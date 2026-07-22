@@ -20,6 +20,10 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    testAnnotationProcessor.extendsFrom annotationProcessor
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation "io.github.openfeign.querydsl:querydsl-jpa:${querydslVersion}"
@@ -36,8 +40,6 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
     testCompileOnly 'org.projectlombok:lombok'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    testAnnotationProcessor "io.github.openfeign.querydsl:querydsl-apt:${querydslVersion}:jpa"
-    testAnnotationProcessor 'org.projectlombok:lombok'
 }
 
 tasks.named('test') {
