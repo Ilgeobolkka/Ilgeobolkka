@@ -96,6 +96,15 @@ ADR이 바로 그 "이후 API 계약" 문서이며, 여기서 성공/오류 응�
 | `GET /api/points/balance` | 없음 | `GetPointBalanceResponse`(balance) | 예 |
 | `GET /api/points/ledger` (쿼리 `page`) | 없음(쿼리 파라미터) | `GetPointLedgerResponse`(entries[]: type, amount, balanceAfter, bookTitle?, pageNumber?, occurredAt, page, totalPages, totalCount) | 예 |
 
+`PATCH /api/reading-sessions/current/page`와 `POST /api/reading-sessions/current/confirmations`는
+모두 인증된 독자의 활성 `ReadingSession`이 있어야 처리됩니다. 세션을 연 적이 없거나 다른 세션으로
+이미 교체된 상태에서 두 엔드포인트를 호출하면 404 Not Found로 거부합니다(오류 응답 형식 절 참고).
+
+`PATCH /api/reading-sessions/current/page`가 현재 세션의 `current_page_number`와 같은 `pageNumber`를
+받으면 페이지 이동으로 처리하지 않습니다. `page_opened_at`을 그대로 유지하고 응답의 `pageOpenedAt`도
+갱신 전 값을 그대로 반환해, 같은 페이지에 머무는 동안 다시 호출해도 6초 판정이 초기화되지 않게 합니다
+(ADR-0001, ADR-0007의 `ReadingSession` 절, BILL-003과 같은 원칙).
+
 `POST /api/reading-sessions/current/confirmations`(BILL-001~006)는 하나의 요청 안에서
 INV-001~005와 다음과 같이 직접 연결됩니다.
 
@@ -103,7 +112,9 @@ INV-001~005와 다음과 같이 직접 연결됩니다.
   값으로 갱신해 잔액과 내역 합계가 항상 일치하게 합니다.
 - **INV-002 중복 차감 금지**: `ConfirmedPage`의 유니크 제약으로 같은 요청을 반복해도(T-BILL-007)
   차감 내역이 하나만 남습니다. 이미 확정된 페이지에 대한 확정 요청은 차감 없이 성공 응답만
-  반환합니다(BILL-002, T-BILL-006).
+  반환합니다(BILL-002, T-BILL-006). 이때 `ConfirmReadingResponse`의 `deductedAmount`는 `0`,
+  `balanceAfter`는 요청 시점의 현재 `PointAccount.balance`를 그대로 반환합니다(처리 순서는 아래
+  "확정 요청 처리 순서" 절 참고).
 - **INV-003 원자성**: `PointAccount` 차감, `PointLedger` 생성, `ConfirmedPage` 생성,
   `LibraryEntry` 갱신을 하나의 트랜잭션에서 처리합니다(Facade/트랜잭션 절). 중간에 실패하면 전부
   롤백되어 열람도 확정되지 않습니다(BILL-006, T-ERR-001).
@@ -113,7 +124,35 @@ INV-001~005와 다음과 같이 직접 연결됩니다.
   기능을 제공하지 않습니다.
 
 또한 `sessionToken`이 현재 `ReadingSession` 행의 값과 다르면(이전 세션의 지연 요청, T-BILL-008)
-확정 요청을 거부해 VIEW-002·BILL-002가 함께 지켜지도록 합니다.
+확정 요청을 거부해 VIEW-002·BILL-002가 함께 지켜지도록 합니다. 같은 이유로 요청 바디의 `bookId`,
+`pageNumber`가 서버 세션의 `current_page_number`·`book_id`와 다르면(예: 페이지 이동 직후 지연
+도착한 이전 페이지의 확정 요청) 확정 요청을 거부합니다. `sessionToken` 불일치와 마찬가지로 409
+Conflict로 응답합니다(오류 응답 형식 절).
+
+### 확정 요청 처리 순서
+
+`POST /api/reading-sessions/current/confirmations`는 INV-002·INV-003·INV-004를 함께 지키기 위해
+Facade 트랜잭션 안에서 아래 순서로 처리합니다(conventions.md Facade와 트랜잭션 절).
+
+1. 활성 `ReadingSession` 존재, `sessionToken` 일치, 요청 바디의 `bookId`·`pageNumber`와 세션의
+   현재 페이지 일치를 검증합니다. 하나라도 어긋나면 404 또는 409로 거부하고 이후 단계를 진행하지
+   않습니다.
+2. 서버 기준 `page_opened_at` 경과가 6초 이상인지 검증합니다(BILL-001). 미만이면 409로 거부합니다.
+3. `ConfirmedPage`에 `(reader_id, book_id, page_number)` 행이 이미 있는지 조회합니다. 있으면
+   `PointAccount`를 잠그지 않고 차감 없이 성공 응답을 반환합니다(`deductedAmount=0`,
+   `balanceAfter`는 현재 잔액, T-BILL-006·T-BILL-007).
+4. 없으면 그때 `PointAccount` 행을 `SELECT ... FOR UPDATE`로 잠그고 잔액을 재확인한 뒤 차감,
+   `PointLedger` 생성, `ConfirmedPage` 삽입, `LibraryEntry` 갱신을 같은 트랜잭션에서 수행합니다
+   (INV-003, INV-004).
+5. 3~4단계 사이의 동시 확정 경합으로 `ConfirmedPage` 삽입이 유니크 제약을 위반하면, 이미 다른
+   요청이 같은 페이지를 확정한 것으로 간주해 3단계와 같은 응답을 반환합니다. 경합 발생 여부를
+   같은 트랜잭션 안에서 즉시 판단해야 하므로 이 삽입에는 `saveAndFlush()`를 사용합니다
+   (conventions.md Service 절의 "즉시 반영이 계약상 필요한 경우" 예외에 해당).
+
+3단계에서 먼저 `ConfirmedPage`를 확인해 이미 확정된 페이지라면 `PointAccount`를 잠그지 않으므로,
+재확인 요청이 몰려도 불필요한 행 잠금 경합이 생기지 않습니다. 이 처리 순서는 Spring Boot 4.1 +
+Spring Data JPA + MySQL 8.4, ADR-0006의 Facade/트랜잭션 경계와 충돌 없이 MVP 범위에서 실현
+가능합니다.
 
 ### 오류 응답 형식
 
@@ -140,13 +179,19 @@ INV-001~005와 다음과 같이 직접 연결됩니다.
 
 | 상황 | HTTP 상태 | 예 |
 | --- | --- | --- |
-| 요청 형식 오류(Bean Validation 실패, JSON 파싱 실패) | 400 Bad Request | 빈 `pageNumber`, 형식이 아닌 `email` |
+| 요청 형식 오류(Bean Validation 실패, JSON 파싱 실패) | 400 Bad Request | 빈 `pageNumber`, 형식이 아닌 `email`, 0 이하인 `pageNumber` |
 | 인증 정보 없음·무효 | 401 Unauthorized | 로그인하지 않고 `POST .../confirmations` 호출 |
-| 인증은 됐지만 본인 소유가 아닌 자원 접근 | 403 Forbidden | 다른 독자의 `GET /api/points/ledger` 조회 시도 |
-| 요청 대상 리소스가 없음 | 404 Not Found | 존재하지 않는 `bookId` |
-| 요청은 유효하나 현재 리소스 상태와 충돌 | 409 Conflict | 만료·교체된 `sessionToken`으로 확정 요청(T-BILL-008), 서버 경과 6초 미만 확정 시도(BILL-001), 이미 동의한 책에 재동의 요청 |
+| 인증은 됐지만 요청한 동작을 수행할 조건을 충족하지 못함 | 403 Forbidden | 최초 열람 동의(CNS-001) 없이 `POST /api/books/{bookId}/reading-sessions` 호출 |
+| 요청 대상 리소스가 없음 | 404 Not Found | 존재하지 않는 `bookId`, `Book.totalPageCount`를 초과하는 `pageNumber`, 활성 `ReadingSession`이 없는 상태에서 `PATCH .../current/page` 또는 `POST .../confirmations` 호출 |
+| 요청은 유효하나 현재 리소스 상태와 충돌 | 409 Conflict | 만료·교체된 `sessionToken`으로 확정 요청(T-BILL-008), 서버 경과 6초 미만 확정 시도(BILL-001), 이미 동의한 책에 재동의 요청, 요청 바디의 `bookId`·`pageNumber`가 서버 세션의 현재 페이지와 다른 확정 요청 |
 | 요청·리소스 상태는 정상이나 비즈니스 규칙 위반 | 422 Unprocessable Entity | 잔액 부족으로 새 페이지 진입 차단(BILL-005) |
 | 서버 내부 오류 | 500 Internal Server Error | 예기치 못한 예외, 차감 처리 중 DB 오류(T-ERR-001) |
+
+다른 독자가 소유한 자원을 경로 파라미터로 지정해 조회하는 엔드포인트는 이 계약에 없습니다.
+`GET /api/points/ledger`, `GET /api/library` 등은 모두 인증된 독자 식별자로만 범위를 지정하므로
+다른 독자의 자원을 지정할 방법이 없고, 조회 결과는 항상 요청자 본인 것만 반환합니다(test-strategy.md
+7절). 이후 다른 독자의 자원을 경로 파라미터로 노출하는 엔드포인트가 추가되면 위 403 행을 그 경우에도
+적용합니다.
 
 ## 결과
 
@@ -160,3 +205,6 @@ INV-001~005와 다음과 같이 직접 연결됩니다.
   (AGENTS.md 2절).
 - 이 ADR은 `제안됨` 상태의 초안입니다. 결정자 검토와 승인 후에만 `상태: 승인됨`으로 바꾸고, 그 전까지
   실제 Controller 구현의 확정 근거로 사용하지 않습니다.
+- 비즈니스 로직·예외 케이스·실현 가능성 관점 팀 검토(SCRUM-86) 완료, 발견 사항 반영. 오류 상태 매핑
+  누락(CNS-001 미동의, 페이지 번호 범위, 활성 세션 없음, 확정 요청 바디 불일치)과 확정 요청 재시도
+  응답 값을 이번 검토로 확정했습니다.
