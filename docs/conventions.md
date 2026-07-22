@@ -20,8 +20,9 @@
 
 - 기본 패키지는 `com.example.ilgeobolkka`입니다.
 - 기능은 기술 계층 전체를 한곳에 모으지 않고 `reading`, `point`, `book`처럼 도메인별로 묶습니다.
-- 한 도메인 안에서는 필요한 계층만 `controller`, `service`, `repository`, `dto`, `entity`로 나눕니다.
-  빈 패키지나 미래 기능용 클래스는 미리 만들지 않습니다.
+- 한 도메인 안에서는 필요한 계층만 `controller`, `facade`, `service`, `repository`, `dto`, `entity`로
+  나눕니다. 도메인의 API를 구현할 때 Facade를 함께 만들되, 아직 구현하지 않는 도메인의 빈 패키지는
+  미리 만들지 않습니다.
 - 설정·예외 처리·보안처럼 실제로 여러 도메인이 함께 쓰는 코드만 `global`에 둡니다. 한 도메인에서만
   쓰는 코드를 재사용 가능성만으로 `global`에 올리지 않습니다.
 - 파일 저장소나 외부 API 같은 외부 시스템 연동은 `infra`에 둡니다. 연동 대상이 정해지기 전에는
@@ -33,13 +34,14 @@
 com.example.ilgeobolkka
 └── reading
     ├── controller
+    ├── facade
     ├── service
     ├── repository
     ├── dto
     └── entity
 ```
 
-도메인 우선 패키지 구조를 선택한 근거와 경계는
+도메인 우선 패키지와 Facade 경계를 선택한 근거는
 [`ADR-0006`](./adr/0006-organize-backend-packages-by-domain.md)에 기록합니다.
 
 ## 이름
@@ -47,6 +49,7 @@ com.example.ilgeobolkka
 | 대상 | 규칙 | 읽어볼까 예시 |
 | --- | --- | --- |
 | Controller | `{Domain}Controller` | `ReadingController` |
+| Facade | `{Domain}Facade` | `ReadingFacade` |
 | Service | `{Domain}Service` | `PointService` |
 | Repository | `{Entity}Repository` | `ConfirmedPageRepository` |
 | Entity | 도메인 명사 단수형 | `ReadingSession`, `PointLedger` |
@@ -65,21 +68,32 @@ com.example.ilgeobolkka
 
 Controller는 HTTP 요청과 응답의 경계만 담당합니다.
 
-- Request DTO 검증, 인증된 독자 식별, Service 호출, Response DTO 변환까지만 수행합니다.
+- Request DTO 검증, 인증된 독자 식별, 같은 도메인의 Facade 호출, Response DTO 변환까지만 수행합니다.
 - 비즈니스 규칙, 트랜잭션, Entity 직접 조립, Repository 접근, 외부 시스템 호출을 두지 않습니다.
 - Entity를 응답으로 직접 반환하지 않습니다.
 - 의존성은 `private final` 필드와 생성자로 주입합니다. Lombok을 사용한다면
   `@RequiredArgsConstructor`까지만 사용하고 `@Autowired` 필드 주입은 사용하지 않습니다.
 
-## Service와 트랜잭션
+## Facade와 트랜잭션
 
+- 도메인마다 `{Domain}Facade`를 두고 Controller가 호출하는 유스케이스 진입점으로 사용합니다.
 - public 메서드는 `confirmReading(readerId, request)`처럼 하나의 유스케이스를 표현합니다.
-- 상태 변경 트랜잭션은 Service에서 시작하고 `@Transactional`을 사용합니다. 조회 전용 유스케이스는
+- 상태 변경 트랜잭션은 Facade에서 시작하고 `@Transactional`을 사용합니다. 조회 전용 유스케이스는
   `@Transactional(readOnly = true)`로 의도를 드러냅니다.
 - 포인트 차감, 내역 생성, 열람 확정, 마지막 열람 위치 갱신은
   [`INV-003`](./test-strategy.md#inv-003-차감과-열람-확정의-원자성)에 따라 하나의 트랜잭션에서 처리합니다.
-- 각 도메인 Service는 자기 도메인의 Repository만 직접 참조합니다. 여러 도메인을 조합하는 흐름은
-  각 Service의 public 메서드를 통해 구성하며, 이름뿐인 Facade 계층은 미리 추가하지 않습니다.
+- Facade는 필요한 도메인 Service의 public 메서드를 조합하지만 Repository를 직접 참조하거나 도메인
+  규칙을 구현하지 않습니다.
+- Facade끼리는 호출하지 않습니다. 다른 도메인의 행위가 필요하면 해당 도메인 Service의 public
+  메서드를 호출해 흐름과 트랜잭션의 주인이 하나만 남게 합니다.
+- Facade는 Spring `@Service`와 생성자 주입을 사용합니다.
+
+## Service
+
+- Service는 자기 도메인의 규칙을 수행하고 자기 도메인의 Repository만 직접 참조합니다.
+- 다른 도메인의 Service나 Facade를 호출하지 않습니다. 도메인 횡단 조합은 호출한 Facade가 담당합니다.
+- Service 메서드는 Facade가 시작한 트랜잭션 안에서 실행합니다. 독립적인 트랜잭션을 새로 열어 원자적
+  유스케이스를 분리하지 않습니다.
 - 외부 API나 파일 저장소 호출은 별도 Client로 분리하고, 긴 DB 트랜잭션 안에서 호출하지 않습니다.
 - 즉시 반영이 계약상 필요한 경우가 아니라면 `saveAndFlush()`를 반복하지 않고 JPA 더티 체킹을
   사용합니다.
@@ -129,6 +143,7 @@ Controller는 HTTP 요청과 응답의 경계만 담당합니다.
   [`docs/test-strategy.md`](./test-strategy.md)를 따릅니다.
 - 테스트 메서드는 `같은_페이지를_재열람하면_포인트를_차감하지_않는다()`처럼 조건과 결과가 드러나는
   한글 이름을 사용합니다. 프레임워크가 생성한 기본 smoke test 이름은 예외로 둡니다.
+- Facade 테스트는 조합된 유스케이스의 정상·실패 흐름과 트랜잭션 원자성을 검증합니다.
 - 도메인 규칙은 빠른 단위 테스트로, JPA·트랜잭션·동시성·고유 제약은 MySQL 통합 테스트로 검증합니다.
 - 시간 경계 테스트에는 고정된 `Instant`나 주입한 `Clock`을 사용하고 `now()`에 결과가 흔들리지 않게
   합니다.

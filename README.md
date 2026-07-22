@@ -54,7 +54,7 @@
 - [ADR-0003: 포인트 원장과 전역 페이지 단가 사용](./docs/adr/0003-use-point-ledger-and-fixed-page-price.md)
 - [ADR-0004: Java 21, Spring Boot 4.1.0, Amazon RDS for MySQL 사용](./docs/adr/0004-use-java21-spring-boot41-and-rds-mysql.md)
 - [ADR-0005: 로컬과 운영 데이터베이스 연결 설정 분리](./docs/adr/0005-separate-local-and-production-database-configuration.md)
-- [ADR-0006: 백엔드 패키지를 도메인별로 구성](./docs/adr/0006-organize-backend-packages-by-domain.md)
+- [ADR-0006: 도메인 우선 패키지와 Facade 구성](./docs/adr/0006-organize-backend-packages-by-domain.md)
 
 ## 로컬 MySQL과 테스트
 
