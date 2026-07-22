@@ -69,7 +69,7 @@ ADR이 바로 그 "이후 API 계약" 문서이며, 여기서 성공/오류 응�
 | BILL-002 | `POST /api/reading-sessions/current/confirmations` | `ConfirmedPage`의 `(reader_id, book_id, page_number)` 유니크 제약으로 최초 1회만 50P 차감 | `ConfirmedPage`, `PointAccount`, `PointLedger` |
 | BILL-003 | `POST /api/reading-sessions/current/confirmations` | 탭 전환·최소화는 별도 이벤트를 보내지 않으므로 `page_opened_at`이 유지되고, 확정 요청 시점의 서버 경과 시간만으로 판정 | `ReadingSession` |
 | BILL-004 | `PATCH /api/reading-sessions/current/page` | 6초 전 페이지 이동/뷰어 종료 시 클라이언트가 확정 요청을 보내지 않아 차감이 발생하지 않음 | `ReadingSession` |
-| BILL-005 | `POST /api/books/{bookId}/reading-sessions`, `PATCH /api/reading-sessions/current/page` | 새 페이지 진입 전 `PointAccount.balance`가 50P 미만이면 페이지 이미지를 반환하지 않고 차단 | `PointAccount` |
+| BILL-005 | `POST /api/books/{bookId}/reading-sessions`, `PATCH /api/reading-sessions/current/page` | 미확정 페이지 진입 전 `PointAccount.balance`가 50P 미만이면 페이지 이미지를 반환하지 않고 차단. 이미 확정된 페이지(`ConfirmedPage` 존재)는 잔액과 무관하게 열람 | `PointAccount`, `ConfirmedPage` |
 | BILL-006 | `POST /api/reading-sessions/current/confirmations` | 차감 실패 시 열람 미확정 상태를 유지하고, 동일 요청 재시도를 멱등하게 허용 | `ReadingSession`, `ConfirmedPage`, `PointAccount`, `PointLedger` |
 | LIB-001 | `POST /api/reading-sessions/current/confirmations`(부수효과), `GET /api/library` | 최초 확정 시 서재 자동 추가, 목록·마지막 확정 페이지 조회 | `LibraryEntry` |
 | PTS-001 | `POST /api/reading-sessions/current/confirmations`(부수효과), `GET /api/points/balance`, `GET /api/points/ledger` | 모든 증감을 내역으로 남기고 잔액=지급 합계-차감 합계를 일치시킴 | `PointAccount`, `PointLedger` |
@@ -97,13 +97,24 @@ ADR이 바로 그 "이후 API 계약" 문서이며, 여기서 성공/오류 응�
 | `GET /api/points/ledger` (쿼리 `page`) | 없음(쿼리 파라미터) | `GetPointLedgerResponse`(entries[]: type, amount, balanceAfter, bookTitle?, pageNumber?, occurredAt, page, totalPages, totalCount) | 예 |
 
 `PATCH /api/reading-sessions/current/page`와 `POST /api/reading-sessions/current/confirmations`는
-모두 인증된 독자의 활성 `ReadingSession`이 있어야 처리됩니다. 세션을 연 적이 없거나 다른 세션으로
-이미 교체된 상태에서 두 엔드포인트를 호출하면 404 Not Found로 거부합니다(오류 응답 형식 절 참고).
+모두 인증된 독자의 활성 `ReadingSession`이 있어야 처리됩니다. 세션을 연 적이 없어 세션 행 자체가
+없으면 404 Not Found로 거부합니다. 세션 행은 있으나 요청의 `sessionToken`이 현재 행의 값과 달라
+다른 세션으로 이미 교체된 경우에는 404가 아니라 409 Conflict로 거부합니다. 즉 "세션 행 없음은 404,
+세션은 있지만 토큰 불일치는 409"로 일관되게 구분합니다(오류 응답 형식 절 참고).
 
 `PATCH /api/reading-sessions/current/page`가 현재 세션의 `current_page_number`와 같은 `pageNumber`를
 받으면 페이지 이동으로 처리하지 않습니다. `page_opened_at`을 그대로 유지하고 응답의 `pageOpenedAt`도
 갱신 전 값을 그대로 반환해, 같은 페이지에 머무는 동안 다시 호출해도 6초 판정이 초기화되지 않게 합니다
 (ADR-0001, ADR-0007의 `ReadingSession` 절, BILL-003과 같은 원칙).
+
+`POST /api/books/{bookId}/reading-sessions`와 `PATCH /api/reading-sessions/current/page`가 페이지에
+진입할 때의 잔액 검사(BILL-005)는 **미확정 페이지에만** 적용합니다. 진입 대상 페이지의
+`ConfirmedPage` 존재 여부를 먼저 확인하고, 이미 확정된 페이지라면 `PointAccount.balance`와 무관하게
+페이지 이미지를 반환합니다(PRD 5.2 "이미 확정된 페이지는 잔액과 관계없이 다시 읽을 수 있다").
+`ConfirmedPage`가 없는 미확정 페이지에 진입할 때만 잔액이 50P 미만이면 이미지를 반환하지 않고
+차단합니다(422). 여기서의 잔액 검사는 진입 차단 용도이며, 실제 차감 시점의 음수 잔액
+방지(INV-004)는 확정 트랜잭션에서 `PointAccount`를 잠근 뒤 다시 검증합니다(아래 "확정 요청 처리
+순서").
 
 `POST /api/reading-sessions/current/confirmations`(BILL-001~006)는 하나의 요청 안에서
 INV-001~005와 다음과 같이 직접 연결됩니다.
@@ -134,23 +145,33 @@ Conflict로 응답합니다(오류 응답 형식 절).
 `POST /api/reading-sessions/current/confirmations`는 INV-002·INV-003·INV-004를 함께 지키기 위해
 Facade 트랜잭션 안에서 아래 순서로 처리합니다(conventions.md Facade와 트랜잭션 절).
 
-1. 활성 `ReadingSession` 존재, `sessionToken` 일치, 요청 바디의 `bookId`·`pageNumber`와 세션의
-   현재 페이지 일치를 검증합니다. 하나라도 어긋나면 404 또는 409로 거부하고 이후 단계를 진행하지
-   않습니다.
+1. 확정 트랜잭션 시작 시 독자의 `ReadingSession` 행을 `SELECT ... FOR UPDATE`로 잠급니다. 잠근 행을
+   기준으로 세션 존재·`sessionToken` 일치·요청 바디의 `bookId`·`pageNumber`와 세션의 현재 페이지
+   일치를 검증합니다. 세션 행 자체가 없으면 404, 세션 행은 있으나 `sessionToken`이 다르거나
+   `bookId`·`pageNumber`가 현재 페이지와 다르면 409로 거부하고 이후 단계를 진행하지 않습니다. 이
+   잠금은 트랜잭션 종료까지 유지되므로, 검증 직후 다른 요청이 페이지를 이동
+   (`PATCH .../current/page`)하거나 새 세션으로 교체해 이전 페이지·이전 세션 요청이 그대로 50P를
+   차감하는 상황(T-BILL-002, T-BILL-008)을 막습니다. 페이지 이동과 새 세션 오픈도 같은 세션 행을
+   갱신하므로 같은 잠금에서 직렬화됩니다.
 2. 서버 기준 `page_opened_at` 경과가 6초 이상인지 검증합니다(BILL-001). 미만이면 409로 거부합니다.
-3. `ConfirmedPage`에 `(reader_id, book_id, page_number)` 행이 이미 있는지 조회합니다. 있으면
-   `PointAccount`를 잠그지 않고 차감 없이 성공 응답을 반환합니다(`deductedAmount=0`,
-   `balanceAfter`는 현재 잔액, T-BILL-006·T-BILL-007).
-4. 없으면 그때 `PointAccount` 행을 `SELECT ... FOR UPDATE`로 잠그고 잔액을 재확인한 뒤 차감,
-   `PointLedger` 생성, `ConfirmedPage` 삽입, `LibraryEntry` 갱신을 같은 트랜잭션에서 수행합니다
-   (INV-003, INV-004).
-5. 3~4단계 사이의 동시 확정 경합으로 `ConfirmedPage` 삽입이 유니크 제약을 위반하면, 이미 다른
-   요청이 같은 페이지를 확정한 것으로 간주해 3단계와 같은 응답을 반환합니다. 경합 발생 여부를
-   같은 트랜잭션 안에서 즉시 판단해야 하므로 이 삽입에는 `saveAndFlush()`를 사용합니다
-   (conventions.md Service 절의 "즉시 반영이 계약상 필요한 경우" 예외에 해당).
+3. `ConfirmedPage`에 `(reader_id, book_id, page_number)` 행이 있는지 선조회합니다. 있으면
+   `PointAccount`를 잠그지 않고 차감 없이 성공 응답을 반환합니다(`deductedAmount=0`, `balanceAfter`는
+   현재 잔액, T-BILL-006·T-BILL-007). 이미 확정된 일반 요청은 이 선조회에서 반환되어 불필요한 잠금을
+   피합니다.
+4. 없으면 `PointAccount` 행을 `SELECT ... FOR UPDATE`로 잠급니다.
+5. 잠근 뒤 `ConfirmedPage`를 다시 조회합니다(더블 체크). 3단계 선조회와 이 재조회 사이에 다른 확정
+   요청이 먼저 삽입했다면 이 시점에 행이 보이므로, 차감 없이 3단계와 같은 성공 응답을 반환합니다.
+   같은 독자의 확정 요청은 모두 같은 `PointAccount` 행을 잠가 직렬화되므로, 유니크 제약 위반 예외를
+   잡아 성공 응답으로 바꾸는 처리 없이도 중복 차감이 방지됩니다(INV-002). 유니크 제약 위반 예외를
+   같은 JPA 트랜잭션에서 잡으면 참여 중인 트랜잭션이 rollback-only 상태가 되어 마지막 커밋에서
+   실패할 수 있으므로 이 방식을 쓰지 않습니다.
+6. 재조회에도 없으면 잔액을 재확인(INV-004)한 뒤 차감, `PointLedger` 생성, `ConfirmedPage` 삽입,
+   `LibraryEntry` 갱신을 같은 트랜잭션에서 수행합니다(INV-003). `ConfirmedPage`의 유니크 제약은 정상
+   흐름에서 의존하는 장치가 아니라, 예기치 못한 경로까지 대비하는 최종 DB 안전망으로 남깁니다.
 
 3단계에서 먼저 `ConfirmedPage`를 확인해 이미 확정된 페이지라면 `PointAccount`를 잠그지 않으므로,
-재확인 요청이 몰려도 불필요한 행 잠금 경합이 생기지 않습니다. 이 처리 순서는 Spring Boot 4.1 +
+재확인 요청이 몰려도 불필요한 행 잠금 경합이 생기지 않습니다. `ReadingSession`과 `PointAccount`를
+모두 잠글 때는 항상 세션 → 계정 순서로 잠가 교착을 피합니다. 이 처리 순서는 Spring Boot 4.1 +
 Spring Data JPA + MySQL 8.4, ADR-0006의 Facade/트랜잭션 경계와 충돌 없이 MVP 범위에서 실현
 가능합니다.
 
@@ -241,3 +262,28 @@ Spring Data JPA + MySQL 8.4, ADR-0006의 Facade/트랜잭션 경계와 충돌 �
     잠금 경합 방지), 재시도 응답 값이 확정되어 있어야 T-BILL-006·007(재시도 멱등성)을 클라이언트가
     검증할 수 있습니다. ADR-0006의 Facade/트랜잭션 경계, conventions.md Service 절의
     `saveAndFlush()` 예외 규정과도 일치합니다.
+- 후속(PR) 리뷰로 아래 지점을 추가 수정했습니다.
+  - **잔액 검사 대상을 미확정 페이지로 한정**(BILL-005 매핑, 엔드포인트 상세): 초안은 "새 페이지 진입
+    전 잔액 50P 미만이면 차단"이라고만 해 "새 페이지"가 미확정 페이지인지 불분명했습니다. 진입 시
+    `ConfirmedPage`를 먼저 확인해 이미 확정된 페이지는 잔액과 무관하게 열람하고, 미확정 페이지
+    진입에만 잔액 검사를 적용한다고 명시했습니다. — 판단 근거: PRD 5.2는 이미 확정된 페이지를 잔액과
+    관계없이 다시 읽을 수 있다고 명시하므로, 확정된 페이지까지 잔액으로 막으면 계약 위반입니다.
+  - **세션 부재/교체 상태 코드 통일**(엔드포인트 상세, 확정 요청 처리 순서 1단계): 초안은 세션을 연
+    적이 없거나 교체된 경우를 모두 404로 적었으나, 같은 문서의 다른 문단과 오류 표는 토큰 불일치를
+    409로 정의해 서로 어긋났습니다. "세션 행 없음은 404, 세션은 있으나 `sessionToken` 불일치는 409"로
+    통일했습니다. — 판단 근거: 토큰 불일치는 리소스 부재가 아니라 교체된 현재 상태와의 충돌이므로
+    409가 정확하고, 오류 응답 표(T-BILL-008 예시)와도 일관됩니다.
+  - **확정 트랜잭션 중 세션 행 잠금**(확정 요청 처리 순서 1단계): 초안은 세션을 검증한 뒤 잠금 없이
+    차감을 진행해, 검증 직후 다른 요청이 페이지를 이동하거나 세션을 교체하면 이전 페이지·이전 세션
+    요청이 그대로 50P를 차감할 수 있었습니다(T-BILL-002·T-BILL-008 위반). 확정 트랜잭션 시작 시
+    `ReadingSession` 행을 `SELECT ... FOR UPDATE`로 잠그고, 페이지 이동·세션 오픈도 같은 행을 갱신해
+    직렬화되도록 했습니다. — 판단 근거: 리뷰가 제시한 두 대안(세션 행 `FOR UPDATE` 잠금 / `@Version`
+    낙관적 락) 중, 이미 `PointAccount`에 비관적 잠금을 쓰는 이 설계와 일관되게 세션 행도 비관적
+    잠금으로 통일했습니다.
+  - **중복 차감 방지 방식 변경 — 유니크 예외 캐치 → 잠금 후 더블 체크**(확정 요청 처리 순서 4~6단계):
+    초안은 `ConfirmedPage` 삽입에 `saveAndFlush()`를 써 유니크 제약 예외를 잡아 성공 응답으로 바꿨으나,
+    같은 JPA 트랜잭션에서 제약 예외를 잡으면 참여 트랜잭션이 rollback-only가 되어 마지막 커밋이 실패할
+    수 있습니다. `ConfirmedPage` 선조회 → `PointAccount` 잠금 → `ConfirmedPage` 재조회 → 없을 때만
+    차감·삽입 순서로 바꿨습니다. — 판단 근거: 같은 독자의 확정 요청은 같은 `PointAccount` 행 잠금으로
+    직렬화되므로 재조회만으로 중복이 안전하게 걸러지고, 예외 캐치로 인한 트랜잭션 오염을 피할 수
+    있습니다. 이미 확정된 일반 요청은 선조회에서 반환되어 불필요한 잠금도 생기지 않습니다.
