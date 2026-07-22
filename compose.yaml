@@ -1,0 +1,25 @@
+services:
+  mysql:
+    image: mysql:8.4
+    ports:
+      - "${DB_PORT:-3307}:3306"
+    environment:
+      MYSQL_DATABASE: ${DB_NAME:-ilgeobolkka}
+      MYSQL_USER: ${DB_USERNAME:-ilgeobolkka}
+      MYSQL_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD must be set}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?DB_ROOT_PASSWORD must be set}
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "mysqladmin ping -h 127.0.0.1 -u$${MYSQL_USER} -p$${MYSQL_PASSWORD} --silent",
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+
+volumes:
+  mysql-data:

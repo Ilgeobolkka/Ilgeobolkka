@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+# push 전 전체 Gradle 검사와 패키징을 수행한다.
+
+fail() { printf '✗ %s 실패 — push를 중단합니다\n' "$1" >&2; exit 1; }
+
+[ -x ./gradlew ] || fail "Gradle wrapper 확인"
+./gradlew -q build || fail "gradlew build"
+
+exit 0
