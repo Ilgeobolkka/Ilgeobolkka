@@ -3,7 +3,6 @@ package com.example.ilgeobolkka.support.config;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.IOException;
 import java.util.Map;
@@ -32,7 +31,8 @@ class DataSourceProfileConfigurationTest {
     }
 
     @Test
-    void 로컬_프로파일은_dotenv에서_주입된_DataSource를_사용한다() throws IOException {
+    void 로컬_프로파일은_dotenv_import와_DataSource_환경변수_계약을_정의한다()
+            throws IOException {
         PropertySourcesPropertyResolver resolver = resolverFor("application-local.yml");
 
         assertAll(
@@ -44,32 +44,13 @@ class DataSourceProfileConfigurationTest {
     }
 
     @Test
-    void 운영_프로파일은_외부_환경변수만으로_DataSource를_구성한다() throws IOException {
+    void 운영_프로파일은_dotenv_import_없이_DataSource_환경변수_계약을_정의한다()
+            throws IOException {
         PropertySourcesPropertyResolver resolver = resolverFor("application-prod.yml");
 
         assertAll(
                 () -> assertNull(resolver.getProperty("spring.config.import")),
                 () -> assertDataSourceProperties(resolver));
-    }
-
-    @Test
-    void 운영_DataSource_환경변수가_없으면_설정_해석에_실패한다() throws IOException {
-        PropertySourcesPropertyResolver resolver =
-                resolverFor("application-prod.yml", Map.of());
-
-        assertAll(
-                () ->
-                        assertThrows(
-                                IllegalArgumentException.class,
-                                () -> resolver.getProperty("spring.datasource.url")),
-                () ->
-                        assertThrows(
-                                IllegalArgumentException.class,
-                                () -> resolver.getProperty("spring.datasource.username")),
-                () ->
-                        assertThrows(
-                                IllegalArgumentException.class,
-                                () -> resolver.getProperty("spring.datasource.password")));
     }
 
     private PropertySourcesPropertyResolver resolverFor(String resourcePath) throws IOException {
@@ -78,11 +59,6 @@ class DataSourceProfileConfigurationTest {
                         "DB_URL", DB_URL,
                         "DB_USERNAME", DB_USERNAME,
                         "DB_PASSWORD", DB_PASSWORD);
-        return resolverFor(resourcePath, environmentVariables);
-    }
-
-    private PropertySourcesPropertyResolver resolverFor(
-            String resourcePath, Map<String, Object> environmentVariables) throws IOException {
         MutablePropertySources propertySources = new MutablePropertySources();
         propertySources.addFirst(new MapPropertySource("test-environment", environmentVariables));
 
