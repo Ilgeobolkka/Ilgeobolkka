@@ -26,6 +26,9 @@ Spring datasource가 요구하는 공통 환경변수는 다음 세 개입니다
 
 ## 3. 로컬 실행
 
+별도 프로파일을 지정하지 않으면 `local` 프로파일이 기본으로 활성화되어 `.env`의 접속 정보를
+Docker Compose MySQL 연결에 사용합니다.
+
 ```bash
 cp .env.example .env
 docker compose up -d --wait
@@ -46,6 +49,7 @@ MySQL을 종료하되 데이터를 유지하려면 `docker compose down`을 실�
 운영 배포 환경에는 다음 형식으로 값을 주입합니다. 실제 엔드포인트와 계정·비밀번호를 파일이나 저장소에 기록하지 않습니다.
 
 ```text
+SPRING_PROFILES_ACTIVE=prod
 DB_URL=jdbc:mysql://<RDS-ENDPOINT>:3306/ilgeobolkka?sslMode=VERIFY_IDENTITY
 DB_USERNAME=<Secrets Manager에서 주입>
 DB_PASSWORD=<Secrets Manager에서 주입>
