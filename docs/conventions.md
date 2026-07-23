@@ -87,6 +87,8 @@ Controller는 HTTP 요청과 응답의 경계만 담당합니다.
 - Facade끼리는 호출하지 않습니다. 다른 도메인의 행위가 필요하면 해당 도메인 Service의 public
   메서드를 호출해 흐름과 트랜잭션의 주인이 하나만 남게 합니다.
 - Facade는 Spring `@Service`와 생성자 주입을 사용합니다.
+- `spring.jpa.open-in-view=false`를 유지합니다. 조회 트랜잭션 안에서 필요한 값을 Response DTO로 변환하고,
+  Controller나 Thymeleaf 렌더링 중 지연 로딩에 의존하지 않습니다.
 
 ## Service
 
