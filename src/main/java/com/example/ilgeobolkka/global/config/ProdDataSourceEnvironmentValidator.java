@@ -18,21 +18,19 @@ public final class ProdDataSourceEnvironmentValidator
             return;
         }
 
-        requireDataSourceProperty(environment, "spring.datasource.url", "DB_URL");
-        requireDataSourceProperty(environment, "spring.datasource.username", "DB_USERNAME");
-        requireDataSourceProperty(environment, "spring.datasource.password", "DB_PASSWORD");
+        requireEnvironmentVariable(environment, "DB_URL");
+        requireEnvironmentVariable(environment, "DB_USERNAME");
+        requireEnvironmentVariable(environment, "DB_PASSWORD");
     }
 
-    private void requireDataSourceProperty(
-            ConfigurableEnvironment environment,
-            String propertyName,
-            String environmentVariable) {
-        String value = environment.getRequiredProperty(propertyName);
+    private void requireEnvironmentVariable(
+            ConfigurableEnvironment environment, String environmentVariable) {
+        String value = environment.getProperty(environmentVariable);
         if (!StringUtils.hasText(value)) {
             throw new IllegalStateException(
                     "Required environment variable '"
                             + environmentVariable
-                            + "' must not be blank");
+                            + "' must be set and not blank");
         }
     }
 }

@@ -19,17 +19,25 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
-import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.PropertySource;
 import org.springframework.core.env.StandardEnvironment;
+import org.springframework.core.env.SystemEnvironmentPropertySource;
 
 class DataSourceProfileIntegrationTest {
 
+    private static final Map<String, Object> SPRING_DATASOURCE_ENVIRONMENT =
+            Map.of(
+                    "SPRING_DATASOURCE_URL", "jdbc:mysql://127.0.0.1:1/ilgeobolkka",
+                    "SPRING_DATASOURCE_USERNAME", "spring-profile-test-user",
+                    "SPRING_DATASOURCE_PASSWORD", "spring-profile-test-password");
     private static final Map<String, Object> VALID_PROD_ENVIRONMENT =
             Map.of(
                     "DB_URL", "jdbc:mysql://db.example:3306/ilgeobolkka",
                     "DB_USERNAME", "profile-test-user",
-                    "DB_PASSWORD", "profile-test-password");
+                    "DB_PASSWORD", "profile-test-password",
+                    "SPRING_DATASOURCE_URL", "jdbc:mysql://127.0.0.1:1/ilgeobolkka",
+                    "SPRING_DATASOURCE_USERNAME", "spring-profile-test-user",
+                    "SPRING_DATASOURCE_PASSWORD", "spring-profile-test-password");
 
     @Test
     void 로컬_프로파일은_dotenv의_DataSource_설정으로_MySQL에_연결한다() throws Exception {
@@ -73,7 +81,7 @@ class DataSourceProfileIntegrationTest {
         assertProdStartFails(
                 providedEnvironment,
                 missingVariable,
-                "Could not resolve placeholder '" + missingVariable + "'");
+                requiredEnvironmentVariableMessage(missingVariable));
     }
 
     @ParameterizedTest(name = "{0} 공백 시 prod 시작 실패")
@@ -85,7 +93,15 @@ class DataSourceProfileIntegrationTest {
         assertProdStartFails(
                 providedEnvironment,
                 blankVariable,
-                "Required environment variable '" + blankVariable + "' must not be blank");
+                requiredEnvironmentVariableMessage(blankVariable));
+    }
+
+    @Test
+    void 운영_프로파일은_Spring_DataSource_설정으로_DB_환경변수_검증을_우회할_수_없다() {
+        assertProdStartFails(
+                SPRING_DATASOURCE_ENVIRONMENT,
+                "DB_URL",
+                requiredEnvironmentVariableMessage("DB_URL"));
     }
 
     private void assertProdStartFails(
@@ -95,7 +111,9 @@ class DataSourceProfileIntegrationTest {
         StandardEnvironment prodEnvironment = environmentWithoutSystemProperties();
         prodEnvironment
                 .getPropertySources()
-                .addFirst(new MapPropertySource("test-prod-environment", providedEnvironment));
+                .addFirst(
+                        new SystemEnvironmentPropertySource(
+                                "test-prod-environment", providedEnvironment));
         SpringApplication application = applicationFor("prod", prodEnvironment);
 
         Exception exception =
@@ -158,5 +176,11 @@ class DataSourceProfileIntegrationTest {
             current = current.getCause();
         }
         return false;
+    }
+
+    private String requiredEnvironmentVariableMessage(String environmentVariable) {
+        return "Required environment variable '"
+                + environmentVariable
+                + "' must be set and not blank";
     }
 }
