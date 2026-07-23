@@ -1,8 +1,9 @@
-package com.example.ilgeobolkka.support.querydsl;
+package com.example.testfixture.querydsl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import com.example.ilgeobolkka.IlgeobolkkaApplication;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -10,10 +11,22 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.persistence.autoconfigure.EntityScan;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-@SpringBootTest
+// 테스트 전용 QuerydslTestEntity는 애플리케이션 스캔 범위(com.example.ilgeobolkka) 밖의
+// com.example.testfixture.querydsl 에 있어 기본 컨텍스트에는 등록되지 않는다. 이 통합 테스트에서만
+// @EntityScan 으로 등록한다(그래서 IlgeobolkkaApplicationTests/CoreDomainSchemaMigrationTest 는
+// 운영 기준값 ddl-auto=validate 로 기동한다).
+// 이 엔티티의 테이블은 Flyway가 아니라 이 클래스가 @BeforeEach에서 raw SQL로 직접 만들므로,
+// 컨텍스트 로딩 시점에는 테이블이 없다. validate면 EntityManagerFactory 생성이 실패하므로 여기서만 끈다.
+// 이 테스트는 애플리케이션 패키지(com.example.ilgeobolkka) 밖에 있어 @SpringBootTest 가
+// @SpringBootConfiguration 을 자동으로 찾지 못하므로 메인 설정을 classes 로 명시한다.
+@SpringBootTest(
+        classes = IlgeobolkkaApplication.class,
+        properties = "spring.jpa.hibernate.ddl-auto=none")
+@EntityScan(basePackageClasses = QuerydslTestEntity.class)
 class QuerydslMySqlIntegrationTest {
 
     private final JdbcTemplate jdbcTemplate;

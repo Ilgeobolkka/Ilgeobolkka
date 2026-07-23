@@ -1,4 +1,4 @@
-package com.example.ilgeobolkka.support.querydsl;
+package com.example.testfixture.querydsl;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
