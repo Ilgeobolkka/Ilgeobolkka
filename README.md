@@ -11,7 +11,8 @@
 - 백엔드는 Java 21과 Spring Boot 4.1.0, 운영 데이터베이스는 Amazon RDS for MySQL로 결정
 - 로컬 개발과 테스트용 MySQL 8.4는 Docker Compose로 실행하며 기본 호스트 포트는 3307
 - Spring datasource는 환경변수 계약을 사용해 로컬 Compose와 운영 RDS를 같은 애플리케이션으로 연결
-- 애플리케이션 배포 방식, 인증 구현 방식, 파일 저장소는 미정
+- 애플리케이션 배포 방식과 인증 구현 방식은 미정
+- 페이지 이미지는 Poppler로 사전 변환하고, 로컬은 파일시스템·운영은 비공개 Amazon S3에 저장
 - PG 결제와 백오피스는 MVP 이후 범위
 
 ## 핵심 경험
@@ -55,6 +56,7 @@
 - [ADR-0004: Java 21, Spring Boot 4.1.0, Amazon RDS for MySQL 사용](./docs/adr/0004-use-java21-spring-boot41-and-rds-mysql.md)
 - [ADR-0005: 로컬과 운영 데이터베이스 연결 설정 분리](./docs/adr/0005-separate-local-and-production-database-configuration.md)
 - [ADR-0006: 도메인 우선 패키지와 Facade 구성](./docs/adr/0006-organize-backend-packages-by-domain.md)
+- [ADR-0011: Poppler로 페이지 이미지 변환, 비공개 S3에 저장](./docs/adr/0011-use-poppler-and-private-s3-for-page-images.md)
 
 ## 로컬 MySQL과 테스트
 
@@ -109,7 +111,6 @@ docker compose up -d --wait
 
 1. 프런트엔드 기술 스택과 저장소 구조
 2. 인증과 세션 구현 방식
-3. 페이지 이미지 변환 및 저장 방식
-4. 정식 서비스명과 상표 검토
-5. PG 결제 성공 후 포인트 자동 충전
-6. 도서 운영을 위한 별도 백오피스
+3. 정식 서비스명과 상표 검토
+4. PG 결제 성공 후 포인트 자동 충전
+5. 도서 운영을 위한 별도 백오피스
