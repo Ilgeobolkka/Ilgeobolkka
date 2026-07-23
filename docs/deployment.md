@@ -24,6 +24,16 @@ Spring datasource가 요구하는 공통 환경변수는 다음 세 개입니다
 
 `DB_PORT`, `DB_NAME`, `DB_ROOT_PASSWORD`는 로컬 Compose 컨테이너를 만드는 데만 사용합니다. 운영 애플리케이션에는 RDS master 계정이나 `DB_ROOT_PASSWORD`를 주입하지 않습니다.
 
+로컬·시연 환경에서만 사용하는 시연 계정 비밀번호는 다음 변수로 주입합니다.
+
+| 변수 | 설명 | 운영 주입 |
+| --- | --- | --- |
+| `DEMO_NORMAL_PASSWORD` | 10,000P 정상 흐름 시연 계정 비밀번호 | 금지 |
+| `DEMO_EMPTY_PASSWORD` | 0P 잔액 부족 시연 계정 비밀번호 | 금지 |
+
+`.env.example`에는 변수명만 두고 실제 비밀번호는 Git에서 제외된 `.env`에만 기록합니다. 운영 환경에는
+시연 계정을 생성하지 않으며 두 변수도 주입하지 않습니다.
+
 ## 3. 로컬 실행
 
 ```bash
@@ -75,6 +85,7 @@ DB_PASSWORD=<Secrets Manager에서 주입>
 - [ ] Secrets Manager secret과 애플리케이션 실행 역할의 조회 권한을 연결합니다.
 - [ ] RDS CA truststore를 배포 이미지 또는 런타임에 설치합니다.
 - [x] Flyway 의존성과 최초 스키마 마이그레이션을 추가합니다. (SCRUM-26 / ADR-0010, `V1__create_core_domain_tables.sql` — 핵심 도메인 8개 테이블)
+- [ ] 로컬·시연 전용 계정 생성 기능이 운영 프로필에서 비활성화되는지 확인합니다.
 - [ ] 운영과 동일한 MySQL 버전에서 전체 테스트를 통과시킵니다.
 - [ ] 배포 후 TLS 연결과 DB health를 확인합니다.
 

@@ -8,6 +8,7 @@ spring:
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
   jpa:
+    open-in-view: false
     hibernate:
       ddl-auto: validate
     properties:
@@ -19,3 +20,8 @@ spring:
           time_zone: UTC
   flyway:
     locations: classpath:db/migration
+
+server:
+  servlet:
+    session:
+      timeout: 2h
