@@ -14,6 +14,7 @@ import java.util.stream.StreamSupport;
 import javax.sql.DataSource;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
@@ -34,10 +35,7 @@ class DataSourceProfileIntegrationTest {
             Map.of(
                     "DB_URL", "jdbc:mysql://db.example:3306/ilgeobolkka",
                     "DB_USERNAME", "profile-test-user",
-                    "DB_PASSWORD", "profile-test-password",
-                    "SPRING_DATASOURCE_URL", "jdbc:mysql://127.0.0.1:1/ilgeobolkka",
-                    "SPRING_DATASOURCE_USERNAME", "spring-profile-test-user",
-                    "SPRING_DATASOURCE_PASSWORD", "spring-profile-test-password");
+                    "DB_PASSWORD", "profile-test-password");
 
     @Test
     void 로컬_프로파일은_dotenv의_DataSource_설정으로_MySQL에_연결한다() throws Exception {
@@ -78,7 +76,7 @@ class DataSourceProfileIntegrationTest {
         Map<String, Object> providedEnvironment = new HashMap<>(VALID_PROD_ENVIRONMENT);
         providedEnvironment.remove(missingVariable);
 
-        assertProdStartFails(
+        assertProdStartFailsForInvalidVariable(
                 providedEnvironment,
                 missingVariable,
                 requiredEnvironmentVariableMessage(missingVariable));
@@ -90,7 +88,7 @@ class DataSourceProfileIntegrationTest {
         Map<String, Object> providedEnvironment = new HashMap<>(VALID_PROD_ENVIRONMENT);
         providedEnvironment.put(blankVariable, " ");
 
-        assertProdStartFails(
+        assertProdStartFailsForInvalidVariable(
                 providedEnvironment,
                 blankVariable,
                 requiredEnvironmentVariableMessage(blankVariable));
@@ -98,16 +96,52 @@ class DataSourceProfileIntegrationTest {
 
     @Test
     void 운영_프로파일은_Spring_DataSource_설정으로_DB_환경변수_검증을_우회할_수_없다() {
-        assertProdStartFails(
+        assertProdStartFailsForInvalidVariable(
                 SPRING_DATASOURCE_ENVIRONMENT,
                 "DB_URL",
                 requiredEnvironmentVariableMessage("DB_URL"));
     }
 
-    private void assertProdStartFails(
+    @ParameterizedTest(name = "{0} 충돌 시 prod 시작 실패")
+    @CsvSource({
+        "SPRING_DATASOURCE_URL, spring.datasource.url, DB_URL",
+        "SPRING_DATASOURCE_USERNAME, spring.datasource.username, DB_USERNAME",
+        "SPRING_DATASOURCE_PASSWORD, spring.datasource.password, DB_PASSWORD"
+    })
+    void 운영_프로파일은_DB_환경변수와_충돌하는_Spring_DataSource_설정을_하나씩_거부한다(
+            String springDataSourceEnvironmentVariable,
+            String dataSourceProperty,
+            String environmentVariable) {
+        Map<String, Object> providedEnvironment = new HashMap<>(VALID_PROD_ENVIRONMENT);
+        providedEnvironment.put(
+                springDataSourceEnvironmentVariable,
+                SPRING_DATASOURCE_ENVIRONMENT.get(springDataSourceEnvironmentVariable));
+
+        assertProdStartFails(
+                providedEnvironment,
+                conflictingDataSourcePropertyMessage(dataSourceProperty, environmentVariable),
+                springDataSourceEnvironmentVariable
+                        + "가 "
+                        + environmentVariable
+                        + "와 충돌하면 prod 시작에 실패해야 한다.");
+    }
+
+    private void assertProdStartFailsForInvalidVariable(
             Map<String, Object> providedEnvironment,
             String invalidVariable,
             String expectedCauseMessage) {
+        Object invalidValue = providedEnvironment.get(invalidVariable);
+        assertTrue(invalidValue == null || invalidValue.toString().isBlank());
+        assertProdStartFails(
+                providedEnvironment,
+                expectedCauseMessage,
+                invalidVariable + " 누락 또는 공백으로 prod 시작에 실패해야 한다.");
+    }
+
+    private void assertProdStartFails(
+            Map<String, Object> providedEnvironment,
+            String expectedCauseMessage,
+            String assertionMessage) {
         StandardEnvironment prodEnvironment = environmentWithoutSystemProperties();
         prodEnvironment
                 .getPropertySources()
@@ -133,14 +167,8 @@ class DataSourceProfileIntegrationTest {
                 () -> assertArrayEquals(new String[] {"prod"}, prodEnvironment.getActiveProfiles()),
                 () ->
                         assertTrue(
-                                prodEnvironment.getProperty(invalidVariable) == null
-                                        || prodEnvironment
-                                                .getProperty(invalidVariable)
-                                                .isBlank()),
-                () ->
-                        assertTrue(
                                 hasCauseMessage(exception, expectedCauseMessage),
-                                invalidVariable + " 누락 또는 공백으로 prod 시작에 실패해야 한다."));
+                                assertionMessage));
     }
 
     private SpringApplication applicationFor(
@@ -182,5 +210,14 @@ class DataSourceProfileIntegrationTest {
         return "Required environment variable '"
                 + environmentVariable
                 + "' must be set and not blank";
+    }
+
+    private String conflictingDataSourcePropertyMessage(
+            String dataSourceProperty, String environmentVariable) {
+        return "Spring datasource property '"
+                + dataSourceProperty
+                + "' must match environment variable '"
+                + environmentVariable
+                + "' in the prod profile";
     }
 }

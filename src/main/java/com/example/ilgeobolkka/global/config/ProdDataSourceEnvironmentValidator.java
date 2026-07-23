@@ -1,5 +1,6 @@
 package com.example.ilgeobolkka.global.config;
 
+import java.util.Objects;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
@@ -21,6 +22,12 @@ public final class ProdDataSourceEnvironmentValidator
         requireEnvironmentVariable(environment, "DB_URL");
         requireEnvironmentVariable(environment, "DB_USERNAME");
         requireEnvironmentVariable(environment, "DB_PASSWORD");
+
+        requireDataSourcePropertyMatches(environment, "spring.datasource.url", "DB_URL");
+        requireDataSourcePropertyMatches(
+                environment, "spring.datasource.username", "DB_USERNAME");
+        requireDataSourcePropertyMatches(
+                environment, "spring.datasource.password", "DB_PASSWORD");
     }
 
     private void requireEnvironmentVariable(
@@ -31,6 +38,22 @@ public final class ProdDataSourceEnvironmentValidator
                     "Required environment variable '"
                             + environmentVariable
                             + "' must be set and not blank");
+        }
+    }
+
+    private void requireDataSourcePropertyMatches(
+            ConfigurableEnvironment environment,
+            String dataSourceProperty,
+            String environmentVariable) {
+        if (!Objects.equals(
+                environment.getProperty(dataSourceProperty),
+                environment.getProperty(environmentVariable))) {
+            throw new IllegalStateException(
+                    "Spring datasource property '"
+                            + dataSourceProperty
+                            + "' must match environment variable '"
+                            + environmentVariable
+                            + "' in the prod profile");
         }
     }
 }
