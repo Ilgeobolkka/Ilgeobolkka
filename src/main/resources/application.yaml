@@ -19,3 +19,8 @@ spring:
           time_zone: UTC
   flyway:
     locations: classpath:db/migration
+
+server:
+  servlet:
+    session:
+      timeout: 2h
