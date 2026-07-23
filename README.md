@@ -57,7 +57,7 @@
 - [ADR-0004: Java 21, Spring Boot 4.1.0, Amazon RDS for MySQL 사용](./docs/adr/0004-use-java21-spring-boot41-and-rds-mysql.md)
 - [ADR-0005: 로컬과 운영 데이터베이스 연결 설정 분리](./docs/adr/0005-separate-local-and-production-database-configuration.md)
 - [ADR-0006: 도메인 우선 패키지와 Facade 구성](./docs/adr/0006-organize-backend-packages-by-domain.md)
-- [ADR-0012: 표지 분리와 페이지 이미지 품질 검증](./docs/adr/0012-separate-cover-and-validate-page-image-quality.md)
+- [ADR-0014: 페이지 이미지 충실도와 뷰포트 가독성 분리 검증](./docs/adr/0014-separate-image-fidelity-and-viewport-readability.md)
 
 ## 로컬 MySQL과 테스트
 
