@@ -49,6 +49,23 @@ class CoreDomainSchemaMigrationTest {
     }
 
     @Test
+    void 열람_확정_6초_경계에_쓰는_page_opened_at은_마이크로초_정밀도다() {
+        Long precision =
+                jdbcTemplate.queryForObject(
+                        """
+                        SELECT datetime_precision
+                        FROM information_schema.columns
+                        WHERE table_schema = DATABASE()
+                          AND table_name = 'reading_session'
+                          AND column_name = 'page_opened_at'
+                        """,
+                        Long.class);
+
+        // DATETIME(정밀도 0)으로 퇴행하면 5.999초/6.000초 경계를 판정할 수 없다(ADR-0001).
+        assertEquals(6L, precision);
+    }
+
+    @Test
     void 같은_사용자와_도서로_중복_열람_동의를_저장하면_유니크_제약_위반이_발생한다() {
         독자를_생성한다(READER_ID);
         도서를_생성한다(BOOK_ID);

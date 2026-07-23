@@ -58,11 +58,12 @@ migration 파일 자체는 이 ADR의 범위가 아니며 후속 구현 작업�
   합니다.
 - 되돌리려면 `ddl-auto` 값 하나만 바꾸면 되지만, 이미 `validate`를 전제로 여러 엔티티와 마이그레이션이
   쌓인 뒤에는 전환 비용이 커집니다.
-- V1 초기 스키마 마이그레이션 파일 작성과 `src/main`의 실제 `@Entity` 도입은 이 ADR의 범위가 아니며
-  후속 구현 작업(SCRUM-107 이후 하위 작업)에서 진행합니다.
-- Spring Boot 4.1은 Flyway 자동설정을 `org.flywaydb:flyway-core`(+ MySQL은 `flyway-mysql`)와는 별도
-  모듈인 `org.springframework.boot:spring-boot-flyway`로 분리했습니다. 세 의존성을 모두 추가해야
-  `FlywayAutoConfiguration`이 동작합니다(직접 기동 확인으로 검증).
+- 이 ADR의 결정 범위는 "Flyway 채택 + `ddl-auto=validate`"입니다. 실제 도메인 테이블을 만드는 초기
+  마이그레이션(`V1__create_core_domain_tables.sql`)은 같은 스토리(SCRUM-26)의 하위 작업에서 이미
+  작성했고, `src/main`의 실제 `@Entity` 도입만 후속 구현 작업으로 남습니다.
+- Spring Boot 4.1은 Flyway 자동설정을 별도 모듈 `org.springframework.boot:spring-boot-flyway`로
+  분리했습니다. 이 모듈과 `org.flywaydb:flyway-mysql`을 추가하면 `flyway-core`는 두 의존성의 전이
+  의존성으로 함께 들어오므로, `flyway-core`를 직접 선언하지는 않습니다(직접 Flyway API를 쓰지 않음).
 - 테스트 전용 엔티티(`QuerydslTestEntity`, `JpaAuditingTestEntity`)는 애플리케이션 스캔 범위
   (`com.example.ilgeobolkka`) 밖의 `com.example.testfixture.*` 패키지에 두어 기본 컨텍스트에 잡히지
   않게 격리합니다. 이 엔티티들의 테이블은 Flyway가 아니라 해당 통합 테스트가 raw SQL로 직접
