@@ -127,7 +127,15 @@ class CoreDomainSchemaMigrationTest {
         독자를_생성한다(READER_ID);
         도서를_생성한다(BOOK_ID);
         jdbcTemplate.update(
-                "INSERT INTO library_entry (reader_id, book_id, last_confirmed_page_number, updated_at) VALUES (?, ?, ?, NOW())",
+                "INSERT INTO confirmed_page (reader_id, book_id, page_number, confirmed_at) VALUES (?, ?, 1, NOW(6))",
+                READER_ID,
+                BOOK_ID);
+        jdbcTemplate.update(
+                """
+                INSERT INTO library_entry
+                    (reader_id, book_id, last_confirmed_page_number, confirmed_page_count, updated_at)
+                VALUES (?, ?, ?, 1, NOW(6))
+                """,
                 READER_ID,
                 BOOK_ID,
                 1);
@@ -136,7 +144,12 @@ class CoreDomainSchemaMigrationTest {
                 DataIntegrityViolationException.class,
                 () ->
                         jdbcTemplate.update(
-                                "INSERT INTO library_entry (reader_id, book_id, last_confirmed_page_number, updated_at) VALUES (?, ?, ?, NOW())",
+                                """
+                                INSERT INTO library_entry
+                                    (reader_id, book_id, last_confirmed_page_number,
+                                     confirmed_page_count, updated_at)
+                                VALUES (?, ?, ?, 1, NOW(6))
+                                """,
                                 READER_ID,
                                 BOOK_ID,
                                 2));
@@ -210,7 +223,7 @@ class CoreDomainSchemaMigrationTest {
     }
 
     @Test
-    void 정상적인_값으로는_핵심_도메인_행이_모두_저장된다() {
+    void 정상적인_포인트_지급과_50P_차감_내역은_저장된다() {
         독자를_생성한다(READER_ID);
         도서를_생성한다(BOOK_ID);
 
@@ -219,7 +232,7 @@ class CoreDomainSchemaMigrationTest {
                     jdbcTemplate.update(
                             "INSERT INTO point_account (reader_id, balance) VALUES (?, ?)",
                             READER_ID,
-                            50);
+                            9_950);
                     // 지급(GRANT): book_id·page_number 없이 저장된다(PTS-001).
                     jdbcTemplate.update(
                             """
