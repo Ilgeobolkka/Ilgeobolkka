@@ -2,10 +2,13 @@ package com.example.ilgeobolkka.support.config;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.example.ilgeobolkka.IlgeobolkkaApplication;
+import com.zaxxer.hikari.HikariDataSource;
 import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,6 +24,7 @@ import org.springframework.boot.WebApplicationType;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.PropertySource;
+import org.springframework.core.env.SimpleCommandLinePropertySource;
 import org.springframework.core.env.StandardEnvironment;
 import org.springframework.core.env.SystemEnvironmentPropertySource;
 
@@ -40,7 +44,7 @@ class DataSourceProfileIntegrationTest {
     @Test
     void 로컬_프로파일은_dotenv의_DataSource_설정으로_MySQL에_연결한다() throws Exception {
         SpringApplication application =
-                applicationFor("local", environmentWithoutSystemProperties());
+                applicationFor(environmentWithoutSystemProperties(), "local");
 
         try (ConfigurableApplicationContext context = application.run()) {
             ConfigurableEnvironment environment = context.getEnvironment();
@@ -126,6 +130,96 @@ class DataSourceProfileIntegrationTest {
                         + "와 충돌하면 prod 시작에 실패해야 한다.");
     }
 
+    @Test
+    void 운영과_로컬_프로파일은_동시에_활성화할_수_없다() {
+        SpringApplication application =
+                applicationFor(environmentWithoutSystemProperties(), "prod", "local");
+
+        Exception exception =
+                assertThrows(
+                        Exception.class,
+                        () -> {
+                            try (ConfigurableApplicationContext ignored = application.run()) {
+                                // 시작 성공 시 컨텍스트를 닫고 테스트를 실패시킨다.
+                            }
+                        });
+
+        assertTrue(
+                hasCauseMessage(
+                        exception,
+                        "Profiles 'prod' and 'local' must not be active at the same time"),
+                "prod와 local이 동시에 활성화되면 시작에 실패해야 한다.");
+    }
+
+    @Test
+    void 운영_프로파일은_명령행_DB_설정을_환경변수로_인정하지_않는다() {
+        StandardEnvironment prodEnvironment = environmentWithoutSystemProperties();
+        prodEnvironment
+                .getPropertySources()
+                .addFirst(
+                        new SimpleCommandLinePropertySource(
+                                "--DB_URL=jdbc:mysql://127.0.0.1:1/ilgeobolkka",
+                                "--DB_USERNAME=command-line-user",
+                                "--DB_PASSWORD=command-line-password"));
+
+        assertProdStartFails(
+                prodEnvironment,
+                requiredEnvironmentVariableMessage("DB_URL"),
+                "명령행 DB_*만 제공하면 환경변수 누락으로 prod 시작에 실패해야 한다.");
+    }
+
+    @Test
+    void 운영_DataSource는_다른_Spring_설정_소스에_의해_교체되지_않는다() {
+        StandardEnvironment prodEnvironment = environmentWithoutSystemProperties();
+        prodEnvironment
+                .getPropertySources()
+                .addFirst(
+                        new SystemEnvironmentPropertySource(
+                                StandardEnvironment.SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME,
+                                VALID_PROD_ENVIRONMENT));
+        prodEnvironment
+                .getPropertySources()
+                .addFirst(
+                        new PropertySource<>("non-enumerable-datasource") {
+                            @Override
+                            public Object getProperty(String name) {
+                                return switch (name) {
+                                    case "spring.datasource.jndi-name" ->
+                                            "java:comp/env/jdbc/ilgeobolkka";
+                                    case "spring.datasource.hikari.jdbc-url" ->
+                                            "jdbc:mysql://127.0.0.1:1/ilgeobolkka";
+                                    default -> null;
+                                };
+                            }
+                        });
+        prodEnvironment
+                .getPropertySources()
+                .addFirst(
+                        new SimpleCommandLinePropertySource(
+                                "--spring.autoconfigure.exclude="
+                                        + "org.springframework.boot.hibernate.autoconfigure."
+                                        + "HibernateJpaAutoConfiguration,"
+                                        + "org.springframework.boot.data.jpa.autoconfigure."
+                                        + "DataJpaRepositoriesAutoConfiguration"));
+        SpringApplication application = applicationFor(prodEnvironment, "prod");
+
+        try (ConfigurableApplicationContext context = application.run()) {
+            HikariDataSource dataSource =
+                    assertInstanceOf(HikariDataSource.class, context.getBean(DataSource.class));
+
+            assertAll(
+                    () -> assertEquals(VALID_PROD_ENVIRONMENT.get("DB_URL"), dataSource.getJdbcUrl()),
+                    () ->
+                            assertEquals(
+                                    VALID_PROD_ENVIRONMENT.get("DB_USERNAME"),
+                                    dataSource.getUsername()),
+                    () ->
+                            assertEquals(
+                                    VALID_PROD_ENVIRONMENT.get("DB_PASSWORD"),
+                                    dataSource.getPassword()));
+        }
+    }
+
     private void assertProdStartFailsForInvalidVariable(
             Map<String, Object> providedEnvironment,
             String invalidVariable,
@@ -147,8 +241,16 @@ class DataSourceProfileIntegrationTest {
                 .getPropertySources()
                 .addFirst(
                         new SystemEnvironmentPropertySource(
-                                "test-prod-environment", providedEnvironment));
-        SpringApplication application = applicationFor("prod", prodEnvironment);
+                                StandardEnvironment.SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME,
+                                providedEnvironment));
+        assertProdStartFails(prodEnvironment, expectedCauseMessage, assertionMessage);
+    }
+
+    private void assertProdStartFails(
+            ConfigurableEnvironment prodEnvironment,
+            String expectedCauseMessage,
+            String assertionMessage) {
+        SpringApplication application = applicationFor(prodEnvironment, "prod");
 
         Exception exception =
                 assertThrows(
@@ -172,10 +274,10 @@ class DataSourceProfileIntegrationTest {
     }
 
     private SpringApplication applicationFor(
-            String profile, ConfigurableEnvironment environment) {
+            ConfigurableEnvironment environment, String... profiles) {
         SpringApplication application = new SpringApplication(IlgeobolkkaApplication.class);
         application.setWebApplicationType(WebApplicationType.NONE);
-        application.setAdditionalProfiles(profile);
+        application.setAdditionalProfiles(profiles);
         application.setEnvironment(environment);
         return application;
     }

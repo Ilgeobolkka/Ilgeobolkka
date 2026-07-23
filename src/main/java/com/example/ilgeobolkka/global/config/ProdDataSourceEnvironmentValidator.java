@@ -4,13 +4,16 @@ import java.util.Objects;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.env.PropertySource;
 import org.springframework.core.env.Profiles;
+import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.util.StringUtils;
 
 public final class ProdDataSourceEnvironmentValidator
         implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 
     private static final String PROD_PROFILE = "prod";
+    private static final String LOCAL_PROFILE = "local";
 
     @Override
     public void initialize(ConfigurableApplicationContext applicationContext) {
@@ -18,36 +21,52 @@ public final class ProdDataSourceEnvironmentValidator
         if (!environment.acceptsProfiles(Profiles.of(PROD_PROFILE))) {
             return;
         }
+        if (environment.acceptsProfiles(Profiles.of(LOCAL_PROFILE))) {
+            throw new IllegalStateException(
+                    "Profiles 'prod' and 'local' must not be active at the same time");
+        }
 
-        requireEnvironmentVariable(environment, "DB_URL");
-        requireEnvironmentVariable(environment, "DB_USERNAME");
-        requireEnvironmentVariable(environment, "DB_PASSWORD");
+        String dbUrl = requireEnvironmentVariable(environment, "DB_URL");
+        String dbUsername = requireEnvironmentVariable(environment, "DB_USERNAME");
+        String dbPassword = requireEnvironmentVariable(environment, "DB_PASSWORD");
 
-        requireDataSourcePropertyMatches(environment, "spring.datasource.url", "DB_URL");
         requireDataSourcePropertyMatches(
-                environment, "spring.datasource.username", "DB_USERNAME");
+                environment, "spring.datasource.url", "DB_URL", dbUrl);
         requireDataSourcePropertyMatches(
-                environment, "spring.datasource.password", "DB_PASSWORD");
+                environment, "spring.datasource.username", "DB_USERNAME", dbUsername);
+        requireDataSourcePropertyMatches(
+                environment, "spring.datasource.password", "DB_PASSWORD", dbPassword);
     }
 
-    private void requireEnvironmentVariable(
+    private String requireEnvironmentVariable(
             ConfigurableEnvironment environment, String environmentVariable) {
-        String value = environment.getProperty(environmentVariable);
+        String value = null;
+        for (PropertySource<?> propertySource : environment.getPropertySources()) {
+            if (propertySource instanceof SystemEnvironmentPropertySource) {
+                Object rawValue = propertySource.getProperty(environmentVariable);
+                if (rawValue != null) {
+                    value = rawValue.toString();
+                    break;
+                }
+            }
+        }
         if (!StringUtils.hasText(value)) {
             throw new IllegalStateException(
                     "Required environment variable '"
                             + environmentVariable
                             + "' must be set and not blank");
         }
+        return value;
     }
 
     private void requireDataSourcePropertyMatches(
             ConfigurableEnvironment environment,
             String dataSourceProperty,
-            String environmentVariable) {
+            String environmentVariable,
+            String environmentValue) {
         if (!Objects.equals(
                 environment.getProperty(dataSourceProperty),
-                environment.getProperty(environmentVariable))) {
+                environmentValue)) {
             throw new IllegalStateException(
                     "Spring datasource property '"
                             + dataSourceProperty
