@@ -74,7 +74,7 @@ DB_PASSWORD=<Secrets Manager에서 주입>
 - [ ] RDS를 생성하고 애플리케이션 전용 DB 계정을 준비합니다.
 - [ ] Secrets Manager secret과 애플리케이션 실행 역할의 조회 권한을 연결합니다.
 - [ ] RDS CA truststore를 배포 이미지 또는 런타임에 설치합니다.
-- [ ] Flyway 의존성과 최초 스키마 마이그레이션을 추가합니다.
+- [x] Flyway 의존성과 최초 스키마 마이그레이션을 추가합니다. (SCRUM-26 / ADR-0010, `V1__create_core_domain_tables.sql` — 핵심 도메인 8개 테이블)
 - [ ] 운영과 동일한 MySQL 버전에서 전체 테스트를 통과시킵니다.
 - [ ] 배포 후 TLS 연결과 DB health를 확인합니다.
 

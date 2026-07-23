@@ -3,11 +3,11 @@ package com.example.ilgeobolkka;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-// 테스트 전용 QuerydslTestEntity의 테이블은 QuerydslMySqlIntegrationTest가 raw SQL로 직접
-// 생성·삭제한다(conventions.md Repository와 스키마 절과 무관한 테스트 픽스처). 이 스모크 테스트는
-// 그 테이블 생성 없이 컨텍스트만 띄우므로, 운영 기준값인 ddl-auto=validate를 그대로 적용하면
-// 스키마 검증이 실패한다. 이 테스트에서만 검증을 끈다.
-@SpringBootTest(properties = "spring.jpa.hibernate.ddl-auto=none")
+// 운영 기준값인 ddl-auto=validate(ADR-0010)를 그대로 적용해 기동하는 가드 테스트.
+// 테스트 전용 엔티티는 com.example.testfixture.* 로 격리되어 기본 스캔에 잡히지 않으므로,
+// 이 컨텍스트는 실제 애플리케이션 설정(Flyway 적용 + validate) 그대로 부팅된다.
+// validate 설정을 삭제·변경하면 이 테스트가 실패해 회귀를 잡는다.
+@SpringBootTest
 class IlgeobolkkaApplicationTests {
 
     @Test

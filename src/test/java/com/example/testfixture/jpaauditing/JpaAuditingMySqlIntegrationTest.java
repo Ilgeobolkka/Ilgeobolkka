@@ -1,9 +1,10 @@
-package com.example.ilgeobolkka.support.jpaauditing;
+package com.example.testfixture.jpaauditing;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.example.ilgeobolkka.IlgeobolkkaApplication;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import java.time.Instant;
@@ -11,12 +12,19 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.persistence.autoconfigure.EntityScan;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-// QuerydslMySqlIntegrationTest와 같은 이유로, 이 테스트 전용 엔티티의 테이블은 Flyway가 아니라
-// 이 클래스가 raw SQL로 직접 관리하므로 ddl-auto=validate 검증을 끈다.
-@SpringBootTest(properties = "spring.jpa.hibernate.ddl-auto=none")
+// QuerydslMySqlIntegrationTest와 같은 이유. JpaAuditingTestEntity는 애플리케이션 스캔 밖의
+// com.example.testfixture.jpaauditing 에 있어 이 테스트에서만 @EntityScan 으로 등록한다.
+// 이 엔티티의 테이블은 이 클래스가 raw SQL로 직접 만들므로 컨텍스트 로딩 시점엔 없어 여기서만 검증을 끈다.
+// 이 테스트는 애플리케이션 패키지(com.example.ilgeobolkka) 밖에 있어 @SpringBootTest 가
+// @SpringBootConfiguration 을 자동으로 찾지 못하므로 메인 설정을 classes 로 명시한다.
+@SpringBootTest(
+        classes = IlgeobolkkaApplication.class,
+        properties = "spring.jpa.hibernate.ddl-auto=none")
+@EntityScan(basePackageClasses = JpaAuditingTestEntity.class)
 class JpaAuditingMySqlIntegrationTest {
 
     private final JdbcTemplate jdbcTemplate;

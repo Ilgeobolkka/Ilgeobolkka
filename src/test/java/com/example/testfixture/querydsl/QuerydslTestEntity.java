@@ -1,4 +1,4 @@
-package com.example.ilgeobolkka.support.querydsl;
+package com.example.testfixture.querydsl;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

@@ -63,8 +63,15 @@ migration 파일 자체는 이 ADR의 범위가 아니며 후속 구현 작업�
 - Spring Boot 4.1은 Flyway 자동설정을 `org.flywaydb:flyway-core`(+ MySQL은 `flyway-mysql`)와는 별도
   모듈인 `org.springframework.boot:spring-boot-flyway`로 분리했습니다. 세 의존성을 모두 추가해야
   `FlywayAutoConfiguration`이 동작합니다(직접 기동 확인으로 검증).
-- `QuerydslTestEntity`(테스트 전용, `QuerydslMySqlIntegrationTest`가 raw SQL로 테이블을 직접
-  생성·삭제)는 컨텍스트 로딩 시점에 아직 테이블이 없어 `ddl-auto=validate`를 그대로 적용하면
-  `IlgeobolkkaApplicationTests`와 `QuerydslMySqlIntegrationTest`의 `@SpringBootTest` 컨텍스트 로딩이
-  실패합니다. 두 테스트에 한해 `@SpringBootTest(properties = "spring.jpa.hibernate.ddl-auto=none")`로
-  검증을 끄고, 운영·로컬 실행 시 적용되는 `application.yaml`의 `validate` 값은 그대로 둡니다.
+- 테스트 전용 엔티티(`QuerydslTestEntity`, `JpaAuditingTestEntity`)는 애플리케이션 스캔 범위
+  (`com.example.ilgeobolkka`) 밖의 `com.example.testfixture.*` 패키지에 두어 기본 컨텍스트에 잡히지
+  않게 격리합니다. 이 엔티티들의 테이블은 Flyway가 아니라 해당 통합 테스트가 raw SQL로 직접
+  만들므로, 그 엔티티를 `@EntityScan`으로 등록하는 두 통합 테스트
+  (`QuerydslMySqlIntegrationTest`, `JpaAuditingMySqlIntegrationTest`)에 한해서만
+  `@SpringBootTest(properties = "spring.jpa.hibernate.ddl-auto=none")`로 검증을 끕니다.
+- 이렇게 격리한 결과, `IlgeobolkkaApplicationTests`(스모크)와 `CoreDomainSchemaMigrationTest`는 운영
+  기준값 `validate` 그대로 기동해, `application.yaml`의 `validate` 설정이 실제로 동작하는지를 회귀
+  테스트로 지킵니다. 즉 `validate`를 삭제·변경하면 이 두 테스트가 실패합니다.
+- 초기 검토 시점에는 `IlgeobolkkaApplicationTests`를 포함한 여러 테스트가 `none`으로 검증을 껐으나,
+  PR 리뷰에서 "그러면 `validate`가 실제로 동작하는지 아무 테스트도 확인하지 못한다"는 지적을 받아 위
+  격리 구조로 바꿨습니다(검증을 끄는 테스트는 픽스처 엔티티를 쓰는 두 통합 테스트로 한정).

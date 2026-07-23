@@ -1,11 +1,16 @@
 -- ADR-0007(핵심 도메인 ERD)에 정의된 8개 테이블을 FK 의존 순서로 생성한다.
 -- reader, book -> reading_consent, reading_session, confirmed_page, library_entry, point_account -> point_ledger
+--
+-- 시각 컬럼은 모두 DATETIME(6)으로 마이크로초까지 저장한다. 정밀도를 생략한 DATETIME은 소수부를
+-- 반올림해 0초 정밀도가 되어(MySQL 8.4 fractional-seconds), ADR-0001의 "5.999초 거절 / 6.000초
+-- 승인" 열람 확정 경계를 정확히 판정할 수 없다. 저장 시각은 UTC 기준이다(application.yaml의
+-- hibernate.jdbc.time_zone=UTC, conventions.md "설정, 시간, 로그").
 
 CREATE TABLE reader (
     id            BIGINT AUTO_INCREMENT PRIMARY KEY,
     email         VARCHAR(255) NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
-    created_at    DATETIME     NOT NULL,
+    created_at    DATETIME(6) NOT NULL,
     CONSTRAINT uk_reader_email UNIQUE (email)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
@@ -25,7 +30,7 @@ CREATE TABLE reading_consent (
     id            BIGINT AUTO_INCREMENT PRIMARY KEY,
     reader_id     BIGINT   NOT NULL,
     book_id       BIGINT   NOT NULL,
-    consented_at  DATETIME NOT NULL,
+    consented_at  DATETIME(6) NOT NULL,
     CONSTRAINT uk_reading_consent_reader_book UNIQUE (reader_id, book_id),
     CONSTRAINT fk_reading_consent_reader FOREIGN KEY (reader_id) REFERENCES reader (id),
     CONSTRAINT fk_reading_consent_book FOREIGN KEY (book_id) REFERENCES book (id)
@@ -38,9 +43,9 @@ CREATE TABLE reading_session (
     reader_id             BIGINT       NOT NULL,
     book_id               BIGINT       NOT NULL,
     current_page_number   INT          NOT NULL,
-    page_opened_at        DATETIME     NOT NULL,
+    page_opened_at        DATETIME(6) NOT NULL,
     session_token         VARCHAR(255) NOT NULL,
-    updated_at            DATETIME     NOT NULL,
+    updated_at            DATETIME(6) NOT NULL,
     CONSTRAINT uk_reading_session_reader UNIQUE (reader_id),
     CONSTRAINT fk_reading_session_reader FOREIGN KEY (reader_id) REFERENCES reader (id),
     CONSTRAINT fk_reading_session_book FOREIGN KEY (book_id) REFERENCES book (id)
@@ -54,7 +59,7 @@ CREATE TABLE confirmed_page (
     reader_id      BIGINT   NOT NULL,
     book_id        BIGINT   NOT NULL,
     page_number    INT      NOT NULL,
-    confirmed_at   DATETIME NOT NULL,
+    confirmed_at   DATETIME(6) NOT NULL,
     CONSTRAINT uk_confirmed_page_reader_book_page UNIQUE (reader_id, book_id, page_number),
     CONSTRAINT fk_confirmed_page_reader FOREIGN KEY (reader_id) REFERENCES reader (id),
     CONSTRAINT fk_confirmed_page_book FOREIGN KEY (book_id) REFERENCES book (id)
@@ -67,7 +72,7 @@ CREATE TABLE library_entry (
     reader_id                   BIGINT   NOT NULL,
     book_id                     BIGINT   NOT NULL,
     last_confirmed_page_number  INT      NOT NULL,
-    updated_at                  DATETIME NOT NULL,
+    updated_at                  DATETIME(6) NOT NULL,
     CONSTRAINT uk_library_entry_reader_book UNIQUE (reader_id, book_id),
     CONSTRAINT fk_library_entry_reader FOREIGN KEY (reader_id) REFERENCES reader (id),
     CONSTRAINT fk_library_entry_book FOREIGN KEY (book_id) REFERENCES book (id)
@@ -96,7 +101,7 @@ CREATE TABLE point_ledger (
     balance_after   INT          NOT NULL,
     book_id         BIGINT       NULL,
     page_number     INT          NULL,
-    occurred_at     DATETIME     NOT NULL,
+    occurred_at     DATETIME(6) NOT NULL,
     CONSTRAINT fk_point_ledger_reader FOREIGN KEY (reader_id) REFERENCES reader (id),
     CONSTRAINT fk_point_ledger_book FOREIGN KEY (book_id) REFERENCES book (id),
     CONSTRAINT ck_point_ledger_type CHECK (type IN ('GRANT', 'DEDUCTION'))

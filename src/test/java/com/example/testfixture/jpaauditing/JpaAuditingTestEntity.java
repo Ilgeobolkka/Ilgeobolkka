@@ -1,4 +1,4 @@
-package com.example.ilgeobolkka.support.jpaauditing;
+package com.example.testfixture.jpaauditing;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
