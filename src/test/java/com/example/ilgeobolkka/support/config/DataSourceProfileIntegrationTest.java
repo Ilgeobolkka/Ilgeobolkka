@@ -2,7 +2,6 @@ package com.example.ilgeobolkka.support.config;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -18,8 +17,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
-import org.springframework.boot.hibernate.autoconfigure.HibernateJpaAutoConfiguration;
-import org.springframework.boot.jdbc.autoconfigure.DataSourceAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.MapPropertySource;
@@ -33,15 +30,6 @@ class DataSourceProfileIntegrationTest {
                     "DB_URL", "jdbc:mysql://db.example:3306/ilgeobolkka",
                     "DB_USERNAME", "profile-test-user",
                     "DB_PASSWORD", "profile-test-password");
-    private static final Map<String, String> DATASOURCE_PROPERTY_BY_ENVIRONMENT_VARIABLE =
-            Map.of(
-                    "DB_URL", "spring.datasource.url",
-                    "DB_USERNAME", "spring.datasource.username",
-                    "DB_PASSWORD", "spring.datasource.password");
-    private static final String EXCLUDED_DATASOURCE_AUTO_CONFIGURATIONS =
-            DataSourceAutoConfiguration.class.getName()
-                    + ","
-                    + HibernateJpaAutoConfiguration.class.getName();
 
     @Test
     void 로컬_프로파일은_dotenv의_DataSource_설정으로_MySQL에_연결한다() throws Exception {
@@ -81,20 +69,34 @@ class DataSourceProfileIntegrationTest {
     void 운영_프로파일은_필수_DB_환경변수를_하나씩_검증한다(String missingVariable) {
         Map<String, Object> providedEnvironment = new HashMap<>(VALID_PROD_ENVIRONMENT);
         providedEnvironment.remove(missingVariable);
-        providedEnvironment.put(
-                "spring.autoconfigure.exclude", EXCLUDED_DATASOURCE_AUTO_CONFIGURATIONS);
 
+        assertProdStartFails(
+                providedEnvironment,
+                missingVariable,
+                "Could not resolve placeholder '" + missingVariable + "'");
+    }
+
+    @ParameterizedTest(name = "{0} 공백 시 prod 시작 실패")
+    @ValueSource(strings = {"DB_URL", "DB_USERNAME", "DB_PASSWORD"})
+    void 운영_프로파일은_빈_DB_환경변수를_하나씩_검증한다(String blankVariable) {
+        Map<String, Object> providedEnvironment = new HashMap<>(VALID_PROD_ENVIRONMENT);
+        providedEnvironment.put(blankVariable, " ");
+
+        assertProdStartFails(
+                providedEnvironment,
+                blankVariable,
+                "Required environment variable '" + blankVariable + "' must not be blank");
+    }
+
+    private void assertProdStartFails(
+            Map<String, Object> providedEnvironment,
+            String invalidVariable,
+            String expectedCauseMessage) {
         StandardEnvironment prodEnvironment = environmentWithoutSystemProperties();
         prodEnvironment
                 .getPropertySources()
                 .addFirst(new MapPropertySource("test-prod-environment", providedEnvironment));
         SpringApplication application = applicationFor("prod", prodEnvironment);
-        application.addInitializers(
-                context ->
-                        context.getEnvironment()
-                                .getRequiredProperty(
-                                        DATASOURCE_PROPERTY_BY_ENVIRONMENT_VARIABLE.get(
-                                                missingVariable)));
 
         Exception exception =
                 assertThrows(
@@ -111,15 +113,16 @@ class DataSourceProfileIntegrationTest {
                 "prod는 .env를 PropertySource로 불러오지 않아야 한다.");
         assertAll(
                 () -> assertArrayEquals(new String[] {"prod"}, prodEnvironment.getActiveProfiles()),
-                () -> assertNull(prodEnvironment.getProperty(missingVariable)),
                 () ->
                         assertTrue(
-                                hasCauseMessage(
-                                        exception,
-                                        "Could not resolve placeholder '"
-                                                + missingVariable
-                                                + "'"),
-                                missingVariable + " 누락으로 prod 시작에 실패해야 한다."));
+                                prodEnvironment.getProperty(invalidVariable) == null
+                                        || prodEnvironment
+                                                .getProperty(invalidVariable)
+                                                .isBlank()),
+                () ->
+                        assertTrue(
+                                hasCauseMessage(exception, expectedCauseMessage),
+                                invalidVariable + " 누락 또는 공백으로 prod 시작에 실패해야 한다."));
     }
 
     private SpringApplication applicationFor(
