@@ -99,6 +99,25 @@ class CoreDomainSchemaMigrationTest {
     }
 
     @Test
+    void 같은_사용자와_도서라도_다른_페이지_번호로_확정하면_모두_저장된다() {
+        독자를_생성한다(READER_ID);
+        도서를_생성한다(BOOK_ID);
+        jdbcTemplate.update(
+                "INSERT INTO confirmed_page (reader_id, book_id, page_number, confirmed_at) VALUES (?, ?, ?, NOW())",
+                READER_ID,
+                BOOK_ID,
+                1);
+
+        assertDoesNotThrow(
+                () ->
+                        jdbcTemplate.update(
+                                "INSERT INTO confirmed_page (reader_id, book_id, page_number, confirmed_at) VALUES (?, ?, ?, NOW())",
+                                READER_ID,
+                                BOOK_ID,
+                                2));
+    }
+
+    @Test
     void 같은_사용자와_도서로_서재_항목을_중복_등록하면_유니크_제약_위반이_발생한다() {
         독자를_생성한다(READER_ID);
         도서를_생성한다(BOOK_ID);
