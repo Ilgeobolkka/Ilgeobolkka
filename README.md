@@ -11,7 +11,8 @@
 - 백엔드는 Java 21과 Spring Boot 4.1.0, 운영 데이터베이스는 Amazon RDS for MySQL로 결정
 - 로컬 개발과 테스트용 MySQL 8.4는 Docker Compose로 실행하며 기본 호스트 포트는 3307
 - Spring datasource는 환경변수 계약을 사용해 로컬 Compose와 운영 RDS를 같은 애플리케이션으로 연결
-- 애플리케이션 배포 방식과 인증 구현 방식은 미정
+- 프런트엔드는 Thymeleaf·Bootstrap 5.3·Vanilla JavaScript로 구성하고 API와 함께 단일 Spring Boot
+  실행물에서 same-origin으로 제공하며, 인증 상태는 Spring Security 서버 세션으로 관리
 - 표지는 PDF 페이지와 분리하고, 페이지 이미지는 Poppler로 사전 변환해 로컬 파일시스템·운영 비공개
   Amazon S3에 저장
 - PG 결제와 백오피스는 MVP 이후 범위
@@ -40,8 +41,10 @@
 | 열람 확정 | 같은 페이지를 유지한 채 6초 경과, 서버 시간으로 검증 |
 | 재열람 | 사용자·도서·페이지별 최초 1회만 차감 |
 | 뷰어 | 서버에서 준비한 현재 페이지 이미지만 제공 |
-| 세션 | 사용자당 온라인 열람 세션 하나 |
+| 열람 세션 | 사용자당 온라인 열람 세션 하나 |
 | 백엔드 | Java 21, Spring Boot 4.1.0 |
+| 프런트엔드 | Thymeleaf, Bootstrap 5.3, Vanilla JavaScript |
+| 배포 단위 | 프런트엔드와 API를 포함한 단일 Spring Boot 실행물 |
 | 데이터베이스 | Amazon RDS for MySQL 8.x, Flyway |
 
 ## 문서
@@ -58,6 +61,8 @@
 - [ADR-0005: 로컬과 운영 데이터베이스 연결 설정 분리](./docs/adr/0005-separate-local-and-production-database-configuration.md)
 - [ADR-0006: 도메인 우선 패키지와 Facade 구성](./docs/adr/0006-organize-backend-packages-by-domain.md)
 - [ADR-0014: 페이지 이미지 충실도와 뷰포트 가독성 분리 검증](./docs/adr/0014-separate-image-fidelity-and-viewport-readability.md)
+- [ADR-0015: 서버 세션으로 웹 인증 상태 관리](./docs/adr/0015-use-server-session-authentication.md)
+- [ADR-0016: Thymeleaf, Bootstrap, Vanilla JavaScript로 프런트엔드 구성](./docs/adr/0016-use-thymeleaf-bootstrap-vanilla-js.md)
 
 ## 로컬 MySQL과 테스트
 
@@ -110,8 +115,6 @@ docker compose up -d --wait
 
 ## 다음 결정
 
-1. 프런트엔드 기술 스택과 저장소 구조
-2. 인증과 세션 구현 방식
-3. 정식 서비스명과 상표 검토
-4. PG 결제 성공 후 포인트 자동 충전
-5. 도서 운영을 위한 별도 백오피스
+1. 운영 세션 저장소와 다중 인스턴스 전환 기준
+2. PG 결제 성공 후 포인트 자동 충전
+3. 도서 운영을 위한 별도 백오피스

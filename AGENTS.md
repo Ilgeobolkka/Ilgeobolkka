@@ -78,8 +78,8 @@ AI 코딩 에이전트(Claude Code, Codex, Antigravity 등)가 이 프로젝트�
 - 프로젝트명: Ilgeobolkka
 - 목표: 실제 열람 확정된 페이지만 포인트로 차감하는 반응형 웹 MVP
 - 대상 사용자: 책 전체 구매가 부담스럽고 필요한 부분부터 읽고 싶은 일반 독자
-- 현재 상태: 제품·도메인 계약 완료, Spring Boot 골격 단계. 프런트엔드와 애플리케이션 배포 방식은 미정
-- 스택: Java 21 / Spring Boot 4.1.0 / Spring MVC / Spring Data JPA / Spring Security / MySQL (로컬 Compose / 운영 RDS)
+- 현재 상태: 제품·도메인·프런트엔드 계약 완료, Spring Boot 골격 단계. MVP는 프런트엔드와 API를 단일 Spring Boot 실행물로 제공
+- 스택: Java 21 / Spring Boot 4.1.0 / Spring MVC / Thymeleaf / Bootstrap 5.3 / Vanilla JavaScript / Spring Data JPA / Spring Security / MySQL (로컬 Compose / 운영 RDS)
 - 문서 라우팅: Java/Spring 구현 전 `docs/conventions.md`; 용어는 `CONTEXT.md`, 요구사항은 `docs/prd.md`, 검증 계약은 `docs/test-strategy.md`, 결정 근거는 `docs/adr/`
 - 핵심 불변식: 사용자·도서·페이지별 최초 1회만 50P 차감하고, 포인트 잔액과 내역 합계를 일치시킨다
 
