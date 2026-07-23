@@ -13,7 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-@SpringBootTest
+// 컨텍스트 로딩 시점에는 이 클래스가 @BeforeEach에서 만드는 테이블이 아직 없어
+// ddl-auto=validate(운영 기준값)를 그대로 적용하면 EntityManagerFactory 생성이 실패한다.
+// 이 테스트 전용 엔티티의 테이블은 Flyway가 아니라 이 클래스가 raw SQL로 직접 관리하므로
+// 이 테스트에서만 검증을 끈다.
+@SpringBootTest(properties = "spring.jpa.hibernate.ddl-auto=none")
 class QuerydslMySqlIntegrationTest {
 
     private final JdbcTemplate jdbcTemplate;
