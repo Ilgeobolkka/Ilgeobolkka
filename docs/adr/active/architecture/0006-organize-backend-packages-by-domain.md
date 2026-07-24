@@ -35,4 +35,4 @@
 - 도메인 간 협력 지점과 트랜잭션 경계가 Facade에 드러납니다.
 - 단순 조회도 Facade를 거치므로 위임 코드가 늘 수 있지만 Controller의 진입점과 의존 방향이 일관됩니다.
 - 멀티 모듈 수준의 컴파일 경계는 제공하지 않으므로 필요해질 때 별도 ADR로 전환 여부를 결정합니다.
-- 세부 이름과 계층 책임은 [`docs/conventions.md`](../conventions.md)를 따릅니다.
+- 세부 이름과 계층 책임은 [`docs/conventions.md`](../../../conventions.md)를 따릅니다.

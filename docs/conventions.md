@@ -12,6 +12,7 @@
 | 독자·열람 확정·포인트 등 도메인 용어 | [`CONTEXT.md`](../CONTEXT.md) |
 | MVP 범위와 기능 요구사항 | [`docs/prd.md`](./prd.md) |
 | 핵심 불변식과 필수 검증 시나리오 | [`docs/test-strategy.md`](./test-strategy.md) |
+| HTTP 엔드포인트·요청/응답·인증 필요 여부·상태 코드 | [`docs/api/api-contract.md`](./api/api-contract.md) |
 | 되돌리기 비싼 기술·구조 결정과 근거 | [`docs/adr/`](./adr/) |
 | 환경별 DB 연결과 민감정보 주입 | [`docs/deployment.md`](./deployment.md) |
 | Java/Spring 구현 방식 | 이 문서 |
@@ -42,7 +43,7 @@ com.example.ilgeobolkka
 ```
 
 도메인 우선 패키지와 Facade 경계를 선택한 근거는
-[`ADR-0006`](./adr/0006-organize-backend-packages-by-domain.md)에 기록합니다.
+[`ADR-0006`](./adr/active/architecture/0006-organize-backend-packages-by-domain.md)에 기록합니다.
 
 ## 이름
 
@@ -124,8 +125,8 @@ Controller는 HTTP 요청과 응답의 경계만 담당합니다.
 - 동시 요청에서 반드시 지켜야 하는 불변식은 DB 제약과 트랜잭션으로 다시 보장합니다.
 - `@Valid`나 도메인 메서드가 이미 검증한 조건을 Controller의 `try-catch`로 반복하지 않습니다.
 - 도메인 예외는 실패한 규칙이 이름에 드러나게 하고 `@RestControllerAdvice`에서 HTTP 오류로 변환합니다.
-- 공통 성공 응답 래퍼는 API 계약이 정해지기 전에 만들지 않습니다. HTTP 상태 코드와 오류 형식은
-  이후 API 계약에서 먼저 합의합니다.
+- 공통 성공 응답 래퍼, HTTP 상태 코드와 오류 형식은
+  [`API 명세`](./api/api-contract.md)를 따릅니다.
 
 ## 설정, 시간, 로그
 
