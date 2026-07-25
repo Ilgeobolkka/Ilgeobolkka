@@ -1,6 +1,6 @@
 # AGENTS.md
 
-AI 코딩 에이전트(Claude Code, Codex, Antigravity 등)가 이 프로젝트에서 따를 행동 지침 정본.
+AI 코딩 에이전트(Claude Code, Codex, Antigravity 등)가 이 프로젝트에서 따를 행동 지침 정본이다.
 규칙 수정은 이 파일에서만 한다. (`CLAUDE.md`는 `@AGENTS.md` 임포트 포인터)
 
 ## 0. 언어
@@ -18,12 +18,12 @@ AI 코딩 에이전트(Claude Code, Codex, Antigravity 등)가 이 프로젝트�
 ## 2. 단순함 우선
 
 - 요청받은 기능만 최소한의 코드로. 미래 대비 기능·추상화·설정 옵션·습관성 방어 코드 금지.
-- 표준 라이브러리로 되면 그걸 쓴다.
+- JDK 또는 현재 프로젝트의 의존성으로 안전하게 구현할 수 있으면 새 라이브러리를 추가하지 않는다.
 - 판단 기준: **지워도 요청 기능이 동작하면 지운다.**
 
 ## 3. 외과적 수정
 
-- 요청과 직접 관련된 코드만 수정한다. 지나가다 본 포매팅·네이밍은 "김에" 고치지 않는다.
+- 요청과 직접 관련된 코드만 수정한다. 지나가다 본 포매팅·네이밍은 "본 김에" 고치지 않는다.
 - 내 변경으로 불필요해진 코드는 내가 정리한다. 기존 코드의 스타일·구조 관례를 따른다.
 
 ## 4. 목표 중심 실행 · 완료 기준
@@ -31,8 +31,8 @@ AI 코딩 에이전트(Claude Code, Codex, Antigravity 등)가 이 프로젝트�
 - 시작 전 완료 기준을 한 문장으로 정의한다.
 - 현재 Java/Spring 기준 완료는 **변경 테스트 + `check` + 변경 유형에 필요한 빌드/실행 확인**으로 판정한다
   (상세 절차는 `test` 스킬).
-- 코드 작성·변경 = 대응 테스트 동반 작성. 테스트 없는 코드는 미완료 (질적 기준은 `test` 스킬).
-- 버그 수정 = 재현 테스트 작성 → 수정 → 통과.
+- 코드 작성·변경 = 대응 테스트 동반 작성. 테스트 없는 코드는 미완료(질적 기준은 `test` 스킬).
+- 버그 수정 = 재현 테스트 작성 → 수정 → 통과
 
 ## 경계 (Boundaries)
 
@@ -50,8 +50,8 @@ AI 코딩 에이전트(Claude Code, Codex, Antigravity 등)가 이 프로젝트�
 
 ## 스킬 (모든 에이전트 공용)
 
-반복 절차는 `.agents/skills/<이름>/SKILL.md`에 있다. 명시적 요청뿐 아니라 **작업 흐름이
-아래 트리거에 도달하면 스스로** 해당 SKILL.md를 먼저 읽고 그대로 따른다.
+반복 절차는 `.agents/skills/<이름>/SKILL.md`에 있다.
+명시적 요청뿐 아니라 **작업 흐름이 아래 트리거에 도달하면 스스로** 해당 SKILL.md를 먼저 읽고 그대로 따른다.
 
 | 트리거 (요청 또는 상황) | 스킬 |
 |---|---|
@@ -76,12 +76,12 @@ AI 코딩 에이전트(Claude Code, Codex, Antigravity 등)가 이 프로젝트�
 ## 프로젝트 정보
 
 - 프로젝트명: Ilgeobolkka
-- 목표: 실제 열람 확정된 페이지만 포인트로 차감하는 반응형 웹 MVP
+- 목표: 필요한 원본 PDF 페이지만 잉크로 30일 대여하는 반응형 웹 MVP
 - 대상 사용자: 책 전체 구매가 부담스럽고 필요한 부분부터 읽고 싶은 일반 독자
 - 현재 상태: 제품·도메인 계약 완료, Spring Boot 골격 단계. 프런트엔드와 애플리케이션 배포 방식은 미정
 - 스택: Java 21 / Spring Boot 4.1.0 / Spring MVC / Spring Data JPA / Spring Security / MySQL (로컬 Compose / 운영 RDS)
-- 문서 라우팅: Java/Spring 구현 전 `docs/conventions.md`; 용어는 `CONTEXT.md`, 요구사항은 `docs/prd.md`, API 명세는 `docs/api/api-contract.md`, 검증 계약은 `docs/test-strategy.md`, 결정 근거는 `docs/adr/`
-- 핵심 불변식: 사용자·도서·페이지별 최초 1회만 50P 차감하고, 포인트 잔액과 내역 합계를 일치시킨다
+- 문서 라우팅: Java/Spring 구현 전 `docs/conventions.md`; 용어는 `CONTEXT.md`, 요구사항은 `docs/prd/README.md`, API 명세는 `docs/api/api-contract.md`, 검증 계약은 `docs/test-strategy.md`, 결정 근거는 `docs/adr/`
+- 핵심 불변식: 유효한 대여가 없는 페이지 열기마다 1잉크만 차감하고, 잉크 잔액·내역·30일 대여를 한 트랜잭션으로 일치시킨다
 
 ### 명령어 (플래그까지 정확히)
 

@@ -1,13 +1,13 @@
 # 0007. 핵심 도메인 엔티티와 ERD를 정의한다
 
-- 상태: 승인됨
+- 상태: 대체됨 (→ 0025)
 - 날짜: 2026-07-22
 
 ## 맥락
 
-읽어볼까 백엔드는 제품·도메인 계약(CONTEXT.md, docs/prd.md, docs/test-strategy.md)과 되돌리기 비싼 기술 결정(ADR-0001~0006)이 이미 합의된 상태이지만,
-아직 JPA Entity나 Flyway migration은 만들지 않은 골격 단계입니다(`src`에는 `IlgeobolkkaApplication`만 존재). 데이터 모델은 한 번 스키마로 굳으면 마이그레이션 비용이 크므로,
-실제 Entity 코드를 작성하기 전에 엔티티·관계·제약을 ERD로 먼저 정리해 검토받습니다.
+읽어볼까 백엔드는 제품·도메인 계약(CONTEXT.md, docs/prd/README.md, docs/test-strategy.md)과 되돌리기 비싼 기술 결정(ADR-0001~0006)이 이미 합의된 상태이지만,
+아직 JPA Entity나 Flyway migration은 만들지 않은 골격 단계입니다.(`src`에는 `IlgeobolkkaApplication`만 존재)
+데이터 모델은 한 번 스키마로 굳으면 마이그레이션 비용이 크므로, 실제 Entity 코드를 작성하기 전에 엔티티·관계·제약을 ERD로 먼저 정리해 검토받습니다.
 
 아래 표는 PRD 7절 기능 요구사항과 test-strategy.md 4절 핵심 불변식을 이 ADR이 정의하는 엔티티에 매핑한 것입니다.
 모든 요구사항 ID와 불변식이 최소 한 엔티티에 근거를 두고 있습니다.

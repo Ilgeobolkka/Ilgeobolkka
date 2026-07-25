@@ -1,6 +1,6 @@
 # 0009. OpenFeign QueryDSL로 타입 안전 JPA 쿼리를 작성한다
 
-- 상태: 승인됨
+- 상태: 대체됨 (→ 0029)
 - 날짜: 2026-07-22
 
 ## 맥락
@@ -17,10 +17,12 @@
 ## 결정
 
 OpenFeign QueryDSL 7.5의 JPA 모듈을 사용합니다.
-`main`과 `test` 컴파일에 JPA `annotation processor`를 설정하고, Gradle Java 플러그인의 기본 경로인 `build/generated/sources/annotationProcessor/java/`에 Q타입을 생성합니다.
+`main`과 `test` 컴파일에 JPA `annotation processor`를 설정하고,
+Gradle Java 플러그인의 기본 경로인 `build/generated/sources/annotationProcessor/java/`에 Q타입을 생성합니다.
 생성물은 빌드 결과이므로 저장소에 커밋하지 않습니다.
 
 ## 결과
 
 엔티티의 지속 필드를 기반으로 Q타입이 생성되어 타입 안전한 동적 JPA 쿼리를 작성할 수 있습니다.
-QueryDSL 버전은 Spring Boot의 의존성 관리 대상이 아니므로 Gradle에서 명시적으로 고정하고, Spring Boot·Hibernate를 올릴 때 annotation processing과 실제 쿼리 호환성을 함께 검증해야 합니다.
+QueryDSL 버전은 Spring Boot의 의존성 관리 대상이 아니므로 Gradle에서 명시적으로 고정하고,
+Spring Boot·Hibernate를 올릴 때 annotation processing과 실제 쿼리 호환성을 함께 검증해야 합니다.
