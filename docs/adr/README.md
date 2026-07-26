@@ -1,43 +1,78 @@
 # 아키텍처 결정 기록
 
-ADR은 결정 당시의 맥락과 근거를 보존합니다. 승인된 본문의 과거 표현을 현재 정책처럼 읽지 않고,
-`상태`와 `대체·후속 결정`을 따라 현행 계약을 확인합니다.
+이 디렉터리에는 되돌리기 비싼 기술 결정의 맥락과 대체 이력을 보존합니다. 가격·기간·사용자 상태 전이는
+[제품 정책](../prd/product-policy.md), 현재 HTTP 계약은 [API 계약](../api-spec.md), 현재 데이터 모델은
+[ERD](../erd.md), 검증 절차는 [테스트 전략](../test-strategy.md)에서 관리합니다.
 
-## 현행 계약 읽기
+## 최초 기준선
 
-- 제품 범위와 사용자 정책: [`docs/prd.md`](../prd.md)
-- 도메인 용어: [`CONTEXT.md`](../../CONTEXT.md)
-- 검증 불변식: [`docs/test-strategy.md`](../test-strategy.md)
-- 기본 ERD와 API: ADR-0007, ADR-0008을 먼저 읽고 ADR-0018~0021의 현행 변경을 적용합니다.
-- 현재 과금·소장: ADR-0018
-- 현재 인증: ADR-0015와 ADR-0019
-- 현재 페이지 이미지: ADR-0014와 ADR-0020
-- 현재 검색·페이지네이션·오류 응답: ADR-0021
-- 현재 QueryDSL 선택 근거: ADR-0022
+2026-07-26에 핵심 도메인 구현과 공유·시연 데이터 생성 전에 제품 방향과 문서 구조를 다시 확정했습니다.
+그 전에 작성한 ADR 0001~0022는 합의된 기술 이력이 아니라 제품 방향을 탐색하던 초안이었으므로 폐기하고,
+현재 색인의 ADR 0001~0012를 최초 승인 기준선으로 사용합니다. 폐기한 초안은 Git 이력에서만 확인합니다.
+아래 보존·대체 규칙은 이 최초 기준선부터 적용합니다.
+
+ADR은 주제를 나타내는 하위 디렉터리 한 곳에 두고, 번호는 디렉터리와 관계없이 저장소 전체에서 유일한
+순번으로 부여합니다. 새 ADR은 모든 주제 폴더에 있는 ADR 중 가장 큰 번호에 1을 더한 4자리 번호를
+사용합니다.
+
+## 상태와 대체
+
+- `승인됨`: 현재 적용하는 기술 결정입니다.
+- `대체됨`: 이후 승인된 ADR이 대신하는 과거 기술 결정입니다.
+
+최초 기준선의 기존 결정을 바꿀 때는 기존 ADR의 제목·날짜·맥락·대안·결정·결과를 그대로 보존하고 상태만 `대체됨`으로
+바꿉니다. 새 ADR은 `승인됨`으로 작성하고 `맥락`에서 대체하는 ADR의 번호와 변경 이유를 명시합니다.
+색인에는 두 ADR을 모두 남기고, 현행 정본과 저장소의 참조는 새 ADR을 가리키게 갱신합니다.
+
+## 주제 분류
+
+- `platform`: 기반 스택과 스키마 관리
+- `application`: 패키지와 애플리케이션 경계
+- `domain`: 데이터와 대여 모델
+- `content`: 콘텐츠 변환과 전달
+- `security`: 인증과 보안
+- `frontend`: 프런트엔드 구성
 
 ## 색인
 
-| 번호 | 결정 | 상태 | 현행 참고 |
-| --- | --- | --- | --- |
-| [0001](./0001-server-validated-reading-confirmation.md) | 서버 검증 6초 기준 열람 확정 | 승인됨 | 유지 |
-| [0002](./0002-serve-page-images.md) | 원본 PDF 대신 현재 페이지 이미지 제공 | 승인됨 | ADR-0014·0020과 함께 적용 |
-| [0003](./0003-use-point-ledger-and-fixed-page-price.md) | 포인트 원장과 전역 페이지 단가 | 대체됨 → 0017 | 현행 소장은 ADR-0018 |
-| [0004](./0004-use-java21-spring-boot41-and-rds-mysql.md) | Java 21·Spring Boot 4.1·RDS MySQL | 승인됨 | 유지 |
-| [0005](./0005-separate-local-and-production-database-configuration.md) | 로컬·운영 DB 설정 분리 | 승인됨 | 유지 |
-| [0006](./0006-organize-backend-packages-by-domain.md) | 도메인 우선 패키지와 Facade | 승인됨 | 유지 |
-| [0007](./0007-define-core-domain-erd.md) | 핵심 도메인 ERD | 승인됨 | 카운트·소장은 ADR-0018 적용 |
-| [0008](./0008-define-api-contract.md) | 기본 API 계약 | 승인됨 | ADR-0018~0021 적용 |
-| [0009](./0009-use-openfeign-querydsl.md) | 초기 OpenFeign QueryDSL 선택 | 대체됨 → 0022 | ADR-0022 적용 |
-| [0010](./0010-manage-schema-with-flyway-not-ddl-auto.md) | Flyway 전용 스키마 변경 | 승인됨 | 유지 |
-| [0011](./0011-use-poppler-and-private-s3-for-page-images.md) | Poppler·비공개 S3 | 대체됨 → 0012 | ADR-0014 적용 |
-| [0012](./0012-separate-cover-and-validate-page-image-quality.md) | 표지 분리·이미지 품질 | 대체됨 → 0013 | ADR-0014 적용 |
-| [0013](./0013-validate-page-images-at-viewer-size.md) | 뷰어 크기 품질 검증 | 대체됨 → 0014 | ADR-0014 적용 |
-| [0014](./0014-separate-image-fidelity-and-viewport-readability.md) | 이미지 충실도·뷰포트 가독성 | 승인됨 | HTTP 전달은 ADR-0020 |
-| [0015](./0015-use-server-session-authentication.md) | 서버 세션 인증 | 승인됨 | 보안 세부는 ADR-0019 |
-| [0016](./0016-use-thymeleaf-bootstrap-vanilla-js.md) | Thymeleaf·Bootstrap·Vanilla JS | 승인됨 | 유지 |
-| [0017](./0017-convert-reading-spend-to-ownership.md) | 공개 가격 기반 소장 | 대체됨 → 0018 | ADR-0018 적용 |
-| [0018](./0018-convert-ninety-percent-reading-to-ownership.md) | 90% 열람 확정 기반 소장 | 승인됨 | 현행 |
-| [0019](./0019-complete-password-and-session-security.md) | 비밀번호·세션·CSRF 보안 | 승인됨 | 현행 |
-| [0020](./0020-proxy-current-page-images-through-application.md) | 애플리케이션 페이지 이미지 프록시 | 승인됨 | 현행 |
-| [0021](./0021-stabilize-catalog-pagination-and-error-contracts.md) | 검색·페이지네이션·오류 응답 | 승인됨 | 현행 |
-| [0022](./0022-retain-openfeign-querydsl-for-type-safe-queries.md) | 타입 안전 조회 기술 검증용 QueryDSL | 승인됨 | 현행 |
+### 플랫폼
+
+| 번호 | 기술 결정 | 상태 |
+| --- | --- | --- |
+| [0001](./platform/0001-use-java21-spring-boot41-and-rds-mysql.md) | Java 21·Spring Boot 4.1·RDS MySQL | 승인됨 |
+| [0005](./platform/0005-manage-schema-with-flyway-not-ddl-auto.md) | Flyway 전용 스키마 변경 | 승인됨 |
+| [0012](./platform/0012-use-portone-v2-test-payments.md) | PortOne V2 테스트 결제 경계 | 승인됨 |
+
+### 애플리케이션
+
+| 번호 | 기술 결정 | 상태 |
+| --- | --- | --- |
+| [0002](./application/0002-organize-backend-packages-by-domain.md) | 도메인 우선 패키지와 Facade | 승인됨 |
+| [0004](./application/0004-define-api-contract.md) | same-origin JSON API 경계 | 승인됨 |
+
+### 도메인
+
+| 번호 | 기술 결정 | 상태 |
+| --- | --- | --- |
+| [0003](./domain/0003-define-core-domain-erd.md) | 핵심 권한·결제 관계형 데이터 모델 | 승인됨 |
+| [0010](./domain/0010-model-page-rentals-with-ink-ledger.md) | 기간 대여와 잉크 원장 | 승인됨 |
+
+### 콘텐츠
+
+| 번호 | 기술 결정 | 상태 |
+| --- | --- | --- |
+| [0006](./content/0006-use-poppler-and-private-s3-for-image-pages.md) | Poppler 사전 변환과 비공개 S3 | 승인됨 |
+| [0011](./content/0011-align-page-content-with-source-pdf.md) | 원본 PDF 연결 텍스트·이미지 콘텐츠 | 승인됨 |
+
+### 보안
+
+| 번호 | 기술 결정 | 상태 |
+| --- | --- | --- |
+| [0007](./security/0007-use-server-session-authentication.md) | 서버 세션 인증 | 승인됨 |
+| [0009](./security/0009-complete-password-and-session-security.md) | 비밀번호 해시·세션·CSRF 보안 | 승인됨 |
+
+### 프런트엔드
+
+| 번호 | 기술 결정 | 상태 |
+| --- | --- | --- |
+| [0008](./frontend/0008-use-thymeleaf-bootstrap-vanilla-js.md) | Thymeleaf·Bootstrap·Vanilla JavaScript | 승인됨 |

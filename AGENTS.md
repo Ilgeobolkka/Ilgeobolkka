@@ -60,6 +60,7 @@ AI 코딩 에이전트(Claude Code, Codex, Antigravity 등)가 이 프로젝트�
 | 코드 리뷰·검토를 하게 될 때 | `review` |
 | 코드를 변경한 뒤 완료를 판정할 때 (모든 코딩 작업) | `test` |
 | 스택·데이터 모델·구조 등 되돌리기 비싼 결정을 하게 될 때 | `adr` |
+| 팀원 로컬의 GitHub CLI PR 환경을 활성화·점검하게 될 때 | `github-cli-setup` |
 | AGENTS.md·스킬·실수 노트 등 하네스 파일을 고치게 될 때 | `harness` |
 
 - Codex·Antigravity는 `.agents/skills/`를 직접 인식하고, Claude Code는 `.claude/skills/`의 심링크로 인식한다.
@@ -76,12 +77,12 @@ AI 코딩 에이전트(Claude Code, Codex, Antigravity 등)가 이 프로젝트�
 ## 프로젝트 정보
 
 - 프로젝트명: Ilgeobolkka
-- 목표: 실제 열람 확정된 페이지에 50P를 사용하고 전체 페이지의 90%를 확정하면 소장으로 전환하는 반응형 웹 MVP
+- 목표: 유효기간 없는 잉크로 페이지를 30일 대여하고 PortOne V2 테스트 결제로 도서를 온라인 소장하는 데스크톱 웹 MVP
 - 대상 사용자: 책 전체 구매가 부담스럽고 필요한 부분부터 읽고 싶은 일반 독자
-- 현재 상태: 제품·도메인·프런트엔드 계약 완료, Spring Boot 골격 단계. MVP는 프런트엔드와 API를 단일 Spring Boot 실행물로 제공
-- 스택: Java 21 / Spring Boot 4.1.0 / Spring MVC / Thymeleaf / Bootstrap 5.3 / Vanilla JavaScript / Spring Data JPA / Spring Security / MySQL (로컬 Compose / 운영 RDS)
-- 문서 라우팅: Java/Spring 구현 전 `docs/conventions.md`; 용어는 `CONTEXT.md`, 요구사항은 `docs/prd.md`, 검증 계약은 `docs/test-strategy.md`, 결정 근거는 `docs/adr/`
-- 핵심 불변식: 사용자·도서·페이지별 최초 1회만 50P를 차감하고, 확정 페이지 수는 실제 확정 행 수와 일치하며 90% 도달 시 소장 처리하고, 포인트 잔액과 내역 합계를 일치시킨다
+- 현재 상태: 제품·도메인·프런트엔드·PortOne V2 테스트 결제 계약 완료, Spring Boot 골격 단계. 프런트엔드와 API는 단일 실행물로 제공
+- 스택: Java 21 / Spring Boot 4.1.0 / Spring MVC / Thymeleaf / Bootstrap 5.3 / Vanilla JavaScript / Spring Data JPA / Spring Security / MySQL (Compose·RDS) / PortOne V2 테스트 채널
+- 문서 라우팅 정본: `docs/prd/README.md`에서 요구사항·용어·API·ERD·검증·컨벤션·배포·ADR로 이동
+- 핵심 불변식: 잉크는 만료되지 않고 권한 없는 페이지 열기에만 1잉크를 차감하며, 소장은 서버가 검증한 테스트 결제로만 한 번 부여하고 잔액·내역·대여·소장 기록을 일관되게 유지한다
 
 ### 명령어 (플래그까지 정확히)
 

@@ -1,26 +1,29 @@
 package com.example.ilgeobolkka.support.schema;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataAccessException;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-// 테스트 전용 엔티티가 com.example.testfixture.* 로 격리되어 이 컨텍스트에는 @Entity 가 없으므로,
-// 운영 기준값 ddl-auto=validate 그대로 기동한다(Flyway가 만든 8개 테이블을 raw SQL로 검증).
-// @Transactional 로 각 테스트를 롤백해 로컬/운영 DB의 실제 데이터를 삭제하지 않는다(파괴적 DELETE 제거).
 @SpringBootTest
+@ActiveProfiles("test")
+@ContextConfiguration(initializers = DedicatedTestDatabaseInitializer.class)
 @Transactional
 class CoreDomainSchemaMigrationTest {
 
     private static final long READER_ID = 1_000L;
+    private static final long SECOND_READER_ID = 1_001L;
     private static final long BOOK_ID = 2_000L;
 
     private final JdbcTemplate jdbcTemplate;
@@ -31,7 +34,7 @@ class CoreDomainSchemaMigrationTest {
     }
 
     @Test
-    void V1_마이그레이션이_8개_핵심_도메인_테이블을_모두_생성한다() {
+    void V1_마이그레이션이_현재_ERD의_11개_테이블을_생성한다() {
         List<String> tableNames =
                 jdbcTemplate.queryForList(
                         """
@@ -39,253 +42,281 @@ class CoreDomainSchemaMigrationTest {
                         FROM information_schema.tables
                         WHERE table_schema = DATABASE()
                           AND table_name IN (
-                              'reader', 'book', 'reading_consent', 'reading_session',
-                              'confirmed_page', 'library_entry', 'point_account', 'point_ledger'
+                              'reader', 'book', 'book_page', 'reading_session',
+                              'ink_account', 'ink_purchase', 'ink_ledger', 'page_rental',
+                              'ownership_payment', 'book_ownership', 'library_entry'
                           )
+                        ORDER BY table_name
                         """,
                         String.class);
 
-        assertEquals(8, tableNames.size());
+        assertEquals(
+                List.of(
+                        "book",
+                        "book_ownership",
+                        "book_page",
+                        "ink_account",
+                        "ink_ledger",
+                        "ink_purchase",
+                        "library_entry",
+                        "ownership_payment",
+                        "page_rental",
+                        "reader",
+                        "reading_session"),
+                tableNames);
     }
 
     @Test
-    void 열람_확정_6초_경계에_쓰는_page_opened_at은_마이크로초_정밀도다() {
-        Long precision =
+    void 시간_경계와_이력에_쓰는_11개_컬럼은_마이크로초_정밀도다() {
+        Long preciseColumnCount =
                 jdbcTemplate.queryForObject(
                         """
-                        SELECT datetime_precision
+                        SELECT COUNT(*)
                         FROM information_schema.columns
                         WHERE table_schema = DATABASE()
-                          AND table_name = 'reading_session'
-                          AND column_name = 'page_opened_at'
+                          AND datetime_precision = 6
+                          AND CONCAT(table_name, '.', column_name) IN (
+                              'reader.created_at',
+                              'reading_session.updated_at',
+                              'ink_purchase.created_at',
+                              'ink_purchase.paid_at',
+                              'ink_ledger.occurred_at',
+                              'page_rental.rented_at',
+                              'page_rental.expires_at',
+                              'ownership_payment.created_at',
+                              'ownership_payment.paid_at',
+                              'book_ownership.created_at',
+                              'library_entry.updated_at'
+                          )
                         """,
                         Long.class);
 
-        // DATETIME(정밀도 0)으로 퇴행하면 5.999초/6.000초 경계를 판정할 수 없다(ADR-0001).
-        assertEquals(6L, precision);
+        assertEquals(11L, preciseColumnCount);
     }
 
     @Test
-    void 같은_사용자와_도서로_중복_열람_동의를_저장하면_유니크_제약_위반이_발생한다() {
-        독자를_생성한다(READER_ID);
-        도서를_생성한다(BOOK_ID);
-        jdbcTemplate.update(
-                "INSERT INTO reading_consent (reader_id, book_id, consented_at) VALUES (?, ?, NOW())",
-                READER_ID,
-                BOOK_ID);
+    void 도서_제목과_저자는_영문_대소문자를_구분하지_않는_collation을_사용한다() {
+        List<String> collations =
+                jdbcTemplate.queryForList(
+                        """
+                        SELECT collation_name
+                        FROM information_schema.columns
+                        WHERE table_schema = DATABASE()
+                          AND table_name = 'book'
+                          AND column_name IN ('title', 'author')
+                        ORDER BY column_name
+                        """,
+                        String.class);
 
-        assertThrows(
-                DataIntegrityViolationException.class,
+        assertEquals(List.of("utf8mb4_0900_ai_ci", "utf8mb4_0900_ai_ci"), collations);
+    }
+
+    @Test
+    void 도서는_카테고리와_양수인_페이지_수와_원가를_가져야_한다() {
+        assertAll(
                 () ->
-                        jdbcTemplate.update(
-                                "INSERT INTO reading_consent (reader_id, book_id, consented_at) VALUES (?, ?, NOW())",
-                                READER_ID,
-                                BOOK_ID));
-    }
-
-    @Test
-    void 같은_사용자와_도서_페이지로_중복_확정하면_유니크_제약_위반이_발생한다() {
-        독자를_생성한다(READER_ID);
-        도서를_생성한다(BOOK_ID);
-        jdbcTemplate.update(
-                "INSERT INTO confirmed_page (reader_id, book_id, page_number, confirmed_at) VALUES (?, ?, ?, NOW())",
-                READER_ID,
-                BOOK_ID,
-                1);
-
-        assertThrows(
-                DataIntegrityViolationException.class,
+                        assertThrows(
+                                DataAccessException.class,
+                                () -> 도서를_생성한다(BOOK_ID, "   ", 100, 10_000)),
                 () ->
-                        jdbcTemplate.update(
-                                "INSERT INTO confirmed_page (reader_id, book_id, page_number, confirmed_at) VALUES (?, ?, ?, NOW())",
-                                READER_ID,
-                                BOOK_ID,
-                                1));
-    }
-
-    @Test
-    void 같은_사용자와_도서라도_다른_페이지_번호로_확정하면_모두_저장된다() {
-        독자를_생성한다(READER_ID);
-        도서를_생성한다(BOOK_ID);
-        jdbcTemplate.update(
-                "INSERT INTO confirmed_page (reader_id, book_id, page_number, confirmed_at) VALUES (?, ?, ?, NOW())",
-                READER_ID,
-                BOOK_ID,
-                1);
-
-        assertDoesNotThrow(
+                        assertThrows(
+                                DataAccessException.class,
+                                () -> 도서를_생성한다(BOOK_ID + 1, "소설", 0, 10_000)),
                 () ->
-                        jdbcTemplate.update(
-                                "INSERT INTO confirmed_page (reader_id, book_id, page_number, confirmed_at) VALUES (?, ?, ?, NOW())",
-                                READER_ID,
-                                BOOK_ID,
-                                2));
+                        assertThrows(
+                                DataAccessException.class,
+                                () -> 도서를_생성한다(BOOK_ID + 2, "소설", 100, 0)));
     }
 
     @Test
-    void 같은_사용자와_도서로_서재_항목을_중복_등록하면_유니크_제약_위반이_발생한다() {
-        독자를_생성한다(READER_ID);
-        도서를_생성한다(BOOK_ID);
-        jdbcTemplate.update(
-                "INSERT INTO confirmed_page (reader_id, book_id, page_number, confirmed_at) VALUES (?, ?, 1, NOW(6))",
-                READER_ID,
-                BOOK_ID);
-        jdbcTemplate.update(
-                """
-                INSERT INTO library_entry
-                    (reader_id, book_id, last_confirmed_page_number, confirmed_page_count, updated_at)
-                VALUES (?, ?, ?, 1, NOW(6))
-                """,
-                READER_ID,
-                BOOK_ID,
-                1);
+    void 도서_페이지는_TEXT와_IMAGE_중_한_형식만_저장한다() {
+        도서를_생성한다(BOOK_ID, "소설", 5, 10_000);
 
-        assertThrows(
-                DataIntegrityViolationException.class,
+        assertAll(
                 () ->
-                        jdbcTemplate.update(
-                                """
-                                INSERT INTO library_entry
-                                    (reader_id, book_id, last_confirmed_page_number,
-                                     confirmed_page_count, updated_at)
-                                VALUES (?, ?, ?, 1, NOW(6))
-                                """,
-                                READER_ID,
-                                BOOK_ID,
-                                2));
-    }
-
-    @Test
-    void 같은_사용자로_열람_세션을_두_번_생성하면_유니크_제약_위반이_발생한다() {
-        독자를_생성한다(READER_ID);
-        도서를_생성한다(BOOK_ID);
-        jdbcTemplate.update(
-                """
-                INSERT INTO reading_session
-                    (reader_id, book_id, current_page_number, page_opened_at, session_token, updated_at)
-                VALUES (?, ?, 1, NOW(), 'token-1', NOW())
-                """,
-                READER_ID,
-                BOOK_ID);
-
-        assertThrows(
-                DataIntegrityViolationException.class,
+                        assertDoesNotThrow(
+                                () -> 텍스트_페이지를_생성한다(3_000L, BOOK_ID, 1)),
                 () ->
-                        jdbcTemplate.update(
-                                """
-                                INSERT INTO reading_session
-                                    (reader_id, book_id, current_page_number, page_opened_at, session_token, updated_at)
-                                VALUES (?, ?, 1, NOW(), 'token-2', NOW())
-                                """,
-                                READER_ID,
-                                BOOK_ID));
-    }
-
-    @Test
-    void 같은_사용자로_포인트_계좌를_두_번_생성하면_유니크_제약_위반이_발생한다() {
-        독자를_생성한다(READER_ID);
-        jdbcTemplate.update(
-                "INSERT INTO point_account (reader_id, balance) VALUES (?, ?)", READER_ID, 0);
-
-        assertThrows(
-                DataIntegrityViolationException.class,
+                        assertDoesNotThrow(
+                                () -> 이미지_페이지를_생성한다(3_001L, BOOK_ID, 2)),
                 () ->
-                        jdbcTemplate.update(
-                                "INSERT INTO point_account (reader_id, balance) VALUES (?, ?)",
-                                READER_ID,
-                                100));
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        jdbcTemplate.update(
+                                                """
+                                                INSERT INTO book_page
+                                                    (id, book_id, page_number, content_type,
+                                                     text_content, image_path)
+                                                VALUES (?, ?, 3, 'TEXT', '본문', '/pages/3.png')
+                                                """,
+                                                3_002L,
+                                                BOOK_ID)),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        jdbcTemplate.update(
+                                                """
+                                                INSERT INTO book_page
+                                                    (id, book_id, page_number, content_type,
+                                                     text_content, image_path)
+                                                VALUES (?, ?, 4, 'AUDIO', NULL, NULL)
+                                                """,
+                                                3_003L,
+                                                BOOK_ID)));
     }
 
     @Test
-    void 포인트_계좌_잔액에_음수_값을_저장하면_체크_제약_위반이_발생한다() {
-        독자를_생성한다(READER_ID);
+    void 같은_도서에_같은_원본_페이지_번호를_중복_저장할_수_없다() {
+        도서를_생성한다(BOOK_ID, "소설", 5, 10_000);
+        텍스트_페이지를_생성한다(3_000L, BOOK_ID, 1);
 
         assertThrows(
                 DataAccessException.class,
-                () ->
-                        jdbcTemplate.update(
-                                "INSERT INTO point_account (reader_id, balance) VALUES (?, ?)",
-                                READER_ID,
-                                -1));
+                () -> 이미지_페이지를_생성한다(3_001L, BOOK_ID, 1));
     }
 
     @Test
-    void 존재하지_않는_독자로_포인트_계좌를_생성하면_외래키_제약_위반이_발생한다() {
-        long 존재하지_않는_독자_ID = 999_999L;
-
-        assertThrows(
-                DataIntegrityViolationException.class,
-                () ->
-                        jdbcTemplate.update(
-                                "INSERT INTO point_account (reader_id, balance) VALUES (?, ?)",
-                                존재하지_않는_독자_ID,
-                                0));
-    }
-
-    @Test
-    void 정상적인_포인트_지급과_50P_차감_내역은_저장된다() {
+    void 열람_세션은_독자와_뷰어_세션_ID가_각각_고유하고_실제_도서_페이지를_가리킨다() {
         독자를_생성한다(READER_ID);
-        도서를_생성한다(BOOK_ID);
+        독자를_생성한다(SECOND_READER_ID);
+        도서를_생성한다(BOOK_ID, "소설", 5, 10_000);
+        텍스트_페이지를_생성한다(3_000L, BOOK_ID, 1);
+        열람_세션을_생성한다(
+                4_000L, READER_ID, BOOK_ID, 1, "00000000-0000-0000-0000-000000000001");
 
-        assertDoesNotThrow(
-                () -> {
-                    jdbcTemplate.update(
-                            "INSERT INTO point_account (reader_id, balance) VALUES (?, ?)",
-                            READER_ID,
-                            9_950);
-                    // 지급(GRANT): book_id·page_number 없이 저장된다(PTS-001).
-                    jdbcTemplate.update(
-                            """
-                            INSERT INTO point_ledger
-                                (reader_id, type, amount, balance_after, occurred_at)
-                            VALUES (?, 'GRANT', ?, ?, NOW(6))
-                            """,
-                            READER_ID,
-                            10_000,
-                            10_000);
-                    // 차감(DEDUCTION): book_id·page_number를 채워 저장된다.
-                    jdbcTemplate.update(
-                            """
-                            INSERT INTO point_ledger
-                                (reader_id, type, amount, balance_after, book_id, page_number, occurred_at)
-                            VALUES (?, 'DEDUCTION', ?, ?, ?, ?, NOW(6))
-                            """,
-                            READER_ID,
-                            50,
-                            9_950,
-                            BOOK_ID,
-                            1);
-                });
+        assertAll(
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        열람_세션을_생성한다(
+                                                4_001L,
+                                                READER_ID,
+                                                BOOK_ID,
+                                                1,
+                                                "00000000-0000-0000-0000-000000000002")),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        열람_세션을_생성한다(
+                                                4_002L,
+                                                SECOND_READER_ID,
+                                                BOOK_ID,
+                                                1,
+                                                "00000000-0000-0000-0000-000000000001")),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        열람_세션을_생성한다(
+                                                4_003L,
+                                                SECOND_READER_ID,
+                                                BOOK_ID,
+                                                2,
+                                                "00000000-0000-0000-0000-000000000003")));
     }
 
     @Test
-    void 허용되지_않은_유형으로_포인트_내역을_저장하면_체크_제약_위반이_발생한다() {
+    void 서재는_독자와_도서별_한_행이며_실제_도서_페이지를_마지막_위치로_가리킨다() {
         독자를_생성한다(READER_ID);
+        도서를_생성한다(BOOK_ID, "소설", 5, 10_000);
+        텍스트_페이지를_생성한다(3_000L, BOOK_ID, 1);
+        이미지_페이지를_생성한다(3_001L, BOOK_ID, 2);
+        서재_항목을_생성한다(5_000L, READER_ID, BOOK_ID, 1);
 
-        assertThrows(
-                DataAccessException.class,
+        assertAll(
                 () ->
-                        jdbcTemplate.update(
-                                """
-                                INSERT INTO point_ledger
-                                    (reader_id, type, amount, balance_after, occurred_at)
-                                VALUES (?, 'REFUND', ?, ?, NOW(6))
-                                """,
-                                READER_ID,
-                                50,
-                                0));
+                        assertThrows(
+                                DataAccessException.class,
+                                () -> 서재_항목을_생성한다(5_001L, READER_ID, BOOK_ID, 2)),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () -> 서재_항목을_생성한다(5_002L, READER_ID, BOOK_ID, 3)));
     }
 
     private void 독자를_생성한다(long readerId) {
         jdbcTemplate.update(
-                "INSERT INTO reader (id, email, password_hash, created_at) VALUES (?, ?, 'hash', NOW())",
+                """
+                INSERT INTO reader (id, email, password_hash, created_at)
+                VALUES (?, ?, 'hash', '2026-07-26 00:00:00.000000')
+                """,
                 readerId,
                 "reader" + readerId + "@example.com");
     }
 
-    private void 도서를_생성한다(long bookId) {
+    private void 도서를_생성한다(
+            long bookId, String category, int totalPageCount, int priceWon) {
         jdbcTemplate.update(
-                "INSERT INTO book (id, title, author, total_page_count) VALUES (?, '제목', '저자', 100)",
-                bookId);
+                """
+                INSERT INTO book
+                    (id, category, title, author, total_page_count, price_won)
+                VALUES (?, ?, '제목', '저자', ?, ?)
+                """,
+                bookId,
+                category,
+                totalPageCount,
+                priceWon);
+    }
+
+    private void 텍스트_페이지를_생성한다(long pageId, long bookId, int pageNumber) {
+        jdbcTemplate.update(
+                """
+                INSERT INTO book_page
+                    (id, book_id, page_number, content_type, text_content)
+                VALUES (?, ?, ?, 'TEXT', '본문')
+                """,
+                pageId,
+                bookId,
+                pageNumber);
+    }
+
+    private void 이미지_페이지를_생성한다(long pageId, long bookId, int pageNumber) {
+        jdbcTemplate.update(
+                """
+                INSERT INTO book_page
+                    (id, book_id, page_number, content_type, image_path)
+                VALUES (?, ?, ?, 'IMAGE', ?)
+                """,
+                pageId,
+                bookId,
+                pageNumber,
+                "/pages/" + pageNumber + ".png");
+    }
+
+    private void 열람_세션을_생성한다(
+            long sessionId,
+            long readerId,
+            long bookId,
+            int currentPageNumber,
+            String viewerSessionId) {
+        jdbcTemplate.update(
+                """
+                INSERT INTO reading_session
+                    (id, reader_id, book_id, current_page_number, viewer_session_id, updated_at)
+                VALUES (?, ?, ?, ?, ?, '2026-07-26 00:00:00.000000')
+                """,
+                sessionId,
+                readerId,
+                bookId,
+                currentPageNumber,
+                viewerSessionId);
+    }
+
+    private void 서재_항목을_생성한다(
+            long entryId, long readerId, long bookId, int lastPageNumber) {
+        jdbcTemplate.update(
+                """
+                INSERT INTO library_entry
+                    (id, reader_id, book_id, last_page_number, updated_at)
+                VALUES (?, ?, ?, ?, '2026-07-26 00:00:00.000000')
+                """,
+                entryId,
+                readerId,
+                bookId,
+                lastPageNumber);
     }
 }
