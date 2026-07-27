@@ -26,8 +26,8 @@ erDiagram
     BOOK_PAGE ||--o{ PAGE_RENTAL : grants_access_to
     BOOK_PAGE ||--o{ READING_SESSION : current_in
     BOOK_PAGE ||--o{ LIBRARY_ENTRY : last_read_in
-    INK_PURCHASE ||--o| INK_LEDGER : grants
-    PAGE_RENTAL ||--o| INK_LEDGER : charges
+    INK_PURCHASE |o--o| INK_LEDGER : grants
+    PAGE_RENTAL |o--o| INK_LEDGER : charges
     OWNERSHIP_PAYMENT ||--o| BOOK_OWNERSHIP : grants
 
     READER {
@@ -124,6 +124,136 @@ Mermaid에서 괄호가 있는 SQL 타입을 안정적으로 표시하기 위해
 표기했습니다. 각각 물리 스키마의 `VARCHAR(255)`, `CHAR(36)`, `DATETIME(6)`을 뜻합니다. 관계선은 실제
 외래 키를 나타냅니다. `reading_session` 및 `library_entry`의 `(book_id, current_page_number)`,
 `(book_id, last_page_number)`는 각각 `book_page(book_id, page_number)`를 참조하므로 `BOOK_PAGE`와 연결합니다.
+
+`ink_ledger`는 지급 원인인 `ink_purchase`와 차감 원인인 `page_rental` 중 정확히 하나만 참조합니다. 따라서
+두 원인 관계의 `|o`는 원장 한 건에서 해당 원인이 없거나 하나임을, `o|`는 하나의 원인이 원장에 연결되지
+않았거나 한 번만 연결됨을 뜻합니다.
+
+## 테이블 명세
+
+아래 명세는 현재 `V1` migration의 물리 컬럼을 텍스트로 풀어 쓴 것입니다. `NULL`은 컬럼의 `NULL` 허용
+여부이며, 복합 키와 값 사이 제약은 이어지는 [핵심 제약조건](#핵심-제약조건)에서 함께 설명합니다.
+
+### `reader`
+
+| 컬럼 | 물리 타입 | NULL | 키·참조 | 설명 |
+| --- | --- | --- | --- | --- |
+| `id` | `BIGINT AUTO_INCREMENT` | 아니오 | PK | 독자 식별자 |
+| `email` | `VARCHAR(255)` | 아니오 | UK | 정규화해 저장하는 로그인 이메일 |
+| `password_hash` | `VARCHAR(255)` | 아니오 | - | 적응형 단방향 함수로 인코딩한 비밀번호 |
+| `created_at` | `DATETIME(6)` | 아니오 | - | 계정 생성 시각(UTC) |
+
+### `book`
+
+| 컬럼 | 물리 타입 | NULL | 키·참조 | 설명 |
+| --- | --- | --- | --- | --- |
+| `id` | `BIGINT AUTO_INCREMENT` | 아니오 | PK, `(id, price_won)` UK 구성 | 도서 식별자 |
+| `category` | `VARCHAR(100)` | 아니오 | - | 목록 정렬에 사용하는 카테고리 |
+| `title` | `VARCHAR(255)` | 아니오 | - | 도서 제목 |
+| `author` | `VARCHAR(255)` | 아니오 | - | 저자명 |
+| `description` | `VARCHAR(2000)` | 예 | - | 도서 상세 소개 |
+| `cover_image_path` | `VARCHAR(500)` | 예 | - | 공개 표지 자산의 same-origin 경로 |
+| `total_page_count` | `INT` | 아니오 | - | 원본 PDF 기준 전체 페이지 수 |
+| `price_won` | `INT` | 아니오 | `(id, price_won)` UK 구성 | 온라인 소장에 사용하는 고정 원가(원) |
+
+### `book_page`
+
+| 컬럼 | 물리 타입 | NULL | 키·참조 | 설명 |
+| --- | --- | --- | --- | --- |
+| `id` | `BIGINT AUTO_INCREMENT` | 아니오 | PK | 변환 페이지 식별자 |
+| `book_id` | `BIGINT` | 아니오 | FK → `book.id`, `(book_id, page_number)` UK 구성 | 소속 도서 |
+| `page_number` | `INT` | 아니오 | `(book_id, page_number)` UK 구성 | 원본 PDF와 같은 페이지 번호 |
+| `content_type` | `VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | - | `TEXT` 또는 `IMAGE` |
+| `text_content` | `TEXT` | 예 | - | 텍스트 페이지 본문 |
+| `image_path` | `VARCHAR(500)` | 예 | - | 이미지 페이지의 비공개 저장소 경로 |
+
+### `reading_session`
+
+| 컬럼 | 물리 타입 | NULL | 키·참조 | 설명 |
+| --- | --- | --- | --- | --- |
+| `id` | `BIGINT AUTO_INCREMENT` | 아니오 | PK | 현재 열람 세션 식별자 |
+| `reader_id` | `BIGINT` | 아니오 | UK, FK → `reader.id` | 독자당 하나인 현재 열람 세션의 소유자 |
+| `book_id` | `BIGINT` | 아니오 | 복합 FK → `book_page(book_id, page_number)` | 현재 도서 |
+| `current_page_number` | `INT` | 아니오 | 복합 FK → `book_page(book_id, page_number)` | 현재 원본 PDF 페이지 번호 |
+| `viewer_session_id` | `CHAR(36) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | UK | 서버가 발급한 뷰어 교체 판정용 UUID |
+| `updated_at` | `DATETIME(6)` | 아니오 | - | 현재 위치 갱신 시각(UTC) |
+
+### `ink_account`
+
+| 컬럼 | 물리 타입 | NULL | 키·참조 | 설명 |
+| --- | --- | --- | --- | --- |
+| `id` | `BIGINT AUTO_INCREMENT` | 아니오 | PK | 잉크 계정 식별자 |
+| `reader_id` | `BIGINT` | 아니오 | UK, FK → `reader.id` | 잉크 계정 소유자 |
+| `balance` | `INT` | 아니오 | - | 현재 사용 가능한 잉크 잔액 |
+
+### `ink_purchase`
+
+| 컬럼 | 물리 타입 | NULL | 키·참조 | 설명 |
+| --- | --- | --- | --- | --- |
+| `id` | `BIGINT AUTO_INCREMENT` | 아니오 | PK, `(reader_id, id)` UK 구성 | 잉크 구매 시도 식별자 |
+| `reader_id` | `BIGINT` | 아니오 | FK → `reader.id`, `(reader_id, id)` UK 구성 | 구매 독자 |
+| `payment_id` | `CHAR(36) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | UK | 서버가 발급한 PortOne 결제 UUID |
+| `status` | `VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | - | `PENDING`, `PAID`, `FAILED` 중 하나 |
+| `amount_won` | `INT` | 아니오 | - | 결제 준비 금액(원) |
+| `granted_ink` | `INT` | 아니오 | - | 검증 성공 시 지급할 잉크 수량 |
+| `created_at` | `DATETIME(6)` | 아니오 | - | 결제 시도 생성 시각(UTC) |
+| `paid_at` | `DATETIME(6)` | 예 | - | `PAID`가 된 시각(UTC) |
+
+### `page_rental`
+
+| 컬럼 | 물리 타입 | NULL | 키·참조 | 설명 |
+| --- | --- | --- | --- | --- |
+| `id` | `BIGINT AUTO_INCREMENT` | 아니오 | PK, `(reader_id, id)` UK 구성 | 페이지 대여 기간 식별자 |
+| `reader_id` | `BIGINT` | 아니오 | FK → `reader.id`, `(reader_id, id)` UK 구성 | 대여 독자 |
+| `book_page_id` | `BIGINT` | 아니오 | FK → `book_page.id` | 대여한 원본 PDF 페이지 |
+| `rented_at` | `DATETIME(6)` | 아니오 | - | 1잉크 차감이 완료된 대여 시작 시각(UTC) |
+| `expires_at` | `DATETIME(6)` | 아니오 | - | 대여 만료 시각(UTC) |
+
+### `ink_ledger`
+
+| 컬럼 | 물리 타입 | NULL | 키·참조 | 설명 |
+| --- | --- | --- | --- | --- |
+| `id` | `BIGINT AUTO_INCREMENT` | 아니오 | PK | 변경 불가능한 잉크 내역 식별자 |
+| `reader_id` | `BIGINT` | 아니오 | 두 복합 FK 구성 | 지급 또는 차감 원인과 같은 독자 |
+| `type` | `VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | - | `GRANT` 또는 `DEDUCTION` |
+| `amount` | `INT` | 아니오 | - | 부호 없는 지급·차감 수량 |
+| `balance_after` | `INT` | 아니오 | - | 이 내역 반영 직후 잔액 |
+| `ink_purchase_id` | `BIGINT` | 예 | UK, 복합 FK → `ink_purchase(reader_id, id)` | `GRANT`의 지급 원인 |
+| `page_rental_id` | `BIGINT` | 예 | UK, 복합 FK → `page_rental(reader_id, id)` | `DEDUCTION`의 차감 원인 |
+| `occurred_at` | `DATETIME(6)` | 아니오 | - | 잉크 변경 발생 시각(UTC) |
+
+### `ownership_payment`
+
+| 컬럼 | 물리 타입 | NULL | 키·참조 | 설명 |
+| --- | --- | --- | --- | --- |
+| `id` | `BIGINT AUTO_INCREMENT` | 아니오 | PK, `(reader_id, book_id, id)` UK 구성 | 소장 결제 시도 식별자 |
+| `reader_id` | `BIGINT` | 아니오 | FK → `reader.id`, 복합 UK 구성 | 결제 독자 |
+| `book_id` | `BIGINT` | 아니오 | 복합 FK → `book(id, price_won)`, 복합 UK 구성 | 소장 대상 도서 |
+| `payment_id` | `CHAR(36) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | UK | 서버가 발급한 PortOne 결제 UUID |
+| `status` | `VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | - | `PENDING`, `PAID`, `FAILED` 중 하나 |
+| `amount_won` | `INT` | 아니오 | 복합 FK → `book(id, price_won)` | 준비 시 저장한 도서 원가(원) |
+| `created_at` | `DATETIME(6)` | 아니오 | - | 결제 시도 생성 시각(UTC) |
+| `paid_at` | `DATETIME(6)` | 예 | - | `PAID`가 된 시각(UTC) |
+
+### `book_ownership`
+
+| 컬럼 | 물리 타입 | NULL | 키·참조 | 설명 |
+| --- | --- | --- | --- | --- |
+| `id` | `BIGINT AUTO_INCREMENT` | 아니오 | PK | 기간 없는 온라인 소장 권한 식별자 |
+| `reader_id` | `BIGINT` | 아니오 | `(reader_id, book_id)` UK, 복합 FK 구성 | 소장 독자 |
+| `book_id` | `BIGINT` | 아니오 | `(reader_id, book_id)` UK, 복합 FK 구성 | 소장 도서 |
+| `ownership_payment_id` | `BIGINT` | 아니오 | UK, 복합 FK → `ownership_payment(reader_id, book_id, id)` | 권한을 부여한 결제 |
+| `created_at` | `DATETIME(6)` | 아니오 | - | 소장 권한 생성 시각(UTC) |
+
+### `library_entry`
+
+| 컬럼 | 물리 타입 | NULL | 키·참조 | 설명 |
+| --- | --- | --- | --- | --- |
+| `id` | `BIGINT AUTO_INCREMENT` | 아니오 | PK | 내 서재 항목 식별자 |
+| `reader_id` | `BIGINT` | 아니오 | FK → `reader.id`, `(reader_id, book_id)` UK 구성 | 서재 소유자 |
+| `book_id` | `BIGINT` | 아니오 | 복합 FK → `book_page(book_id, page_number)`, 복합 UK 구성 | 서재 도서 |
+| `last_page_number` | `INT` | 아니오 | 복합 FK → `book_page(book_id, page_number)` | 마지막으로 성공한 원본 PDF 페이지 번호 |
+| `updated_at` | `DATETIME(6)` | 아니오 | - | 마지막 위치 갱신 시각(UTC) |
 
 ## 핵심 제약조건
 
