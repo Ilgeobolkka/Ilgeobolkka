@@ -58,6 +58,255 @@
 | `GET /api/ownership-payments?page={page}` | 쿼리 파라미터 | 200 | `payments[]`, `page`, `totalPages`, `totalCount` | 예 |
 | `POST /api/webhooks/portone` | PortOne V2 웹훅 바디·서명 헤더 | 200 | 없음 | 웹훅 서명 |
 
+### 기대 응답 형태
+
+아래 JSON은 필드 이름, 중첩 구조와 `null` 가능성을 보여 주는 예시입니다. ID와 시각 등 값 자체를
+고정하지 않으며, 오류 응답은 [오류 응답](#오류-응답)의 공통 형태를 사용합니다.
+
+#### 인증
+
+`POST /api/auth/signup`의 `201 Created`와 `POST /api/auth/login`의 `200 OK`는 같은 형태입니다.
+
+```json
+{
+  "readerId": 1,
+  "email": "reader@example.com"
+}
+```
+
+`POST /api/auth/logout`의 `200 OK`는 무효화하기 전에 식별한 독자를 반환합니다.
+
+```json
+{
+  "readerId": 1
+}
+```
+
+#### 도서 목록과 상세
+
+`GET /api/books?page=1`의 `200 OK`:
+
+```json
+{
+  "books": [
+    {
+      "bookId": 1,
+      "category": "소설",
+      "coverImagePath": "/assets/covers/book-1.jpg",
+      "title": "샘플 도서",
+      "author": "샘플 작가",
+      "bookPrice": 12000
+    }
+  ],
+  "page": 1,
+  "totalPages": 10,
+  "totalCount": 100
+}
+```
+
+`GET /api/books/1`의 `200 OK`:
+
+```json
+{
+  "bookId": 1,
+  "category": "소설",
+  "coverImagePath": "/assets/covers/book-1.jpg",
+  "title": "샘플 도서",
+  "author": "샘플 작가",
+  "description": "도서 소개입니다.",
+  "totalPageCount": 240,
+  "bookPrice": 12000,
+  "owned": false
+}
+```
+
+익명 상세 조회에서는 `owned`만 `null`이고 나머지 형태는 같습니다.
+
+#### 페이지 열기와 콘텐츠
+
+`POST /api/books/1/reading-sessions`의 `201 Created`와
+`PATCH /api/reading-sessions/current/page`의 `200 OK`는 같은 형태입니다. 아래는 새 대여를 만든 경우입니다.
+
+```json
+{
+  "viewerSessionId": "0a7b39a9-a4a8-4dd9-94df-14933c378047",
+  "bookId": 1,
+  "pageNumber": 12,
+  "owned": false,
+  "deductedInk": 1,
+  "inkBalance": 99,
+  "rentedAt": "2026-07-27T10:00:00Z",
+  "expiresAt": "2026-08-26T10:00:00Z",
+  "contentType": "TEXT"
+}
+```
+
+활성 대여 재사용은 `deductedInk=0`과 기존 대여 시각을, 소장 도서는 `owned=true`, `deductedInk=0`,
+`rentedAt=null`, `expiresAt=null`을 반환합니다.
+
+`GET /api/reading-sessions/current/pages/12/content`의 `200 OK`는 JSON이 아닙니다.
+
+- `TEXT`: `Content-Type: text/plain;charset=UTF-8`와 UTF-8 텍스트 바디
+- `IMAGE`: `Content-Type: image/jpeg` 또는 `image/png`와 해당 이미지 바이트
+
+#### 내 서재
+
+`GET /api/library`의 `200 OK`:
+
+```json
+{
+  "entries": [
+    {
+      "bookId": 1,
+      "coverImagePath": "/assets/covers/book-1.jpg",
+      "title": "대여 중인 도서",
+      "category": "소설",
+      "lastPageNumber": 12,
+      "rentedAt": "2026-07-27T10:00:00Z",
+      "expiresAt": "2026-08-26T10:00:00Z",
+      "activeRental": true,
+      "owned": false
+    },
+    {
+      "bookId": 2,
+      "coverImagePath": "/assets/covers/book-2.jpg",
+      "title": "소장한 도서",
+      "category": "에세이",
+      "lastPageNumber": 1,
+      "rentedAt": null,
+      "expiresAt": null,
+      "activeRental": null,
+      "owned": true
+    }
+  ]
+}
+```
+
+#### 잉크 잔액과 내역
+
+`GET /api/ink/balance`의 `200 OK`:
+
+```json
+{
+  "balance": 99
+}
+```
+
+`GET /api/ink/ledger?page=1`의 `200 OK`:
+
+```json
+{
+  "entries": [
+    {
+      "type": "DEDUCTION",
+      "amount": 1,
+      "balanceAfter": 99,
+      "bookTitle": "샘플 도서",
+      "pageNumber": 12,
+      "rentedAt": "2026-07-27T10:00:00Z",
+      "expiresAt": "2026-08-26T10:00:00Z",
+      "occurredAt": "2026-07-27T10:00:00Z"
+    },
+    {
+      "type": "GRANT",
+      "amount": 100,
+      "balanceAfter": 100,
+      "bookTitle": null,
+      "pageNumber": null,
+      "rentedAt": null,
+      "expiresAt": null,
+      "occurredAt": "2026-07-27T09:00:00Z"
+    }
+  ],
+  "page": 1,
+  "totalPages": 1,
+  "totalCount": 2
+}
+```
+
+#### 결제 준비
+
+`POST /api/ink/purchases`와 `POST /api/books/1/ownership-payments`는 대상과 `orderName`,
+`totalAmount`만 다르고 같은 준비 응답을 사용합니다. 새 시도는 `201 Created`, 기존 소장 `PENDING` 재사용은
+`200 OK`입니다.
+
+```json
+{
+  "paymentId": "f3d40d77-84d8-4a4f-b6a3-a54ebd70cf4c",
+  "storeId": "store-example",
+  "channelKey": "channel-key-example",
+  "orderName": "읽어볼까 100잉크",
+  "totalAmount": 1000,
+  "currency": "CURRENCY_KRW"
+}
+```
+
+#### 잉크 결제 완료
+
+`POST /api/ink/purchases/{paymentId}/complete`가 검증된 결제를 처음 반영하거나 이미 처리한 성공을
+재사용한 `200 OK`:
+
+```json
+{
+  "paymentId": "f3d40d77-84d8-4a4f-b6a3-a54ebd70cf4c",
+  "status": "PAID",
+  "grantedInk": 100,
+  "inkBalance": 199
+}
+```
+
+아직 완료되지 않은 결제의 `202 Accepted`:
+
+```json
+{
+  "paymentId": "f3d40d77-84d8-4a4f-b6a3-a54ebd70cf4c",
+  "status": "PENDING",
+  "grantedInk": 0,
+  "inkBalance": 99
+}
+```
+
+#### 소장 결제 완료와 내역
+
+`POST /api/ownership-payments/{paymentId}/complete`가 검증된 결제를 처음 반영하거나 이미 처리한 성공을
+재사용한 `200 OK`:
+
+```json
+{
+  "paymentId": "8e68dfba-1327-4bb1-8b88-3d6046367012",
+  "status": "PAID",
+  "bookId": 1,
+  "owned": true
+}
+```
+
+아직 완료되지 않은 결제의 `202 Accepted`는 같은 형태에서 `status="PENDING"`, `owned=false`입니다.
+
+`GET /api/ownership-payments?page=1`의 `200 OK`:
+
+```json
+{
+  "payments": [
+    {
+      "paymentId": "8e68dfba-1327-4bb1-8b88-3d6046367012",
+      "bookId": 1,
+      "bookTitle": "샘플 도서",
+      "amountWon": 12000,
+      "paidAt": "2026-07-27T11:00:00Z",
+      "owned": true
+    }
+  ],
+  "page": 1,
+  "totalPages": 1,
+  "totalCount": 1
+}
+```
+
+#### PortOne 웹훅
+
+`POST /api/webhooks/portone`의 정상 `200 OK`는 바디를 반환하지 않습니다. 서명 실패와 일시 오류는
+[오류 응답](#오류-응답)에서 정의한 상태 코드 정책을 따릅니다.
+
 ### 회원가입과 로그인
 
 - 회원가입과 로그인 바디의 `email`, `password`는 필수 문자열입니다. 익명 사용자의 상태 변경
