@@ -63,6 +63,15 @@
 아래 JSON은 필드 이름, 중첩 구조와 `null` 가능성을 보여 주는 예시입니다. ID와 시각 등 값 자체를
 고정하지 않으며, 오류 응답은 [오류 응답](#오류-응답)의 공통 형태를 사용합니다.
 
+성공 JSON은 아래에 정의한 필드를 생략하지 않습니다. 값이 없는 nullable 필드는 빈 문자열이나 0으로
+바꾸지 않고 JSON `null`로 반환합니다.
+
+- 도서 목록·상세·내 서재의 `coverImagePath`와 도서 상세의 `description`은 메타데이터가 없으면 `null`
+- 익명 도서 상세의 `owned`는 `null`
+- 소장 도서 페이지 열기의 `rentedAt`, `expiresAt`은 `null`
+- 소장 도서 서재 항목의 `rentedAt`, `expiresAt`, `activeRental`은 `null`
+- 잉크 지급 내역의 `bookTitle`, `pageNumber`, `rentedAt`, `expiresAt`은 `null`
+
 #### 인증
 
 `POST /api/auth/signup`의 `201 Created`와 `POST /api/auth/login`의 `200 OK`는 같은 형태입니다.
@@ -305,7 +314,7 @@
 #### PortOne 웹훅
 
 `POST /api/webhooks/portone`의 정상 `200 OK`는 바디를 반환하지 않습니다. 서명 실패와 일시 오류는
-[오류 응답](#오류-응답)에서 정의한 상태 코드 정책을 따릅니다.
+각각 `400 INVALID_WEBHOOK_SIGNATURE`와 [오류 응답](#오류-응답)에서 정의한 `5xx` 정책을 따릅니다.
 
 ### 회원가입과 로그인
 
@@ -333,8 +342,8 @@
 - `totalPageCount`, `bookPrice`
 - 로그인하지 않은 경우 `owned`는 `null`, 로그인한 경우 소장 여부는 `true` 또는 `false`
 
-`bookPrice`는 원화 단위의 0보다 큰 정수입니다. `coverImagePath`는 공개 표지 자산의 same-origin
-경로이며 원본 PDF 경로나 비공개 페이지 이미지 저장소 주소가 아닙니다. 상세 조회 시 인증된
+`bookPrice`는 원화 단위의 0보다 큰 정수입니다. `coverImagePath`의 문자열 값은 공개 표지 자산의
+same-origin 경로이며 원본 PDF 경로나 비공개 페이지 이미지 저장소 주소가 아닙니다. 상세 조회 시 인증된
 세션이 있으면 `owned`를 계산하고, 없으면 `null`로 응답합니다.
 
 목록과 검색은 한 페이지에 10권을 제공합니다. `page`는 1부터 시작하며 0 이하는
@@ -452,8 +461,8 @@ PortOne 테스트 채널만 가리키며 운영 실결제 채널은 설정하지
 `409 PAYMENT_STATE_CONFLICT`입니다. 존재하지 않는 `paymentId`는 `404 RESOURCE_NOT_FOUND`입니다.
 
 웹훅은 `Transaction.Paid`와 `Transaction.Failed`만 상태 처리 대상으로 삼습니다. 그 밖의 정상 서명
-이벤트와 알 수 없는 유형은 상태를 바꾸지 않고 `200 OK`, 서명 누락·불일치는 `400 Bad Request`, PortOne
-조회 장애나 내부 일시 오류는 재전송을 위해 `5xx`로 응답합니다.
+이벤트와 알 수 없는 유형은 상태를 바꾸지 않고 `200 OK`, 서명 누락·불일치는
+`400 INVALID_WEBHOOK_SIGNATURE`, PortOne 조회 장애나 내부 일시 오류는 재전송을 위해 `5xx`로 응답합니다.
 
 소장 결제 내역은 `PAID`만 한 페이지에 10개씩 `paidAt DESC, id DESC`로 제공합니다. 각 항목은
 `paymentId`, `bookId`, `bookTitle`, `amountWon`, `paidAt`, `owned`를 포함합니다. `PENDING`·`FAILED`는
@@ -472,6 +481,7 @@ PortOne 테스트 채널만 가리키며 운영 실결제 채널은 설정하지
 | 상황 | HTTP 상태 | 대표 코드 |
 | --- | --- | --- |
 | 요청 형식·입력 규칙 위반 | 400 | `INVALID_INPUT` |
+| 웹훅 서명 누락·불일치 | 400 | `INVALID_WEBHOOK_SIGNATURE` |
 | 인증 정보 없음·무효 | 401 | `AUTHENTICATION_REQUIRED`, `INVALID_CREDENTIALS` |
 | CSRF 또는 접근 권한 검증 실패 | 403 | `INVALID_CSRF_TOKEN`, `ACCESS_DENIED` |
 | 도서·페이지·현재 열람 세션 없음 | 404 | `RESOURCE_NOT_FOUND` |
