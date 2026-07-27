@@ -164,6 +164,19 @@ class CoreDomainSchemaMigrationTest {
                                                 VALUES (?, ?, 4, 'AUDIO', NULL, NULL)
                                                 """,
                                                 3_003L,
+                                                BOOK_ID)),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        jdbcTemplate.update(
+                                                """
+                                                INSERT INTO book_page
+                                                    (id, book_id, page_number, content_type,
+                                                     text_content, image_path)
+                                                VALUES (?, ?, 5, 'text', '본문', NULL)
+                                                """,
+                                                3_004L,
                                                 BOOK_ID)));
     }
 

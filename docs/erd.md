@@ -122,7 +122,7 @@ erDiagram
 
 Mermaid에서 괄호가 있는 SQL 타입을 안정적으로 표시하기 위해 `varchar_255`, `char_36`, `datetime_6`처럼
 표기했습니다. 각각 물리 스키마의 `VARCHAR(255)`, `CHAR(36)`, `DATETIME(6)`을 뜻합니다. 관계선은 실제
-외래 키를 나탅니다. `reading_session` 및 `library_entry`의 `(book_id, current_page_number)`,
+외래 키를 나타냅니다. `reading_session` 및 `library_entry`의 `(book_id, current_page_number)`,
 `(book_id, last_page_number)`는 각각 `book_page(book_id, page_number)`를 참조하므로 `BOOK_PAGE`와 연결합니다.
 
 ## 핵심 제약조건

@@ -32,7 +32,7 @@ CREATE TABLE book_page (
     id            BIGINT AUTO_INCREMENT PRIMARY KEY,
     book_id       BIGINT       NOT NULL,
     page_number   INT          NOT NULL,
-    content_type  VARCHAR(20)  NOT NULL,
+    content_type  VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
     text_content  TEXT         NULL,
     image_path    VARCHAR(500) NULL,
     CONSTRAINT uk_book_page_book_number UNIQUE (book_id, page_number),
@@ -116,7 +116,7 @@ CREATE TABLE page_rental (
 CREATE TABLE ink_ledger (
     id               BIGINT AUTO_INCREMENT PRIMARY KEY,
     reader_id        BIGINT      NOT NULL,
-    type             VARCHAR(20) NOT NULL,
+    type             VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
     amount           INT         NOT NULL,
     balance_after    INT         NOT NULL,
     ink_purchase_id  BIGINT      NULL,

@@ -28,7 +28,7 @@ jobs:
       mysql:
         image: mysql:8.4
         env:
-          MYSQL_DATABASE: ilgeobolkka
+          MYSQL_DATABASE: ilgeobolkka_test
           MYSQL_USER: ilgeobolkka
           MYSQL_PASSWORD: ci-password
           MYSQL_ROOT_PASSWORD: ci-root-password
@@ -42,7 +42,8 @@ jobs:
           --health-start-period=10s
 
     env:
-      DB_URL: jdbc:mysql://127.0.0.1:3306/ilgeobolkka?allowPublicKeyRetrieval=true&sslMode=DISABLED
+      DB_URL: jdbc:mysql://127.0.0.1:3306/ilgeobolkka_test?allowPublicKeyRetrieval=true&sslMode=DISABLED
+      TEST_DB_URL: jdbc:mysql://127.0.0.1:3306/ilgeobolkka_test?allowPublicKeyRetrieval=true&sslMode=DISABLED
       DB_USERNAME: ilgeobolkka
       DB_PASSWORD: ci-password
 
@@ -60,6 +61,9 @@ jobs:
         uses: gradle/actions/setup-gradle@v6
         with:
           cache-provider: basic
+
+      - name: GitHub CLI 점검 스크립트 테스트
+        run: bash .agents/skills/github-cli-setup/scripts/check-test.sh
 
       - name: 테스트·검사·패키징
         run: ./gradlew --no-daemon clean check build --warning-mode all

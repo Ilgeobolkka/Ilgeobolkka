@@ -274,7 +274,22 @@ class InkRentalOwnershipSchemaMigrationTest {
                 () ->
                         assertThrows(
                                 DataAccessException.class,
-                                () -> 지급_원장을_생성한다(17_004L, READER_ID, 100, -1, 15_000L)));
+                                () ->
+                                        jdbcTemplate.update(
+                                                """
+                                                INSERT INTO ink_ledger
+                                                    (id, reader_id, type, amount, balance_after,
+                                                     ink_purchase_id, occurred_at)
+                                                VALUES (?, ?, 'grant', 100, 100, ?,
+                                                        '2026-07-26 00:00:00.000000')
+                                                """,
+                                                17_004L,
+                                                READER_ID,
+                                                15_000L)),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () -> 지급_원장을_생성한다(17_005L, READER_ID, 100, -1, 15_000L)));
     }
 
     @Test

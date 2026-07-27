@@ -13,6 +13,36 @@ block() {
   blocked=$((blocked + 1))
 }
 
+safe_github_origin() {
+  local remote_url=$1
+  local repository_path
+
+  case "$remote_url" in
+    https://github.com/*)
+      repository_path=${remote_url#https://github.com/}
+      ;;
+    https://*@github.com/*)
+      repository_path=${remote_url#*@github.com/}
+      ;;
+    git@github.com:*)
+      repository_path=${remote_url#git@github.com:}
+      ;;
+    ssh://git@github.com/*)
+      repository_path=${remote_url#ssh://git@github.com/}
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+
+  repository_path=${repository_path%.git}
+  if [[ ! "$repository_path" =~ ^[^/@[:space:]]+/[^/@[:space:]]+$ ]]; then
+    return 1
+  fi
+
+  printf 'github.com/%s\n' "$repository_path"
+}
+
 if ! command -v git >/dev/null 2>&1; then
   block "git 명령을 찾을 수 없습니다."
   exit 1
@@ -29,11 +59,11 @@ origin_url=$(git remote get-url origin 2>/dev/null || true)
 github_origin=0
 if [[ -z "$origin_url" ]]; then
   block "origin 원격이 없습니다."
-elif [[ "$origin_url" == https://github.com/* || "$origin_url" == git@github.com:* || "$origin_url" == ssh://git@github.com/* ]]; then
-  ok "GitHub origin: $origin_url"
+elif masked_origin=$(safe_github_origin "$origin_url"); then
+  ok "GitHub origin: $masked_origin"
   github_origin=1
 else
-  block "origin이 GitHub 원격이 아닙니다: $origin_url"
+  block "origin이 지원하는 GitHub 원격 형식이 아닙니다."
 fi
 
 gh_ready=0

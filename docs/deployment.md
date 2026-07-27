@@ -14,14 +14,21 @@
 | JDBC TLS | `sslMode=DISABLED` | `sslMode=VERIFY_IDENTITY` |
 | DB 공개 접근 | 로컬 호스트에만 노출 | 비공개 RDS, 애플리케이션 보안 그룹만 허용 |
 
-Spring datasource가 요구하는 공통 환경변수와 로컬 테스트 전용 연결 변수는 다음과 같습니다.
+Spring datasource는 아래 `DB_*`를 프로젝트의 권장 계약으로 사용합니다. Spring Boot 표준
+`SPRING_DATASOURCE_*`도 대체 체계로 사용할 수 있지만 두 체계를 동시에 주입하지 않습니다.
 
-| 변수 | 설명 | 민감정보 |
-| --- | --- | --- |
-| `DB_URL` | 호스트, 포트, DB 이름, TLS 정책을 포함한 JDBC URL | 아니요 |
-| `TEST_DB_URL` | 로컬 테스트 전용 `_test` 데이터베이스 JDBC URL | 아니요 |
-| `DB_USERNAME` | 애플리케이션 전용 DB 계정 | 예 |
-| `DB_PASSWORD` | 애플리케이션 전용 DB 비밀번호 | 예 |
+| 권장 변수 | Spring Boot 표준 대체 변수 | 설명 | 민감정보 |
+| --- | --- | --- | --- |
+| `DB_URL` | `SPRING_DATASOURCE_URL` | 호스트, 포트, DB 이름, TLS 정책을 포함한 JDBC URL | 아니요 |
+| `DB_USERNAME` | `SPRING_DATASOURCE_USERNAME` | 애플리케이션 전용 DB 계정 | 예 |
+| `DB_PASSWORD` | `SPRING_DATASOURCE_PASSWORD` | 애플리케이션 전용 DB 비밀번호 | 예 |
+
+로컬 `.env`와 아래 운영 예시는 `DB_*`를 사용합니다. 배포 플랫폼이 Spring Boot 표준 변수를 직접
+제공한다면 `SPRING_DATASOURCE_*` 세 개만 대신 주입합니다. 두 체계가 함께 있으면 표준 변수가
+`spring.datasource.*`에 직접 바인딩되어 `DB_*`와 다른 연결이 선택될 수 있으므로 혼용하지 않습니다.
+
+`TEST_DB_URL`은 로컬·CI 테스트 전용 `_test` 데이터베이스 JDBC URL입니다. 테스트 프로필은 이 값을
+우선 사용하고, 실제 연결 DB 이름이 `_test`로 끝나지 않으면 시작을 거부합니다.
 
 `TEST_DB_URL`, `DB_PORT`, `DB_NAME`, `DB_ROOT_PASSWORD`는 로컬에서만 사용합니다. 운영 애플리케이션에는
 `TEST_DB_URL`, RDS master 계정이나 `DB_ROOT_PASSWORD`를 주입하지 않습니다.
@@ -116,6 +123,9 @@ DB_URL=jdbc:mysql://<RDS-ENDPOINT>:3306/ilgeobolkka?sslMode=VERIFY_IDENTITY
 DB_USERNAME=<Secrets Manager에서 주입>
 DB_PASSWORD=<Secrets Manager에서 주입>
 ```
+
+배포 플랫폼에서 Spring Boot 표준 변수를 사용한다면 위 세 값을 각각 `SPRING_DATASOURCE_URL`,
+`SPRING_DATASOURCE_USERNAME`, `SPRING_DATASOURCE_PASSWORD`로 바꾸고 `DB_*`는 주입하지 않습니다.
 
 운영 구성은 다음 조건을 지켜야 합니다.
 
