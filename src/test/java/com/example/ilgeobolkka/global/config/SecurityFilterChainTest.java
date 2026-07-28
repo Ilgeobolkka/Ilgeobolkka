@@ -33,11 +33,10 @@ import com.example.ilgeobolkka.global.security.ApiSecurityErrorHandler;
 import com.example.ilgeobolkka.global.security.AuthenticatedReader;
 import com.example.ilgeobolkka.global.smoke.SmokeController;
 
-@WebMvcTest
+@WebMvcTest(controllers = SmokeController.class)
 @Import({
     SecurityConfig.class,
     ApiSecurityErrorHandler.class,
-    SmokeController.class,
     SecurityFilterChainTest.TestController.class
 })
 @ExtendWith(OutputCaptureExtension.class)
@@ -48,7 +47,7 @@ class SecurityFilterChainTest {
 
     @Test
     void 도서_목록과_상세_조회만_익명_사용자에게_공개한다() throws Exception {
-        mockMvc.perform(get("/api/books"))
+        mockMvc.perform(get("/api/books").param("page", "1"))
                 .andExpect(status().isOk());
         mockMvc.perform(get("/api/books/1"))
                 .andExpect(status().isOk());
