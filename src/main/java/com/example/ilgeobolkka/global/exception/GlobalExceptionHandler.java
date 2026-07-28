@@ -2,6 +2,9 @@ package com.example.ilgeobolkka.global.exception;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -12,8 +15,12 @@ import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.method.annotation.HandlerMethodValidationException;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
+import com.example.ilgeobolkka.global.logging.ApiRequestLoggingFilter;
+
 @RestControllerAdvice(annotations = RestController.class)
 public class GlobalExceptionHandler {
+
+    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @ExceptionHandler({
         MethodArgumentNotValidException.class,
@@ -24,17 +31,29 @@ public class GlobalExceptionHandler {
         HttpMediaTypeNotSupportedException.class
     })
     ResponseEntity<ApiErrorResponse> handleInvalidInput(Exception exception) {
+        logFailure(ErrorCode.INVALID_INPUT, exception);
         return response(ErrorCode.INVALID_INPUT);
     }
 
     @ExceptionHandler(AccessDeniedException.class)
     ResponseEntity<ApiErrorResponse> handleAccessDenied(AccessDeniedException exception) {
+        logFailure(ErrorCode.ACCESS_DENIED, exception);
         return response(ErrorCode.ACCESS_DENIED);
     }
 
     @ExceptionHandler(Exception.class)
     ResponseEntity<ApiErrorResponse> handleUnexpectedException(Exception exception) {
+        logFailure(ErrorCode.INTERNAL_SERVER_ERROR, exception);
         return response(ErrorCode.INTERNAL_SERVER_ERROR);
+    }
+
+    private void logFailure(ErrorCode errorCode, Exception exception) {
+        String requestId = MDC.get(ApiRequestLoggingFilter.REQUEST_ID_MDC_KEY);
+        log.warn(
+                "API 요청 실패 requestId={} errorCode={} exceptionType={}",
+                requestId == null ? "-" : requestId,
+                errorCode,
+                exception.getClass().getSimpleName());
     }
 
     private ResponseEntity<ApiErrorResponse> response(ErrorCode errorCode) {
