@@ -39,7 +39,9 @@ public class SecurityConfig {
                         .requestMatchers(SIGNUP, LOGIN, PUBLIC_BOOK_LIST, PUBLIC_BOOK_DETAIL, PORTONE_WEBHOOK).permitAll()
                         .requestMatchers(API).authenticated()
                         .anyRequest().permitAll())
-                .csrf(csrf -> csrf.ignoringRequestMatchers(PORTONE_WEBHOOK))
+                .csrf(csrf -> csrf
+                        .csrfTokenRepository(new SafeRequestCsrfTokenRepository())
+                        .ignoringRequestMatchers(PORTONE_WEBHOOK))
                 .exceptionHandling(exception -> exception
                         .authenticationEntryPoint(securityErrorHandler)
                         .accessDeniedHandler(securityErrorHandler))

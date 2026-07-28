@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,7 +32,7 @@ class AnonymousApiSessionIntegrationTest {
     private int port;
 
     @Test
-    void 익명_보호_API_요청은_세션과_쿠키를_생성하지_않는다() throws Exception {
+    void 익명_보호_API_GET_요청은_세션과_쿠키를_생성하지_않는다() throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:" + port + "/api/test/protected-resource"))
@@ -46,12 +47,33 @@ class AnonymousApiSessionIntegrationTest {
         }
     }
 
+    @Test
+    void 익명_보호_API_POST_요청은_세션과_쿠키를_생성하지_않는다() throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("http://localhost:" + port + "/api/test/protected-resource"))
+                .POST(HttpRequest.BodyPublishers.noBody())
+                .build();
+
+        for (int attempt = 0; attempt < 2; attempt++) {
+            HttpResponse<Void> response = client.send(request, HttpResponse.BodyHandlers.discarding());
+
+            assertEquals(HttpStatus.FORBIDDEN.value(), response.statusCode());
+            assertTrue(response.headers().allValues("Set-Cookie").isEmpty());
+        }
+    }
+
     @RestController
     public static class ProtectedApiController {
 
         @GetMapping("/api/test/protected-resource")
         @ResponseStatus(HttpStatus.NO_CONTENT)
         void protectedResource() {
+        }
+
+        @PostMapping("/api/test/protected-resource")
+        @ResponseStatus(HttpStatus.NO_CONTENT)
+        void changeProtectedResource() {
         }
     }
 }
