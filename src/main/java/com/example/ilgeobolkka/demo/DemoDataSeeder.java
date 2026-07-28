@@ -1,5 +1,6 @@
 package com.example.ilgeobolkka.demo;
 
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,9 +42,7 @@ class DemoDataSeeder {
 
     @Transactional
     public void seed(String rawPassword) {
-        if (rawPassword == null || rawPassword.isBlank()) {
-            throw new IllegalArgumentException("시연 데이터 비밀번호는 비어 있을 수 없습니다.");
-        }
+        validatePassword(rawPassword);
 
         List<DemoBookCatalog.BookSeed> books = demoBookCatalog.books();
         ensureBooks(books);
@@ -60,6 +59,33 @@ class DemoDataSeeder {
 
         verifyExistingSeedState(readers);
         updatePasswords(readers, rawPassword);
+    }
+
+    private void validatePassword(String rawPassword) {
+        if (rawPassword == null
+                || rawPassword.codePointCount(0, rawPassword.length()) < 8
+                || rawPassword.getBytes(StandardCharsets.UTF_8).length > 64) {
+            throw new IllegalArgumentException("시연 데이터 비밀번호가 제품 정책에 맞지 않습니다.");
+        }
+
+        boolean hasLetter = false;
+        boolean hasDigit = false;
+        boolean hasSpecialCharacter = false;
+        for (int index = 0; index < rawPassword.length(); index++) {
+            char character = rawPassword.charAt(index);
+            boolean isLetter =
+                    ('A' <= character && character <= 'Z')
+                            || ('a' <= character && character <= 'z');
+            boolean isDigit = '0' <= character && character <= '9';
+            hasLetter |= isLetter;
+            hasDigit |= isDigit;
+            hasSpecialCharacter |=
+                    '!' <= character && character <= '~' && !isLetter && !isDigit;
+        }
+
+        if (!hasLetter || !hasDigit || !hasSpecialCharacter) {
+            throw new IllegalArgumentException("시연 데이터 비밀번호가 제품 정책에 맞지 않습니다.");
+        }
     }
 
     private void ensureBooks(List<DemoBookCatalog.BookSeed> expectedBooks) {
@@ -291,6 +317,9 @@ class DemoDataSeeder {
     }
 
     private void verifyExistingSeedState(Map<String, StoredReader> readers) {
+        long rentalReaderId = readers.get(RENTAL_READER_EMAIL).id();
+        long emptyReaderId = readers.get(EMPTY_READER_EMAIL).id();
+        long ownershipReaderId = readers.get(OWNERSHIP_READER_EMAIL).id();
         int inkAccountCount =
                 jdbcTemplate.queryForObject(
                         """
@@ -299,43 +328,47 @@ class DemoDataSeeder {
                         WHERE reader_id IN (?, ?, ?)
                         """,
                         Integer.class,
-                        readers.get(RENTAL_READER_EMAIL).id(),
-                        readers.get(EMPTY_READER_EMAIL).id(),
-                        readers.get(OWNERSHIP_READER_EMAIL).id());
+                        rentalReaderId,
+                        emptyReaderId,
+                        ownershipReaderId);
         int grantCount =
                 jdbcTemplate.queryForObject(
                         """
                         SELECT COUNT(*)
                         FROM ink_ledger il
-                        JOIN ink_purchase ip ON ip.id = il.ink_purchase_id
-                        WHERE ip.payment_id = ? AND il.type = 'GRANT'
+                        JOIN ink_purchase ip
+                          ON ip.reader_id = il.reader_id
+                         AND ip.id = il.ink_purchase_id
+                        WHERE ip.reader_id = ?
+                          AND ip.payment_id = ?
+                          AND ip.status = 'PAID'
+                          AND il.type = 'GRANT'
                         """,
                         Integer.class,
+                        rentalReaderId,
                         INK_PAYMENT_ID);
         int ownershipCount =
                 jdbcTemplate.queryForObject(
                         """
                         SELECT COUNT(*)
-                        FROM book_ownership bo
-                        JOIN ownership_payment op ON op.id = bo.ownership_payment_id
-                        WHERE op.payment_id = ? AND bo.book_id = 1
+                        FROM ownership_payment op
+                        JOIN book_ownership bo
+                          ON bo.reader_id = op.reader_id
+                         AND bo.book_id = op.book_id
+                         AND bo.ownership_payment_id = op.id
+                        JOIN library_entry le
+                          ON le.reader_id = bo.reader_id
+                         AND le.book_id = bo.book_id
+                        WHERE op.reader_id = ?
+                          AND op.book_id = 1
+                          AND op.payment_id = ?
+                          AND op.status = 'PAID'
                         """,
                         Integer.class,
+                        ownershipReaderId,
                         OWNERSHIP_PAYMENT_ID);
-        int libraryCount =
-                jdbcTemplate.queryForObject(
-                        """
-                        SELECT COUNT(*)
-                        FROM library_entry
-                        WHERE reader_id = ? AND book_id = 1
-                        """,
-                        Integer.class,
-                        readers.get(OWNERSHIP_READER_EMAIL).id());
 
-        if (inkAccountCount != 3
-                || grantCount != 1
-                || ownershipCount != 1
-                || libraryCount != 1) {
+        if (inkAccountCount != 3 || grantCount != 1 || ownershipCount != 1) {
             throw new IllegalStateException("기존 시연 데이터가 불완전하여 자동 시드를 중단합니다.");
         }
     }

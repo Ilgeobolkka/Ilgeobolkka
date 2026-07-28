@@ -8,10 +8,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 import javax.imageio.ImageIO;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ClassPathResource;
@@ -28,6 +32,9 @@ import org.springframework.transaction.annotation.Transactional;
 class DemoDataSeederMySqlIntegrationTest {
 
     private static final String DEMO_PASSWORD = "Demo-password1!";
+    private static final String INK_PAYMENT_ID = "00000000-0000-0000-0000-000000000101";
+    private static final String OWNERSHIP_PAYMENT_ID =
+            "00000000-0000-0000-0000-000000000201";
 
     private final DemoDataSeeder demoDataSeeder;
     private final JdbcTemplate jdbcTemplate;
@@ -157,9 +164,81 @@ class DemoDataSeederMySqlIntegrationTest {
                                                                 changedPassword, hash))));
     }
 
+    @ParameterizedTest
+    @MethodSource("제품_정책에_맞지_않는_비밀번호")
+    void 제품_정책에_맞지_않는_비밀번호는_DB_작업_전에_거부한다(String rawPassword) {
+        jdbcTemplate.update(
+                """
+                INSERT INTO book
+                    (id, category, title, author, total_page_count, price_won)
+                VALUES (1, '충돌', '기존 도서', '기존 작가', 1, 1000)
+                """);
+
+        assertThrows(IllegalArgumentException.class, () -> demoDataSeeder.seed(rawPassword));
+    }
+
     @Test
-    void 비밀번호가_비어_있으면_시드를_거부한다() {
-        assertThrows(IllegalArgumentException.class, () -> demoDataSeeder.seed(" "));
+    void 제품_정책의_비밀번호_경계값을_허용한다() {
+        String minimumLengthPassword = "Aa1!aaaa";
+        String maximumBytePassword = "Aa1!" + "가".repeat(20);
+
+        assertAll(
+                () -> assertEquals(8, minimumLengthPassword.codePointCount(0, 8)),
+                () ->
+                        assertEquals(
+                                64,
+                                maximumBytePassword.getBytes(StandardCharsets.UTF_8).length));
+
+        demoDataSeeder.seed(minimumLengthPassword);
+        demoDataSeeder.seed(maximumBytePassword);
+
+        assertTrue(
+                시연_계정_비밀번호_해시().stream()
+                        .allMatch(hash -> passwordEncoder.matches(maximumBytePassword, hash)));
+    }
+
+    @Test
+    void 기존_잉크_지급_결제가_PAID가_아니면_재시드를_거부한다() {
+        demoDataSeeder.seed(DEMO_PASSWORD);
+        jdbcTemplate.update(
+                """
+                UPDATE ink_purchase
+                SET status = 'FAILED', paid_at = NULL
+                WHERE payment_id = ?
+                """,
+                INK_PAYMENT_ID);
+
+        assertThrows(IllegalStateException.class, () -> demoDataSeeder.seed(DEMO_PASSWORD));
+    }
+
+    @Test
+    void 기존_잉크_지급이_Reader_A가_아니면_재시드를_거부한다() {
+        demoDataSeeder.seed(DEMO_PASSWORD);
+        잉크_지급을_다른_독자에게_옮긴다();
+
+        assertThrows(IllegalStateException.class, () -> demoDataSeeder.seed(DEMO_PASSWORD));
+    }
+
+    @Test
+    void 기존_소장_결제가_PAID가_아니면_재시드를_거부한다() {
+        demoDataSeeder.seed(DEMO_PASSWORD);
+        jdbcTemplate.update(
+                """
+                UPDATE ownership_payment
+                SET status = 'FAILED', paid_at = NULL
+                WHERE payment_id = ?
+                """,
+                OWNERSHIP_PAYMENT_ID);
+
+        assertThrows(IllegalStateException.class, () -> demoDataSeeder.seed(DEMO_PASSWORD));
+    }
+
+    @Test
+    void 기존_소장과_서재의_독자가_다르면_재시드를_거부한다() {
+        demoDataSeeder.seed(DEMO_PASSWORD);
+        소장을_Reader_A에게_옮긴다();
+
+        assertThrows(IllegalStateException.class, () -> demoDataSeeder.seed(DEMO_PASSWORD));
     }
 
     @Test
@@ -403,6 +482,88 @@ class DemoDataSeederMySqlIntegrationTest {
                 DemoDataSeeder.RENTAL_READER_EMAIL,
                 DemoDataSeeder.EMPTY_READER_EMAIL,
                 DemoDataSeeder.OWNERSHIP_READER_EMAIL);
+    }
+
+    private void 잉크_지급을_다른_독자에게_옮긴다() {
+        long purchaseId =
+                jdbcTemplate.queryForObject(
+                        "SELECT id FROM ink_purchase WHERE payment_id = ?",
+                        Long.class,
+                        INK_PAYMENT_ID);
+        jdbcTemplate.update("DELETE FROM ink_ledger WHERE ink_purchase_id = ?", purchaseId);
+        jdbcTemplate.update("DELETE FROM ink_purchase WHERE id = ?", purchaseId);
+
+        long otherReaderId = 독자_ID(DemoDataSeeder.EMPTY_READER_EMAIL);
+        jdbcTemplate.update(
+                """
+                INSERT INTO ink_purchase
+                    (reader_id, payment_id, status, amount_won, granted_ink, created_at, paid_at)
+                VALUES (?, ?, 'PAID', 1000, 100, '2026-07-28 00:00:00', '2026-07-28 00:00:00')
+                """,
+                otherReaderId,
+                INK_PAYMENT_ID);
+        long otherPurchaseId =
+                jdbcTemplate.queryForObject(
+                        "SELECT id FROM ink_purchase WHERE payment_id = ?",
+                        Long.class,
+                        INK_PAYMENT_ID);
+        jdbcTemplate.update(
+                """
+                INSERT INTO ink_ledger
+                    (reader_id, type, amount, balance_after, ink_purchase_id, occurred_at)
+                VALUES (?, 'GRANT', 100, 100, ?, '2026-07-28 00:00:00')
+                """,
+                otherReaderId,
+                otherPurchaseId);
+    }
+
+    private void 소장을_Reader_A에게_옮긴다() {
+        long paymentId =
+                jdbcTemplate.queryForObject(
+                        "SELECT id FROM ownership_payment WHERE payment_id = ?",
+                        Long.class,
+                        OWNERSHIP_PAYMENT_ID);
+        jdbcTemplate.update(
+                "DELETE FROM book_ownership WHERE ownership_payment_id = ?", paymentId);
+        jdbcTemplate.update("DELETE FROM ownership_payment WHERE id = ?", paymentId);
+
+        long rentalReaderId = 독자_ID(DemoDataSeeder.RENTAL_READER_EMAIL);
+        int priceWon =
+                jdbcTemplate.queryForObject(
+                        "SELECT price_won FROM book WHERE id = 1", Integer.class);
+        jdbcTemplate.update(
+                """
+                INSERT INTO ownership_payment
+                    (reader_id, book_id, payment_id, status, amount_won, created_at, paid_at)
+                VALUES (?, 1, ?, 'PAID', ?, '2026-07-28 00:00:00', '2026-07-28 00:00:00')
+                """,
+                rentalReaderId,
+                OWNERSHIP_PAYMENT_ID,
+                priceWon);
+        long otherPaymentId =
+                jdbcTemplate.queryForObject(
+                        "SELECT id FROM ownership_payment WHERE payment_id = ?",
+                        Long.class,
+                        OWNERSHIP_PAYMENT_ID);
+        jdbcTemplate.update(
+                """
+                INSERT INTO book_ownership
+                    (reader_id, book_id, ownership_payment_id, created_at)
+                VALUES (?, 1, ?, '2026-07-28 00:00:00')
+                """,
+                rentalReaderId,
+                otherPaymentId);
+    }
+
+    private static Stream<String> 제품_정책에_맞지_않는_비밀번호() {
+        return Stream.of(
+                null,
+                " ",
+                "Aa1!aaa",
+                "1234567!",
+                "Abcdefg!",
+                "Abcdefg1",
+                "Aa1!" + "가".repeat(20) + "a");
     }
 
     private Map<String, Integer> 주요_시드_행_개수() {
