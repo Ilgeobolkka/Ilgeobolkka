@@ -25,3 +25,6 @@ server:
   servlet:
     session:
       timeout: 2h
+      cookie:
+        http-only: true
+        same-site: lax

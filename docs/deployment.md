@@ -119,6 +119,7 @@ MySQL을 종료하되 데이터를 유지하려면 `docker compose down`을 실�
 운영 배포 환경에는 다음 형식으로 값을 주입합니다. 실제 엔드포인트와 계정·비밀번호를 파일이나 저장소에 기록하지 않습니다.
 
 ```text
+SPRING_PROFILES_ACTIVE=prod
 DB_URL=jdbc:mysql://<RDS-ENDPOINT>:3306/ilgeobolkka?sslMode=VERIFY_IDENTITY
 DB_USERNAME=<Secrets Manager에서 주입>
 DB_PASSWORD=<Secrets Manager에서 주입>
