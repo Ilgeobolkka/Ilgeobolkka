@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="600" viewBox="0 0 400 600" role="img" aria-labelledby="title">
+  <title id="title">자기계발 가상 도서 표지</title>
+  <rect width="400" height="600" fill="#fff4d6"/>
+  <path d="M75 410 L145 340 L205 370 L325 210" fill="none" stroke="#f28c28" stroke-width="24"/>
+  <circle cx="75" cy="410" r="18" fill="#7a3e00"/>
+  <circle cx="145" cy="340" r="18" fill="#7a3e00"/>
+  <circle cx="205" cy="370" r="18" fill="#7a3e00"/>
+  <circle cx="325" cy="210" r="18" fill="#7a3e00"/>
+  <text x="42" y="80" fill="#5b3a1d" font-size="26" font-family="sans-serif">읽어볼까 가상서가</text>
+  <text x="42" y="530" fill="#5b3a1d" font-size="46" font-weight="700" font-family="sans-serif">자기계발</text>
+</svg>

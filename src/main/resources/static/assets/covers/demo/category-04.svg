@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="600" viewBox="0 0 400 600" role="img" aria-labelledby="title">
+  <title id="title">역사 가상 도서 표지</title>
+  <rect width="400" height="600" fill="#6f4e37"/>
+  <rect x="65" y="145" width="270" height="280" rx="8" fill="#d8c3a5"/>
+  <path d="M95 205 H305 M95 255 H285 M95 305 H310 M95 355 H250" stroke="#6f4e37" stroke-width="12"/>
+  <text x="42" y="80" fill="#fff8ec" font-size="26" font-family="sans-serif">읽어볼까 가상서가</text>
+  <text x="42" y="530" fill="#fff8ec" font-size="52" font-weight="700" font-family="sans-serif">역사</text>
+</svg>

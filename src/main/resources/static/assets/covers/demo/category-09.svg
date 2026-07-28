@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="600" viewBox="0 0 400 600" role="img" aria-labelledby="title">
+  <title id="title">여행 가상 도서 표지</title>
+  <rect width="400" height="600" fill="#7ec8c8"/>
+  <circle cx="310" cy="135" r="65" fill="#ffd166"/>
+  <path d="M0 410 L115 255 L200 355 L275 235 L400 410 V600 H0 Z" fill="#2a9d8f"/>
+  <path d="M0 445 Q200 385 400 445 V600 H0 Z" fill="#1d6f7a"/>
+  <text x="42" y="80" fill="#17324d" font-size="26" font-family="sans-serif">읽어볼까 가상서가</text>
+  <text x="42" y="530" fill="#ffffff" font-size="52" font-weight="700" font-family="sans-serif">여행</text>
+</svg>
