@@ -17,6 +17,7 @@ import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -91,6 +92,15 @@ class GlobalExceptionHandlerTest {
                 .andExpect(content().string(not(containsString("PORTONE_API_SECRET=exposed"))));
     }
 
+    @Test
+    void Controller의_인가_실패는_공통_접근_오류로_응답한다() throws Exception {
+        mockMvc.perform(get("/test/errors/denied"))
+                .andExpect(status().isForbidden())
+                .andExpect(jsonPath("$.code").value("ACCESS_DENIED"))
+                .andExpect(jsonPath("$.message").value("접근 권한이 없습니다."))
+                .andExpect(content().string(not(containsString("viewerSessionId=exposed"))));
+    }
+
     @RestController
     @RequestMapping("/test/errors")
     public static class TestController {
@@ -106,6 +116,11 @@ class GlobalExceptionHandlerTest {
         @GetMapping("/unexpected")
         void unexpected() {
             throw new IllegalStateException("PORTONE_API_SECRET=exposed");
+        }
+
+        @GetMapping("/denied")
+        void denied() {
+            throw new AccessDeniedException("viewerSessionId=exposed");
         }
     }
 
