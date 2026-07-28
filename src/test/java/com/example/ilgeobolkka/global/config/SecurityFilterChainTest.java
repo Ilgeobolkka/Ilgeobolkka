@@ -24,9 +24,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.ilgeobolkka.global.logging.ApiRequestLoggingFilter;
 import com.example.ilgeobolkka.global.security.ApiSecurityErrorHandler;
+import com.example.ilgeobolkka.global.smoke.SmokeController;
 
 @WebMvcTest
-@Import({SecurityConfig.class, ApiSecurityErrorHandler.class, SecurityFilterChainTest.TestController.class})
+@Import({
+    SecurityConfig.class,
+    ApiSecurityErrorHandler.class,
+    SmokeController.class,
+    SecurityFilterChainTest.TestController.class
+})
 @ExtendWith(OutputCaptureExtension.class)
 class SecurityFilterChainTest {
 
@@ -41,6 +47,12 @@ class SecurityFilterChainTest {
                 .andExpect(status().isOk());
         mockMvc.perform(get("/api/books/1/pages"))
                 .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    void smoke_요청은_민감정보_없이_익명으로_성공한다() throws Exception {
+        mockMvc.perform(get("/api/smoke"))
+                .andExpect(status().isNoContent());
     }
 
     @Test

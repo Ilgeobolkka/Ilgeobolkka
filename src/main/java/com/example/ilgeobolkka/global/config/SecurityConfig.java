@@ -22,6 +22,7 @@ public class SecurityConfig {
     private static final RequestMatcher LOGIN = pathPattern(HttpMethod.POST, "/api/auth/login");
     private static final RequestMatcher PUBLIC_BOOK_LIST = pathPattern(HttpMethod.GET, "/api/books");
     private static final RequestMatcher PUBLIC_BOOK_DETAIL = pathPattern(HttpMethod.GET, "/api/books/{bookId}");
+    private static final RequestMatcher SMOKE = pathPattern(HttpMethod.GET, "/api/smoke");
     private static final RequestMatcher PORTONE_WEBHOOK = pathPattern(HttpMethod.POST, "/api/webhooks/portone");
     private static final RequestMatcher API = pathPattern("/api/**");
 
@@ -36,7 +37,8 @@ public class SecurityConfig {
             ApiSecurityErrorHandler securityErrorHandler) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(SIGNUP, LOGIN, PUBLIC_BOOK_LIST, PUBLIC_BOOK_DETAIL, PORTONE_WEBHOOK).permitAll()
+                        .requestMatchers(SIGNUP, LOGIN, PUBLIC_BOOK_LIST, PUBLIC_BOOK_DETAIL, SMOKE, PORTONE_WEBHOOK)
+                        .permitAll()
                         .requestMatchers(API).authenticated()
                         .anyRequest().permitAll())
                 .csrf(csrf -> csrf
