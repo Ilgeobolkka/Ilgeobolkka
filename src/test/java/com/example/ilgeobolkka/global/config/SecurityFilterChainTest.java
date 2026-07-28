@@ -26,9 +26,13 @@ class SecurityFilterChainTest {
     private MockMvc mockMvc;
 
     @Test
-    void 도서_조회_API는_익명_사용자에게_공개한다() throws Exception {
+    void 도서_목록과_상세_조회만_익명_사용자에게_공개한다() throws Exception {
+        mockMvc.perform(get("/api/books"))
+                .andExpect(status().isOk());
         mockMvc.perform(get("/api/books/1"))
                 .andExpect(status().isOk());
+        mockMvc.perform(get("/api/books/1/pages"))
+                .andExpect(status().isUnauthorized());
     }
 
     @Test
@@ -101,7 +105,13 @@ class SecurityFilterChainTest {
     @RestController
     public static class TestController {
 
-        @GetMapping({"/api/books/1", "/api/ink/balance", "/api/webhooks/portone"})
+        @GetMapping({
+            "/api/books",
+            "/api/books/1",
+            "/api/books/1/pages",
+            "/api/ink/balance",
+            "/api/webhooks/portone"
+        })
         void read() {
         }
 
