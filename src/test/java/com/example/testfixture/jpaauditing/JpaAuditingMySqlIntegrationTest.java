@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.example.ilgeobolkka.IlgeobolkkaApplication;
+import com.example.ilgeobolkka.global.config.JpaAuditingConfig;
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -13,21 +13,21 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.persistence.autoconfigure.EntityScan;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 
 // JpaAuditingTestEntity는 애플리케이션 스캔 밖의 com.example.testfixture.jpaauditing 에 있어
-// 애플리케이션 엔티티와 함께 이 테스트의 @EntityScan 으로 등록한다.
+// 이 테스트에서만 @EntityScan 으로 등록한다.
 // 이 엔티티의 테이블은 이 클래스가 raw SQL로 직접 만들므로 컨텍스트 로딩 시점엔 없어 여기서만 검증을 끈다.
-// 이 테스트는 애플리케이션 패키지(com.example.ilgeobolkka) 밖에 있어 @SpringBootTest 가
-// @SpringBootConfiguration 을 자동으로 찾지 못하므로 메인 설정을 classes 로 명시한다.
 @SpringBootTest(
-        classes = IlgeobolkkaApplication.class,
+        classes = JpaAuditingMySqlIntegrationTest.JpaAuditingTestApplication.class,
         properties = "spring.jpa.hibernate.ddl-auto=none")
-@EntityScan(basePackageClasses = {IlgeobolkkaApplication.class, JpaAuditingTestEntity.class})
 @ActiveProfiles("test")
 @ContextConfiguration(initializers = DedicatedTestDatabaseInitializer.class)
 class JpaAuditingMySqlIntegrationTest {
@@ -125,5 +125,12 @@ class JpaAuditingMySqlIntegrationTest {
             }
             entityManager.close();
         }
+    }
+
+    @SpringBootConfiguration
+    @EnableAutoConfiguration
+    @EntityScan(basePackageClasses = JpaAuditingTestEntity.class)
+    @Import(JpaAuditingConfig.class)
+    static class JpaAuditingTestApplication {
     }
 }

@@ -1,6 +1,7 @@
 package com.example.ilgeobolkka.global.exception;
 
 import com.example.ilgeobolkka.book.exception.BookNotFoundException;
+import com.example.ilgeobolkka.reader.exception.EmailAlreadyExistsException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.slf4j.Logger;
@@ -44,10 +45,16 @@ public class GlobalExceptionHandler {
         return response(ErrorCode.ACCESS_DENIED);
     }
 
+    @ExceptionHandler(EmailAlreadyExistsException.class)
+    ResponseEntity<ApiErrorResponse> handleEmailAlreadyExists(
+            EmailAlreadyExistsException exception) {
+        logFailure(ErrorCode.EMAIL_ALREADY_EXISTS, exception);
+        return response(ErrorCode.EMAIL_ALREADY_EXISTS);
+    }
+
     @ExceptionHandler(BookNotFoundException.class)
     ResponseEntity<ApiErrorResponse> handleResourceNotFound(BookNotFoundException exception) {
         logFailure(ErrorCode.RESOURCE_NOT_FOUND, exception);
-
         return response(ErrorCode.RESOURCE_NOT_FOUND);
     }
 
