@@ -43,4 +43,11 @@ public class InkAccount {
 
     @Column(name = "balance", nullable = false)
     private int balance;
+
+    public static InkAccount create(long readerId) {
+        InkAccount inkAccount = new InkAccount();
+        inkAccount.readerId = readerId;
+        inkAccount.balance = 0;
+        return inkAccount;
+    }
 }
