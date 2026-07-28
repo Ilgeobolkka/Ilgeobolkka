@@ -1,11 +1,14 @@
 package com.example.ilgeobolkka.global.config;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.authentication;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -16,6 +19,9 @@ import org.springframework.boot.test.system.CapturedOutput;
 import org.springframework.boot.test.system.OutputCaptureExtension;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.context.annotation.Import;
+import org.springframework.security.authentication.TestingAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.ilgeobolkka.global.logging.ApiRequestLoggingFilter;
 import com.example.ilgeobolkka.global.security.ApiSecurityErrorHandler;
+import com.example.ilgeobolkka.global.security.AuthenticatedReader;
 import com.example.ilgeobolkka.global.smoke.SmokeController;
 
 @WebMvcTest
@@ -61,6 +68,18 @@ class SecurityFilterChainTest {
                 .andExpect(status().isUnauthorized())
                 .andExpect(jsonPath("$.code").value("AUTHENTICATION_REQUIRED"))
                 .andExpect(jsonPath("$.message").value("로그인이 필요합니다."));
+    }
+
+    @Test
+    void 커스텀_Authentication의_AuthenticatedReader를_컨트롤러에_전달한다() throws Exception {
+        AuthenticatedReader authenticatedReader = new AuthenticatedReader(42L);
+        Authentication authentication =
+                new TestingAuthenticationToken(authenticatedReader, null, "ROLE_USER");
+
+        assertSame(authenticatedReader, authentication.getPrincipal());
+        mockMvc.perform(get("/api/test/authenticated-reader").with(authentication(authentication)))
+                .andExpect(status().isOk())
+                .andExpect(content().string("42"));
     }
 
     @Test
@@ -142,6 +161,11 @@ class SecurityFilterChainTest {
 
     @RestController
     public static class TestController {
+
+        @GetMapping("/api/test/authenticated-reader")
+        long authenticatedReader(@AuthenticationPrincipal AuthenticatedReader authenticatedReader) {
+            return authenticatedReader.readerId();
+        }
 
         @GetMapping({
             "/api/books",
