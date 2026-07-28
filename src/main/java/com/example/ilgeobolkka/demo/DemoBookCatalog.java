@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import tools.jackson.databind.ObjectMapper;
 
 @Component
-@Profile({"local", "demo", "test"})
+@Profile("!prod & (local | demo | test)")
 class DemoBookCatalog {
 
     private static final int BOOK_COUNT = 100;

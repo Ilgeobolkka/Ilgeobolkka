@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
-@Profile({"local", "demo", "test"})
+@Profile("!prod & (local | demo | test)")
 class DemoDataSeeder {
 
     static final String RENTAL_READER_EMAIL = "reader-a@demo.ilgeobolkka.test";
