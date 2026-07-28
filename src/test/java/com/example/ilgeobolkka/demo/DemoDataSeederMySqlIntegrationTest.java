@@ -71,6 +71,74 @@ class DemoDataSeederMySqlIntegrationTest {
     }
 
     @Test
+    void 시드_시각은_MySQL_DATETIME에_UTC_원시값으로_저장된다() {
+        demoDataSeeder.seed(DEMO_PASSWORD);
+
+        List<String> rawTimes =
+                jdbcTemplate.queryForList(
+                        """
+                        SELECT DATE_FORMAT(r.created_at, '%Y-%m-%d %H:%i:%s.%f')
+                        FROM reader r
+                        WHERE r.email IN (?, ?, ?)
+                        UNION ALL
+                        SELECT DATE_FORMAT(ip.created_at, '%Y-%m-%d %H:%i:%s.%f')
+                        FROM ink_purchase ip
+                        JOIN reader r ON r.id = ip.reader_id
+                        WHERE r.email = ?
+                        UNION ALL
+                        SELECT DATE_FORMAT(ip.paid_at, '%Y-%m-%d %H:%i:%s.%f')
+                        FROM ink_purchase ip
+                        JOIN reader r ON r.id = ip.reader_id
+                        WHERE r.email = ?
+                        UNION ALL
+                        SELECT DATE_FORMAT(il.occurred_at, '%Y-%m-%d %H:%i:%s.%f')
+                        FROM ink_ledger il
+                        JOIN reader r ON r.id = il.reader_id
+                        WHERE r.email = ?
+                        UNION ALL
+                        SELECT DATE_FORMAT(op.created_at, '%Y-%m-%d %H:%i:%s.%f')
+                        FROM ownership_payment op
+                        JOIN reader r ON r.id = op.reader_id
+                        WHERE r.email = ?
+                        UNION ALL
+                        SELECT DATE_FORMAT(op.paid_at, '%Y-%m-%d %H:%i:%s.%f')
+                        FROM ownership_payment op
+                        JOIN reader r ON r.id = op.reader_id
+                        WHERE r.email = ?
+                        UNION ALL
+                        SELECT DATE_FORMAT(bo.created_at, '%Y-%m-%d %H:%i:%s.%f')
+                        FROM book_ownership bo
+                        JOIN reader r ON r.id = bo.reader_id
+                        WHERE r.email = ?
+                        UNION ALL
+                        SELECT DATE_FORMAT(le.updated_at, '%Y-%m-%d %H:%i:%s.%f')
+                        FROM library_entry le
+                        JOIN reader r ON r.id = le.reader_id
+                        WHERE r.email = ?
+                        """,
+                        String.class,
+                        DemoDataSeeder.RENTAL_READER_EMAIL,
+                        DemoDataSeeder.EMPTY_READER_EMAIL,
+                        DemoDataSeeder.OWNERSHIP_READER_EMAIL,
+                        DemoDataSeeder.RENTAL_READER_EMAIL,
+                        DemoDataSeeder.RENTAL_READER_EMAIL,
+                        DemoDataSeeder.RENTAL_READER_EMAIL,
+                        DemoDataSeeder.OWNERSHIP_READER_EMAIL,
+                        DemoDataSeeder.OWNERSHIP_READER_EMAIL,
+                        DemoDataSeeder.OWNERSHIP_READER_EMAIL,
+                        DemoDataSeeder.OWNERSHIP_READER_EMAIL);
+
+        assertAll(
+                () -> assertEquals(10, rawTimes.size()),
+                () ->
+                        assertTrue(
+                                rawTimes.stream()
+                                        .allMatch(
+                                                "2026-07-28 00:00:00.000000"
+                                                        ::equals)));
+    }
+
+    @Test
     void 주입한_비밀번호가_바뀌면_기존_시연_계정의_해시만_갱신한다() {
         demoDataSeeder.seed(DEMO_PASSWORD);
         Map<String, Integer> firstCounts = 주요_시드_행_개수();

@@ -1,7 +1,6 @@
 package com.example.ilgeobolkka.demo;
 
-import java.sql.Timestamp;
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,7 +23,8 @@ class DemoDataSeeder {
     private static final String INK_PAYMENT_ID = "00000000-0000-0000-0000-000000000101";
     private static final String OWNERSHIP_PAYMENT_ID =
             "00000000-0000-0000-0000-000000000201";
-    private static final Instant SEED_TIME = Instant.parse("2026-07-28T00:00:00Z");
+    private static final LocalDateTime SEED_TIME_UTC =
+            LocalDateTime.of(2026, 7, 28, 0, 0);
 
     private final JdbcTemplate jdbcTemplate;
     private final PasswordEncoder passwordEncoder;
@@ -214,7 +214,7 @@ class DemoDataSeeder {
                 "INSERT INTO reader (email, password_hash, created_at) VALUES (?, ?, ?)",
                 email,
                 passwordEncoder.encode(rawPassword),
-                Timestamp.from(SEED_TIME));
+                SEED_TIME_UTC);
         return jdbcTemplate.queryForObject(
                 "SELECT id FROM reader WHERE email = ?", Long.class, email);
     }
@@ -233,8 +233,8 @@ class DemoDataSeeder {
                 """,
                 readerId,
                 INK_PAYMENT_ID,
-                Timestamp.from(SEED_TIME),
-                Timestamp.from(SEED_TIME));
+                SEED_TIME_UTC,
+                SEED_TIME_UTC);
         long inkPurchaseId =
                 jdbcTemplate.queryForObject(
                         "SELECT id FROM ink_purchase WHERE payment_id = ?",
@@ -248,7 +248,7 @@ class DemoDataSeeder {
                 """,
                 readerId,
                 inkPurchaseId,
-                Timestamp.from(SEED_TIME));
+                SEED_TIME_UTC);
     }
 
     private void createOwnership(long readerId, DemoBookCatalog.BookSeed book) {
@@ -262,8 +262,8 @@ class DemoDataSeeder {
                 book.id(),
                 OWNERSHIP_PAYMENT_ID,
                 book.priceWon(),
-                Timestamp.from(SEED_TIME),
-                Timestamp.from(SEED_TIME));
+                SEED_TIME_UTC,
+                SEED_TIME_UTC);
         long ownershipPaymentId =
                 jdbcTemplate.queryForObject(
                         "SELECT id FROM ownership_payment WHERE payment_id = ?",
@@ -278,7 +278,7 @@ class DemoDataSeeder {
                 readerId,
                 book.id(),
                 ownershipPaymentId,
-                Timestamp.from(SEED_TIME));
+                SEED_TIME_UTC);
         jdbcTemplate.update(
                 """
                 INSERT INTO library_entry
@@ -287,7 +287,7 @@ class DemoDataSeeder {
                 """,
                 readerId,
                 book.id(),
-                Timestamp.from(SEED_TIME));
+                SEED_TIME_UTC);
     }
 
     private void verifyExistingSeedState(Map<String, StoredReader> readers) {
