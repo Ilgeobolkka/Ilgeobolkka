@@ -1,5 +1,6 @@
 package com.example.ilgeobolkka.global.exception;
 
+import com.example.ilgeobolkka.book.exception.BookNotFoundException;
 import com.example.ilgeobolkka.ink.exception.InkAccountNotFoundException;
 import com.example.ilgeobolkka.ink.exception.InkBalanceOverflowException;
 import com.example.ilgeobolkka.ink.exception.InkPurchaseNotFoundException;
@@ -39,12 +40,14 @@ public class GlobalExceptionHandler {
     })
     ResponseEntity<ApiErrorResponse> handleInvalidInput(Exception exception) {
         logFailure(ErrorCode.INVALID_INPUT, exception);
+
         return response(ErrorCode.INVALID_INPUT);
     }
 
     @ExceptionHandler(AccessDeniedException.class)
     ResponseEntity<ApiErrorResponse> handleAccessDenied(AccessDeniedException exception) {
         logFailure(ErrorCode.ACCESS_DENIED, exception);
+
         return response(ErrorCode.ACCESS_DENIED);
     }
 
@@ -55,7 +58,11 @@ public class GlobalExceptionHandler {
         return response(ErrorCode.EMAIL_ALREADY_EXISTS);
     }
 
-    @ExceptionHandler({InkAccountNotFoundException.class, InkPurchaseNotFoundException.class})
+    @ExceptionHandler({
+        BookNotFoundException.class,
+        InkAccountNotFoundException.class,
+        InkPurchaseNotFoundException.class
+    })
     ResponseEntity<ApiErrorResponse> handleResourceNotFound(RuntimeException exception) {
         logFailure(ErrorCode.RESOURCE_NOT_FOUND, exception);
         return response(ErrorCode.RESOURCE_NOT_FOUND);
@@ -83,6 +90,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     ResponseEntity<ApiErrorResponse> handleUnexpectedException(Exception exception) {
         logFailure(ErrorCode.INTERNAL_SERVER_ERROR, exception);
+
         return response(ErrorCode.INTERNAL_SERVER_ERROR);
     }
 
