@@ -3,6 +3,7 @@ package com.example.ilgeobolkka.global.exception;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +20,8 @@ public class GlobalExceptionHandler {
         HandlerMethodValidationException.class,
         MethodArgumentTypeMismatchException.class,
         ServletRequestBindingException.class,
-        HttpMessageNotReadableException.class
+        HttpMessageNotReadableException.class,
+        HttpMediaTypeNotSupportedException.class
     })
     ResponseEntity<ApiErrorResponse> handleInvalidInput(Exception exception) {
         return response(ErrorCode.INVALID_INPUT);

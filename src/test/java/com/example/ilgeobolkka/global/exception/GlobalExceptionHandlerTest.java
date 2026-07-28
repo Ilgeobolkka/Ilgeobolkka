@@ -68,6 +68,16 @@ class GlobalExceptionHandlerTest {
     }
 
     @Test
+    void 지원하지_않는_Content_Type은_공통_입력_오류로_응답한다() throws Exception {
+        mockMvc.perform(post("/test/errors")
+                        .contentType(MediaType.TEXT_PLAIN)
+                        .content("reader"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.code").value("INVALID_INPUT"))
+                .andExpect(jsonPath("$.message").value("입력값이 올바르지 않습니다."));
+    }
+
+    @Test
     void 쿼리_파라미터_검증_실패는_공통_입력_오류로_응답한다() throws Exception {
         mockMvc.perform(get("/test/errors/page").param("page", "0"))
                 .andExpect(status().isBadRequest())
