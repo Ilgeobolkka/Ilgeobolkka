@@ -33,7 +33,10 @@ import com.example.ilgeobolkka.global.security.ApiSecurityErrorHandler;
 import com.example.ilgeobolkka.global.security.AuthenticatedReader;
 import com.example.ilgeobolkka.global.smoke.SmokeController;
 
-@WebMvcTest
+@WebMvcTest(controllers = {
+    SmokeController.class,
+    SecurityFilterChainTest.TestController.class
+})
 @Import({
     SecurityConfig.class,
     ApiSecurityErrorHandler.class,

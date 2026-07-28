@@ -32,4 +32,12 @@ public class Reader {
 
     @Column(name = "created_at", nullable = false, columnDefinition = "DATETIME(6)")
     private Instant createdAt;
+
+    public static Reader signup(String email, String passwordHash, Instant createdAt) {
+        Reader reader = new Reader();
+        reader.email = email;
+        reader.passwordHash = passwordHash;
+        reader.createdAt = createdAt;
+        return reader;
+    }
 }
