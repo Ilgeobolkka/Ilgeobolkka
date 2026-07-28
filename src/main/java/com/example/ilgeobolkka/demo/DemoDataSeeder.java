@@ -331,6 +331,31 @@ class DemoDataSeeder {
                         rentalReaderId,
                         emptyReaderId,
                         ownershipReaderId);
+        int inkBalanceMismatchCount =
+                jdbcTemplate.queryForObject(
+                        """
+                        SELECT COUNT(*)
+                        FROM (
+                            SELECT ia.reader_id,
+                                   ia.balance,
+                                   COALESCE(SUM(
+                                       CASE il.type
+                                           WHEN 'GRANT' THEN il.amount
+                                           WHEN 'DEDUCTION' THEN -il.amount
+                                           ELSE 0
+                                       END
+                                   ), 0) AS ledger_balance
+                            FROM ink_account ia
+                            LEFT JOIN ink_ledger il ON il.reader_id = ia.reader_id
+                            WHERE ia.reader_id IN (?, ?, ?)
+                            GROUP BY ia.reader_id, ia.balance
+                        ) balance_state
+                        WHERE balance <> ledger_balance
+                        """,
+                        Integer.class,
+                        rentalReaderId,
+                        emptyReaderId,
+                        ownershipReaderId);
         int grantCount =
                 jdbcTemplate.queryForObject(
                         """
@@ -368,7 +393,10 @@ class DemoDataSeeder {
                         ownershipReaderId,
                         OWNERSHIP_PAYMENT_ID);
 
-        if (inkAccountCount != 3 || grantCount != 1 || ownershipCount != 1) {
+        if (inkAccountCount != 3
+                || inkBalanceMismatchCount != 0
+                || grantCount != 1
+                || ownershipCount != 1) {
             throw new IllegalStateException("기존 시연 데이터가 불완전하여 자동 시드를 중단합니다.");
         }
     }

@@ -33,6 +33,8 @@ class DemoDataSeederMySqlIntegrationTest {
 
     private static final String DEMO_PASSWORD = "Demo-password1!";
     private static final String INK_PAYMENT_ID = "00000000-0000-0000-0000-000000000101";
+    private static final String ADDITIONAL_INK_PAYMENT_ID =
+            "00000000-0000-0000-0000-000000000102";
     private static final String OWNERSHIP_PAYMENT_ID =
             "00000000-0000-0000-0000-000000000201";
 
@@ -217,6 +219,66 @@ class DemoDataSeederMySqlIntegrationTest {
         잉크_지급을_다른_독자에게_옮긴다();
 
         assertThrows(IllegalStateException.class, () -> demoDataSeeder.seed(DEMO_PASSWORD));
+    }
+
+    @Test
+    void 기존_잉크_잔액과_원장_합계가_다르면_재시드를_거부한다() {
+        demoDataSeeder.seed(DEMO_PASSWORD);
+        long emptyReaderId = 독자_ID(DemoDataSeeder.EMPTY_READER_EMAIL);
+        jdbcTemplate.update(
+                "UPDATE ink_account SET balance = 1 WHERE reader_id = ?", emptyReaderId);
+
+        assertThrows(IllegalStateException.class, () -> demoDataSeeder.seed(DEMO_PASSWORD));
+    }
+
+    @Test
+    void 정상적인_추가_잉크_구매와_원장은_재시드해도_초기화하지_않는다() {
+        demoDataSeeder.seed(DEMO_PASSWORD);
+        long emptyReaderId = 독자_ID(DemoDataSeeder.EMPTY_READER_EMAIL);
+        jdbcTemplate.update(
+                """
+                INSERT INTO ink_purchase
+                    (reader_id, payment_id, status, amount_won, granted_ink, created_at, paid_at)
+                VALUES (?, ?, 'PAID', 1000, 100, '2026-07-28 01:00:00', '2026-07-28 01:00:00')
+                """,
+                emptyReaderId,
+                ADDITIONAL_INK_PAYMENT_ID);
+        long additionalPurchaseId =
+                jdbcTemplate.queryForObject(
+                        "SELECT id FROM ink_purchase WHERE payment_id = ?",
+                        Long.class,
+                        ADDITIONAL_INK_PAYMENT_ID);
+        jdbcTemplate.update(
+                """
+                INSERT INTO ink_ledger
+                    (reader_id, type, amount, balance_after, ink_purchase_id, occurred_at)
+                VALUES (?, 'GRANT', 100, 100, ?, '2026-07-28 01:00:00')
+                """,
+                emptyReaderId,
+                additionalPurchaseId);
+        jdbcTemplate.update(
+                "UPDATE ink_account SET balance = 100 WHERE reader_id = ?", emptyReaderId);
+
+        demoDataSeeder.seed(DEMO_PASSWORD);
+
+        Integer balance =
+                jdbcTemplate.queryForObject(
+                        "SELECT balance FROM ink_account WHERE reader_id = ?",
+                        Integer.class,
+                        emptyReaderId);
+        Integer additionalGrantCount =
+                jdbcTemplate.queryForObject(
+                        """
+                        SELECT COUNT(*)
+                        FROM ink_ledger
+                        WHERE reader_id = ? AND ink_purchase_id = ?
+                        """,
+                        Integer.class,
+                        emptyReaderId,
+                        additionalPurchaseId);
+        assertAll(
+                () -> assertEquals(100, balance),
+                () -> assertEquals(1, additionalGrantCount));
     }
 
     @Test

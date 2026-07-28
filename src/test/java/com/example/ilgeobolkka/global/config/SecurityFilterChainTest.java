@@ -44,6 +44,12 @@ class SecurityFilterChainTest {
     }
 
     @Test
+    void 합성_이미지_fixture는_인증된_요청에도_정적_자산으로_공개하지_않는다() throws Exception {
+        mockMvc.perform(get("/demo/book-pages/category-01.png").with(user("reader")))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
     void 회원가입과_로그인은_익명_요청이어도_CSRF_토큰이_필요하다() throws Exception {
         mockMvc.perform(post("/api/auth/signup"))
                 .andExpect(status().isForbidden())
