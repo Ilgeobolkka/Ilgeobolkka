@@ -21,10 +21,12 @@
   페이지의 `_csrf`, `_csrf_header` meta 태그를 사용하며 별도 토큰 API는 제공하지 않습니다.
 - `POST /api/webhooks/portone`만 브라우저 세션과 CSRF 대신 PortOne V2 웹훅 서명을 검증합니다.
 - JSON 요청은 `Content-Type: application/json`을 사용하고 JSON 응답은 UTF-8로 인코딩합니다. 페이지 콘텐츠와
-  바디가 없는 웹훅 응답은 예외입니다.
+  바디가 없는 웹훅·smoke 응답은 예외입니다.
 - 성공 응답은 공통 래퍼 없이 엔드포인트별 DTO를 JSON 최상위 바디로 반환합니다.
 - 날짜와 시각은 UTC 기준 ISO 8601 문자열로 반환합니다.
 - 공개 오류 코드는 예외 클래스 이름에서 만들지 않고 명시적인 값으로 관리합니다.
+- `/api`와 `/api/**` 응답은 서버가 새로 발급한 UUID를 `X-Request-Id` 헤더로 반환합니다. 클라이언트가
+  보낸 같은 이름의 헤더는 신뢰하지 않으며, 장애 문의에서는 이 값으로 서버 로그를 연결합니다.
 
 ### 페이지 범위와 정렬
 
@@ -43,6 +45,7 @@
 | `POST /api/auth/signup` | `email`, `password` | 201 | `readerId`, `email` | 아니오 |
 | `POST /api/auth/login` | `email`, `password` | 200 | `readerId`, `email` | 아니오 |
 | `POST /api/auth/logout` | 없음 | 200 | `readerId` | 예 |
+| `GET /api/smoke` | 없음 | 204 | 없음 | 아니오 |
 | `GET /api/books?page={page}&keyword={keyword?}` | 쿼리 파라미터 | 200 | `books[]`, `page`, `totalPages`, `totalCount` | 아니오 |
 | `GET /api/books/{bookId}` | 경로 파라미터 | 200 | 도서 기본 정보, `owned` | 선택 |
 | `POST /api/books/{bookId}/reading-sessions` | `pageNumber` | 201 | 세션과 페이지 열기 결과 | 예 |
@@ -90,6 +93,12 @@
   "readerId": 1
 }
 ```
+
+#### 부팅 smoke
+
+`GET /api/smoke`는 애플리케이션의 HTTP 요청 처리를 확인하기 위한 비민감 경로입니다. 정상 응답은
+`204 No Content`이며 바디, DB 상태, 설정값과 내부 경로를 반환하지 않습니다. DB 연결과 Flyway·JPA 검증은
+이 경로를 호출하기 전에 완료되는 애플리케이션 기동 과정에서 확인합니다.
 
 #### 도서 목록과 상세
 
