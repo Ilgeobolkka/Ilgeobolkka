@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="600" viewBox="0 0 400 600" role="img" aria-labelledby="title">
+  <title id="title">기술 가상 도서 표지</title>
+  <rect width="400" height="600" fill="#111827"/>
+  <path d="M75 195 L145 265 L75 335 M325 195 L255 265 L325 335" fill="none" stroke="#38bdf8" stroke-width="22"/>
+  <path d="M220 160 L175 370" stroke="#a7f3d0" stroke-width="18"/>
+  <text x="42" y="80" fill="#ffffff" font-size="26" font-family="sans-serif">읽어볼까 가상서가</text>
+  <text x="42" y="530" fill="#ffffff" font-size="52" font-weight="700" font-family="sans-serif">기술</text>
+</svg>
