@@ -63,4 +63,10 @@ class IlgeobolkkaApplicationTests {
     void 임시_비밀번호를_로그에_남기는_기본_사용자를_생성하지_않는다() {
         assertTrue(applicationContext.getBeansOfType(InMemoryUserDetailsManager.class).isEmpty());
     }
+
+    @Test
+    void DB_접속_정보를_출력하는_라이브러리_로그는_WARN으로_제한한다() {
+        assertEquals("WARN", environment.getProperty("logging.level.org.flywaydb.core"));
+        assertEquals("WARN", environment.getProperty("logging.level.org.hibernate.orm.connections.pooling"));
+    }
 }

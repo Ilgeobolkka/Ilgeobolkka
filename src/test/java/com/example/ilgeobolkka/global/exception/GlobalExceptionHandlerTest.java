@@ -2,6 +2,8 @@ package com.example.ilgeobolkka.global.exception;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.not;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -12,7 +14,10 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.system.CapturedOutput;
+import org.springframework.boot.test.system.OutputCaptureExtension;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.context.annotation.Import;
@@ -29,6 +34,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @WebMvcTest
 @AutoConfigureMockMvc(addFilters = false)
 @Import({GlobalExceptionHandler.class, GlobalExceptionHandlerTest.TestController.class})
+@ExtendWith(OutputCaptureExtension.class)
 class GlobalExceptionHandlerTest {
 
     @Autowired
@@ -94,21 +100,29 @@ class GlobalExceptionHandlerTest {
     }
 
     @Test
-    void 예기치_못한_오류는_원문을_숨기고_공통_서버_오류로_응답한다() throws Exception {
+    void 예기치_못한_오류는_원문을_숨기고_공통_서버_오류로_응답한다(CapturedOutput output) throws Exception {
         mockMvc.perform(get("/test/errors/unexpected"))
                 .andExpect(status().isInternalServerError())
                 .andExpect(jsonPath("$.code").value("INTERNAL_SERVER_ERROR"))
                 .andExpect(jsonPath("$.message").value("서버 오류가 발생했습니다."))
                 .andExpect(content().string(not(containsString("PORTONE_API_SECRET=exposed"))));
+
+        assertTrue(output.getOut().contains("errorCode=INTERNAL_SERVER_ERROR"));
+        assertTrue(output.getOut().contains("exceptionType=IllegalStateException"));
+        assertFalse(output.getOut().contains("PORTONE_API_SECRET=exposed"));
     }
 
     @Test
-    void Controller의_인가_실패는_공통_접근_오류로_응답한다() throws Exception {
+    void Controller의_인가_실패는_공통_접근_오류로_응답한다(CapturedOutput output) throws Exception {
         mockMvc.perform(get("/test/errors/denied"))
                 .andExpect(status().isForbidden())
                 .andExpect(jsonPath("$.code").value("ACCESS_DENIED"))
                 .andExpect(jsonPath("$.message").value("접근 권한이 없습니다."))
                 .andExpect(content().string(not(containsString("viewerSessionId=exposed"))));
+
+        assertTrue(output.getOut().contains("errorCode=ACCESS_DENIED"));
+        assertTrue(output.getOut().contains("exceptionType=AccessDeniedException"));
+        assertFalse(output.getOut().contains("viewerSessionId=exposed"));
     }
 
     @RestController
