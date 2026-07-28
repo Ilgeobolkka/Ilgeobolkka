@@ -12,6 +12,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.session.ChangeSessionIdAuthenticationStrategy;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
+import org.springframework.security.web.authentication.logout.CompositeLogoutHandler;
+import org.springframework.security.web.authentication.logout.CookieClearingLogoutHandler;
+import org.springframework.security.web.authentication.logout.LogoutHandler;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.security.web.savedrequest.NullRequestCache;
@@ -43,6 +47,16 @@ public class SecurityConfig {
     @Bean
     SecurityContextRepository securityContextRepository() {
         return new HttpSessionSecurityContextRepository();
+    }
+
+    @Bean
+    LogoutHandler logoutHandler(SecurityContextRepository securityContextRepository) {
+        SecurityContextLogoutHandler securityContextLogoutHandler =
+                new SecurityContextLogoutHandler();
+        securityContextLogoutHandler.setSecurityContextRepository(securityContextRepository);
+        return new CompositeLogoutHandler(
+                securityContextLogoutHandler,
+                new CookieClearingLogoutHandler("JSESSIONID"));
     }
 
     @Bean

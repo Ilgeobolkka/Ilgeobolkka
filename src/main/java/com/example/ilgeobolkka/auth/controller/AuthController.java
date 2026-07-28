@@ -2,6 +2,7 @@ package com.example.ilgeobolkka.auth.controller;
 
 import com.example.ilgeobolkka.auth.dto.LoginAuthRequest;
 import com.example.ilgeobolkka.auth.dto.LoginAuthResponse;
+import com.example.ilgeobolkka.auth.dto.LogoutAuthResponse;
 import com.example.ilgeobolkka.auth.dto.SignupAuthRequest;
 import com.example.ilgeobolkka.auth.dto.SignupAuthResponse;
 import com.example.ilgeobolkka.auth.facade.AuthFacade;
@@ -16,6 +17,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
 import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,6 +35,7 @@ public class AuthController {
     private final AuthFacade authFacade;
     private final SessionAuthenticationStrategy sessionAuthenticationStrategy;
     private final SecurityContextRepository securityContextRepository;
+    private final LogoutHandler logoutHandler;
 
     @PostMapping("/signup")
     @ResponseStatus(HttpStatus.CREATED)
@@ -58,5 +62,18 @@ public class AuthController {
         SecurityContextHolder.setContext(securityContext);
         securityContextRepository.saveContext(securityContext, httpRequest, httpResponse);
         return response;
+    }
+
+    @PostMapping("/logout")
+    LogoutAuthResponse logout(
+            @AuthenticationPrincipal AuthenticatedReader authenticatedReader,
+            HttpServletRequest httpRequest,
+            HttpServletResponse httpResponse) {
+        long readerId = authenticatedReader.readerId();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        authFacade.logout(readerId);
+        logoutHandler.logout(httpRequest, httpResponse, authentication);
+        return new LogoutAuthResponse(readerId);
     }
 }
