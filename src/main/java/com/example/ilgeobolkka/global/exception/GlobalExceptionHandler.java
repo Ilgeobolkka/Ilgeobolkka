@@ -1,5 +1,6 @@
 package com.example.ilgeobolkka.global.exception;
 
+import com.example.ilgeobolkka.auth.exception.InvalidCredentialsException;
 import com.example.ilgeobolkka.reader.exception.EmailAlreadyExistsException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -47,6 +48,13 @@ public class GlobalExceptionHandler {
             EmailAlreadyExistsException exception) {
         logFailure(ErrorCode.EMAIL_ALREADY_EXISTS, exception);
         return response(ErrorCode.EMAIL_ALREADY_EXISTS);
+    }
+
+    @ExceptionHandler(InvalidCredentialsException.class)
+    ResponseEntity<ApiErrorResponse> handleInvalidCredentials(
+            InvalidCredentialsException exception) {
+        logFailure(ErrorCode.INVALID_CREDENTIALS, exception);
+        return response(ErrorCode.INVALID_CREDENTIALS);
     }
 
     @ExceptionHandler(Exception.class)

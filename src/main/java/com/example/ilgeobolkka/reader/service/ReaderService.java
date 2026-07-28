@@ -1,5 +1,6 @@
 package com.example.ilgeobolkka.reader.service;
 
+import com.example.ilgeobolkka.auth.exception.InvalidCredentialsException;
 import com.example.ilgeobolkka.reader.entity.Reader;
 import com.example.ilgeobolkka.reader.exception.EmailAlreadyExistsException;
 import com.example.ilgeobolkka.reader.repository.ReaderRepository;
@@ -28,5 +29,14 @@ public class ReaderService {
         } catch (DataIntegrityViolationException exception) {
             throw new EmailAlreadyExistsException(exception);
         }
+    }
+
+    public Reader authenticate(String email, String rawPassword) {
+        Reader reader = readerRepository.findByEmail(email)
+                .orElseThrow(InvalidCredentialsException::new);
+        if (!passwordEncoder.matches(rawPassword, reader.getPasswordHash())) {
+            throw new InvalidCredentialsException();
+        }
+        return reader;
     }
 }
