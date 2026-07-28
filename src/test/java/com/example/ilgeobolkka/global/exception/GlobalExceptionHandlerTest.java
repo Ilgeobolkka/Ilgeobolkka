@@ -10,6 +10,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.example.ilgeobolkka.ink.exception.InkBalanceOverflowException;
+import com.example.ilgeobolkka.ink.exception.InkPurchaseNotFoundException;
+import com.example.ilgeobolkka.ink.exception.InkPurchaseStateConflictException;
+import com.example.ilgeobolkka.ink.exception.InsufficientInkException;
+import com.example.ilgeobolkka.ink.exception.InvalidInkLedgerException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -125,6 +130,46 @@ class GlobalExceptionHandlerTest {
         assertFalse(output.getOut().contains("viewerSessionId=exposed"));
     }
 
+    @Test
+    void 잉크_구매를_찾을_수_없으면_공통_리소스_없음_오류로_응답한다() throws Exception {
+        mockMvc.perform(get("/test/errors/ink-purchase-not-found"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.code").value("RESOURCE_NOT_FOUND"))
+                .andExpect(jsonPath("$.message").value("요청한 리소스를 찾을 수 없습니다."));
+    }
+
+    @Test
+    void 잉크_구매_상태가_지급_조건과_다르면_공통_결제_상태_충돌로_응답한다() throws Exception {
+        mockMvc.perform(get("/test/errors/ink-purchase-state-conflict"))
+                .andExpect(status().isConflict())
+                .andExpect(jsonPath("$.code").value("PAYMENT_STATE_CONFLICT"))
+                .andExpect(jsonPath("$.message").value("현재 결제 상태에서는 요청을 처리할 수 없습니다."));
+    }
+
+    @Test
+    void 잉크가_부족하면_공통_잉크_부족_오류로_응답한다() throws Exception {
+        mockMvc.perform(get("/test/errors/insufficient-ink"))
+                .andExpect(status().isUnprocessableContent())
+                .andExpect(jsonPath("$.code").value("INSUFFICIENT_INK"))
+                .andExpect(jsonPath("$.message").value("잉크가 부족합니다."));
+    }
+
+    @Test
+    void 잉크_잔액이_저장_범위를_넘으면_공통_서버_오류로_응답한다() throws Exception {
+        mockMvc.perform(get("/test/errors/ink-balance-overflow"))
+                .andExpect(status().isInternalServerError())
+                .andExpect(jsonPath("$.code").value("INTERNAL_SERVER_ERROR"))
+                .andExpect(jsonPath("$.message").value("서버 오류가 발생했습니다."));
+    }
+
+    @Test
+    void 유효하지_않은_잉크_원장은_공통_서버_오류로_응답한다() throws Exception {
+        mockMvc.perform(get("/test/errors/invalid-ink-ledger"))
+                .andExpect(status().isInternalServerError())
+                .andExpect(jsonPath("$.code").value("INTERNAL_SERVER_ERROR"))
+                .andExpect(jsonPath("$.message").value("서버 오류가 발생했습니다."));
+    }
+
     @RestController
     @RequestMapping("/test/errors")
     public static class TestController {
@@ -145,6 +190,31 @@ class GlobalExceptionHandlerTest {
         @GetMapping("/denied")
         void denied() {
             throw new AccessDeniedException("viewerSessionId=exposed");
+        }
+
+        @GetMapping("/ink-purchase-not-found")
+        void inkPurchaseNotFound() {
+            throw new InkPurchaseNotFoundException();
+        }
+
+        @GetMapping("/ink-purchase-state-conflict")
+        void inkPurchaseStateConflict() {
+            throw new InkPurchaseStateConflictException();
+        }
+
+        @GetMapping("/insufficient-ink")
+        void insufficientInk() {
+            throw new InsufficientInkException();
+        }
+
+        @GetMapping("/ink-balance-overflow")
+        void inkBalanceOverflow() {
+            throw new InkBalanceOverflowException();
+        }
+
+        @GetMapping("/invalid-ink-ledger")
+        void invalidInkLedger() {
+            throw new InvalidInkLedgerException("balanceAfter=-1");
         }
     }
 

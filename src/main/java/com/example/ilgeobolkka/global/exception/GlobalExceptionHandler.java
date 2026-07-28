@@ -1,5 +1,11 @@
 package com.example.ilgeobolkka.global.exception;
 
+import com.example.ilgeobolkka.ink.exception.InkAccountNotFoundException;
+import com.example.ilgeobolkka.ink.exception.InkBalanceOverflowException;
+import com.example.ilgeobolkka.ink.exception.InkPurchaseNotFoundException;
+import com.example.ilgeobolkka.ink.exception.InkPurchaseStateConflictException;
+import com.example.ilgeobolkka.ink.exception.InsufficientInkException;
+import com.example.ilgeobolkka.ink.exception.InvalidInkLedgerException;
 import com.example.ilgeobolkka.reader.exception.EmailAlreadyExistsException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -47,6 +53,31 @@ public class GlobalExceptionHandler {
             EmailAlreadyExistsException exception) {
         logFailure(ErrorCode.EMAIL_ALREADY_EXISTS, exception);
         return response(ErrorCode.EMAIL_ALREADY_EXISTS);
+    }
+
+    @ExceptionHandler({InkAccountNotFoundException.class, InkPurchaseNotFoundException.class})
+    ResponseEntity<ApiErrorResponse> handleResourceNotFound(RuntimeException exception) {
+        logFailure(ErrorCode.RESOURCE_NOT_FOUND, exception);
+        return response(ErrorCode.RESOURCE_NOT_FOUND);
+    }
+
+    @ExceptionHandler(InkPurchaseStateConflictException.class)
+    ResponseEntity<ApiErrorResponse> handlePaymentStateConflict(
+            InkPurchaseStateConflictException exception) {
+        logFailure(ErrorCode.PAYMENT_STATE_CONFLICT, exception);
+        return response(ErrorCode.PAYMENT_STATE_CONFLICT);
+    }
+
+    @ExceptionHandler(InsufficientInkException.class)
+    ResponseEntity<ApiErrorResponse> handleInsufficientInk(InsufficientInkException exception) {
+        logFailure(ErrorCode.INSUFFICIENT_INK, exception);
+        return response(ErrorCode.INSUFFICIENT_INK);
+    }
+
+    @ExceptionHandler({InkBalanceOverflowException.class, InvalidInkLedgerException.class})
+    ResponseEntity<ApiErrorResponse> handleInkInvariantViolation(RuntimeException exception) {
+        logFailure(ErrorCode.INTERNAL_SERVER_ERROR, exception);
+        return response(ErrorCode.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(Exception.class)

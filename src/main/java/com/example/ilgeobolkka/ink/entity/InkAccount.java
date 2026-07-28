@@ -1,5 +1,7 @@
 package com.example.ilgeobolkka.ink.entity;
 
+import com.example.ilgeobolkka.ink.exception.InkBalanceOverflowException;
+import com.example.ilgeobolkka.ink.exception.InsufficientInkException;
 import com.example.ilgeobolkka.reader.entity.Reader;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,6 +27,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class InkAccount {
 
+    private static final int PURCHASE_GRANT_AMOUNT = 100;
+    private static final int PAGE_RENTAL_DEDUCTION_AMOUNT = 1;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -48,6 +53,27 @@ public class InkAccount {
         InkAccount inkAccount = new InkAccount();
         inkAccount.readerId = readerId;
         inkAccount.balance = 0;
+
         return inkAccount;
+    }
+
+    public int grantPurchaseInk() {
+        if (balance > Integer.MAX_VALUE - PURCHASE_GRANT_AMOUNT) {
+            throw new InkBalanceOverflowException();
+        }
+
+        balance += PURCHASE_GRANT_AMOUNT;
+
+        return balance;
+    }
+
+    public int deductPageRentalInk() {
+        if (balance < PAGE_RENTAL_DEDUCTION_AMOUNT) {
+            throw new InsufficientInkException();
+        }
+
+        balance -= PAGE_RENTAL_DEDUCTION_AMOUNT;
+
+        return balance;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.ilgeobolkka.ink.entity;
 
+import com.example.ilgeobolkka.ink.exception.InvalidInkLedgerException;
 import com.example.ilgeobolkka.rental.entity.PageRental;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,11 +20,13 @@ import java.time.Instant;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Immutable;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
 @Getter
 @Entity
+@Immutable
 @Table(
         name = "ink_ledger",
         uniqueConstraints = {
@@ -32,6 +35,9 @@ import org.hibernate.type.SqlTypes;
         })
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class InkLedger {
+
+    private static final int GRANT_AMOUNT = 100;
+    private static final int DEDUCTION_AMOUNT = 1;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -93,4 +99,50 @@ public class InkLedger {
 
     @Column(name = "occurred_at", nullable = false, columnDefinition = "DATETIME(6)")
     private Instant occurredAt;
+
+    public static InkLedger grant(
+            long readerId,
+            long inkPurchaseId,
+            int balanceAfter,
+            Instant occurredAt) {
+        InkLedger ledger = create(readerId, InkLedgerType.GRANT, GRANT_AMOUNT, balanceAfter, occurredAt);
+        ledger.inkPurchaseId = inkPurchaseId;
+
+        return ledger;
+    }
+
+    public static InkLedger deduct(
+            long readerId,
+            long pageRentalId,
+            int balanceAfter,
+            Instant occurredAt) {
+        InkLedger ledger =
+                create(readerId, InkLedgerType.DEDUCTION, DEDUCTION_AMOUNT, balanceAfter, occurredAt);
+        ledger.pageRentalId = pageRentalId;
+
+        return ledger;
+    }
+
+    private static InkLedger create(
+            long readerId,
+            InkLedgerType type,
+            int amount,
+            int balanceAfter,
+            Instant occurredAt) {
+        if (balanceAfter < 0) {
+            throw new InvalidInkLedgerException("잉크 잔액은 0 이상이어야 합니다.");
+        }
+        if (occurredAt == null) {
+            throw new InvalidInkLedgerException("잉크 변경 시각은 필수입니다.");
+        }
+
+        InkLedger ledger = new InkLedger();
+        ledger.readerId = readerId;
+        ledger.type = type;
+        ledger.amount = amount;
+        ledger.balanceAfter = balanceAfter;
+        ledger.occurredAt = occurredAt;
+
+        return ledger;
+    }
 }

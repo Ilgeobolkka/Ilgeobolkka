@@ -71,4 +71,8 @@ public class InkPurchase {
 
     @Column(name = "paid_at", columnDefinition = "DATETIME(6)")
     private Instant paidAt;
+
+    public boolean isPaid() {
+        return status == InkPurchaseStatus.PAID;
+    }
 }
