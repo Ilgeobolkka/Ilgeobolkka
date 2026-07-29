@@ -1,10 +1,9 @@
 # 콘텐츠 변환과 품질 검증
 
 [PRD 색인](./prd/README.md)으로 돌아갑니다. 이 문서는 원본 PDF를 페이지별 `TEXT` 또는 `IMAGE`
-콘텐츠로 변환하고 품질을 검증하는 실행 절차입니다. 콘텐츠 구조의 결정 근거는
-[ADR-0006](./adr/content/0006-use-poppler-and-private-s3-for-image-pages.md)과
-[ADR-0011](./adr/content/0011-align-page-content-with-source-pdf.md)을 따릅니다. 공개 AI 시연 PDF의 저장
-예외는 [ADR-0013](./adr/content/0013-store-public-ai-fixture-pdfs.md)을 따릅니다.
+콘텐츠로 변환하고 품질을 검증하는 실행 절차입니다. 콘텐츠 구조와 공개 AI 시연 fixture 경계는
+[ADR-0013](./adr/content/0013-define-page-content-and-public-ai-fixture-boundary.md)을 따르며, 이미지
+변환과 저장은 [ADR-0006](./adr/content/0006-use-poppler-and-private-s3-for-image-pages.md)을 따릅니다.
 
 ## 변환 원칙
 

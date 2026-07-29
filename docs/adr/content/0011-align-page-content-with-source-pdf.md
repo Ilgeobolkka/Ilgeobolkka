@@ -1,6 +1,6 @@
 # 0011. 원본 PDF 페이지와 연결한 텍스트·이미지 콘텐츠를 제공한다
 
-- 상태: 승인됨
+- 상태: 대체됨 ([ADR-0013](./0013-define-page-content-and-public-ai-fixture-boundary.md))
 - 날짜: 2026-07-26
 
 ## 맥락
