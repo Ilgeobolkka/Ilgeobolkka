@@ -1,5 +1,6 @@
 package com.example.ilgeobolkka.global.exception;
 
+import com.example.ilgeobolkka.auth.exception.InvalidCredentialsException;
 import com.example.ilgeobolkka.book.exception.BookNotFoundException;
 import com.example.ilgeobolkka.ink.exception.InkAccountNotFoundException;
 import com.example.ilgeobolkka.ink.exception.InkBalanceOverflowException;
@@ -40,14 +41,12 @@ public class GlobalExceptionHandler {
     })
     ResponseEntity<ApiErrorResponse> handleInvalidInput(Exception exception) {
         logFailure(ErrorCode.INVALID_INPUT, exception);
-
         return response(ErrorCode.INVALID_INPUT);
     }
 
     @ExceptionHandler(AccessDeniedException.class)
     ResponseEntity<ApiErrorResponse> handleAccessDenied(AccessDeniedException exception) {
         logFailure(ErrorCode.ACCESS_DENIED, exception);
-
         return response(ErrorCode.ACCESS_DENIED);
     }
 
@@ -56,6 +55,13 @@ public class GlobalExceptionHandler {
             EmailAlreadyExistsException exception) {
         logFailure(ErrorCode.EMAIL_ALREADY_EXISTS, exception);
         return response(ErrorCode.EMAIL_ALREADY_EXISTS);
+    }
+
+    @ExceptionHandler(InvalidCredentialsException.class)
+    ResponseEntity<ApiErrorResponse> handleInvalidCredentials(
+            InvalidCredentialsException exception) {
+        logFailure(ErrorCode.INVALID_CREDENTIALS, exception);
+        return response(ErrorCode.INVALID_CREDENTIALS);
     }
 
     @ExceptionHandler({
@@ -90,7 +96,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     ResponseEntity<ApiErrorResponse> handleUnexpectedException(Exception exception) {
         logFailure(ErrorCode.INTERNAL_SERVER_ERROR, exception);
-
         return response(ErrorCode.INTERNAL_SERVER_ERROR);
     }
 
