@@ -33,6 +33,9 @@ import org.hibernate.type.SqlTypes;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class InkLedger {
 
+    private static final int GRANT_AMOUNT = 100;
+    private static final int DEDUCTION_AMOUNT = 1;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -93,4 +96,34 @@ public class InkLedger {
 
     @Column(name = "occurred_at", nullable = false, columnDefinition = "DATETIME(6)")
     private Instant occurredAt;
+
+    public static InkLedger grant(
+            long readerId, long inkPurchaseId, int balanceAfter, Instant occurredAt) {
+        InkLedger ledger = create(readerId, InkLedgerType.GRANT, balanceAfter, occurredAt);
+        ledger.amount = GRANT_AMOUNT;
+        ledger.inkPurchaseId = inkPurchaseId;
+        return ledger;
+    }
+
+    public static InkLedger deduction(
+            long readerId, long pageRentalId, int balanceAfter, Instant occurredAt) {
+        InkLedger ledger = create(readerId, InkLedgerType.DEDUCTION, balanceAfter, occurredAt);
+        ledger.amount = DEDUCTION_AMOUNT;
+        ledger.pageRentalId = pageRentalId;
+        return ledger;
+    }
+
+    private static InkLedger create(
+            long readerId, InkLedgerType type, int balanceAfter, Instant occurredAt) {
+        if (balanceAfter < 0) {
+            throw new IllegalArgumentException("차감 후 잔액은 0 이상이어야 합니다.");
+        }
+
+        InkLedger ledger = new InkLedger();
+        ledger.readerId = readerId;
+        ledger.type = type;
+        ledger.balanceAfter = balanceAfter;
+        ledger.occurredAt = occurredAt;
+        return ledger;
+    }
 }

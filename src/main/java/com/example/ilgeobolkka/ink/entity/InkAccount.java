@@ -1,5 +1,6 @@
 package com.example.ilgeobolkka.ink.entity;
 
+import com.example.ilgeobolkka.ink.exception.InsufficientInkException;
 import com.example.ilgeobolkka.reader.entity.Reader;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,6 +26,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class InkAccount {
 
+    private static final int GRANT_AMOUNT = 100;
+    private static final int DEDUCTION_AMOUNT = 1;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -49,5 +53,16 @@ public class InkAccount {
         inkAccount.readerId = readerId;
         inkAccount.balance = 0;
         return inkAccount;
+    }
+
+    public void grant() {
+        balance = Math.addExact(balance, GRANT_AMOUNT);
+    }
+
+    public void deduct() {
+        if (balance < DEDUCTION_AMOUNT) {
+            throw new InsufficientInkException();
+        }
+        balance -= DEDUCTION_AMOUNT;
     }
 }
