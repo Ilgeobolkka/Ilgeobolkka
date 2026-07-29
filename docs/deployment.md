@@ -82,6 +82,33 @@ Git에서 제외된 `.env`에 테스트 채널 값을 주입합니다. `PORTONE_
 준비 API를 통해 브라우저에 전달할 수 있지만 API secret과 웹훅 secret은 서버 밖으로 내보내지 않습니다.
 AWS 운영 환경에는 위 PortOne 변수를 주입하지 않고 결제 기능을 비활성화합니다.
 
+### 브라우저 콘텐츠 보안 정책
+
+모든 환경에서 `Content-Security-Policy`를 보고 전용이 아닌 실제 차단 헤더로 적용합니다. 공통 기준은
+다음과 같습니다.
+
+```text
+default-src 'self';
+script-src 'self' https://cdn.portone.io;
+style-src 'self';
+img-src 'self' data:;
+font-src 'self';
+connect-src 'self';
+object-src 'none';
+base-uri 'self';
+form-action 'self';
+frame-ancestors 'self';
+```
+
+- `unsafe-inline`, `unsafe-eval`, `*`, 포괄적인 `https:` 출처는 허용하지 않습니다.
+- Thymeleaf 화면, Bootstrap WebJar, 애플리케이션 CSS와 JavaScript는 모두 same-origin으로 제공합니다.
+- 공통 셸은 PortOne SDK를 로드하지 않습니다. 잉크·소장 결제 화면에서만
+  `https://cdn.portone.io/v2/browser-sdk.esm.js`를 동적으로 import하고 로딩 실패를 결제 영역에만
+  표시합니다. 탐색·뷰어·서재의 공통 모듈은 이 import에 의존하지 않습니다.
+- 실제 테스트 결제에 `connect-src`, `frame-src`, `form-action`의 외부 출처가 더 필요하면 테스트 채널에서
+  확인한 정확한 origin만 결제 구현·런타임 검증 범위에서 추가합니다. 추측한 PG사 도메인이나 wildcard는
+  미리 허용하지 않습니다.
+
 ## 3. 로컬 실행
 
 ### 최초 기준선 전환
@@ -110,10 +137,8 @@ docker compose exec -T mysql sh /docker-entrypoint-initdb.d/01-create-test-datab
 ```
 
 PortOne V2 테스트 결제를 확인하려면 `.env`의 `PORTONE_PAYMENT_ENABLED=true`와 테스트 상점·채널 값을
-설정합니다. 브라우저는 공식 ESM 모듈
-`https://cdn.portone.io/v2/browser-sdk.esm.js`를 사용하므로 CSP `script-src`에
-`https://cdn.portone.io`를 허용합니다. CDN 로딩 실패 시 도서 탐색과 뷰어는 유지하고 결제 화면만 오류를
-표시합니다.
+설정하고 위 [브라우저 콘텐츠 보안 정책](#브라우저-콘텐츠-보안-정책)의 화면별 SDK 로딩과 실패 격리를
+함께 확인합니다.
 
 검증은 개발 서버와 별도로 다음 명령을 실행합니다.
 
