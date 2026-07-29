@@ -1,6 +1,7 @@
 package com.example.ilgeobolkka.global.exception;
 
 import com.example.ilgeobolkka.auth.exception.InvalidCredentialsException;
+import com.example.ilgeobolkka.book.exception.BookNotFoundException;
 import com.example.ilgeobolkka.reader.exception.EmailAlreadyExistsException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -55,6 +56,12 @@ public class GlobalExceptionHandler {
             InvalidCredentialsException exception) {
         logFailure(ErrorCode.INVALID_CREDENTIALS, exception);
         return response(ErrorCode.INVALID_CREDENTIALS);
+    }
+
+    @ExceptionHandler(BookNotFoundException.class)
+    ResponseEntity<ApiErrorResponse> handleResourceNotFound(BookNotFoundException exception) {
+        logFailure(ErrorCode.RESOURCE_NOT_FOUND, exception);
+        return response(ErrorCode.RESOURCE_NOT_FOUND);
     }
 
     @ExceptionHandler(Exception.class)

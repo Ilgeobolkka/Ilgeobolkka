@@ -112,7 +112,7 @@ class CoreDomainSchemaMigrationTest {
     }
 
     @Test
-    void 도서는_카테고리와_양수인_페이지_수와_원가를_가져야_한다() {
+    void 도서는_카테고리와_양수인_페이지_수를_가져야_한다() {
         assertAll(
                 () ->
                         assertThrows(
@@ -121,11 +121,20 @@ class CoreDomainSchemaMigrationTest {
                 () ->
                         assertThrows(
                                 DataAccessException.class,
-                                () -> 도서를_생성한다(BOOK_ID + 1, "소설", 0, 10_000)),
+                                () -> 도서를_생성한다(BOOK_ID + 1, "소설", 0, 10_000)));
+    }
+
+    @Test
+    void T_OWN_001_도서_원가는_0보다_커야_한다() {
+        assertAll(
                 () ->
                         assertThrows(
                                 DataAccessException.class,
-                                () -> 도서를_생성한다(BOOK_ID + 2, "소설", 100, 0)));
+                                () -> 도서를_생성한다(BOOK_ID + 2, "소설", 100, 0)),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () -> 도서를_생성한다(BOOK_ID + 3, "소설", 100, -1)));
     }
 
     @Test
