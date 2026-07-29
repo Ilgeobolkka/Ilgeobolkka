@@ -1,0 +1,8 @@
+:focus-visible {
+    outline: 0.2rem solid #0d6efd;
+    outline-offset: 0.2rem;
+}
+
+[data-common-error][hidden] {
+    display: none;
+}
