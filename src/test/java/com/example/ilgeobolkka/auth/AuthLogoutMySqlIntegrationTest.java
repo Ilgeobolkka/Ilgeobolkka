@@ -2,6 +2,7 @@ package com.example.ilgeobolkka.auth;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.doThrow;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -10,6 +11,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.example.ilgeobolkka.reader.entity.Reader;
 import com.example.ilgeobolkka.reader.service.ReaderService;
+import com.example.ilgeobolkka.reading.repository.ReadingSessionRepository;
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -18,11 +20,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
+import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,6 +44,9 @@ class AuthLogoutMySqlIntegrationTest {
     private final MockMvc mockMvc;
     private final ReaderService readerService;
     private final JdbcTemplate jdbcTemplate;
+
+    @MockitoSpyBean
+    private ReadingSessionRepository readingSessionRepository;
 
     @Autowired
     AuthLogoutMySqlIntegrationTest(
@@ -93,6 +100,28 @@ class AuthLogoutMySqlIntegrationTest {
                 .andExpect(jsonPath("$.readerId").value(reader.getId()));
 
         assertTrue(authenticatedSession.isInvalid());
+    }
+
+    @Test
+    void 열람_세션_삭제가_실패해도_로그인_세션과_쿠키는_무효화한다() throws Exception {
+        Reader reader = readerService.createReader(EMAIL, RAW_PASSWORD);
+        MockHttpSession authenticatedSession = login();
+        doThrow(new DataAccessResourceFailureException("강제 저장소 오류"))
+                .when(readingSessionRepository)
+                .deleteByReaderId(reader.getId());
+
+        MvcResult logoutResult = mockMvc.perform(post("/api/auth/logout")
+                        .session(authenticatedSession)
+                        .with(csrf()))
+                .andExpect(status().isInternalServerError())
+                .andExpect(jsonPath("$.code").value("INTERNAL_SERVER_ERROR"))
+                .andReturn();
+
+        assertTrue(authenticatedSession.isInvalid());
+        assertTrue(logoutResult.getResponse().getHeaders("Set-Cookie").stream()
+                .anyMatch(cookie -> cookie.contains("JSESSIONID=")
+                        && cookie.contains("Max-Age=0")
+                        && cookie.contains("Path=/")));
     }
 
     private MockHttpSession login() throws Exception {

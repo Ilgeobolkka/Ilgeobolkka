@@ -50,8 +50,11 @@ public class AuthController {
             HttpServletRequest httpRequest,
             HttpServletResponse httpResponse) {
         long readerId = authenticatedReader.readerId();
-        authFacade.logout(readerId);
-        authSessionManager.logout(httpRequest, httpResponse);
+        try {
+            authFacade.logout(readerId);
+        } finally {
+            authSessionManager.logout(httpRequest, httpResponse);
+        }
         return new LogoutAuthResponse(readerId);
     }
 }
