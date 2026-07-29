@@ -167,6 +167,53 @@ Controller는 HTTP 요청과 응답의 경계만 담당합니다.
   뒤에는 새 페이지를 렌더링하며 별도 CSRF 토큰 API를 만들지 않습니다.
 - 로그인 실패는 이메일 존재 여부와 관계없이 `INVALID_CREDENTIALS`로 통일합니다.
 
+## Thymeleaf 공통 셸과 브라우저 호출
+
+프런트엔드 기준선에는 다음 의존성만 추가합니다.
+
+- `org.springframework.boot:spring-boot-starter-thymeleaf` — 버전은 Spring Boot BOM을 따릅니다.
+- `org.webjars:bootstrap:5.3.8` — CSS와 `bootstrap.bundle.min.js`를 애플리케이션에 포함합니다.
+
+Bootstrap 자산은 `/webjars/bootstrap/5.3.8/` 아래의 버전 명시 경로에서 불러옵니다. 버전 없는 WebJar
+경로를 위한 `webjars-locator`, Thymeleaf Layout Dialect, React·Vue·HTMX, Node.js·npm·Vite 빌드 단계는
+추가하지 않습니다.
+
+공통 셸은 Thymeleaf 기본 fragment로만 구성하고 다음 책임을 가집니다.
+
+- `src/main/resources/templates`의 공통 head·헤더·내비게이션·오류 영역·본문 fragment를 기능별 화면이
+  재사용합니다. 정적 CSS와 ES Module은 `src/main/resources/static`에 둡니다.
+- head에는 서버가 렌더링한 `_csrf`, `_csrf_header` meta 태그를 두고 상태 변경 Thymeleaf form에는 hidden
+  CSRF field를 둡니다.
+- 오류 영역은 `role="alert"`와 `aria-live`를 사용합니다. 오류 문자열은 `textContent`로만 출력하고 서버가
+  반환한 HTML이나 예외 원문을 삽입하지 않습니다.
+- 모든 조작 요소는 접근 가능한 이름과 `:focus-visible` 상태를 제공합니다. 대체 포커스 표시 없이 기본
+  outline을 제거하지 않습니다.
+- PortOne SDK는 공통 셸이나 공통 JavaScript 모듈에서 import하지 않습니다. 결제 화면의 로딩 책임은
+  [PortOne V2 테스트 결제](#portone-v2-테스트-결제)를 따릅니다.
+
+[HTML 화면 경로](./api-spec.md#html-화면-경로)의 전역 내비게이션은 다음처럼 인증 상태에 따라 렌더링합니다.
+
+- 도서 탐색은 항상 표시합니다.
+- 비로그인 상태에는 회원가입과 로그인을 표시합니다.
+- 로그인 상태에는 잉크, 소장 결제 내역, 내 서재와 로그아웃을 표시합니다.
+- 뷰어는 도서 상세·내 서재에서, 소장 결제 시작은 도서 상세에서만 진입합니다.
+- 공통 셸은 인증 여부만 사용하고 도메인 Facade나 Repository를 호출하지 않습니다. 사용자 이메일이나
+  잉크 잔액처럼 별도 조회가 필요한 값을 공통 셸에서 조회하지 않습니다.
+- 로그아웃은 `POST /api/auth/logout` 성공 뒤 `/books`로 이동합니다. 로그인 성공 뒤에도 `/books`를 새로
+  렌더링해 교체된 세션의 CSRF 토큰을 사용합니다.
+
+브라우저용 JSON API 호출은 공통 ES Module의 `requestJson(url, options)`로 통일합니다.
+
+- same-origin URL만 허용하고 `credentials: "same-origin"`을 사용합니다.
+- `POST`, `PUT`, `PATCH`, `DELETE` 요청에는 페이지 meta의 CSRF header 이름과 토큰을 자동으로
+  추가합니다. `GET`, `HEAD`, `OPTIONS`, `TRACE`에는 추가하지 않습니다.
+- JSON 요청은 `Content-Type: application/json`을 사용합니다.
+- `2xx` JSON 성공은 공통 래퍼 없이 엔드포인트별 DTO를 반환하고 `204 No Content`는 `null`을 반환합니다.
+- 실패 JSON의 `code`, `message`와 HTTP 상태, `X-Request-Id`를 `ApiRequestError`에 보존합니다. JSON으로
+  해석할 수 없는 실패와 네트워크 오류에는 민감정보가 없는 고정 한국어 안내를 사용합니다.
+- `401`, `403`에서 자동 이동하지 않습니다. 로그인 이동이나 재시도 여부는 요청한 기능 화면이 결정합니다.
+- 텍스트·이미지 페이지 콘텐츠는 `requestJson`으로 파싱하지 않고 콘텐츠 전용 `fetch` 흐름으로 처리합니다.
+
 ## 목록과 콘텐츠 전달
 
 - 목록·검색·내역의 정렬과 페이지 크기는 [`API 계약`](./api-spec.md)을 그대로 구현합니다.
