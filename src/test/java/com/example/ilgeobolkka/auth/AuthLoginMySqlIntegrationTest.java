@@ -15,7 +15,6 @@ import com.example.ilgeobolkka.global.security.AuthenticatedReader;
 import com.example.ilgeobolkka.reader.entity.Reader;
 import com.example.ilgeobolkka.reader.service.ReaderService;
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
-import jakarta.servlet.http.HttpServletRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -41,7 +40,6 @@ import org.springframework.web.bind.annotation.RestController;
 @ActiveProfiles("test")
 @ContextConfiguration(initializers = DedicatedTestDatabaseInitializer.class)
 @Import({
-    AuthLoginMySqlIntegrationTest.CsrfTokenController.class,
     AuthLoginMySqlIntegrationTest.CurrentReaderController.class
 })
 @Transactional
@@ -125,10 +123,16 @@ class AuthLoginMySqlIntegrationTest {
     }
 
     private CsrfToken issueCsrfToken(MockHttpSession session) throws Exception {
-        MvcResult result = mockMvc.perform(get("/test/csrf-token").session(session))
+        MvcResult result = mockMvc.perform(get("/login").session(session))
                 .andExpect(status().isOk())
                 .andReturn();
-        return (CsrfToken) result.getRequest().getAttribute(CsrfToken.class.getName());
+        CsrfToken csrfToken =
+                (CsrfToken) result.getRequest().getAttribute(CsrfToken.class.getName());
+        String html = result.getResponse().getContentAsString();
+        assertTrue(html.contains("name=\"_csrf\" content=\"" + csrfToken.getToken() + "\""));
+        assertTrue(html.contains(
+                "name=\"_csrf_header\" content=\"" + csrfToken.getHeaderName() + "\""));
+        return csrfToken;
     }
 
     private void assertInvalidCredentials(String email, String password) throws Exception {
@@ -148,17 +152,6 @@ class AuthLoginMySqlIntegrationTest {
                   "password": "%s"
                 }
                 """.formatted(email, password);
-    }
-
-    @RestController
-    static class CsrfTokenController {
-
-        @GetMapping("/test/csrf-token")
-        String csrfToken(HttpServletRequest request) {
-            CsrfToken csrfToken =
-                    (CsrfToken) request.getAttribute(CsrfToken.class.getName());
-            return csrfToken.getToken();
-        }
     }
 
     @RestController

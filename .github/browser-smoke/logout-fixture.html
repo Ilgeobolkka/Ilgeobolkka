@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="_csrf" content="browser-smoke-token">
+    <meta name="_csrf_header" content="X-CSRF-TOKEN">
+    <title>로그아웃 브라우저 smoke fixture</title>
+    <script type="module" src="/logout-fixture.js"></script>
+</head>
+<body>
+<div role="alert"
+     aria-live="assertive"
+     tabindex="-1"
+     data-common-error
+     hidden></div>
+<form action="/api/auth/logout" method="post" data-logout-form>
+    <button type="submit">로그아웃</button>
+</form>
+</body>
+</html>

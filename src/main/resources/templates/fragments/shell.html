@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      th:fragment="page(pageTitle, pageContent)">
+<head th:replace="~{fragments/head :: head(${pageTitle})}"></head>
+<body class="d-flex flex-column min-vh-100 bg-light">
+<header th:replace="~{fragments/header :: header}"></header>
+<main class="container flex-grow-1 py-4" id="main-content">
+    <div th:replace="~{fragments/error :: error}"></div>
+    <th:block th:replace="${pageContent}"></th:block>
+</main>
+</body>
+</html>
