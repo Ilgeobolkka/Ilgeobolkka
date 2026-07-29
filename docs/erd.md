@@ -5,9 +5,9 @@
 
 ## 구현 상태
 
-현재 `V1` migration이 아래 잉크·30일 대여·도서 원가 직접 결제 모델의 11개 테이블과 핵심 제약을
-생성하고, 11개 JPA Entity와 실제 외래 키 기반 최소 연관관계까지 매핑했습니다. Repository·Service·API와
-도메인 기능은 아직 구현 전이므로, 제품 기능이 완료됐다는 의미는 아닙니다.
+현재 `V1` migration이 아래 잉크·30일 대여·도서 원가 직접 결제 모델의 11개 테이블과 핵심 제약을 생성하고,
+11개 JPA Entity와 실제 외래 키 기반 최소 연관관계까지 매핑했습니다. `V2` migration은 잉크 원장 최신순 조회 인덱스를 추가합니다.
+Repository·Service·API와 도메인 기능은 단계적으로 구현 중이므로, 제품 기능이 완료됐다는 의미는 아닙니다.
 
 ## 외래 키 관계
 
@@ -265,7 +265,7 @@ Mermaid에서 괄호가 있는 SQL 타입을 안정적으로 표시하기 위해
 | `reading_session` | `reader_id`·`viewer_session_id` 각각 고유, `current_page_number > 0`, `(book_id, current_page_number)`로 실제 `book_page` 참조 |
 | `ink_account` | `reader_id` 고유, `balance >= 0` |
 | `ink_purchase` | `payment_id` 고유, `PENDING`·`PAID`·`FAILED`, `PAID`만 `paid_at` 필수, 1,000원·100잉크 조합만 허용 |
-| `ink_ledger` | `ink_purchase_id`·`page_rental_id` 각각 고유, 지급 100잉크 또는 대여 차감 1잉크와 원인 하나만 연결, `balance_after >= 0`, 원인과 같은 `reader_id` 보장 |
+| `ink_ledger` | `ink_purchase_id`·`page_rental_id` 각각 고유, 지급 100잉크 또는 대여 차감 1잉크와 원인 하나만 연결, `balance_after >= 0`, 원인과 같은 `reader_id` 보장, `(reader_id, occurred_at DESC, id DESC)` 최신순 조회 인덱스 |
 | `page_rental` | `rented_at < expires_at`, 과거 대여를 보존하므로 같은 페이지의 여러 기간 허용 |
 | `ownership_payment` | `payment_id` 고유, `PENDING`·`PAID`·`FAILED`, `PAID`만 `paid_at` 필수, `(book_id, amount_won)`으로 도서 원가 일치 |
 | `book_ownership` | `(reader_id, book_id)`·`ownership_payment_id` 각각 고유, 결제의 독자·도서와 소장의 독자·도서 일치 |

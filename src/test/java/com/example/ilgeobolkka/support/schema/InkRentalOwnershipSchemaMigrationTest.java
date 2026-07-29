@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,6 +32,25 @@ class InkRentalOwnershipSchemaMigrationTest {
     @Autowired
     InkRentalOwnershipSchemaMigrationTest(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+    }
+
+    @Test
+    void 잉크_원장_최신순_조회는_독자와_발생_시각과_ID_복합_인덱스를_사용한다() {
+        List<String> indexedColumns =
+                jdbcTemplate.queryForList(
+                        """
+                        SELECT CONCAT(column_name, ':', collation)
+                        FROM information_schema.statistics
+                        WHERE table_schema = DATABASE()
+                          AND table_name = 'ink_ledger'
+                          AND index_name = 'idx_ink_ledger_reader_occurred_id'
+                        ORDER BY seq_in_index
+                        """,
+                        String.class);
+
+        assertEquals(
+                List.of("reader_id:A", "occurred_at:D", "id:D"),
+                indexedColumns);
     }
 
     @Test

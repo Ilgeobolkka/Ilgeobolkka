@@ -45,6 +45,8 @@ public class InkService {
     }
 
     public void grantInk(long readerId, long inkPurchaseId) {
+        InkAccount account = findAccountForUpdate(readerId);
+
         InkPurchase purchase = inkPurchaseRepository
                 .findByIdAndReaderId(inkPurchaseId, readerId)
                 .orElseThrow(InkPurchaseNotFoundException::new);
@@ -53,9 +55,7 @@ public class InkService {
             throw new InkPurchaseStateConflictException();
         }
 
-        InkAccount account = findAccountForUpdate(readerId);
-
-        if (inkLedgerRepository.findByInkPurchaseIdForUpdate(inkPurchaseId).isPresent()) {
+        if (inkLedgerRepository.findByInkPurchaseId(inkPurchaseId).isPresent()) {
             return;
         }
 
@@ -66,16 +66,16 @@ public class InkService {
     }
 
     public void deductInk(long readerId, long pageRentalId) {
+        InkAccount account = findAccountForUpdate(readerId);
+
         long rentalReaderId = inkLedgerRepository.findPageRentalReaderId(pageRentalId)
                 .orElseThrow(() -> new InvalidInkLedgerException("페이지 대여를 찾을 수 없습니다."));
         if (rentalReaderId != readerId) {
             throw new InvalidInkLedgerException("다른 독자의 페이지 대여 내역입니다.");
         }
 
-        InkAccount account = findAccountForUpdate(readerId);
-
         Optional<InkLedger> existingLedger =
-                inkLedgerRepository.findByPageRentalIdForUpdate(pageRentalId);
+                inkLedgerRepository.findByPageRentalId(pageRentalId);
         if (existingLedger.isPresent()) {
             return;
         }
