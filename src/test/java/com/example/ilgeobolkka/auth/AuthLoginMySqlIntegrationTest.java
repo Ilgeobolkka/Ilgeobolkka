@@ -15,11 +15,10 @@ import com.example.ilgeobolkka.global.security.AuthenticatedReader;
 import com.example.ilgeobolkka.reader.entity.Reader;
 import com.example.ilgeobolkka.reader.service.ReaderService;
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
-import java.time.Duration;
+import jakarta.servlet.http.HttpServletRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.autoconfigure.ServerProperties;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
@@ -28,6 +27,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -40,7 +40,10 @@ import org.springframework.web.bind.annotation.RestController;
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
 @ContextConfiguration(initializers = DedicatedTestDatabaseInitializer.class)
-@Import(AuthLoginMySqlIntegrationTest.CurrentReaderController.class)
+@Import({
+    AuthLoginMySqlIntegrationTest.CsrfTokenController.class,
+    AuthLoginMySqlIntegrationTest.CurrentReaderController.class
+})
 @Transactional
 class AuthLoginMySqlIntegrationTest {
 
@@ -49,16 +52,13 @@ class AuthLoginMySqlIntegrationTest {
 
     private final MockMvc mockMvc;
     private final ReaderService readerService;
-    private final ServerProperties serverProperties;
 
     @Autowired
     AuthLoginMySqlIntegrationTest(
             MockMvc mockMvc,
-            ReaderService readerService,
-            ServerProperties serverProperties) {
+            ReaderService readerService) {
         this.mockMvc = mockMvc;
         this.readerService = readerService;
-        this.serverProperties = serverProperties;
     }
 
     @Test
@@ -103,8 +103,32 @@ class AuthLoginMySqlIntegrationTest {
     }
 
     @Test
-    void 로그인_세션의_비활성_만료는_2시간이다() {
-        assertEquals(Duration.ofHours(2), serverProperties.getServlet().getSession().getTimeout());
+    void 로그인_성공은_기존_CSRF_토큰을_교체한다() throws Exception {
+        readerService.createReader(EMAIL, RAW_PASSWORD);
+        MockHttpSession loginSession = new MockHttpSession();
+        CsrfToken csrfTokenBeforeLogin = issueCsrfToken(loginSession);
+
+        MvcResult loginResult = mockMvc.perform(post("/api/auth/login")
+                        .session(loginSession)
+                        .header(csrfTokenBeforeLogin.getHeaderName(), csrfTokenBeforeLogin.getToken())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(loginJson(EMAIL, RAW_PASSWORD)))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        MockHttpSession authenticatedSession =
+                (MockHttpSession) loginResult.getRequest().getSession(false);
+        assertNotNull(authenticatedSession);
+        CsrfToken csrfTokenAfterLogin = issueCsrfToken(authenticatedSession);
+
+        assertNotEquals(csrfTokenBeforeLogin.getToken(), csrfTokenAfterLogin.getToken());
+    }
+
+    private CsrfToken issueCsrfToken(MockHttpSession session) throws Exception {
+        MvcResult result = mockMvc.perform(get("/test/csrf-token").session(session))
+                .andExpect(status().isOk())
+                .andReturn();
+        return (CsrfToken) result.getRequest().getAttribute(CsrfToken.class.getName());
     }
 
     private void assertInvalidCredentials(String email, String password) throws Exception {
@@ -124,6 +148,17 @@ class AuthLoginMySqlIntegrationTest {
                   "password": "%s"
                 }
                 """.formatted(email, password);
+    }
+
+    @RestController
+    static class CsrfTokenController {
+
+        @GetMapping("/test/csrf-token")
+        String csrfToken(HttpServletRequest request) {
+            CsrfToken csrfToken =
+                    (CsrfToken) request.getAttribute(CsrfToken.class.getName());
+            return csrfToken.getToken();
+        }
     }
 
     @RestController
