@@ -44,6 +44,11 @@ class ProdSessionCookieIntegrationTest {
     }
 
     @Test
+    void 로그인_세션의_비활성_만료_시간은_2시간이다() {
+        assertEquals(120, servletContext.getSessionTimeout());
+    }
+
+    @Test
     void 운영_프로필의_세션_쿠키는_보안_속성을_모두_포함한다() throws Exception {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:" + port + "/test/session-cookie"))

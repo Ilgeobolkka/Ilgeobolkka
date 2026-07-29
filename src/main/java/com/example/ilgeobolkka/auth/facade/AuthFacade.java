@@ -1,8 +1,11 @@
 package com.example.ilgeobolkka.auth.facade;
 
+import com.example.ilgeobolkka.auth.dto.LoginAuthRequest;
+import com.example.ilgeobolkka.auth.dto.LoginAuthResponse;
 import com.example.ilgeobolkka.auth.dto.SignupAuthRequest;
 import com.example.ilgeobolkka.auth.dto.SignupAuthResponse;
 import com.example.ilgeobolkka.ink.service.InkService;
+import com.example.ilgeobolkka.reading.service.ReadingSessionService;
 import com.example.ilgeobolkka.reader.entity.Reader;
 import com.example.ilgeobolkka.reader.service.ReaderService;
 import lombok.RequiredArgsConstructor;
@@ -15,11 +18,23 @@ public class AuthFacade {
 
     private final ReaderService readerService;
     private final InkService inkService;
+    private final ReadingSessionService readingSessionService;
 
     @Transactional
     public SignupAuthResponse signup(SignupAuthRequest request) {
         Reader reader = readerService.createReader(request.email(), request.password());
         inkService.createInkAccount(reader.getId());
         return SignupAuthResponse.from(reader);
+    }
+
+    @Transactional(readOnly = true)
+    public LoginAuthResponse login(LoginAuthRequest request) {
+        Reader reader = readerService.authenticate(request.email(), request.password());
+        return LoginAuthResponse.from(reader);
+    }
+
+    @Transactional
+    public void logout(long readerId) {
+        readingSessionService.invalidateCurrentSession(readerId);
     }
 }

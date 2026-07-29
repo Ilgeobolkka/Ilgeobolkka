@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
-import java.time.Duration;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -37,16 +36,6 @@ class IlgeobolkkaApplicationTests {
 
     @Test
     void contextLoads() {
-    }
-
-    @Test
-    void 로그인_세션의_비활성_만료_시간은_2시간이다() {
-        Duration timeout =
-                Binder.get(environment)
-                        .bind("server.servlet.session.timeout", Duration.class)
-                        .orElseThrow(() -> new IllegalStateException("세션 만료 설정이 없습니다."));
-
-        assertEquals(Duration.ofHours(2), timeout);
     }
 
     @Test
