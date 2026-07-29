@@ -68,7 +68,7 @@ jobs:
       - name: 테스트·검사·패키징
         run: ./gradlew --no-daemon clean check build --warning-mode all
 
-      - name: 실제 애플리케이션 부팅 smoke 검증
+      - name: 실제 애플리케이션 부팅·브라우저 smoke 검증
         run: .github/scripts/boot-smoke.sh build/libs/Ilgeobolkka-0.0.1-SNAPSHOT.jar
 
       - name: 실패 리포트 업로드

@@ -1,6 +1,9 @@
 package com.example.ilgeobolkka.auth;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.doThrow;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
@@ -24,6 +27,7 @@ import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.mock.web.MockHttpSession;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
@@ -103,16 +107,22 @@ class AuthLogoutMySqlIntegrationTest {
     }
 
     @Test
-    void 열람_세션_삭제가_실패해도_로그인_세션과_쿠키는_무효화한다() throws Exception {
+    void 열람_세션_삭제가_실패해도_로그인_세션을_무효화하고_새_익명_화면을_사용한다() throws Exception {
         Reader reader = readerService.createReader(EMAIL, RAW_PASSWORD);
         MockHttpSession authenticatedSession = login();
+        MvcResult authenticatedPage = mockMvc.perform(get("/books").session(authenticatedSession))
+                .andExpect(status().isOk())
+                .andReturn();
+        CsrfToken csrfTokenBeforeLogout = csrfToken(authenticatedPage);
         doThrow(new DataAccessResourceFailureException("강제 저장소 오류"))
                 .when(readingSessionRepository)
                 .deleteByReaderId(reader.getId());
 
         MvcResult logoutResult = mockMvc.perform(post("/api/auth/logout")
                         .session(authenticatedSession)
-                        .with(csrf()))
+                        .header(
+                                csrfTokenBeforeLogout.getHeaderName(),
+                                csrfTokenBeforeLogout.getToken()))
                 .andExpect(status().isInternalServerError())
                 .andExpect(jsonPath("$.code").value("INTERNAL_SERVER_ERROR"))
                 .andReturn();
@@ -122,6 +132,42 @@ class AuthLogoutMySqlIntegrationTest {
                 .anyMatch(cookie -> cookie.contains("JSESSIONID=")
                         && cookie.contains("Max-Age=0")
                         && cookie.contains("Path=/")));
+        assertAnonymousPageUsesFreshCsrfToken(csrfTokenBeforeLogout);
+    }
+
+    @Test
+    void 로그아웃_뒤_새로_렌더링한_페이지는_새_CSRF_토큰을_사용한다() throws Exception {
+        readerService.createReader(EMAIL, RAW_PASSWORD);
+        MockHttpSession authenticatedSession = login();
+        MvcResult authenticatedPage = mockMvc.perform(get("/books").session(authenticatedSession))
+                .andExpect(status().isOk())
+                .andReturn();
+        CsrfToken csrfTokenBeforeLogout = csrfToken(authenticatedPage);
+
+        mockMvc.perform(post("/api/auth/logout")
+                        .session(authenticatedSession)
+                        .header(
+                                csrfTokenBeforeLogout.getHeaderName(),
+                                csrfTokenBeforeLogout.getToken()))
+                .andExpect(status().isOk());
+
+        assertAnonymousPageUsesFreshCsrfToken(csrfTokenBeforeLogout);
+    }
+
+    private void assertAnonymousPageUsesFreshCsrfToken(CsrfToken csrfTokenBeforeLogout)
+            throws Exception {
+        MvcResult anonymousPage = mockMvc.perform(get("/books"))
+                .andExpect(status().isOk())
+                .andReturn();
+        CsrfToken csrfTokenAfterLogout = csrfToken(anonymousPage);
+        String html = anonymousPage.getResponse().getContentAsString();
+
+        assertNotEquals(csrfTokenBeforeLogout.getToken(), csrfTokenAfterLogout.getToken());
+        assertNotNull(anonymousPage.getRequest().getSession(false));
+        assertTrue(html.contains("href=\"/signup\""));
+        assertTrue(html.contains("href=\"/login\""));
+        assertFalse(html.contains("href=\"/ink\""));
+        assertFalse(html.contains("data-logout-form"));
     }
 
     private MockHttpSession login() throws Exception {
@@ -139,6 +185,10 @@ class AuthLogoutMySqlIntegrationTest {
                 .andExpect(status().isOk())
                 .andReturn();
         return (MockHttpSession) result.getRequest().getSession(false);
+    }
+
+    private CsrfToken csrfToken(MvcResult result) {
+        return (CsrfToken) result.getRequest().getAttribute(CsrfToken.class.getName());
     }
 
     private void createReadingSession(long readerId) {

@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.authentication.session.ChangeSessionIdAuthenticationStrategy;
 import org.springframework.security.web.authentication.session.CompositeSessionAuthenticationStrategy;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
@@ -23,12 +24,26 @@ import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.security.web.csrf.CsrfAuthenticationStrategy;
 import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.security.web.savedrequest.NullRequestCache;
+import org.springframework.security.web.util.matcher.OrRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
 import com.example.ilgeobolkka.global.security.ApiSecurityErrorHandler;
 
 @Configuration
 public class SecurityConfig {
+
+    static final String CONTENT_SECURITY_POLICY = """
+            default-src 'self'; \
+            script-src 'self' https://cdn.portone.io; \
+            style-src 'self'; \
+            img-src 'self' data:; \
+            font-src 'self'; \
+            connect-src 'self'; \
+            object-src 'none'; \
+            base-uri 'self'; \
+            form-action 'self'; \
+            frame-ancestors 'self'\
+            """;
 
     private static final RequestMatcher SIGNUP = pathPattern(HttpMethod.POST, "/api/auth/signup");
     private static final RequestMatcher LOGIN = pathPattern(HttpMethod.POST, "/api/auth/login");
@@ -37,6 +52,11 @@ public class SecurityConfig {
     private static final RequestMatcher SMOKE = pathPattern(HttpMethod.GET, "/api/smoke");
     private static final RequestMatcher PORTONE_WEBHOOK = pathPattern(HttpMethod.POST, "/api/webhooks/portone");
     private static final RequestMatcher API = pathPattern("/api/**");
+    private static final RequestMatcher PROTECTED_HTML = new OrRequestMatcher(
+            pathPattern("/books/{bookId}/viewer"),
+            pathPattern("/ink"),
+            pathPattern("/ownership-payments"),
+            pathPattern("/library"));
 
     @Bean
     PasswordEncoder passwordEncoder() {
@@ -82,13 +102,20 @@ public class SecurityConfig {
                         .requestMatchers(SIGNUP, LOGIN, PUBLIC_BOOK_LIST, PUBLIC_BOOK_DETAIL, SMOKE, PORTONE_WEBHOOK)
                         .permitAll()
                         .requestMatchers(API).authenticated()
+                        .requestMatchers(PROTECTED_HTML).authenticated()
                         .anyRequest().permitAll())
                 .csrf(csrf -> csrf
                         .csrfTokenRepository(csrfTokenRepository)
                         .ignoringRequestMatchers(PORTONE_WEBHOOK))
                 .exceptionHandling(exception -> exception
-                        .authenticationEntryPoint(securityErrorHandler)
+                        .defaultAuthenticationEntryPointFor(securityErrorHandler, API)
+                        .defaultAuthenticationEntryPointFor(
+                                new LoginUrlAuthenticationEntryPoint("/login"),
+                                PROTECTED_HTML)
                         .accessDeniedHandler(securityErrorHandler))
+                .headers(headers -> headers
+                        .contentSecurityPolicy(csp -> csp
+                                .policyDirectives(CONTENT_SECURITY_POLICY)))
                 .requestCache(requestCache -> requestCache.requestCache(new NullRequestCache()))
                 .securityContext(securityContext -> securityContext
                         .securityContextRepository(securityContextRepository))
