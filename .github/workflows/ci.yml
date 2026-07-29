@@ -46,6 +46,7 @@ jobs:
       TEST_DB_URL: jdbc:mysql://127.0.0.1:3306/ilgeobolkka_test?allowPublicKeyRetrieval=true&sslMode=DISABLED
       DB_USERNAME: ilgeobolkka
       DB_PASSWORD: ci-password
+      DB_ROOT_PASSWORD: ci-root-password
 
     steps:
       - name: 저장소 체크아웃

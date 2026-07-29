@@ -5,8 +5,9 @@
 
 ## 구현 상태
 
-현재 `V1` migration이 아래 잉크·30일 대여·도서 원가 직접 결제 모델의 11개 테이블과 핵심 제약을 생성하고,
-11개 JPA Entity와 실제 외래 키 기반 최소 연관관계까지 매핑했습니다. `V2` migration은 잉크 원장 최신순 조회 인덱스를 추가합니다.
+현재 `V1` migration이 잉크·30일 페이지 대여·도서 원가 직접 결제 모델의 11개 테이블과 핵심 제약을 생성합니다.
+`V2` migration은 잉크 원장 최신순 조회 인덱스와 지급·차감 재처리의 원자적 선점을 위한 `ink_operation_claim`을 추가하고 기존 원장 원인을 claim으로 이관합니다.
+현재 12개 테이블과 JPA Entity를 실제 외래 키 기반 최소 연관관계까지 매핑했습니다.
 Repository·Service·API와 도메인 기능은 단계적으로 구현 중이므로, 제품 기능이 완료됐다는 의미는 아닙니다.
 
 ## 외래 키 관계
@@ -28,6 +29,8 @@ erDiagram
     BOOK_PAGE ||--o{ LIBRARY_ENTRY : last_read_in
     INK_PURCHASE |o--o| INK_LEDGER : grants
     PAGE_RENTAL |o--o| INK_LEDGER : charges
+    INK_PURCHASE |o--o| INK_OPERATION_CLAIM : claimed_for_grant
+    PAGE_RENTAL |o--o| INK_OPERATION_CLAIM : claimed_for_deduction
     OWNERSHIP_PAYMENT ||--o| BOOK_OWNERSHIP : grants
 
     READER {
@@ -87,6 +90,13 @@ erDiagram
         bigint page_rental_id FK
         datetime_6 occurred_at
     }
+    INK_OPERATION_CLAIM {
+        bigint id PK
+        bigint reader_id FK
+        bigint ink_purchase_id FK
+        bigint page_rental_id FK
+        char_36 claim_token UK
+    }
     PAGE_RENTAL {
         bigint id PK
         bigint reader_id FK
@@ -125,9 +135,8 @@ Mermaid에서 괄호가 있는 SQL 타입을 안정적으로 표시하기 위해
 외래 키를 나타냅니다. `reading_session` 및 `library_entry`의 `(book_id, current_page_number)`,
 `(book_id, last_page_number)`는 각각 `book_page(book_id, page_number)`를 참조하므로 `BOOK_PAGE`와 연결합니다.
 
-`ink_ledger`는 지급 원인인 `ink_purchase`와 차감 원인인 `page_rental` 중 정확히 하나만 참조합니다. 따라서
-두 원인 관계의 `|o`는 원장 한 건에서 해당 원인이 없거나 하나임을, `o|`는 하나의 원인이 원장에 연결되지
-않았거나 한 번만 연결됨을 뜻합니다.
+`ink_ledger`와 `ink_operation_claim`은 지급 원인인 `ink_purchase`와 차감 원인인 `page_rental` 중 정확히 하나만 참조합니다.
+따라서 두 원인 관계의 `|o`는 한 건에서 해당 원인이 없거나 하나임을, `o|`는 하나의 원인이 원장 또는 claim에 연결되지 않았거나 한 번만 연결됨을 뜻합니다.
 
 ## 테이블 명세
 
@@ -222,6 +231,16 @@ Mermaid에서 괄호가 있는 SQL 타입을 안정적으로 표시하기 위해
 | `page_rental_id` | `BIGINT` | 예 | UK, 복합 FK → `page_rental(reader_id, id)` | `DEDUCTION`의 차감 원인 |
 | `occurred_at` | `DATETIME(6)` | 아니오 | - | 잉크 변경 발생 시각(UTC) |
 
+### `ink_operation_claim`
+
+| 컬럼 | 물리 타입 | NULL | 키·참조 | 설명 |
+| --- | --- | --- | --- | --- |
+| `id` | `BIGINT AUTO_INCREMENT` | 아니오 | PK | 잉크 처리 선점 식별자 |
+| `reader_id` | `BIGINT` | 아니오 | 두 복합 FK 구성 | 지급 또는 차감 원인과 같은 독자 |
+| `ink_purchase_id` | `BIGINT` | 예 | UK, 복합 FK → `ink_purchase(reader_id, id)` | 지급 선점 원인 |
+| `page_rental_id` | `BIGINT` | 예 | UK, 복합 FK → `page_rental(reader_id, id)` | 차감 선점 원인 |
+| `claim_token` | `CHAR(36) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | UK | 최초 처리자를 구분하는 UUID |
+
 ### `ownership_payment`
 
 | 컬럼 | 물리 타입 | NULL | 키·참조 | 설명 |
@@ -266,14 +285,16 @@ Mermaid에서 괄호가 있는 SQL 타입을 안정적으로 표시하기 위해
 | `ink_account` | `reader_id` 고유, `balance >= 0` |
 | `ink_purchase` | `payment_id` 고유, `PENDING`·`PAID`·`FAILED`, `PAID`만 `paid_at` 필수, 1,000원·100잉크 조합만 허용 |
 | `ink_ledger` | `ink_purchase_id`·`page_rental_id` 각각 고유, 지급 100잉크 또는 대여 차감 1잉크와 원인 하나만 연결, `balance_after >= 0`, 원인과 같은 `reader_id` 보장, `(reader_id, occurred_at DESC, id DESC)` 최신순 조회 인덱스 |
+| `ink_operation_claim` | `ink_purchase_id`·`page_rental_id`·`claim_token` 각각 고유, 지급 또는 차감 원인 하나만 연결, 원인과 같은 `reader_id` 보장 |
 | `page_rental` | `rented_at < expires_at`, 과거 대여를 보존하므로 같은 페이지의 여러 기간 허용 |
 | `ownership_payment` | `payment_id` 고유, `PENDING`·`PAID`·`FAILED`, `PAID`만 `paid_at` 필수, `(book_id, amount_won)`으로 도서 원가 일치 |
 | `book_ownership` | `(reader_id, book_id)`·`ownership_payment_id` 각각 고유, 결제의 독자·도서와 소장의 독자·도서 일치 |
 | `library_entry` | `(reader_id, book_id)` 고유, `last_page_number > 0`, `(book_id, last_page_number)`로 실제 `book_page` 참조 |
 
-물리 외래 키의 삭제·수정 동작은 기본값인 `RESTRICT`이며 핵심 이력을 연쇄 삭제하지 않습니다.
+핵심 이력의 물리 외래 키 삭제·수정 동작은 기본값인 `RESTRICT`이며 이력을 연쇄 삭제하지 않습니다.
+내부 동시성 제어 데이터인 `ink_operation_claim`만 원인인 구매·대여를 삭제하면 함께 삭제됩니다.
 모든 시각 컬럼은 UTC로 읽고 쓰는 `DATETIME(6)`입니다. `viewer_session_id`와 두 결제 테이블의
-`payment_id`는 대소문자가 별개인 ASCII 값으로 비교합니다.
+`payment_id`, `claim_token`은 대소문자가 별개인 ASCII 값으로 비교합니다.
 
 ## 애플리케이션이 보장하는 불변식
 
@@ -289,6 +310,8 @@ Mermaid에서 괄호가 있는 SQL 타입을 안정적으로 표시하기 위해
   차감은 `InkAccount`를 잠근 뒤 소장·대여를 다시 조회해 방지합니다.
 - 새 대여의 잔액 차감, `InkLedger`, `PageRental`, `LibraryEntry`는 하나의 트랜잭션에서
   함께 성공하거나 함께 실패합니다. 원장과 대여·결제 이력은 수정·삭제하지 않습니다.
+- 지급·차감 원인의 claim은 최신 고유 인덱스를 확인하는 원자적 쓰기로 선점하고, claim·잔액 변경·원장은 하나의 트랜잭션에서 함께 성공하거나 함께 실패합니다.
+  다른 토큰이 선점한 원인의 재처리는 성공으로 종료합니다.
 - 소장 결제 준비는 `InkAccount`를 잠그고 이미 소장했는지와 같은 독자·도서의 `PENDING`을
   확인합니다. 기존 `PENDING`은 재사용하고 `FAILED`만 있을 때 새 시도를 만듭니다.
 - 오직 서버 검증을 통과한 `PAID` 결제만 같은 트랜잭션에서 `InkLedger` 지급 또는
@@ -313,7 +336,7 @@ Mermaid에서 괄호가 있는 SQL 타입을 안정적으로 표시하기 위해
 | --- | --- |
 | `Reader`, `ReadingSession` | `AUTH-*`, `VIEW-002` |
 | `Book`, `BookPage` | `CAT-*`, `VIEW-001`, `VIEW-003~005` |
-| `InkAccount`, `InkPurchase`, `InkLedger` | `INK-*`, `PAY-*` |
+| `InkAccount`, `InkPurchase`, `InkLedger`, `InkOperationClaim` | `INK-*`, `PAY-*` |
 | `PageRental` | `RENT-*` |
 | `OwnershipPayment`, `BookOwnership` | `OWN-*`, `PAY-*` |
 | `LibraryEntry` | `LIB-001` |

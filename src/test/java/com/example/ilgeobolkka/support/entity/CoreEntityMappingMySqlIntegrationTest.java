@@ -78,7 +78,7 @@ class CoreEntityMappingMySqlIntegrationTest {
     }
 
     @Test
-    void V1의_11개_테이블이_각각_JPA_엔티티로_등록된다() {
+    void 현재_12개_테이블이_각각_JPA_엔티티로_등록된다() {
         List<String> entityNames =
                 entityManager.getMetamodel().getEntities().stream()
                         .map(EntityType::getJavaType)
@@ -94,6 +94,7 @@ class CoreEntityMappingMySqlIntegrationTest {
                         "BookPage",
                         "InkAccount",
                         "InkLedger",
+                        "InkOperationClaim",
                         "InkPurchase",
                         "LibraryEntry",
                         "OwnershipPayment",
@@ -360,7 +361,8 @@ class CoreEntityMappingMySqlIntegrationTest {
                   AND table_name IN (
                       'reader', 'book', 'book_page', 'reading_session',
                       'ink_account', 'ink_purchase', 'page_rental', 'ink_ledger',
-                      'ownership_payment', 'book_ownership', 'library_entry'
+                      'ink_operation_claim', 'ownership_payment',
+                      'book_ownership', 'library_entry'
                   )
                 %s
                 ORDER BY table_name, ordinal_position

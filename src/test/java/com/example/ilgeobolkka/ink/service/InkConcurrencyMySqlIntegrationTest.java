@@ -169,6 +169,46 @@ class InkConcurrencyMySqlIntegrationTest {
                         "SELECT COUNT(*) FROM ink_ledger WHERE reader_id = ?",
                         Integer.class,
                         READER_ID));
+        assertEquals(
+                1,
+                jdbcTemplate.queryForObject(
+                        "SELECT COUNT(*) FROM ink_operation_claim WHERE reader_id = ?",
+                        Integer.class,
+                        READER_ID));
+
+        long unprocessedRentalId = jdbcTemplate.queryForObject(
+                """
+                SELECT rental.id
+                FROM page_rental rental
+                LEFT JOIN ink_ledger ledger ON ledger.page_rental_id = rental.id
+                WHERE rental.reader_id = ?
+                  AND ledger.id IS NULL
+                """,
+                Long.class,
+                READER_ID);
+        transactionTemplate.executeWithoutResult(
+                status -> inkService.grantInk(READER_ID, PAID_PURCHASE_ID));
+        transactionTemplate.executeWithoutResult(
+                status -> inkService.deductInk(READER_ID, unprocessedRentalId));
+
+        assertEquals(
+                99,
+                jdbcTemplate.queryForObject(
+                        "SELECT balance FROM ink_account WHERE reader_id = ?",
+                        Integer.class,
+                        READER_ID));
+        assertEquals(
+                3,
+                jdbcTemplate.queryForObject(
+                        "SELECT COUNT(*) FROM ink_ledger WHERE reader_id = ?",
+                        Integer.class,
+                        READER_ID));
+        assertEquals(
+                3,
+                jdbcTemplate.queryForObject(
+                        "SELECT COUNT(*) FROM ink_operation_claim WHERE reader_id = ?",
+                        Integer.class,
+                        READER_ID));
     }
 
     @Test
@@ -304,6 +344,94 @@ class InkConcurrencyMySqlIntegrationTest {
                         OTHER_PAID_PURCHASE_ID));
     }
 
+    @Test
+    void 과거_스냅샷이_있어도_같은_구매의_재지급은_멱등_성공한다()
+            throws Exception {
+        과거_스냅샷에서_다른_트랜잭션_처리_후_재처리한다(
+                """
+                SELECT COUNT(*)
+                FROM ink_ledger
+                WHERE ink_purchase_id = ?
+                """,
+                PAID_PURCHASE_ID,
+                () -> inkService.grantInk(READER_ID, PAID_PURCHASE_ID));
+
+        assertEquals(
+                101,
+                jdbcTemplate.queryForObject(
+                        "SELECT balance FROM ink_account WHERE reader_id = ?",
+                        Integer.class,
+                        READER_ID));
+        assertEquals(
+                1,
+                jdbcTemplate.queryForObject(
+                        "SELECT COUNT(*) FROM ink_ledger WHERE ink_purchase_id = ?",
+                        Integer.class,
+                        PAID_PURCHASE_ID));
+    }
+
+    @Test
+    void 과거_스냅샷이_있어도_같은_대여의_재차감은_멱등_성공한다()
+            throws Exception {
+        과거_스냅샷에서_다른_트랜잭션_처리_후_재처리한다(
+                """
+                SELECT COUNT(*)
+                FROM ink_ledger
+                WHERE page_rental_id = ?
+                """,
+                FIRST_RENTAL_ID,
+                () -> inkService.deductInk(READER_ID, FIRST_RENTAL_ID));
+
+        assertEquals(
+                0,
+                jdbcTemplate.queryForObject(
+                        "SELECT balance FROM ink_account WHERE reader_id = ?",
+                        Integer.class,
+                        READER_ID));
+        assertEquals(
+                1,
+                jdbcTemplate.queryForObject(
+                        "SELECT COUNT(*) FROM ink_ledger WHERE page_rental_id = ?",
+                        Integer.class,
+                        FIRST_RENTAL_ID));
+    }
+
+    private void 과거_스냅샷에서_다른_트랜잭션_처리_후_재처리한다(
+            String snapshotQuery,
+            long sourceId,
+            Runnable operation) throws Exception {
+        CountDownLatch snapshotCreated = new CountDownLatch(1);
+        CountDownLatch firstOperationCommitted = new CountDownLatch(1);
+
+        try (ExecutorService executor = Executors.newFixedThreadPool(2)) {
+            Future<Boolean> retry = executor.submit(() -> transactionTemplate.execute(status -> {
+                assertEquals(
+                        0,
+                        jdbcTemplate.queryForObject(
+                                snapshotQuery,
+                                Integer.class,
+                                sourceId));
+                snapshotCreated.countDown();
+                await(firstOperationCommitted, "첫 처리가 제한 시간 안에 커밋되어야 합니다.");
+
+                operation.run();
+                return true;
+            }));
+            Future<Boolean> firstOperation = executor.submit(() -> {
+                await(snapshotCreated, "재처리 트랜잭션이 제한 시간 안에 스냅샷을 생성해야 합니다.");
+                boolean result = transactionTemplate.execute(status -> {
+                    operation.run();
+                    return true;
+                });
+                firstOperationCommitted.countDown();
+                return result;
+            });
+
+            assertTrue(firstOperation.get(10, TimeUnit.SECONDS));
+            assertTrue(retry.get(10, TimeUnit.SECONDS));
+        }
+    }
+
     private boolean 차감을_시도한다(
             long rentalId,
             CountDownLatch ready,
@@ -311,18 +439,9 @@ class InkConcurrencyMySqlIntegrationTest {
         try {
             return transactionTemplate.execute(status -> {
                 ready.countDown();
-                try {
-                    start.await(5, TimeUnit.SECONDS);
-                } catch (InterruptedException exception) {
-                    Thread.currentThread().interrupt();
-                    throw new IllegalStateException(exception);
-                }
-                try {
-                    inkService.deductInk(READER_ID, rentalId);
-                    return true;
-                } catch (InsufficientInkException exception) {
-                    return false;
-                }
+                await(start, "두 차감 작업이 제한 시간 안에 시작되어야 합니다.");
+                inkService.deductInk(READER_ID, rentalId);
+                return true;
             });
         } catch (InsufficientInkException exception) {
             return false;
@@ -346,6 +465,15 @@ class InkConcurrencyMySqlIntegrationTest {
             inkService.grantInk(readerId, purchaseId);
             return true;
         });
+    }
+
+    private void await(CountDownLatch latch, String timeoutMessage) {
+        try {
+            assertTrue(latch.await(5, TimeUnit.SECONDS), timeoutMessage);
+        } catch (InterruptedException exception) {
+            Thread.currentThread().interrupt();
+            throw new IllegalStateException(exception);
+        }
     }
 
     private void 페이지_대여를_생성한다(long rentalId) {

@@ -250,6 +250,14 @@ class DemoDataSeederMySqlIntegrationTest {
                         ADDITIONAL_INK_PAYMENT_ID);
         jdbcTemplate.update(
                 """
+                INSERT INTO ink_operation_claim
+                    (reader_id, ink_purchase_id, claim_token)
+                VALUES (?, ?, '00000000-0000-0000-0000-000000000103')
+                """,
+                emptyReaderId,
+                additionalPurchaseId);
+        jdbcTemplate.update(
+                """
                 INSERT INTO ink_ledger
                     (reader_id, type, amount, balance_after, ink_purchase_id, occurred_at)
                 VALUES (?, 'GRANT', 100, 100, ?, '2026-07-28 01:00:00')
@@ -457,11 +465,14 @@ class DemoDataSeederMySqlIntegrationTest {
                 jdbcTemplate.queryForObject(
                         """
                         SELECT COUNT(*)
-                        FROM ink_ledger
-                        WHERE reader_id = ?
-                          AND type = 'GRANT'
-                          AND amount = 100
-                          AND balance_after = 100
+                        FROM ink_ledger ledger
+                        JOIN ink_operation_claim claim
+                          ON claim.reader_id = ledger.reader_id
+                         AND claim.ink_purchase_id = ledger.ink_purchase_id
+                        WHERE ledger.reader_id = ?
+                          AND ledger.type = 'GRANT'
+                          AND ledger.amount = 100
+                          AND ledger.balance_after = 100
                         """,
                         Integer.class,
                         readerId);
@@ -661,6 +672,18 @@ class DemoDataSeederMySqlIntegrationTest {
                                 SELECT COUNT(*)
                                 FROM ink_ledger il
                                 JOIN reader r ON r.id = il.reader_id
+                                WHERE r.email IN (?, ?, ?)
+                                """,
+                                Integer.class,
+                                DemoDataSeeder.RENTAL_READER_EMAIL,
+                                DemoDataSeeder.EMPTY_READER_EMAIL,
+                                DemoDataSeeder.OWNERSHIP_READER_EMAIL),
+                "ink_operation_claim",
+                        jdbcTemplate.queryForObject(
+                                """
+                                SELECT COUNT(*)
+                                FROM ink_operation_claim claim
+                                JOIN reader r ON r.id = claim.reader_id
                                 WHERE r.email IN (?, ?, ?)
                                 """,
                                 Integer.class,

@@ -12,6 +12,7 @@ sensitive_variables=(
   DB_URL
   DB_USERNAME
   DB_PASSWORD
+  DB_ROOT_PASSWORD
   PORTONE_API_SECRET
   PORTONE_WEBHOOK_SECRET
   CONTENT_STORAGE_PATH
@@ -47,7 +48,7 @@ assert_sensitive_values_absent() {
   local variable
   local value
 
-  for variable in DB_URL DB_PASSWORD PORTONE_API_SECRET PORTONE_WEBHOOK_SECRET CONTENT_STORAGE_PATH CONTENT_STORAGE_ROOT;
+  for variable in DB_URL DB_PASSWORD DB_ROOT_PASSWORD PORTONE_API_SECRET PORTONE_WEBHOOK_SECRET CONTENT_STORAGE_PATH CONTENT_STORAGE_ROOT;
   do
     value="${!variable-}"
     if [[ -n "$value" ]] && grep -Fq -- "$value" "$raw_log"; then

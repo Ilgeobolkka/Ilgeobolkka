@@ -22,6 +22,7 @@ class DemoDataSeeder {
     static final String OWNERSHIP_READER_EMAIL = "reader-c@demo.ilgeobolkka.test";
 
     private static final String INK_PAYMENT_ID = "00000000-0000-0000-0000-000000000101";
+    private static final String INK_CLAIM_TOKEN = "00000000-0000-0000-0000-000000000102";
     private static final String OWNERSHIP_PAYMENT_ID =
             "00000000-0000-0000-0000-000000000201";
     private static final LocalDateTime SEED_TIME_UTC =
@@ -268,6 +269,15 @@ class DemoDataSeeder {
                         INK_PAYMENT_ID);
         jdbcTemplate.update(
                 """
+                INSERT INTO ink_operation_claim
+                    (reader_id, ink_purchase_id, claim_token)
+                VALUES (?, ?, ?)
+                """,
+                readerId,
+                inkPurchaseId,
+                INK_CLAIM_TOKEN);
+        jdbcTemplate.update(
+                """
                 INSERT INTO ink_ledger
                     (reader_id, type, amount, balance_after, ink_purchase_id, occurred_at)
                 VALUES (?, 'GRANT', 100, 100, ?, ?)
@@ -364,6 +374,9 @@ class DemoDataSeeder {
                         JOIN ink_purchase ip
                           ON ip.reader_id = il.reader_id
                          AND ip.id = il.ink_purchase_id
+                        JOIN ink_operation_claim claim
+                          ON claim.reader_id = il.reader_id
+                         AND claim.ink_purchase_id = il.ink_purchase_id
                         WHERE ip.reader_id = ?
                           AND ip.payment_id = ?
                           AND ip.status = 'PAID'

@@ -54,6 +54,104 @@ class InkRentalOwnershipSchemaMigrationTest {
     }
 
     @Test
+    void 잉크_처리_claim은_원인별_한_건이고_원인과_독자가_일치해야_한다() {
+        대여_기본_데이터를_생성한다();
+        독자를_생성한다(SECOND_READER_ID);
+        이용권_결제를_생성한다(15_000L, READER_ID, "ink-payment-1", 1_000, 100);
+        이용권_결제를_생성한다(15_001L, SECOND_READER_ID, "ink-payment-2", 1_000, 100);
+        이용권_결제를_생성한다(15_002L, READER_ID, "ink-payment-3", 1_000, 100);
+        페이지_대여를_생성한다(
+                16_000L,
+                READER_ID,
+                "2026-07-26 00:00:00.000000",
+                "2026-08-25 00:00:00.000000");
+        지급_claim을_생성한다(
+                17_000L,
+                READER_ID,
+                15_000L,
+                "00000000-0000-0000-0000-000000017000");
+        차감_claim을_생성한다(
+                17_001L,
+                READER_ID,
+                16_000L,
+                "00000000-0000-0000-0000-000000017001");
+
+        assertAll(
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        지급_claim을_생성한다(
+                                                17_002L,
+                                                READER_ID,
+                                                15_000L,
+                                                "00000000-0000-0000-0000-000000017002")),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        차감_claim을_생성한다(
+                                                17_003L,
+                                                READER_ID,
+                                                16_000L,
+                                                "00000000-0000-0000-0000-000000017003")),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        지급_claim을_생성한다(
+                                                17_004L,
+                                                SECOND_READER_ID,
+                                                15_002L,
+                                                "00000000-0000-0000-0000-000000017004")),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        지급_claim을_생성한다(
+                                                17_005L,
+                                                SECOND_READER_ID,
+                                                15_001L,
+                                                "00000000-0000-0000-0000-000000017000")),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        jdbcTemplate.update(
+                                                """
+                                                INSERT INTO ink_operation_claim
+                                                    (id, reader_id, ink_purchase_id,
+                                                     page_rental_id, claim_token)
+                                                VALUES (?, ?, ?, ?, ?)
+                                                """,
+                                                17_006L,
+                                                READER_ID,
+                                                15_002L,
+                                                16_000L,
+                                                "00000000-0000-0000-0000-000000017006")));
+    }
+
+    @Test
+    void 잉크_처리_claim은_원인_삭제와_함께_삭제된다() {
+        독자를_생성한다(READER_ID);
+        이용권_결제를_생성한다(15_000L, READER_ID, "ink-payment-1", 1_000, 100);
+        지급_claim을_생성한다(
+                17_000L,
+                READER_ID,
+                15_000L,
+                "00000000-0000-0000-0000-000000017000");
+
+        jdbcTemplate.update("DELETE FROM ink_purchase WHERE id = ?", 15_000L);
+
+        assertEquals(
+                0,
+                jdbcTemplate.queryForObject(
+                        "SELECT COUNT(*) FROM ink_operation_claim WHERE id = ?",
+                        Integer.class,
+                        17_000L));
+    }
+
+    @Test
     void 잉크_계정은_독자별_한_행이며_잔액이_음수일_수_없다() {
         독자를_생성한다(READER_ID);
         독자를_생성한다(SECOND_READER_ID);
@@ -552,6 +650,40 @@ class InkRentalOwnershipSchemaMigrationTest {
                 amount,
                 balanceAfter,
                 pageRentalId);
+    }
+
+    private void 지급_claim을_생성한다(
+            long claimId,
+            long readerId,
+            long inkPurchaseId,
+            String claimToken) {
+        jdbcTemplate.update(
+                """
+                INSERT INTO ink_operation_claim
+                    (id, reader_id, ink_purchase_id, claim_token)
+                VALUES (?, ?, ?, ?)
+                """,
+                claimId,
+                readerId,
+                inkPurchaseId,
+                claimToken);
+    }
+
+    private void 차감_claim을_생성한다(
+            long claimId,
+            long readerId,
+            long pageRentalId,
+            String claimToken) {
+        jdbcTemplate.update(
+                """
+                INSERT INTO ink_operation_claim
+                    (id, reader_id, page_rental_id, claim_token)
+                VALUES (?, ?, ?, ?)
+                """,
+                claimId,
+                readerId,
+                pageRentalId,
+                claimToken);
     }
 
     private void 소장_결제를_생성한다(

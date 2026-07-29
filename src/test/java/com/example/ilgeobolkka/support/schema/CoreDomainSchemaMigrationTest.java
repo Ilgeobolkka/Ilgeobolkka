@@ -34,7 +34,7 @@ class CoreDomainSchemaMigrationTest {
     }
 
     @Test
-    void V1_마이그레이션이_현재_ERD의_11개_테이블을_생성한다() {
+    void Flyway_마이그레이션이_현재_ERD의_12개_테이블을_생성한다() {
         List<String> tableNames =
                 jdbcTemplate.queryForList(
                         """
@@ -43,7 +43,8 @@ class CoreDomainSchemaMigrationTest {
                         WHERE table_schema = DATABASE()
                           AND table_name IN (
                               'reader', 'book', 'book_page', 'reading_session',
-                              'ink_account', 'ink_purchase', 'ink_ledger', 'page_rental',
+                              'ink_account', 'ink_purchase', 'ink_ledger',
+                              'ink_operation_claim', 'page_rental',
                               'ownership_payment', 'book_ownership', 'library_entry'
                           )
                         ORDER BY table_name
@@ -57,6 +58,7 @@ class CoreDomainSchemaMigrationTest {
                         "book_page",
                         "ink_account",
                         "ink_ledger",
+                        "ink_operation_claim",
                         "ink_purchase",
                         "library_entry",
                         "ownership_payment",
