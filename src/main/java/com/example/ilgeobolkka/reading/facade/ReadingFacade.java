@@ -3,6 +3,7 @@ package com.example.ilgeobolkka.reading.facade;
 import com.example.ilgeobolkka.book.entity.BookPage;
 import com.example.ilgeobolkka.book.service.BookService;
 import com.example.ilgeobolkka.ink.service.InkService;
+import com.example.ilgeobolkka.library.service.LibraryEntryService;
 import com.example.ilgeobolkka.ownership.service.OwnershipService;
 import com.example.ilgeobolkka.reading.dto.OpenPageResponse;
 import com.example.ilgeobolkka.reading.entity.ReadingSession;
@@ -20,10 +21,9 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * 세션 생성(POST)과 페이지 이동(PATCH)이 공유하는 페이지 열기 유스케이스의 단일 진입점.
  *
- * <p>정책상 처리 순서(docs/prd/product-policy.md "페이지 열기 처리 순서와 원자성")의 1~4단계(도서·페이지
- * 유효성, 온라인 소장은 즉시 제공, 활성 대여 확인, 잠금 뒤 소장·활성 대여 재확인)까지 이번 서브태스크에서
- * 구현한다. 5~7단계(잉크 잔액 확인, 1잉크 차감, {@code PageRental}/{@code LibraryEntry} 저장)는
- * 뒤따르는 서브태스크의 몫이다.
+ * <p>정책상 처리 순서(docs/prd/product-policy.md "페이지 열기 처리 순서와 원자성")의 1~7단계(도서·페이지
+ * 유효성, 온라인 소장은 즉시 제공, 활성 대여 확인, 잠금 뒤 소장·활성 대여 재확인, 잉크 잔액 확인,
+ * 1잉크 차감, {@code PageRental}/{@code LibraryEntry} 저장)까지 모두 구현되어 있다.
  *
  * <p>MySQL InnoDB의 기본 격리 수준(REPEATABLE READ)에서는 잠금 획득(3단계) 뒤에도 일반 조회가
  * 트랜잭션 시작 시점의 스냅숏을 그대로 읽어 재확인(4단계)이 방금 커밋된 소장·대여를 놓칠 수 있다.
@@ -40,6 +40,7 @@ public class ReadingFacade {
     private final ReadingSessionService readingSessionService;
     private final InkService inkService;
     private final PageRentalService pageRentalService;
+    private final LibraryEntryService libraryEntryService;
     private final Clock clock;
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
@@ -76,8 +77,12 @@ public class ReadingFacade {
 
     /**
      * 활성 대여 확인(3단계) → 없으면 {@code InkAccount} 잠금 → 잠금 뒤 소장·활성 대여 재확인(4단계)까지
-     * 처리한다(INV-002, INV-012). 재확인 후에도 권한이 없으면 잉크 잔액 확인·1잉크 차감·{@code
-     * PageRental} 저장(정책 5~7단계)은 뒤따르는 서브태스크의 몫이므로 스텁 예외를 유지한다.
+     * 처리한다(INV-002, INV-012). 재확인 후에도 권한이 없으면 1잉크 차감과 새 30일 {@code PageRental},
+     * {@code LibraryEntry} 마지막 위치를 이 트랜잭션 안에서 원자적으로 저장한다(정책 5~7단계, INV-003,
+     * INV-004). {@code PageRental}을 먼저 저장해 {@code id}를 확보한 뒤 {@code InkService.deduct}를
+     * 호출해야 {@code ink_ledger.page_rental_id} FK를 만족한다. 잔액 부족 시 {@code
+     * InkAccount.deduct()}가 던지는 {@link com.example.ilgeobolkka.ink.exception.InsufficientInkException}
+     * 이 트랜잭션 전체를 롤백한다.
      */
     private OpenPageResponse provideRentedPage(
             long readerId, ResolvedViewer resolvedViewer, BookPage page) {
@@ -102,8 +107,15 @@ public class ReadingFacade {
                     readerId, resolvedViewer, page, reconfirmedRental.get());
         }
 
-        throw new UnsupportedOperationException(
-                "잉크 잔액 확인과 새 대여 저장(정책 5~7단계)은 아직 구현되지 않았습니다.");
+        PageRental rental = pageRentalService.rent(readerId, page.getId(), now);
+        inkService.deduct(readerId, rental.getId(), now);
+        libraryEntryService.recordLastPosition(readerId, page, now);
+
+        ReadingSession session = openOrMoveSession(readerId, resolvedViewer, page);
+        int inkBalance = inkService.getBalance(readerId);
+
+        return OpenPageResponse.newlyRented(
+                session, page, inkBalance, rental.getRentedAt(), rental.getExpiresAt());
     }
 
     private OpenPageResponse provideAlreadyRentedPage(

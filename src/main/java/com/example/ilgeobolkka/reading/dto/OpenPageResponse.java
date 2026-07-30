@@ -31,6 +31,16 @@ public record OpenPageResponse(
         return of(session, page, false, 0, inkBalance, rentedAt, expiresAt);
     }
 
+    /** 소장·활성 대여가 없어 1잉크를 차감하고 새 30일 대여를 시작한 페이지의 응답이다. */
+    public static OpenPageResponse newlyRented(
+            ReadingSession session,
+            BookPage page,
+            int inkBalance,
+            Instant rentedAt,
+            Instant expiresAt) {
+        return of(session, page, false, 1, inkBalance, rentedAt, expiresAt);
+    }
+
     private static OpenPageResponse of(
             ReadingSession session,
             BookPage page,

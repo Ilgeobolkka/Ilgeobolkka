@@ -13,6 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+import java.time.Duration;
 import java.time.Instant;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -28,6 +29,8 @@ import lombok.NoArgsConstructor;
                         columnNames = {"reader_id", "id"}))
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PageRental {
+
+    private static final Duration RENTAL_PERIOD = Duration.ofDays(30);
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,4 +65,14 @@ public class PageRental {
 
     @Column(name = "expires_at", nullable = false, columnDefinition = "DATETIME(6)")
     private Instant expiresAt;
+
+    /** 1잉크 차감이 완료된 서버 시각부터 30일짜리 대여를 새로 만든다(정책 "페이지 열기와 30일 대여"). */
+    public static PageRental rent(long readerId, long bookPageId, Instant rentedAt) {
+        PageRental rental = new PageRental();
+        rental.readerId = readerId;
+        rental.bookPageId = bookPageId;
+        rental.rentedAt = rentedAt;
+        rental.expiresAt = rentedAt.plus(RENTAL_PERIOD);
+        return rental;
+    }
 }

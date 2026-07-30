@@ -71,4 +71,21 @@ public class LibraryEntry {
 
     @Column(name = "updated_at", nullable = false, columnDefinition = "DATETIME(6)")
     private Instant updatedAt;
+
+    /** 독자가 처음 마지막 위치를 기록할 때 새 {@link LibraryEntry} 행을 만든다. */
+    public static LibraryEntry create(long readerId, BookPage page, Instant updatedAt) {
+        LibraryEntry entry = new LibraryEntry();
+        entry.readerId = readerId;
+        entry.bookId = page.getBookId();
+        entry.lastPageNumber = page.getPageNumber();
+        entry.updatedAt = updatedAt;
+        return entry;
+    }
+
+    /** 이미 기록된 마지막 위치를 새 페이지로 갱신한다. */
+    public void moveTo(BookPage page, Instant updatedAt) {
+        this.bookId = page.getBookId();
+        this.lastPageNumber = page.getPageNumber();
+        this.updatedAt = updatedAt;
+    }
 }

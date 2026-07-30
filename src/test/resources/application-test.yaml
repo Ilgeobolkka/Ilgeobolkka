@@ -1,3 +1,13 @@
 spring:
   datasource:
     url: ${TEST_DB_URL:jdbc:mysql://localhost:3307/ilgeobolkka_test?allowPublicKeyRetrieval=true&sslMode=DISABLED}
+    hikari:
+      # 테스트 컨텍스트마다 커넥션 풀이 하나씩 생기고, Spring 이 컨텍스트를 캐시해 두므로
+      # 풀이 동시에 여러 개 살아 있는다. Hikari 기본값(maximum-pool-size 10, minimum-idle 은
+      # maximum 과 동일)으로는 컨텍스트가 16개만 돼도 160개를 요구해 MySQL 기본
+      # max_connections(151)를 넘고, 뒤에 로드되는 컨텍스트가 Flyway 연결부터 실패한다.
+      #
+      # 통합 테스트가 한 컨텍스트에서 동시에 필요한 커넥션은 잠금 대기 검증(스레드 2개 +
+      # 픽스처 조회)이 가장 많아 3개다. 4로 두고 유휴 시에는 1개만 유지한다.
+      maximum-pool-size: 4
+      minimum-idle: 1

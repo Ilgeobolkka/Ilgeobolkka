@@ -6,6 +6,8 @@ import java.time.Instant;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,5 +22,17 @@ public class PageRentalService {
      */
     public Optional<PageRental> findActive(long readerId, long bookPageId, Instant now) {
         return pageRentalRepository.findActive(readerId, bookPageId, now).stream().findFirst();
+    }
+
+    /**
+     * 1잉크 차감보다 먼저 저장해 {@code id}를 확보해야 한다(ink_ledger의 page_rental_id FK).
+     *
+     * <p>{@code MANDATORY}로 호출자의 트랜잭션 합류를 강제한다. 애노테이션이 없으면 트랜잭션
+     * 밖에서 호출될 때 이 {@code save}가 자기 트랜잭션으로 개별 커밋되어, 뒤따르는 차감이
+     * 실패해도 대여만 남는다. INV-003(차감과 대여의 원자성)이 조용히 깨지는 경로다.
+     */
+    @Transactional(propagation = Propagation.MANDATORY)
+    public PageRental rent(long readerId, long bookPageId, Instant rentedAt) {
+        return pageRentalRepository.save(PageRental.rent(readerId, bookPageId, rentedAt));
     }
 }
