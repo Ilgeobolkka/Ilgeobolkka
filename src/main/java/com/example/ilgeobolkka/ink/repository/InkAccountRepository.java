@@ -10,6 +10,8 @@ import org.springframework.data.repository.query.Param;
 
 public interface InkAccountRepository extends JpaRepository<InkAccount, Long> {
 
+    Optional<InkAccount> findByReaderId(long readerId);
+
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("SELECT account FROM InkAccount account WHERE account.readerId = :readerId")
     Optional<InkAccount> findByReaderIdForUpdate(@Param("readerId") long readerId);

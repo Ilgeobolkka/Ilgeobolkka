@@ -2,6 +2,10 @@ package com.example.ilgeobolkka.global.exception;
 
 import com.example.ilgeobolkka.auth.exception.InvalidCredentialsException;
 import com.example.ilgeobolkka.book.exception.BookNotFoundException;
+import com.example.ilgeobolkka.infra.portone.PortOnePaymentUnavailableException;
+import com.example.ilgeobolkka.ink.exception.InkPurchaseNotFoundException;
+import com.example.ilgeobolkka.ink.exception.PaymentStateConflictException;
+import com.example.ilgeobolkka.ink.exception.PaymentVerificationException;
 import com.example.ilgeobolkka.reader.exception.EmailAlreadyExistsException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -58,10 +62,31 @@ public class GlobalExceptionHandler {
         return response(ErrorCode.INVALID_CREDENTIALS);
     }
 
-    @ExceptionHandler(BookNotFoundException.class)
-    ResponseEntity<ApiErrorResponse> handleResourceNotFound(BookNotFoundException exception) {
+    @ExceptionHandler({BookNotFoundException.class, InkPurchaseNotFoundException.class})
+    ResponseEntity<ApiErrorResponse> handleResourceNotFound(Exception exception) {
         logFailure(ErrorCode.RESOURCE_NOT_FOUND, exception);
         return response(ErrorCode.RESOURCE_NOT_FOUND);
+    }
+
+    @ExceptionHandler(PaymentStateConflictException.class)
+    ResponseEntity<ApiErrorResponse> handlePaymentStateConflict(
+            PaymentStateConflictException exception) {
+        logFailure(ErrorCode.PAYMENT_STATE_CONFLICT, exception);
+        return response(ErrorCode.PAYMENT_STATE_CONFLICT);
+    }
+
+    @ExceptionHandler(PaymentVerificationException.class)
+    ResponseEntity<ApiErrorResponse> handlePaymentVerification(
+            PaymentVerificationException exception) {
+        logFailure(exception.errorCode(), exception);
+        return response(exception.errorCode());
+    }
+
+    @ExceptionHandler(PortOnePaymentUnavailableException.class)
+    ResponseEntity<ApiErrorResponse> handlePaymentProviderUnavailable(
+            PortOnePaymentUnavailableException exception) {
+        logFailure(ErrorCode.PAYMENT_PROVIDER_UNAVAILABLE, exception);
+        return response(ErrorCode.PAYMENT_PROVIDER_UNAVAILABLE);
     }
 
     @ExceptionHandler(Exception.class)

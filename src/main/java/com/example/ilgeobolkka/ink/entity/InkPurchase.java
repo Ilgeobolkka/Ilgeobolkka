@@ -35,6 +35,9 @@ import org.hibernate.type.SqlTypes;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class InkPurchase {
 
+    public static final int PACKAGE_AMOUNT_WON = 1_000;
+    public static final int PACKAGE_GRANTED_INK = 100;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -71,4 +74,46 @@ public class InkPurchase {
 
     @Column(name = "paid_at", columnDefinition = "DATETIME(6)")
     private Instant paidAt;
+
+    public static InkPurchase create(long readerId, UUID paymentId, Instant createdAt) {
+        if (readerId <= 0) {
+            throw new IllegalArgumentException("독자 ID는 양수여야 합니다.");
+        }
+        if (paymentId == null) {
+            throw new IllegalArgumentException("결제 ID는 필수입니다.");
+        }
+        if (createdAt == null) {
+            throw new IllegalArgumentException("결제 생성 시각은 필수입니다.");
+        }
+
+        InkPurchase purchase = new InkPurchase();
+        purchase.readerId = readerId;
+        purchase.paymentId = paymentId;
+        purchase.status = InkPurchaseStatus.PENDING;
+        purchase.amountWon = PACKAGE_AMOUNT_WON;
+        purchase.grantedInk = PACKAGE_GRANTED_INK;
+        purchase.createdAt = createdAt;
+        return purchase;
+    }
+
+    public void markPaid(Instant paidAt) {
+        requirePending();
+        if (paidAt == null) {
+            throw new IllegalArgumentException("결제 완료 시각은 필수입니다.");
+        }
+        status = InkPurchaseStatus.PAID;
+        this.paidAt = paidAt;
+    }
+
+    public void markFailed() {
+        requirePending();
+        status = InkPurchaseStatus.FAILED;
+        paidAt = null;
+    }
+
+    private void requirePending() {
+        if (status != InkPurchaseStatus.PENDING) {
+            throw new IllegalStateException("PENDING 결제만 상태를 변경할 수 있습니다.");
+        }
+    }
 }
