@@ -49,8 +49,9 @@ Spring datasource는 아래 `DB_*`를 프로젝트의 권장 계약으로 사용
 AWS 운영은 `prod` 프로필을 명시합니다.
 
 시연 데이터 자동 생성기는 `local`·`demo` 프로필에서만 등록되고, `DEMO_VALIDATION_PASSWORD`가 비어
-있으면 아무 데이터도 만들지 않습니다. 조건을 만족한 첫 시작에는 고정 도서 ID 1~100과 페이지,
-아래 계정 3개를 하나의 트랜잭션으로 생성합니다.
+있으면 아무 데이터도 만들지 않습니다. 조건을 만족한 첫 시작에는 고정 도서 ID 1~100의 메타데이터와
+아래 계정 3개를 하나의 트랜잭션으로 생성합니다. 페이지는 일반 서버 시작 전에
+[`content-import` 배치](#콘텐츠-변환적재)로 별도 적재해야 합니다.
 
 | 이메일 | 용도 |
 | --- | --- |
@@ -58,9 +59,10 @@ AWS 운영은 `prod` 프로필을 명시합니다.
 | `reader-b@demo.ilgeobolkka.test` | 0잉크·잉크 부족 검증 |
 | `reader-c@demo.ilgeobolkka.test` | 0잉크·Book 1 온라인 소장 검증 |
 
-재시작할 때 같은 도서·페이지는 중복 생성하지 않고 세 계정의 현재 잉크·서재 진행 상태도 초기화하지
-않습니다. 주입한 비밀번호가 바뀌면 세 계정의 비밀번호 해시만 갱신합니다. 고정 도서 ID나 페이지에 다른
-데이터가 있거나 시연 계정이 일부만 존재하면 기존 데이터를 덮어쓰지 않고 시작을 거부합니다.
+재시작할 때 같은 도서 메타데이터는 중복 생성하지 않고 세 계정의 현재 잉크·서재 진행 상태도 초기화하지
+않습니다. 주입한 비밀번호가 바뀌면 세 계정의 비밀번호 해시만 갱신합니다. 고정 도서 ID가 충돌하거나,
+변환 페이지 수가 다르거나 IMAGE 파일이 없거나, 시연 계정이 일부만 존재하면 기존 데이터를 덮어쓰지 않고
+시작을 거부합니다.
 
 `test` 프로필은 자동 시드를 등록하지 않으며 각 테스트가 필요한 fixture만 직접 생성합니다. `prod`
 프로필에서는 자동·수동 여부와 관계없이 이 시연 데이터 생성기를 사용할 수 없습니다. 실제 운영 도서
@@ -133,6 +135,41 @@ docker compose up -d --wait
 cp .env.example .env
 docker compose up -d --wait
 docker compose exec -T mysql sh /docker-entrypoint-initdb.d/01-create-test-database.sh
+```
+
+시연 계정의 소장·서재 외래 키는 고정 PDF에서 적재한 `book_page`를 참조합니다. 새 DB에서
+`DEMO_VALIDATION_PASSWORD`를 주입하기 전 아래 콘텐츠 배치를 한 번 완료해야 합니다.
+
+### 콘텐츠 변환·적재
+
+`pdftotext`와 `pdftoppm`은 모두 Poppler `26.05.0`이어야 합니다. 먼저 실제 실행 경로와 버전을
+확인합니다.
+
+```bash
+PDFTOTEXT_COMMAND="$(command -v pdftotext)"
+PDFTOPPM_COMMAND="$(command -v pdftoppm)"
+"$PDFTOTEXT_COMMAND" -v
+"$PDFTOPPM_COMMAND" -v
+```
+
+`.env`의 로컬 DB 연결을 사용해 HTTP 서버와 분리된 배치를 실행합니다.
+
+```bash
+SPRING_PROFILES_ACTIVE=content-import \
+PDFTOTEXT_COMMAND="$PDFTOTEXT_COMMAND" \
+PDFTOPPM_COMMAND="$PDFTOPPM_COMMAND" \
+./gradlew bootRun
+```
+
+기본 입력은 `fixtures/content/manifest.json`, 출력은 Git 제외
+`var/content/pages/<manifestSha256>/`입니다. 경로를 바꿔야 할 때만
+`CONTENT_IMPORT_MANIFEST`, `CONTENT_IMPORT_OUTPUT_ROOT`를 주입합니다. 배치는 PDF 100권·400페이지,
+SHA-256, 연속 페이지 번호와 TEXT/IMAGE 산출물을 모두 검증한 뒤 도서 메타데이터와 `BookPage`를 한 DB
+트랜잭션으로 적재하고 종료합니다.
+
+배치 성공 후 시연 계정 비밀번호를 `.env`에 주입하고 일반 서버를 시작합니다.
+
+```bash
 ./gradlew bootRun
 ```
 

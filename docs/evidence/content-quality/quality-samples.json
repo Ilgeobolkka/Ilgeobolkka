@@ -1,0 +1,334 @@
+{
+  "manifestSha256": "edc689a910ff624bd536e40fe9a37f30e72fd44231995036fa22378e20c041eb",
+  "conversion": {
+    "pdftotextVersion": "26.05.0",
+    "pdftoppmVersion": "26.05.0",
+    "imageFormat": "JPEG",
+    "dpi": 150,
+    "quality": 85
+  },
+  "inspection": {
+    "date": "2026-07-30",
+    "imageScales": [
+      "100%",
+      "200%"
+    ],
+    "result": "PASS",
+    "summary": "카테고리별 대표 10권의 첫·중간·마지막 페이지와 IMAGE 위험 페이지에서 잘림, 글자 순서 변경, 가는 요소 누락, 식별 가능한 압축 손상이 없었다."
+  },
+  "riskCoverage": [
+    {
+      "kind": "SMALL_TEXT",
+      "pageNumber": null,
+      "result": "NOT_APPLICABLE",
+      "exclusionReason": "현재 시연 IMAGE 페이지 10종에는 글자가 없고 텍스트 페이지 본문은 별도 읽기 순서 검증 대상이다."
+    },
+    {
+      "kind": "TABLE",
+      "pageNumber": null,
+      "result": "NOT_APPLICABLE",
+      "exclusionReason": "현재 시연 IMAGE 페이지 10종에는 표가 없다."
+    },
+    {
+      "kind": "FORMULA",
+      "pageNumber": null,
+      "result": "NOT_APPLICABLE",
+      "exclusionReason": "현재 시연 IMAGE 페이지 10종에는 수식이 없다."
+    },
+    {
+      "kind": "ILLUSTRATION",
+      "pageNumbers": [
+        2
+      ],
+      "bookIds": [
+        1,
+        11,
+        21,
+        31,
+        41,
+        51,
+        61,
+        71,
+        81,
+        91
+      ],
+      "result": "PASS"
+    },
+    {
+      "kind": "FINE_LINE",
+      "pageNumbers": [
+        2
+      ],
+      "bookIds": [
+        1,
+        11,
+        21,
+        31,
+        41,
+        51,
+        61,
+        71,
+        81,
+        91
+      ],
+      "result": "PASS"
+    }
+  ],
+  "samples": [
+    {
+      "bookId": 1,
+      "category": "소설",
+      "sourceSha256": "b5c7acde5060bc21c42f1112b4a26dca79dca87b5579947a9e71f03ad5dd52e9",
+      "totalPageCount": 4,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "reason": "첫 페이지 TEXT 글자·문장 순서",
+          "result": "PASS"
+        },
+        {
+          "pageNumber": 2,
+          "reason": "중간 IMAGE, 전선·나뭇가지·젖은 표면의 가는 선",
+          "imageBytes": 181422,
+          "result": "PASS"
+        },
+        {
+          "pageNumber": 4,
+          "reason": "마지막 페이지 TEXT 글자·문장 순서",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "bookId": 11,
+      "category": "에세이",
+      "sourceSha256": "2be39a80ab38518aa6bb3d1cff38d6692551b1fb7cd519e9d86181f307864980",
+      "totalPageCount": 5,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "reason": "첫 페이지 TEXT 글자·문장 순서",
+          "result": "PASS"
+        },
+        {
+          "pageNumber": 3,
+          "reason": "중간 페이지 TEXT 글자·문장 순서",
+          "result": "PASS"
+        },
+        {
+          "pageNumber": 5,
+          "reason": "마지막 페이지 TEXT 글자·문장 순서",
+          "result": "PASS"
+        },
+        {
+          "pageNumber": 2,
+          "reason": "IMAGE, 빗방울·가는 가지·유리 윤곽",
+          "imageBytes": 210093,
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "bookId": 21,
+      "category": "과학",
+      "sourceSha256": "0d7b985564c60e8f57afe333d8f1769007b2dc327b38d244f65f303e5ae01202",
+      "totalPageCount": 3,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "reason": "첫 페이지 TEXT 글자·문장 순서",
+          "result": "PASS"
+        },
+        {
+          "pageNumber": 2,
+          "reason": "중간 IMAGE, 잔뿌리·균사·작은 생물의 세부",
+          "imageBytes": 305914,
+          "result": "PASS"
+        },
+        {
+          "pageNumber": 3,
+          "reason": "마지막 페이지 TEXT 글자·문장 순서",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "bookId": 31,
+      "category": "역사",
+      "sourceSha256": "1be9e288d6bcc59633a30833c4f83ed9fee924e21814a4eaf8cfb7a6a38f5565",
+      "totalPageCount": 4,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "reason": "첫 페이지 TEXT 글자·문장 순서",
+          "result": "PASS"
+        },
+        {
+          "pageNumber": 2,
+          "reason": "중간 IMAGE, 원거리 인물·기와·직물 경계",
+          "imageBytes": 231843,
+          "result": "PASS"
+        },
+        {
+          "pageNumber": 4,
+          "reason": "마지막 페이지 TEXT 글자·문장 순서",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "bookId": 41,
+      "category": "경제",
+      "sourceSha256": "0f4f1fea29a59fde792c04b2392d4e26ea0d73cc1f2482977a9999b132f35e8e",
+      "totalPageCount": 5,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "reason": "첫 페이지 TEXT 글자·문장 순서",
+          "result": "PASS"
+        },
+        {
+          "pageNumber": 3,
+          "reason": "중간 페이지 TEXT 글자·문장 순서",
+          "result": "PASS"
+        },
+        {
+          "pageNumber": 5,
+          "reason": "마지막 페이지 TEXT 글자·문장 순서",
+          "result": "PASS"
+        },
+        {
+          "pageNumber": 2,
+          "reason": "IMAGE, 동전·잎·꽃잎의 작은 반복 요소",
+          "imageBytes": 273713,
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "bookId": 51,
+      "category": "철학",
+      "sourceSha256": "a5cdf3099c3f0ab243cf572a072d49b01dbdba08e1886fc1397da5a8c9a46f66",
+      "totalPageCount": 3,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "reason": "첫 페이지 TEXT 글자·문장 순서",
+          "result": "PASS"
+        },
+        {
+          "pageNumber": 2,
+          "reason": "중간 IMAGE, 가지·별·반사 경계의 가는 선",
+          "imageBytes": 213899,
+          "result": "PASS"
+        },
+        {
+          "pageNumber": 3,
+          "reason": "마지막 페이지 TEXT 글자·문장 순서",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "bookId": 61,
+      "category": "예술",
+      "sourceSha256": "86472b3ec0596ecd931b0e1890ab9807629141649f13c5d22f1c4afd62eabbaf",
+      "totalPageCount": 4,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "reason": "첫 페이지 TEXT 글자·문장 순서",
+          "result": "PASS"
+        },
+        {
+          "pageNumber": 2,
+          "reason": "중간 IMAGE, 해칭·붓 자국·종이 결",
+          "imageBytes": 278664,
+          "result": "PASS"
+        },
+        {
+          "pageNumber": 4,
+          "reason": "마지막 페이지 TEXT 글자·문장 순서",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "bookId": 71,
+      "category": "기술",
+      "sourceSha256": "2cc68f2ea4da0787b957b0f76854651d7a4832698530876ed7a62f02af258cec",
+      "totalPageCount": 5,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "reason": "첫 페이지 TEXT 글자·문장 순서",
+          "result": "PASS"
+        },
+        {
+          "pageNumber": 3,
+          "reason": "중간 페이지 TEXT 글자·문장 순서",
+          "result": "PASS"
+        },
+        {
+          "pageNumber": 5,
+          "reason": "마지막 페이지 TEXT 글자·문장 순서",
+          "result": "PASS"
+        },
+        {
+          "pageNumber": 2,
+          "reason": "IMAGE, 발광 네트워크 선·서버 장비 세부",
+          "imageBytes": 209254,
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "bookId": 81,
+      "category": "여행",
+      "sourceSha256": "2177be0191356cf0e861b11cb2e513e0624ef66a2ebe813bf067e1389caca8c0",
+      "totalPageCount": 3,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "reason": "첫 페이지 TEXT 글자·문장 순서",
+          "result": "PASS"
+        },
+        {
+          "pageNumber": 2,
+          "reason": "중간 IMAGE, 풀잎·돌담·해안 윤곽",
+          "imageBytes": 266187,
+          "result": "PASS"
+        },
+        {
+          "pageNumber": 3,
+          "reason": "마지막 페이지 TEXT 글자·문장 순서",
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "bookId": 91,
+      "category": "자기계발",
+      "sourceSha256": "d3c57f180e580eac39f87d5a899bd92ab6a8bbeb1b93d78313ac0e016d178737",
+      "totalPageCount": 4,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "reason": "첫 페이지 TEXT 글자·문장 순서",
+          "result": "PASS"
+        },
+        {
+          "pageNumber": 2,
+          "reason": "중간 IMAGE, 신발끈·직물 줄무늬·유리병 경계",
+          "imageBytes": 181262,
+          "result": "PASS"
+        },
+        {
+          "pageNumber": 4,
+          "reason": "마지막 페이지 TEXT 글자·문장 순서",
+          "result": "PASS"
+        }
+      ]
+    }
+  ]
+}

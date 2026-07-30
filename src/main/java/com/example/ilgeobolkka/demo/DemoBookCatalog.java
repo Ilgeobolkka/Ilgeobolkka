@@ -2,7 +2,6 @@ package com.example.ilgeobolkka.demo;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -13,8 +12,8 @@ import org.springframework.stereotype.Component;
 import tools.jackson.databind.ObjectMapper;
 
 @Component
-@Profile("!prod & (local | demo | test)")
-class DemoBookCatalog {
+@Profile("!prod & (local | demo | test | content-import)")
+public class DemoBookCatalog {
 
     private static final int BOOK_COUNT = 100;
     private static final String BOOK_RESOURCE_PATH = "demo/books.json";
@@ -25,7 +24,7 @@ class DemoBookCatalog {
         this.books = loadBooks(objectMapper);
     }
 
-    List<BookSeed> books() {
+    public List<BookSeed> books() {
         return books;
     }
 
@@ -61,11 +60,6 @@ class DemoBookCatalog {
     }
 
     private BookSeed createBook(BookMetadata metadata) {
-        List<PageSeed> pages = new ArrayList<>(metadata.totalPageCount());
-        for (int pageNumber = 1; pageNumber <= metadata.totalPageCount(); pageNumber++) {
-            pages.add(createPage(metadata, pageNumber));
-        }
-
         return new BookSeed(
                 metadata.id(),
                 metadata.category(),
@@ -74,34 +68,7 @@ class DemoBookCatalog {
                 metadata.description(),
                 metadata.coverImagePath(),
                 metadata.totalPageCount(),
-                metadata.priceWon(),
-                List.copyOf(pages));
-    }
-
-    private PageSeed createPage(BookMetadata book, int pageNumber) {
-        if (pageNumber == 2) {
-            return new PageSeed(
-                    pageNumber,
-                    "IMAGE",
-                    null,
-                    "demo/book-pages/"
-                            + book.coverImagePath()
-                                    .substring(book.coverImagePath().lastIndexOf('/') + 1)
-                                    .replace(".svg", ".png"));
-        }
-
-        return new PageSeed(
-                pageNumber,
-                "TEXT",
-                """
-                %s
-
-                %s이 작성한 가상 본문의 %d페이지입니다.
-                이 문장은 원본 페이지 번호와 텍스트 순서 검증을 위한 결정적 시드입니다.
-                """
-                        .formatted(book.title(), book.author(), pageNumber)
-                        .strip(),
-                null);
+                metadata.priceWon());
     }
 
     private record BookMetadata(
@@ -114,7 +81,7 @@ class DemoBookCatalog {
             int totalPageCount,
             int priceWon) {}
 
-    record BookSeed(
+    public record BookSeed(
             long id,
             String category,
             String title,
@@ -122,12 +89,5 @@ class DemoBookCatalog {
             String description,
             String coverImagePath,
             int totalPageCount,
-            int priceWon,
-            List<PageSeed> pages) {}
-
-    record PageSeed(
-            int pageNumber,
-            String contentType,
-            String textContent,
-            String imagePath) {}
+            int priceWon) {}
 }
