@@ -18,6 +18,14 @@ public interface InkPurchaseRepository extends JpaRepository<InkPurchase, Long> 
             SELECT purchase
             FROM InkPurchase purchase
             WHERE purchase.paymentId = :paymentId
+            """)
+    Optional<InkPurchase> findByPaymentIdForUpdate(@Param("paymentId") UUID paymentId);
+
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @Query("""
+            SELECT purchase
+            FROM InkPurchase purchase
+            WHERE purchase.paymentId = :paymentId
               AND purchase.readerId = :readerId
             """)
     Optional<InkPurchase> findByPaymentIdAndReaderIdForUpdate(

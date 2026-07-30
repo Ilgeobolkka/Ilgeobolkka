@@ -11,8 +11,9 @@
 - 화면과 결제 흐름은 데스크톱 브라우저만 지원합니다.
 - 아래 표의 경로와 응답은 합의된 범위입니다.
 - 결제는 PortOne V2 테스트 채널까지만 구현하며 운영 실결제는 활성화하지 않습니다.
-- 도서 목록·검색·상세와 잉크 구매 준비·완료 Controller, PortOne JVM SDK 결제 조회 경계까지 구현됐습니다.
-  PortOne 웹훅·잉크 조회·소장 결제와 나머지 도메인 기능은 아직 구현 전입니다.
+- 도서 목록·검색·상세와 잉크 잔액·내역 조회, 잉크 구매 준비·완료 Controller, PortOne JVM SDK 결제
+  조회·웹훅 서명 검증 및 멱등 완료 경계까지 구현됐습니다. 소장 결제와 나머지 도메인 기능은 아직
+  구현 전입니다.
 
 ## 공통 규칙
 
@@ -497,6 +498,9 @@ PortOne 테스트 채널만 가리키며 운영 실결제 채널은 설정하지
 웹훅은 `Transaction.Paid`와 `Transaction.Failed`만 상태 처리 대상으로 삼습니다. 그 밖의 정상 서명
 이벤트와 알 수 없는 유형은 상태를 바꾸지 않고 `200 OK`, 서명 누락·불일치는
 `400 INVALID_WEBHOOK_SIGNATURE`, PortOne 조회 장애나 내부 일시 오류는 재전송을 위해 `5xx`로 응답합니다.
+정상 서명된 처리 대상 이벤트라도 `paymentId`에 대응하는 내부 결제 준비 기록이 없으면
+`404 RESOURCE_NOT_FOUND`로 응답해 일시적인 기록 불일치에 대한 PortOne 재전송을 허용하며, 결제 상태와
+도메인 효과는 만들지 않습니다.
 
 소장 결제 내역은 `PAID`만 한 페이지에 10개씩 `paidAt DESC, id DESC`로 제공합니다. 각 항목은
 `paymentId`, `bookId`, `bookTitle`, `amountWon`, `paidAt`, `owned`를 포함합니다. `PENDING`·`FAILED`는

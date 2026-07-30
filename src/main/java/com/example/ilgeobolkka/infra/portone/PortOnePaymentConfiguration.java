@@ -1,6 +1,7 @@
 package com.example.ilgeobolkka.infra.portone;
 
 import io.portone.sdk.server.payment.PaymentClient;
+import io.portone.sdk.server.webhook.WebhookVerifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -28,5 +29,11 @@ public class PortOnePaymentConfiguration {
     @ConditionalOnProperty(prefix = "portone.payment", name = "enabled", havingValue = "true")
     PortOnePaymentGateway portOnePaymentGateway(PaymentClient paymentClient) {
         return new PortOneSdkPaymentGateway(paymentClient);
+    }
+
+    @Bean
+    @ConditionalOnProperty(prefix = "portone.payment", name = "enabled", havingValue = "true")
+    PortOneWebhookVerifier portOneWebhookVerifier(PortOnePaymentProperties properties) {
+        return new PortOneWebhookVerifier(new WebhookVerifier(properties.webhookSecret()));
     }
 }
