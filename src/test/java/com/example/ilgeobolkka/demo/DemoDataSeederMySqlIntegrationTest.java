@@ -9,11 +9,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
-import javax.imageio.ImageIO;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,27 +41,35 @@ class DemoDataSeederMySqlIntegrationTest {
     private static final String OWNERSHIP_PAYMENT_ID =
             "00000000-0000-0000-0000-000000000201";
 
+    @TempDir Path contentOutputDirectory;
+
     private final DemoDataSeeder demoDataSeeder;
+    private final DemoBookCatalog demoBookCatalog;
+    private final DemoBookWriter demoBookWriter;
     private final JdbcTemplate jdbcTemplate;
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
     DemoDataSeederMySqlIntegrationTest(
             DemoDataSeeder demoDataSeeder,
+            DemoBookCatalog demoBookCatalog,
+            DemoBookWriter demoBookWriter,
             JdbcTemplate jdbcTemplate,
             PasswordEncoder passwordEncoder) {
         this.demoDataSeeder = demoDataSeeder;
+        this.demoBookCatalog = demoBookCatalog;
+        this.demoBookWriter = demoBookWriter;
         this.jdbcTemplate = jdbcTemplate;
         this.passwordEncoder = passwordEncoder;
     }
 
     @Test
     void 시드하면_100권과_상태별_계정_3개가_생성된다() {
-        demoDataSeeder.seed(DEMO_PASSWORD);
+        시연_데이터_시드(DEMO_PASSWORD);
 
         assertAll(
                 this::도서_시드가_계약과_일치한다,
-                this::페이지_시드가_계약과_일치한다,
+                this::페이지는_전용_배치가_준비한_400개를_유지한다,
                 this::검색_경계_시드가_존재한다,
                 this::대여_검증_계정이_100잉크와_지급_원장을_가진다,
                 this::잉크_부족_검증_계정이_0잉크와_빈_원장을_가진다,
@@ -68,11 +79,11 @@ class DemoDataSeederMySqlIntegrationTest {
 
     @Test
     void 시드를_다시_실행해도_행이_중복되지_않는다() {
-        demoDataSeeder.seed(DEMO_PASSWORD);
+        시연_데이터_시드(DEMO_PASSWORD);
         Map<String, Integer> firstCounts = 주요_시드_행_개수();
         List<String> firstPasswordHashes = 시연_계정_비밀번호_해시();
 
-        demoDataSeeder.seed(DEMO_PASSWORD);
+        시연_데이터_시드(DEMO_PASSWORD);
 
         assertAll(
                 () -> assertEquals(firstCounts, 주요_시드_행_개수()),
@@ -81,7 +92,7 @@ class DemoDataSeederMySqlIntegrationTest {
 
     @Test
     void 시드_시각은_MySQL_DATETIME에_UTC_원시값으로_저장된다() {
-        demoDataSeeder.seed(DEMO_PASSWORD);
+        시연_데이터_시드(DEMO_PASSWORD);
 
         List<String> rawTimes =
                 jdbcTemplate.queryForList(
@@ -149,11 +160,11 @@ class DemoDataSeederMySqlIntegrationTest {
 
     @Test
     void 주입한_비밀번호가_바뀌면_기존_시연_계정의_해시만_갱신한다() {
-        demoDataSeeder.seed(DEMO_PASSWORD);
+        시연_데이터_시드(DEMO_PASSWORD);
         Map<String, Integer> firstCounts = 주요_시드_행_개수();
         String changedPassword = "Changed-demo2@";
 
-        demoDataSeeder.seed(changedPassword);
+        시연_데이터_시드(changedPassword);
 
         assertAll(
                 () -> assertEquals(firstCounts, 주요_시드_행_개수()),
@@ -191,8 +202,8 @@ class DemoDataSeederMySqlIntegrationTest {
                                 64,
                                 maximumBytePassword.getBytes(StandardCharsets.UTF_8).length));
 
-        demoDataSeeder.seed(minimumLengthPassword);
-        demoDataSeeder.seed(maximumBytePassword);
+        시연_데이터_시드(minimumLengthPassword);
+        시연_데이터_시드(maximumBytePassword);
 
         assertTrue(
                 시연_계정_비밀번호_해시().stream()
@@ -201,7 +212,7 @@ class DemoDataSeederMySqlIntegrationTest {
 
     @Test
     void 기존_잉크_지급_결제가_PAID가_아니면_재시드를_거부한다() {
-        demoDataSeeder.seed(DEMO_PASSWORD);
+        시연_데이터_시드(DEMO_PASSWORD);
         jdbcTemplate.update(
                 """
                 UPDATE ink_purchase
@@ -215,7 +226,7 @@ class DemoDataSeederMySqlIntegrationTest {
 
     @Test
     void 기존_잉크_지급이_Reader_A가_아니면_재시드를_거부한다() {
-        demoDataSeeder.seed(DEMO_PASSWORD);
+        시연_데이터_시드(DEMO_PASSWORD);
         잉크_지급을_다른_독자에게_옮긴다();
 
         assertThrows(IllegalStateException.class, () -> demoDataSeeder.seed(DEMO_PASSWORD));
@@ -223,7 +234,7 @@ class DemoDataSeederMySqlIntegrationTest {
 
     @Test
     void 기존_잉크_잔액과_원장_합계가_다르면_재시드를_거부한다() {
-        demoDataSeeder.seed(DEMO_PASSWORD);
+        시연_데이터_시드(DEMO_PASSWORD);
         long emptyReaderId = 독자_ID(DemoDataSeeder.EMPTY_READER_EMAIL);
         jdbcTemplate.update(
                 "UPDATE ink_account SET balance = 1 WHERE reader_id = ?", emptyReaderId);
@@ -233,7 +244,7 @@ class DemoDataSeederMySqlIntegrationTest {
 
     @Test
     void 정상적인_추가_잉크_구매와_원장은_재시드해도_초기화하지_않는다() {
-        demoDataSeeder.seed(DEMO_PASSWORD);
+        시연_데이터_시드(DEMO_PASSWORD);
         long emptyReaderId = 독자_ID(DemoDataSeeder.EMPTY_READER_EMAIL);
         jdbcTemplate.update(
                 """
@@ -259,7 +270,7 @@ class DemoDataSeederMySqlIntegrationTest {
         jdbcTemplate.update(
                 "UPDATE ink_account SET balance = 100 WHERE reader_id = ?", emptyReaderId);
 
-        demoDataSeeder.seed(DEMO_PASSWORD);
+        시연_데이터_시드(DEMO_PASSWORD);
 
         Integer balance =
                 jdbcTemplate.queryForObject(
@@ -283,7 +294,7 @@ class DemoDataSeederMySqlIntegrationTest {
 
     @Test
     void 기존_소장_결제가_PAID가_아니면_재시드를_거부한다() {
-        demoDataSeeder.seed(DEMO_PASSWORD);
+        시연_데이터_시드(DEMO_PASSWORD);
         jdbcTemplate.update(
                 """
                 UPDATE ownership_payment
@@ -297,7 +308,7 @@ class DemoDataSeederMySqlIntegrationTest {
 
     @Test
     void 기존_소장과_서재의_독자가_다르면_재시드를_거부한다() {
-        demoDataSeeder.seed(DEMO_PASSWORD);
+        시연_데이터_시드(DEMO_PASSWORD);
         소장을_Reader_A에게_옮긴다();
 
         assertThrows(IllegalStateException.class, () -> demoDataSeeder.seed(DEMO_PASSWORD));
@@ -313,6 +324,63 @@ class DemoDataSeederMySqlIntegrationTest {
                 """);
 
         assertThrows(IllegalStateException.class, () -> demoDataSeeder.seed(DEMO_PASSWORD));
+    }
+
+    @Test
+    void 기존_페이지는_재시드해도_변경하지_않는다() {
+        시연_데이터_시드(DEMO_PASSWORD);
+        jdbcTemplate.update(
+                """
+                UPDATE book_page
+                SET content_type = 'TEXT',
+                    text_content = '변환 배치가 적재한 본문',
+                    image_path = NULL
+                WHERE book_id = 1 AND page_number = 1
+                """);
+
+        시연_데이터_시드(DEMO_PASSWORD);
+
+        String textContent =
+                jdbcTemplate.queryForObject(
+                        """
+                        SELECT text_content
+                        FROM book_page
+                        WHERE book_id = 1 AND page_number = 1
+                        """,
+                        String.class);
+        assertEquals("변환 배치가 적재한 본문", textContent);
+    }
+
+    @Test
+    void 콘텐츠_페이지가_없으면_계정_시드_전에_명확히_중단한다() {
+        IllegalStateException exception =
+                assertThrows(
+                        IllegalStateException.class,
+                        () -> demoDataSeeder.seed(DEMO_PASSWORD));
+
+        assertEquals(
+                "시연 계정 시드 전에 content-import 배치로 400페이지와 IMAGE 파일을 적재해야 합니다.",
+                exception.getMessage());
+    }
+
+    @Test
+    void 레거시_이미지_경로가_남아_있으면_계정_시드_전에_중단한다() {
+        콘텐츠_페이지_준비();
+        jdbcTemplate.update(
+                """
+                UPDATE book_page
+                SET image_path = 'demo/book-pages/category-01.png'
+                WHERE book_id = 1 AND page_number = 2
+                """);
+
+        IllegalStateException exception =
+                assertThrows(
+                        IllegalStateException.class,
+                        () -> demoDataSeeder.seed(DEMO_PASSWORD));
+
+        assertEquals(
+                "시연 계정 시드 전에 content-import 배치로 400페이지와 IMAGE 파일을 적재해야 합니다.",
+                exception.getMessage());
     }
 
     private void 도서_시드가_계약과_일치한다() {
@@ -357,58 +425,13 @@ class DemoDataSeederMySqlIntegrationTest {
                                                                 .exists())));
     }
 
-    private void 페이지_시드가_계약과_일치한다() {
-        Integer mismatchedPageCount =
+    private void 페이지는_전용_배치가_준비한_400개를_유지한다() {
+        Integer pageCount =
                 jdbcTemplate.queryForObject(
-                        """
-                        SELECT COUNT(*)
-                        FROM book b
-                        LEFT JOIN (
-                            SELECT book_id, COUNT(*) AS page_count
-                            FROM book_page
-                            GROUP BY book_id
-                        ) bp ON bp.book_id = b.id
-                        WHERE b.id BETWEEN 1 AND 100
-                          AND b.total_page_count <> COALESCE(bp.page_count, 0)
-                        """,
+                        "SELECT COUNT(*) FROM book_page WHERE book_id BETWEEN 1 AND 100",
                         Integer.class);
-        List<String> contentTypes =
-                jdbcTemplate.queryForList(
-                        """
-                        SELECT DISTINCT content_type
-                        FROM book_page
-                        WHERE book_id BETWEEN 1 AND 100
-                        ORDER BY content_type
-                        """,
-                        String.class);
-        List<String> imagePaths =
-                jdbcTemplate.queryForList(
-                        """
-                        SELECT DISTINCT image_path
-                        FROM book_page
-                        WHERE book_id BETWEEN 1 AND 100 AND content_type = 'IMAGE'
-                        ORDER BY image_path
-                        """,
-                        String.class);
 
-        assertAll(
-                () -> assertEquals(0, mismatchedPageCount),
-                () -> assertEquals(List.of("IMAGE", "TEXT"), contentTypes),
-                () -> assertEquals(10, imagePaths.size()),
-                () ->
-                        assertTrue(
-                                imagePaths.stream()
-                                        .allMatch(this::정규화된_이미지_리소스가_존재한다)));
-    }
-
-    private boolean 정규화된_이미지_리소스가_존재한다(String path) {
-        ClassPathResource resource = new ClassPathResource(path);
-        try (var inputStream = resource.getInputStream()) {
-            var image = ImageIO.read(inputStream);
-            return image != null && image.getWidth() == 800 && image.getHeight() == 600;
-        } catch (IOException exception) {
-            return false;
-        }
+        assertEquals(400, pageCount);
     }
 
     private void 검색_경계_시드가_존재한다() {
@@ -702,5 +725,67 @@ class DemoDataSeederMySqlIntegrationTest {
     private long 독자_ID(String email) {
         return jdbcTemplate.queryForObject(
                 "SELECT id FROM reader WHERE email = ?", Long.class, email);
+    }
+
+    private void 시연_데이터_시드(String rawPassword) {
+        콘텐츠_페이지_준비();
+        demoDataSeeder.seed(rawPassword);
+    }
+
+    private void 콘텐츠_페이지_준비() {
+        Integer pageCount =
+                jdbcTemplate.queryForObject(
+                        "SELECT COUNT(*) FROM book_page WHERE book_id BETWEEN 1 AND 100",
+                        Integer.class);
+        if (pageCount != 0) {
+            return;
+        }
+
+        List<DemoBookCatalog.BookSeed> books = demoBookCatalog.books();
+        demoBookWriter.ensureBooks(books);
+        List<Object[]> pages = new ArrayList<>();
+        for (DemoBookCatalog.BookSeed book : books) {
+            for (int pageNumber = 1; pageNumber <= book.totalPageCount(); pageNumber++) {
+                if (pageNumber == 2) {
+                    Path imagePath =
+                            contentOutputDirectory.resolve(
+                                    "book-%03d/page-002.jpg".formatted(book.id()));
+                    테스트_이미지_파일_생성(imagePath);
+                    pages.add(
+                            new Object[] {
+                                book.id(),
+                                pageNumber,
+                                "IMAGE",
+                                null,
+                                imagePath.toString()
+                            });
+                } else {
+                    pages.add(
+                            new Object[] {
+                                book.id(),
+                                pageNumber,
+                                "TEXT",
+                                "도서 %d의 %d페이지".formatted(book.id(), pageNumber),
+                                null
+                            });
+                }
+            }
+        }
+        jdbcTemplate.batchUpdate(
+                """
+                INSERT INTO book_page
+                    (book_id, page_number, content_type, text_content, image_path)
+                VALUES (?, ?, ?, ?, ?)
+                """,
+                pages);
+    }
+
+    private void 테스트_이미지_파일_생성(Path imagePath) {
+        try {
+            Files.createDirectories(imagePath.getParent());
+            Files.writeString(imagePath, "test-image");
+        } catch (IOException exception) {
+            throw new IllegalStateException("테스트 이미지 파일을 준비할 수 없습니다.", exception);
+        }
     }
 }

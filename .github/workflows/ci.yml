@@ -65,7 +65,25 @@ jobs:
       - name: GitHub CLI 점검 스크립트 테스트
         run: bash .agents/skills/github-cli-setup/scripts/check-test.sh
 
+      - name: Poppler 26.05.0 설정
+        run: |
+          "$CONDA/bin/conda" create \
+            --yes \
+            --quiet \
+            --prefix "$RUNNER_TEMP/poppler-26.05.0" \
+            --channel conda-forge \
+            --override-channels \
+            "poppler=26.05.0=hfdef1ce_3"
+          "$RUNNER_TEMP/poppler-26.05.0/bin/pdftotext" -v 2>&1 \
+            | grep --fixed-strings --line-regexp "pdftotext version 26.05.0"
+          "$RUNNER_TEMP/poppler-26.05.0/bin/pdftoppm" -v 2>&1 \
+            | grep --fixed-strings --line-regexp "pdftoppm version 26.05.0"
+
       - name: 테스트·검사·패키징
+        env:
+          RUN_CONTENT_IMPORT_INTEGRATION: "true"
+          PDFTOTEXT_COMMAND: ${{ runner.temp }}/poppler-26.05.0/bin/pdftotext
+          PDFTOPPM_COMMAND: ${{ runner.temp }}/poppler-26.05.0/bin/pdftoppm
         run: ./gradlew --no-daemon clean check build --warning-mode all
 
       - name: 실제 애플리케이션 부팅·브라우저 smoke 검증
