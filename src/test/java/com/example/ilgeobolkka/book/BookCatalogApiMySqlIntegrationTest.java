@@ -237,6 +237,16 @@ class BookCatalogApiMySqlIntegrationTest {
                 .andExpect(jsonPath("$.page").value(11))
                 .andExpect(jsonPath("$.totalPages").value(10))
                 .andExpect(jsonPath("$.totalCount").value(100));
+
+        mockMvc.perform(
+                        get("/api/books")
+                                .param("page", "214748366")
+                                .param("keyword", "Space  Between"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.books.length()").value(0))
+                .andExpect(jsonPath("$.page").value(214748366))
+                .andExpect(jsonPath("$.totalPages").value(1))
+                .andExpect(jsonPath("$.totalCount").value(1));
     }
 
     @Test

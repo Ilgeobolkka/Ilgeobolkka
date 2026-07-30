@@ -27,4 +27,15 @@ public interface BookRepository extends JpaRepository<Book, Long> {
                     """,
             nativeQuery = true)
     Page<Book> findByKeyword(@Param("keyword") String keyword, Pageable pageable);
+
+    @Query(
+            value =
+                    """
+                    SELECT COUNT(*)
+                    FROM book b
+                    WHERE b.title LIKE CONCAT('%', :keyword, '%') ESCAPE '!'
+                       OR b.author LIKE CONCAT('%', :keyword, '%') ESCAPE '!'
+                    """,
+            nativeQuery = true)
+    long countByKeyword(@Param("keyword") String keyword);
 }
