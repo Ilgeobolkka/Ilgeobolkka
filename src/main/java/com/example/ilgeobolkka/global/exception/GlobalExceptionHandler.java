@@ -2,6 +2,7 @@ package com.example.ilgeobolkka.global.exception;
 
 import com.example.ilgeobolkka.auth.exception.InvalidCredentialsException;
 import com.example.ilgeobolkka.book.exception.BookNotFoundException;
+import com.example.ilgeobolkka.book.exception.BookPageNotFoundException;
 import com.example.ilgeobolkka.infra.portone.PortOnePaymentUnavailableException;
 import com.example.ilgeobolkka.infra.portone.PortOneWebhookVerificationException;
 import com.example.ilgeobolkka.ink.exception.InkPurchaseNotFoundException;
@@ -90,6 +91,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler({
         BookNotFoundException.class,
+        BookPageNotFoundException.class,
         InkPurchaseNotFoundException.class,
         ReadingSessionNotFoundException.class
     })

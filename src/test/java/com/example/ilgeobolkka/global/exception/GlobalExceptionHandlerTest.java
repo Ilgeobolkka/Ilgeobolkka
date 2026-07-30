@@ -10,6 +10,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.example.ilgeobolkka.book.exception.BookPageNotFoundException;
 import com.example.ilgeobolkka.ink.exception.InsufficientInkException;
 import com.example.ilgeobolkka.reading.exception.ReadingSessionNotFoundException;
 import com.example.ilgeobolkka.reading.exception.ViewerSessionReplacedException;
@@ -161,6 +162,16 @@ class GlobalExceptionHandlerTest {
         assertTrue(output.getOut().contains("errorCode=RESOURCE_NOT_FOUND"));
     }
 
+    @Test
+    void 도서_페이지_없음은_공통_리소스_없음_오류로_응답한다(CapturedOutput output) throws Exception {
+        mockMvc.perform(get("/test/errors/missing-book-page"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.code").value("RESOURCE_NOT_FOUND"))
+                .andExpect(jsonPath("$.message").value("요청한 리소스를 찾을 수 없습니다."));
+
+        assertTrue(output.getOut().contains("errorCode=RESOURCE_NOT_FOUND"));
+    }
+
     @RestController
     @RequestMapping("/test/errors")
     public static class TestController {
@@ -196,6 +207,11 @@ class GlobalExceptionHandlerTest {
         @GetMapping("/missing-reading-session")
         void missingReadingSession() {
             throw new ReadingSessionNotFoundException(7L);
+        }
+
+        @GetMapping("/missing-book-page")
+        void missingBookPage() {
+            throw new BookPageNotFoundException(7L, 3);
         }
     }
 
