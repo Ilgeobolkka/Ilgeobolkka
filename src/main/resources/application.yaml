@@ -36,3 +36,11 @@ server:
       cookie:
         http-only: true
         same-site: lax
+
+portone:
+  payment:
+    enabled: ${PORTONE_PAYMENT_ENABLED:false}
+    store-id: ${PORTONE_STORE_ID:}
+    channel-key: ${PORTONE_CHANNEL_KEY:}
+    api-secret: ${PORTONE_API_SECRET:}
+    webhook-secret: ${PORTONE_WEBHOOK_SECRET:}

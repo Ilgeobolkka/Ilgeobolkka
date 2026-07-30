@@ -234,8 +234,8 @@ Bootstrap 자산은 `/webjars/bootstrap/5.3.8/` 아래의 버전 명시 경로�
 import * as PortOne from "https://cdn.portone.io/v2/browser-sdk.esm.js";
 ```
 
-- PortOne JVM SDK 의존성은 결제 구현을 시작할 때 추가합니다. 이번 문서·스키마 기준선에는 아직
-  추가하지 않습니다.
+- PortOne JVM SDK 의존성은 `io.portone:server-sdk:0.24.0`으로 고정하며, 서버 결제 재조회 어댑터에서만
+  사용합니다.
 - PortOne 서버 Client와 웹훅 서명 검증 어댑터는 `infra`에 두고, Controller나 Entity가 SDK 타입에
   의존하지 않게 합니다.
 - 잉크 이용권과 소장 결제는 별도 Facade·Entity·API로 유지하고 PortOne 조회·웹훅 검증 Client만

@@ -1,10 +1,16 @@
 package com.example.ilgeobolkka;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.example.ilgeobolkka.infra.portone.PortOnePaymentGateway;
+import com.example.ilgeobolkka.ink.controller.InkPurchaseController;
+import com.example.ilgeobolkka.ink.facade.InkPurchaseFacade;
+import com.example.ilgeobolkka.ink.service.InkPurchaseService;
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
+import io.portone.sdk.server.payment.PaymentClient;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,7 +25,7 @@ import org.springframework.test.context.ContextConfiguration;
 // 테스트 전용 엔티티는 com.example.testfixture.* 로 격리되어 기본 스캔에 잡히지 않으므로,
 // 이 컨텍스트는 실제 애플리케이션 설정(Flyway 적용 + validate) 그대로 부팅된다.
 // validate 설정을 삭제·변경하면 이 테스트가 실패해 회귀를 잡는다.
-@SpringBootTest
+@SpringBootTest(properties = "portone.payment.enabled=false")
 @ActiveProfiles("test")
 @ContextConfiguration(initializers = DedicatedTestDatabaseInitializer.class)
 class IlgeobolkkaApplicationTests {
@@ -57,5 +63,25 @@ class IlgeobolkkaApplicationTests {
     void DB_접속_정보를_출력하는_라이브러리_로그는_WARN으로_제한한다() {
         assertEquals("WARN", environment.getProperty("logging.level.org.flywaydb.core"));
         assertEquals("WARN", environment.getProperty("logging.level.org.hibernate.orm.connections.pooling"));
+    }
+
+    @Test
+    void 결제를_활성화하지_않으면_결제_API와_PortOne_클라이언트를_노출하지_않는다() {
+        assertAll(
+                () -> assertTrue(applicationContext
+                        .getBeansOfType(InkPurchaseController.class)
+                        .isEmpty()),
+                () -> assertTrue(applicationContext
+                        .getBeansOfType(InkPurchaseFacade.class)
+                        .isEmpty()),
+                () -> assertTrue(applicationContext
+                        .getBeansOfType(InkPurchaseService.class)
+                        .isEmpty()),
+                () -> assertTrue(applicationContext
+                        .getBeansOfType(PortOnePaymentGateway.class)
+                        .isEmpty()),
+                () -> assertTrue(applicationContext
+                        .getBeansOfType(PaymentClient.class)
+                        .isEmpty()));
     }
 }
