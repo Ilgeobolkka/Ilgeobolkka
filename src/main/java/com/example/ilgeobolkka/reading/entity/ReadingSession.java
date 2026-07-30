@@ -83,4 +83,21 @@ public class ReadingSession {
 
     @Column(name = "updated_at", nullable = false, columnDefinition = "DATETIME(6)")
     private Instant updatedAt;
+
+    public static ReadingSession open(
+            long readerId, BookPage page, UUID viewerSessionId, Instant openedAt) {
+        ReadingSession session = new ReadingSession();
+        session.readerId = readerId;
+        session.bookId = page.getBookId();
+        session.currentPageNumber = page.getPageNumber();
+        session.viewerSessionId = viewerSessionId;
+        session.updatedAt = openedAt;
+        return session;
+    }
+
+    public void moveTo(BookPage page, Instant movedAt) {
+        this.bookId = page.getBookId();
+        this.currentPageNumber = page.getPageNumber();
+        this.updatedAt = movedAt;
+    }
 }

@@ -2,11 +2,13 @@ package com.example.ilgeobolkka.global.exception;
 
 import com.example.ilgeobolkka.auth.exception.InvalidCredentialsException;
 import com.example.ilgeobolkka.book.exception.BookNotFoundException;
+import com.example.ilgeobolkka.book.exception.BookPageNotFoundException;
 import com.example.ilgeobolkka.infra.portone.PortOnePaymentUnavailableException;
 import com.example.ilgeobolkka.ink.exception.InkPurchaseNotFoundException;
 import com.example.ilgeobolkka.ink.exception.PaymentStateConflictException;
 import com.example.ilgeobolkka.ink.exception.PaymentVerificationException;
 import com.example.ilgeobolkka.reader.exception.EmailAlreadyExistsException;
+import com.example.ilgeobolkka.reading.exception.ReadingSessionNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.slf4j.Logger;
@@ -62,7 +64,12 @@ public class GlobalExceptionHandler {
         return response(ErrorCode.INVALID_CREDENTIALS);
     }
 
-    @ExceptionHandler({BookNotFoundException.class, InkPurchaseNotFoundException.class})
+    @ExceptionHandler({
+        BookNotFoundException.class,
+        InkPurchaseNotFoundException.class,
+        BookPageNotFoundException.class,
+        ReadingSessionNotFoundException.class
+    })
     ResponseEntity<ApiErrorResponse> handleResourceNotFound(Exception exception) {
         logFailure(ErrorCode.RESOURCE_NOT_FOUND, exception);
         return response(ErrorCode.RESOURCE_NOT_FOUND);
