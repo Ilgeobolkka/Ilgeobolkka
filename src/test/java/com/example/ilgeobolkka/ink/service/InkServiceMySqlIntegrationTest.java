@@ -2,11 +2,13 @@ package com.example.ilgeobolkka.ink.service;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.example.ilgeobolkka.ink.entity.InkAccount;
 import com.example.ilgeobolkka.ink.exception.InkAccountNotFoundException;
 import com.example.ilgeobolkka.ink.exception.InsufficientInkException;
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
@@ -248,6 +250,61 @@ class InkServiceMySqlIntegrationTest {
                 () -> assertInstanceOf(InsufficientInkException.class, failures.getFirst()),
                 () -> assertEquals(0, 잔액을_조회한다()),
                 () -> assertEquals(1, 원장_수를_조회한다()));
+    }
+
+    @Test
+    void 계좌가_없는_독자를_잠그면_InkAccountNotFoundException을_던진다() {
+        독자를_생성한다();
+
+        assertThrows(
+                InkAccountNotFoundException.class,
+                () -> 트랜잭션에서(() -> inkService.lockAccount(READER_ID)));
+    }
+
+    /**
+     * SCRUM-434(2/5): {@code lockAccount}가 실제로 {@code SELECT ... FOR UPDATE}를 실행해 다른
+     * 트랜잭션을 대기시키는지 증명한다. 잠금 보유 트랜잭션이 잔액을 바꾸고 커밋할 때까지 두 번째
+     * 잠금 시도가 끝나지 않아야 하고, 커밋 뒤에는 바뀐 잔액을 읽어야 한다.
+     */
+    @Test
+    void 계좌_잠금은_다른_트랜잭션이_커밋할_때까지_대기한다() throws Exception {
+        기본_데이터를_생성한다(0);
+        CountDownLatch locked = new CountDownLatch(1);
+        CountDownLatch proceed = new CountDownLatch(1);
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        try {
+            Future<?> holder = executor.submit(() -> transactionTemplate.executeWithoutResult(
+                    status -> {
+                        InkAccount account = inkService.lockAccount(READER_ID);
+                        account.grant();
+                        locked.countDown();
+                        awaitUninterruptibly(proceed);
+                    }));
+
+            assertTrue(locked.await(5, TimeUnit.SECONDS));
+            Future<Integer> waiter = executor.submit(() -> transactionTemplate.execute(
+                    status -> inkService.lockAccount(READER_ID).getBalance()));
+
+            Thread.sleep(200);
+            assertFalse(waiter.isDone());
+
+            proceed.countDown();
+            holder.get(5, TimeUnit.SECONDS);
+
+            assertEquals(100, waiter.get(5, TimeUnit.SECONDS));
+        } finally {
+            executor.shutdownNow();
+            executor.awaitTermination(5, TimeUnit.SECONDS);
+        }
+    }
+
+    private void awaitUninterruptibly(CountDownLatch latch) {
+        try {
+            assertTrue(latch.await(5, TimeUnit.SECONDS));
+        } catch (InterruptedException exception) {
+            Thread.currentThread().interrupt();
+            throw new IllegalStateException(exception);
+        }
     }
 
     private void 트랜잭션에서(Runnable action) {

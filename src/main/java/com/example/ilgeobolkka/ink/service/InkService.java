@@ -54,6 +54,15 @@ public class InkService {
                 InkLedger.deduction(readerId, pageRentalId, account.getBalance(), occurredAt));
     }
 
+    /**
+     * 소장·활성 대여가 없어 보일 때 잠금 뒤 재확인(INV-002)에 쓰도록 {@link InkAccount} 행을
+     * 잠근다. 이 메서드는 잠금만 하고 잔액을 바꾸지 않는다.
+     */
+    @Transactional(propagation = Propagation.MANDATORY)
+    public InkAccount lockAccount(long readerId) {
+        return findAccountForUpdate(readerId);
+    }
+
     @Transactional(propagation = Propagation.MANDATORY, readOnly = true)
     public int getBalance(long readerId) {
         return inkAccountRepository

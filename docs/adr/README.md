@@ -51,6 +51,7 @@ ADR을 모두 남기고, 현행 정본과 저장소의 참조는 새 ADR을 가�
 | --- | --- | --- |
 | [0002](./application/0002-organize-backend-packages-by-domain.md) | 도메인 우선 패키지와 Facade | 승인됨 |
 | [0004](./application/0004-define-api-contract.md) | same-origin JSON API 경계 | 승인됨 |
+| [0014](./application/0014-read-page-opening-at-read-committed.md) | 페이지 열기 트랜잭션 READ COMMITTED | 승인됨 |
 
 ### 도메인
 
