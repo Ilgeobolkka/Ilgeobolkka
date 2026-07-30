@@ -11,6 +11,7 @@ public enum ErrorCode {
     INVALID_CSRF_TOKEN(HttpStatus.FORBIDDEN, "CSRF 토큰이 유효하지 않습니다."),
     ACCESS_DENIED(HttpStatus.FORBIDDEN, "접근 권한이 없습니다."),
     EMAIL_ALREADY_EXISTS(HttpStatus.CONFLICT, "이미 가입된 이메일입니다."),
+    BOOK_ALREADY_OWNED(HttpStatus.CONFLICT, "이미 소장한 도서입니다."),
     PAYMENT_STATE_CONFLICT(HttpStatus.CONFLICT, "현재 결제 상태에서는 요청을 처리할 수 없습니다."),
     RESOURCE_NOT_FOUND(HttpStatus.NOT_FOUND, "요청한 리소스를 찾을 수 없습니다."),
     PAYMENT_VERIFICATION_FAILED(HttpStatus.UNPROCESSABLE_CONTENT, "결제 검증에 실패했습니다."),

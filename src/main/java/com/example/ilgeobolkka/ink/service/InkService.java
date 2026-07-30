@@ -30,6 +30,11 @@ public class InkService {
     }
 
     @Transactional(propagation = Propagation.MANDATORY)
+    public void lockAccount(long readerId) {
+        findAccountForUpdate(readerId);
+    }
+
+    @Transactional(propagation = Propagation.MANDATORY)
     public int grant(long readerId, long inkPurchaseId, Instant occurredAt) {
         InkAccount account = findAccountForUpdate(readerId);
         if (inkLedgerRepository.existsByInkPurchaseId(inkPurchaseId)) {
