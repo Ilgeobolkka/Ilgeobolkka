@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.example.ilgeobolkka.ink.controller.InkPurchaseController;
 import com.example.ilgeobolkka.ink.facade.InkPurchaseFacade;
 import com.example.ilgeobolkka.ink.service.InkPurchaseService;
+import com.example.ilgeobolkka.webhook.controller.PortOneWebhookController;
+import com.example.ilgeobolkka.webhook.facade.PortOneWebhookFacade;
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
 import io.portone.sdk.server.payment.PaymentClient;
 import org.junit.jupiter.api.Test;
@@ -43,6 +45,15 @@ class PortOneProdProfileIntegrationTest {
                         .isEmpty()),
                 () -> assertTrue(applicationContext
                         .getBeansOfType(PortOnePaymentGateway.class)
+                        .isEmpty()),
+                () -> assertTrue(applicationContext
+                        .getBeansOfType(PortOneWebhookController.class)
+                        .isEmpty()),
+                () -> assertTrue(applicationContext
+                        .getBeansOfType(PortOneWebhookFacade.class)
+                        .isEmpty()),
+                () -> assertTrue(applicationContext
+                        .getBeansOfType(PortOneWebhookVerifier.class)
                         .isEmpty()),
                 () -> assertTrue(applicationContext
                         .getBeansOfType(PaymentClient.class)
