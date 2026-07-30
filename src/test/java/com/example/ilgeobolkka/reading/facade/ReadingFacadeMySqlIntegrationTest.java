@@ -19,7 +19,14 @@ import java.time.Clock;
 import java.time.Instant;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -46,6 +53,7 @@ class ReadingFacadeMySqlIntegrationTest {
     private static final long IMAGE_PAGE_ID = 411_202L;
     private static final long OWNED_PAGE_ID = 411_203L;
     private static final long OWNERSHIP_PAYMENT_ID = 411_301L;
+    private static final int CONCURRENT_REQUEST_COUNT = 2;
     private static final Instant NOW = Instant.parse("2026-07-30T10:00:00.123456Z");
     private static final DateTimeFormatter DATETIME_FORMATTER =
             DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS").withZone(ZoneOffset.UTC);
@@ -221,6 +229,50 @@ class ReadingFacadeMySqlIntegrationTest {
         assertThrows(
                 ReadingSessionNotFoundException.class,
                 () -> readingFacade.movePage(READER_ID, UUID.randomUUID(), 1));
+    }
+
+    @Test
+    void T_RENT_005_같은_페이지를_동시에_열어도_1잉크만_차감하고_대여도_하나만_만든다() throws Exception {
+        독자를_생성한다(5);
+        대여용_도서를_생성한다();
+
+        List<OpenPageResponse> responses = 동시에_같은_페이지를_연다(CONCURRENT_REQUEST_COUNT);
+
+        int 차감_합계 = responses.stream().mapToInt(OpenPageResponse::deductedInk).sum();
+        assertAll(
+                () -> assertEquals(CONCURRENT_REQUEST_COUNT, responses.size()),
+                () -> assertEquals(1, 차감_합계),
+                () -> assertEquals(4, 잔액을_조회한다()),
+                () -> assertEquals(1, 대여_수를_조회한다()),
+                () -> assertEquals(1, 차감_원장_수를_조회한다()),
+                () -> assertEquals(1, 세션_수를_조회한다()),
+                () -> assertEquals(1, 서재_항목_수를_조회한다()));
+    }
+
+    /** 잠금 뒤 재확인이 실제로 동작하는지 보려면 모든 요청이 잠금 전 첫 확인을 함께 통과해야 한다. */
+    private List<OpenPageResponse> 동시에_같은_페이지를_연다(int 요청_수) throws Exception {
+        CyclicBarrier 출발선 = new CyclicBarrier(요청_수);
+        ExecutorService executor = Executors.newFixedThreadPool(요청_수);
+        try {
+            List<Future<OpenPageResponse>> futures = new ArrayList<>();
+            for (int i = 0; i < 요청_수; i++) {
+                futures.add(
+                        executor.submit(
+                                () -> {
+                                    출발선.await(5, TimeUnit.SECONDS);
+                                    return readingFacade.openNewSession(
+                                            READER_ID, RENTAL_BOOK_ID, 1);
+                                }));
+            }
+
+            List<OpenPageResponse> responses = new ArrayList<>();
+            for (Future<OpenPageResponse> future : futures) {
+                responses.add(future.get(20, TimeUnit.SECONDS));
+            }
+            return responses;
+        } finally {
+            executor.shutdownNow();
+        }
     }
 
     private void 독자를_생성한다(int balance) {
