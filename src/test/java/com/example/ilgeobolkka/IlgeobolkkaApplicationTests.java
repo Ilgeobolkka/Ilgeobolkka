@@ -9,6 +9,8 @@ import com.example.ilgeobolkka.infra.portone.PortOnePaymentGateway;
 import com.example.ilgeobolkka.ink.controller.InkPurchaseController;
 import com.example.ilgeobolkka.ink.facade.InkPurchaseFacade;
 import com.example.ilgeobolkka.ink.service.InkPurchaseService;
+import com.example.ilgeobolkka.ownership.controller.OwnershipPaymentController;
+import com.example.ilgeobolkka.ownership.facade.OwnershipPaymentFacade;
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
 import io.portone.sdk.server.payment.PaymentClient;
 import org.junit.jupiter.api.Test;
@@ -76,6 +78,12 @@ class IlgeobolkkaApplicationTests {
                         .isEmpty()),
                 () -> assertTrue(applicationContext
                         .getBeansOfType(InkPurchaseService.class)
+                        .isEmpty()),
+                () -> assertTrue(applicationContext
+                        .getBeansOfType(OwnershipPaymentController.class)
+                        .isEmpty()),
+                () -> assertTrue(applicationContext
+                        .getBeansOfType(OwnershipPaymentFacade.class)
                         .isEmpty()),
                 () -> assertTrue(applicationContext
                         .getBeansOfType(PortOnePaymentGateway.class)
