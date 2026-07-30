@@ -236,7 +236,8 @@ class ReadingFacadeMySqlIntegrationTest {
         독자를_생성한다(5);
         대여용_도서를_생성한다();
 
-        List<OpenPageResponse> responses = 동시에_같은_페이지를_연다(CONCURRENT_REQUEST_COUNT);
+        List<OpenPageResponse> responses =
+                동시에_같은_페이지를_연다(CONCURRENT_REQUEST_COUNT, RENTAL_BOOK_ID);
 
         int 차감_합계 = responses.stream().mapToInt(OpenPageResponse::deductedInk).sum();
         assertAll(
@@ -249,8 +250,25 @@ class ReadingFacadeMySqlIntegrationTest {
                 () -> assertEquals(1, 서재_항목_수를_조회한다()));
     }
 
-    /** 잠금 뒤 재확인이 실제로 동작하는지 보려면 모든 요청이 잠금 전 첫 확인을 함께 통과해야 한다. */
-    private List<OpenPageResponse> 동시에_같은_페이지를_연다(int 요청_수) throws Exception {
+    @Test
+    void 소장_도서를_동시에_열어도_세션과_서재_항목은_하나씩만_남는다() throws Exception {
+        독자를_생성한다(3);
+        소장용_도서를_생성한다();
+
+        List<OpenPageResponse> responses =
+                동시에_같은_페이지를_연다(CONCURRENT_REQUEST_COUNT, OWNED_BOOK_ID);
+
+        assertAll(
+                () -> assertTrue(responses.stream().allMatch(OpenPageResponse::owned)),
+                () -> assertEquals(3, 잔액을_조회한다()),
+                () -> assertEquals(0, 대여_수를_조회한다()),
+                () -> assertEquals(0, 차감_원장_수를_조회한다()),
+                () -> assertEquals(1, 세션_수를_조회한다()),
+                () -> assertEquals(1, 서재_항목_수를_조회한다()));
+    }
+
+    /** 모든 요청이 잠금을 함께 두드려야 직렬화가 실제로 동작하는지 확인할 수 있다. */
+    private List<OpenPageResponse> 동시에_같은_페이지를_연다(int 요청_수, long bookId) throws Exception {
         CyclicBarrier 출발선 = new CyclicBarrier(요청_수);
         ExecutorService executor = Executors.newFixedThreadPool(요청_수);
         try {
@@ -260,8 +278,7 @@ class ReadingFacadeMySqlIntegrationTest {
                         executor.submit(
                                 () -> {
                                     출발선.await(5, TimeUnit.SECONDS);
-                                    return readingFacade.openNewSession(
-                                            READER_ID, RENTAL_BOOK_ID, 1);
+                                    return readingFacade.openNewSession(READER_ID, bookId, 1);
                                 }));
             }
 
