@@ -85,7 +85,7 @@ class OwnershipPaymentFacadeMySqlIntegrationTest {
                 () -> assertTrue(first.created()),
                 () -> assertEquals("store-test", first.response().storeId()),
                 () -> assertEquals("channel-test", first.response().channelKey()),
-                () -> assertEquals("읽어볼까 동시성의 숲 소장", first.response().orderName()),
+                () -> assertEquals("읽어볼까 도서 소장", first.response().orderName()),
                 () -> assertEquals(BOOK_PRICE_WON, first.response().totalAmount()),
                 () -> assertEquals("CURRENCY_KRW", first.response().currency()),
                 () -> assertTrue(!reused.created()),

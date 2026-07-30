@@ -3,6 +3,7 @@ package com.example.ilgeobolkka.ownership.controller;
 import com.example.ilgeobolkka.global.security.AuthenticatedReader;
 import com.example.ilgeobolkka.ownership.dto.PrepareOwnershipPaymentResponse;
 import com.example.ilgeobolkka.ownership.facade.OwnershipPaymentFacade;
+import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Profile;
@@ -25,7 +26,7 @@ public class OwnershipPaymentController {
 
     @PostMapping
     ResponseEntity<PrepareOwnershipPaymentResponse> prepare(
-            @PathVariable long bookId,
+            @PathVariable @Positive long bookId,
             @AuthenticationPrincipal AuthenticatedReader authenticatedReader) {
         OwnershipPaymentFacade.Preparation preparation =
                 ownershipPaymentFacade.prepare(authenticatedReader.readerId(), bookId);

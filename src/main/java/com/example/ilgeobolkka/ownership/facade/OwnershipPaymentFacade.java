@@ -21,8 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class OwnershipPaymentFacade {
 
     public static final String CLIENT_CURRENCY = "CURRENCY_KRW";
-    private static final String ORDER_NAME_PREFIX = "읽어볼까 ";
-    private static final String ORDER_NAME_SUFFIX = " 소장";
+    private static final String ORDER_NAME = "읽어볼까 도서 소장";
 
     private final InkService inkService;
     private final BookService bookService;
@@ -44,7 +43,7 @@ public class OwnershipPaymentFacade {
                 preparation.payment(),
                 paymentProperties.storeId(),
                 paymentProperties.channelKey(),
-                ORDER_NAME_PREFIX + book.getTitle() + ORDER_NAME_SUFFIX,
+                ORDER_NAME,
                 CLIENT_CURRENCY);
         return new Preparation(response, preparation.created());
     }

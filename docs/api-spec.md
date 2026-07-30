@@ -272,7 +272,7 @@
 
 `POST /api/ink/purchases`와 `POST /api/books/1/ownership-payments`는 대상과 `orderName`,
 `totalAmount`만 다르고 같은 준비 응답을 사용합니다. 새 시도는 `201 Created`, 기존 소장 `PENDING` 재사용은
-`200 OK`입니다. 소장 결제의 `orderName`은 `읽어볼까 {도서명} 소장`, `totalAmount`는 대여 이력과
+`200 OK`입니다. 소장 결제의 `orderName`은 `읽어볼까 도서 소장`, `totalAmount`는 대여 이력과
 잉크 잔액을 반영하지 않은 도서 원가 전액입니다.
 
 ```json

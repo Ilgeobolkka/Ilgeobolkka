@@ -70,7 +70,7 @@ class OwnershipPaymentApiMySqlIntegrationTest {
     }
 
     @Test
-    void T_PAY_001_소장_결제를_준비하면_도서명과_원가를_반환하고_잉크를_바꾸지_않는다()
+    void T_PAY_001_소장_결제를_준비하면_정적_주문명과_원가를_반환하고_잉크를_바꾸지_않는다()
             throws Exception {
         모든_페이지를_대여한다();
         MvcResult inkPurchaseResult = mockMvc.perform(post("/api/ink/purchases")
@@ -89,7 +89,7 @@ class OwnershipPaymentApiMySqlIntegrationTest {
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.storeId").value("store-test"))
                 .andExpect(jsonPath("$.channelKey").value("channel-test"))
-                .andExpect(jsonPath("$.orderName").value("읽어볼까 사라지지 않는 페이지 소장"))
+                .andExpect(jsonPath("$.orderName").value("읽어볼까 도서 소장"))
                 .andExpect(jsonPath("$.totalAmount").value(BOOK_PRICE_WON))
                 .andExpect(jsonPath("$.currency").value("CURRENCY_KRW"))
                 .andReturn();
@@ -140,6 +140,23 @@ class OwnershipPaymentApiMySqlIntegrationTest {
                         .with(csrf()))
                 .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.code").value("RESOURCE_NOT_FOUND"));
+
+        assertEquals(0, 결제_수를_조회한다());
+    }
+
+    @Test
+    void 유효하지_않은_도서_ID는_400_INVALID_INPUT으로_거부한다() throws Exception {
+        mockMvc.perform(post("/api/books/{bookId}/ownership-payments", 0)
+                        .with(authentication(인증된_독자()))
+                        .with(csrf()))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.code").value("INVALID_INPUT"));
+
+        mockMvc.perform(post("/api/books/{bookId}/ownership-payments", -1)
+                        .with(authentication(인증된_독자()))
+                        .with(csrf()))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.code").value("INVALID_INPUT"));
 
         assertEquals(0, 결제_수를_조회한다());
     }
