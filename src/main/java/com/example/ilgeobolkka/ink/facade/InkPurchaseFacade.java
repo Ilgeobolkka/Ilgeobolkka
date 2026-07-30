@@ -51,4 +51,9 @@ public class InkPurchaseFacade {
         }
         return result.response();
     }
+
+    public void completeWebhook(UUID paymentId) {
+        PortOnePayment payment = paymentGateway.getPayment(paymentId.toString());
+        inkPurchaseService.applyWebhookPaymentResult(paymentId, payment);
+    }
 }

@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 public enum ErrorCode {
 
     INVALID_INPUT(HttpStatus.BAD_REQUEST, "입력값이 올바르지 않습니다."),
+    INVALID_WEBHOOK_SIGNATURE(HttpStatus.BAD_REQUEST, "웹훅 서명이 유효하지 않습니다."),
     AUTHENTICATION_REQUIRED(HttpStatus.UNAUTHORIZED, "로그인이 필요합니다."),
     INVALID_CREDENTIALS(HttpStatus.UNAUTHORIZED, "이메일 또는 비밀번호가 올바르지 않습니다."),
     INVALID_CSRF_TOKEN(HttpStatus.FORBIDDEN, "CSRF 토큰이 유효하지 않습니다."),
