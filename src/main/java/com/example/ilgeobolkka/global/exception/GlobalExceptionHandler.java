@@ -6,11 +6,13 @@ import com.example.ilgeobolkka.book.exception.BookPageNotFoundException;
 import com.example.ilgeobolkka.infra.portone.PortOnePaymentUnavailableException;
 import com.example.ilgeobolkka.infra.portone.PortOneWebhookVerificationException;
 import com.example.ilgeobolkka.ink.exception.InkPurchaseNotFoundException;
+import com.example.ilgeobolkka.ink.exception.InsufficientInkException;
 import com.example.ilgeobolkka.ink.exception.PaymentStateConflictException;
 import com.example.ilgeobolkka.ink.exception.PaymentVerificationException;
 import com.example.ilgeobolkka.ownership.exception.BookAlreadyOwnedException;
 import com.example.ilgeobolkka.reader.exception.EmailAlreadyExistsException;
 import com.example.ilgeobolkka.reading.exception.ReadingSessionNotFoundException;
+import com.example.ilgeobolkka.reading.exception.ViewerSessionReplacedException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.slf4j.Logger;
@@ -96,6 +98,19 @@ public class GlobalExceptionHandler {
             PaymentStateConflictException exception) {
         logFailure(ErrorCode.PAYMENT_STATE_CONFLICT, exception);
         return response(ErrorCode.PAYMENT_STATE_CONFLICT);
+    }
+
+    @ExceptionHandler(ViewerSessionReplacedException.class)
+    ResponseEntity<ApiErrorResponse> handleViewerSessionReplaced(
+            ViewerSessionReplacedException exception) {
+        logFailure(ErrorCode.VIEWER_SESSION_REPLACED, exception);
+        return response(ErrorCode.VIEWER_SESSION_REPLACED);
+    }
+
+    @ExceptionHandler(InsufficientInkException.class)
+    ResponseEntity<ApiErrorResponse> handleInsufficientInk(InsufficientInkException exception) {
+        logFailure(ErrorCode.INSUFFICIENT_INK, exception);
+        return response(ErrorCode.INSUFFICIENT_INK);
     }
 
     @ExceptionHandler(PaymentVerificationException.class)

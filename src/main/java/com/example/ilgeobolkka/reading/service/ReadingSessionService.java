@@ -3,6 +3,7 @@ package com.example.ilgeobolkka.reading.service;
 import com.example.ilgeobolkka.book.entity.BookPage;
 import com.example.ilgeobolkka.reading.entity.ReadingSession;
 import com.example.ilgeobolkka.reading.exception.ReadingSessionNotFoundException;
+import com.example.ilgeobolkka.reading.exception.ViewerSessionReplacedException;
 import com.example.ilgeobolkka.reading.repository.ReadingSessionRepository;
 import java.time.Instant;
 import java.util.UUID;
@@ -19,13 +20,17 @@ public class ReadingSessionService {
         readingSessionRepository.deleteByReaderId(readerId);
     }
 
-    /** 헤더로 전달된 뷰어 세션이 독자의 현재 세션과 일치할 때만 반환한다. */
+    /**
+     * 헤더로 전달된 뷰어 세션이 독자의 현재 세션과 일치할 때만 반환한다. 세션 레코드 자체가 없으면
+     * {@link ReadingSessionNotFoundException}(404), 레코드는 있으나 다른 뷰어 세션으로 이미
+     * 교체되었으면 {@link ViewerSessionReplacedException}(409)을 던져 두 실패 원인을 구분한다.
+     */
     public ReadingSession findCurrentSession(long readerId, UUID viewerSessionId) {
         ReadingSession session = readingSessionRepository
                 .findByReaderId(readerId)
                 .orElseThrow(() -> new ReadingSessionNotFoundException(readerId));
         if (!session.getViewerSessionId().equals(viewerSessionId)) {
-            throw new ReadingSessionNotFoundException(readerId);
+            throw new ViewerSessionReplacedException(readerId);
         }
         return session;
     }

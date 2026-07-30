@@ -76,11 +76,11 @@ class ReadingSessionReplacementMySqlIntegrationTest {
     }
 
     /**
-     * docs/api-spec.md 414~416행의 정식 계약은 무효화된 뷰어 세션으로의 이동을 {@code 409
-     * VIEWER_SESSION_REPLACED}로 규정하지만, 현재 {@code ReadingSessionService.findCurrentSession}은
-     * 불일치 시 {@link com.example.ilgeobolkka.reading.exception.ReadingSessionNotFoundException}을
-     * 던져 {@code 404 RESOURCE_NOT_FOUND}로 응답한다. 이 갭은 SCRUM-436(5/5)의 몫이며, 이 테스트는
-     * 그 전까지의 임시 동작만 고정한다.
+     * docs/api-spec.md 414~417행의 계약대로, 무효화된 뷰어 세션으로의 이동은 {@code 409
+     * VIEWER_SESSION_REPLACED}로 거부되어야 한다. {@code ReadingSessionService.findCurrentSession}이
+     * 세션 레코드는 있지만 {@code viewerSessionId}가 다른 경우를 {@link
+     * com.example.ilgeobolkka.reading.exception.ViewerSessionReplacedException}으로 구분해 던지고,
+     * {@code GlobalExceptionHandler}가 이를 409로 매핑한다(SCRUM-436, 5/5).
      */
     @Test
     void 같은_독자가_새_뷰어_세션을_열면_기존_세션을_교체하고_이전_세션_ID는_무효화된다() throws Exception {
@@ -97,8 +97,8 @@ class ReadingSessionReplacementMySqlIntegrationTest {
                         .header("X-Viewer-Session-Id", firstViewerSessionId)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"pageNumber\":2}"))
-                .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$.code").value("RESOURCE_NOT_FOUND"));
+                .andExpect(status().isConflict())
+                .andExpect(jsonPath("$.code").value("VIEWER_SESSION_REPLACED"));
 
         assertEquals(1, 독자의_세션_행_수를_조회한다());
         assertEquals(secondViewerSessionId, 독자의_현재_뷰어_세션_ID를_조회한다());

@@ -18,7 +18,8 @@ import org.springframework.test.context.ContextConfiguration;
 
 /**
  * SCRUM-435: 잉크가 부족하면 도메인 예외로 실패하고 어떤 행도 남지 않는지 증명한다(T-BAL-001의
- * 이번 범위분. 공개 {@code 422 INSUFFICIENT_INK} 응답 계약은 SCRUM-436 몫이다).
+ * 이번 범위분). 공개 {@code 422 INSUFFICIENT_INK} 응답 계약은 {@code
+ * ReadingSessionFailureResponseMySqlIntegrationTest}(SCRUM-436, 5/5)가 HTTP 레벨로 증명한다.
  *
  * <p>클래스 레벨 {@code @Transactional}을 두지 않는다. 저장이 없었음을 확인하려면 실제 커밋된 DB
  * 상태를 봐야 한다. 테스트가 트랜잭션 안에 있으면 {@code ReadingFacade.openPage}가 그 트랜잭션에
