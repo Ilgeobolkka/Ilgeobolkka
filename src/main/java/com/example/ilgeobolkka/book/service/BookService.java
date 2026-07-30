@@ -3,8 +3,10 @@ package com.example.ilgeobolkka.book.service;
 import com.example.ilgeobolkka.book.entity.Book;
 import com.example.ilgeobolkka.book.exception.BookNotFoundException;
 import com.example.ilgeobolkka.book.repository.BookRepository;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +20,15 @@ public class BookService {
 
     public Page<Book> findBooks(int page, String keyword) {
         String normalizedKeyword = keyword == null ? "" : keyword.strip();
+        String escapedKeyword = escapeLikePattern(normalizedKeyword);
+        PageRequest pageable = PageRequest.of(page - 1, PAGE_SIZE);
 
-        return bookRepository.findByKeyword(
-                escapeLikePattern(normalizedKeyword),
-                PageRequest.of(page - 1, PAGE_SIZE));
+        if (pageable.getOffset() > Integer.MAX_VALUE) {
+            return new PageImpl<>(
+                    List.of(), pageable, bookRepository.countByKeyword(escapedKeyword));
+        }
+
+        return bookRepository.findByKeyword(escapedKeyword, pageable);
     }
 
     public Book findBook(long bookId) {
