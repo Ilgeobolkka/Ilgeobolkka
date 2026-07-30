@@ -2,6 +2,7 @@ package com.example.ilgeobolkka.infra.portone;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -14,6 +15,7 @@ import io.portone.sdk.server.payment.FailedPayment;
 import io.portone.sdk.server.payment.PaidPayment;
 import io.portone.sdk.server.payment.PaymentAmount;
 import io.portone.sdk.server.payment.PaymentClient;
+import io.portone.sdk.server.payment.ReadyPayment;
 import java.time.Instant;
 import java.util.concurrent.CompletableFuture;
 import org.junit.jupiter.api.BeforeEach;
@@ -78,6 +80,32 @@ class PortOneSdkPaymentGatewayTest {
         PortOnePayment payment = paymentGateway.getPayment(PAYMENT_ID);
 
         assertEquals(PortOnePaymentStatus.FAILED, payment.status());
+    }
+
+    @Test
+    void PortOne_READY_결제는_채널이_없어도_PENDING으로_변환한다() {
+        ReadyPayment readyPayment = mock(ReadyPayment.class);
+        PaymentAmount amount = mock(PaymentAmount.class);
+        Currency currency = mock(Currency.class);
+        PortOneVersion version = mock(PortOneVersion.class);
+        when(readyPayment.getId()).thenReturn(PAYMENT_ID);
+        when(readyPayment.getAmount()).thenReturn(amount);
+        when(amount.getTotal()).thenReturn(1_000L);
+        when(readyPayment.getCurrency()).thenReturn(currency);
+        when(currency.getValue()).thenReturn("KRW");
+        when(readyPayment.getStoreId()).thenReturn("store-test");
+        when(readyPayment.getChannel()).thenReturn(null);
+        when(readyPayment.getOrderName()).thenReturn("읽어볼까 100잉크");
+        when(readyPayment.getVersion()).thenReturn(version);
+        when(version.getValue()).thenReturn("V2");
+        when(paymentClient.getPayment(PAYMENT_ID))
+                .thenReturn(CompletableFuture.completedFuture(readyPayment));
+
+        PortOnePayment payment = paymentGateway.getPayment(PAYMENT_ID);
+
+        assertAll(
+                () -> assertEquals(PortOnePaymentStatus.PENDING, payment.status()),
+                () -> assertNull(payment.channelKey()));
     }
 
     @Test

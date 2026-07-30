@@ -18,6 +18,7 @@ import com.example.ilgeobolkka.ink.dto.CompleteInkPurchaseResponse;
 import com.example.ilgeobolkka.ink.facade.InkPurchaseFacade;
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.Callable;
@@ -171,6 +172,30 @@ class InkPurchaseApiMySqlIntegrationTest {
     }
 
     @Test
+    void READY_결제의_채널이_아직_없으면_PENDING을_유지한다() throws Exception {
+        UUID paymentId = 결제를_준비한다(READER_ID);
+        paymentGateway.respondWith(new PortOnePayment(
+                paymentId.toString(),
+                PortOnePaymentStatus.PENDING,
+                1_000,
+                "KRW",
+                "store-test",
+                null,
+                "읽어볼까 100잉크",
+                "V2",
+                null));
+
+        결제를_완료한다(READER_ID, paymentId)
+                .andExpect(status().isAccepted())
+                .andExpect(jsonPath("$.status").value("PENDING"));
+
+        assertAll(
+                () -> assertEquals("PENDING", 결제_상태를_조회한다(paymentId)),
+                () -> assertEquals(0, 잔액을_조회한다(READER_ID)),
+                () -> assertEquals(0, 지급_원장_수를_조회한다(paymentId)));
+    }
+
+    @Test
     void T_PAY_004_금액이_다르면_FAILED로_기록하고_잉크를_지급하지_않는다() throws Exception {
         UUID paymentId = 결제를_준비한다(READER_ID);
         paymentGateway.respondWith(결제(paymentId, PortOnePaymentStatus.PAID, 999));
@@ -189,6 +214,46 @@ class InkPurchaseApiMySqlIntegrationTest {
                 () -> assertEquals(0, 잔액을_조회한다(READER_ID)),
                 () -> assertEquals(0, 지급_원장_수를_조회한다(paymentId)),
                 () -> assertEquals(callCount, paymentGateway.callCount()));
+    }
+
+    @Test
+    void 결제_금액이_1원_초과해도_FAILED로_기록한다() throws Exception {
+        UUID paymentId = 결제를_준비한다(READER_ID);
+        paymentGateway.respondWith(결제(paymentId, PortOnePaymentStatus.PAID, 1_001));
+
+        결제를_완료한다(READER_ID, paymentId)
+                .andExpect(status().isUnprocessableContent())
+                .andExpect(jsonPath("$.code").value("INVALID_PAYMENT_AMOUNT"));
+
+        assertAll(
+                () -> assertEquals("FAILED", 결제_상태를_조회한다(paymentId)),
+                () -> assertEquals(0, 잔액을_조회한다(READER_ID)),
+                () -> assertEquals(0, 지급_원장_수를_조회한다(paymentId)));
+    }
+
+    @Test
+    void 결제_통화가_KRW가_아니면_FAILED로_기록한다() throws Exception {
+        UUID paymentId = 결제를_준비한다(READER_ID);
+        PortOnePayment payment = 결제(paymentId, PortOnePaymentStatus.PAID, 1_000);
+        paymentGateway.respondWith(new PortOnePayment(
+                payment.paymentId(),
+                payment.status(),
+                payment.totalAmount(),
+                "USD",
+                payment.storeId(),
+                payment.channelKey(),
+                payment.orderName(),
+                payment.version(),
+                payment.paidAt()));
+
+        결제를_완료한다(READER_ID, paymentId)
+                .andExpect(status().isUnprocessableContent())
+                .andExpect(jsonPath("$.code").value("PAYMENT_VERIFICATION_FAILED"));
+
+        assertAll(
+                () -> assertEquals("FAILED", 결제_상태를_조회한다(paymentId)),
+                () -> assertEquals(0, 잔액을_조회한다(READER_ID)),
+                () -> assertEquals(0, 지급_원장_수를_조회한다(paymentId)));
     }
 
     @Test
@@ -221,6 +286,22 @@ class InkPurchaseApiMySqlIntegrationTest {
                 () -> assertEquals("FAILED", 결제_상태를_조회한다(mismatchedPaymentId)),
                 () -> assertEquals("FAILED", 결제_상태를_조회한다(failedPaymentId)),
                 () -> assertEquals(0, 잔액을_조회한다(READER_ID)));
+    }
+
+    @Test
+    void 실패한_결제_뒤_다시_준비하면_이전_시도를_보존하고_새_결제를_만든다() throws Exception {
+        UUID failedPaymentId = 결제를_준비한다(READER_ID);
+        paymentGateway.respondWith(결제(failedPaymentId, PortOnePaymentStatus.FAILED, 1_000));
+        결제를_완료한다(READER_ID, failedPaymentId)
+                .andExpect(status().isUnprocessableContent());
+
+        UUID retriedPaymentId = 결제를_준비한다(READER_ID);
+
+        assertAll(
+                () -> assertTrue(!failedPaymentId.equals(retriedPaymentId)),
+                () -> assertEquals("FAILED", 결제_상태를_조회한다(failedPaymentId)),
+                () -> assertEquals("PENDING", 결제_상태를_조회한다(retriedPaymentId)),
+                () -> assertEquals(2, 결제_수를_조회한다()));
     }
 
     @Test
@@ -319,8 +400,9 @@ class InkPurchaseApiMySqlIntegrationTest {
     }
 
     private List<CompleteInkPurchaseResponse> 동시에_완료한다(UUID paymentId) throws Exception {
-        ExecutorService executor = Executors.newFixedThreadPool(2);
-        CountDownLatch ready = new CountDownLatch(2);
+        int concurrentRequestCount = 10;
+        ExecutorService executor = Executors.newFixedThreadPool(concurrentRequestCount);
+        CountDownLatch ready = new CountDownLatch(concurrentRequestCount);
         CountDownLatch start = new CountDownLatch(1);
         try {
             Callable<CompleteInkPurchaseResponse> action = () -> {
@@ -328,11 +410,17 @@ class InkPurchaseApiMySqlIntegrationTest {
                 assertTrue(start.await(5, TimeUnit.SECONDS));
                 return inkPurchaseFacade.complete(READER_ID, paymentId);
             };
-            Future<CompleteInkPurchaseResponse> first = executor.submit(action);
-            Future<CompleteInkPurchaseResponse> second = executor.submit(action);
+            List<Future<CompleteInkPurchaseResponse>> futures = new ArrayList<>();
+            for (int index = 0; index < concurrentRequestCount; index++) {
+                futures.add(executor.submit(action));
+            }
             assertTrue(ready.await(5, TimeUnit.SECONDS));
             start.countDown();
-            return List.of(first.get(10, TimeUnit.SECONDS), second.get(10, TimeUnit.SECONDS));
+            List<CompleteInkPurchaseResponse> responses = new ArrayList<>();
+            for (Future<CompleteInkPurchaseResponse> future : futures) {
+                responses.add(future.get(10, TimeUnit.SECONDS));
+            }
+            return responses;
         } finally {
             executor.shutdownNow();
         }

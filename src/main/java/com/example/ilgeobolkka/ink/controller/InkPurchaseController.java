@@ -8,6 +8,7 @@ import com.example.ilgeobolkka.ink.facade.InkPurchaseFacade;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/ink/purchases")
 @RequiredArgsConstructor
 @ConditionalOnProperty(prefix = "portone.payment", name = "enabled", havingValue = "true")
+@Profile("!prod")
 public class InkPurchaseController {
 
     private final InkPurchaseFacade inkPurchaseFacade;
