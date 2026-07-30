@@ -7,6 +7,7 @@ import com.example.ilgeobolkka.infra.portone.PortOneWebhookVerificationException
 import com.example.ilgeobolkka.ink.exception.InkPurchaseNotFoundException;
 import com.example.ilgeobolkka.ink.exception.PaymentStateConflictException;
 import com.example.ilgeobolkka.ink.exception.PaymentVerificationException;
+import com.example.ilgeobolkka.ownership.exception.BookAlreadyOwnedException;
 import com.example.ilgeobolkka.reader.exception.EmailAlreadyExistsException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -68,6 +69,13 @@ public class GlobalExceptionHandler {
             InvalidCredentialsException exception) {
         logFailure(ErrorCode.INVALID_CREDENTIALS, exception);
         return response(ErrorCode.INVALID_CREDENTIALS);
+    }
+
+    @ExceptionHandler(BookAlreadyOwnedException.class)
+    ResponseEntity<ApiErrorResponse> handleBookAlreadyOwned(
+            BookAlreadyOwnedException exception) {
+        logFailure(ErrorCode.BOOK_ALREADY_OWNED, exception);
+        return response(ErrorCode.BOOK_ALREADY_OWNED);
     }
 
     @ExceptionHandler({BookNotFoundException.class, InkPurchaseNotFoundException.class})
