@@ -13,6 +13,8 @@ public interface InkLedgerRepository extends JpaRepository<InkLedger, Long> {
 
     boolean existsByPageRentalId(long pageRentalId);
 
+    long countByReaderId(long readerId);
+
     @Query(
             value =
                     """

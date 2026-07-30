@@ -208,6 +208,15 @@ class InkHistoryApiMySqlIntegrationTest {
                 .andExpect(jsonPath("$.page").value(2))
                 .andExpect(jsonPath("$.totalPages").value(1))
                 .andExpect(jsonPath("$.totalCount").value(1));
+
+        mockMvc.perform(get("/api/ink/ledger")
+                        .param("page", "214748366")
+                        .with(authentication(인증된_독자(READER_ID))))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.entries.length()").value(0))
+                .andExpect(jsonPath("$.page").value(214748366))
+                .andExpect(jsonPath("$.totalPages").value(1))
+                .andExpect(jsonPath("$.totalCount").value(1));
     }
 
     @Test
