@@ -91,4 +91,36 @@ public class OwnershipPayment {
 
     @Column(name = "paid_at", columnDefinition = "DATETIME(6)")
     private Instant paidAt;
+
+    public static OwnershipPayment create(
+            long readerId,
+            long bookId,
+            UUID paymentId,
+            int amountWon,
+            Instant createdAt) {
+        if (readerId <= 0) {
+            throw new IllegalArgumentException("독자 ID는 양수여야 합니다.");
+        }
+        if (bookId <= 0) {
+            throw new IllegalArgumentException("도서 ID는 양수여야 합니다.");
+        }
+        if (paymentId == null) {
+            throw new IllegalArgumentException("결제 ID는 필수입니다.");
+        }
+        if (amountWon <= 0) {
+            throw new IllegalArgumentException("소장 결제 금액은 양수여야 합니다.");
+        }
+        if (createdAt == null) {
+            throw new IllegalArgumentException("결제 생성 시각은 필수입니다.");
+        }
+
+        OwnershipPayment payment = new OwnershipPayment();
+        payment.readerId = readerId;
+        payment.bookId = bookId;
+        payment.paymentId = paymentId;
+        payment.status = OwnershipPaymentStatus.PENDING;
+        payment.amountWon = amountWon;
+        payment.createdAt = createdAt;
+        return payment;
+    }
 }
