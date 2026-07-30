@@ -53,7 +53,7 @@ import tools.jackson.databind.ObjectMapper;
     "portone.payment.store-id=store-test",
     "portone.payment.channel-key=channel-test",
     "portone.payment.api-secret=test-api-secret",
-    "portone.payment.webhook-secret=test-webhook-secret"
+    "portone.payment.webhook-secret=whsec_dGVzdC13ZWJob29rLXNlY3JldA=="
 })
 @AutoConfigureMockMvc
 @ActiveProfiles("test")

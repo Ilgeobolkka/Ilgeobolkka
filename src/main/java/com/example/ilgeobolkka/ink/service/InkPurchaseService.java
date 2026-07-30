@@ -70,6 +70,24 @@ public class InkPurchaseService {
             throw new PaymentStateConflictException();
         }
 
+        return applyPendingPaymentResult(purchase, payment);
+    }
+
+    @Transactional
+    public void applyWebhookPaymentResult(
+            UUID paymentId,
+            PortOnePayment payment) {
+        InkPurchase purchase = findPurchaseForUpdate(paymentId);
+        if (purchase.getStatus() != InkPurchaseStatus.PENDING) {
+            return;
+        }
+        applyPendingPaymentResult(purchase, payment);
+    }
+
+    private CompletionResult applyPendingPaymentResult(
+            InkPurchase purchase,
+            PortOnePayment payment) {
+        long readerId = purchase.getReaderId();
         if (payment.status() == PortOnePaymentStatus.NOT_FOUND) {
             return CompletionResult.success(CompleteInkPurchaseResponse.pending(
                     purchase,
@@ -131,6 +149,12 @@ public class InkPurchaseService {
     private InkPurchase findPurchaseForUpdate(UUID paymentId, long readerId) {
         return inkPurchaseRepository
                 .findByPaymentIdAndReaderIdForUpdate(paymentId, readerId)
+                .orElseThrow(() -> new InkPurchaseNotFoundException(paymentId));
+    }
+
+    private InkPurchase findPurchaseForUpdate(UUID paymentId) {
+        return inkPurchaseRepository
+                .findByPaymentIdForUpdate(paymentId)
                 .orElseThrow(() -> new InkPurchaseNotFoundException(paymentId));
     }
 

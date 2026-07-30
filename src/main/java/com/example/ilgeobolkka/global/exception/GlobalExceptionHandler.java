@@ -3,6 +3,7 @@ package com.example.ilgeobolkka.global.exception;
 import com.example.ilgeobolkka.auth.exception.InvalidCredentialsException;
 import com.example.ilgeobolkka.book.exception.BookNotFoundException;
 import com.example.ilgeobolkka.infra.portone.PortOnePaymentUnavailableException;
+import com.example.ilgeobolkka.infra.portone.PortOneWebhookVerificationException;
 import com.example.ilgeobolkka.ink.exception.InkPurchaseNotFoundException;
 import com.example.ilgeobolkka.ink.exception.PaymentStateConflictException;
 import com.example.ilgeobolkka.ink.exception.PaymentVerificationException;
@@ -40,6 +41,13 @@ public class GlobalExceptionHandler {
     ResponseEntity<ApiErrorResponse> handleInvalidInput(Exception exception) {
         logFailure(ErrorCode.INVALID_INPUT, exception);
         return response(ErrorCode.INVALID_INPUT);
+    }
+
+    @ExceptionHandler(PortOneWebhookVerificationException.class)
+    ResponseEntity<ApiErrorResponse> handleInvalidWebhookSignature(
+            PortOneWebhookVerificationException exception) {
+        logFailure(ErrorCode.INVALID_WEBHOOK_SIGNATURE, exception);
+        return response(ErrorCode.INVALID_WEBHOOK_SIGNATURE);
     }
 
     @ExceptionHandler(AccessDeniedException.class)
