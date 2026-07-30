@@ -23,15 +23,16 @@ public class InkService {
     }
 
     @Transactional(propagation = Propagation.MANDATORY)
-    public void grant(long readerId, long inkPurchaseId, Instant occurredAt) {
+    public int grant(long readerId, long inkPurchaseId, Instant occurredAt) {
         InkAccount account = findAccountForUpdate(readerId);
         if (inkLedgerRepository.existsByInkPurchaseId(inkPurchaseId)) {
-            return;
+            return account.getBalance();
         }
 
         account.grant();
         inkLedgerRepository.save(
                 InkLedger.grant(readerId, inkPurchaseId, account.getBalance(), occurredAt));
+        return account.getBalance();
     }
 
     @Transactional(propagation = Propagation.MANDATORY)
@@ -44,6 +45,14 @@ public class InkService {
         account.deduct();
         inkLedgerRepository.save(
                 InkLedger.deduction(readerId, pageRentalId, account.getBalance(), occurredAt));
+    }
+
+    @Transactional(propagation = Propagation.MANDATORY, readOnly = true)
+    public int getBalance(long readerId) {
+        return inkAccountRepository
+                .findByReaderId(readerId)
+                .orElseThrow(() -> new InkAccountNotFoundException(readerId))
+                .getBalance();
     }
 
     private InkAccount findAccountForUpdate(long readerId) {
