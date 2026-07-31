@@ -287,8 +287,7 @@ Mermaid에서 괄호가 있는 SQL 타입을 안정적으로 표시하기 위해
 - `Book.totalPageCount`는 원본 PDF 페이지 수와 같고 `BookPage.pageNumber`는 1부터
   `totalPageCount`까지 빈번호 없이 한 번씩 존재해야 합니다.
 - `PageRental.expiresAt`은 `rentedAt`에서 제품 정책의 대여 기간을 더한 값입니다. 활성 대여 중복
-  차감은 `InkAccount`를 잠근 뒤 소장·대여를 조회해 방지하며, 이 조회는 잠금 시점의 최신 커밋을
-  읽어야 합니다.
+  차감은 `InkAccount`를 잠근 뒤 소장·대여를 다시 조회해 방지합니다.
 - 새 대여의 잔액 차감, `InkLedger`, `PageRental`, `LibraryEntry`는 하나의 트랜잭션에서
   함께 성공하거나 함께 실패합니다. 원장과 대여·결제 이력은 수정·삭제하지 않습니다.
 - 소장 결제 준비는 `InkAccount`를 잠그고 이미 소장했는지와 같은 독자·도서의 `PENDING`을
