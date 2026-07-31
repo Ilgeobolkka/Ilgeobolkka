@@ -6,7 +6,9 @@ import com.example.ilgeobolkka.ink.service.InkService;
 import com.example.ilgeobolkka.library.service.LibraryService;
 import com.example.ilgeobolkka.ownership.service.OwnershipService;
 import com.example.ilgeobolkka.reading.dto.OpenPageResponse;
+import com.example.ilgeobolkka.reading.dto.PageContent;
 import com.example.ilgeobolkka.reading.entity.ReadingSession;
+import com.example.ilgeobolkka.reading.service.PageContentService;
 import com.example.ilgeobolkka.reading.service.ReadingSessionService;
 import com.example.ilgeobolkka.rental.entity.PageRental;
 import com.example.ilgeobolkka.rental.service.RentalService;
@@ -15,6 +17,7 @@ import java.time.Instant;
 import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,6 +41,7 @@ public class ReadingFacade {
     private final RentalService rentalService;
     private final InkService inkService;
     private final ReadingSessionService readingSessionService;
+    private final PageContentService pageContentService;
     private final LibraryService libraryService;
     private final Clock clock;
 
@@ -53,6 +57,26 @@ public class ReadingFacade {
                 readingSessionService.getCurrentSession(readerId, viewerSessionId);
         BookPage page = bookService.findPage(currentSession.getBookId(), pageNumber);
         return openPage(readerId, page, Viewer.existing(viewerSessionId));
+    }
+
+    @Transactional(readOnly = true)
+    public PageContent getCurrentPageContent(
+            long readerId, UUID viewerSessionId, int pageNumber) {
+        ReadingSession currentSession =
+                readingSessionService.getCurrentSession(readerId, viewerSessionId);
+        if (currentSession.getCurrentPageNumber() != pageNumber) {
+            throw new AccessDeniedException("현재 열람 페이지와 요청 페이지가 다릅니다.");
+        }
+
+        BookPage page = bookService.findPage(currentSession.getBookId(), pageNumber);
+        boolean canRead = ownershipService.isOwned(readerId, currentSession.getBookId())
+                || rentalService
+                        .findActiveRental(readerId, page.getId(), clock.instant())
+                        .isPresent();
+        if (!canRead) {
+            throw new AccessDeniedException("페이지 콘텐츠 접근 권한이 없습니다.");
+        }
+        return pageContentService.read(page);
     }
 
     /**
