@@ -18,6 +18,7 @@ import com.example.ilgeobolkka.infra.portone.PortOnePaymentStatus;
 import com.example.ilgeobolkka.infra.portone.PortOnePaymentUnavailableException;
 import com.example.ilgeobolkka.ownership.dto.CompleteOwnershipPaymentResponse;
 import com.example.ilgeobolkka.ownership.facade.OwnershipPaymentFacade;
+import com.example.ilgeobolkka.reading.facade.ReadingFacade;
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
 import java.time.Instant;
 import java.time.ZoneOffset;
@@ -78,6 +79,7 @@ class OwnershipPaymentApiMySqlIntegrationTest {
     private final ObjectMapper objectMapper;
     private final JdbcTemplate jdbcTemplate;
     private final OwnershipPaymentFacade ownershipPaymentFacade;
+    private final ReadingFacade readingFacade;
     private final FakePortOnePaymentGateway paymentGateway;
 
     @Autowired
@@ -86,11 +88,13 @@ class OwnershipPaymentApiMySqlIntegrationTest {
             ObjectMapper objectMapper,
             JdbcTemplate jdbcTemplate,
             OwnershipPaymentFacade ownershipPaymentFacade,
+            ReadingFacade readingFacade,
             FakePortOnePaymentGateway paymentGateway) {
         this.mockMvc = mockMvc;
         this.objectMapper = objectMapper;
         this.jdbcTemplate = jdbcTemplate;
         this.ownershipPaymentFacade = ownershipPaymentFacade;
+        this.readingFacade = readingFacade;
         this.paymentGateway = paymentGateway;
     }
 
@@ -385,6 +389,22 @@ class OwnershipPaymentApiMySqlIntegrationTest {
     }
 
     @Test
+    void T_OWN_010_소장_완료와_페이지_열기를_동시에_처리해도_잉크는_한_번만_움직인다() throws Exception {
+        UUID paymentId = 결제를_준비하고_ID를_반환한다();
+        paymentGateway.respondWith(결제(paymentId, PortOnePaymentStatus.PAID, BOOK_PRICE_WON));
+
+        소장_완료와_페이지_열기를_동시에_실행한다(paymentId);
+
+        int 차감_수 = 대여_수를_조회한다();
+        assertAll(
+                () -> assertEquals("PAID", 결제_상태를_조회한다(paymentId)),
+                () -> assertEquals(1, 소장_수를_조회한다()),
+                () -> assertTrue(차감_수 == 0 || 차감_수 == 1),
+                () -> assertEquals(차감_수, 잉크_내역_수를_조회한다()),
+                () -> assertEquals(70 - 차감_수, 잉크_잔액을_조회한다()));
+    }
+
+    @Test
     void 소장_생성이_실패하면_PAID_전이도_함께_롤백한다() throws Exception {
         UUID paymentId = 결제를_준비하고_ID를_반환한다();
         long ownershipPaymentId = jdbcTemplate.queryForObject(
@@ -573,6 +593,38 @@ class OwnershipPaymentApiMySqlIntegrationTest {
         }
     }
 
+    /**
+     * 두 요청은 같은 {@code InkAccount} 잠금으로 순서화된다. 소장이 먼저 반영되면 페이지 열기가
+     * 재확인에서 소장을 보고 차감하지 않고, 대여가 먼저면 1잉크 차감 뒤 소장이 부여된다. 어느 쪽이
+     * 먼저인지는 고정하지 않고, 두 결과 모두 잉크와 대여가 어긋나지 않는지만 확인한다.
+     */
+    private void 소장_완료와_페이지_열기를_동시에_실행한다(UUID paymentId) throws Exception {
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        CountDownLatch ready = new CountDownLatch(2);
+        CountDownLatch start = new CountDownLatch(1);
+        try {
+            List<Future<?>> futures = new ArrayList<>();
+            futures.add(executor.submit(() -> {
+                ready.countDown();
+                assertTrue(start.await(5, TimeUnit.SECONDS));
+                return ownershipPaymentFacade.complete(READER_ID, paymentId);
+            }));
+            futures.add(executor.submit(() -> {
+                ready.countDown();
+                assertTrue(start.await(5, TimeUnit.SECONDS));
+                return readingFacade.openNewSession(READER_ID, BOOK_ID, 1);
+            }));
+
+            assertTrue(ready.await(5, TimeUnit.SECONDS));
+            start.countDown();
+            for (Future<?> future : futures) {
+                future.get(10, TimeUnit.SECONDS);
+            }
+        } finally {
+            executor.shutdownNow();
+        }
+    }
+
     private PortOnePayment 결제(UUID paymentId, PortOnePaymentStatus status, long totalAmount) {
         return new PortOnePayment(
                 paymentId.toString(),
@@ -744,6 +796,8 @@ class OwnershipPaymentApiMySqlIntegrationTest {
     private void 테스트_데이터를_정리한다() {
         jdbcTemplate.update("DELETE FROM book_ownership WHERE reader_id IN (?, ?)", READER_ID, OTHER_READER_ID);
         jdbcTemplate.update("DELETE FROM ownership_payment WHERE reader_id IN (?, ?)", READER_ID, OTHER_READER_ID);
+        jdbcTemplate.update("DELETE FROM library_entry WHERE reader_id = ?", READER_ID);
+        jdbcTemplate.update("DELETE FROM reading_session WHERE reader_id = ?", READER_ID);
         jdbcTemplate.update("DELETE FROM ink_ledger WHERE reader_id = ?", READER_ID);
         jdbcTemplate.update("DELETE FROM page_rental WHERE reader_id = ?", READER_ID);
         jdbcTemplate.update("DELETE FROM book_page WHERE book_id = ?", BOOK_ID);

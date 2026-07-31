@@ -8,7 +8,6 @@ import com.example.ilgeobolkka.infra.portone.PortOnePaymentProperties;
 import com.example.ilgeobolkka.ink.exception.PaymentVerificationException;
 import com.example.ilgeobolkka.ink.service.InkService;
 import com.example.ilgeobolkka.ownership.dto.CompleteOwnershipPaymentResponse;
-import com.example.ilgeobolkka.ownership.dto.FindOwnershipPaymentsResponse;
 import com.example.ilgeobolkka.ownership.dto.PrepareOwnershipPaymentResponse;
 import com.example.ilgeobolkka.ownership.service.OwnershipPaymentService;
 import java.time.Clock;
@@ -54,6 +53,13 @@ public class OwnershipPaymentFacade {
         return new Preparation(response, preparation.created());
     }
 
+    /**
+     * PortOne 조회를 DB 트랜잭션 밖에서 하려고 단계마다 짧은 트랜잭션을 쓴다. 이 메서드에
+     * {@code @Transactional}을 붙이면 안 된다. 검증 실패는 예외 대신
+     * {@link OwnershipPaymentService.CompletionResult#errorCode()}로 돌아오는데, 이는
+     * {@code FAILED} 전이를 커밋한 뒤 트랜잭션 밖에서 던지기 위함이다. 여기서 트랜잭션을 열면 그
+     * 전이가 함께 되돌아간다.
+     */
     public CompleteOwnershipPaymentResponse complete(long readerId, UUID paymentId) {
         var cachedResponse = ownershipPaymentService.findCachedCompletion(readerId, paymentId);
         if (cachedResponse.isPresent()) {
@@ -76,11 +82,6 @@ public class OwnershipPaymentFacade {
     public void completeWebhook(UUID paymentId) {
         PortOnePayment payment = paymentGateway.getPayment(paymentId.toString());
         ownershipPaymentService.applyWebhookPaymentResult(paymentId, payment);
-    }
-
-    public FindOwnershipPaymentsResponse findHistory(long readerId, int page) {
-        return FindOwnershipPaymentsResponse.from(
-                ownershipPaymentService.getHistory(readerId, page), page);
     }
 
     public record Preparation(

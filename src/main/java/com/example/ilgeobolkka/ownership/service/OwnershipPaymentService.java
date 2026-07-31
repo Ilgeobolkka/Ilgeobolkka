@@ -5,6 +5,7 @@ import com.example.ilgeobolkka.infra.portone.PortOnePayment;
 import com.example.ilgeobolkka.infra.portone.PortOnePaymentProperties;
 import com.example.ilgeobolkka.infra.portone.PortOnePaymentStatus;
 import com.example.ilgeobolkka.ink.exception.PaymentStateConflictException;
+import com.example.ilgeobolkka.ink.service.InkService;
 import com.example.ilgeobolkka.ownership.dto.CompleteOwnershipPaymentResponse;
 import com.example.ilgeobolkka.ownership.entity.BookOwnership;
 import com.example.ilgeobolkka.ownership.entity.OwnershipPayment;
@@ -12,19 +13,14 @@ import com.example.ilgeobolkka.ownership.entity.OwnershipPaymentStatus;
 import com.example.ilgeobolkka.ownership.exception.BookAlreadyOwnedException;
 import com.example.ilgeobolkka.ownership.exception.OwnershipPaymentNotFoundException;
 import com.example.ilgeobolkka.ownership.repository.BookOwnershipRepository;
-import com.example.ilgeobolkka.ownership.repository.OwnershipPaymentEntryProjection;
 import com.example.ilgeobolkka.ownership.repository.OwnershipPaymentRepository;
 import java.time.Instant;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Profile;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,9 +33,9 @@ public class OwnershipPaymentService {
     public static final String ORDER_NAME = "읽어볼까 도서 소장";
     private static final String SERVER_CURRENCY = "KRW";
     private static final String PORTONE_VERSION = "V2";
-    private static final int HISTORY_PAGE_SIZE = 10;
 
     private final OwnershipService ownershipService;
+    private final InkService inkService;
     private final BookOwnershipRepository bookOwnershipRepository;
     private final OwnershipPaymentRepository ownershipPaymentRepository;
     private final PortOnePaymentProperties paymentProperties;
@@ -112,22 +108,19 @@ public class OwnershipPaymentService {
         applyPendingPaymentResult(payment, portOnePayment);
     }
 
-    @Transactional(readOnly = true)
-    public Page<OwnershipPaymentEntryProjection> getHistory(long readerId, int page) {
-        PageRequest pageable = PageRequest.of(page - 1, HISTORY_PAGE_SIZE);
-
-        if (pageable.getOffset() > Integer.MAX_VALUE) {
-            return new PageImpl<>(
-                    List.of(),
-                    pageable,
-                    ownershipPaymentRepository.countByReaderIdAndStatus(
-                            readerId, OwnershipPaymentStatus.PAID));
-        }
-
-        return ownershipPaymentRepository.findEntriesByReaderIdAndStatus(
-                readerId, OwnershipPaymentStatus.PAID, pageable);
-    }
-
+    /**
+     * 소장을 부여하기 직전에만 독자의 {@code InkAccount}를 잠근다. 같은 독자의 페이지 열기도 이
+     * 계정을 잠그므로, 두 요청은 이 잠금 하나로 순서가 정해진다
+     * ({@code docs/prd/product-policy.md#페이지-열기-처리-순서와-원자성},
+     * {@code docs/adr/domain/0010-model-page-rentals-with-ink-ledger.md}).
+     *
+     * <p>검증 실패·미완료 상태는 소장에 영향을 주지 않으므로 그 경로에서는 계정을 잠그지 않는다.
+     * 완료 폴링처럼 반복 호출되는 경로에서 페이지 열기와 불필요하게 경합하지 않기 위해서다.
+     *
+     * <p>결제 행을 이미 잠근 뒤에 계정을 잠근다. 준비(prepare)는 계정을 잠근 채 결제 행을 새로 넣기만
+     * 하고 기존 결제 행을 기다리지 않으므로 순환이 생기지 않는다. 브라우저 완료와 웹훅이 같은 순서를
+     * 쓰도록 두 경로가 공유하는 이 지점에 둔다.
+     */
     private CompletionResult applyPendingPaymentResult(
             OwnershipPayment payment, PortOnePayment portOnePayment) {
         if (portOnePayment.status() == PortOnePaymentStatus.NOT_FOUND) {
@@ -152,6 +145,7 @@ public class OwnershipPaymentService {
             return CompletionResult.failure(ErrorCode.PAYMENT_VERIFICATION_FAILED);
         }
 
+        inkService.lockAccount(payment.getReaderId());
         payment.markPaid(portOnePayment.paidAt());
         bookOwnershipRepository.save(
                 BookOwnership.create(
