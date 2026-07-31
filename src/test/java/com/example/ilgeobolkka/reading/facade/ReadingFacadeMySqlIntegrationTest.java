@@ -275,15 +275,28 @@ class ReadingFacadeMySqlIntegrationTest {
         }
     }
 
+    /**
+     * 독자와 잉크 계정은 지우지 않고 갱신해 재사용한다. 매번 삭제 후 같은 {@code reader_id}로 다시
+     * 넣으면 purge 전의 삭제 표시 인덱스 레코드가 남고, 동시 요청의 {@code FOR UPDATE} 스캔이 그
+     * 레코드까지 잠그면서 교착이 생긴다. 운영에서는 잉크 계정을 삭제하지 않으므로 없는 상황이다.
+     */
     private void 독자를_생성한다(int balance) {
         jdbcTemplate.update(
                 """
                 INSERT INTO reader (id, email, password_hash, created_at)
                 VALUES (?, 'scrum411@example.com', '{noop}password', '2026-07-30 00:00:00.000000')
+                AS incoming
+                ON DUPLICATE KEY UPDATE password_hash = incoming.password_hash
                 """,
                 READER_ID);
         jdbcTemplate.update(
-                "INSERT INTO ink_account (reader_id, balance) VALUES (?, ?)", READER_ID, balance);
+                """
+                INSERT INTO ink_account (reader_id, balance) VALUES (?, ?)
+                AS incoming
+                ON DUPLICATE KEY UPDATE balance = incoming.balance
+                """,
+                READER_ID,
+                balance);
     }
 
     private void 대여용_도서를_생성한다() {
@@ -411,8 +424,6 @@ class ReadingFacadeMySqlIntegrationTest {
         jdbcTemplate.update("DELETE FROM page_rental WHERE reader_id = ?", READER_ID);
         jdbcTemplate.update("DELETE FROM book_ownership WHERE reader_id = ?", READER_ID);
         jdbcTemplate.update("DELETE FROM ownership_payment WHERE reader_id = ?", READER_ID);
-        jdbcTemplate.update("DELETE FROM ink_account WHERE reader_id = ?", READER_ID);
-        jdbcTemplate.update("DELETE FROM reader WHERE id = ?", READER_ID);
         jdbcTemplate.update("DELETE FROM book_page WHERE book_id IN (?, ?)", RENTAL_BOOK_ID, OWNED_BOOK_ID);
         jdbcTemplate.update("DELETE FROM book WHERE id IN (?, ?)", RENTAL_BOOK_ID, OWNED_BOOK_ID);
     }
