@@ -41,6 +41,11 @@ public class InkPurchaseService {
     }
 
     @Transactional(readOnly = true)
+    public boolean existsByPaymentId(UUID paymentId) {
+        return inkPurchaseRepository.existsByPaymentId(paymentId);
+    }
+
+    @Transactional(readOnly = true)
     public Optional<CompleteInkPurchaseResponse> findCachedCompletion(
             long readerId, UUID paymentId) {
         InkPurchase purchase = findPurchase(paymentId, readerId);

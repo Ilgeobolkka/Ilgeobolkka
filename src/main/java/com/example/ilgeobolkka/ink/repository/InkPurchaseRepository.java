@@ -13,6 +13,8 @@ public interface InkPurchaseRepository extends JpaRepository<InkPurchase, Long> 
 
     Optional<InkPurchase> findByPaymentIdAndReaderId(UUID paymentId, long readerId);
 
+    boolean existsByPaymentId(UUID paymentId);
+
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("""
             SELECT purchase
