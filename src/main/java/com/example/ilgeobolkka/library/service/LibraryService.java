@@ -1,6 +1,5 @@
 package com.example.ilgeobolkka.library.service;
 
-import com.example.ilgeobolkka.library.entity.LibraryEntry;
 import com.example.ilgeobolkka.library.repository.LibraryEntryRepository;
 import java.time.Instant;
 import lombok.RequiredArgsConstructor;
@@ -16,13 +15,6 @@ public class LibraryService {
 
     @Transactional(propagation = Propagation.MANDATORY)
     public void recordVisit(long readerId, long bookId, int pageNumber, Instant visitedAt) {
-        libraryEntryRepository
-                .findByReaderIdAndBookId(readerId, bookId)
-                .ifPresentOrElse(
-                        entry -> entry.moveTo(pageNumber, visitedAt),
-                        () ->
-                                libraryEntryRepository.save(
-                                        LibraryEntry.create(
-                                                readerId, bookId, pageNumber, visitedAt)));
+        libraryEntryRepository.upsertLastReadPage(readerId, bookId, pageNumber, visitedAt);
     }
 }

@@ -38,17 +38,7 @@ public class ReadingSessionService {
     @Transactional(propagation = Propagation.MANDATORY)
     public void openOrReplace(
             long readerId, long bookId, int pageNumber, UUID viewerSessionId, Instant now) {
-        readingSessionRepository
-                .findByReaderId(readerId)
-                .ifPresentOrElse(
-                        session -> session.replace(bookId, pageNumber, viewerSessionId, now),
-                        () ->
-                                readingSessionRepository.save(
-                                        ReadingSession.open(
-                                                readerId,
-                                                bookId,
-                                                pageNumber,
-                                                viewerSessionId,
-                                                now)));
+        readingSessionRepository.upsertCurrentSession(
+                readerId, bookId, pageNumber, viewerSessionId.toString(), now);
     }
 }
