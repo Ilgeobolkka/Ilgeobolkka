@@ -34,11 +34,27 @@ public class ReadingSessionService {
         return session;
     }
 
-    /** 독자당 하나뿐인 현재 세션을 새 책·페이지·뷰어로 발급하거나 교체한다. */
+    /** 독자당 하나뿐인 현재 세션을 새 뷰어로 발급하거나 교체한다. 새 뷰어가 항상 이긴다. */
     @Transactional(propagation = Propagation.MANDATORY)
-    public void openOrReplace(
+    public void openWithNewViewer(
             long readerId, long bookId, int pageNumber, UUID viewerSessionId, Instant now) {
         readingSessionRepository.upsertCurrentSession(
                 readerId, bookId, pageNumber, viewerSessionId.toString(), now);
+    }
+
+    /**
+     * 현재 세션의 위치를 옮긴다. 요청한 뷰어가 이미 교체되었으면 409에 해당하는 예외를 던져
+     * 트랜잭션을 되돌린다. {@link #getCurrentSession}의 확인만으로는 확인과 갱신 사이에 새 뷰어가
+     * 끼어들 수 있어, 갱신 문장 자체가 뷰어를 조건으로 가져야 한다.
+     */
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void moveCurrentViewer(
+            long readerId, long bookId, int pageNumber, UUID viewerSessionId, Instant now) {
+        int moved =
+                readingSessionRepository.moveCurrentViewer(
+                        readerId, bookId, pageNumber, viewerSessionId.toString(), now);
+        if (moved == 0) {
+            throw new ViewerSessionReplacedException(readerId);
+        }
     }
 }

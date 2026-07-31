@@ -39,6 +39,29 @@ public interface ReadingSessionRepository extends JpaRepository<ReadingSession, 
             @Param("viewerSessionId") String viewerSessionId,
             @Param("updatedAt") Instant updatedAt);
 
+    /**
+     * 요청한 뷰어가 아직 현재 세션일 때만 위치를 옮기고 옮긴 행 수를 돌려준다. 뷰어 확인과 갱신을
+     * 한 문장에 두어야, 확인을 통과한 뒤 새 뷰어가 세션을 교체한 지연 요청이 이전 뷰어를 다시
+     * 현재 세션으로 되살리지 못한다.
+     */
+    @Modifying(flushAutomatically = true)
+    @Query(
+            value =
+                    """
+                    UPDATE reading_session
+                    SET book_id = :bookId,
+                        current_page_number = :pageNumber,
+                        updated_at = :updatedAt
+                    WHERE reader_id = :readerId AND viewer_session_id = :viewerSessionId
+                    """,
+            nativeQuery = true)
+    int moveCurrentViewer(
+            @Param("readerId") long readerId,
+            @Param("bookId") long bookId,
+            @Param("pageNumber") int pageNumber,
+            @Param("viewerSessionId") String viewerSessionId,
+            @Param("updatedAt") Instant updatedAt);
+
     @Modifying
     @Query("delete from ReadingSession readingSession where readingSession.readerId = :readerId")
     int deleteByReaderId(@Param("readerId") long readerId);

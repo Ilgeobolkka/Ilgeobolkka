@@ -44,8 +44,7 @@ public class ReadingFacade {
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public OpenPageResponse openNewSession(long readerId, long bookId, int pageNumber) {
         BookPage page = bookService.findPage(bookId, pageNumber);
-        UUID viewerSessionId = UUID.randomUUID();
-        return openPage(readerId, page, viewerSessionId);
+        return openPage(readerId, page, Viewer.created());
     }
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
@@ -53,7 +52,21 @@ public class ReadingFacade {
         ReadingSession currentSession =
                 readingSessionService.getCurrentSession(readerId, viewerSessionId);
         BookPage page = bookService.findPage(currentSession.getBookId(), pageNumber);
-        return openPage(readerId, page, viewerSessionId);
+        return openPage(readerId, page, Viewer.existing(viewerSessionId));
+    }
+
+    /**
+     * 새 뷰어인지에 따라 열람 세션을 무조건 교체할지, 아직 현재 뷰어일 때만 옮길지가 갈린다.
+     */
+    private record Viewer(UUID sessionId, boolean isNew) {
+
+        static Viewer created() {
+            return new Viewer(UUID.randomUUID(), true);
+        }
+
+        static Viewer existing(UUID sessionId) {
+            return new Viewer(sessionId, false);
+        }
     }
 
     /**
@@ -62,54 +75,59 @@ public class ReadingFacade {
      * 실제 차감보다 앞선다. 정책의 "대여 기간은 차감이 완료된 서버 시각부터 30일"을 지키려면 재확인과
      * 대여·차감이 같은 시각을 써야 한다.
      */
-    private OpenPageResponse openPage(long readerId, BookPage page, UUID viewerSessionId) {
+    private OpenPageResponse openPage(long readerId, BookPage page, Viewer viewer) {
         Optional<OpenPageResponse> freeAccess =
-                tryFreeAccess(readerId, page, viewerSessionId, clock.instant());
+                tryFreeAccess(readerId, page, viewer, clock.instant());
         if (freeAccess.isPresent()) {
             return freeAccess.get();
         }
 
         inkService.lockAccount(readerId);
         Instant chargedAt = clock.instant();
-        freeAccess = tryFreeAccess(readerId, page, viewerSessionId, chargedAt);
+        freeAccess = tryFreeAccess(readerId, page, viewer, chargedAt);
         if (freeAccess.isPresent()) {
             return freeAccess.get();
         }
 
-        return chargeNewRental(readerId, page, viewerSessionId, chargedAt);
+        return chargeNewRental(readerId, page, viewer, chargedAt);
     }
 
     private Optional<OpenPageResponse> tryFreeAccess(
-            long readerId, BookPage page, UUID viewerSessionId, Instant now) {
+            long readerId, BookPage page, Viewer viewer, Instant now) {
         if (ownershipService.isOwned(readerId, page.getBookId())) {
-            recordVisit(readerId, page, viewerSessionId, now);
+            recordVisit(readerId, page, viewer, now);
             int balance = inkService.getBalance(readerId);
-            return Optional.of(OpenPageResponse.owned(viewerSessionId, page, balance));
+            return Optional.of(OpenPageResponse.owned(viewer.sessionId(), page, balance));
         }
 
         return rentalService
                 .findActiveRental(readerId, page.getId(), now)
                 .map(
                         rental -> {
-                            recordVisit(readerId, page, viewerSessionId, now);
+                            recordVisit(readerId, page, viewer, now);
                             int balance = inkService.getBalance(readerId);
                             return OpenPageResponse.activeRental(
-                                    viewerSessionId, page, rental, balance);
+                                    viewer.sessionId(), page, rental, balance);
                         });
     }
 
     private OpenPageResponse chargeNewRental(
-            long readerId, BookPage page, UUID viewerSessionId, Instant now) {
+            long readerId, BookPage page, Viewer viewer, Instant now) {
         PageRental rental = rentalService.startRental(readerId, page.getId(), now);
         inkService.deduct(readerId, rental.getId(), now);
         int balance = inkService.getBalance(readerId);
-        recordVisit(readerId, page, viewerSessionId, now);
-        return OpenPageResponse.newRental(viewerSessionId, page, rental, balance);
+        recordVisit(readerId, page, viewer, now);
+        return OpenPageResponse.newRental(viewer.sessionId(), page, rental, balance);
     }
 
-    private void recordVisit(long readerId, BookPage page, UUID viewerSessionId, Instant now) {
-        readingSessionService.openOrReplace(
-                readerId, page.getBookId(), page.getPageNumber(), viewerSessionId, now);
+    private void recordVisit(long readerId, BookPage page, Viewer viewer, Instant now) {
+        if (viewer.isNew()) {
+            readingSessionService.openWithNewViewer(
+                    readerId, page.getBookId(), page.getPageNumber(), viewer.sessionId(), now);
+        } else {
+            readingSessionService.moveCurrentViewer(
+                    readerId, page.getBookId(), page.getPageNumber(), viewer.sessionId(), now);
+        }
         libraryService.recordVisit(readerId, page.getBookId(), page.getPageNumber(), now);
     }
 }
