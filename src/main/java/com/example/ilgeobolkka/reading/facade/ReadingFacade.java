@@ -21,16 +21,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 세션 생성(POST)과 페이지 이동(PATCH)이 공유하는 원자적 페이지 열기 유스케이스.
- * 잠금 → 소장 → 활성 대여 → 신규 대여·차감 순서는
+ * 소장 → 활성 대여 → 잠금 → 재확인 → 신규 대여·차감 순서는
  * {@code docs/prd/product-policy.md#페이지-열기-처리-순서와-원자성}을 따른다.
  *
- * <p>독자당 하나뿐인 {@code InkAccount} 행 잠금이 같은 독자의 페이지 열기를 직렬화하는 유일한
- * 지점이다. 소장·활성 대여처럼 차감이 없는 경로도 {@code ReadingSession}과 {@code LibraryEntry}를
- * 쓰므로, 잠금 밖에서 처리하면 같은 독자의 동시 요청이 두 테이블의 유니크 제약을 깨뜨린다.
- *
  * <p>두 진입점은 {@link Isolation#READ_COMMITTED}로 연다. InnoDB 기본값인 REPEATABLE READ에서는
- * 잠금보다 먼저 실행하는 도서·세션 조회가 트랜잭션 스냅샷을 고정해, 잠금 뒤 확인도 그 스냅샷을
- * 읽는다. 그러면 먼저 커밋한 동시 요청이 만든 대여가 보이지 않아 1잉크가 두 번 차감된다.
+ * 잠금 전 첫 확인이 고정한 스냅샷을 잠금 뒤 재확인도 그대로 읽어, 먼저 커밋한 동시 요청이 만든
+ * 대여가 보이지 않고 중복 차감된다. 재확인이 매번 최신 커밋을 읽어야 정책의 "잠금 뒤 다시 확인해
+ * 한 번만 차감한다"가 성립한다.
  */
 @Service
 @RequiredArgsConstructor
@@ -61,9 +58,18 @@ public class ReadingFacade {
 
     private OpenPageResponse openPage(
             long readerId, BookPage page, UUID viewerSessionId, Instant now) {
+        Optional<OpenPageResponse> freeAccess = tryFreeAccess(readerId, page, viewerSessionId, now);
+        if (freeAccess.isPresent()) {
+            return freeAccess.get();
+        }
+
         inkService.lockAccount(readerId);
-        return tryFreeAccess(readerId, page, viewerSessionId, now)
-                .orElseGet(() -> chargeNewRental(readerId, page, viewerSessionId, now));
+        freeAccess = tryFreeAccess(readerId, page, viewerSessionId, now);
+        if (freeAccess.isPresent()) {
+            return freeAccess.get();
+        }
+
+        return chargeNewRental(readerId, page, viewerSessionId, now);
     }
 
     private Optional<OpenPageResponse> tryFreeAccess(
