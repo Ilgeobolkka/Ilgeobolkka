@@ -84,33 +84,6 @@ public class ReadingSession {
     @Column(name = "updated_at", nullable = false, columnDefinition = "DATETIME(6)")
     private Instant updatedAt;
 
-    public static ReadingSession open(
-            long readerId,
-            long bookId,
-            int pageNumber,
-            UUID viewerSessionId,
-            Instant openedAt) {
-        ReadingSession session = new ReadingSession();
-        session.readerId = readerId;
-        session.bookId = bookId;
-        session.currentPageNumber = pageNumber;
-        session.viewerSessionId = viewerSessionId;
-        session.updatedAt = openedAt;
-        return session;
-    }
-
-    /**
-     * 독자당 하나뿐인 현재 세션을 새 뷰어로 교체한다. delete 후 insert 대신 같은 행을
-     * 갱신해 {@code uk_reading_session_reader}·{@code uk_reading_session_viewer} 유니크
-     * 제약 충돌을 피한다.
-     */
-    public void replace(long bookId, int pageNumber, UUID viewerSessionId, Instant updatedAt) {
-        this.bookId = bookId;
-        this.currentPageNumber = pageNumber;
-        this.viewerSessionId = viewerSessionId;
-        this.updatedAt = updatedAt;
-    }
-
     public boolean matchesViewer(UUID viewerSessionId) {
         return this.viewerSessionId.equals(viewerSessionId);
     }

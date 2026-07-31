@@ -71,19 +71,4 @@ public class LibraryEntry {
 
     @Column(name = "updated_at", nullable = false, columnDefinition = "DATETIME(6)")
     private Instant updatedAt;
-
-    public static LibraryEntry create(
-            long readerId, long bookId, int lastPageNumber, Instant updatedAt) {
-        LibraryEntry entry = new LibraryEntry();
-        entry.readerId = readerId;
-        entry.bookId = bookId;
-        entry.lastPageNumber = lastPageNumber;
-        entry.updatedAt = updatedAt;
-        return entry;
-    }
-
-    public void moveTo(int lastPageNumber, Instant updatedAt) {
-        this.lastPageNumber = lastPageNumber;
-        this.updatedAt = updatedAt;
-    }
 }
