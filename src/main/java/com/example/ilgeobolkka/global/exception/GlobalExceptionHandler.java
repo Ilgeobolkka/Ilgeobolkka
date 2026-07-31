@@ -12,6 +12,7 @@ import com.example.ilgeobolkka.ink.exception.PaymentVerificationException;
 import com.example.ilgeobolkka.ownership.exception.BookAlreadyOwnedException;
 import com.example.ilgeobolkka.ownership.exception.OwnershipPaymentNotFoundException;
 import com.example.ilgeobolkka.reader.exception.EmailAlreadyExistsException;
+import com.example.ilgeobolkka.reading.exception.PageContentNotFoundException;
 import com.example.ilgeobolkka.reading.exception.ReadingSessionNotFoundException;
 import com.example.ilgeobolkka.reading.exception.ViewerSessionReplacedException;
 import com.example.ilgeobolkka.webhook.exception.UnknownPaymentException;
@@ -96,6 +97,7 @@ public class GlobalExceptionHandler {
         BookPageNotFoundException.class,
         InkPurchaseNotFoundException.class,
         OwnershipPaymentNotFoundException.class,
+        PageContentNotFoundException.class,
         ReadingSessionNotFoundException.class,
         UnknownPaymentException.class
     })

@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.example.ilgeobolkka.book.entity.BookPageContentType;
+import com.example.ilgeobolkka.global.config.ContentStorageProperties;
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
 import java.io.IOException;
 import java.io.InputStream;
@@ -67,16 +68,18 @@ class ContentImportFullMySqlIntegrationTest {
 
         ContentImportProperties properties = new ContentImportProperties();
         properties.setManifest(Path.of("fixtures/content/manifest.json"));
-        properties.setOutputRoot(Path.of("var/content/pages"));
         properties.setPdftotextCommand(
                 System.getenv().getOrDefault("PDFTOTEXT_COMMAND", "pdftotext"));
         properties.setPdftoppmCommand(
                 System.getenv().getOrDefault("PDFTOPPM_COMMAND", "pdftoppm"));
         PdfTool pdfTool = new PopplerPdfTool(properties);
+        Path outputRoot = Path.of("var/content/pages");
+        ContentStorageProperties storageProperties = new ContentStorageProperties();
+        storageProperties.setRoot(outputRoot);
         ContentBatchConverter converter =
                 new ContentBatchConverter(
-                        properties.manifest(),
-                        properties.outputRoot(),
+                        properties,
+                        storageProperties,
                         objectMapper,
                         pdfTool);
 
@@ -126,10 +129,10 @@ class ContentImportFullMySqlIntegrationTest {
                 () ->
                         assertTrue(
                                 Files.isRegularFile(
-                                        Path.of(
-                                                "var/content/pages",
-                                                batch.manifestSha256(),
-                                                "manifest.json"))));
+                                        outputRoot.resolve(
+                                                Path.of(
+                                                        batch.manifestSha256(),
+                                                        "manifest.json")))));
     }
 
     private void verifySourceContent(ContentBatch batch, BookMetadata[] books) {

@@ -163,7 +163,8 @@ PDFTOPPM_COMMAND="$PDFTOPPM_COMMAND" \
 
 기본 입력은 `fixtures/content/manifest.json`, 출력은 Git 제외
 `var/content/pages/<manifestSha256>/`입니다. 경로를 바꿔야 할 때만
-`CONTENT_IMPORT_MANIFEST`, `CONTENT_IMPORT_OUTPUT_ROOT`를 주입합니다. 배치는 PDF 100권·400페이지,
+`CONTENT_IMPORT_MANIFEST`를 배치에 주입하고, `CONTENT_IMPORT_OUTPUT_ROOT`는 `.env`에 설정해 배치와
+일반 서버가 같은 콘텐츠 루트를 사용하게 합니다. 배치는 PDF 100권·400페이지,
 SHA-256, 연속 페이지 번호와 TEXT/IMAGE 산출물을 모두 검증한 뒤 도서 메타데이터와 `BookPage`를 한 DB
 트랜잭션으로 적재하고 종료합니다.
 
