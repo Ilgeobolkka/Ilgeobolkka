@@ -32,4 +32,20 @@ class PageRentalTest {
 
         assertFalse(rental.isActive(Instant.parse("2026-08-24T14:00:00Z")));
     }
+
+    @Test
+    void 정확한_대여_시각부터는_활성이다() {
+        Instant rentedAt = Instant.parse("2026-07-25T14:00:00Z");
+
+        PageRental rental = PageRental.start(1L, 2L, rentedAt);
+
+        assertTrue(rental.isActive(rentedAt));
+    }
+
+    @Test
+    void 대여_시작_1밀리초_전에는_아직_활성이_아니다() {
+        PageRental rental = PageRental.start(1L, 2L, Instant.parse("2026-07-25T14:00:00Z"));
+
+        assertFalse(rental.isActive(Instant.parse("2026-07-25T13:59:59.999Z")));
+    }
 }

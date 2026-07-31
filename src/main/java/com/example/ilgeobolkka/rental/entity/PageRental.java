@@ -75,8 +75,11 @@ public class PageRental {
         return rental;
     }
 
-    /** 활성 대여는 {@code serverNow < expiresAt}일 때이며 {@code expiresAt}부터 만료다. */
+    /**
+     * 활성 대여는 {@code rentedAt <= now < expiresAt}이며 {@code expiresAt}부터 만료다
+     * (test-strategy.md의 INV-006).
+     */
     public boolean isActive(Instant now) {
-        return now.isBefore(expiresAt);
+        return !now.isBefore(rentedAt) && now.isBefore(expiresAt);
     }
 }
