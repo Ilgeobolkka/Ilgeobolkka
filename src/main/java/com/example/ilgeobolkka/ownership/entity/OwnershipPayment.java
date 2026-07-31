@@ -123,4 +123,25 @@ public class OwnershipPayment {
         payment.createdAt = createdAt;
         return payment;
     }
+
+    public void markPaid(Instant paidAt) {
+        requirePending();
+        if (paidAt == null) {
+            throw new IllegalArgumentException("결제 완료 시각은 필수입니다.");
+        }
+        status = OwnershipPaymentStatus.PAID;
+        this.paidAt = paidAt;
+    }
+
+    public void markFailed() {
+        requirePending();
+        status = OwnershipPaymentStatus.FAILED;
+        paidAt = null;
+    }
+
+    private void requirePending() {
+        if (status != OwnershipPaymentStatus.PENDING) {
+            throw new IllegalStateException("PENDING 결제만 상태를 변경할 수 있습니다.");
+        }
+    }
 }

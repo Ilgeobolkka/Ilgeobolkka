@@ -52,6 +52,10 @@ public class InkPurchaseFacade {
         return result.response();
     }
 
+    public boolean existsByPaymentId(UUID paymentId) {
+        return inkPurchaseService.existsByPaymentId(paymentId);
+    }
+
     public void completeWebhook(UUID paymentId) {
         PortOnePayment payment = paymentGateway.getPayment(paymentId.toString());
         inkPurchaseService.applyWebhookPaymentResult(paymentId, payment);
