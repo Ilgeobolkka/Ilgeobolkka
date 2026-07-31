@@ -341,9 +341,11 @@ export function createViewer(root, dependencies = {}) {
             event.preventDefault();
             requestPage(elements.pageInput.valueAsNumber);
         });
-        root.addEventListener("keydown", (event) => {
-            if (event.altKey || event.ctrlKey || event.metaKey
-                    || event.target.matches("input, textarea, select")) {
+        elements.pageInput.addEventListener("input", () => {
+            elements.pageInput.setCustomValidity("");
+        });
+        elements.content.addEventListener("keydown", (event) => {
+            if (event.altKey || event.ctrlKey || event.metaKey) {
                 return;
             }
             if (event.key === "ArrowLeft" && !elements.previous.disabled) {

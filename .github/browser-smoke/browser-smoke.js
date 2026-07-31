@@ -303,6 +303,17 @@ async function verifyViewerFlow() {
         metadataRequests.length + contentRequests.length === requestCountBeforeZoom,
         "이미지 확대는 페이지 API를 다시 호출하면 안 됩니다.");
 
+    const requestCountBeforeControlArrow =
+        metadataRequests.length + contentRequests.length;
+    root.querySelector("[data-viewer-zoom-in]").dispatchEvent(new KeyboardEvent("keydown", {
+        key: "ArrowLeft",
+        bubbles: true
+    }));
+    await viewer.whenIdle();
+    assert(
+        metadataRequests.length + contentRequests.length === requestCountBeforeControlArrow,
+        "뷰어 조작 버튼에서 화살표 키를 눌러도 페이지를 이동하면 안 됩니다.");
+
     content.dispatchEvent(new KeyboardEvent("keydown", {
         key: "ArrowLeft",
         bubbles: true
@@ -399,7 +410,17 @@ async function verifyViewerInitialPageAndRecovery() {
         pageInput.disabled === false,
         "초기 페이지 열기에 실패해도 다른 페이지 번호를 입력할 수 있어야 합니다.");
 
+    pageInput.value = "";
+    root.querySelector("[data-viewer-page-form]").requestSubmit();
+    assert(
+        pageInput.validationMessage.includes("1부터 5 사이"),
+        "빈 페이지 번호를 제출하면 페이지 범위 오류를 표시해야 합니다.");
+
     pageInput.value = "4";
+    pageInput.dispatchEvent(new Event("input", {bubbles: true}));
+    assert(
+        pageInput.validationMessage === "",
+        "페이지 번호를 다시 입력하면 이전 사용자 지정 오류를 해제해야 합니다.");
     root.querySelector("[data-viewer-page-form]").requestSubmit();
     await viewer.whenIdle();
 
