@@ -1,6 +1,7 @@
 package com.example.ilgeobolkka.reading.service;
 
 import com.example.ilgeobolkka.book.entity.BookPage;
+import com.example.ilgeobolkka.global.config.ContentStorageProperties;
 import com.example.ilgeobolkka.reading.dto.PageContent;
 import com.example.ilgeobolkka.reading.exception.PageContentNotFoundException;
 import java.io.IOException;
@@ -8,13 +9,13 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PageContentService {
 
-    private static final Path DEFAULT_CONTENT_ROOT = Path.of("var/content/pages");
     private static final MediaType TEXT_PLAIN_UTF_8 =
             new MediaType("text", "plain", StandardCharsets.UTF_8);
     private static final byte[] PNG_SIGNATURE = {
@@ -23,8 +24,9 @@ public class PageContentService {
 
     private final Path contentRoot;
 
-    public PageContentService() {
-        this(DEFAULT_CONTENT_ROOT);
+    @Autowired
+    public PageContentService(ContentStorageProperties properties) {
+        this(properties.root());
     }
 
     PageContentService(Path contentRoot) {

@@ -35,7 +35,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import tools.jackson.databind.ObjectMapper;
 
 @AutoConfigureMockMvc
-@SpringBootTest
+@SpringBootTest(properties = "content-storage.root=build/test-content/scrum-405-pages")
 @ActiveProfiles("test")
 @ContextConfiguration(initializers = DedicatedTestDatabaseInitializer.class)
 class PageContentApiMySqlIntegrationTest {
@@ -52,7 +52,7 @@ class PageContentApiMySqlIntegrationTest {
         (byte) 0xFF, (byte) 0xD8, (byte) 0xFF, (byte) 0xE0, 0x00
     };
     private static final Path IMAGE_DIRECTORY =
-            Path.of("var/content/pages/scrum-405-test/book-405102");
+            Path.of("build/test-content/scrum-405-pages/scrum-405-test/book-405102");
     private static final Path IMAGE_PATH = IMAGE_DIRECTORY.resolve("page-002.jpg");
 
     private final MockMvc mockMvc;
@@ -98,7 +98,7 @@ class PageContentApiMySqlIntegrationTest {
     }
 
     @Test
-    void T_VIEW_001_IMAGE는_현재_페이지의_실제_JPEG_바이트를_반환한다() throws Exception {
+    void T_VIEW_001_IMAGE는_사용자_지정_콘텐츠_루트의_실제_JPEG_바이트를_반환한다() throws Exception {
         String viewerSessionId = 새_세션을_연다(2);
 
         mockMvc.perform(get("/api/reading-sessions/current/pages/{pageNumber}/content", 2)

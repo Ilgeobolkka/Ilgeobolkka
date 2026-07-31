@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.example.ilgeobolkka.book.entity.BookPageContentType;
+import com.example.ilgeobolkka.global.config.ContentStorageProperties;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -22,13 +23,18 @@ class ContentBatchConverterTest {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Test
-    void PDF_100권을_400개_TEXT_IMAGE_페이지로_변환한다() throws IOException {
+    void 사용자_지정_콘텐츠_루트에_PDF_100권을_400개_TEXT_IMAGE_페이지로_변환한다()
+            throws IOException {
         Path manifestPath = createManifest();
         Path outputRoot = tempDirectory.resolve("output");
+        var importProperties = new ContentImportProperties();
+        importProperties.setManifest(manifestPath);
+        var storageProperties = new ContentStorageProperties();
+        storageProperties.setRoot(outputRoot);
         var pdfTool = new FakePdfTool();
         var converter =
                 new ContentBatchConverter(
-                        manifestPath, outputRoot, objectMapper, pdfTool);
+                        importProperties, storageProperties, objectMapper, pdfTool);
 
         ContentBatch batch = converter.convert();
 
