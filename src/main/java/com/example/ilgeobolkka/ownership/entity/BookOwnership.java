@@ -68,4 +68,30 @@ public class BookOwnership {
 
     @Column(name = "created_at", nullable = false, columnDefinition = "DATETIME(6)")
     private Instant createdAt;
+
+    public static BookOwnership create(
+            long readerId,
+            long bookId,
+            long ownershipPaymentId,
+            Instant createdAt) {
+        if (readerId <= 0) {
+            throw new IllegalArgumentException("독자 ID는 양수여야 합니다.");
+        }
+        if (bookId <= 0) {
+            throw new IllegalArgumentException("도서 ID는 양수여야 합니다.");
+        }
+        if (ownershipPaymentId <= 0) {
+            throw new IllegalArgumentException("소장 결제 ID는 양수여야 합니다.");
+        }
+        if (createdAt == null) {
+            throw new IllegalArgumentException("소장 생성 시각은 필수입니다.");
+        }
+
+        BookOwnership ownership = new BookOwnership();
+        ownership.readerId = readerId;
+        ownership.bookId = bookId;
+        ownership.ownershipPaymentId = ownershipPaymentId;
+        ownership.createdAt = createdAt;
+        return ownership;
+    }
 }

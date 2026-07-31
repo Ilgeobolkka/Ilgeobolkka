@@ -1,12 +1,15 @@
 package com.example.ilgeobolkka.infra.portone;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.example.ilgeobolkka.ink.controller.InkPurchaseController;
 import com.example.ilgeobolkka.ink.facade.InkPurchaseFacade;
 import com.example.ilgeobolkka.ink.service.InkPurchaseService;
+import com.example.ilgeobolkka.ownership.controller.OwnershipHistoryController;
 import com.example.ilgeobolkka.ownership.controller.OwnershipPaymentController;
+import com.example.ilgeobolkka.ownership.facade.OwnershipHistoryFacade;
 import com.example.ilgeobolkka.ownership.facade.OwnershipPaymentFacade;
 import com.example.ilgeobolkka.webhook.controller.PortOneWebhookController;
 import com.example.ilgeobolkka.webhook.facade.PortOneWebhookFacade;
@@ -66,5 +69,16 @@ class PortOneProdProfileIntegrationTest {
                 () -> assertTrue(applicationContext
                         .getBeansOfType(PaymentClient.class)
                         .isEmpty()));
+    }
+
+    @Test
+    void 운영_프로필에서도_소장_결제_내역_조회_API는_노출된다() {
+        assertAll(
+                () -> assertEquals(
+                        1,
+                        applicationContext.getBeansOfType(OwnershipHistoryController.class).size()),
+                () -> assertEquals(
+                        1,
+                        applicationContext.getBeansOfType(OwnershipHistoryFacade.class).size()));
     }
 }

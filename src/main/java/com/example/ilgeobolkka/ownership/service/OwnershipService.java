@@ -1,18 +1,22 @@
 package com.example.ilgeobolkka.ownership.service;
 
-import com.example.ilgeobolkka.ownership.entity.OwnershipPayment;
 import com.example.ilgeobolkka.ownership.entity.OwnershipPaymentStatus;
-import com.example.ilgeobolkka.ownership.exception.BookAlreadyOwnedException;
 import com.example.ilgeobolkka.ownership.repository.BookOwnershipRepository;
+import com.example.ilgeobolkka.ownership.repository.OwnershipPaymentEntryProjection;
 import com.example.ilgeobolkka.ownership.repository.OwnershipPaymentRepository;
-import java.time.Instant;
-import java.util.UUID;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
 public class OwnershipService {
+
+    private static final int HISTORY_PAGE_SIZE = 10;
 
     private final BookOwnershipRepository bookOwnershipRepository;
     private final OwnershipPaymentRepository ownershipPaymentRepository;
@@ -21,40 +25,20 @@ public class OwnershipService {
         return bookOwnershipRepository.existsByReaderIdAndBookId(readerId, bookId);
     }
 
-    public PaymentPreparation preparePayment(
-            long readerId,
-            long bookId,
-            UUID paymentId,
-            int amountWon,
-            Instant createdAt) {
-        if (isOwned(readerId, bookId)) {
-            throw new BookAlreadyOwnedException(readerId, bookId);
+    /** 완료된 소장 결제 내역은 조회 전용이라 PortOne 연동 활성화 여부와 무관하게 제공한다. */
+    @Transactional(readOnly = true)
+    public Page<OwnershipPaymentEntryProjection> getHistory(long readerId, int page) {
+        PageRequest pageable = PageRequest.of(page - 1, HISTORY_PAGE_SIZE);
+
+        if (pageable.getOffset() > Integer.MAX_VALUE) {
+            return new PageImpl<>(
+                    List.of(),
+                    pageable,
+                    ownershipPaymentRepository.countByReaderIdAndStatus(
+                            readerId, OwnershipPaymentStatus.PAID));
         }
 
-        var pendingPayment = ownershipPaymentRepository
-                .findFirstByReaderIdAndBookIdAndStatusOrderByIdDesc(
-                        readerId,
-                        bookId,
-                        OwnershipPaymentStatus.PENDING);
-        if (pendingPayment.isPresent()) {
-            return PaymentPreparation.reused(pendingPayment.get());
-        }
-
-        OwnershipPayment payment = ownershipPaymentRepository.save(
-                OwnershipPayment.create(readerId, bookId, paymentId, amountWon, createdAt));
-        return PaymentPreparation.created(payment);
-    }
-
-    public record PaymentPreparation(
-            OwnershipPayment payment,
-            boolean created) {
-
-        private static PaymentPreparation created(OwnershipPayment payment) {
-            return new PaymentPreparation(payment, true);
-        }
-
-        private static PaymentPreparation reused(OwnershipPayment payment) {
-            return new PaymentPreparation(payment, false);
-        }
+        return ownershipPaymentRepository.findEntriesByReaderIdAndStatus(
+                readerId, OwnershipPaymentStatus.PAID, pageable);
     }
 }
