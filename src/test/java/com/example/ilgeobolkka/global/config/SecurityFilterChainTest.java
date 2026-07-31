@@ -9,6 +9,7 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -36,7 +37,7 @@ import com.example.ilgeobolkka.global.smoke.SmokeController;
 @WebMvcTest(controllers = {
     SmokeController.class,
     SecurityFilterChainTest.TestController.class
-})
+}, properties = "portone.payment.enabled=true")
 @Import({
     SecurityConfig.class,
     ApiSecurityErrorHandler.class,
@@ -46,8 +47,49 @@ import com.example.ilgeobolkka.global.smoke.SmokeController;
 @ExtendWith(OutputCaptureExtension.class)
 class SecurityFilterChainTest {
 
+    private static final String BASE_CONTENT_SECURITY_POLICY = "default-src 'self'; "
+            + "script-src 'self'; "
+            + "style-src 'self'; "
+            + "img-src 'self' data:; "
+            + "font-src 'self'; "
+            + "connect-src 'self'; "
+            + "object-src 'none'; "
+            + "base-uri 'self'; "
+            + "form-action 'self'; "
+            + "frame-ancestors 'self'";
+    private static final String PAYMENT_CONTENT_SECURITY_POLICY = "default-src 'self'; "
+            + "script-src 'self' https://cdn.portone.io; "
+            + "style-src 'self'; "
+            + "img-src 'self' data:; "
+            + "font-src 'self'; "
+            + "connect-src 'self' "
+            + "https://checkout-service.prod.iamport.co "
+            + "https://tx-gateway-service.prod.iamport.co "
+            + "https://service.iamport.kr "
+            + "https://coretelemetry.prod.iamport.co; "
+            + "frame-src 'self' https://payment-bridge.prod.iamport.co; "
+            + "object-src 'none'; "
+            + "base-uri 'self'; "
+            + "form-action 'self'; "
+            + "frame-ancestors 'self'";
+
     @Autowired
     private MockMvc mockMvc;
+
+    @Test
+    void 결제_활성화_환경은_잉크_화면에만_PortOne_CSP를_적용한다() throws Exception {
+        mockMvc.perform(get("/ink").with(user("reader")))
+                .andExpect(status().isOk())
+                .andExpect(header().string(
+                        "Content-Security-Policy",
+                        PAYMENT_CONTENT_SECURITY_POLICY));
+
+        mockMvc.perform(get("/api/smoke"))
+                .andExpect(status().isNoContent())
+                .andExpect(header().string(
+                        "Content-Security-Policy",
+                        BASE_CONTENT_SECURITY_POLICY));
+    }
 
     @Test
     void 도서_목록과_상세_조회만_익명_사용자에게_공개한다() throws Exception {
@@ -171,6 +213,7 @@ class SecurityFilterChainTest {
         }
 
         @GetMapping({
+            "/ink",
             "/api/books",
             "/api/books/1",
             "/api/books/1/pages",

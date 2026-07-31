@@ -91,11 +91,28 @@ AWS 운영 환경에는 위 PortOne 변수를 주입하지 않고 결제 기능�
 
 ```text
 default-src 'self';
-script-src 'self' https://cdn.portone.io;
+script-src 'self';
 style-src 'self';
 img-src 'self' data:;
 font-src 'self';
 connect-src 'self';
+object-src 'none';
+base-uri 'self';
+form-action 'self';
+frame-ancestors 'self';
+```
+
+- 결제가 활성화된 비운영 `/ink` 화면만 다음 PortOne 전용 정책을 대신 사용합니다. 두 정책을 동시에
+  응답하지 않습니다.
+
+```text
+default-src 'self';
+script-src 'self' https://cdn.portone.io;
+style-src 'self';
+img-src 'self' data:;
+font-src 'self';
+connect-src 'self' https://checkout-service.prod.iamport.co https://tx-gateway-service.prod.iamport.co https://service.iamport.kr https://coretelemetry.prod.iamport.co;
+frame-src 'self' https://payment-bridge.prod.iamport.co;
 object-src 'none';
 base-uri 'self';
 form-action 'self';
@@ -107,9 +124,9 @@ frame-ancestors 'self';
 - 공통 셸은 PortOne SDK를 로드하지 않습니다. 잉크·소장 결제 화면에서만
   `https://cdn.portone.io/v2/browser-sdk.esm.js`를 동적으로 import하고 로딩 실패를 결제 영역에만
   표시합니다. 탐색·뷰어·서재의 공통 모듈은 이 import에 의존하지 않습니다.
-- 실제 테스트 결제에 `connect-src`, `frame-src`, `form-action`의 외부 출처가 더 필요하면 테스트 채널에서
-  확인한 정확한 origin만 결제 구현·런타임 검증 범위에서 추가합니다. 추측한 PG사 도메인이나 wildcard는
-  미리 허용하지 않습니다.
+- 현재 정책은 PortOne V2 브라우저 SDK의 고정 출처만 허용합니다. 실제 테스트 채널의 PG 결제창에서
+  `connect-src`, `frame-src`, `form-action`의 외부 출처가 더 필요하면 런타임에서 확인한 정확한 origin만
+  추가합니다. 추측한 PG사 도메인이나 wildcard는 미리 허용하지 않습니다.
 
 ## 3. 로컬 실행
 

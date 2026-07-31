@@ -14,6 +14,22 @@
      data-common-error
      hidden></div>
 <div data-logout-fixtures></div>
+<section data-ink-smoke-fixture>
+    <output data-ink-balance>불러오는 중</output>
+    <button type="button" data-ink-purchase>구매</button>
+    <div role="status"
+         aria-live="polite"
+         tabindex="-1"
+         data-ink-payment-status
+         hidden></div>
+    <button type="button" data-ink-payment-retry hidden></button>
+    <table>
+        <tbody data-ink-ledger></tbody>
+    </table>
+    <span data-ink-ledger-page></span>
+    <button type="button" data-ink-ledger-previous disabled>이전</button>
+    <button type="button" data-ink-ledger-next disabled>다음</button>
+</section>
 <output data-browser-smoke-result>RUNNING</output>
 </body>
 </html>

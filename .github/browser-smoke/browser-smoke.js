@@ -1,4 +1,5 @@
 import {clearCommonError, showCommonError} from "/js/common/error-display.js";
+import {initializeInkPage} from "/js/ink/ink-page.js";
 import {ApiRequestError, requestJson} from "/js/common/request-json.js";
 
 const DEFAULT_ERROR_MESSAGE = "요청을 처리하지 못했습니다. 잠시 후 다시 시도해 주세요.";
@@ -43,6 +44,7 @@ async function run() {
     await verifyLogoutNavigation("server-error");
     await verifyLogoutRetryableError("network-error");
     await verifyLogoutRetryableError("missing-csrf");
+    await verifyInkPage();
 }
 
 async function verifyResponseHandling() {
@@ -205,6 +207,253 @@ async function loadLogoutFixture(mode) {
         () => iframe.contentDocument.body.dataset.logoutFixtureReady === "true",
         `${mode} 로그아웃 fixture가 준비되어야 합니다.`);
     return iframe;
+}
+
+async function verifyInkPage() {
+    const fixture = document.querySelector("[data-ink-smoke-fixture]");
+    const purchaseButton = fixture.querySelector("[data-ink-purchase]");
+    const retryButton = fixture.querySelector("[data-ink-payment-retry]");
+    const paymentStatus = fixture.querySelector("[data-ink-payment-status]");
+    const previousButton = fixture.querySelector("[data-ink-ledger-previous]");
+    const nextButton = fixture.querySelector("[data-ink-ledger-next]");
+    const requestedLedgerPages = [];
+    let balance = 100;
+    let prepareCount = 0;
+    let completeCount = 0;
+    let sdkMode = "success";
+    let paymentMode = "success";
+    let completeMode = "paid";
+    let lastPaymentRequest;
+
+    const fakeRequest = async (url) => {
+        if (url === "/api/ink/balance") {
+            return {balance};
+        }
+        if (url.startsWith("/api/ink/ledger")) {
+            const page = Number(new URL(url, window.location.href).searchParams.get("page"));
+            requestedLedgerPages.push(page);
+            return inkLedgerResponse(page);
+        }
+        if (url === "/api/ink/purchases") {
+            prepareCount += 1;
+            return {
+                paymentId: `payment-${prepareCount}`,
+                storeId: "store-test",
+                channelKey: "channel-test",
+                orderName: "읽어볼까 100잉크",
+                totalAmount: 1000,
+                currency: "CURRENCY_KRW"
+            };
+        }
+        if (url.includes("/complete")) {
+            completeCount += 1;
+            if (completeMode === "pending") {
+                return {
+                    paymentId: `payment-${prepareCount}`,
+                    status: "PENDING",
+                    grantedInk: 0,
+                    inkBalance: balance
+                };
+            }
+            if (completeMode === "unavailable") {
+                throw new ApiRequestError(
+                    "PAYMENT_PROVIDER_UNAVAILABLE",
+                    "결제 확인 서비스 오류",
+                    503,
+                    "payment-503");
+            }
+            if (completeMode === "failed") {
+                throw new ApiRequestError(
+                    "PAYMENT_VERIFICATION_FAILED",
+                    "결제 검증에 실패했습니다.",
+                    422,
+                    "payment-422");
+            }
+            if (completeMode === "conflict") {
+                throw new ApiRequestError(
+                    "PAYMENT_STATE_CONFLICT",
+                    "결제 상태가 변경되어 요청을 처리할 수 없습니다.",
+                    409,
+                    "payment-409");
+            }
+            balance = 200;
+            return {
+                paymentId: `payment-${prepareCount}`,
+                status: "PAID",
+                grantedInk: 100,
+                inkBalance: balance
+            };
+        }
+        throw new Error(`예상하지 않은 잉크 API 요청: ${url}`);
+    };
+
+    const fakePortOneLoader = async () => {
+        if (sdkMode === "failed") {
+            throw new Error("강제 CDN 오류");
+        }
+        return {
+            requestPayment: async (request) => {
+                lastPaymentRequest = request;
+                if (paymentMode === "interrupted") {
+                    return {
+                        paymentId: request.paymentId,
+                        code: "PAYMENT_PROCESS_ABORTED",
+                        message: "사용자가 결제창을 닫았습니다."
+                    };
+                }
+                return {paymentId: request.paymentId};
+            }
+        };
+    };
+
+    const {ready} = initializeInkPage(fixture, {
+        request: fakeRequest,
+        loadPortOne: fakePortOneLoader
+    });
+    await ready;
+
+    assert(
+        fixture.querySelector("[data-ink-balance]").textContent === "100잉크",
+        "현재 잉크 잔액을 표시해야 합니다.");
+    assert(
+        fixture.querySelector("[data-ink-ledger]").textContent.includes("+100잉크"),
+        "GRANT 내역은 +100잉크로 표시해야 합니다.");
+    assert(
+        fixture.querySelector("[data-ink-ledger]").textContent.includes("-1잉크"),
+        "DEDUCTION 내역은 -1잉크로 표시해야 합니다.");
+    assert(
+        fixture.querySelector("[data-ink-ledger]").textContent.includes("원본 12페이지"),
+        "차감 내역에 원본 페이지 번호를 표시해야 합니다.");
+    assert(
+        fixture.querySelector("[data-ink-ledger]").textContent.includes("샘플 도서"),
+        "차감 내역에 도서 제목을 표시해야 합니다.");
+    assert(previousButton.disabled, "첫 페이지에서 이전 버튼을 비활성화해야 합니다.");
+    assert(!nextButton.disabled, "다음 페이지가 있으면 다음 버튼을 활성화해야 합니다.");
+
+    nextButton.click();
+    await waitFor(
+        () => fixture.querySelector("[data-ink-ledger-page]").textContent === "2 / 2페이지",
+        "다음 잉크 내역 페이지를 표시해야 합니다.");
+    assert(requestedLedgerPages.includes(2), "잉크 내역 2페이지를 API에 요청해야 합니다.");
+    assert(!previousButton.disabled, "둘째 페이지에서 이전 버튼을 활성화해야 합니다.");
+    assert(nextButton.disabled, "마지막 페이지에서 다음 버튼을 비활성화해야 합니다.");
+
+    sdkMode = "failed";
+    purchaseButton.click();
+    await waitFor(
+        () => paymentStatus.textContent.includes("결제 모듈을 불러오지 못했습니다"),
+        "PortOne CDN 실패를 결제 영역에 표시해야 합니다.");
+    assert(prepareCount === 0, "SDK를 불러오지 못하면 PENDING 구매를 생성하지 않아야 합니다.");
+    assert(
+        document.querySelector("[data-common-error]").hidden,
+        "PortOne CDN 실패는 공통 오류 영역을 열면 안 됩니다.");
+    assert(purchaseButton.disabled === false, "SDK 실패 뒤 구매를 다시 시도할 수 있어야 합니다.");
+
+    sdkMode = "success";
+    paymentMode = "interrupted";
+    purchaseButton.click();
+    await waitFor(
+        () => retryButton.textContent === "결제창 다시 열기",
+        "결제창 이탈 뒤 같은 결제창 재시도를 제공해야 합니다.");
+    assert(prepareCount === 1, "결제 준비는 한 번만 생성해야 합니다.");
+    assert(completeCount === 0, "결제창 이탈은 완료 API를 호출하면 안 됩니다.");
+    assert(purchaseButton.disabled, "PENDING 결제가 있으면 새 구매를 막아야 합니다.");
+    assert(lastPaymentRequest.payMethod === "CARD", "결제 수단은 카드로 고정해야 합니다.");
+    assert(
+        lastPaymentRequest.currency === "CURRENCY_KRW",
+        "서버가 준비한 결제 통화를 그대로 사용해야 합니다.");
+
+    paymentMode = "success";
+    completeMode = "pending";
+    retryButton.click();
+    await waitFor(
+        () => retryButton.textContent === "결제 결과 다시 확인",
+        "PENDING 응답은 결과 재확인을 제공해야 합니다.");
+    assert(prepareCount === 1, "결제창 재시도에서 새 구매를 준비하면 안 됩니다.");
+    assert(completeCount === 1, "결제창 성공 뒤 완료 API를 호출해야 합니다.");
+    assert(paymentStatus.textContent.includes("[PENDING]"), "PENDING 상태를 구분해 표시해야 합니다.");
+
+    completeMode = "unavailable";
+    retryButton.click();
+    await waitFor(
+        () => paymentStatus.textContent.includes("일시적인 문제가 있습니다"),
+        "503 응답은 일시 장애로 안내해야 합니다.");
+    assert(paymentStatus.textContent.includes("[PENDING]"), "503에서도 PENDING 유지를 표시해야 합니다.");
+    assert(purchaseButton.disabled, "503 뒤에도 새 구매를 만들면 안 됩니다.");
+
+    completeMode = "failed";
+    retryButton.click();
+    await waitFor(
+        () => paymentStatus.textContent.includes("[FAILED]"),
+        "422 응답은 FAILED 상태로 표시해야 합니다.");
+    assert(purchaseButton.disabled === false, "FAILED 뒤에는 새 구매를 허용해야 합니다.");
+
+    completeMode = "conflict";
+    purchaseButton.click();
+    await waitFor(
+        () => paymentStatus.textContent.includes("결제 상태가 변경되어"),
+        "이미 FAILED인 결제의 409 응답도 종료 상태로 안내해야 합니다.");
+    assert(purchaseButton.disabled === false, "409 상태 충돌 뒤에는 새 구매를 허용해야 합니다.");
+
+    completeMode = "paid";
+    purchaseButton.click();
+    await waitFor(
+        () => paymentStatus.textContent.includes("[PAID]"),
+        "검증된 결제 성공을 PAID 상태로 표시해야 합니다.");
+    assert(
+        fixture.querySelector("[data-ink-balance]").textContent === "200잉크",
+        "PAID 뒤 현재 잉크 잔액을 다시 조회해야 합니다.");
+    assert(
+        requestedLedgerPages.at(-1) === 1,
+        "PAID 뒤 원장 첫 페이지를 다시 조회해야 합니다.");
+    assert(purchaseButton.disabled === false, "PAID 뒤 새 구매를 허용해야 합니다.");
+}
+
+function inkLedgerResponse(page) {
+    if (page === 1) {
+        return {
+            entries: [
+                {
+                    type: "DEDUCTION",
+                    amount: 1,
+                    balanceAfter: 99,
+                    bookTitle: "샘플 도서",
+                    pageNumber: 12,
+                    rentedAt: "2026-07-27T09:00:00Z",
+                    expiresAt: "2026-08-26T09:00:00Z",
+                    occurredAt: "2026-07-27T09:00:00Z"
+                },
+                {
+                    type: "GRANT",
+                    amount: 100,
+                    balanceAfter: 100,
+                    bookTitle: null,
+                    pageNumber: null,
+                    rentedAt: null,
+                    expiresAt: null,
+                    occurredAt: "2026-07-27T08:00:00Z"
+                }
+            ],
+            page: 1,
+            totalPages: 2,
+            totalCount: 3
+        };
+    }
+    return {
+        entries: [{
+            type: "GRANT",
+            amount: 100,
+            balanceAfter: 100,
+            bookTitle: null,
+            pageNumber: null,
+            rentedAt: null,
+            expiresAt: null,
+            occurredAt: "2026-07-26T08:00:00Z"
+        }],
+        page,
+        totalPages: 2,
+        totalCount: 3
+    };
 }
 
 async function assertApiError(action, code, status, requestId, message) {
