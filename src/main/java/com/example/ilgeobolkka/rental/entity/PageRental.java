@@ -13,6 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+import java.time.Duration;
 import java.time.Instant;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -28,6 +29,8 @@ import lombok.NoArgsConstructor;
                         columnNames = {"reader_id", "id"}))
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PageRental {
+
+    private static final Duration RENTAL_PERIOD = Duration.ofDays(30);
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,4 +65,21 @@ public class PageRental {
 
     @Column(name = "expires_at", nullable = false, columnDefinition = "DATETIME(6)")
     private Instant expiresAt;
+
+    public static PageRental start(long readerId, long bookPageId, Instant rentedAt) {
+        PageRental rental = new PageRental();
+        rental.readerId = readerId;
+        rental.bookPageId = bookPageId;
+        rental.rentedAt = rentedAt;
+        rental.expiresAt = rentedAt.plus(RENTAL_PERIOD);
+        return rental;
+    }
+
+    /**
+     * 활성 대여는 {@code rentedAt <= now < expiresAt}이며 {@code expiresAt}부터 만료다
+     * (test-strategy.md의 INV-006).
+     */
+    public boolean isActive(Instant now) {
+        return !now.isBefore(rentedAt) && now.isBefore(expiresAt);
+    }
 }

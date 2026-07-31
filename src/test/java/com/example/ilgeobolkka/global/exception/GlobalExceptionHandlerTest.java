@@ -10,6 +10,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.example.ilgeobolkka.book.exception.BookPageNotFoundException;
+import com.example.ilgeobolkka.ink.exception.InsufficientInkException;
+import com.example.ilgeobolkka.reading.exception.ReadingSessionNotFoundException;
+import com.example.ilgeobolkka.reading.exception.ViewerSessionReplacedException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -125,6 +129,49 @@ class GlobalExceptionHandlerTest {
         assertFalse(output.getOut().contains("viewerSessionId=exposed"));
     }
 
+    @Test
+    void 잉크_부족은_구매_안내_오류로_응답한다(CapturedOutput output) throws Exception {
+        mockMvc.perform(get("/test/errors/insufficient-ink"))
+                .andExpect(status().isUnprocessableEntity())
+                .andExpect(jsonPath("$.code").value("INSUFFICIENT_INK"))
+                .andExpect(jsonPath("$.message").value("잉크가 부족합니다. 잉크를 충전해 주세요."));
+
+        assertTrue(output.getOut().contains("errorCode=INSUFFICIENT_INK"));
+    }
+
+    @Test
+    void 교체된_뷰어_세션은_충돌_오류로_응답하고_내부_메시지를_숨긴다(CapturedOutput output)
+            throws Exception {
+        mockMvc.perform(get("/test/errors/replaced-viewer"))
+                .andExpect(status().isConflict())
+                .andExpect(jsonPath("$.code").value("VIEWER_SESSION_REPLACED"))
+                .andExpect(jsonPath("$.message").value("새 뷰어로 교체된 열람 세션입니다."))
+                .andExpect(content().string(not(containsString("교체되었습니다"))));
+
+        assertTrue(output.getOut().contains("errorCode=VIEWER_SESSION_REPLACED"));
+        assertFalse(output.getOut().contains("교체되었습니다"));
+    }
+
+    @Test
+    void 현재_열람_세션_없음은_공통_리소스_없음_오류로_응답한다(CapturedOutput output) throws Exception {
+        mockMvc.perform(get("/test/errors/missing-reading-session"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.code").value("RESOURCE_NOT_FOUND"))
+                .andExpect(jsonPath("$.message").value("요청한 리소스를 찾을 수 없습니다."));
+
+        assertTrue(output.getOut().contains("errorCode=RESOURCE_NOT_FOUND"));
+    }
+
+    @Test
+    void 도서_페이지_없음은_공통_리소스_없음_오류로_응답한다(CapturedOutput output) throws Exception {
+        mockMvc.perform(get("/test/errors/missing-book-page"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.code").value("RESOURCE_NOT_FOUND"))
+                .andExpect(jsonPath("$.message").value("요청한 리소스를 찾을 수 없습니다."));
+
+        assertTrue(output.getOut().contains("errorCode=RESOURCE_NOT_FOUND"));
+    }
+
     @RestController
     @RequestMapping("/test/errors")
     public static class TestController {
@@ -145,6 +192,26 @@ class GlobalExceptionHandlerTest {
         @GetMapping("/denied")
         void denied() {
             throw new AccessDeniedException("viewerSessionId=exposed");
+        }
+
+        @GetMapping("/insufficient-ink")
+        void insufficientInk() {
+            throw new InsufficientInkException();
+        }
+
+        @GetMapping("/replaced-viewer")
+        void replacedViewer() {
+            throw new ViewerSessionReplacedException(7L);
+        }
+
+        @GetMapping("/missing-reading-session")
+        void missingReadingSession() {
+            throw new ReadingSessionNotFoundException(7L);
+        }
+
+        @GetMapping("/missing-book-page")
+        void missingBookPage() {
+            throw new BookPageNotFoundException(7L, 3);
         }
     }
 

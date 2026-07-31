@@ -83,4 +83,8 @@ public class ReadingSession {
 
     @Column(name = "updated_at", nullable = false, columnDefinition = "DATETIME(6)")
     private Instant updatedAt;
+
+    public boolean matchesViewer(UUID viewerSessionId) {
+        return this.viewerSessionId.equals(viewerSessionId);
+    }
 }
