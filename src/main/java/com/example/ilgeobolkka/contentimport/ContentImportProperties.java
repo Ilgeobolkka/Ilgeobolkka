@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 class ContentImportProperties {
 
     private Path manifest = Path.of("fixtures/content/manifest.json");
-    private Path outputRoot = Path.of("var/content/pages");
     private String pdftotextCommand = "pdftotext";
     private String pdftoppmCommand = "pdftoppm";
 
@@ -21,14 +20,6 @@ class ContentImportProperties {
 
     public void setManifest(Path manifest) {
         this.manifest = manifest;
-    }
-
-    Path outputRoot() {
-        return outputRoot;
-    }
-
-    public void setOutputRoot(Path outputRoot) {
-        this.outputRoot = outputRoot;
     }
 
     String pdftotextCommand() {

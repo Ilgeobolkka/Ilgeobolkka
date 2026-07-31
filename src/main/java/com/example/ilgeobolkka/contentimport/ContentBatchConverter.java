@@ -1,6 +1,7 @@
 package com.example.ilgeobolkka.contentimport;
 
 import com.example.ilgeobolkka.book.entity.BookPageContentType;
+import com.example.ilgeobolkka.global.config.ContentStorageProperties;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.AtomicMoveNotSupportedException;
@@ -37,10 +38,13 @@ class ContentBatchConverter {
 
     @Autowired
     ContentBatchConverter(
-            ContentImportProperties properties, ObjectMapper objectMapper, PdfTool pdfTool) {
+            ContentImportProperties properties,
+            ContentStorageProperties storageProperties,
+            ObjectMapper objectMapper,
+            PdfTool pdfTool) {
         this(
                 properties.manifest(),
-                properties.outputRoot(),
+                storageProperties.root(),
                 objectMapper,
                 pdfTool);
     }

@@ -17,13 +17,11 @@ import com.example.ilgeobolkka.infra.portone.PortOnePayment;
 import com.example.ilgeobolkka.infra.portone.PortOnePaymentGateway;
 import com.example.ilgeobolkka.infra.portone.PortOnePaymentStatus;
 import com.example.ilgeobolkka.infra.portone.PortOnePaymentUnavailableException;
-import com.example.ilgeobolkka.ink.facade.InkPurchaseFacade;
+import com.example.ilgeobolkka.ownership.facade.OwnershipPaymentFacade;
 import com.example.ilgeobolkka.webhook.facade.PortOneWebhookFacade;
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.Base64;
-import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
@@ -55,6 +53,11 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 import tools.jackson.databind.ObjectMapper;
 
+/**
+ * 웹훅 이벤트는 잉크 이용권·소장 결제 어느 paymentId인지 구분하는 필드가 없다.
+ * {@link PortOneWebhookFacade}가 잉크 구매에 없으면 소장 결제로 넘기는 분기를 소장 결제
+ * paymentId 기준으로 검증한다.
+ */
 @SpringBootTest(properties = {
     "portone.payment.enabled=true",
     "portone.payment.store-id=store-test",
@@ -65,32 +68,34 @@ import tools.jackson.databind.ObjectMapper;
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
 @ContextConfiguration(initializers = DedicatedTestDatabaseInitializer.class)
-@Import(PortOneWebhookApiMySqlIntegrationTest.PaymentGatewayTestConfiguration.class)
-class PortOneWebhookApiMySqlIntegrationTest {
+@Import(OwnershipPaymentWebhookMySqlIntegrationTest.PaymentGatewayTestConfiguration.class)
+class OwnershipPaymentWebhookMySqlIntegrationTest {
 
     private static final byte[] WEBHOOK_SECRET = "test-webhook-secret".getBytes(UTF_8);
-    private static final long READER_ID = 409_001L;
-    private static final Instant PAID_AT = Instant.parse("2026-07-30T03:00:00.123456Z");
+    private static final long READER_ID = 415_004L;
+    private static final long BOOK_ID = 415_104L;
+    private static final int BOOK_PRICE_WON = 16_000;
+    private static final Instant PAID_AT = Instant.parse("2026-08-01T04:00:00.123456Z");
 
     private final MockMvc mockMvc;
     private final ObjectMapper objectMapper;
     private final JdbcTemplate jdbcTemplate;
-    private final InkPurchaseFacade inkPurchaseFacade;
+    private final OwnershipPaymentFacade ownershipPaymentFacade;
     private final PortOneWebhookFacade portOneWebhookFacade;
     private final FakePortOnePaymentGateway paymentGateway;
 
     @Autowired
-    PortOneWebhookApiMySqlIntegrationTest(
+    OwnershipPaymentWebhookMySqlIntegrationTest(
             MockMvc mockMvc,
             ObjectMapper objectMapper,
             JdbcTemplate jdbcTemplate,
-            InkPurchaseFacade inkPurchaseFacade,
+            OwnershipPaymentFacade ownershipPaymentFacade,
             PortOneWebhookFacade portOneWebhookFacade,
             FakePortOnePaymentGateway paymentGateway) {
         this.mockMvc = mockMvc;
         this.objectMapper = objectMapper;
         this.jdbcTemplate = jdbcTemplate;
-        this.inkPurchaseFacade = inkPurchaseFacade;
+        this.ownershipPaymentFacade = ownershipPaymentFacade;
         this.portOneWebhookFacade = portOneWebhookFacade;
         this.paymentGateway = paymentGateway;
     }
@@ -98,7 +103,7 @@ class PortOneWebhookApiMySqlIntegrationTest {
     @BeforeEach
     void setUp() {
         테스트_데이터를_정리한다();
-        독자와_잉크_계좌를_생성한다();
+        독자와_도서를_생성한다();
         paymentGateway.reset();
     }
 
@@ -108,7 +113,7 @@ class PortOneWebhookApiMySqlIntegrationTest {
     }
 
     @Test
-    void T_PAY_003_PAID_웹훅_뒤_브라우저_완료가_와도_잉크는_한_번만_지급한다() throws Exception {
+    void T_PAY_003_PAID_웹훅_뒤_브라우저_완료가_와도_소장은_한_번만_반영한다() throws Exception {
         UUID paymentId = 결제를_준비한다();
         paymentGateway.respondWith(결제(paymentId, PortOnePaymentStatus.PAID));
 
@@ -118,17 +123,16 @@ class PortOneWebhookApiMySqlIntegrationTest {
         브라우저에서_완료한다(paymentId)
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.status").value("PAID"))
-                .andExpect(jsonPath("$.inkBalance").value(100));
+                .andExpect(jsonPath("$.owned").value(true));
 
         assertAll(
                 () -> assertEquals("PAID", 결제_상태를_조회한다(paymentId)),
-                () -> assertEquals(100, 잔액을_조회한다()),
-                () -> assertEquals(1, 지급_원장_수를_조회한다(paymentId)),
+                () -> assertEquals(1, 소장_수를_조회한다()),
                 () -> assertEquals(1, paymentGateway.callCount()));
     }
 
     @Test
-    void T_PAY_003_브라우저_완료_뒤_PAID_웹훅이_와도_잉크는_한_번만_지급한다() throws Exception {
+    void T_PAY_003_브라우저_완료_뒤_PAID_웹훅이_와도_소장은_한_번만_반영한다() throws Exception {
         UUID paymentId = 결제를_준비한다();
         paymentGateway.respondWith(결제(paymentId, PortOnePaymentStatus.PAID));
 
@@ -140,8 +144,7 @@ class PortOneWebhookApiMySqlIntegrationTest {
 
         assertAll(
                 () -> assertEquals("PAID", 결제_상태를_조회한다(paymentId)),
-                () -> assertEquals(100, 잔액을_조회한다()),
-                () -> assertEquals(1, 지급_원장_수를_조회한다(paymentId)),
+                () -> assertEquals(1, 소장_수를_조회한다()),
                 () -> assertEquals(2, paymentGateway.callCount()));
     }
 
@@ -157,8 +160,7 @@ class PortOneWebhookApiMySqlIntegrationTest {
 
         assertAll(
                 () -> assertEquals("FAILED", 결제_상태를_조회한다(paymentId)),
-                () -> assertEquals(0, 잔액을_조회한다()),
-                () -> assertEquals(0, 지급_원장_수를_조회한다(paymentId)),
+                () -> assertEquals(0, 소장_수를_조회한다()),
                 () -> assertEquals(2, paymentGateway.callCount()));
     }
 
@@ -172,42 +174,8 @@ class PortOneWebhookApiMySqlIntegrationTest {
 
         assertAll(
                 () -> assertEquals("PENDING", 결제_상태를_조회한다(paymentId)),
-                () -> assertEquals(0, 잔액을_조회한다()),
-                () -> assertEquals(0, 지급_원장_수를_조회한다(paymentId)),
+                () -> assertEquals(0, 소장_수를_조회한다()),
                 () -> assertEquals(0, paymentGateway.callCount()));
-    }
-
-    @Test
-    void T_PAY_008_서명_누락과_불일치는_400이고_비밀과_상태를_노출하지_않는다() throws Exception {
-        UUID paymentId = 결제를_준비한다();
-        String body = 웹훅_본문("Transaction.Paid", paymentId);
-        SignedWebhook signed = 서명한다(body);
-
-        MvcResult missing = mockMvc.perform(post("/api/webhooks/portone")
-                        .contentType(APPLICATION_JSON)
-                        .content(body))
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.code").value("INVALID_WEBHOOK_SIGNATURE"))
-                .andReturn();
-        MvcResult mismatched = mockMvc.perform(post("/api/webhooks/portone")
-                        .contentType(APPLICATION_JSON)
-                        .header("webhook-id", signed.id())
-                        .header("webhook-signature", "v1,aW52YWxpZA==")
-                        .header("webhook-timestamp", signed.timestamp())
-                        .content(body))
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.code").value("INVALID_WEBHOOK_SIGNATURE"))
-                .andReturn();
-
-        assertAll(
-                () -> assertEquals("PENDING", 결제_상태를_조회한다(paymentId)),
-                () -> assertEquals(0, paymentGateway.callCount()),
-                () -> assertTrue(!missing.getResponse()
-                        .getContentAsString()
-                        .contains("test-webhook-secret")),
-                () -> assertTrue(!mismatched.getResponse()
-                        .getContentAsString()
-                        .contains("test-webhook-secret")));
     }
 
     @Test
@@ -219,21 +187,13 @@ class PortOneWebhookApiMySqlIntegrationTest {
                 .andExpect(status().isServiceUnavailable())
                 .andExpect(jsonPath("$.code").value("PAYMENT_PROVIDER_UNAVAILABLE"));
 
-        UUID pendingPaymentId = 결제를_준비한다();
-        paymentGateway.respondWith(결제(pendingPaymentId, PortOnePaymentStatus.PENDING));
-        웹훅을_전송한다("Transaction.Paid", pendingPaymentId)
-                .andExpect(status().isOk());
-
         assertAll(
                 () -> assertEquals("PENDING", 결제_상태를_조회한다(unavailablePaymentId)),
-                () -> assertEquals("PENDING", 결제_상태를_조회한다(pendingPaymentId)),
-                () -> assertEquals(0, 잔액을_조회한다()),
-                () -> assertEquals(0, 지급_원장_수를_조회한다(unavailablePaymentId)),
-                () -> assertEquals(0, 지급_원장_수를_조회한다(pendingPaymentId)));
+                () -> assertEquals(0, 소장_수를_조회한다()));
     }
 
     @Test
-    void 준비되지_않은_결제의_지원_웹훅은_404이다() throws Exception {
+    void 잉크_구매에도_소장_결제에도_없는_결제의_지원_웹훅은_404이다() throws Exception {
         UUID unknownPaymentId = UUID.randomUUID();
         paymentGateway.respondWith(결제(unknownPaymentId, PortOnePaymentStatus.PAID));
 
@@ -241,45 +201,26 @@ class PortOneWebhookApiMySqlIntegrationTest {
                 .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.code").value("RESOURCE_NOT_FOUND"));
 
-        // 잉크 구매·소장 결제 어디에도 내부 기록이 없으면 존재 확인만으로 404를 판정하고
-        // PortOne을 조회하지 않는다 (SCRUM-415에서 소장 결제 라우팅을 추가하며 도입).
         assertAll(
-                () -> assertEquals(0, 잔액을_조회한다()),
+                () -> assertEquals(0, 소장_수를_조회한다()),
                 () -> assertEquals(0, paymentGateway.callCount()));
     }
 
     @Test
-    void 완료와_웹훅을_동시에_10회_처리해도_지급_효과는_한_번이다() throws Exception {
+    void 완료와_웹훅을_동시에_10회_처리해도_소장_반영은_한_번이다() throws Exception {
         UUID paymentId = 결제를_준비한다();
         paymentGateway.respondWith(결제(paymentId, PortOnePaymentStatus.PAID));
-        SignedWebhook signed =
-                서명한다(웹훅_본문("Transaction.Paid", paymentId));
+        SignedWebhook signed = 서명한다(웹훅_본문("Transaction.Paid", paymentId));
 
         동시에_완료한다(paymentId, signed);
 
         assertAll(
                 () -> assertEquals("PAID", 결제_상태를_조회한다(paymentId)),
-                () -> assertEquals(100, 잔액을_조회한다()),
-                () -> assertEquals(1, 지급_원장_수를_조회한다(paymentId)));
-    }
-
-    @Test
-    void 웹훅_지급이_실패하면_PAID_전이도_함께_롤백한다() throws Exception {
-        UUID paymentId = 결제를_준비한다();
-        jdbcTemplate.update("DELETE FROM ink_account WHERE reader_id = ?", READER_ID);
-        paymentGateway.respondWith(결제(paymentId, PortOnePaymentStatus.PAID));
-
-        웹훅을_전송한다("Transaction.Paid", paymentId)
-                .andExpect(status().isInternalServerError())
-                .andExpect(jsonPath("$.code").value("INTERNAL_SERVER_ERROR"));
-
-        assertAll(
-                () -> assertEquals("PENDING", 결제_상태를_조회한다(paymentId)),
-                () -> assertEquals(0, 지급_원장_수를_조회한다(paymentId)));
+                () -> assertEquals(1, 소장_수를_조회한다()));
     }
 
     private UUID 결제를_준비한다() throws Exception {
-        MvcResult result = mockMvc.perform(post("/api/ink/purchases")
+        MvcResult result = mockMvc.perform(post("/api/books/{bookId}/ownership-payments", BOOK_ID)
                         .with(authentication(인증된_독자()))
                         .with(csrf()))
                 .andExpect(status().isCreated())
@@ -291,7 +232,7 @@ class PortOneWebhookApiMySqlIntegrationTest {
     }
 
     private ResultActions 브라우저에서_완료한다(UUID paymentId) throws Exception {
-        return mockMvc.perform(post("/api/ink/purchases/{paymentId}/complete", paymentId)
+        return mockMvc.perform(post("/api/ownership-payments/{paymentId}/complete", paymentId)
                 .with(authentication(인증된_독자()))
                 .with(csrf()));
     }
@@ -312,14 +253,14 @@ class PortOneWebhookApiMySqlIntegrationTest {
         CountDownLatch ready = new CountDownLatch(concurrentRequestCount);
         CountDownLatch start = new CountDownLatch(1);
         try {
-            List<Future<Void>> futures = new ArrayList<>();
+            java.util.List<Future<Void>> futures = new java.util.ArrayList<>();
             for (int index = 0; index < concurrentRequestCount; index++) {
                 int requestIndex = index;
                 Callable<Void> action = () -> {
                     ready.countDown();
                     assertTrue(start.await(5, TimeUnit.SECONDS));
                     if (requestIndex % 2 == 0) {
-                        inkPurchaseFacade.complete(READER_ID, paymentId);
+                        ownershipPaymentFacade.complete(READER_ID, paymentId);
                     } else {
                         portOneWebhookFacade.handle(
                                 signed.body(),
@@ -358,7 +299,7 @@ class PortOneWebhookApiMySqlIntegrationTest {
         return """
                 {
                   "type": "%s",
-                  "timestamp": "2026-07-30T03:00:00Z",
+                  "timestamp": "2026-08-01T04:00:00Z",
                   "data": {
                     "storeId": "store-test",
                     "paymentId": "%s",
@@ -372,11 +313,11 @@ class PortOneWebhookApiMySqlIntegrationTest {
         return new PortOnePayment(
                 paymentId.toString(),
                 status,
-                1_000,
+                BOOK_PRICE_WON,
                 "KRW",
                 "store-test",
                 "channel-test",
-                "읽어볼까 100잉크",
+                "읽어볼까 도서 소장",
                 "V2",
                 status == PortOnePaymentStatus.PAID ? PAID_AT : null);
     }
@@ -388,58 +329,48 @@ class PortOneWebhookApiMySqlIntegrationTest {
                 "ROLE_USER");
     }
 
-    private void 독자와_잉크_계좌를_생성한다() {
+    private void 독자와_도서를_생성한다() {
         jdbcTemplate.update(
                 """
                 INSERT INTO reader (id, email, password_hash, created_at)
-                VALUES (?, ?, '{noop}password', '2026-07-30 00:00:00.000000')
+                VALUES (?, 'scrum415-webhook@example.com', '{noop}password',
+                        '2026-08-01 00:00:00.000000')
                 """,
-                READER_ID,
-                "scrum409@example.com");
+                READER_ID);
         jdbcTemplate.update(
                 "INSERT INTO ink_account (reader_id, balance) VALUES (?, 0)",
                 READER_ID);
+        jdbcTemplate.update(
+                """
+                INSERT INTO book
+                    (id, category, title, author, total_page_count, price_won)
+                VALUES (?, '과학', '웹훅으로 오는 소장', '읽어볼까', 1, ?)
+                """,
+                BOOK_ID,
+                BOOK_PRICE_WON);
     }
 
     private void 테스트_데이터를_정리한다() {
-        jdbcTemplate.update(
-                "DELETE FROM ink_ledger WHERE reader_id = ?",
-                READER_ID);
-        jdbcTemplate.update(
-                "DELETE FROM ink_purchase WHERE reader_id = ?",
-                READER_ID);
-        jdbcTemplate.update(
-                "DELETE FROM ink_account WHERE reader_id = ?",
-                READER_ID);
-        jdbcTemplate.update(
-                "DELETE FROM reader WHERE id = ?",
-                READER_ID);
+        jdbcTemplate.update("DELETE FROM book_ownership WHERE reader_id = ?", READER_ID);
+        jdbcTemplate.update("DELETE FROM ownership_payment WHERE reader_id = ?", READER_ID);
+        jdbcTemplate.update("DELETE FROM ink_account WHERE reader_id = ?", READER_ID);
+        jdbcTemplate.update("DELETE FROM reader WHERE id = ?", READER_ID);
+        jdbcTemplate.update("DELETE FROM book WHERE id = ?", BOOK_ID);
     }
 
     private String 결제_상태를_조회한다(UUID paymentId) {
         return jdbcTemplate.queryForObject(
-                "SELECT status FROM ink_purchase WHERE payment_id = ?",
+                "SELECT status FROM ownership_payment WHERE payment_id = ?",
                 String.class,
                 paymentId.toString());
     }
 
-    private int 잔액을_조회한다() {
+    private int 소장_수를_조회한다() {
         return jdbcTemplate.queryForObject(
-                "SELECT balance FROM ink_account WHERE reader_id = ?",
+                "SELECT COUNT(*) FROM book_ownership WHERE reader_id = ? AND book_id = ?",
                 Integer.class,
-                READER_ID);
-    }
-
-    private int 지급_원장_수를_조회한다(UUID paymentId) {
-        return jdbcTemplate.queryForObject(
-                """
-                SELECT COUNT(*)
-                FROM ink_ledger ledger
-                JOIN ink_purchase purchase ON purchase.id = ledger.ink_purchase_id
-                WHERE purchase.payment_id = ?
-                """,
-                Integer.class,
-                paymentId.toString());
+                READER_ID,
+                BOOK_ID);
     }
 
     private record SignedWebhook(
