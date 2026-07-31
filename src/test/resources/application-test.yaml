@@ -1,3 +1,7 @@
 spring:
   datasource:
     url: ${TEST_DB_URL:jdbc:mysql://localhost:3307/ilgeobolkka_test?allowPublicKeyRetrieval=true&sslMode=DISABLED}
+    hikari:
+      # Hikari의 minimum-idle 기본값은 maximum-pool-size다. 통합 테스트는 컨텍스트를 십여 개
+      # 캐시하므로 그대로 두면 유휴 커넥션만으로 MySQL max_connections에 닿는다.
+      minimum-idle: 2
