@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CommonPageController {
@@ -35,9 +36,14 @@ public class CommonPageController {
     }
 
     @GetMapping("/books/{bookId}/viewer")
-    String viewer(@PathVariable long bookId, Model model) {
+    String viewer(
+            @PathVariable long bookId,
+            @RequestParam(defaultValue = "1") int page,
+            Model model) {
         model.addAttribute("bookId", bookId);
-        return placeholder(model, "뷰어", "도서 뷰어 화면을 준비하고 있습니다.");
+        model.addAttribute("initialPage", page);
+        model.addAttribute("pageTitle", "뷰어");
+        return "pages/viewer";
     }
 
     @GetMapping("/ink")
