@@ -37,7 +37,7 @@ public class SecurityConfig {
             default-src 'self'; \
             script-src 'self' https://cdn.portone.io; \
             style-src 'self'; \
-            img-src 'self' data:; \
+            img-src 'self' data: blob:; \
             font-src 'self'; \
             connect-src 'self'; \
             object-src 'none'; \

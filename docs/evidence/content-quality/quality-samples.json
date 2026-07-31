@@ -16,6 +16,49 @@
     "result": "PASS",
     "summary": "카테고리별 대표 10권의 첫·중간·마지막 페이지와 IMAGE 위험 페이지에서 잘림, 글자 순서 변경, 가는 요소 누락, 식별 가능한 압축 손상이 없었다."
   },
+  "viewerInspection": {
+    "date": "2026-07-31",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "initialImageScale": "WIDTH_FIT",
+    "bookIds": [
+      1,
+      11,
+      21,
+      31,
+      41,
+      51,
+      61,
+      71,
+      81,
+      91
+    ],
+    "textPages": {
+      "count": 23,
+      "fontSize": "18px",
+      "lineHeight": "32.4px",
+      "horizontalOverflowCount": 0
+    },
+    "imagePages": {
+      "count": 10,
+      "naturalSize": {
+        "width": 1240,
+        "height": 1754
+      },
+      "renderedSize": {
+        "width": 1099,
+        "height": 1555
+      },
+      "horizontalOverflowCount": 0,
+      "aspectRatioPreserved": true,
+      "fullHeightAvailableByViewerScroll": true
+    },
+    "focusedPageCount": 33,
+    "result": "PASS",
+    "summary": "대표 10권의 첫·중간·마지막과 IMAGE 위험 페이지 33개를 실제 1280×800 뷰어에서 확인했다. TEXT는 읽을 수 있는 크기와 순서를 유지했고, IMAGE는 초기 너비 맞춤에서 가로 잘림과 비율 왜곡 없이 전체 높이를 뷰어 내부 스크롤로 제공했다."
+  },
   "riskCoverage": [
     {
       "kind": "SMALL_TEXT",

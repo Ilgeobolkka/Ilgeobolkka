@@ -311,7 +311,8 @@
   첫·중간·마지막과 위험 페이지를 수동 검수해 파일 크기를 기록합니다.
 - 시연 PDF·manifest와 변환 산출물이 `bootJar`와 배포 이미지에 포함되지 않아야 합니다.
 - 최초 동결이 끝난 뒤 합성 페이지 생성 코드와 기존 페이지 PNG가 런타임 classpath에 남지 않아야 합니다.
-- 실제 데스크톱 뷰어 크기의 표시 품질은 SCRUM-406에서 같은 표본으로 확인합니다.
+- 실제 데스크톱 뷰어 크기의 표시 품질은 SCRUM-406에서 같은 표본으로 확인했으며,
+  결과는 `docs/evidence/content-quality/quality-samples.json`의 `viewerInspection`에 기록했습니다.
 
 ## 9. 사용자 이해 검증
 

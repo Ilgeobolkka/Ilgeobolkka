@@ -46,7 +46,7 @@ class CommonPageControllerTest {
     private static final String CONTENT_SECURITY_POLICY = "default-src 'self'; "
             + "script-src 'self' https://cdn.portone.io; "
             + "style-src 'self'; "
-            + "img-src 'self' data:; "
+            + "img-src 'self' data: blob:; "
             + "font-src 'self'; "
             + "connect-src 'self'; "
             + "object-src 'none'; "
@@ -133,6 +133,30 @@ class CommonPageControllerTest {
     }
 
     @Test
+    void 뷰어는_전용_화면과_접근_가능한_페이지_조작을_렌더링한다() throws Exception {
+        MvcResult result = mockMvc.perform(
+                        get("/books/17/viewer")
+                                .param("page", "9")
+                                .with(authentication(readerAuthentication())))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith("text/html"))
+                .andReturn();
+
+        String html = result.getResponse().getContentAsString();
+
+        assertTrue(html.contains("data-book-id=\"17\""));
+        assertTrue(html.contains("data-initial-page=\"9\""));
+        assertTrue(html.contains("data-viewer-root"));
+        assertTrue(html.contains("aria-label=\"이전 페이지\""));
+        assertTrue(html.contains("aria-label=\"다음 페이지\""));
+        assertTrue(html.contains("aria-label=\"이동할 페이지 번호\""));
+        assertTrue(html.contains("aria-label=\"글자 크기 키우기\""));
+        assertTrue(html.contains("aria-label=\"페이지 이미지 확대\""));
+        assertTrue(html.contains("/js/viewer/viewer.js"));
+        assertFalse(html.contains("도서 뷰어 화면을 준비하고 있습니다."));
+    }
+
+    @Test
     void 비로그인_사용자는_보호_HTML에서_저장된_요청_없이_로그인으로_이동한다() throws Exception {
         for (String path : new String[] {
             "/books/1/viewer",
@@ -194,6 +218,12 @@ class CommonPageControllerTest {
                 .andExpect(status().isOk());
 
         mockMvc.perform(get("/js/common/shell.js"))
+                .andExpect(status().isOk());
+
+        mockMvc.perform(get("/js/viewer/viewer-page.js"))
+                .andExpect(status().isOk());
+
+        mockMvc.perform(get("/js/viewer/viewer.js"))
                 .andExpect(status().isOk());
 
         mockMvc.perform(get("/css/common.css"))
