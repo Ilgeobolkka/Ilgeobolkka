@@ -175,6 +175,50 @@ class ReadingFacadeMySqlIntegrationTest {
     }
 
     @Test
+    void T_RENT_003_만료_1밀리초_전에는_무료_재열람이고_정확한_만료_시각에는_새_대여를_시작한다() {
+        독자를_생성한다(5);
+        대여용_도서를_생성한다();
+        Instant 만료_시각 = NOW.plusSeconds(10);
+        활성_대여를_생성한다(TEXT_PAGE_ID, 만료_시각.minus(RENTAL_PERIOD), 만료_시각);
+        clock.script(만료_시각.minusMillis(1), 만료_시각, 만료_시각);
+
+        OpenPageResponse beforeExpiry = readingFacade.openNewSession(READER_ID, RENTAL_BOOK_ID, 1);
+        OpenPageResponse atExpiry = readingFacade.openNewSession(READER_ID, RENTAL_BOOK_ID, 1);
+
+        assertAll(
+                () -> assertEquals(0, beforeExpiry.deductedInk()),
+                () -> assertEquals(만료_시각.minus(RENTAL_PERIOD), beforeExpiry.rentedAt()),
+                () -> assertEquals(만료_시각, beforeExpiry.expiresAt()),
+                () -> assertEquals(1, atExpiry.deductedInk()),
+                () -> assertEquals(만료_시각, atExpiry.rentedAt()),
+                () -> assertEquals(만료_시각.plus(RENTAL_PERIOD), atExpiry.expiresAt()),
+                () -> assertEquals(4, atExpiry.inkBalance()),
+                () -> assertEquals(2, 대여_수를_조회한다()),
+                () -> assertEquals(1, 차감_원장_수를_조회한다()));
+    }
+
+    @Test
+    void T_RENT_004_시작_시각이_다른_두_페이지는_각각_독립적으로_30일_뒤_만료된다() {
+        독자를_생성한다(5);
+        대여용_도서를_생성한다();
+        Instant 첫_페이지_차감_시각 = NOW;
+        Instant 둘째_페이지_차감_시각 = NOW.plusSeconds(3600);
+
+        clock.script(첫_페이지_차감_시각, 첫_페이지_차감_시각);
+        OpenPageResponse first = readingFacade.openNewSession(READER_ID, RENTAL_BOOK_ID, 1);
+        clock.script(둘째_페이지_차감_시각, 둘째_페이지_차감_시각);
+        OpenPageResponse second =
+                readingFacade.movePage(READER_ID, UUID.fromString(first.viewerSessionId()), 2);
+
+        assertAll(
+                () -> assertEquals(첫_페이지_차감_시각.plus(RENTAL_PERIOD), first.expiresAt()),
+                () -> assertEquals(둘째_페이지_차감_시각.plus(RENTAL_PERIOD), second.expiresAt()),
+                () -> assertNotEquals(first.expiresAt(), second.expiresAt()),
+                () -> assertEquals(2, 대여_수를_조회한다()),
+                () -> assertEquals(2, 차감_원장_수를_조회한다()));
+    }
+
+    @Test
     void 소장_도서는_잉크_차감과_대여_없이_페이지를_제공한다() {
         독자를_생성한다(3);
         소장용_도서를_생성한다();
@@ -189,6 +233,42 @@ class ReadingFacadeMySqlIntegrationTest {
                 () -> assertNull(response.expiresAt()),
                 () -> assertEquals(3, 잔액을_조회한다()),
                 () -> assertEquals(0, 대여_수를_조회한다()));
+    }
+
+    @Test
+    void T_OWN_007_잉크_0인_소장_도서의_미대여_페이지는_차감_없이_제공된다() {
+        독자를_생성한다(0);
+        소장용_도서를_생성한다();
+
+        OpenPageResponse response = readingFacade.openNewSession(READER_ID, OWNED_BOOK_ID, 1);
+
+        assertAll(
+                () -> assertTrue(response.owned()),
+                () -> assertEquals(0, response.deductedInk()),
+                () -> assertEquals(0, response.inkBalance()),
+                () -> assertNull(response.rentedAt()),
+                () -> assertNull(response.expiresAt()),
+                () -> assertEquals(0, 잔액을_조회한다()),
+                () -> assertEquals(0, 대여_수를_조회한다()));
+    }
+
+    @Test
+    void T_OWN_008_소장_전_대여가_만료된_뒤에도_소장_도서는_새_대여_없이_제공된다() {
+        독자를_생성한다(3);
+        소장용_도서를_생성한다();
+        활성_대여를_생성한다(
+                OWNED_PAGE_ID, NOW.minus(RENTAL_PERIOD).minusSeconds(3600), NOW.minusSeconds(3600));
+
+        OpenPageResponse response = readingFacade.openNewSession(READER_ID, OWNED_BOOK_ID, 1);
+
+        assertAll(
+                () -> assertTrue(response.owned()),
+                () -> assertEquals(0, response.deductedInk()),
+                () -> assertEquals(3, response.inkBalance()),
+                () -> assertNull(response.rentedAt()),
+                () -> assertNull(response.expiresAt()),
+                () -> assertEquals(3, 잔액을_조회한다()),
+                () -> assertEquals(1, 대여_수를_조회한다()));
     }
 
     @Test
