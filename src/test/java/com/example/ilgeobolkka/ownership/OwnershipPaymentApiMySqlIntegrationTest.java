@@ -3,6 +3,7 @@ package com.example.ilgeobolkka.ownership;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.authentication;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
@@ -32,12 +33,17 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Function;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
@@ -51,6 +57,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.support.TransactionTemplate;
 import tools.jackson.databind.ObjectMapper;
 
 @SpringBootTest(properties = {
@@ -81,6 +89,7 @@ class OwnershipPaymentApiMySqlIntegrationTest {
     private final OwnershipPaymentFacade ownershipPaymentFacade;
     private final ReadingFacade readingFacade;
     private final FakePortOnePaymentGateway paymentGateway;
+    private final TransactionTemplate transactionTemplate;
 
     @Autowired
     OwnershipPaymentApiMySqlIntegrationTest(
@@ -89,13 +98,15 @@ class OwnershipPaymentApiMySqlIntegrationTest {
             JdbcTemplate jdbcTemplate,
             OwnershipPaymentFacade ownershipPaymentFacade,
             ReadingFacade readingFacade,
-            FakePortOnePaymentGateway paymentGateway) {
+            FakePortOnePaymentGateway paymentGateway,
+            PlatformTransactionManager transactionManager) {
         this.mockMvc = mockMvc;
         this.objectMapper = objectMapper;
         this.jdbcTemplate = jdbcTemplate;
         this.ownershipPaymentFacade = ownershipPaymentFacade;
         this.readingFacade = readingFacade;
         this.paymentGateway = paymentGateway;
+        this.transactionTemplate = new TransactionTemplate(transactionManager);
     }
 
     @BeforeEach
@@ -283,20 +294,13 @@ class OwnershipPaymentApiMySqlIntegrationTest {
                 () -> assertEquals(callCount, paymentGateway.callCount()));
     }
 
-    @Test
-    void 결제_통화가_KRW가_아니면_FAILED로_기록한다() throws Exception {
+    @ParameterizedTest(name = "{0}")
+    @MethodSource("검증_실패_필드_변형")
+    void 결제_필드가_준비_기록과_다르면_검증_실패로_기록한다(
+            String 설명, Function<PortOnePayment, PortOnePayment> 변형) throws Exception {
         UUID paymentId = 결제를_준비하고_ID를_반환한다();
         PortOnePayment payment = 결제(paymentId, PortOnePaymentStatus.PAID, BOOK_PRICE_WON);
-        paymentGateway.respondWith(new PortOnePayment(
-                payment.paymentId(),
-                payment.status(),
-                payment.totalAmount(),
-                "USD",
-                payment.storeId(),
-                payment.channelKey(),
-                payment.orderName(),
-                payment.version(),
-                payment.paidAt()));
+        paymentGateway.respondWith(변형.apply(payment));
 
         결제를_완료한다(READER_ID, paymentId)
                 .andExpect(status().isUnprocessableContent())
@@ -307,26 +311,115 @@ class OwnershipPaymentApiMySqlIntegrationTest {
                 () -> assertEquals(0, 소장_수를_조회한다()));
     }
 
+    private static Stream<Arguments> 검증_실패_필드_변형() {
+        return Stream.of(
+                Arguments.of(
+                        "통화가 KRW가 아니면",
+                        (Function<PortOnePayment, PortOnePayment>) payment -> new PortOnePayment(
+                                payment.paymentId(),
+                                payment.status(),
+                                payment.totalAmount(),
+                                "USD",
+                                payment.storeId(),
+                                payment.channelKey(),
+                                payment.orderName(),
+                                payment.version(),
+                                payment.paidAt())),
+                Arguments.of(
+                        "결제 식별자가 다르면",
+                        (Function<PortOnePayment, PortOnePayment>) payment -> new PortOnePayment(
+                                UUID.randomUUID().toString(),
+                                payment.status(),
+                                payment.totalAmount(),
+                                payment.currency(),
+                                payment.storeId(),
+                                payment.channelKey(),
+                                payment.orderName(),
+                                payment.version(),
+                                payment.paidAt())),
+                Arguments.of(
+                        "storeId가 다르면",
+                        (Function<PortOnePayment, PortOnePayment>) payment -> new PortOnePayment(
+                                payment.paymentId(),
+                                payment.status(),
+                                payment.totalAmount(),
+                                payment.currency(),
+                                "다른-store",
+                                payment.channelKey(),
+                                payment.orderName(),
+                                payment.version(),
+                                payment.paidAt())),
+                Arguments.of(
+                        "orderName이 다르면",
+                        (Function<PortOnePayment, PortOnePayment>) payment -> new PortOnePayment(
+                                payment.paymentId(),
+                                payment.status(),
+                                payment.totalAmount(),
+                                payment.currency(),
+                                payment.storeId(),
+                                payment.channelKey(),
+                                "다른 주문명",
+                                payment.version(),
+                                payment.paidAt())),
+                Arguments.of(
+                        "PortOne 버전이 다르면",
+                        (Function<PortOnePayment, PortOnePayment>) payment -> new PortOnePayment(
+                                payment.paymentId(),
+                                payment.status(),
+                                payment.totalAmount(),
+                                payment.currency(),
+                                payment.storeId(),
+                                payment.channelKey(),
+                                payment.orderName(),
+                                "V1",
+                                payment.paidAt())),
+                Arguments.of(
+                        "PAID인데 채널키가 없으면",
+                        (Function<PortOnePayment, PortOnePayment>) payment -> new PortOnePayment(
+                                payment.paymentId(),
+                                payment.status(),
+                                payment.totalAmount(),
+                                payment.currency(),
+                                payment.storeId(),
+                                null,
+                                payment.orderName(),
+                                payment.version(),
+                                payment.paidAt())),
+                Arguments.of(
+                        "PAID인데 결제완료 시각이 없으면",
+                        (Function<PortOnePayment, PortOnePayment>) payment -> new PortOnePayment(
+                                payment.paymentId(),
+                                payment.status(),
+                                payment.totalAmount(),
+                                payment.currency(),
+                                payment.storeId(),
+                                payment.channelKey(),
+                                payment.orderName(),
+                                payment.version(),
+                                null)));
+    }
+
     @Test
-    void 결제_식별자가_다르면_검증_실패로_기록한다() throws Exception {
+    void 채널키가_아직_없는_PENDING_결제는_PENDING을_유지한다() throws Exception {
         UUID paymentId = 결제를_준비하고_ID를_반환한다();
+        PortOnePayment payment = 결제(paymentId, PortOnePaymentStatus.PENDING, BOOK_PRICE_WON);
         paymentGateway.respondWith(new PortOnePayment(
-                UUID.randomUUID().toString(),
-                PortOnePaymentStatus.PAID,
-                BOOK_PRICE_WON,
-                "KRW",
-                "store-test",
-                "channel-test",
-                "읽어볼까 도서 소장",
-                "V2",
-                PAID_AT));
+                payment.paymentId(),
+                payment.status(),
+                payment.totalAmount(),
+                payment.currency(),
+                payment.storeId(),
+                null,
+                payment.orderName(),
+                payment.version(),
+                payment.paidAt()));
 
         결제를_완료한다(READER_ID, paymentId)
-                .andExpect(status().isUnprocessableContent())
-                .andExpect(jsonPath("$.code").value("PAYMENT_VERIFICATION_FAILED"));
+                .andExpect(status().isAccepted())
+                .andExpect(jsonPath("$.status").value("PENDING"));
 
         assertAll(
-                () -> assertEquals("FAILED", 결제_상태를_조회한다(paymentId)),
+                () -> assertEquals("PENDING", 결제_상태를_조회한다(paymentId)),
                 () -> assertEquals(0, 소장_수를_조회한다()));
     }
 
@@ -402,6 +495,53 @@ class OwnershipPaymentApiMySqlIntegrationTest {
                 () -> assertTrue(차감_수 == 0 || 차감_수 == 1),
                 () -> assertEquals(차감_수, 잉크_내역_수를_조회한다()),
                 () -> assertEquals(70 - 차감_수, 잉크_잔액을_조회한다()));
+    }
+
+    /**
+     * T_OWN_010은 결과(0 또는 1잉크 차감)만 보므로 {@code inkService.lockAccount(...)} 호출을
+     * 지워도 우연히 통과할 수 있다. 이 테스트는 별도 트랜잭션이 {@code ink_account} 행을 잠근 채
+     * 놓지 않는 동안 소장 완료가 실제로 대기하는지를 latch로 직접 증명한다.
+     */
+    @Test
+    void 소장_완료는_다른_트랜잭션이_쥔_InkAccount_행_잠금이_풀릴_때까지_대기한다() throws Exception {
+        UUID paymentId = 결제를_준비하고_ID를_반환한다();
+        paymentGateway.respondWith(결제(paymentId, PortOnePaymentStatus.PAID, BOOK_PRICE_WON));
+
+        CountDownLatch lockHeld = new CountDownLatch(1);
+        CountDownLatch releaseLock = new CountDownLatch(1);
+        ExecutorService lockHolder = Executors.newSingleThreadExecutor();
+        ExecutorService completer = Executors.newSingleThreadExecutor();
+        try {
+            lockHolder.submit(() -> transactionTemplate.executeWithoutResult(status -> {
+                jdbcTemplate.queryForObject(
+                        "SELECT balance FROM ink_account WHERE reader_id = ? FOR UPDATE",
+                        Integer.class,
+                        READER_ID);
+                lockHeld.countDown();
+                try {
+                    assertTrue(releaseLock.await(5, TimeUnit.SECONDS));
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }));
+            assertTrue(lockHeld.await(5, TimeUnit.SECONDS));
+
+            Future<CompleteOwnershipPaymentResponse> completion = completer.submit(
+                    () -> ownershipPaymentFacade.complete(READER_ID, paymentId));
+
+            assertThrows(TimeoutException.class, () -> completion.get(300, TimeUnit.MILLISECONDS));
+
+            releaseLock.countDown();
+            CompleteOwnershipPaymentResponse response = completion.get(5, TimeUnit.SECONDS);
+
+            assertAll(
+                    () -> assertEquals("PAID", response.status().name()),
+                    () -> assertEquals(1, 소장_수를_조회한다()));
+        } finally {
+            releaseLock.countDown();
+            lockHolder.shutdownNow();
+            completer.shutdownNow();
+        }
     }
 
     @Test
