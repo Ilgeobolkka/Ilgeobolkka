@@ -16,12 +16,16 @@ import com.example.ilgeobolkka.reading.exception.ReadingSessionNotFoundException
 import com.example.ilgeobolkka.reading.exception.ViewerSessionReplacedException;
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
 import java.time.Clock;
+import java.time.Duration;
 import java.time.Instant;
+import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -39,11 +43,15 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
 
 @SpringBootTest
 @ActiveProfiles("test")
 @ContextConfiguration(initializers = DedicatedTestDatabaseInitializer.class)
-@Import(ReadingFacadeMySqlIntegrationTest.FixedClockConfiguration.class)
+@Import(ReadingFacadeMySqlIntegrationTest.ScriptedClockConfiguration.class)
+// T-RENT-005가 동시 요청 10건을 띄우므로 이 컨텍스트에서만 기본 풀 10을 넘긴다.
+// 전역으로 올리면 컨텍스트 수만큼 곱해져 MySQL max_connections를 넘는다.
+@TestPropertySource(properties = "spring.datasource.hikari.maximum-pool-size=15")
 class ReadingFacadeMySqlIntegrationTest {
 
     private static final long READER_ID = 411_001L;
@@ -53,27 +61,33 @@ class ReadingFacadeMySqlIntegrationTest {
     private static final long IMAGE_PAGE_ID = 411_202L;
     private static final long OWNED_PAGE_ID = 411_203L;
     private static final long OWNERSHIP_PAYMENT_ID = 411_301L;
-    private static final int CONCURRENT_REQUEST_COUNT = 2;
+    private static final int CONCURRENT_REQUEST_COUNT = 10;
     private static final Instant NOW = Instant.parse("2026-07-30T10:00:00.123456Z");
+    private static final Duration RENTAL_PERIOD = Duration.ofDays(30);
     private static final DateTimeFormatter DATETIME_FORMATTER =
             DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS").withZone(ZoneOffset.UTC);
 
     private final ReadingFacade readingFacade;
     private final JdbcTemplate jdbcTemplate;
+    private final ScriptedClock clock;
 
     @Autowired
-    ReadingFacadeMySqlIntegrationTest(ReadingFacade readingFacade, JdbcTemplate jdbcTemplate) {
+    ReadingFacadeMySqlIntegrationTest(
+            ReadingFacade readingFacade, JdbcTemplate jdbcTemplate, ScriptedClock clock) {
         this.readingFacade = readingFacade;
         this.jdbcTemplate = jdbcTemplate;
+        this.clock = clock;
     }
 
     @BeforeEach
     void setUp() {
+        clock.reset();
         테스트_데이터를_정리한다();
     }
 
     @AfterEach
     void tearDown() {
+        clock.reset();
         테스트_데이터를_정리한다();
     }
 
@@ -248,7 +262,25 @@ class ReadingFacadeMySqlIntegrationTest {
                 () -> assertEquals(1, 대여_수를_조회한다()),
                 () -> assertEquals(1, 차감_원장_수를_조회한다()),
                 () -> assertEquals(1, 세션_수를_조회한다()),
-                () -> assertEquals(1, 서재_항목_수를_조회한다()));
+                () -> assertEquals(1, 서재_항목_수를_조회한다()),
+                () -> assertEquals(1, responses.stream().map(OpenPageResponse::rentedAt).distinct().count()),
+                () -> assertEquals(1, responses.stream().map(OpenPageResponse::expiresAt).distinct().count()));
+    }
+
+    @Test
+    void 잠금을_기다리는_동안_시각이_흘러도_대여는_차감_시각부터_30일이다() {
+        독자를_생성한다(5);
+        대여용_도서를_생성한다();
+        Instant 차감_시각 = NOW.plusSeconds(5);
+        clock.script(NOW, 차감_시각);
+
+        OpenPageResponse response = readingFacade.openNewSession(READER_ID, RENTAL_BOOK_ID, 1);
+
+        assertAll(
+                () -> assertEquals(차감_시각, response.rentedAt()),
+                () -> assertEquals(차감_시각.plus(RENTAL_PERIOD), response.expiresAt()),
+                () -> assertEquals(DATETIME_FORMATTER.format(차감_시각), 대여_시작_시각을_조회한다()),
+                () -> assertEquals(DATETIME_FORMATTER.format(차감_시각), 차감_원장_시각을_조회한다()));
     }
 
     @Test
@@ -420,6 +452,26 @@ class ReadingFacadeMySqlIntegrationTest {
                 READER_ID);
     }
 
+    private String 대여_시작_시각을_조회한다() {
+        return jdbcTemplate.queryForObject(
+                """
+                SELECT DATE_FORMAT(rented_at, '%Y-%m-%d %H:%i:%s.%f')
+                FROM page_rental WHERE reader_id = ?
+                """,
+                String.class,
+                READER_ID);
+    }
+
+    private String 차감_원장_시각을_조회한다() {
+        return jdbcTemplate.queryForObject(
+                """
+                SELECT DATE_FORMAT(occurred_at, '%Y-%m-%d %H:%i:%s.%f')
+                FROM ink_ledger WHERE reader_id = ? AND type = 'DEDUCTION'
+                """,
+                String.class,
+                READER_ID);
+    }
+
     /** 네이티브 upsert가 `Instant`를 UTC로 저장하는지 확인하기 위해 저장된 문자열을 그대로 읽는다. */
     private String 세션_갱신_시각을_조회한다() {
         return jdbcTemplate.queryForObject(
@@ -458,12 +510,46 @@ class ReadingFacadeMySqlIntegrationTest {
     }
 
     @TestConfiguration(proxyBeanMethods = false)
-    static class FixedClockConfiguration {
+    static class ScriptedClockConfiguration {
 
         @Bean
         @Primary
-        Clock fixedClock() {
-            return Clock.fixed(NOW, ZoneOffset.UTC);
+        ScriptedClock scriptedClock() {
+            return new ScriptedClock();
+        }
+    }
+
+    /**
+     * 기본값은 항상 {@link #NOW}라 고정 시계와 같다. {@link #script}로 호출 순서별 시각을 지정하면
+     * 잠금 전 확인과 잠금 뒤 차감이 서로 다른 시각을 쓰는지 검증할 수 있다.
+     */
+    static final class ScriptedClock extends Clock {
+
+        private final Queue<Instant> scripted = new ConcurrentLinkedQueue<>();
+
+        void script(Instant... instants) {
+            scripted.clear();
+            scripted.addAll(List.of(instants));
+        }
+
+        void reset() {
+            scripted.clear();
+        }
+
+        @Override
+        public Instant instant() {
+            Instant next = scripted.poll();
+            return next == null ? NOW : next;
+        }
+
+        @Override
+        public ZoneId getZone() {
+            return ZoneOffset.UTC;
+        }
+
+        @Override
+        public Clock withZone(ZoneId zone) {
+            return this;
         }
     }
 }

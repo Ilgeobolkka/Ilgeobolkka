@@ -45,7 +45,7 @@ public class ReadingFacade {
     public OpenPageResponse openNewSession(long readerId, long bookId, int pageNumber) {
         BookPage page = bookService.findPage(bookId, pageNumber);
         UUID viewerSessionId = UUID.randomUUID();
-        return openPage(readerId, page, viewerSessionId, clock.instant());
+        return openPage(readerId, page, viewerSessionId);
     }
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
@@ -53,23 +53,30 @@ public class ReadingFacade {
         ReadingSession currentSession =
                 readingSessionService.getCurrentSession(readerId, viewerSessionId);
         BookPage page = bookService.findPage(currentSession.getBookId(), pageNumber);
-        return openPage(readerId, page, viewerSessionId, clock.instant());
+        return openPage(readerId, page, viewerSessionId);
     }
 
-    private OpenPageResponse openPage(
-            long readerId, BookPage page, UUID viewerSessionId, Instant now) {
-        Optional<OpenPageResponse> freeAccess = tryFreeAccess(readerId, page, viewerSessionId, now);
+    /**
+     * 잠금을 얻은 뒤 서버 시각을 다시 읽는다. 잠금 대기는 앞선 요청이 끝날 때까지 이어지므로, 잠금
+     * 전에 읽은 시각으로 대여를 만들면 대기한 만큼 30일이 줄고 {@code rentedAt}과 잉크 원장 시각이
+     * 실제 차감보다 앞선다. 정책의 "대여 기간은 차감이 완료된 서버 시각부터 30일"을 지키려면 재확인과
+     * 대여·차감이 같은 시각을 써야 한다.
+     */
+    private OpenPageResponse openPage(long readerId, BookPage page, UUID viewerSessionId) {
+        Optional<OpenPageResponse> freeAccess =
+                tryFreeAccess(readerId, page, viewerSessionId, clock.instant());
         if (freeAccess.isPresent()) {
             return freeAccess.get();
         }
 
         inkService.lockAccount(readerId);
-        freeAccess = tryFreeAccess(readerId, page, viewerSessionId, now);
+        Instant chargedAt = clock.instant();
+        freeAccess = tryFreeAccess(readerId, page, viewerSessionId, chargedAt);
         if (freeAccess.isPresent()) {
             return freeAccess.get();
         }
 
-        return chargeNewRental(readerId, page, viewerSessionId, now);
+        return chargeNewRental(readerId, page, viewerSessionId, chargedAt);
     }
 
     private Optional<OpenPageResponse> tryFreeAccess(
