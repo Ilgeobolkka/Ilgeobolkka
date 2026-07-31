@@ -11,6 +11,7 @@ import com.example.ilgeobolkka.ink.exception.PaymentStateConflictException;
 import com.example.ilgeobolkka.ink.exception.PaymentVerificationException;
 import com.example.ilgeobolkka.ownership.exception.BookAlreadyOwnedException;
 import com.example.ilgeobolkka.reader.exception.EmailAlreadyExistsException;
+import com.example.ilgeobolkka.reading.exception.PageContentNotFoundException;
 import com.example.ilgeobolkka.reading.exception.ReadingSessionNotFoundException;
 import com.example.ilgeobolkka.reading.exception.ViewerSessionReplacedException;
 import org.springframework.http.ResponseEntity;
@@ -93,6 +94,7 @@ public class GlobalExceptionHandler {
         BookNotFoundException.class,
         BookPageNotFoundException.class,
         InkPurchaseNotFoundException.class,
+        PageContentNotFoundException.class,
         ReadingSessionNotFoundException.class
     })
     ResponseEntity<ApiErrorResponse> handleResourceNotFound(Exception exception) {
