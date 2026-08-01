@@ -7,6 +7,7 @@ import com.example.ilgeobolkka.infra.portone.PortOnePaymentGateway;
 import com.example.ilgeobolkka.infra.portone.PortOnePaymentProperties;
 import com.example.ilgeobolkka.ink.exception.PaymentVerificationException;
 import com.example.ilgeobolkka.ink.service.InkService;
+import com.example.ilgeobolkka.library.service.LibraryService;
 import com.example.ilgeobolkka.ownership.dto.CompleteOwnershipPaymentResponse;
 import com.example.ilgeobolkka.ownership.dto.PrepareOwnershipPaymentResponse;
 import com.example.ilgeobolkka.ownership.service.OwnershipPaymentService;
@@ -17,6 +18,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionTemplate;
 
 @Service
 @RequiredArgsConstructor
@@ -29,9 +31,11 @@ public class OwnershipPaymentFacade {
     private final InkService inkService;
     private final BookService bookService;
     private final OwnershipPaymentService ownershipPaymentService;
+    private final LibraryService libraryService;
     private final PortOnePaymentGateway paymentGateway;
     private final PortOnePaymentProperties paymentProperties;
     private final Clock clock;
+    private final TransactionTemplate transactionTemplate;
 
     @Transactional
     public Preparation prepare(long readerId, long bookId) {
@@ -61,14 +65,23 @@ public class OwnershipPaymentFacade {
      * 전이가 함께 되돌아간다.
      */
     public CompleteOwnershipPaymentResponse complete(long readerId, UUID paymentId) {
-        var cachedResponse = ownershipPaymentService.findCachedCompletion(readerId, paymentId);
-        if (cachedResponse.isPresent()) {
-            return cachedResponse.get();
+        var cachedCompletion = transactionTemplate.execute(status -> {
+            var completion = ownershipPaymentService.findCachedCompletion(readerId, paymentId);
+            completion.ifPresent(this::recordOwnership);
+            return completion;
+        });
+        if (cachedCompletion.isPresent()) {
+            return cachedCompletion.get().response();
         }
 
         PortOnePayment payment = paymentGateway.getPayment(paymentId.toString());
         OwnershipPaymentService.CompletionResult result =
-                ownershipPaymentService.applyPaymentResult(readerId, paymentId, payment);
+                transactionTemplate.execute(status -> {
+                    var completion =
+                            ownershipPaymentService.applyPaymentResult(readerId, paymentId, payment);
+                    recordOwnership(completion);
+                    return completion;
+                });
         if (result.errorCode() != null) {
             throw new PaymentVerificationException(result.errorCode());
         }
@@ -81,7 +94,18 @@ public class OwnershipPaymentFacade {
 
     public void completeWebhook(UUID paymentId) {
         PortOnePayment payment = paymentGateway.getPayment(paymentId.toString());
-        ownershipPaymentService.applyWebhookPaymentResult(paymentId, payment);
+        transactionTemplate.executeWithoutResult(status -> {
+            var completion = ownershipPaymentService.applyWebhookPaymentResult(paymentId, payment);
+            recordOwnership(completion);
+        });
+    }
+
+    private void recordOwnership(OwnershipPaymentService.CompletionResult completion) {
+        if (completion.ownershipGrant() == null) {
+            return;
+        }
+        var grant = completion.ownershipGrant();
+        libraryService.recordOwnership(grant.readerId(), grant.bookId(), grant.ownedAt());
     }
 
     public record Preparation(

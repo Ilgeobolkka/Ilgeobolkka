@@ -68,7 +68,8 @@ public class CommonPageController {
 
     @GetMapping("/library")
     String library(Model model) {
-        return placeholder(model, "내 서재", "내 서재 화면을 준비하고 있습니다.");
+        model.addAttribute("pageTitle", "내 서재");
+        return "pages/library";
     }
 
     private String placeholder(Model model, String pageTitle, String pageDescription) {

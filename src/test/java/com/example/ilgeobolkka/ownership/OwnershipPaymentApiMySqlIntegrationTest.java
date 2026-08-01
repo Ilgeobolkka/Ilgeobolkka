@@ -51,6 +51,7 @@ import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Primary;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.authentication.TestingAuthenticationToken;
 import org.springframework.test.context.ActiveProfiles;
@@ -249,9 +250,53 @@ class OwnershipPaymentApiMySqlIntegrationTest {
                 () -> assertEquals("PAID", 결제_상태를_조회한다(paymentId)),
                 () -> assertEquals("2026-08-01 03:00:00.123456", 소장_완료_시각을_조회한다(paymentId)),
                 () -> assertEquals(1, 소장_수를_조회한다()),
+                () -> assertEquals(1, 서재_항목_수를_조회한다()),
+                () -> assertEquals(1, 서재_마지막_페이지를_조회한다()),
+                () -> assertEquals("2026-08-01 03:00:00.123456", 서재_갱신_시각을_조회한다()),
                 () -> assertEquals(70, 잉크_잔액을_조회한다()),
                 () -> assertEquals(0, 잉크_내역_수를_조회한다()),
                 () -> assertEquals(1, paymentGateway.callCount()));
+    }
+
+    @Test
+    void 소장_전에_읽은_페이지가_있으면_기존_마지막_위치를_유지한다() throws Exception {
+        jdbcTemplate.update(
+                """
+                INSERT INTO library_entry
+                    (reader_id, book_id, last_page_number, updated_at)
+                VALUES (?, ?, 3, '2026-07-31 12:00:00.123456')
+                """,
+                READER_ID,
+                BOOK_ID);
+        UUID paymentId = 결제를_준비하고_ID를_반환한다();
+        paymentGateway.respondWith(결제(paymentId, PortOnePaymentStatus.PAID, BOOK_PRICE_WON));
+
+        결제를_완료한다(READER_ID, paymentId)
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.owned").value(true));
+
+        assertAll(
+                () -> assertEquals(1, 서재_항목_수를_조회한다()),
+                () -> assertEquals(3, 서재_마지막_페이지를_조회한다()),
+                () -> assertEquals("2026-07-31 12:00:00.123456", 서재_갱신_시각을_조회한다()));
+    }
+
+    @Test
+    void 서재_항목_생성에_실패하면_결제_완료와_소장도_함께_되돌아간다() throws Exception {
+        UUID paymentId = 결제를_준비하고_ID를_반환한다();
+        jdbcTemplate.update(
+                "DELETE FROM book_page WHERE book_id = ? AND page_number = 1",
+                BOOK_ID);
+        paymentGateway.respondWith(결제(paymentId, PortOnePaymentStatus.PAID, BOOK_PRICE_WON));
+
+        assertThrows(
+                DataIntegrityViolationException.class,
+                () -> ownershipPaymentFacade.complete(READER_ID, paymentId));
+
+        assertAll(
+                () -> assertEquals("PENDING", 결제_상태를_조회한다(paymentId)),
+                () -> assertEquals(0, 소장_수를_조회한다()),
+                () -> assertEquals(0, 서재_항목_수를_조회한다()));
     }
 
     @Test
@@ -271,7 +316,8 @@ class OwnershipPaymentApiMySqlIntegrationTest {
 
         assertAll(
                 () -> assertEquals("PENDING", 결제_상태를_조회한다(paymentId)),
-                () -> assertEquals(0, 소장_수를_조회한다()));
+                () -> assertEquals(0, 소장_수를_조회한다()),
+                () -> assertEquals(0, 서재_항목_수를_조회한다()));
     }
 
     @Test
@@ -291,6 +337,7 @@ class OwnershipPaymentApiMySqlIntegrationTest {
         assertAll(
                 () -> assertEquals("FAILED", 결제_상태를_조회한다(paymentId)),
                 () -> assertEquals(0, 소장_수를_조회한다()),
+                () -> assertEquals(0, 서재_항목_수를_조회한다()),
                 () -> assertEquals(callCount, paymentGateway.callCount()));
     }
 
@@ -1008,6 +1055,34 @@ class OwnershipPaymentApiMySqlIntegrationTest {
         return jdbcTemplate.queryForObject(
                 "SELECT COUNT(*) FROM book_ownership WHERE reader_id = ? AND book_id = ?",
                 Integer.class,
+                READER_ID,
+                BOOK_ID);
+    }
+
+    private int 서재_항목_수를_조회한다() {
+        return jdbcTemplate.queryForObject(
+                "SELECT COUNT(*) FROM library_entry WHERE reader_id = ? AND book_id = ?",
+                Integer.class,
+                READER_ID,
+                BOOK_ID);
+    }
+
+    private int 서재_마지막_페이지를_조회한다() {
+        return jdbcTemplate.queryForObject(
+                "SELECT last_page_number FROM library_entry WHERE reader_id = ? AND book_id = ?",
+                Integer.class,
+                READER_ID,
+                BOOK_ID);
+    }
+
+    private String 서재_갱신_시각을_조회한다() {
+        return jdbcTemplate.queryForObject(
+                """
+                SELECT DATE_FORMAT(updated_at, '%Y-%m-%d %H:%i:%s.%f')
+                FROM library_entry
+                WHERE reader_id = ? AND book_id = ?
+                """,
+                String.class,
                 READER_ID,
                 BOOK_ID);
     }
