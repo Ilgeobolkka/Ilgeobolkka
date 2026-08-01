@@ -12,6 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.example.ilgeobolkka.book.entity.BookPageContentType;
 import com.example.ilgeobolkka.book.exception.BookPageNotFoundException;
 import com.example.ilgeobolkka.ink.exception.InsufficientInkException;
+import com.example.ilgeobolkka.ink.repository.InkAccountRepository;
+import com.example.ilgeobolkka.ink.repository.InkLedgerRepository;
+import com.example.ilgeobolkka.ink.service.InkService;
 import com.example.ilgeobolkka.reading.dto.OpenPageResponse;
 import com.example.ilgeobolkka.reading.exception.ReadingSessionNotFoundException;
 import com.example.ilgeobolkka.reading.exception.ViewerSessionReplacedException;
@@ -33,7 +36,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
+import java.util.concurrent.atomic.AtomicReference;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -53,7 +56,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 @SpringBootTest
 @ActiveProfiles("test")
 @ContextConfiguration(initializers = DedicatedTestDatabaseInitializer.class)
-@Import(ReadingFacadeMySqlIntegrationTest.ScriptedClockConfiguration.class)
+@Import(ReadingFacadeMySqlIntegrationTest.ReadingFacadeTestConfiguration.class)
 // T-RENT-005가 동시 요청 10건을 띄우므로 이 컨텍스트에서만 기본 풀 10을 넘긴다.
 // 전역으로 올리면 컨텍스트 수만큼 곱해져 MySQL max_connections를 넘는다.
 @TestPropertySource(properties = "spring.datasource.hikari.maximum-pool-size=15")
@@ -76,17 +79,20 @@ class ReadingFacadeMySqlIntegrationTest {
     private final JdbcTemplate jdbcTemplate;
     private final ScriptedClock clock;
     private final TransactionTemplate transactionTemplate;
+    private final ProbedInkService probedInkService;
 
     @Autowired
     ReadingFacadeMySqlIntegrationTest(
             ReadingFacade readingFacade,
             JdbcTemplate jdbcTemplate,
             ScriptedClock clock,
-            PlatformTransactionManager transactionManager) {
+            PlatformTransactionManager transactionManager,
+            ProbedInkService probedInkService) {
         this.readingFacade = readingFacade;
         this.jdbcTemplate = jdbcTemplate;
         this.clock = clock;
         this.transactionTemplate = new TransactionTemplate(transactionManager);
+        this.probedInkService = probedInkService;
     }
 
     @BeforeEach
@@ -392,6 +398,7 @@ class ReadingFacadeMySqlIntegrationTest {
         Instant rentedAt = NOW.minusSeconds(3600);
         Instant expiresAt = NOW.plusSeconds(3600);
         CountDownLatch rentalPrepared = new CountDownLatch(1);
+        CountDownLatch accountLockRequested = new CountDownLatch(1);
         CountDownLatch allowCommit = new CountDownLatch(1);
         ExecutorService lockHolder = Executors.newSingleThreadExecutor();
         ExecutorService pageOpener = Executors.newSingleThreadExecutor();
@@ -408,11 +415,12 @@ class ReadingFacadeMySqlIntegrationTest {
                         래치를_기다린다(allowCommit);
                     }));
             assertTrue(rentalPrepared.await(5, TimeUnit.SECONDS));
+            probedInkService.signalOnNextAccountLock(accountLockRequested);
 
             Future<OpenPageResponse> opening = pageOpener.submit(
                     () -> readingFacade.openNewSession(READER_ID, RENTAL_BOOK_ID, 1));
 
-            assertThrows(TimeoutException.class, () -> opening.get(300, TimeUnit.MILLISECONDS));
+            assertTrue(accountLockRequested.await(5, TimeUnit.SECONDS));
 
             allowCommit.countDown();
             heldTransaction.get(5, TimeUnit.SECONDS);
@@ -430,13 +438,14 @@ class ReadingFacadeMySqlIntegrationTest {
                     () -> assertEquals(1, 서재_항목_수를_조회한다()));
         } finally {
             allowCommit.countDown();
+            probedInkService.clearAccountLockSignal();
             lockHolder.shutdownNow();
             pageOpener.shutdownNow();
         }
     }
 
     @Test
-    void T_BAL_002_잔액_1에서_서로_다른_페이지를_동시에_열면_하나만_대여된다() throws Exception {
+    void 잔액_1에서_서로_다른_미대여_페이지를_동시에_열면_정확히_하나만_성공한다() throws Exception {
         독자를_생성한다(1);
         대여용_도서를_생성한다();
 
@@ -763,12 +772,46 @@ class ReadingFacadeMySqlIntegrationTest {
     }
 
     @TestConfiguration(proxyBeanMethods = false)
-    static class ScriptedClockConfiguration {
+    static class ReadingFacadeTestConfiguration {
 
         @Bean
         @Primary
         ScriptedClock scriptedClock() {
             return new ScriptedClock();
+        }
+
+        @Bean
+        @Primary
+        ProbedInkService probedInkService(
+                InkAccountRepository inkAccountRepository, InkLedgerRepository inkLedgerRepository) {
+            return new ProbedInkService(inkAccountRepository, inkLedgerRepository);
+        }
+    }
+
+    static class ProbedInkService extends InkService {
+
+        private final AtomicReference<CountDownLatch> accountLockSignal = new AtomicReference<>();
+
+        ProbedInkService(
+                InkAccountRepository inkAccountRepository, InkLedgerRepository inkLedgerRepository) {
+            super(inkAccountRepository, inkLedgerRepository);
+        }
+
+        void signalOnNextAccountLock(CountDownLatch signal) {
+            accountLockSignal.set(signal);
+        }
+
+        void clearAccountLockSignal() {
+            accountLockSignal.set(null);
+        }
+
+        @Override
+        public void lockAccount(long readerId) {
+            CountDownLatch signal = accountLockSignal.getAndSet(null);
+            if (signal != null) {
+                signal.countDown();
+            }
+            super.lockAccount(readerId);
         }
     }
 
