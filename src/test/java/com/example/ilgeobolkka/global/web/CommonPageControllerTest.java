@@ -166,11 +166,15 @@ class CommonPageControllerTest {
     void 결제_활성화_환경의_잉크_화면은_구매를_허용한다() {
         MockEnvironment environment = new MockEnvironment()
                 .withProperty("portone.payment.enabled", "true");
-        ExtendedModelMap model = new ExtendedModelMap();
+        ExtendedModelMap inkModel = new ExtendedModelMap();
+        ExtendedModelMap bookModel = new ExtendedModelMap();
 
-        new CommonPageController(environment).ink(model);
+        CommonPageController controller = new CommonPageController(environment);
+        controller.ink(inkModel);
+        controller.bookDetail(17L, bookModel);
 
-        assertEquals(true, model.get("inkPurchaseEnabled"));
+        assertEquals(true, inkModel.get("inkPurchaseEnabled"));
+        assertEquals(true, bookModel.get("ownershipPaymentEnabled"));
     }
 
     @Test
@@ -178,11 +182,42 @@ class CommonPageControllerTest {
         MockEnvironment environment = new MockEnvironment()
                 .withProperty("portone.payment.enabled", "true");
         environment.setActiveProfiles("prod");
-        ExtendedModelMap model = new ExtendedModelMap();
+        ExtendedModelMap inkModel = new ExtendedModelMap();
+        ExtendedModelMap bookModel = new ExtendedModelMap();
 
-        new CommonPageController(environment).ink(model);
+        CommonPageController controller = new CommonPageController(environment);
+        controller.ink(inkModel);
+        controller.bookDetail(17L, bookModel);
 
-        assertEquals(false, model.get("inkPurchaseEnabled"));
+        assertEquals(false, inkModel.get("inkPurchaseEnabled"));
+        assertEquals(false, bookModel.get("ownershipPaymentEnabled"));
+    }
+
+    @Test
+    void 도서_상세는_원가와_소장_결제_정책_및_결과_영역을_렌더링한다() throws Exception {
+        MvcResult result = mockMvc.perform(get("/books/17"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith("text/html"))
+                .andExpect(header().string(
+                        "Content-Security-Policy",
+                        CONTENT_SECURITY_POLICY))
+                .andReturn();
+
+        String html = result.getResponse().getContentAsString();
+
+        assertTrue(html.contains("data-book-detail-root"));
+        assertTrue(html.contains("data-book-id=\"17\""));
+        assertTrue(html.contains("data-authenticated=\"false\""));
+        assertTrue(html.contains("data-payment-enabled=\"false\""));
+        assertTrue(html.contains("data-book-price"));
+        assertTrue(html.contains("data-ownership-purchase"));
+        assertTrue(html.contains("data-ownership-payment-status"));
+        assertTrue(html.contains("data-ownership-payment-retry"));
+        assertTrue(html.contains("대여에 사용한 잉크는 도서 원가에서 공제되지 않으며"));
+        assertTrue(html.contains("소장 결제는 잉크 잔액과 잉크 내역을 변경하지 않습니다."));
+        assertTrue(html.contains("/js/ownership/book-detail.js"));
+        assertFalse(html.contains("도서 상세 화면을 준비하고 있습니다."));
+        assertFalse(html.contains("browser-sdk.esm.js"));
     }
 
     @Test
@@ -228,6 +263,27 @@ class CommonPageControllerTest {
         assertTrue(html.contains("aria-live=\"polite\""));
         assertTrue(html.contains("/js/library/library.js"));
         assertFalse(html.contains("내 서재 화면을 준비하고 있습니다."));
+    }
+
+    @Test
+    void 소장_결제_내역은_PAID_목록과_10건_페이지_이동_영역을_렌더링한다()
+            throws Exception {
+        MvcResult result = mockMvc.perform(
+                        get("/ownership-payments")
+                                .with(authentication(readerAuthentication())))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith("text/html"))
+                .andReturn();
+
+        String html = result.getResponse().getContentAsString();
+
+        assertTrue(html.contains("data-ownership-history-root"));
+        assertTrue(html.contains("data-ownership-history-list"));
+        assertTrue(html.contains("data-ownership-history-previous"));
+        assertTrue(html.contains("data-ownership-history-next"));
+        assertTrue(html.contains("완료된 도서 소장 결제만 잉크 내역과 분리"));
+        assertTrue(html.contains("/js/ownership/ownership-history.js"));
+        assertFalse(html.contains("완료된 소장 결제 내역 화면을 준비하고 있습니다."));
     }
 
     @Test
@@ -319,6 +375,40 @@ class CommonPageControllerTest {
 
         mockMvc.perform(get("/js/library/library.js"))
                 .andExpect(status().isOk());
+
+        mockMvc.perform(get("/js/ownership/book-detail.js"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(org.hamcrest.Matchers.not(
+                        org.hamcrest.Matchers.containsString("cdn.portone.io"))));
+
+        mockMvc.perform(get("/js/ownership/book-detail-page.js"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(org.hamcrest.Matchers.containsString(
+                        "https://cdn.portone.io/v2/browser-sdk.esm.js")))
+                .andExpect(content().string(org.hamcrest.Matchers.containsString(
+                        "/ownership-payments")))
+                .andExpect(content().string(org.hamcrest.Matchers.containsString(
+                        "[PAID]")))
+                .andExpect(content().string(org.hamcrest.Matchers.containsString(
+                        "[PENDING]")))
+                .andExpect(content().string(org.hamcrest.Matchers.containsString(
+                        "[FAILED]")))
+                .andExpect(content().string(org.hamcrest.Matchers.not(
+                        org.hamcrest.Matchers.containsString("/cancel"))))
+                .andExpect(content().string(org.hamcrest.Matchers.not(
+                        org.hamcrest.Matchers.containsString("/refund"))));
+
+        mockMvc.perform(get("/js/ownership/ownership-history.js"))
+                .andExpect(status().isOk());
+
+        mockMvc.perform(get("/js/ownership/ownership-history-page.js"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(org.hamcrest.Matchers.containsString(
+                        "/api/ownership-payments?page=")))
+                .andExpect(content().string(org.hamcrest.Matchers.not(
+                        org.hamcrest.Matchers.containsString("PENDING"))))
+                .andExpect(content().string(org.hamcrest.Matchers.not(
+                        org.hamcrest.Matchers.containsString("FAILED"))));
 
         mockMvc.perform(get("/css/common.css"))
                 .andExpect(status().isOk());

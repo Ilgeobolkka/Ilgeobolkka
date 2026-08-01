@@ -77,12 +77,24 @@ class SecurityFilterChainTest {
     private MockMvc mockMvc;
 
     @Test
-    void 결제_활성화_환경은_잉크_화면에만_PortOne_CSP를_적용한다() throws Exception {
+    void 결제_활성화_환경은_잉크와_도서_상세에만_PortOne_CSP를_적용한다() throws Exception {
         mockMvc.perform(get("/ink").with(user("reader")))
                 .andExpect(status().isOk())
                 .andExpect(header().string(
                         "Content-Security-Policy",
                         PAYMENT_CONTENT_SECURITY_POLICY));
+
+        mockMvc.perform(get("/books/1"))
+                .andExpect(status().isOk())
+                .andExpect(header().string(
+                        "Content-Security-Policy",
+                        PAYMENT_CONTENT_SECURITY_POLICY));
+
+        mockMvc.perform(get("/ownership-payments").with(user("reader")))
+                .andExpect(status().isOk())
+                .andExpect(header().string(
+                        "Content-Security-Policy",
+                        BASE_CONTENT_SECURITY_POLICY));
 
         mockMvc.perform(get("/api/smoke"))
                 .andExpect(status().isNoContent())
@@ -214,6 +226,8 @@ class SecurityFilterChainTest {
 
         @GetMapping({
             "/ink",
+            "/books/1",
+            "/ownership-payments",
             "/api/books",
             "/api/books/1",
             "/api/books/1/pages",

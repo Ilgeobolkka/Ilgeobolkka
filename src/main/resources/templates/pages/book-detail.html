@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/shell :: page(${pageTitle}, ~{::section})}">
+<body>
+<section data-book-detail-root
+         th:attr="data-book-id=${bookId},
+                  data-authenticated=${authenticated},
+                  data-payment-enabled=${ownershipPaymentEnabled}"
+         aria-labelledby="book-detail-title">
+    <p class="text-secondary" data-book-detail-loading aria-live="polite">
+        도서 정보를 불러오고 있습니다.
+    </p>
+
+    <div data-book-detail-content hidden>
+        <div class="row g-4 g-lg-5 mb-4">
+            <div class="col-12 col-md-4 col-xl-3">
+                <img class="img-fluid rounded-3 border book-detail-cover"
+                     data-book-cover
+                     alt="">
+                <div class="book-detail-cover-placeholder rounded-3 border align-items-center justify-content-center text-secondary"
+                     data-book-cover-placeholder
+                     hidden>
+                    표지 없음
+                </div>
+            </div>
+
+            <div class="col-12 col-md-8 col-xl-9">
+                <p class="small text-secondary mb-2" data-book-category></p>
+                <h1 class="display-6 fw-semibold mb-2" id="book-detail-title" data-book-title></h1>
+                <p class="fs-5 text-secondary mb-4" data-book-author></p>
+                <p class="mb-4 book-detail-description" data-book-description></p>
+
+                <dl class="row mb-4">
+                    <dt class="col-sm-3">원본 페이지</dt>
+                    <dd class="col-sm-9" data-book-page-count></dd>
+                    <dt class="col-sm-3">도서 원가</dt>
+                    <dd class="col-sm-9 fw-semibold" data-book-price></dd>
+                </dl>
+
+                <div class="d-flex flex-wrap gap-2">
+                    <a class="btn btn-primary" data-book-viewer-link>첫 페이지 읽기</a>
+                    <a class="btn btn-outline-secondary" th:href="@{/books}">목록으로</a>
+                </div>
+            </div>
+        </div>
+
+        <section class="bg-white border rounded-3 p-4"
+                 aria-labelledby="ownership-payment-title">
+            <div class="d-flex flex-column flex-lg-row align-items-lg-start justify-content-between gap-3">
+                <div>
+                    <h2 class="h4 mb-2" id="ownership-payment-title">온라인 소장</h2>
+                    <p class="mb-2" data-ownership-summary>
+                        도서 원가 전액을 원화로 직접 결제해 기간 제한 없이 읽습니다.
+                    </p>
+                    <p class="small text-secondary mb-0">
+                        대여에 사용한 잉크는 도서 원가에서 공제되지 않으며,
+                        소장 결제는 잉크 잔액과 잉크 내역을 변경하지 않습니다.
+                    </p>
+                </div>
+
+                <div class="flex-shrink-0">
+                    <button class="btn btn-primary"
+                            type="button"
+                            data-ownership-purchase
+                            disabled>
+                        소장 결제
+                    </button>
+                    <a class="btn btn-primary"
+                       th:href="@{/login}"
+                       data-ownership-login
+                       hidden>
+                        로그인 후 소장하기
+                    </a>
+                </div>
+            </div>
+
+            <div class="alert mt-3 mb-0"
+                 role="status"
+                 aria-live="polite"
+                 aria-atomic="true"
+                 tabindex="-1"
+                 data-ownership-payment-status
+                 hidden></div>
+            <button class="btn btn-outline-primary mt-3"
+                    type="button"
+                    data-ownership-payment-retry
+                    hidden></button>
+        </section>
+    </div>
+
+    <script type="module" th:src="@{/js/ownership/book-detail.js}"></script>
+</section>
+</body>
+</html>

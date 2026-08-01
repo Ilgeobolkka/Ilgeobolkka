@@ -1,6 +1,8 @@
 import {clearCommonError, showCommonError} from "/js/common/error-display.js";
 import {initializeInkPage} from "/js/ink/ink-page.js";
 import {createLibraryPage} from "/js/library/library-page.js";
+import {initializeBookDetailPage} from "/js/ownership/book-detail-page.js";
+import {createOwnershipHistoryPage} from "/js/ownership/ownership-history-page.js";
 import {ApiRequestError, requestJson} from "/js/common/request-json.js";
 import {
     createViewer,
@@ -55,6 +57,8 @@ async function run() {
     await verifyLogoutRetryableError("network-error");
     await verifyLogoutRetryableError("missing-csrf");
     await verifyLibraryPage();
+    await verifyBookDetailPage();
+    await verifyOwnershipHistoryPage();
     await verifyInkPage();
 }
 
@@ -825,6 +829,355 @@ async function loadLogoutFixture(mode) {
         () => iframe.contentDocument.body.dataset.logoutFixtureReady === "true",
         `${mode} 로그아웃 fixture가 준비되어야 합니다.`);
     return iframe;
+}
+
+async function verifyBookDetailPage() {
+    const root = createBookDetailFixture();
+    fixtureContainer.append(root);
+    const purchaseButton = root.querySelector("[data-ownership-purchase]");
+    const retryButton = root.querySelector("[data-ownership-payment-retry]");
+    const paymentStatus = root.querySelector("[data-ownership-payment-status]");
+    let sdkMode = "failed";
+    let paymentMode = "interrupted";
+    let completeMode = "pending";
+    let prepareCount = 0;
+    let completeCount = 0;
+    let lastPaymentRequest;
+
+    const request = async (url) => {
+        if (url === "/api/books/17") {
+            return bookDetailResponse(false);
+        }
+        if (url === "/api/books/17/ownership-payments") {
+            prepareCount += 1;
+            return {
+                paymentId: `ownership-payment-${prepareCount}`,
+                storeId: "store-test",
+                channelKey: "channel-test",
+                orderName: "읽어볼까 도서 소장",
+                totalAmount: 12000,
+                currency: "CURRENCY_KRW"
+            };
+        }
+        if (url.includes("/complete")) {
+            completeCount += 1;
+            if (completeMode === "pending") {
+                return {
+                    paymentId: `ownership-payment-${prepareCount}`,
+                    status: "PENDING",
+                    bookId: 17,
+                    owned: false
+                };
+            }
+            if (completeMode === "unavailable") {
+                throw new ApiRequestError(
+                    "PAYMENT_PROVIDER_UNAVAILABLE",
+                    "결제 확인 서비스 오류",
+                    503,
+                    "ownership-payment-503"
+                );
+            }
+            if (completeMode === "failed") {
+                throw new ApiRequestError(
+                    "PAYMENT_VERIFICATION_FAILED",
+                    "결제 검증에 실패했습니다.",
+                    422,
+                    "ownership-payment-422"
+                );
+            }
+            return {
+                paymentId: `ownership-payment-${prepareCount}`,
+                status: "PAID",
+                bookId: 17,
+                owned: true
+            };
+        }
+        throw new Error(`예상하지 않은 도서 상세 API 요청: ${url}`);
+    };
+
+    const loadPortOne = async () => {
+        if (sdkMode === "failed") {
+            throw new Error("강제 CDN 오류");
+        }
+        return {
+            requestPayment: async (paymentRequest) => {
+                lastPaymentRequest = paymentRequest;
+                if (paymentMode === "interrupted") {
+                    return {
+                        paymentId: paymentRequest.paymentId,
+                        code: "PAYMENT_PROCESS_ABORTED",
+                        message: "사용자가 결제창을 닫았습니다."
+                    };
+                }
+                if (paymentMode === "already-paid") {
+                    return {
+                        paymentId: paymentRequest.paymentId,
+                        code: "PAYMENT_ALREADY_PAID",
+                        message: "이미 결제된 paymentId입니다."
+                    };
+                }
+                return {paymentId: paymentRequest.paymentId};
+            }
+        };
+    };
+
+    const {ready} = initializeBookDetailPage(root, {request, loadPortOne});
+    const loadedBook = await ready;
+
+    assert(loadedBook?.description === null, "description이 null인 도서 상세 응답도 허용해야 합니다.");
+    assert(root.querySelector("[data-book-description]").textContent === "", "description이 null이면 빈 소개를 표시해야 합니다.");
+    assert(root.querySelector("[data-book-title]").textContent === "브라우저 소장 도서", "도서 제목을 표시해야 합니다.");
+    assert(root.querySelector("[data-book-price]").textContent === "₩12,000", "도서 원가를 원화로 표시해야 합니다.");
+    assert(
+        root.querySelector("[data-book-viewer-link]").getAttribute("href")
+            === "/books/17/viewer?page=1",
+        "첫 페이지 뷰어 URL을 설정해야 합니다.");
+    assert(!root.querySelector("[data-book-cover-placeholder]").hidden, "표지가 없으면 대체 영역을 표시해야 합니다.");
+    assert(!purchaseButton.disabled, "로그인한 미소장 독자는 소장 결제를 시작할 수 있어야 합니다.");
+
+    purchaseButton.click();
+    await waitFor(
+        () => paymentStatus.textContent.includes("결제 모듈을 불러오지 못했습니다"),
+        "PortOne CDN 실패를 소장 결제 영역에 표시해야 합니다.");
+    assert(prepareCount === 0, "SDK를 불러오지 못하면 PENDING 소장 결제를 만들면 안 됩니다.");
+    assert(!purchaseButton.disabled, "SDK 실패 뒤 소장 결제를 다시 시도할 수 있어야 합니다.");
+
+    sdkMode = "success";
+    purchaseButton.click();
+    await waitFor(
+        () => retryButton.textContent === "결제창 다시 열기",
+        "결제창 이탈 뒤 같은 소장 결제창 재시도를 제공해야 합니다.");
+    assert(prepareCount === 1, "소장 결제 준비는 한 번만 생성해야 합니다.");
+    assert(completeCount === 1, "결제창 이탈 뒤에도 서버에서 소장 결제 상태를 확인해야 합니다.");
+    assert(purchaseButton.disabled, "PENDING 소장 결제가 있으면 새 결제를 막아야 합니다.");
+    assert(lastPaymentRequest.payMethod === "CARD", "소장 결제 수단은 카드로 고정해야 합니다.");
+    assert(lastPaymentRequest.totalAmount === 12000, "서버가 준비한 도서 원가를 결제창에 전달해야 합니다.");
+
+    paymentMode = "success";
+    retryButton.click();
+    await waitFor(
+        () => retryButton.textContent === "결제 결과 다시 확인",
+        "PENDING 소장 결제는 결과 재확인을 제공해야 합니다.");
+    assert(prepareCount === 1, "결제창 재시도에서 새 소장 결제를 준비하면 안 됩니다.");
+    assert(completeCount === 2, "결제창 성공 뒤 소장 완료 API를 호출해야 합니다.");
+    assert(paymentStatus.textContent.includes("[PENDING]"), "PENDING 소장 상태를 구분해 표시해야 합니다.");
+
+    completeMode = "unavailable";
+    retryButton.click();
+    await waitFor(
+        () => paymentStatus.textContent.includes("일시적인 문제가 있습니다"),
+        "503 응답은 소장 결제 일시 장애로 안내해야 합니다.");
+    assert(purchaseButton.disabled, "503 뒤에도 새 소장 결제를 만들면 안 됩니다.");
+
+    completeMode = "failed";
+    retryButton.click();
+    await waitFor(
+        () => paymentStatus.textContent.includes("[FAILED]"),
+        "422 응답은 소장 결제 FAILED 상태로 표시해야 합니다.");
+    assert(!purchaseButton.disabled, "FAILED 뒤에는 새 소장 결제를 허용해야 합니다.");
+
+    completeMode = "paid";
+    purchaseButton.click();
+    await waitFor(
+        () => paymentStatus.textContent.includes("[PAID]"),
+        "검증된 소장 결제 성공을 PAID 상태로 표시해야 합니다.");
+    assert(prepareCount === 2, "FAILED 뒤 새 paymentId를 준비해야 합니다.");
+    assert(purchaseButton.hidden, "PAID 뒤 소장 결제 버튼을 숨겨야 합니다.");
+    assert(retryButton.hidden, "PAID 뒤 결제 재시도 버튼을 숨겨야 합니다.");
+    assert(
+        root.querySelector("[data-ownership-summary]").textContent.includes("온라인 소장 중입니다"),
+        "PAID 뒤 기간 제한 없는 소장 상태를 표시해야 합니다.");
+
+    assert(document.querySelector("[data-common-error]").hidden, "결제 상태 오류는 공통 오류 영역을 열면 안 됩니다.");
+    root.remove();
+
+    paymentMode = "already-paid";
+    completeMode = "paid";
+    const prepareCountBeforeReconnect = prepareCount;
+    const completeCountBeforeReconnect = completeCount;
+    const reconnectRoot = createBookDetailFixture();
+    fixtureContainer.append(reconnectRoot);
+    const reconnectStatus = reconnectRoot.querySelector("[data-ownership-payment-status]");
+    await initializeBookDetailPage(reconnectRoot, {request, loadPortOne}).ready;
+
+    reconnectRoot.querySelector("[data-ownership-purchase]").click();
+    await waitFor(
+        () => reconnectStatus.textContent.includes("[PAID]"),
+        "이미 결제된 paymentId의 SDK 오류 뒤 서버 PAID 조회로 소장을 복구해야 합니다.");
+    assert(
+        prepareCount === prepareCountBeforeReconnect + 1,
+        "재접속은 기존 PENDING 소장 결제 준비 정보를 한 번 조회해야 합니다.");
+    assert(
+        completeCount === completeCountBeforeReconnect + 1,
+        "이미 결제된 SDK 오류 뒤 소장 완료 API를 호출해야 합니다.");
+    assert(
+        reconnectRoot.querySelector("[data-ownership-purchase]").hidden,
+        "재접속 PAID 복구 뒤 소장 결제 버튼을 숨겨야 합니다.");
+    reconnectRoot.remove();
+
+    const anonymousRoot = createBookDetailFixture({authenticated: false});
+    fixtureContainer.append(anonymousRoot);
+    await initializeBookDetailPage(anonymousRoot, {
+        request: async () => bookDetailResponse(null),
+        loadPortOne
+    }).ready;
+    assert(anonymousRoot.querySelector("[data-ownership-purchase]").hidden, "비로그인 사용자에게 결제 버튼을 숨겨야 합니다.");
+    assert(!anonymousRoot.querySelector("[data-ownership-login]").hidden, "비로그인 사용자에게 로그인 링크를 표시해야 합니다.");
+    anonymousRoot.remove();
+
+    const disabledRoot = createBookDetailFixture({paymentEnabled: false});
+    fixtureContainer.append(disabledRoot);
+    await initializeBookDetailPage(disabledRoot, {
+        request: async () => bookDetailResponse(false),
+        loadPortOne
+    }).ready;
+    assert(disabledRoot.querySelector("[data-ownership-purchase]").disabled, "결제 비활성 환경에서는 소장 결제를 막아야 합니다.");
+    assert(
+        disabledRoot.querySelector("[data-ownership-summary]").textContent.includes("사용할 수 없습니다"),
+        "결제 비활성 환경 안내를 표시해야 합니다.");
+    disabledRoot.remove();
+}
+
+function createBookDetailFixture({authenticated = true, paymentEnabled = true} = {}) {
+    const root = document.createElement("section");
+    root.dataset.bookId = "17";
+    root.dataset.authenticated = String(authenticated);
+    root.dataset.paymentEnabled = String(paymentEnabled);
+    root.innerHTML = `
+        <p data-book-detail-loading></p>
+        <div data-book-detail-content hidden>
+            <img data-book-cover alt="">
+            <div data-book-cover-placeholder hidden></div>
+            <span data-book-category></span>
+            <h1 data-book-title></h1>
+            <span data-book-author></span>
+            <p data-book-description></p>
+            <span data-book-page-count></span>
+            <span data-book-price></span>
+            <a data-book-viewer-link>첫 페이지 읽기</a>
+            <p data-ownership-summary></p>
+            <button type="button" data-ownership-purchase disabled>소장 결제</button>
+            <a href="/login" data-ownership-login hidden>로그인</a>
+            <div tabindex="-1" data-ownership-payment-status hidden></div>
+            <button type="button" data-ownership-payment-retry hidden></button>
+        </div>
+    `;
+    return root;
+}
+
+function bookDetailResponse(owned) {
+    return {
+        bookId: 17,
+        category: "소설",
+        coverImagePath: null,
+        title: "브라우저 소장 도서",
+        author: "브라우저 작가",
+        description: null,
+        totalPageCount: 120,
+        bookPrice: 12000,
+        owned
+    };
+}
+
+async function verifyOwnershipHistoryPage() {
+    const root = createOwnershipHistoryFixture();
+    fixtureContainer.append(root);
+    const requestedPages = [];
+    const page = root.querySelector("[data-ownership-history-page]");
+    const previousButton = root.querySelector("[data-ownership-history-previous]");
+    const nextButton = root.querySelector("[data-ownership-history-next]");
+
+    const history = createOwnershipHistoryPage(root, {
+        request: async (url) => {
+            const requestedPage = Number(new URL(url, window.location.href).searchParams.get("page"));
+            requestedPages.push(requestedPage);
+            return ownershipHistoryResponse(requestedPage);
+        }
+    });
+    await history.start();
+
+    let rows = root.querySelectorAll("[data-ownership-history-list] tr");
+    assert(requestedPages[0] === 1, "소장 결제 내역 첫 페이지를 요청해야 합니다.");
+    assert(rows.length === 2, "첫 페이지의 완료된 소장 결제 두 건을 렌더링해야 합니다.");
+    assert(rows[0].textContent.includes("최신 소장 도서"), "최신 소장 결제를 먼저 표시해야 합니다.");
+    assert(rows[0].textContent.includes("₩12,000"), "소장 결제 금액을 원화로 표시해야 합니다.");
+    assert(
+        rows[0].querySelector("a").getAttribute("href") === "/books/17",
+        "소장 결제 도서 상세 링크를 제공해야 합니다.");
+    assert(rows[0].textContent.includes("온라인 소장 중"), "현재 소장 상태를 표시해야 합니다.");
+    assert(page.textContent === "1 / 2페이지", "현재 소장 결제 내역 페이지를 표시해야 합니다.");
+    assert(previousButton.disabled, "첫 페이지에서 이전 버튼을 비활성화해야 합니다.");
+    assert(!nextButton.disabled, "다음 소장 결제 내역이 있으면 다음 버튼을 활성화해야 합니다.");
+
+    nextButton.click();
+    await waitFor(
+        () => page.textContent === "2 / 2페이지",
+        "다음 소장 결제 내역 페이지를 표시해야 합니다.");
+    rows = root.querySelectorAll("[data-ownership-history-list] tr");
+    assert(requestedPages.includes(2), "소장 결제 내역 2페이지를 API에 요청해야 합니다.");
+    assert(rows.length === 1 && rows[0].textContent.includes("이전 소장 도서"), "둘째 페이지 내역을 교체해 표시해야 합니다.");
+    assert(!previousButton.disabled, "둘째 페이지에서 이전 버튼을 활성화해야 합니다.");
+    assert(nextButton.disabled, "마지막 페이지에서 다음 버튼을 비활성화해야 합니다.");
+    root.remove();
+
+    const emptyRoot = createOwnershipHistoryFixture();
+    fixtureContainer.append(emptyRoot);
+    await createOwnershipHistoryPage(emptyRoot, {
+        request: async () => ({payments: [], page: 1, totalPages: 0, totalCount: 0})
+    }).start();
+    assert(
+        emptyRoot.querySelector("[data-ownership-history-status]").textContent
+            === "완료된 소장 결제 내역이 없습니다.",
+        "빈 소장 결제 내역을 안내해야 합니다.");
+    assert(
+        emptyRoot.querySelector("[data-ownership-history-page]").textContent === "내역 없음",
+        "빈 소장 결제 내역의 페이지 상태를 표시해야 합니다.");
+    assert(emptyRoot.querySelector("[data-ownership-history-next]").disabled, "빈 내역에서는 다음 버튼을 비활성화해야 합니다.");
+    emptyRoot.remove();
+
+    const invalidRoot = createOwnershipHistoryFixture();
+    fixtureContainer.append(invalidRoot);
+    const invalidResponse = await createOwnershipHistoryPage(invalidRoot, {
+        request: async () => ({payments: [{bookId: 0}], page: 1, totalPages: 1, totalCount: 1})
+    }).start();
+    assert(invalidResponse === null, "잘못된 소장 결제 내역 응답은 성공으로 반환하면 안 됩니다.");
+    assert(
+        invalidRoot.querySelector("[data-ownership-history-status]").textContent
+            === "소장 결제 내역을 불러오지 못했습니다.",
+        "소장 결제 내역 오류 상태를 표시해야 합니다.");
+    assert(
+        document.querySelector("[data-common-error]").textContent
+            === "소장 결제 내역 API 응답 형식이 올바르지 않습니다.",
+        "소장 결제 응답 검증 오류를 공통 오류 영역에 표시해야 합니다.");
+
+    clearCommonError();
+    invalidRoot.remove();
+}
+
+function createOwnershipHistoryFixture() {
+    const root = document.createElement("section");
+    root.innerHTML = `
+        <p data-ownership-history-status></p>
+        <table><tbody data-ownership-history-list></tbody></table>
+        <span data-ownership-history-page></span>
+        <button type="button" data-ownership-history-previous disabled>이전</button>
+        <button type="button" data-ownership-history-next disabled>다음</button>
+    `;
+    return root;
+}
+
+function ownershipHistoryResponse(page) {
+    const payments = page === 1
+        ? [
+            ownershipHistoryEntry("payment-latest", 17, "최신 소장 도서", 12000, "2026-08-01T08:00:00Z"),
+            ownershipHistoryEntry("payment-middle", 18, "중간 소장 도서", 10000, "2026-07-31T08:00:00Z")
+        ]
+        : [ownershipHistoryEntry("payment-old", 19, "이전 소장 도서", 9000, "2026-07-30T08:00:00Z")];
+    return {payments, page, totalPages: 2, totalCount: 3};
+}
+
+function ownershipHistoryEntry(paymentId, bookId, bookTitle, amountWon, paidAt) {
+    return {paymentId, bookId, bookTitle, amountWon, paidAt, owned: true};
 }
 
 async function verifyInkPage() {
