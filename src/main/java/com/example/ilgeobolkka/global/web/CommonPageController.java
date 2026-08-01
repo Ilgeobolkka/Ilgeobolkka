@@ -37,12 +37,14 @@ public class CommonPageController {
 
     @GetMapping("/signup")
     String signup(Model model) {
-        return placeholder(model, "회원가입", "회원가입 화면을 준비하고 있습니다.");
+        model.addAttribute("pageTitle", "회원가입");
+        return "pages/signup";
     }
 
     @GetMapping("/login")
     String login(Model model) {
-        return placeholder(model, "로그인", "로그인 화면을 준비하고 있습니다.");
+        model.addAttribute("pageTitle", "로그인");
+        return "pages/login";
     }
 
     @GetMapping("/books/{bookId}/viewer")

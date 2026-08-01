@@ -7,6 +7,10 @@
     display: none;
 }
 
+.auth-page {
+    max-width: 32rem;
+}
+
 .book-detail-cover,
 .book-detail-cover-placeholder {
     width: 100%;
