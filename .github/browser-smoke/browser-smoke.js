@@ -1,5 +1,6 @@
 import {clearCommonError, showCommonError} from "/js/common/error-display.js";
 import {initializeInkPage} from "/js/ink/ink-page.js";
+import {createLibraryPage} from "/js/library/library-page.js";
 import {ApiRequestError, requestJson} from "/js/common/request-json.js";
 import {
     createViewer,
@@ -53,6 +54,7 @@ async function run() {
     await verifyLogoutNavigation("server-error");
     await verifyLogoutRetryableError("network-error");
     await verifyLogoutRetryableError("missing-csrf");
+    await verifyLibraryPage();
     await verifyInkPage();
 }
 
@@ -526,6 +528,127 @@ function createViewerFixture(initialPage = 1) {
              data-viewer-content></div>
     `;
     return root;
+}
+
+async function verifyLibraryPage() {
+    const root = createLibraryFixture();
+    fixtureContainer.append(root);
+    let requestedUrl;
+
+    const response = await createLibraryPage(root, {
+        request: async (url) => {
+            requestedUrl = url;
+            return {
+                entries: [
+                    libraryEntry(11, "소장 도서", 7, true, null),
+                    libraryEntry(12, "대여 중 도서", 3, false, true),
+                    libraryEntry(13, "만료 도서", 2, false, false)
+                ]
+            };
+        }
+    }).start();
+
+    const cards = root.querySelectorAll("[data-library-card]");
+    assert(requestedUrl === "/api/library", "내 서재 API를 요청해야 합니다.");
+    assert(response.entries.length === 3, "검증한 서재 API 응답을 반환해야 합니다.");
+    assert(cards.length === 3, "소장·대여 중·대여 만료 도서를 모두 렌더링해야 합니다.");
+    assert(
+        root.querySelector("[data-library-status]").textContent === "서재에서 3권을 찾았습니다.",
+        "서재 도서 수를 상태 영역에 표시해야 합니다.");
+
+    const ownedCard = cards[0];
+    assert(
+        ownedCard.querySelector("[data-library-access]").textContent === "온라인 소장",
+        "소장 도서 상태를 표시해야 합니다.");
+    assert(ownedCard.querySelector("[data-library-rental]").hidden, "소장 도서에는 대여 기간을 숨겨야 합니다.");
+    assert(!ownedCard.querySelector("[data-library-owned]").hidden, "소장 도서 안내를 표시해야 합니다.");
+    assert(
+        ownedCard.querySelector("[data-library-resume]").getAttribute("href")
+            === "/books/11/viewer?page=7",
+        "마지막 페이지를 이어서 읽기 URL에 포함해야 합니다.");
+
+    const activeRentalCard = cards[1];
+    assert(
+        activeRentalCard.querySelector("[data-library-access]").textContent === "대여 중",
+        "활성 대여 상태를 표시해야 합니다.");
+    assert(
+        activeRentalCard.querySelector("[data-library-access]").classList.contains("text-bg-success"),
+        "활성 대여 배지 스타일을 적용해야 합니다.");
+    assert(
+        activeRentalCard.querySelector("[data-library-rented-at]").textContent.startsWith("대여 시작:"),
+        "대여 시작 시각을 표시해야 합니다.");
+    assert(
+        activeRentalCard.querySelector("[data-library-expires-at]").textContent.startsWith("대여 만료:"),
+        "대여 만료 시각을 표시해야 합니다.");
+
+    const expiredRentalCard = cards[2];
+    assert(
+        expiredRentalCard.querySelector("[data-library-access]").textContent === "대여 만료",
+        "만료된 대여 상태를 표시해야 합니다.");
+    assert(
+        expiredRentalCard.querySelector("[data-library-access]").classList.contains("text-bg-secondary"),
+        "만료된 대여 배지 스타일을 적용해야 합니다.");
+
+    await createLibraryPage(root, {
+        request: async () => ({entries: []})
+    }).start();
+    assert(root.querySelector("[data-library-list]").children.length === 0, "빈 서재는 카드 목록을 비워야 합니다.");
+    assert(!root.querySelector("[data-library-empty]").hidden, "빈 서재 안내를 표시해야 합니다.");
+
+    const invalidResponse = await createLibraryPage(root, {
+        request: async () => ({entries: [{bookId: 0}]})
+    }).start();
+    assert(invalidResponse === null, "잘못된 서재 API 응답은 성공으로 반환하면 안 됩니다.");
+    assert(
+        root.querySelector("[data-library-status]").textContent === "내 서재를 불러오지 못했습니다.",
+        "서재 오류 상태를 표시해야 합니다.");
+    assert(
+        document.querySelector("[data-common-error]").textContent
+            === "서재 API 응답 형식이 올바르지 않습니다.",
+        "응답 검증 오류를 공통 오류 영역에 표시해야 합니다.");
+
+    clearCommonError();
+    root.remove();
+}
+
+function createLibraryFixture() {
+    const root = document.createElement("section");
+    root.innerHTML = `
+        <p data-library-status></p>
+        <div data-library-list></div>
+        <section data-library-empty hidden>빈 서재</section>
+        <template data-library-card-template>
+            <article data-library-card>
+                <img data-library-cover alt="">
+                <div data-library-cover-placeholder hidden>표지 없음</div>
+                <span data-library-category></span>
+                <h2 data-library-title></h2>
+                <p data-library-last-page></p>
+                <span data-library-access></span>
+                <div data-library-rental>
+                    <p data-library-rented-at></p>
+                    <p data-library-expires-at></p>
+                </div>
+                <p data-library-owned hidden>소장 안내</p>
+                <a data-library-resume>이어서 읽기</a>
+            </article>
+        </template>
+    `;
+    return root;
+}
+
+function libraryEntry(bookId, title, lastPageNumber, owned, activeRental) {
+    return {
+        bookId,
+        coverImagePath: null,
+        title,
+        category: "소설",
+        lastPageNumber,
+        rentedAt: owned ? null : "2026-07-31T06:00:00Z",
+        expiresAt: owned ? null : "2026-08-30T06:00:00Z",
+        owned,
+        activeRental
+    };
 }
 
 function viewerMetadata(pageNumber, contentType, owned = false) {
