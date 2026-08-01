@@ -11,6 +11,7 @@ import {
 } from "/js/viewer/viewer-page.js";
 
 const DEFAULT_ERROR_MESSAGE = "요청을 처리하지 못했습니다. 잠시 후 다시 시도해 주세요.";
+const AUTH_REQUEST_STORAGE_KEY = "browser-smoke-auth-request";
 const result = document.querySelector("[data-browser-smoke-result]");
 const fixtureContainer = document.querySelector("[data-logout-fixtures]");
 let assertionCount = 0;
@@ -50,6 +51,9 @@ async function run() {
     }
 
     verifySafeErrorDisplay();
+    await verifyAuthSuccess("signup", "/api/auth/signup", "/login");
+    await verifyAuthSuccess("login", "/api/auth/login", "/books");
+    await verifyAuthFailure();
     await verifyViewerFlow();
     await verifyViewerInitialPageAndRecovery();
     await verifyViewerRenderFailureStopsQueue();
@@ -958,6 +962,75 @@ function verifySafeErrorDisplay() {
     clearCommonError();
     assert(errorRegion.hidden, "오류를 지우면 오류 영역을 숨겨야 합니다.");
     assert(errorRegion.textContent === "", "오류를 지우면 기존 메시지를 제거해야 합니다.");
+}
+
+async function verifyAuthSuccess(flow, expectedApiPath, expectedSuccessPath) {
+    const iframe = await loadAuthFixture(flow, "success");
+    const iframeDocument = iframe.contentDocument;
+    iframeDocument.querySelector("[name='email']").value = "reader@example.com";
+    iframeDocument.querySelector("[name='password']").value = "Password1!";
+    iframeDocument.querySelector("[data-auth-form]").requestSubmit();
+
+    await waitFor(
+        () => iframe.contentWindow.location.pathname === expectedSuccessPath,
+        `${flow} 성공 뒤 ${expectedSuccessPath}(으)로 이동해야 합니다.`);
+
+    assertAuthRequest(iframe, expectedApiPath);
+    iframe.contentWindow.sessionStorage.removeItem(AUTH_REQUEST_STORAGE_KEY);
+    iframe.remove();
+}
+
+async function verifyAuthFailure() {
+    const iframe = await loadAuthFixture("login", "server-error");
+    const iframeDocument = iframe.contentDocument;
+    iframeDocument.querySelector("[name='email']").value = "reader@example.com";
+    iframeDocument.querySelector("[name='password']").value = "Password1!";
+    iframeDocument.querySelector("[data-auth-form]").requestSubmit();
+
+    await waitFor(
+        () => !iframeDocument.querySelector("[data-common-error]").hidden,
+        "로그인 실패 오류를 현재 화면에 표시해야 합니다.");
+    assert(
+        iframe.contentWindow.location.pathname === "/auth-fixture.html",
+        "로그인 실패에서는 현재 화면을 유지해야 합니다.");
+    assert(
+        iframeDocument.querySelector("[data-common-error]").textContent === "강제 인증 오류",
+        "로그인 실패의 공개 오류 메시지를 표시해야 합니다.");
+    assert(
+        iframeDocument.querySelector("button[type='submit']").disabled === false,
+        "로그인 실패 뒤 다시 시도할 수 있어야 합니다.");
+    assert(
+        iframeDocument.activeElement === iframeDocument.querySelector("[data-common-error]"),
+        "로그인 실패 오류 영역으로 포커스를 이동해야 합니다.");
+    assertAuthRequest(iframe, "/api/auth/login");
+    iframe.contentWindow.sessionStorage.removeItem(AUTH_REQUEST_STORAGE_KEY);
+    iframe.remove();
+}
+
+function assertAuthRequest(iframe, expectedApiPath) {
+    const request = JSON.parse(
+        iframe.contentWindow.sessionStorage.getItem(AUTH_REQUEST_STORAGE_KEY));
+    assert(request.path === expectedApiPath, `${expectedApiPath} 인증 API를 호출해야 합니다.`);
+    assert(request.method === "POST", "인증 API는 POST로 호출해야 합니다.");
+    assert(request.credentials === "same-origin", "인증 요청은 same-origin 자격 증명만 전송해야 합니다.");
+    assert(request.csrfToken === "browser-smoke-token", "인증 요청에 페이지의 CSRF 토큰을 추가해야 합니다.");
+    assert(request.contentType === "application/json", "인증 요청은 JSON Content-Type을 사용해야 합니다.");
+    assert(
+        request.body.email === "reader@example.com"
+            && request.body.password === "Password1!",
+        "인증 폼의 이메일과 비밀번호를 JSON 본문에 담아야 합니다.");
+}
+
+async function loadAuthFixture(flow, mode) {
+    const iframe = document.createElement("iframe");
+    const loaded = new Promise((resolve) => iframe.addEventListener("load", resolve, {once: true}));
+    iframe.src = `/auth-fixture.html?flow=${flow}&mode=${mode}`;
+    fixtureContainer.append(iframe);
+    await loaded;
+    await waitFor(
+        () => iframe.contentDocument.body.dataset.authFixtureReady === "true",
+        `${flow} ${mode} 인증 fixture가 준비되어야 합니다.`);
+    return iframe;
 }
 
 async function verifyLogoutNavigation(mode) {
