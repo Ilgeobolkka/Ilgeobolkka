@@ -71,14 +71,14 @@ public class OwnershipPaymentService {
     }
 
     @Transactional(readOnly = true)
-    public Optional<CompleteOwnershipPaymentResponse> findCachedCompletion(
+    public Optional<CompletionResult> findCachedCompletion(
             long readerId, UUID paymentId) {
         OwnershipPayment payment = findPayment(paymentId, readerId);
         if (payment.getStatus() == OwnershipPaymentStatus.FAILED) {
             throw new PaymentStateConflictException();
         }
         if (payment.getStatus() == OwnershipPaymentStatus.PAID) {
-            return Optional.of(CompleteOwnershipPaymentResponse.paid(payment));
+            return Optional.of(CompletionResult.paid(payment));
         }
         return Optional.empty();
     }
@@ -90,7 +90,7 @@ public class OwnershipPaymentService {
             PortOnePayment portOnePayment) {
         OwnershipPayment payment = findPaymentForUpdate(paymentId, readerId);
         if (payment.getStatus() == OwnershipPaymentStatus.PAID) {
-            return CompletionResult.success(CompleteOwnershipPaymentResponse.paid(payment));
+            return CompletionResult.paid(payment);
         }
         if (payment.getStatus() == OwnershipPaymentStatus.FAILED) {
             throw new PaymentStateConflictException();
@@ -100,12 +100,16 @@ public class OwnershipPaymentService {
     }
 
     @Transactional
-    public void applyWebhookPaymentResult(UUID paymentId, PortOnePayment portOnePayment) {
+    public CompletionResult applyWebhookPaymentResult(
+            UUID paymentId, PortOnePayment portOnePayment) {
         OwnershipPayment payment = findPaymentForUpdate(paymentId);
-        if (payment.getStatus() != OwnershipPaymentStatus.PENDING) {
-            return;
+        if (payment.getStatus() == OwnershipPaymentStatus.PAID) {
+            return CompletionResult.paid(payment);
         }
-        applyPendingPaymentResult(payment, portOnePayment);
+        if (payment.getStatus() == OwnershipPaymentStatus.FAILED) {
+            return CompletionResult.ignored();
+        }
+        return applyPendingPaymentResult(payment, portOnePayment);
     }
 
     /**
@@ -153,7 +157,7 @@ public class OwnershipPaymentService {
                         payment.getBookId(),
                         payment.getId(),
                         portOnePayment.paidAt()));
-        return CompletionResult.success(CompleteOwnershipPaymentResponse.paid(payment));
+        return CompletionResult.paid(payment);
     }
 
     private ErrorCode verifyPayment(OwnershipPayment payment, PortOnePayment portOnePayment) {
@@ -210,14 +214,33 @@ public class OwnershipPaymentService {
 
     public record CompletionResult(
             CompleteOwnershipPaymentResponse response,
-            ErrorCode errorCode) {
+            ErrorCode errorCode,
+            OwnershipGrant ownershipGrant) {
 
         private static CompletionResult success(CompleteOwnershipPaymentResponse response) {
-            return new CompletionResult(response, null);
+            return new CompletionResult(response, null, null);
+        }
+
+        private static CompletionResult paid(OwnershipPayment payment) {
+            return new CompletionResult(
+                    CompleteOwnershipPaymentResponse.paid(payment),
+                    null,
+                    new OwnershipGrant(
+                            payment.getReaderId(), payment.getBookId(), payment.getPaidAt()));
         }
 
         private static CompletionResult failure(ErrorCode errorCode) {
-            return new CompletionResult(null, errorCode);
+            return new CompletionResult(null, errorCode, null);
         }
+
+        private static CompletionResult ignored() {
+            return new CompletionResult(null, null, null);
+        }
+    }
+
+    public record OwnershipGrant(
+            long readerId,
+            long bookId,
+            Instant ownedAt) {
     }
 }

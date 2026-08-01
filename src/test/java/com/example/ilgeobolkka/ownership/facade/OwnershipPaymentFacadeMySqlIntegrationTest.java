@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.example.ilgeobolkka.ownership.dto.CompleteOwnershipPaymentResponse;
 import com.example.ilgeobolkka.ownership.exception.BookAlreadyOwnedException;
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
 import java.time.Clock;
@@ -148,6 +149,47 @@ class OwnershipPaymentFacadeMySqlIntegrationTest {
     }
 
     @Test
+    void 기존_PAID_결제의_누락된_서재_항목을_완료_재조회로_복구한다() {
+        UUID paymentId = UUID.randomUUID();
+        jdbcTemplate.update(
+                """
+                INSERT INTO ownership_payment
+                    (reader_id, book_id, payment_id, status, amount_won, created_at, paid_at)
+                VALUES (?, ?, ?, 'PAID', ?, '2026-07-31 00:00:00.000000',
+                        '2026-07-31 00:01:00.123456')
+                """,
+                READER_ID,
+                BOOK_ID,
+                paymentId.toString(),
+                BOOK_PRICE_WON);
+        long ownershipPaymentId = jdbcTemplate.queryForObject(
+                "SELECT id FROM ownership_payment WHERE payment_id = ?",
+                Long.class,
+                paymentId.toString());
+        jdbcTemplate.update(
+                """
+                INSERT INTO book_ownership
+                    (reader_id, book_id, ownership_payment_id, created_at)
+                VALUES (?, ?, ?, '2026-07-31 00:01:00.123456')
+                """,
+                READER_ID,
+                BOOK_ID,
+                ownershipPaymentId);
+
+        CompleteOwnershipPaymentResponse response =
+                ownershipPaymentFacade.complete(READER_ID, paymentId);
+
+        assertAll(
+                () -> assertEquals("PAID", response.status().name()),
+                () -> assertTrue(response.owned()),
+                () -> assertEquals(1, 서재_항목_수를_조회한다()),
+                () -> assertEquals(1, 서재_마지막_페이지를_조회한다()),
+                () -> assertEquals(
+                        "2026-07-31 00:01:00.123456",
+                        서재_갱신_시각을_조회한다()));
+    }
+
+    @Test
     void 동시에_준비해도_같은_PENDING_결제를_재사용한다() throws Exception {
         List<OwnershipPaymentFacade.Preparation> preparations = 동시에_준비한다();
 
@@ -215,9 +257,20 @@ class OwnershipPaymentFacadeMySqlIntegrationTest {
                 """,
                 BOOK_ID,
                 BOOK_PRICE_WON);
+        jdbcTemplate.update(
+                """
+                INSERT INTO book_page
+                    (book_id, page_number, content_type, text_content)
+                VALUES (?, 1, 'TEXT', '첫 페이지')
+                """,
+                BOOK_ID);
     }
 
     private void 테스트_데이터를_정리한다() {
+        jdbcTemplate.update(
+                "DELETE FROM library_entry WHERE reader_id = ? AND book_id = ?",
+                READER_ID,
+                BOOK_ID);
         jdbcTemplate.update(
                 "DELETE FROM book_ownership WHERE reader_id = ? AND book_id = ?",
                 READER_ID,
@@ -228,6 +281,7 @@ class OwnershipPaymentFacadeMySqlIntegrationTest {
                 BOOK_ID);
         jdbcTemplate.update("DELETE FROM ink_account WHERE reader_id = ?", READER_ID);
         jdbcTemplate.update("DELETE FROM reader WHERE id = ?", READER_ID);
+        jdbcTemplate.update("DELETE FROM book_page WHERE book_id = ?", BOOK_ID);
         jdbcTemplate.update("DELETE FROM book WHERE id = ?", BOOK_ID);
     }
 
@@ -274,6 +328,34 @@ class OwnershipPaymentFacadeMySqlIntegrationTest {
                 "SELECT balance FROM ink_account WHERE reader_id = ?",
                 Integer.class,
                 READER_ID);
+    }
+
+    private int 서재_항목_수를_조회한다() {
+        return jdbcTemplate.queryForObject(
+                "SELECT COUNT(*) FROM library_entry WHERE reader_id = ? AND book_id = ?",
+                Integer.class,
+                READER_ID,
+                BOOK_ID);
+    }
+
+    private int 서재_마지막_페이지를_조회한다() {
+        return jdbcTemplate.queryForObject(
+                "SELECT last_page_number FROM library_entry WHERE reader_id = ? AND book_id = ?",
+                Integer.class,
+                READER_ID,
+                BOOK_ID);
+    }
+
+    private String 서재_갱신_시각을_조회한다() {
+        return jdbcTemplate.queryForObject(
+                """
+                SELECT DATE_FORMAT(updated_at, '%Y-%m-%d %H:%i:%s.%f')
+                FROM library_entry
+                WHERE reader_id = ? AND book_id = ?
+                """,
+                String.class,
+                READER_ID,
+                BOOK_ID);
     }
 
     @TestConfiguration(proxyBeanMethods = false)
