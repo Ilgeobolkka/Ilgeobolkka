@@ -7,6 +7,29 @@
     display: none;
 }
 
+.book-detail-cover,
+.book-detail-cover-placeholder {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+}
+
+.book-detail-cover {
+    object-fit: cover;
+}
+
+.book-detail-cover-placeholder {
+    display: flex;
+    background: #e9ecef;
+}
+
+.book-detail-cover-placeholder[hidden] {
+    display: none;
+}
+
+.book-detail-description {
+    white-space: pre-line;
+}
+
 .library-cover,
 .library-cover-placeholder {
     aspect-ratio: 3 / 4;

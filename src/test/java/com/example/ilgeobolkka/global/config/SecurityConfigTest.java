@@ -34,10 +34,14 @@ class SecurityConfigTest {
                 environment,
                 "/ink",
                 SecurityConfig.BASE_CONTENT_SECURITY_POLICY);
+        assertContentSecurityPolicy(
+                environment,
+                "/books/17",
+                SecurityConfig.BASE_CONTENT_SECURITY_POLICY);
     }
 
     @Test
-    void 결제_활성화_환경은_잉크_화면에만_결제_CSP를_사용한다() {
+    void 결제_활성화_환경은_잉크와_도서_상세에만_결제_CSP를_사용한다() {
         MockEnvironment environment = new MockEnvironment()
                 .withProperty("portone.payment.enabled", "true");
 
@@ -47,7 +51,15 @@ class SecurityConfigTest {
                 SecurityConfig.PAYMENT_CONTENT_SECURITY_POLICY);
         assertContentSecurityPolicy(
                 environment,
+                "/books/17",
+                SecurityConfig.PAYMENT_CONTENT_SECURITY_POLICY);
+        assertContentSecurityPolicy(
+                environment,
                 "/books",
+                SecurityConfig.BASE_CONTENT_SECURITY_POLICY);
+        assertContentSecurityPolicy(
+                environment,
+                "/ownership-payments",
                 SecurityConfig.BASE_CONTENT_SECURITY_POLICY);
     }
 
@@ -60,6 +72,10 @@ class SecurityConfigTest {
         assertContentSecurityPolicy(
                 environment,
                 "/ink",
+                SecurityConfig.BASE_CONTENT_SECURITY_POLICY);
+        assertContentSecurityPolicy(
+                environment,
+                "/books/17",
                 SecurityConfig.BASE_CONTENT_SECURITY_POLICY);
     }
 

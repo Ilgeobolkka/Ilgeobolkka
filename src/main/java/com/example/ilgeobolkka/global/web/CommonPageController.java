@@ -30,7 +30,9 @@ public class CommonPageController {
     @GetMapping("/books/{bookId}")
     String bookDetail(@PathVariable long bookId, Model model) {
         model.addAttribute("bookId", bookId);
-        return placeholder(model, "도서 상세", "도서 상세 화면을 준비하고 있습니다.");
+        model.addAttribute("pageTitle", "도서 상세");
+        model.addAttribute("ownershipPaymentEnabled", paymentEnabled());
+        return "pages/book-detail";
     }
 
     @GetMapping("/signup")
@@ -57,13 +59,14 @@ public class CommonPageController {
     @GetMapping("/ink")
     String ink(Model model) {
         model.addAttribute("pageTitle", "잉크");
-        model.addAttribute("inkPurchaseEnabled", inkPurchaseEnabled());
+        model.addAttribute("inkPurchaseEnabled", paymentEnabled());
         return "pages/ink";
     }
 
     @GetMapping("/ownership-payments")
     String ownershipPayments(Model model) {
-        return placeholder(model, "소장 결제 내역", "완료된 소장 결제 내역 화면을 준비하고 있습니다.");
+        model.addAttribute("pageTitle", "소장 결제 내역");
+        return "pages/ownership-payments";
     }
 
     @GetMapping("/library")
@@ -78,7 +81,7 @@ public class CommonPageController {
         return "pages/placeholder";
     }
 
-    private boolean inkPurchaseEnabled() {
+    private boolean paymentEnabled() {
         return environment.acceptsProfiles(Profiles.of("!prod"))
                 && environment.getProperty("portone.payment.enabled", Boolean.class, false);
     }
