@@ -1,5 +1,6 @@
 package com.example.ilgeobolkka.global.web;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -21,10 +22,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpStatus;
+import org.springframework.mock.env.MockEnvironment;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.security.authentication.TestingAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.csrf.CsrfToken;
+import org.springframework.ui.ExtendedModelMap;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,7 +37,7 @@ import org.springframework.web.bind.annotation.RestController;
 @WebMvcTest(controllers = {
     CommonPageController.class,
     CommonPageControllerTest.TestAuthController.class
-})
+}, properties = "portone.payment.enabled=false")
 @Import({
     SecurityConfig.class,
     ApiSecurityErrorHandler.class,
@@ -44,7 +47,7 @@ import org.springframework.web.bind.annotation.RestController;
 class CommonPageControllerTest {
 
     private static final String CONTENT_SECURITY_POLICY = "default-src 'self'; "
-            + "script-src 'self' https://cdn.portone.io; "
+            + "script-src 'self'; "
             + "style-src 'self'; "
             + "img-src 'self' data: blob:; "
             + "font-src 'self'; "
@@ -130,6 +133,56 @@ class CommonPageControllerTest {
         assertTrue(html.contains("value=\"" + csrfToken.getToken() + "\""));
         assertFalse(html.contains("href=\"/signup\""));
         assertFalse(html.contains("href=\"/login\""));
+    }
+
+    @Test
+    void 결제_비활성화_환경의_잉크_화면은_구매를_막고_잔액과_원장을_렌더링한다() throws Exception {
+        MvcResult result = mockMvc.perform(get("/ink").with(authentication(readerAuthentication())))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith("text/html"))
+                .andExpect(header().string(
+                        "Content-Security-Policy",
+                        CONTENT_SECURITY_POLICY))
+                .andReturn();
+
+        String html = result.getResponse().getContentAsString();
+
+        assertTrue(html.contains("data-ink-page"));
+        assertTrue(html.contains("data-ink-balance"));
+        assertTrue(html.contains("data-ink-purchase"));
+        assertTrue(html.matches(
+                "(?s).*data-ink-purchase[^>]*disabled=\"disabled\">구매 비활성화</button>.*"));
+        assertTrue(html.contains("현재 환경에서는 잉크 구매를 사용할 수 없습니다."));
+        assertTrue(html.contains("data-ink-payment-status"));
+        assertTrue(html.contains("data-ink-ledger"));
+        assertTrue(html.contains("data-ink-ledger-previous"));
+        assertTrue(html.contains("data-ink-ledger-next"));
+        assertTrue(html.contains("aria-label=\"잉크 내역 페이지\""));
+        assertTrue(html.contains("/js/ink/ink.js"));
+        assertFalse(html.contains("browser-sdk.esm.js"));
+    }
+
+    @Test
+    void 결제_활성화_환경의_잉크_화면은_구매를_허용한다() {
+        MockEnvironment environment = new MockEnvironment()
+                .withProperty("portone.payment.enabled", "true");
+        ExtendedModelMap model = new ExtendedModelMap();
+
+        new CommonPageController(environment).ink(model);
+
+        assertEquals(true, model.get("inkPurchaseEnabled"));
+    }
+
+    @Test
+    void 운영_프로필의_잉크_화면은_활성화_설정이_있어도_구매를_막는다() {
+        MockEnvironment environment = new MockEnvironment()
+                .withProperty("portone.payment.enabled", "true");
+        environment.setActiveProfiles("prod");
+        ExtendedModelMap model = new ExtendedModelMap();
+
+        new CommonPageController(environment).ink(model);
+
+        assertEquals(false, model.get("inkPurchaseEnabled"));
     }
 
     @Test
@@ -219,6 +272,20 @@ class CommonPageControllerTest {
 
         mockMvc.perform(get("/js/common/shell.js"))
                 .andExpect(status().isOk());
+
+        mockMvc.perform(get("/js/ink/ink.js"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(org.hamcrest.Matchers.not(
+                        org.hamcrest.Matchers.containsString("cdn.portone.io"))));
+
+        mockMvc.perform(get("/js/ink/ink-page.js"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(org.hamcrest.Matchers.containsString(
+                        "https://cdn.portone.io/v2/browser-sdk.esm.js")))
+                .andExpect(content().string(org.hamcrest.Matchers.not(
+                        org.hamcrest.Matchers.containsString("/cancel"))))
+                .andExpect(content().string(org.hamcrest.Matchers.not(
+                        org.hamcrest.Matchers.containsString("/refund"))));
 
         mockMvc.perform(get("/js/viewer/viewer-page.js"))
                 .andExpect(status().isOk());
