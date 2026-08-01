@@ -132,6 +132,30 @@ class ReadingFacadeMySqlIntegrationTest {
     }
 
     @Test
+    void T_RENT_006_응답_유실_후_같은_페이지를_재시도하면_활성_대여를_재사용한다() {
+        독자를_생성한다(5);
+        대여용_도서를_생성한다();
+        OpenPageResponse lostResponse =
+                readingFacade.openNewSession(READER_ID, RENTAL_BOOK_ID, 1);
+
+        OpenPageResponse retried =
+                readingFacade.openNewSession(READER_ID, RENTAL_BOOK_ID, 1);
+
+        assertAll(
+                () -> assertEquals(1, lostResponse.deductedInk()),
+                () -> assertEquals(0, retried.deductedInk()),
+                () -> assertEquals(lostResponse.rentedAt(), retried.rentedAt()),
+                () -> assertEquals(lostResponse.expiresAt(), retried.expiresAt()),
+                () -> assertNotEquals(lostResponse.viewerSessionId(), retried.viewerSessionId()),
+                () -> assertEquals(4, retried.inkBalance()),
+                () -> assertEquals(4, 잔액을_조회한다()),
+                () -> assertEquals(1, 대여_수를_조회한다()),
+                () -> assertEquals(1, 차감_원장_수를_조회한다()),
+                () -> assertEquals(1, 세션_수를_조회한다()),
+                () -> assertEquals(1, 서재_항목_수를_조회한다()));
+    }
+
+    @Test
     void T_BAL_001_잔액_0으로_열면_잉크_부족_오류를_반환하고_대여_기록이_없다() {
         독자를_생성한다(0);
         대여용_도서를_생성한다();
