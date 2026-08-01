@@ -210,6 +210,27 @@ class CommonPageControllerTest {
     }
 
     @Test
+    void 내_서재는_공통_셸과_목록_상태_및_마지막_페이지_재개_화면을_렌더링한다()
+            throws Exception {
+        MvcResult result = mockMvc.perform(
+                        get("/library").with(authentication(readerAuthentication())))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith("text/html"))
+                .andReturn();
+
+        String html = result.getResponse().getContentAsString();
+
+        assertTrue(html.contains("data-library-root"));
+        assertTrue(html.contains("data-library-list"));
+        assertTrue(html.contains("data-library-empty"));
+        assertTrue(html.contains("data-library-card-template"));
+        assertTrue(html.contains("data-library-resume"));
+        assertTrue(html.contains("aria-live=\"polite\""));
+        assertTrue(html.contains("/js/library/library.js"));
+        assertFalse(html.contains("내 서재 화면을 준비하고 있습니다."));
+    }
+
+    @Test
     void 비로그인_사용자는_보호_HTML에서_저장된_요청_없이_로그인으로_이동한다() throws Exception {
         for (String path : new String[] {
             "/books/1/viewer",
@@ -291,6 +312,12 @@ class CommonPageControllerTest {
                 .andExpect(status().isOk());
 
         mockMvc.perform(get("/js/viewer/viewer.js"))
+                .andExpect(status().isOk());
+
+        mockMvc.perform(get("/js/library/library-page.js"))
+                .andExpect(status().isOk());
+
+        mockMvc.perform(get("/js/library/library.js"))
                 .andExpect(status().isOk());
 
         mockMvc.perform(get("/css/common.css"))

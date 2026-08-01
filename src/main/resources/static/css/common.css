@@ -7,6 +7,24 @@
     display: none;
 }
 
+.library-cover,
+.library-cover-placeholder {
+    aspect-ratio: 3 / 4;
+}
+
+.library-cover {
+    object-fit: cover;
+}
+
+.library-cover-placeholder {
+    display: flex;
+    background: #e9ecef;
+}
+
+.library-cover-placeholder[hidden] {
+    display: none;
+}
+
 .viewer-shell {
     max-width: 72rem;
     margin: 0 auto;
