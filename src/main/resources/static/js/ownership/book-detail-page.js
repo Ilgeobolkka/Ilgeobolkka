@@ -176,27 +176,19 @@ export function initializeBookDetailPage(root, dependencies = {}) {
                 payMethod: "CARD"
             });
         } catch {
-            showInterruptedPayment();
+            await completePayment(true);
             return;
         }
 
         if (!response || response.code !== undefined) {
-            showInterruptedPayment();
+            await completePayment(true);
             return;
         }
 
         await completePayment();
     }
 
-    function showInterruptedPayment() {
-        showPaymentStatus(
-            "warning",
-            "[PENDING] 결제가 완료되지 않았습니다. 별도 취소 기록 없이 기존 결제창을 다시 열 수 있습니다.",
-            "결제창 다시 열기",
-            openPreparedPayment);
-    }
-
-    async function completePayment() {
+    async function completePayment(reopenWhenPending = false) {
         showPaymentStatus("info", "결제 결과를 서버에서 확인하고 있습니다.");
         try {
             const response = await request(
@@ -218,9 +210,11 @@ export function initializeBookDetailPage(root, dependencies = {}) {
 
             showPaymentStatus(
                 "warning",
-                "[PENDING] 아직 결제가 확인되지 않았습니다. 잠시 후 같은 결제 결과를 다시 확인해 주세요.",
-                "결제 결과 다시 확인",
-                completePayment);
+                reopenWhenPending
+                    ? "[PENDING] 결제가 완료되지 않았습니다. 별도 취소 기록 없이 기존 결제창을 다시 열 수 있습니다."
+                    : "[PENDING] 아직 결제가 확인되지 않았습니다. 잠시 후 같은 결제 결과를 다시 확인해 주세요.",
+                reopenWhenPending ? "결제창 다시 열기" : "결제 결과 다시 확인",
+                reopenWhenPending ? openPreparedPayment : completePayment);
         } catch (error) {
             if (error.status === 409 || error.status === 422) {
                 preparedPayment = null;

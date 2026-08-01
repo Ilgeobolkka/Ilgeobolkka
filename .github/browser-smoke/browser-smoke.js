@@ -909,6 +909,13 @@ async function verifyBookDetailPage() {
                         message: "사용자가 결제창을 닫았습니다."
                     };
                 }
+                if (paymentMode === "already-paid") {
+                    return {
+                        paymentId: paymentRequest.paymentId,
+                        code: "PAYMENT_ALREADY_PAID",
+                        message: "이미 결제된 paymentId입니다."
+                    };
+                }
                 return {paymentId: paymentRequest.paymentId};
             }
         };
@@ -941,7 +948,7 @@ async function verifyBookDetailPage() {
         () => retryButton.textContent === "결제창 다시 열기",
         "결제창 이탈 뒤 같은 소장 결제창 재시도를 제공해야 합니다.");
     assert(prepareCount === 1, "소장 결제 준비는 한 번만 생성해야 합니다.");
-    assert(completeCount === 0, "결제창 이탈은 소장 완료 API를 호출하면 안 됩니다.");
+    assert(completeCount === 1, "결제창 이탈 뒤에도 서버에서 소장 결제 상태를 확인해야 합니다.");
     assert(purchaseButton.disabled, "PENDING 소장 결제가 있으면 새 결제를 막아야 합니다.");
     assert(lastPaymentRequest.payMethod === "CARD", "소장 결제 수단은 카드로 고정해야 합니다.");
     assert(lastPaymentRequest.totalAmount === 12000, "서버가 준비한 도서 원가를 결제창에 전달해야 합니다.");
@@ -952,7 +959,7 @@ async function verifyBookDetailPage() {
         () => retryButton.textContent === "결제 결과 다시 확인",
         "PENDING 소장 결제는 결과 재확인을 제공해야 합니다.");
     assert(prepareCount === 1, "결제창 재시도에서 새 소장 결제를 준비하면 안 됩니다.");
-    assert(completeCount === 1, "결제창 성공 뒤 소장 완료 API를 호출해야 합니다.");
+    assert(completeCount === 2, "결제창 성공 뒤 소장 완료 API를 호출해야 합니다.");
     assert(paymentStatus.textContent.includes("[PENDING]"), "PENDING 소장 상태를 구분해 표시해야 합니다.");
 
     completeMode = "unavailable";
@@ -983,6 +990,30 @@ async function verifyBookDetailPage() {
 
     assert(document.querySelector("[data-common-error]").hidden, "결제 상태 오류는 공통 오류 영역을 열면 안 됩니다.");
     root.remove();
+
+    paymentMode = "already-paid";
+    completeMode = "paid";
+    const prepareCountBeforeReconnect = prepareCount;
+    const completeCountBeforeReconnect = completeCount;
+    const reconnectRoot = createBookDetailFixture();
+    fixtureContainer.append(reconnectRoot);
+    const reconnectStatus = reconnectRoot.querySelector("[data-ownership-payment-status]");
+    await initializeBookDetailPage(reconnectRoot, {request, loadPortOne}).ready;
+
+    reconnectRoot.querySelector("[data-ownership-purchase]").click();
+    await waitFor(
+        () => reconnectStatus.textContent.includes("[PAID]"),
+        "이미 결제된 paymentId의 SDK 오류 뒤 서버 PAID 조회로 소장을 복구해야 합니다.");
+    assert(
+        prepareCount === prepareCountBeforeReconnect + 1,
+        "재접속은 기존 PENDING 소장 결제 준비 정보를 한 번 조회해야 합니다.");
+    assert(
+        completeCount === completeCountBeforeReconnect + 1,
+        "이미 결제된 SDK 오류 뒤 소장 완료 API를 호출해야 합니다.");
+    assert(
+        reconnectRoot.querySelector("[data-ownership-purchase]").hidden,
+        "재접속 PAID 복구 뒤 소장 결제 버튼을 숨겨야 합니다.");
+    reconnectRoot.remove();
 
     const anonymousRoot = createBookDetailFixture({authenticated: false});
     fixtureContainer.append(anonymousRoot);
