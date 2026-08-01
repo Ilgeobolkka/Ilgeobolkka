@@ -95,6 +95,71 @@ class CommonPageControllerTest {
     }
 
     @Test
+    void 회원가입과_로그인은_CSRF가_있는_전용_폼을_렌더링한다() throws Exception {
+        MvcResult signupResult = mockMvc.perform(get("/signup"))
+                .andExpect(status().isOk())
+                .andReturn();
+        CsrfToken signupCsrfToken = csrfToken(signupResult);
+        String signupHtml = signupResult.getResponse().getContentAsString();
+
+        assertTrue(signupHtml.contains("data-auth-page"));
+        assertTrue(signupHtml.contains("data-auth-form"));
+        assertTrue(signupHtml.contains("action=\"/api/auth/signup\""));
+        assertTrue(signupHtml.contains("name=\"" + signupCsrfToken.getParameterName() + "\""));
+        assertTrue(signupHtml.contains("value=\"" + signupCsrfToken.getToken() + "\""));
+        assertTrue(signupHtml.contains("autocomplete=\"email\""));
+        assertTrue(signupHtml.contains("autocomplete=\"new-password\""));
+        assertTrue(signupHtml.contains("maxlength=\"255\""));
+        assertTrue(signupHtml.contains("minlength=\"8\""));
+        assertTrue(signupHtml.contains("영문, 숫자, 공백이 아닌 ASCII 특수문자"));
+        assertTrue(signupHtml.contains("data-success-path=\"/login\""));
+        assertTrue(signupHtml.contains("/js/auth/auth.js"));
+        assertFalse(signupHtml.contains("회원가입 화면을 준비하고 있습니다."));
+
+        MvcResult loginResult = mockMvc.perform(get("/login"))
+                .andExpect(status().isOk())
+                .andReturn();
+        CsrfToken loginCsrfToken = csrfToken(loginResult);
+        String loginHtml = loginResult.getResponse().getContentAsString();
+
+        assertTrue(loginHtml.contains("data-auth-page"));
+        assertTrue(loginHtml.contains("data-auth-form"));
+        assertTrue(loginHtml.contains("action=\"/api/auth/login\""));
+        assertTrue(loginHtml.contains("name=\"" + loginCsrfToken.getParameterName() + "\""));
+        assertTrue(loginHtml.contains("value=\"" + loginCsrfToken.getToken() + "\""));
+        assertTrue(loginHtml.contains("autocomplete=\"current-password\""));
+        assertTrue(loginHtml.contains("maxlength=\"255\""));
+        assertTrue(loginHtml.contains("minlength=\"8\""));
+        assertTrue(loginHtml.contains("data-success-path=\"/books\""));
+        assertTrue(loginHtml.contains("/js/auth/auth.js"));
+        assertFalse(loginHtml.contains("로그인 화면을 준비하고 있습니다."));
+    }
+
+    @Test
+    void 도서_목록은_검색과_빈_결과와_페이지_이동_영역을_렌더링한다() throws Exception {
+        MvcResult result = mockMvc.perform(get("/books"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith("text/html"))
+                .andReturn();
+
+        String html = result.getResponse().getContentAsString();
+
+        assertTrue(html.contains("data-book-list-root"));
+        assertTrue(html.contains("data-book-search-form"));
+        assertTrue(html.contains("data-book-search"));
+        assertTrue(html.contains("data-book-list"));
+        assertTrue(html.contains("data-book-empty"));
+        assertTrue(html.contains("data-book-empty-title"));
+        assertTrue(html.contains("data-book-card-template"));
+        assertTrue(html.contains("data-book-previous"));
+        assertTrue(html.contains("data-book-next"));
+        assertTrue(html.contains("aria-label=\"도서 목록 페이지\""));
+        assertTrue(html.contains("aria-live=\"polite\""));
+        assertTrue(html.contains("/js/book/catalog.js"));
+        assertFalse(html.contains("도서 목록 화면을 준비하고 있습니다."));
+    }
+
+    @Test
     void 비로그인_공통_셸은_CSRF와_공개_내비게이션을_렌더링한다() throws Exception {
         MvcResult result = mockMvc.perform(get("/books"))
                 .andExpect(status().isOk())
@@ -348,6 +413,12 @@ class CommonPageControllerTest {
                 .andExpect(status().isOk());
 
         mockMvc.perform(get("/js/common/shell.js"))
+                .andExpect(status().isOk());
+
+        mockMvc.perform(get("/js/auth/auth.js"))
+                .andExpect(status().isOk());
+
+        mockMvc.perform(get("/js/book/catalog.js"))
                 .andExpect(status().isOk());
 
         mockMvc.perform(get("/js/ink/ink.js"))
