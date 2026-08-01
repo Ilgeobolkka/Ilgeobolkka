@@ -55,7 +55,7 @@ export function initializeBookDetailPage(root, dependencies = {}) {
         elements.category.textContent = book.category;
         elements.title.textContent = book.title;
         elements.author.textContent = book.author;
-        elements.description.textContent = book.description;
+        elements.description.textContent = book.description ?? "";
         elements.pageCount.textContent = `${book.totalPageCount}페이지`;
         elements.price.textContent = formatWon(book.bookPrice);
         elements.viewer.href = `/books/${book.bookId}/viewer?page=1`;
@@ -323,7 +323,7 @@ function validateBook(book, expectedBookId) {
     const validBookText = typeof book?.category === "string"
         && typeof book.title === "string"
         && typeof book.author === "string"
-        && typeof book.description === "string";
+        && (book.description === null || typeof book.description === "string");
     const validBookNumbers = Number.isInteger(book?.totalPageCount) && book.totalPageCount > 0
         && Number.isInteger(book.bookPrice) && book.bookPrice > 0;
     const validCover = book?.coverImagePath === null || typeof book.coverImagePath === "string";

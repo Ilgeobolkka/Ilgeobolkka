@@ -915,8 +915,10 @@ async function verifyBookDetailPage() {
     };
 
     const {ready} = initializeBookDetailPage(root, {request, loadPortOne});
-    await ready;
+    const loadedBook = await ready;
 
+    assert(loadedBook?.description === null, "description이 null인 도서 상세 응답도 허용해야 합니다.");
+    assert(root.querySelector("[data-book-description]").textContent === "", "description이 null이면 빈 소개를 표시해야 합니다.");
     assert(root.querySelector("[data-book-title]").textContent === "브라우저 소장 도서", "도서 제목을 표시해야 합니다.");
     assert(root.querySelector("[data-book-price]").textContent === "₩12,000", "도서 원가를 원화로 표시해야 합니다.");
     assert(
@@ -1039,7 +1041,7 @@ function bookDetailResponse(owned) {
         coverImagePath: null,
         title: "브라우저 소장 도서",
         author: "브라우저 작가",
-        description: "소장 결제 브라우저 검증 도서입니다.",
+        description: null,
         totalPageCount: 120,
         bookPrice: 12000,
         owned
