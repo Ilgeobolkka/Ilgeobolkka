@@ -3,6 +3,7 @@ package com.example.ilgeobolkka.reading.facade;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -348,6 +349,40 @@ class ReadingFacadeMySqlIntegrationTest {
     }
 
     @Test
+    void T_BAL_002_잔액_1에서_서로_다른_페이지를_동시에_열면_하나만_대여된다() throws Exception {
+        독자를_생성한다(1);
+        대여용_도서를_생성한다();
+
+        List<PageOpenResult> results = 동시에_서로_다른_페이지를_연다();
+
+        List<OpenPageResponse> successes =
+                results.stream()
+                        .map(PageOpenResult::response)
+                        .filter(response -> response != null)
+                        .toList();
+        List<RuntimeException> failures =
+                results.stream()
+                        .map(PageOpenResult::failure)
+                        .filter(failure -> failure != null)
+                        .toList();
+        assertAll(
+                () -> assertEquals(1, successes.size()),
+                () -> assertEquals(1, failures.size()),
+                () -> assertInstanceOf(InsufficientInkException.class, failures.getFirst()),
+                () -> assertEquals(1, successes.getFirst().deductedInk()),
+                () -> assertEquals(0, successes.getFirst().inkBalance()),
+                () -> assertEquals(0, 잔액을_조회한다()),
+                () -> assertEquals(1, 대여_수를_조회한다()),
+                () -> assertEquals(1, 차감_원장_수를_조회한다()),
+                () -> assertEquals(1, 세션_수를_조회한다()),
+                () -> assertEquals(1, 서재_항목_수를_조회한다()),
+                () ->
+                        assertEquals(
+                                successes.getFirst().pageNumber(),
+                                서재_마지막_페이지를_조회한다(RENTAL_BOOK_ID)));
+    }
+
+    @Test
     void 잠금을_기다리는_동안_시각이_흘러도_대여는_차감_시각부터_30일이다() {
         독자를_생성한다(5);
         대여용_도서를_생성한다();
@@ -402,6 +437,46 @@ class ReadingFacadeMySqlIntegrationTest {
             return responses;
         } finally {
             executor.shutdownNow();
+        }
+    }
+
+    private List<PageOpenResult> 동시에_서로_다른_페이지를_연다() throws Exception {
+        CyclicBarrier 출발선 = new CyclicBarrier(2);
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        try {
+            List<Future<PageOpenResult>> futures =
+                    List.of(
+                            executor.submit(() -> 페이지를_연다(출발선, 1)),
+                            executor.submit(() -> 페이지를_연다(출발선, 2)));
+
+            List<PageOpenResult> results = new ArrayList<>();
+            for (Future<PageOpenResult> future : futures) {
+                results.add(future.get(20, TimeUnit.SECONDS));
+            }
+            return results;
+        } finally {
+            executor.shutdownNow();
+        }
+    }
+
+    private PageOpenResult 페이지를_연다(CyclicBarrier 출발선, int pageNumber) throws Exception {
+        출발선.await(5, TimeUnit.SECONDS);
+        try {
+            return PageOpenResult.success(
+                    readingFacade.openNewSession(READER_ID, RENTAL_BOOK_ID, pageNumber));
+        } catch (RuntimeException failure) {
+            return PageOpenResult.failure(failure);
+        }
+    }
+
+    private record PageOpenResult(OpenPageResponse response, RuntimeException failure) {
+
+        static PageOpenResult success(OpenPageResponse response) {
+            return new PageOpenResult(response, null);
+        }
+
+        static PageOpenResult failure(RuntimeException failure) {
+            return new PageOpenResult(null, failure);
         }
     }
 
