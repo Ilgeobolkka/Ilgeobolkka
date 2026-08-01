@@ -65,9 +65,13 @@ public class OwnershipPaymentFacade {
      * 전이가 함께 되돌아간다.
      */
     public CompleteOwnershipPaymentResponse complete(long readerId, UUID paymentId) {
-        var cachedResponse = ownershipPaymentService.findCachedCompletion(readerId, paymentId);
-        if (cachedResponse.isPresent()) {
-            return cachedResponse.get();
+        var cachedCompletion = transactionTemplate.execute(status -> {
+            var completion = ownershipPaymentService.findCachedCompletion(readerId, paymentId);
+            completion.ifPresent(this::recordOwnership);
+            return completion;
+        });
+        if (cachedCompletion.isPresent()) {
+            return cachedCompletion.get().response();
         }
 
         PortOnePayment payment = paymentGateway.getPayment(paymentId.toString());

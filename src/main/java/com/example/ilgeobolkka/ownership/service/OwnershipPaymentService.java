@@ -71,14 +71,14 @@ public class OwnershipPaymentService {
     }
 
     @Transactional(readOnly = true)
-    public Optional<CompleteOwnershipPaymentResponse> findCachedCompletion(
+    public Optional<CompletionResult> findCachedCompletion(
             long readerId, UUID paymentId) {
         OwnershipPayment payment = findPayment(paymentId, readerId);
         if (payment.getStatus() == OwnershipPaymentStatus.FAILED) {
             throw new PaymentStateConflictException();
         }
         if (payment.getStatus() == OwnershipPaymentStatus.PAID) {
-            return Optional.of(CompleteOwnershipPaymentResponse.paid(payment));
+            return Optional.of(CompletionResult.paid(payment));
         }
         return Optional.empty();
     }
