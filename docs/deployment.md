@@ -93,7 +93,7 @@ AWS 운영 환경에는 위 PortOne 변수를 주입하지 않고 결제 기능�
 default-src 'self';
 script-src 'self';
 style-src 'self';
-img-src 'self' data:;
+img-src 'self' data: blob:;
 font-src 'self';
 connect-src 'self';
 object-src 'none';
@@ -109,7 +109,7 @@ frame-ancestors 'self';
 default-src 'self';
 script-src 'self' https://cdn.portone.io;
 style-src 'self';
-img-src 'self' data:;
+img-src 'self' data: blob:;
 font-src 'self';
 connect-src 'self' https://checkout-service.prod.iamport.co https://tx-gateway-service.prod.iamport.co https://service.iamport.kr https://coretelemetry.prod.iamport.co;
 frame-src 'self' https://payment-bridge.prod.iamport.co;
