@@ -52,6 +52,24 @@
     display: none;
 }
 
+.book-card-cover,
+.book-card-cover-placeholder {
+    aspect-ratio: 3 / 4;
+}
+
+.book-card-cover {
+    object-fit: cover;
+}
+
+.book-card-cover-placeholder {
+    display: flex;
+    background: #e9ecef;
+}
+
+.book-card-cover-placeholder[hidden] {
+    display: none;
+}
+
 .viewer-shell {
     max-width: 72rem;
     margin: 0 auto;

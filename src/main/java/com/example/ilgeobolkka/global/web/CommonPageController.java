@@ -24,7 +24,8 @@ public class CommonPageController {
 
     @GetMapping("/books")
     String books(Model model) {
-        return placeholder(model, "도서 탐색", "도서 목록 화면을 준비하고 있습니다.");
+        model.addAttribute("pageTitle", "도서 탐색");
+        return "pages/books";
     }
 
     @GetMapping("/books/{bookId}")
