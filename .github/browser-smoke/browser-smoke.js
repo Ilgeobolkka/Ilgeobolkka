@@ -44,6 +44,7 @@ async function run() {
         await verifyCsrfHandling();
         await verifyNoAutomaticAuthenticationRedirect();
         await verifyPageContentRequest();
+        await verifyCatalogLatestRequestWins();
     } finally {
         window.fetch = originalFetch;
     }
@@ -154,6 +155,175 @@ async function verifyPageContentRequest() {
         409,
         "viewer-replaced-request",
         "새 뷰어로 교체된 열람 세션입니다.");
+}
+
+async function verifyCatalogLatestRequestWins() {
+    const root = createCatalogFixture();
+    fixtureContainer.append(root);
+    const originalPath = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+    let resolvePreviousSearch;
+    let previousResponseConsumed = false;
+    let rejectPreviousSearch;
+    let previousErrorCompleted = false;
+
+    window.fetch = async (url) => {
+        const keyword = url.searchParams.get("keyword");
+        if (keyword === "이전 검색") {
+            return new Promise((resolve) => {
+                resolvePreviousSearch = () => resolve({
+                    ok: true,
+                    status: 200,
+                    headers: new Headers(),
+                    json: async () => {
+                        previousResponseConsumed = true;
+                        return catalogResponse("이전 검색 도서", 4);
+                    }
+                });
+            });
+        }
+        if (keyword === "이전 오류") {
+            return new Promise((resolve, reject) => {
+                rejectPreviousSearch = () => {
+                    previousErrorCompleted = true;
+                    reject(new TypeError("강제 지연 오류"));
+                };
+            });
+        }
+        if (keyword === "최신 검색" || keyword === "오류 뒤 최신") {
+            const title = keyword === "최신 검색" ? "최신 검색 도서" : "오류 뒤 최신 도서";
+            const totalPages = keyword === "최신 검색" ? 1 : 2;
+            return new Response(JSON.stringify(catalogResponse(title, totalPages)), {
+                status: 200,
+                headers: {"Content-Type": "application/json"}
+            });
+        }
+        return new Response(JSON.stringify(catalogResponse("초기 도서", 1)), {
+            status: 200,
+            headers: {"Content-Type": "application/json"}
+        });
+    };
+
+    try {
+        await import(`/js/book/catalog.js?browser-smoke=${Date.now()}`);
+        await waitFor(
+            () => root.querySelector("[data-book-title]")?.textContent === "초기 도서",
+            "초기 도서 목록을 표시해야 합니다.");
+
+        const form = root.querySelector("[data-book-search-form]");
+        const search = root.querySelector("[data-book-search]");
+        search.value = "이전 검색";
+        form.requestSubmit();
+        await waitFor(
+            () => typeof resolvePreviousSearch === "function",
+            "이전 검색 응답을 지연할 수 있어야 합니다.");
+
+        search.value = "최신 검색";
+        form.requestSubmit();
+        await waitFor(
+            () => root.querySelector("[data-book-title]")?.textContent === "최신 검색 도서",
+            "최신 검색 결과를 먼저 표시해야 합니다.");
+
+        resolvePreviousSearch();
+        await waitFor(
+            () => previousResponseConsumed,
+            "지연된 이전 검색 응답이 완료되어야 합니다.");
+        await new Promise((resolve) => setTimeout(resolve, 0));
+
+        const currentUrl = new URL(window.location.href);
+        assert(
+            root.querySelector("[data-book-title]")?.textContent === "최신 검색 도서",
+            "지연된 이전 응답이 최신 검색 결과를 덮어쓰면 안 됩니다.");
+        assert(
+            root.querySelector("[data-book-page]").textContent === "1페이지 / 전체 1페이지"
+                && root.querySelector("[data-book-next]").disabled,
+            "지연된 이전 응답이 최신 페이지 상태를 덮어쓰면 안 됩니다.");
+        assert(
+            currentUrl.pathname === "/books"
+                && currentUrl.searchParams.get("page") === "1"
+                && currentUrl.searchParams.get("keyword") === "최신 검색",
+            "지연된 이전 응답이 최신 검색 URL을 덮어쓰면 안 됩니다.");
+
+        search.value = "이전 오류";
+        form.requestSubmit();
+        await waitFor(
+            () => typeof rejectPreviousSearch === "function",
+            "이전 검색 오류를 지연할 수 있어야 합니다.");
+
+        search.value = "오류 뒤 최신";
+        form.requestSubmit();
+        await waitFor(
+            () => root.querySelector("[data-book-title]")?.textContent === "오류 뒤 최신 도서",
+            "이전 요청 오류보다 최신 검색 결과를 먼저 표시해야 합니다.");
+
+        rejectPreviousSearch();
+        await waitFor(
+            () => previousErrorCompleted,
+            "지연된 이전 검색 오류가 완료되어야 합니다.");
+        await new Promise((resolve) => setTimeout(resolve, 0));
+
+        const urlAfterPreviousError = new URL(window.location.href);
+        assert(
+            root.querySelector("[data-book-title]")?.textContent === "오류 뒤 최신 도서"
+                && root.querySelector("[data-book-page]").textContent === "1페이지 / 전체 2페이지"
+                && !root.querySelector("[data-book-next]").disabled,
+            "지연된 이전 오류가 최신 검색 결과와 페이지 상태를 지우면 안 됩니다.");
+        assert(
+            document.querySelector("[data-common-error]").hidden,
+            "지연된 이전 오류를 현재 검색의 오류로 표시하면 안 됩니다.");
+        assert(
+            urlAfterPreviousError.searchParams.get("keyword") === "오류 뒤 최신",
+            "지연된 이전 오류가 최신 검색 URL을 바꾸면 안 됩니다.");
+    } finally {
+        root.remove();
+        window.history.replaceState(null, "", originalPath);
+    }
+}
+
+function createCatalogFixture() {
+    const root = document.createElement("section");
+    root.dataset.bookListRoot = "";
+    root.innerHTML = `
+        <form data-book-search-form>
+            <input type="search" data-book-search>
+            <button type="submit">검색</button>
+        </form>
+        <p data-book-status></p>
+        <div data-book-list></div>
+        <section data-book-empty hidden>
+            <h2 data-book-empty-title></h2>
+            <p data-book-empty-description></p>
+        </section>
+        <button type="button" data-book-previous disabled>이전</button>
+        <span data-book-page></span>
+        <button type="button" data-book-next disabled>다음</button>
+        <template data-book-card-template>
+            <article>
+                <img data-book-cover alt="">
+                <div data-book-cover-placeholder hidden>표지 없음</div>
+                <span data-book-category></span>
+                <a data-book-title></a>
+                <span data-book-author></span>
+                <span data-book-price></span>
+            </article>
+        </template>
+    `;
+    return root;
+}
+
+function catalogResponse(title, totalPages) {
+    return {
+        books: [{
+            bookId: totalPages,
+            category: "소설",
+            title,
+            author: "테스트 저자",
+            bookPrice: 10000,
+            coverImagePath: null
+        }],
+        page: 1,
+        totalPages,
+        totalCount: totalPages
+    };
 }
 
 async function verifyViewerFlow() {

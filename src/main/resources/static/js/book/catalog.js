@@ -9,6 +9,7 @@ if (root) {
     let currentPage = parsePage(initialQuery.get("page"));
     let totalPages = 0;
     let keyword = (initialQuery.get("keyword") || "").trim();
+    let requestSequence = 0;
 
     elements.search.value = keyword;
     elements.searchForm.addEventListener("submit", (event) => {
@@ -27,6 +28,7 @@ if (root) {
     loadPage(currentPage);
 
     async function loadPage(page) {
+        const sequence = ++requestSequence;
         currentPage = page;
         clearCommonError();
         elements.status.textContent = "도서 목록을 불러오고 있습니다.";
@@ -41,6 +43,9 @@ if (root) {
 
         try {
             const response = await requestJson(`/api/books?${query}`);
+            if (sequence !== requestSequence) {
+                return;
+            }
             validateResponse(response);
             currentPage = response.page;
             totalPages = response.totalPages;
@@ -48,6 +53,9 @@ if (root) {
             renderPage(response);
             window.history.replaceState(null, "", `/books?${query}`);
         } catch (error) {
+            if (sequence !== requestSequence) {
+                return;
+            }
             elements.list.replaceChildren();
             elements.status.textContent = "도서 목록을 불러오지 못했습니다.";
             elements.page.textContent = "페이지 정보를 불러오지 못했습니다.";
