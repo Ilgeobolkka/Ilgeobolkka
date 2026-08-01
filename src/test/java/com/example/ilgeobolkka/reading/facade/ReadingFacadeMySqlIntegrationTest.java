@@ -3,6 +3,7 @@ package com.example.ilgeobolkka.reading.facade;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -11,6 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.example.ilgeobolkka.book.entity.BookPageContentType;
 import com.example.ilgeobolkka.book.exception.BookPageNotFoundException;
 import com.example.ilgeobolkka.ink.exception.InsufficientInkException;
+import com.example.ilgeobolkka.ink.repository.InkAccountRepository;
+import com.example.ilgeobolkka.ink.repository.InkLedgerRepository;
+import com.example.ilgeobolkka.ink.service.InkService;
 import com.example.ilgeobolkka.reading.dto.OpenPageResponse;
 import com.example.ilgeobolkka.reading.exception.ReadingSessionNotFoundException;
 import com.example.ilgeobolkka.reading.exception.ViewerSessionReplacedException;
@@ -26,11 +30,13 @@ import java.util.List;
 import java.util.Queue;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicReference;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -44,11 +50,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.support.TransactionTemplate;
 
 @SpringBootTest
 @ActiveProfiles("test")
 @ContextConfiguration(initializers = DedicatedTestDatabaseInitializer.class)
-@Import(ReadingFacadeMySqlIntegrationTest.ScriptedClockConfiguration.class)
+@Import(ReadingFacadeMySqlIntegrationTest.ReadingFacadeTestConfiguration.class)
 // T-RENT-005가 동시 요청 10건을 띄우므로 이 컨텍스트에서만 기본 풀 10을 넘긴다.
 // 전역으로 올리면 컨텍스트 수만큼 곱해져 MySQL max_connections를 넘는다.
 @TestPropertySource(properties = "spring.datasource.hikari.maximum-pool-size=15")
@@ -70,13 +78,21 @@ class ReadingFacadeMySqlIntegrationTest {
     private final ReadingFacade readingFacade;
     private final JdbcTemplate jdbcTemplate;
     private final ScriptedClock clock;
+    private final TransactionTemplate transactionTemplate;
+    private final ProbedInkService probedInkService;
 
     @Autowired
     ReadingFacadeMySqlIntegrationTest(
-            ReadingFacade readingFacade, JdbcTemplate jdbcTemplate, ScriptedClock clock) {
+            ReadingFacade readingFacade,
+            JdbcTemplate jdbcTemplate,
+            ScriptedClock clock,
+            PlatformTransactionManager transactionManager,
+            ProbedInkService probedInkService) {
         this.readingFacade = readingFacade;
         this.jdbcTemplate = jdbcTemplate;
         this.clock = clock;
+        this.transactionTemplate = new TransactionTemplate(transactionManager);
+        this.probedInkService = probedInkService;
     }
 
     @BeforeEach
@@ -128,6 +144,30 @@ class ReadingFacadeMySqlIntegrationTest {
                 () -> assertEquals(NOW.plusSeconds(3600), response.expiresAt()),
                 () -> assertEquals(1, 대여_수를_조회한다()),
                 () -> assertEquals(0, 차감_원장_수를_조회한다()));
+    }
+
+    @Test
+    void T_RENT_006_응답_유실_후_같은_페이지를_재시도하면_활성_대여를_재사용한다() {
+        독자를_생성한다(5);
+        대여용_도서를_생성한다();
+        OpenPageResponse lostResponse =
+                readingFacade.openNewSession(READER_ID, RENTAL_BOOK_ID, 1);
+
+        OpenPageResponse retried =
+                readingFacade.openNewSession(READER_ID, RENTAL_BOOK_ID, 1);
+
+        assertAll(
+                () -> assertEquals(1, lostResponse.deductedInk()),
+                () -> assertEquals(0, retried.deductedInk()),
+                () -> assertEquals(lostResponse.rentedAt(), retried.rentedAt()),
+                () -> assertEquals(lostResponse.expiresAt(), retried.expiresAt()),
+                () -> assertNotEquals(lostResponse.viewerSessionId(), retried.viewerSessionId()),
+                () -> assertEquals(4, retried.inkBalance()),
+                () -> assertEquals(4, 잔액을_조회한다()),
+                () -> assertEquals(1, 대여_수를_조회한다()),
+                () -> assertEquals(1, 차감_원장_수를_조회한다()),
+                () -> assertEquals(1, 세션_수를_조회한다()),
+                () -> assertEquals(1, 서재_항목_수를_조회한다()));
     }
 
     @Test
@@ -347,6 +387,97 @@ class ReadingFacadeMySqlIntegrationTest {
                 () -> assertEquals(1, responses.stream().map(OpenPageResponse::expiresAt).distinct().count()));
     }
 
+    /**
+     * 선행 트랜잭션의 미커밋 대여는 첫 조회에 보이지 않는다. 페이지 열기가 계좌 잠금을 기다린 뒤
+     * 커밋된 활성 대여를 다시 읽어야 중복 대여와 차감을 막을 수 있다.
+     */
+    @Test
+    void 잠금_뒤_재확인은_선행_트랜잭션이_만든_활성_대여를_재사용한다() throws Exception {
+        독자를_생성한다(1);
+        대여용_도서를_생성한다();
+        Instant rentedAt = NOW.minusSeconds(3600);
+        Instant expiresAt = NOW.plusSeconds(3600);
+        CountDownLatch rentalPrepared = new CountDownLatch(1);
+        CountDownLatch accountLockRequested = new CountDownLatch(1);
+        CountDownLatch allowCommit = new CountDownLatch(1);
+        ExecutorService lockHolder = Executors.newSingleThreadExecutor();
+        ExecutorService pageOpener = Executors.newSingleThreadExecutor();
+
+        try {
+            Future<?> heldTransaction = lockHolder.submit(() ->
+                    transactionTemplate.executeWithoutResult(status -> {
+                        jdbcTemplate.queryForObject(
+                                "SELECT balance FROM ink_account WHERE reader_id = ? FOR UPDATE",
+                                Integer.class,
+                                READER_ID);
+                        활성_대여를_생성한다(TEXT_PAGE_ID, rentedAt, expiresAt);
+                        rentalPrepared.countDown();
+                        래치를_기다린다(allowCommit);
+                    }));
+            assertTrue(rentalPrepared.await(5, TimeUnit.SECONDS));
+            probedInkService.signalOnNextAccountLock(accountLockRequested);
+
+            Future<OpenPageResponse> opening = pageOpener.submit(
+                    () -> readingFacade.openNewSession(READER_ID, RENTAL_BOOK_ID, 1));
+
+            assertTrue(accountLockRequested.await(5, TimeUnit.SECONDS));
+
+            allowCommit.countDown();
+            heldTransaction.get(5, TimeUnit.SECONDS);
+            OpenPageResponse response = opening.get(20, TimeUnit.SECONDS);
+
+            assertAll(
+                    () -> assertEquals(0, response.deductedInk()),
+                    () -> assertEquals(1, response.inkBalance()),
+                    () -> assertEquals(rentedAt, response.rentedAt()),
+                    () -> assertEquals(expiresAt, response.expiresAt()),
+                    () -> assertEquals(1, 잔액을_조회한다()),
+                    () -> assertEquals(1, 대여_수를_조회한다()),
+                    () -> assertEquals(0, 차감_원장_수를_조회한다()),
+                    () -> assertEquals(1, 세션_수를_조회한다()),
+                    () -> assertEquals(1, 서재_항목_수를_조회한다()));
+        } finally {
+            allowCommit.countDown();
+            probedInkService.clearAccountLockSignal();
+            lockHolder.shutdownNow();
+            pageOpener.shutdownNow();
+        }
+    }
+
+    @Test
+    void 잔액_1에서_서로_다른_미대여_페이지를_동시에_열면_정확히_하나만_성공한다() throws Exception {
+        독자를_생성한다(1);
+        대여용_도서를_생성한다();
+
+        List<PageOpenResult> results = 동시에_서로_다른_페이지를_연다();
+
+        List<OpenPageResponse> successes =
+                results.stream()
+                        .map(PageOpenResult::response)
+                        .filter(response -> response != null)
+                        .toList();
+        List<RuntimeException> failures =
+                results.stream()
+                        .map(PageOpenResult::failure)
+                        .filter(failure -> failure != null)
+                        .toList();
+        assertAll(
+                () -> assertEquals(1, successes.size()),
+                () -> assertEquals(1, failures.size()),
+                () -> assertInstanceOf(InsufficientInkException.class, failures.getFirst()),
+                () -> assertEquals(1, successes.getFirst().deductedInk()),
+                () -> assertEquals(0, successes.getFirst().inkBalance()),
+                () -> assertEquals(0, 잔액을_조회한다()),
+                () -> assertEquals(1, 대여_수를_조회한다()),
+                () -> assertEquals(1, 차감_원장_수를_조회한다()),
+                () -> assertEquals(1, 세션_수를_조회한다()),
+                () -> assertEquals(1, 서재_항목_수를_조회한다()),
+                () ->
+                        assertEquals(
+                                successes.getFirst().pageNumber(),
+                                서재_마지막_페이지를_조회한다(RENTAL_BOOK_ID)));
+    }
+
     @Test
     void 잠금을_기다리는_동안_시각이_흘러도_대여는_차감_시각부터_30일이다() {
         독자를_생성한다(5);
@@ -402,6 +533,57 @@ class ReadingFacadeMySqlIntegrationTest {
             return responses;
         } finally {
             executor.shutdownNow();
+        }
+    }
+
+    private List<PageOpenResult> 동시에_서로_다른_페이지를_연다() throws Exception {
+        CyclicBarrier 출발선 = new CyclicBarrier(2);
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        try {
+            List<Future<PageOpenResult>> futures =
+                    List.of(
+                            executor.submit(() -> 페이지를_연다(출발선, 1)),
+                            executor.submit(() -> 페이지를_연다(출발선, 2)));
+
+            List<PageOpenResult> results = new ArrayList<>();
+            for (Future<PageOpenResult> future : futures) {
+                results.add(future.get(20, TimeUnit.SECONDS));
+            }
+            return results;
+        } finally {
+            executor.shutdownNow();
+        }
+    }
+
+    private PageOpenResult 페이지를_연다(CyclicBarrier 출발선, int pageNumber) throws Exception {
+        출발선.await(5, TimeUnit.SECONDS);
+        try {
+            return PageOpenResult.success(
+                    readingFacade.openNewSession(READER_ID, RENTAL_BOOK_ID, pageNumber));
+        } catch (RuntimeException failure) {
+            return PageOpenResult.failure(failure);
+        }
+    }
+
+    private void 래치를_기다린다(CountDownLatch latch) {
+        try {
+            if (!latch.await(5, TimeUnit.SECONDS)) {
+                throw new IllegalStateException("동시성 테스트 래치 대기 시간이 초과되었습니다.");
+            }
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new IllegalStateException("동시성 테스트 래치 대기가 중단되었습니다.", e);
+        }
+    }
+
+    private record PageOpenResult(OpenPageResponse response, RuntimeException failure) {
+
+        static PageOpenResult success(OpenPageResponse response) {
+            return new PageOpenResult(response, null);
+        }
+
+        static PageOpenResult failure(RuntimeException failure) {
+            return new PageOpenResult(null, failure);
         }
     }
 
@@ -590,12 +772,46 @@ class ReadingFacadeMySqlIntegrationTest {
     }
 
     @TestConfiguration(proxyBeanMethods = false)
-    static class ScriptedClockConfiguration {
+    static class ReadingFacadeTestConfiguration {
 
         @Bean
         @Primary
         ScriptedClock scriptedClock() {
             return new ScriptedClock();
+        }
+
+        @Bean
+        @Primary
+        ProbedInkService probedInkService(
+                InkAccountRepository inkAccountRepository, InkLedgerRepository inkLedgerRepository) {
+            return new ProbedInkService(inkAccountRepository, inkLedgerRepository);
+        }
+    }
+
+    static class ProbedInkService extends InkService {
+
+        private final AtomicReference<CountDownLatch> accountLockSignal = new AtomicReference<>();
+
+        ProbedInkService(
+                InkAccountRepository inkAccountRepository, InkLedgerRepository inkLedgerRepository) {
+            super(inkAccountRepository, inkLedgerRepository);
+        }
+
+        void signalOnNextAccountLock(CountDownLatch signal) {
+            accountLockSignal.set(signal);
+        }
+
+        void clearAccountLockSignal() {
+            accountLockSignal.set(null);
+        }
+
+        @Override
+        public void lockAccount(long readerId) {
+            CountDownLatch signal = accountLockSignal.getAndSet(null);
+            if (signal != null) {
+                signal.countDown();
+            }
+            super.lockAccount(readerId);
         }
     }
 
