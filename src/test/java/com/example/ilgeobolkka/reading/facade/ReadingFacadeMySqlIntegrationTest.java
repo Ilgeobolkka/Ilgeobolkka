@@ -27,11 +27,13 @@ import java.util.List;
 import java.util.Queue;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -45,6 +47,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.support.TransactionTemplate;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -71,13 +75,18 @@ class ReadingFacadeMySqlIntegrationTest {
     private final ReadingFacade readingFacade;
     private final JdbcTemplate jdbcTemplate;
     private final ScriptedClock clock;
+    private final TransactionTemplate transactionTemplate;
 
     @Autowired
     ReadingFacadeMySqlIntegrationTest(
-            ReadingFacade readingFacade, JdbcTemplate jdbcTemplate, ScriptedClock clock) {
+            ReadingFacade readingFacade,
+            JdbcTemplate jdbcTemplate,
+            ScriptedClock clock,
+            PlatformTransactionManager transactionManager) {
         this.readingFacade = readingFacade;
         this.jdbcTemplate = jdbcTemplate;
         this.clock = clock;
+        this.transactionTemplate = new TransactionTemplate(transactionManager);
     }
 
     @BeforeEach
@@ -372,6 +381,60 @@ class ReadingFacadeMySqlIntegrationTest {
                 () -> assertEquals(1, responses.stream().map(OpenPageResponse::expiresAt).distinct().count()));
     }
 
+    /**
+     * 선행 트랜잭션의 미커밋 대여는 첫 조회에 보이지 않는다. 페이지 열기가 계좌 잠금을 기다린 뒤
+     * 커밋된 활성 대여를 다시 읽어야 중복 대여와 차감을 막을 수 있다.
+     */
+    @Test
+    void 잠금_뒤_재확인은_선행_트랜잭션이_만든_활성_대여를_재사용한다() throws Exception {
+        독자를_생성한다(1);
+        대여용_도서를_생성한다();
+        Instant rentedAt = NOW.minusSeconds(3600);
+        Instant expiresAt = NOW.plusSeconds(3600);
+        CountDownLatch rentalPrepared = new CountDownLatch(1);
+        CountDownLatch allowCommit = new CountDownLatch(1);
+        ExecutorService lockHolder = Executors.newSingleThreadExecutor();
+        ExecutorService pageOpener = Executors.newSingleThreadExecutor();
+
+        try {
+            Future<?> heldTransaction = lockHolder.submit(() ->
+                    transactionTemplate.executeWithoutResult(status -> {
+                        jdbcTemplate.queryForObject(
+                                "SELECT balance FROM ink_account WHERE reader_id = ? FOR UPDATE",
+                                Integer.class,
+                                READER_ID);
+                        활성_대여를_생성한다(TEXT_PAGE_ID, rentedAt, expiresAt);
+                        rentalPrepared.countDown();
+                        래치를_기다린다(allowCommit);
+                    }));
+            assertTrue(rentalPrepared.await(5, TimeUnit.SECONDS));
+
+            Future<OpenPageResponse> opening = pageOpener.submit(
+                    () -> readingFacade.openNewSession(READER_ID, RENTAL_BOOK_ID, 1));
+
+            assertThrows(TimeoutException.class, () -> opening.get(300, TimeUnit.MILLISECONDS));
+
+            allowCommit.countDown();
+            heldTransaction.get(5, TimeUnit.SECONDS);
+            OpenPageResponse response = opening.get(20, TimeUnit.SECONDS);
+
+            assertAll(
+                    () -> assertEquals(0, response.deductedInk()),
+                    () -> assertEquals(1, response.inkBalance()),
+                    () -> assertEquals(rentedAt, response.rentedAt()),
+                    () -> assertEquals(expiresAt, response.expiresAt()),
+                    () -> assertEquals(1, 잔액을_조회한다()),
+                    () -> assertEquals(1, 대여_수를_조회한다()),
+                    () -> assertEquals(0, 차감_원장_수를_조회한다()),
+                    () -> assertEquals(1, 세션_수를_조회한다()),
+                    () -> assertEquals(1, 서재_항목_수를_조회한다()));
+        } finally {
+            allowCommit.countDown();
+            lockHolder.shutdownNow();
+            pageOpener.shutdownNow();
+        }
+    }
+
     @Test
     void T_BAL_002_잔액_1에서_서로_다른_페이지를_동시에_열면_하나만_대여된다() throws Exception {
         독자를_생성한다(1);
@@ -490,6 +553,17 @@ class ReadingFacadeMySqlIntegrationTest {
                     readingFacade.openNewSession(READER_ID, RENTAL_BOOK_ID, pageNumber));
         } catch (RuntimeException failure) {
             return PageOpenResult.failure(failure);
+        }
+    }
+
+    private void 래치를_기다린다(CountDownLatch latch) {
+        try {
+            if (!latch.await(5, TimeUnit.SECONDS)) {
+                throw new IllegalStateException("동시성 테스트 래치 대기 시간이 초과되었습니다.");
+            }
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new IllegalStateException("동시성 테스트 래치 대기가 중단되었습니다.", e);
         }
     }
 
