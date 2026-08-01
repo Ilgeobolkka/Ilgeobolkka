@@ -128,6 +128,8 @@ class OwnershipPaymentWebhookMySqlIntegrationTest {
         assertAll(
                 () -> assertEquals("PAID", 결제_상태를_조회한다(paymentId)),
                 () -> assertEquals(1, 소장_수를_조회한다()),
+                () -> assertEquals(1, 서재_항목_수를_조회한다()),
+                () -> assertEquals(1, 서재_마지막_페이지를_조회한다()),
                 () -> assertEquals(1, paymentGateway.callCount()));
     }
 
@@ -145,6 +147,7 @@ class OwnershipPaymentWebhookMySqlIntegrationTest {
         assertAll(
                 () -> assertEquals("PAID", 결제_상태를_조회한다(paymentId)),
                 () -> assertEquals(1, 소장_수를_조회한다()),
+                () -> assertEquals(1, 서재_항목_수를_조회한다()),
                 () -> assertEquals(2, paymentGateway.callCount()));
     }
 
@@ -216,7 +219,8 @@ class OwnershipPaymentWebhookMySqlIntegrationTest {
 
         assertAll(
                 () -> assertEquals("PAID", 결제_상태를_조회한다(paymentId)),
-                () -> assertEquals(1, 소장_수를_조회한다()));
+                () -> assertEquals(1, 소장_수를_조회한다()),
+                () -> assertEquals(1, 서재_항목_수를_조회한다()));
     }
 
     private UUID 결제를_준비한다() throws Exception {
@@ -348,13 +352,22 @@ class OwnershipPaymentWebhookMySqlIntegrationTest {
                 """,
                 BOOK_ID,
                 BOOK_PRICE_WON);
+        jdbcTemplate.update(
+                """
+                INSERT INTO book_page
+                    (book_id, page_number, content_type, text_content)
+                VALUES (?, 1, 'TEXT', '웹훅 소장 도서 1쪽')
+                """,
+                BOOK_ID);
     }
 
     private void 테스트_데이터를_정리한다() {
+        jdbcTemplate.update("DELETE FROM library_entry WHERE reader_id = ?", READER_ID);
         jdbcTemplate.update("DELETE FROM book_ownership WHERE reader_id = ?", READER_ID);
         jdbcTemplate.update("DELETE FROM ownership_payment WHERE reader_id = ?", READER_ID);
         jdbcTemplate.update("DELETE FROM ink_account WHERE reader_id = ?", READER_ID);
         jdbcTemplate.update("DELETE FROM reader WHERE id = ?", READER_ID);
+        jdbcTemplate.update("DELETE FROM book_page WHERE book_id = ?", BOOK_ID);
         jdbcTemplate.update("DELETE FROM book WHERE id = ?", BOOK_ID);
     }
 
@@ -368,6 +381,22 @@ class OwnershipPaymentWebhookMySqlIntegrationTest {
     private int 소장_수를_조회한다() {
         return jdbcTemplate.queryForObject(
                 "SELECT COUNT(*) FROM book_ownership WHERE reader_id = ? AND book_id = ?",
+                Integer.class,
+                READER_ID,
+                BOOK_ID);
+    }
+
+    private int 서재_항목_수를_조회한다() {
+        return jdbcTemplate.queryForObject(
+                "SELECT COUNT(*) FROM library_entry WHERE reader_id = ? AND book_id = ?",
+                Integer.class,
+                READER_ID,
+                BOOK_ID);
+    }
+
+    private int 서재_마지막_페이지를_조회한다() {
+        return jdbcTemplate.queryForObject(
+                "SELECT last_page_number FROM library_entry WHERE reader_id = ? AND book_id = ?",
                 Integer.class,
                 READER_ID,
                 BOOK_ID);

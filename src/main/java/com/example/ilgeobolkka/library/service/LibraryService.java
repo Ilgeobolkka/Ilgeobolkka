@@ -1,7 +1,9 @@
 package com.example.ilgeobolkka.library.service;
 
 import com.example.ilgeobolkka.library.repository.LibraryEntryRepository;
+import com.example.ilgeobolkka.library.repository.LibraryEntryView;
 import java.time.Instant;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -16,5 +18,14 @@ public class LibraryService {
     @Transactional(propagation = Propagation.MANDATORY)
     public void recordVisit(long readerId, long bookId, int pageNumber, Instant visitedAt) {
         libraryEntryRepository.upsertLastReadPage(readerId, bookId, pageNumber, visitedAt);
+    }
+
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void recordOwnership(long readerId, long bookId, Instant ownedAt) {
+        libraryEntryRepository.insertOwnedBookIfAbsent(readerId, bookId, ownedAt);
+    }
+
+    public List<LibraryEntryView> findEntries(long readerId) {
+        return libraryEntryRepository.findEntriesByReaderId(readerId);
     }
 }
