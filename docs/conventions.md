@@ -165,9 +165,9 @@ Controller는 HTTP 요청과 응답의 경계만 담당합니다.
 - 회원가입은 계정과 0잉크 계좌만 만들고 인증 세션을 만들지 않습니다.
 - 새 뷰어에는 서버가 UUID `viewerSessionId`를 발급합니다. 브라우저는 탭별 `sessionStorage`에 보관하고
   페이지 이동·콘텐츠 요청의 `X-Viewer-Session-Id` 헤더로 전달합니다. 이 값만으로 인증하지 않습니다.
-- Spring Security의 CSRF 보호를 끄지 않습니다. Thymeleaf 폼은 hidden field, JavaScript `fetch`는
-  페이지의 `_csrf`, `_csrf_header` meta 태그에서 읽은 토큰을 요청 헤더로 전달합니다. 로그인·로그아웃
-  뒤에는 새 페이지를 렌더링하며 별도 CSRF 토큰 API를 만들지 않습니다.
+- Spring Security의 CSRF 보호를 끄지 않습니다. 브라우저가 서버에 직접 제출하는 Thymeleaf 폼은 hidden
+  field, JavaScript `fetch`는 페이지의 `_csrf`, `_csrf_header` meta 태그에서 읽은 토큰을 요청 헤더로
+  전달합니다. 로그인·로그아웃 뒤에는 새 페이지를 렌더링하며 별도 CSRF 토큰 API를 만들지 않습니다.
 - 로그인 실패는 이메일 존재 여부와 관계없이 `INVALID_CREDENTIALS`로 통일합니다.
 
 ## Thymeleaf 공통 셸과 브라우저 호출
@@ -185,8 +185,8 @@ Bootstrap 자산은 `/webjars/bootstrap/5.3.8/` 아래의 버전 명시 경로�
 
 - `src/main/resources/templates`의 공통 head·헤더·내비게이션·오류 영역·본문 fragment를 기능별 화면이
   재사용합니다. 정적 CSS와 ES Module은 `src/main/resources/static`에 둡니다.
-- head에는 서버가 렌더링한 `_csrf`, `_csrf_header` meta 태그를 두고 상태 변경 Thymeleaf form에는 hidden
-  CSRF field를 둡니다.
+- head에는 서버가 렌더링한 `_csrf`, `_csrf_header` meta 태그를 두고 브라우저가 직접 제출하는 상태 변경
+  Thymeleaf form에는 hidden CSRF field를 둡니다.
 - 오류 영역은 `role="alert"`와 `aria-live`를 사용합니다. 오류 문자열은 `textContent`로만 출력하고 서버가
   반환한 HTML이나 예외 원문을 삽입하지 않습니다.
 - 모든 조작 요소는 접근 가능한 이름과 `:focus-visible` 상태를 제공합니다. 대체 포커스 표시 없이 기본

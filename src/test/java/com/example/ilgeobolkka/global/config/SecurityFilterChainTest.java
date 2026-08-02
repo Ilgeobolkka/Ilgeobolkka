@@ -192,6 +192,10 @@ class SecurityFilterChainTest {
 
     @Test
     void 로그아웃은_인증과_CSRF_토큰이_모두_필요하다() throws Exception {
+        mockMvc.perform(post("/api/auth/logout").with(user("reader")))
+                .andExpect(status().isForbidden())
+                .andExpect(jsonPath("$.code").value("INVALID_CSRF_TOKEN"));
+
         mockMvc.perform(post("/api/auth/logout").with(csrf()))
                 .andExpect(status().isUnauthorized())
                 .andExpect(jsonPath("$.code").value("AUTHENTICATION_REQUIRED"));

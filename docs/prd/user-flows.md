@@ -6,7 +6,8 @@
 ## 계정과 잉크 구매
 
 1. 사용자는 이메일과 비밀번호로 회원가입한 뒤 로그인 화면에서 별도로 로그인합니다.
-2. Thymeleaf 폼은 hidden CSRF 필드를, JavaScript 요청은 페이지의 CSRF meta 태그를 사용합니다.
+2. 브라우저가 서버에 직접 제출하는 Thymeleaf 폼은 hidden CSRF 필드를, JavaScript 요청은 페이지의 CSRF
+   meta 태그를 사용합니다.
 3. 잉크가 부족하면 페이지 이용권 구매 화면으로 이동합니다.
 4. 백엔드는 `PENDING` 결제 시도와 PortOne V2 테스트 채널 호출 정보를 만듭니다.
 5. 브라우저가 PortOne V2 결제를 마치면 완료 API를 호출하고, PortOne은 별도로 웹훅을 보낼 수 있습니다.
