@@ -1030,6 +1030,9 @@ async function loadAuthFixture(flow, mode) {
     await waitFor(
         () => iframe.contentDocument.body.dataset.authFixtureReady === "true",
         `${flow} ${mode} 인증 fixture가 준비되어야 합니다.`);
+    assert(
+        iframe.contentDocument.querySelector("[data-auth-fields]")?.disabled === false,
+        `${flow} 인증 필드는 스크립트 준비 뒤 활성화되어야 합니다.`);
     return iframe;
 }
 

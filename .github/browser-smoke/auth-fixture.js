@@ -6,7 +6,7 @@ const page = document.querySelector("[data-auth-page]");
 const form = document.querySelector("[data-auth-form]");
 
 if (flow === "signup") {
-    form.action = "/api/auth/signup";
+    form.dataset.authEndpoint = "/api/auth/signup";
     page.dataset.successPath = "/login";
 }
 

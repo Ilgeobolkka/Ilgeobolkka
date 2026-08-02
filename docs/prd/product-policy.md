@@ -134,6 +134,6 @@
 - 회원가입은 계정과 0잉크 계좌만 생성하고 로그인 세션을 만들지 않습니다. 가입 후 사용자가 별도로
   로그인해야 하며 자동 로그인과 Remember Me는 제공하지 않습니다.
 - 회원가입·로그인·로그아웃을 포함한 상태 변경 요청에 CSRF 검증을 적용합니다.
-- Thymeleaf 폼은 hidden CSRF 필드를 사용하고, JavaScript `fetch`는 서버가 렌더링한 `_csrf`와
-  `_csrf_header` meta 태그를 읽어 헤더로 전달합니다. 로그인·로그아웃 뒤에는 페이지를 다시 렌더링해
-  새 토큰을 받고 별도 CSRF 토큰 API는 만들지 않습니다.
+- 브라우저가 서버에 직접 제출하는 Thymeleaf 폼은 hidden CSRF 필드를 사용하고, JavaScript `fetch`는
+  서버가 렌더링한 `_csrf`와 `_csrf_header` meta 태그를 읽어 헤더로 전달합니다. 로그인·로그아웃 뒤에는
+  페이지를 다시 렌더링해 새 토큰을 받고 별도 CSRF 토큰 API는 만들지 않습니다.

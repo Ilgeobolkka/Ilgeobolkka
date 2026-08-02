@@ -14,10 +14,12 @@
      data-common-error
      hidden></div>
 <section data-auth-page data-success-path="/books">
-    <form action="/api/auth/login" method="post" data-auth-form>
-        <input name="email" type="email" required>
-        <input name="password" type="password" required>
-        <button type="submit">인증</button>
+    <form data-auth-form data-auth-endpoint="/api/auth/login">
+        <fieldset disabled data-auth-fields>
+            <input name="email" type="email" required>
+            <input name="password" type="password" required>
+            <button type="submit">인증</button>
+        </fieldset>
     </form>
 </section>
 </body>

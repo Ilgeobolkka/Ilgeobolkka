@@ -95,18 +95,18 @@ class CommonPageControllerTest {
     }
 
     @Test
-    void 회원가입과_로그인은_CSRF가_있는_전용_폼을_렌더링한다() throws Exception {
+    void 회원가입과_로그인은_JS가_준비된_뒤_활성화되는_전용_폼을_렌더링한다() throws Exception {
         MvcResult signupResult = mockMvc.perform(get("/signup"))
                 .andExpect(status().isOk())
                 .andReturn();
-        CsrfToken signupCsrfToken = csrfToken(signupResult);
         String signupHtml = signupResult.getResponse().getContentAsString();
 
         assertTrue(signupHtml.contains("data-auth-page"));
         assertTrue(signupHtml.contains("data-auth-form"));
-        assertTrue(signupHtml.contains("action=\"/api/auth/signup\""));
-        assertTrue(signupHtml.contains("name=\"" + signupCsrfToken.getParameterName() + "\""));
-        assertTrue(signupHtml.contains("value=\"" + signupCsrfToken.getToken() + "\""));
+        assertTrue(signupHtml.contains("data-auth-endpoint=\"/api/auth/signup\""));
+        assertDisabledAuthFields(signupHtml);
+        assertFalse(signupHtml.contains("action=\"/api/auth/signup\""));
+        assertFalse(signupHtml.contains("<input type=\"hidden\""));
         assertTrue(signupHtml.contains("autocomplete=\"email\""));
         assertTrue(signupHtml.contains("autocomplete=\"new-password\""));
         assertTrue(signupHtml.contains("maxlength=\"255\""));
@@ -114,24 +114,26 @@ class CommonPageControllerTest {
         assertTrue(signupHtml.contains("영문, 숫자, 공백이 아닌 ASCII 특수문자"));
         assertTrue(signupHtml.contains("data-success-path=\"/login\""));
         assertTrue(signupHtml.contains("/js/auth/auth.js"));
+        assertTrue(signupHtml.contains("JavaScript를 활성화해 주세요."));
         assertFalse(signupHtml.contains("회원가입 화면을 준비하고 있습니다."));
 
         MvcResult loginResult = mockMvc.perform(get("/login"))
                 .andExpect(status().isOk())
                 .andReturn();
-        CsrfToken loginCsrfToken = csrfToken(loginResult);
         String loginHtml = loginResult.getResponse().getContentAsString();
 
         assertTrue(loginHtml.contains("data-auth-page"));
         assertTrue(loginHtml.contains("data-auth-form"));
-        assertTrue(loginHtml.contains("action=\"/api/auth/login\""));
-        assertTrue(loginHtml.contains("name=\"" + loginCsrfToken.getParameterName() + "\""));
-        assertTrue(loginHtml.contains("value=\"" + loginCsrfToken.getToken() + "\""));
+        assertTrue(loginHtml.contains("data-auth-endpoint=\"/api/auth/login\""));
+        assertDisabledAuthFields(loginHtml);
+        assertFalse(loginHtml.contains("action=\"/api/auth/login\""));
+        assertFalse(loginHtml.contains("<input type=\"hidden\""));
         assertTrue(loginHtml.contains("autocomplete=\"current-password\""));
         assertTrue(loginHtml.contains("maxlength=\"255\""));
         assertTrue(loginHtml.contains("minlength=\"8\""));
         assertTrue(loginHtml.contains("data-success-path=\"/books\""));
         assertTrue(loginHtml.contains("/js/auth/auth.js"));
+        assertTrue(loginHtml.contains("JavaScript를 활성화해 주세요."));
         assertFalse(loginHtml.contains("로그인 화면을 준비하고 있습니다."));
     }
 
@@ -483,6 +485,12 @@ class CommonPageControllerTest {
 
         mockMvc.perform(get("/css/common.css"))
                 .andExpect(status().isOk());
+    }
+
+    private void assertDisabledAuthFields(String html) {
+        assertTrue(html.matches(
+                "(?s).*<fieldset(?=[^>]*\\sdisabled(?:\\s|=|>))"
+                        + "(?=[^>]*\\sdata-auth-fields(?:\\s|=|>))[^>]*>.*"));
     }
 
     private CsrfToken csrfToken(MvcResult result) {
