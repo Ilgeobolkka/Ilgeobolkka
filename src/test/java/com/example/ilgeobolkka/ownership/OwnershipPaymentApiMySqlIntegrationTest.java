@@ -2,9 +2,12 @@ package com.example.ilgeobolkka.ownership;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.doAnswer;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.authentication;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -17,8 +20,10 @@ import com.example.ilgeobolkka.infra.portone.PortOnePayment;
 import com.example.ilgeobolkka.infra.portone.PortOnePaymentGateway;
 import com.example.ilgeobolkka.infra.portone.PortOnePaymentStatus;
 import com.example.ilgeobolkka.infra.portone.PortOnePaymentUnavailableException;
+import com.example.ilgeobolkka.ink.service.InkService;
 import com.example.ilgeobolkka.ownership.dto.CompleteOwnershipPaymentResponse;
 import com.example.ilgeobolkka.ownership.facade.OwnershipPaymentFacade;
+import com.example.ilgeobolkka.reading.dto.OpenPageResponse;
 import com.example.ilgeobolkka.reading.facade.ReadingFacade;
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
 import java.time.Instant;
@@ -40,6 +45,7 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -56,6 +62,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.authentication.TestingAuthenticationToken;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
+import org.springframework.test.util.AopTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -91,6 +99,9 @@ class OwnershipPaymentApiMySqlIntegrationTest {
     private final ReadingFacade readingFacade;
     private final FakePortOnePaymentGateway paymentGateway;
     private final TransactionTemplate transactionTemplate;
+
+    @MockitoSpyBean
+    private InkService inkService;
 
     @Autowired
     OwnershipPaymentApiMySqlIntegrationTest(
@@ -528,36 +539,104 @@ class OwnershipPaymentApiMySqlIntegrationTest {
                 () -> assertEquals(1, 소장_수를_조회한다()));
     }
 
-    @Test
-    void T_OWN_010_소장_완료와_페이지_열기를_동시에_처리해도_잉크는_한_번만_움직인다() throws Exception {
+    @RepeatedTest(5)
+    void T_OWN_010_소장이_먼저면_페이지를_대여하지_않는다() throws Exception {
         UUID paymentId = 결제를_준비하고_ID를_반환한다();
         paymentGateway.respondWith(결제(paymentId, PortOnePaymentStatus.PAID, BOOK_PRICE_WON));
+        AccountLockGate lockGate = 첫번째_계정_잠금을_멈춘다();
 
-        소장_완료와_페이지_열기를_동시에_실행한다(paymentId);
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        try {
+            Future<CompleteOwnershipPaymentResponse> completion = executor.submit(
+                    () -> ownershipPaymentFacade.complete(READER_ID, paymentId));
+            assertTrue(lockGate.firstLockHeld().await(5, TimeUnit.SECONDS));
 
-        int 차감_수 = 대여_수를_조회한다();
-        assertAll(
-                () -> assertEquals("PAID", 결제_상태를_조회한다(paymentId)),
-                () -> assertEquals(1, 소장_수를_조회한다()),
-                () -> assertTrue(차감_수 == 0 || 차감_수 == 1),
-                () -> assertEquals(차감_수, 잉크_내역_수를_조회한다()),
-                () -> assertEquals(70 - 차감_수, 잉크_잔액을_조회한다()));
+            Future<OpenPageResponse> pageOpening = executor.submit(
+                    () -> readingFacade.openNewSession(READER_ID, BOOK_ID, 1));
+            assertTrue(lockGate.secondLockRequested().await(5, TimeUnit.SECONDS));
+            assertThrows(TimeoutException.class, () -> pageOpening.get(300, TimeUnit.MILLISECONDS));
+
+            lockGate.releaseFirstLock().countDown();
+            CompleteOwnershipPaymentResponse completionResponse = completion.get(5, TimeUnit.SECONDS);
+            OpenPageResponse pageResponse = pageOpening.get(5, TimeUnit.SECONDS);
+
+            assertAll(
+                    () -> assertTrue(completionResponse.owned()),
+                    () -> assertTrue(pageResponse.owned()),
+                    () -> assertEquals(0, pageResponse.deductedInk()),
+                    () -> assertNull(pageResponse.rentedAt()),
+                    () -> assertNull(pageResponse.expiresAt()),
+                    () -> assertEquals("PAID", 결제_상태를_조회한다(paymentId)),
+                    () -> assertEquals(1, 소장_수를_조회한다()),
+                    () -> assertEquals(0, 대여_수를_조회한다()),
+                    () -> assertEquals(0, 잉크_내역_수를_조회한다()),
+                    () -> assertEquals(70, 잉크_잔액을_조회한다()));
+        } finally {
+            lockGate.releaseFirstLock().countDown();
+            executor.shutdownNow();
+        }
+    }
+
+    @RepeatedTest(5)
+    void T_OWN_010_대여가_먼저면_한_번_차감한_뒤_소장하고_환불하지_않는다() throws Exception {
+        UUID paymentId = 결제를_준비하고_ID를_반환한다();
+        paymentGateway.respondWith(결제(paymentId, PortOnePaymentStatus.PAID, BOOK_PRICE_WON));
+        AccountLockGate lockGate = 첫번째_계정_잠금을_멈춘다();
+
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        try {
+            Future<OpenPageResponse> pageOpening = executor.submit(
+                    () -> readingFacade.openNewSession(READER_ID, BOOK_ID, 1));
+            assertTrue(lockGate.firstLockHeld().await(5, TimeUnit.SECONDS));
+
+            Future<CompleteOwnershipPaymentResponse> completion = executor.submit(
+                    () -> ownershipPaymentFacade.complete(READER_ID, paymentId));
+            assertTrue(lockGate.secondLockRequested().await(5, TimeUnit.SECONDS));
+            assertThrows(TimeoutException.class, () -> completion.get(300, TimeUnit.MILLISECONDS));
+
+            lockGate.releaseFirstLock().countDown();
+            OpenPageResponse pageResponse = pageOpening.get(5, TimeUnit.SECONDS);
+            CompleteOwnershipPaymentResponse completionResponse = completion.get(5, TimeUnit.SECONDS);
+
+            assertAll(
+                    () -> assertFalse(pageResponse.owned()),
+                    () -> assertEquals(1, pageResponse.deductedInk()),
+                    () -> assertTrue(completionResponse.owned()),
+                    () -> assertEquals("PAID", 결제_상태를_조회한다(paymentId)),
+                    () -> assertEquals(1, 소장_수를_조회한다()),
+                    () -> assertEquals(1, 대여_수를_조회한다()),
+                    () -> assertEquals(1, 잉크_내역_수를_조회한다()),
+                    () -> assertEquals(69, 잉크_잔액을_조회한다()));
+        } finally {
+            lockGate.releaseFirstLock().countDown();
+            executor.shutdownNow();
+        }
     }
 
     /**
-     * T_OWN_010은 결과(0 또는 1잉크 차감)만 보므로 {@code inkService.lockAccount(...)} 호출을
-     * 지워도 우연히 통과할 수 있다. 이 테스트는 별도 트랜잭션이 {@code ink_account} 행을 잠근 채
-     * 놓지 않는 동안 소장 완료가 실제로 대기하는지를 latch로 직접 증명한다.
+     * 별도 트랜잭션이 {@code ink_account}를 잠근 동안 소장 완료가 계정 잠금 진입 지점에서 멈추고,
+     * {@code ownership_payment}는 다른 트랜잭션이 잠글 수 있어야 한다. 결제 행을 먼저 잠그면 두 번째
+     * 잠금 요청이 시간 안에 끝나지 않으므로 정본의 계정 선행 잠금 순서를 직접 검증한다.
      */
     @Test
-    void 소장_완료는_다른_트랜잭션이_쥔_InkAccount_행_잠금이_풀릴_때까지_대기한다() throws Exception {
+    void 소장_완료는_InkAccount를_ownershipPayment보다_먼저_잠근다() throws Exception {
         UUID paymentId = 결제를_준비하고_ID를_반환한다();
         paymentGateway.respondWith(결제(paymentId, PortOnePaymentStatus.PAID, BOOK_PRICE_WON));
 
         CountDownLatch lockHeld = new CountDownLatch(1);
         CountDownLatch releaseLock = new CountDownLatch(1);
+        CountDownLatch accountLockRequested = new CountDownLatch(1);
+        InkService inkServiceTarget = AopTestUtils.getUltimateTargetObject(inkService);
+        doAnswer(invocation -> {
+                    accountLockRequested.countDown();
+                    return invocation.callRealMethod();
+                })
+                .when(inkServiceTarget)
+                .lockAccount(READER_ID);
+
         ExecutorService lockHolder = Executors.newSingleThreadExecutor();
         ExecutorService completer = Executors.newSingleThreadExecutor();
+        ExecutorService paymentLockProbe = Executors.newSingleThreadExecutor();
         try {
             lockHolder.submit(() -> transactionTemplate.executeWithoutResult(status -> {
                 jdbcTemplate.queryForObject(
@@ -576,7 +655,15 @@ class OwnershipPaymentApiMySqlIntegrationTest {
             Future<CompleteOwnershipPaymentResponse> completion = completer.submit(
                     () -> ownershipPaymentFacade.complete(READER_ID, paymentId));
 
+            assertTrue(accountLockRequested.await(5, TimeUnit.SECONDS));
             assertThrows(TimeoutException.class, () -> completion.get(300, TimeUnit.MILLISECONDS));
+
+            Future<String> paymentStatus = paymentLockProbe.submit(() ->
+                    transactionTemplate.execute(status -> jdbcTemplate.queryForObject(
+                            "SELECT status FROM ownership_payment WHERE payment_id = ? FOR UPDATE",
+                            String.class,
+                            paymentId.toString())));
+            assertEquals("PENDING", paymentStatus.get(5, TimeUnit.SECONDS));
 
             releaseLock.countDown();
             CompleteOwnershipPaymentResponse response = completion.get(5, TimeUnit.SECONDS);
@@ -588,6 +675,44 @@ class OwnershipPaymentApiMySqlIntegrationTest {
             releaseLock.countDown();
             lockHolder.shutdownNow();
             completer.shutdownNow();
+            paymentLockProbe.shutdownNow();
+        }
+    }
+
+    @Test
+    void 동시_PAID_웹훅은_계정_잠금_뒤_결제의_최신_상태를_조회한다() throws Exception {
+        UUID paymentId = 결제를_준비하고_ID를_반환한다();
+        paymentGateway.respondWith(결제(paymentId, PortOnePaymentStatus.PAID, BOOK_PRICE_WON));
+
+        CountDownLatch accountLockReady = new CountDownLatch(2);
+        CountDownLatch startAccountLock = new CountDownLatch(1);
+        InkService inkServiceTarget = AopTestUtils.getUltimateTargetObject(inkService);
+        doAnswer(invocation -> {
+                    accountLockReady.countDown();
+                    assertTrue(startAccountLock.await(5, TimeUnit.SECONDS));
+                    return invocation.callRealMethod();
+                })
+                .when(inkServiceTarget)
+                .lockAccount(READER_ID);
+
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        try {
+            List<Future<?>> completions = List.of(
+                    executor.submit(() -> ownershipPaymentFacade.completeWebhook(paymentId)),
+                    executor.submit(() -> ownershipPaymentFacade.completeWebhook(paymentId)));
+            assertTrue(accountLockReady.await(5, TimeUnit.SECONDS));
+            startAccountLock.countDown();
+
+            for (Future<?> completion : completions) {
+                completion.get(5, TimeUnit.SECONDS);
+            }
+
+            assertAll(
+                    () -> assertEquals("PAID", 결제_상태를_조회한다(paymentId)),
+                    () -> assertEquals(1, 소장_수를_조회한다()));
+        } finally {
+            startAccountLock.countDown();
+            executor.shutdownNow();
         }
     }
 
@@ -780,37 +905,33 @@ class OwnershipPaymentApiMySqlIntegrationTest {
         }
     }
 
-    /**
-     * 두 요청은 같은 {@code InkAccount} 잠금으로 순서화된다. 소장이 먼저 반영되면 페이지 열기가
-     * 재확인에서 소장을 보고 차감하지 않고, 대여가 먼저면 1잉크 차감 뒤 소장이 부여된다. 어느 쪽이
-     * 먼저인지는 고정하지 않고, 두 결과 모두 잉크와 대여가 어긋나지 않는지만 확인한다.
-     */
-    private void 소장_완료와_페이지_열기를_동시에_실행한다(UUID paymentId) throws Exception {
-        ExecutorService executor = Executors.newFixedThreadPool(2);
-        CountDownLatch ready = new CountDownLatch(2);
-        CountDownLatch start = new CountDownLatch(1);
-        try {
-            List<Future<?>> futures = new ArrayList<>();
-            futures.add(executor.submit(() -> {
-                ready.countDown();
-                assertTrue(start.await(5, TimeUnit.SECONDS));
-                return ownershipPaymentFacade.complete(READER_ID, paymentId);
-            }));
-            futures.add(executor.submit(() -> {
-                ready.countDown();
-                assertTrue(start.await(5, TimeUnit.SECONDS));
-                return readingFacade.openNewSession(READER_ID, BOOK_ID, 1);
-            }));
-
-            assertTrue(ready.await(5, TimeUnit.SECONDS));
-            start.countDown();
-            for (Future<?> future : futures) {
-                future.get(10, TimeUnit.SECONDS);
-            }
-        } finally {
-            executor.shutdownNow();
-        }
+    private AccountLockGate 첫번째_계정_잠금을_멈춘다() {
+        CountDownLatch firstLockHeld = new CountDownLatch(1);
+        CountDownLatch releaseFirstLock = new CountDownLatch(1);
+        CountDownLatch secondLockRequested = new CountDownLatch(1);
+        AtomicInteger lockOrder = new AtomicInteger();
+        InkService inkServiceTarget = AopTestUtils.getUltimateTargetObject(inkService);
+        doAnswer(invocation -> {
+                    int order = lockOrder.incrementAndGet();
+                    if (order == 2) {
+                        secondLockRequested.countDown();
+                    }
+                    Object result = invocation.callRealMethod();
+                    if (order == 1) {
+                        firstLockHeld.countDown();
+                        assertTrue(releaseFirstLock.await(5, TimeUnit.SECONDS));
+                    }
+                    return result;
+                })
+                .when(inkServiceTarget)
+                .lockAccount(READER_ID);
+        return new AccountLockGate(firstLockHeld, releaseFirstLock, secondLockRequested);
     }
+
+    private record AccountLockGate(
+            CountDownLatch firstLockHeld,
+            CountDownLatch releaseFirstLock,
+            CountDownLatch secondLockRequested) {}
 
     private PortOnePayment 결제(UUID paymentId, PortOnePaymentStatus status, long totalAmount) {
         return new PortOnePayment(
