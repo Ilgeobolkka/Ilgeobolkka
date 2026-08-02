@@ -11,6 +11,7 @@ import {
 } from "/js/viewer/viewer-page.js";
 
 const DEFAULT_ERROR_MESSAGE = "요청을 처리하지 못했습니다. 잠시 후 다시 시도해 주세요.";
+const AUTH_REQUEST_STORAGE_KEY = "browser-smoke-auth-request";
 const result = document.querySelector("[data-browser-smoke-result]");
 const fixtureContainer = document.querySelector("[data-logout-fixtures]");
 let assertionCount = 0;
@@ -44,11 +45,15 @@ async function run() {
         await verifyCsrfHandling();
         await verifyNoAutomaticAuthenticationRedirect();
         await verifyPageContentRequest();
+        await verifyCatalogLatestRequestWins();
     } finally {
         window.fetch = originalFetch;
     }
 
     verifySafeErrorDisplay();
+    await verifyAuthSuccess("signup", "/api/auth/signup", "/login");
+    await verifyAuthSuccess("login", "/api/auth/login", "/books");
+    await verifyAuthFailure();
     await verifyViewerFlow();
     await verifyViewerInitialPageAndRecovery();
     await verifyViewerRenderFailureStopsQueue();
@@ -154,6 +159,199 @@ async function verifyPageContentRequest() {
         409,
         "viewer-replaced-request",
         "새 뷰어로 교체된 열람 세션입니다.");
+}
+
+async function verifyCatalogLatestRequestWins() {
+    const root = createCatalogFixture();
+    fixtureContainer.append(root);
+    const originalPath = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+    let resolvePreviousSearch;
+    let previousResponseConsumed = false;
+    let rejectPreviousSearch;
+    let previousErrorCompleted = false;
+
+    window.fetch = async (url) => {
+        const keyword = url.searchParams.get("keyword");
+        if (keyword === "이전 검색") {
+            return new Promise((resolve) => {
+                resolvePreviousSearch = () => resolve({
+                    ok: true,
+                    status: 200,
+                    headers: new Headers(),
+                    json: async () => {
+                        previousResponseConsumed = true;
+                        return catalogResponse("이전 검색 도서", 4);
+                    }
+                });
+            });
+        }
+        if (keyword === "이전 오류") {
+            return new Promise((resolve, reject) => {
+                rejectPreviousSearch = () => {
+                    previousErrorCompleted = true;
+                    reject(new TypeError("강제 지연 오류"));
+                };
+            });
+        }
+        if (keyword === "최신 검색" || keyword === "오류 뒤 최신") {
+            const title = keyword === "최신 검색" ? "최신 검색 도서" : "오류 뒤 최신 도서";
+            const totalPages = keyword === "최신 검색" ? 1 : 2;
+            const page = Number(url.searchParams.get("page"));
+            return new Response(JSON.stringify(catalogResponse(title, totalPages, page)), {
+                status: 200,
+                headers: {"Content-Type": "application/json"}
+            });
+        }
+        return new Response(JSON.stringify(catalogResponse("초기 도서", 1)), {
+            status: 200,
+            headers: {"Content-Type": "application/json"}
+        });
+    };
+
+    try {
+        await import(`/js/book/catalog.js?browser-smoke=${Date.now()}`);
+        await waitFor(
+            () => root.querySelector("[data-book-title]")?.textContent === "초기 도서",
+            "초기 도서 목록을 표시해야 합니다.");
+
+        const form = root.querySelector("[data-book-search-form]");
+        const search = root.querySelector("[data-book-search]");
+        search.value = "이전 검색";
+        form.requestSubmit();
+        await waitFor(
+            () => typeof resolvePreviousSearch === "function",
+            "이전 검색 응답을 지연할 수 있어야 합니다.");
+
+        search.value = "최신 검색";
+        form.requestSubmit();
+        await waitFor(
+            () => root.querySelector("[data-book-title]")?.textContent === "최신 검색 도서",
+            "최신 검색 결과를 먼저 표시해야 합니다.");
+
+        resolvePreviousSearch();
+        await waitFor(
+            () => previousResponseConsumed,
+            "지연된 이전 검색 응답이 완료되어야 합니다.");
+        await new Promise((resolve) => setTimeout(resolve, 0));
+
+        const currentUrl = new URL(window.location.href);
+        assert(
+            root.querySelector("[data-book-title]")?.textContent === "최신 검색 도서",
+            "지연된 이전 응답이 최신 검색 결과를 덮어쓰면 안 됩니다.");
+        assert(
+            root.querySelector("[data-book-page]").textContent === "1페이지 / 전체 1페이지"
+                && root.querySelector("[data-book-next]").disabled,
+            "지연된 이전 응답이 최신 페이지 상태를 덮어쓰면 안 됩니다.");
+        assert(
+            currentUrl.pathname === "/books"
+                && currentUrl.searchParams.get("page") === "1"
+                && currentUrl.searchParams.get("keyword") === "최신 검색",
+            "지연된 이전 응답이 최신 검색 URL을 덮어쓰면 안 됩니다.");
+
+        search.value = "이전 오류";
+        form.requestSubmit();
+        await waitFor(
+            () => typeof rejectPreviousSearch === "function",
+            "이전 검색 오류를 지연할 수 있어야 합니다.");
+
+        search.value = "오류 뒤 최신";
+        form.requestSubmit();
+        await waitFor(
+            () => root.querySelector("[data-book-title]")?.textContent === "오류 뒤 최신 도서",
+            "이전 요청 오류보다 최신 검색 결과를 먼저 표시해야 합니다.");
+
+        rejectPreviousSearch();
+        await waitFor(
+            () => previousErrorCompleted,
+            "지연된 이전 검색 오류가 완료되어야 합니다.");
+        await new Promise((resolve) => setTimeout(resolve, 0));
+
+        const urlAfterPreviousError = new URL(window.location.href);
+        assert(
+            root.querySelector("[data-book-title]")?.textContent === "오류 뒤 최신 도서"
+                && root.querySelector("[data-book-page]").textContent === "1페이지 / 전체 2페이지"
+                && !root.querySelector("[data-book-next]").disabled,
+            "지연된 이전 오류가 최신 검색 결과와 페이지 상태를 지우면 안 됩니다.");
+        assert(
+            document.querySelector("[data-common-error]").hidden,
+            "지연된 이전 오류를 현재 검색의 오류로 표시하면 안 됩니다.");
+        assert(
+            urlAfterPreviousError.searchParams.get("keyword") === "오류 뒤 최신",
+            "지연된 이전 오류가 최신 검색 URL을 바꾸면 안 됩니다.");
+
+        root.querySelector("[data-book-next]").click();
+        await waitFor(
+            () => root.querySelector("[data-book-page]").textContent === "2페이지 / 전체 2페이지",
+            "다음 버튼은 두 번째 페이지를 표시해야 합니다.");
+        assert(
+            new URL(window.location.href).searchParams.get("page") === "2",
+            "다음 페이지 이동은 브라우저 기록에 두 번째 페이지를 추가해야 합니다.");
+
+        window.history.back();
+        await waitFor(
+            () => new URL(window.location.href).searchParams.get("page") === "1"
+                && root.querySelector("[data-book-page]").textContent === "1페이지 / 전체 2페이지",
+            "뒤로 가기는 이전 도서 목록 페이지를 복원해야 합니다.");
+        assert(
+            search.value === "오류 뒤 최신",
+            "뒤로 가기는 URL의 검색어를 검색 입력에 복원해야 합니다.");
+
+        window.history.forward();
+        await waitFor(
+            () => new URL(window.location.href).searchParams.get("page") === "2"
+                && root.querySelector("[data-book-page]").textContent === "2페이지 / 전체 2페이지",
+            "앞으로 가기는 다음 도서 목록 페이지를 복원해야 합니다.");
+    } finally {
+        root.remove();
+        window.history.replaceState(null, "", originalPath);
+    }
+}
+
+function createCatalogFixture() {
+    const root = document.createElement("section");
+    root.dataset.bookListRoot = "";
+    root.innerHTML = `
+        <form data-book-search-form>
+            <input type="search" data-book-search>
+            <button type="submit">검색</button>
+        </form>
+        <p data-book-status></p>
+        <div data-book-list></div>
+        <section data-book-empty hidden>
+            <h2 data-book-empty-title></h2>
+            <p data-book-empty-description></p>
+        </section>
+        <button type="button" data-book-previous disabled>이전</button>
+        <span data-book-page></span>
+        <button type="button" data-book-next disabled>다음</button>
+        <template data-book-card-template>
+            <article>
+                <img data-book-cover alt="">
+                <div data-book-cover-placeholder hidden>표지 없음</div>
+                <span data-book-category></span>
+                <a data-book-title></a>
+                <span data-book-author></span>
+                <span data-book-price></span>
+            </article>
+        </template>
+    `;
+    return root;
+}
+
+function catalogResponse(title, totalPages, page = 1) {
+    return {
+        books: [{
+            bookId: totalPages,
+            category: "소설",
+            title,
+            author: "테스트 저자",
+            bookPrice: 10000,
+            coverImagePath: null
+        }],
+        page,
+        totalPages,
+        totalCount: totalPages
+    };
 }
 
 async function verifyViewerFlow() {
@@ -788,6 +986,78 @@ function verifySafeErrorDisplay() {
     clearCommonError();
     assert(errorRegion.hidden, "오류를 지우면 오류 영역을 숨겨야 합니다.");
     assert(errorRegion.textContent === "", "오류를 지우면 기존 메시지를 제거해야 합니다.");
+}
+
+async function verifyAuthSuccess(flow, expectedApiPath, expectedSuccessPath) {
+    const iframe = await loadAuthFixture(flow, "success");
+    const iframeDocument = iframe.contentDocument;
+    iframeDocument.querySelector("[name='email']").value = "reader@example.com";
+    iframeDocument.querySelector("[name='password']").value = "Password1!";
+    iframeDocument.querySelector("[data-auth-form]").requestSubmit();
+
+    await waitFor(
+        () => iframe.contentWindow.location.pathname === expectedSuccessPath,
+        `${flow} 성공 뒤 ${expectedSuccessPath}(으)로 이동해야 합니다.`);
+
+    assertAuthRequest(iframe, expectedApiPath);
+    iframe.contentWindow.sessionStorage.removeItem(AUTH_REQUEST_STORAGE_KEY);
+    iframe.remove();
+}
+
+async function verifyAuthFailure() {
+    const iframe = await loadAuthFixture("login", "server-error");
+    const iframeDocument = iframe.contentDocument;
+    iframeDocument.querySelector("[name='email']").value = "reader@example.com";
+    iframeDocument.querySelector("[name='password']").value = "Password1!";
+    iframeDocument.querySelector("[data-auth-form]").requestSubmit();
+
+    await waitFor(
+        () => !iframeDocument.querySelector("[data-common-error]").hidden,
+        "로그인 실패 오류를 현재 화면에 표시해야 합니다.");
+    assert(
+        iframe.contentWindow.location.pathname === "/auth-fixture.html",
+        "로그인 실패에서는 현재 화면을 유지해야 합니다.");
+    assert(
+        iframeDocument.querySelector("[data-common-error]").textContent === "강제 인증 오류",
+        "로그인 실패의 공개 오류 메시지를 표시해야 합니다.");
+    assert(
+        iframeDocument.querySelector("button[type='submit']").disabled === false,
+        "로그인 실패 뒤 다시 시도할 수 있어야 합니다.");
+    assert(
+        iframeDocument.activeElement === iframeDocument.querySelector("[data-common-error]"),
+        "로그인 실패 오류 영역으로 포커스를 이동해야 합니다.");
+    assertAuthRequest(iframe, "/api/auth/login");
+    iframe.contentWindow.sessionStorage.removeItem(AUTH_REQUEST_STORAGE_KEY);
+    iframe.remove();
+}
+
+function assertAuthRequest(iframe, expectedApiPath) {
+    const request = JSON.parse(
+        iframe.contentWindow.sessionStorage.getItem(AUTH_REQUEST_STORAGE_KEY));
+    assert(request.path === expectedApiPath, `${expectedApiPath} 인증 API를 호출해야 합니다.`);
+    assert(request.method === "POST", "인증 API는 POST로 호출해야 합니다.");
+    assert(request.credentials === "same-origin", "인증 요청은 same-origin 자격 증명만 전송해야 합니다.");
+    assert(request.csrfToken === "browser-smoke-token", "인증 요청에 페이지의 CSRF 토큰을 추가해야 합니다.");
+    assert(request.contentType === "application/json", "인증 요청은 JSON Content-Type을 사용해야 합니다.");
+    assert(
+        request.body.email === "reader@example.com"
+            && request.body.password === "Password1!",
+        "인증 폼의 이메일과 비밀번호를 JSON 본문에 담아야 합니다.");
+}
+
+async function loadAuthFixture(flow, mode) {
+    const iframe = document.createElement("iframe");
+    const loaded = new Promise((resolve) => iframe.addEventListener("load", resolve, {once: true}));
+    iframe.src = `/auth-fixture.html?flow=${flow}&mode=${mode}`;
+    fixtureContainer.append(iframe);
+    await loaded;
+    await waitFor(
+        () => iframe.contentDocument.body.dataset.authFixtureReady === "true",
+        `${flow} ${mode} 인증 fixture가 준비되어야 합니다.`);
+    assert(
+        iframe.contentDocument.querySelector("[data-auth-fields]")?.disabled === false,
+        `${flow} 인증 필드는 스크립트 준비 뒤 활성화되어야 합니다.`);
+    return iframe;
 }
 
 async function verifyLogoutNavigation(mode) {

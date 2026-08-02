@@ -24,7 +24,8 @@ public class CommonPageController {
 
     @GetMapping("/books")
     String books(Model model) {
-        return placeholder(model, "도서 탐색", "도서 목록 화면을 준비하고 있습니다.");
+        model.addAttribute("pageTitle", "도서 탐색");
+        return "pages/books";
     }
 
     @GetMapping("/books/{bookId}")
@@ -37,12 +38,14 @@ public class CommonPageController {
 
     @GetMapping("/signup")
     String signup(Model model) {
-        return placeholder(model, "회원가입", "회원가입 화면을 준비하고 있습니다.");
+        model.addAttribute("pageTitle", "회원가입");
+        return "pages/signup";
     }
 
     @GetMapping("/login")
     String login(Model model) {
-        return placeholder(model, "로그인", "로그인 화면을 준비하고 있습니다.");
+        model.addAttribute("pageTitle", "로그인");
+        return "pages/login";
     }
 
     @GetMapping("/books/{bookId}/viewer")
@@ -73,12 +76,6 @@ public class CommonPageController {
     String library(Model model) {
         model.addAttribute("pageTitle", "내 서재");
         return "pages/library";
-    }
-
-    private String placeholder(Model model, String pageTitle, String pageDescription) {
-        model.addAttribute("pageTitle", pageTitle);
-        model.addAttribute("pageDescription", pageDescription);
-        return "pages/placeholder";
     }
 
     private boolean paymentEnabled() {

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/shell :: page(${pageTitle}, ~{::section})}">
+<body>
+<section class="auth-page mx-auto"
+         data-auth-page
+         data-success-path="/books"
+         aria-labelledby="login-title">
+    <div class="bg-white border rounded-3 p-4 p-md-5">
+        <h1 class="h2 mb-2" id="login-title">로그인</h1>
+        <p class="text-secondary mb-4">가입한 이메일과 비밀번호를 입력해 주세요.</p>
+
+        <noscript>
+            <p class="alert alert-warning">로그인하려면 JavaScript를 활성화해 주세요.</p>
+        </noscript>
+
+        <form method="post" data-auth-form th:data-auth-endpoint="@{/api/auth/login}">
+            <fieldset disabled data-auth-fields>
+                <div class="mb-3">
+                    <label class="form-label" for="login-email">이메일</label>
+                    <input class="form-control"
+                           id="login-email"
+                           name="email"
+                           type="email"
+                           maxlength="255"
+                           autocomplete="email"
+                           required>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label" for="login-password">비밀번호</label>
+                    <input class="form-control"
+                           id="login-password"
+                           name="password"
+                           type="password"
+                           minlength="8"
+                           autocomplete="current-password"
+                           required>
+                </div>
+
+                <button class="btn btn-primary w-100" type="submit">로그인</button>
+            </fieldset>
+        </form>
+
+        <p class="text-center mt-4 mb-0">
+            계정이 없으신가요?
+            <a th:href="@{/signup}">회원가입</a>
+        </p>
+    </div>
+
+    <script type="module" th:src="@{/js/auth/auth.js}"></script>
+</section>
+</body>
+</html>

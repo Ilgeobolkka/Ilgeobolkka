@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/shell :: page(${pageTitle}, ~{::section})}">
+<body>
+<section data-book-list-root aria-labelledby="book-list-title">
+    <header class="mb-4">
+        <h1 class="h2 mb-2" id="book-list-title">도서 탐색</h1>
+        <p class="mb-0 text-secondary">제목이나 저자로 필요한 도서를 찾아보세요.</p>
+    </header>
+
+    <form class="row g-2 mb-4"
+          th:action="@{/books}"
+          method="get"
+          role="search"
+          data-book-search-form>
+        <div class="col">
+            <label class="visually-hidden" for="book-search">제목 또는 저자 검색</label>
+            <input class="form-control"
+                   id="book-search"
+                   name="keyword"
+                   type="search"
+                   placeholder="제목 또는 저자를 입력하세요"
+                   autocomplete="off"
+                   data-book-search>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-primary" type="submit">검색</button>
+        </div>
+    </form>
+
+    <p class="text-secondary" aria-live="polite" data-book-status>
+        도서 목록을 불러오고 있습니다.
+    </p>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-5 g-4 mb-4"
+         data-book-list></div>
+
+    <section class="bg-white border rounded-3 p-4 text-center mb-4"
+             data-book-empty
+             hidden>
+        <h2 class="h4" data-book-empty-title>표시할 도서가 없습니다.</h2>
+        <p class="text-secondary mb-0" data-book-empty-description></p>
+    </section>
+
+    <nav class="d-flex align-items-center justify-content-center gap-3"
+         aria-label="도서 목록 페이지">
+        <button class="btn btn-outline-secondary"
+                type="button"
+                data-book-previous
+                disabled>이전</button>
+        <span class="text-secondary" data-book-page>불러오는 중</span>
+        <button class="btn btn-outline-secondary"
+                type="button"
+                data-book-next
+                disabled>다음</button>
+    </nav>
+
+    <template data-book-card-template>
+        <article class="col">
+            <div class="card h-100 shadow-sm">
+                <img class="card-img-top book-card-cover" data-book-cover alt="">
+                <div class="book-card-cover-placeholder align-items-center justify-content-center text-secondary"
+                     data-book-cover-placeholder
+                     hidden>
+                    표지 없음
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <p class="small text-secondary mb-1" data-book-category></p>
+                    <h2 class="h5 card-title">
+                        <a class="stretched-link text-decoration-none" data-book-title></a>
+                    </h2>
+                    <p class="mb-2" data-book-author></p>
+                    <p class="fw-semibold mt-auto mb-0" data-book-price></p>
+                </div>
+            </div>
+        </article>
+    </template>
+
+    <script type="module" th:src="@{/js/book/catalog.js}"></script>
+</section>
+</body>
+</html>

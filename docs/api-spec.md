@@ -19,8 +19,8 @@
 
 - JSON API는 `/api` 아래에 둡니다.
 - 인증이 필요한 요청의 독자 식별자는 서버 세션의 `Principal`에서 얻고 요청 값으로 받지 않습니다.
-- 상태 변경 요청은 CSRF 토큰을 검증합니다. Thymeleaf 폼은 hidden 필드, JavaScript `fetch`는 서버 렌더링
-  페이지의 `_csrf`, `_csrf_header` meta 태그를 사용하며 별도 토큰 API는 제공하지 않습니다.
+- 상태 변경 요청은 CSRF 토큰을 검증합니다. 브라우저가 서버에 직접 제출하는 Thymeleaf 폼은 hidden 필드,
+  JavaScript `fetch`는 서버 렌더링 페이지의 `_csrf`, `_csrf_header` meta 태그를 사용하며 별도 토큰 API는 제공하지 않습니다.
 - `POST /api/webhooks/portone`만 브라우저 세션과 CSRF 대신 PortOne V2 웹훅 서명을 검증합니다.
 - JSON 요청은 `Content-Type: application/json`을 사용하고 JSON 응답은 UTF-8로 인코딩합니다. 페이지 콘텐츠와
   바디가 없는 웹훅·smoke 응답은 예외입니다.
