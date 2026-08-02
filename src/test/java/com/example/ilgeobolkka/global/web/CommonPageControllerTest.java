@@ -157,6 +157,8 @@ class CommonPageControllerTest {
         assertTrue(html.contains("data-book-next"));
         assertTrue(html.contains("aria-label=\"도서 목록 페이지\""));
         assertTrue(html.contains("aria-live=\"polite\""));
+        assertEquals(1, html.split("aria-live=\"polite\"", -1).length - 1);
+        assertTrue(html.contains("<span class=\"text-secondary\" data-book-page>"));
         assertTrue(html.contains("/js/book/catalog.js"));
         assertFalse(html.contains("도서 목록 화면을 준비하고 있습니다."));
     }

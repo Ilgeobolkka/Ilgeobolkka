@@ -15,19 +15,25 @@ if (root) {
     elements.searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         keyword = elements.search.value.trim();
-        loadPage(1);
+        loadPage(1, "push");
     });
     elements.previous.addEventListener("click", () => {
         const previousPage = currentPage > totalPages && totalPages > 0
             ? totalPages
             : currentPage - 1;
-        loadPage(previousPage);
+        loadPage(previousPage, "push");
     });
-    elements.next.addEventListener("click", () => loadPage(currentPage + 1));
+    elements.next.addEventListener("click", () => loadPage(currentPage + 1, "push"));
+    window.addEventListener("popstate", () => {
+        const query = new URLSearchParams(window.location.search);
+        keyword = (query.get("keyword") || "").trim();
+        elements.search.value = keyword;
+        loadPage(parsePage(query.get("page")));
+    });
 
-    loadPage(currentPage);
+    loadPage(currentPage, "replace");
 
-    async function loadPage(page) {
+    async function loadPage(page, historyMode) {
         const sequence = ++requestSequence;
         currentPage = page;
         clearCommonError();
@@ -51,7 +57,7 @@ if (root) {
             totalPages = response.totalPages;
             renderBooks(response.books);
             renderPage(response);
-            window.history.replaceState(null, "", `/books?${query}`);
+            updateHistory(query, historyMode);
         } catch (error) {
             if (sequence !== requestSequence) {
                 return;
@@ -93,12 +99,26 @@ if (root) {
     }
 
     function renderPage(response) {
-        elements.status.textContent = response.books.length === 0
+        const resultStatus = response.books.length === 0
             ? `전체 ${formatNumber(response.totalCount)}권 중 표시할 도서가 없습니다.`
             : `전체 ${formatNumber(response.totalCount)}권 중 ${response.books.length}권을 표시했습니다.`;
+        const pageStatus = response.totalPages === 0
+            ? "전체 페이지가 없습니다."
+            : `${response.page}페이지, 전체 ${response.totalPages}페이지입니다.`;
+        elements.status.textContent = `${resultStatus} ${pageStatus}`;
         elements.page.textContent = `${response.page}페이지 / 전체 ${response.totalPages}페이지`;
         elements.previous.disabled = response.totalPages === 0 || response.page <= 1;
         elements.next.disabled = response.totalPages === 0 || response.page >= response.totalPages;
+    }
+
+    function updateHistory(query, historyMode) {
+        const url = `/books?${query}`;
+        if (historyMode === "replace") {
+            window.history.replaceState(null, "", url);
+        } else if (historyMode === "push"
+                && url !== `${window.location.pathname}${window.location.search}`) {
+            window.history.pushState(null, "", url);
+        }
     }
 }
 

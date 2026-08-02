@@ -196,7 +196,8 @@ async function verifyCatalogLatestRequestWins() {
         if (keyword === "최신 검색" || keyword === "오류 뒤 최신") {
             const title = keyword === "최신 검색" ? "최신 검색 도서" : "오류 뒤 최신 도서";
             const totalPages = keyword === "최신 검색" ? 1 : 2;
-            return new Response(JSON.stringify(catalogResponse(title, totalPages)), {
+            const page = Number(url.searchParams.get("page"));
+            return new Response(JSON.stringify(catalogResponse(title, totalPages, page)), {
                 status: 200,
                 headers: {"Content-Type": "application/json"}
             });
@@ -277,6 +278,29 @@ async function verifyCatalogLatestRequestWins() {
         assert(
             urlAfterPreviousError.searchParams.get("keyword") === "오류 뒤 최신",
             "지연된 이전 오류가 최신 검색 URL을 바꾸면 안 됩니다.");
+
+        root.querySelector("[data-book-next]").click();
+        await waitFor(
+            () => root.querySelector("[data-book-page]").textContent === "2페이지 / 전체 2페이지",
+            "다음 버튼은 두 번째 페이지를 표시해야 합니다.");
+        assert(
+            new URL(window.location.href).searchParams.get("page") === "2",
+            "다음 페이지 이동은 브라우저 기록에 두 번째 페이지를 추가해야 합니다.");
+
+        window.history.back();
+        await waitFor(
+            () => new URL(window.location.href).searchParams.get("page") === "1"
+                && root.querySelector("[data-book-page]").textContent === "1페이지 / 전체 2페이지",
+            "뒤로 가기는 이전 도서 목록 페이지를 복원해야 합니다.");
+        assert(
+            search.value === "오류 뒤 최신",
+            "뒤로 가기는 URL의 검색어를 검색 입력에 복원해야 합니다.");
+
+        window.history.forward();
+        await waitFor(
+            () => new URL(window.location.href).searchParams.get("page") === "2"
+                && root.querySelector("[data-book-page]").textContent === "2페이지 / 전체 2페이지",
+            "앞으로 가기는 다음 도서 목록 페이지를 복원해야 합니다.");
     } finally {
         root.remove();
         window.history.replaceState(null, "", originalPath);
@@ -314,7 +338,7 @@ function createCatalogFixture() {
     return root;
 }
 
-function catalogResponse(title, totalPages) {
+function catalogResponse(title, totalPages, page = 1) {
     return {
         books: [{
             bookId: totalPages,
@@ -324,7 +348,7 @@ function catalogResponse(title, totalPages) {
             bookPrice: 10000,
             coverImagePath: null
         }],
-        page: 1,
+        page,
         totalPages,
         totalCount: totalPages
     };
