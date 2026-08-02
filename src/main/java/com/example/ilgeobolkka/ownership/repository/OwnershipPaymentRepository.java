@@ -21,6 +21,9 @@ public interface OwnershipPaymentRepository extends JpaRepository<OwnershipPayme
 
     Optional<OwnershipPayment> findByPaymentIdAndReaderId(UUID paymentId, long readerId);
 
+    @Query("SELECT payment.readerId FROM OwnershipPayment payment WHERE payment.paymentId = :paymentId")
+    Optional<Long> findReaderIdByPaymentId(@Param("paymentId") UUID paymentId);
+
     boolean existsByPaymentId(UUID paymentId);
 
     long countByReaderIdAndStatus(long readerId, OwnershipPaymentStatus status);
