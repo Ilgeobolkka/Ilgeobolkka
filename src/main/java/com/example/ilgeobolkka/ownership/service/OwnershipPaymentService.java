@@ -83,11 +83,16 @@ public class OwnershipPaymentService {
         return Optional.empty();
     }
 
+    /**
+     * 페이지 열기와 같은 {@code InkAccount}를 먼저 잠근 뒤 결제 행을 잠가, 소장과 신규 대여를 독자
+     * 단위로 순서화한다.
+     */
     @Transactional
     public CompletionResult applyPaymentResult(
             long readerId,
             UUID paymentId,
             PortOnePayment portOnePayment) {
+        inkService.lockAccount(readerId);
         OwnershipPayment payment = findPaymentForUpdate(paymentId, readerId);
         if (payment.getStatus() == OwnershipPaymentStatus.PAID) {
             return CompletionResult.paid(payment);
@@ -99,9 +104,15 @@ public class OwnershipPaymentService {
         return applyPendingPaymentResult(payment, portOnePayment);
     }
 
+    /**
+     * 웹훅은 결제에서 잠금 대상 독자를 먼저 식별하되, 상태 판정은 계정 잠금 뒤 결제 행을 다시 잠가
+     * 조회한 결과로 수행한다.
+     */
     @Transactional
     public CompletionResult applyWebhookPaymentResult(
             UUID paymentId, PortOnePayment portOnePayment) {
+        long readerId = findPaymentReaderId(paymentId);
+        inkService.lockAccount(readerId);
         OwnershipPayment payment = findPaymentForUpdate(paymentId);
         if (payment.getStatus() == OwnershipPaymentStatus.PAID) {
             return CompletionResult.paid(payment);
@@ -112,19 +123,6 @@ public class OwnershipPaymentService {
         return applyPendingPaymentResult(payment, portOnePayment);
     }
 
-    /**
-     * 소장을 부여하기 직전에만 독자의 {@code InkAccount}를 잠근다. 같은 독자의 페이지 열기도 이
-     * 계정을 잠그므로, 두 요청은 이 잠금 하나로 순서가 정해진다
-     * ({@code docs/prd/product-policy.md#페이지-열기-처리-순서와-원자성},
-     * {@code docs/adr/domain/0010-model-page-rentals-with-ink-ledger.md}).
-     *
-     * <p>검증 실패·미완료 상태는 소장에 영향을 주지 않으므로 그 경로에서는 계정을 잠그지 않는다.
-     * 완료 폴링처럼 반복 호출되는 경로에서 페이지 열기와 불필요하게 경합하지 않기 위해서다.
-     *
-     * <p>결제 행을 이미 잠근 뒤에 계정을 잠근다. 준비(prepare)는 계정을 잠근 채 결제 행을 새로 넣기만
-     * 하고 기존 결제 행을 기다리지 않으므로 순환이 생기지 않는다. 브라우저 완료와 웹훅이 같은 순서를
-     * 쓰도록 두 경로가 공유하는 이 지점에 둔다.
-     */
     private CompletionResult applyPendingPaymentResult(
             OwnershipPayment payment, PortOnePayment portOnePayment) {
         if (portOnePayment.status() == PortOnePaymentStatus.NOT_FOUND) {
@@ -149,7 +147,6 @@ public class OwnershipPaymentService {
             return CompletionResult.failure(ErrorCode.PAYMENT_VERIFICATION_FAILED);
         }
 
-        inkService.lockAccount(payment.getReaderId());
         payment.markPaid(portOnePayment.paidAt());
         bookOwnershipRepository.save(
                 BookOwnership.create(
@@ -184,6 +181,17 @@ public class OwnershipPaymentService {
     private OwnershipPayment findPayment(UUID paymentId, long readerId) {
         return ownershipPaymentRepository
                 .findByPaymentIdAndReaderId(paymentId, readerId)
+                .orElseThrow(() -> new OwnershipPaymentNotFoundException(paymentId));
+    }
+
+    /**
+     * 웹훅에는 독자 식별자가 없으므로 계정 잠금 대상을 정하기 위한 읽기다. {@code readerId}는 결제 생성
+     * 뒤 바뀌지 않는다. 스칼라 값만 조회해 결제 엔티티를 영속성 컨텍스트에 넣지 않고, 계정을 잠근 다음
+     * 결제 행을 처음 조회한 최신 상태로 판정한다.
+     */
+    private long findPaymentReaderId(UUID paymentId) {
+        return ownershipPaymentRepository
+                .findReaderIdByPaymentId(paymentId)
                 .orElseThrow(() -> new OwnershipPaymentNotFoundException(paymentId));
     }
 
