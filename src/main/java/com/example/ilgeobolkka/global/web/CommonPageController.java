@@ -78,12 +78,6 @@ public class CommonPageController {
         return "pages/library";
     }
 
-    private String placeholder(Model model, String pageTitle, String pageDescription) {
-        model.addAttribute("pageTitle", pageTitle);
-        model.addAttribute("pageDescription", pageDescription);
-        return "pages/placeholder";
-    }
-
     private boolean paymentEnabled() {
         return environment.acceptsProfiles(Profiles.of("!prod"))
                 && environment.getProperty("portone.payment.enabled", Boolean.class, false);
