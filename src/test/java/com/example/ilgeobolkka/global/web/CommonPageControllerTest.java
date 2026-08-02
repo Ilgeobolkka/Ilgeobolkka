@@ -104,6 +104,7 @@ class CommonPageControllerTest {
         assertTrue(signupHtml.contains("data-auth-page"));
         assertTrue(signupHtml.contains("data-auth-form"));
         assertTrue(signupHtml.contains("data-auth-endpoint=\"/api/auth/signup\""));
+        assertTrue(signupHtml.contains("method=\"post\""));
         assertDisabledAuthFields(signupHtml);
         assertFalse(signupHtml.contains("action=\"/api/auth/signup\""));
         assertFalse(signupHtml.contains("<input type=\"hidden\""));
@@ -125,6 +126,7 @@ class CommonPageControllerTest {
         assertTrue(loginHtml.contains("data-auth-page"));
         assertTrue(loginHtml.contains("data-auth-form"));
         assertTrue(loginHtml.contains("data-auth-endpoint=\"/api/auth/login\""));
+        assertTrue(loginHtml.contains("method=\"post\""));
         assertDisabledAuthFields(loginHtml);
         assertFalse(loginHtml.contains("action=\"/api/auth/login\""));
         assertFalse(loginHtml.contains("<input type=\"hidden\""));

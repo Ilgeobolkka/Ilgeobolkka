@@ -15,7 +15,7 @@
             <p class="alert alert-warning">로그인하려면 JavaScript를 활성화해 주세요.</p>
         </noscript>
 
-        <form data-auth-form th:data-auth-endpoint="@{/api/auth/login}">
+        <form method="post" data-auth-form th:data-auth-endpoint="@{/api/auth/login}">
             <fieldset disabled data-auth-fields>
                 <div class="mb-3">
                     <label class="form-label" for="login-email">이메일</label>

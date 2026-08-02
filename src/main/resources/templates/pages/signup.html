@@ -15,7 +15,7 @@
             <p class="alert alert-warning">회원가입하려면 JavaScript를 활성화해 주세요.</p>
         </noscript>
 
-        <form data-auth-form th:data-auth-endpoint="@{/api/auth/signup}">
+        <form method="post" data-auth-form th:data-auth-endpoint="@{/api/auth/signup}">
             <fieldset disabled data-auth-fields>
                 <div class="mb-3">
                     <label class="form-label" for="signup-email">이메일</label>
