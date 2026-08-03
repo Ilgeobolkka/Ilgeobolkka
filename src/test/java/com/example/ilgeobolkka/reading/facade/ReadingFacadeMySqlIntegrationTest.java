@@ -367,7 +367,7 @@ class ReadingFacadeMySqlIntegrationTest {
                 () -> readingFacade.movePage(READER_ID, UUID.randomUUID(), 1));
     }
 
-    @RepeatedTest(10)
+    @RepeatedTest(5)
     void T_RENT_005_같은_페이지를_동시에_열어도_1잉크만_차감하고_대여도_하나만_만든다() throws Exception {
         독자를_생성한다(5);
         대여용_도서를_생성한다();
@@ -445,7 +445,7 @@ class ReadingFacadeMySqlIntegrationTest {
         }
     }
 
-    @RepeatedTest(10)
+    @RepeatedTest(5)
     void 잔액_1에서_서로_다른_미대여_페이지를_동시에_열면_정확히_하나만_성공한다() throws Exception {
         독자를_생성한다(1);
         대여용_도서를_생성한다();

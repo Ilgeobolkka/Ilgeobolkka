@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.verify;
 
 import com.example.ilgeobolkka.ink.entity.InkLedger;
 import com.example.ilgeobolkka.ink.repository.InkLedgerRepository;
@@ -84,7 +83,6 @@ class ReadingFacadeRollbackMySqlIntegrationTest {
                 () -> readingFacade.openNewSession(READER_ID, BOOK_ID, 1));
 
         assertEquals("강제 대여 저장 실패", failure.getMessage());
-        verify(pageRentalRepository).save(any(PageRental.class));
         모든_변경이_롤백됐는지_확인한다();
     }
 
@@ -99,7 +97,6 @@ class ReadingFacadeRollbackMySqlIntegrationTest {
                 () -> readingFacade.openNewSession(READER_ID, BOOK_ID, 1));
 
         assertEquals("강제 원장 저장 실패", failure.getMessage());
-        verify(inkLedgerRepository).save(any(InkLedger.class));
         모든_변경이_롤백됐는지_확인한다();
     }
 

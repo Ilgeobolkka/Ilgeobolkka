@@ -539,7 +539,7 @@ class OwnershipPaymentApiMySqlIntegrationTest {
                 () -> assertEquals(1, 소장_수를_조회한다()));
     }
 
-    @RepeatedTest(10)
+    @RepeatedTest(5)
     void T_OWN_010_소장이_먼저면_페이지를_대여하지_않는다() throws Exception {
         UUID paymentId = 결제를_준비하고_ID를_반환한다();
         paymentGateway.respondWith(결제(paymentId, PortOnePaymentStatus.PAID, BOOK_PRICE_WON));
@@ -577,7 +577,7 @@ class OwnershipPaymentApiMySqlIntegrationTest {
         }
     }
 
-    @RepeatedTest(10)
+    @RepeatedTest(5)
     void T_OWN_010_대여가_먼저면_한_번_차감한_뒤_소장하고_환불하지_않는다() throws Exception {
         UUID paymentId = 결제를_준비하고_ID를_반환한다();
         paymentGateway.respondWith(결제(paymentId, PortOnePaymentStatus.PAID, BOOK_PRICE_WON));

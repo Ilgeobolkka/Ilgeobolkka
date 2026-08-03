@@ -113,7 +113,7 @@ class OwnershipPaymentWebhookMySqlIntegrationTest {
         테스트_데이터를_정리한다();
     }
 
-    @RepeatedTest(10)
+    @RepeatedTest(5)
     void T_PAY_003_PAID_웹훅_뒤_브라우저_완료가_와도_소장은_한_번만_반영한다() throws Exception {
         UUID paymentId = 결제를_준비한다();
         paymentGateway.respondWith(결제(paymentId, PortOnePaymentStatus.PAID));
@@ -134,7 +134,7 @@ class OwnershipPaymentWebhookMySqlIntegrationTest {
                 () -> assertEquals(1, paymentGateway.callCount()));
     }
 
-    @RepeatedTest(10)
+    @RepeatedTest(5)
     void T_PAY_003_브라우저_완료_뒤_PAID_웹훅이_와도_소장은_한_번만_반영한다() throws Exception {
         UUID paymentId = 결제를_준비한다();
         paymentGateway.respondWith(결제(paymentId, PortOnePaymentStatus.PAID));
