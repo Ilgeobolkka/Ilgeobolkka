@@ -37,9 +37,15 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 
 /**
- * SCRUM-422: MVP 핵심 경로(도서 목록·페이지 열기·서재)의 쿼리 수·응답 시간을 실제 MySQL 8.4에서
- * 측정해 명백한 N+1 유무를 근거로 확인한다. 조회 쿼리는 모두 native SQL 단일 문장이라 목록 크기와
- * 무관하게 쿼리 수가 고정될 것으로 예상하며, 아래 상한 초과는 그 가정이 깨졌다는 회귀 신호다.
+ * SCRUM-422: MVP 핵심 경로(도서 목록·페이지 열기·서재)의 쿼리 수·파사드 처리 시간을 실제 MySQL
+ * 8.4에서 측정해 명백한 N+1 유무를 근거로 확인한다. 조회 쿼리는 모두 native SQL 단일 문장이라 목록
+ * 크기와 무관하게 쿼리 수가 고정될 것으로 예상하며, 아래 상한 초과는 그 가정이 깨졌다는 회귀
+ * 신호다. 처리 시간은 컨트롤러·시큐리티·직렬화를 제외한 파사드 호출만의 경과 시간이며, HTTP API
+ * 응답 시간이 아니다.
+ *
+ * <p>목록 측정은 {@link #MEASUREMENT_KEYWORD}로 격리한다. keyword=null(전체 조회)로 측정하면
+ * 오래 쓴 {@code _test} DB에 다른 테스트가 남긴 도서가 섞여도 결과가 비어 있지만 않으면 통과해,
+ * "100권 중" 전제와 재현성이 조용히 깨질 수 있어서다.
  *
  * <p>애플리케이션은 실제 시스템 Clock으로 대여 활성 여부를 판정하므로, 서재 데이터의 활성·만료
  * 경계를 날짜 리터럴로 고정하면 측정 시점이 지날수록 전제가 조용히 깨진다. {@link #FIXED_NOW}를
@@ -50,12 +56,12 @@ import org.springframework.test.context.ContextConfiguration;
  * 명백한 N+1이 확인되지 않았고, 그에 따라 별도 보정은 하지 않았다.
  *
  * <pre>
- * | 경로                        | 쿼리 수 | 응답 시간 |
- * |-----------------------------|--------|----------|
- * | 도서 목록 1페이지(100권 중) | 2건    | 2ms      |
- * | 도서 목록 2페이지(100권 중) | 2건    | 10ms     |
- * | 서재 조회(30건)             | 1건    | 13ms     |
- * | 페이지 열기(신규 대여)      | 14건   | 97ms     |
+ * | 경로                        | 쿼리 수 | 파사드 처리 시간 |
+ * |-----------------------------|--------|-----------------|
+ * | 도서 목록 1페이지(100권 중) | 2건    | 2ms             |
+ * | 도서 목록 2페이지(100권 중) | 2건    | 10ms            |
+ * | 서재 조회(30건)             | 1건    | 13ms            |
+ * | 페이지 열기(신규 대여)      | 14건   | 97ms            |
  * </pre>
  */
 @SpringBootTest
@@ -71,6 +77,13 @@ class CoreQueryMeasurementMySqlIntegrationTest {
     private static final long RENTAL_BOOK_ID = 422_500L;
     private static final long RENTAL_PAGE_ID = 422_501L;
     private static final String[] CATEGORIES = {"소설", "에세이", "과학", "역사", "경제"};
+    /**
+     * 목록 측정을 이 키워드로만 격리한다. keyword=null(전체 조회)로 측정하면 오래 쓴 {@code _test}
+     * DB에 다른 테스트가 남긴 도서가 섞여도 결과가 비어 있지만 않으면 통과해, "100권 중" 전제와
+     * 재현성이 조용히 깨질 수 있다. 이 문자열은 이 클래스가 만든 100권의 제목에만 포함되고 다른
+     * 테스트 데이터·대여용 도서(RENTAL_BOOK_ID)와는 겹치지 않는다.
+     */
+    private static final String MEASUREMENT_KEYWORD = "SCRUM-422 측정도서";
     private static final Instant FIXED_NOW = Instant.parse("2026-08-03T00:00:00Z");
     private static final DateTimeFormatter DATETIME_FORMATTER =
             DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS").withZone(ZoneOffset.UTC);
@@ -115,13 +128,14 @@ class CoreQueryMeasurementMySqlIntegrationTest {
         statistics.clear();
         long start = System.nanoTime();
 
-        FindBooksResponse response = bookFacade.findBooks(1, null);
+        FindBooksResponse response = bookFacade.findBooks(1, MEASUREMENT_KEYWORD);
 
         long elapsedMillis = 경과_밀리초(start);
         long queryCount = statistics.getPrepareStatementCount();
         측정_결과를_출력한다("도서 목록 1페이지(100권 중)", queryCount, elapsedMillis);
 
-        assertTrue(response.books().size() > 0);
+        assertEquals(10, response.books().size(), "1페이지는 10권이어야 한다");
+        assertEquals(BOOK_COUNT, response.totalCount(), "격리된 측정 데이터가 100권이어야 한다");
         assertTrue(
                 queryCount <= 2,
                 "목록 조회는 콘텐츠·카운트 쿼리 2건을 넘지 않아야 한다: " + queryCount);
@@ -132,13 +146,14 @@ class CoreQueryMeasurementMySqlIntegrationTest {
         statistics.clear();
         long start = System.nanoTime();
 
-        FindBooksResponse response = bookFacade.findBooks(2, null);
+        FindBooksResponse response = bookFacade.findBooks(2, MEASUREMENT_KEYWORD);
 
         long elapsedMillis = 경과_밀리초(start);
         long queryCount = statistics.getPrepareStatementCount();
         측정_결과를_출력한다("도서 목록 2페이지(100권 중)", queryCount, elapsedMillis);
 
-        assertTrue(response.books().size() > 0);
+        assertEquals(10, response.books().size(), "2페이지도 10권이어야 한다");
+        assertEquals(BOOK_COUNT, response.totalCount(), "격리된 측정 데이터가 100권이어야 한다");
         assertTrue(
                 queryCount <= 2,
                 "목록 조회는 콘텐츠·카운트 쿼리 2건을 넘지 않아야 한다: " + queryCount);
