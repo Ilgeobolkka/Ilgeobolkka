@@ -13,6 +13,7 @@ import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
 import jakarta.persistence.EntityManagerFactory;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import org.hibernate.SessionFactory;
 import org.hibernate.stat.Statistics;
 import org.junit.jupiter.api.AfterEach;
@@ -237,7 +238,7 @@ class CoreQueryMeasurementMySqlIntegrationTest {
                         paymentId,
                         READER_ID,
                         bookId,
-                        java.util.UUID.randomUUID().toString());
+                        UUID.randomUUID().toString());
                 jdbcTemplate.update(
                         """
                         INSERT INTO book_ownership (reader_id, book_id, ownership_payment_id, created_at)
