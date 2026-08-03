@@ -1,7 +1,6 @@
 package com.example.ilgeobolkka.perf;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.example.ilgeobolkka.book.dto.FindBooksResponse;
@@ -52,16 +51,17 @@ import org.springframework.test.context.ContextConfiguration;
  * 주입해 "지금"을 고정하고, 그 기준으로 활성·만료·소장 건수를 매번 명시적으로 검증한다.
  *
  * <p>2026-08-03 로컬 MySQL 8.4(Docker), 도서 100권·서재 30건(소장 10·활성 대여 10·만료 대여 10)
- * 조건으로 측정한 베이스라인은 아래와 같다. 모든 경로가 데이터 규모와 무관한 고정 쿼리 수를 보여
+ * 조건으로 목록 격리·고정 Clock 반영 뒤 재측정한 베이스라인은 아래와 같다(쿼리 수는 격리 전
+ * 최초 측정과 동일, 처리 시간은 재측정값). 모든 경로가 데이터 규모와 무관한 고정 쿼리 수를 보여
  * 명백한 N+1이 확인되지 않았고, 그에 따라 별도 보정은 하지 않았다.
  *
  * <pre>
  * | 경로                        | 쿼리 수 | 파사드 처리 시간 |
  * |-----------------------------|--------|-----------------|
- * | 도서 목록 1페이지(100권 중) | 2건    | 2ms             |
- * | 도서 목록 2페이지(100권 중) | 2건    | 10ms            |
- * | 서재 조회(30건)             | 1건    | 13ms            |
- * | 페이지 열기(신규 대여)      | 14건   | 97ms            |
+ * | 도서 목록 1페이지(100권 중) | 2건    | 3ms             |
+ * | 도서 목록 2페이지(100권 중) | 2건    | 7ms             |
+ * | 서재 조회(30건)             | 1건    | 12ms            |
+ * | 페이지 열기(신규 대여)      | 14건   | 94ms            |
  * </pre>
  */
 @SpringBootTest
@@ -199,7 +199,14 @@ class CoreQueryMeasurementMySqlIntegrationTest {
         long queryCount = statistics.getPrepareStatementCount();
         측정_결과를_출력한다("페이지 열기(신규 대여)", queryCount, elapsedMillis);
 
-        assertNotNull(response);
+        assertEquals(false, response.owned(), "소장 경로가 아니라 신규 대여 경로여야 한다");
+        assertEquals(1, response.deductedInk(), "신규 대여는 1잉크를 차감해야 한다");
+        assertEquals(99, response.inkBalance(), "잔액 100에서 1 차감된 99여야 한다");
+        assertEquals(FIXED_NOW, response.rentedAt(), "고정 Clock 기준 지금 대여를 시작해야 한다");
+        assertEquals(
+                FIXED_NOW.plus(Duration.ofDays(30)),
+                response.expiresAt(),
+                "만료는 대여 시작 30일 뒤여야 한다");
         assertTrue(
                 queryCount <= 14,
                 "잠금→재확인→신규 대여 흐름의 고정 쿼리 수(측정값 14건)를 벗어났다: " + queryCount);
