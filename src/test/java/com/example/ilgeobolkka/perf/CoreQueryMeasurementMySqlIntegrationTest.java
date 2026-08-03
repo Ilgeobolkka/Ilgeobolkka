@@ -36,11 +36,11 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 
 /**
- * SCRUM-422: MVP 핵심 경로(도서 목록·페이지 열기·서재)의 쿼리 수·파사드 처리 시간을 실제 MySQL
- * 8.4에서 측정해 명백한 N+1 유무를 근거로 확인한다. 조회 쿼리는 모두 native SQL 단일 문장이라 목록
- * 크기와 무관하게 쿼리 수가 고정될 것으로 예상하며, 아래 상한 초과는 그 가정이 깨졌다는 회귀
- * 신호다. 처리 시간은 컨트롤러·시큐리티·직렬화를 제외한 파사드 호출만의 경과 시간이며, HTTP API
- * 응답 시간이 아니다.
+ * SCRUM-422: MVP 핵심 경로(도서 목록·페이지 열기·서재)의 쿼리 수·단발 파사드 처리 시간을 실제
+ * MySQL 8.4에서 측정해 명백한 N+1 유무를 근거로 확인한다. 조회 쿼리는 모두 native SQL 단일
+ * 문장이라 목록 크기와 무관하게 쿼리 수가 고정될 것으로 예상하며, 아래 상한 초과는 그 가정이 깨졌다는
+ * 회귀 신호다. 판정 근거는 쿼리 수이고, 처리 시간은 컨트롤러·시큐리티·직렬화를 제외한 파사드 단일
+ * 호출의 경과 시간(워밍업·반복 없음)을 담은 참고용 수치일 뿐 HTTP API 응답 시간이 아니다.
  *
  * <p>목록 측정은 {@link #MEASUREMENT_KEYWORD}로 격리한다. keyword=null(전체 조회)로 측정하면
  * 오래 쓴 {@code _test} DB에 다른 테스트가 남긴 도서가 섞여도 결과가 비어 있지만 않으면 통과해,
