@@ -3,9 +3,16 @@ package com.example.ilgeobolkka.reading.facade;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.verify;
 
+import com.example.ilgeobolkka.ink.entity.InkLedger;
+import com.example.ilgeobolkka.ink.repository.InkLedgerRepository;
 import com.example.ilgeobolkka.library.repository.LibraryEntryRepository;
 import com.example.ilgeobolkka.library.service.LibraryService;
+import com.example.ilgeobolkka.rental.entity.PageRental;
+import com.example.ilgeobolkka.rental.repository.PageRentalRepository;
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
 import java.time.Clock;
 import java.time.Instant;
@@ -22,11 +29,11 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
 
 /**
- * T-RENT-007. 차감·원장·대여를 이미 저장한 뒤 마지막 위치 저장에서 실패시켜, 정책이 요구하는
- * "함께 성공하거나 함께 실패"(INV-003)를 확인한다. 저장 직전에 실패시키는 경우보다 뒤 단계에서
- * 깨뜨리므로 롤백 범위를 더 넓게 검증한다.
+ * T-RENT-007. 대여·원장·마지막 위치 저장 단계마다 실패를 주입해 정책이 요구하는
+ * "함께 성공하거나 함께 실패"(INV-003)를 확인한다.
  */
 @SpringBootTest
 @ActiveProfiles("test")
@@ -41,6 +48,12 @@ class ReadingFacadeRollbackMySqlIntegrationTest {
 
     private final ReadingFacade readingFacade;
     private final JdbcTemplate jdbcTemplate;
+
+    @MockitoSpyBean
+    private PageRentalRepository pageRentalRepository;
+
+    @MockitoSpyBean
+    private InkLedgerRepository inkLedgerRepository;
 
     @Autowired
     ReadingFacadeRollbackMySqlIntegrationTest(
@@ -61,11 +74,45 @@ class ReadingFacadeRollbackMySqlIntegrationTest {
     }
 
     @Test
+    void T_RENT_007_대여_저장_직전_실패하면_아무_변경도_남지_않는다() {
+        doThrow(new IllegalStateException("강제 대여 저장 실패"))
+                .when(pageRentalRepository)
+                .save(any(PageRental.class));
+
+        IllegalStateException failure = assertThrows(
+                IllegalStateException.class,
+                () -> readingFacade.openNewSession(READER_ID, BOOK_ID, 1));
+
+        assertEquals("강제 대여 저장 실패", failure.getMessage());
+        verify(pageRentalRepository).save(any(PageRental.class));
+        모든_변경이_롤백됐는지_확인한다();
+    }
+
+    @Test
+    void T_RENT_007_원장_저장_직전_실패하면_대여와_잔액도_남지_않는다() {
+        doThrow(new IllegalStateException("강제 원장 저장 실패"))
+                .when(inkLedgerRepository)
+                .save(any(InkLedger.class));
+
+        IllegalStateException failure = assertThrows(
+                IllegalStateException.class,
+                () -> readingFacade.openNewSession(READER_ID, BOOK_ID, 1));
+
+        assertEquals("강제 원장 저장 실패", failure.getMessage());
+        verify(inkLedgerRepository).save(any(InkLedger.class));
+        모든_변경이_롤백됐는지_확인한다();
+    }
+
+    @Test
     void T_RENT_007_마지막_위치_저장에_실패하면_차감과_대여도_남지_않는다() {
         assertThrows(
                 IllegalStateException.class,
                 () -> readingFacade.openNewSession(READER_ID, BOOK_ID, 1));
 
+        모든_변경이_롤백됐는지_확인한다();
+    }
+
+    private void 모든_변경이_롤백됐는지_확인한다() {
         assertAll(
                 () -> assertEquals(5, 잔액을_조회한다()),
                 () -> assertEquals(0, 개수를_조회한다("page_rental")),

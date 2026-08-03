@@ -44,5 +44,9 @@ out/
 .env.*
 !.env.example
 
+### Python ###
+__pycache__/
+*.py[cod]
+
 ### Generated content ###
 /var/content/pages/
