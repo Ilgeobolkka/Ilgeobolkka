@@ -252,6 +252,9 @@
 - 잉크 내역·`PageRental`·온라인 소장 기록 저장 직전 오류
 - 연결이 끊긴 상태에서 새 페이지 또는 소장 결제 결과 요청
 
+MySQL 8.4에서 수행한 SCRUM-421 교차 반복 회귀의 조건과 결과는
+[실행 근거](./evidence/mysql-regression/scrum-421-2026-08-03.md)에 보존합니다.
+
 MySQL 8.4에서 측정한 SCRUM-422 핵심 경로(도서 목록·페이지 열기·서재) 쿼리 수·응답 시간의 조건과
 결과는 [측정 근거](./evidence/query-measurement/scrum-422-2026-08-03.md)에 보존합니다.
 

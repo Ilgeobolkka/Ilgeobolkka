@@ -36,6 +36,7 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -112,7 +113,7 @@ class OwnershipPaymentWebhookMySqlIntegrationTest {
         테스트_데이터를_정리한다();
     }
 
-    @Test
+    @RepeatedTest(5)
     void T_PAY_003_PAID_웹훅_뒤_브라우저_완료가_와도_소장은_한_번만_반영한다() throws Exception {
         UUID paymentId = 결제를_준비한다();
         paymentGateway.respondWith(결제(paymentId, PortOnePaymentStatus.PAID));
@@ -133,7 +134,7 @@ class OwnershipPaymentWebhookMySqlIntegrationTest {
                 () -> assertEquals(1, paymentGateway.callCount()));
     }
 
-    @Test
+    @RepeatedTest(5)
     void T_PAY_003_브라우저_완료_뒤_PAID_웹훅이_와도_소장은_한_번만_반영한다() throws Exception {
         UUID paymentId = 결제를_준비한다();
         paymentGateway.respondWith(결제(paymentId, PortOnePaymentStatus.PAID));
