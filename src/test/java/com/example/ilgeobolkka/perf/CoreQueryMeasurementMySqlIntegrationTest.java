@@ -209,7 +209,7 @@ class CoreQueryMeasurementMySqlIntegrationTest {
                 "만료는 대여 시작 30일 뒤여야 한다");
         assertTrue(
                 queryCount <= 14,
-                "잠금→재확인→신규 대여 흐름의 고정 쿼리 수(측정값 14건)를 벗어났다: " + queryCount);
+                "잠금→재확인→신규 대여 흐름의 고정 쿼리 수 상한을 벗어났다: " + queryCount);
     }
 
     private long 경과_밀리초(long startNanos) {
