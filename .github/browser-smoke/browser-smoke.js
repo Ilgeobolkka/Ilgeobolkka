@@ -56,6 +56,7 @@ async function run() {
     await verifyAuthFailure();
     await verifyViewerFlow();
     await verifyViewerInitialPageAndRecovery();
+    await verifyViewerInvalidInitialPage();
     await verifyViewerRenderFailureStopsQueue();
     await verifyLogoutNavigation("success");
     await verifyLogoutNavigation("server-error");
@@ -534,6 +535,8 @@ async function verifyViewerFlow() {
             && access.textContent.includes("까지"),
         "활성 대여의 재사용 상태와 만료 시각을 표시해야 합니다.");
 
+    const accessBeforeInsufficientInk = access.textContent;
+    const balanceBeforeInsufficientInk = inkBalance.textContent;
     await viewer.requestPage(4);
     await viewer.whenIdle();
     assert(
@@ -546,6 +549,12 @@ async function verifyViewerFlow() {
     assert(
         content.textContent === "2페이지 본문",
         "잉크 부족이면 현재 페이지 콘텐츠를 유지해야 합니다.");
+    assert(
+        access.textContent === accessBeforeInsufficientInk,
+        "잉크 부족이면 현재 페이지의 열람 권한 안내를 유지해야 합니다.");
+    assert(
+        inkBalance.textContent === balanceBeforeInsufficientInk,
+        "잉크 부족이면 현재 페이지의 잉크 잔액 안내를 유지해야 합니다.");
 
     await viewer.requestPage(5);
     await viewer.whenIdle();
@@ -590,7 +599,10 @@ async function verifyViewerInitialPageAndRecovery() {
                 "initial-insufficient-ink-request"
             );
         }
-        return viewerMetadata(pageNumber, "TEXT");
+        return {
+            ...viewerMetadata(pageNumber, "TEXT"),
+            inkBalance: 0
+        };
     };
     const viewer = createViewer(root, {
         request,
@@ -609,9 +621,23 @@ async function verifyViewerInitialPageAndRecovery() {
     await viewer.whenIdle();
 
     const pageInput = root.querySelector("[data-viewer-page-input]");
+    const notice = root.querySelector("[data-viewer-notice]");
     assert(
         requestedPages[0]?.method === "POST" && requestedPages[0]?.pageNumber === 3,
         "URL에서 선택한 초기 페이지만 첫 세션 생성 요청으로 보내야 합니다.");
+    assert(
+        root.querySelector("[data-viewer-access]").textContent === "",
+        "초기 잉크 부족 응답 뒤 열람 권한 확인 문구를 제거해야 합니다.");
+    assert(
+        root.querySelector("[data-viewer-notice-message]")
+            .textContent.includes("잉크가 부족"),
+        "초기 잉크 부족을 경고 안내로 표시해야 합니다.");
+    assert(
+        root.querySelector("[data-viewer-ink-link]").hidden === false,
+        "초기 잉크 부족 안내에 충전 화면 링크를 제공해야 합니다.");
+    assert(
+        document.activeElement === notice,
+        "초기 잉크 부족 안내 영역으로 포커스를 이동해야 합니다.");
     assert(
         pageInput.disabled === false,
         "초기 페이지 열기에 실패해도 다른 페이지 번호를 입력할 수 있어야 합니다.");
@@ -637,6 +663,21 @@ async function verifyViewerInitialPageAndRecovery() {
         root.querySelector("[data-viewer-content]").textContent
             === "4페이지 활성 대여 본문",
         "잉크가 없어도 활성 대여 중인 다른 페이지를 표시할 수 있어야 합니다.");
+    assert(
+        root.querySelector("[data-viewer-access]").textContent.includes("대여 중"),
+        "잉크 부족 후 복구한 페이지의 활성 대여 상태를 표시해야 합니다.");
+    assert(
+        root.querySelector("[data-viewer-ink-balance]").textContent === "남은 잉크 0",
+        "잉크 부족 후 복구한 페이지에 Reader B의 0잉크 잔액을 표시해야 합니다.");
+    assert(
+        root.querySelector("[data-viewer-notice]").hidden,
+        "페이지 복구 후 이전 잉크 부족 안내를 숨겨야 합니다.");
+    assert(
+        root.querySelector("[data-viewer-ink-link]").hidden,
+        "페이지 복구 후 이전 충전 화면 링크를 숨겨야 합니다.");
+    assert(
+        document.activeElement === root.querySelector("[data-viewer-content]"),
+        "페이지 복구 후 콘텐츠 영역으로 포커스를 이동해야 합니다.");
 
     root.remove();
 }
@@ -689,8 +730,48 @@ async function verifyViewerRenderFailureStopsQueue() {
         document.querySelector("[data-common-error]").textContent
             === DEFAULT_ERROR_MESSAGE,
         "렌더링 오류는 안전한 공통 오류 메시지로 표시해야 합니다.");
+    assert(
+        root.querySelector("[data-viewer-access]").textContent === "",
+        "초기 페이지 오류 후 열람 권한 확인 문구를 제거해야 합니다.");
 
     clearCommonError();
+    root.remove();
+}
+
+async function verifyViewerInvalidInitialPage() {
+    const root = createViewerFixture(6);
+    fixtureContainer.append(root);
+
+    let pageRequestCount = 0;
+    const viewer = createViewer(root, {
+        request: async (url) => {
+            if (url === "/api/books/1") {
+                return {
+                    bookId: 1,
+                    title: "페이지 범위 검증 도서",
+                    totalPageCount: 5
+                };
+            }
+            pageRequestCount += 1;
+            throw new Error("범위 밖 페이지는 요청하면 안 됩니다.");
+        }
+    });
+
+    await viewer.start();
+    await viewer.whenIdle();
+
+    assert(pageRequestCount === 0, "범위 밖 초기 페이지는 API에 요청하면 안 됩니다.");
+    assert(
+        root.querySelector("[data-viewer-status]").textContent
+            === "페이지 번호를 확인해 주세요.",
+        "범위 밖 초기 페이지 번호를 안내해야 합니다.");
+    assert(
+        root.querySelector("[data-viewer-access]").textContent === "",
+        "범위 밖 초기 페이지에서 열람 권한 확인 문구를 제거해야 합니다.");
+    assert(
+        document.activeElement === root.querySelector("[data-viewer-page-input]"),
+        "범위 밖 초기 페이지에서 페이지 입력으로 포커스를 이동해야 합니다.");
+
     root.remove();
 }
 
@@ -702,7 +783,7 @@ function createViewerFixture(initialPage = 1) {
     root.innerHTML = `
         <h1 data-viewer-title>도서 뷰어</h1>
         <p data-viewer-status></p>
-        <div tabindex="-1" data-viewer-notice hidden>
+        <div role="alert" tabindex="-1" data-viewer-notice hidden>
             <span data-viewer-notice-message></span>
             <a href="/ink" data-viewer-ink-link hidden>잉크 충전하기</a>
         </div>
@@ -722,7 +803,7 @@ function createViewerFixture(initialPage = 1) {
             <button type="button" data-viewer-zoom-fit>너비 맞춤</button>
             <button type="button" data-viewer-zoom-in>확대</button>
         </div>
-        <span data-viewer-access></span>
+        <span data-viewer-access>열람 권한을 확인하고 있습니다.</span>
         <span data-viewer-ink-balance></span>
         <div tabindex="-1"
              data-text-size="medium"

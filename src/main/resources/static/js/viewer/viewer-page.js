@@ -138,6 +138,7 @@ export function createViewer(root, dependencies = {}) {
             elements.content.setAttribute("aria-busy", "false");
             if (state.displayedPage === 0) {
                 elements.status.textContent = "페이지 번호를 확인해 주세요.";
+                elements.access.textContent = "";
             }
             elements.pageInput.setCustomValidity(
                 `1부터 ${state.totalPageCount} 사이의 페이지 번호를 입력해 주세요.`
@@ -301,6 +302,9 @@ export function createViewer(root, dependencies = {}) {
         elements.status.textContent = state.displayedPage > 0
             ? `${state.displayedPage} / ${state.totalPageCount} 페이지`
             : "페이지를 불러오지 못했습니다.";
+        if (state.displayedPage === 0) {
+            elements.access.textContent = "";
+        }
 
         if (error instanceof ApiRequestError
                 && error.code === "VIEWER_SESSION_REPLACED") {
