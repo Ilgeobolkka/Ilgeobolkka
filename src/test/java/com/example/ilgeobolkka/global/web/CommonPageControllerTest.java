@@ -311,6 +311,11 @@ class CommonPageControllerTest {
         assertTrue(html.contains("aria-label=\"이동할 페이지 번호\""));
         assertTrue(html.contains("aria-label=\"글자 크기 키우기\""));
         assertTrue(html.contains("aria-label=\"페이지 이미지 확대\""));
+        assertTrue(html.matches(
+                "(?s).*role=\"alert\"\\s+tabindex=\"-1\"\\s+data-viewer-notice.*"));
+        assertTrue(html.matches(
+                "(?s).*href=\"/ink\"\\s+data-viewer-ink-link.*"));
+        assertTrue(html.contains("열람 권한을 확인하고 있습니다."));
         assertTrue(html.contains("/js/viewer/viewer.js"));
         assertFalse(html.contains("도서 뷰어 화면을 준비하고 있습니다."));
     }
