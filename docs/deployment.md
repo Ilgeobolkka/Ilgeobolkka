@@ -112,7 +112,7 @@ style-src 'self';
 img-src 'self' data: blob:;
 font-src 'self';
 connect-src 'self' https://checkout-service.prod.iamport.co https://tx-gateway-service.prod.iamport.co https://service.iamport.kr https://coretelemetry.prod.iamport.co;
-frame-src 'self' https://payment-bridge.prod.iamport.co;
+frame-src 'self' https://payment-bridge.prod.iamport.co https://checkout-service.prod.iamport.co;
 object-src 'none';
 base-uri 'self';
 form-action 'self';
