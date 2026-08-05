@@ -179,7 +179,7 @@ class PortOneWebhookApiMySqlIntegrationTest {
     }
 
     @Test
-    void 정상_서명의_비_UUID_paymentId_웹훅은_부수_효과_없이_200이다() throws Exception {
+    void T_PAY_008_정상_서명의_비_UUID_paymentId_웹훅은_부수_효과_없이_200이다() throws Exception {
         웹훅을_전송한다("Transaction.Paid", "example-payment-id")
                 .andExpect(status().isOk())
                 .andExpect(content().string(""));
