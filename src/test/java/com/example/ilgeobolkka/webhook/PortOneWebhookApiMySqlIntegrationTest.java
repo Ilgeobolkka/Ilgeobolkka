@@ -40,6 +40,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
@@ -178,9 +180,11 @@ class PortOneWebhookApiMySqlIntegrationTest {
                 () -> assertEquals(0, paymentGateway.callCount()));
     }
 
-    @Test
-    void T_PAY_008_정상_서명의_비_UUID_paymentId_웹훅은_부수_효과_없이_200이다() throws Exception {
-        웹훅을_전송한다("Transaction.Paid", "example-payment-id")
+    @ParameterizedTest
+    @ValueSource(strings = {"example-payment-id", "1-1-1-1-1"})
+    void T_PAY_008_앱_발급_형식이_아닌_paymentId_웹훅은_부수_효과_없이_200이다(
+            String paymentId) throws Exception {
+        웹훅을_전송한다("Transaction.Paid", paymentId)
                 .andExpect(status().isOk())
                 .andExpect(content().string(""));
 
