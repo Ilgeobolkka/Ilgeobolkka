@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="600" viewBox="0 0 400 600" role="img" aria-labelledby="title">
+  <title id="title">경제 가상 도서 표지</title>
+  <rect width="400" height="600" fill="#173f35"/>
+  <path d="M65 390 L145 310 L215 350 L335 190" fill="none" stroke="#f4d35e" stroke-width="20"/>
+  <path d="M285 190 H335 V240" fill="none" stroke="#f4d35e" stroke-width="20"/>
+  <text x="42" y="80" fill="#ffffff" font-size="26" font-family="sans-serif">읽어볼까 가상서가</text>
+  <text x="42" y="530" fill="#ffffff" font-size="52" font-weight="700" font-family="sans-serif">경제</text>
+</svg>

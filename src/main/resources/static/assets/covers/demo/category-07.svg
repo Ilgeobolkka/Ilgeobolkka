@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="600" viewBox="0 0 400 600" role="img" aria-labelledby="title">
+  <title id="title">예술 가상 도서 표지</title>
+  <rect width="400" height="600" fill="#f7f1e3"/>
+  <circle cx="120" cy="225" r="78" fill="#e63946"/>
+  <rect x="200" y="155" width="140" height="140" fill="#457b9d" transform="rotate(12 270 225)"/>
+  <path d="M75 405 Q205 285 335 405" fill="none" stroke="#e9c46a" stroke-width="38"/>
+  <text x="42" y="80" fill="#1d3557" font-size="26" font-family="sans-serif">읽어볼까 가상서가</text>
+  <text x="42" y="530" fill="#1d3557" font-size="52" font-weight="700" font-family="sans-serif">예술</text>
+</svg>

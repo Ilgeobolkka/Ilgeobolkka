@@ -1,0 +1,60 @@
+package com.example.ilgeobolkka.auth.controller;
+
+import com.example.ilgeobolkka.auth.dto.LoginAuthRequest;
+import com.example.ilgeobolkka.auth.dto.LoginAuthResponse;
+import com.example.ilgeobolkka.auth.dto.LogoutAuthResponse;
+import com.example.ilgeobolkka.auth.dto.SignupAuthRequest;
+import com.example.ilgeobolkka.auth.dto.SignupAuthResponse;
+import com.example.ilgeobolkka.auth.facade.AuthFacade;
+import com.example.ilgeobolkka.global.security.AuthSessionManager;
+import com.example.ilgeobolkka.global.security.AuthenticatedReader;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/auth")
+@RequiredArgsConstructor
+public class AuthController {
+
+    private final AuthFacade authFacade;
+    private final AuthSessionManager authSessionManager;
+
+    @PostMapping("/signup")
+    @ResponseStatus(HttpStatus.CREATED)
+    SignupAuthResponse signup(@Valid @RequestBody SignupAuthRequest request) {
+        return authFacade.signup(request);
+    }
+
+    @PostMapping("/login")
+    LoginAuthResponse login(
+            @Valid @RequestBody LoginAuthRequest request,
+            HttpServletRequest httpRequest,
+            HttpServletResponse httpResponse) {
+        LoginAuthResponse response = authFacade.login(request);
+        authSessionManager.login(response.readerId(), httpRequest, httpResponse);
+        return response;
+    }
+
+    @PostMapping("/logout")
+    LogoutAuthResponse logout(
+            @AuthenticationPrincipal AuthenticatedReader authenticatedReader,
+            HttpServletRequest httpRequest,
+            HttpServletResponse httpResponse) {
+        long readerId = authenticatedReader.readerId();
+        try {
+            authFacade.logout(readerId);
+        } finally {
+            authSessionManager.logout(httpRequest, httpResponse);
+        }
+        return new LogoutAuthResponse(readerId);
+    }
+}

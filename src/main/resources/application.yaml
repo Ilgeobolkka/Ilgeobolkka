@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    default: local
   config:
     import: optional:file:.env[.properties]
   application:
@@ -7,3 +9,41 @@ spring:
     url: ${DB_URL}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        # 저장 시각을 JVM 타임존과 무관하게 UTC로 읽고 쓴다. DATETIME 은 타임존을 보존하지 않으므로,
+        # 이 값이 없으면 JVM 이 KST 일 때 UTC DB 에 로컬 시각이 저장돼 instant 가 어긋난다
+        # (conventions.md "설정, 시간, 로그", Connector/J time-instants).
+        jdbc:
+          time_zone: UTC
+  flyway:
+    locations: classpath:db/migration
+
+logging:
+  level:
+    org.flywaydb.core: WARN
+    org.hibernate.orm.connections.pooling: WARN
+
+content-storage:
+  root: ${CONTENT_IMPORT_OUTPUT_ROOT:var/content/pages}
+
+server:
+  servlet:
+    session:
+      timeout: 2h
+      tracking-modes: cookie
+      cookie:
+        http-only: true
+        same-site: lax
+
+portone:
+  payment:
+    enabled: ${PORTONE_PAYMENT_ENABLED:false}
+    store-id: ${PORTONE_STORE_ID:}
+    channel-key: ${PORTONE_CHANNEL_KEY:}
+    api-secret: ${PORTONE_API_SECRET:}
+    webhook-secret: ${PORTONE_WEBHOOK_SECRET:}

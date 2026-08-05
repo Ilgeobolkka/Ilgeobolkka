@@ -5,10 +5,18 @@ description: PR(Pull Request)을 요청받거나 작업 흐름상 만들거나 �
 
 # Pull Request
 
+## 도구 경계
+
+- PR 생성·수정·조회는 `gh` CLI만 사용한다. Computer Use, 브라우저 UI, GitHub 앱·커넥터로
+  대신 수행하지 않는다.
+- `gh`가 없거나 인증·권한 확인이 실패하면 `.agents/skills/github-cli-setup/SKILL.md` 절차로
+  진단하고, 해결 전에는 PR 작업을 중단한다.
+- 토큰 값을 출력하거나 사용자에게 채팅으로 전달하도록 요구하지 않는다.
+
 ## 절차
 
 1. `origin`이 있는지 확인한다. 없으면 임의로 추가하지 않고 원격 설정이 필요하다고 보고한다.
-2. 원격이 GitHub인지, `gh` 인증이 유효한지 확인한다.
+2. 원격이 GitHub인지, `gh auth status --hostname github.com` 인증이 유효한지 확인한다.
 3. 현재 브랜치와 base 브랜치를 확인한다. main/master에서 직접 작업한 상태면 먼저 보고한다.
 4. `test` 스킬의 완료 기준 통과 후 push → `gh pr create`. (미검증 상태면 draft로 만들고 draft임을 명시)
 5. 생성된 PR URL을 사용자에게 전달한다.
@@ -27,8 +35,16 @@ description: PR(Pull Request)을 요청받거나 작업 흐름상 만들거나 �
 ## 변경 사항
 - <핵심 변경만. 파일 나열 금지>
 
-## 테스트
+## 계약과 영향
+- 관련 요구사항·불변식·테스트: <예: PAY-003, INV-013, T-PAY-003>
+- 관련 ADR·이슈: <예: ADR-0012, Closes #12>
+- API·DB·설정 영향: <영향 또는 없음>
+
+## 검증
 - <실행한 검증 명령과 결과>
+
+## 리뷰 포인트
+- <위험도가 높거나 먼저 확인할 지점. 없으면 섹션 삭제>
 
 ## 참고
 - <리뷰어가 알아야 할 맥락. 없으면 섹션 삭제>

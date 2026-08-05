@@ -1,0 +1,8 @@
+spring:
+  main:
+    web-application-type: none
+
+content-import:
+  manifest: ${CONTENT_IMPORT_MANIFEST:fixtures/content/manifest.json}
+  pdftotext-command: ${PDFTOTEXT_COMMAND:pdftotext}
+  pdftoppm-command: ${PDFTOPPM_COMMAND:pdftoppm}

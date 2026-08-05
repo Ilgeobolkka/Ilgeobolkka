@@ -1,0 +1,154 @@
+:focus-visible {
+    outline: 0.2rem solid #0d6efd;
+    outline-offset: 0.2rem;
+}
+
+[data-common-error][hidden] {
+    display: none;
+}
+
+.auth-page {
+    max-width: 32rem;
+}
+
+.book-detail-cover,
+.book-detail-cover-placeholder {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+}
+
+.book-detail-cover {
+    object-fit: cover;
+}
+
+.book-detail-cover-placeholder {
+    display: flex;
+    background: #e9ecef;
+}
+
+.book-detail-cover-placeholder[hidden] {
+    display: none;
+}
+
+.book-detail-description {
+    white-space: pre-line;
+}
+
+.library-cover,
+.library-cover-placeholder {
+    aspect-ratio: 3 / 4;
+}
+
+.library-cover {
+    object-fit: cover;
+}
+
+.library-cover-placeholder {
+    display: flex;
+    background: #e9ecef;
+}
+
+.library-cover-placeholder[hidden] {
+    display: none;
+}
+
+.book-card-cover,
+.book-card-cover-placeholder {
+    aspect-ratio: 3 / 4;
+}
+
+.book-card-cover {
+    object-fit: cover;
+}
+
+.book-card-cover-placeholder {
+    display: flex;
+    background: #e9ecef;
+}
+
+.book-card-cover-placeholder[hidden] {
+    display: none;
+}
+
+.viewer-shell {
+    max-width: 72rem;
+    margin: 0 auto;
+}
+
+.viewer-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.viewer-page {
+    min-height: 32rem;
+    max-height: calc(100vh - 19rem);
+    overflow: auto;
+    background: #e9ecef;
+}
+
+.viewer-text {
+    width: min(100%, 52rem);
+    min-height: 100%;
+    margin: 0 auto;
+    padding: 3rem;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    line-height: 1.8;
+    background: #fff;
+    color: #212529;
+}
+
+[data-viewer-content][data-text-size="small"] .viewer-text {
+    font-size: 1rem;
+}
+
+[data-viewer-content][data-text-size="medium"] .viewer-text {
+    font-size: 1.125rem;
+}
+
+[data-viewer-content][data-text-size="large"] .viewer-text {
+    font-size: 1.25rem;
+}
+
+[data-viewer-content][data-text-size="x-large"] .viewer-text {
+    font-size: 1.5rem;
+}
+
+.viewer-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+[data-viewer-content][data-image-zoom="75"] .viewer-image {
+    width: 75%;
+}
+
+[data-viewer-content][data-image-zoom="125"] .viewer-image {
+    width: 125%;
+    max-width: none;
+}
+
+[data-viewer-content][data-image-zoom="150"] .viewer-image {
+    width: 150%;
+    max-width: none;
+}
+
+[data-viewer-content][data-image-zoom="200"] .viewer-image {
+    width: 200%;
+    max-width: none;
+}
+
+@media (max-height: 800px) {
+    .viewer-page {
+        min-height: 25rem;
+        max-height: calc(100vh - 16rem);
+    }
+
+    .viewer-text {
+        padding: 2rem 2.5rem;
+    }
+}
