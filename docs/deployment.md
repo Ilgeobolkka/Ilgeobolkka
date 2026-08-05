@@ -102,8 +102,8 @@ form-action 'self';
 frame-ancestors 'self';
 ```
 
-- 결제가 활성화된 비운영 `/ink` 화면만 다음 PortOne 전용 정책을 대신 사용합니다. 두 정책을 동시에
-  응답하지 않습니다.
+- 결제가 활성화된 비운영 `/ink`와 `/books/{bookId}` 결제 화면만 다음 PortOne 전용 정책을 대신
+  사용합니다. 두 정책을 동시에 응답하지 않습니다.
 
 ```text
 default-src 'self';
@@ -112,7 +112,7 @@ style-src 'self';
 img-src 'self' data: blob:;
 font-src 'self';
 connect-src 'self' https://checkout-service.prod.iamport.co https://tx-gateway-service.prod.iamport.co https://service.iamport.kr https://coretelemetry.prod.iamport.co;
-frame-src 'self' https://payment-bridge.prod.iamport.co;
+frame-src 'self' https://payment-bridge.prod.iamport.co https://checkout-service.prod.iamport.co;
 object-src 'none';
 base-uri 'self';
 form-action 'self';

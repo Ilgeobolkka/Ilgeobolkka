@@ -62,7 +62,7 @@ public class SecurityConfig {
             https://tx-gateway-service.prod.iamport.co \
             https://service.iamport.kr \
             https://coretelemetry.prod.iamport.co; \
-            frame-src 'self' https://payment-bridge.prod.iamport.co; \
+            frame-src 'self' https://payment-bridge.prod.iamport.co https://checkout-service.prod.iamport.co; \
             object-src 'none'; \
             base-uri 'self'; \
             form-action 'self'; \
