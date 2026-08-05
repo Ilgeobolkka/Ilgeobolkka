@@ -33,7 +33,7 @@
 | 도메인 용어와 피해야 할 표현 | [도메인 용어](../../CONTEXT.md) |
 | 핵심 불변식, 필수 시나리오와 출시 게이트 | [테스트 전략](../test-strategy.md) |
 | 원본 PDF 콘텐츠 변환 절차와 품질 근거 | [콘텐츠 변환과 품질 검증](../content-conversion.md) |
-| AI 경로 지원 시연 도서와 개발·잠금 holdout 평가 데이터 | [AI 경로 콘텐츠 코퍼스](../ai-route-content-corpus.md) |
+| AI 경로 지원 시연 도서와 대표 목적 평가 데이터 | [AI 경로 콘텐츠 코퍼스](../ai-route-content-corpus.md) |
 | Java/Spring 패키지와 계층 구현 규칙 | [백엔드 구현 컨벤션](../conventions.md) |
 | 환경별 데이터베이스 연결과 민감정보 주입 | [배포 가이드](../deployment.md) |
 
