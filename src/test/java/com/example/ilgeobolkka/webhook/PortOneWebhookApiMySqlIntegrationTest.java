@@ -179,6 +179,22 @@ class PortOneWebhookApiMySqlIntegrationTest {
     }
 
     @Test
+    void 정상_서명의_비_UUID_paymentId_웹훅은_부수_효과_없이_200이다() throws Exception {
+        웹훅을_전송한다("Transaction.Paid", "example-payment-id")
+                .andExpect(status().isOk())
+                .andExpect(content().string(""));
+
+        assertAll(
+                () -> assertEquals(0, paymentGateway.callCount()),
+                () -> assertEquals(0, 잉크_구매_수를_조회한다()),
+                () -> assertEquals(0, 소장_결제_수를_조회한다()),
+                () -> assertEquals(0, 잉크_원장_수를_조회한다()),
+                () -> assertEquals(0, 잔액을_조회한다()),
+                () -> assertEquals(0, 소장_수를_조회한다()),
+                () -> assertEquals(0, 서재_항목_수를_조회한다()));
+    }
+
+    @Test
     void T_PAY_008_서명_누락과_불일치는_400이고_비밀과_상태를_노출하지_않는다() throws Exception {
         UUID paymentId = 결제를_준비한다();
         String body = 웹훅_본문("Transaction.Paid", paymentId);
@@ -298,6 +314,10 @@ class PortOneWebhookApiMySqlIntegrationTest {
     }
 
     private ResultActions 웹훅을_전송한다(String type, UUID paymentId) throws Exception {
+        return 웹훅을_전송한다(type, paymentId.toString());
+    }
+
+    private ResultActions 웹훅을_전송한다(String type, String paymentId) throws Exception {
         SignedWebhook signed = 서명한다(웹훅_본문(type, paymentId));
         return mockMvc.perform(post("/api/webhooks/portone")
                 .contentType(APPLICATION_JSON)
@@ -356,6 +376,10 @@ class PortOneWebhookApiMySqlIntegrationTest {
     }
 
     private String 웹훅_본문(String type, UUID paymentId) {
+        return 웹훅_본문(type, paymentId.toString());
+    }
+
+    private String 웹훅_본문(String type, String paymentId) {
         return """
                 {
                   "type": "%s",
@@ -414,6 +438,41 @@ class PortOneWebhookApiMySqlIntegrationTest {
                 READER_ID);
         jdbcTemplate.update(
                 "DELETE FROM reader WHERE id = ?",
+                READER_ID);
+    }
+
+    private int 잉크_구매_수를_조회한다() {
+        return jdbcTemplate.queryForObject(
+                "SELECT COUNT(*) FROM ink_purchase WHERE reader_id = ?",
+                Integer.class,
+                READER_ID);
+    }
+
+    private int 소장_결제_수를_조회한다() {
+        return jdbcTemplate.queryForObject(
+                "SELECT COUNT(*) FROM ownership_payment WHERE reader_id = ?",
+                Integer.class,
+                READER_ID);
+    }
+
+    private int 잉크_원장_수를_조회한다() {
+        return jdbcTemplate.queryForObject(
+                "SELECT COUNT(*) FROM ink_ledger WHERE reader_id = ?",
+                Integer.class,
+                READER_ID);
+    }
+
+    private int 소장_수를_조회한다() {
+        return jdbcTemplate.queryForObject(
+                "SELECT COUNT(*) FROM book_ownership WHERE reader_id = ?",
+                Integer.class,
+                READER_ID);
+    }
+
+    private int 서재_항목_수를_조회한다() {
+        return jdbcTemplate.queryForObject(
+                "SELECT COUNT(*) FROM library_entry WHERE reader_id = ?",
+                Integer.class,
                 READER_ID);
     }
 

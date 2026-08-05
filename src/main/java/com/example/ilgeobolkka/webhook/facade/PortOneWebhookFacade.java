@@ -39,7 +39,12 @@ public class PortOneWebhookFacade {
         if (event.type() == PortOneWebhookEvent.Type.UNSUPPORTED) {
             return;
         }
-        UUID paymentId = UUID.fromString(event.paymentId());
+        UUID paymentId;
+        try {
+            paymentId = UUID.fromString(event.paymentId());
+        } catch (IllegalArgumentException ignored) {
+            return;
+        }
         if (inkPurchaseFacade.existsByPaymentId(paymentId)) {
             inkPurchaseFacade.completeWebhook(paymentId);
         } else if (ownershipPaymentFacade.existsByPaymentId(paymentId)) {
