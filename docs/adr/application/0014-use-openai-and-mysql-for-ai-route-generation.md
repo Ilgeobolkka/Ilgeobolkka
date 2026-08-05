@@ -1,6 +1,6 @@
 # 0014. OpenAI와 MySQL로 AI 잉크 경로를 생성한다
 
-- 상태: 승인됨
+- 상태: 대체됨 — [ADR-0015](./0015-harden-openai-ai-route-generation.md)
 - 날짜: 2026-08-04
 
 ## 맥락

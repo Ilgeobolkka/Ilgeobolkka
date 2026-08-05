@@ -189,42 +189,64 @@ PDFTOPPM_COMMAND="$PDFTOPPM_COMMAND" \
 대여·소장·내역이 없고 아직 HTTP 트래픽을 받지 않는 공개 전 후보 시연 DB에만 적재하며, 분석 메타데이터와
 선언한 모델·차원의 임베딩도 사전에 완성·검증해 `BookPage`와 같은 트랜잭션으로 적재합니다. Embeddings
 API 호출 직전에는 전용 OpenAI 프로젝트의 원격 정책 증거와 콘텐츠 요구 조건이 만든
-`openAiPolicyHash`가 일치하고 같은 조직·프로젝트의 `dataSharingDisabledEvidence`가 있어야 합니다. 적재
-실행의 정책 해시·데이터 공유 증거와 서비스 계정·키 추적 ID는 결정적 변환 결과 manifest가 아니라
-`runId`별 접근 제한 배포 증거와 DB 적재 메타데이터에 기록합니다. 같은 콘텐츠를 새 정책 증거로 재적재해도
-콘텐츠 배치 식별자는 유지하고 실행 증거만 새로 만듭니다. 적재 직후
+`openAiPolicyHash`가 일치하고 같은 조직·프로젝트의 `dataSharingDisabledEvidence`와
+`openAiHardSpendLimitEvidence`가 있어야 합니다. 적재 실행의 정책 해시·두 운영 증거와 서비스 계정·키 추적
+ID는 결정적 변환 결과 manifest가 아니라 `runId`별 접근 제한 배포 증거와 DB 적재 메타데이터에 기록합니다.
+같은 콘텐츠를 새 정책 증거로 재적재해도 콘텐츠 배치 식별자는 유지하고 실행 증거만 새로 만듭니다. 적재 직후
 비소설 90권은 `EVALUATABLE`, 소설 10권은 `UNSUPPORTED`이며 일반 서버의 생성 요청으로 평가하지
 않습니다. 공개 후보 DB를 트랜잭션 일관 스냅샷으로 접근 제한 평가 DB에 복제하고 두 DB의 MySQL 버전·
-스키마 마이그레이션이 같은지 확인합니다. 콘텐츠 manifest SHA, 콘텐츠 배치 ID, 도서·페이지·분석
-메타데이터·임베딩의 정규화 해시와 마이그레이션 체크섬으로 `evaluationSourceHash`를 만들어 두 DB가
+스키마 마이그레이션이 같은지 확인합니다. 콘텐츠 manifest SHA, 콘텐츠 배치 ID, 도서·페이지·분석 텍스트·
+분석 메타데이터·임베딩·선수 그래프의 정규화 해시와 마이그레이션 체크섬으로 `evaluationSourceHash`를 만들어 두 DB가
 일치할 때만 비웹 `ai-route-evaluation` 배치를 평가 DB에서 실행합니다. 평가는 `./gradlew build`가 만든
 `build/libs/Ilgeobolkka-0.0.1-SNAPSHOT.jar`의 SHA-256 `generationArtifactHash`를 기록하고, 이후 공개 서버에
 배포할 바로 그 JAR 바이트로 실행합니다.
 [AI 잉크 경로 PRD의 품질·출시 기준](./prd/ai-ink-route.md#품질과-출시-기준)을 모두 통과하면 평가 증거를
-보존합니다. 평가 전에 정답 데이터·시나리오 배정과 지표 계산 코드·사람 판정 기준·PRD 품질 임계값 경로의
-미커밋·미추적 변경이 없음을 확인하고 정확한 커밋 SHA를 `evaluationGitRevision`으로 기록합니다. 배치는
-270개 목적을 비소장 예산 0·5·10·15와 소장 깊이 5·10·15 시나리오에 고정 배정하고,
+보존합니다. 저장소의 개발·회귀 목적 90개로 조정한 지표는 `developmentDatasetGitRevision`과 함께 출시
+판정과 분리해 기록합니다. 출시 평가 전에
+시나리오 배정과 지표 계산 코드·사람 판정 기준·PRD 품질 임계값 경로의 미커밋·미추적 변경이 없음을 확인하고
+정확한 커밋 SHA를 `evaluationGitRevision`으로 기록합니다. 평가 운영자는 공개 배포할
+`generationArtifactHash`, 명시적 `service_tier=default`를 포함한 `generationConfigHash`, 앞에서 계산한
+`evaluationSourceHash`와 `evaluationGitRevision`을 확정합니다. 이어 접근 제한 저장소의 메타데이터로 콘텐츠를
+열지 않고 `holdoutDatasetVersion`·정규 직렬화 SHA-256 `holdoutDatasetHash`를 확인해 여섯 값을 모두 봉인·
+기록한 뒤에만 잠금 holdout에 접근하고 접근자·접근 시각을 남깁니다.
+배치는 개발·회귀 목적과 겹치지 않는 잠금 holdout 270개를 비소장 예산 0·5·10·15와 소장 깊이 5·10·15
+시나리오에 고정 배정하고,
 평가용 대여·잉크 원장과 소장·테스트 결제의 정합성을 유지합니다. 배치의 임시 검수 산출물은 Git에서 제외한
 `var/ai-route-evaluation/<runId>/review.json`에 만들고 배포 담당자와 지정 검수자만 읽을 수 있게 제한합니다.
-산출물에는 고정 목적과 표시 경로만 기록하고 OpenAI 요청·응답 원문과 비공개 분석 텍스트는 기록하지
-않습니다. [AI 경로 콘텐츠 코퍼스](./ai-route-content-corpus.md#고정-품질-평가-조건)의 보관 기한을 넘기면
+단일 요청 지연은 [AI 경로 콘텐츠 코퍼스의 고정 프로토콜](./ai-route-content-corpus.md#잠금-holdout-품질-평가-조건)에
+따라 공개 배포와 같은 `latencyProfile`에서 새 프로세스·무워밍업·고정 순서·동시성 1로 측정합니다. 경로
+구성 요청에는 `service_tier=default`를 명시하고 270개 응답의 실효 `service_tier`가 모두 `default`인지
+검증합니다. 270개가 모두 최종 `ROUTE` 또는 `NO_ROUTE`여야 하며 경과 시간과 관계없이 공급자·서버·시간 제한
+`FAILED`가 하나라도 있으면 품질·지연 결과와 공개 전환을 무효화합니다.
+산출물에는 잠금 holdout 목적과 표시 경로만 기록하고 OpenAI 요청·응답 원문과 비공개 분석 텍스트는 기록하지
+않습니다. [AI 경로 콘텐츠 코퍼스](./ai-route-content-corpus.md#잠금-holdout-품질-평가-조건)의 보관 기한을 넘기면
 임시 산출물을 삭제하고 평가 DB 전체를 폐기한 뒤 새 평가 DB에서 전체 평가를 다시 실행합니다.
-최종 판정을 감사할 수 있는 정제 평가 증거에 `evaluationGitRevision`, `evaluationSourceHash`,
-`generationArtifactHash`, `generationConfigHash`와 `openAiPolicyHash`를 포함해 접근 제한 저장소에 보존하고
-다시 읽어 검증한 뒤 임시 검수 산출물을 삭제하고 평가 DB 전체를 폐기합니다.
+holdout 결과를 본 뒤 `holdoutDatasetVersion`·`holdoutDatasetHash`·`generationArtifactHash`·
+`generationConfigHash`·`evaluationSourceHash`·`evaluationGitRevision` 중 하나라도 바꾸면 해당 holdout을
+폐기하고 새 잠금 버전으로 전체 평가를 다시 실행합니다. `FAILED`나 실행 조건 위반만 바로잡고 여섯 봉인값을
+유지하는 경우에는 같은 holdout으로 270개 전체를 다시 실행할 수 있습니다. 최종 판정을 감사할 수 있는 정제 평가 증거에
+`evaluationGitRevision`, `holdoutDatasetVersion`, `holdoutDatasetHash`, holdout 접근 증거, `latencyProfile`,
+`evaluationSourceHash`, `generationArtifactHash`, `generationConfigHash`, 요청 서비스 티어와 270개 응답의
+실효 서비스 티어, `openAiPolicyHash`, 평가용 전역 외부 실행 한도, `dataSharingDisabledEvidence`와
+`openAiHardSpendLimitEvidence` 식별자를 포함해 접근 제한 저장소에 보존하고 다시 읽어 검증한 뒤 임시 검수
+산출물을 삭제하고 평가 DB 전체를 폐기합니다.
 평가 DB의 계정·잉크·원장·
 대여·소장·평가용 결제·멱등·생성·임시·저장 경로·진행·피드백을 애플리케이션 삭제 경로로 개별 삭제하지
 않습니다. 임시 파일과 평가 DB의 부재를 확인하고 평가 계약 경로의 현재 파일 내용이
-`evaluationGitRevision`과 같으며 현재 실행 JAR에서 다시 계산한 `generationArtifactHash`, 공개 후보 DB의
-`evaluationSourceHash`, 평가한 `generationConfigHash`와 `openAiPolicyHash`가 증거와 같은지 다시
-검증합니다. 같은 공개 후보 DB 트랜잭션에서 평가 Git 리비전과 두 승인 해시를 저장하며 비소설 90권을
-`PUBLIC`로 일괄 전환합니다. 평가 데이터가 들어간 DB는 공개하지 않고 전환한 공개 후보 DB만 시연 서버에
-연결하며 소설 10권은 `UNSUPPORTED`를 유지합니다.
+`evaluationGitRevision`과 같으며 잠금 holdout 버전·해시, 현재 실행 JAR에서 다시 계산한
+`generationArtifactHash`, 공개 후보 DB의 `evaluationSourceHash`, 평가한 `generationConfigHash`와
+`openAiPolicyHash`가 증거와 같은지 다시 검증합니다. 같은 공개 후보 DB 트랜잭션에서 평가 Git 리비전,
+holdout 버전·해시와 두 승인 해시를 저장하며 비소설 90권을 `PUBLIC`로 일괄 전환합니다. 평가 데이터가
+들어간 DB는 공개하지 않고 전환한 공개 후보 DB만 시연 서버에 연결하며 소설 10권은 `UNSUPPORTED`를
+유지합니다.
 
 초기 manifest는 콘텐츠 배치 성공 후 시연 계정 비밀번호를 `.env`에 주입하고 일반 서버를 시작합니다.
 `ai-route-v2`는 위 평가 DB 폐기와 `PUBLIC` 전환까지 완료한 공개 후보 DB에 시연 계정 비밀번호를 주입하고,
-평가 증거의 `generationArtifactHash`와 같은 JAR을 다시 빌드하지 않고 실행합니다. 일반 서버가 한 번이라도
-HTTP 트래픽을 받은 뒤에는 초기 manifest로 만든 새 DB로 교체하는 롤백을 실행하지 않습니다. 해당 시점 이후의
+평가 증거의 `generationArtifactHash`와 같은 JAR을 다시 빌드하지 않고 실행하며 실제 리전·네트워크 경로·
+컴퓨팅 등급·Java/JVM·MySQL·Responses API 요청 티어 `default`가 평가 증거의 `latencyProfile`과 같은지
+확인합니다. 공개 요청의 모든 Responses 응답도 실효 `service_tier=default`인지 검증합니다. 일반
+서버가 한 번이라도 HTTP 트래픽을 받은 뒤에는 초기 manifest로 만든 새 DB로 교체하는 롤백을 실행하지
+않습니다. 해당 시점 이후의
 콘텐츠 버전 마이그레이션과 사용자 기록 보존 롤백은 2차 MVP 범위 밖이므로, 필요하면 별도 결정과 검증 절차를
 먼저 마련합니다.
 
@@ -234,14 +256,32 @@ shasum -a 256 "$AI_ROUTE_JAR"
 java -jar "$AI_ROUTE_JAR"
 ```
 
-### OpenAI 데이터 제어
+### OpenAI 데이터·비용 제어
 
-[ADR-0014](./adr/application/0014-use-openai-and-mysql-for-ai-route-generation.md)의 AI 경로를 활성화하기
+[ADR-0015](./adr/application/0015-harden-openai-ai-route-generation.md)의 AI 경로를 활성화하기
 전에 OpenAI API 키는 브라우저나 저장소가 아닌 배포 환경 변수로 주입하고 다음을 확인합니다.
 
 - 콘텐츠 적재·평가·일반 생성은 같은 전용 OpenAI 프로젝트의 서비스 계정 API 키를 사용합니다. 비민감
   프로젝트 ID와 서비스 계정·키 추적 ID를 배포 대상과 함께 관리하고 API 키 원문은 환경 변수로만
   주입합니다. 다른 프로젝트에 속한 키는 사용할 수 없습니다.
+- OpenAI Platform의 전용 프로젝트 `Limits`에서 월간 spend limit을 설정하고 `Enforce a hard limit`을
+  활성화합니다. 조직 관리자는 조직·프로젝트 ID, 월간 한도, hard limit 활성 여부, 확인 시각과 확인자를
+  `openAiHardSpendLimitEvidence`로 남깁니다. 콘텐츠 적재·평가·공개 서버 시작과 API 키 교체 전에 증거가
+  없거나 프로젝트가 다르거나 hard limit이 꺼져 있으면 배포를 중단합니다. 공급자 hard limit은 적용 전파 중
+  소액을 초과할 수 있으므로 애플리케이션 전역 한도를 대체하지 않습니다. 구체적인 공급자 동작은
+  [OpenAI spend limits](https://developers.openai.com/api/docs/guides/spend-limits#understand-hard-limit-behavior)를
+  따릅니다. hard spend limit을 올리거나 내리거나 끄기 전에는 AI 경로를 비활성화하고, 변경 뒤 새 활성
+  증거를 확인한 경우에만 다시 활성화합니다.
+- AI 경로를 활성화하는 공개 서버와 격리 평가 배치에는 각각
+  `AI_ROUTE_DAILY_OPENAI_EXECUTION_LIMIT`을 1 이상의 정수로 반드시 주입합니다. AI 경로를 비활성화한 상태의
+  비웹 배포 작업이 이 값을 대상 DB의 승인 전역 한도 값으로 먼저 등록하며, 공개 서버와 평가 배치는 자신의
+  주입값이 DB 승인값과 정확히 같은지 시작과 외부 호출 전에 확인합니다. 값이 없거나 1 미만이거나 DB 승인값과
+  다르면 해당 서버나 배치를 시작하지 않습니다. 일반 HTTP 생성은 서로 다른 계정의 외부 실행을 같은 공개
+  애플리케이션 DB의 `(quotaDate)`별 한 행에 합산하고 DB 승인값을 기준으로 MySQL에서 원자적으로 소비합니다.
+  같은 DB를 쓰는 모든 인스턴스와 재시작·롤링 배포는 승인값과 카운터를 공유하며 프로세스나 배포 버전으로
+  사용량을 초기화하지 않습니다. 한도를 바꿀 때는 AI 경로를 비활성화하고 비웹 작업으로 DB 승인값을 갱신하며
+  당일 카운터를 유지합니다. 별도 평가 DB도 그 DB의 승인값과 날짜별 전역 카운터를 사용하며 평가 값은 270개
+  잠금 holdout 전체 실행을 허용하도록 정하고 정제 평가 증거에 기록합니다.
 - 콘텐츠 적재, 평가, 공개 서버 시작과 API 키 교체 직전에 OpenAI Admin API 또는 원격 상태를 갱신하는
   구성 관리 도구로 프로젝트 정책을 읽어 검토된 구성과 drift가 없는지 확인합니다. 프로젝트의 실효 데이터
   제어와 캐시 허용 정책을 확인하며, 관리 자격증명은 일반 웹 애플리케이션에 주입하지 않습니다. 원격 상태를
@@ -260,8 +300,9 @@ java -jar "$AI_ROUTE_JAR"
   전에 확인하고 조직·프로젝트 ID, 확인 시각과 확인자를 `dataSharingDisabledEvidence`로 남깁니다. 증거가
   없거나 대상이 다르거나 공유가 켜져 있으면 배포를 중단합니다. 데이터 공유 설정 변경 전에는 AI 경로를
   먼저 비활성화하고 새 비활성 확인 증거가 있기 전에는 다시 활성화하지 않습니다.
-- 경로 모델 ID·추론 mode·effort·프롬프트·출력 스키마·후보 선택·서버 경로 정책 버전과 실행 JAR의
-  `generationArtifactHash`를 정규화해 `generationConfigHash`를 만듭니다. 평가 배치가 사용한 두 해시를
+- 경로 모델 ID·추론 mode·effort·Responses API의 명시적 `service_tier=default`·프롬프트·출력 스키마·후보
+  선택·서버 경로 정책 버전과 실행 JAR의 `generationArtifactHash`를 정규화해 `generationConfigHash`를
+  만듭니다. `service_tier` 생략과 `auto`는 허용하지 않습니다. 평가 배치가 사용한 두 해시를
   `PUBLIC` 전환 트랜잭션에 승인값으로 저장합니다. 공개 서버는 시작과 외부 호출 전에 자신의 JAR 해시를
   포함한 현재 두 해시를 다시 계산하며 승인값과 다르면 AI 경로 요청을 실패 폐쇄하고 OpenAI를 호출하지
   않습니다. 도서 탐색·기존 뷰어 같은 비-AI 기능은 계속 제공합니다.
@@ -271,8 +312,9 @@ java -jar "$AI_ROUTE_JAR"
   통과한 경우에만 한 DB 트랜잭션에서 승인 `openAiPolicyHash`를 교체하고 이전·새 해시와 변경 이유를 배포
   증거에 남깁니다. 실패하면 승인값을 바꾸지 않고 AI 경로의 실패 폐쇄를 유지합니다.
 - OpenAI 프로젝트 ID 변경은 정책 재승인으로 처리하지 않고 새 프로젝트에서 콘텐츠 임베딩 적재와 고정
-  코퍼스 평가·공개 승인을 다시 수행합니다. 같은 프로젝트의 API 키 교체는 새 키의 프로젝트 소속, 원격
-  증명과 데이터 공유 비활성 확인을 갱신하되 두 해시가 그대로면 품질 평가를 반복하지 않습니다.
+  잠금 holdout 평가·공개 승인을 다시 수행합니다. 같은 프로젝트의 API 키 교체는 새 키의 프로젝트 소속,
+  원격 증명, 데이터 공유 비활성 확인과 hard spend limit 확인을 갱신하되 두 해시가 그대로면 품질 평가를
+  반복하지 않습니다.
 - 콘텐츠 적재의 Embeddings API 요청에는 권리·보관 조건을 확인한 페이지 분석 텍스트만 있고, 런타임
   요청에는 정규화한 독서 목적만 있으며 두 입력을 섞지 않는지 확인합니다. 런타임 모델·차원은 콘텐츠
   버전에 묶인 페이지 벡터와 같아야 합니다.
@@ -294,10 +336,22 @@ java -jar "$AI_ROUTE_JAR"
   충족합니다.
 - 콘텐츠 적재 사전 검증에서 위 권리·보관 조건이 누락되거나 허용되지 않은 표본을 넣었을 때 Embeddings API
   호출과 DB 변경 없이 실패하는지 확인합니다.
-- 배포 증거에는 콘텐츠 버전, `generationArtifactHash`, `generationConfigHash`, `openAiPolicyHash`, 프로젝트
-  ID, 서비스 계정·키 추적 ID, 임베딩·경로 모델, 실효 데이터 제어, 캐시 허용 정책, 원격 확인 도구와
-  확인·만료 시각 및 `dataSharingDisabledEvidence` 식별자를 기록합니다. API 키, 독서 목적, 요청·응답
-  원문은 기록하지 않습니다.
+- 계정 정상 결과·계정 외부 실행·애플리케이션 전역 외부 실행 한도는 각각 PRD의 안정된 `429` 코드와 다음
+  UTC 날짜까지의 `Retry-After`를 반환합니다. 계정 또는 전역 외부 실행 슬롯을 얻지 못하면 두 실행 슬롯을
+  모두 소비하지 않고 정상 결과 예약을 해제하며 현재 멱등 시도를 `FAILED`로 끝냅니다. OpenAI가
+  `organization_spend_limit_exceeded`, `project_spend_limit_exceeded`, `organization_usage_limit_exceeded` 또는
+  `credit_balance_exhausted`를 반환하면 원문 조직·프로젝트·비용·크레딧 정보를 숨기고
+  `503 AI_ROUTE_PROVIDER_BUDGET_UNAVAILABLE`로 변환하며 비-AI 기능은 계속 제공합니다.
+- Responses API 응답의 실효 `service_tier`가 `default`가 아니면 모델 출력을 사용하지 않고 임시 결과를
+  만들지 않습니다. 시작한 외부 실행 시도는 유지하고 정상 결과 예약을 해제하며 현재 멱등 시도를 `FAILED`로
+  끝낸 뒤 외부 API·서버 오류와 같은 재시도 가능한 서비스 실패로 변환합니다. 평가 배치에서 하나라도 발생하면
+  해당 품질·지연 실행 전체를 무효화합니다.
+- 배포 증거에는 콘텐츠 버전, `generationArtifactHash`, `generationConfigHash`, `openAiPolicyHash`,
+  `latencyProfile`, 요청 `service_tier=default`와 평가 응답의 실효 서비스 티어, 프로젝트 ID, 서비스 계정·키
+  추적 ID, 임베딩·경로 모델, 실효 데이터 제어, 캐시 허용 정책, 원격 확인 도구와
+  확인·만료 시각, `AI_ROUTE_DAILY_OPENAI_EXECUTION_LIMIT`의 주입값·DB 승인값·일치 검증 결과,
+  `dataSharingDisabledEvidence`와 `openAiHardSpendLimitEvidence` 식별자를 기록합니다. API 키, 독서 목적,
+  요청·응답 원문은 기록하지 않습니다.
 
 ### AI 경로 멱등 입력 HMAC
 

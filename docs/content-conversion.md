@@ -69,26 +69,30 @@ SCRUM-403의 `books.json`, 합성 페이지 규칙과 PNG는 목록·검색·잉
   임베딩만 반영하지 않습니다.
 - Embeddings API 호출 전에 전용 OpenAI 프로젝트와 서비스 계정 키의 소속을 확인하고 원격 상태를 갱신해
   프로젝트 ID·실효 데이터 제어·캐시 허용 정책의 `openAiPolicyHash`를 만듭니다. 조직 관리자가 같은
-  조직·프로젝트의 학습용 데이터 공유 비활성을 별도 `dataSharingDisabledEvidence`로 확인합니다. 콘텐츠
-  요구 조건이나 배포 증거와 다르거나 1시간 원격 증명이 만료됐거나 데이터 공유 확인 증거가 없으면 외부
-  호출과 DB 변경 없이 전체 적재를 실패시킵니다.
+  조직·프로젝트의 학습용 데이터 공유 비활성을 별도 `dataSharingDisabledEvidence`로 확인하고 월간 hard
+  spend limit 활성화를 `openAiHardSpendLimitEvidence`로 확인합니다. 콘텐츠 요구 조건이나 배포 증거와
+  다르거나 1시간 원격 증명이 만료됐거나 두 운영 증거 중 하나가 없으면 외부 호출과 DB 변경 없이 전체
+  적재를 실패시킵니다.
 - 도서·콘텐츠 버전별 AI 경로 상태는 `UNSUPPORTED`, `EVALUATABLE`, `PUBLIC` 중 하나로 영속화합니다.
   `ai-route-v2` 적재 직후 비소설 90권은 `EVALUATABLE`, 소설 10권은 `UNSUPPORTED`입니다. 공개 전 후보
   시연 DB를 트랜잭션 일관 스냅샷으로 복제한 접근 제한 평가 DB의 비웹 `ai-route-evaluation` 배치만
   `EVALUATABLE`에서 운영 생성 서비스를 호출할 수 있습니다. 두 DB는 같은 MySQL 버전·스키마 마이그레이션을
-  사용하고 콘텐츠 manifest SHA, 콘텐츠 배치 ID, 도서·페이지·분석 메타데이터·임베딩의 정규화 해시와
-  마이그레이션 체크섬으로 만든 `evaluationSourceHash`가 일치해야 합니다.
+  사용하고 콘텐츠 manifest SHA, 콘텐츠 배치 ID, 도서·페이지·분석 텍스트·분석 메타데이터·임베딩·선수
+  그래프의 정규화 해시와 마이그레이션 체크섬으로 만든 `evaluationSourceHash`가 일치해야 합니다.
   [AI 잉크 경로 PRD의 품질·출시 기준](./prd/ai-ink-route.md#품질과-출시-기준)을 통과하면 정제 평가
   증거를 보존하고 다시 읽어 검증합니다.
-  [AI 경로 콘텐츠 코퍼스](./ai-route-content-corpus.md#고정-품질-평가-조건)의 임시 검수 산출물을 삭제하고
+  [AI 경로 콘텐츠 코퍼스](./ai-route-content-corpus.md#잠금-holdout-품질-평가-조건)의 임시 검수 산출물을 삭제하고
   평가 DB 전체를 폐기해 둘의 부재를 확인합니다. 평가용 잉크·원장·대여·소장·결제 및 런타임 상태를
   애플리케이션 삭제 경로로 개별 삭제하지 않습니다. 공개 전환 작업은 평가 증거의 `evaluationGitRevision`에
-  기록한 정답 데이터·평가 코드·사람 판정 기준·PRD 품질 임계값의 Git 파일 내용이 현재 전환 대상과 같은지
-  먼저 검증합니다. 평가·공개 전환에 같은 패키징 JAR을 사용하고 해당 JAR의 `generationArtifactHash`, 공개
-  후보 DB의 `evaluationSourceHash`, 평가에 사용한 `generationConfigHash`와 `openAiPolicyHash`도 평가 증거와
-  같은지 다시 검증한 뒤 같은 트랜잭션에서 평가 Git 리비전과 두 승인 해시를 저장하며 비소설 90권을
-  `PUBLIC`로 일괄 전환합니다. 평가 JAR은 다시 빌드하지 않고 공개 서버에 그대로 배포하며, 평가 데이터가
-  들어간 DB는 공개하지 않고 전환한 공개 후보 DB만 시연 서버에 연결합니다.
+  기록한 평가 코드·사람 판정 기준·PRD 품질 임계값의 Git 파일 내용이 현재 전환 대상과 같은지 먼저
+  검증합니다. 접근 제한 저장소의 잠금 holdout `holdoutDatasetVersion`·`holdoutDatasetHash`, 평가·공개
+  전환에 사용하는 같은 패키징 JAR의 `generationArtifactHash`, 공개 후보 DB의 `evaluationSourceHash`,
+  평가에 사용한 `generationConfigHash`와 `openAiPolicyHash`도 평가 증거와 같은지 다시 검증합니다. 평가
+  증거의 `latencyProfile`이 실제 공개 배포의 리전·네트워크 경로·컴퓨팅 등급·Java/JVM·MySQL·Responses 요청
+  티어와 같은지도 확인합니다. 평가·공개 Responses API 요청은 명시적 `service_tier=default`이고 평가 응답
+  270개의 실효 티어도 모두 `default`여야 합니다. 같은 트랜잭션에서 평가 Git 리비전, holdout 버전·해시와 두
+  승인 해시를 저장하며 비소설 90권을 `PUBLIC`로 일괄 전환합니다. 평가 JAR은 다시 빌드하지 않고 공개 서버에
+  그대로 배포하며, 평가 데이터가 들어간 DB는 공개하지 않고 전환한 공개 후보 DB만 시연 서버에 연결합니다.
 - 지원 도서나 페이지의 외부 전송 권리·데이터 보관 조건이 누락됐거나 허용되지 않으면 사전 검증에서 전체
   적재를 실패시키고 Embeddings API를 호출하지 않으며 `PUBLIC`로 전환하지 않습니다.
 - 하나라도 실패하면 DB를 변경하지 않고 기존 시연 콘텐츠를 유지합니다. AI 경로 상태 외의 일반 콘텐츠 공개
@@ -114,8 +118,9 @@ SCRUM-403의 `books.json`, 합성 페이지 규칙과 PNG는 목록·검색·잉
 `ai-route-v2` 결과에는 입력 manifest에 고정한 임베딩 모델·차원, 페이지별 분석 입력 SHA-256과 생성한
 임베딩 벡터의 SHA-256도 기록합니다.
 
-원격 확인 시각, `openAiPolicyHash`, `dataSharingDisabledEvidence` 식별자와 서비스 계정·키 추적 ID는
-콘텐츠 바이트나 임베딩 설정이 아니라 실행 시점의 승인 증거이므로 결정적 결과 manifest에 넣지 않습니다.
+원격 확인 시각, `openAiPolicyHash`, `dataSharingDisabledEvidence`·`openAiHardSpendLimitEvidence` 식별자와
+서비스 계정·키 추적 ID는 콘텐츠 바이트나 임베딩 설정이 아니라 실행 시점의 승인 증거이므로 결정적 결과
+manifest에 넣지 않습니다.
 이 값은 `runId`로 구분한 접근 제한 콘텐츠 적재 실행 증거와 DB 적재 메타데이터에 별도로 기록합니다. 같은
 콘텐츠 배치를 새 정책 증거로 다시 적재해도 콘텐츠 배치 식별자는 바뀌지 않고 새 실행 증거가 생기며,
 임베딩 모델·차원이나 분석 입력이 바뀌면 입력 manifest와 콘텐츠 배치 식별자가 함께 바뀝니다.
