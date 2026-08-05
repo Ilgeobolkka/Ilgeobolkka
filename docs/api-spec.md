@@ -500,9 +500,10 @@ PortOne 테스트 채널만 가리키며 운영 실결제 채널은 설정하지
 웹훅은 `Transaction.Paid`와 `Transaction.Failed`만 상태 처리 대상으로 삼습니다. 그 밖의 정상 서명
 이벤트와 알 수 없는 유형은 상태를 바꾸지 않고 `200 OK`, 서명 누락·불일치는
 `400 INVALID_WEBHOOK_SIGNATURE`, PortOne 조회 장애나 내부 일시 오류는 재전송을 위해 `5xx`로 응답합니다.
-정상 서명된 처리 대상 이벤트라도 `paymentId`에 대응하는 내부 결제 준비 기록이 없으면
-`404 RESOURCE_NOT_FOUND`로 응답해 일시적인 기록 불일치에 대한 PortOne 재전송을 허용하며, 결제 상태와
-도메인 효과는 만들지 않습니다.
+정상 서명된 처리 대상 이벤트라도 `paymentId`가 이 애플리케이션이 발급하는 UUID 형식이 아니면 결제 ID
+영역 밖의 이벤트로 보고 상태를 바꾸지 않은 채 `200 OK`로 응답합니다. UUID 형식이지만 대응하는 내부 결제
+준비 기록이 없으면 `404 RESOURCE_NOT_FOUND`로 응답해 일시적인 기록 불일치에 대한 PortOne 재전송을
+허용하며, 결제 상태와 도메인 효과는 만들지 않습니다.
 
 소장 결제 내역은 `PAID`만 한 페이지에 10개씩 `paidAt DESC, id DESC`로 제공합니다. 각 항목은
 `paymentId`, `bookId`, `bookTitle`, `amountWon`, `paidAt`, `owned`를 포함합니다. `PENDING`·`FAILED`는
