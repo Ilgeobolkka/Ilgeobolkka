@@ -4,6 +4,8 @@
 데이터의 정본입니다. 기존 PDF 변환·권리·공개 fixture 경계는
 [콘텐츠 변환과 품질 검증](./content-conversion.md)과
 [ADR-0013](./adr/content/0013-define-page-content-and-public-ai-fixture-boundary.md)을 따릅니다.
+외부 전송 조건의 식별자와 비교 규칙은
+[OpenAI 데이터 정책 프로필](./evidence/openai-data-policy/README.md)을 따릅니다.
 
 ## 범위
 
@@ -35,19 +37,37 @@
 
 ## 구조 메타데이터
 
-각 도서와 페이지에는 최소한 다음 분석 메타데이터를 만듭니다.
+`ai-route-v2` 콘텐츠 입력은 `fixtures/content/ai-route-v2/manifest.json`, PDF는 그 파일 기준 상대 경로인
+`fixtures/content/ai-route-v2/pdfs/`에 둡니다. manifest의 최소 필드는 다음과 같습니다.
 
-- 도서·콘텐츠 버전별 AI 경로 지원 여부
-- 장·절과 원본 PDF 페이지 번호
-- 페이지의 주요 개념과 보조 개념
-- 먼저 알아야 하는 개념과 페이지 관계 0개 이상. 선수 페이지가 없는 루트는 빈 목록
-- 페이지 역할: 선수 개념, 핵심 개념, 사례, 반론, 결론
-- 원문·결론·수치·사례 결과를 포함하지 않고 사람 검수를 통과한 공개 가이드 주제
-- 의미상 중복되는 페이지 그룹 소속 0개 이상. 의미상 고유한 페이지는 빈 목록
-- 텍스트 길이 또는 이미지 복잡도에 따른 예상 독서 시간 입력값
-- 외부 AI 전송 권리와 적용할 데이터 보관 조건의 수용 여부
+| 위치 | 필수 필드 |
+| --- | --- |
+| 최상위 | `contentVersion`, `dataPolicyVersion`, `embeddingModel`, `embeddingDimensions`, `books[]` |
+| `books[]` | `bookId`, `pdfPath`, `pdfSha256`, `totalPageCount`, `aiRouteCandidate`, `aiExternalTransferAllowed`, `pages[]` |
+| `aiRouteCandidate=true`인 `books[].pages[]` | `pageNumber`, `chapter`, `section`, `primaryConcepts[]`, `secondaryConcepts[]`, `contentRole`, `aiAnalysisText`, `aiAnalysisInputSha256`, `aiPublicGuideTopic`, `estimatedReadingSeconds`, `prerequisitePageNumbers[]`, `duplicateGroupKeys[]` |
 
-구조 메타데이터 중 화면 공개가 합의되지 않은 값은 외부 API에 제공하지 않습니다.
+재제작한 비소설 90권은 `aiRouteCandidate=true`이고 모든 페이지 메타데이터를 가지며, 소설 10권은
+`aiRouteCandidate=false`와 빈 `pages[]`를 사용합니다. 지원 후보의 `primaryConcepts[]`는 하나 이상이고 나머지
+목록 필드는 항목이 없으면 빈 배열을 사용합니다.
+
+`contentRole`은 `PREREQUISITE`, `CORE`, `EXAMPLE`, `COUNTERPOINT`, `CONCLUSION` 중 하나인 콘텐츠 제작·평가용
+분류이며 생성 결과의 경로별 `role` 정답으로 사용하지 않습니다. `chapter`, `section`, `primaryConcepts`,
+`secondaryConcepts`, `contentRole`, `aiAnalysisInputSha256`, `aiRouteCandidate`는 manifest에서 제작 완전성과
+평가 연결을 검증하는 비영속 메타데이터입니다. 런타임 후보 생성 입력이나 공개 API에 포함하지 않습니다.
+
+적재 시 `contentVersion`, `dataPolicyVersion`, `aiExternalTransferAllowed`는 `book`의 대응 필드로,
+`aiAnalysisText`, `aiPublicGuideTopic`, `estimatedReadingSeconds`, 임베딩 모델·차원·벡터와
+`duplicateGroupKeys`는 `book_page`의 대응 필드로 저장합니다. `prerequisitePageNumbers`는 현재 페이지를 의존
+페이지로 하는 `ai_route_prerequisite` 행으로 저장합니다. 구체적인 물리 필드는
+[ERD의 AI 잉크 경로 목표 모델](./erd.md#ai-잉크-경로-2차-mvp-목표-모델-구현-전)을 따릅니다.
+
+manifest는 AI 경로 지원 후보를 정의할 뿐 `ai_route_supported=true`를 선언하지 않습니다. 적재 직후에는
+`false`로 두고 아래 품질 평가를 통과한 비소설 도서만 `true`로 전환합니다.
+
+`ai-route-v2`의 `dataPolicyVersion`은 `OPENAI_DEFAULT_RETENTION_V1`이며 지원 후보 도서의
+`aiExternalTransferAllowed`는 `true`여야 합니다. 개별 페이지 하나라도 외부 전송 권리를 확인하지 못하면
+도서 전체를 `false`로 판정합니다. 구조 메타데이터 중 화면 공개가 합의되지 않은 값은 외부 API에 제공하지
+않습니다.
 
 선수 관계는 같은 도서·콘텐츠 버전 안에서 `선수 페이지 -> 의존 페이지` 방향 그래프로 해석합니다. 모든
 참조 페이지가 존재해야 하고 다른 도서·콘텐츠 버전을 가리킬 수 없으며, 자기 참조와 방향 순환이 없어야
@@ -60,21 +80,22 @@
 관리하고 프롬프트·후보 정책 회귀와 출시 전 품질 확인에 함께 사용합니다. 독립적인 미관측 평가셋이 아니므로
 결과를 일반 사용자 전체의 성과로 확대 해석하지 않습니다.
 
-각 목적은 다음을 정의합니다.
+평가 입력은 `fixtures/content/ai-route-v2/evaluation.json`에 두며 최소 필드는 다음과 같습니다.
 
-- 목적 문장
-- 비소장 예산 0·5·10·15 또는 소장 빠른·균형·깊이 중 하나의 평가 시나리오
-- 반드시 포함해야 할 필수 개념 1개 이상
-- 포함하면 좋은 개념·사례·반론·결론
-- 먼저 배치해야 할 선수 관계
-- 무관한 페이지와 의미가 중복된 페이지
-- 참고할 수 있는 기대 페이지와 허용 가능한 다른 페이지·순서
+| 위치 | 필수 필드 |
+| --- | --- |
+| 최상위 | `contentVersion`, `cases[]` |
+| `cases[]` 식별·입력 | `caseId`, `bookId`, `purpose`, `owned`, `maxAdditionalInk`, `depth`, `activeRentalPageNumbers[]` |
+| `cases[]` 정답 | `requiredConcepts[]`, `helpfulConcepts[]`, `requiredPrerequisites[]`, `irrelevantPageNumbers[]`, `duplicatePageGroups[]`, `referencePageNumbers[]`, `allowedAlternativePageNumbers[]` |
+
+`caseId`는 파일 안에서 고유합니다. 비소장 사례는 `owned=false`, `maxAdditionalInk`에 0·5·10·15 중 하나,
+`depth=null`을 사용하고, 소장 사례는 `owned=true`, `maxAdditionalInk=null`, `depth`에 `QUICK`, `BALANCED`,
+`DEEP` 중 하나를 사용합니다. `requiredConcepts[]`는 하나 이상이고 나머지 목록 필드는 항목이 없으면 빈 배열을
+사용합니다. `requiredPrerequisites[]`의 각 항목은 `beforePageNumber`와 `afterPageNumber`를 가집니다.
+`duplicatePageGroups[]`의 각 항목은 중복으로 판정할 페이지 번호 배열입니다.
 
 정답 필드는 후보 검색이나 경로 구성 입력에 사용하지 않습니다. 독서 목적만 일반 사용자 입력과 같은
 경계로 전달하며 정확한 페이지 번호 일치보다 개념 충족 여부를 우선 판정합니다.
-
-<!-- 대체된 ADR-0015의 기존 링크 호환용 앵커 -->
-<a id="잠금-holdout-품질-평가-조건"></a>
 
 ### 품질 평가 조건
 
@@ -92,9 +113,9 @@
   재시도를 거쳐 최종 결과를 확정할 때까지 측정합니다.
 - 평가 결과에는 콘텐츠 manifest와 평가 데이터의 Git 리비전, 실행 시각, 임베딩·경로 모델, 프롬프트와 후보
   정책 버전, 자동 지표와 사람 판정을 기록합니다.
-- 모델·프롬프트·후보 정책이나 평가 데이터를 바꾸면 90개 전체를 다시 실행합니다. 일반 코드 변경이나
-  공급자 처리 티어 차이만으로 기존 평가 결과를 자동 폐기하지 않습니다.
-- 판정은 [AI 잉크 경로 PRD의 품질과 출시 기준](./prd/ai-ink-route.md#품질과-출시-기준)을 따릅니다.
+- 판정과 재평가 대상은
+  [AI 잉크 경로 PRD의 품질과 출시 기준](./prd/ai-ink-route.md#품질과-출시-기준)을 따릅니다. 일반 코드
+  변경이나 공급자 처리 티어 차이만으로 기존 평가 결과를 자동 폐기하지 않습니다.
 
 ## 생성·검수 순서
 
@@ -119,7 +140,7 @@
 - 각 지원 도서에 대표 목적 1개와 개념 중심 정답 데이터가 있고 일곱 평가 시나리오가 모두 포함됩니다.
 - 정답 평가 데이터가 런타임 추천 입력과 분리됩니다.
 - 공개 fixture 권리·개인정보 검사를 통과합니다.
-- 외부 전송 권리나 데이터 보관 조건이 누락·거부된 표본은 Embeddings API 호출과 지원 활성화 전에
-  거부됩니다.
+- 외부 전송 권리나 `dataPolicyVersion`이 누락·거부됐거나 배포 환경의 지원 프로필과 다른 표본은
+  Embeddings API 호출과 지원 활성화 전에 거부됩니다.
 - 대표 목적 90개가 [AI 잉크 경로 PRD의 품질·출시 기준](./prd/ai-ink-route.md#품질과-출시-기준)을
   통과하고 결과에 재현에 필요한 Git 리비전·모델·정책 버전이 기록됩니다.

@@ -37,11 +37,12 @@ SCRUM-403의 `books.json`, 합성 페이지 규칙과 PNG는 목록·검색·잉
 [AI 경로 콘텐츠 코퍼스](./ai-route-content-corpus.md)의 `ai-route-v2`는 초기 fixture를 덮어쓰지 않는
 별도 콘텐츠 버전입니다.
 
-- `ai-route-v2` manifest는 도서 100권 전체와 `contentVersion`, 임베딩 모델·차원, 지원 페이지의 분석
-  메타데이터 입력과 입력 SHA-256을 기록합니다. 이 결정적 입력이 하나라도 바뀌면 manifest SHA-256도
-  바뀌어야 합니다.
-- 비소설 90권은 각각 48~72페이지이고, 소설 10권은 초기 fixture의 PDF·SHA-256·페이지 수를 그대로
-  사용합니다.
+- `ai-route-v2` manifest의 도서 구성과 페이지 범위는
+  [AI 경로 콘텐츠 코퍼스의 범위](./ai-route-content-corpus.md#범위)와
+  [도서 제작 기준](./ai-route-content-corpus.md#도서-제작-기준)을 따릅니다. manifest는
+  `contentVersion`, `dataPolicyVersion`, 도서별 `aiExternalTransferAllowed`, 임베딩 모델·차원, 지원
+  페이지의 분석 메타데이터 입력과 입력 SHA-256을 기록하며 이 결정적 입력이 하나라도 바뀌면 manifest
+  SHA-256도 바뀌어야 합니다.
 - `ai-route-v2`의 전체 페이지 수는 manifest의 도서별 페이지 수 합계로 계산하며 400으로 고정하지
   않습니다.
 - 현재 변환기의 `100권·400페이지` 검증은 초기 fixture에만 적용합니다. 2차 MVP 구현에서는 선택한
@@ -59,23 +60,27 @@ SCRUM-403의 `books.json`, 합성 페이지 규칙과 PNG는 목록·검색·잉
 - `TEXT`는 DB에 저장하고 `IMAGE`는 로컬에서 Git 제외한 `var/content/pages/`에 저장합니다. 운영에서는
   [ADR-0006](./adr/content/0006-use-poppler-and-private-s3-for-image-pages.md)의 비공개 S3로 교체합니다.
 - 파일 산출물은 새 버전 디렉터리에 완성하고 검증이 끝나기 전 DB에서 해당 경로를 참조하지 않습니다.
-- 선택한 버전의 도서 100권과 버전별 페이지 수 검증이 통과한 뒤 한 DB 트랜잭션에서 기존
+- 선택한 버전의 전체 도서와 버전별 페이지 수 검증이 통과한 뒤 한 DB 트랜잭션에서 기존
   `(bookId, pageNumber)`의 `BookPage` 내용을 갱신하고 없는 페이지만 추가합니다. 기존 식별자는 보존하며
   예상하지 않은 기존 페이지가 있으면 삭제하지 않고 전체 적재를 실패시킵니다.
 - `ai-route-v2`는 DB 트랜잭션 전에 외부 전송 권리와 데이터 보관 조건을 확인한 페이지 분석 텍스트로
   임베딩을 모두 생성하고, 분석 텍스트·공개 가이드 주제·선수 관계·중복 그룹·예상 독서 시간 입력값·임베딩을
-  `contentVersion`, 임베딩 모델·차원과 함께 검증합니다. 검증 뒤 `BookPage`와 같은 적재 트랜잭션에 저장하며
-  일부 분석 데이터나 임베딩만 반영하지 않습니다.
-- Embeddings API 호출 전에 전용 OpenAI 프로젝트의 적용 데이터 제어가 콘텐츠의 보관 조건을 만족하는지
-  배포 체크리스트로 확인합니다. 확인 기준은
-  [OpenAI API 데이터 보관 정책 근거](./evidence/openai-data-policy/2026-08-05.md)를 따르며, 조건이 맞지 않으면
-  외부 호출과 DB 변경 없이 전체 적재를 실패시킵니다.
-- 도서·콘텐츠 버전별 AI 경로 지원 여부를 영속화합니다. 비소설 90권은 콘텐츠 완전성과 외부 전송 조건을
-  통과하고 [AI 잉크 경로 PRD의 품질·출시 기준](./prd/ai-ink-route.md#품질과-출시-기준)을 통과한 경우에만
-  지원하고, 소설 10권은 지원하지 않습니다. 평가는 별도 DB나 사용자·결제 기록 없이 비웹 평가 입력으로
-  실행합니다.
-- 지원 도서나 페이지의 외부 전송 권리·데이터 보관 조건이 누락됐거나 허용되지 않으면 사전 검증에서 전체
-  적재를 실패시키고 Embeddings API를 호출하지 않으며 AI 경로 지원으로 활성화하지 않습니다.
+  `contentVersion`, `dataPolicyVersion`, 임베딩 모델·차원과 함께 검증합니다. 검증 뒤 `BookPage`와 같은 적재
+  트랜잭션에 저장하며 일부 분석 데이터나 임베딩만 반영하지 않습니다. manifest 전용 비영속 필드와 평가
+  fixture의 경로·최소 스키마는 [AI 경로 콘텐츠 코퍼스](./ai-route-content-corpus.md#구조-메타데이터)만
+  따르며 평가 정답은 콘텐츠 적재나 런타임 후보 생성 입력으로 사용하지 않습니다.
+- Embeddings API 호출 전에 manifest의 `dataPolicyVersion`과 배포 환경의
+  `OPENAI_DATA_POLICY_VERSION`이 같고, 운영자가 전용 OpenAI 프로젝트의 적용 데이터 제어가 해당 프로필과
+  같거나 더 엄격함을 확인했는지 검사합니다. 확인 기준은
+  [OpenAI 데이터 정책 프로필](./evidence/openai-data-policy/README.md)을 따르며, 조건이 맞지 않으면 외부
+  호출과 DB 변경 없이 전체 적재를 실패시킵니다.
+- 도서·콘텐츠 버전별 AI 경로 지원 여부를 영속화합니다. 지원 대상과 평가 데이터는
+  [AI 경로 콘텐츠 코퍼스](./ai-route-content-corpus.md), 활성화 판정은
+  [AI 잉크 경로 PRD의 품질·출시 기준](./prd/ai-ink-route.md#품질과-출시-기준)을 통과한 경우에만
+  지원합니다.
+- 지원 후보 도서의 `aiExternalTransferAllowed`가 `false`이거나 지원 데이터 정책 프로필이 누락·불일치하면
+  사전 검증에서 전체 적재를 실패시키고 Embeddings API를 호출하지 않으며 AI 경로 지원으로 활성화하지
+  않습니다.
 - 하나라도 실패하면 DB를 변경하지 않고 기존 시연 콘텐츠를 유지합니다. AI 경로 지원 여부 외의 일반 콘텐츠 공개
   상태, 운영 백오피스와 기존 사용자 데이터에 대한 재적재 삭제 정책은 MVP 범위에 포함하지 않습니다.
 - 배치는 `content-import` 프로필의 비웹 애플리케이션으로만 실행합니다. 일반 서버 시작, HTTP 요청과
@@ -96,12 +101,12 @@ SCRUM-403의 `books.json`, 합성 페이지 규칙과 PNG는 목록·검색·잉
 선택한 입력 manifest 파일 바이트의 SHA-256을 결정적 콘텐츠 배치 식별자로 사용합니다. 기본 출력은
 `var/content/pages/<manifestSha256>/`이고 이 디렉터리의 `manifest.json`에는 입력 manifest SHA,
 콘텐츠 버전, Poppler 버전, 이미지 형식·DPI·품질, 도서별 원본 SHA와 실제 페이지 결과 수를 기록합니다.
-`ai-route-v2` 결과에는 입력 manifest에 고정한 임베딩 모델·차원, 페이지별 분석 입력 SHA-256과 생성한
-임베딩 벡터의 SHA-256도 기록합니다.
+`ai-route-v2` 결과에는 입력 manifest에 고정한 `dataPolicyVersion`, 임베딩 모델·차원, 페이지별 분석 입력
+SHA-256과 생성한 임베딩 벡터의 SHA-256도 기록합니다.
 
-배포 시 확인한 OpenAI 프로젝트와 데이터 제어는 콘텐츠 바이트나 임베딩 설정이 아니므로 결정적 결과
-manifest에 넣지 않습니다. 임베딩 모델·차원이나 분석 입력이 바뀌면 입력 manifest와 콘텐츠 배치 식별자가
-함께 바뀝니다.
+배포 시 확인한 실제 OpenAI 프로젝트 ID와 데이터 제어 상태는 콘텐츠 바이트가 아니므로 결정적 결과
+manifest에 넣지 않습니다. 콘텐츠가 요구하는 `dataPolicyVersion`은 입력 manifest에 포함하며, 이 값이나
+임베딩 모델·차원·분석 입력이 바뀌면 입력 manifest와 콘텐츠 배치 식별자가 함께 바뀝니다.
 
 변환 중에는 같은 출력 루트의 숨김 staging 디렉터리만 사용합니다. 전체 검증이 끝나면 staging
 디렉터리를 최종 배치 식별자 경로로 이동합니다. 같은 manifest 결과가 이미 있으면 결정적 결과 manifest와
@@ -110,9 +115,10 @@ manifest가 선언한 모든 IMAGE 파일의 바이트가 같은 경우에만 �
 
 ## 변환 완전성
 
-- manifest에는 시연 PDF 100권이 있고 `bookId`가 중복 없이 현재 시연 도서와 일치해야 합니다.
-- 초기 버전은 전체 400페이지여야 합니다. `ai-route-v2`는 비소설 90권이 각각 48~72페이지이고 소설
-  10권의 PDF·SHA-256·페이지 수가 초기 버전과 같으며, 전체 페이지 수는 manifest 합계와 일치해야 합니다.
+- manifest의 `bookId`는 중복 없이 선택한 콘텐츠 버전의 시연 도서와 일치해야 합니다.
+- 초기 버전은 전체 400페이지여야 합니다. `ai-route-v2`의 도서 구성·페이지 범위·기존 콘텐츠 보존 조건은
+  [AI 경로 콘텐츠 코퍼스의 완료 조건](./ai-route-content-corpus.md#완료-조건)을 따르며, 전체 페이지 수는
+  manifest 합계와 일치해야 합니다.
 - 각 PDF의 SHA-256과 페이지 수가 manifest와 일치해야 합니다.
 - 원본 PDF 페이지 수와 생성한 페이지 콘텐츠 수가 같아야 합니다.
 - 모든 페이지가 `TEXT` 또는 `IMAGE` 중 정확히 하나의 형식을 가져야 합니다.
@@ -128,8 +134,8 @@ manifest가 선언한 모든 IMAGE 파일의 바이트가 같은 경우에만 �
   검증에서 전체 적재를 실패시켜야 합니다.
 - AI 경로 지원은 위 콘텐츠 완전성과 외부 전송 권리·데이터 보관 조건을 모두 통과한 비소설 도서에만
   허용합니다.
-- 모든 지원 도서와 페이지에는 외부 전송 허용과 적용할 데이터 보관 조건의 수용 여부가 명시돼야 합니다.
-  하나라도 누락되거나 적용할 OpenAI 프로젝트 정책과 맞지 않으면 Embeddings API 호출 전에 실패해야 합니다.
+- 모든 지원 후보 도서에는 `aiExternalTransferAllowed=true`, manifest에는 지원하는 `dataPolicyVersion`이
+  있어야 합니다. 하나라도 누락되거나 배포 환경의 프로필과 다르면 Embeddings API 호출 전에 실패해야 합니다.
 - 변환 실패나 번호 불일치가 있으면 DB 적재를 시작하지 않습니다.
 - 적재 전후 같은 `(bookId, pageNumber)`의 `BookPage.id`가 유지되어야 합니다.
 

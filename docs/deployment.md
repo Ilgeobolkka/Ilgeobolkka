@@ -1,4 +1,4 @@
-# 환경별 데이터베이스·PortOne 연결과 AWS RDS 배포
+# 환경별 데이터베이스·OpenAI·PortOne 연결과 AWS RDS 배포
 
 ## 1. 목적
 
@@ -182,15 +182,16 @@ PDFTOPPM_COMMAND="$PDFTOPPM_COMMAND" \
 `var/content/pages/<manifestSha256>/`입니다. 경로를 바꿔야 할 때만
 `CONTENT_IMPORT_MANIFEST`를 배치에 주입하고, `CONTENT_IMPORT_OUTPUT_ROOT`는 `.env`에 설정해 배치와
 일반 서버가 같은 콘텐츠 루트를 사용하게 합니다. 초기 manifest는 PDF 100권·400페이지를 검증합니다.
-`ai-route-v2` manifest는 비소설 90권의 권당 48~72페이지와 초기 PDF를 유지한 소설 10권을 검증하고 전체
-페이지 수는 manifest 합계로 계산하며 임베딩 모델·차원과 페이지별 분석 입력 SHA-256도 결정적 입력으로
-고정합니다. 두 버전 모두 SHA-256, 연속 페이지 번호와 TEXT/IMAGE 산출물을
-검증한 뒤 도서 메타데이터와 `BookPage`를 한 DB 트랜잭션으로 적재하고 종료합니다. `ai-route-v2`는 기존
+`ai-route-v2` manifest는 [AI 경로 콘텐츠 코퍼스](./ai-route-content-corpus.md)의 도서 구성·페이지 범위·
+기존 콘텐츠 보존 조건을 검증하고 전체 페이지 수는 manifest 합계로 계산하며 `dataPolicyVersion`, 임베딩
+모델·차원과 페이지별 분석 입력 SHA-256도 결정적 입력으로 고정합니다. 두 버전 모두 SHA-256, 연속 페이지 번호와 TEXT/IMAGE
+산출물을 검증한 뒤 도서 메타데이터와 `BookPage`를 한 DB 트랜잭션으로 적재하고 종료합니다. `ai-route-v2`는 기존
 대여·소장·내역이 없는 새 시연 DB에 적재하며 분석 메타데이터와 선언한 모델·차원의 임베딩도 `BookPage`와
-같은 트랜잭션으로 저장합니다. Embeddings API 호출 전에는 전용 OpenAI 프로젝트의 데이터 제어가 콘텐츠의
-보관 조건을 만족하는지 확인합니다.
+같은 트랜잭션으로 저장합니다. Embeddings API 호출 전에는
+[OpenAI 데이터 정책 프로필](./evidence/openai-data-policy/README.md)에 따라 manifest와 환경 설정의 프로필이
+같고 전용 OpenAI 프로젝트의 데이터 제어가 해당 프로필과 같거나 더 엄격한지 확인합니다.
 
-적재 뒤에는 [AI 경로 콘텐츠 코퍼스](./ai-route-content-corpus.md)의 대표 목적 90개를 비웹 평가로 실행합니다.
+적재 뒤에는 [AI 경로 콘텐츠 코퍼스](./ai-route-content-corpus.md)의 대표 목적 평가 데이터를 비웹으로 실행합니다.
 평가는 별도 DB나 평가용 계정·잉크·원장·대여·소장·결제를 만들지 않고 예산과 권한 시나리오를 입력으로
 전달합니다. [AI 잉크 경로 PRD의 품질·출시 기준](./prd/ai-ink-route.md#품질과-출시-기준)을 통과하면
 콘텐츠 manifest·평가 데이터 Git 리비전, 모델·프롬프트·후보 정책 버전과 지표를 평가 결과에 기록합니다.
@@ -206,18 +207,38 @@ PDFTOPPM_COMMAND="$PDFTOPPM_COMMAND" \
 
 ### OpenAI 데이터·비용 제어
 
-[ADR-0016](./adr/application/0016-simplify-openai-ai-route-for-mvp.md)의 AI 경로를 활성화하기
-전에 OpenAI API 키는 브라우저나 저장소가 아닌 배포 환경 변수로 주입하고 다음을 확인합니다.
+[ADR-0014](./adr/application/0014-use-openai-and-mysql-for-ai-route-generation.md)의 AI 경로를 활성화하기
+위한 2차 MVP 구현 전 목표 계약입니다. 현재 애플리케이션은 아직 아래 변수를 바인딩하거나 OpenAI를 호출하지
+않습니다. 구현 뒤 다음 환경변수를 사용합니다.
 
-- 콘텐츠 적재·평가·일반 생성은 같은 전용 OpenAI 프로젝트의 서비스 계정 API 키를 사용합니다. 비민감
-  프로젝트 ID를 배포 대상과 함께 관리하고 API 키 원문은 환경 변수로만 주입합니다.
+| 변수 | 기본값 | 설명 | 민감정보 |
+| --- | --- | --- | --- |
+| `AI_ROUTE_ENABLED` | `false` | `true`일 때만 공개 AI 경로 화면·API 등록 | 아니요 |
+| `OPENAI_PROJECT_ID` | 없음 | 콘텐츠 적재·평가·일반 생성이 함께 사용하는 전용 프로젝트 ID | 아니요 |
+| `OPENAI_API_KEY` | 없음 | 전용 프로젝트 서비스 계정의 서버 API 키 | 예 |
+| `OPENAI_DATA_POLICY_VERSION` | 없음 | 실제 프로젝트 조건이 충족함을 확인한 지원 데이터 정책 프로필 ID | 아니요 |
+
+일반 서버는 `AI_ROUTE_ENABLED=false`이면 OpenAI 키 없이 시작하고 AI 경로 화면·API를 등록하지 않습니다.
+`true`인데 프로젝트 ID·API 키·데이터 정책 프로필 중 하나가 비어 있으면 외부 호출 전에 시작을 거부합니다.
+활성화 시 DB의 지원 도서 프로필과 환경 설정도 같아야 합니다. `ai-route-v2` 콘텐츠 적재와 비웹 평가는 공개
+기능 플래그와 관계없이 세 OpenAI 변수를 요구합니다. 적재는 manifest·환경 설정, 평가는 manifest·DB·환경
+설정의 프로필이 다르면 실패합니다. 초기 manifest 변환은 세 변수를 요구하지 않습니다.
+`.env.example`에는 위 기본값과 빈 변수명만 두고 실제 키는 Git에서 제외된 `.env` 또는 배포 환경의 관리형
+secret으로 주입합니다. 키 원문은 브라우저·로그·오류 응답·평가 결과에 기록하지 않습니다.
+
+설정을 주입한 뒤 다음을 확인합니다.
+
+- 콘텐츠 적재·평가·일반 생성은 같은 전용 OpenAI 프로젝트의 서비스 계정 API 키와 지원 데이터 정책
+  프로필을 사용합니다. 비민감 프로젝트 ID·프로필을 배포 대상과 함께 관리하고 API 키 원문은 환경 변수로만
+  주입합니다.
 - OpenAI Platform의 전용 프로젝트 `Limits`에서 월간 spend limit을 설정합니다. 공급자 한도는 적용 전파 중
   소액을 초과할 수 있으므로 절대적인 예산 보증으로 안내하지 않습니다. 구체적인 동작은
   [OpenAI spend limits](https://developers.openai.com/api/docs/guides/spend-limits#understand-hard-limit-behavior)를
-  따릅니다.
+  따릅니다. 한도 금액은 변동 가능한 공급자 가격과 배포 예산에 속하므로 PRD에 복사하지 않고, 출시 증거에
+  프로젝트 ID·금액·통화·확인 시각과 적용한 가격표 확인일을 기록합니다.
 - 출시 직전과 모델·엔드포인트·프로젝트 데이터 제어 변경 시
-  [OpenAI API 데이터 보관 정책 확인 근거](./evidence/openai-data-policy/2026-08-05.md)의 공식 출처를 다시
-  확인합니다. 내용이 달라졌으면 근거의 확인일, 사용자 안내와 콘텐츠 지원 조건을 함께 갱신합니다.
+  [OpenAI 데이터 정책 프로필](./evidence/openai-data-policy/README.md)의 공식 출처를 다시 확인합니다. 내용이
+  달라졌으면 날짜별 근거, 사용자 안내와 콘텐츠 지원 조건을 함께 갱신합니다.
 - 콘텐츠 적재의 Embeddings API 요청에는 권리·보관 조건을 확인한 페이지 분석 텍스트만 있고, 런타임
   요청에는 정규화한 독서 목적만 있으며 두 입력을 섞지 않는지 확인합니다. 런타임 모델·차원은 콘텐츠
   버전에 묶인 페이지 벡터와 같아야 합니다.
@@ -225,14 +246,12 @@ PDFTOPPM_COMMAND="$PDFTOPPM_COMMAND" \
   Conversations·Background mode·호스팅 도구를 사용하지 않는지 통합 테스트로 확인합니다. 추가 잉크 예산,
   잔액과 페이지별 대여·소장 상태는 전송하지 않습니다. `store=false`는 응답 상태 저장만 끄며 악용 모니터링과
   프롬프트 캐시 조건은 별도로 확인합니다.
-- 공개 AI 시연 콘텐츠는 기본 악용 모니터링의 원칙적인 최대 30일과 법률·안전상 더 길어질 수 있는 예외,
-  비-ZDR 프롬프트 파생 캐시의 최대 24시간 보관을 허용한 상태로 실행합니다. 캐시는 원문이 아니라 입력에서
-  파생된 key/value tensor이며 GPT-5.6의 `prompt_cache_options.ttl`은 최소 캐시 수명이지 최대 보관 제한이
-  아닙니다.
-- 실제 출판 콘텐츠는 외부 전송 권리와 함께 적용할 데이터 제어와 파생 캐시 허용 조건을 확인합니다. 기본
-  정책을 콘텐츠가 허용하지 않으면 AI 경로 지원 대상으로 적재하지 않습니다.
-- 콘텐츠 적재 사전 검증에서 위 권리·보관 조건이 누락되거나 허용되지 않은 표본을 넣었을 때 Embeddings API
-  호출과 DB 변경 없이 실패하는지 확인합니다.
+- 공개 AI 시연 콘텐츠와 실제 출판 콘텐츠의 허용 보관 조건·사용자 안내는
+  [OpenAI 데이터 정책 프로필](./evidence/openai-data-policy/README.md)과
+  [AI 잉크 경로 PRD](./prd/ai-ink-route.md#개인정보와-콘텐츠-보호)를 따릅니다. 실제 적용할 프로젝트의 데이터
+  제어와 파생 캐시 조건을 콘텐츠가 허용하지 않으면 AI 경로 지원 대상으로 적재하지 않습니다.
+- 콘텐츠 적재 사전 검증에서 외부 전송 권리·지원 프로필이 누락되거나 manifest·환경 설정의 프로필이 다른
+  표본을 넣었을 때 Embeddings API 호출과 DB 변경 없이 실패하는지 확인합니다.
 - 계정별 일일 생성 한도는 PRD의 `429` 코드와 다음 UTC 날짜까지의 `Retry-After`를 반환합니다. OpenAI의
   지출·사용량 한도 또는 크레딧 소진 오류는 원문 조직·프로젝트·비용 정보를 숨기고
   `503 AI_ROUTE_PROVIDER_BUDGET_UNAVAILABLE`로 변환하며 비-AI 기능은 계속 제공합니다.
