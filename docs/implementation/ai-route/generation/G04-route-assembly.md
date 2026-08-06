@@ -1,0 +1,78 @@
+# G04 예산·선수·가이드 경로 조립
+
+[구현 작업 색인](../README.md)으로 돌아갑니다.
+
+- 권장 담당: 파동 5 / 담당 B
+- 선행: [G02 후보 검색](./G02-candidate-search.md), [G03 출력 검증](./G03-output-validation.md)
+- 후속: [G07 orchestration](./G07-generation-orchestration.md), [S01 단일 저장](../saved-route/S01-save-generation.md)
+
+## 목표
+
+검증된 proposal을 현재 권한 snapshot의 비용·선수 조건으로 순회해 ROUTE 또는 두 NO_ROUTE 결과를 만들고,
+공개 metadata만으로 표시 항목을 조립합니다.
+
+## 정본 링크
+
+- [비소장·소장 입력 정책](../../../prd/ai-ink-route.md#독서-목적과-예산-입력)
+- [경로 생성 정책](../../../prd/ai-ink-route.md#경로-생성-정책)
+- [AI 페이지 가이드](../../../prd/ai-ink-route.md#ai-페이지-가이드)
+- [예상 독서 시간](../../../prd/ai-ink-route.md#예상-독서-시간)
+- 필수 시나리오: [T-AIR-002·013](../../../test-strategy.md#5-필수-시나리오)
+
+## 현재 구현 기준선
+
+- G02가 관련 후보, G03이 허용·순서를 검증하지만 비용·guide assembler는 없습니다.
+- 기존 [OwnershipService](../../../../src/main/java/com/example/ilgeobolkka/ownership/service/OwnershipService.java),
+  [RentalService](../../../../src/main/java/com/example/ilgeobolkka/rental/service/RentalService.java),
+  [InkService](../../../../src/main/java/com/example/ilgeobolkka/ink/service/InkService.java)는 G07이 snapshot을 만들 때만 사용합니다.
+
+## 입력과 산출물
+
+- 입력: `ValidatedRouteProposal`, request command, owned 또는 balance·activeRentalPageNumbers snapshot,
+  publicGuideTopic·estimatedReadingSeconds
+- 산출물: `AiRouteAssembler`, `AiRouteGuideFactory`, `AiRouteGenerationResult`
+- 결과: ROUTE items 또는 NO_RELEVANT_PAGES/INSUFFICIENT_BUDGET+minimumRequiredInk
+- G07·S01에 넘길 것: 영속화 가능한 공급자 중립 결과와 생성 때 사용한 비용 snapshot
+
+## 수정 허용 파일
+
+- 새 `airoute/service/assembly`의 assembler·guide factory·결과 타입
+- 기존 ownership/rental/ink 코드는 수정하지 않음
+- 새 `AiRouteAssemblerTest`, `AiRouteGuideFactoryTest`
+
+## 구현 조건
+
+1. owned는 모든 page 추가 비용 0, QUICK 5·BALANCED 10·DEEP 15 상한을 적용합니다.
+2. non-owned는 active rental page 0, 나머지 1로 계산하고 누적 새 비용이 예산을 넘지 않게 합니다.
+3. 선수를 비용 때문에 제외하면 그 선수에 의존하는 page도 제외합니다.
+4. 상한·예산을 채우려고 무관 page를 추가하지 않고 같은 page를 중복 포함하지 않습니다.
+5. 관련 후보가 없으면 NO_RELEVANT_PAGES/null, 관련 후보는 있지만 유효 경로가 없으면 선택 예산보다 큰
+   minimumRequiredInk의 INSUFFICIENT_BUDGET을 반환합니다.
+6. guide는 publicGuideTopic과 server role 템플릿으로만 만들고 analysisText·모델 문구를 입력받지 않습니다.
+7. estimated minutes와 `ONE_INK|ACTIVE_RENTAL|OWNED`를 정본 계산으로 만들며 상태를 변경하지 않습니다.
+
+## 테스트
+
+- non-owned 0·5·10·15 예산, active rental 혼합과 잔액 상한
+- owned 세 depth와 관련 page 부족
+- 다단계 선수 비용 제외·의존 제거, duplicate group 중복 억제
+- 두 NO_ROUTE와 minimumRequiredInk 경계
+- guide에 공개 topic·role만 있고 분석 text·결론·수치가 없는지 확인
+- 명령: `./gradlew test --tests '*AiRouteAssemblerTest' --tests '*AiRouteGuideFactoryTest'`
+
+## 제외 범위
+
+- DB에서 현재 권한 조회, OpenAI 호출·재시도
+- generation Entity 저장과 route 저장
+- 사용자별 독서 속도·비율 표시
+
+## 완료 조건
+
+- T-AIR-002·013과 INV-014·017 계산 경계가 순수 단위 테스트됩니다.
+- assembler 실행 전후 어떤 Entity도 변경되지 않습니다.
+- `./gradlew check`가 통과합니다.
+
+## 인계
+
+G07 담당자에게 필요한 권한 snapshot 필드와 결과 타입을 전달합니다. S01 담당자에게 저장 시 재계산할 비용
+입력과 생성 예산 필드를 전달합니다.

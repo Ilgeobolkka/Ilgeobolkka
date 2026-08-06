@@ -79,7 +79,7 @@ AI 코딩 에이전트(Claude Code, Codex, Antigravity 등)가 이 프로젝트�
 - 프로젝트명: Ilgeobolkka
 - 목표: 유효기간 없는 잉크로 페이지를 30일 대여하고 PortOne V2 테스트 결제로 도서를 온라인 소장하는 데스크톱 웹 MVP
 - 대상 사용자: 책 전체 구매가 부담스럽고 필요한 부분부터 읽고 싶은 일반 독자
-- 현재 상태: 제품·도메인·프런트엔드·PortOne V2 테스트 결제 계약 완료, Spring Boot 골격 단계. 프런트엔드와 API는 단일 실행물로 제공
+- 현재 상태: [PRD 색인의 문서 상태](./docs/prd/README.md#문서-상태)에서만 관리
 - 스택: Java 21 / Spring Boot 4.1.0 / Spring MVC / Thymeleaf / Bootstrap 5.3 / Vanilla JavaScript / Spring Data JPA / Spring Security / MySQL (Compose·RDS) / PortOne V2 테스트 채널
 - 문서 라우팅 정본: `docs/prd/README.md`에서 요구사항·용어·API·ERD·검증·컨벤션·배포·ADR로 이동
 - 핵심 불변식: 잉크는 만료되지 않고 권한 없는 페이지 열기에만 1잉크를 차감하며, 소장은 서버가 검증한 테스트 결제로만 한 번 부여하고 잔액·내역·대여·소장 기록을 일관되게 유지한다

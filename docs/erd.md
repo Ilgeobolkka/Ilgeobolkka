@@ -10,6 +10,9 @@
 계좌·원장, 페이지 대여·열람 세션·콘텐츠, 내 서재, 잉크 구매와 소장 결제의 준비·완료·조회 API 및
 PortOne 결제 조회·웹훅 멱등 완료 경계까지 구현됐습니다.
 
+[AI 잉크 경로 2차 MVP 목표 모델](#ai-잉크-경로-2차-mvp-목표-모델-구현-전)은 합의된 구현 목표이며 현재
+`V1`이나 JPA Entity에 반영되지 않았습니다. 구현할 때 `V1`을 수정하지 않고 새 Flyway migration을 추가합니다.
+
 ## 외래 키 관계
 
 ```mermaid
@@ -308,6 +311,200 @@ Mermaid에서 괄호가 있는 SQL 타입을 안정적으로 표시하기 위해
 - `TEXT`는 `textContent`, `IMAGE`는 비공개 저장소의 `imagePath`만 사용합니다.
 - 원본 PDF와 내부 저장소 주소는 공개 API에 포함하지 않습니다.
 
+## AI 잉크 경로 2차 MVP 목표 모델 (구현 전)
+
+이 절은 [AI 잉크 경로 PRD](./prd/ai-ink-route.md)와
+[목표 API 계약](./api-spec.md#ai-잉크-경로-2차-mvp-목표-계약-구현-전)을 구현하기 위한 논리·물리 목표입니다.
+아래 컬럼과 테이블은 아직 존재하지 않으며 구현 완료 뒤에만 위 구현 상태와 현재 외래 키 관계에 합칩니다.
+
+### 목표 관계
+
+```mermaid
+erDiagram
+    READER ||--o{ AI_ROUTE_GENERATION : requests
+    READER ||--o{ AI_READING_ROUTE : saves
+    READER ||--o{ AI_ROUTE_DAILY_USAGE : consumes
+    READER ||--o{ AI_ROUTE_CURRENT : selects
+    BOOK ||--o{ AI_ROUTE_GENERATION : targets
+    BOOK ||--o{ AI_READING_ROUTE : owns_routes
+    BOOK ||--o{ AI_ROUTE_CURRENT : has_current
+    BOOK_PAGE ||--o{ AI_ROUTE_PREREQUISITE : prerequisite
+    BOOK_PAGE ||--o{ AI_ROUTE_PREREQUISITE : dependent
+    AI_ROUTE_GENERATION ||--o{ AI_ROUTE_GENERATION_ITEM : contains
+    AI_ROUTE_GENERATION o|--o| AI_READING_ROUTE : saved_as
+    BOOK_PAGE ||--o{ AI_ROUTE_GENERATION_ITEM : previews
+    AI_READING_ROUTE ||--|{ AI_READING_ROUTE_ITEM : contains
+    BOOK_PAGE ||--o{ AI_READING_ROUTE_ITEM : recommends
+    AI_READING_ROUTE ||--o| AI_ROUTE_CURRENT : selected_as
+```
+
+### 기존 테이블 확장
+
+#### `book` 추가 컬럼
+
+| 컬럼 | 물리 타입 | NULL | 설명 |
+| --- | --- | --- | --- |
+| `content_version` | `VARCHAR(100) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | 현재 적재한 콘텐츠 manifest의 버전 |
+| `ai_route_supported` | `BOOLEAN` | 아니오 | 현재 버전을 공개 AI 경로 생성에 사용할 수 있는지 여부 |
+| `ai_external_transfer_allowed` | `BOOLEAN` | 아니오 | 외부 AI 전송 권리 확인 여부 |
+| `ai_data_policy_version` | `VARCHAR(100) CHARACTER SET ascii COLLATE ascii_bin` | 예 | 콘텐츠 manifest에서 복사한 지원 데이터 정책 프로필 ID |
+
+`ai_route_supported=true`인 도서는 외부 전송이 허용되고
+[지원 데이터 정책 프로필](./evidence/openai-data-policy/README.md)이 있어야 하며, 활성화한 서버의
+`OPENAI_DATA_POLICY_VERSION`과 같아야 합니다. 소설과 품질 평가 전 콘텐츠는 `false`입니다. 콘텐츠 버전은
+페이지·임베딩·선수 관계를 함께 적재할 때만 바꿉니다.
+
+#### `book_page` 추가 컬럼
+
+| 컬럼 | 물리 타입 | NULL | 설명 |
+| --- | --- | --- | --- |
+| `ai_analysis_text` | `MEDIUMTEXT` | 예 | 외부 후보 분석에만 쓰는 비공개 텍스트 |
+| `ai_public_guide_topic` | `VARCHAR(500)` | 예 | 사람 검수를 통과한 공개 가이드 주제 |
+| `estimated_reading_seconds` | `INT` | 예 | 예상 독서 시간 계산 입력값 |
+| `embedding_model` | `VARCHAR(100) CHARACTER SET ascii COLLATE ascii_bin` | 예 | 페이지 임베딩 모델 |
+| `embedding_dimensions` | `INT` | 예 | 페이지 임베딩 차원 |
+| `embedding_json` | `JSON` | 예 | 고정 차원의 실수 배열 |
+| `duplicate_group_keys` | `JSON` | 예 | 의미상 중복 그룹 키 문자열 배열, 고유 페이지는 빈 배열 |
+
+AI 경로 지원 도서의 모든 페이지는 위 일곱 필드를 가져야 하고 `estimated_reading_seconds`와
+`embedding_dimensions`는 0보다 커야 합니다. 미지원 도서는 일곱 필드를 모두 `NULL`로 둘 수 있습니다.
+분석 텍스트·임베딩·중복 그룹은 공개 API에 반환하지 않습니다.
+
+### 새 테이블
+
+#### `ai_route_prerequisite`
+
+| 컬럼 | 물리 타입 | NULL | 키·참조 | 설명 |
+| --- | --- | --- | --- | --- |
+| `id` | `BIGINT AUTO_INCREMENT` | 아니오 | PK | 선수 관계 식별자 |
+| `book_id` | `BIGINT` | 아니오 | 두 복합 FK와 UK 구성 | 같은 도서 강제 |
+| `prerequisite_page_number` | `INT` | 아니오 | 복합 FK → `book_page(book_id, page_number)`, UK 구성 | 먼저 읽을 페이지 |
+| `dependent_page_number` | `INT` | 아니오 | 복합 FK → `book_page(book_id, page_number)`, UK 구성 | 선수 페이지에 의존하는 페이지 |
+
+`(book_id, prerequisite_page_number, dependent_page_number)`는 고유하고 두 페이지 번호는 달라야 합니다.
+방향 순환과 콘텐츠 버전 전체의 위상 정렬 가능 여부는 적재 전에 애플리케이션이 검증합니다.
+
+#### `ai_route_generation`
+
+| 컬럼 | 물리 타입 | NULL | 키·참조 | 설명 |
+| --- | --- | --- | --- | --- |
+| `generation_id` | `CHAR(36) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | PK | 서버 발급 임시 결과 UUID |
+| `reader_id` | `BIGINT` | 아니오 | FK → `reader.id`, `(reader_id, idempotency_key)` UK 구성 | 요청 소유자 |
+| `book_id` | `BIGINT` | 아니오 | FK → `book.id` | 대상 도서 |
+| `content_version` | `VARCHAR(100) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | - | 생성 시점 콘텐츠 버전 스냅샷 |
+| `idempotency_key` | `CHAR(36) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | `(reader_id, idempotency_key)` UK 구성 | 클라이언트 생성 UUID |
+| `request_fingerprint` | `CHAR(64) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | - | 정규화한 전체 생성 입력의 SHA-256 |
+| `normalized_purpose` | `VARCHAR(200)` | 예 | - | 저장 전까지 보관하는 정규화한 독서 목적 |
+| `request_type` | `VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin` | 예 | - | `INK_BUDGET` 또는 `OWNED_DEPTH` |
+| `max_additional_ink` | `INT` | 예 | - | 비소장 예산 |
+| `depth` | `VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin` | 예 | - | `QUICK`, `BALANCED`, `DEEP` 중 하나 |
+| `status` | `VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | - | `GENERATING`, `ROUTE`, `NO_ROUTE`, `FAILED`, `SAVED`, `CONSUMED` 중 하나 |
+| `no_route_reason` | `VARCHAR(40) CHARACTER SET ascii COLLATE ascii_bin` | 예 | - | `NO_RELEVANT_PAGES` 또는 `INSUFFICIENT_BUDGET` |
+| `minimum_required_ink` | `INT` | 예 | - | 예산 부족 `NO_ROUTE`의 최소 추가 잉크 |
+| `failure_code` | `VARCHAR(100) CHARACTER SET ascii COLLATE ascii_bin` | 예 | - | `FAILED` 재조회에 사용할 공개 오류 코드 |
+| `saved_route_id` | `BIGINT` | 예 | UK, FK → `ai_reading_route.id` | `SAVED`가 반환할 저장 경로 |
+| `created_at` | `DATETIME(6)` | 아니오 | - | 생성 시작 시각(UTC) |
+| `completed_at` | `DATETIME(6)` | 예 | - | 첫 최종 상태 확정 시각(UTC) |
+| `expires_at` | `DATETIME(6)` | 예 | - | 최종 상태 확정 뒤 계산한 임시 상태·결과 만료 시각(UTC) |
+
+저장 전 상태는 `normalized_purpose`, `request_type`과 그에 맞는 `max_additional_ink` 또는 `depth` 중 하나를
+가집니다. `ROUTE`만 결과 항목을 가집니다. `NO_ROUTE`는 `no_route_reason`을 반드시 가지며
+`NO_RELEVANT_PAGES`이면 `minimum_required_ink`가 `NULL`, `INSUFFICIENT_BUDGET`이면 선택 예산보다 큰 최소
+추가 잉크를 가집니다. 다른 상태에서는 두 필드가 모두 `NULL`입니다.
+`FAILED`는 임시 경로 없이 멱등 오류만 재현합니다. 저장 성공 시 임시 항목과 목적·입력 필드를 제거하고
+`SAVED`·`saved_route_id`·`request_fingerprint`만 원래 만료 시각까지 보존합니다. 저장 경로가 먼저 삭제되면
+`CONSUMED`로 바꾸고 포인터를 비웁니다. `GENERATING`만 `completed_at`·`expires_at`이 없고 최종 상태는 두
+시각을 모두 가집니다. 중단된 `GENERATING`은 전체 시간 제한 뒤 `FAILED`로 복구해 같은 키가 외부 호출을 다시
+시작하지 않게 합니다. 만료 정리는 남은 항목을 먼저 지운 뒤 생성 행을 삭제합니다.
+
+#### `ai_route_generation_item`
+
+| 컬럼 | 물리 타입 | NULL | 키·참조 | 설명 |
+| --- | --- | --- | --- | --- |
+| `id` | `BIGINT AUTO_INCREMENT` | 아니오 | PK | 임시 경로 항목 식별자 |
+| `generation_id` | `CHAR(36) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | FK → `ai_route_generation.generation_id`, UK 구성 | 소속 임시 결과 |
+| `book_page_id` | `BIGINT` | 아니오 | FK → `book_page.id`, UK 구성 | 추천 페이지 |
+| `position` | `INT` | 아니오 | `(generation_id, position)` UK 구성 | 1부터 시작하는 경로 순서 |
+| `relevance` | `VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | - | `HIGH` 또는 `MEDIUM` |
+| `prerequisite` | `BOOLEAN` | 아니오 | - | 선수 개념 페이지 여부 |
+| `role` | `VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | - | API 계약의 경로 역할 |
+
+같은 생성 결과에서 `position`과 `book_page_id`는 각각 고유합니다. 페이지는 생성 행의 도서·콘텐츠 버전과
+일치해야 합니다.
+
+#### `ai_reading_route`
+
+| 컬럼 | 물리 타입 | NULL | 키·참조 | 설명 |
+| --- | --- | --- | --- | --- |
+| `id` | `BIGINT AUTO_INCREMENT` | 아니오 | PK, 복합 UK 구성 | 저장 경로 식별자 |
+| `generation_id` | `CHAR(36) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | UK | 소비한 임시 생성 식별자 |
+| `reader_id` | `BIGINT` | 아니오 | FK → `reader.id`, `(reader_id, book_id, id)` UK 구성 | 경로 소유자 |
+| `book_id` | `BIGINT` | 아니오 | FK → `book.id`, `(reader_id, book_id, id)` UK 구성 | 대상 도서 |
+| `content_version` | `VARCHAR(100) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | - | 저장한 경로의 콘텐츠 버전 |
+| `normalized_purpose` | `VARCHAR(200)` | 아니오 | - | 저장한 독서 목적 |
+| `request_type` | `VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | - | `INK_BUDGET` 또는 `OWNED_DEPTH` |
+| `max_additional_ink` | `INT` | 예 | - | 생성 때 사용한 비소장 예산 |
+| `depth` | `VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin` | 예 | - | 생성 때 사용한 소장 깊이 |
+| `completed_at` | `DATETIME(6)` | 예 | - | 모든 항목을 처음 연 시각(UTC) |
+| `feedback` | `VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin` | 예 | - | `HELPFUL`, `NEUTRAL`, `NOT_HELPFUL` 중 하나 |
+| `feedback_at` | `DATETIME(6)` | 예 | - | 피드백 생성·변경 시각(UTC) |
+| `created_at` | `DATETIME(6)` | 아니오 | - | 저장 시각(UTC) |
+
+`generation_id` 고유 제약으로 같은 임시 결과의 저장 재시도를 기존 경로에 연결합니다. 입력 조합은 생성 행과
+같은 배타 규칙을 따르며 피드백은 `completed_at`이 있는 경로에만 저장합니다.
+
+#### `ai_reading_route_item`
+
+| 컬럼 | 물리 타입 | NULL | 키·참조 | 설명 |
+| --- | --- | --- | --- | --- |
+| `id` | `BIGINT AUTO_INCREMENT` | 아니오 | PK | 저장 경로 항목 식별자 |
+| `route_id` | `BIGINT` | 아니오 | FK → `ai_reading_route.id`, UK 구성 | 소속 저장 경로 |
+| `book_page_id` | `BIGINT` | 아니오 | FK → `book_page.id`, UK 구성 | 추천 페이지 |
+| `position` | `INT` | 아니오 | `(route_id, position)` UK 구성 | 고정 추천 순서 |
+| `relevance` | `VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | - | 저장한 정성 관련도 |
+| `prerequisite` | `BOOLEAN` | 아니오 | - | 저장한 선수 개념 여부 |
+| `role` | `VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | - | 저장한 경로 역할 |
+| `opened_at` | `DATETIME(6)` | 예 | - | 경로 페이지 콘텐츠를 처음 제공한 시각(UTC) |
+
+같은 경로에서 `position`과 `book_page_id`는 각각 고유하며 페이지는 경로의 도서·콘텐츠 버전과 일치해야
+합니다. 저장 뒤 항목과 순서는 수정하지 않고 `opened_at`만 최초 콘텐츠 제공에 성공할 때 기록합니다.
+
+#### `ai_route_current`
+
+| 컬럼 | 물리 타입 | NULL | 키·참조 | 설명 |
+| --- | --- | --- | --- | --- |
+| `reader_id` | `BIGINT` | 아니오 | PK 구성, 복합 FK 구성 | 경로 소유자 |
+| `book_id` | `BIGINT` | 아니오 | PK 구성, 복합 FK 구성 | 대상 도서 |
+| `route_id` | `BIGINT` | 아니오 | UK, 복합 FK → `ai_reading_route(reader_id, book_id, id)` | 현재 경로 |
+| `updated_at` | `DATETIME(6)` | 아니오 | - | 현재 경로 변경 시각(UTC) |
+
+`(reader_id, book_id)` 기본 키로 책마다 현재 경로를 최대 하나만 둡니다. 저장·현재 지정·현재 경로 삭제는 이
+기본 키를 원자적으로 upsert하거나 잠그고 같은 독자·도서의 저장 경로와 한 트랜잭션으로 처리합니다.
+
+#### `ai_route_daily_usage`
+
+| 컬럼 | 물리 타입 | NULL | 키·참조 | 설명 |
+| --- | --- | --- | --- | --- |
+| `reader_id` | `BIGINT` | 아니오 | PK 구성, FK → `reader.id` | 생성 요청 독자 |
+| `usage_date` | `DATE` | 아니오 | PK 구성 | UTC 기준 사용 날짜 |
+| `generation_count` | `INT` | 아니오 | - | 외부 호출을 시작한 새 요청 수 |
+
+`(reader_id, usage_date)` 기본 키와 원자적 조건부 증가로 PRD의 계정별 한도를 넘지 않게 하며
+`generation_count >= 0`을 보장합니다. 과거 날짜 행은 결제·잉크 원장이 아니므로 운영 보존 기간을 정한 뒤
+정리할 수 있습니다.
+
+### 목표 트랜잭션과 삭제 경계
+
+- 생성 시작은 `ai_route_generation` 멱등 행 생성과 `ai_route_daily_usage` 증가를 한 트랜잭션으로 처리한 뒤
+  외부 API를 호출합니다. 외부 호출은 DB 트랜잭션 안에서 수행하지 않습니다.
+- 임시 저장은 생성 결과·소유자·도서·콘텐츠 버전·만료를 다시 검증하고 저장 경로·항목·현재 경로를 한
+  트랜잭션으로 만듭니다. 성공 뒤 임시 항목과 목적·입력을 제거하고 생성 행은 `SAVED`와 저장 경로 포인터만
+  원래 만료 시각까지 보존합니다. 저장 경로의 `generation_id`는 기한 없이 보존합니다.
+- 저장 경로 삭제는 현재 포인터, 경로 항목, 경로 순서로 명시적으로 삭제하고 `PageRental`과 `InkLedger`는
+  건드리지 않습니다. 아직 남은 생성 멱등 행은 `CONSUMED`로 바꾸며, 현재 경로였다면 같은 트랜잭션에서
+  PRD가 정한 후속 경로를 지정합니다.
+- 다른 독자의 임시·저장 경로는 소유자 조건을 포함한 조회에서 찾지 못한 것으로 처리합니다.
+
 ## 요구사항 추적
 
 | 엔티티 | 요구사항 |
@@ -318,6 +515,9 @@ Mermaid에서 괄호가 있는 SQL 타입을 안정적으로 표시하기 위해
 | `PageRental` | `RENT-*` |
 | `OwnershipPayment`, `BookOwnership` | `OWN-*`, `PAY-*` |
 | `LibraryEntry` | `LIB-001` |
+| `Book`·`BookPage` AI 확장, `AiRoutePrerequisite` | `AIR-004`, `AIR-006`, `AIR-013~015` |
+| `AiRouteGeneration`, `AiRouteGenerationItem`, `AiRouteDailyUsage` | `AIR-001~007`, `AIR-011~013`, `AIR-016~017` |
+| `AiReadingRoute`, `AiReadingRouteItem`, `AiRouteCurrent` | `AIR-007~010`, `AIR-016` |
 
 현행 데이터 구조를 선택한 배경은 [ADR 색인](./adr/README.md)에서 확인합니다. 최초 기준선 전에 폐기한
 초안과 물리 모델은 Git 이력에서 확인합니다.
