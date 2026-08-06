@@ -30,7 +30,7 @@ Q01 결과와 지정 검수자의 판정을 정본 수식으로 계산하고, �
 
 - 입력: Q01 90 case 결과, evaluation 정답, 검수자 90개 useful 판정
 - 산출물: `AiRouteEvaluationMetrics`, `AiRouteEvaluationReport`, `AiRouteSupportActivationService`
-- artifact: manifest/evaluation Git revision, 실행 시각, model, prompt/candidate policy version, 자동 지표·사람 판정
+- artifact: manifest/evaluation Git revision, 실행 시각, embeddingModel, routeModel, candidate·prompt·schema version, 자동 지표·사람 판정
 - Q03에 넘길 것: 통과 report와 support true 90권·소설 false 증거
 
 ## 수정 허용 파일
@@ -48,7 +48,7 @@ Q01 결과와 지정 검수자의 판정을 정본 수식으로 계산하고, �
 5. report에 provider 원문·purpose·분석 text·API key를 기록하지 않습니다.
 6. 최초 활성화는 같은 contentVersion·profile의 비소설 90권을 한 transaction으로 true, 소설 10권은 false로
    유지합니다. 일부 true를 허용하지 않습니다.
-7. 입력 revision·model·prompt·candidate policy가 바뀌면 기존 report 재사용을 거부합니다.
+7. 입력 revision·embeddingModel·routeModel·candidate·prompt·schema version 중 하나라도 바뀌면 기존 report 재사용을 거부합니다.
 
 ## 테스트
 

@@ -4,7 +4,7 @@
 
 - 권장 담당: 파동 3 / 담당 B
 - 선행: [F03 OpenAI 설정](./F03-openai-configuration.md),
-  [GATE-AIR-02 후보·prompt 정책](../00-implementation-gates.md#gate-air-02-후보prompt-정책-v1)
+  [해제된 후보·prompt 정책 v1](../../../prd/ai-ink-route.md#후보prompt-정책-v1)
 - 후속: [G03 출력 검증](../generation/G03-output-validation.md),
   [G07 생성 orchestration](../generation/G07-generation-orchestration.md)
 
@@ -24,13 +24,13 @@
 ## 현재 구현 기준선
 
 - Responses adapter·prompt resource·strict schema가 없습니다.
-- F03이 공통 설정과 HTTP Bean을 제공하고 GATE-AIR-02가 prompt·schema version을 확정해야 합니다.
+- F03이 공통 설정과 HTTP Bean을 제공하고 정본이 prompt·schema resource와 SHA-256 version 계산을 확정했습니다.
 - 외부 모델 결과의 최종 신뢰 경계는 G03이 소유합니다.
 
 ## 입력과 산출물
 
-- 입력: normalizedPurpose, 같은 book·contentVersion의 candidate pageNumber·analysisText·검증된 선수 edge
-- 산출물: `OpenAiRouteGateway`, `OpenAiHttpRouteGateway`, 공급자 DTO, `ModelRouteProposal`
+- 입력: normalizedPurpose, `air-candidate-v1`의 확정 순서 candidate pageNumber·analysisText·검증된 선수 edge
+- 산출물: `OpenAiRouteGateway`, `OpenAiHttpRouteGateway`, 공급자 DTO, `ModelRouteProposal`, `promptVersion`, `schemaVersion`
 - proposal 필드: pageNumber, `HIGH|MEDIUM`, prerequisite boolean,
   `PREREQUISITE|CORE|EXAMPLE|COUNTERPOINT|CONCLUSION`
 - 오류: budget, temporary, timeout/incomplete, refusal, malformed response의 공급자 중립 분류
@@ -43,19 +43,31 @@
 
 ## 구현 조건
 
-1. 요청은 ADR의 route model, `store=false`, `text.format` strict JSON Schema를 사용합니다.
-2. schema는 위 proposal 필드만 허용하고 `additionalProperties=false`로 둡니다.
-3. 독자 ID, 예산, 잉크, 대여·소장·결제·세션, 평가 정답을 입력 DTO가 받을 수 없게 합니다.
-4. 가이드·비용·예상 시간과 자유 문구를 모델 출력 schema에 넣지 않습니다.
-5. Conversations, previous response, Background mode, streaming, hosted tools를 사용하지 않습니다.
-6. `incomplete`, refusal, output item 누락·복수 message·schema parse 실패를 성공 proposal로 바꾸지 않습니다.
-7. 요청·응답 원문과 분석 텍스트를 로그·예외에 포함하지 않습니다.
+1. 요청은 ADR의 route model, `store=false`, `text.format.type=json_schema`,
+   `text.format.name=ai_route_proposal_v1`, `strict=true`를 사용합니다.
+2. prompt와 schema는 정본의 두 classpath resource만 읽습니다.
+   각 UTF-8 원본 byte 전체의 SHA-256을 별도 정규화 없이 계산해 논리 버전 뒤에 64자리 소문자 hex로 붙입니다.
+3. schema 최상위는 필수 `items` 배열 하나와 `additionalProperties=false`이고 `minItems=1`, `maxItems=72`입니다.
+   각 item의 pageNumber는 `type=integer`, `minimum=1`인 양의 정수이고
+   relevance·prerequisite·role을 모두 필수로 가지며 `additionalProperties=false`입니다.
+4. 독자 ID, 예산, 잉크, 대여·소장·결제·세션, 평가 정답을 입력 DTO가 받을 수 없게 합니다.
+5. 가이드·비용·예상 시간과 자유 문구를 모델 출력 schema에 넣지 않습니다.
+6. Conversations, previous response, Background mode, streaming, hosted tools를 사용하지 않습니다.
+7. `incomplete`, refusal, output item 누락·복수 message·schema parse 실패를 성공 proposal로 바꾸지 않습니다.
+   완료 응답의 message 누락·복수와 schema parse 실패는 G07이 판정할 재시도 가능한 malformed output으로,
+   `incomplete`와 refusal은 재시도 불가 실패로 분류합니다.
+8. 요청·응답 원문과 분석 텍스트를 로그·예외에 포함하지 않습니다.
 
 ## 테스트
 
-- 가짜 HTTP server에서 model, `store=false`, `text.format`, strict schema와 금지 필드 부재 확인
+- 가짜 HTTP server에서 model, `store=false`, `text.format.type=json_schema`,
+  `text.format.name=ai_route_proposal_v1`, `strict=true`, `items` 1~72개, pageNumber의
+  `type=integer`·`minimum=1`, 모든 필수 필드와 양쪽 `additionalProperties=false` 확인
+- 두 resource의 UTF-8 byte SHA-256과 `air-route-prompt-v1:sha256:...`,
+  `air-route-schema-v1:sha256:...` 형식, 공백 변경 시 version 변경 확인
 - 정상 proposal Enum·순서 parse
-- 자유 필드·알 수 없는 Enum·incomplete·refusal·malformed JSON·5xx·budget limit 실패 주입
+- pageNumber 0·음수, 자유 필드·알 수 없는 Enum·incomplete·refusal·malformed JSON·5xx·budget limit 실패 주입
+- 완료 응답의 message 0개·2개가 재시도 가능한 malformed output으로 분류되는지 확인
 - 로그 capture의 목적·분석 텍스트·응답 원문 비노출 확인
 - 명령: `./gradlew test --tests '*OpenAiHttpRouteGatewayTest'`
 
@@ -74,4 +86,4 @@
 ## 인계
 
 G03 담당자에게 proposal 타입과 실패 종류, prompt·schema version 계산 결과를 전달합니다. G03은 HTTP 응답
-원문을 다시 parse하지 않습니다.
+원문을 다시 parse하지 않습니다. G07은 같은 version과 입력 snapshot으로만 malformed output을 재시도합니다.

@@ -120,6 +120,45 @@ AI 잉크 경로는 독자가 선택한 한 권에서 독서 목적과 추가 �
 - 검증 실패 시 남은 전체 제한 시간 안에서 한 번 재시도하고 다시 실패하면 임시 결과도 만들지 않습니다.
 - 외부 API·서버 오류에는 경로와 잉크 상태를 변경하지 않고 재시도를 제공합니다.
 
+### 후보·prompt 정책 v1
+
+- 후보 정책 `air-candidate-v1`은 같은 도서·콘텐츠 버전과 같은 임베딩 모델·차원의 모든 지원 페이지를 애플리케이션 메모리에서 exact cosine으로 비교합니다.
+  vector가 유한 실수가 아니거나 zero norm이면 관련도 0으로 대체하지 않고 실패합니다.
+- cosine similarity가 `0.30` 이상인 페이지만 남기고 반올림하지 않은 similarity 내림차순, `pageNumber` 오름차순으로 정렬한 최초 30개를 후보로 고정합니다.
+  정확히 `0.30`인 페이지는 포함하고 similarity가 같을 때만 `pageNumber`를 비교합니다.
+- `TEXT`와 `IMAGE` 페이지에 같은 기준을 적용합니다. 이미지 페이지도 검수된 분석 text와 같은 모델·차원의 vector가 있어야 합니다.
+- 후보별 전이적 선수 페이지 폐쇄는 30개를 고른 뒤 같은 도서·콘텐츠 버전의 검증된 그래프에서 추가합니다.
+  선수 페이지에는 similarity `0.30`과 30개 상한을 다시 적용하지 않습니다.
+  similarity 후보가 한 개도 없으면 Responses를 호출하지 않고 `NO_RELEVANT_PAGES`를 반환합니다.
+- prompt는 `src/main/resources/openai/ai-route/route-generation-prompt-v1.md`, strict JSON Schema는
+  `src/main/resources/openai/ai-route/route-proposal-v1.schema.json`에 둡니다. 환경 변수·DB·원격 prompt로
+  대체하지 않습니다.
+- `promptVersion`은 `air-route-prompt-v1:sha256:<64자리 소문자 hex>`, `schemaVersion`은
+  `air-route-schema-v1:sha256:<64자리 소문자 hex>`입니다. `<64자리 소문자 hex>`는 각 classpath resource의
+  UTF-8 원본 byte 전체를 별도 정규화 없이 SHA-256으로 계산합니다.
+- Responses의 `text.format.type`은 `json_schema`, `name`은 `ai_route_proposal_v1`이고 `strict=true`입니다.
+  schema의 최상위 객체는 `items` 배열 하나만 허용하며 배열은 1~72개입니다. 각 item은 `pageNumber` 양의
+  정수, `HIGH|MEDIUM` relevance, prerequisite boolean,
+  `PREREQUISITE|CORE|EXAMPLE|COUNTERPOINT|CONCLUSION` role을 모두 필수로 가집니다. 최상위와 item 객체는
+  `additionalProperties=false`이며 중복·실재·허용 집합·순서는 서버가 다시 검증합니다.
+- F05의 malformed model output 또는 G03의 semantic invalid output만 최초 20초 제한의 남은 시간 안에서
+  즉시 한 번 재시도합니다. 재시도는 정규화 목적, 확정 후보의 값과 순서, 선수 그래프 snapshot, model,
+  `candidatePolicyVersion`, `promptVersion`, `schemaVersion`을 그대로 사용한 새 Responses 요청이며
+  `previous_response_id`와 최초 응답 원문을 사용하지 않습니다.
+- refusal, incomplete, HTTP·timeout·공급자 한도 오류는 검증 재시도 대상이 아닙니다. 두 번째 invalid output은
+  부분 결과 없이 전체 실패하고 외부 API·서버 오류의 사용자 재시도는 기존 멱등·실패 계약을 따릅니다.
+- 후보 임계값 변경을 검토할 때는 같은 content·evaluation revision과 임베딩 모델, cosine 계산,
+  30개 상한·동점 규칙을 고정하고 `0.35`, `0.40`, `0.45`를 비교합니다. 선수 페이지 폐쇄를 추가하기 전
+  후보의 `primaryConcepts[]`와 평가 정답의 `requiredConcepts[]`를 대소문자를 구분한 문자열 완전 일치로
+  비교합니다. 90건의 전체 필수 개념 수를 분모로, 하나 이상의 후보에 정확히 일치한 필수 개념 수를 분자로
+  사용하며 trim·Unicode 정규화·부분 문자열·의미 유사도 비교는 적용하지 않습니다. 같은 도서의 전체 페이지
+  `primaryConcepts[]`에 정확히 일치하지 않는 필수 개념이 하나라도 있으면 평가 데이터 불일치로 임계값 비교를
+  실패합니다. 재현율 95% 이상을 유지하는 가장 높은 임계값만 새 후보 정책 version의 검토값으로 선택합니다.
+  세 값이 모두 미달하면 `0.30`을 유지하고 중간값을 임의로 채택하지 않습니다.
+- v1의 후보 값, resource 내용 또는 schema 계약을 바꾸면 기존 식별자를 재사용하지 않고 v2로 올린 뒤 대표
+  목적 90개를 전체 재평가합니다. 평가 정답을 후보·prompt 입력에 넣거나, 재시도에서 후보·정책을 바꾸거나,
+  버전이 다른 평가 결과를 재사용하지 않습니다.
+
 ## AI 페이지 가이드
 
 AI 페이지 가이드는 페이지를 열기 전에 표시하는 짧은 선택 이유입니다. 원문이나 요약을 미리 제공하지
@@ -270,9 +309,9 @@ AI 페이지 가이드는 사람이 미리 검수한 페이지별 공개 가이�
 - 사람 검수에서 목적 달성에 유용하다고 평가한 대표 경로: 80% 이상
 - 90개 모두 외부 API·서버·시간 제한 실패 없이 최종 경로를 반환
 - 90개 서버 측 전체 처리 시간의 95백분위인 오름차순 86번째 값: 10초 이하, 20초 초과 0건
-- 평가 결과에 콘텐츠 manifest와 평가 데이터의 Git 리비전, 임베딩·경로 모델, 프롬프트와 후보 정책 버전을
-  기록합니다. 콘텐츠 manifest·평가 데이터·임베딩 모델·경로 모델·프롬프트·후보 정책 중 하나라도 바뀌면
-  기존 평가 결과를 재사용하지 않고 90개 전체를 다시 평가합니다.
+- 평가 결과에 콘텐츠 manifest와 평가 데이터의 Git 리비전, 임베딩·경로 모델, 후보 정책·prompt·schema
+  버전을 기록합니다. 콘텐츠 manifest·평가 데이터·임베딩 모델·경로 모델·후보 정책·prompt·schema 중
+  하나라도 바뀌면 기존 평가 결과를 재사용하지 않고 90개 전체를 다시 평가합니다.
 - 사용자 완료 피드백의 `도움이 됐어요`: 70% 이상을 출시 차단이 아닌 운영 관찰 지표로 측정
 
 ## 기술 결정
