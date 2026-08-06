@@ -3,14 +3,18 @@
 [구현 작업 색인](./README.md)으로 돌아갑니다. 현재 정본과 코드만으로 한 가지 구현을 결정할 수 없는
 사항입니다. 구현자는 아래 값·오류·전환 순서를 추측하지 않습니다.
 
-## GATE-AIR-01 초기 콘텐츠 버전
+## GATE-AIR-01 초기 콘텐츠 버전 해제
 
-- 차단 작업: [F01 스키마 migration](./foundation/F01-schema-migration.md)
-- 확인된 불일치: [ERD](../../erd.md#기존-테이블-확장)는 `book.content_version NOT NULL`을 요구하지만
-  [현재 manifest](../../../fixtures/content/manifest.json)에는 `contentVersion`이 없습니다.
-- 결정할 내용: 초기 manifest 버전 식별자와 기존 `book` 행 backfill 규칙
-- 반영 위치: [콘텐츠 변환 정본](../../content-conversion.md), 초기 manifest, F01 테스트 입력
-- 금지: `initial-v1` 같은 값 추측, nullable 임시 컬럼, V1 수정
+- 결정 정본: [콘텐츠 변환의 초기 MVP 시연 PDF 기준선](../../content-conversion.md#초기-mvp-시연-pdf-기준선)
+- 초기 manifest의 `contentVersion`은 `initial-v1`입니다.
+- 버전 컬럼 도입 전 V1 schema의 모든 기존 `book` 행은 조건 없이 `initial-v1`로 backfill합니다.
+- F01의 최종 `book.content_version`은 기존 writer 호환을 위해
+  `VARCHAR(100) CHARACTER SET ascii COLLATE ascii_bin NOT NULL DEFAULT 'initial-v1'`입니다.
+- manifest와 AI 콘텐츠 import는 DB 기본값에 의존하지 않고 `contentVersion`을 명시합니다.
+- `ai-route-v2`는 사용자 기록과 HTTP 트래픽이 없는 새 시연 DB에 전체 적재하며 `initial-v1` fixture는
+  재현·회귀 입력으로 보존합니다.
+- 해제된 차단 작업: [F01 스키마 migration](./foundation/F01-schema-migration.md)
+- 금지: 일부 ID만 선별 backfill, nullable 임시 컬럼, V1 수정, manifest 버전 누락 허용
 
 ## GATE-AIR-02 후보·prompt 정책 v1
 

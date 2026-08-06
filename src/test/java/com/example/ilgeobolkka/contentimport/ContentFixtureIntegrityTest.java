@@ -17,6 +17,9 @@ import tools.jackson.databind.ObjectMapper;
 
 class ContentFixtureIntegrityTest {
 
+    private static final String INITIAL_MANIFEST_SHA256 =
+            "e91609452a5a85baec4f61464cd127e6e79d2223336a28867027f58c57924408";
+
     @Test
     void 고정_PDF_100권과_manifest_SHA_페이지_계약이_일치한다() throws IOException {
         Path fixtureDirectory = Path.of("fixtures/content");
@@ -47,6 +50,10 @@ class ContentFixtureIntegrityTest {
             totalPageCount += book.totalPageCount();
         }
 
+        assertEquals(
+                INITIAL_MANIFEST_SHA256,
+                ContentBatchConverter.sha256(Files.readAllBytes(manifestPath)));
+        assertEquals("initial-v1", manifest.contentVersion());
         assertEquals(100, manifest.books().size());
         assertEquals(100, bookIds.size());
         assertEquals(400, totalPageCount);

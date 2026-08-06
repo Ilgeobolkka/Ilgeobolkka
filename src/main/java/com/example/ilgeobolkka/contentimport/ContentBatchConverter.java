@@ -29,6 +29,8 @@ class ContentBatchConverter {
 
     private static final int BOOK_COUNT = 100;
     private static final int PAGE_COUNT = 400;
+    // 초기 코퍼스(initial-v1) 전용 계약이다. 이후 버전은 이 제한을 풀지 않고 버전별 검증 경로를 추가한다.
+    private static final String INITIAL_CONTENT_VERSION = "initial-v1";
     private static final String POPPLER_VERSION = "26.05.0";
 
     private final Path manifestPath;
@@ -81,11 +83,16 @@ class ContentBatchConverter {
                             books,
                             manifestSha256,
                             stagingDirectory);
-            ContentBatch batch = new ContentBatch(manifestSha256, List.copyOf(convertedBooks));
+            ContentBatch batch =
+                    new ContentBatch(
+                            manifest.contentVersion(),
+                            manifestSha256,
+                            List.copyOf(convertedBooks));
             validateConvertedBatch(batch);
             writeResultManifest(
                     stagingDirectory,
                     new ContentResultManifest(
+                            batch.contentVersion(),
                             manifestSha256,
                             pdftotextVersion,
                             pdftoppmVersion,
@@ -109,7 +116,11 @@ class ContentBatchConverter {
     }
 
     private void validateManifest(ContentManifest manifest) {
-        if (manifest == null || manifest.books() == null || manifest.books().size() != BOOK_COUNT) {
+        if (manifest == null || !INITIAL_CONTENT_VERSION.equals(manifest.contentVersion())) {
+            throw new IllegalStateException(
+                    "초기 콘텐츠 manifest의 contentVersion은 initial-v1이어야 합니다.");
+        }
+        if (manifest.books() == null || manifest.books().size() != BOOK_COUNT) {
             throw new IllegalStateException("콘텐츠 manifest에는 정확히 100권이 있어야 합니다.");
         }
 

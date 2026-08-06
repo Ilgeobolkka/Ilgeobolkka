@@ -21,9 +21,17 @@ SCRUM-403의 `books.json`, 합성 페이지 규칙과 PNG는 목록·검색·잉
 임시 입력입니다. SCRUM-404에서는 이 입력과 내용이 같은 공개 가능 AI 시연 PDF 100권을 한 번 만들고
 `fixtures/content/pdfs/`에 고정합니다. PDF를 고정한 뒤에는 해당 PDF가 페이지 수와 번호의 정본입니다.
 
-`fixtures/content/manifest.json`은 도서마다 `bookId`, PDF 상대 경로, PDF SHA-256과 전체 페이지 수만
-기록합니다. PDF 생성 방법과 도구는 최초 fixture 준비 근거로 남기되, 반복 변환이 기존 합성 페이지 규칙을
+`fixtures/content/manifest.json`의 콘텐츠 버전은 `initial-v1`입니다. manifest는 최상위
+`contentVersion`을 생략하지 않고 도서마다 `bookId`, PDF 상대 경로, PDF SHA-256과 전체 페이지 수를
+기록합니다. `contentVersion`은 구조·호환 계약을, manifest SHA-256은 정확한 입력 파일 리비전을
+식별합니다. PDF 생성 방법과 도구는 최초 fixture 준비 근거로 남기되, 반복 변환이 기존 합성 페이지 규칙을
 읽어 PDF를 다시 만들지는 않습니다.
+
+버전 컬럼 도입 전 V1 schema에 존재하는 모든 `book` 행은 ID·페이지 수·manifest 포함 여부로 선별하지 않고
+`initial-v1`로 backfill합니다. F01 migration의 최종 `book.content_version`은 기존 도서 writer와 테스트
+fixture의 호환을 위해 `NOT NULL DEFAULT 'initial-v1'`로 유지합니다. 이 DB 기본값은 기존 삽입 경로의
+호환 장치일 뿐이며 콘텐츠 manifest와 import batch는 `contentVersion`을 명시하고 기본값으로 추측하지
+않습니다. `ai-route-v2` 적재도 해당 버전을 명시적으로 기록합니다.
 
 최초 PDF와 현재 합성 페이지의 도서·페이지 번호·`TEXT`·`IMAGE` 내용이 같다는 검증을 보존한 뒤
 `DemoBookCatalog#createPage`와 `src/main/resources/demo/book-pages/`의 페이지 PNG는 제거합니다.
@@ -34,7 +42,7 @@ SCRUM-403의 `books.json`, 합성 페이지 규칙과 PNG는 목록·검색·잉
 
 ## AI 잉크 경로 2차 fixture 기준선
 
-[AI 경로 콘텐츠 코퍼스](./ai-route-content-corpus.md)의 `ai-route-v2`는 초기 fixture를 덮어쓰지 않는
+[AI 경로 콘텐츠 코퍼스](./ai-route-content-corpus.md)의 `ai-route-v2`는 `initial-v1` fixture를 덮어쓰지 않는
 별도 콘텐츠 버전입니다.
 
 - `ai-route-v2` manifest의 도서 구성과 페이지 범위는
@@ -45,11 +53,11 @@ SCRUM-403의 `books.json`, 합성 페이지 규칙과 PNG는 목록·검색·잉
   SHA-256도 바뀌어야 합니다.
 - `ai-route-v2`의 전체 페이지 수는 manifest의 도서별 페이지 수 합계로 계산하며 400으로 고정하지
   않습니다.
-- 현재 변환기의 `100권·400페이지` 검증은 초기 fixture에만 적용합니다. 2차 MVP 구현에서는 선택한
+- 현재 변환기의 `100권·400페이지` 검증은 `initial-v1` fixture에만 적용합니다. 2차 MVP 구현에서는 선택한
   `contentVersion`에 따라 초기 계약 또는 `ai-route-v2` 계약을 검증하도록 바꿉니다.
 - `ai-route-v2`는 대여·소장·내역이 없고 아직 HTTP 트래픽을 받지 않는 공개 전 후보 시연 DB에 전체
   적재합니다. 기존 사용자 기록이 있는 DB의 콘텐츠를 제자리에서 교체하거나 페이지를 삭제하지 않습니다.
-- 초기 manifest와 새 시연 DB로 되돌리는 절차는 후보 DB가 HTTP 트래픽을 받기 전에만 허용합니다. 한 번이라도
+- `initial-v1` manifest와 새 시연 DB로 되돌리는 절차는 후보 DB가 HTTP 트래픽을 받기 전에만 허용합니다. 한 번이라도
   HTTP 트래픽을 받아 사용자 기록이 생긴 DB를 폐기하거나 이전 manifest의 새 DB로 교체하는 롤백은
   금지합니다. 운영 사용자 데이터의 콘텐츠 버전 마이그레이션과 롤백은 2차 MVP 범위가 아닙니다.
 
@@ -116,7 +124,7 @@ manifest가 선언한 모든 IMAGE 파일의 바이트가 같은 경우에만 �
 ## 변환 완전성
 
 - manifest의 `bookId`는 중복 없이 선택한 콘텐츠 버전의 시연 도서와 일치해야 합니다.
-- 초기 버전은 전체 400페이지여야 합니다. `ai-route-v2`의 도서 구성·페이지 범위·기존 콘텐츠 보존 조건은
+- `initial-v1`은 전체 400페이지여야 합니다. `ai-route-v2`의 도서 구성·페이지 범위·기존 콘텐츠 보존 조건은
   [AI 경로 콘텐츠 코퍼스의 완료 조건](./ai-route-content-corpus.md#완료-조건)을 따르며, 전체 페이지 수는
   manifest 합계와 일치해야 합니다.
 - 각 PDF의 SHA-256과 페이지 수가 manifest와 일치해야 합니다.

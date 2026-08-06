@@ -18,6 +18,8 @@ import tools.jackson.databind.ObjectMapper;
 
 class ContentBatchConverterTest {
 
+    private static final String INITIAL_CONTENT_VERSION = "initial-v1";
+
     @TempDir Path tempDirectory;
 
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -38,6 +40,7 @@ class ContentBatchConverterTest {
 
         ContentBatch batch = converter.convert();
 
+        assertEquals(INITIAL_CONTENT_VERSION, batch.contentVersion());
         assertEquals(100, batch.books().size());
         assertEquals(400, batch.pages().size());
         assertEquals(
@@ -52,12 +55,47 @@ class ContentBatchConverterTest {
                         .count());
         Path batchDirectory = outputRoot.resolve(batch.manifestSha256());
         assertTrue(Files.isRegularFile(batchDirectory.resolve("manifest.json")));
+        ContentResultManifest resultManifest =
+                objectMapper.readValue(
+                        batchDirectory.resolve("manifest.json").toFile(),
+                        ContentResultManifest.class);
+        assertEquals(INITIAL_CONTENT_VERSION, resultManifest.contentVersion());
         assertTrue(
                 Files.isRegularFile(
                         batchDirectory.resolve("book-001/page-002.jpg")));
         assertFalse(
                 Files.list(outputRoot)
                         .anyMatch(path -> path.getFileName().toString().contains(".staging-")));
+    }
+
+    @Test
+    void 초기_manifest의_contentVersion이_없으면_변환을_거부한다() throws IOException {
+        Path manifestPath = createManifest(null);
+        var pdfTool = new FakePdfTool();
+        var converter =
+                new ContentBatchConverter(
+                        manifestPath,
+                        tempDirectory.resolve("output"),
+                        objectMapper,
+                        pdfTool);
+
+        assertThrows(IllegalStateException.class, converter::convert);
+        assertEquals(0, pdfTool.extractCount);
+    }
+
+    @Test
+    void 초기_manifest가_initial_v1이_아니면_변환을_거부한다() throws IOException {
+        Path manifestPath = createManifest("ai-route-v2");
+        var pdfTool = new FakePdfTool();
+        var converter =
+                new ContentBatchConverter(
+                        manifestPath,
+                        tempDirectory.resolve("output"),
+                        objectMapper,
+                        pdfTool);
+
+        assertThrows(IllegalStateException.class, converter::convert);
+        assertEquals(0, pdfTool.extractCount);
     }
 
     @Test
@@ -137,6 +175,10 @@ class ContentBatchConverterTest {
     }
 
     private Path createManifest() throws IOException {
+        return createManifest(INITIAL_CONTENT_VERSION);
+    }
+
+    private Path createManifest(String contentVersion) throws IOException {
         Path fixtureDirectory = tempDirectory.resolve("fixtures");
         Path pdfDirectory = fixtureDirectory.resolve("pdfs");
         Files.createDirectories(pdfDirectory);
@@ -157,7 +199,9 @@ class ContentBatchConverterTest {
         Path manifestPath = fixtureDirectory.resolve("manifest.json");
         objectMapper
                 .writerWithDefaultPrettyPrinter()
-                .writeValue(manifestPath.toFile(), new ContentManifest(books));
+                .writeValue(
+                        manifestPath.toFile(),
+                        new ContentManifest(contentVersion, books));
         return manifestPath;
     }
 
