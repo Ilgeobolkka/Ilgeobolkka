@@ -29,6 +29,7 @@ class ContentBatchConverter {
 
     private static final int BOOK_COUNT = 100;
     private static final int PAGE_COUNT = 400;
+    // 초기 코퍼스(initial-v1) 전용 계약이다. 이후 버전은 이 제한을 풀지 않고 버전별 검증 경로를 추가한다.
     private static final String INITIAL_CONTENT_VERSION = "initial-v1";
     private static final String POPPLER_VERSION = "26.05.0";
 
