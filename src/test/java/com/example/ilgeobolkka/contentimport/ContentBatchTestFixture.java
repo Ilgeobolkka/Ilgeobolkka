@@ -47,6 +47,6 @@ final class ContentBatchTestFixture {
                             totalPageCount,
                             List.copyOf(pages)));
         }
-        return new ContentBatch("b".repeat(64), List.copyOf(books));
+        return new ContentBatch("initial-v1", "b".repeat(64), List.copyOf(books));
     }
 }

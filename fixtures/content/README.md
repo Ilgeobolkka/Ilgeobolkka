@@ -7,13 +7,15 @@
 ## 동결 결과
 
 - 동결일: 2026-07-30
+- 콘텐츠 버전: `initial-v1`
 - 도서·페이지: 100권·400페이지
 - PDF 경로: `pdfs/book-001.pdf`부터 `pdfs/book-100.pdf`
-- manifest SHA-256: `edc689a910ff624bd536e40fe9a37f30e72fd44231995036fa22378e20c041eb`
+- manifest SHA-256: `e91609452a5a85baec4f61464cd127e6e79d2223336a28867027f58c57924408`
 - 최초 PDF 생성 도구: Google Chrome Headless `150.0.7871.187`
 - 반복 변환 도구: Poppler `pdftotext`·`pdftoppm` `26.05.0`
 
-`manifest.json`은 도서별 `bookId`, PDF 상대 경로, PDF SHA-256, 전체 페이지 수만 기록한다. 동결 뒤
+`manifest.json`은 최상위 `contentVersion=initial-v1`과 도서별 `bookId`, PDF 상대 경로, PDF SHA-256,
+전체 페이지 수를 기록한다. 동결 뒤
 변환 배치는 이 파일과 PDF만 입력으로 사용하며 아래 최초 합성 규칙이나 삭제된 PNG를 읽지 않는다.
 
 ## 최초 생성 입력과 규칙

@@ -29,7 +29,7 @@ Jira에는 담당자·일정·상태와 leaf 문서 링크만 둡니다. 정책 
 
 | ID | 작업 | 선행 | 핵심 산출물 |
 | --- | --- | --- | --- |
-| F01 | [AI 목표 스키마 migration](./foundation/F01-schema-migration.md) | [GATE-AIR-01](./00-implementation-gates.md#gate-air-01-초기-콘텐츠-버전) | V2+ migration과 스키마 테스트 |
+| F01 | [AI 목표 스키마 migration](./foundation/F01-schema-migration.md) | [해제된 `initial-v1` 정책](../../content-conversion.md#초기-mvp-시연-pdf-기준선) | V2+ migration과 스키마 테스트 |
 | F02 | [JPA Entity·Repository 기반](./foundation/F02-jpa-mapping.md) | F01 | AI Entity·Repository와 매핑 테스트 |
 | F03 | [기능 플래그·OpenAI 설정 계약](./foundation/F03-openai-configuration.md) | 없음 | 조건부 Bean과 설정 검증 |
 | F04 | [Embeddings HTTP adapter](./foundation/F04-embeddings-adapter.md) | F03 | 목적·분석 텍스트 embedding Gateway |
@@ -90,7 +90,7 @@ Jira에는 담당자·일정·상태와 leaf 문서 링크만 둡니다. 정책 
 
 | 파동 | 담당 A | 담당 B | 담당 C |
 | --- | --- | --- | --- |
-| 0 | [GATE-AIR-01](./00-implementation-gates.md#gate-air-01-초기-콘텐츠-버전) 결정 지원 | [GATE-AIR-02](./00-implementation-gates.md#gate-air-02-후보prompt-정책-v1) 결정 지원 | [GATE-AIR-03·04](./00-implementation-gates.md) 결정 지원 |
+| 0 | [GATE-AIR-01 해제](./00-implementation-gates.md#gate-air-01-초기-콘텐츠-버전-해제) | [GATE-AIR-02](./00-implementation-gates.md#gate-air-02-후보prompt-정책-v1) 결정 지원 | [GATE-AIR-03·04](./00-implementation-gates.md) 결정 지원 |
 | 1 | F01 스키마 | F03 설정 | G01 입력 정규화 |
 | 2 | F02 JPA | F04 Embeddings | G02 후보 검색 |
 | 3 | C01 manifest | F05 Responses | G05 멱등·일일 한도 |

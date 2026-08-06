@@ -8,7 +8,8 @@
 
 ## 목표
 
-초기 manifest 계약을 보존하면서 `contentVersion=ai-route-v2`의 구조 메타데이터와 평가 파일을 타입으로
+`contentVersion=initial-v1`인 초기 manifest 계약을 보존하면서 `contentVersion=ai-route-v2`의 구조
+메타데이터와 평가 파일을 타입으로
 읽고 형식 오류를 외부 호출·파일 변환·DB 접근 전에 거부합니다.
 
 ## 정본 링크
@@ -20,7 +21,8 @@
 
 ## 현재 구현 기준선
 
-- [초기 manifest](../../../../fixtures/content/manifest.json)는 `books[]`와 PDF 정보만 가집니다.
+- [초기 manifest](../../../../fixtures/content/manifest.json)는 `contentVersion=initial-v1`, `books[]`와
+  PDF 정보만 가집니다.
 - [ContentBatchConverter](../../../../src/main/java/com/example/ilgeobolkka/contentimport/ContentBatchConverter.java)는
   초기 100권·400페이지 계약만 검증합니다.
 - `fixtures/content/ai-route-v2/`와 평가 JSON은 아직 없습니다.
@@ -46,7 +48,8 @@
 3. 알 수 없는 필드, 중복 bookId·pageNumber·caseId, null 대신 필요한 빈 배열 위반을 거부합니다.
 4. `embeddingDimensions > 0`, 필수 문자열 non-blank, Enum과 숫자 범위 같은 단일 객체 형식만 검사합니다.
 5. 파일 존재·SHA, 페이지 간 참조, DAG, 권리·정책 일치는 C02로 넘기고 parser에서 외부 I/O를 섞지 않습니다.
-6. 초기 manifest는 OpenAI 필드를 요구하지 않고 기존 100권·400페이지 테스트를 그대로 통과합니다.
+6. 초기 manifest는 `contentVersion=initial-v1`을 필수로 요구하되 OpenAI 필드는 요구하지 않고 기존
+   100권·400페이지 테스트를 그대로 통과합니다.
 
 ## 테스트
 

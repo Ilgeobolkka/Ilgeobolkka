@@ -41,7 +41,7 @@
 
 ## 구현 조건
 
-1. `contentVersion`별로 초기 100권·400페이지와 AI manifest 합계 계약을 분기합니다.
+1. `contentVersion`별로 `initial-v1` 100권·400페이지와 `ai-route-v2` manifest 합계 계약을 분기합니다.
 2. TEXT/IMAGE 파일은 새 version staging에 완성한 뒤 DB가 참조하게 합니다.
 3. 예상하지 않은 기존 page는 삭제하지 않고 전체 실패하며 `(bookId,pageNumber)` ID를 보존합니다.
 4. Book contentVersion·권리·policy·support false, BookPage의 모든 AI 필드와 prerequisite를 한 transaction에

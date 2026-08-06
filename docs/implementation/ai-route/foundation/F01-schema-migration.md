@@ -3,7 +3,7 @@
 [구현 작업 색인](../README.md)으로 돌아갑니다.
 
 - 권장 담당: 파동 1 / 담당 A
-- 선행: [GATE-AIR-01 초기 콘텐츠 버전](../00-implementation-gates.md#gate-air-01-초기-콘텐츠-버전)
+- 선행: [해제된 GATE-AIR-01 초기 콘텐츠 버전](../00-implementation-gates.md#gate-air-01-초기-콘텐츠-버전-해제)
 - 후속: [F02 JPA 매핑](./F02-jpa-mapping.md), [C04 원자적 적재](../content/C04-atomic-import.md)
 
 ## 목표
@@ -22,15 +22,15 @@ AI 경로 목표 ERD의 기존 테이블 확장과 일곱 새 테이블을 다�
 ## 현재 구현 기준선
 
 - 적용된 migration은 [V1](../../../../src/main/resources/db/migration/V1__create_core_domain_tables.sql)뿐입니다.
-- [초기 manifest](../../../../fixtures/content/manifest.json)에
-  `contentVersion`이 없어 GATE-AIR-01 결정 없이는 `book.content_version`을 backfill할 수 없습니다.
+- [초기 manifest](../../../../fixtures/content/manifest.json)의 `contentVersion`은 `initial-v1`이며
+  GATE-AIR-01에서 기존 V1 `book` 행 전체의 backfill 값으로 확정했습니다.
 - 기존 스키마 검증 패턴은
   [InkRentalOwnershipSchemaMigrationTest](../../../../src/test/java/com/example/ilgeobolkka/support/schema/InkRentalOwnershipSchemaMigrationTest.java)를
   따릅니다.
 
 ## 입력과 산출물
 
-- 입력: GATE-AIR-01에서 확정한 초기 버전과 ERD의 물리 타입·NULL·PK·UK·FK·인덱스
+- 입력: 초기 버전 `initial-v1`, 전체 기존 행 backfill 규칙과 ERD의 물리 타입·NULL·PK·UK·FK·인덱스
 - 산출물: 현재 기준선에서는 `V2__create_ai_route_domain.sql`; 착수 시 V2가 존재하면 다음 번호
 - 산출물: `AiRouteSchemaMigrationTest`
 - F02에 넘길 것: 실제 테이블·컬럼·제약 이름과 migration 적용 증거
@@ -42,7 +42,9 @@ AI 경로 목표 ERD의 기존 테이블 확장과 일곱 새 테이블을 다�
 
 ## 구현 조건
 
-1. V1을 수정하지 않고 기존 `book` 행을 확정 버전으로 backfill한 뒤 `content_version NOT NULL`을 적용합니다.
+1. V1을 수정하지 않고 모든 기존 `book` 행을 `initial-v1`로 backfill합니다. 최종 컬럼은 기존 writer와
+   테스트 fixture 호환을 위해 `NOT NULL DEFAULT 'initial-v1'`로 적용하며 일부 ID만 선별하거나 nullable
+   중간 계약을 남기지 않습니다.
 2. `book`, `book_page` 확장 컬럼의 타입·ASCII collation·JSON·NULL 계약을 ERD와 일치시킵니다.
 3. `ai_route_prerequisite`, `ai_route_generation`, `ai_route_generation_item`, `ai_reading_route`,
    `ai_reading_route_item`, `ai_route_current`, `ai_route_daily_usage`를 빠짐없이 만듭니다.
@@ -54,7 +56,7 @@ AI 경로 목표 ERD의 기존 테이블 확장과 일곱 새 테이블을 다�
 ## 테스트
 
 - 빈 schema에 V1부터 새 migration까지 적용
-- V1만 적용된 schema에 새 migration 적용과 기존 book backfill 확인
+- V1만 적용된 schema에 새 migration 적용, 모든 기존 book의 `initial-v1` backfill과 컬럼 기본값 확인
 - 중복 멱등 키·현재 route·position과 잘못된 복합 FK가 SQL 예외로 거부되는지 확인
 - route 삭제 뒤 `page_rental`, `ink_ledger`, `library_entry`, `reading_session` 보존 확인
 - 명령: `./gradlew test --tests '*AiRouteSchemaMigrationTest'`

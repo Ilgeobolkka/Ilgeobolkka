@@ -1,5 +1,6 @@
 {
-  "manifestSha256": "edc689a910ff624bd536e40fe9a37f30e72fd44231995036fa22378e20c041eb",
+  "contentVersion": "initial-v1",
+  "manifestSha256": "e91609452a5a85baec4f61464cd127e6e79d2223336a28867027f58c57924408",
   "conversion": {
     "pdftotextVersion": "26.05.0",
     "pdftoppmVersion": "26.05.0",

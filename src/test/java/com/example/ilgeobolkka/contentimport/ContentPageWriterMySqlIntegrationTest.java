@@ -164,7 +164,10 @@ class ContentPageWriterMySqlIntegrationTest {
                         lastBook.sourceSha256(),
                         lastBook.totalPageCount(),
                         List.copyOf(pages)));
-        return new ContentBatch(validBatch.manifestSha256(), List.copyOf(books));
+        return new ContentBatch(
+                validBatch.contentVersion(),
+                validBatch.manifestSha256(),
+                List.copyOf(books));
     }
 
     private void deleteCommittedFixture() {
