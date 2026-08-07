@@ -66,7 +66,9 @@ ADR을 모두 남기고, 현행 정본과 저장소의 참조는 새 ADR을 가�
 | --- | --- | --- |
 | [0006](./content/0006-use-poppler-and-private-s3-for-image-pages.md) | Poppler 사전 변환과 비공개 S3 | 승인됨 |
 | [0011](./content/0011-align-page-content-with-source-pdf.md) | 원본 PDF 연결 텍스트·이미지 콘텐츠 | 대체됨 |
-| [0013](./content/0013-define-page-content-and-public-ai-fixture-boundary.md) | 원본 PDF 연결 콘텐츠와 공개 AI 시연 fixture 경계 | 승인됨 |
+| [0013](./content/0013-define-page-content-and-public-ai-fixture-boundary.md) | 원본 PDF 연결 콘텐츠와 공개 AI 시연 fixture 경계 | 대체됨 |
+| [0015](./content/0015-include-rights-verified-public-domain-sources-in-ai-fixtures.md) | 권리 검증된 공개 원전을 포함한 AI 시연 fixture | 대체됨 |
+| [0016](./content/0016-publish-korean-original-ebook-content-for-ai-fixtures.md) | 한국어 창작 전자책 AI 시연 fixture | 승인됨 |
 
 ### 보안
 

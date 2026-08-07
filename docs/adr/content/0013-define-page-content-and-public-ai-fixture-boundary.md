@@ -1,6 +1,6 @@
 # 0013. 원본 PDF 연결 콘텐츠와 공개 AI 시연 fixture 경계를 정의한다
 
-- 상태: 승인됨
+- 상태: 대체됨 ([ADR-0015](./0015-include-rights-verified-public-domain-sources-in-ai-fixtures.md))
 - 날짜: 2026-07-29
 
 ## 맥락

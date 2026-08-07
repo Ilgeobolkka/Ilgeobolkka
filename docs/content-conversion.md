@@ -2,7 +2,7 @@
 
 [PRD 색인](./prd/README.md)으로 돌아갑니다. 이 문서는 원본 PDF를 페이지별 `TEXT` 또는 `IMAGE`
 콘텐츠로 변환하고 품질을 검증하는 실행 절차입니다. 콘텐츠 구조와 공개 AI 시연 fixture 경계는
-[ADR-0013](./adr/content/0013-define-page-content-and-public-ai-fixture-boundary.md)을 따르며, 이미지
+[ADR-0016](./adr/content/0016-publish-korean-original-ebook-content-for-ai-fixtures.md)을 따르며, 이미지
 변환과 저장은 [ADR-0006](./adr/content/0006-use-poppler-and-private-s3-for-image-pages.md)을 따릅니다.
 
 ## 변환 원칙
@@ -13,7 +13,7 @@
   표·수식·삽화나 복잡한 배치는 `IMAGE`로 변환합니다.
 - 표지는 PDF 페이지와 별도인 공개 메타데이터 자산으로 준비하고 페이지 수에 포함하지 않습니다.
 - 실제 사용 원본 PDF와 이미지 저장소는 비공개로 유지하고 브라우저에는 내부 경로를 제공하지 않습니다.
-  공개 AI 시연 PDF에는 ADR-0013의 제한된 Git fixture 예외만 적용합니다.
+  공개 AI 시연 PDF에는 ADR-0016의 한국어 창작 전자책 Git fixture 예외만 적용합니다.
 
 ## 초기 MVP 시연 PDF 기준선
 
