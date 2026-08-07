@@ -166,6 +166,9 @@
 `guide`, `additionalCostStatus`를 포함합니다. `relevance`는 `HIGH`·`MEDIUM`, `role`은
 `PREREQUISITE`·`CORE`·`EXAMPLE`·`COUNTERPOINT`·`CONCLUSION`, `additionalCostStatus`는
 `ONE_INK`·`ACTIVE_RENTAL`·`OWNED` 중 하나입니다. 임시 결과는 접근권한이나 잉크 차감을 만들지 않습니다.
+생성 결과의 `additionalCostStatus`는 생성 시점 값이며, `GET /api/ai-route-generations/{generationId}`로
+다시 조회해도 현재 권한으로 재계산하지 않습니다(저장 거부 뒤 재조회도 같습니다). 재계산은 저장 경로 상세
+조회에서만 수행합니다.
 
 `NO_RELEVANT_PAGES`는 `minimumRequiredInk=null`이고, `INSUFFICIENT_BUDGET`은 선택한 예산보다 큰 최소
 추가 잉크를 `minimumRequiredInk`로 반환합니다. `NO_ROUTE`가 아닌 상태에서는 두 필드가 모두 `null`입니다.
@@ -191,13 +194,14 @@
 ([저장과 생명주기 3단계](./prd/ai-ink-route.md#저장과-생명주기)) `409 AI_ROUTE_ENTITLEMENT_CHANGED`로
 거부합니다. 이때 `generationId`는 **소비하지 않습니다.** 경로·현재 경로를 만들지 않고 임시 결과는 원래
 만료 시각까지 `ROUTE` 상태로 남아 다시 조회할 수 있습니다. 저장은 매 요청마다 그 시점의 권한으로 추가
-잉크를 다시 계산하므로, 권한이 그대로인 재시도는 같은 오류를 반환하고, 독자가 만료 전에 필요한 대여를
-다시 확보해 추가 잉크가 생성 예산 이하로 내려가면 같은 `generationId`로 저장할 수 있습니다. 최초 거부를
-기록해 이후 저장을 막는 상태는 두지 않습니다.
-독자에게는 대여·소장 상태가 바뀌어 필요한 잉크가 생성 시점보다 늘었으므로 경로를 다시 생성해야 한다고
-안내합니다. 이 응답에는 재계산한 비용·권한 상세를 포함하지 않습니다. 콘텐츠 버전 변경
-(`AI_ROUTE_CONTENT_CHANGED`), 입력 오류(`INVALID_INPUT`), 잉크 부족(`INSUFFICIENT_INK`)은 원인이 다르므로
-이 상황에 대신 사용하지 않습니다.
+잉크를 다시 계산하므로 권한이 그대로인 재시도는 같은 오류를 반환하며, 최초 거부를 기록해 이후 저장을 막는
+상태는 두지 않습니다. 따라서 만료 전 권한이 예산 이하로 회복되면 같은 `generationId` 저장이 성공할 수
+있지만, 이는 재계산의 결과일 뿐 클라이언트에 안내하는 복구 경로가 아닙니다.
+
+독자에게는 대여·소장 상태가 바뀌어 필요한 잉크가 생성 시점보다 늘었으므로 **경로를 다시 생성해야 한다고만
+안내합니다**(화면 조건은 [W01](./implementation/ai-route/web/W01-generation-page.md)). 이 응답에는 재계산한
+비용·권한 상세를 포함하지 않습니다. 콘텐츠 버전 변경(`AI_ROUTE_CONTENT_CHANGED`), 입력
+오류(`INVALID_INPUT`), 잉크 부족(`INSUFFICIENT_INK`)은 원인이 다르므로 이 상황에 대신 사용하지 않습니다.
 
 피드백 `rating`은 `HELPFUL`, `NEUTRAL`, `NOT_HELPFUL` 중 하나입니다. 완료하지 않았거나 소유하지 않은
 경로에는 저장하지 않습니다.

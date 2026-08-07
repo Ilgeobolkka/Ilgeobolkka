@@ -46,7 +46,7 @@ AI leaf 작업과 기존 초기 MVP 전체 회귀를 MySQL·패키징 실행물�
 
 1. `docker compose config -q`, `docker compose up -d --wait`로 MySQL 8.4를 준비합니다.
 2. `./gradlew test`, `./gradlew check`, `./gradlew build`를 실행합니다.
-3. `INV-014~021`, `T-AIR-001~019`와 기존 초기 MVP 필수 시나리오 누락을 추적성 표로 대조합니다.
+3. `INV-014~021`, `T-AIR-001~020`과 기존 초기 MVP 필수 시나리오 누락을 추적성 표로 대조합니다.
 4. `AI_ROUTE_ENABLED=false` 패키징 서버에서 AI route 미등록·기존 smoke/도서/뷰어/결제를 확인합니다.
 5. 설정을 갖춘 활성 서버에서 지원/미지원·owner/다른 독자·생성/저장/읽기/삭제 흐름을 확인합니다.
 6. 브라우저에서 도서 상세→생성→polling→저장→서재→경로 읽기→완료→feedback→삭제를 확인합니다.

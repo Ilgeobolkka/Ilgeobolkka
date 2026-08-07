@@ -115,7 +115,7 @@ S04·S05와 W02 사이에는 문서 계약뿐 아니라 컴파일 가능한 산�
 | `infra/openai` 공통 HTTP 설정 | F04 | F05는 route adapter 전용 파일만 추가 |
 | `contentimport` | C01~C04 담당 A | 다른 담당자는 manifest 타입을 복제하지 않음 |
 | generation Facade | G07 | G08은 Facade 호출만 하고 orchestration 추가 금지 |
-| `ErrorCode`, `GlobalExceptionHandler`, `SecurityConfig` | G08 | 다른 작업은 공개 오류가 필요하면 G08에 인계. 예외: S01은 G08보다 앞 파동이라 [GATE-AIR-03](./00-implementation-gates.md#gate-air-03-저장-전-권한-변동-오류)이 확정한 `AI_ROUTE_ENTITLEMENT_CHANGED` 상수 1개와 그 예외 매핑만 추가 |
+| `ErrorCode`, `GlobalExceptionHandler`, `SecurityConfig` | G08 | 각 작업은 **자기가 실제로 반환하는 공개 오류 코드와 그 예외 매핑만** 추가하고, **이미 정의된 코드는 재사용하고 다시 추가하지 않습니다**(같은 코드를 여러 endpoint가 반환하면 먼저 진행하는 작업이 정의). 그 밖의 변경(다른 작업 코드·`SecurityConfig`·공통 구조)은 G08에 인계. 예: S01은 G08보다 앞 파동이므로 자기 endpoint의 `AI_ROUTE_ENTITLEMENT_CHANGED`·`AI_ROUTE_CONTENT_CHANGED`·`AI_ROUTE_GENERATION_CONSUMED`를 정의하고, 뒤따르는 G08은 그중 자기도 반환하는 코드를 재사용 |
 | 저장 경로 Controller | S01~S05의 문서별 별도 Controller | 공용 거대 Controller로 합치지 않음 |
 | 새 AI 화면 | W01·W02 각자 | W03은 새 화면 파일을 수정하지 않음 |
 | `book-detail.html`, `library.html` | W03 | 다른 웹 작업은 링크 자리만 계약으로 전달 |

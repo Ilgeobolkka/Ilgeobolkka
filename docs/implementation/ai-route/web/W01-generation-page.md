@@ -18,7 +18,8 @@
 - [저장과 생명주기](../../../prd/ai-ink-route.md#저장과-생명주기)
 - [해제된 저장 거부 오류 계약](../../../api-spec.md#저장-경로-결과와-상태-변경)
 - [Thymeleaf·fetch 규칙](../../../conventions.md#thymeleaf-공통-셸과-브라우저-호출)
-- 필수 시나리오: [T-AIR-001·013·018](../../../test-strategy.md#5-필수-시나리오)
+- 필수 시나리오: [T-AIR-001·013·018·020](../../../test-strategy.md#5-필수-시나리오)
+  (020은 저장 거부 안내의 화면 동작만 담당합니다)
 
 ## 현재 구현 기준선
 
@@ -49,10 +50,14 @@
 6. purpose·guide·오류 message는 DOM `textContent` 또는 Thymeleaf escaped output만 사용합니다.
 7. 저장 버튼은 generationId만 S01 endpoint로 보내며 page·순서·guide를 다시 전송하지 않습니다.
 8. 저장이 `409 AI_ROUTE_ENTITLEMENT_CHANGED`면 대여·소장 상태가 바뀌어 필요한 잉크가 생성 시점보다
-   늘었음을 알리고 경로 다시 생성을 안내합니다. 재계산한 비용·권한 상세는 화면에 표시하지 않습니다.
-   저장 성공이 아니므로 화면을 저장 완료 상태로 바꾸지 않되, preview와 저장 버튼은 그대로 두어 독자가
-   필요한 대여를 확보한 뒤 만료 전에 다시 시도할 수 있게 합니다(임시 결과를 소비하지 않는 저장 계약과
-   같은 이유입니다).
+   늘었음을 알리고 **경로 다시 생성 한 가지만** 안내합니다. 저장 버튼은 비활성화(`disabled`)해 같은
+   preview로 다시 저장할 수 없게 하고, 규칙 3의 생성 버튼으로 새 실행만 하게 합니다. 규칙 5의 cost
+   status는 생성 시점 값이라 더 이상 맞지 않으므로, 재계산 값을 채우지 말고 항목별 표시를 무효 상태로
+   바꿔 낡은 값을 그대로 읽지 않게 합니다. 이 비활성·무효 표시는 거부 직후 세션 한정 안내이며, 새로고침하면
+   서버 스냅샷 기준 초기 화면으로 돌아옵니다(스냅샷 노출은 GATE-AIR-03 결정이라 그대로 두고, 그 뒤의
+   오해는 재생성 안내로만 막습니다). 그때 다시 저장해도 권한이 그대로면 서버가 같은 `409`로 거부합니다.
+   화면이 재저장을 유도하지 않는 이유는
+   [GATE-AIR-03](../00-implementation-gates.md#gate-air-03-저장-전-권한-변동-오류)에 있습니다.
 9. feature flag false면 PageController Bean이 없고 OpenAI 설정·분석 text를 HTML에 넣지 않습니다.
 
 ## 테스트
@@ -61,8 +66,8 @@
 - 소장/비소장 입력 DOM과 201/200/202/NO_ROUTE fixture별 표시 helper
 - HTML 모양 purpose·guide가 `innerHTML` 경로 없이 text로 표시되는지 정적/브라우저 확인
 - UUID의 새 실행/동일 retry 재사용과 저장 request body 비어 있음 확인
-- 저장 `409 AI_ROUTE_ENTITLEMENT_CHANGED` fixture에서 재생성 안내가 표시되고 비용·권한 상세가 DOM에
-  없으며, 저장 완료 상태로 바뀌지 않고 preview·저장 버튼이 남아 재시도할 수 있음 확인
+- 저장 `409 AI_ROUTE_ENTITLEMENT_CHANGED` fixture에서 재생성 안내만 표시되고(다른 복구 경로 안내 없음)
+  비용·권한 상세가 DOM에 없으며, 저장 버튼이 `disabled`가 되고 항목별 cost status가 무효 표시로 바뀜 확인
 - 수동 브라우저: 입력→202 polling→preview→저장, 두 NO_ROUTE, 409 권한 변동 거부, 429·503 오류
 - 명령: `./gradlew test --tests '*AiRouteGenerationPageTest'`
 
