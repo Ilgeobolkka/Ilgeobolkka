@@ -5,7 +5,7 @@
 - 권장 담당: 파동 6 / 담당 C
 - 선행: [F02 JPA 기반](../foundation/F02-jpa-mapping.md),
   [G06 생명주기](../generation/G06-generation-lifecycle.md),
-  [GATE-AIR-03 권한 변동 오류](../00-implementation-gates.md#gate-air-03-저장-전-권한-변동-오류)
+  [해제된 GATE-AIR-03 저장 전 권한 변동 오류](../00-implementation-gates.md#gate-air-03-저장-전-권한-변동-오류)
 - 후속: [S03 현재 경로·삭제](./S03-current-delete.md), [W01 생성 화면](../web/W01-generation-page.md)
 
 ## 목표
@@ -26,9 +26,10 @@ route를 현재 경로로 지정합니다. 저장 재시도는 같은 route를 �
 - 기존 도메인 잠금 조합은
   [ReadingFacade](../../../../src/main/java/com/example/ilgeobolkka/reading/facade/ReadingFacade.java)를 참고하지만
   페이지 열기 Facade를 호출하지 않습니다.
-- 권한 변동 저장 거부는 GATE-AIR-03에서 확정한 `409 AI_ROUTE_ENTITLEMENT_CHANGED`만 사용합니다
-  (`ErrorCode` enum 추가는 [G08](../generation/G08-generation-api.md) 소유이므로 이 작업에서 새 공개 code를
-  정의하지 않고 필요하면 G08에 인계합니다).
+- 권한 변동 저장 거부는 GATE-AIR-03에서 확정한 `409 AI_ROUTE_ENTITLEMENT_CHANGED`만 사용합니다.
+  `ErrorCode`는 원래 [G08](../generation/G08-generation-api.md) 소유지만 G08은 이 작업보다 뒤(파동 7)라,
+  이 상수 하나와 대응 예외 매핑 추가는 GATE-AIR-03 해제 조건으로 S01에 예외 허용합니다(색인의 공유 파일
+  소유권 표 참고). 그 밖의 AI 공개 오류 코드는 정의하지 않고 G08에 남깁니다.
 
 ## 입력과 산출물
 
@@ -40,6 +41,8 @@ route를 현재 경로로 지정합니다. 저장 재시도는 같은 route를 �
 ## 수정 허용 파일
 
 - 새 save Facade·Service·Controller·DTO·exception
+- `ErrorCode`에 `AI_ROUTE_ENTITLEMENT_CHANGED`(409) 상수 1개와 `GlobalExceptionHandler`의 대응 매핑
+  (GATE-AIR-03 해제 조건으로 허용한 예외. 다른 AI 오류 코드는 추가하지 않음)
 - generation·route·current Repository에 이 작업 전용 owner/lock query
 - G06 lifecycle API는 호출만 하고 Entity status 직접 변경 금지
 - 새 `AiRouteSaveMySqlIntegrationTest`
@@ -62,7 +65,9 @@ route를 현재 경로로 지정합니다. 저장 재시도는 같은 route를 �
 - 정상 첫 저장 201과 같은 generation 순차·동시 재시도 200+route 한 건
 - 다른 독자·만료·NO_ROUTE·FAILED는 `404`, contentVersion 변경은 `409 AI_ROUTE_CONTENT_CHANGED` 거부
 - 권한 변동으로 비용이 예산을 넘으면 `409 AI_ROUTE_ENTITLEMENT_CHANGED`, 이어지는 조회에서 generation이
-  아직 `ROUTE`이고 route·current가 생기지 않았음을 확인(재시도도 같은 오류)
+  아직 `ROUTE`이고 route·current가 생기지 않았음을 확인
+- 위 거부 뒤 권한이 그대로면 재시도도 같은 409, 필요한 대여를 다시 확보해 비용이 예산 이하로 내려가면
+  같은 `generationId` 저장이 `201`로 성공(거부가 고정되지 않음)
 - 두 generation 동시 저장에서 route는 각각 존재하고 current는 완료 순서의 한 건
 - 재시도 사이 다른 route를 current로 지정했을 때 재시도가 current를 되돌리지 않음
 - 저장 전후 잉크·대여·세션·서재 불변과 rollback 주입
