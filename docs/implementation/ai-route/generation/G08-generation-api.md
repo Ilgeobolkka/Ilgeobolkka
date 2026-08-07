@@ -17,7 +17,13 @@
 - [생성 입력과 결과](../../../api-spec.md#생성-입력과-결과)
 - [목표 오류](../../../api-spec.md#목표-오류)
 - [인증과 세션](../../../conventions.md#인증과-세션)
-- 필수 시나리오: [T-AIR-001·007~010·013~016·018](../../../test-strategy.md#5-필수-시나리오)
+- 필수 시나리오: [T-AIR-001·007~010·013~016·018·020](../../../test-strategy.md#5-필수-시나리오)
+  (020은 저장 거부 뒤 `GET /api/ai-route-generations/{generationId}` 재조회가 생성 시점
+  `additionalCostStatus` 스냅샷을 그대로 반환하고 재계산하지 않는 부분만 담당합니다)
+- 이 스냅샷의 실현 방식은 이 작업이 정합니다. 현재 ERD의 `ai_route_generation_item`에는 비용 상태 컬럼이
+  없고 `page_rental`이 `rented_at`·`expires_at`로 과거 기간을 보존하므로 이력 기반 재구성이 가능하며,
+  그 경우 기준 시각(예: `ai_route_generation.completed_at`)을 명시합니다. 저장 방식을 택하면 F01
+  migration 변경이 필요하므로 그 전에 별도 승인을 받습니다.
 
 ## 현재 구현 기준선
 
@@ -39,7 +45,9 @@
 ## 수정 허용 파일
 
 - 새 generation Controller·API DTO·API exception
-- 기존 `ErrorCode`, `GlobalExceptionHandler`, `SecurityConfig`의 AI generation 관련 최소 변경
+- 기존 `ErrorCode`, `GlobalExceptionHandler`, `SecurityConfig`의 AI generation 관련 최소 변경.
+  앞 파동 작업이 이미 정의한 코드(예: S01의 `AI_ROUTE_GENERATION_CONSUMED`)는 재사용하고 다시 추가하지
+  않습니다([공유 파일 소유권](../README.md#공유-파일-소유권))
 - 새 `AiRouteGenerationApiMySqlIntegrationTest`, 조건부 경로 테스트
 
 ## 구현 조건

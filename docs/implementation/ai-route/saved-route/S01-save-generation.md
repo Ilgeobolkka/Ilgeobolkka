@@ -5,7 +5,7 @@
 - 권장 담당: 파동 6 / 담당 C
 - 선행: [F02 JPA 기반](../foundation/F02-jpa-mapping.md),
   [G06 생명주기](../generation/G06-generation-lifecycle.md),
-  [GATE-AIR-03 권한 변동 오류](../00-implementation-gates.md#gate-air-03-저장-전-권한-변동-오류)
+  [해제된 저장 거부 오류 계약](../../../api-spec.md#저장-경로-결과와-상태-변경)
 - 후속: [S03 현재 경로·삭제](./S03-current-delete.md), [W01 생성 화면](../web/W01-generation-page.md)
 
 ## 목표
@@ -18,7 +18,7 @@ route를 현재 경로로 지정합니다. 저장 재시도는 같은 route를 �
 - [저장과 생명주기 3~6단계](../../../prd/ai-ink-route.md#저장과-생명주기)
 - [저장 경로 결과](../../../api-spec.md#저장-경로-결과와-상태-변경)
 - [ERD 목표 트랜잭션](../../../erd.md#목표-트랜잭션과-삭제-경계)
-- 필수 시나리오: [T-AIR-004·005·019](../../../test-strategy.md#5-필수-시나리오)
+- 필수 시나리오: [T-AIR-004·005·019·020](../../../test-strategy.md#5-필수-시나리오)
 
 ## 현재 구현 기준선
 
@@ -26,7 +26,8 @@ route를 현재 경로로 지정합니다. 저장 재시도는 같은 route를 �
 - 기존 도메인 잠금 조합은
   [ReadingFacade](../../../../src/main/java/com/example/ilgeobolkka/reading/facade/ReadingFacade.java)를 참고하지만
   페이지 열기 Facade를 호출하지 않습니다.
-- 권한 변동 저장 거부의 공개 code는 GATE-AIR-03 해제 값만 사용합니다.
+- 권한 변동 저장 거부는 GATE-AIR-03에서 확정한 `409 AI_ROUTE_ENTITLEMENT_CHANGED`만 사용합니다.
+  이 endpoint가 반환하는 오류 코드의 정의 주체는 아래 수정 허용 파일을 따릅니다.
 
 ## 입력과 산출물
 
@@ -38,6 +39,11 @@ route를 현재 경로로 지정합니다. 저장 재시도는 같은 route를 �
 ## 수정 허용 파일
 
 - 새 save Facade·Service·Controller·DTO·exception
+- `ErrorCode`에 이 endpoint가 반환하는 `AI_ROUTE_ENTITLEMENT_CHANGED`·`AI_ROUTE_CONTENT_CHANGED`·
+  `AI_ROUTE_GENERATION_CONSUMED`(모두 409) 상수와 `GlobalExceptionHandler`의 대응 매핑
+  ([api-spec 목표 오류](../../../api-spec.md#목표-오류) 기준). `AI_ROUTE_GENERATION_CONSUMED`는 생성
+  endpoint의 멱등 재조회도 반환하지만 이 작업이 먼저 진행하므로 여기서 정의하고 G08이 재사용합니다.
+  이 endpoint가 반환하지 않는 AI 오류 코드는 추가하지 않습니다
 - generation·route·current Repository에 이 작업 전용 owner/lock query
 - G06 lifecycle API는 호출만 하고 Entity status 직접 변경 금지
 - 새 `AiRouteSaveMySqlIntegrationTest`
@@ -47,7 +53,9 @@ route를 현재 경로로 지정합니다. 저장 재시도는 같은 route를 �
 1. readerId+generationId로 잠금 조회하고 다른 독자·만료는 같은 404로 처리합니다.
 2. ROUTE의 bookId·contentVersion·item·purpose를 서버 저장값에서만 읽고 request body로 받지 않습니다.
 3. 현재 Book contentVersion이 다르면 `AI_ROUTE_CONTENT_CHANGED`로 거부합니다.
-4. 현재 소장·활성 대여로 추가 비용을 다시 계산하고 생성 예산 초과는 GATE-AIR-03의 확정 오류로 거부합니다.
+4. 현재 소장·활성 대여로 추가 비용을 다시 계산하고 생성 예산을 넘으면 `409 AI_ROUTE_ENTITLEMENT_CHANGED`로
+   거부합니다. 이때 generation을 소비하지 않고 route·current를 만들지 않아 임시 결과가 만료 전까지
+   `ROUTE`로 남습니다([GATE-AIR-03](../00-implementation-gates.md#gate-air-03-저장-전-권한-변동-오류)).
 5. 같은 reader·book current PK를 원자적 upsert/lock하고 route·items·current·G06 SAVED를 한 transaction에
    처리합니다.
 6. generationId UK로 동시 저장을 route 한 건으로 수렴시키고 재시도는 저장 route를 다시 현재로 만들지 않습니다.
@@ -56,7 +64,17 @@ route를 현재 경로로 지정합니다. 저장 재시도는 같은 route를 �
 ## 테스트
 
 - 정상 첫 저장 201과 같은 generation 순차·동시 재시도 200+route 한 건
-- 다른 독자·만료·NO_ROUTE·FAILED·contentVersion 변경·권한 비용 증가 거부
+- 다른 독자·만료·NO_ROUTE·FAILED·contentVersion 변경 거부
+- 권한 변동 상황은 주입한 `Clock`으로 만든다(test-strategy 시간 경계 관례). 절차 1의 만료 404가 절차 4보다
+  먼저이므로, 30일 대여의 잔여 기간이 15분 미만이 되도록 시계를 맞춘 뒤 생성해 대여 만료가 임시 결과
+  만료보다 먼저 오게 하고, 대여만 만료된 시점에 저장한다. 비용이 예산을 넘으면
+  `409 AI_ROUTE_ENTITLEMENT_CHANGED`, 저장값 기준으로 generation이 아직 `ROUTE`이고 route·current가
+  생기지 않았으며 그 요청으로 잉크·대여·내역이 바뀌지 않음을 확인
+- 위 거부 뒤 권한이 그대로면 재시도도 같은 409. 이어서 같은 15분 창 안에서 그 페이지를 다시 대여해 비용이
+  예산 이하로 내려가면 같은 `generationId` 저장이 다시 가능함을 확인(거부를 기록하는 상태를 두지 않음,
+  T-AIR-020). 공개 `GET` 재조회 응답은 [G08](../generation/G08-generation-api.md) 범위라 여기서 단언하지 않음
+- 거부 응답 바디의 필드 집합이 정확히 `code`·`message`뿐이고 재계산 비용·권한·페이지 상세 필드가 없음을
+  확인(필드가 추가되면 실패하도록 전체 키 집합을 단언)
 - 두 generation 동시 저장에서 route는 각각 존재하고 current는 완료 순서의 한 건
 - 재시도 사이 다른 route를 current로 지정했을 때 재시도가 current를 되돌리지 않음
 - 저장 전후 잉크·대여·세션·서재 불변과 rollback 주입
@@ -70,7 +88,7 @@ route를 현재 경로로 지정합니다. 저장 재시도는 같은 route를 �
 
 ## 완료 조건
 
-- T-AIR-004·005·019의 저장 부분이 실제 MySQL 동시성으로 통과합니다.
+- T-AIR-004·005·019·020의 저장 부분이 실제 MySQL 동시성으로 통과합니다.
 - 같은 generation은 기한 없이 route 하나와 연결되고 G06 최소 상태만 만료까지 남습니다.
 - `./gradlew check`가 통과합니다.
 

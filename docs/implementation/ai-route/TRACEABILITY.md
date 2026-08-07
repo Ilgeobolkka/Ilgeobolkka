@@ -11,9 +11,9 @@
 | AIR-002 | [G01](./generation/G01-purpose-input.md), [G04](./generation/G04-route-assembly.md) | [W01](./web/W01-generation-page.md) |
 | AIR-003 | [G01](./generation/G01-purpose-input.md), [G04](./generation/G04-route-assembly.md) | [W01](./web/W01-generation-page.md) |
 | AIR-004 | [C02](./content/C02-metadata-graph-validation.md), [G02](./generation/G02-candidate-search.md), [G03](./generation/G03-output-validation.md), [G04](./generation/G04-route-assembly.md) | [Q01](./release/Q01-evaluation-runner.md) |
-| AIR-005 | [G04](./generation/G04-route-assembly.md), [G07](./generation/G07-generation-orchestration.md) | [S01](./saved-route/S01-save-generation.md) |
+| AIR-005 | [G04](./generation/G04-route-assembly.md), [G07](./generation/G07-generation-orchestration.md) | [S01](./saved-route/S01-save-generation.md), [G08](./generation/G08-generation-api.md), [W01](./web/W01-generation-page.md) |
 | AIR-006 | [F05](./foundation/F05-responses-adapter.md), [G03](./generation/G03-output-validation.md), [G04](./generation/G04-route-assembly.md) | [W01](./web/W01-generation-page.md) |
-| AIR-007 | [G05](./generation/G05-idempotency-daily-limit.md), [G06](./generation/G06-generation-lifecycle.md), [S01](./saved-route/S01-save-generation.md) | [G08](./generation/G08-generation-api.md) |
+| AIR-007 | [G05](./generation/G05-idempotency-daily-limit.md), [G06](./generation/G06-generation-lifecycle.md), [S01](./saved-route/S01-save-generation.md) | [G08](./generation/G08-generation-api.md), [W01](./web/W01-generation-page.md) |
 | AIR-008 | [G04](./generation/G04-route-assembly.md), [S04](./saved-route/S04-content-progress.md) | [W02](./web/W02-route-detail-page.md) |
 | AIR-009 | [S04](./saved-route/S04-content-progress.md), [S05](./saved-route/S05-feedback.md) | [W02](./web/W02-route-detail-page.md) |
 | AIR-010 | [S03](./saved-route/S03-current-delete.md) | [W02](./web/W02-route-detail-page.md) |
@@ -49,6 +49,7 @@
 | T-AIR-017 | [S05 피드백](./saved-route/S05-feedback.md) |
 | T-AIR-018 | [F03 설정](./foundation/F03-openai-configuration.md), [C03 콘텐츠 embedding](./content/C03-content-embeddings.md), [Q03 출시 회귀](./release/Q03-release-regression.md) |
 | T-AIR-019 | [G06 생명주기](./generation/G06-generation-lifecycle.md), [S01 단일 저장](./saved-route/S01-save-generation.md), [S03 현재·삭제](./saved-route/S03-current-delete.md) |
+| T-AIR-020 | [S01 단일 저장](./saved-route/S01-save-generation.md), [G08 생성 API](./generation/G08-generation-api.md), [W01 생성 화면](./web/W01-generation-page.md) |
 
 ## 교차 불변식
 

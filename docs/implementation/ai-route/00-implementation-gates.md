@@ -32,13 +32,29 @@
 
 ## GATE-AIR-03 저장 전 권한 변동 오류
 
-- 차단 작업: [S01 generation 저장](./saved-route/S01-save-generation.md)
-- 확인된 불일치: [저장 정책](../../prd/ai-ink-route.md#저장과-생명주기)은 권한 변동으로 비용이 생성 예산을
-  넘으면 저장을 거부하지만 [API 오류 계약](../../api-spec.md#목표-오류)은 공개 status·code를 정의하지
-  않습니다.
-- 결정할 내용: HTTP status, 안정된 ErrorCode, generation 유지·소비 여부, 화면 안내
-- 반영 위치: API 계약과 `T-AIR-004`
-- 금지: `AI_ROUTE_CONTENT_CHANGED` 또는 `INVALID_INPUT`으로 임의 매핑
+- 결정 정본: [저장과 생명주기 3단계](../../prd/ai-ink-route.md#저장과-생명주기),
+  [저장 경로 결과와 상태 변경](../../api-spec.md#저장-경로-결과와-상태-변경),
+  [목표 오류](../../api-spec.md#목표-오류)
+- 저장 시점에 현재 권한으로 다시 계산한 추가 잉크가 생성 예산을 넘으면 `409
+  AI_ROUTE_ENTITLEMENT_CHANGED`로 거부합니다. 입력이 아니라 서버 권한 상태가 생성 시점과 달라진
+  충돌이므로 409입니다.
+- `generationId`는 소비하지 않고 최초 거부를 기록하는 상태·전이도 추가하지 않습니다.
+- 거부 응답과 생성 결과 재조회에는 재계산한 비용·권한 상세를 노출하지 않습니다(재조회는 생성 시점
+  스냅샷 그대로). 저장 경로 상세 조회의 재계산은 기존 계약 그대로입니다. 이 스냅샷을 어떻게 실현할지
+  (`ai_route_generation_item` 저장 vs `page_rental`·`book_ownership` 이력으로 재구성, 후자면 기준 시각)는
+  생성 결과 조회 계약이므로 [G08](./generation/G08-generation-api.md)에서 정합니다.
+- 화면은 **경로 다시 생성 한 가지만** 안내합니다. 서버가 재저장을 막지 않는데도 유도하지 않는 이유는,
+  권한 상세를 노출하지 않아 어느 페이지를 대여해야 하는지 알릴 수 없고 대여 확보 자체가 경로 밖 잉크
+  사용을 유발하기 때문입니다. 화면 조건은 [W01](./web/W01-generation-page.md)에 있습니다.
+- 테스트 기대값은 [`T-AIR-020`](../../test-strategy.md#5-필수-시나리오)에 있습니다. 저장 자체의
+  조작·만료 거부는 기존 `T-AIR-004`가 담당합니다.
+- 코드 정의 주체는 [공유 파일 소유권](./README.md#공유-파일-소유권)을 따릅니다.
+  `AI_ROUTE_GENERATION_CONSUMED`는 저장 endpoint와 생성 endpoint의 멱등 재조회
+  ([api-spec](../../api-spec.md#생성-입력과-결과))가 함께 반환하므로, 먼저 진행하는 S01이 정의하고
+  G08은 재사용합니다.
+- 해제된 차단 작업: [S01 generation 저장](./saved-route/S01-save-generation.md)
+- 금지: **권한 변동 케이스를** `AI_ROUTE_CONTENT_CHANGED`·`INVALID_INPUT`·`INSUFFICIENT_INK`로 매핑,
+  거부하면서 `generationId` 소비, 재계산 비용·권한 상세 노출
 
 ## GATE-AIR-04 재평가 중 공개 지원 상태
 

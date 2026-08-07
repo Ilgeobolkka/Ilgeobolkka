@@ -61,7 +61,7 @@ Jira에는 담당자·일정·상태와 leaf 문서 링크만 둡니다. 정책 
 
 | ID | 작업 | 선행 | 핵심 산출물 |
 | --- | --- | --- | --- |
-| S01 | [`generationId` 단일 저장](./saved-route/S01-save-generation.md) | F02, G06, [GATE-AIR-03](./00-implementation-gates.md#gate-air-03-저장-전-권한-변동-오류) | 원자적 route 저장과 SAVED 상태 |
+| S01 | [`generationId` 단일 저장](./saved-route/S01-save-generation.md) | F02, G06, [해제된 저장 거부 오류 계약](../../api-spec.md#저장-경로-결과와-상태-변경) | 원자적 route 저장과 SAVED 상태 |
 | S02 | [저장 경로 목록·상세 조회](./saved-route/S02-route-query.md) | F02 | 소유자 한정 목록·상세 DTO |
 | S03 | [현재 경로 지정·삭제](./saved-route/S03-current-delete.md) | S01, S02 | 현재 경로 직렬화와 CONSUMED 전이 |
 | S04 | [경로 콘텐츠 제공·진행](./saved-route/S04-content-progress.md) | S02 | 기존 열기 뒤 콘텐츠·openedAt 원자성 |
@@ -90,7 +90,7 @@ Jira에는 담당자·일정·상태와 leaf 문서 링크만 둡니다. 정책 
 
 | 파동 | 담당 A | 담당 B | 담당 C |
 | --- | --- | --- | --- |
-| 0 | [GATE-AIR-01 해제](./00-implementation-gates.md#gate-air-01-초기-콘텐츠-버전-해제) | [GATE-AIR-02 해제](../../prd/ai-ink-route.md#후보prompt-정책-v1) | [GATE-AIR-03·04](./00-implementation-gates.md) 결정 지원 |
+| 0 | [GATE-AIR-01 해제](./00-implementation-gates.md#gate-air-01-초기-콘텐츠-버전-해제) | [GATE-AIR-02 해제](../../prd/ai-ink-route.md#후보prompt-정책-v1) | [GATE-AIR-03 해제](./00-implementation-gates.md#gate-air-03-저장-전-권한-변동-오류) · [GATE-AIR-04](./00-implementation-gates.md#gate-air-04-재평가-중-공개-지원-상태) 결정 지원 |
 | 1 | F01 스키마 | F03 설정 | G01 입력 정규화 |
 | 2 | F02 JPA | F04 Embeddings | G02 후보 검색 |
 | 3 | C01 manifest | F05 Responses | G05 멱등·일일 한도 |
@@ -115,7 +115,7 @@ S04·S05와 W02 사이에는 문서 계약뿐 아니라 컴파일 가능한 산�
 | `infra/openai` 공통 HTTP 설정 | F04 | F05는 route adapter 전용 파일만 추가 |
 | `contentimport` | C01~C04 담당 A | 다른 담당자는 manifest 타입을 복제하지 않음 |
 | generation Facade | G07 | G08은 Facade 호출만 하고 orchestration 추가 금지 |
-| `ErrorCode`, `GlobalExceptionHandler`, `SecurityConfig` | G08 | 다른 작업은 공개 오류가 필요하면 G08에 인계 |
+| `ErrorCode`, `GlobalExceptionHandler`, `SecurityConfig` | G08 | 각 작업은 **자기가 실제로 반환하는 공개 오류 코드와 그 예외 매핑만** 추가하고, **이미 정의된 코드는 재사용하고 다시 추가하지 않습니다**(같은 코드를 여러 endpoint가 반환하면 먼저 진행하는 작업이 정의). 그 밖의 변경(다른 작업 코드·`SecurityConfig`·공통 구조)은 G08에 인계. 예: S01은 G08보다 앞 파동이므로 자기 endpoint의 `AI_ROUTE_ENTITLEMENT_CHANGED`·`AI_ROUTE_CONTENT_CHANGED`·`AI_ROUTE_GENERATION_CONSUMED`를 정의하고, 뒤따르는 G08은 그중 자기도 반환하는 코드를 재사용 |
 | 저장 경로 Controller | S01~S05의 문서별 별도 Controller | 공용 거대 Controller로 합치지 않음 |
 | 새 AI 화면 | W01·W02 각자 | W03은 새 화면 파일을 수정하지 않음 |
 | `book-detail.html`, `library.html` | W03 | 다른 웹 작업은 링크 자리만 계약으로 전달 |
