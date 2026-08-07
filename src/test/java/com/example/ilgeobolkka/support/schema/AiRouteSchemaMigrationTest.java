@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
 import java.util.List;
@@ -447,6 +448,247 @@ class AiRouteSchemaMigrationTest {
     }
 
     @Test
+    void generation_상태별_정상_조합을_허용한다() {
+        기본_독자_도서_페이지를_생성한다();
+        저장_경로를_생성한다(55_000L, 식별자를_생성한다(51_104), READER_ID, BOOK_ID);
+
+        생성을_생성한다(식별자를_생성한다(51_100), 식별자를_생성한다(1_100));
+        최종_생성을_생성한다(
+                식별자를_생성한다(51_101),
+                식별자를_생성한다(1_101),
+                "ROUTE",
+                null,
+                null,
+                null);
+        최종_생성을_생성한다(
+                식별자를_생성한다(51_102),
+                식별자를_생성한다(1_102),
+                "NO_ROUTE",
+                "NO_RELEVANT_PAGES",
+                null,
+                null);
+        최종_생성을_생성한다(
+                식별자를_생성한다(51_103),
+                식별자를_생성한다(1_103),
+                "NO_ROUTE",
+                "INSUFFICIENT_BUDGET",
+                null,
+                4);
+        저장_상태_생성을_생성한다(
+                식별자를_생성한다(51_104),
+                식별자를_생성한다(1_104),
+                "SAVED",
+                55_000L);
+        최종_생성을_생성한다(
+                식별자를_생성한다(51_105),
+                식별자를_생성한다(1_105),
+                "FAILED",
+                null,
+                "AI_ROUTE_PROVIDER_FAILURE",
+                null);
+        저장_상태_생성을_생성한다(
+                식별자를_생성한다(51_106),
+                식별자를_생성한다(1_106),
+                "CONSUMED",
+                null);
+
+        assertEquals(7, 행_수를_조회한다("ai_route_generation"));
+    }
+
+    @Test
+    void generation_상태별_잘못된_조합을_INSERT와_UPDATE에서_거부한다() {
+        기본_독자_도서_페이지를_생성한다();
+        저장_경로를_생성한다(55_000L, SECOND_GENERATION_ID, READER_ID, BOOK_ID);
+        생성을_생성한다(GENERATION_ID, "00000000-0000-0000-0000-000000001000");
+
+        assertAll(
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        최종_생성을_생성한다(
+                                                식별자를_생성한다(51_110),
+                                                식별자를_생성한다(1_110),
+                                                "UNKNOWN",
+                                                null,
+                                                null,
+                                                null)),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        최종_생성을_생성한다(
+                                                식별자를_생성한다(51_111),
+                                                식별자를_생성한다(1_111),
+                                                "NO_ROUTE",
+                                                null,
+                                                null,
+                                                null)),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        최종_생성을_생성한다(
+                                                식별자를_생성한다(51_112),
+                                                식별자를_생성한다(1_112),
+                                                "NO_ROUTE",
+                                                "INSUFFICIENT_BUDGET",
+                                                null,
+                                                3)),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        최종_생성을_생성한다(
+                                                식별자를_생성한다(51_113),
+                                                식별자를_생성한다(1_113),
+                                                "FAILED",
+                                                null,
+                                                null,
+                                                null)),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        저장_상태_생성을_생성한다(
+                                                식별자를_생성한다(51_114),
+                                                식별자를_생성한다(1_114),
+                                                "SAVED",
+                                                null)),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        저장_상태_생성을_생성한다(
+                                                식별자를_생성한다(51_115),
+                                                식별자를_생성한다(1_115),
+                                                "CONSUMED",
+                                                55_000L)),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        jdbcTemplate.update(
+                                                """
+                                                UPDATE ai_route_generation
+                                                SET completed_at = '2026-08-07 00:00:01.000000',
+                                                    expires_at = '2026-08-07 00:10:01.000000'
+                                                WHERE generation_id = ?
+                                                """,
+                                                GENERATION_ID)),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        jdbcTemplate.update(
+                                                """
+                                                UPDATE ai_route_generation
+                                                SET status = 'ROUTE',
+                                                    completed_at = '2026-08-06 23:59:59.000000',
+                                                    expires_at = '2026-08-07 00:10:01.000000'
+                                                WHERE generation_id = ?
+                                                """,
+                                                GENERATION_ID)),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        jdbcTemplate.update(
+                                                """
+                                                UPDATE ai_route_generation
+                                                SET status = 'ROUTE',
+                                                    completed_at = '2026-08-07 00:00:01.000000',
+                                                    expires_at = '2026-08-07 00:00:01.000000'
+                                                WHERE generation_id = ?
+                                                """,
+                                                GENERATION_ID)),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        jdbcTemplate.update(
+                                                """
+                                                UPDATE ai_route_generation
+                                                SET status = 'ROUTE'
+                                                WHERE generation_id = ?
+                                                """,
+                                                GENERATION_ID)));
+    }
+
+    @Test
+    void 완료한_저장_route만_피드백_조합을_허용한다() {
+        기본_독자_도서_페이지를_생성한다();
+        저장_경로를_생성한다(55_000L, GENERATION_ID, READER_ID, BOOK_ID);
+
+        assertThrows(
+                DataAccessException.class,
+                () ->
+                        jdbcTemplate.update(
+                                """
+                                UPDATE ai_reading_route
+                                SET feedback = 'HELPFUL',
+                                    feedback_at = '2026-08-07 00:01:00.000000'
+                                WHERE id = 55000
+                                """));
+
+        jdbcTemplate.update(
+                """
+                UPDATE ai_reading_route
+                SET completed_at = '2026-08-07 00:00:30.000000'
+                WHERE id = 55000
+                """);
+
+        assertAll(
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        jdbcTemplate.update(
+                                                """
+                                                UPDATE ai_reading_route
+                                                SET feedback = 'HELPFUL'
+                                                WHERE id = 55000
+                                                """)),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        jdbcTemplate.update(
+                                                """
+                                                UPDATE ai_reading_route
+                                                SET feedback = 'UNKNOWN',
+                                                    feedback_at = '2026-08-07 00:01:00.000000'
+                                                WHERE id = 55000
+                                                """)));
+
+        jdbcTemplate.update(
+                """
+                UPDATE ai_reading_route
+                SET feedback = 'HELPFUL',
+                    feedback_at = '2026-08-07 00:01:00.000000'
+                WHERE id = 55000
+                """);
+
+        assertAll(
+                () ->
+                        assertEquals(
+                                "HELPFUL",
+                                jdbcTemplate.queryForObject(
+                                        "SELECT feedback FROM ai_reading_route WHERE id = 55000",
+                                        String.class)),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        jdbcTemplate.update(
+                                                """
+                                                UPDATE ai_reading_route
+                                                SET feedback = NULL
+                                                WHERE id = 55000
+                                                """)));
+    }
+
+    @Test
     void 중복_멱등키와_generation_항목의_중복_position_page를_거부한다() {
         기본_독자_도서_페이지를_생성한다();
         생성을_생성한다(GENERATION_ID, "00000000-0000-0000-0000-000000001000");
@@ -535,18 +777,56 @@ class AiRouteSchemaMigrationTest {
     }
 
     @Test
-    void 저장_route를_삭제해도_대여_잉크_세션_서재는_보존한다() {
+    void SAVED_generation을_CONSUMED로_바꾼_뒤_route를_삭제해도_핵심_기록은_보존한다() {
         기본_독자_도서_페이지를_생성한다();
         핵심_사용자_기록을_생성한다();
         저장_경로를_생성한다(55_000L, GENERATION_ID, READER_ID, BOOK_ID);
+        저장_상태_생성을_생성한다(
+                GENERATION_ID,
+                "00000000-0000-0000-0000-000000001000",
+                "SAVED",
+                55_000L);
         저장_경로_항목을_생성한다(56_000L, 55_000L, FIRST_PAGE_ID, 1);
         현재_경로를_생성한다(READER_ID, BOOK_ID, 55_000L);
 
         jdbcTemplate.update("DELETE FROM ai_route_current WHERE route_id = ?", 55_000L);
         jdbcTemplate.update("DELETE FROM ai_reading_route_item WHERE route_id = ?", 55_000L);
+        assertThrows(
+                DataAccessException.class,
+                () -> jdbcTemplate.update("DELETE FROM ai_reading_route WHERE id = ?", 55_000L));
+
+        jdbcTemplate.update(
+                """
+                UPDATE ai_route_generation
+                SET status = 'CONSUMED', saved_route_id = NULL
+                WHERE generation_id = ?
+                """,
+                GENERATION_ID);
         jdbcTemplate.update("DELETE FROM ai_reading_route WHERE id = ?", 55_000L);
 
         assertAll(
+                () ->
+                        assertEquals(
+                                "CONSUMED",
+                                jdbcTemplate.queryForObject(
+                                        """
+                                        SELECT status
+                                        FROM ai_route_generation
+                                        WHERE generation_id = ?
+                                        """,
+                                        String.class,
+                                        GENERATION_ID)),
+                () ->
+                        assertTrue(
+                                jdbcTemplate.queryForObject(
+                                        """
+                                        SELECT saved_route_id IS NULL
+                                        FROM ai_route_generation
+                                        WHERE generation_id = ?
+                                        """,
+                                        Boolean.class,
+                                        GENERATION_ID)),
+                () -> assertEquals(0, 행_수를_조회한다("ai_reading_route")),
                 () -> assertEquals(1, 행_수를_조회한다("page_rental")),
                 () -> assertEquals(1, 행_수를_조회한다("ink_ledger")),
                 () -> assertEquals(1, 행_수를_조회한다("library_entry")),
@@ -654,6 +934,61 @@ class AiRouteSchemaMigrationTest {
                 BOOK_ID,
                 idempotencyKey,
                 "a".repeat(64));
+    }
+
+    private String 식별자를_생성한다(long suffix) {
+        return "00000000-0000-0000-0000-%012d".formatted(suffix);
+    }
+
+    private void 최종_생성을_생성한다(
+            String generationId,
+            String idempotencyKey,
+            String status,
+            String noRouteReason,
+            String failureCode,
+            Integer minimumRequiredInk) {
+        jdbcTemplate.update(
+                """
+                INSERT INTO ai_route_generation
+                    (generation_id, reader_id, book_id, content_version,
+                     idempotency_key, request_fingerprint, normalized_purpose,
+                     request_type, max_additional_ink, status, no_route_reason,
+                     minimum_required_ink, failure_code, created_at, completed_at, expires_at)
+                VALUES (?, ?, ?, 'initial-v1', ?, ?, '테스트 목적',
+                        'INK_BUDGET', 3, ?, ?, ?, ?,
+                        '2026-08-07 00:00:00.000000',
+                        '2026-08-07 00:00:01.000000', '2026-08-07 00:10:01.000000')
+                """,
+                generationId,
+                READER_ID,
+                BOOK_ID,
+                idempotencyKey,
+                "a".repeat(64),
+                status,
+                noRouteReason,
+                minimumRequiredInk,
+                failureCode);
+    }
+
+    private void 저장_상태_생성을_생성한다(
+            String generationId, String idempotencyKey, String status, Long savedRouteId) {
+        jdbcTemplate.update(
+                """
+                INSERT INTO ai_route_generation
+                    (generation_id, reader_id, book_id, content_version,
+                     idempotency_key, request_fingerprint, status, saved_route_id,
+                     created_at, completed_at, expires_at)
+                VALUES (?, ?, ?, 'initial-v1', ?, ?, ?, ?,
+                        '2026-08-07 00:00:00.000000',
+                        '2026-08-07 00:00:01.000000', '2026-08-07 00:10:01.000000')
+                """,
+                generationId,
+                READER_ID,
+                BOOK_ID,
+                idempotencyKey,
+                "a".repeat(64),
+                status,
+                savedRouteId);
     }
 
     private void 생성_항목을_생성한다(
