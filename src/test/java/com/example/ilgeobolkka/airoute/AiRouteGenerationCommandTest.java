@@ -19,7 +19,7 @@ class AiRouteGenerationCommandTest {
     @Test
     void 비소장_입력은_예산만_가지고_깊이는_비어_있다() {
         AiRouteGenerationCommand command =
-                AiRouteGenerationCommand.forInkBudget(PURPOSE, BOOK_ID, CONTENT_VERSION, 5, 100);
+                AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, PURPOSE, 5, 100);
 
         assertEquals(AiRouteRequestType.INK_BUDGET, command.requestType());
         assertEquals(5, command.maxAdditionalInk());
@@ -30,7 +30,7 @@ class AiRouteGenerationCommandTest {
     @EnumSource(AiRouteDepth.class)
     void 소장_입력은_깊이_세_값만_가지고_예산은_비어_있다(AiRouteDepth depth) {
         AiRouteGenerationCommand command =
-                AiRouteGenerationCommand.forOwnedDepth(PURPOSE, BOOK_ID, CONTENT_VERSION, depth);
+                AiRouteGenerationCommand.forOwnedDepth(BOOK_ID, CONTENT_VERSION, PURPOSE, depth);
 
         assertEquals(AiRouteRequestType.OWNED_DEPTH, command.requestType());
         assertEquals(depth, command.depth());
@@ -41,7 +41,7 @@ class AiRouteGenerationCommandTest {
     @ValueSource(ints = {0, 7, 100})
     void 예산이_0부터_잔액까지면_허용한다(int budget) {
         AiRouteGenerationCommand command =
-                AiRouteGenerationCommand.forInkBudget(PURPOSE, BOOK_ID, CONTENT_VERSION, budget, 100);
+                AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, PURPOSE, budget, 100);
 
         assertEquals(budget, command.maxAdditionalInk());
     }
@@ -50,14 +50,14 @@ class AiRouteGenerationCommandTest {
     void 예산이_잔액보다_1_크면_거부한다() {
         assertThrows(
                 InvalidAiRouteGenerationInputException.class,
-                () -> AiRouteGenerationCommand.forInkBudget(PURPOSE, BOOK_ID, CONTENT_VERSION, 101, 100));
+                () -> AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, PURPOSE, 101, 100));
     }
 
     @Test
     void 음수_예산을_거부한다() {
         assertThrows(
                 InvalidAiRouteGenerationInputException.class,
-                () -> AiRouteGenerationCommand.forInkBudget(PURPOSE, BOOK_ID, CONTENT_VERSION, -1, 100));
+                () -> AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, PURPOSE, -1, 100));
     }
 
     @Test
@@ -66,9 +66,9 @@ class AiRouteGenerationCommandTest {
                 InvalidAiRouteGenerationInputException.class,
                 () ->
                         new AiRouteGenerationCommand(
-                                PURPOSE,
                                 BOOK_ID,
                                 CONTENT_VERSION,
+                                PURPOSE,
                                 AiRouteRequestType.INK_BUDGET,
                                 5,
                                 AiRouteDepth.QUICK));
@@ -80,7 +80,7 @@ class AiRouteGenerationCommandTest {
                 InvalidAiRouteGenerationInputException.class,
                 () ->
                         new AiRouteGenerationCommand(
-                                PURPOSE, BOOK_ID, CONTENT_VERSION, AiRouteRequestType.INK_BUDGET, null, null));
+                                BOOK_ID, CONTENT_VERSION, PURPOSE, AiRouteRequestType.INK_BUDGET, null, null));
     }
 
     @Test
@@ -89,7 +89,7 @@ class AiRouteGenerationCommandTest {
                 InvalidAiRouteGenerationInputException.class,
                 () ->
                         new AiRouteGenerationCommand(
-                                PURPOSE, BOOK_ID, CONTENT_VERSION, AiRouteRequestType.OWNED_DEPTH, null, null));
+                                BOOK_ID, CONTENT_VERSION, PURPOSE, AiRouteRequestType.OWNED_DEPTH, null, null));
     }
 
     @ParameterizedTest
@@ -97,14 +97,14 @@ class AiRouteGenerationCommandTest {
     void 정규화한_목적이_비어_있거나_공백뿐이면_거부한다(String purpose) {
         assertThrows(
                 InvalidAiRouteGenerationInputException.class,
-                () -> AiRouteGenerationCommand.forInkBudget(purpose, BOOK_ID, CONTENT_VERSION, 5, 100));
+                () -> AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, purpose, 5, 100));
     }
 
     @Test
     void 콘텐츠_버전이_없으면_거부한다() {
         assertThrows(
                 InvalidAiRouteGenerationInputException.class,
-                () -> AiRouteGenerationCommand.forInkBudget(PURPOSE, BOOK_ID, " ", 5, 100));
+                () -> AiRouteGenerationCommand.forInkBudget(BOOK_ID, " ", PURPOSE, 5, 100));
     }
 
     @Test
@@ -131,9 +131,9 @@ class AiRouteGenerationCommandTest {
     @Test
     void 같은_입력은_같은_command가_되어_지문_계산에_쓸_수_있다() {
         AiRouteGenerationCommand first =
-                AiRouteGenerationCommand.forInkBudget(PURPOSE, BOOK_ID, CONTENT_VERSION, 5, 100);
+                AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, PURPOSE, 5, 100);
         AiRouteGenerationCommand second =
-                AiRouteGenerationCommand.forInkBudget(PURPOSE, BOOK_ID, CONTENT_VERSION, 5, 100);
+                AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, PURPOSE, 5, 100);
 
         assertEquals(first, second);
         assertEquals(first.hashCode(), second.hashCode());

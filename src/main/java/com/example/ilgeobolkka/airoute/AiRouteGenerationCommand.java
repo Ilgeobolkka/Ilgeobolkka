@@ -5,21 +5,25 @@ import com.example.ilgeobolkka.airoute.exception.InvalidAiRouteGenerationInputEx
 /**
  * 공급자·HTTP와 독립적인 생성 입력. 이후 단계는 이 값만 사용하고 목적을 다시 정규화하지 않는다.
  *
- * <p>필드 선언 순서를 멱등 요청 지문의 입력 순서로 쓰므로 순서를 바꾸면 같은 요청의 지문이 달라진다.
- * {@code purpose}는 {@link com.example.ilgeobolkka.airoute.service.AiRoutePurposeNormalizer}가
- * 정규화한 결과여야 한다.
+ * <p>멱등 요청 지문의 입력 순서는 G05가 정의하는
+ * {@code bookId·contentVersion·normalizedPurpose·requestType·budget/depth}이며, 읽는 사람이 두 순서를
+ * 대조하지 않아도 되도록 필드도 같은 순서로 선언한다. 다만 지문 계산은 이 선언 순서에 기대지 말고
+ * 각 값을 명시적으로 나열해야 한다. 선언 순서를 바꿔도 지문이 조용히 달라지지 않아야 한다.
  *
- * @param normalizedPurpose 정규화한 독서 목적
+ * <p>{@code normalizedPurpose}는
+ * {@link com.example.ilgeobolkka.airoute.service.AiRoutePurposeNormalizer}가 정규화한 결과여야 한다.
+ *
  * @param bookId 대상 도서
  * @param contentVersion 생성 시점 콘텐츠 버전
+ * @param normalizedPurpose 정규화한 독서 목적
  * @param requestType 예산 입력인지 깊이 입력인지
  * @param maxAdditionalInk {@code INK_BUDGET}에서만 값을 가지는 추가 잉크 상한
  * @param depth {@code OWNED_DEPTH}에서만 값을 가지는 경로 깊이
  */
 public record AiRouteGenerationCommand(
-        String normalizedPurpose,
         long bookId,
         String contentVersion,
+        String normalizedPurpose,
         AiRouteRequestType requestType,
         Integer maxAdditionalInk,
         AiRouteDepth depth) {
@@ -70,9 +74,9 @@ public record AiRouteGenerationCommand(
      * @throws InvalidAiRouteGenerationInputException 예산이 범위를 벗어날 때
      */
     public static AiRouteGenerationCommand forInkBudget(
-            String normalizedPurpose,
             long bookId,
             String contentVersion,
+            String normalizedPurpose,
             int maxAdditionalInk,
             int inkBalance) {
         if (maxAdditionalInk > inkBalance) {
@@ -80,9 +84,9 @@ public record AiRouteGenerationCommand(
                     "예산은 현재 잉크 잔액 이하여야 합니다. 잔액 " + inkBalance + ", 입력 " + maxAdditionalInk);
         }
         return new AiRouteGenerationCommand(
-                normalizedPurpose,
                 bookId,
                 contentVersion,
+                normalizedPurpose,
                 AiRouteRequestType.INK_BUDGET,
                 maxAdditionalInk,
                 null);
@@ -90,11 +94,11 @@ public record AiRouteGenerationCommand(
 
     /** 소장 도서 입력. 추가 비용이 없으므로 예산을 받지 않는다. */
     public static AiRouteGenerationCommand forOwnedDepth(
-            String normalizedPurpose, long bookId, String contentVersion, AiRouteDepth depth) {
+            long bookId, String contentVersion, String normalizedPurpose, AiRouteDepth depth) {
         return new AiRouteGenerationCommand(
-                normalizedPurpose,
                 bookId,
                 contentVersion,
+                normalizedPurpose,
                 AiRouteRequestType.OWNED_DEPTH,
                 null,
                 depth);
