@@ -80,7 +80,7 @@ Jira에는 담당자·일정·상태와 leaf 문서 링크만 둡니다. 정책 
 | ID | 작업 | 선행 | 핵심 산출물 |
 | --- | --- | --- | --- |
 | Q01 | [90건 비웹 평가 runner](./release/Q01-evaluation-runner.md) | C04, G07 | 사용자 상태 없는 동일 엔진 실행 |
-| Q02 | [평가 지표·지원 활성화](./release/Q02-metrics-activation.md) | Q01, [GATE-AIR-04](./00-implementation-gates.md#gate-air-04-재평가-중-공개-지원-상태)는 재평가에만 적용 | 지표 artifact와 최초 원자적 활성화 |
+| Q02 | [평가 지표·지원 활성화](./release/Q02-metrics-activation.md) | Q01, [해제된 재평가와 지원 활성화 순서](../../prd/ai-ink-route.md#재평가와-지원-활성화-순서) | 지표 artifact와 후보 DB별 원자적 활성화 |
 | Q03 | [통합 회귀·출시 증거](./release/Q03-release-regression.md) | G08, [W01](./web/W01-generation-page.md), [W02](./web/W02-route-detail-page.md), [W03](./web/W03-book-library-integration.md), Q02 | 전체 테스트·패키징·smoke 증거 |
 
 ## 3인 병렬 작업 파동
@@ -90,7 +90,7 @@ Jira에는 담당자·일정·상태와 leaf 문서 링크만 둡니다. 정책 
 
 | 파동 | 담당 A | 담당 B | 담당 C |
 | --- | --- | --- | --- |
-| 0 | [GATE-AIR-01 해제](./00-implementation-gates.md#gate-air-01-초기-콘텐츠-버전-해제) | [GATE-AIR-02 해제](../../prd/ai-ink-route.md#후보prompt-정책-v1) | [GATE-AIR-03 해제](./00-implementation-gates.md#gate-air-03-저장-전-권한-변동-오류) · [GATE-AIR-04](./00-implementation-gates.md#gate-air-04-재평가-중-공개-지원-상태) 결정 지원 |
+| 0 | [GATE-AIR-01 해제](./00-implementation-gates.md#gate-air-01-초기-콘텐츠-버전-해제) | [GATE-AIR-02 해제](../../prd/ai-ink-route.md#후보prompt-정책-v1) | [GATE-AIR-03 해제](./00-implementation-gates.md#gate-air-03-저장-전-권한-변동-오류) · [GATE-AIR-04 해제](./00-implementation-gates.md#gate-air-04-재평가-중-공개-지원-상태) |
 | 1 | F01 스키마 | F03 설정 | G01 입력 정규화 |
 | 2 | F02 JPA | F04 Embeddings | G02 후보 검색 |
 | 3 | C01 manifest | F05 Responses | G05 멱등·일일 한도 |

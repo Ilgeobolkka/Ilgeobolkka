@@ -52,7 +52,10 @@ route를 현재 경로로 지정합니다. 저장 재시도는 같은 route를 �
 
 1. readerId+generationId로 잠금 조회하고 다른 독자·만료는 같은 404로 처리합니다.
 2. ROUTE의 bookId·contentVersion·item·purpose를 서버 저장값에서만 읽고 request body로 받지 않습니다.
-3. 현재 Book contentVersion이 다르면 `AI_ROUTE_CONTENT_CHANGED`로 거부합니다.
+3. 현재 Book contentVersion이 다르면 `AI_ROUTE_CONTENT_CHANGED`로 거부합니다. 2차 MVP는
+   [`contentVersion`을 재발급하지 않으므로](../../../prd/ai-ink-route.md#재평가와-지원-활성화-순서) 이
+   거부는 도달 가능한 사용자 경로가 아니라 불변식 방어 검사입니다. 계약을 제거하지 말고 테스트도 값을
+   직접 조작한 불변식 검사로 작성합니다.
 4. 현재 소장·활성 대여로 추가 비용을 다시 계산하고 생성 예산을 넘으면 `409 AI_ROUTE_ENTITLEMENT_CHANGED`로
    거부합니다. 이때 generation을 소비하지 않고 route·current를 만들지 않아 임시 결과가 만료 전까지
    `ROUTE`로 남습니다([GATE-AIR-03](../00-implementation-gates.md#gate-air-03-저장-전-권한-변동-오류)).

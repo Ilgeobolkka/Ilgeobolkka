@@ -63,6 +63,7 @@ Responses, 서버 검증·경로 조립 코드로 실행하고 원시 판정 입
   입력에 전달하지 않습니다.
 - 재현율 95% 이상을 만족하는 가장 높은 값만 새 version 검토값으로 선택합니다.
   세 값이 모두 미달하면 `air-candidate-v1`의 `0.30`을 유지하며, 선택한 값은 새 version으로 90건 전체 경로를 재평가하기 전에 운영에 적용하지 않습니다.
+- 승격을 결정한 뒤의 적용 순서는 [재평가 배포 순서](../../../deployment.md#재평가-배포-순서)를 따릅니다.
 
 ## 테스트
 
@@ -89,5 +90,6 @@ Responses, 서버 검증·경로 조립 코드로 실행하고 원시 판정 입
 
 ## 인계
 
-Q02 담당자에게 case 결과 schema, 처리 시간 기준, manifest/evaluation Git revision·embeddingModel·routeModel과
-candidate·prompt·schema version을 전달합니다.
+Q02 담당자에게 case 결과 schema, 처리 시간 기준, manifest SHA-256, manifest/evaluation Git
+revision·embeddingModel·routeModel과 candidate·prompt·schema version을 전달합니다. Q02의 report 재사용
+판정이 manifest SHA-256을 쓰므로 이 값을 빠뜨리지 않습니다.

@@ -17,6 +17,7 @@ AI leaf 작업과 기존 초기 MVP 전체 회귀를 MySQL·패키징 실행물�
 
 - [AI 2차 MVP 출시 게이트](../../../test-strategy.md#ai-잉크-경로-2차-mvp)
 - [배포 전 게이트](../../../deployment.md#5-배포-전-게이트)
+- [재평가 배포 순서](../../../deployment.md#재평가-배포-순서)
 - [OpenAI 데이터·비용 제어](../../../deployment.md#openai-데이터비용-제어)
 - [PRD 품질과 출시 기준](../../../prd/ai-ink-route.md#품질과-출시-기준)
 - [전체 추적성](../TRACEABILITY.md)
@@ -52,6 +53,10 @@ AI leaf 작업과 기존 초기 MVP 전체 회귀를 MySQL·패키징 실행물�
 6. 브라우저에서 도서 상세→생성→polling→저장→서재→경로 읽기→완료→feedback→삭제를 확인합니다.
 7. 로그·응답·HTML·artifact에서 key·purpose·분석 text·provider 원문 금지 항목을 검색합니다.
 8. 실제 OpenAI 호출·project spend limit·data policy 근거는 실행했다면 기술 test와 별도 증거로 기록합니다.
+9. 지원 활성화가 HTTP 트래픽 공개 전에 끝났음을 활성화 배치 로그의 완료 시각과 일반 서버 최초 기동 로그
+   시각을 비교해 증거로 남깁니다. 이어서 회귀 실행 전후의 `ai_route_supported` 값 집계(지원 90·미지원
+   10)를 비교해 변화 0건인지 확인합니다. 전환 코드 경로 자체의 부재는 Q02 제외 범위로 이미 판정했으므로
+   여기서는 실행 증거만 남깁니다.
 
 ## 필수 실패 주입
 

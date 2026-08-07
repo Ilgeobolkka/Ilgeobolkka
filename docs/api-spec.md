@@ -220,6 +220,11 @@
 | OpenAI 지출·사용량 한도 또는 크레딧 소진 | 503 | `AI_ROUTE_PROVIDER_BUDGET_UNAVAILABLE` |
 | OpenAI 일시 오류·출력 검증 최종 실패·전체 시간 제한 | 503 | `AI_ROUTE_PROVIDER_UNAVAILABLE`, `AI_ROUTE_INVALID_OUTPUT`, `AI_ROUTE_GENERATION_TIMEOUT` |
 
+`AI_ROUTE_CONTENT_CHANGED`는 2차 MVP에서 `contentVersion`을 재발급하지 않으므로
+([재평가와 지원 활성화 순서](./prd/ai-ink-route.md#재평가와-지원-활성화-순서)) 도달 가능한 사용자
+경로가 없습니다. 운영자 오적재를 저장 시점에 탐지하는 불변식 방어 검사로 계약을 유지하며, 일반 사용자
+흐름으로 설계하거나 화면 안내를 만들지 않습니다.
+
 `429`는 PRD가 정한 다음 초기화 시각까지의 `Retry-After`를 포함합니다. 외부 오류 응답에는 공급자 조직·
 프로젝트·비용, 프롬프트, 분석 텍스트와 응답 원문을 포함하지 않습니다. `AI_ROUTE_ENABLED=false`이면 목표
 HTML·JSON 경로를 등록하지 않으며 기존 도서·뷰어·결제 기능은 계속 제공합니다.

@@ -44,7 +44,7 @@
 | T-AIR-012 | [Q01 평가 runner](./release/Q01-evaluation-runner.md), [Q02 지표·활성화](./release/Q02-metrics-activation.md) |
 | T-AIR-013 | [G04 경로 조립](./generation/G04-route-assembly.md), [G06 생명주기](./generation/G06-generation-lifecycle.md) |
 | T-AIR-014 | [F03 설정](./foundation/F03-openai-configuration.md), [Q02 지표·활성화](./release/Q02-metrics-activation.md) |
-| T-AIR-015 | [C03 콘텐츠 embedding](./content/C03-content-embeddings.md), [G08 생성 API](./generation/G08-generation-api.md) |
+| T-AIR-015 | [C03 콘텐츠 embedding](./content/C03-content-embeddings.md), [G08 생성 API](./generation/G08-generation-api.md), [Q02 지표·활성화](./release/Q02-metrics-activation.md) |
 | T-AIR-016 | [G08 생성 API](./generation/G08-generation-api.md), [S01 저장](./saved-route/S01-save-generation.md), [S02 조회](./saved-route/S02-route-query.md), [S03 현재·삭제](./saved-route/S03-current-delete.md), [S04 콘텐츠·진행](./saved-route/S04-content-progress.md), [S05 피드백](./saved-route/S05-feedback.md) |
 | T-AIR-017 | [S05 피드백](./saved-route/S05-feedback.md) |
 | T-AIR-018 | [F03 설정](./foundation/F03-openai-configuration.md), [C03 콘텐츠 embedding](./content/C03-content-embeddings.md), [Q03 출시 회귀](./release/Q03-release-regression.md) |
