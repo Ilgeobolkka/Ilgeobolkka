@@ -39,6 +39,8 @@ AI 경로 목표 ERD의 기존 테이블 확장과 일곱 새 테이블을 다�
 
 - 새 Flyway migration 한 개
 - 새 `src/test/java/com/example/ilgeobolkka/support/schema/AiRouteSchemaMigrationTest.java`
+- 기존 `src/test/java/com/example/ilgeobolkka/support/entity/CoreEntityMappingMySqlIntegrationTest.java`의
+  V1 엔티티·컬럼 검증 범위 고정
 
 ## 구현 조건
 
@@ -71,7 +73,7 @@ AI 경로 목표 ERD의 기존 테이블 확장과 일곱 새 테이블을 다�
 
 - migration과 스키마 테스트가 ERD의 모든 목표 필드·제약을 이름까지 검증합니다.
 - 기존 migration 테스트와 `./gradlew check`가 통과합니다.
-- diff에 migration과 해당 테스트 외 파일이 없습니다.
+- diff에 migration, 해당 스키마 테스트와 V1 매핑 검증 범위 조정 외 파일이 없습니다.
 
 ## 인계
 
