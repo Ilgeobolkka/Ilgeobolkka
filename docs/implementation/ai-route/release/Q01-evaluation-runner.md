@@ -46,10 +46,23 @@ Responses, 서버 검증·경로 조립 코드로 실행하고 원시 판정 입
 2. caseId·purpose·권한 snapshot만 생성 engine에 전달하고 required/helpful/reference/alternative 정답은 전달하지
    않습니다.
 3. Reader·InkAccount·Ledger·Rental·Ownership·Payment·Generation·Route row를 만들거나 조회하지 않습니다.
-4. 운영과 같은 normalization·Embeddings·candidate·Responses·한 번 retry·output validation·assembly를 사용합니다.
+4. 운영과 같은 normalization·Embeddings·`air-candidate-v1`·Responses·동일 snapshot 한 번 retry·output validation·assembly를 사용합니다.
 5. 처리 시간은 evaluation entry부터 최종 route 확정까지 monotonic clock으로 측정합니다.
 6. 90건 모두 ROUTE여야 하며 case 실패를 건너뛰거나 NO_ROUTE를 정상 통과로 바꾸지 않습니다.
 7. purpose·분석 text·provider request/response·API key를 결과 artifact와 로그에 기록하지 않습니다.
+
+### 후보 임계값 변경 평가
+
+- 후속 후보 정책 승격을 검토할 때만 같은 content·evaluation revision, 임베딩 모델·vector와
+  30개 상한·동점 규칙을 고정한 채 `0.35`, `0.40`, `0.45`를 각각 실행합니다.
+- 선수 페이지 폐쇄 전 후보의 `primaryConcepts[]`와 `requiredConcepts[]`는 대소문자를 구분한 문자열 완전
+  일치로 비교합니다. 90건의 전체 필수 개념 수를 분모로, 하나 이상의 후보에 정확히 일치한 필수 개념 수를
+  분자로 사용합니다. trim·Unicode 정규화·부분 문자열·의미 유사도 비교는 적용하지 않습니다.
+- 같은 도서의 전체 페이지 `primaryConcepts[]`에 정확히 일치하지 않는 `requiredConcepts[]`가 하나라도 있으면
+  평가 데이터 불일치로 임계값 비교를 실패합니다. 정답은 후보 선택 후 지표 계산에만 사용하고 runtime
+  입력에 전달하지 않습니다.
+- 재현율 95% 이상을 만족하는 가장 높은 값만 새 version 검토값으로 선택합니다.
+  세 값이 모두 미달하면 `air-candidate-v1`의 `0.30`을 유지하며, 선택한 값은 새 version으로 90건 전체 경로를 재평가하기 전에 운영에 적용하지 않습니다.
 
 ## 테스트
 
@@ -57,7 +70,9 @@ Responses, 서버 검증·경로 조립 코드로 실행하고 원시 판정 입
 - engine spy로 정답 필드 전달 0개 확인
 - persistence spy/DB count로 사용자·결제·generation·route row 변화 0건
 - 일부 case provider 실패·NO_ROUTE·timeout 때 전체 평가 실패와 완료 case 결과 구분
-- 같은 engine policy/model/version 기록 입력 확인
+- 같은 engine의 embeddingModel·routeModel·candidatePolicyVersion·promptVersion·schemaVersion 기록 입력 확인
+- 후보 정책 승격 평가의 `0.35`·`0.40`·`0.45` 고정, 문자열 완전 일치와 불일치 입력 실패, 선수 폐쇄 전
+  필수 개념 재현율 95% 경계와 가장 높은 통과값 선택·전체 미달 시 `0.30` 유지
 - 명령: `./gradlew test --tests '*AiRouteEvaluationRunnerTest'`
 
 ## 제외 범위
@@ -74,5 +89,5 @@ Responses, 서버 검증·경로 조립 코드로 실행하고 원시 판정 입
 
 ## 인계
 
-Q02 담당자에게 case 결과 schema, 처리 시간 기준, manifest/evaluation Git revision·model·policy version을
-전달합니다.
+Q02 담당자에게 case 결과 schema, 처리 시간 기준, manifest/evaluation Git revision·embeddingModel·routeModel과
+candidate·prompt·schema version을 전달합니다.

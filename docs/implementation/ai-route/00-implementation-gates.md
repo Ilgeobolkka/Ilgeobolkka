@@ -18,15 +18,17 @@
 
 ## GATE-AIR-02 후보·prompt 정책 v1
 
-- 차단 작업: [F05 Responses](./foundation/F05-responses-adapter.md),
+- 결정 정본: [후보·prompt 정책 v1](../../prd/ai-ink-route.md#후보prompt-정책-v1)
+- 후보 정책은 `air-candidate-v1`, 최소 cosine similarity는 `0.30` 이상, 상한은 30개이며 similarity
+  내림차순·`pageNumber` 오름차순으로 고정합니다. 선수 폐쇄는 후보 선정 뒤 별도로 추가합니다.
+- prompt·schema는 classpath의 고정 resource에서 읽고 논리 버전과 UTF-8 원본 byte의 SHA-256을 함께
+  기록합니다. Responses의 `text.format`은 `type=json_schema`, `name=ai_route_proposal_v1`, `strict=true`로
+  고정하고 malformed·semantic invalid output만 같은 후보·정책으로 전체 20초 안에서 한 번 재시도합니다.
+- 해제된 차단 작업: [F05 Responses](./foundation/F05-responses-adapter.md),
   [G02 후보 검색](./generation/G02-candidate-search.md),
   [G03 출력 검증](./generation/G03-output-validation.md)
-- 확인된 공백: [경로 생성 정책](../../prd/ai-ink-route.md#경로-생성-정책)은 cosine 후보와 정책 버전 기록을
-  요구하지만 후보 `top-K` 또는 최소 유사도, 동점 정렬, prompt·schema 버전 저장 위치를 정하지 않습니다.
-- 결정할 내용: 최초 후보 범위·최소 관련성·동점 기준, prompt와 strict schema의 저장 위치·버전 계산,
-  검증 재시도의 동일 후보·정책 사용 여부
-- 반영 위치: 버전 고정 구현 artifact와 [평가 결과](../../prd/ai-ink-route.md#품질과-출시-기준)
-- 금지: 평가 정답을 후보 입력으로 사용하거나 구현자 취향으로 threshold 선택
+- 금지: 평가 정답의 runtime 입력 사용, v1 값의 무버전 변경, 재시도 후보·정책 교체, 임시 prompt·schema와
+  중복 version 타입
 
 ## GATE-AIR-03 저장 전 권한 변동 오류
 

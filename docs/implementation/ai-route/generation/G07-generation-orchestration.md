@@ -16,6 +16,7 @@
 ## 정본 링크
 
 - [경로 생성 정책](../../../prd/ai-ink-route.md#경로-생성-정책)
+- [후보·prompt 정책 v1](../../../prd/ai-ink-route.md#후보prompt-정책-v1)
 - [생성 횟수와 실패](../../../prd/ai-ink-route.md#생성-횟수와-실패)
 - [ERD 목표 트랜잭션](../../../erd.md#목표-트랜잭션과-삭제-경계)
 - [Facade와 트랜잭션](../../../conventions.md#facade와-트랜잭션)
@@ -33,7 +34,9 @@
 
 - 입력: readerId, idempotencyKey, G01 command
 - 산출물: `AiRouteGenerationFacade`, `AiRouteEntitlementSnapshotFactory`, `GenerationExecutionResult`
-- 호출 순서: 사전 검증 → G05 start → F04 → G02 → F05 → G03 → G04 → G06 complete/fail
+- 공통 호출 순서: 사전 검증 → G05 start → F04 → G02
+- 후보 없음: G04의 `NO_RELEVANT_PAGES` → G06 complete
+- 후보 있음: F05 → G03 → G04 → G06 complete/fail
 - G08에 넘길 것: NEW/REPLAY/GENERATING/FINAL과 공개 실패 종류의 HTTP 독립 결과
 
 ## 수정 허용 파일
@@ -47,16 +50,24 @@
 1. feature flag·도서 지원·권리·DB/environment policy profile을 G05와 외부 호출 전에 검사합니다.
 2. 소장·활성 대여·잔액 snapshot은 서버 계산에만 쓰고 F04·F05 입력에 넣지 않습니다.
 3. G05가 NEW일 때만 외부 호출하며 같은 key의 기존 상태는 Gateway 0회로 반환합니다.
-4. G05 transaction commit 뒤 F04·F05를 호출하고 호출 중 transaction active=false를 테스트합니다.
-5. Responses output validation 실패만 남은 전체 20초 안에서 한 번 재시도하고 같은 후보·정책을 사용합니다.
-6. 20초 초과, provider budget/temporary, 최종 invalid output을 G06 FAILED 공개 code로 확정합니다.
-7. 외부 호출 후 contentVersion이 바뀌어도 임시 생성 snapshot은 유지하고 저장 단계가 다시 검증합니다.
-8. 생성 전후 InkAccount·Ledger·Rental·Ownership·ReadingSession·LibraryEntry가 바뀌지 않습니다.
+4. G05 transaction commit 뒤 F04·G02를 실행하고, G02 후보가 있을 때만 F05를 호출합니다.
+   외부 호출 중 transaction active=false를 테스트합니다.
+5. G02 후보가 없으면 F05·G03을 호출하지 않고 G04의 `NO_RELEVANT_PAGES`를 G06으로 완료합니다.
+6. F05 malformed output 또는 G03 semantic invalid output만 남은 전체 20초 안에서 즉시 한 번 재시도합니다.
+   정규화 목적, 후보 값과 순서, 선수 graph snapshot, model과 candidate·prompt·schema version은 첫 호출과 같아야 하며
+   새 Responses 요청에 `previous_response_id`나 최초 응답 원문을 넣지 않습니다.
+7. refusal, incomplete, HTTP·timeout·provider budget/temporary는 검증 재시도하지 않습니다.
+   20초 초과와 재시도 불가 실패, 두 번째 invalid output을 G06 FAILED 공개 code로 확정합니다.
+8. 외부 호출 후 contentVersion이 바뀌어도 임시 생성 snapshot은 유지하고 저장 단계가 다시 검증합니다.
+9. 생성 전후 InkAccount·Ledger·Rental·Ownership·ReadingSession·LibraryEntry가 바뀌지 않습니다.
 
 ## 테스트
 
-- NEW 정상 ROUTE·두 NO_ROUTE와 기존 key replay의 Gateway 호출 수
-- 첫 invalid→정상, 두 번 invalid, provider 오류, budget 오류, 20초 timeout
+- NEW 정상 ROUTE·`INSUFFICIENT_BUDGET`은 Responses 1회,
+  `NO_RELEVANT_PAGES`와 기존 key replay는 Responses 0회
+- 첫 malformed/semantic invalid→정상과 두 번 invalid에서 Responses 호출 수 2회,
+  두 호출의 후보 순서·graph·model·candidate/prompt/schema version 동일성
+- refusal·incomplete·provider·budget·timeout은 Responses 호출 수 1회
 - 각 Gateway 호출 시 transaction inactive 확인과 complete/fail transaction rollback
 - 권리·프로필·미지원 도서의 Gateway 0회
 - 생성 전후 잉크·대여·세션·서재 row count·값 불변

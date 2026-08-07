@@ -4,7 +4,7 @@
 
 - 권장 담당: 파동 4 / 담당 B
 - 선행: [F05 Responses adapter](../foundation/F05-responses-adapter.md),
-  [GATE-AIR-02 prompt·schema](../00-implementation-gates.md#gate-air-02-후보prompt-정책-v1)
+  [해제된 prompt·schema 정책 v1](../../../prd/ai-ink-route.md#후보prompt-정책-v1)
 - 후속: [G04 경로 조립](./G04-route-assembly.md), [G07 orchestration](./G07-generation-orchestration.md)
 
 ## 목표
@@ -27,7 +27,7 @@
 
 ## 입력과 산출물
 
-- 입력: bookId·contentVersion, G02 후보, 같은 version prerequisite graph, F05 proposal
+- 입력: bookId·contentVersion, `air-candidate-v1`의 확정 순서 후보, 같은 version prerequisite graph, F05 proposal
 - 산출물: `AiRouteOutputValidator`, `ValidatedRouteProposal`, `AiRouteInvalidOutputException`
 - 산출물: 후보별 전이적 선수 폐쇄와 요청 허용 page 집합
 - G04에 넘길 것: 순서·Enum·허용 집합을 통과한 proposal만
@@ -40,7 +40,8 @@
 
 ## 구현 조건
 
-1. 후보마다 DAG의 전이적 선수 page를 계산하고 후보와 선수 폐쇄의 합집합을 허용 집합으로 고정합니다.
+1. G02의 최대 30개 후보를 받은 뒤 후보마다 DAG의 전이적 선수 page를 계산하고 후보와 선수 폐쇄의 합집합을
+   허용 집합으로 고정합니다. 선수 폐쇄에는 similarity threshold와 30개 상한을 적용하지 않습니다.
 2. proposal page가 다른 book/version, 미존재, 허용 집합 밖, 중복이면 전체 거부합니다.
 3. position은 입력 배열 순서로 고정하고 선수 page가 의존 page보다 뒤거나 누락되면 전체 거부합니다.
 4. relevance·role·prerequisite가 F05 허용 Enum과 일치하는지 검증합니다.
@@ -50,7 +51,7 @@
 
 ## 테스트
 
-- 정상 후보+선수 폐쇄, 다단계 선수 순서
+- 정상 후보+`0.30` 미만 선수 폐쇄, 30개 후보 뒤 추가된 다단계 선수 순서
 - 다른 book/version·미존재·허용 집합 밖·duplicate·선수 누락·역순 각각 전체 실패
 - 자유 필드/Enum은 F05에서, semantic 허용 경계는 G03에서 실패하는 역할 분리
 - 실패 결과에 부분 proposal·분석 text가 없는지 확인
