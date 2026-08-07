@@ -2,6 +2,7 @@ package com.example.ilgeobolkka.airoute.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.example.ilgeobolkka.airoute.exception.InvalidAiRoutePurposeException;
@@ -39,6 +40,18 @@ class AiRoutePurposeNormalizerTest {
         String raw = "Spring Boot 와 JPA-내부 동작 (성능!)";
 
         assertEquals(raw, normalizer.normalize(raw));
+    }
+
+    @Test
+    void 공백이_아닌_앞뒤_제어_문자는_제거하지_않는다() {
+        // trim 은 U+0020 이하를 잘라내지만 제어 문자는 White_Space 가 아니므로 남아야 한다.
+        // 제거하면 서로 다른 입력이 같은 결과·멱등 지문으로 합쳐진다.
+        String raw = "\u0001목적\u0002";
+
+        String normalized = normalizer.normalize(raw);
+
+        assertEquals(raw, normalized);
+        assertNotEquals(normalizer.normalize("목적"), normalized);
     }
 
     @Test

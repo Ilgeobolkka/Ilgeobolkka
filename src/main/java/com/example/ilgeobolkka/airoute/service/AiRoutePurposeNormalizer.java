@@ -25,10 +25,19 @@ public class AiRoutePurposeNormalizer {
      */
     private static final Pattern WHITE_SPACE_RUN = Pattern.compile("\\p{IsWhite_Space}+");
 
+    /**
+     * 앞뒤에 남은 ASCII 공백.
+     *
+     * <p>{@code String#trim}은 U+0020 이하를 모두 잘라내 U+0001 같은 제어 문자까지 없앤다. 제어 문자는
+     * Unicode {@code White_Space}가 아니므로 "공백이 아닌 문자는 바꾸지 않는다"는 계약을 어기고, 서로 다른
+     * 입력이 같은 정규화 결과·멱등 지문으로 합쳐진다. 그래서 U+0020만 제거한다.
+     */
+    private static final Pattern EDGE_ASCII_SPACE = Pattern.compile("\\A +| +\\z");
+
     private static final String ASCII_SPACE = " ";
 
     /**
-     * NFC 정규화 → Unicode 공백 연속 구간을 ASCII 공백 하나로 축약 → 앞뒤 공백 제거 순으로 처리하고
+     * NFC 정규화 → Unicode 공백 연속 구간을 ASCII 공백 하나로 축약 → 앞뒤 ASCII 공백 제거 순으로 처리하고
      * 결과를 code point 개수로 검사한다.
      *
      * @throws InvalidAiRoutePurposeException 결과가 비었거나 {@value #MAX_CODE_POINTS} code point를 넘을 때
@@ -39,8 +48,8 @@ public class AiRoutePurposeNormalizer {
         }
 
         String composed = Normalizer.normalize(rawPurpose, Normalizer.Form.NFC);
-        // 축약 뒤에는 ASCII 공백만 남으므로 trim 으로 앞뒤를 제거할 수 있다.
-        String normalized = WHITE_SPACE_RUN.matcher(composed).replaceAll(ASCII_SPACE).trim();
+        String collapsed = WHITE_SPACE_RUN.matcher(composed).replaceAll(ASCII_SPACE);
+        String normalized = EDGE_ASCII_SPACE.matcher(collapsed).replaceAll("");
 
         int codePointCount = normalized.codePointCount(0, normalized.length());
         if (codePointCount < MIN_CODE_POINTS) {
