@@ -26,7 +26,9 @@ route를 현재 경로로 지정합니다. 저장 재시도는 같은 route를 �
 - 기존 도메인 잠금 조합은
   [ReadingFacade](../../../../src/main/java/com/example/ilgeobolkka/reading/facade/ReadingFacade.java)를 참고하지만
   페이지 열기 Facade를 호출하지 않습니다.
-- 권한 변동 저장 거부의 공개 code는 GATE-AIR-03 해제 값만 사용합니다.
+- 권한 변동 저장 거부는 GATE-AIR-03에서 확정한 `409 AI_ROUTE_ENTITLEMENT_CHANGED`만 사용합니다
+  (`ErrorCode` enum 추가는 [G08](../generation/G08-generation-api.md) 소유이므로 이 작업에서 새 공개 code를
+  정의하지 않고 필요하면 G08에 인계합니다).
 
 ## 입력과 산출물
 
@@ -47,7 +49,9 @@ route를 현재 경로로 지정합니다. 저장 재시도는 같은 route를 �
 1. readerId+generationId로 잠금 조회하고 다른 독자·만료는 같은 404로 처리합니다.
 2. ROUTE의 bookId·contentVersion·item·purpose를 서버 저장값에서만 읽고 request body로 받지 않습니다.
 3. 현재 Book contentVersion이 다르면 `AI_ROUTE_CONTENT_CHANGED`로 거부합니다.
-4. 현재 소장·활성 대여로 추가 비용을 다시 계산하고 생성 예산 초과는 GATE-AIR-03의 확정 오류로 거부합니다.
+4. 현재 소장·활성 대여로 추가 비용을 다시 계산하고 생성 예산을 넘으면 `409 AI_ROUTE_ENTITLEMENT_CHANGED`로
+   거부합니다. 이때 generation을 소비하지 않고 route·current를 만들지 않아 임시 결과가 만료 전까지
+   `ROUTE`로 남습니다([GATE-AIR-03](../00-implementation-gates.md#gate-air-03-저장-전-권한-변동-오류)).
 5. 같은 reader·book current PK를 원자적 upsert/lock하고 route·items·current·G06 SAVED를 한 transaction에
    처리합니다.
 6. generationId UK로 동시 저장을 route 한 건으로 수렴시키고 재시도는 저장 route를 다시 현재로 만들지 않습니다.
@@ -56,7 +60,9 @@ route를 현재 경로로 지정합니다. 저장 재시도는 같은 route를 �
 ## 테스트
 
 - 정상 첫 저장 201과 같은 generation 순차·동시 재시도 200+route 한 건
-- 다른 독자·만료·NO_ROUTE·FAILED·contentVersion 변경·권한 비용 증가 거부
+- 다른 독자·만료·NO_ROUTE·FAILED는 `404`, contentVersion 변경은 `409 AI_ROUTE_CONTENT_CHANGED` 거부
+- 권한 변동으로 비용이 예산을 넘으면 `409 AI_ROUTE_ENTITLEMENT_CHANGED`, 이어지는 조회에서 generation이
+  아직 `ROUTE`이고 route·current가 생기지 않았음을 확인(재시도도 같은 오류)
 - 두 generation 동시 저장에서 route는 각각 존재하고 current는 완료 순서의 한 건
 - 재시도 사이 다른 route를 current로 지정했을 때 재시도가 current를 되돌리지 않음
 - 저장 전후 잉크·대여·세션·서재 불변과 rollback 주입

@@ -187,6 +187,15 @@
 [저장과 생명주기](./prd/ai-ink-route.md#저장과-생명주기)를 따릅니다. 경로 페이지 콘텐츠 `POST`만
 `openedAt`과 경로 완료 상태를 기록하며 생성·미리보기·저장·상세 조회는 진행을 바꾸지 않습니다.
 
+저장 시점에 현재 대여·소장 권한으로 다시 계산한 추가 잉크가 임시 결과의 생성 예산을 넘으면
+([저장과 생명주기 3단계](./prd/ai-ink-route.md#저장과-생명주기)) `409 AI_ROUTE_ENTITLEMENT_CHANGED`로
+거부합니다. 이때 `generationId`는 **소비하지 않습니다.** 경로·현재 경로를 만들지 않고 임시 결과는 원래
+만료 시각까지 `ROUTE` 상태로 남아 다시 조회할 수 있으며, 같은 요청을 재시도해도 같은 오류를 반환합니다.
+독자에게는 대여·소장 상태가 바뀌어 필요한 잉크가 생성 시점보다 늘었으므로 경로를 다시 생성해야 한다고
+안내합니다. 이 응답에는 재계산한 비용·권한 상세를 포함하지 않습니다. 콘텐츠 버전 변경
+(`AI_ROUTE_CONTENT_CHANGED`), 입력 오류(`INVALID_INPUT`), 잉크 부족(`INSUFFICIENT_INK`)은 원인이 다르므로
+이 상황에 대신 사용하지 않습니다.
+
 피드백 `rating`은 `HELPFUL`, `NEUTRAL`, `NOT_HELPFUL` 중 하나입니다. 완료하지 않았거나 소유하지 않은
 경로에는 저장하지 않습니다.
 
@@ -198,6 +207,7 @@
 | 미지원 도서·외부 전송 권리·데이터 정책 프로필 미충족 | 422 | `AI_ROUTE_NOT_SUPPORTED` |
 | 같은 멱등 키의 다른 입력·저장 전 콘텐츠 버전 변경 | 409 | `AI_ROUTE_IDEMPOTENCY_KEY_REUSED`, `AI_ROUTE_CONTENT_CHANGED` |
 | 저장 뒤 경로를 삭제한 생성 결과 재사용 | 409 | `AI_ROUTE_GENERATION_CONSUMED` |
+| 저장 전 권한 변동으로 추가 잉크가 생성 예산 초과 | 409 | `AI_ROUTE_ENTITLEMENT_CHANGED` |
 | 만료한 임시 결과 | 404 | `RESOURCE_NOT_FOUND` |
 | 계정별 생성 횟수 초과 | 429 | `AI_ROUTE_DAILY_LIMIT_EXCEEDED` |
 | OpenAI 지출·사용량 한도 또는 크레딧 소진 | 503 | `AI_ROUTE_PROVIDER_BUDGET_UNAVAILABLE` |

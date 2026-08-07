@@ -32,13 +32,19 @@
 
 ## GATE-AIR-03 저장 전 권한 변동 오류
 
-- 차단 작업: [S01 generation 저장](./saved-route/S01-save-generation.md)
-- 확인된 불일치: [저장 정책](../../prd/ai-ink-route.md#저장과-생명주기)은 권한 변동으로 비용이 생성 예산을
-  넘으면 저장을 거부하지만 [API 오류 계약](../../api-spec.md#목표-오류)은 공개 status·code를 정의하지
-  않습니다.
-- 결정할 내용: HTTP status, 안정된 ErrorCode, generation 유지·소비 여부, 화면 안내
-- 반영 위치: API 계약과 `T-AIR-004`
-- 금지: `AI_ROUTE_CONTENT_CHANGED` 또는 `INVALID_INPUT`으로 임의 매핑
+- 결정 정본: [저장 경로 결과와 상태 변경](../../api-spec.md#저장-경로-결과와-상태-변경),
+  [목표 오류](../../api-spec.md#목표-오류)
+- 저장 시점에 현재 대여·소장 권한으로 다시 계산한 추가 잉크가 임시 결과의 생성 예산을 넘으면
+  `409 AI_ROUTE_ENTITLEMENT_CHANGED`로 거부합니다. 입력이 아니라 서버 권한 상태가 생성 시점과 달라진
+  충돌이므로 409이며, 같은 절의 `AI_ROUTE_CONTENT_CHANGED`와 같은 계열입니다.
+- `generationId`는 소비하지 않습니다. 경로·현재 경로를 만들지 않고 임시 결과는 원래 만료 시각까지
+  `ROUTE` 상태로 남아 다시 조회할 수 있으며, 같은 요청 재시도는 같은 오류를 반환합니다.
+- 화면은 대여·소장 상태가 바뀌어 필요한 잉크가 생성 시점보다 늘었음을 알리고 경로 다시 생성을
+  안내합니다. 응답과 화면에 재계산한 비용·권한 상세를 노출하지 않습니다.
+- 테스트 기대값은 [`T-AIR-004`](../../test-strategy.md#5-필수-시나리오)에 반영했습니다.
+- 해제된 차단 작업: [S01 generation 저장](./saved-route/S01-save-generation.md)
+- 금지: `AI_ROUTE_CONTENT_CHANGED`·`INVALID_INPUT`·`INSUFFICIENT_INK`로 임의 매핑, 거부하면서
+  `generationId` 소비, 재계산 비용·권한 상세 노출
 
 ## GATE-AIR-04 재평가 중 공개 지원 상태
 
