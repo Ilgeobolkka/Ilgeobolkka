@@ -1,0 +1,32 @@
+{
+  "contentVersion": "ai-route-v2",
+  "reviewDate": "2026-08-07",
+  "reviewType": "PDF 렌더링 표본 검수",
+  "reviewer": "코덱스 작업 에이전트",
+  "sampledBooks": [
+    {"bookId": 11, "category": "에세이", "pageNumbers": [1, 2, 3, 4, 5, 6, 12, 33, 59, 60]},
+    {"bookId": 21, "category": "과학", "pageNumbers": [1, 2, 3, 4, 5, 6, 10, 28, 56, 57]},
+    {"bookId": 23, "category": "과학", "pageNumbers": [51]},
+    {"bookId": 31, "category": "역사", "pageNumbers": [1, 2, 3, 4, 5, 6, 12, 31, 61, 62]},
+    {"bookId": 41, "category": "경제", "pageNumbers": [1, 2, 3, 4, 5, 6, 9, 25, 49, 50]},
+    {"bookId": 51, "category": "철학", "pageNumbers": [1, 2, 3, 4, 5, 6, 10, 32, 57, 58]},
+    {"bookId": 61, "category": "예술", "pageNumbers": [1, 2, 3, 4, 5, 6, 14, 38, 70, 71]},
+    {"bookId": 71, "category": "기술", "pageNumbers": [1, 2, 3, 4, 5, 6, 10, 28, 49, 50]},
+    {"bookId": 81, "category": "여행", "pageNumbers": [1, 2, 3, 4, 5, 6, 12, 33, 65, 66]},
+    {"bookId": 91, "category": "자기계발", "pageNumbers": [1, 2, 3, 4, 5, 6, 9, 29, 57, 58]}
+  ],
+  "checks": {
+    "coverAndFrontMatter": "PASS",
+    "tableOfContents": "PASS",
+    "chapterOpening": "PASS",
+    "bodyDensityAndReadability": "PASS",
+    "diagramLabelWrapping": "PASS",
+    "footerAndPageNumber": "PASS",
+    "epilogueAndReferencePage": "PASS",
+    "visibleMetaPhraseAbsence": "PASS",
+    "visibleEnglishSentenceAbsence": "PASS",
+    "sampledNearDuplicateAppearance": "PASS"
+  },
+  "humanReviewStatus": "PENDING_HUMAN_REVIEW",
+  "humanReviewReason": "비소설 90권 전체의 문체, 사실성, 장 간 연결과 도표 분석 텍스트는 임베딩 및 지원 활성화 전에 사람이 최종 검수해야 합니다."
+}

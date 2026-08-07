@@ -1,0 +1,4529 @@
+{
+  "contentVersion": "ai-route-v2",
+  "cases": [
+    {
+      "caseId": "AIR-V2-011",
+      "bookId": 11,
+      "purpose": "느린 아침을 수집하는 법에서 아침빛의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 0,
+      "depth": null,
+      "activeRentalPageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "requiredConcepts": [
+        "느린 아침을 수집하는 법 - 아침빛의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "느린 아침을 수집하는 법 - 아침빛의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        60
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-012",
+      "bookId": 12,
+      "purpose": "창가의 작은 계절들에서 창문의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "창가의 작은 계절들 - 창문의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "창가의 작은 계절들 - 창문의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        62
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          8
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        8
+      ]
+    },
+    {
+      "caseId": "AIR-V2-013",
+      "bookId": 13,
+      "purpose": "낯선 골목과 친해지는 시간에서 골목의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "낯선 골목과 친해지는 시간 - 골목의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "낯선 골목과 친해지는 시간 - 골목의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        56
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          8
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        8
+      ]
+    },
+    {
+      "caseId": "AIR-V2-014",
+      "bookId": 14,
+      "purpose": "한 잔의 온도가 남긴 것에서 찻잔의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 15,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "한 잔의 온도가 남긴 것 - 찻잔의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "한 잔의 온도가 남긴 것 - 찻잔의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        63
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          8
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        8
+      ]
+    },
+    {
+      "caseId": "AIR-V2-015",
+      "bookId": 15,
+      "purpose": "오늘의 소음을 접어두기에서 도시 소리의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "오늘의 소음을 접어두기 - 도시 소리의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "오늘의 소음을 접어두기 - 도시 소리의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        64
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-016",
+      "bookId": 16,
+      "purpose": "우산 아래 나눈 짧은 문장에서 우산의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "우산 아래 나눈 짧은 문장 - 우산의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "우산 아래 나눈 짧은 문장 - 우산의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        60
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-017",
+      "bookId": 17,
+      "purpose": "마음의 서랍을 정리하는 밤에서 감정의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "마음의 서랍을 정리하는 밤 - 감정의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "마음의 서랍을 정리하는 밤 - 감정의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        66
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-018",
+      "bookId": 18,
+      "purpose": "작은 실패를 기르는 정원에서 실패의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 0,
+      "depth": null,
+      "activeRentalPageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "requiredConcepts": [
+        "작은 실패를 기르는 정원 - 실패의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "작은 실패를 기르는 정원 - 실패의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        48
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          8
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        8
+      ]
+    },
+    {
+      "caseId": "AIR-V2-019",
+      "bookId": 19,
+      "purpose": "저녁 여섯 시의 산책자에서 저녁 산책의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "저녁 여섯 시의 산책자 - 저녁 산책의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "저녁 여섯 시의 산책자 - 저녁 산책의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        69
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-020",
+      "bookId": 20,
+      "purpose": "말하지 않은 친절의 모양에서 친절의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "말하지 않은 친절의 모양 - 친절의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "말하지 않은 친절의 모양 - 친절의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        61
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-021",
+      "bookId": 21,
+      "purpose": "별먼지 실험실의 하루에서 별먼지의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 15,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "별먼지 실험실의 하루 - 별먼지의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "별먼지 실험실의 하루 - 별먼지의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        57
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-022",
+      "bookId": 22,
+      "purpose": "보이지 않는 파동의 지도에서 파동의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "보이지 않는 파동의 지도 - 파동의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "보이지 않는 파동의 지도 - 파동의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        58
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          8
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        8
+      ]
+    },
+    {
+      "caseId": "AIR-V2-023",
+      "bookId": 23,
+      "purpose": "도시를 움직이는 미생물에서 미생물의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "도시를 움직이는 미생물 - 미생물의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "도시를 움직이는 미생물 - 미생물의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        58
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-024",
+      "bookId": 24,
+      "purpose": "빛보다 느린 질문들에서 빛의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "빛보다 느린 질문들 - 빛의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "빛보다 느린 질문들 - 빛의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        52
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-025",
+      "bookId": 25,
+      "purpose": "구름을 측정하는 열두 방법에서 구름의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 0,
+      "depth": null,
+      "activeRentalPageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "requiredConcepts": [
+        "구름을 측정하는 열두 방법 - 구름의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "구름을 측정하는 열두 방법 - 구름의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        51
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-026",
+      "bookId": 26,
+      "purpose": "심해의 작은 전구들에서 심해의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "심해의 작은 전구들 - 심해의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "심해의 작은 전구들 - 심해의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        60
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-027",
+      "bookId": 27,
+      "purpose": "중력과 찻잔 사이에서 중력의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "중력과 찻잔 사이 - 중력의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "중력과 찻잔 사이 - 중력의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        67
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-028",
+      "bookId": 28,
+      "purpose": "식물의 느린 대화에서 식물 신호의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 15,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "식물의 느린 대화 - 식물 신호의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "식물의 느린 대화 - 식물 신호의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        71
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-029",
+      "bookId": 29,
+      "purpose": "숫자로 읽는 가상 기후에서 기후 자료의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "숫자로 읽는 가상 기후 - 기후 자료의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "숫자로 읽는 가상 기후 - 기후 자료의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        70
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-030",
+      "bookId": 30,
+      "purpose": "달의 뒷면에 비가 온다면에서 달의 뒷면의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "달의 뒷면에 비가 온다면 - 달의 뒷면의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "달의 뒷면에 비가 온다면 - 달의 뒷면의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        71
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-031",
+      "bookId": 31,
+      "purpose": "모래도시의 백 년 기록에서 모래도시의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "모래도시의 백 년 기록 - 모래도시의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "모래도시의 백 년 기록 - 모래도시의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        62
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-032",
+      "bookId": 32,
+      "purpose": "지도에서 사라진 항구들에서 항구의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 0,
+      "depth": null,
+      "activeRentalPageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "requiredConcepts": [
+        "지도에서 사라진 항구들 - 항구의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "지도에서 사라진 항구들 - 항구의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        72
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-033",
+      "bookId": 33,
+      "purpose": "청동 종이 울리던 시대에서 청동 종의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "청동 종이 울리던 시대 - 청동 종의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "청동 종이 울리던 시대 - 청동 종의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        68
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-034",
+      "bookId": 34,
+      "purpose": "겨울 왕국의 세금 장부에서 세금 장부의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "겨울 왕국의 세금 장부 - 세금 장부의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "겨울 왕국의 세금 장부 - 세금 장부의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        51
+      ],
+      "duplicatePageGroups": [],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": []
+    },
+    {
+      "caseId": "AIR-V2-035",
+      "bookId": 35,
+      "purpose": "다섯 다리를 건넌 제국에서 다리의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 15,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "다섯 다리를 건넌 제국 - 다리의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "다섯 다리를 건넌 제국 - 다리의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        60
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-036",
+      "bookId": 36,
+      "purpose": "편지로 복원한 어느 봄에서 편지의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "편지로 복원한 어느 봄 - 편지의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "편지로 복원한 어느 봄 - 편지의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        55
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-037",
+      "bookId": 37,
+      "purpose": "바람길 상인의 연대기에서 바람길의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "바람길 상인의 연대기 - 바람길의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "바람길 상인의 연대기 - 바람길의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        49
+      ],
+      "duplicatePageGroups": [],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": []
+    },
+    {
+      "caseId": "AIR-V2-038",
+      "bookId": 38,
+      "purpose": "벽화 속 사람들의 식탁에서 벽화의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "벽화 속 사람들의 식탁 - 벽화의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "벽화 속 사람들의 식탁 - 벽화의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        67
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-039",
+      "bookId": 39,
+      "purpose": "한밤의 인쇄소 혁명에서 인쇄소의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 0,
+      "depth": null,
+      "activeRentalPageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "requiredConcepts": [
+        "한밤의 인쇄소 혁명 - 인쇄소의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "한밤의 인쇄소 혁명 - 인쇄소의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        68
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-040",
+      "bookId": 40,
+      "purpose": "북쪽 관문의 마지막 겨울에서 북쪽 관문의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "북쪽 관문의 마지막 겨울 - 북쪽 관문의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "북쪽 관문의 마지막 겨울 - 북쪽 관문의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        50
+      ],
+      "duplicatePageGroups": [],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": []
+    },
+    {
+      "caseId": "AIR-V2-041",
+      "bookId": 41,
+      "purpose": "빵집에서 배우는 작은 시장에서 빵집의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "빵집에서 배우는 작은 시장 - 빵집의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "빵집에서 배우는 작은 시장 - 빵집의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        50
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          8
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        8
+      ]
+    },
+    {
+      "caseId": "AIR-V2-042",
+      "bookId": 42,
+      "purpose": "신뢰의 가격표에서 신뢰의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 15,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "신뢰의 가격표 - 신뢰의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "신뢰의 가격표 - 신뢰의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        55
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-043",
+      "bookId": 43,
+      "purpose": "열두 가게의 현금흐름에서 열두 가게의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "열두 가게의 현금흐름 - 열두 가게의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "열두 가게의 현금흐름 - 열두 가게의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        63
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-044",
+      "bookId": 44,
+      "purpose": "수요곡선 밖의 사람들에서 수요곡선의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "수요곡선 밖의 사람들 - 수요곡선의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "수요곡선 밖의 사람들 - 수요곡선의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        55
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-045",
+      "bookId": 45,
+      "purpose": "동전 하나의 긴 여행에서 동전의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "동전 하나의 긴 여행 - 동전의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "동전 하나의 긴 여행 - 동전의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        68
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-046",
+      "bookId": 46,
+      "purpose": "작은 도시의 큰 예산에서 도시 예산의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 0,
+      "depth": null,
+      "activeRentalPageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "requiredConcepts": [
+        "작은 도시의 큰 예산 - 도시 예산의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "작은 도시의 큰 예산 - 도시 예산의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        71
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-047",
+      "bookId": 47,
+      "purpose": "가격은 어디에서 오는가에서 가격 형성의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "가격은 어디에서 오는가 - 가격 형성의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "가격은 어디에서 오는가 - 가격 형성의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        59
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          8
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        8
+      ]
+    },
+    {
+      "caseId": "AIR-V2-048",
+      "bookId": 48,
+      "purpose": "공유창고의 경제학에서 공유창고의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "공유창고의 경제학 - 공유창고의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "공유창고의 경제학 - 공유창고의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        67
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-049",
+      "bookId": 49,
+      "purpose": "느린 성장의 계산법에서 느린 성장의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 15,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "느린 성장의 계산법 - 느린 성장의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "느린 성장의 계산법 - 느린 성장의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        64
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-050",
+      "bookId": 50,
+      "purpose": "시장 골목의 데이터 노트에서 시장 데이터의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "시장 골목의 데이터 노트 - 시장 데이터의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "시장 골목의 데이터 노트 - 시장 데이터의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        66
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          8
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        8
+      ]
+    },
+    {
+      "caseId": "AIR-V2-051",
+      "bookId": 51,
+      "purpose": "질문이 머무는 의자에서 질문의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "질문이 머무는 의자 - 질문의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "질문이 머무는 의자 - 질문의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        58
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-052",
+      "bookId": 52,
+      "purpose": "선택하지 않은 길의 윤리에서 선택하지 않은 길의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "선택하지 않은 길의 윤리 - 선택하지 않은 길의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "선택하지 않은 길의 윤리 - 선택하지 않은 길의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        72
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-053",
+      "bookId": 53,
+      "purpose": "기억은 누구의 것인가에서 기억의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 0,
+      "depth": null,
+      "activeRentalPageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "requiredConcepts": [
+        "기억은 누구의 것인가 - 기억의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "기억은 누구의 것인가 - 기억의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        51
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-054",
+      "bookId": 54,
+      "purpose": "고요를 증명하는 방법에서 고요의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "고요를 증명하는 방법 - 고요의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "고요를 증명하는 방법 - 고요의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        64
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-055",
+      "bookId": 55,
+      "purpose": "타인의 창문을 바라볼 때에서 타인의 창문의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "타인의 창문을 바라볼 때 - 타인의 창문의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "타인의 창문을 바라볼 때 - 타인의 창문의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        56
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-056",
+      "bookId": 56,
+      "purpose": "행복의 최소 단위에서 행복의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 15,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "행복의 최소 단위 - 행복의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "행복의 최소 단위 - 행복의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        69
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-057",
+      "bookId": 57,
+      "purpose": "시간에게 빚진 문장에서 시간의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "시간에게 빚진 문장 - 시간의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "시간에게 빚진 문장 - 시간의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        56
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-058",
+      "bookId": 58,
+      "purpose": "경계선 위의 약속에서 경계선의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "경계선 위의 약속 - 경계선의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "경계선 위의 약속 - 경계선의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        54
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          8
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        8
+      ]
+    },
+    {
+      "caseId": "AIR-V2-059",
+      "bookId": 59,
+      "purpose": "모르는 것을 아는 연습에서 무지의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "모르는 것을 아는 연습 - 무지의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "모르는 것을 아는 연습 - 무지의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        51
+      ],
+      "duplicatePageGroups": [],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": []
+    },
+    {
+      "caseId": "AIR-V2-060",
+      "bookId": 60,
+      "purpose": "정답 없는 방의 대화에서 정답 없는 방의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 0,
+      "depth": null,
+      "activeRentalPageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "requiredConcepts": [
+        "정답 없는 방의 대화 - 정답 없는 방의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "정답 없는 방의 대화 - 정답 없는 방의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        72
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-061",
+      "bookId": 61,
+      "purpose": "파란 점 하나로 시작한 그림에서 파란 점의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "파란 점 하나로 시작한 그림 - 파란 점의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "파란 점 하나로 시작한 그림 - 파란 점의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        71
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-062",
+      "bookId": 62,
+      "purpose": "무대 뒤의 빛 설계에서 무대 조명의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "무대 뒤의 빛 설계 - 무대 조명의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "무대 뒤의 빛 설계 - 무대 조명의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        53
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-063",
+      "bookId": 63,
+      "purpose": "침묵을 연주하는 악보에서 침묵의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 15,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "침묵을 연주하는 악보 - 침묵의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "침묵을 연주하는 악보 - 침묵의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        48
+      ],
+      "duplicatePageGroups": [],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": []
+    },
+    {
+      "caseId": "AIR-V2-064",
+      "bookId": 64,
+      "purpose": "종이 조각의 움직임에서 종이 조각의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "종이 조각의 움직임 - 종이 조각의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "종이 조각의 움직임 - 종이 조각의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        63
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-065",
+      "bookId": 65,
+      "purpose": "열 가지 색의 온도에서 열 가지 색의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "열 가지 색의 온도 - 열 가지 색의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "열 가지 색의 온도 - 열 가지 색의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        61
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-066",
+      "bookId": 66,
+      "purpose": "골목 벽화의 문법에서 골목 벽화의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "골목 벽화의 문법 - 골목 벽화의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "골목 벽화의 문법 - 골목 벽화의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        53
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          8
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        8
+      ]
+    },
+    {
+      "caseId": "AIR-V2-067",
+      "bookId": 67,
+      "purpose": "한 장면을 만드는 소리에서 장면의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 0,
+      "depth": null,
+      "activeRentalPageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "requiredConcepts": [
+        "한 장면을 만드는 소리 - 장면의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "한 장면을 만드는 소리 - 장면의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        71
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-068",
+      "bookId": 68,
+      "purpose": "움직이는 조각의 오후에서 움직이는 조각의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "움직이는 조각의 오후 - 움직이는 조각의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "움직이는 조각의 오후 - 움직이는 조각의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        50
+      ],
+      "duplicatePageGroups": [],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": []
+    },
+    {
+      "caseId": "AIR-V2-069",
+      "bookId": 69,
+      "purpose": "사진 밖으로 걸어 나온 사람에서 사진의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "사진 밖으로 걸어 나온 사람 - 사진의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "사진 밖으로 걸어 나온 사람 - 사진의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        51
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          8
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        8
+      ]
+    },
+    {
+      "caseId": "AIR-V2-070",
+      "bookId": 70,
+      "purpose": "빈 캔버스의 사용법에서 빈 캔버스의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 15,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "빈 캔버스의 사용법 - 빈 캔버스의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "빈 캔버스의 사용법 - 빈 캔버스의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        69
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-071",
+      "bookId": 71,
+      "purpose": "작은 서버의 긴 하루에서 서버의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "작은 서버의 긴 하루 - 서버의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "작은 서버의 긴 하루 - 서버의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        50
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-072",
+      "bookId": 72,
+      "purpose": "데이터가 길을 잃지 않게에서 데이터 흐름의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "데이터가 길을 잃지 않게 - 데이터 흐름의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "데이터가 길을 잃지 않게 - 데이터 흐름의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        58
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-073",
+      "bookId": 73,
+      "purpose": "버그를 관찰하는 창에서 버그의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "버그를 관찰하는 창 - 버그의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "버그를 관찰하는 창 - 버그의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        70
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-074",
+      "bookId": 74,
+      "purpose": "함수 사이의 다리에서 함수의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 0,
+      "depth": null,
+      "activeRentalPageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "requiredConcepts": [
+        "함수 사이의 다리 - 함수의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "함수 사이의 다리 - 함수의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        71
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-075",
+      "bookId": 75,
+      "purpose": "로그 한 줄의 여행에서 로그의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "로그 한 줄의 여행 - 로그의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "로그 한 줄의 여행 - 로그의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        55
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          8
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        8
+      ]
+    },
+    {
+      "caseId": "AIR-V2-076",
+      "bookId": 76,
+      "purpose": "안전한 기본값의 설계에서 기본값의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "안전한 기본값의 설계 - 기본값의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "안전한 기본값의 설계 - 기본값의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        50
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          8
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        8
+      ]
+    },
+    {
+      "caseId": "AIR-V2-077",
+      "bookId": 77,
+      "purpose": "테스트가 지키는 계약에서 테스트의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 15,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "테스트가 지키는 계약 - 테스트의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "테스트가 지키는 계약 - 테스트의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        60
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-078",
+      "bookId": 78,
+      "purpose": "느린 쿼리를 찾는 밤에서 느린 질의의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "느린 쿼리를 찾는 밤 - 느린 질의의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "느린 쿼리를 찾는 밤 - 느린 질의의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        57
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          8
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        8
+      ]
+    },
+    {
+      "caseId": "AIR-V2-079",
+      "bookId": 79,
+      "purpose": "작은 화면의 접근성에서 작은 화면의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "작은 화면의 접근성 - 작은 화면의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "작은 화면의 접근성 - 작은 화면의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        64
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-080",
+      "bookId": 80,
+      "purpose": "배포 전 마지막 점검표에서 배포의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "배포 전 마지막 점검표 - 배포의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "배포 전 마지막 점검표 - 배포의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        67
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-081",
+      "bookId": 81,
+      "purpose": "비행기 없이 건넌 일곱 섬에서 일곱 섬의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 0,
+      "depth": null,
+      "activeRentalPageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "requiredConcepts": [
+        "비행기 없이 건넌 일곱 섬 - 일곱 섬의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "비행기 없이 건넌 일곱 섬 - 일곱 섬의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        66
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-082",
+      "bookId": 82,
+      "purpose": "북쪽 기차의 창가 노트에서 북쪽 기차의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "북쪽 기차의 창가 노트 - 북쪽 기차의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "북쪽 기차의 창가 노트 - 북쪽 기차의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        67
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-083",
+      "bookId": 83,
+      "purpose": "시장 냄새로 기억한 도시에서 시장 냄새의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "시장 냄새로 기억한 도시 - 시장 냄새의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "시장 냄새로 기억한 도시 - 시장 냄새의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        61
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-084",
+      "bookId": 84,
+      "purpose": "지도 없는 숲길 사흘에서 숲길의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 15,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "지도 없는 숲길 사흘 - 숲길의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "지도 없는 숲길 사흘 - 숲길의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        49
+      ],
+      "duplicatePageGroups": [],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": []
+    },
+    {
+      "caseId": "AIR-V2-085",
+      "bookId": 85,
+      "purpose": "바람이 강한 해안도로에서 해안도로의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "바람이 강한 해안도로 - 해안도로의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "바람이 강한 해안도로 - 해안도로의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        66
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-086",
+      "bookId": 86,
+      "purpose": "새벽 항구의 첫 식사에서 새벽 항구의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "새벽 항구의 첫 식사 - 새벽 항구의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "새벽 항구의 첫 식사 - 새벽 항구의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        60
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          8
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        8
+      ]
+    },
+    {
+      "caseId": "AIR-V2-087",
+      "bookId": 87,
+      "purpose": "고원 마을의 느린 우편에서 고원 마을의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "고원 마을의 느린 우편 - 고원 마을의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "고원 마을의 느린 우편 - 고원 마을의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        65
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-088",
+      "bookId": 88,
+      "purpose": "비 오는 골목의 지도에서 비 오는 골목의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 0,
+      "depth": null,
+      "activeRentalPageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "requiredConcepts": [
+        "비 오는 골목의 지도 - 비 오는 골목의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "비 오는 골목의 지도 - 비 오는 골목의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        53
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          8
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        8
+      ]
+    },
+    {
+      "caseId": "AIR-V2-089",
+      "bookId": 89,
+      "purpose": "열두 정거장의 하루에서 열두 정거장의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "열두 정거장의 하루 - 열두 정거장의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "열두 정거장의 하루 - 열두 정거장의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        66
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-090",
+      "bookId": 90,
+      "purpose": "별이 가까운 사막의 밤에서 사막의 밤의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "별이 가까운 사막의 밤 - 사막의 밤의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "별이 가까운 사막의 밤 - 사막의 밤의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        66
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          8
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        8
+      ]
+    },
+    {
+      "caseId": "AIR-V2-091",
+      "bookId": 91,
+      "purpose": "하루를 작게 나누는 기술에서 하루의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 15,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "하루를 작게 나누는 기술 - 하루의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "하루를 작게 나누는 기술 - 하루의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        58
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          8
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        8
+      ]
+    },
+    {
+      "caseId": "AIR-V2-092",
+      "bookId": 92,
+      "purpose": "미루는 마음과 협상하기에서 미루는 마음의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "미루는 마음과 협상하기 - 미루는 마음의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "미루는 마음과 협상하기 - 미루는 마음의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        62
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-093",
+      "bookId": 93,
+      "purpose": "집중을 위한 빈칸 만들기에서 집중의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "집중을 위한 빈칸 만들기 - 집중의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "집중을 위한 빈칸 만들기 - 집중의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        66
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-094",
+      "bookId": 94,
+      "purpose": "기록이 습관이 되는 순간에서 기록의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "기록이 습관이 되는 순간 - 기록의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "기록이 습관이 되는 순간 - 기록의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        54
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-095",
+      "bookId": 95,
+      "purpose": "완벽하지 않은 시작의 힘에서 불완전한 시작의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 0,
+      "depth": null,
+      "activeRentalPageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "requiredConcepts": [
+        "완벽하지 않은 시작의 힘 - 불완전한 시작의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "완벽하지 않은 시작의 힘 - 불완전한 시작의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        54
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          8
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        8
+      ]
+    },
+    {
+      "caseId": "AIR-V2-096",
+      "bookId": 96,
+      "purpose": "질문으로 여는 회의에서 질문의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "질문으로 여는 회의 - 질문의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "질문으로 여는 회의 - 질문의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        60
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-097",
+      "bookId": 97,
+      "purpose": "일주일을 돌아보는 열 문장에서 일주일의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "일주일을 돌아보는 열 문장 - 일주일의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "일주일을 돌아보는 열 문장 - 일주일의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        59
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-098",
+      "bookId": 98,
+      "purpose": "배운 것을 설명하는 연습에서 설명의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": false,
+      "maxAdditionalInk": 15,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "배운 것을 설명하는 연습 - 설명의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "배운 것을 설명하는 연습 - 설명의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        58
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-099",
+      "bookId": 99,
+      "purpose": "작은 목표의 측정법에서 작은 목표의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "작은 목표의 측정법 - 작은 목표의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "작은 목표의 측정법 - 작은 목표의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        61
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    },
+    {
+      "caseId": "AIR-V2-100",
+      "bookId": 100,
+      "purpose": "다음 달의 나에게 보내는 계획에서 다음 달의 핵심 원리와 적용 한계를 순서대로 이해하고 싶다.",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "다음 달의 나에게 보내는 계획 - 다음 달의 핵심 원리"
+      ],
+      "helpfulConcepts": [
+        "다음 달의 나에게 보내는 계획 - 다음 달의 배경"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        }
+      ],
+      "irrelevantPageNumbers": [
+        2,
+        55
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          7
+        ]
+      ],
+      "referencePageNumbers": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "allowedAlternativePageNumbers": [
+        7
+      ]
+    }
+  ]
+}
