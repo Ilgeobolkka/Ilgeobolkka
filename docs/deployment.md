@@ -194,7 +194,7 @@ PDFTOPPM_COMMAND="$PDFTOPPM_COMMAND" \
 적재 뒤에는 [AI 경로 콘텐츠 코퍼스](./ai-route-content-corpus.md)의 대표 목적 평가 데이터를 비웹으로 실행합니다.
 평가는 별도 DB나 평가용 계정·잉크·원장·대여·소장·결제를 만들지 않고 예산과 권한 시나리오를 입력으로
 전달합니다. [AI 잉크 경로 PRD의 품질·출시 기준](./prd/ai-ink-route.md#품질과-출시-기준)을 통과하면
-콘텐츠 manifest·평가 데이터 Git 리비전, 임베딩 모델·경로 모델·후보 정책·prompt·schema 버전과 지표를 평가 결과에 기록합니다.
+콘텐츠 manifest SHA-256, 콘텐츠 manifest·평가 데이터 Git 리비전, 임베딩 모델·경로 모델·후보 정책·prompt·schema 버전과 지표를 평가 결과에 기록합니다.
 
 `ai-route-v2`는 평가를 통과한 뒤 같은 `contentVersion`·데이터 정책 프로필의 비소설 90권을 한
 트랜잭션으로 활성화하고 소설 10권은 `false`로 둡니다. AI 경로 지원 활성화가 없는 초기 manifest 배치는 이

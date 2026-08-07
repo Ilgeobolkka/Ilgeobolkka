@@ -90,5 +90,6 @@ Responses, 서버 검증·경로 조립 코드로 실행하고 원시 판정 입
 
 ## 인계
 
-Q02 담당자에게 case 결과 schema, 처리 시간 기준, manifest/evaluation Git revision·embeddingModel·routeModel과
-candidate·prompt·schema version을 전달합니다.
+Q02 담당자에게 case 결과 schema, 처리 시간 기준, manifest SHA-256, manifest/evaluation Git
+revision·embeddingModel·routeModel과 candidate·prompt·schema version을 전달합니다. Q02의 report 재사용
+판정이 manifest SHA-256을 쓰므로 이 값을 빠뜨리지 않습니다.

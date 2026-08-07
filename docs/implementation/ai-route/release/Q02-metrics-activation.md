@@ -35,7 +35,7 @@ DB에서도 다시 사용하므로 한 번만 실행되는 코드로 만들지 �
 
 - 입력: Q01 90 case 결과, evaluation 정답, 검수자 90개 useful 판정
 - 산출물: `AiRouteEvaluationMetrics`, `AiRouteEvaluationReport`, `AiRouteSupportActivationService`
-- artifact: manifest/evaluation Git revision, 실행 시각, embeddingModel, routeModel, candidate·prompt·schema version, 자동 지표·사람 판정
+- artifact: manifest SHA-256, manifest/evaluation Git revision, 실행 시각, embeddingModel, routeModel, candidate·prompt·schema version, 자동 지표·사람 판정
 - Q03에 넘길 것: 통과 report와 support true 90권·소설 false 증거
 
 ## 수정 허용 파일
@@ -54,6 +54,7 @@ DB에서도 다시 사용하므로 한 번만 실행되는 코드로 만들지 �
 6. 후보 DB별 활성화는 같은 contentVersion·profile의 비소설 90권을 한 transaction으로 true, 소설 10권은
    false로 유지합니다. 일부 true를 허용하지 않습니다.
 7. 입력 revision·embeddingModel·routeModel·candidate·prompt·schema version 중 하나라도 바뀌면 기존 report 재사용을 거부합니다.
+   manifest는 SHA-256, 평가 데이터는 Git revision으로 비교하므로 manifest의 Git revision만 달라진 입력은 거부하지 않습니다.
 8. 활성화는 대상 90권이 모두 `false`일 때만 실행하고 하나라도 이미 `true`면 전체 실패합니다. 재평가를
    이유로 기존 `true`를 `false`로 내리거나 다시 올리는 전환은 구현하지 않습니다. 어떤 재평가를 활성화까지
    진행할지는 [재평가 배포 순서](../../../deployment.md#재평가-배포-순서)의 운영 절차이며 이 작업의 코드
