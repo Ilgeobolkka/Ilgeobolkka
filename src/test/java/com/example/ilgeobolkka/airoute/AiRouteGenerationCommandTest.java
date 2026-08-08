@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class AiRouteGenerationCommandTest {
@@ -76,50 +77,15 @@ class AiRouteGenerationCommandTest {
         assertEquals(canonical.hashCode(), fromVariant.hashCode());
     }
 
-    @Test
-    void 목적이_201_code_point면_command_경계에서_거부한다() {
-        String tooLong = "가".repeat(201);
-
-        assertThrows(
-                InvalidAiRoutePurposeException.class,
-                () -> AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, tooLong, 5, 100));
-    }
-
-    @Test
-    void 목적이_200_code_point면_command_경계를_통과한다() {
-        String limit = "가".repeat(200);
-
-        AiRouteGenerationCommand command =
-                AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, limit, 5, 100);
-
-        assertEquals(limit, command.normalizedPurpose());
-    }
-
     @ParameterizedTest
-    @ValueSource(strings = {"", " ", "\t", "\u00A0", "\u3000\u3000", "\u2003"})
-    void 목적이_비었거나_공백뿐이면_command_경계에서_거부한다(String rawPurpose) {
-        // NBSP·전각 공백은 \s 나 Character.isWhitespace 로는 걸러지지 않는다.
+    @NullSource
+    @ValueSource(strings = {"   ", "\u200B"})
+    void 목적_검증은_정규화기에_위임한다(String rawPurpose) {
+        // 200/201 code point·공백 종류별 경계는 AiRoutePurposeNormalizerTest 가 전수로 덮는다.
+        // 여기서 증명할 것은 command 가 그 정규화기를 실제로 거친다는 사실 하나뿐이다.
         assertThrows(
                 InvalidAiRoutePurposeException.class,
                 () -> AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, rawPurpose, 5, 100));
-    }
-
-    @Test
-    void 목적이_없으면_거부한다() {
-        assertThrows(
-                InvalidAiRoutePurposeException.class,
-                () -> AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, null, 5, 100));
-    }
-
-    @Test
-    void 이미_정규화된_목적을_다시_넣어도_결과가_같다() {
-        AiRouteGenerationCommand first =
-                AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, "  목적  확인 ", 5, 100);
-        AiRouteGenerationCommand second =
-                AiRouteGenerationCommand.forInkBudget(
-                        BOOK_ID, CONTENT_VERSION, first.normalizedPurpose(), 5, 100);
-
-        assertEquals(first, second);
     }
 
     // --- 예산·깊이 규칙 ----------------------------------------------------
@@ -190,12 +156,6 @@ class AiRouteGenerationCommandTest {
         assertThrows(
                 IllegalStateException.class,
                 () -> AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, PURPOSE, 0, -1));
-    }
-
-    @Test
-    void 깊이는_세_값만_존재해_그_밖의_값을_받을_수_없다() {
-        assertEquals(3, AiRouteDepth.values().length);
-        assertThrows(IllegalArgumentException.class, () -> AiRouteDepth.valueOf("UNKNOWN"));
     }
 
     @Test

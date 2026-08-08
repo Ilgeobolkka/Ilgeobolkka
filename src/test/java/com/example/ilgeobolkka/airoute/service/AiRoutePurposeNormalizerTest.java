@@ -108,6 +108,20 @@ class AiRoutePurposeNormalizerTest {
         assertThrows(InvalidAiRoutePurposeException.class, () -> AiRoutePurposeNormalizer.normalize(raw));
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"\u0001", "\u200B", "\uFEFF", "\u00AD", "\u200B \t\u0001"})
+    void 보이지_않는_문자뿐이면_거부한다(String raw) {
+        // ZWSP·BOM·SHY 는 White_Space 가 아니라 축약되지 않는다. 그대로 두면 내용 없는 목적이
+        // 지문과 외부 요청까지 간다. 공백뿐인 목적을 막는 것과 같은 이유다.
+        assertThrows(InvalidAiRoutePurposeException.class, () -> AiRoutePurposeNormalizer.normalize(raw));
+    }
+
+    @Test
+    void 내용이_하나라도_있으면_보이지_않는_문자를_보존한다() {
+        // 거부는 "내용이 없을 때"만이다. 내용이 있으면 지우지 않는다 — 지우면 서로 다른 입력이 합쳐진다.
+        assertEquals("\u200B목적\uFEFF", AiRoutePurposeNormalizer.normalize("\u200B목적\uFEFF"));
+    }
+
     @Test
     void null_입력을_거부한다() {
         assertThrows(InvalidAiRoutePurposeException.class, () -> AiRoutePurposeNormalizer.normalize(null));

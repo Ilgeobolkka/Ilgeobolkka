@@ -12,9 +12,6 @@ import java.util.Objects;
  *
  * <p>record 가 아닌 이유는 {@link #forInkBudget}의 잔액 검사가 command 필드에 없는 {@code inkBalance}를
  * 참조하기 때문이다. public record 는 canonical 생성자를 좁힐 수 없어 잔액 검사를 건너뛰는 경로가 남는다.
- *
- * <p>필드 선언 순서는 G05의 지문 입력 순서와 같다. 다만 지문 계산은 선언 순서에 기대지 말고 각 값을
- * 명시적으로 나열해야 한다.
  */
 public final class AiRouteGenerationCommand {
 

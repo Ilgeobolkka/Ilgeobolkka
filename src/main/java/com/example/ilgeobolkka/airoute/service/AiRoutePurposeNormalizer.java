@@ -16,7 +16,6 @@ import java.util.regex.Pattern;
  */
 public final class AiRoutePurposeNormalizer {
 
-    public static final int MIN_CODE_POINTS = 1;
     public static final int MAX_CODE_POINTS = 200;
 
     /**
@@ -28,13 +27,13 @@ public final class AiRoutePurposeNormalizer {
     private static final Pattern WHITE_SPACE_RUN = Pattern.compile("\\p{IsWhite_Space}+");
 
     /**
-     * 앞뒤에 남은 ASCII 공백.
+     * 앞뒤에 남은 ASCII 공백. 축약이 끝난 뒤라 각 끝에 최대 한 개만 있을 수 있다.
      *
      * <p>{@code String#trim}은 U+0020 이하를 모두 잘라내 U+0001 같은 제어 문자까지 없앤다. 제어 문자는
      * Unicode {@code White_Space}가 아니므로 "공백이 아닌 문자는 바꾸지 않는다"는 계약을 어기고, 서로 다른
      * 입력이 같은 정규화 결과·멱등 지문으로 합쳐진다. 그래서 U+0020만 제거한다.
      */
-    private static final Pattern EDGE_ASCII_SPACE = Pattern.compile("\\A +| +\\z");
+    private static final Pattern EDGE_ASCII_SPACE = Pattern.compile("\\A | \\z");
 
     private static final String ASCII_SPACE = " ";
 
@@ -42,9 +41,11 @@ public final class AiRoutePurposeNormalizer {
 
     /**
      * NFC 정규화 → Unicode 공백 연속 구간을 ASCII 공백 하나로 축약 → 앞뒤 ASCII 공백 제거 순으로 처리하고
-     * 결과를 code point 개수로 검사한다. 이미 정규화된 값을 다시 넣어도 결과가 같다(멱등).
+     * 결과에 내용이 남았는지, code point 수가 한도 안인지 검사한다. 이미 정규화된 값을 다시 넣어도 결과가
+     * 같다(멱등).
      *
-     * @throws InvalidAiRoutePurposeException 결과가 비었거나 {@value #MAX_CODE_POINTS} code point를 넘을 때
+     * @throws InvalidAiRoutePurposeException 남는 내용이 없거나 {@value #MAX_CODE_POINTS} code point를
+     *     넘을 때
      */
     public static String normalize(String rawPurpose) {
         if (rawPurpose == null) {
@@ -55,14 +56,33 @@ public final class AiRoutePurposeNormalizer {
         String collapsed = WHITE_SPACE_RUN.matcher(composed).replaceAll(ASCII_SPACE);
         String normalized = EDGE_ASCII_SPACE.matcher(collapsed).replaceAll("");
 
-        int codePointCount = normalized.codePointCount(0, normalized.length());
-        if (codePointCount < MIN_CODE_POINTS) {
-            throw new InvalidAiRoutePurposeException("공백을 제외한 내용이 필요합니다.");
+        if (!hasContent(normalized)) {
+            throw new InvalidAiRoutePurposeException("공백과 보이지 않는 문자를 제외한 내용이 필요합니다.");
         }
+        int codePointCount = normalized.codePointCount(0, normalized.length());
         if (codePointCount > MAX_CODE_POINTS) {
             throw new InvalidAiRoutePurposeException(
                     "최대 " + MAX_CODE_POINTS + "자까지 입력할 수 있습니다. 현재 " + codePointCount + "자입니다.");
         }
         return normalized;
+    }
+
+    /**
+     * 눈에 보이는 내용이 한 code point라도 있는지.
+     *
+     * <p>공백만으로 된 목적을 거부하는 것과 같은 이유로, 제어 문자(Cc)·서식 문자(Cf)만으로 된 목적도
+     * 거부한다. 그대로 두면 ZWSP 하나짜리 목적이 지문과 외부 요청까지 간다. 내용이 있으면 그 문자들은
+     * 지우지 않고 보존한다 — 서로 다른 입력이 같은 지문으로 합쳐지면 안 되기 때문이다.
+     */
+    private static boolean hasContent(String normalized) {
+        return normalized.codePoints().anyMatch(AiRoutePurposeNormalizer::isContent);
+    }
+
+    private static boolean isContent(int codePoint) {
+        if (Character.isSpaceChar(codePoint)) {
+            return false;
+        }
+        int type = Character.getType(codePoint);
+        return type != Character.CONTROL && type != Character.FORMAT;
     }
 }
