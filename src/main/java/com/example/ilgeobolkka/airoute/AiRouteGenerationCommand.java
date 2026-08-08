@@ -37,6 +37,8 @@ public final class AiRouteGenerationCommand {
             Integer maxAdditionalInk,
             AiRouteDepth depth) {
         String normalized = AiRoutePurposeNormalizer.normalize(rawPurpose);
+        // contentVersion 도 지문 입력이지만 정규화하지 않는다. 요청 바디가 아니라 서버가 도서에서 읽어
+        // 오는 값이라 변형이 들어올 경로가 없고, 여기서 다듬으면 도서가 가진 값과 달라져 비교가 어긋난다.
         if (contentVersion == null || contentVersion.isBlank()) {
             throw new InvalidAiRouteGenerationInputException("콘텐츠 버전이 필요합니다.");
         }

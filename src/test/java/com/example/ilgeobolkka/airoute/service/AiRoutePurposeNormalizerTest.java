@@ -85,6 +85,24 @@ class AiRoutePurposeNormalizerTest {
     }
 
     @Test
+    void NFC가_code_point를_늘리는_입력도_정규화_뒤_길이로_센다() {
+        // U+0958 은 합성 제외 문자라 NFC 가 U+0915 U+093C 둘로 늘린다(이런 문자가 85종).
+        // raw 를 세면 100 이라 통과하지만 정규화 결과는 200 이다. 줄어드는 방향(NFD→NFC)만 테스트하면
+        // "정규화 결과를 센다"는 계약의 절반만 지켜진다.
+        String limit = "\u0958".repeat(100);
+
+        assertEquals(200, codePointCount(AiRoutePurposeNormalizer.normalize(limit)));
+    }
+
+    @Test
+    void NFC로_늘어나_한도를_넘기면_거부한다() {
+        String tooLong = "\u0958".repeat(101); // NFC 뒤 202 code point
+
+        assertThrows(
+                InvalidAiRoutePurposeException.class, () -> AiRoutePurposeNormalizer.normalize(tooLong));
+    }
+
+    @Test
     void 보조_평면_문자는_UTF16_길이가_아니라_code_point로_센다() {
         // emoji 는 UTF-16 에서 2 char 이므로 length() 기준이면 200 을 넘는다고 잘못 판정한다.
         String raw = "😀".repeat(200);
