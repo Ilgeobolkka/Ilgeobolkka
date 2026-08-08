@@ -1,7 +1,7 @@
 {
   "contentVersion": "ai-route-v2",
   "verifiedAt": "2026-08-08",
-  "manifestSha256": "b6abf3404b184000d3eff0028f8489e0c9957c69f30d46da0a7b0c99591886c0",
+  "manifestSha256": "7d9dad133972fb5eb63e7c02abfe16de7413c50a395ebf7a86d168f0c961fbee",
   "evaluationSha256": "cd869ef0436211b0816e6c20f6f0d5666649f4950a0d8f4898a9b690038e539b",
   "sourceLedgerSha256": "a42f12b49bfdde00ca556a3c8b25460b45e9eb07fdfedbff4a07148050eceddb",
   "books": 100,
@@ -13,8 +13,8 @@
   "candidateDistinctPageCounts": 25,
   "candidateChapterCountMin": 6,
   "candidateChapterCountMax": 9,
-  "candidateTextPages": 4777,
-  "candidateImagePages": 668,
+  "candidateTextPages": 5355,
+  "candidateImagePages": 90,
   "visibleKoreanCharacterRatio": 0.999329,
   "evaluationCases": 90,
   "evaluationScenarios": 7,
@@ -28,7 +28,7 @@
     "CONTINUOUS_PAGE_NUMBERS",
     "UNIQUE_VISIBLE_TEXT_PAGES",
     "UNIQUE_BODY_PARAGRAPHS_PER_BOOK",
-    "TEXT_IMAGE_CONTENT",
+    "ONE_AI_GENERATED_PHOTO_PER_CANDIDATE_BOOK",
     "AI_ANALYSIS_SHA256",
     "KOREAN_VISIBLE_CONTENT",
     "KOREAN_ANALYSIS_METADATA",
@@ -43,8 +43,14 @@
     "SOURCE_IMAGE_ABSENCE",
     "PERSONAL_CONTACT_PATTERN_SCAN",
     "CATALOG_COVER_ALIGNMENT",
-    "PUBLISHER_NAME_SPELLING"
+    "PUBLISHER_NAME_SPELLING",
+    "IMAGE_METADATA_ALIGNMENT",
+    "ANALYSIS_GRAMMAR_AND_VARIATION",
+    "DIAGRAM_PAGE_ABSENCE",
+    "GENERATED_IMAGE_ASSET_SHA256",
+    "REFLECTION_PROMPT_ABSENCE",
+    "BODY_VERTICAL_CENTERING"
   ],
   "automatedStatus": "PASS",
-  "humanReviewStatus": "PENDING_HUMAN_REVIEW"
+  "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
 }
