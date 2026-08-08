@@ -32,7 +32,8 @@ canonical command를 사용하게 합니다.
 
 - 입력: raw purpose, maxAdditionalInk 또는 depth, bookId·contentVersion, 현재 소장 여부·잉크 잔액
 - 산출물: `AiRoutePurposeNormalizer`, `AiRouteGenerationCommand`, `AiRouteRequestType`, `AiRouteDepth`
-- command: normalizedPurpose, bookId, contentVersion, `INK_BUDGET|maxAdditionalInk` 또는 `OWNED_DEPTH|depth`
+- command: bookId, contentVersion, normalizedPurpose, `INK_BUDGET|maxAdditionalInk` 또는 `OWNED_DEPTH|depth`
+  ([G05 지문 입력 순서](./G05-idempotency-daily-limit.md#구현-조건)와 같게 적습니다)
 - G05에 넘길 것: fingerprint 입력 순서가 고정된 canonical command
 
 ## 수정 허용 파일
@@ -75,3 +76,22 @@ canonical command를 사용하게 합니다.
 
 G05·G08 담당자에게 command 생성 API와 validation exception을 전달합니다. 두 작업은 purpose를 다시
 정규화하거나 별도 depth Enum을 만들지 않습니다.
+
+`maxAdditionalInk`와 `depth` **동시 입력을 거부하는 책임은 G08 DTO 단독**입니다
+([api-spec 생성 입력](../../../api-spec.md#생성-입력과-결과): 함께 보내면 `400 INVALID_INPUT`).
+command는 `forInkBudget`·`forOwnedDepth` 두 팩토리가 각각 반대쪽을 `null`로 고정하므로 둘을 함께 가진
+값이 애초에 만들어지지 않고, 따라서 command 층에서는 이 오류를 검출할 수 없습니다. DTO가 둘 다 받은
+요청에서 한쪽을 버리고 팩토리를 호출하면 계약이 조용히 깨지므로, G08은 팩토리를 부르기 **전에** 거부해야
+합니다.
+
+**validation 예외는 두 종류이고 둘 다 `400 INVALID_INPUT`입니다**
+([api-spec 목표 오류](../../../api-spec.md#목표-오류)). 목적 문제는 `InvalidAiRoutePurposeException`, 예산·깊이·
+콘텐츠 버전 문제는 `InvalidAiRouteGenerationInputException`입니다. G08 핸들러는 두 타입을 모두 잡아야
+합니다. 지금은 소비자가 G08 하나뿐이라 공통 부모를 만들지 않았습니다. G05·W01 등에서 같은 매핑이 또
+필요해지면 그때 부모 타입을 도입하는 편이 낫습니다.
+
+정규화한 목적은 **보이지 않는 문자를 지우지 않고 보존합니다.** 지문 무결성을 위해 서로 다른 입력을 합치지
+않는 것이 우선이기 때문입니다. 그래서 `U+202E`(RLO) 같은 bidi override도 그대로 남을 수 있습니다. 목적은
+작성자 본인에게만 보이고 W01·W02가 [PRD 표시 규칙](../../../prd/ai-ink-route.md#독서-목적)대로 Thymeleaf
+이스케이프 출력이나 DOM `textContent`로만 렌더링한다는 전제에서 허용한 값입니다. 목적을 다른 독자에게
+보이는 화면이 생기면 이 전제를 다시 따져야 합니다.
