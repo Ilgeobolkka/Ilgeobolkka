@@ -30,7 +30,7 @@ public final class AiRouteGenerationCommand {
 
     /**
      * 예산·깊이 배타 규칙은 팩토리가 어느 쪽에 null 을 넣을지 정해 구조로 보장하므로 여기서 다시
-     * 검사하지 않는다. 두 팩토리를 거치지 않고 이 생성자에 닿을 방법은 없다.
+     * 검사하지 않는다.
      */
     private AiRouteGenerationCommand(
             long bookId,
@@ -59,9 +59,11 @@ public final class AiRouteGenerationCommand {
      * @throws InvalidAiRouteGenerationInputException 예산이 {@code 0..inkBalance}를 벗어나거나 콘텐츠
      *     버전이 비었을 때
      * @throws InvalidAiRoutePurposeException 목적이 비었거나 200 code point를 넘을 때
+     * @throws IllegalStateException 잔액이 음수일 때 ({@link #requireNonNegativeBalance} 참고)
      */
     public static AiRouteGenerationCommand forInkBudget(
             long bookId, String contentVersion, String rawPurpose, int maxAdditionalInk, int inkBalance) {
+        requireNonNegativeBalance(inkBalance);
         if (maxAdditionalInk < 0) {
             throw new InvalidAiRouteGenerationInputException("예산은 0 이상이어야 합니다.");
         }
@@ -93,15 +95,25 @@ public final class AiRouteGenerationCommand {
      * 비소장 예산 기본값 {@code min(10, 잔액)}. 호출자가 잔액과 함께 요청할 때만 계산하며,
      * command 를 만든 뒤에는 입력을 다시 해석하지 않는다.
      *
-     * @throws IllegalStateException 잔액이 음수일 때. 잉크 잔액은 DB CHECK 제약
-     *     {@code ck_ink_account_balance_non_negative}로 0 이상이 보장되므로, 음수는 사용자 입력 오류가
-     *     아니라 시스템 불변식 위반이다. 사용자 입력 오류로 던지면 서버 버그가 400으로 나간다.
+     * @throws IllegalStateException 잔액이 음수일 때 ({@link #requireNonNegativeBalance} 참고)
      */
     public static int defaultInkBudget(int inkBalance) {
+        requireNonNegativeBalance(inkBalance);
+        return Math.min(DEFAULT_INK_BUDGET_CAP, inkBalance);
+    }
+
+    /**
+     * 잉크 잔액은 DB CHECK 제약 {@code ck_ink_account_balance_non_negative}로 0 이상이 보장된다. 음수는
+     * 사용자 입력 오류가 아니라 시스템 불변식 위반이므로 입력 예외로 던지지 않는다. 입력 예외로 던지면
+     * G08이 서버 버그를 400으로 내보낸다.
+     *
+     * <p>잔액을 받는 두 메서드가 같은 판정을 내리도록 한 곳에 모은다. 한쪽만 막으면 같은 음수 잔액이
+     * 경로에 따라 불변식 위반과 입력 오류로 갈린다.
+     */
+    private static void requireNonNegativeBalance(int inkBalance) {
         if (inkBalance < 0) {
             throw new IllegalStateException("잉크 잔액이 음수입니다. " + inkBalance);
         }
-        return Math.min(DEFAULT_INK_BUDGET_CAP, inkBalance);
     }
 
     public long bookId() {

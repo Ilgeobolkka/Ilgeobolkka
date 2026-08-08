@@ -185,6 +185,14 @@ class AiRouteGenerationCommandTest {
     }
 
     @Test
+    void 음수_잔액은_기본값_계산과_command_생성_어느_쪽에서도_같게_판정한다() {
+        // 한쪽만 막으면 같은 음수 잔액이 경로에 따라 불변식 위반과 "예산 > 잔액" 입력 오류로 갈린다.
+        assertThrows(
+                IllegalStateException.class,
+                () -> AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, PURPOSE, 0, -1));
+    }
+
+    @Test
     void 깊이는_세_값만_존재해_그_밖의_값을_받을_수_없다() {
         assertEquals(3, AiRouteDepth.values().length);
         assertThrows(IllegalArgumentException.class, () -> AiRouteDepth.valueOf("UNKNOWN"));
