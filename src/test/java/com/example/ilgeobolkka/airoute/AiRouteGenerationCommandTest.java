@@ -1,13 +1,17 @@
 package com.example.ilgeobolkka.airoute;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.example.ilgeobolkka.airoute.exception.InvalidAiRouteGenerationInputException;
+import com.example.ilgeobolkka.airoute.exception.InvalidAiRoutePurposeException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class AiRouteGenerationCommandTest {
@@ -15,6 +19,10 @@ class AiRouteGenerationCommandTest {
     private static final String PURPOSE = "트랜잭션 격리 수준 이해하기";
     private static final long BOOK_ID = 42L;
     private static final String CONTENT_VERSION = "initial-v1";
+    /** "한글" NFC 조합형. */
+    private static final String HANGUL_NFC = "\uD55C\uAE00";
+    /** "한글" NFD 자모 분해형. 바이트 열이 NFC 와 완전히 다르다. */
+    private static final String HANGUL_NFD = "\u1112\u1161\u11AB\u1100\u1173\u11AF";
 
     @Test
     void 비소장_입력은_예산만_가지고_깊이는_비어_있다() {
@@ -37,6 +45,85 @@ class AiRouteGenerationCommandTest {
         assertNull(command.maxAdditionalInk());
     }
 
+    // --- canonical 경계 ---------------------------------------------------
+
+    @Test
+    void 같은_의미의_NFC_NFD_공백_변형은_같은_command가_된다() {
+        // NFD 자모 + NBSP(U+00A0) + 전각 공백(U+3000) + 앞뒤 공백
+        String variant = "  " + HANGUL_NFD + "\u00A0\u3000목적  ";
+
+        AiRouteGenerationCommand canonical =
+                AiRouteGenerationCommand.forInkBudget(
+                        BOOK_ID, CONTENT_VERSION, HANGUL_NFC + " 목적", 5, 100);
+        AiRouteGenerationCommand fromVariant =
+                AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, variant, 5, 100);
+
+        assertEquals(HANGUL_NFC + " 목적", fromVariant.normalizedPurpose());
+        assertEquals(canonical, fromVariant);
+        assertEquals(canonical.hashCode(), fromVariant.hashCode());
+    }
+
+    @Test
+    void 소장_입력도_같은_의미의_목적이면_같은_command가_된다() {
+        AiRouteGenerationCommand canonical =
+                AiRouteGenerationCommand.forOwnedDepth(
+                        BOOK_ID, CONTENT_VERSION, HANGUL_NFC + " 목적", AiRouteDepth.QUICK);
+        AiRouteGenerationCommand fromVariant =
+                AiRouteGenerationCommand.forOwnedDepth(
+                        BOOK_ID, CONTENT_VERSION, " " + HANGUL_NFD + "\t목적 ", AiRouteDepth.QUICK);
+
+        assertEquals(canonical, fromVariant);
+        assertEquals(canonical.hashCode(), fromVariant.hashCode());
+    }
+
+    @Test
+    void 목적이_201_code_point면_command_경계에서_거부한다() {
+        String tooLong = "가".repeat(201);
+
+        assertThrows(
+                InvalidAiRoutePurposeException.class,
+                () -> AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, tooLong, 5, 100));
+    }
+
+    @Test
+    void 목적이_200_code_point면_command_경계를_통과한다() {
+        String limit = "가".repeat(200);
+
+        AiRouteGenerationCommand command =
+                AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, limit, 5, 100);
+
+        assertEquals(limit, command.normalizedPurpose());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", " ", "\t", "\u00A0", "\u3000\u3000", "\u2003"})
+    void 목적이_비었거나_공백뿐이면_command_경계에서_거부한다(String rawPurpose) {
+        // NBSP·전각 공백은 \s 나 Character.isWhitespace 로는 걸러지지 않는다.
+        assertThrows(
+                InvalidAiRoutePurposeException.class,
+                () -> AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, rawPurpose, 5, 100));
+    }
+
+    @Test
+    void 목적이_없으면_거부한다() {
+        assertThrows(
+                InvalidAiRoutePurposeException.class,
+                () -> AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, null, 5, 100));
+    }
+
+    @Test
+    void 이미_정규화된_목적을_다시_넣어도_결과가_같다() {
+        AiRouteGenerationCommand first =
+                AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, "  목적  확인 ", 5, 100);
+        AiRouteGenerationCommand second =
+                AiRouteGenerationCommand.forInkBudget(
+                        BOOK_ID, CONTENT_VERSION, first.normalizedPurpose(), 5, 100);
+
+        assertEquals(first, second);
+    }
+
+    // --- 예산·깊이 규칙 ----------------------------------------------------
+
     @ParameterizedTest
     @ValueSource(ints = {0, 7, 100})
     void 예산이_0부터_잔액까지면_허용한다(int budget) {
@@ -54,6 +141,13 @@ class AiRouteGenerationCommandTest {
     }
 
     @Test
+    void 잔액이_0이면_어떤_양수_예산도_거부한다() {
+        assertThrows(
+                InvalidAiRouteGenerationInputException.class,
+                () -> AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, PURPOSE, 1, 0));
+    }
+
+    @Test
     void 음수_예산을_거부한다() {
         assertThrows(
                 InvalidAiRouteGenerationInputException.class,
@@ -61,50 +155,19 @@ class AiRouteGenerationCommandTest {
     }
 
     @Test
-    void 예산과_깊이를_함께_주면_거부한다() {
+    void 소장_입력에_깊이가_없으면_거부한다() {
         assertThrows(
                 InvalidAiRouteGenerationInputException.class,
-                () ->
-                        new AiRouteGenerationCommand(
-                                BOOK_ID,
-                                CONTENT_VERSION,
-                                PURPOSE,
-                                AiRouteRequestType.INK_BUDGET,
-                                5,
-                                AiRouteDepth.QUICK));
-    }
-
-    @Test
-    void 예산_입력인데_예산이_없으면_거부한다() {
-        assertThrows(
-                InvalidAiRouteGenerationInputException.class,
-                () ->
-                        new AiRouteGenerationCommand(
-                                BOOK_ID, CONTENT_VERSION, PURPOSE, AiRouteRequestType.INK_BUDGET, null, null));
-    }
-
-    @Test
-    void 깊이_입력인데_깊이가_없으면_거부한다() {
-        assertThrows(
-                InvalidAiRouteGenerationInputException.class,
-                () ->
-                        new AiRouteGenerationCommand(
-                                BOOK_ID, CONTENT_VERSION, PURPOSE, AiRouteRequestType.OWNED_DEPTH, null, null));
+                () -> AiRouteGenerationCommand.forOwnedDepth(BOOK_ID, CONTENT_VERSION, PURPOSE, null));
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"", " ", "\t"})
-    void 정규화한_목적이_비어_있거나_공백뿐이면_거부한다(String purpose) {
+    @NullAndEmptySource
+    @ValueSource(strings = {" "})
+    void 콘텐츠_버전이_없으면_거부한다(String contentVersion) {
         assertThrows(
                 InvalidAiRouteGenerationInputException.class,
-                () -> AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, purpose, 5, 100));
-    }
-
-    @Test
-    void 콘텐츠_버전이_없으면_거부한다() {
-        assertThrows(
-                InvalidAiRouteGenerationInputException.class,
-                () -> AiRouteGenerationCommand.forInkBudget(BOOK_ID, " ", PURPOSE, 5, 100));
+                () -> AiRouteGenerationCommand.forInkBudget(BOOK_ID, contentVersion, PURPOSE, 5, 100));
     }
 
     @Test
@@ -116,10 +179,9 @@ class AiRouteGenerationCommandTest {
     }
 
     @Test
-    void 음수_잔액으로_기본_예산을_계산하면_거부한다() {
-        assertThrows(
-                InvalidAiRouteGenerationInputException.class,
-                () -> AiRouteGenerationCommand.defaultInkBudget(-1));
+    void 음수_잔액은_입력_오류가_아니라_불변식_위반으로_던진다() {
+        // DB CHECK 제약으로 잔액은 0 이상이다. 입력 예외로 던지면 G08 이 서버 버그를 400 으로 내보낸다.
+        assertThrows(IllegalStateException.class, () -> AiRouteGenerationCommand.defaultInkBudget(-1));
     }
 
     @Test
@@ -129,13 +191,51 @@ class AiRouteGenerationCommandTest {
     }
 
     @Test
-    void 같은_입력은_같은_command가_되어_지문_계산에_쓸_수_있다() {
-        AiRouteGenerationCommand first =
-                AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, PURPOSE, 5, 100);
-        AiRouteGenerationCommand second =
+    void 필드가_하나라도_다르면_다른_command다() {
+        // 지문 입력이 될 타입이라 equals 에서 필드 하나를 빠뜨리면 서로 다른 요청이 같은 요청으로 합쳐진다.
+        AiRouteGenerationCommand base =
                 AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, PURPOSE, 5, 100);
 
-        assertEquals(first, second);
-        assertEquals(first.hashCode(), second.hashCode());
+        assertNotEquals(
+                base,
+                AiRouteGenerationCommand.forInkBudget(BOOK_ID + 1, CONTENT_VERSION, PURPOSE, 5, 100),
+                "bookId");
+        assertNotEquals(
+                base,
+                AiRouteGenerationCommand.forInkBudget(BOOK_ID, "other-v2", PURPOSE, 5, 100),
+                "contentVersion");
+        assertNotEquals(
+                base,
+                AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, "다른 목적", 5, 100),
+                "normalizedPurpose");
+        assertNotEquals(
+                base,
+                AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, PURPOSE, 6, 100),
+                "maxAdditionalInk");
+        assertNotEquals(
+                base,
+                AiRouteGenerationCommand.forOwnedDepth(
+                        BOOK_ID, CONTENT_VERSION, PURPOSE, AiRouteDepth.QUICK),
+                "requestType");
+    }
+
+    @Test
+    void 깊이만_다르면_다른_command다() {
+        AiRouteGenerationCommand quick =
+                AiRouteGenerationCommand.forOwnedDepth(
+                        BOOK_ID, CONTENT_VERSION, PURPOSE, AiRouteDepth.QUICK);
+        AiRouteGenerationCommand deep =
+                AiRouteGenerationCommand.forOwnedDepth(
+                        BOOK_ID, CONTENT_VERSION, PURPOSE, AiRouteDepth.DEEP);
+
+        assertNotEquals(quick, deep);
+    }
+
+    @Test
+    void 목적을_toString에_남기지_않는다() {
+        AiRouteGenerationCommand command =
+                AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, "노출되면 안 되는 목적", 5, 100);
+
+        assertFalse(command.toString().contains("노출되면"));
     }
 }

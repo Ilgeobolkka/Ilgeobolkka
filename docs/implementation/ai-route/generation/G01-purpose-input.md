@@ -75,3 +75,10 @@ canonical command를 사용하게 합니다.
 
 G05·G08 담당자에게 command 생성 API와 validation exception을 전달합니다. 두 작업은 purpose를 다시
 정규화하거나 별도 depth Enum을 만들지 않습니다.
+
+`maxAdditionalInk`와 `depth` **동시 입력을 거부하는 책임은 G08 DTO 단독**입니다
+([api-spec 생성 입력](../../../api-spec.md#생성-입력과-결과): 함께 보내면 `400 INVALID_INPUT`).
+command는 `forInkBudget`·`forOwnedDepth` 두 팩토리가 각각 반대쪽을 `null`로 고정하므로 둘을 함께 가진
+값이 애초에 만들어지지 않고, 따라서 command 층에서는 이 오류를 검출할 수 없습니다. DTO가 둘 다 받은
+요청에서 한쪽을 버리고 팩토리를 호출하면 계약이 조용히 깨지므로, G08은 팩토리를 부르기 **전에** 거부해야
+합니다.

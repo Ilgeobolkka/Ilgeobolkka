@@ -3,16 +3,18 @@ package com.example.ilgeobolkka.airoute.service;
 import com.example.ilgeobolkka.airoute.exception.InvalidAiRoutePurposeException;
 import java.text.Normalizer;
 import java.util.regex.Pattern;
-import org.springframework.stereotype.Service;
 
 /**
  * 독서 목적 입력을 저장·외부 요청에 쓰는 정규화 형태로 바꾼다.
  *
  * <p>대소문자와 공백이 아닌 문자는 바꾸지 않으며, 원문은 반환값·예외 메시지 어디에도 남기지 않는다.
  * 정규화 결과는 목적 데이터일 뿐 외부 모델에 대한 지시문이 아니므로 이 클래스는 문구를 덧붙이지 않는다.
+ *
+ * <p>의존이 없는 순수 함수라 static 으로 둔다. 생성 입력의 canonical 경계인
+ * {@link com.example.ilgeobolkka.airoute.AiRouteGenerationCommand}가 Spring 컨테이너 없이 이 규칙을
+ * 적용해야 하고, 규칙을 주입으로 바꿔 끼울 수 있으면 경계가 경계가 아니게 된다.
  */
-@Service
-public class AiRoutePurposeNormalizer {
+public final class AiRoutePurposeNormalizer {
 
     public static final int MIN_CODE_POINTS = 1;
     public static final int MAX_CODE_POINTS = 200;
@@ -36,13 +38,15 @@ public class AiRoutePurposeNormalizer {
 
     private static final String ASCII_SPACE = " ";
 
+    private AiRoutePurposeNormalizer() {}
+
     /**
      * NFC 정규화 → Unicode 공백 연속 구간을 ASCII 공백 하나로 축약 → 앞뒤 ASCII 공백 제거 순으로 처리하고
-     * 결과를 code point 개수로 검사한다.
+     * 결과를 code point 개수로 검사한다. 이미 정규화된 값을 다시 넣어도 결과가 같다(멱등).
      *
      * @throws InvalidAiRoutePurposeException 결과가 비었거나 {@value #MAX_CODE_POINTS} code point를 넘을 때
      */
-    public String normalize(String rawPurpose) {
+    public static String normalize(String rawPurpose) {
         if (rawPurpose == null) {
             throw new InvalidAiRoutePurposeException("값이 없습니다.");
         }
