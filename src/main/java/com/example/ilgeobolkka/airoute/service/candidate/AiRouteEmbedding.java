@@ -1,7 +1,5 @@
 package com.example.ilgeobolkka.airoute.service.candidate;
 
-import java.util.Arrays;
-
 /**
  * 후보 비교에 쓰는 임베딩. 모델·차원과 값이 붙어 다녀야 다른 프로필의 벡터를 실수로 비교하지 않는다.
  *
@@ -108,10 +106,5 @@ public final class AiRouteEmbedding {
     @Override
     public String toString() {
         return "AiRouteEmbedding[model=%s, dimensions=%d]".formatted(model, dimensions);
-    }
-
-    /** 방어 복사본. 테스트와 호출자가 내부 배열을 바꾸지 못하게 한다. */
-    double[] values() {
-        return Arrays.copyOf(values, values.length);
     }
 }
