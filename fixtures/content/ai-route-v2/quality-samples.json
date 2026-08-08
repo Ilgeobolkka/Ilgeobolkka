@@ -1,6 +1,6 @@
 {
   "contentVersion": "ai-route-v2",
-  "reviewDate": "2026-08-07",
+  "reviewDate": "2026-08-08",
   "reviewType": "PDF 렌더링 표본 검수",
   "reviewer": "코덱스 작업 에이전트",
   "sampledBooks": [
@@ -25,7 +25,9 @@
     "epilogueAndReferencePage": "PASS",
     "visibleMetaPhraseAbsence": "PASS",
     "visibleEnglishSentenceAbsence": "PASS",
-    "sampledNearDuplicateAppearance": "PASS"
+    "sampledNearDuplicateAppearance": "PASS",
+    "catalogCoverAlignment": "PASS",
+    "publisherNameSpelling": "PASS"
   },
   "humanReviewStatus": "PENDING_HUMAN_REVIEW",
   "humanReviewReason": "비소설 90권 전체의 문체, 사실성, 장 간 연결과 도표 분석 텍스트는 임베딩 및 지원 활성화 전에 사람이 최종 검수해야 합니다."

@@ -97,7 +97,7 @@
     {
       "bookId": 11,
       "pdfPath": "pdfs/book-011.pdf",
-      "pdfSha256": "9b5eb4550f0a3d3b2c5edafd19be873928fa2dccf503eaf882b3cb54ec755de2",
+      "pdfSha256": "f8e8e2db5f73e936bdf7bd4fdeea46ab8996e6499315dc1697d8f7e18d9bb4b0",
       "totalPageCount": 60,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -1515,7 +1515,7 @@
     {
       "bookId": 12,
       "pdfPath": "pdfs/book-012.pdf",
-      "pdfSha256": "12de2f6182d2dde7f19e99d8c34f942990f3093580996dae37bca42218c7a77f",
+      "pdfSha256": "16fe59dd4c718843ed80275e0a6b2311f748541a6a50ce9908122d7865340e0e",
       "totalPageCount": 62,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -2997,7 +2997,7 @@
     {
       "bookId": 13,
       "pdfPath": "pdfs/book-013.pdf",
-      "pdfSha256": "6d6fa0115ed617ed957cd94eb4575e458c31e88397d2e22b6c5cf0bd505981a2",
+      "pdfSha256": "4261f2766fc540124d0a848c3c5ed8d891aa1461415ee57e57c0c041598be415",
       "totalPageCount": 56,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -4325,7 +4325,7 @@
     {
       "bookId": 14,
       "pdfPath": "pdfs/book-014.pdf",
-      "pdfSha256": "27986234996615195c9cac325bc8303af99695436ddac86316167611912f189d",
+      "pdfSha256": "9f1321b96fca1d3f66a3a13b8838c895fe2aef7f7fe8c88fca1620eac1b5be50",
       "totalPageCount": 63,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -5830,7 +5830,7 @@
     {
       "bookId": 15,
       "pdfPath": "pdfs/book-015.pdf",
-      "pdfSha256": "57d670ca33614c7062b76bdc08c7cf02dcb615ef181c46fcf858e88a3d3cafa5",
+      "pdfSha256": "203b0e443ecb31645e0d3a4ff2ff7e7d9aed0785f821e654568c409a3cb44add",
       "totalPageCount": 64,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -7352,7 +7352,7 @@
     {
       "bookId": 16,
       "pdfPath": "pdfs/book-016.pdf",
-      "pdfSha256": "d430aaf23d06344c0caaba656f430e7e6c91815964533b1defb0410937535496",
+      "pdfSha256": "34b3ccd458b4d302fd4451c85e7403865859aab03f65d50d38f61276f0b6964a",
       "totalPageCount": 60,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -8770,7 +8770,7 @@
     {
       "bookId": 17,
       "pdfPath": "pdfs/book-017.pdf",
-      "pdfSha256": "9868fc6101c2f82afb9d1267f8109cc3309215980b1db99eeefb7b5792846b9f",
+      "pdfSha256": "8a4f2e32154e1f3738ff6f34e7f0eff7004963a7479f118ab5e0413ea1a63f24",
       "totalPageCount": 66,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -10326,7 +10326,7 @@
     {
       "bookId": 18,
       "pdfPath": "pdfs/book-018.pdf",
-      "pdfSha256": "6999a022c87da2a49beb8a37be39a25af289bd6369dee34662efa681d4673419",
+      "pdfSha256": "4227752526db9d7aac85c491aa8e0b6aa8f28f96e6753bb60b8b4201ffbc450c",
       "totalPageCount": 48,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -11474,7 +11474,7 @@
     {
       "bookId": 19,
       "pdfPath": "pdfs/book-019.pdf",
-      "pdfSha256": "98ffb005761a8de32cec611e5d2ff0710064e1af711f58f1cfeca79fe468a1b3",
+      "pdfSha256": "bb06b37bccae7617f3829efc9ef3a2356c9a3b4aeacb71e024e986f56ad81297",
       "totalPageCount": 69,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -13099,7 +13099,7 @@
     {
       "bookId": 20,
       "pdfPath": "pdfs/book-020.pdf",
-      "pdfSha256": "91053c17bc66889310576c3bc8f2a95fb88c2adb5e8cbc80ba2810859bf4ba7d",
+      "pdfSha256": "ae7b148c169183ebcd9fa7e638508144916472f7b8a62ab7c8eeb063d96c8a13",
       "totalPageCount": 61,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -14546,7 +14546,7 @@
     {
       "bookId": 21,
       "pdfPath": "pdfs/book-021.pdf",
-      "pdfSha256": "7a7346be8d131e5e9f1ecdef8484d3759b453c0345a709bbdd3602ab2949ea70",
+      "pdfSha256": "609d94b2df5e0e096ab2735d5cfb997454c879ca2c49c09de430473e52f9fe5c",
       "totalPageCount": 57,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -15901,7 +15901,7 @@
     {
       "bookId": 22,
       "pdfPath": "pdfs/book-022.pdf",
-      "pdfSha256": "284e9497e6ce2ab65c785d63feaf106210532ff156b67bac171c63031cb96260",
+      "pdfSha256": "ca6e317e5e7a0c41dea8779122bbe02ed7ee8c962532df21206f7095d9e3de03",
       "totalPageCount": 58,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -17285,7 +17285,7 @@
     {
       "bookId": 23,
       "pdfPath": "pdfs/book-023.pdf",
-      "pdfSha256": "71aa00c8a98b68bce34de886f4e1e51106d092b35abc44a55eadee84831fa0b7",
+      "pdfSha256": "6ead3565f1021c51d0a4b3bb4ce227d7a33fb8527a2e079c62c8e07e0ab35be0",
       "totalPageCount": 58,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -18663,7 +18663,7 @@
     {
       "bookId": 24,
       "pdfPath": "pdfs/book-024.pdf",
-      "pdfSha256": "d657a069efcbe7625e108c89fe30f5fc5fea59af04f146a01e4c343867956508",
+      "pdfSha256": "4df03352d928f31e44e8a196a7f335767f7fa11a5d519e0738f8f527c9186141",
       "totalPageCount": 52,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -19903,7 +19903,7 @@
     {
       "bookId": 25,
       "pdfPath": "pdfs/book-025.pdf",
-      "pdfSha256": "39aebcefdc480afe640349b638c65f9c99e7d64c4c2233e72eb6c5f3e755aee8",
+      "pdfSha256": "d3cfd487bc40dcc28839e88db42b7bc01b4557ed50a7bf3bab14b85a2786fc41",
       "totalPageCount": 51,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -21120,7 +21120,7 @@
     {
       "bookId": 26,
       "pdfPath": "pdfs/book-026.pdf",
-      "pdfSha256": "6a68a05cf6329e4a5f36d0648a24a3b3e9fc0e2247e9a5adf6c63591bbf4727c",
+      "pdfSha256": "7d57926060de526372589035aeb750cc0d3bbd29640a7cff2ea26025ed9cf81a",
       "totalPageCount": 60,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -22538,7 +22538,7 @@
     {
       "bookId": 27,
       "pdfPath": "pdfs/book-027.pdf",
-      "pdfSha256": "bf926dd5157f4985106fbc3906fa121888311bcc1128723ecc0bef2182703107",
+      "pdfSha256": "be8b474d7519cc9b277456a75d7a85544d1e0aa3ec7f195cfa2b32438276d2b9",
       "totalPageCount": 67,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -24117,7 +24117,7 @@
     {
       "bookId": 28,
       "pdfPath": "pdfs/book-028.pdf",
-      "pdfSha256": "d9d6ac9cd6f65538b2adfaa6245fcca84a4a3026cbc28b7e7be0ebc4a1c39a53",
+      "pdfSha256": "6c7124d329f4a5678eaf7746b2b76fd19eb2926f53e33c6e93159fdda4925391",
       "totalPageCount": 71,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -25794,7 +25794,7 @@
     {
       "bookId": 29,
       "pdfPath": "pdfs/book-029.pdf",
-      "pdfSha256": "e1623415337cb5a34e0d3a23cd582d9786a196f99776b75f5be192ea97c17caf",
+      "pdfSha256": "a03b7eb799176a0e52d93033dfe09191006e94e033e2f71c6dd009a7ee8458cc",
       "totalPageCount": 70,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -27442,7 +27442,7 @@
     {
       "bookId": 30,
       "pdfPath": "pdfs/book-030.pdf",
-      "pdfSha256": "65c165963ee4d289e7923a3631ab961b5ae007ea2344b4ebd16e1dd61f073c14",
+      "pdfSha256": "ec463b875f75bfd966349543579e1effd83203b06813960ef8683a1b533bad8a",
       "totalPageCount": 71,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -29125,7 +29125,7 @@
     {
       "bookId": 31,
       "pdfPath": "pdfs/book-031.pdf",
-      "pdfSha256": "44376c75b75a800e726a51bf701a684648646b0b3960ce07d146a89009ca4a4c",
+      "pdfSha256": "9cc88940a43073c956b7fe5e83f942bcf184aed7eb0bdc53140f20d072354bf6",
       "totalPageCount": 62,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -30589,7 +30589,7 @@
     {
       "bookId": 32,
       "pdfPath": "pdfs/book-032.pdf",
-      "pdfSha256": "61edfecb03ed3477aa0baea80862d472b444b20890bdfd7665ba9a137c4060b1",
+      "pdfSha256": "cdd5a84a53d6e3138e0c8b010436819b4b464b19e65709fec537397e0f5bb93a",
       "totalPageCount": 72,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -32295,7 +32295,7 @@
     {
       "bookId": 33,
       "pdfPath": "pdfs/book-033.pdf",
-      "pdfSha256": "9b86c532a23da82147bbc72ec910c884e7e21a47808c8468cd0e5eaf6f31a885",
+      "pdfSha256": "97609f896a634088557d92ba4bccd504409ee6997b2791811104aba45098f1d0",
       "totalPageCount": 68,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -33903,7 +33903,7 @@
     {
       "bookId": 34,
       "pdfPath": "pdfs/book-034.pdf",
-      "pdfSha256": "26b465bf20d93ae127b4eb0e3860dda6817703a64d24109082df928988941565",
+      "pdfSha256": "b75c615c1a9ac3d0a03371cc676f012aa0b59d093c6d76ca373d6cb9eb781efc",
       "totalPageCount": 51,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -35096,7 +35096,7 @@
     {
       "bookId": 35,
       "pdfPath": "pdfs/book-035.pdf",
-      "pdfSha256": "1280e5c1349a868afd032deb9df302096a242b2ef03783ee8442ed3e7060f1e9",
+      "pdfSha256": "a447c8f99ec7d402445a584510969b59cf48169a827c97e3388fc23e0480bcf2",
       "totalPageCount": 60,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -36520,7 +36520,7 @@
     {
       "bookId": 36,
       "pdfPath": "pdfs/book-036.pdf",
-      "pdfSha256": "7f043405da3d8c8d81c17cad1c22ab144f1728457cd1ad48fde455b2840f3ce9",
+      "pdfSha256": "9367069cfe30a585a96954ea6111918113c0cb8f3a6bf955c9ae0a9472b12ab5",
       "totalPageCount": 55,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -37823,7 +37823,7 @@
     {
       "bookId": 37,
       "pdfPath": "pdfs/book-037.pdf",
-      "pdfSha256": "17058a65426e9e8acc3213d86c3e2cd4756c83880b5f9f10b88459dc6e7c880e",
+      "pdfSha256": "63c5fab3802588e1326c1dd5ed38c9d0d4d52488ddb9a003e4a748dd8ee3215d",
       "totalPageCount": 49,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -38968,7 +38968,7 @@
     {
       "bookId": 38,
       "pdfPath": "pdfs/book-038.pdf",
-      "pdfSha256": "f9a65aa0a059cb869c12c03072a2832a623d26fff31d05c4354f16d982e41c7f",
+      "pdfSha256": "14369a5dd0c5a70a75c204fda2c23f232e407996e21e3f252cb8e0f2d7ec5ef4",
       "totalPageCount": 67,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -40565,7 +40565,7 @@
     {
       "bookId": 39,
       "pdfPath": "pdfs/book-039.pdf",
-      "pdfSha256": "b5e44d2520263387281299647c65ff32796e3d8bc5943ce3efb5174f3c065662",
+      "pdfSha256": "e3539ede743dea3c263c2b0e62f36fe2cde8fd31ec5f6170fe54a7fdd1e60519",
       "totalPageCount": 68,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -42179,7 +42179,7 @@
     {
       "bookId": 40,
       "pdfPath": "pdfs/book-040.pdf",
-      "pdfSha256": "b41e5fc449246bd39b184e54b299a9cd71b9510075f95a8d515b1f6caca8ae91",
+      "pdfSha256": "9dc06ff8f7044f08fbac7b348e9fe1e44d23da460df0b9d397f316301ab5945e",
       "totalPageCount": 50,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -43348,7 +43348,7 @@
     {
       "bookId": 41,
       "pdfPath": "pdfs/book-041.pdf",
-      "pdfSha256": "622b3d38e388d2eb7326959806bb868f990f766a85bd8b88d6e46d1232ee34b3",
+      "pdfSha256": "983e094302ce1ff1f82a18c08b18e46906a7b38abbc3ebbed6c256fc6218a58d",
       "totalPageCount": 50,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -44542,7 +44542,7 @@
     {
       "bookId": 42,
       "pdfPath": "pdfs/book-042.pdf",
-      "pdfSha256": "c73228b7dbb285b676614af3fd9f3091528fd72ddd09ce3937e699f024f0731a",
+      "pdfSha256": "541cabae3df43ce247ddae2e0921b4f6cec13e0c0ae60864f9fd55cdf2ce30e6",
       "totalPageCount": 55,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -45851,7 +45851,7 @@
     {
       "bookId": 43,
       "pdfPath": "pdfs/book-043.pdf",
-      "pdfSha256": "7710a6fea617568bd4684e3f6c7271e2ba5fe19890ad31dd97d17d8faed59c8f",
+      "pdfSha256": "0a6371befff29a4df43aaee94d48fa01034429a3ea96aa495382c4e03bb5423d",
       "totalPageCount": 63,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -47344,7 +47344,7 @@
     {
       "bookId": 44,
       "pdfPath": "pdfs/book-044.pdf",
-      "pdfSha256": "99e18333602bc39e84e767fa6f5bc5172f10a23c25cf18e2b0d2aaa229db9847",
+      "pdfSha256": "ce3b345e6df8503b9f904bd549de3283c2469e5a1295b9c02b0a7c3633081b3b",
       "totalPageCount": 55,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -48647,7 +48647,7 @@
     {
       "bookId": 45,
       "pdfPath": "pdfs/book-045.pdf",
-      "pdfSha256": "d43182d51944d49dd4e0ac90b441ddef6165f9d7d37425b5c9e44a7c880ab8a6",
+      "pdfSha256": "5138273dc96a65014a2cf1a502ce67326808ddbd064d345ebdadf0ad4e88ce1a",
       "totalPageCount": 68,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -50255,7 +50255,7 @@
     {
       "bookId": 46,
       "pdfPath": "pdfs/book-046.pdf",
-      "pdfSha256": "e1c0bc5181a0b3155150a77c5f31fb74d5c2d5256bf2f19c9603c6295bcbaf4b",
+      "pdfSha256": "c49b0195811fd3ab0902bd583011bbf971631245cfd0164f7fc2622c1228d184",
       "totalPageCount": 71,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -51944,7 +51944,7 @@
     {
       "bookId": 47,
       "pdfPath": "pdfs/book-047.pdf",
-      "pdfSha256": "1b6ccc58d9742479b7065d0a159d3fabd0ca6360e902bdf3af63ed818b2d9281",
+      "pdfSha256": "41600e308b6a94bce0c28b08a20e44e877bd329f96913388d29bb12451e290a6",
       "totalPageCount": 59,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -53351,7 +53351,7 @@
     {
       "bookId": 48,
       "pdfPath": "pdfs/book-048.pdf",
-      "pdfSha256": "1fa8d08d4cbdc1f513c7b70f01f264554e1ff44c42d9a82968b77ac2e5913fe9",
+      "pdfSha256": "6c8872a40412b6857db1a19c6243b4ffe97d827bfe1aed013825d6d2292852d8",
       "totalPageCount": 67,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -54936,7 +54936,7 @@
     {
       "bookId": 49,
       "pdfPath": "pdfs/book-049.pdf",
-      "pdfSha256": "76f030c86896acf106d98dd9cb854c3c50c07639239950fdfa807db921ed5bf3",
+      "pdfSha256": "e3f8b93757ff2d74923b68d674eb37d46b08b9703a862ba4002d97077b4ad26b",
       "totalPageCount": 64,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -56452,7 +56452,7 @@
     {
       "bookId": 50,
       "pdfPath": "pdfs/book-050.pdf",
-      "pdfSha256": "77157628456c8d0398e9242afcd91fb169327abb519ba07d08da15e378b88c67",
+      "pdfSha256": "3a987e7ed7360a0ae03db1fb8e4465526fc86c0a1575cdf8d9ed30fc1d3439a8",
       "totalPageCount": 66,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -58026,7 +58026,7 @@
     {
       "bookId": 51,
       "pdfPath": "pdfs/book-051.pdf",
-      "pdfSha256": "a8ffd76554a7fbcebc64db3834b097113a22a6781cce5efde8d69b66d36caf20",
+      "pdfSha256": "d069ee9652cb307c7e14e1b792997d9890a8cc457500c08b8c9f42bb9f753996",
       "totalPageCount": 58,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -59410,7 +59410,7 @@
     {
       "bookId": 52,
       "pdfPath": "pdfs/book-052.pdf",
-      "pdfSha256": "d15df2c3fdfeb15121b8624d8969e65c3d9a9b1d0e13441515286e48c4e147a4",
+      "pdfSha256": "3baf4a7e7a931d0392f12f5cb52a7f0d0395ce92bba43c28b5836cd66020fc5e",
       "totalPageCount": 72,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -61110,7 +61110,7 @@
     {
       "bookId": 53,
       "pdfPath": "pdfs/book-053.pdf",
-      "pdfSha256": "7cab291907f72081ea4ffa2e01995652a9089bdaa3ea56345628e85bcff2e538",
+      "pdfSha256": "c687e0361e4b7dd1e86ec833177fe7f42eb5fc29350108f13bbd7b935c645b5f",
       "totalPageCount": 51,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -62321,7 +62321,7 @@
     {
       "bookId": 54,
       "pdfPath": "pdfs/book-054.pdf",
-      "pdfSha256": "cb5920c80e2384c6752fd7775006f0deabfde18bc4584fd03907285482e5cc7f",
+      "pdfSha256": "8a9edd250beb5b858ab0320257b7f67141ca7f8e697b958a348c9007cb62d516",
       "totalPageCount": 64,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -63843,7 +63843,7 @@
     {
       "bookId": 55,
       "pdfPath": "pdfs/book-055.pdf",
-      "pdfSha256": "0dbe3059754eb785274a2ebcc0ae03eaea1adc6fd4b81f4650436becc98e9cb7",
+      "pdfSha256": "79dc8a7738a044aaec40554793287b9c8c2b32492a49eb4c6ca9d30e7d5d8725",
       "totalPageCount": 56,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -65175,7 +65175,7 @@
     {
       "bookId": 56,
       "pdfPath": "pdfs/book-056.pdf",
-      "pdfSha256": "0037662dd5b1809b58ac7c8fa7326d98dab27f2c5fd54ded3c51c11df696dd69",
+      "pdfSha256": "a8073c179887c0599a3e78494055450df11b24361cff537603632b328e0ba378",
       "totalPageCount": 69,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -66806,7 +66806,7 @@
     {
       "bookId": 57,
       "pdfPath": "pdfs/book-057.pdf",
-      "pdfSha256": "b99d9c65c161380d097e5bfa4148b0b9d6761894b26c5b281a10d2ecc4137844",
+      "pdfSha256": "d5ba5991db603ba0417804852543c59a8662c755e0f11dedfb77dd8040359bac",
       "totalPageCount": 56,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -68144,7 +68144,7 @@
     {
       "bookId": 58,
       "pdfPath": "pdfs/book-058.pdf",
-      "pdfSha256": "3697ae8c538b8306c49605460d84d11c2dee3b842d239289c59ffe1d2264b5ca",
+      "pdfSha256": "937aba077eea0eae7ee502afaed34b5c8f2e34b0a0b45fe799acb1552366acb8",
       "totalPageCount": 54,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -69436,7 +69436,7 @@
     {
       "bookId": 59,
       "pdfPath": "pdfs/book-059.pdf",
-      "pdfSha256": "3b559d44ab6045269cb6d526b49ecd30f2ad19b6e8705bd975d76ea2225599e6",
+      "pdfSha256": "7543c5ee203975e8b4b4f741e94935ed9d69dcd849548ed3c3c539299fa988da",
       "totalPageCount": 51,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -70629,7 +70629,7 @@
     {
       "bookId": 60,
       "pdfPath": "pdfs/book-060.pdf",
-      "pdfSha256": "5b8acdc7f8ac241243bf0aef70f8e36f335eb0115c7cf0ad3b3022eef2911b78",
+      "pdfSha256": "89a2aa9eb7a264fb366f3a7fd8a623cc9cdab1d579079f15e2facd092a690df9",
       "totalPageCount": 72,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -72341,7 +72341,7 @@
     {
       "bookId": 61,
       "pdfPath": "pdfs/book-061.pdf",
-      "pdfSha256": "16848b28c5df816aea8cde16ee8668fafe33c29bcea7908cb4782891f8b3b4ba",
+      "pdfSha256": "9d3a0e320a4dffaab71c8b839d762f56ad0a86a990679eebe5bfc882d424f0bf",
       "totalPageCount": 71,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -74012,7 +74012,7 @@
     {
       "bookId": 62,
       "pdfPath": "pdfs/book-062.pdf",
-      "pdfSha256": "8e0d046c7e14bdf7e4c04cbdf9c3133eeb5f7050b0e7e947b1a52ed9be8ae049",
+      "pdfSha256": "6688a66091bd67410f71422810e45fa2621e6715a6d6c6424d53b974851fc7a7",
       "totalPageCount": 53,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -75269,7 +75269,7 @@
     {
       "bookId": 63,
       "pdfPath": "pdfs/book-063.pdf",
-      "pdfSha256": "4360a8b0f8a03cbcc4522701985c918be1b63b6f0fa957d7116fdd777599fdef",
+      "pdfSha256": "fe4de2e01527c18c567f2d23ed7a907c5f0132a0460250b94d9b96ab5c6db1b8",
       "totalPageCount": 48,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -76390,7 +76390,7 @@
     {
       "bookId": 64,
       "pdfPath": "pdfs/book-064.pdf",
-      "pdfSha256": "d1380534094efdefe9b250c445c852b194c15e65cf94cdf08aed1ffa2e3f458d",
+      "pdfSha256": "282949aa61487476cf4e7042bdfe35fb68982f4c31378d27dd223d8a9a53fb17",
       "totalPageCount": 63,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -77877,7 +77877,7 @@
     {
       "bookId": 65,
       "pdfPath": "pdfs/book-065.pdf",
-      "pdfSha256": "a2d8e92c74621412edbc04b3c500731ce568a7a86688f72fd55526c41555bfde",
+      "pdfSha256": "6e044b087062ab802954bcc4acd8c6605b2d95bc5d4e0dca995a80c038ae6fec",
       "totalPageCount": 61,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -79330,7 +79330,7 @@
     {
       "bookId": 66,
       "pdfPath": "pdfs/book-066.pdf",
-      "pdfSha256": "88768e3ca838673f50806e55ee4aacfa22034c5077278f4b5fb29239f4d50439",
+      "pdfSha256": "9ffc09365e9e708cfe01082fe6c5b19b30a703a8acdc0461cc78bbe65145b6f4",
       "totalPageCount": 53,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -80595,7 +80595,7 @@
     {
       "bookId": 67,
       "pdfPath": "pdfs/book-067.pdf",
-      "pdfSha256": "11044cae470efe9dea8cbed3fa512a4aac8b37efed4caee15d1bf55098ead34c",
+      "pdfSha256": "7da3fea420805d06667da7355f81edb6476b869ae89df6707eb8d616b9fd32bc",
       "totalPageCount": 71,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -82278,7 +82278,7 @@
     {
       "bookId": 68,
       "pdfPath": "pdfs/book-068.pdf",
-      "pdfSha256": "a128850ebd285b62330706c3e7467f8c088401de642677454ff3981e28926430",
+      "pdfSha256": "396b5e46d987ed1bfe0b67f6b4586dbf40ca7c2e4895917582c9d8d6cc5a21a9",
       "totalPageCount": 50,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -83462,7 +83462,7 @@
     {
       "bookId": 69,
       "pdfPath": "pdfs/book-069.pdf",
-      "pdfSha256": "126e109cc2b2d9ff0c01af17e06598e76d69d9477c974deffbce254123cfbbc3",
+      "pdfSha256": "02742e1b3ac18a364e0cfc6b02441ab4c90fb1d6fc9af71a9220e5c9f6bdc843",
       "totalPageCount": 51,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -84673,7 +84673,7 @@
     {
       "bookId": 70,
       "pdfPath": "pdfs/book-070.pdf",
-      "pdfSha256": "43e82d59883006c4060e8f66a901518c2aad6fe177e7e2c5444dbc6185012dcb",
+      "pdfSha256": "d0b7c337b41d9ded7b8a3bc0a3a099597ed2876809702760fbae191c46dba8de",
       "totalPageCount": 69,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -86298,7 +86298,7 @@
     {
       "bookId": 71,
       "pdfPath": "pdfs/book-071.pdf",
-      "pdfSha256": "28da3940c7e62145bd2bdc5a32d72091d3d13ca41d80f44eb41917c576641ccc",
+      "pdfSha256": "a0e567db755ef6aa5fd41dab12043cc6b2feb7e390428f9321f1ed2c4780d9f8",
       "totalPageCount": 50,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -87486,7 +87486,7 @@
     {
       "bookId": 72,
       "pdfPath": "pdfs/book-072.pdf",
-      "pdfSha256": "6902abc224bfeaeff8e7f46d5aceeacf151e4bba2e7d8bb34684fd87ae545e73",
+      "pdfSha256": "64b1905526e0dcb0e20022d84c3da23ff4742c66c0813d60af9e00eb1b555278",
       "totalPageCount": 58,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -88858,7 +88858,7 @@
     {
       "bookId": 73,
       "pdfPath": "pdfs/book-073.pdf",
-      "pdfSha256": "299af87be95e7099f755e94a4adc51a6e327339f11bcb20cf3743f992b78ecc3",
+      "pdfSha256": "a900bf39ecdc8abf1e26b6072cc961de6d58c5969456e87a724005588a3856d5",
       "totalPageCount": 70,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -90512,7 +90512,7 @@
     {
       "bookId": 74,
       "pdfPath": "pdfs/book-074.pdf",
-      "pdfSha256": "9abb9e0a988e1e33359f81ae4d60d872ba789e0ecec29c498ced1115c2ee0b60",
+      "pdfSha256": "b43929d465561575dc46a4ad23eb99467fe151c526ddbfbf6a351e9fc04b6b7a",
       "totalPageCount": 71,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -92189,7 +92189,7 @@
     {
       "bookId": 75,
       "pdfPath": "pdfs/book-075.pdf",
-      "pdfSha256": "46c557bd1caefd97d617150e64ddc8d5dbeaa4d182a948a8df977b3bdbf68f6c",
+      "pdfSha256": "18371ccad2c69a0f2bc298aed1856398261bb83ac718e19299a4256ca1a554e7",
       "totalPageCount": 55,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -93504,7 +93504,7 @@
     {
       "bookId": 76,
       "pdfPath": "pdfs/book-076.pdf",
-      "pdfSha256": "b816933b9f71e6261e5b85b4ba8dcc0fdd2d9e2e850aed5c462e57c6214c31ea",
+      "pdfSha256": "664f330e1db09285d404fc397f2b8790e8033b5a59428509d20640999d7bf2f7",
       "totalPageCount": 50,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -94698,7 +94698,7 @@
     {
       "bookId": 77,
       "pdfPath": "pdfs/book-077.pdf",
-      "pdfSha256": "fbad4752b9fea915267ea38ca74218f9980f5e7fe131ccc42656e9467b863cbd",
+      "pdfSha256": "80276a98e64c5fe91cecf50576d95c9972c392902bc35cbdaeee0000e01d7150",
       "totalPageCount": 60,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -96116,7 +96116,7 @@
     {
       "bookId": 78,
       "pdfPath": "pdfs/book-078.pdf",
-      "pdfSha256": "4f1a45c0398053169228e34e7fe907d4e667ab7259dba935b622e17b9ef417e7",
+      "pdfSha256": "e69ebf2650c79cfcc321b7a15293a08f1d2243bcc08a8398c0b143c103d39cc7",
       "totalPageCount": 57,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -97477,7 +97477,7 @@
     {
       "bookId": 79,
       "pdfPath": "pdfs/book-079.pdf",
-      "pdfSha256": "6eb83d5f214a043998d6c15899612b986e4eb5bbd3fac1fd8bdfbf89e2e88885",
+      "pdfSha256": "86c9f06570701efda14aa29ce5251950f289db18c86e8b4780c07685fc5a9237",
       "totalPageCount": 64,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -98993,7 +98993,7 @@
     {
       "bookId": 80,
       "pdfPath": "pdfs/book-080.pdf",
-      "pdfSha256": "15df72b5679d4dd9abcabfc017324ead9667ab52034a30b7f81a3adfb87de7d1",
+      "pdfSha256": "db39103b22af1fde3856fea8e7e24c99bec52a82ef26ab606e8e2a7a1a9835b1",
       "totalPageCount": 67,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -100590,7 +100590,7 @@
     {
       "bookId": 81,
       "pdfPath": "pdfs/book-081.pdf",
-      "pdfSha256": "3d652addbb213be08d8f5de00eeeead554a681b21f959f97a8f670c5917ae780",
+      "pdfSha256": "a6d7d4b52f6dae92a072e6df5b7de7c17b53c08d4f953db38e2d07b4703bd0f2",
       "totalPageCount": 66,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -102152,7 +102152,7 @@
     {
       "bookId": 82,
       "pdfPath": "pdfs/book-082.pdf",
-      "pdfSha256": "77afa705ee6e0fb90fe96eb0558feffb8226eb7dc2e89c50d1039bd6744bfa70",
+      "pdfSha256": "9d5e63d7eb6f2489ec3a92b798191e1867934ab4f0fe13784a1269961c13d3f8",
       "totalPageCount": 67,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -103743,7 +103743,7 @@
     {
       "bookId": 83,
       "pdfPath": "pdfs/book-083.pdf",
-      "pdfSha256": "d0eedb43da8b960b76f648b3ba472faca2caf86a6b49f7c6eb2481e29827ab7d",
+      "pdfSha256": "c2cddb4842fe5f1c5d4b634eb6aa69d7d7617102d0bfff8db60143d20a2af937",
       "totalPageCount": 61,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -105190,7 +105190,7 @@
     {
       "bookId": 84,
       "pdfPath": "pdfs/book-084.pdf",
-      "pdfSha256": "1a143d741c9569a064269a944a43097bb18f5a6f75a9579350b7917c2361f4a7",
+      "pdfSha256": "0c89185c2722fb011a8db0f99e7fd65760b042e1925854b77c9cfd2768881254",
       "totalPageCount": 49,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -106347,7 +106347,7 @@
     {
       "bookId": 85,
       "pdfPath": "pdfs/book-085.pdf",
-      "pdfSha256": "bf102391405e0ed9d6eeb77618d9dea252557417cad32212882aaac4df919ffb",
+      "pdfSha256": "24160cb37a535b1c6fad0a1e72521e8c215831e14b1c5fb9aea8f5da535b2d88",
       "totalPageCount": 66,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -107915,7 +107915,7 @@
     {
       "bookId": 86,
       "pdfPath": "pdfs/book-086.pdf",
-      "pdfSha256": "0d9bccc55207bdcd921f2e74e1ce929dd9c4d36416137944c7e0bf60bad0c345",
+      "pdfSha256": "9c9886145c9ac0cb32a3ecec0dde458b9cb3c21a115ffef22e067aef4a5c86f3",
       "totalPageCount": 60,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -109351,7 +109351,7 @@
     {
       "bookId": 87,
       "pdfPath": "pdfs/book-087.pdf",
-      "pdfSha256": "d30f360456f35ab6853a86885dbc40ec06e32cfb28bfbc14e9c86965fa691032",
+      "pdfSha256": "9e4dc0a87ba2bd30a883ee851ba85b73544268fcb7362e363aa4c07c0409a451",
       "totalPageCount": 65,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -110890,7 +110890,7 @@
     {
       "bookId": 88,
       "pdfPath": "pdfs/book-088.pdf",
-      "pdfSha256": "4f9ba19d7db1db8e6439e2edb38d26e47b61fdb9ddc4b709f28a0f65279dce22",
+      "pdfSha256": "7d669ea7c93dfb12e0647cb0b0a8a9ea474fa673005e6b92641d10a2f21d9728",
       "totalPageCount": 53,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -112155,7 +112155,7 @@
     {
       "bookId": 89,
       "pdfPath": "pdfs/book-089.pdf",
-      "pdfSha256": "d9347036007f1ce65cbf5beef874f20cdfd9a8e1d563e31a627086c1bf162f0d",
+      "pdfSha256": "897ff72fb135282a51b9582d16a729bfdf9cb520d91c348c612b61ac5c13aacd",
       "totalPageCount": 66,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -113729,7 +113729,7 @@
     {
       "bookId": 90,
       "pdfPath": "pdfs/book-090.pdf",
-      "pdfSha256": "891b28992daef706cadd0c423ba8003fd485678385576a1243285f71e24938f2",
+      "pdfSha256": "4c9a01a106a8df651f048c940a96644fa3dc3516a3e7397e0928753e7ea7763a",
       "totalPageCount": 66,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -115303,7 +115303,7 @@
     {
       "bookId": 91,
       "pdfPath": "pdfs/book-091.pdf",
-      "pdfSha256": "55dd047a198615ebad3d31e832c177c7d9c43cbae53ddd198f772b6450a1ecfd",
+      "pdfSha256": "848d91f13dd0a1fe6cd3d4e9725565607276b594a15b7465a63007114d057e15",
       "totalPageCount": 58,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -116685,7 +116685,7 @@
     {
       "bookId": 92,
       "pdfPath": "pdfs/book-092.pdf",
-      "pdfSha256": "1074627f0aeda08cdfe7f684ca991b319a3808728a42fe68db5416a1c839a5d3",
+      "pdfSha256": "6cd2471d3865a3b6319f093a01abd41fa333bc84c05050cacc127d9d7807e5b2",
       "totalPageCount": 62,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -118155,7 +118155,7 @@
     {
       "bookId": 93,
       "pdfPath": "pdfs/book-093.pdf",
-      "pdfSha256": "7ebfe1243c278d5c160737bece86a9f6514b56d100b03e2b9dfd83daaba074d7",
+      "pdfSha256": "b24dda2fc90d7b887e7cc9c51bef3057bb5dd84da0c0ed15ed0e7105298aee9b",
       "totalPageCount": 66,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -119711,7 +119711,7 @@
     {
       "bookId": 94,
       "pdfPath": "pdfs/book-094.pdf",
-      "pdfSha256": "a5b8823bbc9f8c5f3df9159c7d7bf3261af3c866cdcd242232881719ea6f4c73",
+      "pdfSha256": "fe0a31273cd72466d7822c1111394cb1e106f39655f227c423457888fa58b59e",
       "totalPageCount": 54,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -120991,7 +120991,7 @@
     {
       "bookId": 95,
       "pdfPath": "pdfs/book-095.pdf",
-      "pdfSha256": "5bd9977f266750cd8af335dff421c372be80dd0361879cb2deb1759a03f96a1f",
+      "pdfSha256": "fad187911260c403cd7b4d7adc5f235865e62db7141d5d8517e6efcd0099fcab",
       "totalPageCount": 54,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -122265,7 +122265,7 @@
     {
       "bookId": 96,
       "pdfPath": "pdfs/book-096.pdf",
-      "pdfSha256": "83681c1861544598adca5f07edc08dd55ec92a3a394a1c417cd36436e9857aa1",
+      "pdfSha256": "d9e60edec9a0e6e5c2d5beb07609519badd80259a95f25a0c89ad113120d83d3",
       "totalPageCount": 60,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -123689,7 +123689,7 @@
     {
       "bookId": 97,
       "pdfPath": "pdfs/book-097.pdf",
-      "pdfSha256": "d7bd9becbe4c30523b96524268f0c8983d0fdd15fb182d0f5bd300ab2de844be",
+      "pdfSha256": "c6e1e20bd7f6d3d309913d44578e81479a4765b80f6b30278f157a50e7a5aa20",
       "totalPageCount": 59,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -125090,7 +125090,7 @@
     {
       "bookId": 98,
       "pdfPath": "pdfs/book-098.pdf",
-      "pdfSha256": "6148898096a579a341cd61a06d230d7f805e01c175d77625d5e22bff164fe810",
+      "pdfSha256": "52b5014e3dd625fa9f6d90e515a3c676cf2cbf32b87e49633b07dfcad8a845ad",
       "totalPageCount": 58,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -126474,7 +126474,7 @@
     {
       "bookId": 99,
       "pdfPath": "pdfs/book-099.pdf",
-      "pdfSha256": "db905a564102e2926150a6d23cf9cf6038a4e746cdc01c8fb5bce67e3e451305",
+      "pdfSha256": "d8c1661e51e10b0a4fb479794ca2318f2e7c5757baacce6e4218441049a9ae4e",
       "totalPageCount": 61,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -127921,7 +127921,7 @@
     {
       "bookId": 100,
       "pdfPath": "pdfs/book-100.pdf",
-      "pdfSha256": "b4769df7b53cfd61cf373089e0f4637af5018a5d643a89f1ff432c72b2536382",
+      "pdfSha256": "44ecc2d47ec5b292c6298e6ee85419823a84bd3ce07ffab62675912f2320743e",
       "totalPageCount": 55,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,

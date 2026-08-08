@@ -1,7 +1,7 @@
 {
   "contentVersion": "ai-route-v2",
-  "verifiedAt": "2026-08-07",
-  "manifestSha256": "29d3a47bd1f3be0912938072506b68f5ab2ff211d03ba8951a7ace9318f74fc2",
+  "verifiedAt": "2026-08-08",
+  "manifestSha256": "b6abf3404b184000d3eff0028f8489e0c9957c69f30d46da0a7b0c99591886c0",
   "evaluationSha256": "cd869ef0436211b0816e6c20f6f0d5666649f4950a0d8f4898a9b690038e539b",
   "sourceLedgerSha256": "a42f12b49bfdde00ca556a3c8b25460b45e9eb07fdfedbff4a07148050eceddb",
   "books": 100,
@@ -41,7 +41,9 @@
     "NOVEL_INITIAL_V1_PRESERVATION",
     "REFERENCE_ONLY_SOURCE_BOUNDARY",
     "SOURCE_IMAGE_ABSENCE",
-    "PERSONAL_CONTACT_PATTERN_SCAN"
+    "PERSONAL_CONTACT_PATTERN_SCAN",
+    "CATALOG_COVER_ALIGNMENT",
+    "PUBLISHER_NAME_SPELLING"
   ],
   "automatedStatus": "PASS",
   "humanReviewStatus": "PENDING_HUMAN_REVIEW"
