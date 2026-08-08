@@ -1,6 +1,6 @@
 {
   "contentVersion": "ai-route-v2",
-  "reviewDate": "2026-08-08",
+  "reviewDate": "2026-08-09",
   "sourceMetadataSha256": "2b8da48bc08e67c1b042ec855c01da893477f7e4a64f45e1dda0a1c562fab52b",
   "sourceLedgerSha256": "a42f12b49bfdde00ca556a3c8b25460b45e9eb07fdfedbff4a07148050eceddb",
   "generationEnvironment": {
@@ -26,19 +26,26 @@
     "publisherNameSpelling": "PASS",
     "imageMetadataAlignment": "PASS",
     "analysisGrammarAndVariation": "PASS",
+    "relatedContextKoreanParticles": "PASS",
     "oneGeneratedPhotoPerCandidateBook": "PASS",
     "generatedImageAssetSha256": "PASS",
-    "diagramPagesAbsent": "PASS",
-    "reflectionPromptAbsence": "PASS",
-    "bodyVerticalCentering": "PASS"
+    "endOfChapterReflectionPromptAbsence": "PASS",
+    "counterpointPageAbsence": "PASS",
+    "sourceBodyTextPreservation": "PASS",
+    "bodyTextNotObscured": "PASS",
+    "bodyVerticalCentering": "PASS",
+    "bodySafeAreaMargins": "PASS",
+    "endOfChapterPromptBoxGraphicAbsence": "PASS",
+    "promptBoxGraphicAbsence": "PASS",
+    "reflectionPromptAbsence": "PASS"
   },
   "humanReviewGate": {
-    "status": "HUMAN_REVIEW_COMPLETED",
+    "status": "PENDING_HUMAN_REVIEW",
     "requiredBefore": [
       "C03_EMBEDDING",
       "AI_ROUTE_SUPPORT_ACTIVATION"
     ],
-    "reason": "비소설 90권의 문체, 사실성, 장 간 연결과 AI 생성 사진의 주제 적합성에 대한 사람 편집 검수를 완료했습니다."
+    "reason": "자동 검증과 전체 PDF 렌더 검수 뒤에도 문체, 사실성, 장 간 연결과 AI 생성 사진의 적합성은 사람 편집 검수가 필요합니다."
   },
   "files": [
     {
@@ -134,1171 +141,1171 @@
     {
       "bookId": 11,
       "pdfPath": "pdfs/book-011.pdf",
-      "pdfSha256": "5719603bea2cf561fa37c1859b88c20f83582ac2fd3bb42d27250039b7925aa0",
+      "pdfSha256": "de8a9336702fa195b3a23132cc6659de0e4f31b0f4b1c91e1524beed846ec530",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 11,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-02.svg"
     },
     {
       "bookId": 12,
       "pdfPath": "pdfs/book-012.pdf",
-      "pdfSha256": "54d5b3b048ccc0d1c51b6e740100358161d4a8964113422efca2e2c439cff585",
+      "pdfSha256": "60b11e8182c3321e252810f03a3efd98fdfd5ee5f52517db63876883de6479b7",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 12,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-02.svg"
     },
     {
       "bookId": 13,
       "pdfPath": "pdfs/book-013.pdf",
-      "pdfSha256": "945bb509325de01d22505615db2ae61b8e52ac91d3bc8e5a99208b314442f8b4",
+      "pdfSha256": "4ca3b9d387caed1c66cf4c51d1877bd5ff8278036fec22da2cdd139a321002a6",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 13,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-02.svg"
     },
     {
       "bookId": 14,
       "pdfPath": "pdfs/book-014.pdf",
-      "pdfSha256": "060de638f9645b056a418dd10dc98ad02deaa4b3543af546939d0b90f726bb2c",
+      "pdfSha256": "9fd0b27953231953db2ff431ff3828f3b1cc34688255b08919b985ff2f72a136",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 14,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-02.svg"
     },
     {
       "bookId": 15,
       "pdfPath": "pdfs/book-015.pdf",
-      "pdfSha256": "69125ee77d5333c9461e6582eb426bce3942ea8c37216f7ec35cbdcebafb49e9",
+      "pdfSha256": "5c37ff6d61c4d2f49be765f12c6ac9d59da9710cdee47e62c87ffb15096d6302",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 15,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-02.svg"
     },
     {
       "bookId": 16,
       "pdfPath": "pdfs/book-016.pdf",
-      "pdfSha256": "89672f2c5c4400c46403427886df9c8c636670ad13ab5f130f3511ef427023e7",
+      "pdfSha256": "9b59d791adfd759517068f2f802b3d06fecad37498ae2e5f5615dcbcacef8db8",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 16,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-02.svg"
     },
     {
       "bookId": 17,
       "pdfPath": "pdfs/book-017.pdf",
-      "pdfSha256": "99161d955dcf586f0ff2a244b94e470aef2c283dfd151a6a0b65fb236e6f0fa6",
+      "pdfSha256": "ea72612692a20805f8c37d91f10b187e5a9b3363a3321f041ca96d9431ab6c64",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 17,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-02.svg"
     },
     {
       "bookId": 18,
       "pdfPath": "pdfs/book-018.pdf",
-      "pdfSha256": "edea6ca6f0bda7096f6a6b491a0b4d108db2522be0bff7f3ef5043f940772be8",
+      "pdfSha256": "09b794967debc063323b57b749ab56f85251471145e56453ccf8341ad60faf1d",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 18,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-02.svg"
     },
     {
       "bookId": 19,
       "pdfPath": "pdfs/book-019.pdf",
-      "pdfSha256": "6bb3b93d4fd2381df4c6682f6595cc17879e26bf47b54775648bcb413737b9fb",
+      "pdfSha256": "b2a508fb1da9072f9d9bca7fd89a60d25ece171b3c22829bab3989be100af141",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 19,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-02.svg"
     },
     {
       "bookId": 20,
       "pdfPath": "pdfs/book-020.pdf",
-      "pdfSha256": "aad3605a2a0c05136ea3e84fcd884ee08e4d3b24eae2a4abddda9902dfa5762b",
+      "pdfSha256": "a28bad7b47a64cf012763017724614530a649872b51efb8b22dc045ea61fafc2",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 20,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-02.svg"
     },
     {
       "bookId": 21,
       "pdfPath": "pdfs/book-021.pdf",
-      "pdfSha256": "b2f43972cdb64508c0552c03e6bb65ff7e2aecf3eb536d692459d85f0ded2481",
+      "pdfSha256": "aa2aebcbc5f208a65e0d216130978d33d989ed3072dfe76b1c909aaac39378e7",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 21,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-03.svg"
     },
     {
       "bookId": 22,
       "pdfPath": "pdfs/book-022.pdf",
-      "pdfSha256": "63b07f6f17742144243c45f44d641fdee58c2bb348631c421c19f6c318289231",
+      "pdfSha256": "ad8eeed5ecf85d76dd4d8185dbaf95e3ab71aa6c7392372e4de8d826fb24c2ef",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 22,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-03.svg"
     },
     {
       "bookId": 23,
       "pdfPath": "pdfs/book-023.pdf",
-      "pdfSha256": "17e703f2e3388a89ac6ed52ee7146903c8f535b04a0c4962b54bd067555686bb",
+      "pdfSha256": "47e313a161a8466c15c4b7c940b91b6af69d23e164767a2a726724e1a938e45d",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 23,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-03.svg"
     },
     {
       "bookId": 24,
       "pdfPath": "pdfs/book-024.pdf",
-      "pdfSha256": "9c9ea76ad6bd022b6d87adcb0f5c94c67e603104f08b6e3a21f5aa7499f31bef",
+      "pdfSha256": "b16564a7fb1a5f0e5075a8bb3d9c48899bb64aa0639a5c9e7d6da6ff334a8160",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 24,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-03.svg"
     },
     {
       "bookId": 25,
       "pdfPath": "pdfs/book-025.pdf",
-      "pdfSha256": "8d1c77e9d25fd8807d7c5107ca1a968ce4f0a14be8e59c60c6642296267a4773",
+      "pdfSha256": "83c62907a42d918410fe225f5910be5745e66644f678330233bd2e3a5e5cfb10",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 25,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-03.svg"
     },
     {
       "bookId": 26,
       "pdfPath": "pdfs/book-026.pdf",
-      "pdfSha256": "e9e4ce574958049c995c2e284843595896d59f9791228ebb4347153fbd5e25fa",
+      "pdfSha256": "b1e65152b360b0d1d198e0a4f33271d54f74f835393bdb4fa734989e23e3aa69",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 26,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-03.svg"
     },
     {
       "bookId": 27,
       "pdfPath": "pdfs/book-027.pdf",
-      "pdfSha256": "42743875fa4620b9802772884b8722a72b416dd4d871ad8645e649bb026149a9",
+      "pdfSha256": "a2cbdf7cf0bbb18d6b28811a378095b7fb0f80132789ad9a8e4eea85ef94d42f",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 27,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-03.svg"
     },
     {
       "bookId": 28,
       "pdfPath": "pdfs/book-028.pdf",
-      "pdfSha256": "e863903aed4e6545d0db6238db60cf637f8f82424ad46296b66d0a5294c6a0b9",
+      "pdfSha256": "03d7d8d2f1d5395f9a5dea9172570e519e445be23c683e0d1bc5dabffc3c4662",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 28,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-03.svg"
     },
     {
       "bookId": 29,
       "pdfPath": "pdfs/book-029.pdf",
-      "pdfSha256": "4ae4e60c7c7a58f93f576f7f86b1ddde9666c9f2c0a80da9f64eb34a3014c6af",
+      "pdfSha256": "2ace17758741332593a8601fd017c56690c4ea33b3641359358d81d9f4dca207",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 29,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-03.svg"
     },
     {
       "bookId": 30,
       "pdfPath": "pdfs/book-030.pdf",
-      "pdfSha256": "650e8a7af3d058ff3a1ef0276bdd5aee04ee6decf2e36d7ceecc45e6f3393518",
+      "pdfSha256": "91c52836e64d0cb170ca46018101f050bef7916b7791ebf191fb1730bd00670a",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 30,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-03.svg"
     },
     {
       "bookId": 31,
       "pdfPath": "pdfs/book-031.pdf",
-      "pdfSha256": "6375906ea93784af0ac99ba48367f1769697eda27f71d756a29b5293b24881a2",
+      "pdfSha256": "59a4ba5df5f10e318139457d93e9f6722d1e3a9e4fb0bf78f5f0c2900c4d0030",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 31,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-04.svg"
     },
     {
       "bookId": 32,
       "pdfPath": "pdfs/book-032.pdf",
-      "pdfSha256": "8b788794f627ba6ff653a91ca682156f3c08cc79e2f4466c40b816de2afa123a",
+      "pdfSha256": "f20f149700fd650ca4e27a23edeeaa18e13806669991ccef40df5cd679505831",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 32,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-04.svg"
     },
     {
       "bookId": 33,
       "pdfPath": "pdfs/book-033.pdf",
-      "pdfSha256": "3efcec00cffc9f71595f552fb94fad6c72d1666c41985bcf51e80d33ef83f3c3",
+      "pdfSha256": "6c4ccf730ed4c6043f0bae984c49e51743a8413a9fcd36a2290d10a7be8dc5b1",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 33,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-04.svg"
     },
     {
       "bookId": 34,
       "pdfPath": "pdfs/book-034.pdf",
-      "pdfSha256": "7a1fec817602e2b18631236575647cdc2620e841d8f30759a42725f870e59913",
+      "pdfSha256": "5709fe896d310dd5532d568bfa15a2c0f03070088ea5c3f2adfdc16b9cf3be0f",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 34,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-04.svg"
     },
     {
       "bookId": 35,
       "pdfPath": "pdfs/book-035.pdf",
-      "pdfSha256": "6b951c56be9e8958f4c37c01d7609c803482f6a40e5ba9264df83f9ba51e464a",
+      "pdfSha256": "1b09431b42b8d3c5a1c06bf1307f56b3da2a735265e4f9a0fe333ae399bc18a4",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 35,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-04.svg"
     },
     {
       "bookId": 36,
       "pdfPath": "pdfs/book-036.pdf",
-      "pdfSha256": "79f85bf70eff1accd91b502d89897be452e8955df24da5c48d996d4cebdf86bd",
+      "pdfSha256": "a182e155dc9db15a0cd0ffa92f42cea0c8d3def4872711c0608699932fb4c920",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 36,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-04.svg"
     },
     {
       "bookId": 37,
       "pdfPath": "pdfs/book-037.pdf",
-      "pdfSha256": "8bb08fcd7bc8a6dbbf6a5261fe6bac5495918b93b7e7da12e4300668f8dd42e9",
+      "pdfSha256": "3162ca09780e2891e83b76f8afb659bfbfa148fda88b328f5899a3db30cd0841",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 37,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-04.svg"
     },
     {
       "bookId": 38,
       "pdfPath": "pdfs/book-038.pdf",
-      "pdfSha256": "5d38f3c7600c056a8e44fb69619f354da329943f1ede7409ee826649c4523744",
+      "pdfSha256": "1270da649af2087fb06519ee7ecf0e0bdb39cc8491e9e9c9e54b1ba46347b264",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 38,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-04.svg"
     },
     {
       "bookId": 39,
       "pdfPath": "pdfs/book-039.pdf",
-      "pdfSha256": "da64081e1b99e382cc0ce87bd2f269044beff7d37b0204deb6f621840b69bfc1",
+      "pdfSha256": "9ac52c8ac8efb94b5fd3eedb0eaee03df671c56016e9f33fcf5fc1956106fda0",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 39,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-04.svg"
     },
     {
       "bookId": 40,
       "pdfPath": "pdfs/book-040.pdf",
-      "pdfSha256": "75afaa2c8d6e8385ba494d5553b393a2ea1c75f80ced3a63d579bd130d42a1d4",
+      "pdfSha256": "543ad9c4029f15cb1f12af25d7136d3dc4d60de0915c761fa3cae8faa4df1795",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 40,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-04.svg"
     },
     {
       "bookId": 41,
       "pdfPath": "pdfs/book-041.pdf",
-      "pdfSha256": "e17232d9cbf281a5a33c1a00abbfca6c9b2bb24ff32bf777ebe189716653a7f7",
+      "pdfSha256": "0adb3f6bd21e761739a097bd61edfad187ed0c0c823ee0724af8a80e5de48d40",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 41,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-05.svg"
     },
     {
       "bookId": 42,
       "pdfPath": "pdfs/book-042.pdf",
-      "pdfSha256": "26cad8c6949d9b3bd385d60035761530eb63bf3acacc1f76a4ce829a46e26222",
+      "pdfSha256": "4e383f96a64219e28fa85c38c6a8dab86f63b12dbedd2e8a512f793a6c06a029",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 42,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-05.svg"
     },
     {
       "bookId": 43,
       "pdfPath": "pdfs/book-043.pdf",
-      "pdfSha256": "1c515531185aedad1252cd5be16f332887d71ddacc4c8cd66de25afe9be381b9",
+      "pdfSha256": "e0a4c5ad6e8b17cefe1a16ea7efdf1a6db5d285d9c6f15e26bb3f61a12cdcc43",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 43,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-05.svg"
     },
     {
       "bookId": 44,
       "pdfPath": "pdfs/book-044.pdf",
-      "pdfSha256": "ee3a02d93380bccdedd182e314184ddf4f76f36f513e3e6bb88a9355ee953d8c",
+      "pdfSha256": "243bcfddcfed17232c13299694f8a3f9dc63cc790dce72ca711081eacee9de07",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 44,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-05.svg"
     },
     {
       "bookId": 45,
       "pdfPath": "pdfs/book-045.pdf",
-      "pdfSha256": "7d2e0e55b83f40909ab1914ba6f175d6e66e13d62af8641afe2a3bae7ff9f296",
+      "pdfSha256": "29ca3a7766be73627e78d26ad30bca7ad4554c530c5b9ccadac3246ffb744c6d",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 45,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-05.svg"
     },
     {
       "bookId": 46,
       "pdfPath": "pdfs/book-046.pdf",
-      "pdfSha256": "ecd6bae98172626270b6a09758b78837cff2e0a7b5c8077927c82b210b93070e",
+      "pdfSha256": "c75db543de108e8b10670804bf4f18c72320985f9e71eae0bad010af0185c0d3",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 46,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-05.svg"
     },
     {
       "bookId": 47,
       "pdfPath": "pdfs/book-047.pdf",
-      "pdfSha256": "ab3f3431793343e68d2f234c6ee0a739ea542595c48d997d995cc5f6b4296797",
+      "pdfSha256": "d7661d81765434190b212236e703172b7564dea8b663704bd096465386e9fcfb",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 47,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-05.svg"
     },
     {
       "bookId": 48,
       "pdfPath": "pdfs/book-048.pdf",
-      "pdfSha256": "74a765bf54f7826679a00f8f6e6507913f6f7ea40ac5021f0ab9de00202716ea",
+      "pdfSha256": "faae7ea4124bdd69c5d6ac178b32454431277e3071b551808e830e845feddbf1",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 48,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-05.svg"
     },
     {
       "bookId": 49,
       "pdfPath": "pdfs/book-049.pdf",
-      "pdfSha256": "a9b50c3970ff6426fad2b5a6e9a9458c3828753efb46f1da37f4d016f57a05dc",
+      "pdfSha256": "a26d2fa8bbf7c788adda9cade8a81e0928393947595a16ad6252f003383c12d0",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 49,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-05.svg"
     },
     {
       "bookId": 50,
       "pdfPath": "pdfs/book-050.pdf",
-      "pdfSha256": "666c63674f48471ed0dbf77ceada5ed069eb153a2858ae21c319041b24e60c4f",
+      "pdfSha256": "ce6f238fd8ea8daa04e93a93b0eef0f9169d4720a42d2d580ca268d1aedd6dd6",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 50,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-05.svg"
     },
     {
       "bookId": 51,
       "pdfPath": "pdfs/book-051.pdf",
-      "pdfSha256": "5a59f13b4bf30818a65fa6f9abfc764f1c3130a21aae580cfba4d776035deb51",
+      "pdfSha256": "348a53f59b9e58c35244da9aee0a9e735a8459a67c92979fe2ae74f05c643193",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 51,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-06.svg"
     },
     {
       "bookId": 52,
       "pdfPath": "pdfs/book-052.pdf",
-      "pdfSha256": "d3137acb75ead4a5ebe27313f4ccc8578f64d5971e45b01b62aae5d6e2d28cce",
+      "pdfSha256": "dee6c5f683eb10e09099bf609559441708e3182df72ca9d4fe83aba2223f6dee",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 52,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-06.svg"
     },
     {
       "bookId": 53,
       "pdfPath": "pdfs/book-053.pdf",
-      "pdfSha256": "677e75fffbbf5db1d55e0863d05016a56e14ea8f1b8c10e28080e7d315d73973",
+      "pdfSha256": "cd4ed100ab6101d964a49fd645052f06a9c6b457466ba54e9c63c283a04ca2b3",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 53,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-06.svg"
     },
     {
       "bookId": 54,
       "pdfPath": "pdfs/book-054.pdf",
-      "pdfSha256": "f0528ce282c1ae941c85e4ed3e22d2c12d1ad8fe467cad52ab3fdbc7979d7e07",
+      "pdfSha256": "92f181b25dc9906d040007abd9ed1c68a398dd68670c95b7ba54117ddfe68277",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 54,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-06.svg"
     },
     {
       "bookId": 55,
       "pdfPath": "pdfs/book-055.pdf",
-      "pdfSha256": "09eb3adcd889748a496b963213fd95fb73959c962acb58e9a5011c416c813262",
+      "pdfSha256": "4d5e7e8fabc0fcf8f39edf44478320c0e536eef771c6d45dd42441450148080d",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 55,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-06.svg"
     },
     {
       "bookId": 56,
       "pdfPath": "pdfs/book-056.pdf",
-      "pdfSha256": "2b79f0268190263f63430d10213d509e4672f9243aff444ef480308288e1a231",
+      "pdfSha256": "a35a67eae94989983bf35567aa085607510e8a9245368282f4edfdda0f4e7dd6",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 56,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-06.svg"
     },
     {
       "bookId": 57,
       "pdfPath": "pdfs/book-057.pdf",
-      "pdfSha256": "901051d529e22e079316128949a75b4cdd5aad1f5e6e7c5fbed1c3851ebc6724",
+      "pdfSha256": "81a847e0a4bc5194570a7d51260fa3394f62fb22b7b4aa83e57aedb7d80070dc",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 57,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-06.svg"
     },
     {
       "bookId": 58,
       "pdfPath": "pdfs/book-058.pdf",
-      "pdfSha256": "695f52aef3fa878fb7000eae78569733e92982e9b140a9ca8c73957d06a6e0ea",
+      "pdfSha256": "dcb53e8a3b6d160e42519322f60f47a91daf950e5bd3a50a735263c07b3a34bc",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 58,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-06.svg"
     },
     {
       "bookId": 59,
       "pdfPath": "pdfs/book-059.pdf",
-      "pdfSha256": "7f92bfa029bad316564646eda23d42ca4b67ade2511259a6e91ad27cb36a50b4",
+      "pdfSha256": "ace4eeaf0765cb4e8f02941c25402d8c153921b47ccce6264f00079ce5d77e09",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 59,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-06.svg"
     },
     {
       "bookId": 60,
       "pdfPath": "pdfs/book-060.pdf",
-      "pdfSha256": "9cd70a1e7bd45a04d53f697711ff872ceead7d67c2e2dfec12e1354ac6bdf872",
+      "pdfSha256": "eb3233e13bd5df6d1164f788ce51a42fd105e51615efdd42d84da0b2433758f3",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 60,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-06.svg"
     },
     {
       "bookId": 61,
       "pdfPath": "pdfs/book-061.pdf",
-      "pdfSha256": "c3dbaf90ef1d3dab5a12fcba01485a572963aa8474b12031dd3605b7c2f9317f",
+      "pdfSha256": "b6cf6421f886e492cb83af68bf39e3d11d5581b4a1605b7552ba3b808247fba4",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 61,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-07.svg"
     },
     {
       "bookId": 62,
       "pdfPath": "pdfs/book-062.pdf",
-      "pdfSha256": "cabbb0cfa679683039d667fd238bb82871e77c483a1471ee42bae3c25c74870e",
+      "pdfSha256": "79fe66ac7a66db322eae7e9cafb2447e35c3f3a6a3a24de7360a7f15a453ee16",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 62,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-07.svg"
     },
     {
       "bookId": 63,
       "pdfPath": "pdfs/book-063.pdf",
-      "pdfSha256": "d59fa6b7182e3266c4c7e1f2055b114f3e0f7ed432bd88072ef22b3e880d201d",
+      "pdfSha256": "e6a2f9bc3b372b76765af111a18b82bb33d38a22b3c3d58db847bde1b757b555",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 63,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-07.svg"
     },
     {
       "bookId": 64,
       "pdfPath": "pdfs/book-064.pdf",
-      "pdfSha256": "e0af677e7fdf59d93610028ef943ffa9a8f57be0600a07255e4dd73552a34b4b",
+      "pdfSha256": "f565b2e4cae4ac0aeb35aaae5d76ac2ac03f94092336548461b4e637b298f5f6",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 64,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-07.svg"
     },
     {
       "bookId": 65,
       "pdfPath": "pdfs/book-065.pdf",
-      "pdfSha256": "8cd582c7fb86e3122d087cfe77bb36ea6e0f5e96173d61c2f5b2b9e474e199ab",
+      "pdfSha256": "3f8b6cf37c37b1698a7deb6380d5a4dafc87d944524b81f16e8bf364d9e5fade",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 65,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-07.svg"
     },
     {
       "bookId": 66,
       "pdfPath": "pdfs/book-066.pdf",
-      "pdfSha256": "9878554c0e1169ec51af8d25db16125f07c3a60c8c6b0c5c9b763665e95e30fa",
+      "pdfSha256": "caf2ed63c681aeab21aac236692c4b5e03573dd6df7dfb5560e32da5b9ef278c",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 66,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-07.svg"
     },
     {
       "bookId": 67,
       "pdfPath": "pdfs/book-067.pdf",
-      "pdfSha256": "341fb8254caaa40df026808f246ab6123fee259ea3acaa8246e197a5cbe4d9b6",
+      "pdfSha256": "22a86a6d02b8b76241482c91ab9f36a08f48abfaf35f7fdf13e12d07698fba03",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 67,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-07.svg"
     },
     {
       "bookId": 68,
       "pdfPath": "pdfs/book-068.pdf",
-      "pdfSha256": "93b88a00d8c2aae02b1fa27f3e570fab5c4d673a446f82be323a9e3986c333a1",
+      "pdfSha256": "71dd186d4833aa74cd2ef4f5391335af267fd01a528f9015c8f17da81d4dace9",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 68,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-07.svg"
     },
     {
       "bookId": 69,
       "pdfPath": "pdfs/book-069.pdf",
-      "pdfSha256": "83670ca2d37bbe7c610f0c107246d1ea1c2d3d6227a7be3b758bb37530177d91",
+      "pdfSha256": "e0608f7cae9bf26d76bba26f61e538de0e03a71510326996e97f59c8782613ec",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 69,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-07.svg"
     },
     {
       "bookId": 70,
       "pdfPath": "pdfs/book-070.pdf",
-      "pdfSha256": "ef7d3c8be495c85156fb2a604f922dbb0192d4881315d9f785598d584e151e18",
+      "pdfSha256": "b52e76e8acde76eefa488711202b5a5cf026a19cc4810d3a2247129b2db61145",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 70,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-07.svg"
     },
     {
       "bookId": 71,
       "pdfPath": "pdfs/book-071.pdf",
-      "pdfSha256": "64211b29d78f6596680fd1c799ca5af2973a949680440aa4fc32b2ae24c753ea",
+      "pdfSha256": "d05aaa0a9f65c156fa231eb8636f3a892509cf142caac7d3a3d1a60536830623",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 71,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-08.svg"
     },
     {
       "bookId": 72,
       "pdfPath": "pdfs/book-072.pdf",
-      "pdfSha256": "fd18f5dc46524e5391c7df19cc1dcff5e8be06b059f8a901d2f2a7ea443d20a4",
+      "pdfSha256": "13ef741b2dce15752d406749cadf90938bd12874ef66029c30daabb9de24ec1f",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 72,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-08.svg"
     },
     {
       "bookId": 73,
       "pdfPath": "pdfs/book-073.pdf",
-      "pdfSha256": "dd449abad19b3a6f4bb16ae506eecdf5e49d2831336ea3613225045a9363e077",
+      "pdfSha256": "875ef5fc45853eae28390882cd7638219cec6f51bdf4ae67ec9e8503fe485f8d",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 73,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-08.svg"
     },
     {
       "bookId": 74,
       "pdfPath": "pdfs/book-074.pdf",
-      "pdfSha256": "d96b36c98b5faa053fe50a6fa827cab91d1dd3362c0bc8e412a7378df7644f62",
+      "pdfSha256": "83e1c6373b2b2daa7d45431b19421765f7fc14aa165c9b78f646c778264d5dff",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 74,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-08.svg"
     },
     {
       "bookId": 75,
       "pdfPath": "pdfs/book-075.pdf",
-      "pdfSha256": "141a78de19ad9ff6acdee5b7d850bb159b7297a70e7ac42307edb57fce0cddfb",
+      "pdfSha256": "55d5ae401762faa70a410bb923247aedc443cb3caf5a49dd37d9611aa016e7a6",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 75,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-08.svg"
     },
     {
       "bookId": 76,
       "pdfPath": "pdfs/book-076.pdf",
-      "pdfSha256": "bee55c4f5f51418fe95222d91c79bdea06dd8958d348ab3790be65590bc6bb9c",
+      "pdfSha256": "3fea11c2d4b97ab0fa94567e6815e79a1326479d8bdb26f9c0339bd8fc18eaff",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 76,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-08.svg"
     },
     {
       "bookId": 77,
       "pdfPath": "pdfs/book-077.pdf",
-      "pdfSha256": "60b8d21138bbb2ff373410c573b9c193ecddf1b67433f3c08c1940b7e82dd34a",
+      "pdfSha256": "b9d28ac4d9a8cf18e8f574c652595abedf548e2b9ee85dd1fa0e19c197f24cff",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 77,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-08.svg"
     },
     {
       "bookId": 78,
       "pdfPath": "pdfs/book-078.pdf",
-      "pdfSha256": "955cd494ded55986636482ea566bbf94da33101d08f6ea0386288ea0033b6e32",
+      "pdfSha256": "609444d472541811c1375db75261abbfa43aaf8150fec5fe1de11e02d411aee0",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 78,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-08.svg"
     },
     {
       "bookId": 79,
       "pdfPath": "pdfs/book-079.pdf",
-      "pdfSha256": "0fccf57e65a12c09deee3cf4b34dd8ce452f8110e1161762d69637544d8490bb",
+      "pdfSha256": "c31d5a6ec930f093ff10b85886ae871ad1730af592653e0dda9a99e40d321113",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 79,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-08.svg"
     },
     {
       "bookId": 80,
       "pdfPath": "pdfs/book-080.pdf",
-      "pdfSha256": "78a8ad8dd0cabd15934a1815a1e235c5fd9e8b52cf46e4261d3a5e3f5ac9d25e",
+      "pdfSha256": "486727a17678a1be61f191b65b112767a59dfceba33372ee13ba90a50616f8db",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 80,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-08.svg"
     },
     {
       "bookId": 81,
       "pdfPath": "pdfs/book-081.pdf",
-      "pdfSha256": "6df3f946d21c4e1bd666a7edf46808444f6f4fe30fec99fc0ba5207a475af240",
+      "pdfSha256": "cfd787cb3b489f24bfb6823456e35b525c2da7feaca08836f207a1fc1c94c147",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 81,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-09.svg"
     },
     {
       "bookId": 82,
       "pdfPath": "pdfs/book-082.pdf",
-      "pdfSha256": "16fabccb1c68d1e41dbef1dcc244224fb1105afad5e59df77aca5999de273b2a",
+      "pdfSha256": "acc829d0fc645207596f7aca3ad7eb32e102f240cad9d021fc7c4181f4a6ee3d",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 82,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-09.svg"
     },
     {
       "bookId": 83,
       "pdfPath": "pdfs/book-083.pdf",
-      "pdfSha256": "c270dba6b4fbc9a6e6dcbadf5dd5d16aa92b944e2f02a0779fc9ccb69029050a",
+      "pdfSha256": "1ad5c9cce1a3d4a83ca1670938f9e9b4764b4dd6bdb73ed50162b85b23b654bf",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 83,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-09.svg"
     },
     {
       "bookId": 84,
       "pdfPath": "pdfs/book-084.pdf",
-      "pdfSha256": "fcf49269b7d740c3a371905cf4d55f0f71eb8f7cfea5b80bf9ac72299941bbf7",
+      "pdfSha256": "4c959bf59ba4e8dd78dab6f449181ec457d284560eb168457d6d847563b57830",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 84,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-09.svg"
     },
     {
       "bookId": 85,
       "pdfPath": "pdfs/book-085.pdf",
-      "pdfSha256": "ef41e8891e7b67738b825906c87e520624a4695d4cb6944568481e3659aaeb6e",
+      "pdfSha256": "88fb1887e23c33d418b033008e55023adad4137b5c72884a729a59d8fb6f8bd5",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 85,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-09.svg"
     },
     {
       "bookId": 86,
       "pdfPath": "pdfs/book-086.pdf",
-      "pdfSha256": "c31a5b631dcf565f8fb1c9c176b7a85436510c227369dec6a02997ac6290b0a8",
+      "pdfSha256": "b42b16832fb09c959fbb1981106bcaf687b6e713e7e13efe5e3421ff5868fad9",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 86,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-09.svg"
     },
     {
       "bookId": 87,
       "pdfPath": "pdfs/book-087.pdf",
-      "pdfSha256": "bede1d625ee5eb6aefa7e67ed921a660e209c6463419ca27b36c9b2d56916cdd",
+      "pdfSha256": "f8bcb10fbf7d99c6eeac325eb43064f03818e65ea56ae8df2b2c545e605f55cf",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 87,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-09.svg"
     },
     {
       "bookId": 88,
       "pdfPath": "pdfs/book-088.pdf",
-      "pdfSha256": "ee34415d9cd9fa3324eb563e96d3c41a2ac0504b4872c8baf780b26d13939832",
+      "pdfSha256": "5cfa71106643a96172b0421ef66139c8ba7438c9e8de5ec9b6f30009cb8850e9",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 88,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-09.svg"
     },
     {
       "bookId": 89,
       "pdfPath": "pdfs/book-089.pdf",
-      "pdfSha256": "9857ef64f21b90edfc02f5d64481f5a5d3bdeb7cada2d31c87114b94b05c2cd8",
+      "pdfSha256": "66efa3df2f90ae87926d7c81bc43a6cabef53fad37b36f3cfe0287d890f7bee3",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 89,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-09.svg"
     },
     {
       "bookId": 90,
       "pdfPath": "pdfs/book-090.pdf",
-      "pdfSha256": "256d52e44ab9943618c423d36d8508a0cd3869127a481c5970bcf6e1779973eb",
+      "pdfSha256": "2214bfdcaad7c6804dabfdd3a8c99e8dd79604fc2096548e14106639f7f9a3ba",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 90,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-09.svg"
     },
     {
       "bookId": 91,
       "pdfPath": "pdfs/book-091.pdf",
-      "pdfSha256": "e985c734c92184fa3bb5eee6592c61f2fdcca2dbb34a43fef904ac86a242566c",
+      "pdfSha256": "06470d9be08c3cfb80a7e5c3478e692b45d949db8ab3f37e14b5471fbbbab5eb",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 91,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-10.svg"
     },
     {
       "bookId": 92,
       "pdfPath": "pdfs/book-092.pdf",
-      "pdfSha256": "1fc5a30b868d8935f04b74930202545d0d2e9f563d433a8ba40346a4b4693d46",
+      "pdfSha256": "8c17191c86d0e575abbbac7f0ccf32f12c4b29861cc332ef39ec3d1220202eaf",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 92,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-10.svg"
     },
     {
       "bookId": 93,
       "pdfPath": "pdfs/book-093.pdf",
-      "pdfSha256": "fc3aad813e16c5c919fd904c68ee92bf399bd01ec78685fe91d442bf938012f1",
+      "pdfSha256": "1a5559a229ba9dac9f6c5c7fec0496557f52e3442033a009614d91f9f75adcdf",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 93,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-10.svg"
     },
     {
       "bookId": 94,
       "pdfPath": "pdfs/book-094.pdf",
-      "pdfSha256": "8ee4a86b44c952dab374102d6f72e3c6faa4c7873f362ee8aa735ceed0ed93b8",
+      "pdfSha256": "47cabe1df7ebf2336abe35d5087babbdf6ab5856d188ce444c0674dfb0e9eab5",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 94,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-10.svg"
     },
     {
       "bookId": 95,
       "pdfPath": "pdfs/book-095.pdf",
-      "pdfSha256": "cf0fb62211a63d342844fb110b7cb23b95da2707a0248533643aa6cbe04f7fbb",
+      "pdfSha256": "23b7f6d1d06edce7c1f7f70762e3fbe6584a450b9597a0f6643064316fb2f874",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 95,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-10.svg"
     },
     {
       "bookId": 96,
       "pdfPath": "pdfs/book-096.pdf",
-      "pdfSha256": "152afd7bba7b1348a21fc2f013d2d77eed49c0dd1292ae8d78706212e3dff98c",
+      "pdfSha256": "8a604e6499da63a18aa6b732e980e8ae65241d0b6a16d551af88a1fae0667113",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 96,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-10.svg"
     },
     {
       "bookId": 97,
       "pdfPath": "pdfs/book-097.pdf",
-      "pdfSha256": "da81e4a1a4e4249ba7109ce2e708edc5d46445ea94a12fdd2de06f03a8024bb4",
+      "pdfSha256": "0cf67ddb6eae5f4e7afea2e13ed588dfe1424c522dcf00e64bc3e38616def2a3",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 97,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-10.svg"
     },
     {
       "bookId": 98,
       "pdfPath": "pdfs/book-098.pdf",
-      "pdfSha256": "e0ed96f3992a982350b0423acf5a98435e3ab24c34c87d06bd05bb99e6439c2d",
+      "pdfSha256": "fa0c19484c3bb454d42a077a1f66f7b6ee0278c24bb06bbd7b0d1459b49c1105",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 98,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-10.svg"
     },
     {
       "bookId": 99,
       "pdfPath": "pdfs/book-099.pdf",
-      "pdfSha256": "2e7518dda4a4ad5b0506c1ab3c685e190fdcaa48b0796b3442d08458464f47e9",
+      "pdfSha256": "d332a47615d5e77dd3c4a547198e7673e20f18bab5bb08f5a5f5c8b4769e12d3",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 99,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-10.svg"
     },
     {
       "bookId": 100,
       "pdfPath": "pdfs/book-100.pdf",
-      "pdfSha256": "13313347929b5d50ba6b815a6349148c442e15c2a7131db9b48c04a6d698f466",
+      "pdfSha256": "8f466146b1961aa3383db24f8de69974e05bfe7c784d0632c7b9e25bb307694d",
       "contentKind": "한국어 창작 전자책",
       "referenceLedgerBookId": 100,
       "automatedRightsStatus": "PASS",
       "automatedPersonalDataStatus": "PASS",
       "visibleLanguageStatus": "PASS",
       "forbiddenMetaPhraseStatus": "PASS",
-      "humanReviewStatus": "HUMAN_FILE_REVIEW_COMPLETED",
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW",
       "coverImagePath": "/assets/covers/demo/category-10.svg"
     }
   ],
@@ -1312,7 +1319,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "9572b96571dd94a355f7712dfd1ddd82779bff0633fce463dbd2632a310e2454",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 12,
@@ -1323,7 +1330,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "5ad85e10981ae5b858d28287cc7dec590b8ab9500570978bafd735014f9c856b",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 13,
@@ -1334,7 +1341,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "8e2e322d8ededd9a6ec5af8afb44c4269fdbcc792d64170bbe954ff446d2505c",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 14,
@@ -1345,7 +1352,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "179a50c75b2d3addd2b37228ade39bd7b75aaac49bb72a7b2ee2dbaa9f260552",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 15,
@@ -1356,7 +1363,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "8614cef125af578ff3393e4781879f01a1d6ec4a89ece911cf56d3bea4f361fc",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 16,
@@ -1367,7 +1374,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "8c1915137120b4666fd3ffa721ae75e5e097ada0100562958c0acfb91f69fdb1",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 17,
@@ -1378,7 +1385,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "463b8da42afe015f3227085a38ab6e7f70fd5bb9e8bef7e91680e5a32944e53e",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 18,
@@ -1389,7 +1396,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "1a7411d3de1abaf323b88d76db2a2743e9ef0861c5727a2935f586495dab845c",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 19,
@@ -1400,7 +1407,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "94622d3cc0bfd27320ecf6a24f1237a1f1070a57e899a986a395dffe33f912c2",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 20,
@@ -1411,7 +1418,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "24243362cfa8d6f6ce71d08bfc6b644a382c9c8372e10aba7c34d3f4abe413cd",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 21,
@@ -1422,7 +1429,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "dffab491b3cc00d4ae853548d8394d6b0150bdb154af4801755ffb92c97e44dc",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 22,
@@ -1433,7 +1440,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "9da51d22190d8632d01af772226cfa75cd9915121388df1520fa841bcf661fb4",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 23,
@@ -1444,7 +1451,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "e7cb8cef882c91f77f0f9286d8bbe63bb741726739b7829289f353ecd7129b70",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 24,
@@ -1455,7 +1462,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "4302480a980e5fde8d394cdf8b00801848c40ab1254197373a1dcde4eceae485",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 25,
@@ -1466,7 +1473,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "8619c2a30686853f4a24eec42e7c58c4f6ea25481426404cb0dca75d098aebce",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 26,
@@ -1477,7 +1484,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "ee21836cb9493d4c4a3a62f58dd0f7a045cb578e94b6972d44e97a6bef225a53",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 27,
@@ -1488,7 +1495,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "71c73ba2473e539e6a5676189ea243c25a51c399939a456d6d1c5a0513a58796",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 28,
@@ -1499,7 +1506,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "055c2379bfd60f7afb1eaa8d13754d4c530a2c73e598158de83c6319f540ebf1",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 29,
@@ -1510,7 +1517,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "dccef167f0a1e7c1a026310d05bff6b6324153c9fbd79c07bdb7b59c1fccbe60",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 30,
@@ -1521,7 +1528,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "f825cf401a48cb1d39fe6102fa259a78bc495e423ecbf69d4237c8782cc5af1d",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 31,
@@ -1532,7 +1539,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "c4999978abcafcfd558164dcad3fd0e0a59758d49b3d4c9e464454c53a2a5ed5",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 32,
@@ -1543,7 +1550,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "3e3c9b4818a536cfc0eee7f0e336c46308f2541e1c5b036c082251acb0055026",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 33,
@@ -1554,7 +1561,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "8d4f90fa74e2344175197a5f7425605c5005f52707253fe294259cfa2b0b0b3f",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 34,
@@ -1565,7 +1572,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "569f26d23c2a6ae3cd0273d687a164835b97aa901956cc52792051f12bcd24ad",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 35,
@@ -1576,7 +1583,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "217b17fd1455fde7d407944bdee2f97b4615b4afdb8497f540359927a2404777",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 36,
@@ -1587,7 +1594,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "28b3f04852c287e174e00977005b322974b1af1335e99b931e2cd4928c1a490e",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 37,
@@ -1598,7 +1605,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "dc39a02c79a4053da26d87de230df237d71b8fb2c6d365ec415e55a33da62c02",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 38,
@@ -1609,7 +1616,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "f3f5b7d812cd722be451d6de58557f39206a9286f161a40f9cbcfef314022d3a",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 39,
@@ -1620,7 +1627,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "35b3dd739415feb81a7b3de9621ccefcb312b4e2eb61decc87912957c1455b48",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 40,
@@ -1631,7 +1638,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "bee1d8e83730cfaff579d90bfc41835734845b99b14207211d34ec83ad8a739e",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 41,
@@ -1642,7 +1649,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "cdc5f0fb17866ce5183fa045664e67e8f4f0c6a459bad23db58ba76e68afbf73",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 42,
@@ -1653,7 +1660,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "99f21d2955cea97e058d46a3fb23aa7f5a3d5efac4567dcfbb676a4b1e0e3a01",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 43,
@@ -1664,7 +1671,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "49eefb6a5454f4814f9771d1e74f094ac00e845f6ec6e611d298a8f76de56f45",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 44,
@@ -1675,7 +1682,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "840319cd9899318794863fbf02ab14722d850f0cfde45044c75985d1345ce060",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 45,
@@ -1686,7 +1693,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "2938408bab89fc22bda2e310745b70e8ac3af707866c4ce6be03f54703220f04",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 46,
@@ -1697,7 +1704,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "99d3e70816345b1265c28cce8b8a0726a027f025cef8a503f69a80e78e2d9c6d",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 47,
@@ -1708,7 +1715,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "489e494ac0f90b71ac8ad999688366a4d9a80219b68386e867b1d79e3bc403ba",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 48,
@@ -1719,7 +1726,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "1abdcafad16d732a2a3308ddcb85ac02aef935c78c3b9fbf62e3fc8ed94231e2",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 49,
@@ -1730,7 +1737,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "cae6d7848b8bad9e84f56a587f24601f6305ab30d7a9ac815f90e8995165d077",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 50,
@@ -1741,7 +1748,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "a3b559174dc4065f68538a431ac05c0107b8257117ed766c755fb73cc580a07b",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 51,
@@ -1752,7 +1759,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "1e905fb69acb37bd9975b6ce0fc8b7e37f60c34c44c8ca4f00d4f0f915a64de1",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 52,
@@ -1763,7 +1770,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "624dd1edf6fe7dd33dd107cab5c524464b236fbcf269b0c1ad3affa90d8220d1",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 53,
@@ -1774,7 +1781,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "e22c2169cbeb7d7f8064010f9e3bc92cba0d9ba75f8e73bca3002c3048aab50b",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 54,
@@ -1785,7 +1792,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "f866c33a270d35de8f417b223feeaa47884eecf5f299267007563b74ca4cbc6e",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 55,
@@ -1796,7 +1803,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "6af0104bfe612fb0b04ffdfc02f2a48a1cb121e03307b80547a1634709e103dc",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 56,
@@ -1807,7 +1814,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "af36f4f562eb5c70f2e2516671209e04a5b2616a9c3cf4e88696d47157deded0",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 57,
@@ -1818,7 +1825,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "f24f4650643790a2e832d73a8cf6ebc812034f87d10108049e4c4c3fb0cfb5e3",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 58,
@@ -1829,7 +1836,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "910c05e4f14953e8842c3d52adf19fe56525a66934b3a12efbcc83527d5afaca",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 59,
@@ -1840,7 +1847,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "710d3787217257133d01f267b2b75a51c407d55e8c9daf99496b45b33b268842",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 60,
@@ -1851,7 +1858,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "2d3f393224b079f30fb4d1db9d2f72b700551a342805de439e99bfebb9daa4f2",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 61,
@@ -1862,7 +1869,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "c12748adcba2d4035fe4c152c2d11f7e2e15ee3ba8dc1e90f13edf8fc93ccf8d",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 62,
@@ -1873,7 +1880,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "b4f7825b4b454e78208cdf43f5a3b9b1b9f723e5b06ba9e8129e8a8ddf2bbadb",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 63,
@@ -1884,7 +1891,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "42f5b2e836f561351c9cd1d978058598dba1528d12cd7d49a8003c2a91b1cdd7",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 64,
@@ -1895,7 +1902,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "8231ff27f0b15004966422cc25f3a4acddd43393f7839368dc8e5c00ab6e23a1",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 65,
@@ -1906,7 +1913,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "17970b4d464f45a82a9320804484b04756b6a576055f0311d33b82df430510e2",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 66,
@@ -1917,7 +1924,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "524f782d229b64346b594ed4352a19aa04c9710d74cca88cf4b5e20f0cdc5d90",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 67,
@@ -1928,7 +1935,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "3e58f5b388c41d3ed6a4610bd95089f851dbf4801fad94a40ea9755c4a3024df",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 68,
@@ -1939,7 +1946,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "765276550f2778c480b58ea3df137fdd912344bd2f86b0a3da16ff73a03ad1c5",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 69,
@@ -1950,7 +1957,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "db328361abc010d0a97a52b42f0803ef020c8446e29cab538c092a40c0ca6156",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 70,
@@ -1961,7 +1968,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "1afa953eed1c87dbfbd30bef0ccae7600bf68e68f304c87eb0ac7c6a5a859500",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 71,
@@ -1972,7 +1979,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "ea3edf19ce319b7eaae5cf237911b7540f95c4bf8e851c91b60801cf4e2f2554",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 72,
@@ -1983,7 +1990,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "5058028549a1a42e9a0b3f7409ce8fd180fffef5d7e58adce38c6b4063904a57",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 73,
@@ -1994,7 +2001,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "4c18a549a44d75c8addd49b4913641f4fcb3e42b9a98ef0b19fe4437cb733937",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 74,
@@ -2005,7 +2012,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "7602ad44f721774808dee8699d9306eefd0711474592d6c17bd2899c8c7e6ec3",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 75,
@@ -2016,7 +2023,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "731a66397fca7d5434981d999523a24a3b16c722dbd3e19cfa13e0b2c53487dd",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 76,
@@ -2027,7 +2034,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "f6b8da38f9b9bfe5858e089423c18989a567d393d9108a6f8a87db9c91c5c506",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 77,
@@ -2038,7 +2045,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "3bb080d13e97b62578bec423687b986ef5711fcb7a28795f2a1c2d5809af141b",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 78,
@@ -2049,7 +2056,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "6e0cc616f84046a7cb08134d1fecc928397b10e9e41c0bf4d0b3dd71edd5d86b",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 79,
@@ -2060,7 +2067,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "070cb5f68728f39206a8332156306386b2ee1db0d40ab2342105899d13dac73c",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 80,
@@ -2071,7 +2078,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "4d164114df7842d1535d27adf096d6e2d9bef5fe43627a16e6a582e22dd9aed0",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 81,
@@ -2082,7 +2089,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "48c429e3050742f4c8985a49a4333c8c7dee876f5adeb1e7f5ca87c92ab17563",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 82,
@@ -2093,7 +2100,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "ac493b846387fc423a2ec2e6c99db9c7237606b59eb8abae8528035fcdaf33c9",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 83,
@@ -2104,7 +2111,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "f9acd5f1a6fa7b0e58f9469d362d8011bd31a4ef29202cd455773a5196010572",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 84,
@@ -2115,7 +2122,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "0be000bfb1e6527806c7c9a8a1de4a973d721c2794d262c803e4ee12fc0ac088",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 85,
@@ -2126,7 +2133,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "6173a95381ceaf2ce1599084ba419c2e73b5a6cabf98bd907fbb37e6115124be",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 86,
@@ -2137,7 +2144,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "db5fc09c15a5cee6ee29af332b6e1f9625bfeec5f9ff4a9d2f7a9b4e98468958",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 87,
@@ -2148,7 +2155,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "14a26f340c233e2d2e80271cb0a09a1b81c04e26a71b514ae2419eec8d757a7a",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 88,
@@ -2159,7 +2166,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "e27cdd6f19a7e4d5837171e130df3815e2d043e9e318d53b74aea0d9e0b2e2a7",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 89,
@@ -2170,7 +2177,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "f1b2a9ce0faf8fb965cf2771360ceaa6ddefbe4a013acefb72974b81f3111425",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 90,
@@ -2181,7 +2188,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "bb6f471bb937d3216779b1908b57512ce8f0320daa75be227270b1e6aa5e08e3",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 91,
@@ -2192,7 +2199,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "10d1ed8eb2d4a49041aff1d00e2cde41440bd5763030ea103c90bdddae6aca75",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 92,
@@ -2203,7 +2210,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "17c0d335c5fbe78dac70efb63ad4f65df911ce0cdc68931b6258bd8565220b3d",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 93,
@@ -2214,7 +2221,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "442cb9ac1dafa87fee16b50924c1622f4fda4d3c11e18ae391526b9de3e770ae",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 94,
@@ -2225,7 +2232,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "04159dce8b528040b009aba177ba16222609ed57468319888d9bec3528e8d6c4",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 95,
@@ -2236,7 +2243,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "e5e3937d62837638331e1051b9649c1d6bcaf171c972e70c9d97ab652a00f0a9",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 96,
@@ -2247,7 +2254,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "bd414aa7225d56ac38c296af9b90358ff6bfdac7147410fd45970a817869ffc2",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 97,
@@ -2258,7 +2265,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "79211ca2057abc0d07bd1e8582b83fa2d59654127a4ddecdfc72d55f0534b1a2",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 98,
@@ -2269,7 +2276,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "84a668db5a1c67389a6125e869d90ff6cccf0c0fb58942b5573523140ef43ba2",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 99,
@@ -2280,7 +2287,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "a57daa8c40807eaff7a4fdf584f071a927061d97b43a118ceb3c31b56582b9bd",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
     {
       "bookId": 100,
@@ -2291,7 +2298,7 @@
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
       "aiAnalysisInputSha256": "26f36951459bf3bd76a4b61dcf8ce81262052bad22d1ee86d3a9d296e38b392d",
       "automatedSourceAnalysisLink": "PASS",
-      "humanReviewStatus": "HUMAN_REVIEW_COMPLETED"
+      "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     }
   ]
 }

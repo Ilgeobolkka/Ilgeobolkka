@@ -82,6 +82,7 @@ jobs:
       - name: 테스트·검사·패키징
         env:
           RUN_CONTENT_IMPORT_INTEGRATION: "true"
+          RUN_AI_ROUTE_V2_PDF_INTEGRITY: "true"
           PDFTOTEXT_COMMAND: ${{ runner.temp }}/poppler-26.05.0/bin/pdftotext
           PDFTOPPM_COMMAND: ${{ runner.temp }}/poppler-26.05.0/bin/pdftoppm
         run: ./gradlew --no-daemon clean check build --warning-mode all

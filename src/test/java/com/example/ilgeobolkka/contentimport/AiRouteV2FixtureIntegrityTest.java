@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayDeque;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.ObjectMapper;
 
@@ -57,7 +59,7 @@ class AiRouteV2FixtureIntegrityTest {
                     "prerequisitePageNumbers",
                     "duplicateGroupKeys");
     private static final Set<String> CONTENT_ROLES =
-            Set.of("PREREQUISITE", "CORE", "EXAMPLE", "COUNTERPOINT", "CONCLUSION");
+            Set.of("PREREQUISITE", "CORE", "EXAMPLE", "CONCLUSION");
     private static final Set<String> CASE_FIELDS =
             Set.of(
                     "caseId",
@@ -207,6 +209,7 @@ class AiRouteV2FixtureIntegrityTest {
             assertEquals(CASE_FIELDS, Set.copyOf(evaluationCase.propertyNames()));
             String caseId = evaluationCase.get("caseId").asText();
             long bookId = evaluationCase.get("bookId").asLong();
+            assertFalse(evaluationCase.get("purpose").asText().contains("적용 한계"));
             assertTrue(caseIds.add(caseId), "중복 caseId: " + caseId);
             assertTrue(caseBookIds.add(bookId), "도서별 평가가 1건이 아님: " + bookId);
             JsonNode book = candidateBooks.get(bookId);
@@ -257,7 +260,7 @@ class AiRouteV2FixtureIntegrityTest {
     }
 
     @Test
-    void AI_생성_사진은_도서마다_한_장이고_도표는_없으며_검수를_마쳤다() throws IOException {
+    void AI_생성_사진과_자동_검증은_사람_검수_완료로_과장하지_않는다() throws IOException {
         JsonNode manifest = read(ROOT.resolve("manifest.json"));
         JsonNode evidence = read(ROOT.resolve("review-evidence.json"));
         JsonNode qualitySamples = read(ROOT.resolve("quality-samples.json"));
@@ -267,25 +270,71 @@ class AiRouteV2FixtureIntegrityTest {
         Map<Long, Integer> imageCounts = new HashMap<>();
 
         assertEquals(
-                "HUMAN_REVIEW_COMPLETED",
+                "PENDING_HUMAN_REVIEW",
                 evidence.get("humanReviewGate").get("status").asText());
-        assertEquals("HUMAN_REVIEW_COMPLETED", qualitySamples.get("humanReviewStatus").asText());
+        assertEquals(
+                "PASS",
+                evidence.get("automatedChecks").get("bodyVerticalCentering").asText());
+        assertEquals(
+                "PASS",
+                evidence.get("automatedChecks").get("bodySafeAreaMargins").asText());
+        assertEquals(
+                "PASS",
+                evidence
+                        .get("automatedChecks")
+                        .get("relatedContextKoreanParticles")
+                        .asText());
+        assertEquals(
+                "PASS",
+                evidence
+                        .get("automatedChecks")
+                        .get("endOfChapterReflectionPromptAbsence")
+                        .asText());
+        assertEquals(
+                "PASS",
+                evidence
+                        .get("automatedChecks")
+                        .get("endOfChapterPromptBoxGraphicAbsence")
+                        .asText());
+        assertEquals("PENDING_HUMAN_REVIEW", qualitySamples.get("humanReviewStatus").asText());
         assertEquals(
                 "PASS",
                 qualitySamples.get("checks").get("sampledNearDuplicateAppearance").asText());
-        assertEquals("HUMAN_REVIEW_COMPLETED", verificationSummary.get("humanReviewStatus").asText());
+        assertEquals(
+                "PASS",
+                qualitySamples
+                        .get("checks")
+                        .get("endOfChapterReflectionPromptAbsence")
+                        .asText());
+        assertEquals(
+                "PASS",
+                qualitySamples
+                        .get("checks")
+                        .get("endOfChapterPromptBoxGraphicAbsence")
+                        .asText());
+        assertEquals(
+                "PASS",
+                qualitySamples
+                        .get("checks")
+                        .get("relatedContextKoreanParticles")
+                        .asText());
+        assertTrue(
+                textSet(verificationSummary.get("automatedChecks"))
+                        .contains("RELATED_CONTEXT_KOREAN_PARTICLES"));
+        assertEquals("PENDING_HUMAN_REVIEW", verificationSummary.get("humanReviewStatus").asText());
         for (JsonNode file : evidence.get("files")) {
             if (candidateBooks.containsKey(file.get("bookId").asLong())) {
-                assertEquals("HUMAN_FILE_REVIEW_COMPLETED", file.get("humanReviewStatus").asText());
+                assertEquals("PENDING_HUMAN_REVIEW", file.get("humanReviewStatus").asText());
             }
         }
 
         for (JsonNode book : candidateBooks.values()) {
             for (JsonNode page : book.get("pages")) {
                 assertFalse(page.get("section").asText().contains("네 가지 확인"));
-                assertFalse(page.get("section").asText().contains("도표"));
-                assertFalse(page.get("aiAnalysisText").asText().contains("순환 도표"));
-                assertFalse(page.get("aiPublicGuideTopic").asText().contains("도표"));
+                assertFalse(page.get("section").asText().contains("반대 관점과 한계"));
+                assertFalse(page.get("contentRole").asText().equals("COUNTERPOINT"));
+                assertFalse(page.get("aiAnalysisText").asText().contains("반대 관점"));
+                assertFalse(page.get("aiPublicGuideTopic").asText().contains("반례"));
             }
         }
 
@@ -309,7 +358,7 @@ class AiRouteV2FixtureIntegrityTest {
             assertEquals(
                     "Codex 내장 imagegen 도구로 생성한 원본 사진",
                     imagePage.get("sourceMethod").asText());
-            assertEquals("HUMAN_REVIEW_COMPLETED", imagePage.get("humanReviewStatus").asText());
+            assertEquals("PENDING_HUMAN_REVIEW", imagePage.get("humanReviewStatus").asText());
 
             Path imagePath = ROOT.resolve(imagePage.get("imageAssetPath").asText());
             assertTrue(Files.isRegularFile(imagePath), "이미지 파일 누락: " + imagePath);
@@ -319,6 +368,141 @@ class AiRouteV2FixtureIntegrityTest {
         }
         assertEquals(candidateBooks.keySet(), imageCounts.keySet());
         assertTrue(imageCounts.values().stream().allMatch(count -> count == 1));
+    }
+
+    @Test
+    void 렌더링_표본은_10개_카테고리와_PDF_크기에_연결된다() throws IOException {
+        JsonNode manifest = read(ROOT.resolve("manifest.json"));
+        JsonNode qualitySamples = read(ROOT.resolve("quality-samples.json"));
+        Map<Long, JsonNode> manifestBooks = booksById(manifest.get("books"));
+        Map<Long, JsonNode> catalogBooks = catalogBooksById(read(BOOKS_PATH));
+        Set<Long> sampledBookIds = new HashSet<>();
+        Set<String> sampledCategories = new HashSet<>();
+
+        assertEquals(10, qualitySamples.get("sampledBooks").size());
+        for (JsonNode sampledBook : qualitySamples.get("sampledBooks")) {
+            long bookId = sampledBook.get("bookId").asLong();
+            JsonNode manifestBook = manifestBooks.get(bookId);
+            JsonNode catalogBook = catalogBooks.get(bookId);
+            Set<Integer> pageNumbers = intSet(sampledBook.get("pageNumbers"));
+
+            assertTrue(sampledBookIds.add(bookId), "중복 렌더링 표본: " + bookId);
+            assertNotNull(manifestBook, "manifest에 없는 렌더링 표본: " + bookId);
+            assertNotNull(catalogBook, "catalog에 없는 렌더링 표본: " + bookId);
+            assertEquals(catalogBook.get("category").asText(), sampledBook.get("category").asText());
+            assertTrue(sampledCategories.add(sampledBook.get("category").asText()));
+
+            Path pdfPath = ROOT.resolve(manifestBook.get("pdfPath").asText());
+            assertEquals(Files.size(pdfPath), sampledBook.get("pdfSizeBytes").asLong());
+            assertTrue(pageNumbers.contains(1), "첫 페이지 표본 누락: " + bookId);
+            assertTrue(
+                    pageNumbers.contains(manifestBook.get("totalPageCount").asInt()),
+                    "마지막 페이지 표본 누락: " + bookId);
+            assertTrue(
+                    pageNumbers.stream()
+                            .allMatch(
+                                    pageNumber ->
+                                            pageNumber >= 1
+                                                    && pageNumber
+                                                            <= manifestBook
+                                                                    .get("totalPageCount")
+                                                                    .asInt()),
+                    "범위 밖 렌더링 표본: " + bookId);
+
+            if ("소설".equals(sampledBook.get("category").asText())) {
+                assertFalse(manifestBook.get("aiRouteCandidate").asBoolean());
+                assertEquals(Set.of(1, 2, 3, 4), pageNumbers);
+            }
+        }
+
+        assertEquals(
+                Set.of("소설", "에세이", "과학", "역사", "경제", "철학", "예술", "기술", "여행", "자기계발"),
+                sampledCategories);
+    }
+
+    @Test
+    @EnabledIfEnvironmentVariable(
+            named = "RUN_AI_ROUTE_V2_PDF_INTEGRITY",
+            matches = "true")
+    void 비소설_90권의_실제_PDF는_구조와_관련_맥락_조사를_지킨다()
+            throws IOException, InterruptedException {
+        JsonNode manifest = read(ROOT.resolve("manifest.json"));
+        String pdftotextCommand =
+                System.getenv().getOrDefault("PDFTOTEXT_COMMAND", "pdftotext");
+
+        for (JsonNode book : manifest.get("books")) {
+            if (!book.get("aiRouteCandidate").asBoolean()) {
+                continue;
+            }
+            Path pdfPath = ROOT.resolve(book.get("pdfPath").asText());
+            String visibleText = extractAllText(pdftotextCommand, pdfPath);
+            List<String> visiblePages = List.of(visibleText.split("\f", -1));
+
+            assertTrue(visibleText.contains("이 장을 여는 문장"), pdfPath.toString());
+            assertFalse(visibleText.contains("생각을 이어 가는 문장"), pdfPath.toString());
+            assertFalse(visibleText.contains("생각할 질문:"), pdfPath.toString());
+            assertFalse(visibleText.contains("남기는 질문"), pdfPath.toString());
+            assertFalse(visibleText.contains("반대 관점과 한계"), pdfPath.toString());
+            assertTrue(visibleText.contains("관련 맥락"), pdfPath.toString());
+
+            for (JsonNode page : book.get("pages")) {
+                if (!page.get("section").asText().endsWith("관련 맥락")) {
+                    continue;
+                }
+                int pageNumber = page.get("pageNumber").asInt();
+                String pageText = normalizeWhitespace(visiblePages.get(pageNumber - 1));
+                String chapter = page.get("chapter").asText();
+                String topic = page.get("secondaryConcepts").get(0).asText();
+                String companion = page.get("secondaryConcepts").get(1).asText();
+                String first = page.get("secondaryConcepts").get(2).asText();
+                String second = page.get("secondaryConcepts").get(3).asText();
+                String location = pdfPath + ":" + pageNumber;
+
+                assertTrue(
+                        pageText.contains(
+                                withJosa(topic, "은", "는")
+                                        + " "
+                                        + chapter
+                                        + "의 내용을 이어 주는 중심 용어입니다."),
+                        location);
+                assertTrue(
+                        pageText.contains(
+                                withJosa(topic, "과", "와")
+                                        + " "
+                                        + withJosa(companion, "은", "는")
+                                        + " 서로 떨어진 항목이 아니라"),
+                        location);
+                assertTrue(
+                        pageText.contains(
+                                withJosa(first, "과", "와")
+                                        + " "
+                                        + withJosa(second, "은", "는")
+                                        + " 두 개념이"),
+                        location);
+                assertTrue(
+                        pageText.contains(
+                                companion
+                                        + withDirectionJosa(companion)
+                                        + " 범위를 넓히고"),
+                        location);
+                assertTrue(
+                        pageText.contains(
+                                withJosa(first, "과", "와") + " " + second + "의 관계를"),
+                        location);
+                assertTrue(
+                        pageText.contains(withJosa(topic, "이", "가") + " 단독 설명이 아니라"),
+                        location);
+                assertTrue(
+                        pageText.contains(
+                                companion
+                                        + ", "
+                                        + first
+                                        + ", "
+                                        + withJosa(second, "과", "와")
+                                        + " 함께 전개되는"),
+                        location);
+            }
+        }
     }
 
     @Test
@@ -380,6 +564,43 @@ class AiRouteV2FixtureIntegrityTest {
 
     private static JsonNode read(Path path) throws IOException {
         return OBJECT_MAPPER.readTree(path.toFile());
+    }
+
+    private static String extractAllText(String command, Path pdfPath)
+            throws IOException, InterruptedException {
+        Process process =
+                new ProcessBuilder(command, "-enc", "UTF-8", pdfPath.toString(), "-")
+                        .redirectErrorStream(true)
+                        .start();
+        String output = new String(process.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
+        int exitCode = process.waitFor();
+        assertEquals(0, exitCode, "pdftotext 실패: " + pdfPath + "\n" + output);
+        return output;
+    }
+
+    private static String normalizeWhitespace(String text) {
+        return text.replaceAll("\\s+", " ").trim();
+    }
+
+    private static String withJosa(String word, String withFinal, String withoutFinal) {
+        return word + (hasFinalConsonant(word) ? withFinal : withoutFinal);
+    }
+
+    private static String withDirectionJosa(String word) {
+        int finalConsonant = finalConsonantIndex(word);
+        return finalConsonant == 0 || finalConsonant == 8 ? "로" : "으로";
+    }
+
+    private static boolean hasFinalConsonant(String word) {
+        return finalConsonantIndex(word) != 0;
+    }
+
+    private static int finalConsonantIndex(String word) {
+        int lastCharacter = word.codePointBefore(word.length());
+        if (lastCharacter < '가' || lastCharacter > '힣') {
+            throw new IllegalArgumentException("한글 음절로 끝나지 않는 개념: " + word);
+        }
+        return (lastCharacter - '가') % 28;
     }
 
     private static Map<Long, JsonNode> booksById(JsonNode books) {
