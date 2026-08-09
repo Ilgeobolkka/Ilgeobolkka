@@ -3,13 +3,15 @@
 [구현 작업 색인](../README.md)으로 돌아갑니다.
 
 - 권장 담당: 파동 3 / 담당 B
-- 선행: [F03 OpenAI 설정](./F03-openai-configuration.md), [해제된 후보·prompt 정책 v1](../../../prd/ai-ink-route.md#후보prompt-정책-v1)
-- 후속: [G03 출력 검증](../generation/G03-output-validation.md), [G07 생성 orchestration](../generation/G07-generation-orchestration.md)
+- 선행: [F03 OpenAI 설정](./F03-openai-configuration.md),
+  [해제된 후보·prompt 정책 v1](../../../prd/ai-ink-route.md#후보prompt-정책-v1)
+- 후속: [G03 출력 검증](../generation/G03-output-validation.md),
+  [G07 생성 orchestration](../generation/G07-generation-orchestration.md)
 
 ## 목표
 
-정규화 목적과 서버 후보만 전송하고 strict 구조화 값만 반환하는 Responses adapter를 구현합니다.
-서버 후보 검증·예산·가이드 조립은 이 작업에 넣지 않습니다.
+정규화 목적과 서버 후보만 전송하고 strict 구조화 값만 반환하는 Responses adapter를 구현합니다. 서버
+후보 검증·예산·가이드 조립은 이 작업에 넣지 않습니다.
 
 ## 정본 링크
 
@@ -29,7 +31,8 @@
 
 - 입력: normalizedPurpose, `air-candidate-v1`의 확정 순서 candidate pageNumber·analysisText·검증된 선수 edge
 - 산출물: `OpenAiRouteGateway`, `OpenAiHttpRouteGateway`, 공급자 DTO, `ModelRouteProposal`, `promptVersion`, `schemaVersion`
-- proposal 필드: pageNumber, `HIGH|MEDIUM`, prerequisite boolean, `PREREQUISITE|CORE|EXAMPLE|COUNTERPOINT|CONCLUSION`
+- proposal 필드: pageNumber, `HIGH|MEDIUM`, prerequisite boolean,
+  `PREREQUISITE|CORE|EXAMPLE|COUNTERPOINT|CONCLUSION`
 - 오류: budget, temporary, timeout/incomplete, refusal, malformed response의 공급자 중립 분류
 
 ## 수정 허용 파일
@@ -59,8 +62,8 @@
 ## 테스트
 
 - 가짜 HTTP server에서 model, `store=false`, `text.format.type=json_schema`,
-  `text.format.name=ai_route_proposal_v1`, `strict=true`, `items` 1~72개,
-  pageNumber의 `type=integer`·`minimum=1`, 모든 필수 필드와 양쪽 `additionalProperties=false` 확인
+  `text.format.name=ai_route_proposal_v1`, `strict=true`, `items` 1~72개, pageNumber의
+  `type=integer`·`minimum=1`, 모든 필수 필드와 양쪽 `additionalProperties=false` 확인
 - 두 resource의 UTF-8 byte SHA-256과 `air-route-prompt-v1:sha256:...`,
   `air-route-schema-v1:sha256:...` 형식, 공백 변경 시 version 변경 확인
 - 정상 proposal Enum·순서 parse
@@ -83,5 +86,5 @@
 
 ## 인계
 
-G03 담당자에게 proposal 타입과 실패 종류, prompt·schema version 계산 결과를 전달합니다. G03은 HTTP 응답 원문을 다시 parse하지 않습니다.
-G07은 같은 version과 입력 snapshot으로만 malformed output을 재시도합니다.
+G03 담당자에게 proposal 타입과 실패 종류, prompt·schema version 계산 결과를 전달합니다. G03은 HTTP 응답
+원문을 다시 parse하지 않습니다. G07은 같은 version과 입력 snapshot으로만 malformed output을 재시도합니다.
