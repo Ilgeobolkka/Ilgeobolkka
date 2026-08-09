@@ -23,7 +23,7 @@ class OpenAiPropertiesTest {
         OpenAiProperties properties = completeProperties();
 
         assertAll(
-                () -> assertDoesNotThrow(() -> properties.validateForServer(true)),
+                () -> assertDoesNotThrow(properties::validateForServer),
                 () -> assertDoesNotThrow(properties::validateForContentImport),
                 () -> assertDoesNotThrow(properties::validateForEvaluation),
                 () -> assertEquals(URI.create("https://api.openai.com/v1"), properties.baseUrl()),
@@ -32,20 +32,13 @@ class OpenAiPropertiesTest {
                 () -> assertEquals("policy-v1", properties.dataPolicyVersion()));
     }
 
-    @Test
-    void 비활성_일반_서버는_OpenAI_설정이_없어도_검증을_통과한다() {
-        OpenAiProperties properties = new OpenAiProperties(null, null, null);
-
-        assertDoesNotThrow(() -> properties.validateForServer(false));
-    }
-
     @ParameterizedTest
     @MethodSource("missingSettings")
     void 활성_일반_서버는_누락된_설정의_환경변수_이름으로_실패한다(
             OpenAiProperties properties,
             String environmentVariable) {
         assertValidationFailure(
-                () -> properties.validateForServer(true),
+                properties::validateForServer,
                 "AI 경로 활성화에는 " + environmentVariable + " 값이 필요합니다.");
     }
 

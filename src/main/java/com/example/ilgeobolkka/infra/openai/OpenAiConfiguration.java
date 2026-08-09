@@ -22,12 +22,12 @@ public class OpenAiConfiguration {
     @Bean
     @Conditional(OpenAiRequiredCondition.class)
     RestClient openAiRestClient(
-            AiRouteFeatureProperties featureProperties,
+            RestClient.Builder restClientBuilder,
             OpenAiProperties openAiProperties,
             Environment environment) {
-        validateForActiveMode(featureProperties, openAiProperties, environment);
+        validateForActiveMode(openAiProperties, environment);
 
-        RestClient.Builder builder = RestClient.builder().baseUrl(openAiProperties.baseUrl());
+        RestClient.Builder builder = restClientBuilder.baseUrl(openAiProperties.baseUrl());
         if (environment.acceptsProfiles(Profiles.of("content-import"))) {
             return builder.requestInterceptor((request, body, execution) -> {
                         openAiProperties.validateForContentImport();
@@ -44,7 +44,6 @@ public class OpenAiConfiguration {
     }
 
     private void validateForActiveMode(
-            AiRouteFeatureProperties featureProperties,
             OpenAiProperties openAiProperties,
             Environment environment) {
         // 두 프로필이 같이 활성화되어도 evaluation의 기동 중 검증을 content-import의 요청 직전 검증보다 우선한다.
@@ -58,7 +57,7 @@ public class OpenAiConfiguration {
             return;
         }
 
-        openAiProperties.validateForServer(featureProperties.enabled());
+        openAiProperties.validateForServer();
     }
 
     private void setAuthenticationHeaders(HttpHeaders headers, OpenAiProperties openAiProperties) {

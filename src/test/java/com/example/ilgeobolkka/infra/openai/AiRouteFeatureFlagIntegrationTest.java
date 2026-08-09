@@ -13,6 +13,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.springframework.boot.autoconfigure.AutoConfigurations;
+import org.springframework.boot.restclient.RestClientCustomizer;
+import org.springframework.boot.restclient.autoconfigure.RestClientAutoConfiguration;
 import org.springframework.boot.test.context.ConfigDataApplicationContextInitializer;
 import org.springframework.boot.test.context.runner.ApplicationContextRunner;
 import org.springframework.boot.test.system.CapturedOutput;
@@ -25,8 +28,13 @@ import org.springframework.web.client.RestClient;
 class AiRouteFeatureFlagIntegrationTest {
 
     private static final String API_KEY = "sk-openai-context-secret-test-value";
+    private static final String BOOT_CUSTOMIZER_HEADER = "X-Boot-RestClient-Customizer";
 
     private final ApplicationContextRunner contextRunner = new ApplicationContextRunner()
+            .withConfiguration(AutoConfigurations.of(RestClientAutoConfiguration.class))
+            .withBean(
+                    RestClientCustomizer.class,
+                    () -> builder -> builder.defaultHeader(BOOT_CUSTOMIZER_HEADER, "applied"))
             .withInitializer(new ConfigDataApplicationContextInitializer())
             .withUserConfiguration(OpenAiConfiguration.class);
 
@@ -86,7 +94,7 @@ class AiRouteFeatureFlagIntegrationTest {
 
     @ParameterizedTest(name = "[{index}] {0}")
     @ValueSource(strings = {"server", "evaluation"})
-    void 일반_서버와_evaluation의_OpenAI_HTTP_Bean은_인증_헤더를_전송한다(String executionMode) {
+    void 일반_서버와_evaluation의_OpenAI_HTTP_Bean은_인증_헤더와_Boot_공통_설정을_적용한다(String executionMode) {
         completeExternalRequestContext(executionMode).run(context -> {
             RestClient.Builder builder = context.getBean(RestClient.class).mutate();
             MockRestServiceServer server = MockRestServiceServer.bindTo(builder).build();
@@ -94,6 +102,7 @@ class AiRouteFeatureFlagIntegrationTest {
             server.expect(requestTo("https://api.openai.com/v1/models"))
                     .andExpect(header(HttpHeaders.AUTHORIZATION, "Bearer " + API_KEY))
                     .andExpect(header("OpenAI-Project", "project-test"))
+                    .andExpect(header(BOOT_CUSTOMIZER_HEADER, "applied"))
                     .andRespond(withSuccess());
 
             builder.build().get().uri("/models").retrieve().toBodilessEntity();

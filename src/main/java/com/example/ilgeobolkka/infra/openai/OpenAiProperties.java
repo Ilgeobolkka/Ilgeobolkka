@@ -15,10 +15,8 @@ public record OpenAiProperties(
         return BASE_URL;
     }
 
-    public void validateForServer(boolean aiRouteEnabled) {
-        if (aiRouteEnabled) {
-            validateRequiredValues("AI 경로 활성화");
-        }
+    public void validateForServer() {
+        validateRequiredValues("AI 경로 활성화");
     }
 
     public void validateForContentImport() {
