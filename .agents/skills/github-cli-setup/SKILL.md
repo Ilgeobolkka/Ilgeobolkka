@@ -26,7 +26,8 @@ description: 팀원 로컬에서 GitHub CLI 기반 PR 에이전트 환경을 활
 
    - `git` 또는 `gh` 없음: 새 도구 설치 승인을 요청한다. 설치 경로는
      <https://cli.github.com/>의 현재 공식 안내를 사용한다.
-   - GitHub 인증 실패: 사용자가 직접 아래 명령으로 로그인하게 한다.
+   - GitHub 인증 실패: 제한 환경에서 실행했다면 로그인 실패로 확정하지 않는다.
+     먼저 키체인과 네트워크에 접근 가능한 승인 경계에서 진단 스크립트를 다시 실행한다. 그 결과도 실패할 때만 사용자가 직접 아래 명령으로 로그인하게 한다.
 
      ```bash
      gh auth login --hostname github.com --git-protocol https
