@@ -41,12 +41,19 @@ ALTER TABLE book_page
             AND embedding_dimensions IS NOT NULL
             AND embedding_dimensions > 0
             AND embedding_json IS NOT NULL
-            AND JSON_TYPE(embedding_json) = 'ARRAY'
+            AND JSON_SCHEMA_VALID(
+                '{"type":"array","items":{"type":"number"}}',
+                embedding_json
+            )
             AND JSON_LENGTH(embedding_json) = embedding_dimensions
         )
     ),
     ADD CONSTRAINT ck_book_page_duplicate_groups_array CHECK (
-        duplicate_group_keys IS NULL OR JSON_TYPE(duplicate_group_keys) = 'ARRAY'
+        duplicate_group_keys IS NULL
+        OR JSON_SCHEMA_VALID(
+            '{"type":"array","items":{"type":"string"}}',
+            duplicate_group_keys
+        )
     );
 
 CREATE TABLE ai_route_prerequisite (

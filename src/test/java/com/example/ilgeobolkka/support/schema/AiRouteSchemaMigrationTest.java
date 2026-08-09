@@ -448,6 +448,69 @@ class AiRouteSchemaMigrationTest {
     }
 
     @Test
+    void AI_페이지_JSON_CHECK_제약은_배열_원소_타입을_검증한다() {
+        기본_독자_도서_페이지를_생성한다();
+
+        assertAll(
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        jdbcTemplate.update(
+                                                """
+                                                UPDATE book_page
+                                                SET embedding_model = 'text-embedding-test',
+                                                    embedding_dimensions = 1,
+                                                    embedding_json = JSON_ARRAY('숫자 아님')
+                                                WHERE id = ?
+                                                """,
+                                                FIRST_PAGE_ID)),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        jdbcTemplate.update(
+                                                """
+                                                UPDATE book_page
+                                                SET duplicate_group_keys = JSON_ARRAY(JSON_OBJECT())
+                                                WHERE id = ?
+                                                """,
+                                                FIRST_PAGE_ID)),
+                () ->
+                        assertEquals(
+                                1,
+                                jdbcTemplate.update(
+                                        """
+                                        UPDATE book_page
+                                        SET embedding_model = 'text-embedding-test',
+                                            embedding_dimensions = 2,
+                                            embedding_json = JSON_ARRAY(0.1, -2)
+                                        WHERE id = ?
+                                        """,
+                                        FIRST_PAGE_ID)),
+                () ->
+                        assertEquals(
+                                1,
+                                jdbcTemplate.update(
+                                        """
+                                        UPDATE book_page
+                                        SET duplicate_group_keys = JSON_ARRAY()
+                                        WHERE id = ?
+                                        """,
+                                        FIRST_PAGE_ID)),
+                () ->
+                        assertEquals(
+                                1,
+                                jdbcTemplate.update(
+                                        """
+                                        UPDATE book_page
+                                        SET duplicate_group_keys = JSON_ARRAY('duplicate-group-1')
+                                        WHERE id = ?
+                                        """,
+                                        FIRST_PAGE_ID)));
+    }
+
+    @Test
     void generation_상태별_정상_조합을_허용한다() {
         기본_독자_도서_페이지를_생성한다();
         저장_경로를_생성한다(55_000L, 식별자를_생성한다(51_104), READER_ID, BOOK_ID);
