@@ -61,14 +61,10 @@ public final class AiRouteEmbedding {
         return new AiRouteEmbedding(model, dimensions, copied, norm);
     }
 
-    public String model() {
-        return model;
-    }
-
-    public int dimensions() {
-        return dimensions;
-    }
-
+    /**
+     * 테스트가 "norm이 정확히 1.0"이라는 전제를 확인하는 데 쓴다. 계산은 내부 필드로 하므로 프로덕션
+     * 코드에는 소비자가 없다.
+     */
     public double norm() {
         return norm;
     }

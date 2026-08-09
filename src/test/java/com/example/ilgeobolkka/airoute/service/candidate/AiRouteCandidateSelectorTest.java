@@ -1,6 +1,8 @@
 package com.example.ilgeobolkka.airoute.service.candidate;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -20,6 +22,8 @@ class AiRouteCandidateSelectorTest {
     private static final String MODEL = "text-embedding-3-small";
     private static final long BOOK_ID = 42L;
     private static final String CONTENT_VERSION = "ai-route-v2";
+    /** pageId 와 pageNumber 를 다른 값으로 두려고 더한다. 같으면 둘을 뒤바꿔 매핑해도 테스트가 통과한다. */
+    private static final long PAGE_ID_BASE = 1000L;
 
     /**
      * 이 값을 두 번째 성분으로 쓰면 {@code {x, PARTNER}}의 norm이 정확히 {@code 1.0}이 된다. 목적 벡터도
@@ -48,7 +52,7 @@ class AiRouteCandidateSelectorTest {
                                 page(2, embedding(0.0, 1.0)), // 직교 → 0.0
                                 page(3, embedding(-1.0, 0.0)))); // 반대 → -1.0
 
-        assertEquals(List.of(1L), pageIdsOf(candidates));
+        assertEquals(List.of(PAGE_ID_BASE + 1), pageIdsOf(candidates));
         assertEquals(1.0, candidates.get(0).similarity());
     }
 
@@ -158,7 +162,9 @@ class AiRouteCandidateSelectorTest {
                                 page(3, embedding(7.0, 24.0)), // 7/25  = 0.28 → 제외
                                 page(4, embedding(3.0, 4.0)))); // 3/5   = 0.6
 
-        assertEquals(List.of(2L, 4L, 1L), pageIdsOf(candidates));
+        assertEquals(
+                List.of(PAGE_ID_BASE + 2, PAGE_ID_BASE + 4, PAGE_ID_BASE + 1),
+                pageIdsOf(candidates));
     }
 
     @ParameterizedTest
@@ -193,6 +199,32 @@ class AiRouteCandidateSelectorTest {
         assertTrue(candidates.isEmpty());
     }
 
+    // --- 후보로 실려 나가는 값 ----------------------------------------------
+
+    @Test
+    void pageId와_pageNumber가_각각_제자리로_실린다() {
+        List<AiRouteCandidate> candidates =
+                selectCandidates(
+                        BOOK_ID, CONTENT_VERSION, embedding(1.0, 0.0), List.of(page(7, embedding(3.0, 4.0))));
+
+        AiRouteCandidate candidate = candidates.get(0);
+        assertNotEquals(
+                candidate.pageId(), candidate.pageNumber(), "두 값이 같으면 뒤바꿔 매핑해도 통과한다");
+        assertEquals(PAGE_ID_BASE + 7, candidate.pageId());
+        assertEquals(7, candidate.pageNumber());
+    }
+
+    @Test
+    void 분석_텍스트_참조와_선수_페이지_참조가_후보로_전달된다() {
+        // G03 은 선수 폐쇄에, F05 는 분석 텍스트 조회에 쓴다. 빠지면 하위 작업이 값을 잃는다.
+        List<AiRouteCandidate> candidates =
+                selectCandidates(
+                        BOOK_ID, CONTENT_VERSION, embedding(1.0, 0.0), List.of(page(7, embedding(3.0, 4.0))));
+
+        assertEquals("analysis-7", candidates.get(0).analysisTextRef());
+        assertEquals(List.of(107), candidates.get(0).prerequisitePageNumbers());
+    }
+
     // --- 입력 경계 ----------------------------------------------------------
 
     @Test
@@ -208,7 +240,7 @@ class AiRouteCandidateSelectorTest {
                                 page(1, sameVector, BookPageContentType.TEXT),
                                 page(2, sameVector, BookPageContentType.IMAGE)));
 
-        assertEquals(List.of(1L, 2L), pageIdsOf(candidates));
+        assertEquals(List.of(PAGE_ID_BASE + 1, PAGE_ID_BASE + 2), pageIdsOf(candidates));
         assertEquals(candidates.get(0).similarity(), candidates.get(1).similarity());
     }
 
@@ -269,6 +301,72 @@ class AiRouteCandidateSelectorTest {
                                 CONTENT_VERSION,
                                 embedding(1.0, 0.0),
                                 List.of(page(1, embedding(1.0, 0.0)), page(1, embedding(3.0, 4.0)))));
+    }
+
+    @Test
+    void 페이지_번호가_1_미만이면_거부한다() {
+        assertThrows(
+                InvalidAiRouteCandidateInputException.class, () -> page(0, embedding(1.0, 0.0)));
+    }
+
+    @Test
+    void 페이지의_필수_값이_비면_거부한다() {
+        AiRouteEmbedding valid = embedding(1.0, 0.0);
+
+        assertAll(
+                () ->
+                        assertThrows(
+                                InvalidAiRouteCandidateInputException.class,
+                                () -> newPage(null, BookPageContentType.TEXT, valid, "analysis", List.of()),
+                                "contentVersion"),
+                () ->
+                        assertThrows(
+                                InvalidAiRouteCandidateInputException.class,
+                                () -> newPage(CONTENT_VERSION, null, valid, "analysis", List.of()),
+                                "contentType"),
+                () ->
+                        assertThrows(
+                                InvalidAiRouteCandidateInputException.class,
+                                () -> newPage(CONTENT_VERSION, BookPageContentType.TEXT, null, "analysis", List.of()),
+                                "embedding"),
+                () ->
+                        assertThrows(
+                                InvalidAiRouteCandidateInputException.class,
+                                () -> newPage(CONTENT_VERSION, BookPageContentType.TEXT, valid, " ", List.of()),
+                                "analysisTextRef"),
+                () ->
+                        assertThrows(
+                                InvalidAiRouteCandidateInputException.class,
+                                () -> newPage(CONTENT_VERSION, BookPageContentType.TEXT, valid, "analysis", null),
+                                "prerequisitePageNumbers"));
+    }
+
+    @Test
+    void selector_인자가_비면_거부한다() {
+        AiRouteEmbedding purpose = embedding(1.0, 0.0);
+        List<AiRouteCandidatePage> pages = List.of(page(1, embedding(1.0, 0.0)));
+
+        assertAll(
+                () ->
+                        assertThrows(
+                                InvalidAiRouteCandidateInputException.class,
+                                () -> selector.select(BOOK_ID, null, purpose, pages),
+                                "대상 contentVersion null"),
+                () ->
+                        assertThrows(
+                                InvalidAiRouteCandidateInputException.class,
+                                () -> selector.select(BOOK_ID, " ", purpose, pages),
+                                "대상 contentVersion 공백"),
+                () ->
+                        assertThrows(
+                                InvalidAiRouteCandidateInputException.class,
+                                () -> selector.select(BOOK_ID, CONTENT_VERSION, null, pages),
+                                "목적 임베딩"),
+                () ->
+                        assertThrows(
+                                InvalidAiRouteCandidateInputException.class,
+                                () -> selector.select(BOOK_ID, CONTENT_VERSION, purpose, null),
+                                "페이지 목록"));
     }
 
     // --- 정책 버전 ----------------------------------------------------------
@@ -376,12 +474,29 @@ class AiRouteCandidateSelectorTest {
         return new AiRouteCandidatePage(
                 BOOK_ID,
                 CONTENT_VERSION,
-                pageNumber,
+                PAGE_ID_BASE + pageNumber,
                 pageNumber,
                 contentType,
                 embedding,
                 "analysis-" + pageNumber,
-                List.of());
+                List.of(pageNumber + 100));
+    }
+
+    private AiRouteCandidatePage newPage(
+            String contentVersion,
+            BookPageContentType contentType,
+            AiRouteEmbedding embedding,
+            String analysisTextRef,
+            List<Integer> prerequisitePageNumbers) {
+        return new AiRouteCandidatePage(
+                BOOK_ID,
+                contentVersion,
+                PAGE_ID_BASE + 1,
+                1,
+                contentType,
+                embedding,
+                analysisTextRef,
+                prerequisitePageNumbers);
     }
 
     private List<Long> pageIdsOf(List<AiRouteCandidate> candidates) {
