@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.example.ilgeobolkka.airoute.exception.InvalidAiRouteCandidateInputException;
+import com.example.ilgeobolkka.airoute.exception.InvalidAiRouteEmbeddingException;
 import com.example.ilgeobolkka.book.entity.BookPageContentType;
 import java.lang.reflect.RecordComponent;
 import java.util.ArrayList;

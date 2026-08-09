@@ -1,4 +1,4 @@
-package com.example.ilgeobolkka.airoute.service.candidate;
+package com.example.ilgeobolkka.airoute.exception;
 
 /** 후보 선택에 넣을 수 없는 입력이다. 페이지 메타데이터나 도서·콘텐츠 버전이 계약과 다르다. */
 public class InvalidAiRouteCandidateInputException extends RuntimeException {

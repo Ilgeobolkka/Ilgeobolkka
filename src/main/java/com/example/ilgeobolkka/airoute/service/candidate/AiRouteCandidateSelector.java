@@ -1,5 +1,7 @@
 package com.example.ilgeobolkka.airoute.service.candidate;
 
+import com.example.ilgeobolkka.airoute.exception.InvalidAiRouteCandidateInputException;
+import com.example.ilgeobolkka.airoute.exception.InvalidAiRouteEmbeddingException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
@@ -44,8 +46,7 @@ public final class AiRouteCandidateSelector {
         }
 
         // 계산 전에 전수 확인한다. 중간에 실패하면 어떤 페이지까지 비교했는지가 결과에 남는다.
-        requireSameBookAndVersion(bookId, contentVersion, pages);
-        requireComparableEmbeddings(purposeEmbedding, pages);
+        requireComparablePages(bookId, contentVersion, purposeEmbedding, pages);
 
         List<AiRouteCandidate> aboveThreshold = new ArrayList<>();
         for (AiRouteCandidatePage page : pages) {
@@ -66,8 +67,15 @@ public final class AiRouteCandidateSelector {
                 AiRouteCandidatePolicy.VERSION, aboveThreshold.subList(0, size));
     }
 
-    private void requireSameBookAndVersion(
-            long bookId, String contentVersion, List<AiRouteCandidatePage> pages) {
+    /**
+     * 계산 전에 모든 페이지를 한 번 훑어 요청 대상·서로 간·목적 벡터와 비교 가능한지 확인한다. 하나라도
+     * 어긋나면 similarity 를 하나도 계산하지 않고 실패한다.
+     */
+    private void requireComparablePages(
+            long bookId,
+            String contentVersion,
+            AiRouteEmbedding purposeEmbedding,
+            List<AiRouteCandidatePage> pages) {
         Set<Integer> seenPageNumbers = new HashSet<>();
         for (AiRouteCandidatePage page : pages) {
             if (page.bookId() != bookId) {
@@ -85,12 +93,6 @@ public final class AiRouteCandidateSelector {
                 throw new InvalidAiRouteCandidateInputException(
                         "페이지 번호가 중복입니다. " + page.pageNumber());
             }
-        }
-    }
-
-    private void requireComparableEmbeddings(
-            AiRouteEmbedding purposeEmbedding, List<AiRouteCandidatePage> pages) {
-        for (AiRouteCandidatePage page : pages) {
             purposeEmbedding.requireComparableWith(page.embedding(), "페이지 " + page.pageId());
         }
     }

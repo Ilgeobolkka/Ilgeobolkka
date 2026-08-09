@@ -1,4 +1,4 @@
-package com.example.ilgeobolkka.airoute.service.candidate;
+package com.example.ilgeobolkka.airoute.exception;
 
 /**
  * 후보 비교에 쓸 수 없는 임베딩이다. 모델·차원이 다르거나, 값이 유한 실수가 아니거나, zero norm이다.

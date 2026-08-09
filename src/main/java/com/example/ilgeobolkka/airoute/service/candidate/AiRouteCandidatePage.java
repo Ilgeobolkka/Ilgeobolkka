@@ -1,5 +1,6 @@
 package com.example.ilgeobolkka.airoute.service.candidate;
 
+import com.example.ilgeobolkka.airoute.exception.InvalidAiRouteCandidateInputException;
 import com.example.ilgeobolkka.book.entity.BookPageContentType;
 import java.util.List;
 
