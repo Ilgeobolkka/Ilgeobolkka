@@ -48,7 +48,8 @@
 1. 일반 서버는 `AI_ROUTE_ENABLED=false`일 때 OpenAI 키 없이 부팅하고 AI Controller/Page Bean이 등록될
    조건을 false로 제공합니다.
 2. 활성 서버는 projectId·apiKey·dataPolicyVersion 중 하나라도 비면 민감값 없이 부팅을 거부합니다.
-3. content-import와 evaluation은 공개 플래그와 무관하게 세 OpenAI 값을 요구하는 별도 검증 진입점을 둡니다.
+3. 초기 `initial-v1` content-import는 OpenAI 값 없이 유지합니다. `ai-route-v2` content-import와 evaluation은
+   공개 플래그와 무관하게 세 OpenAI 값을 요구하는 별도 검증 진입점을 둡니다.
 4. API 키를 record `toString`, validation message, 로그, 오류 응답에 포함하지 않습니다.
 5. DB·manifest와 dataPolicyVersion 비교는 각 호출 작업이 수행하고 설정 Bean이 임의로 대체하지 않습니다.
 6. endpoint·model·prompt를 무제한 환경 옵션으로 추가하지 않습니다.
@@ -57,7 +58,8 @@
 
 - 비활성 일반 서버 + 키 없음 부팅 성공
 - 활성 일반 서버의 세 설정 누락별 부팅 실패
-- content-import·evaluation 모드의 설정 누락별 외부 Gateway Bean 미생성 또는 실행 전 실패
+- 초기 `initial-v1` content-import의 키 없는 기동 성공
+- `ai-route-v2` content-import·evaluation 모드의 설정 누락별 외부 호출 전 실패
 - 예외·로그 capture에 API 키 원문이 없는지 확인
 - 명령: `./gradlew test --tests '*OpenAiPropertiesTest' --tests '*AiRouteFeatureFlagIntegrationTest'`
 
