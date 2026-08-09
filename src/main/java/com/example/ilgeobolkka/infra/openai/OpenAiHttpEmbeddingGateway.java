@@ -7,6 +7,8 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Component;
@@ -21,6 +23,7 @@ import tools.jackson.databind.ObjectMapper;
 public final class OpenAiHttpEmbeddingGateway implements OpenAiEmbeddingGateway {
 
     private static final String EMBEDDINGS_PATH = "/embeddings";
+    private static final Logger log = LoggerFactory.getLogger(OpenAiHttpEmbeddingGateway.class);
 
     private final RestClient restClient;
     private final ObjectMapper objectMapper;
@@ -69,6 +72,13 @@ public final class OpenAiHttpEmbeddingGateway implements OpenAiEmbeddingGateway 
                         }
 
                         if (clientResponse.getStatusCode().isError()) {
+                            int status = clientResponse.getStatusCode().value();
+                            String errorCode = extractErrorCode(clientResponse.getBody());
+                            log.warn(
+                                    "OpenAI Embeddings 요청 실패 status={} errorCode={}",
+                                    status,
+                                    errorCode);
+
                             throw new OpenAiEmbeddingException(Failure.INVALID_RESPONSE);
                         }
 
@@ -76,8 +86,6 @@ public final class OpenAiHttpEmbeddingGateway implements OpenAiEmbeddingGateway 
                     });
 
             return validateResponse(response, model, dimensions);
-        } catch (OpenAiEmbeddingException exception) {
-            throw exception;
         } catch (ResourceAccessException exception) {
             throw new OpenAiEmbeddingException(Failure.TEMPORARY);
         } catch (RestClientException exception) {
@@ -124,6 +132,19 @@ public final class OpenAiHttpEmbeddingGateway implements OpenAiEmbeddingGateway 
         }
 
         return new Embedding(List.copyOf(vector), response.model(), requestedDimensions);
+    }
+
+    private String extractErrorCode(InputStream responseBody) {
+        try {
+            String errorCode = objectMapper.readTree(responseBody)
+                    .path("error")
+                    .path("code")
+                    .asString("");
+
+            return errorCode.matches("[A-Za-z0-9._-]{1,100}") ? errorCode : "-";
+        } catch (RuntimeException exception) {
+            return "-";
+        }
     }
 
     private Failure classifyLimit(InputStream responseBody) {

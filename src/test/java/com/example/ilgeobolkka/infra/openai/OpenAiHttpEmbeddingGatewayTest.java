@@ -27,9 +27,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.springframework.boot.test.context.runner.ApplicationContextRunner;
 import org.springframework.boot.test.system.CapturedOutput;
 import org.springframework.boot.test.system.OutputCaptureExtension;
-import org.springframework.boot.test.context.runner.ApplicationContextRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -134,6 +134,52 @@ class OpenAiHttpEmbeddingGatewayTest {
         server.verify();
     }
 
+    @ParameterizedTest(name = "[{index}] HTTP {0}")
+    @MethodSource("clientErrorResponses")
+    void 공급자_4xx는_status와_error_code만_로그에_남긴다(
+            HttpStatus status,
+            String errorCode,
+            CapturedOutput output) {
+        String purpose = "로그에 남으면 안 되는 목적";
+        String providerMessage = "민감한 원인 " + API_KEY + " " + PROJECT_ID;
+        String providerBody = """
+                {"error":{"message":"%s","type":"request_error","code":"%s"}}
+                """.formatted(providerMessage, errorCode);
+        expectAnyEmbeddingRequest()
+                .andRespond(withStatus(status)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(providerBody));
+
+        OpenAiEmbeddingException exception = assertFailure(
+                () -> gateway.embedPurpose(new PurposeInput(purpose), MODEL, DIMENSIONS),
+                Failure.INVALID_RESPONSE);
+
+        assertThat(output.getAll())
+                .contains("WARN", "status=" + status.value(), "errorCode=" + errorCode)
+                .doesNotContain(providerMessage, "request_error");
+        assertNoSensitiveText(exception, output, providerBody);
+        server.verify();
+    }
+
+    @Test
+    void 파싱할_수_없는_4xx_응답도_원문_없이_status만_로그에_남긴다(CapturedOutput output) {
+        String providerBody = "invalid-body " + API_KEY + " " + PROJECT_ID;
+        expectAnyEmbeddingRequest()
+                .andRespond(withStatus(HttpStatus.BAD_REQUEST)
+                        .contentType(MediaType.TEXT_PLAIN)
+                        .body(providerBody));
+
+        OpenAiEmbeddingException exception = assertFailure(
+                () -> gateway.embedPurpose(new PurposeInput("로그에 남으면 안 되는 목적"), MODEL, DIMENSIONS),
+                Failure.INVALID_RESPONSE);
+
+        assertThat(output.getAll())
+                .contains("WARN", "status=400", "errorCode=-")
+                .doesNotContain(providerBody);
+        assertNoSensitiveText(exception, output, providerBody);
+        server.verify();
+    }
+
     @Test
     void 일반_429는_rate_limit으로_분류한다() {
         expectAnyEmbeddingRequest()
@@ -151,11 +197,50 @@ class OpenAiHttpEmbeddingGatewayTest {
     }
 
     @Test
-    void 지출_사용량_크레딧_429는_budget_limit으로_분류하고_원문을_숨긴다(CapturedOutput output) {
+    void 비_JSON_429는_rate_limit으로_폴백하고_원문을_숨긴다(CapturedOutput output) {
+        String providerBody = "invalid 429 body " + API_KEY + " " + PROJECT_ID;
+        expectAnyEmbeddingRequest()
+                .andRespond(withStatus(HttpStatus.TOO_MANY_REQUESTS)
+                        .contentType(MediaType.TEXT_PLAIN)
+                        .body(providerBody));
+
+        OpenAiEmbeddingException exception = assertFailure(
+                () -> gateway.embedPurpose(new PurposeInput("로그에 남으면 안 되는 목적"), MODEL, DIMENSIONS),
+                Failure.RATE_LIMIT);
+
+        assertNoSensitiveText(exception, output, providerBody);
+        server.verify();
+    }
+
+    @Test
+    void insufficient_quota_type_429는_budget_limit으로_분류하고_원문을_숨긴다(CapturedOutput output) {
         String providerBody = """
-                {"error":{"message":"Credit exhausted for %s and %s",\
-                "type":"insufficient_quota","code":"insufficient_quota"}}
+                {"error":{"message":"Provider limit for %s and %s",\
+                "type":"insufficient_quota","code":"unknown_limit"}}
                 """.formatted(PROJECT_ID, API_KEY);
+        expectAnyEmbeddingRequest()
+                .andRespond(withStatus(HttpStatus.TOO_MANY_REQUESTS)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(providerBody));
+
+        OpenAiEmbeddingException exception = assertFailure(
+                () -> gateway.embedPageAnalysis(
+                        new PageAnalysisInput("외부에 전송하는 분석 텍스트"), MODEL, DIMENSIONS),
+                Failure.BUDGET_LIMIT);
+
+        assertNoSensitiveText(exception, output, providerBody);
+        server.verify();
+    }
+
+    @ParameterizedTest(name = "[{index}] {0}")
+    @MethodSource("budgetLimitErrorCodes")
+    void 공식_예산_한도_error_code_429는_budget_limit으로_분류하고_원문을_숨긴다(
+            String errorCode,
+            CapturedOutput output) {
+        String providerBody = """
+                {"error":{"message":"Provider limit for %s and %s",\
+                "type":"provider_error","code":"%s"}}
+                """.formatted(PROJECT_ID, API_KEY, errorCode);
         expectAnyEmbeddingRequest()
                 .andRespond(withStatus(HttpStatus.TOO_MANY_REQUESTS)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -289,7 +374,7 @@ class OpenAiHttpEmbeddingGatewayTest {
                 Arguments.of("비유한 수", response("[0.1,1e309,0.3]", "0", MODEL)),
                 Arguments.of("빈 vector", response("[]", "0", MODEL)),
                 Arguments.of("빈 data", "{\"data\":[],\"model\":\"" + MODEL + "\"}"),
-                Arguments.of("중복 index", """
+                Arguments.of("data 원소 2개", """
                         {"data":[{"embedding":[0.1,0.2,0.3],"index":0},
                         {"embedding":[0.4,0.5,0.6],"index":0}],
                         "model":"text-embedding-3-small"}
@@ -301,6 +386,21 @@ class OpenAiHttpEmbeddingGatewayTest {
                 Arguments.of("model 불일치", response("[0.1,0.2,0.3]", "0", "other-model")),
                 Arguments.of("null data", "{\"data\":null,\"model\":\"" + MODEL + "\"}"),
                 Arguments.of("null vector", response("null", "0", MODEL)));
+    }
+
+    private static Stream<Arguments> clientErrorResponses() {
+        return Stream.of(
+                Arguments.of(HttpStatus.BAD_REQUEST, "unsupported_parameter"),
+                Arguments.of(HttpStatus.UNAUTHORIZED, "invalid_api_key"),
+                Arguments.of(HttpStatus.FORBIDDEN, "project_permission_denied"));
+    }
+
+    private static Stream<String> budgetLimitErrorCodes() {
+        return Stream.of(
+                "organization_spend_limit_exceeded",
+                "project_spend_limit_exceeded",
+                "organization_usage_limit_exceeded",
+                "credit_balance_exhausted");
     }
 
     private static String response(String vector, String index, String model) {
