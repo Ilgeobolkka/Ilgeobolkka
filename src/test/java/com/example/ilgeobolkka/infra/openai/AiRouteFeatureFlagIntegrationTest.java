@@ -2,6 +2,9 @@ package com.example.ilgeobolkka.infra.openai;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.header;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
+import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
@@ -14,6 +17,8 @@ import org.springframework.boot.test.context.ConfigDataApplicationContextInitial
 import org.springframework.boot.test.context.runner.ApplicationContextRunner;
 import org.springframework.boot.test.system.CapturedOutput;
 import org.springframework.boot.test.system.OutputCaptureExtension;
+import org.springframework.http.HttpHeaders;
+import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.RestClient;
 
 @ExtendWith(OutputCaptureExtension.class)
@@ -76,6 +81,24 @@ class AiRouteFeatureFlagIntegrationTest {
             assertThat(context).hasNotFailed();
             assertThat(context).hasSingleBean(RestClient.class);
             assertThat(context.getBean(AiRouteFeatureProperties.class).enabled()).isFalse();
+        });
+    }
+
+    @ParameterizedTest(name = "[{index}] {0}")
+    @ValueSource(strings = {"server", "evaluation"})
+    void 일반_서버와_evaluation의_OpenAI_HTTP_Bean은_인증_헤더를_전송한다(String executionMode) {
+        completeExternalRequestContext(executionMode).run(context -> {
+            RestClient.Builder builder = context.getBean(RestClient.class).mutate();
+            MockRestServiceServer server = MockRestServiceServer.bindTo(builder).build();
+
+            server.expect(requestTo("https://api.openai.com/v1/models"))
+                    .andExpect(header(HttpHeaders.AUTHORIZATION, "Bearer " + API_KEY))
+                    .andExpect(header("OpenAI-Project", "project-test"))
+                    .andRespond(withSuccess());
+
+            builder.build().get().uri("/models").retrieve().toBodilessEntity();
+
+            server.verify();
         });
     }
 
@@ -168,6 +191,14 @@ class AiRouteFeatureFlagIntegrationTest {
                 "OPENAI_PROJECT_ID=project-test",
                 "OPENAI_API_KEY=" + API_KEY,
                 "OPENAI_DATA_POLICY_VERSION=policy-v1");
+    }
+
+    private ApplicationContextRunner completeExternalRequestContext(String executionMode) {
+        if ("evaluation".equals(executionMode)) {
+            return completeBatchContext(executionMode);
+        }
+
+        return completeServerContext();
     }
 
     private void assertStartupFailure(Throwable failure, String expectedRootCauseMessage) {

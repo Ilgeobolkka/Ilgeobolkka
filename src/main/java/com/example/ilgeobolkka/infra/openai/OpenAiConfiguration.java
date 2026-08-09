@@ -47,14 +47,17 @@ public class OpenAiConfiguration {
             AiRouteFeatureProperties featureProperties,
             OpenAiProperties openAiProperties,
             Environment environment) {
+        // 두 프로필이 같이 활성화되어도 evaluation의 기동 중 검증을 content-import의 요청 직전 검증보다 우선한다.
         if (environment.acceptsProfiles(Profiles.of("evaluation"))) {
             openAiProperties.validateForEvaluation();
 
             return;
         }
+
         if (environment.acceptsProfiles(Profiles.of("content-import"))) {
             return;
         }
+
         openAiProperties.validateForServer(featureProperties.enabled());
     }
 
