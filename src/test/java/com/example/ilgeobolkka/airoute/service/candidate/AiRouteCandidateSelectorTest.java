@@ -39,7 +39,7 @@ class AiRouteCandidateSelectorTest {
         AiRouteEmbedding purpose = embedding(1.0, 0.0);
 
         List<AiRouteCandidate> candidates =
-                selector.select(
+                selectCandidates(
                         BOOK_ID,
                         CONTENT_VERSION,
                         purpose,
@@ -148,7 +148,7 @@ class AiRouteCandidateSelectorTest {
         AiRouteEmbedding purpose = embedding(1.0, 0.0);
 
         List<AiRouteCandidate> candidates =
-                selector.select(
+                selectCandidates(
                         BOOK_ID,
                         CONTENT_VERSION,
                         purpose,
@@ -171,7 +171,7 @@ class AiRouteCandidateSelectorTest {
         }
 
         List<AiRouteCandidate> candidates =
-                selector.select(BOOK_ID, CONTENT_VERSION, embedding(1.0, 0.0), pages);
+                selectCandidates(BOOK_ID, CONTENT_VERSION, embedding(1.0, 0.0), pages);
 
         int expectedSize = Math.min(pageCount, AiRouteCandidatePolicy.MAXIMUM_CANDIDATES);
         assertEquals(expectedSize, candidates.size());
@@ -184,7 +184,7 @@ class AiRouteCandidateSelectorTest {
     void 임계값을_넘는_페이지가_없으면_빈_목록이다() {
         // NO_RELEVANT_PAGES 판정은 상위 단계가 한다. selector 는 빈 결과까지만 책임진다.
         List<AiRouteCandidate> candidates =
-                selector.select(
+                selectCandidates(
                         BOOK_ID,
                         CONTENT_VERSION,
                         embedding(1.0, 0.0),
@@ -200,7 +200,7 @@ class AiRouteCandidateSelectorTest {
         AiRouteEmbedding sameVector = embedding(0.50, UNIT_PARTNER_FOR_050);
 
         List<AiRouteCandidate> candidates =
-                selector.select(
+                selectCandidates(
                         BOOK_ID,
                         CONTENT_VERSION,
                         embedding(1.0, 0.0),
@@ -271,6 +271,35 @@ class AiRouteCandidateSelectorTest {
                                 List.of(page(1, embedding(1.0, 0.0)), page(1, embedding(3.0, 4.0)))));
     }
 
+    // --- 정책 버전 ----------------------------------------------------------
+
+    @Test
+    void 결과에_후보를_뽑은_정책_버전이_함께_실린다() {
+        // 상수를 참조하지 않고 값을 직접 적는다. 값이 바뀌면 정책 버전을 올려야 하고,
+        // 상수를 그대로 비교하면 값이 조용히 바뀌어도 이 테스트가 통과한다.
+        AiRouteCandidateSelection selection =
+                selector.select(
+                        BOOK_ID,
+                        CONTENT_VERSION,
+                        embedding(1.0, 0.0),
+                        List.of(page(1, embedding(3.0, 4.0))));
+
+        assertEquals("air-candidate-v1", selection.candidatePolicyVersion());
+    }
+
+    @Test
+    void 후보가_하나도_없어도_정책_버전은_실린다() {
+        AiRouteCandidateSelection selection =
+                selector.select(
+                        BOOK_ID,
+                        CONTENT_VERSION,
+                        embedding(1.0, 0.0),
+                        List.of(page(1, embedding(7.0, 24.0)))); // 0.28
+
+        assertTrue(selection.candidates().isEmpty());
+        assertEquals("air-candidate-v1", selection.candidatePolicyVersion());
+    }
+
     // --- 결정성과 범위 ------------------------------------------------------
 
     @Test
@@ -282,9 +311,9 @@ class AiRouteCandidateSelectorTest {
                         page(3, embedding(3.0, 4.0)));
 
         List<AiRouteCandidate> first =
-                selector.select(BOOK_ID, CONTENT_VERSION, embedding(1.0, 0.0), pages);
+                selectCandidates(BOOK_ID, CONTENT_VERSION, embedding(1.0, 0.0), pages);
         List<AiRouteCandidate> second =
-                selector.select(BOOK_ID, CONTENT_VERSION, embedding(1.0, 0.0), pages);
+                selectCandidates(BOOK_ID, CONTENT_VERSION, embedding(1.0, 0.0), pages);
 
         assertEquals(first, second);
     }
@@ -306,7 +335,7 @@ class AiRouteCandidateSelectorTest {
     @Test
     void similarity를_백분율로_바꾸지_않고_원값_그대로_돌려준다() {
         List<AiRouteCandidate> candidates =
-                selector.select(
+                selectCandidates(
                         BOOK_ID,
                         CONTENT_VERSION,
                         embedding(1.0, 0.0),
@@ -319,11 +348,19 @@ class AiRouteCandidateSelectorTest {
     // --- fixture ------------------------------------------------------------
 
     private List<AiRouteCandidate> selectSingle(double targetSimilarity) {
-        return selector.select(
+        return selectCandidates(
                 BOOK_ID,
                 CONTENT_VERSION,
                 embedding(1.0, 0.0),
                 List.of(page(1, embedding(targetSimilarity, UNIT_PARTNER_FOR_030))));
+    }
+
+    private List<AiRouteCandidate> selectCandidates(
+            long bookId,
+            String contentVersion,
+            AiRouteEmbedding purposeEmbedding,
+            List<AiRouteCandidatePage> pages) {
+        return selector.select(bookId, contentVersion, purposeEmbedding, pages).candidates();
     }
 
     private AiRouteEmbedding embedding(double first, double second) {

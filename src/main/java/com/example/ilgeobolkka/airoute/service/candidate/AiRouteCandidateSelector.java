@@ -28,7 +28,7 @@ public final class AiRouteCandidateSelector {
      * @throws InvalidAiRouteCandidateInputException 도서·콘텐츠 버전이 섞였거나 페이지 번호가 중복일 때
      * @throws InvalidAiRouteEmbeddingException 목적과 모델·차원이 다른 페이지가 있을 때
      */
-    public List<AiRouteCandidate> select(
+    public AiRouteCandidateSelection select(
             long bookId,
             String contentVersion,
             AiRouteEmbedding purposeEmbedding,
@@ -62,7 +62,8 @@ public final class AiRouteCandidateSelector {
         aboveThreshold.sort(bySimilarity.reversed().thenComparingInt(AiRouteCandidate::pageNumber));
 
         int size = Math.min(aboveThreshold.size(), AiRouteCandidatePolicy.MAXIMUM_CANDIDATES);
-        return List.copyOf(aboveThreshold.subList(0, size));
+        return new AiRouteCandidateSelection(
+                AiRouteCandidatePolicy.VERSION, aboveThreshold.subList(0, size));
     }
 
     private void requireSameBookAndVersion(
