@@ -4,13 +4,12 @@
 
 - 권장 담당: 파동 2 / 담당 B
 - 선행: [F03 OpenAI 설정](./F03-openai-configuration.md)
-- 후속: [C03 콘텐츠 embedding](../content/C03-content-embeddings.md),
-  [G07 생성 orchestration](../generation/G07-generation-orchestration.md)
+- 후속: [C03 콘텐츠 embedding](../content/C03-content-embeddings.md), [G07 생성 orchestration](../generation/G07-generation-orchestration.md)
 
 ## 목표
 
-페이지 분석 텍스트와 정규화한 독서 목적을 지정 모델·차원의 vector로 변환하는 공급자 adapter를
-`infra.openai`에 격리합니다. 후보 검색과 DB 저장은 구현하지 않습니다.
+페이지 분석 텍스트와 정규화한 독서 목적을 지정 모델·차원의 vector로 변환하는 공급자 adapter를 `infra.openai`에 격리합니다.
+후보 검색과 DB 저장은 구현하지 않습니다.
 
 ## 정본 링크
 
@@ -21,11 +20,8 @@
 
 ## 현재 구현 기준선
 
-- `infra.openai` 패키지와 OpenAI HTTP client가 없습니다.
-- 기존 외부 Gateway 경계는
-  [PortOnePaymentGateway](../../../../src/main/java/com/example/ilgeobolkka/infra/portone/PortOnePaymentGateway.java)와
-  [PortOneSdkPaymentGateway](../../../../src/main/java/com/example/ilgeobolkka/infra/portone/PortOneSdkPaymentGateway.java)를
-  참고합니다.
+- F03이 공통 `openAiRestClient`와 OpenAI 설정 Properties를 제공하고 Embeddings adapter는 아직 없습니다.
+- 기존 외부 Gateway 경계는 [PortOnePaymentGateway](../../../../src/main/java/com/example/ilgeobolkka/infra/portone/PortOnePaymentGateway.java)와 [PortOneSdkPaymentGateway](../../../../src/main/java/com/example/ilgeobolkka/infra/portone/PortOneSdkPaymentGateway.java)를 참고합니다.
 - `build.gradle`에 OpenAI SDK는 없습니다.
 
 ## 입력과 산출물
@@ -38,7 +34,8 @@
 ## 수정 허용 파일
 
 - 새 `infra/openai` embedding 전용 파일
-- F03의 공통 HTTP Bean 설정은 호출만 하며 수정하지 않음
+- F03의 `openAiRestClient`를 주입받아 사용하고 공통 HTTP Bean 설정은 수정하지 않음
+- `RestClient.builder()` 등으로 별도 client를 생성해 F03 검증·인증 설정을 우회하지 않음
 - 새 `OpenAiHttpEmbeddingGatewayTest`
 
 ## 구현 조건
@@ -72,5 +69,4 @@
 
 ## 인계
 
-C03과 G07 담당자에게 Gateway 메서드·내부 오류 종류를 전달합니다. 두 작업은 공급자 DTO나 HTTP client를
-직접 참조하지 않습니다.
+C03과 G07 담당자에게 Gateway 메서드·내부 오류 종류를 전달합니다. 두 작업은 공급자 DTO나 HTTP client를 직접 참조하지 않습니다.
