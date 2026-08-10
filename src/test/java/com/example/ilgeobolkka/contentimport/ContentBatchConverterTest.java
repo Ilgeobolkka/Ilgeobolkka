@@ -85,22 +85,8 @@ class ContentBatchConverterTest {
     }
 
     @Test
-    void 초기_manifest가_initial_v1이_아니면_변환을_거부한다() throws IOException {
-        Path manifestPath = createManifest("ai-route-v2");
-        var pdfTool = new FakePdfTool();
-        var converter =
-                new ContentBatchConverter(
-                        manifestPath,
-                        tempDirectory.resolve("output"),
-                        objectMapper,
-                        pdfTool);
-
-        assertThrows(IllegalStateException.class, converter::convert);
-        assertEquals(0, pdfTool.extractCount);
-    }
-
-    @Test
-    void 정상_AI_manifest는_전체_사전_검증_연결_전_변환을_거부한다() throws IOException {
+    void initial_v1이_아닌_정상_AI_manifest는_전체_사전_검증_연결_전_변환을_거부한다()
+            throws IOException {
         Path manifestPath = createAiRouteManifest();
         var pdfTool = new FakePdfTool();
         var converter =

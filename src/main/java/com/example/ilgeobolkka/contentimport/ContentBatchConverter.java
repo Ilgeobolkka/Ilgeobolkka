@@ -1,7 +1,6 @@
 package com.example.ilgeobolkka.contentimport;
 
 import com.example.ilgeobolkka.book.entity.BookPageContentType;
-import com.example.ilgeobolkka.contentimport.manifest.AiRouteContentManifest;
 import com.example.ilgeobolkka.contentimport.manifest.ContentManifest;
 import com.example.ilgeobolkka.contentimport.manifest.ContentManifestParser;
 import com.example.ilgeobolkka.contentimport.manifest.InitialContentManifest;
@@ -30,10 +29,9 @@ import tools.jackson.databind.ObjectMapper;
 @Profile("content-import")
 class ContentBatchConverter {
 
+    // 초기 코퍼스(initial-v1) 전용 계약이다. 이후 버전은 이 제한을 풀지 않고 버전별 검증 경로를 추가한다.
     private static final int BOOK_COUNT = 100;
     private static final int PAGE_COUNT = 400;
-    // 초기 코퍼스(initial-v1) 전용 계약이다. 이후 버전은 이 제한을 풀지 않고 버전별 검증 경로를 추가한다.
-    private static final String INITIAL_CONTENT_VERSION = "initial-v1";
     private static final String POPPLER_VERSION = "26.05.0";
 
     private final Path manifestPath;
@@ -117,32 +115,21 @@ class ContentBatchConverter {
         if (manifest instanceof InitialContentManifest initialManifest) {
             return initialManifest;
         }
-        AiRouteContentManifest aiRouteManifest = (AiRouteContentManifest) manifest;
         throw new IllegalStateException(
-                "ai-route-v2 콘텐츠는 전체 사전 검증 연결 후 변환할 수 있습니다: "
-                        + aiRouteManifest.contentVersion());
+                "초기 코퍼스 이외 콘텐츠는 전체 사전 검증 연결 후 변환할 수 있습니다: "
+                        + manifest.contentVersion());
     }
 
     private void validateManifest(InitialContentManifest manifest) {
-        if (manifest == null || !INITIAL_CONTENT_VERSION.equals(manifest.contentVersion())) {
-            throw new IllegalStateException(
-                    "초기 콘텐츠 manifest의 contentVersion은 initial-v1이어야 합니다.");
-        }
-        if (manifest.books() == null || manifest.books().size() != BOOK_COUNT) {
+        if (manifest.books().size() != BOOK_COUNT) {
             throw new IllegalStateException("콘텐츠 manifest에는 정확히 100권이 있어야 합니다.");
         }
 
-        Set<Long> ids = new HashSet<>();
         int totalPageCount = 0;
         for (InitialContentManifest.Book book : manifest.books()) {
-            if (book == null
-                    || book.bookId() < 1
+            if (book.bookId() < 1
                     || book.bookId() > BOOK_COUNT
-                    || !ids.add(book.bookId())
-                    || !expectedPdfPath(book.bookId()).equals(book.pdfPath())
-                    || book.pdfSha256() == null
-                    || !book.pdfSha256().matches("[0-9a-f]{64}")
-                    || book.totalPageCount() < 1) {
+                    || !expectedPdfPath(book.bookId()).equals(book.pdfPath())) {
                 throw new IllegalStateException("콘텐츠 manifest에 유효하지 않은 도서가 있습니다.");
             }
             totalPageCount += book.totalPageCount();

@@ -97,6 +97,36 @@ class AiRouteContentManifestTest {
     }
 
     @Test
+    void 지원하지_않는_manifest_버전을_거부한다() {
+        String unsupportedVersion =
+                validManifest().replace("\"ai-route-v2\"", "\"ai-route-v3\"");
+
+        ContentManifestFormatException exception =
+                assertThrows(
+                        ContentManifestFormatException.class,
+                        () -> parser.parseManifest(unsupportedVersion));
+
+        assertEquals(
+                "지원하지 않는 콘텐츠 manifest 버전입니다: ai-route-v3",
+                exception.getMessage());
+    }
+
+    @Test
+    void ai_route_v2가_아닌_evaluation_버전을_거부한다() {
+        String initialVersion =
+                validEvaluation().replace("\"ai-route-v2\"", "\"initial-v1\"");
+
+        ContentManifestFormatException exception =
+                assertThrows(
+                        ContentManifestFormatException.class,
+                        () -> parser.parseEvaluation(initialVersion));
+
+        assertEquals(
+                "AI 경로 evaluation의 contentVersion은 ai-route-v2여야 합니다.",
+                exception.getMessage());
+    }
+
+    @Test
     void 필수_필드_누락과_unknown_field를_거부한다() {
         String missingRequired =
                 validManifest().replace("\"aiExternalTransferAllowed\": true,", "");

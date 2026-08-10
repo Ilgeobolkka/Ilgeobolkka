@@ -1,5 +1,8 @@
 package com.example.ilgeobolkka.contentimport.manifest;
 
+import static com.example.ilgeobolkka.contentimport.manifest.ContentManifest.AI_ROUTE_CONTENT_VERSION;
+import static com.example.ilgeobolkka.contentimport.manifest.ContentManifest.INITIAL_CONTENT_VERSION;
+
 import java.nio.charset.StandardCharsets;
 import tools.jackson.core.JacksonException;
 import tools.jackson.core.StreamReadFeature;
@@ -12,9 +15,6 @@ import tools.jackson.databind.cfg.CoercionInputShape;
 import tools.jackson.databind.type.LogicalType;
 
 public final class ContentManifestParser {
-
-    private static final String INITIAL_CONTENT_VERSION = "initial-v1";
-    private static final String AI_ROUTE_CONTENT_VERSION = "ai-route-v2";
 
     private final ObjectMapper objectMapper;
     private final ObjectReader strictReader;

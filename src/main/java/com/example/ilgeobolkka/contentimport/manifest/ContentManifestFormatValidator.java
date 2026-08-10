@@ -1,13 +1,14 @@
 package com.example.ilgeobolkka.contentimport.manifest;
 
+import static com.example.ilgeobolkka.contentimport.manifest.ContentManifest.AI_ROUTE_CONTENT_VERSION;
+import static com.example.ilgeobolkka.contentimport.manifest.ContentManifest.INITIAL_CONTENT_VERSION;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 final class ContentManifestFormatValidator {
 
-    private static final String INITIAL_CONTENT_VERSION = "initial-v1";
-    private static final String AI_ROUTE_CONTENT_VERSION = "ai-route-v2";
     private static final Set<Integer> ALLOWED_ADDITIONAL_INK = Set.of(0, 5, 10, 15);
 
     private ContentManifestFormatValidator() {}
