@@ -1,9 +1,9 @@
 package com.example.ilgeobolkka.infra.openai;
 
 import com.example.ilgeobolkka.infra.openai.OpenAiEmbeddingException.Failure;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestClientException;
+import tools.jackson.core.JacksonException;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.ObjectMapper;
 
@@ -59,7 +60,7 @@ public final class OpenAiHttpEmbeddingGateway implements OpenAiEmbeddingGateway 
                 List.of(text), model, dimensions, "float");
 
         try {
-            EmbeddingResponse response = restClient.post()
+            JsonNode response = restClient.post()
                     .uri(EMBEDDINGS_PATH)
                     .body(request)
                     .exchange((clientRequest, clientResponse) -> {
@@ -82,13 +83,21 @@ public final class OpenAiHttpEmbeddingGateway implements OpenAiEmbeddingGateway 
                             throw new OpenAiEmbeddingException(Failure.INVALID_RESPONSE);
                         }
 
-                        return clientResponse.bodyTo(EmbeddingResponse.class);
+                        return parseResponse(clientResponse.getBody());
                     });
 
             return validateResponse(response, model, dimensions);
         } catch (ResourceAccessException exception) {
             throw new OpenAiEmbeddingException(Failure.TEMPORARY);
         } catch (RestClientException exception) {
+            throw new OpenAiEmbeddingException(Failure.INVALID_RESPONSE);
+        }
+    }
+
+    private JsonNode parseResponse(InputStream responseBody) {
+        try {
+            return objectMapper.readTree(responseBody);
+        } catch (JacksonException exception) {
             throw new OpenAiEmbeddingException(Failure.INVALID_RESPONSE);
         }
     }
@@ -108,40 +117,73 @@ public final class OpenAiHttpEmbeddingGateway implements OpenAiEmbeddingGateway 
     }
 
     private Embedding validateResponse(
-            EmbeddingResponse response,
+            JsonNode response,
             String requestedModel,
             int requestedDimensions) {
-        if (response == null
-                || !requestedModel.equals(response.model())
-                || response.data() == null
-                || response.data().size() != 1) {
+        if (response == null || !response.isObject()) {
             throw new OpenAiEmbeddingException(Failure.INVALID_RESPONSE);
         }
 
-        EmbeddingData item = response.data().getFirst();
-        if (item == null || item.index() == null || item.index() != 0) {
+        JsonNode modelNode = response.path("model");
+        JsonNode dataNode = response.path("data");
+        if (!modelNode.isString()
+                || !requestedModel.equals(modelNode.asString())
+                || !dataNode.isArray()
+                || dataNode.size() != 1) {
             throw new OpenAiEmbeddingException(Failure.INVALID_RESPONSE);
         }
 
-        List<Double> vector = item.embedding();
-        if (vector == null
-                || vector.isEmpty()
-                || vector.size() != requestedDimensions
-                || vector.stream().anyMatch(value -> value == null || !Double.isFinite(value))) {
+        JsonNode item = dataNode.get(0);
+        JsonNode indexNode = item.path("index");
+        if (!item.isObject()
+                || !indexNode.isIntegralNumber()
+                || !indexNode.canConvertToInt()
+                || indexNode.intValue() != 0) {
             throw new OpenAiEmbeddingException(Failure.INVALID_RESPONSE);
         }
 
-        return new Embedding(List.copyOf(vector), response.model(), requestedDimensions);
+        JsonNode vectorNode = item.path("embedding");
+
+        if (!vectorNode.isArray()
+                || vectorNode.isEmpty()
+                || vectorNode.size() != requestedDimensions) {
+            throw new OpenAiEmbeddingException(Failure.INVALID_RESPONSE);
+        }
+
+        List<Double> vector = new ArrayList<>(requestedDimensions);
+        for (JsonNode valueNode : vectorNode) {
+            if (!valueNode.isNumber()) {
+                throw new OpenAiEmbeddingException(Failure.INVALID_RESPONSE);
+            }
+
+            double value = valueNode.doubleValue();
+
+            if (!Double.isFinite(value)) {
+                throw new OpenAiEmbeddingException(Failure.INVALID_RESPONSE);
+            }
+
+            vector.add(value);
+        }
+
+        return new Embedding(List.copyOf(vector), modelNode.asString(), requestedDimensions);
     }
 
     private String extractErrorCode(InputStream responseBody) {
         try {
-            String errorCode = objectMapper.readTree(responseBody)
+            JsonNode errorCodeNode = objectMapper.readTree(responseBody)
                     .path("error")
-                    .path("code")
-                    .asString("");
+                    .path("code");
 
-            return errorCode.matches("[A-Za-z0-9._-]{1,100}") ? errorCode : "-";
+            if (!errorCodeNode.isString()) {
+                return "-";
+            }
+
+            return switch (errorCodeNode.asString()) {
+                case "unsupported_parameter" -> "INVALID_REQUEST";
+                case "invalid_api_key" -> "AUTHENTICATION_FAILED";
+                case "project_permission_denied" -> "PERMISSION_DENIED";
+                default -> "-";
+            };
         } catch (RuntimeException exception) {
             return "-";
         }
@@ -180,11 +222,4 @@ public final class OpenAiHttpEmbeddingGateway implements OpenAiEmbeddingGateway 
             @JsonProperty("encoding_format") String encodingFormat) {
     }
 
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    private record EmbeddingResponse(List<EmbeddingData> data, String model) {
-    }
-
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    private record EmbeddingData(List<Double> embedding, Integer index) {
-    }
 }

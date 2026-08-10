@@ -119,6 +119,20 @@ class OpenAiHttpEmbeddingGatewayTest {
     }
 
     @Test
+    void 파싱할_수_없는_2xx_응답은_invalid_response로_분류하고_원문을_숨긴다(CapturedOutput output) {
+        String providerBody = "{\"data\":[\"" + API_KEY + " " + PROJECT_ID;
+        expectAnyEmbeddingRequest()
+                .andRespond(withSuccess(providerBody, MediaType.APPLICATION_JSON));
+
+        OpenAiEmbeddingException exception = assertFailure(
+                () -> gateway.embedPurpose(new PurposeInput("로그에 남으면 안 되는 목적"), MODEL, DIMENSIONS),
+                Failure.INVALID_RESPONSE);
+
+        assertNoSensitiveText(exception, output, providerBody);
+        server.verify();
+    }
+
+    @Test
     void 공급자_5xx는_일시_오류로_분류하고_원문을_숨긴다(CapturedOutput output) {
         String providerBody = "분석 텍스트와 " + API_KEY + " " + PROJECT_ID;
         expectAnyEmbeddingRequest()
@@ -139,6 +153,7 @@ class OpenAiHttpEmbeddingGatewayTest {
     void 공급자_4xx는_status와_error_code만_로그에_남긴다(
             HttpStatus status,
             String errorCode,
+            String expectedErrorCode,
             CapturedOutput output) {
         String purpose = "로그에 남으면 안 되는 목적";
         String providerMessage = "민감한 원인 " + API_KEY + " " + PROJECT_ID;
@@ -155,8 +170,27 @@ class OpenAiHttpEmbeddingGatewayTest {
                 Failure.INVALID_RESPONSE);
 
         assertThat(output.getAll())
-                .contains("WARN", "status=" + status.value(), "errorCode=" + errorCode)
+                .contains("WARN", "status=" + status.value(), "errorCode=" + expectedErrorCode)
                 .doesNotContain(providerMessage, "request_error");
+        assertNoSensitiveText(exception, output, providerBody);
+        server.verify();
+    }
+
+    @Test
+    void 알_수_없는_error_code는_로그에_노출하지_않는다(CapturedOutput output) {
+        String providerBody = """
+                {"error":{"message":"민감한 원인","type":"request_error","code":"%s"}}
+                """.formatted(API_KEY);
+        expectAnyEmbeddingRequest()
+                .andRespond(withStatus(HttpStatus.BAD_REQUEST)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(providerBody));
+
+        OpenAiEmbeddingException exception = assertFailure(
+                () -> gateway.embedPurpose(new PurposeInput("로그에 남으면 안 되는 목적"), MODEL, DIMENSIONS),
+                Failure.INVALID_RESPONSE);
+
+        assertThat(output.getAll()).contains("WARN", "status=400", "errorCode=-");
         assertNoSensitiveText(exception, output, providerBody);
         server.verify();
     }
@@ -372,6 +406,8 @@ class OpenAiHttpEmbeddingGatewayTest {
                 Arguments.of("차원 불일치", response("[0.1,0.2]", "0", MODEL)),
                 Arguments.of("null 원소", response("[0.1,null,0.3]", "0", MODEL)),
                 Arguments.of("비유한 수", response("[0.1,1e309,0.3]", "0", MODEL)),
+                Arguments.of("문자열 vector 원소", response("[0.1,\"0.2\",0.3]", "0", MODEL)),
+                Arguments.of("문자열 index", response("[0.1,0.2,0.3]", "\"0\"", MODEL)),
                 Arguments.of("빈 vector", response("[]", "0", MODEL)),
                 Arguments.of("빈 data", "{\"data\":[],\"model\":\"" + MODEL + "\"}"),
                 Arguments.of("data 원소 2개", """
@@ -390,9 +426,9 @@ class OpenAiHttpEmbeddingGatewayTest {
 
     private static Stream<Arguments> clientErrorResponses() {
         return Stream.of(
-                Arguments.of(HttpStatus.BAD_REQUEST, "unsupported_parameter"),
-                Arguments.of(HttpStatus.UNAUTHORIZED, "invalid_api_key"),
-                Arguments.of(HttpStatus.FORBIDDEN, "project_permission_denied"));
+                Arguments.of(HttpStatus.BAD_REQUEST, "unsupported_parameter", "INVALID_REQUEST"),
+                Arguments.of(HttpStatus.UNAUTHORIZED, "invalid_api_key", "AUTHENTICATION_FAILED"),
+                Arguments.of(HttpStatus.FORBIDDEN, "project_permission_denied", "PERMISSION_DENIED"));
     }
 
     private static Stream<String> budgetLimitErrorCodes() {
