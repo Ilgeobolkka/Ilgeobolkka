@@ -1,0 +1,72 @@
+{
+  "contentVersion": "ai-route-v2",
+  "cases": [
+    {
+      "caseId": "case-book-047",
+      "bookId": 47,
+      "purpose": "작은 가게를 열려는데 물건값을 어떤 기준으로 정해야 할지 알고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "수요의 법칙",
+        "공급의 법칙",
+        "균형가격",
+        "수요의 가격탄력성"
+      ],
+      "helpfulConcepts": [
+        "기회비용",
+        "초과수요",
+        "탄력성과 매출"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 13,
+          "afterPageNumber": 25
+        },
+        {
+          "beforePageNumber": 21,
+          "afterPageNumber": 25
+        },
+        {
+          "beforePageNumber": 25,
+          "afterPageNumber": 35
+        }
+      ],
+      "irrelevantPageNumbers": [
+        1,
+        52,
+        53,
+        54,
+        55
+      ],
+      "duplicatePageGroups": [
+        [
+          28,
+          44
+        ],
+        [
+          2,
+          56
+        ]
+      ],
+      "referencePageNumbers": [
+        11,
+        13,
+        19,
+        21,
+        25,
+        37,
+        40
+      ],
+      "allowedAlternativePageNumbers": [
+        12,
+        20,
+        26,
+        38,
+        41
+      ]
+    }
+  ]
+}
