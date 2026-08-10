@@ -80,20 +80,6 @@ class CoreEntityMappingMySqlIntegrationTest {
                     OwnershipPayment.class,
                     BookOwnership.class,
                     LibraryEntry.class);
-    private static final Set<String> AI_ROUTE_EXTENSION_COLUMNS =
-            Set.of(
-                    "book.content_version",
-                    "book.ai_route_supported",
-                    "book.ai_external_transfer_allowed",
-                    "book.ai_data_policy_version",
-                    "book_page.ai_analysis_text",
-                    "book_page.ai_public_guide_topic",
-                    "book_page.estimated_reading_seconds",
-                    "book_page.embedding_model",
-                    "book_page.embedding_dimensions",
-                    "book_page.embedding_json",
-                    "book_page.duplicate_group_keys");
-
     private final EntityManager entityManager;
     private final JdbcTemplate jdbcTemplate;
 
@@ -180,9 +166,6 @@ class CoreEntityMappingMySqlIntegrationTest {
                                                             mappedColumns,
                                                             mappedNullableColumns));
                         });
-        mappedColumns.removeAll(AI_ROUTE_EXTENSION_COLUMNS);
-        mappedNullableColumns.removeAll(AI_ROUTE_EXTENSION_COLUMNS);
-
         List<String> physicalColumns = 물리_컬럼을_조회한다(false);
         List<String> physicalNullableColumns = 물리_컬럼을_조회한다(true);
 
@@ -384,8 +367,7 @@ class CoreEntityMappingMySqlIntegrationTest {
     private List<String> 물리_컬럼을_조회한다(boolean nullableOnly) {
         String nullableCondition = nullableOnly ? "AND is_nullable = 'YES'" : "";
 
-        return jdbcTemplate
-                .queryForList(
+        return jdbcTemplate.queryForList(
                         """
                         SELECT CONCAT(table_name, '.', column_name)
                         FROM information_schema.columns
@@ -399,9 +381,6 @@ class CoreEntityMappingMySqlIntegrationTest {
                         ORDER BY table_name, ordinal_position
                         """
                                 .formatted(nullableCondition),
-                        String.class)
-                .stream()
-                .filter(column -> !AI_ROUTE_EXTENSION_COLUMNS.contains(column))
-                .toList();
+                        String.class);
     }
 }
