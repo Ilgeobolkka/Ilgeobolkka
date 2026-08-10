@@ -69,6 +69,13 @@ manifest는 AI 경로 지원 후보를 정의할 뿐 `ai_route_supported=true`�
 도서 전체를 `false`로 판정합니다. 구조 메타데이터 중 화면 공개가 합의되지 않은 값은 외부 API에 제공하지
 않습니다.
 
+`ai-route-v2`의 `embeddingModel`은
+[ADR-0014](./adr/application/0014-use-openai-and-mysql-for-ai-route-generation.md)가 정한
+`text-embedding-3-small`이고 `embeddingDimensions`는 그 모델의 기본 차원인 `1536`입니다. 한 콘텐츠 버전의
+모든 페이지 vector를 이 모델·차원으로 생성하며, 목적 vector와 model·dimensions가 다르면 후보 검색을
+시작하지 않고 실패합니다. 값을 바꾸면 해당 콘텐츠 버전의 페이지 임베딩을 전부 다시 생성해야 하므로
+기존 콘텐츠 버전에서 바꾸지 않고 새 콘텐츠 버전에서만 변경합니다.
+
 선수 관계는 같은 도서·콘텐츠 버전 안에서 `선수 페이지 -> 의존 페이지` 방향 그래프로 해석합니다. 모든
 참조 페이지가 존재해야 하고 다른 도서·콘텐츠 버전을 가리킬 수 없으며, 자기 참조와 방향 순환이 없어야
 합니다. 적재 전 위상 정렬로 전체 페이지를 방문할 수 있는지 검증하고 하나라도 실패하면 해당 콘텐츠 버전의
