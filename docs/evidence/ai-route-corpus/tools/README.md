@@ -12,7 +12,7 @@ SCRUM-485 90권 확장에서 재사용하는 Python 스크립트다. 애플리�
 | `validate_manifest.py` | `manifest.json`의 모든 도서와 `evaluation.json`을 한 번에 검사한다. `check.py`(book-047 전용, 이 디렉터리에 없음)를 대신한다. |
 | `pdfcheck.py` | Poppler 없이 PDF 객체를 직접 파싱해 페이지 수·TEXT/IMAGE 구성을 확인한다. `python3 pdfcheck.py <pdf경로> <기대페이지수> <기대이미지목록,쉼표구분>`. |
 | `figures041.py` | book-041 도표 4개의 SVG 생성 예시. 새 도서의 도표를 그릴 때 `head()`/`svg()` 헬퍼를 그대로 가져다 쓴다. |
-| `build_pdf_template.py` | 원고 JSON을 A4 HTML로 조립해 Chrome Headless로 PDF를 뽑는 스크립트 템플릿(book-041 기준). 새 도서마다 `MS`·`IMAGE_PAGES` 경로만 바꿔 재사용한다. |
+| `build_pdf_generic.py` | 원고 JSON을 A4 HTML로 조립해 Chrome Headless로 PDF를 뽑는다. `python3 build_pdf_generic.py <bookId> <이미지페이지,쉼표>`로 바로 실행. |
 
 ## 새 도서를 만드는 순서
 

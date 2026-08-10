@@ -1,15 +1,12 @@
 #!/usr/bin/env python3
-"""book-041 원본 PDF 조립용 HTML 생성. book-047의 build_pdf.py 패턴을 일반화."""
+"""임의 도서의 원본 PDF 조립용 HTML 생성. 사용: python3 build_pdf_generic.py <bookId> <이미지페이지,쉼표>"""
 import base64
 import html
 import json
+import sys
 from pathlib import Path
 
-HERE = Path(__file__).parent
 REPO = Path("/Users/t2025-m0204/Documents/sparta/Ilgeobolkka")
-OUT = HERE / "pdfbuild041"
-MS = json.loads((REPO / "docs/evidence/ai-route-corpus/book-041-manuscript.json").read_text("utf-8"))
-IMAGE_PAGES = {7, 19, 24, 42}
 
 CSS = """
 @page { size: A4; margin: 0; }
@@ -42,12 +39,18 @@ def data_uri(path):
 
 
 def main():
+    book_id = int(sys.argv[1])
+    image_pages = {int(x) for x in sys.argv[2].split(",")}
+    scratch = Path(sys.argv[3]) if len(sys.argv) > 3 else Path(f"pdfbuild{book_id:03d}")
+    scratch.mkdir(exist_ok=True)
+
+    ms = json.loads((REPO / f"docs/evidence/ai-route-corpus/book-{book_id:03d}-manuscript.json").read_text("utf-8"))
     parts = [f"<!doctype html><html lang='ko'><head><meta charset='utf-8'>"
-             f"<title>{html.escape(MS['title'])}</title><style>{CSS}</style></head><body>"]
-    for page in MS["pages"]:
+             f"<title>{html.escape(ms['title'])}</title><style>{CSS}</style></head><body>"]
+    for page in ms["pages"]:
         n = page["pageNumber"]
-        if n in IMAGE_PAGES:
-            uri = data_uri(OUT / f"fig-{n:02d}.png")
+        if n in image_pages:
+            uri = data_uri(scratch / f"fig-{n:02d}.png")
             parts.append(f"<section class='page img'><img src='{uri}' alt=''></section>")
             continue
         if page["section"] == "목차":
@@ -59,13 +62,13 @@ def main():
         paras = "".join(f"<p>{html.escape(t)}</p>" for t in page["body"].split("\n\n") if t.strip())
         parts.append(
             f"<section class='page text'>"
-            f"<div class='hd'>{html.escape(MS['title'])}<span class='sec'>{html.escape(page['chapter'])}</span></div>"
+            f"<div class='hd'>{html.escape(ms['title'])}<span class='sec'>{html.escape(page['chapter'])}</span></div>"
             f"<h1 class='sect'>{html.escape(page['section'])}</h1>{paras}"
             f"<div class='pn'>{n}</div></section>")
     parts.append("</body></html>")
-    dest = OUT / "book-041.html"
+    dest = scratch / f"book-{book_id:03d}.html"
     dest.write_text("".join(parts), encoding="utf-8")
-    print(f"{dest}  ({dest.stat().st_size:,} bytes, {len(MS['pages'])} pages)")
+    print(f"{dest}  ({dest.stat().st_size:,} bytes, {len(ms['pages'])} pages)")
 
 
 if __name__ == "__main__":
