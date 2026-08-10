@@ -1,10 +1,6 @@
 package com.example.ilgeobolkka.infra.openai;
 
 import com.example.ilgeobolkka.infra.openai.OpenAiRouteException.Failure;
-import com.example.ilgeobolkka.infra.openai.OpenAiRouteGateway.ModelRouteItem;
-import com.example.ilgeobolkka.infra.openai.OpenAiRouteGateway.ModelRouteProposal;
-import com.example.ilgeobolkka.infra.openai.OpenAiRouteGateway.Relevance;
-import com.example.ilgeobolkka.infra.openai.OpenAiRouteGateway.Role;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.SocketTimeoutException;
@@ -29,8 +25,10 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestClientException;
 import tools.jackson.core.JacksonException;
+import tools.jackson.databind.DeserializationFeature;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectReader;
 
 @Component
 @Conditional(OpenAiConfiguration.OpenAiRequiredCondition.class)
@@ -50,6 +48,7 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
 
     private final RestClient restClient;
     private final ObjectMapper objectMapper;
+    private final ObjectReader proposalReader;
     private final String prompt;
     private final JsonNode schema;
     private final String promptVersion;
@@ -60,6 +59,7 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
             ObjectMapper objectMapper) {
         this.restClient = Objects.requireNonNull(restClient);
         this.objectMapper = Objects.requireNonNull(objectMapper);
+        proposalReader = objectMapper.reader(DeserializationFeature.FAIL_ON_READING_DUP_TREE_KEY);
 
         byte[] promptBytes = readResourceBytes(PROMPT_RESOURCE);
         byte[] schemaBytes = readResourceBytes(SCHEMA_RESOURCE);
@@ -92,7 +92,7 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
                             throw new OpenAiRouteException(Failure.TEMPORARY);
                         }
 
-                        if (clientResponse.getStatusCode().isError()) {
+                        if (clientResponse.getStatusCode().value() != 200) {
                             int status = clientResponse.getStatusCode().value();
                             String errorCode = extractErrorCode(clientResponse.getBody());
                             log.warn(
@@ -224,7 +224,7 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
     private ModelRouteProposal parseProposalText(String proposalText) {
         JsonNode proposal;
         try {
-            proposal = objectMapper.readTree(proposalText);
+            proposal = proposalReader.readTree(proposalText);
         } catch (JacksonException exception) {
             throw new OpenAiRouteException(Failure.MALFORMED_RESPONSE);
         }

@@ -37,6 +37,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.boot.test.context.runner.ApplicationContextRunner;
 import org.springframework.boot.test.system.CapturedOutput;
 import org.springframework.boot.test.system.OutputCaptureExtension;
@@ -333,6 +334,19 @@ class OpenAiHttpRouteGatewayTest {
                 () -> gateway.proposeRoute(routeInput()), Failure.TEMPORARY);
 
         assertNoSensitiveText(exception, output, providerBody);
+        server.verify();
+    }
+
+    @ParameterizedTest(name = "[{index}] HTTP {0}")
+    @ValueSource(ints = {201, 302})
+    void HTTP_200이_아닌_정상_형태_응답은_temporary로_거부한다(int status) {
+        expectAnyRouteRequest()
+                .andRespond(withStatus(HttpStatus.valueOf(status))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(completedResponse(validProposal())));
+
+        assertFailure(() -> gateway.proposeRoute(routeInput()), Failure.TEMPORARY);
+
         server.verify();
     }
 
@@ -635,6 +649,10 @@ class OpenAiHttpRouteGatewayTest {
                 Arguments.of("음수 pageNumber", item(-1, "HIGH", true, "CORE")),
                 Arguments.of("알 수 없는 relevance", item(1, "LOW", true, "CORE")),
                 Arguments.of("알 수 없는 role", item(1, "HIGH", true, "SUMMARY")),
+                Arguments.of("중복 pageNumber", """
+                        {"items":[{"pageNumber":1,"pageNumber":2,"relevance":"HIGH",\
+                        "prerequisite":true,"role":"CORE"}]}
+                        """),
                 Arguments.of("item 자유 필드", """
                         {"items":[{"pageNumber":1,"relevance":"HIGH",\
                         "prerequisite":true,"role":"CORE","guide":"금지"}]}
