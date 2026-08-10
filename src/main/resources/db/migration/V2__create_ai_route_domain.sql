@@ -27,6 +27,7 @@ ALTER TABLE book_page
     ADD COLUMN embedding_dimensions INT NULL,
     ADD COLUMN embedding_json JSON NULL,
     ADD COLUMN duplicate_group_keys JSON NULL,
+    ADD CONSTRAINT uk_book_page_id_book UNIQUE (id, book_id),
     ADD CONSTRAINT ck_book_page_ai_reading_seconds_positive CHECK (
         estimated_reading_seconds IS NULL OR estimated_reading_seconds > 0
     ),
@@ -95,6 +96,7 @@ CREATE TABLE ai_route_generation (
     created_at           DATETIME(6)  NOT NULL,
     completed_at         DATETIME(6)  NULL,
     expires_at           DATETIME(6)  NULL,
+    CONSTRAINT uk_ai_route_generation_id_book UNIQUE (generation_id, book_id),
     CONSTRAINT uk_ai_route_generation_reader_idempotency
         UNIQUE (reader_id, idempotency_key),
     CONSTRAINT uk_ai_route_generation_saved_route UNIQUE (saved_route_id),
@@ -194,6 +196,7 @@ CREATE TABLE ai_route_generation (
 CREATE TABLE ai_route_generation_item (
     id             BIGINT AUTO_INCREMENT PRIMARY KEY,
     generation_id  CHAR(36) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+    book_id        BIGINT       NOT NULL,
     book_page_id   BIGINT       NOT NULL,
     position       INT          NOT NULL,
     relevance      VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
@@ -211,10 +214,11 @@ CREATE TABLE ai_route_generation_item (
     CONSTRAINT ck_ai_route_generation_item_role CHECK (
         role IN ('PREREQUISITE', 'CORE', 'EXAMPLE', 'COUNTERPOINT', 'CONCLUSION')
     ),
-    CONSTRAINT fk_ai_route_generation_item_generation
-        FOREIGN KEY (generation_id) REFERENCES ai_route_generation (generation_id),
+    CONSTRAINT fk_ai_route_generation_item_generation_book
+        FOREIGN KEY (generation_id, book_id)
+        REFERENCES ai_route_generation (generation_id, book_id),
     CONSTRAINT fk_ai_route_generation_item_page
-        FOREIGN KEY (book_page_id) REFERENCES book_page (id)
+        FOREIGN KEY (book_page_id, book_id) REFERENCES book_page (id, book_id)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_0900_ai_ci;
@@ -234,6 +238,8 @@ CREATE TABLE ai_reading_route (
     feedback_at         DATETIME(6)  NULL,
     created_at          DATETIME(6)  NOT NULL,
     CONSTRAINT uk_ai_reading_route_generation UNIQUE (generation_id),
+    CONSTRAINT uk_ai_reading_route_id_book UNIQUE (id, book_id),
+    CONSTRAINT uk_ai_reading_route_id_generation UNIQUE (id, generation_id),
     CONSTRAINT uk_ai_reading_route_owner UNIQUE (reader_id, book_id, id),
     CONSTRAINT ck_ai_reading_route_request_type CHECK (
         request_type IN ('INK_BUDGET', 'OWNED_DEPTH')
@@ -276,6 +282,7 @@ CREATE TABLE ai_reading_route (
 CREATE TABLE ai_reading_route_item (
     id             BIGINT AUTO_INCREMENT PRIMARY KEY,
     route_id       BIGINT       NOT NULL,
+    book_id        BIGINT       NOT NULL,
     book_page_id   BIGINT       NOT NULL,
     position       INT          NOT NULL,
     relevance      VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
@@ -294,10 +301,10 @@ CREATE TABLE ai_reading_route_item (
     CONSTRAINT ck_ai_reading_route_item_role CHECK (
         role IN ('PREREQUISITE', 'CORE', 'EXAMPLE', 'COUNTERPOINT', 'CONCLUSION')
     ),
-    CONSTRAINT fk_ai_reading_route_item_route
-        FOREIGN KEY (route_id) REFERENCES ai_reading_route (id),
+    CONSTRAINT fk_ai_reading_route_item_route_book
+        FOREIGN KEY (route_id, book_id) REFERENCES ai_reading_route (id, book_id),
     CONSTRAINT fk_ai_reading_route_item_page
-        FOREIGN KEY (book_page_id) REFERENCES book_page (id)
+        FOREIGN KEY (book_page_id, book_id) REFERENCES book_page (id, book_id)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_0900_ai_ci;
@@ -330,4 +337,5 @@ CREATE TABLE ai_route_daily_usage (
 
 ALTER TABLE ai_route_generation
     ADD CONSTRAINT fk_ai_route_generation_saved_route
-        FOREIGN KEY (saved_route_id) REFERENCES ai_reading_route (id);
+        FOREIGN KEY (saved_route_id, generation_id)
+        REFERENCES ai_reading_route (id, generation_id);

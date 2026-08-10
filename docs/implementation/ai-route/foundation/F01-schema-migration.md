@@ -50,16 +50,20 @@ AI 경로 목표 ERD의 기존 테이블 확장과 일곱 새 테이블을 다�
 2. `book`, `book_page` 확장 컬럼의 타입·ASCII collation·JSON·NULL 계약을 ERD와 일치시킵니다.
 3. `ai_route_prerequisite`, `ai_route_generation`, `ai_route_generation_item`, `ai_reading_route`,
    `ai_reading_route_item`, `ai_route_current`, `ai_route_daily_usage`를 빠짐없이 만듭니다.
-4. 같은 독자·멱등 키, generation·route의 position·page, generation과 저장 route, 현재 route의 고유성을
-   DB 제약으로 보장합니다.
-5. 선수 관계의 같은 book 복합 FK와 저장 route의 `(reader_id, book_id, id)` 복합 FK를 검증합니다.
-6. 저장 route 삭제 cascade가 잉크·대여·세션·서재 테이블로 전파되지 않게 합니다.
+4. 같은 독자·멱등 키, generation·route의 position·page, generation과 저장 route, 현재 route의 고유성과
+   generation이 가리키는 저장 route의 `generation_id` 일치를 DB 제약으로 보장합니다.
+5. 선수 관계, generation·저장 route 항목의 같은 book 복합 FK와 저장 route의
+   `(reader_id, book_id, id)` 복합 FK를 검증합니다.
+6. `book_page`에 콘텐츠 버전 컬럼이 없으므로 항목 페이지와 상위 generation·route의
+   `content_version` 일치는 애플리케이션 계층이 검증합니다.
+7. 저장 route 삭제 cascade가 잉크·대여·세션·서재 테이블로 전파되지 않게 합니다.
 
 ## 테스트
 
 - 빈 schema에 V1부터 새 migration까지 적용
 - V1만 적용된 schema에 새 migration 적용, 모든 기존 book의 `initial-v1` backfill과 컬럼 기본값 확인
-- 중복 멱등 키·현재 route·position과 잘못된 복합 FK가 SQL 예외로 거부되는지 확인
+- 중복 멱등 키·현재 route·position, 다른 generation·도서 연결을 포함한 잘못된 복합 FK가 SQL 예외로
+  거부되는지 확인
 - route 삭제 뒤 `page_rental`, `ink_ledger`, `library_entry`, `reading_session` 보존 확인
 - 명령: `./gradlew test --tests '*AiRouteSchemaMigrationTest'`
 

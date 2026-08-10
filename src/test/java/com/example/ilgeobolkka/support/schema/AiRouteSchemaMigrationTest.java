@@ -176,6 +176,7 @@ class AiRouteSchemaMigrationTest {
                         "ai_reading_route.created_at|datetime(6)|NO|-|-",
                         "ai_reading_route_item.id|bigint|NO|-|auto_increment",
                         "ai_reading_route_item.route_id|bigint|NO|-|-",
+                        "ai_reading_route_item.book_id|bigint|NO|-|-",
                         "ai_reading_route_item.book_page_id|bigint|NO|-|-",
                         "ai_reading_route_item.position|int|NO|-|-",
                         "ai_reading_route_item.relevance|varchar(20)|NO|ascii_bin|-",
@@ -209,6 +210,7 @@ class AiRouteSchemaMigrationTest {
                         "ai_route_generation.expires_at|datetime(6)|YES|-|-",
                         "ai_route_generation_item.id|bigint|NO|-|auto_increment",
                         "ai_route_generation_item.generation_id|char(36)|NO|ascii_bin|-",
+                        "ai_route_generation_item.book_id|bigint|NO|-|-",
                         "ai_route_generation_item.book_page_id|bigint|NO|-|-",
                         "ai_route_generation_item.position|int|NO|-|-",
                         "ai_route_generation_item.relevance|varchar(20)|NO|ascii_bin|-",
@@ -243,11 +245,15 @@ class AiRouteSchemaMigrationTest {
                         FROM information_schema.statistics
                         WHERE table_schema = DATABASE()
                           AND non_unique = 0
-                          AND table_name IN (
-                              'ai_route_prerequisite', 'ai_route_generation',
-                              'ai_route_generation_item', 'ai_reading_route',
-                              'ai_reading_route_item', 'ai_route_current',
-                              'ai_route_daily_usage'
+                          AND (
+                              table_name IN (
+                                  'ai_route_prerequisite', 'ai_route_generation',
+                                  'ai_route_generation_item', 'ai_reading_route',
+                                  'ai_reading_route_item', 'ai_route_current',
+                                  'ai_route_daily_usage'
+                              )
+                              OR (table_name = 'book_page'
+                                  AND index_name = 'uk_book_page_id_book')
                           )
                         GROUP BY table_name, index_name
                         ORDER BY table_name, index_name
@@ -282,6 +288,8 @@ class AiRouteSchemaMigrationTest {
                                 List.of(
                                         "ai_reading_route.PRIMARY(id)",
                                         "ai_reading_route.uk_ai_reading_route_generation(generation_id)",
+                                        "ai_reading_route.uk_ai_reading_route_id_book(id,book_id)",
+                                        "ai_reading_route.uk_ai_reading_route_id_generation(id,generation_id)",
                                         "ai_reading_route.uk_ai_reading_route_owner(reader_id,book_id,id)",
                                         "ai_reading_route_item.PRIMARY(id)",
                                         "ai_reading_route_item.uk_ai_reading_route_item_page(route_id,book_page_id)",
@@ -290,28 +298,30 @@ class AiRouteSchemaMigrationTest {
                                         "ai_route_current.uk_ai_route_current_route(route_id)",
                                         "ai_route_daily_usage.PRIMARY(reader_id,usage_date)",
                                         "ai_route_generation.PRIMARY(generation_id)",
+                                        "ai_route_generation.uk_ai_route_generation_id_book(generation_id,book_id)",
                                         "ai_route_generation.uk_ai_route_generation_reader_idempotency(reader_id,idempotency_key)",
                                         "ai_route_generation.uk_ai_route_generation_saved_route(saved_route_id)",
                                         "ai_route_generation_item.PRIMARY(id)",
                                         "ai_route_generation_item.uk_ai_route_generation_item_page(generation_id,book_page_id)",
                                         "ai_route_generation_item.uk_ai_route_generation_item_position(generation_id,position)",
                                         "ai_route_prerequisite.PRIMARY(id)",
-                                        "ai_route_prerequisite.uk_ai_route_prerequisite_edge(book_id,prerequisite_page_number,dependent_page_number)"),
+                                        "ai_route_prerequisite.uk_ai_route_prerequisite_edge(book_id,prerequisite_page_number,dependent_page_number)",
+                                        "book_page.uk_book_page_id_book(id,book_id)"),
                                 actualIndexes),
                 () ->
                         assertEquals(
                                 List.of(
                                         "ai_reading_route.fk_ai_reading_route_book(book_id)->book(id)",
                                         "ai_reading_route.fk_ai_reading_route_reader(reader_id)->reader(id)",
-                                        "ai_reading_route_item.fk_ai_reading_route_item_page(book_page_id)->book_page(id)",
-                                        "ai_reading_route_item.fk_ai_reading_route_item_route(route_id)->ai_reading_route(id)",
+                                        "ai_reading_route_item.fk_ai_reading_route_item_page(book_page_id,book_id)->book_page(id,book_id)",
+                                        "ai_reading_route_item.fk_ai_reading_route_item_route_book(route_id,book_id)->ai_reading_route(id,book_id)",
                                         "ai_route_current.fk_ai_route_current_route(reader_id,book_id,route_id)->ai_reading_route(reader_id,book_id,id)",
                                         "ai_route_daily_usage.fk_ai_route_daily_usage_reader(reader_id)->reader(id)",
                                         "ai_route_generation.fk_ai_route_generation_book(book_id)->book(id)",
                                         "ai_route_generation.fk_ai_route_generation_reader(reader_id)->reader(id)",
-                                        "ai_route_generation.fk_ai_route_generation_saved_route(saved_route_id)->ai_reading_route(id)",
-                                        "ai_route_generation_item.fk_ai_route_generation_item_generation(generation_id)->ai_route_generation(generation_id)",
-                                        "ai_route_generation_item.fk_ai_route_generation_item_page(book_page_id)->book_page(id)",
+                                        "ai_route_generation.fk_ai_route_generation_saved_route(saved_route_id,generation_id)->ai_reading_route(id,generation_id)",
+                                        "ai_route_generation_item.fk_ai_route_generation_item_generation_book(generation_id,book_id)->ai_route_generation(generation_id,book_id)",
+                                        "ai_route_generation_item.fk_ai_route_generation_item_page(book_page_id,book_id)->book_page(id,book_id)",
                                         "ai_route_prerequisite.fk_ai_route_prerequisite_dependent_page(book_id,dependent_page_number)->book_page(book_id,page_number)",
                                         "ai_route_prerequisite.fk_ai_route_prerequisite_prerequisite_page(book_id,prerequisite_page_number)->book_page(book_id,page_number)"),
                                 actualForeignKeys));
@@ -755,7 +765,7 @@ class AiRouteSchemaMigrationTest {
     void 중복_멱등키와_generation_항목의_중복_position_page를_거부한다() {
         기본_독자_도서_페이지를_생성한다();
         생성을_생성한다(GENERATION_ID, "00000000-0000-0000-0000-000000001000");
-        생성_항목을_생성한다(54_000L, GENERATION_ID, FIRST_PAGE_ID, 1);
+        생성_항목을_생성한다(54_000L, GENERATION_ID, BOOK_ID, FIRST_PAGE_ID, 1);
 
         assertAll(
                 () ->
@@ -770,20 +780,28 @@ class AiRouteSchemaMigrationTest {
                                 DataAccessException.class,
                                 () ->
                                         생성_항목을_생성한다(
-                                                54_001L, GENERATION_ID, SECOND_PAGE_ID, 1)),
+                                                54_001L,
+                                                GENERATION_ID,
+                                                BOOK_ID,
+                                                SECOND_PAGE_ID,
+                                                1)),
                 () ->
                         assertThrows(
                                 DataAccessException.class,
                                 () ->
                                         생성_항목을_생성한다(
-                                                54_002L, GENERATION_ID, FIRST_PAGE_ID, 2)));
+                                                54_002L,
+                                                GENERATION_ID,
+                                                BOOK_ID,
+                                                FIRST_PAGE_ID,
+                                                2)));
     }
 
     @Test
     void 저장_route_항목의_중복_position_page를_거부한다() {
         기본_독자_도서_페이지를_생성한다();
         저장_경로를_생성한다(55_000L, GENERATION_ID, READER_ID, BOOK_ID);
-        저장_경로_항목을_생성한다(56_000L, 55_000L, FIRST_PAGE_ID, 1);
+        저장_경로_항목을_생성한다(56_000L, 55_000L, BOOK_ID, FIRST_PAGE_ID, 1);
 
         assertAll(
                 () ->
@@ -791,13 +809,13 @@ class AiRouteSchemaMigrationTest {
                                 DataAccessException.class,
                                 () ->
                                         저장_경로_항목을_생성한다(
-                                                56_001L, 55_000L, SECOND_PAGE_ID, 1)),
+                                                56_001L, 55_000L, BOOK_ID, SECOND_PAGE_ID, 1)),
                 () ->
                         assertThrows(
                                 DataAccessException.class,
                                 () ->
                                         저장_경로_항목을_생성한다(
-                                                56_002L, 55_000L, FIRST_PAGE_ID, 2)));
+                                                56_002L, 55_000L, BOOK_ID, FIRST_PAGE_ID, 2)));
     }
 
     @Test
@@ -840,6 +858,52 @@ class AiRouteSchemaMigrationTest {
     }
 
     @Test
+    void 생성과_저장_route_항목은_상위_도서와_다른_페이지를_거부한다() {
+        기본_독자_도서_페이지를_생성한다();
+        도서를_생성한다(SECOND_BOOK_ID);
+        페이지를_생성한다(SECOND_PAGE_ID + 1, SECOND_BOOK_ID, 1);
+        생성을_생성한다(GENERATION_ID, "00000000-0000-0000-0000-000000001000");
+        저장_경로를_생성한다(55_000L, GENERATION_ID, READER_ID, BOOK_ID);
+
+        assertAll(
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        생성_항목을_생성한다(
+                                                54_000L,
+                                                GENERATION_ID,
+                                                BOOK_ID,
+                                                SECOND_PAGE_ID + 1,
+                                                1)),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        저장_경로_항목을_생성한다(
+                                                56_000L,
+                                                55_000L,
+                                                BOOK_ID,
+                                                SECOND_PAGE_ID + 1,
+                                                1)));
+    }
+
+    @Test
+    void SAVED_generation은_동일한_generation_id의_저장_route만_참조한다() {
+        기본_독자_도서_페이지를_생성한다();
+        저장_경로를_생성한다(55_000L, SECOND_GENERATION_ID, READER_ID, BOOK_ID);
+
+        assertThrows(
+                DataAccessException.class,
+                () ->
+                        저장_상태_생성을_생성한다(
+                                GENERATION_ID,
+                                "00000000-0000-0000-0000-000000001000",
+                                "SAVED",
+                                55_000L));
+    }
+
+    @Test
     void SAVED_generation을_CONSUMED로_바꾼_뒤_route를_삭제해도_핵심_기록은_보존한다() {
         기본_독자_도서_페이지를_생성한다();
         핵심_사용자_기록을_생성한다();
@@ -849,7 +913,7 @@ class AiRouteSchemaMigrationTest {
                 "00000000-0000-0000-0000-000000001000",
                 "SAVED",
                 55_000L);
-        저장_경로_항목을_생성한다(56_000L, 55_000L, FIRST_PAGE_ID, 1);
+        저장_경로_항목을_생성한다(56_000L, 55_000L, BOOK_ID, FIRST_PAGE_ID, 1);
         현재_경로를_생성한다(READER_ID, BOOK_ID, 55_000L);
 
         jdbcTemplate.update("DELETE FROM ai_route_current WHERE route_id = ?", 55_000L);
@@ -1055,16 +1119,17 @@ class AiRouteSchemaMigrationTest {
     }
 
     private void 생성_항목을_생성한다(
-            long itemId, String generationId, long pageId, int position) {
+            long itemId, String generationId, long bookId, long pageId, int position) {
         jdbcTemplate.update(
                 """
                 INSERT INTO ai_route_generation_item
-                    (id, generation_id, book_page_id, position,
+                    (id, generation_id, book_id, book_page_id, position,
                      relevance, prerequisite, role)
-                VALUES (?, ?, ?, ?, 'HIGH', FALSE, 'CORE')
+                VALUES (?, ?, ?, ?, ?, 'HIGH', FALSE, 'CORE')
                 """,
                 itemId,
                 generationId,
+                bookId,
                 pageId,
                 position);
     }
@@ -1086,16 +1151,17 @@ class AiRouteSchemaMigrationTest {
     }
 
     private void 저장_경로_항목을_생성한다(
-            long itemId, long routeId, long pageId, int position) {
+            long itemId, long routeId, long bookId, long pageId, int position) {
         jdbcTemplate.update(
                 """
                 INSERT INTO ai_reading_route_item
-                    (id, route_id, book_page_id, position,
+                    (id, route_id, book_id, book_page_id, position,
                      relevance, prerequisite, role)
-                VALUES (?, ?, ?, ?, 'HIGH', FALSE, 'CORE')
+                VALUES (?, ?, ?, ?, ?, 'HIGH', FALSE, 'CORE')
                 """,
                 itemId,
                 routeId,
+                bookId,
                 pageId,
                 position);
     }

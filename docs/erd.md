@@ -369,6 +369,8 @@ erDiagram
 AI 경로 지원 도서의 모든 페이지는 위 일곱 필드를 가져야 하고 `estimated_reading_seconds`와
 `embedding_dimensions`는 0보다 커야 합니다. 미지원 도서는 일곱 필드를 모두 `NULL`로 둘 수 있습니다.
 분석 텍스트·임베딩·중복 그룹은 공개 API에 반환하지 않습니다.
+generation·저장 route 항목이 페이지의 도서를 복합 FK로 확인할 수 있도록
+`(id, book_id)` 고유키를 추가합니다.
 
 ### 새 테이블
 
@@ -388,9 +390,9 @@ AI 경로 지원 도서의 모든 페이지는 위 일곱 필드를 가져야 �
 
 | 컬럼 | 물리 타입 | NULL | 키·참조 | 설명 |
 | --- | --- | --- | --- | --- |
-| `generation_id` | `CHAR(36) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | PK | 서버 발급 임시 결과 UUID |
+| `generation_id` | `CHAR(36) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | PK, `(generation_id, book_id)` UK·`(saved_route_id, generation_id)` FK 구성 | 서버 발급 임시 결과 UUID |
 | `reader_id` | `BIGINT` | 아니오 | FK → `reader.id`, `(reader_id, idempotency_key)` UK 구성 | 요청 소유자 |
-| `book_id` | `BIGINT` | 아니오 | FK → `book.id` | 대상 도서 |
+| `book_id` | `BIGINT` | 아니오 | FK → `book.id`, `(generation_id, book_id)` UK 구성 | 대상 도서 |
 | `content_version` | `VARCHAR(100) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | - | 생성 시점 콘텐츠 버전 스냅샷 |
 | `idempotency_key` | `CHAR(36) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | `(reader_id, idempotency_key)` UK 구성 | 클라이언트 생성 UUID |
 | `request_fingerprint` | `CHAR(64) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | - | 정규화한 전체 생성 입력의 SHA-256 |
@@ -402,7 +404,7 @@ AI 경로 지원 도서의 모든 페이지는 위 일곱 필드를 가져야 �
 | `no_route_reason` | `VARCHAR(40) CHARACTER SET ascii COLLATE ascii_bin` | 예 | - | `NO_RELEVANT_PAGES` 또는 `INSUFFICIENT_BUDGET` |
 | `minimum_required_ink` | `INT` | 예 | - | 예산 부족 `NO_ROUTE`의 최소 추가 잉크 |
 | `failure_code` | `VARCHAR(100) CHARACTER SET ascii COLLATE ascii_bin` | 예 | - | `FAILED` 재조회에 사용할 공개 오류 코드 |
-| `saved_route_id` | `BIGINT` | 예 | UK, FK → `ai_reading_route.id` | `SAVED`가 반환할 저장 경로 |
+| `saved_route_id` | `BIGINT` | 예 | UK, 복합 FK → `ai_reading_route(id, generation_id)` 구성 | `SAVED`가 반환할 저장 경로 |
 | `created_at` | `DATETIME(6)` | 아니오 | - | 생성 시작 시각(UTC) |
 | `completed_at` | `DATETIME(6)` | 예 | - | 첫 최종 상태 확정 시각(UTC) |
 | `expires_at` | `DATETIME(6)` | 예 | - | 최종 상태 확정 뒤 계산한 임시 상태·결과 만료 시각(UTC) |
@@ -412,34 +414,37 @@ AI 경로 지원 도서의 모든 페이지는 위 일곱 필드를 가져야 �
 `NO_RELEVANT_PAGES`이면 `minimum_required_ink`가 `NULL`, `INSUFFICIENT_BUDGET`이면 선택 예산보다 큰 최소
 추가 잉크를 가집니다. 다른 상태에서는 두 필드가 모두 `NULL`입니다.
 `FAILED`는 임시 경로 없이 멱등 오류만 재현합니다. 저장 성공 시 임시 항목과 목적·입력 필드를 제거하고
-`SAVED`·`saved_route_id`·`request_fingerprint`만 원래 만료 시각까지 보존합니다. 저장 경로가 먼저 삭제되면
-`CONSUMED`로 바꾸고 포인터를 비웁니다. `GENERATING`만 `completed_at`·`expires_at`이 없고 최종 상태는 두
-시각을 모두 가집니다. 중단된 `GENERATING`은 전체 시간 제한 뒤 `FAILED`로 복구해 같은 키가 외부 호출을 다시
-시작하지 않게 합니다. 만료 정리는 남은 항목을 먼저 지운 뒤 생성 행을 삭제합니다.
+`SAVED`·`saved_route_id`·`request_fingerprint`만 원래 만료 시각까지 보존합니다. `saved_route_id`와
+`generation_id` 복합 FK는 포인터가 같은 임시 생성을 소비한 저장 경로만 가리키게 합니다. 저장 경로가 먼저
+삭제되면 `CONSUMED`로 바꾸고 포인터를 비웁니다. `GENERATING`만 `completed_at`·`expires_at`이 없고 최종
+상태는 두 시각을 모두 가집니다. 중단된 `GENERATING`은 전체 시간 제한 뒤 `FAILED`로 복구해 같은 키가 외부
+호출을 다시 시작하지 않게 합니다. 만료 정리는 남은 항목을 먼저 지운 뒤 생성 행을 삭제합니다.
 
 #### `ai_route_generation_item`
 
 | 컬럼 | 물리 타입 | NULL | 키·참조 | 설명 |
 | --- | --- | --- | --- | --- |
 | `id` | `BIGINT AUTO_INCREMENT` | 아니오 | PK | 임시 경로 항목 식별자 |
-| `generation_id` | `CHAR(36) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | FK → `ai_route_generation.generation_id`, UK 구성 | 소속 임시 결과 |
-| `book_page_id` | `BIGINT` | 아니오 | FK → `book_page.id`, UK 구성 | 추천 페이지 |
+| `generation_id` | `CHAR(36) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | 복합 FK → `ai_route_generation(generation_id, book_id)`, UK 구성 | 소속 임시 결과 |
+| `book_id` | `BIGINT` | 아니오 | generation·페이지 복합 FK 구성 | 상위 생성과 추천 페이지의 같은 도서 강제 |
+| `book_page_id` | `BIGINT` | 아니오 | 복합 FK → `book_page(id, book_id)`, UK 구성 | 추천 페이지 |
 | `position` | `INT` | 아니오 | `(generation_id, position)` UK 구성 | 1부터 시작하는 경로 순서 |
 | `relevance` | `VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | - | `HIGH` 또는 `MEDIUM` |
 | `prerequisite` | `BOOLEAN` | 아니오 | - | 선수 개념 페이지 여부 |
 | `role` | `VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | - | API 계약의 경로 역할 |
 
-같은 생성 결과에서 `position`과 `book_page_id`는 각각 고유합니다. 페이지는 생성 행의 도서·콘텐츠 버전과
-일치해야 합니다.
+같은 생성 결과에서 `position`과 `book_page_id`는 각각 고유합니다. 페이지의 도서 일치는 복합 FK로
+강제하고, `book_page`에 콘텐츠 버전 컬럼이 없으므로 생성 행과의 콘텐츠 버전 일치는 애플리케이션 계층에서
+검증합니다.
 
 #### `ai_reading_route`
 
 | 컬럼 | 물리 타입 | NULL | 키·참조 | 설명 |
 | --- | --- | --- | --- | --- |
-| `id` | `BIGINT AUTO_INCREMENT` | 아니오 | PK, 복합 UK 구성 | 저장 경로 식별자 |
-| `generation_id` | `CHAR(36) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | UK | 소비한 임시 생성 식별자 |
+| `id` | `BIGINT AUTO_INCREMENT` | 아니오 | PK, `(id, book_id)`·`(id, generation_id)`·`(reader_id, book_id, id)` 복합 UK 구성 | 저장 경로 식별자 |
+| `generation_id` | `CHAR(36) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | UK, `(id, generation_id)` UK·복합 FK 대상 구성 | 소비한 임시 생성 식별자 |
 | `reader_id` | `BIGINT` | 아니오 | FK → `reader.id`, `(reader_id, book_id, id)` UK 구성 | 경로 소유자 |
-| `book_id` | `BIGINT` | 아니오 | FK → `book.id`, `(reader_id, book_id, id)` UK 구성 | 대상 도서 |
+| `book_id` | `BIGINT` | 아니오 | FK → `book.id`, `(id, book_id)`·`(reader_id, book_id, id)` UK 구성 | 대상 도서 |
 | `content_version` | `VARCHAR(100) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | - | 저장한 경로의 콘텐츠 버전 |
 | `normalized_purpose` | `VARCHAR(200)` | 아니오 | - | 저장한 독서 목적 |
 | `request_type` | `VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | - | `INK_BUDGET` 또는 `OWNED_DEPTH` |
@@ -450,24 +455,27 @@ AI 경로 지원 도서의 모든 페이지는 위 일곱 필드를 가져야 �
 | `feedback_at` | `DATETIME(6)` | 예 | - | 피드백 생성·변경 시각(UTC) |
 | `created_at` | `DATETIME(6)` | 아니오 | - | 저장 시각(UTC) |
 
-`generation_id` 고유 제약으로 같은 임시 결과의 저장 재시도를 기존 경로에 연결합니다. 입력 조합은 생성 행과
-같은 배타 규칙을 따르며 피드백은 `completed_at`이 있는 경로에만 저장합니다.
+`generation_id` 고유 제약으로 같은 임시 결과의 저장 재시도를 기존 경로에 연결합니다. generation에서
+route를 향하는 복합 FK이므로 임시 generation을 만료 삭제한 뒤에도 저장 route의 식별자는 보존됩니다. 입력
+조합은 생성 행과 같은 배타 규칙을 따르며 피드백은 `completed_at`이 있는 경로에만 저장합니다.
 
 #### `ai_reading_route_item`
 
 | 컬럼 | 물리 타입 | NULL | 키·참조 | 설명 |
 | --- | --- | --- | --- | --- |
 | `id` | `BIGINT AUTO_INCREMENT` | 아니오 | PK | 저장 경로 항목 식별자 |
-| `route_id` | `BIGINT` | 아니오 | FK → `ai_reading_route.id`, UK 구성 | 소속 저장 경로 |
-| `book_page_id` | `BIGINT` | 아니오 | FK → `book_page.id`, UK 구성 | 추천 페이지 |
+| `route_id` | `BIGINT` | 아니오 | 복합 FK → `ai_reading_route(id, book_id)`, UK 구성 | 소속 저장 경로 |
+| `book_id` | `BIGINT` | 아니오 | route·페이지 복합 FK 구성 | 상위 경로와 추천 페이지의 같은 도서 강제 |
+| `book_page_id` | `BIGINT` | 아니오 | 복합 FK → `book_page(id, book_id)`, UK 구성 | 추천 페이지 |
 | `position` | `INT` | 아니오 | `(route_id, position)` UK 구성 | 고정 추천 순서 |
 | `relevance` | `VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | - | 저장한 정성 관련도 |
 | `prerequisite` | `BOOLEAN` | 아니오 | - | 저장한 선수 개념 여부 |
 | `role` | `VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | - | 저장한 경로 역할 |
 | `opened_at` | `DATETIME(6)` | 예 | - | 경로 페이지 콘텐츠를 처음 제공한 시각(UTC) |
 
-같은 경로에서 `position`과 `book_page_id`는 각각 고유하며 페이지는 경로의 도서·콘텐츠 버전과 일치해야
-합니다. 저장 뒤 항목과 순서는 수정하지 않고 `opened_at`만 최초 콘텐츠 제공에 성공할 때 기록합니다.
+같은 경로에서 `position`과 `book_page_id`는 각각 고유합니다. 페이지의 도서 일치는 복합 FK로 강제하고,
+`book_page`에 콘텐츠 버전 컬럼이 없으므로 경로와의 콘텐츠 버전 일치는 애플리케이션 계층에서 검증합니다.
+저장 뒤 항목과 순서는 수정하지 않고 `opened_at`만 최초 콘텐츠 제공에 성공할 때 기록합니다.
 
 #### `ai_route_current`
 
