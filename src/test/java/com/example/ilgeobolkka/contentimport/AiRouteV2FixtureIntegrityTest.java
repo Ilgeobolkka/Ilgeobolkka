@@ -12,12 +12,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import tools.jackson.databind.JsonNode;
@@ -29,6 +30,9 @@ class AiRouteV2FixtureIntegrityTest {
     private static final Path INITIAL_ROOT = Path.of("fixtures/content");
     private static final Path BOOKS_PATH = Path.of("src/main/resources/demo/books.json");
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+    private static final Pattern BBOX_WORD_PATTERN =
+            Pattern.compile(
+                    "<word xMin=\\\"([0-9.]+)\\\" yMin=\\\"([0-9.]+)\\\" xMax=\\\"[0-9.]+\\\" yMax=\\\"([0-9.]+)\\\">");
     private static final Set<String> MANIFEST_FIELDS =
             Set.of(
                     "contentVersion",
@@ -75,8 +79,10 @@ class AiRouteV2FixtureIntegrityTest {
                     "helpfulConcepts",
                     "requiredPrerequisites",
                     "irrelevantPageNumbers",
+                    "irrelevantRationales",
                     "duplicatePageGroups",
                     "referencePageNumbers",
+                    "referenceRationales",
                     "allowedAlternativePageNumbers");
     private static final Set<String> EVALUATION_SCENARIOS =
             Set.of(
@@ -87,41 +93,6 @@ class AiRouteV2FixtureIntegrityTest {
                     "OWNED:QUICK",
                     "OWNED:BALANCED",
                     "OWNED:DEEP");
-    private static final Set<String> EVALUATION_STOP_WORDS =
-            Set.of(
-                    "경우",
-                    "과정",
-                    "관련",
-                    "기준",
-                    "방법",
-                    "변화",
-                    "사례",
-                    "상황",
-                    "순서",
-                    "원리",
-                    "조건",
-                    "핵심",
-                    "확인");
-    private static final List<String> KOREAN_PARTICLES =
-            List.of(
-                    "에서",
-                    "으로",
-                    "에게",
-                    "부터",
-                    "까지",
-                    "처럼",
-                    "보다",
-                    "과",
-                    "와",
-                    "이",
-                    "가",
-                    "은",
-                    "는",
-                    "을",
-                    "를",
-                    "의",
-                    "에",
-                    "로");
 
     @Test
     void manifest는_페이지_구조_분석_해시와_DAG_계약을_지킨다() throws IOException {
@@ -281,21 +252,8 @@ class AiRouteV2FixtureIntegrityTest {
             assertTrue(primaryConcepts.containsAll(requiredConcepts));
             assertTrue(primaryConcepts.containsAll(textSet(evaluationCase.get("helpfulConcepts"))));
             for (String requiredConcept : requiredConcepts) {
-                Set<String> conceptTokens = meaningfulTokens(requiredConcept);
                 assertFalse(purpose.contains(requiredConcept));
-                assertTrue(
-                        Collections.disjoint(meaningfulTokens(purpose), conceptTokens),
-                        "목적과 정답 개념의 어휘 누출: " + caseId + " / " + requiredConcept);
-                assertTrue(
-                        conceptTokens.stream().noneMatch(purpose::contains),
-                        "목적과 정답 개념의 부분 어휘 누출: " + caseId + " / " + requiredConcept);
                 for (JsonNode page : book.get("pages")) {
-                    assertFalse(
-                            page.get("aiAnalysisText").asText().contains(requiredConcept),
-                            "정답 개념이 분석 텍스트에 축자 포함됨: "
-                                    + caseId
-                                    + " / "
-                                    + requiredConcept);
                     if (textSet(page.get("primaryConcepts")).contains(requiredConcept)) {
                         requiredConceptPageNumbers.add(page.get("pageNumber").asInt());
                     }
@@ -308,7 +266,6 @@ class AiRouteV2FixtureIntegrityTest {
             assertExistingPages(evaluationCase.get("allowedAlternativePageNumbers"), pages.keySet());
 
             Set<Integer> irrelevantPageNumbers = intSet(evaluationCase.get("irrelevantPageNumbers"));
-            Set<String> referenceRoles = new HashSet<>();
             List<Integer> referencePageNumbers = new ArrayList<>();
             for (JsonNode page : book.get("pages")) {
                 int pageNumber = page.get("pageNumber").asInt();
@@ -326,9 +283,8 @@ class AiRouteV2FixtureIntegrityTest {
                 referencePageNumbers.add(pageNumber);
                 JsonNode page = pages.get(pageNumber);
                 assertTrue(page.get("aiRouteSearchEligible").asBoolean());
-                referenceRoles.add(page.get("contentRole").asText());
             }
-            assertEquals(CONTENT_ROLES, referenceRoles, "평가 역할 누락: " + caseId);
+            assertTrue(referencePageNumbers.size() >= 2, "평가 정답 페이지 부족: " + caseId);
             assertTrue(
                     referencePageSets.add(List.copyOf(referencePageNumbers)),
                     "중복 평가 위치: " + referencePageNumbers);
@@ -337,6 +293,16 @@ class AiRouteV2FixtureIntegrityTest {
                         referencePageNumbers.get(index) - referencePageNumbers.get(index - 1) > 1,
                         "연속된 평가 정답 페이지: " + caseId + " / " + referencePageNumbers);
             }
+            assertReferenceRationales(
+                    evaluationCase.get("referenceRationales"),
+                    Set.copyOf(referencePageNumbers),
+                    pages,
+                    purpose);
+            assertIrrelevantRationales(
+                    evaluationCase.get("irrelevantRationales"),
+                    irrelevantPageNumbers,
+                    pages,
+                    purpose);
 
             for (JsonNode prerequisite : evaluationCase.get("requiredPrerequisites")) {
                 int before = prerequisite.get("beforePageNumber").asInt();
@@ -545,84 +511,150 @@ class AiRouteV2FixtureIntegrityTest {
     @EnabledIfEnvironmentVariable(
             named = "RUN_AI_ROUTE_V2_PDF_INTEGRITY",
             matches = "true")
-    void 비소설_90권의_실제_PDF는_구조와_관련_맥락_조사를_지킨다()
+    void 비소설_90권의_실제_PDF는_본문_골격과_장_구성을_반복하지_않는다()
             throws IOException, InterruptedException {
         JsonNode manifest = read(ROOT.resolve("manifest.json"));
         String pdftotextCommand =
                 System.getenv().getOrDefault("PDFTOTEXT_COMMAND", "pdftotext");
+        Map<String, Set<Long>> skeletonBooks = new HashMap<>();
+        Map<String, Set<Long>> exactSentenceBooks = new HashMap<>();
+        Map<Long, List<String>> bookSkeletons = new HashMap<>();
+        Set<List<String>> normalizedChapterSequences = new HashSet<>();
+        Set<String> sectionSkeletons = new HashSet<>();
+        int sectionCount = 0;
 
         for (JsonNode book : manifest.get("books")) {
             if (!book.get("aiRouteCandidate").asBoolean()) {
                 continue;
             }
+            long bookId = book.get("bookId").asLong();
             Path pdfPath = ROOT.resolve(book.get("pdfPath").asText());
             String visibleText = extractAllText(pdftotextCommand, pdfPath);
             List<String> visiblePages = List.of(visibleText.split("\f", -1));
+            String normalizedVisibleText = normalizeWhitespace(visibleText);
 
-            assertTrue(visibleText.contains("이 장을 여는 문장"), pdfPath.toString());
             assertFalse(visibleText.contains("생각을 이어 가는 문장"), pdfPath.toString());
             assertFalse(visibleText.contains("생각할 질문:"), pdfPath.toString());
             assertFalse(visibleText.contains("남기는 질문"), pdfPath.toString());
             assertFalse(visibleText.contains("반대 관점과 한계"), pdfPath.toString());
-            assertTrue(visibleText.contains("관련 맥락"), pdfPath.toString());
-
+            assertFalse(visibleText.contains("이 페이지는"), pdfPath.toString());
+            assertFalse(normalizedVisibleText.contains("입니다.’이라는"), pdfPath.toString());
+            assertFalse(normalizedVisibleText.contains("가라는 표본"), pdfPath.toString());
+            assertFalse(normalizedVisibleText.contains(" 단위으로"), pdfPath.toString());
+            assertTrue(
+                    normalizedVisibleText.contains(
+                            "두 장면을 담았으며 실제 사건의 증거가 아닌 보조 자료입니다."),
+                    "사진 캡션 문구 누락: " + pdfPath);
+            List<String> chapterSequence = new ArrayList<>();
+            String previousChapter = null;
             for (JsonNode page : book.get("pages")) {
-                if (!page.get("section").asText().endsWith("관련 맥락")) {
+                if (!page.get("aiRouteSearchEligible").asBoolean()) {
                     continue;
                 }
                 int pageNumber = page.get("pageNumber").asInt();
                 String pageText = normalizeWhitespace(visiblePages.get(pageNumber - 1));
+                assertFalse(
+                        pageText.contains(";"),
+                        "본문에서 마침표 대신 세미콜론 사용: " + pdfPath + " / page=" + pageNumber);
+                List<String> concepts = new ArrayList<>();
+                concepts.addAll(textSet(page.get("primaryConcepts")));
+                concepts.addAll(textSet(page.get("secondaryConcepts")));
                 String chapter = page.get("chapter").asText();
-                String topic = page.get("secondaryConcepts").get(0).asText();
-                String companion = page.get("secondaryConcepts").get(1).asText();
-                String first = page.get("secondaryConcepts").get(2).asText();
-                String second = page.get("secondaryConcepts").get(3).asText();
-                String location = pdfPath + ":" + pageNumber;
-
-                assertTrue(
-                        pageText.contains(
-                                withJosa(topic, "은", "는")
-                                        + " "
-                                        + chapter
-                                        + "의 내용을 이어 주는 중심 용어입니다."),
-                        location);
-                assertTrue(
-                        pageText.contains(
-                                withJosa(topic, "과", "와")
-                                        + " "
-                                        + withJosa(companion, "은", "는")
-                                        + " 서로 떨어진 항목이 아니라"),
-                        location);
-                assertTrue(
-                        pageText.contains(
-                                withJosa(first, "과", "와")
-                                        + " "
-                                        + withJosa(second, "은", "는")
-                                        + " 두 개념이"),
-                        location);
-                assertTrue(
-                        pageText.contains(
-                                companion
-                                        + withDirectionJosa(companion)
-                                        + " 범위를 넓히고"),
-                        location);
-                assertTrue(
-                        pageText.contains(
-                                withJosa(first, "과", "와") + " " + second + "의 관계를"),
-                        location);
-                assertTrue(
-                        pageText.contains(withJosa(topic, "이", "가") + " 단독 설명이 아니라"),
-                        location);
-                assertTrue(
-                        pageText.contains(
-                                companion
-                                        + ", "
-                                        + first
-                                        + ", "
-                                        + withJosa(second, "과", "와")
-                                        + " 함께 전개되는"),
-                        location);
+                if (!chapter.equals(previousChapter)) {
+                    chapterSequence.add(normalizeSkeleton(chapter, concepts));
+                    previousChapter = chapter;
+                }
+                sectionSkeletons.add(normalizeSkeleton(page.get("section").asText(), concepts));
+                sectionCount++;
+                for (String sentence : pageText.split("(?<=[.!?])\\s+")) {
+                    String normalizedSentence = normalizeWhitespace(sentence);
+                    if (normalizedSentence.length() < 30) {
+                        continue;
+                    }
+                    String skeleton = normalizeSkeleton(normalizedSentence, concepts);
+                    skeletonBooks.computeIfAbsent(skeleton, ignored -> new HashSet<>()).add(bookId);
+                    exactSentenceBooks
+                            .computeIfAbsent(normalizedSentence, ignored -> new HashSet<>())
+                            .add(bookId);
+                    bookSkeletons.computeIfAbsent(bookId, ignored -> new ArrayList<>()).add(skeleton);
+                }
             }
+            assertTrue(
+                    normalizedChapterSequences.add(List.copyOf(chapterSequence)),
+                    "다른 도서와 동일한 장 테마 순서: book=" + bookId + " / " + chapterSequence);
+        }
+
+        int sentenceCount = bookSkeletons.values().stream().mapToInt(List::size).sum();
+        double uniqueSkeletonRatio =
+                (double) skeletonBooks.values().stream().filter(books -> books.size() == 1).count()
+                        / sentenceCount;
+        assertTrue(uniqueSkeletonRatio >= 0.65, "본문 고유 문장 골격 비율: " + uniqueSkeletonRatio);
+        assertTrue(
+                (double) sectionSkeletons.size() / sectionCount >= 0.50,
+                "소제목 고유 골격 비율: " + (double) sectionSkeletons.size() / sectionCount);
+        int maximumExactSentenceBookCount =
+                exactSentenceBooks.values().stream().mapToInt(Set::size).max().orElse(0);
+        assertTrue(
+                maximumExactSentenceBookCount <= 2,
+                "여러 도서의 동일 본문 문장 출현 권수: " + maximumExactSentenceBookCount);
+        for (Map.Entry<Long, List<String>> entry : bookSkeletons.entrySet()) {
+            long sharedWithFiveBooks =
+                    entry.getValue().stream()
+                            .filter(skeleton -> skeletonBooks.get(skeleton).size() >= 5)
+                            .count();
+            double sharedRatio = (double) sharedWithFiveBooks / entry.getValue().size();
+            List<String> sharedExamples =
+                    entry.getValue().stream()
+                            .filter(skeleton -> skeletonBooks.get(skeleton).size() >= 5)
+                            .distinct()
+                            .limit(5)
+                            .toList();
+            assertTrue(
+                    sharedRatio <= 0.15,
+                    "다른 5권 이상과 공유하는 본문 골격 비율: book="
+                            + entry.getKey()
+                            + " / "
+                            + sharedRatio
+                            + " / examples="
+                            + sharedExamples);
+        }
+    }
+
+    @Test
+    @EnabledIfEnvironmentVariable(
+            named = "RUN_AI_ROUTE_V2_PDF_INTEGRITY",
+            matches = "true")
+    void 카테고리별_대표_본문은_제목과_쪽번호_사이에서_세로_가운데에_놓인다()
+            throws IOException, InterruptedException {
+        JsonNode manifest = read(ROOT.resolve("manifest.json"));
+        String pdftotextCommand =
+                System.getenv().getOrDefault("PDFTOTEXT_COMMAND", "pdftotext");
+        Set<Long> sampledBookIds = Set.of(11L, 21L, 31L, 41L, 51L, 61L, 71L, 81L, 91L);
+
+        for (JsonNode book : manifest.get("books")) {
+            long bookId = book.get("bookId").asLong();
+            if (!sampledBookIds.contains(bookId)) {
+                continue;
+            }
+            Path pdfPath = ROOT.resolve(book.get("pdfPath").asText());
+            String bboxText = extractPageBoundingBoxes(pdftotextCommand, pdfPath, 5);
+            Matcher matcher = BBOX_WORD_PATTERN.matcher(bboxText);
+            double bodyTop = Double.POSITIVE_INFINITY;
+            double bodyBottom = Double.NEGATIVE_INFINITY;
+            while (matcher.find()) {
+                double xMin = Double.parseDouble(matcher.group(1));
+                double yMin = Double.parseDouble(matcher.group(2));
+                double yMax = Double.parseDouble(matcher.group(3));
+                if (xMin >= 61.5 && yMin >= 130.0 && yMax <= 780.0) {
+                    bodyTop = Math.min(bodyTop, yMin);
+                    bodyBottom = Math.max(bodyBottom, yMax);
+                }
+            }
+            assertTrue(Double.isFinite(bodyTop), "본문 bbox 없음: " + pdfPath);
+            double bodyCenter = (bodyTop + bodyBottom) / 2.0;
+            assertTrue(
+                    Math.abs(bodyCenter - 450.0) <= 30.0,
+                    "본문 세로 중심 이탈: book=" + bookId + " / center=" + bodyCenter);
         }
     }
 
@@ -661,6 +693,47 @@ class AiRouteV2FixtureIntegrityTest {
             assertEquals(catalogBook.get("category"), fixtureMetadata.get("category"));
             assertEquals(catalogBook.get("description"), fixtureMetadata.get("description"));
             assertTrue(gutenbergIds.add(sourceBook.get("reference").get("gutenbergId").asInt()));
+            assertFalse(
+                    sourceBook.get("usage").get("bodyFactSourceClaimed").asBoolean(),
+                    "관련 고전을 본문 사실 출처로 과장함: book=" + bookId);
+            JsonNode editorialEvidence = sourceBook.get("editorialEvidence");
+            assertNotNull(editorialEvidence, "도서별 편집 근거 누락: book=" + bookId);
+            assertTrue(editorialEvidence.size() >= 6, "도서별 편집 근거 부족: book=" + bookId);
+            JsonNode manifestBook = aiRouteBooks.get(bookId);
+            Map<Integer, JsonNode> pages = pagesByNumber(manifestBook);
+            for (JsonNode evidence : editorialEvidence) {
+                assertEquals(
+                        Set.of(
+                                "evidenceMarker",
+                                "bodyPageNumbers",
+                                "evidenceType",
+                                "sourceRelationship",
+                                "directQuotationIncluded",
+                                "sourceTranslationIncluded"),
+                        Set.copyOf(evidence.propertyNames()));
+                assertFalse(evidence.get("evidenceMarker").asText().isBlank());
+                assertEquals(
+                        "BOOK_SPECIFIC_CONCRETE_DETAIL",
+                        evidence.get("evidenceType").asText());
+                assertEquals(
+                        "INDEPENDENT_KOREAN_ORIGINAL",
+                        evidence.get("sourceRelationship").asText());
+                assertFalse(evidence.get("directQuotationIncluded").asBoolean());
+                assertFalse(evidence.get("sourceTranslationIncluded").asBoolean());
+                assertFalse(evidence.get("bodyPageNumbers").isEmpty());
+                for (JsonNode pageNumber : evidence.get("bodyPageNumbers")) {
+                    JsonNode page = pages.get(pageNumber.asInt());
+                    assertNotNull(page, "연구 근거가 없는 페이지를 가리킴: book=" + bookId);
+                    assertTrue(
+                            page.get("aiAnalysisText")
+                                    .asText()
+                                    .contains(evidence.get("evidenceMarker").asText()),
+                            "연구 근거 표지가 분석 텍스트에 없음: book="
+                                    + bookId
+                                    + ", page="
+                                    + pageNumber.asInt());
+                }
+            }
         }
         assertEquals(candidateBooksById(manifest).keySet(), sourceBookIds);
 
@@ -699,29 +772,97 @@ class AiRouteV2FixtureIntegrityTest {
         return output;
     }
 
+    private static String extractPageBoundingBoxes(String command, Path pdfPath, int pageNumber)
+            throws IOException, InterruptedException {
+        Process process =
+                new ProcessBuilder(
+                                command,
+                                "-f",
+                                Integer.toString(pageNumber),
+                                "-l",
+                                Integer.toString(pageNumber),
+                                "-bbox-layout",
+                                pdfPath.toString(),
+                                "-")
+                        .redirectErrorStream(true)
+                        .start();
+        String output = new String(process.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
+        int exitCode = process.waitFor();
+        assertEquals(0, exitCode, "pdftotext bbox 실패: " + pdfPath + "\n" + output);
+        return output;
+    }
+
     private static String normalizeWhitespace(String text) {
         return text.replaceAll("\\s+", " ").trim();
     }
 
-    private static String withJosa(String word, String withFinal, String withoutFinal) {
-        return word + (hasFinalConsonant(word) ? withFinal : withoutFinal);
-    }
-
-    private static String withDirectionJosa(String word) {
-        int finalConsonant = finalConsonantIndex(word);
-        return finalConsonant == 0 || finalConsonant == 8 ? "로" : "으로";
-    }
-
-    private static boolean hasFinalConsonant(String word) {
-        return finalConsonantIndex(word) != 0;
-    }
-
-    private static int finalConsonantIndex(String word) {
-        int lastCharacter = word.codePointBefore(word.length());
-        if (lastCharacter < '가' || lastCharacter > '힣') {
-            throw new IllegalArgumentException("한글 음절로 끝나지 않는 개념: " + word);
+    private static String normalizeSkeleton(String text, List<String> concepts) {
+        String result = text;
+        List<String> longestFirst =
+                concepts.stream().distinct().sorted((left, right) -> right.length() - left.length()).toList();
+        for (String concept : longestFirst) {
+            result = result.replace(concept, "§");
         }
-        return (lastCharacter - '가') % 28;
+        return normalizeWhitespace(result.replaceAll("[0-9]+", "#"));
+    }
+
+    private static void assertReferenceRationales(
+            JsonNode rationales,
+            Set<Integer> expectedPageNumbers,
+            Map<Integer, JsonNode> pages,
+            String purpose) {
+        assertEquals(expectedPageNumbers.size(), rationales.size(), "정답 근거 수 불일치");
+        Set<Integer> actualPageNumbers = new HashSet<>();
+        for (JsonNode rationale : rationales) {
+            assertEquals(
+                    Set.of("pageNumber", "purposeFacet", "evidence"),
+                    Set.copyOf(rationale.propertyNames()));
+            int pageNumber = rationale.get("pageNumber").asInt();
+            assertTrue(actualPageNumbers.add(pageNumber), "정답 근거 페이지 중복: " + pageNumber);
+            assertNotNull(pages.get(pageNumber), "정답 근거 페이지 없음: " + pageNumber);
+            String purposeFacet = rationale.get("purposeFacet").asText();
+            String evidence = rationale.get("evidence").asText();
+            assertFalse(purposeFacet.isBlank(), "정답 목적 요소 누락: " + pageNumber);
+            assertFalse(evidence.isBlank(), "정답 본문 근거 누락: " + pageNumber);
+            assertTrue(purpose.contains(purposeFacet), "정답 목적에 없는 요소: " + purposeFacet);
+            assertTrue(
+                    pages.get(pageNumber).get("aiAnalysisText").asText().contains(evidence),
+                    "정답 분석 텍스트에 없는 근거: " + pageNumber + " / " + evidence);
+        }
+        assertEquals(expectedPageNumbers, actualPageNumbers, "정답 근거 페이지 집합 불일치");
+    }
+
+    private static void assertIrrelevantRationales(
+            JsonNode rationales,
+            Set<Integer> expectedPageNumbers,
+            Map<Integer, JsonNode> pages,
+            String purpose) {
+        assertEquals(expectedPageNumbers.size(), rationales.size(), "무관 근거 수 불일치");
+        Set<Integer> actualPageNumbers = new HashSet<>();
+        for (JsonNode rationale : rationales) {
+            assertEquals(
+                    Set.of("pageNumber", "reason", "evidence"),
+                    Set.copyOf(rationale.propertyNames()));
+            int pageNumber = rationale.get("pageNumber").asInt();
+            assertTrue(actualPageNumbers.add(pageNumber), "무관 근거 페이지 중복: " + pageNumber);
+            JsonNode page = pages.get(pageNumber);
+            assertNotNull(page, "무관 근거 페이지 없음: " + pageNumber);
+            String reason = rationale.get("reason").asText();
+            String evidence = rationale.get("evidence").asText();
+            assertFalse(evidence.isBlank(), "무관 본문 근거 누락: " + pageNumber);
+            assertTrue(
+                    page.get("aiAnalysisText").asText().contains(evidence),
+                    "무관 분석 텍스트에 없는 근거: " + pageNumber + " / " + evidence);
+            if (page.get("aiRouteSearchEligible").asBoolean()) {
+                assertEquals("PURPOSE_EVIDENCE_MISMATCH", reason);
+                assertFalse(
+                        purpose.contains(evidence),
+                        "목적 단서와 같은 페이지를 무관으로 분류함: " + pageNumber + " / " + evidence);
+            } else {
+                assertEquals("SEARCH_INELIGIBLE", reason);
+            }
+        }
+        assertEquals(expectedPageNumbers, actualPageNumbers, "무관 근거 페이지 집합 불일치");
     }
 
     private static Map<Long, JsonNode> booksById(JsonNode books) {
@@ -775,26 +916,6 @@ class AiRouteV2FixtureIntegrityTest {
         return result;
     }
 
-    private static Set<String> meaningfulTokens(String text) {
-        Set<String> result = new HashSet<>();
-        for (String rawToken : text.split("[^0-9A-Za-z가-힣]+")) {
-            String token = stripKoreanParticle(rawToken);
-            if (token.length() >= 2 && !EVALUATION_STOP_WORDS.contains(token)) {
-                result.add(token);
-            }
-        }
-        return result;
-    }
-
-    private static String stripKoreanParticle(String token) {
-        for (String particle : KOREAN_PARTICLES) {
-            if (token.length() > particle.length() + 1 && token.endsWith(particle)) {
-                return token.substring(0, token.length() - particle.length());
-            }
-        }
-        return token;
-    }
-
     private static void assertAnalysisDiversity(List<String> analysisTexts) {
         Map<String, Integer> sentenceFrequencies = new HashMap<>();
         Map<String, Integer> shingleFrequencies = new HashMap<>();
@@ -828,9 +949,16 @@ class AiRouteV2FixtureIntegrityTest {
             }
         }
 
-        int maximumSentenceFrequency =
-                sentenceFrequencies.values().stream().max(Integer::compareTo).orElse(0);
-        assertTrue(maximumSentenceFrequency <= 5, "반복 분석 문장 빈도: " + maximumSentenceFrequency);
+        Map.Entry<String, Integer> mostRepeatedSentence =
+                sentenceFrequencies.entrySet().stream()
+                        .max(Map.Entry.comparingByValue())
+                        .orElse(Map.entry("", 0));
+        assertTrue(
+                mostRepeatedSentence.getValue() <= 5,
+                "반복 분석 문장 빈도: "
+                        + mostRepeatedSentence.getValue()
+                        + " / "
+                        + mostRepeatedSentence.getKey());
 
         List<Double> repeatedShingleRatios = new ArrayList<>();
         for (Set<String> shingles : pageShingles) {

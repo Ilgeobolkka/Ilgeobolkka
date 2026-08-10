@@ -23,7 +23,7 @@ class ContentFixtureIntegrityTest {
     private static final String INITIAL_MANIFEST_SHA256 =
             "e91609452a5a85baec4f61464cd127e6e79d2223336a28867027f58c57924408";
     private static final String AI_ROUTE_MANIFEST_SHA256 =
-            "c2515fa4daa90b5417010af2f1530b7f452272368aad5f85e200737ddc6e62fd";
+            "3b082189c86e75e788b997b470cca4752ec7086ce19a2c777cdcef94096e6c1e";
     private static final Pattern PDF_PAGE_PATTERN = Pattern.compile("/Type\\s*/Page\\b");
 
     @Test
