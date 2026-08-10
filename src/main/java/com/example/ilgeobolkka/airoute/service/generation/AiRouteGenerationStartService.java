@@ -51,20 +51,10 @@ public class AiRouteGenerationStartService {
             throw new IllegalArgumentException("멱등 키는 필수입니다.");
         }
         String requestFingerprint = AiRouteRequestFingerprint.of(command);
-        Instant startedAt = clock.instant();
-        // 요청이 시작된 UTC 날짜로 계수한다. 뒤에 수렴 경로를 타더라도 다시 계산하지 않는다.
-        LocalDate usageDate = LocalDate.ofInstant(startedAt, ZoneOffset.UTC);
 
         try {
             return transactionTemplate.execute(
-                    status ->
-                            startOnce(
-                                    readerId,
-                                    idempotencyKey,
-                                    command,
-                                    requestFingerprint,
-                                    usageDate,
-                                    startedAt));
+                    status -> startOnce(readerId, idempotencyKey, command, requestFingerprint));
         } catch (DataIntegrityViolationException conflict) {
             return convergeOnExisting(readerId, idempotencyKey, requestFingerprint, conflict);
         }
@@ -101,9 +91,7 @@ public class AiRouteGenerationStartService {
             long readerId,
             UUID idempotencyKey,
             AiRouteGenerationCommand command,
-            String requestFingerprint,
-            LocalDate usageDate,
-            Instant startedAt) {
+            String requestFingerprint) {
         Optional<AiRouteGeneration> existing = findExistingForUpdate(readerId, idempotencyKey);
         if (existing.isPresent()) {
             // 이미 있는 요청은 성공이든 실패든 횟수를 다시 쓰지 않는다.
@@ -113,12 +101,15 @@ public class AiRouteGenerationStartService {
         // 잠금 순서는 사용량 행 → 생성 행 insert 다. 같은 독자의 동시 요청은 대개 사용량 행 하나에
         // 줄을 서지만, UTC 자정을 사이에 둔 두 요청은 서로 다른 사용량 행을 잠그므로 줄이 서지 않는다.
         // 그렇게 겹친 insert는 unique key 경합이 되고, start()가 기존 행 재조회로 수렴시킨다.
-        AiRouteDailyUsage usage = lockDailyUsage(readerId, usageDate);
+        AiRouteDailyUsage usage = lockCurrentDailyUsage(readerId);
         if (usage.getGenerationCount() >= DAILY_GENERATION_LIMIT) {
             return GenerationStartResult.dailyLimitExceeded();
         }
         usage.increment();
 
+        // 계수 날짜와 달리 created_at 은 행을 만드는 시점의 값이 맞다. 둘은 같은 질문이 아니라서
+        // 위에서 확정한 날짜를 여기에 다시 쓰지 않는다.
+        Instant startedAt = clock.instant();
         UUID generationId = UUID.randomUUID();
         // flush를 미루면 insert가 commit 시점에 실행돼 제약 위반이 transaction 종료 예외로 뒤바뀐다.
         // 여기서 흘려보내야 호출자가 받는 예외 종류가 일정하고, 사용량 증가와 함께 되돌아간다.
@@ -147,6 +138,32 @@ public class AiRouteGenerationStartService {
         }
         return generationRepository.findByReaderIdAndIdempotencyKeyForUpdate(
                 readerId, idempotencyKey);
+    }
+
+    /**
+     * 지금 UTC 날짜의 사용량 행을 잠근다. 잠근 뒤에 날짜를 다시 확인해서, 잠금을 기다리는 동안 자정을
+     * 넘겼으면 새 날짜의 행으로 옮겨 잠근다.
+     *
+     * <p>진입 시점 날짜로 고정하면 앞선 요청이 잠금을 오래 쥐는 사이 자정이 지났을 때 이미 초기화된
+     * 어제 한도로 거절한다. PRD는 횟수를 매일 {@code 00:00 UTC}에 초기화하고 계수를 첫 외부 호출 직전
+     * 시점의 UTC 날짜로 규정한다.
+     *
+     * <p>이미 잡은 잠금은 transaction 이 끝나야 풀리므로 지나간 날짜의 행도 함께 쥔 채로 진행한다.
+     * 날짜는 앞으로만 가고 모든 요청이 같은 오름차순으로 잠그므로 교착하지 않는다. 자정을 넘긴 요청은
+     * 어제 날짜에 0회 행을 남기는데, 그날 생성이 0건이라는 사실 그대로라 지우지 않는다.
+     */
+    private AiRouteDailyUsage lockCurrentDailyUsage(long readerId) {
+        while (true) {
+            LocalDate usageDate = currentUsageDate();
+            AiRouteDailyUsage usage = lockDailyUsage(readerId, usageDate);
+            if (usageDate.equals(currentUsageDate())) {
+                return usage;
+            }
+        }
+    }
+
+    private LocalDate currentUsageDate() {
+        return LocalDate.ofInstant(clock.instant(), ZoneOffset.UTC);
     }
 
     /**

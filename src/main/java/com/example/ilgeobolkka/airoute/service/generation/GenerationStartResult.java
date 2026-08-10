@@ -8,16 +8,28 @@ import java.util.UUID;
  * 생성 시작 판정. G07은 {@link Kind#NEW} 일 때만 외부 호출을 시작하고, 나머지는 이미 있는 결과나 거절
  * 사유를 그대로 응답으로 옮긴다.
  *
- * <p>생성 경로는 아래 네 팩토리뿐이다. {@code kind} 별로 채워지는 필드가 다르므로 직접 만들면 조합이
- * 어긋난다.
+ * <p>{@code kind} 별로 채워지는 필드가 다르다. record 로 두면 canonical 생성자가 자동으로 public 이라
+ * (JLS 8.10.4) 팩토리를 우회해 {@code EXISTING_FINAL} 인데 상태가 {@code GENERATING} 인 결과를 만들 수
+ * 있다. 조합을 구조로 강제하려고 생성자를 숨긴 일반 클래스로 둔다. {@code AiRouteGenerationCommand} 를
+ * record 로 두지 못한 것과 같은 이유다.
  *
- * @param kind 판정 결과
- * @param generationId {@code NEW}·{@code EXISTING_*} 에서만 채워진다. 나머지는 {@code null}.
- * @param status 저장된 생성 상태. {@code KEY_REUSED}·{@code DAILY_LIMIT} 은 {@code null}.
- * @param expiresAt 보관 만료 시각. 완료 상태에서만 값이 있고 {@code GENERATING} 은 아직 {@code null} 이다.
+ * <p>{@code equals}·{@code toString} 은 두지 않는다. 결과를 값으로 비교하거나 찍는 곳이 없고, 쓰지 않는
+ * 구현을 손으로 적어 두면 계약이 바뀔 때 같이 틀어진다.
  */
-public record GenerationStartResult(
-        Kind kind, UUID generationId, AiRouteGenerationStatus status, Instant expiresAt) {
+public final class GenerationStartResult {
+
+    private final Kind kind;
+    private final UUID generationId;
+    private final AiRouteGenerationStatus status;
+    private final Instant expiresAt;
+
+    private GenerationStartResult(
+            Kind kind, UUID generationId, AiRouteGenerationStatus status, Instant expiresAt) {
+        this.kind = kind;
+        this.generationId = generationId;
+        this.status = status;
+        this.expiresAt = expiresAt;
+    }
 
     public enum Kind {
         /** 이 요청이 새 생성을 만들었고 일일 횟수를 한 번 썼다. 외부 호출은 이 결과에서만 시작한다. */
@@ -59,5 +71,24 @@ public record GenerationStartResult(
 
     static GenerationStartResult dailyLimitExceeded() {
         return new GenerationStartResult(Kind.DAILY_LIMIT, null, null, null);
+    }
+
+    public Kind kind() {
+        return kind;
+    }
+
+    /** {@code NEW}·{@code EXISTING_*} 에서만 값이 있다. */
+    public UUID generationId() {
+        return generationId;
+    }
+
+    /** {@code KEY_REUSED}·{@code DAILY_LIMIT} 은 {@code null} 이다. */
+    public AiRouteGenerationStatus status() {
+        return status;
+    }
+
+    /** 보관 만료 시각. 완료 상태에서만 값이 있고 {@code GENERATING} 은 아직 {@code null} 이다. */
+    public Instant expiresAt() {
+        return expiresAt;
     }
 }

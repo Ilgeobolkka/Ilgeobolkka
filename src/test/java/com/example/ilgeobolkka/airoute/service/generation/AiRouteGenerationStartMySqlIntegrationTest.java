@@ -180,46 +180,108 @@ class AiRouteGenerationStartMySqlIntegrationTest {
     }
 
     /**
-     * 다른 요청이 같은 {@code (readerId, idempotencyKey)} 를 아직 commit 하지 않은 채 쥐고 있는 동안
-     * 시작한다. 스냅샷 조회는 미확정 행을 보지 못하므로 이 요청은 insert 까지 밀고 갔다가 unique key 에
-     * 부딪힌다. 조건 6이 요구하는 것은 그때 500 이 아니라 기존 행으로 수렴하는 것이다.
+     * 요청이 기존 생성 조회를 마친 뒤에 다른 요청이 같은 {@code (readerId, idempotencyKey)} 를 확정하는
+     * 순서를 만든다. 이 요청은 insert 까지 밀고 갔다가 unique key 에 부딪히고, 조건 6이 요구하는 것은
+     * 그때 500 이 아니라 기존 행으로 수렴하는 것이다.
      *
-     * <p>수렴 분기를 탔는지 사전 조회에서 걸렀는지는 밖에서 구분할 수 없다. 두 분기가 같은 답을 내는
-     * 것이 이 설계의 목적이기 때문이다. 이 테스트가 증명하는 것은 경합을 실제로 만들어 두었을 때 계약이
-     * 지켜진다는 것이다.
+     * <p>순서를 시간이 아니라 신호로 고정한다. 사용량 행을 미리 잠가 두면 요청은 기존 생성 조회를 마치고
+     * (없음) 날짜를 확정한 직후 사용량 행에서 반드시 멈춘다. 그 지점을 시계 읽기 래치로 관측한 뒤에
+     * 경합 상대를 commit 하므로, 실행이 느려도 사전 조회로 빠지지 않는다.
      */
     @Test
-    void 다른_요청이_같은_키를_미확정으로_쥐고_있어도_그_행으로_수렴한다() throws Exception {
+    void 조회_뒤에_확정된_같은_키가_있으면_그_행으로_수렴한다() throws Exception {
         UUID key = UUID.randomUUID();
         UUID 먼저_들어온_생성 = UUID.randomUUID();
-        CountDownLatch 미확정_삽입_완료 = new CountDownLatch(1);
+        사용량을_심는다(READER_ID, USAGE_DATE, 0);
+        CountDownLatch 사용량_잠금_확보 = new CountDownLatch(1);
+        CountDownLatch 사용량_잠금_해제 = new CountDownLatch(1);
+        CountDownLatch 날짜_확정 = clock.다음_읽기를_알린다();
+
         ExecutorService executor = Executors.newFixedThreadPool(2);
         try {
-            Future<?> 선행_요청 =
+            Future<?> 길목 =
                     executor.submit(
                             () ->
                                     transactionTemplate.executeWithoutResult(
                                             status -> {
-                                                생성을_직접_넣는다(먼저_들어온_생성, key);
-                                                미확정_삽입_완료.countDown();
-                                                잠시_미확정으로_쥐고_있는다();
+                                                사용량_행을_잠근다(READER_ID, USAGE_DATE);
+                                                사용량_잠금_확보.countDown();
+                                                해제를_기다린다(사용량_잠금_해제);
                                             }));
             Future<GenerationStartResult> 뒤따르는_요청 =
                     executor.submit(
                             () -> {
-                                assertTrue(미확정_삽입_완료.await(5, TimeUnit.SECONDS));
+                                assertTrue(사용량_잠금_확보.await(5, TimeUnit.SECONDS));
                                 return startService.start(READER_ID, key, 명령(PURPOSE));
                             });
 
-            선행_요청.get(30, TimeUnit.SECONDS);
+            // 여기까지 오면 뒤따르는 요청은 기존 생성 조회를 이미 마쳤고 사용량 행에서 막혀 있다.
+            assertTrue(날짜_확정.await(10, TimeUnit.SECONDS));
+            생성을_직접_넣는다(먼저_들어온_생성, key);
+            사용량_잠금_해제.countDown();
+
+            길목.get(30, TimeUnit.SECONDS);
             GenerationStartResult converged = 뒤따르는_요청.get(30, TimeUnit.SECONDS);
 
             assertAll(
                     () -> assertEquals(Kind.EXISTING_GENERATING, converged.kind()),
                     () -> assertEquals(먼저_들어온_생성, converged.generationId()),
                     () -> assertEquals(1, 생성_수를_조회한다(READER_ID)),
-                    () -> assertNull(사용량을_조회한다(READER_ID, USAGE_DATE)));
+                    () -> assertEquals(0, 사용량을_조회한다(READER_ID, USAGE_DATE)));
         } finally {
+            사용량_잠금_해제.countDown();
+            executor.shutdownNow();
+            executor.awaitTermination(5, TimeUnit.SECONDS);
+        }
+    }
+
+    /**
+     * 전날 한도를 다 쓴 상태에서 자정 직전에 시작해, 사용량 잠금을 기다리는 사이 자정을 넘긴다. 진입
+     * 시점 날짜로 계수하면 이미 초기화된 어제 한도로 거절해 {@code 매일 00:00 UTC 초기화} 계약을 깬다.
+     *
+     * <p>시계 읽기 래치가 뒤따르는 요청이 <b>전날 날짜로 확정한 것</b>을 보장한다. 확정을 확인한 뒤에만
+     * 시계를 옮기므로, 처음부터 새 날짜를 읽어 우연히 통과하는 일이 없다.
+     */
+    @Test
+    void 사용량_잠금을_기다리다_자정을_넘기면_새_날짜로_계수한다() throws Exception {
+        사용량을_심는다(READER_ID, USAGE_DATE, LIMIT);
+        CountDownLatch 사용량_잠금_확보 = new CountDownLatch(1);
+        CountDownLatch 사용량_잠금_해제 = new CountDownLatch(1);
+        CountDownLatch 날짜_확정 = clock.다음_읽기를_알린다();
+
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        try {
+            Future<?> 길목 =
+                    executor.submit(
+                            () ->
+                                    transactionTemplate.executeWithoutResult(
+                                            status -> {
+                                                사용량_행을_잠근다(READER_ID, USAGE_DATE);
+                                                사용량_잠금_확보.countDown();
+                                                해제를_기다린다(사용량_잠금_해제);
+                                            }));
+            Future<GenerationStartResult> 뒤따르는_요청 =
+                    executor.submit(
+                            () -> {
+                                assertTrue(사용량_잠금_확보.await(5, TimeUnit.SECONDS));
+                                return startService.start(
+                                        READER_ID, UUID.randomUUID(), 명령(PURPOSE));
+                            });
+
+            assertTrue(날짜_확정.await(10, TimeUnit.SECONDS));
+            clock.set(NEXT_UTC_DAY);
+            사용량_잠금_해제.countDown();
+
+            길목.get(30, TimeUnit.SECONDS);
+            GenerationStartResult result = 뒤따르는_요청.get(30, TimeUnit.SECONDS);
+
+            assertAll(
+                    () -> assertEquals(Kind.NEW, result.kind()),
+                    () -> assertEquals(LIMIT, 사용량을_조회한다(READER_ID, USAGE_DATE)),
+                    () -> assertEquals(1, 사용량을_조회한다(READER_ID, NEXT_USAGE_DATE)),
+                    () -> assertEquals(1, 생성_수를_조회한다(READER_ID)));
+        } finally {
+            사용량_잠금_해제.countDown();
             executor.shutdownNow();
             executor.awaitTermination(5, TimeUnit.SECONDS);
         }
@@ -479,16 +541,28 @@ class AiRouteGenerationStartMySqlIntegrationTest {
                 PURPOSE);
     }
 
-    /**
-     * 뒤따르는 요청이 스냅샷 조회를 지나 insert 까지 도달하도록 미확정 상태를 잠깐 유지한다. 이 대기가
-     * 없으면 commit 이 먼저 끝나 애초에 경합이 만들어지지 않는다.
-     */
-    private static void 잠시_미확정으로_쥐고_있는다() {
+    /** 뒤따르는 요청을 이 행에서 멈춰 세운다. transaction 이 끝날 때까지 잠금을 쥐고 있는다. */
+    private void 사용량_행을_잠근다(long readerId, LocalDate usageDate) {
+        jdbcTemplate.queryForObject(
+                """
+                SELECT generation_count
+                FROM ai_route_daily_usage
+                WHERE reader_id = ? AND usage_date = ?
+                FOR UPDATE
+                """,
+                Integer.class,
+                readerId,
+                usageDate.toString());
+    }
+
+    private static void 해제를_기다린다(CountDownLatch 해제) {
         try {
-            Thread.sleep(500);
+            if (!해제.await(10, TimeUnit.SECONDS)) {
+                throw new IllegalStateException("잠금 해제 신호를 기다리다 시간이 지났습니다.");
+            }
         } catch (InterruptedException interrupted) {
             Thread.currentThread().interrupt();
-            throw new IllegalStateException("미확정 상태 유지가 중단됐습니다.", interrupted);
+            throw new IllegalStateException("잠금 유지가 중단됐습니다.", interrupted);
         }
     }
 
@@ -582,6 +656,7 @@ class AiRouteGenerationStartMySqlIntegrationTest {
     static class MutableClock extends Clock {
 
         private volatile Instant instant;
+        private volatile CountDownLatch 읽힘 = new CountDownLatch(0);
 
         MutableClock(Instant instant) {
             this.instant = instant;
@@ -591,8 +666,19 @@ class AiRouteGenerationStartMySqlIntegrationTest {
             this.instant = instant;
         }
 
+        /**
+         * 다음 읽기를 관측할 래치를 건다. 서비스가 사용량 날짜를 확정한 시점을 테스트가 알아야 경합
+         * 순서를 시간이 아니라 신호로 고정할 수 있다. 첫 읽기 뒤에는 열린 래치라 아무 일도 하지 않는다.
+         */
+        CountDownLatch 다음_읽기를_알린다() {
+            CountDownLatch 신호 = new CountDownLatch(1);
+            읽힘 = 신호;
+            return 신호;
+        }
+
         @Override
         public Instant instant() {
+            읽힘.countDown();
             return instant;
         }
 
