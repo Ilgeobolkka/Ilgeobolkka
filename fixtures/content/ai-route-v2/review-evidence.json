@@ -30,14 +30,17 @@
     "oneGeneratedPhotoPerCandidateBook": "PASS",
     "generatedImageAssetSha256": "PASS",
     "endOfChapterReflectionPromptAbsence": "PASS",
-    "counterpointPageAbsence": "PASS",
     "sourceBodyTextPreservation": "PASS",
     "bodyTextNotObscured": "PASS",
     "bodyVerticalCentering": "PASS",
     "bodySafeAreaMargins": "PASS",
     "endOfChapterPromptBoxGraphicAbsence": "PASS",
     "promptBoxGraphicAbsence": "PASS",
-    "reflectionPromptAbsence": "PASS"
+    "reflectionPromptAbsence": "PASS",
+    "analysisTemplateDiversity": "PASS",
+    "evaluationLexicalLeakageAbsence": "PASS",
+    "searchIneligibleFrontAndBackMatter": "PASS",
+    "counterpointRoleCoverage": "PASS"
   },
   "humanReviewGate": {
     "status": "PENDING_HUMAN_REVIEW",
@@ -1317,7 +1320,7 @@
       "imageAssetSha256": "fd6d505e2516da7d8f9c226a5cf1b9d6d260ea7b7ea896cf12d195cc35e8d526",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "9572b96571dd94a355f7712dfd1ddd82779bff0633fce463dbd2632a310e2454",
+      "aiAnalysisInputSha256": "d60dea471ee7fdd64ddfb5cbb6e3bf4ee531b116cb45da9333bf71a711c18592",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1328,7 +1331,7 @@
       "imageAssetSha256": "6f83c840b164f8ca0e45e79f0c3e7c315aaa1247b6dbbcbd661c15640832e7c0",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "5ad85e10981ae5b858d28287cc7dec590b8ab9500570978bafd735014f9c856b",
+      "aiAnalysisInputSha256": "ac273b14a79e04753b04b7733862c91af3cf977762c7299363e6569fa94fa9b4",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1339,7 +1342,7 @@
       "imageAssetSha256": "259a5d7c3f2e7238c876f8ac1e0cd90c0f08c4eb8b9d4bca32659501ccd8c2ba",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "8e2e322d8ededd9a6ec5af8afb44c4269fdbcc792d64170bbe954ff446d2505c",
+      "aiAnalysisInputSha256": "bf1eedacf0350f6e3354dbcf13a597319f9108f97e4bf5dd26e2af723812b82d",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1350,7 +1353,7 @@
       "imageAssetSha256": "eebdcedb06bf4ec2f2030c4d1d138159b16c06b0b25f3e9827b5a8ca6c107587",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "179a50c75b2d3addd2b37228ade39bd7b75aaac49bb72a7b2ee2dbaa9f260552",
+      "aiAnalysisInputSha256": "c9c05484897f619942e09dc4bb2e2020ef68d9d82ba190b45688331dad6e1992",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1361,7 +1364,7 @@
       "imageAssetSha256": "60d688921c4bb055fa77bac8c862ecedd64d22f18c3542a196d734dde39bb17a",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "8614cef125af578ff3393e4781879f01a1d6ec4a89ece911cf56d3bea4f361fc",
+      "aiAnalysisInputSha256": "01e01ec18459135de0f125be755b171dc4c8b38f9af09bcbc7fc6553d59fe4c5",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1372,7 +1375,7 @@
       "imageAssetSha256": "164ae55b6cdf6b5c9c9c505a37cc96d74f4bcd6952da196d3f2b0cf5254aeea3",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "8c1915137120b4666fd3ffa721ae75e5e097ada0100562958c0acfb91f69fdb1",
+      "aiAnalysisInputSha256": "a120f01c629736b97135e5ba00d1c97246edc1da69bc47d8a8efd503144cfe9b",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1383,7 +1386,7 @@
       "imageAssetSha256": "3f63de53f182de6a26285648e7c6c354d36c94c7c8b01875f0e4ca7945d111c0",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "463b8da42afe015f3227085a38ab6e7f70fd5bb9e8bef7e91680e5a32944e53e",
+      "aiAnalysisInputSha256": "4d83fa230f29b8b3a07dff0fb66da2c2705b00d5664f52444e9dee88d959391e",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1394,7 +1397,7 @@
       "imageAssetSha256": "68dd0dd1912bd0eae8ea78d033ecb57f91d710ec0e1aa806323219b330f84fe7",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "1a7411d3de1abaf323b88d76db2a2743e9ef0861c5727a2935f586495dab845c",
+      "aiAnalysisInputSha256": "b65394e1feb226f955b4919dece890479cac7adfe18e562ccb1919f50fff6108",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1405,7 +1408,7 @@
       "imageAssetSha256": "0d244b605a51e63cfc9fcc37bb39b5f7e476d85ef8eec7b2cbe168d7ab8d68a5",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "94622d3cc0bfd27320ecf6a24f1237a1f1070a57e899a986a395dffe33f912c2",
+      "aiAnalysisInputSha256": "5732fab15a8eb3ec0d68c8d70164863f9a8755958f9c57e7e3e0d0e19d240921",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1416,7 +1419,7 @@
       "imageAssetSha256": "25c0b6adeb3de396a525dc7faf1fbfd4c5368bcc2be324db2c6db535ecc62893",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "24243362cfa8d6f6ce71d08bfc6b644a382c9c8372e10aba7c34d3f4abe413cd",
+      "aiAnalysisInputSha256": "04a64732fc110eca34a6a05398eceb8f36427b7408bc5c9b535f0c6782b5e5ce",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1427,7 +1430,7 @@
       "imageAssetSha256": "00deabbca58da8b440a3997cd61b9099487e630022785ce533eb3bf4ee918cde",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "dffab491b3cc00d4ae853548d8394d6b0150bdb154af4801755ffb92c97e44dc",
+      "aiAnalysisInputSha256": "e8c65758a86ef866c0ecb70ff54134f58dcedfabfcee7888688279fd916f2f9a",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1438,7 +1441,7 @@
       "imageAssetSha256": "4371ce42d7832a81a82aeb024c95f4fc891e0ee6b6a97bf75e27cf49c8493738",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "9da51d22190d8632d01af772226cfa75cd9915121388df1520fa841bcf661fb4",
+      "aiAnalysisInputSha256": "2a2bf5a637d434935caed7616abb2e4f44480025099925add688ae9646137886",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1449,7 +1452,7 @@
       "imageAssetSha256": "768f1a5e30a22f8d5e4af98f16fb6c82cb8cb25cca3d29e0a1d968513aba0e82",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "e7cb8cef882c91f77f0f9286d8bbe63bb741726739b7829289f353ecd7129b70",
+      "aiAnalysisInputSha256": "59f039386d816462a2060eb6e42abb0db1a97514ea261d3b8a930fab5ae1adef",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1460,7 +1463,7 @@
       "imageAssetSha256": "df7de69208ad00d3402d910169cb74341cd4332e1be754d6d5945679b514558c",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "4302480a980e5fde8d394cdf8b00801848c40ab1254197373a1dcde4eceae485",
+      "aiAnalysisInputSha256": "67eee1f55904237640156a486505368ba3bc5a1629e5ebdee417023437cd0631",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1471,7 +1474,7 @@
       "imageAssetSha256": "8b8bf9b7fc6924d2d72fdbd157e046ab120ae14d1ac89ea368443a6a76611137",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "8619c2a30686853f4a24eec42e7c58c4f6ea25481426404cb0dca75d098aebce",
+      "aiAnalysisInputSha256": "b1275a6d8227c7d25e16d864e4e4ed4644917e70784b7c862c1f52d953a1b772",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1482,7 +1485,7 @@
       "imageAssetSha256": "b316d454116567e114a414af5532ced5b63fa13f1b0089c6127a9a09392fb8c9",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "ee21836cb9493d4c4a3a62f58dd0f7a045cb578e94b6972d44e97a6bef225a53",
+      "aiAnalysisInputSha256": "e10b9a8fc6caa2efe42d37330ecdb7fefc46f4d76914c11d5831aa61eb2a789c",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1493,7 +1496,7 @@
       "imageAssetSha256": "8ffc6e71653b62a5538c1890069a7121cd0768826704ce09b6cca6c60901c15b",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "71c73ba2473e539e6a5676189ea243c25a51c399939a456d6d1c5a0513a58796",
+      "aiAnalysisInputSha256": "bcb022162aed4269a9da877661f8619d33cefd320800be4e2c34b533dc0f6f2a",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1504,7 +1507,7 @@
       "imageAssetSha256": "09cc5eaeef599bd3e94e2e3d72df18ce6c511fcd73c8e05ce9eefc5e9a5f2a6a",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "055c2379bfd60f7afb1eaa8d13754d4c530a2c73e598158de83c6319f540ebf1",
+      "aiAnalysisInputSha256": "860939298b6dbd59dc6d6d23a8534ed415bff119f917c7bc62e3d6ff21f41ed4",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1515,7 +1518,7 @@
       "imageAssetSha256": "7fe1a5b8cf0072b1c9ed9e2689f6a5cc53c05ecf556148aa867ee98ca223ecdd",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "dccef167f0a1e7c1a026310d05bff6b6324153c9fbd79c07bdb7b59c1fccbe60",
+      "aiAnalysisInputSha256": "e372952447ab7c093b17462c3cf55f5263c4247f457f7f7498df4862a5d395a9",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1526,7 +1529,7 @@
       "imageAssetSha256": "5765f9c8ce3cc3cef9c4ff4f66819189ff8afb5b141baa97839b03b32622c8fa",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "f825cf401a48cb1d39fe6102fa259a78bc495e423ecbf69d4237c8782cc5af1d",
+      "aiAnalysisInputSha256": "ae72b6f10f8e5c635cd90e857e42c02c13ce60bae1f611a68c0e62a2494cdbec",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1537,7 +1540,7 @@
       "imageAssetSha256": "a9ed8822b036cbc7659ae34e1defca5f084fdb50a9842a00016708e8fd7e9647",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "c4999978abcafcfd558164dcad3fd0e0a59758d49b3d4c9e464454c53a2a5ed5",
+      "aiAnalysisInputSha256": "ea1ccb1a0d3e50d4bc1364199d2ab0da6d96dcdaf3abfd65ad9901355a7713e4",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1548,7 +1551,7 @@
       "imageAssetSha256": "d2ef3a1649a9c8ed7fa65178805b1cb843a243a89bc35cb5814dcfb54b4c7f37",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "3e3c9b4818a536cfc0eee7f0e336c46308f2541e1c5b036c082251acb0055026",
+      "aiAnalysisInputSha256": "2d11462da29af7c3fb7c34bb4162a5c32b46ed0edb578ba76d35dc9d7c592d12",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1559,7 +1562,7 @@
       "imageAssetSha256": "69289fc144eb48393843980920f7e5d7996c960307cf282173706ff46a2729a6",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "8d4f90fa74e2344175197a5f7425605c5005f52707253fe294259cfa2b0b0b3f",
+      "aiAnalysisInputSha256": "ca97bbd1d46882acd0fffdb2330d286cf0c22a9c1b991f38a0154ea088e1d980",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1570,7 +1573,7 @@
       "imageAssetSha256": "9886a4aa31fdaf78a16bad412c4eaafa3bfd8e5e38f48cab62f01422a16b36f2",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "569f26d23c2a6ae3cd0273d687a164835b97aa901956cc52792051f12bcd24ad",
+      "aiAnalysisInputSha256": "7ffa74a8c4109e91be0a006fde830cb95428f603b6984472aa325a6a90950aa5",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1581,7 +1584,7 @@
       "imageAssetSha256": "5aead44136d19f104cc6978de8799e5e6a835599d3f24e227fae80dc69dd8458",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "217b17fd1455fde7d407944bdee2f97b4615b4afdb8497f540359927a2404777",
+      "aiAnalysisInputSha256": "23c24aa00292ede1887bb0b2fac13f95c97a552a0ddd08a6306aba748b88746e",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1592,7 +1595,7 @@
       "imageAssetSha256": "592ee48e70375aa318eca00bbc404f9afad60afc98fa4b429b3b17052b433254",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "28b3f04852c287e174e00977005b322974b1af1335e99b931e2cd4928c1a490e",
+      "aiAnalysisInputSha256": "b6efb92b4915a5281bd45b06816a8f510d56555268062a84f2c9724a8ef2afc6",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1603,7 +1606,7 @@
       "imageAssetSha256": "6a5faceecb8568f4baf78e5ddd5b5f40b36df8ad6e42b3aebd3ec62e3f5392e3",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "dc39a02c79a4053da26d87de230df237d71b8fb2c6d365ec415e55a33da62c02",
+      "aiAnalysisInputSha256": "b58f106dfa48a19c17d3f6fcd5a22e2c67c2e2ba53d23e8083cfb29b771790f2",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1614,7 +1617,7 @@
       "imageAssetSha256": "af70e304c5d700d3013c5f4783c229cff90003ce4a91a7a83de7744e1ff2ffcb",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "f3f5b7d812cd722be451d6de58557f39206a9286f161a40f9cbcfef314022d3a",
+      "aiAnalysisInputSha256": "079a6250629327e1061daa7e58f75a23437277add92356edf1f2bf7b156657ca",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1625,7 +1628,7 @@
       "imageAssetSha256": "7cd841070815394945f669aa1f7de58fd437dc2554bf8f62e62d80e77f2c0ed1",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "35b3dd739415feb81a7b3de9621ccefcb312b4e2eb61decc87912957c1455b48",
+      "aiAnalysisInputSha256": "77b69924dddd62f9e7adc490e29557198f78b9216d6606be3f9eacb5a95cefce",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1636,7 +1639,7 @@
       "imageAssetSha256": "f55c50f8faec61f1797578ef104293ff982ca98e21a43d6d9a25af0c51241436",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "bee1d8e83730cfaff579d90bfc41835734845b99b14207211d34ec83ad8a739e",
+      "aiAnalysisInputSha256": "cd03a389037bbedd50a00a46615d27211bc3f1c2a2dcc016d258462f6f2385a1",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1647,7 +1650,7 @@
       "imageAssetSha256": "167caa4f3c1bc60f91edb1b60ea934c33fec6e664ba2d1a9c4a97dc95ddddd8d",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "cdc5f0fb17866ce5183fa045664e67e8f4f0c6a459bad23db58ba76e68afbf73",
+      "aiAnalysisInputSha256": "58e938ffaf321ae2fb9a0612cebd57bb2d903adb894a7d20f61639fdd0117c3d",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1658,7 +1661,7 @@
       "imageAssetSha256": "83f163a1c8b6e6fdd3d4abf36793d8075b8b21505ea2019e0d7e911c3bd65936",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "99f21d2955cea97e058d46a3fb23aa7f5a3d5efac4567dcfbb676a4b1e0e3a01",
+      "aiAnalysisInputSha256": "ad0dc2c306166cc1086e6a6d53bcf924fdc9a2793d94a5229cfbfd792ac64d83",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1669,7 +1672,7 @@
       "imageAssetSha256": "84ea77b2f865d05176058263d47aab28b347447f82487b8dd5958d8fd7847c11",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "49eefb6a5454f4814f9771d1e74f094ac00e845f6ec6e611d298a8f76de56f45",
+      "aiAnalysisInputSha256": "1136c9a9ec01f6c69e409c3f9e7984bac1470d2daab1517d826db4fdc306b257",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1680,7 +1683,7 @@
       "imageAssetSha256": "2947a0d78b668f90fe61ab025e92b7f3ee125243b9d711b8d45071a3f15341a3",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "840319cd9899318794863fbf02ab14722d850f0cfde45044c75985d1345ce060",
+      "aiAnalysisInputSha256": "38a859b206cae6ba4205586f6d00bae742cf20451ed1687cec5be6fa8b8581b8",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1691,7 +1694,7 @@
       "imageAssetSha256": "613dd985ae855944f10be2fbff0d8923d803373b2a0875b4f3872b1eb109f5ed",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "2938408bab89fc22bda2e310745b70e8ac3af707866c4ce6be03f54703220f04",
+      "aiAnalysisInputSha256": "e325eaae84f2a38dde487c33bc9c3bb71d9c0895baede7f113e83359317c52cb",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1702,7 +1705,7 @@
       "imageAssetSha256": "843193ba37508650e863e884d524be5a3ad994196cf1979f4b7b4edf21807779",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "99d3e70816345b1265c28cce8b8a0726a027f025cef8a503f69a80e78e2d9c6d",
+      "aiAnalysisInputSha256": "13ca5e9a13dd86f1a73f2b8c127e24102c3b032a20967a081da1d89d3172ae52",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1713,7 +1716,7 @@
       "imageAssetSha256": "d1a33db182b4e581b299ec93e35dfed73a5672b539426640ea438e87463c681c",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "489e494ac0f90b71ac8ad999688366a4d9a80219b68386e867b1d79e3bc403ba",
+      "aiAnalysisInputSha256": "3465a6727598fe9e9d23eb23ae3df12604c38d31dd24d4660d9c3080c5773fea",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1724,7 +1727,7 @@
       "imageAssetSha256": "93162c14680d184de3e7f9327cb4133e29f8abde30a2c1fcdbd8f85dc19740a8",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "1abdcafad16d732a2a3308ddcb85ac02aef935c78c3b9fbf62e3fc8ed94231e2",
+      "aiAnalysisInputSha256": "66ba3c131d13ab28a0dc3678e972334d95a1d30ea4b72b941951c5eb96f6ed03",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1735,7 +1738,7 @@
       "imageAssetSha256": "38299962882ed9802107559808c2320e10a94846ef9c6d625295a50b3ce9daf2",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "cae6d7848b8bad9e84f56a587f24601f6305ab30d7a9ac815f90e8995165d077",
+      "aiAnalysisInputSha256": "93e89e3e4ba3bd98f732157fdc32ea60c9f47f5e0a14f6bde6999ff3b58bd4a6",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1746,7 +1749,7 @@
       "imageAssetSha256": "cb5b846b0674da96a742170fe41a1d3654989132b97f08237332912883b68029",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "a3b559174dc4065f68538a431ac05c0107b8257117ed766c755fb73cc580a07b",
+      "aiAnalysisInputSha256": "bbb295927e608e1c855d4f863b70064bf469e279c288891172d5ed377907d909",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1757,7 +1760,7 @@
       "imageAssetSha256": "94ab68e278b02bf30cc505c43467e5767dfe70f0f2695d4243acf90674454d6e",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "1e905fb69acb37bd9975b6ce0fc8b7e37f60c34c44c8ca4f00d4f0f915a64de1",
+      "aiAnalysisInputSha256": "e1ae4c811b8cf2a39670de4c131cf4e9888c8fc7fb2f6fa04ee37c35cf19be5b",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1768,7 +1771,7 @@
       "imageAssetSha256": "d323bbfff0f38e0eeecca78c0364a552fb0855abec9d2a8566753e6d797b7e46",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "624dd1edf6fe7dd33dd107cab5c524464b236fbcf269b0c1ad3affa90d8220d1",
+      "aiAnalysisInputSha256": "df21a92c63afed930275abc89b9d16f9599135e083dca4f2b3815fad39852792",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1779,7 +1782,7 @@
       "imageAssetSha256": "f50bd6a2c10ef16d4cb1364a5b0774edb64d6ff97b7ddf1702872ff1378269d1",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "e22c2169cbeb7d7f8064010f9e3bc92cba0d9ba75f8e73bca3002c3048aab50b",
+      "aiAnalysisInputSha256": "679d4385f0d3350ac08b2b926146b2a8f0bfca8073f01fbc187b5573870abbbe",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1790,7 +1793,7 @@
       "imageAssetSha256": "4ec315a1034fe97e02df6c736a8006bf821881cdadab9f2b4c5dc12a1e6c899c",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "f866c33a270d35de8f417b223feeaa47884eecf5f299267007563b74ca4cbc6e",
+      "aiAnalysisInputSha256": "9fd1064388927602383f9e92e82d6fe67dfd7570c0d8b8d103ddf8bd39ff24df",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1801,7 +1804,7 @@
       "imageAssetSha256": "a05945d10f8416709d405ecd28873a168d72f6ec0780345f2b1962ea03dde50c",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "6af0104bfe612fb0b04ffdfc02f2a48a1cb121e03307b80547a1634709e103dc",
+      "aiAnalysisInputSha256": "051b7fb84556d9ab7eadaa4ddae9e88bbcb03bf0e19a94dce83900b264bd5b98",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1812,7 +1815,7 @@
       "imageAssetSha256": "b3c059c59072a43271e5905364508198739a9410eb159da84d0ff0aa7f66b81d",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "af36f4f562eb5c70f2e2516671209e04a5b2616a9c3cf4e88696d47157deded0",
+      "aiAnalysisInputSha256": "09ea3b5f3eeab44ebf96550db78deaf426d4352473ef3e2c014a2f6902cd8446",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1823,7 +1826,7 @@
       "imageAssetSha256": "dc4ffbe40b242354e7ff66df6e15190b841accf08566a643ae7f75d6a600f3aa",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "f24f4650643790a2e832d73a8cf6ebc812034f87d10108049e4c4c3fb0cfb5e3",
+      "aiAnalysisInputSha256": "31d6c3e987233ba04b577cf3c8ba6da116a188ef89699e39d8a81c8de6be1590",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1834,7 +1837,7 @@
       "imageAssetSha256": "54a21d133b643aee7b20a32fd087e304e8b7925ac1bb6892894c5e53d4e5225b",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "910c05e4f14953e8842c3d52adf19fe56525a66934b3a12efbcc83527d5afaca",
+      "aiAnalysisInputSha256": "ac4b1d43703e36b341d768353bf36521502977e040af665fc6e3426c0a239c1c",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1845,7 +1848,7 @@
       "imageAssetSha256": "a4e4bee6e21dea5501ef4717ac54c600d8ebb5a0b95cf333b1853e99cea4ade8",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "710d3787217257133d01f267b2b75a51c407d55e8c9daf99496b45b33b268842",
+      "aiAnalysisInputSha256": "c585e37d661b79ad0969b6ff484aaf3259b4b05e04210a2000c170134147f7b5",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1856,7 +1859,7 @@
       "imageAssetSha256": "f7943e93598cfec38dac8c911b52ae205ecc4689d462511cc4944c68e7131c6a",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "2d3f393224b079f30fb4d1db9d2f72b700551a342805de439e99bfebb9daa4f2",
+      "aiAnalysisInputSha256": "34f79de8850947bb94c226ccb5568886b1ebf6c8241906558858baf2a15b9e17",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1867,7 +1870,7 @@
       "imageAssetSha256": "a8f8199fa47ad6b7a9120f26cbf1aaf127f3d02ad9d8ffc8a02cb982145cf68a",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "c12748adcba2d4035fe4c152c2d11f7e2e15ee3ba8dc1e90f13edf8fc93ccf8d",
+      "aiAnalysisInputSha256": "cae44a2fb9cc803aad1146b9e1a3213cb9f3fc6bf5fea8939bfa9a1c850957df",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1878,7 +1881,7 @@
       "imageAssetSha256": "af6d4c433393d9987e32fe72df9d31f87a0fc5d87a06614b1c70ac150f691a90",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "b4f7825b4b454e78208cdf43f5a3b9b1b9f723e5b06ba9e8129e8a8ddf2bbadb",
+      "aiAnalysisInputSha256": "4181ae568425d2334a55c552a0f0955a2de7f684dce83e61993b46a2660d6ded",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1889,7 +1892,7 @@
       "imageAssetSha256": "b40f90a8de91b8d52631cbf19586ddcf58ce65db9f8f62f9c394dee5c97abefc",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "42f5b2e836f561351c9cd1d978058598dba1528d12cd7d49a8003c2a91b1cdd7",
+      "aiAnalysisInputSha256": "072ed5c96ef99fefbe40ab48423daa0a20200bf06657f7e4687ec27e4d1d4444",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1900,7 +1903,7 @@
       "imageAssetSha256": "5bce613491e2f8f7a64cb22d6096e059e21c1edd7d82d95174b38c0180c1307d",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "8231ff27f0b15004966422cc25f3a4acddd43393f7839368dc8e5c00ab6e23a1",
+      "aiAnalysisInputSha256": "0d43a0270eca4c3687007c59005c424a5725b2ef5da46018dce4ff0fc23fbc4e",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1911,7 +1914,7 @@
       "imageAssetSha256": "68432328c5856d6c71afd523e64219a08f2c36784819da2378c2341c96668a32",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "17970b4d464f45a82a9320804484b04756b6a576055f0311d33b82df430510e2",
+      "aiAnalysisInputSha256": "a763a858b4d1fb6461d461f047fd50277672aa4e0a4e3a43e1930a6ec4f5bc19",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1922,7 +1925,7 @@
       "imageAssetSha256": "b8e8e5b6ba05832e0a53fc65b065b17262830d22016b542fd18ee2d9064daefd",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "524f782d229b64346b594ed4352a19aa04c9710d74cca88cf4b5e20f0cdc5d90",
+      "aiAnalysisInputSha256": "d4c6eb5f6d3fe396610aa4d0fbcd4294211852a0541b7e6f9da47faff4555927",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1933,7 +1936,7 @@
       "imageAssetSha256": "0950ab6d99b5aefbbc172a11daea3b40c3c2e6218359b589c1f049fa5ff452a5",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "3e58f5b388c41d3ed6a4610bd95089f851dbf4801fad94a40ea9755c4a3024df",
+      "aiAnalysisInputSha256": "4049574c5dfc69f8fe6ce322aec0324edadcc33a43f3f17be43af1acdd54d99b",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1944,7 +1947,7 @@
       "imageAssetSha256": "eca0d32f07f8615abf0b3c64fa19d4f536a94ad771841089e1f844897ebb40de",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "765276550f2778c480b58ea3df137fdd912344bd2f86b0a3da16ff73a03ad1c5",
+      "aiAnalysisInputSha256": "30137a262a480d2700f05acdad6c3d1dd57d3d8d5c17740f6aa8348c58523ddd",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1955,7 +1958,7 @@
       "imageAssetSha256": "1ec6c56b88c1a578c35a9292a381fdfc6c1d561682e7a2112084e5b39006d044",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "db328361abc010d0a97a52b42f0803ef020c8446e29cab538c092a40c0ca6156",
+      "aiAnalysisInputSha256": "25cf95c371242b4b858385cf47d1b7c5c1562554b41fc8d1534eacb71ab4e86e",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1966,7 +1969,7 @@
       "imageAssetSha256": "c39a6014ee58b7fa6c6480506004b838d1b6a05a33c57a10fed4a85c4a89e78a",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "1afa953eed1c87dbfbd30bef0ccae7600bf68e68f304c87eb0ac7c6a5a859500",
+      "aiAnalysisInputSha256": "50069f3d58b9ceb317418acd0a9f64a8fe3bbe2f571875ac5c9fb8c1b085e436",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1977,7 +1980,7 @@
       "imageAssetSha256": "b0a3226081b46a14af1b735c3936bde68ca47727327b42df815683f2ca85023d",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "ea3edf19ce319b7eaae5cf237911b7540f95c4bf8e851c91b60801cf4e2f2554",
+      "aiAnalysisInputSha256": "3634261060d98bb46dd7f4a5f64b82deee9c5d6fb2d51d31f9b373d90ed089eb",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1988,7 +1991,7 @@
       "imageAssetSha256": "9c158e3562614a1fd8a4c1fdbb0e42ffec8e76b1ac99bb0dc31fd23d8f3a0063",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "5058028549a1a42e9a0b3f7409ce8fd180fffef5d7e58adce38c6b4063904a57",
+      "aiAnalysisInputSha256": "653be69086d86da9534a9ffcf0a2e6e24dd1d0efd5b1ca4bb93fe7ef849cd28a",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -1999,7 +2002,7 @@
       "imageAssetSha256": "e54307c67c7532d4669e9f1961d1ec0d68def58c8bc80915d681759a6d2db756",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "4c18a549a44d75c8addd49b4913641f4fcb3e42b9a98ef0b19fe4437cb733937",
+      "aiAnalysisInputSha256": "d447ed55aa76fa6f23215adcf7dac520394213fde6a66b511a30b0f39ea0e789",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2010,7 +2013,7 @@
       "imageAssetSha256": "8e873e86004319e22e0850be2581a1a31029bfbe0a18ffd55a950127f8dab62b",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "7602ad44f721774808dee8699d9306eefd0711474592d6c17bd2899c8c7e6ec3",
+      "aiAnalysisInputSha256": "41db49d006c0a4430ae1a98acb5c68540dc0728fac8de58c5dc1e4e16016b1dc",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2021,7 +2024,7 @@
       "imageAssetSha256": "79e81e825538eed50cf57e3166612288495b2059b2c1269b296ba08d9a3e2e2d",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "731a66397fca7d5434981d999523a24a3b16c722dbd3e19cfa13e0b2c53487dd",
+      "aiAnalysisInputSha256": "1c29e45b1b4a78f14dc2353a90ba918a5c8103f64dd7045c8d2e0ee9b1ce5da4",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2032,7 +2035,7 @@
       "imageAssetSha256": "0bc2e6519f35fbb8464d6d8d146f8f21dee62b6282d19c0df0ef5e1743ba7990",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "f6b8da38f9b9bfe5858e089423c18989a567d393d9108a6f8a87db9c91c5c506",
+      "aiAnalysisInputSha256": "36089e2f5e1aa0f08df1974a1ac3c81361e89a41da67e322d912ef4da9886454",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2043,7 +2046,7 @@
       "imageAssetSha256": "ee88b23fc41cc2ab5ad6e4e9ff480bd244f4e83ff4e9f813b264ddb4e7a7eddc",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "3bb080d13e97b62578bec423687b986ef5711fcb7a28795f2a1c2d5809af141b",
+      "aiAnalysisInputSha256": "0b30e7cdcd8e58d23f379523b1e734d515ce259ee4096edc496c9bd0de1f6b7b",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2054,7 +2057,7 @@
       "imageAssetSha256": "b73c29cead8185986e9b3ce64f88ddf083c32a72e8c4f3c68142aae89632ddad",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "6e0cc616f84046a7cb08134d1fecc928397b10e9e41c0bf4d0b3dd71edd5d86b",
+      "aiAnalysisInputSha256": "5c1fc6b286c9134effededf1afbae84a481a61e3e21caf04232a545a2b86d7ad",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2065,7 +2068,7 @@
       "imageAssetSha256": "1671040ae385f13a2a779e152686e0d399452d8bb566543d84c56d92a80a95f0",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "070cb5f68728f39206a8332156306386b2ee1db0d40ab2342105899d13dac73c",
+      "aiAnalysisInputSha256": "7b4c3152d4c4046bc46526fac8d4490f4b9ec75e184a95177079c22c1b828836",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2076,7 +2079,7 @@
       "imageAssetSha256": "df9136cc25039f821386937de9d71db69fde84c9278ce6d73b12dad55e439497",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "4d164114df7842d1535d27adf096d6e2d9bef5fe43627a16e6a582e22dd9aed0",
+      "aiAnalysisInputSha256": "62052b26fe7c089bca46f99f7a0eebbd307b2d1c8a21faf2e161a33d4d0a1977",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2087,7 +2090,7 @@
       "imageAssetSha256": "f340888e58426c7f69a82ce293b3078f9782c8e62a1ca7f46f07949a0ce0a79d",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "48c429e3050742f4c8985a49a4333c8c7dee876f5adeb1e7f5ca87c92ab17563",
+      "aiAnalysisInputSha256": "ce0e8a86ba143c43488941b7bd6e9ded2803d9160f665d6a2712ec1d0eac6057",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2098,7 +2101,7 @@
       "imageAssetSha256": "abab63e696c1c7a2a182fc3e69330c00f4b4d4dc903ae8d0483bccbbf5e60be7",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "ac493b846387fc423a2ec2e6c99db9c7237606b59eb8abae8528035fcdaf33c9",
+      "aiAnalysisInputSha256": "0337327aa1d997cab1339a50b262530cf8fe3177817e558f4846a017815c8228",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2109,7 +2112,7 @@
       "imageAssetSha256": "d7f2634c2641b4f5c1f6d65a909d7fb9b16be9402b7d0716d1d4e8f99c0fd901",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "f9acd5f1a6fa7b0e58f9469d362d8011bd31a4ef29202cd455773a5196010572",
+      "aiAnalysisInputSha256": "6d7e73dd058b1473da019f03a228ef4d4805453041c067be0a6408bb05a6bca3",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2120,7 +2123,7 @@
       "imageAssetSha256": "5858c6d16f9c4c78cfb17644fb38ee9aa005071b4aead7d08189b627a5888ed8",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "0be000bfb1e6527806c7c9a8a1de4a973d721c2794d262c803e4ee12fc0ac088",
+      "aiAnalysisInputSha256": "a9ed011d6cb444629488ef4b1de5edfdf99e05c3bb24d240b7c163d1dd2f6200",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2131,7 +2134,7 @@
       "imageAssetSha256": "b61bc674a64829e473a7ebb5b705a054b32a4d1a73809b9ef064995e35975a04",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "6173a95381ceaf2ce1599084ba419c2e73b5a6cabf98bd907fbb37e6115124be",
+      "aiAnalysisInputSha256": "95a23221226682679f62274489f724238d75238a824e02359f7eb6c478bb58b3",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2142,7 +2145,7 @@
       "imageAssetSha256": "d557e6fc12ba26aee323e59554c5a508c2b28af6a4a724c8bd84474db6bd5735",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "db5fc09c15a5cee6ee29af332b6e1f9625bfeec5f9ff4a9d2f7a9b4e98468958",
+      "aiAnalysisInputSha256": "c4e7a6b4e674b56726786f9276c40ad750c04ad57ee5f2b4a2254aa4c2f1e497",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2153,7 +2156,7 @@
       "imageAssetSha256": "8865e0ba049753097a96084f790b9a64841e1424bf6b7ef7495ac563300405b7",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "14a26f340c233e2d2e80271cb0a09a1b81c04e26a71b514ae2419eec8d757a7a",
+      "aiAnalysisInputSha256": "ca5df832150c52653c518e61fa7d822c64246b00e565a21380250218d5e85d3c",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2164,7 +2167,7 @@
       "imageAssetSha256": "3699ac5b2e78719e7a4d593e5c8b80ab36510229088b89fa8ebbfd280ba39249",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "e27cdd6f19a7e4d5837171e130df3815e2d043e9e318d53b74aea0d9e0b2e2a7",
+      "aiAnalysisInputSha256": "e866609048fc8cd7db267db01ee1c1e2185fb6f10e151a698c119b4d0a4f83cf",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2175,7 +2178,7 @@
       "imageAssetSha256": "8719615be377c6215f53896dd28e5fbefb5ca7aeac48ff5c896756f08fd6b8ff",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "f1b2a9ce0faf8fb965cf2771360ceaa6ddefbe4a013acefb72974b81f3111425",
+      "aiAnalysisInputSha256": "920ffcf2ea635f3d64b41be4d0f3b58271edbb1f18f4083ebe84cafeb807c054",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2186,7 +2189,7 @@
       "imageAssetSha256": "d364ebe05e233c7a904b659f4c3cf61ad7fc62bdf17e801fef47e189fc17cd76",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "bb6f471bb937d3216779b1908b57512ce8f0320daa75be227270b1e6aa5e08e3",
+      "aiAnalysisInputSha256": "6d48bf0911eb04e68b64e37e586511c058db10c9d87982d2407cc245dbb937b1",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2197,7 +2200,7 @@
       "imageAssetSha256": "30cfbf89460c3e418e8ca5cc8ea683d585c31c0a503285c7358fcf781bf95a24",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "10d1ed8eb2d4a49041aff1d00e2cde41440bd5763030ea103c90bdddae6aca75",
+      "aiAnalysisInputSha256": "ce3a992cc53bf6c452745c5b178483c7ab7d37b2a226dc355b69226ba69499ba",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2208,7 +2211,7 @@
       "imageAssetSha256": "d71edc403ebe098071bebf1340a5d28e86cf5fab8e04274e95811e6ed9074a61",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "17c0d335c5fbe78dac70efb63ad4f65df911ce0cdc68931b6258bd8565220b3d",
+      "aiAnalysisInputSha256": "48af26e75d15ddaee09c426768e96f250a9a023bf6b189ef0b07724d8fa8bc96",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2219,7 +2222,7 @@
       "imageAssetSha256": "1cb642289fca20b298041717c02d07028d775c1c9b000d8165e037a1b4169046",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "442cb9ac1dafa87fee16b50924c1622f4fda4d3c11e18ae391526b9de3e770ae",
+      "aiAnalysisInputSha256": "0c7f7dc99421b560cb0a4caed0fd35cf5a107c33353726648b816dc4f93adb75",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2230,7 +2233,7 @@
       "imageAssetSha256": "801e8b7501434ed70e8cb6d2b0ecf972e211d24ab3e32cca2e9a11ab9d6a388b",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "04159dce8b528040b009aba177ba16222609ed57468319888d9bec3528e8d6c4",
+      "aiAnalysisInputSha256": "fb5a29b9ef3c5003a3cdeccdc5feefe98b9c8b9ec607782ad55575f953ae6b0b",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2241,7 +2244,7 @@
       "imageAssetSha256": "64cb03472555458ac22ef787a623f1849681396b8c4cac81a6ff6ac56106ce76",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "e5e3937d62837638331e1051b9649c1d6bcaf171c972e70c9d97ab652a00f0a9",
+      "aiAnalysisInputSha256": "4e79dcd9d976b555781c319dde6bc050adae15b45efd19201d872460e6d5d662",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2252,7 +2255,7 @@
       "imageAssetSha256": "36774b0b6dbefb914342112943a0092b826725438cfebd9292df3f8f914c908f",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "bd414aa7225d56ac38c296af9b90358ff6bfdac7147410fd45970a817869ffc2",
+      "aiAnalysisInputSha256": "026ae1e47266cff6791a1456957f9bfa6467583f08d9392cf2523f56a740fe8c",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2263,7 +2266,7 @@
       "imageAssetSha256": "c8748c021acb653b6e5e8e66301e605e2c9eb04328896b568d6c7ff55c3485de",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "79211ca2057abc0d07bd1e8582b83fa2d59654127a4ddecdfc72d55f0534b1a2",
+      "aiAnalysisInputSha256": "c284c34ae2c8f9f83bd82a6d61fbd805404706101499e4e592bc571d9d3f8d73",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2274,7 +2277,7 @@
       "imageAssetSha256": "d380d80e2d1080b16cc7b389754d05a545f378411fa4c44b8e8a065411af1ce6",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "84a668db5a1c67389a6125e869d90ff6cccf0c0fb58942b5573523140ef43ba2",
+      "aiAnalysisInputSha256": "01cd37833993d912ccd41445239885abf2f4431beece038359f3eb45b2e2d072",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2285,7 +2288,7 @@
       "imageAssetSha256": "99092012a60006360cabdbbcc3b3528ee24e71273692702e16e684c9bd18ebdd",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "a57daa8c40807eaff7a4fdf584f071a927061d97b43a118ceb3c31b56582b9bd",
+      "aiAnalysisInputSha256": "93f78bb632fe8fab8ed976374251b089084019f2c40047d71cec4aa5ee2a8e4e",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     },
@@ -2296,7 +2299,7 @@
       "imageAssetSha256": "ddc24ab245309787cd31dc5f3c4335fcfada026a508f60e22ae7211905648944",
       "sourceMethod": "Codex 내장 imagegen 도구로 생성한 원본 사진",
       "promptDesign": "도서 제목, 설명, 첫 장 주제와 분야별 실제 장면을 결합한 개별 프롬프트",
-      "aiAnalysisInputSha256": "26f36951459bf3bd76a4b61dcf8ce81262052bad22d1ee86d3a9d296e38b392d",
+      "aiAnalysisInputSha256": "9424235b601ca7b7a85dc26699d2668d7b1a48978afcb08e186cb4bde6dffeab",
       "automatedSourceAnalysisLink": "PASS",
       "humanReviewStatus": "PENDING_HUMAN_REVIEW"
     }

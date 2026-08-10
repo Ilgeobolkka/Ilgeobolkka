@@ -46,7 +46,8 @@
 1. `contentVersion`으로 초기 계약과 AI 계약을 명시적으로 분기하고 필드 존재 여부로 추측하지 않습니다.
 2. 코퍼스가 정의한 최상위·book·page·prerequisite·evaluation 필드를 빠짐없이 읽습니다.
 3. 알 수 없는 필드, 중복 bookId·pageNumber·caseId, null 대신 필요한 빈 배열 위반을 거부합니다.
-4. `embeddingDimensions > 0`, 필수 문자열 non-blank, Enum과 숫자 범위 같은 단일 객체 형식만 검사합니다.
+4. `embeddingDimensions > 0`, `aiRouteSearchEligible` boolean, 필수 문자열 non-blank, Enum과 숫자 범위 같은
+   단일 객체 형식만 검사합니다.
 5. 파일 존재·SHA, 페이지 간 참조, DAG, 권리·정책 일치는 C02로 넘기고 parser에서 외부 I/O를 섞지 않습니다.
 6. 초기 manifest는 `contentVersion=initial-v1`을 필수로 요구하되 OpenAI 필드는 요구하지 않고 기존
    100권·400페이지 테스트를 그대로 통과합니다.

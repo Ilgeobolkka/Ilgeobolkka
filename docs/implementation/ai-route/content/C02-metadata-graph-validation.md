@@ -43,8 +43,9 @@ C01의 manifest 전체를 검증해 외부 전송 권리·파일 무결성·페�
 
 1. 비소설 90권은 48~72페이지·최소 장 수, 소설 10권은 AI candidate false라는 코퍼스 계약을 검사합니다.
 2. PDF·분석 입력 파일과 SHA-256, 전체 페이지 번호의 1부터 연속·중복 없음과 page count를 검사합니다.
-3. 지원 페이지의 분석 텍스트, 공개 가이드 주제, 예상 시간, embedding model·dimensions, 선수·중복 목록
-   필드를 검사합니다.
+3. 지원 페이지의 분석 텍스트, 공개 가이드 주제, 예상 시간, `aiRouteSearchEligible`, embedding
+   model·dimensions, 선수·중복 목록 필드를 검사합니다. 장 본문만 검색 대상이고 앞·뒷부분은 검색 제외인지
+   함께 확인합니다.
 4. 선수 edge는 같은 book·contentVersion의 존재 page만 가리키며 자기 참조·중복 edge를 거부합니다.
 5. `선수 -> 의존` 방향으로 위상 정렬해 모든 노드를 방문하지 못하면 순환으로 전체 실패합니다.
 6. `aiExternalTransferAllowed=false`, dataPolicyVersion 누락·환경 불일치는 Gateway 호출 전에 전체 실패합니다.

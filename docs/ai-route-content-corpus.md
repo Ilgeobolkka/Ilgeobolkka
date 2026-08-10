@@ -28,10 +28,12 @@
 - 최소 6개 장을 가지며 장과 절의 순서를 명시합니다.
 - 한 책 안에 핵심 개념, 선수 개념, 적용 사례, 관련 맥락과 결론 역할의 페이지를 포함합니다. 장 시작에는
   독자가 읽을 관점을 잡도록 짧은 도입 문장 상자를 둘 수 있지만, 장 끝에는 독립적인 성찰 질문 상자를 두지
-  않습니다. 반대 관점 또는 한계 전용 페이지도 두지 않습니다.
+  않습니다. 반대 관점 전용 페이지를 별도로 만들지는 않고, 본문에서 실제 반례를 다룬 페이지에
+  `COUNTERPOINT` 역할을 표시합니다.
 - 핵심 개념과 평가 대상 내용은 도서별로 구분합니다. 합성 코퍼스의 일반적인 연결 문장은 일부 반복될 수 있으며, 평가용 중복 후보는 의도와 근거를 메타데이터에 표시합니다.
 - 사진·도표·삽화 등 도서 내용을 이해하는 데 필요한 시각 자료는 내용에 맞는 형식을 선택해 배치 보존이 필요한 이미지 페이지로 포함합니다.
-- 모든 페이지는 화면용 `TEXT` 또는 `IMAGE` 콘텐츠와 별개로 비공개 AI 분석 텍스트를 가집니다.
+- 모든 페이지는 화면용 `TEXT` 또는 `IMAGE` 콘텐츠와 별개로 비공개 AI 분석 텍스트를 가집니다. 검색 대상
+  본문의 분석 텍스트는 PDF의 실제 페이지 내용을 바탕으로 작성하며, 공통 슬롯에 개념어만 치환하지 않습니다.
 - 이미지 페이지의 분석 텍스트는 원본 추출 또는 OCR과 사람 검수로 작성하며 API에 노출하지 않습니다.
 - 비소설은 기존 제목·저자·카테고리·소개에 맞춘 한국어 창작 전자책으로 편집합니다. 표지·판권·머리말·목차,
   최소 6개 장의 이어지는 본문, 사례·관련 맥락·맺음말·참고 자료를 포함합니다.
@@ -52,21 +54,24 @@
 | --- | --- |
 | 최상위 | `contentVersion`, `dataPolicyVersion`, `embeddingModel`, `embeddingDimensions`, `books[]` |
 | `books[]` | `bookId`, `pdfPath`, `pdfSha256`, `totalPageCount`, `aiRouteCandidate`, `aiExternalTransferAllowed`, `pages[]` |
-| `aiRouteCandidate=true`인 `books[].pages[]` | `pageNumber`, `chapter`, `section`, `primaryConcepts[]`, `secondaryConcepts[]`, `contentRole`, `aiAnalysisText`, `aiAnalysisInputSha256`, `aiPublicGuideTopic`, `estimatedReadingSeconds`, `prerequisitePageNumbers[]`, `duplicateGroupKeys[]` |
+| `aiRouteCandidate=true`인 `books[].pages[]` | `pageNumber`, `chapter`, `section`, `primaryConcepts[]`, `secondaryConcepts[]`, `contentRole`, `aiRouteSearchEligible`, `aiAnalysisText`, `aiAnalysisInputSha256`, `aiPublicGuideTopic`, `estimatedReadingSeconds`, `prerequisitePageNumbers[]`, `duplicateGroupKeys[]` |
 
 재제작한 비소설 90권은 `aiRouteCandidate=true`이고 모든 페이지 메타데이터를 가지며, 소설 10권은
 `aiRouteCandidate=false`와 빈 `pages[]`를 사용합니다. 지원 후보의 `primaryConcepts[]`는 하나 이상이고 나머지
 목록 필드는 항목이 없으면 빈 배열을 사용합니다.
 
 `contentRole`은 `PREREQUISITE`, `CORE`, `EXAMPLE`, `COUNTERPOINT`, `CONCLUSION` 중 하나인 콘텐츠 제작·평가용
-분류이며 생성 결과의 경로별 `role` 정답으로 사용하지 않습니다. 현재 `ai-route-v2` 비소설에는
-`COUNTERPOINT`를 배정하지 않습니다. `chapter`, `section`, `primaryConcepts`,
-`secondaryConcepts`, `contentRole`, `aiAnalysisInputSha256`, `aiRouteCandidate`는 manifest에서 제작 완전성과
-평가 연결을 검증하는 비영속 메타데이터입니다. 런타임 후보 생성 입력이나 공개 API에 포함하지 않습니다.
+분류이며 생성 결과의 경로별 `role` 정답으로 사용하지 않습니다. 각 비소설은 실제 반례 문장이 있는 본문
+페이지 하나 이상을 `COUNTERPOINT`로 가집니다. `aiRouteSearchEligible`은 장 본문에서만 `true`이고
+표지·판권·머리말·차례·맺음말·참고 자료에서는 `false`입니다. `false`인 페이지는 C03에서 임베딩을 만들지
+않고 G02 후보에 포함하지 않습니다. `chapter`, `section`, `primaryConcepts`, `secondaryConcepts`,
+`contentRole`, `aiRouteSearchEligible`, `aiAnalysisInputSha256`, `aiRouteCandidate`는 manifest에서 제작 완전성과
+평가 연결을 검증하는 비영속 메타데이터입니다. 공개 API에 포함하지 않습니다.
 
 적재 시 `contentVersion`, `dataPolicyVersion`, `aiExternalTransferAllowed`는 `book`의 대응 필드로,
-`aiAnalysisText`, `aiPublicGuideTopic`, `estimatedReadingSeconds`, 임베딩 모델·차원·벡터와
-`duplicateGroupKeys`는 `book_page`의 대응 필드로 저장합니다. `prerequisitePageNumbers`는 현재 페이지를 의존
+`aiAnalysisText`, `aiPublicGuideTopic`, `estimatedReadingSeconds`와 `duplicateGroupKeys`는 `book_page`의 대응
+필드로 저장합니다. 임베딩 모델·차원·벡터는 `aiRouteSearchEligible=true`인 페이지만 저장하고 나머지는
+`NULL`로 둡니다. `prerequisitePageNumbers`는 현재 페이지를 의존
 페이지로 하는 `ai_route_prerequisite` 행으로 저장합니다. 구체적인 물리 필드는
 [ERD의 AI 잉크 경로 목표 모델](./erd.md#ai-잉크-경로-2차-mvp-목표-모델-구현-전)을 따릅니다.
 
@@ -105,6 +110,11 @@ manifest는 AI 경로 지원 후보를 정의할 뿐 `ai_route_supported=true`�
 
 정답 필드는 후보 검색이나 경로 구성 입력에 사용하지 않습니다. 독서 목적만 일반 사용자 입력과 같은
 경계로 전달하며 정확한 페이지 번호 일치보다 개념 충족 여부를 우선 판정합니다.
+
+대표 목적은 도서 제목이나 `requiredConcepts[]`의 유의미한 어휘를 축자 포함하지 않습니다. 각 도서의
+`referencePageNumbers[]`는 서로 다른 비연속 위치를 사용하고 다섯 `contentRole`을 모두 포함합니다.
+`aiRouteSearchEligible=false`인 모든 페이지는 해당 사례의 `irrelevantPageNumbers[]`에 넣어 검색 제외 정책이
+평가에서도 오류로 집계되게 합니다.
 
 ### 품질 평가 조건
 
@@ -145,10 +155,14 @@ manifest는 AI 경로 지원 후보를 정의할 뿐 `ai_route_supported=true`�
 - 소설을 제외한 90권이 모두 48~72페이지이고 최소 6개 장을 가집니다.
 - 각 도서의 PDF 페이지 수, 변환 페이지 수와 분석 페이지 수가 일치합니다.
 - 모든 이미지 페이지에 검수한 분석 텍스트가 있습니다.
+- 검색 대상 분석 텍스트는 6슬롯 고정 형식을 사용하지 않으며, 같은 30자 이상 문장의 최대 빈도는 5회,
+  20페이지 이상에서 반복되는 5단어 구문의 페이지별 비율 중앙값은 10% 이하입니다.
 - 모든 지원 페이지에 원문·결론·수치·사례 결과가 없는 검수된 공개 가이드 주제가 있습니다.
 - 모든 페이지에 선수 관계·중복 그룹 소속 목록 필드가 하나씩 있고, 선수 관계는 같은 도서·콘텐츠 버전의
   존재하는 페이지만 가리키며 자기 참조와 방향 순환이 없습니다.
 - 각 지원 도서에 대표 목적 1개와 개념 중심 정답 데이터가 있고 일곱 평가 시나리오가 모두 포함됩니다.
+- 대표 목적에 도서 제목·정답 개념 어휘 누출이 없고, 90개 기준 페이지 집합이 모두 다른 비연속 위치이며
+  다섯 `contentRole`을 평가합니다.
 - 정답 평가 데이터가 런타임 추천 입력과 분리됩니다.
 - 공개 fixture 권리·개인정보 검사를 통과합니다.
 - 외부 전송 권리나 `dataPolicyVersion`이 누락·거부됐거나 배포 환경의 지원 프로필과 다른 표본은

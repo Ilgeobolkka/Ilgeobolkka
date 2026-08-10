@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -52,6 +53,7 @@ class AiRouteV2FixtureIntegrityTest {
                     "primaryConcepts",
                     "secondaryConcepts",
                     "contentRole",
+                    "aiRouteSearchEligible",
                     "aiAnalysisText",
                     "aiAnalysisInputSha256",
                     "aiPublicGuideTopic",
@@ -59,7 +61,7 @@ class AiRouteV2FixtureIntegrityTest {
                     "prerequisitePageNumbers",
                     "duplicateGroupKeys");
     private static final Set<String> CONTENT_ROLES =
-            Set.of("PREREQUISITE", "CORE", "EXAMPLE", "CONCLUSION");
+            Set.of("PREREQUISITE", "CORE", "EXAMPLE", "COUNTERPOINT", "CONCLUSION");
     private static final Set<String> CASE_FIELDS =
             Set.of(
                     "caseId",
@@ -85,10 +87,41 @@ class AiRouteV2FixtureIntegrityTest {
                     "OWNED:QUICK",
                     "OWNED:BALANCED",
                     "OWNED:DEEP");
-    private static final String REPEATED_APPLICATION_SENTENCE =
-            "관찰 사실과 해석을 분리하고 시작 조건과 결과를 같은 기준으로 비교한다.";
-    private static final String REPEATED_LIMIT_SENTENCE =
-            "한 사례를 일반화하지 않고 조건이 달라지면 판단을 다시 검토한다.";
+    private static final Set<String> EVALUATION_STOP_WORDS =
+            Set.of(
+                    "경우",
+                    "과정",
+                    "관련",
+                    "기준",
+                    "방법",
+                    "변화",
+                    "사례",
+                    "상황",
+                    "순서",
+                    "원리",
+                    "조건",
+                    "핵심",
+                    "확인");
+    private static final List<String> KOREAN_PARTICLES =
+            List.of(
+                    "에서",
+                    "으로",
+                    "에게",
+                    "부터",
+                    "까지",
+                    "처럼",
+                    "보다",
+                    "과",
+                    "와",
+                    "이",
+                    "가",
+                    "은",
+                    "는",
+                    "을",
+                    "를",
+                    "의",
+                    "에",
+                    "로");
 
     @Test
     void manifest는_페이지_구조_분석_해시와_DAG_계약을_지킨다() throws IOException {
@@ -98,7 +131,7 @@ class AiRouteV2FixtureIntegrityTest {
 
         Set<Long> bookIds = new HashSet<>();
         Set<Integer> candidatePageCounts = new HashSet<>();
-        Set<String> analysisTexts = new HashSet<>();
+        List<String> searchAnalysisTexts = new ArrayList<>();
         int candidateBooks = 0;
         int candidatePages = 0;
         int preservedNovelBooks = 0;
@@ -143,20 +176,28 @@ class AiRouteV2FixtureIntegrityTest {
                 assertTrue(page.get("estimatedReadingSeconds").asInt() > 0);
 
                 String chapter = page.get("chapter").asText();
+                boolean searchEligible = page.get("aiRouteSearchEligible").asBoolean();
+                assertEquals(
+                        chapter.matches("[0-9]+장 .+"),
+                        searchEligible,
+                        "본문이 아닌 검색 후보 또는 본문 검색 누락: book="
+                                + bookId
+                                + ", page="
+                                + pageNumber);
                 if (chapter.matches("[0-9]+장 .+")) {
                     chapters.add(chapter);
                 }
 
                 String analysisText = page.get("aiAnalysisText").asText();
                 assertFalse(analysisText.isBlank());
-                assertTrue(analysisTexts.add(analysisText), "중복 분석 텍스트: " + analysisText);
+                if (searchEligible) {
+                    searchAnalysisTexts.add(analysisText);
+                }
                 assertEquals(
                         ContentBatchConverter.sha256(analysisText.getBytes()),
                         page.get("aiAnalysisInputSha256").asText());
                 assertFalse(analysisText.contains("관계을"));
                 assertFalse(analysisText.contains("한계을"));
-                assertFalse(analysisText.contains(REPEATED_APPLICATION_SENTENCE));
-                assertFalse(analysisText.contains(REPEATED_LIMIT_SENTENCE));
 
                 indegrees.put(pageNumber, page.get("prerequisitePageNumbers").size());
                 for (JsonNode prerequisite : page.get("prerequisitePageNumbers")) {
@@ -191,6 +232,7 @@ class AiRouteV2FixtureIntegrityTest {
         assertEquals(5445, candidatePages);
         assertEquals(5485, totalPages);
         assertEquals(25, candidatePageCounts.size());
+        assertAnalysisDiversity(searchAnalysisTexts);
     }
 
     @Test
@@ -201,7 +243,11 @@ class AiRouteV2FixtureIntegrityTest {
         Map<Long, JsonNode> candidateBooks = candidateBooksById(manifest);
         Set<Long> caseBookIds = new HashSet<>();
         Set<String> caseIds = new HashSet<>();
+        Set<String> purposes = new HashSet<>();
         Set<String> scenarios = new HashSet<>();
+        Set<List<Integer>> referencePageSets = new HashSet<>();
+        Set<Integer> requiredConceptPageNumbers = new HashSet<>();
+        Map<Long, JsonNode> catalogBooks = catalogBooksById(read(BOOKS_PATH));
 
         assertEquals("ai-route-v2", evaluation.get("contentVersion").asText());
         assertEquals(90, evaluation.get("cases").size());
@@ -209,7 +255,9 @@ class AiRouteV2FixtureIntegrityTest {
             assertEquals(CASE_FIELDS, Set.copyOf(evaluationCase.propertyNames()));
             String caseId = evaluationCase.get("caseId").asText();
             long bookId = evaluationCase.get("bookId").asLong();
-            assertFalse(evaluationCase.get("purpose").asText().contains("적용 한계"));
+            String purpose = evaluationCase.get("purpose").asText();
+            assertFalse(purpose.contains(catalogBooks.get(bookId).get("title").asText()));
+            assertTrue(purposes.add(purpose), "중복 평가 목적: " + purpose);
             assertTrue(caseIds.add(caseId), "중복 caseId: " + caseId);
             assertTrue(caseBookIds.add(bookId), "도서별 평가가 1건이 아님: " + bookId);
             JsonNode book = candidateBooks.get(bookId);
@@ -220,19 +268,75 @@ class AiRouteV2FixtureIntegrityTest {
             Map<String, Set<Integer>> duplicateGroups = new HashMap<>();
             for (JsonNode page : book.get("pages")) {
                 primaryConcepts.addAll(textSet(page.get("primaryConcepts")));
+                assertFalse(
+                        page.get("aiAnalysisText").asText().contains(purpose),
+                        "평가 목적이 분석 텍스트에 축자 포함됨: " + caseId);
                 for (JsonNode key : page.get("duplicateGroupKeys")) {
                     duplicateGroups
                             .computeIfAbsent(key.asText(), ignored -> new HashSet<>())
                             .add(page.get("pageNumber").asInt());
                 }
             }
-            assertTrue(primaryConcepts.containsAll(textSet(evaluationCase.get("requiredConcepts"))));
+            Set<String> requiredConcepts = textSet(evaluationCase.get("requiredConcepts"));
+            assertTrue(primaryConcepts.containsAll(requiredConcepts));
             assertTrue(primaryConcepts.containsAll(textSet(evaluationCase.get("helpfulConcepts"))));
+            for (String requiredConcept : requiredConcepts) {
+                Set<String> conceptTokens = meaningfulTokens(requiredConcept);
+                assertFalse(purpose.contains(requiredConcept));
+                assertTrue(
+                        Collections.disjoint(meaningfulTokens(purpose), conceptTokens),
+                        "목적과 정답 개념의 어휘 누출: " + caseId + " / " + requiredConcept);
+                assertTrue(
+                        conceptTokens.stream().noneMatch(purpose::contains),
+                        "목적과 정답 개념의 부분 어휘 누출: " + caseId + " / " + requiredConcept);
+                for (JsonNode page : book.get("pages")) {
+                    assertFalse(
+                            page.get("aiAnalysisText").asText().contains(requiredConcept),
+                            "정답 개념이 분석 텍스트에 축자 포함됨: "
+                                    + caseId
+                                    + " / "
+                                    + requiredConcept);
+                    if (textSet(page.get("primaryConcepts")).contains(requiredConcept)) {
+                        requiredConceptPageNumbers.add(page.get("pageNumber").asInt());
+                    }
+                }
+            }
 
             assertExistingPages(evaluationCase.get("activeRentalPageNumbers"), pages.keySet());
             assertExistingPages(evaluationCase.get("irrelevantPageNumbers"), pages.keySet());
             assertExistingPages(evaluationCase.get("referencePageNumbers"), pages.keySet());
             assertExistingPages(evaluationCase.get("allowedAlternativePageNumbers"), pages.keySet());
+
+            Set<Integer> irrelevantPageNumbers = intSet(evaluationCase.get("irrelevantPageNumbers"));
+            Set<String> referenceRoles = new HashSet<>();
+            List<Integer> referencePageNumbers = new ArrayList<>();
+            for (JsonNode page : book.get("pages")) {
+                int pageNumber = page.get("pageNumber").asInt();
+                if (!page.get("aiRouteSearchEligible").asBoolean()) {
+                    assertTrue(
+                            irrelevantPageNumbers.contains(pageNumber),
+                            "검색 제외 페이지가 무관 정답에 없음: book="
+                                    + bookId
+                                    + ", page="
+                                    + pageNumber);
+                }
+            }
+            for (JsonNode referencePageNumber : evaluationCase.get("referencePageNumbers")) {
+                int pageNumber = referencePageNumber.asInt();
+                referencePageNumbers.add(pageNumber);
+                JsonNode page = pages.get(pageNumber);
+                assertTrue(page.get("aiRouteSearchEligible").asBoolean());
+                referenceRoles.add(page.get("contentRole").asText());
+            }
+            assertEquals(CONTENT_ROLES, referenceRoles, "평가 역할 누락: " + caseId);
+            assertTrue(
+                    referencePageSets.add(List.copyOf(referencePageNumbers)),
+                    "중복 평가 위치: " + referencePageNumbers);
+            for (int index = 1; index < referencePageNumbers.size(); index++) {
+                assertTrue(
+                        referencePageNumbers.get(index) - referencePageNumbers.get(index - 1) > 1,
+                        "연속된 평가 정답 페이지: " + caseId + " / " + referencePageNumbers);
+            }
 
             for (JsonNode prerequisite : evaluationCase.get("requiredPrerequisites")) {
                 int before = prerequisite.get("beforePageNumber").asInt();
@@ -254,6 +358,8 @@ class AiRouteV2FixtureIntegrityTest {
 
         assertEquals(candidateBooks.keySet(), caseBookIds);
         assertEquals(EVALUATION_SCENARIOS, scenarios);
+        assertEquals(90, referencePageSets.size());
+        assertTrue(requiredConceptPageNumbers.size() >= 30);
         assertEquals(
                 ContentBatchConverter.sha256(Files.readAllBytes(ROOT.resolve("evaluation.json"))),
                 verificationSummary.get("evaluationSha256").asText());
@@ -296,6 +402,24 @@ class AiRouteV2FixtureIntegrityTest {
                         .get("automatedChecks")
                         .get("endOfChapterPromptBoxGraphicAbsence")
                         .asText());
+        assertEquals(
+                "PASS",
+                evidence.get("automatedChecks").get("analysisTemplateDiversity").asText());
+        assertEquals(
+                "PASS",
+                evidence
+                        .get("automatedChecks")
+                        .get("evaluationLexicalLeakageAbsence")
+                        .asText());
+        assertEquals(
+                "PASS",
+                evidence
+                        .get("automatedChecks")
+                        .get("searchIneligibleFrontAndBackMatter")
+                        .asText());
+        assertEquals(
+                "PASS",
+                evidence.get("automatedChecks").get("counterpointRoleCoverage").asText());
         assertEquals("PENDING_HUMAN_REVIEW", qualitySamples.get("humanReviewStatus").asText());
         assertEquals(
                 "PASS",
@@ -332,9 +456,6 @@ class AiRouteV2FixtureIntegrityTest {
             for (JsonNode page : book.get("pages")) {
                 assertFalse(page.get("section").asText().contains("네 가지 확인"));
                 assertFalse(page.get("section").asText().contains("반대 관점과 한계"));
-                assertFalse(page.get("contentRole").asText().equals("COUNTERPOINT"));
-                assertFalse(page.get("aiAnalysisText").asText().contains("반대 관점"));
-                assertFalse(page.get("aiPublicGuideTopic").asText().contains("반례"));
             }
         }
 
@@ -652,6 +773,76 @@ class AiRouteV2FixtureIntegrityTest {
             result.add(item.asInt());
         }
         return result;
+    }
+
+    private static Set<String> meaningfulTokens(String text) {
+        Set<String> result = new HashSet<>();
+        for (String rawToken : text.split("[^0-9A-Za-z가-힣]+")) {
+            String token = stripKoreanParticle(rawToken);
+            if (token.length() >= 2 && !EVALUATION_STOP_WORDS.contains(token)) {
+                result.add(token);
+            }
+        }
+        return result;
+    }
+
+    private static String stripKoreanParticle(String token) {
+        for (String particle : KOREAN_PARTICLES) {
+            if (token.length() > particle.length() + 1 && token.endsWith(particle)) {
+                return token.substring(0, token.length() - particle.length());
+            }
+        }
+        return token;
+    }
+
+    private static void assertAnalysisDiversity(List<String> analysisTexts) {
+        Map<String, Integer> sentenceFrequencies = new HashMap<>();
+        Map<String, Integer> shingleFrequencies = new HashMap<>();
+        List<Set<String>> pageShingles = new ArrayList<>();
+
+        for (String analysisText : analysisTexts) {
+            assertFalse(
+                    analysisText.contains("핵심 논지:")
+                            && analysisText.contains("구조:")
+                            && analysisText.contains("선수 개념:")
+                            && analysisText.contains("연결 개념:")
+                            && analysisText.contains("적용 조건:")
+                            && analysisText.contains("한계:"),
+                    "고정 6슬롯 분석 템플릿: " + analysisText);
+
+            for (String sentence : analysisText.split("(?<=[.!?])\\s+")) {
+                String normalized = sentence.replaceAll("\\s+", " ").trim();
+                if (normalized.length() >= 30) {
+                    sentenceFrequencies.merge(normalized, 1, Integer::sum);
+                }
+            }
+
+            List<String> tokens = List.of(analysisText.split("[^0-9A-Za-z가-힣]+"));
+            Set<String> shingles = new HashSet<>();
+            for (int index = 0; index + 4 < tokens.size(); index++) {
+                shingles.add(String.join(" ", tokens.subList(index, index + 5)));
+            }
+            pageShingles.add(shingles);
+            for (String shingle : shingles) {
+                shingleFrequencies.merge(shingle, 1, Integer::sum);
+            }
+        }
+
+        int maximumSentenceFrequency =
+                sentenceFrequencies.values().stream().max(Integer::compareTo).orElse(0);
+        assertTrue(maximumSentenceFrequency <= 5, "반복 분석 문장 빈도: " + maximumSentenceFrequency);
+
+        List<Double> repeatedShingleRatios = new ArrayList<>();
+        for (Set<String> shingles : pageShingles) {
+            long repeated =
+                    shingles.stream()
+                            .filter(shingle -> shingleFrequencies.get(shingle) >= 20)
+                            .count();
+            repeatedShingleRatios.add(shingles.isEmpty() ? 0.0 : (double) repeated / shingles.size());
+        }
+        repeatedShingleRatios.sort(Double::compareTo);
+        double median = repeatedShingleRatios.get(repeatedShingleRatios.size() / 2);
+        assertTrue(median <= 0.10, "과잉 반복 5-gram 중앙값: " + median);
     }
 
     private static void assertExistingPages(JsonNode pageNumbers, Set<Integer> existingPages) {

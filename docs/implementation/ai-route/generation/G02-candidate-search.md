@@ -28,7 +28,7 @@ v1에 따라 결정적인 후보 집합을 반환합니다.
 
 ## 입력과 산출물
 
-- 입력: bookId, contentVersion, purpose vector, 같은 version page vector·analysis metadata
+- 입력: bookId, contentVersion, purpose vector, 같은 version의 검색 대상 page vector·analysis metadata
 - 산출물: `AiRouteCandidateSelector`, `AiRouteCandidate`, `AiRouteCandidatePolicy` 하나와 `candidatePolicyVersion=air-candidate-v1`
 - candidate: pageId·pageNumber·similarity·analysisText reference·prerequisite edge reference
 - G04/F05에 넘길 것: 확정 순서의 후보와 candidatePolicyVersion
@@ -43,7 +43,8 @@ v1에 따라 결정적인 후보 집합을 반환합니다.
 
 1. 목적·페이지 model과 dimensions가 모두 같고 vector가 유한 실수인지 계산 전에 확인합니다.
 2. zero norm vector를 similarity 0으로 조용히 처리하지 않고 잘못된 콘텐츠/입력으로 실패합니다.
-3. 한 권의 모든 지원 페이지를 메모리에서 exact cosine으로 계산하고 근사 검색·vector DB를 도입하지 않습니다.
+3. 한 권에서 `aiRouteSearchEligible=true`로 임베딩을 만든 페이지만 메모리에서 exact cosine으로 계산하고
+   근사 검색·vector DB를 도입하지 않습니다. vector가 없는 앞·뒷부분을 후보로 복구하지 않습니다.
 4. 반올림하지 않은 similarity가 `0.30` 이상인 페이지만 남기고 similarity 내림차순, `pageNumber` 오름차순으로 정렬한 최초 30개를 반환합니다.
    정확히 `0.30`은 포함하고 similarity가 같을 때만 `pageNumber`를 비교합니다.
 5. 이미지 페이지도 분석 text와 vector가 있으면 동일하게 후보에 포함합니다.
@@ -55,7 +56,7 @@ v1에 따라 결정적인 후보 집합을 반환합니다.
 
 - 직교·동일·반대 vector cosine, dimensions·model 불일치, zero norm·비유한 수 실패
 - `0.30` 직전·정확 경계·직후, 29·30·31개 경계, 동일 similarity의 `pageNumber` 오름차순
-- TEXT·IMAGE 동일 처리와 다른 contentVersion 혼입 거부
+- 검색 대상 TEXT·IMAGE 동일 처리, 검색 제외 앞·뒷부분 미포함과 다른 contentVersion 혼입 거부
 - 같은 입력 반복 결과 동일성, 평가 정답 타입 의존성 부재
 - 명령: `./gradlew test --tests '*AiRouteCandidateSelectorTest'`
 

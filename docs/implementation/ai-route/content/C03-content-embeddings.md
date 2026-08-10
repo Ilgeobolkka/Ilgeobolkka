@@ -9,7 +9,7 @@
 
 ## 목표
 
-검증된 `ai-route-v2` 페이지 분석 텍스트를 manifest의 model·dimensions로 모두 변환하고, DB 트랜잭션을
+검증된 `ai-route-v2` 검색 대상 페이지의 분석 텍스트만 manifest의 model·dimensions로 변환하고, DB 트랜잭션을
 열기 전에 완전한 vector batch를 만듭니다.
 
 ## 정본 링크
@@ -31,7 +31,7 @@
 - 입력: `ValidatedAiRouteContent`, 검증된 OpenAI project·dataPolicy 설정, F04 Gateway
 - 산출물: `AiRouteContentEmbeddingService`, `EmbeddedAiRouteContent`
 - vector key: bookId·pageNumber·contentVersion; 값: model·dimensions·유한 실수 배열
-- C04에 넘길 것: 모든 지원 page가 정확히 한 vector를 가진 불변 batch
+- C04에 넘길 것: `aiRouteSearchEligible=true`인 page가 정확히 한 vector를 가진 불변 batch
 
 ## 수정 허용 파일
 
@@ -43,16 +43,17 @@
 
 1. C02 결과 외의 문자열을 Gateway에 보내지 않고 공개 가이드·평가 purpose·정답을 섞지 않습니다.
 2. manifest·환경 dataPolicyVersion 일치를 호출 직전에 다시 확인합니다.
-3. bookId ASC, pageNumber ASC의 결정적 순서로 요청·결과를 연결합니다.
-4. 한 page 실패, 개수·키·차원 불일치, NaN·Infinity가 있으면 전체 batch를 버립니다.
-5. 부분 vector를 파일이나 DB에 publish하지 않고 Repository·transaction을 호출하지 않습니다.
-6. API 키, 분석 text와 vector 원문을 로그·평가 결과에 남기지 않습니다.
+3. `aiRouteSearchEligible=false`인 표지·판권·머리말·차례·맺음말·참고 자료는 Gateway에 보내지 않습니다.
+4. bookId ASC, pageNumber ASC의 결정적 순서로 요청·결과를 연결합니다.
+5. 한 page 실패, 개수·키·차원 불일치, NaN·Infinity가 있으면 전체 batch를 버립니다.
+6. 부분 vector를 파일이나 DB에 publish하지 않고 Repository·transaction을 호출하지 않습니다.
+7. API 키, 분석 text와 vector 원문을 로그·평가 결과에 남기지 않습니다.
 
 ## 테스트
 
 - 여러 도서·페이지 결과의 결정적 순서와 정확한 model·dimensions 전달
 - 중간 Gateway 실패, 결과 누락·중복·차원 오류에서 batch 미생성·DB 호출 0회
-- manifest·환경 프로필 불일치에서 Gateway 호출 0회
+- manifest·환경 프로필 불일치와 검색 제외 페이지에서 Gateway 호출 0회
 - 로그 capture의 키·분석 text·vector 비노출
 - 명령: `./gradlew test --tests '*AiRouteContentEmbeddingServiceTest'`
 
@@ -64,7 +65,7 @@
 
 ## 완료 조건
 
-- 정상 결과는 전체 page vector를 가지거나 실패하며 부분 성공 상태가 없습니다.
+- 정상 결과는 검색 대상 page 전체의 vector를 가지거나 실패하며 부분 성공 상태가 없습니다.
 - T-AIR-010·015·018의 적재 외부 호출 경계가 자동 검증됩니다.
 - `./gradlew check`가 통과합니다.
 

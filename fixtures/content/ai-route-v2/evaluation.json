@@ -4,4525 +4,5299 @@
     {
       "caseId": "AIR-V2-011",
       "bookId": 11,
-      "purpose": "느린 아침을 수집하는 법에서 아침빛의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "침묵, 표정, 준비 시간, 사물과 시간 각각을 차례로 점검해 설명이 흔들리는 지점을 찾고 싶다.",
       "owned": false,
       "maxAdditionalInk": 0,
       "depth": null,
       "activeRentalPageNumbers": [
-        5,
-        6,
-        7,
-        8
+        9,
+        20,
+        30,
+        42,
+        52
       ],
       "requiredConcepts": [
-        "느린 아침을 수집하는 법 - 아침빛의 핵심 원리"
+        "느린 호흡, 감각의 기록의 중심 판단"
       ],
       "helpfulConcepts": [
-        "느린 아침을 수집하는 법 - 아침빛의 배경"
+        "아침빛의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 9,
+          "afterPageNumber": 20
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 20,
+          "afterPageNumber": 30
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 30,
+          "afterPageNumber": 42
+        },
+        {
+          "beforePageNumber": 42,
+          "afterPageNumber": 52
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        60
+        3,
+        4,
+        59,
+        60,
+        58
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          20,
+          18
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        9,
+        20,
+        30,
+        42,
+        52
       ],
       "allowedAlternativePageNumbers": [
-        7
+        18
       ]
     },
     {
       "caseId": "AIR-V2-012",
       "bookId": 12,
-      "purpose": "창가의 작은 계절들에서 창문의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "거리, 리듬, 손길, 새싹 각각을 차례로 점검해 설명이 흔들리는 지점을 찾고 싶다.",
       "owned": false,
       "maxAdditionalInk": 5,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "창가의 작은 계절들 - 창문의 핵심 원리"
+        "겨울빛, 익숙함을 낯설게 보기의 구체 장면"
       ],
       "helpfulConcepts": [
-        "창가의 작은 계절들 - 창문의 배경"
+        "낙엽의 배경"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 10,
+          "afterPageNumber": 21
         },
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
+          "beforePageNumber": 21,
+          "afterPageNumber": 32
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 32,
+          "afterPageNumber": 44
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 44,
+          "afterPageNumber": 55
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        62
+        3,
+        4,
+        61,
+        62,
+        60
       ],
       "duplicatePageGroups": [
         [
-          6,
-          8
+          21,
+          19
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        10,
+        21,
+        32,
+        44,
+        55
       ],
       "allowedAlternativePageNumbers": [
-        8
+        19
       ]
     },
     {
       "caseId": "AIR-V2-013",
       "bookId": 13,
-      "purpose": "낯선 골목과 친해지는 시간에서 골목의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "냄새, 거리, 이웃의 표정, 익숙함을 낯설게 보기 가운데 결과를 가르는 단서를 골라 읽는 흐름이 필요하다.",
       "owned": false,
       "maxAdditionalInk": 10,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "낯선 골목과 친해지는 시간 - 골목의 핵심 원리"
+        "모퉁이, 돌봄과 회복 사이의 어긋남"
       ],
       "helpfulConcepts": [
-        "낯선 골목과 친해지는 시간 - 골목의 배경"
+        "걷는 속도의 배경"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 8,
+          "afterPageNumber": 19
         },
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
+          "beforePageNumber": 19,
+          "afterPageNumber": 29
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 29,
+          "afterPageNumber": 41
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 41,
+          "afterPageNumber": 50
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        56
+        3,
+        4,
+        55,
+        56,
+        54
       ],
       "duplicatePageGroups": [
         [
-          6,
-          8
+          19,
+          17
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        8,
+        19,
+        29,
+        41,
+        50
       ],
       "allowedAlternativePageNumbers": [
-        8
+        17
       ]
     },
     {
       "caseId": "AIR-V2-014",
       "bookId": 14,
-      "purpose": "한 잔의 온도가 남긴 것에서 찻잔의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "남은 향, 익숙함을 낯설게 보기, 냄새, 표정 사이를 비교해 처음의 판단을 고쳐 가는 방식을 알고 싶다.",
       "owned": false,
       "maxAdditionalInk": 15,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "한 잔의 온도가 남긴 것 - 찻잔의 핵심 원리"
+        "대화, 남겨진 마음의 종합 결론"
       ],
       "helpfulConcepts": [
-        "한 잔의 온도가 남긴 것 - 찻잔의 배경"
+        "남은 향의 적용 사례"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 10,
+          "afterPageNumber": 22
         },
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
+          "beforePageNumber": 22,
+          "afterPageNumber": 34
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 34,
+          "afterPageNumber": 46
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 46,
+          "afterPageNumber": 57
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        63
+        3,
+        4,
+        62,
+        63,
+        61
       ],
       "duplicatePageGroups": [
         [
-          6,
-          8
+          22,
+          20
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        10,
+        22,
+        34,
+        46,
+        57
       ],
       "allowedAlternativePageNumbers": [
-        8
+        20
       ]
     },
     {
       "caseId": "AIR-V2-015",
       "bookId": 15,
-      "purpose": "오늘의 소음을 접어두기에서 도시 소리의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "표정, 익숙함을 낯설게 보기, 온도, 작은 변화 가운데 결과를 가르는 단서를 골라 읽는 흐름이 필요하다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "QUICK",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "오늘의 소음을 접어두기 - 도시 소리의 핵심 원리"
+        "도시 소리, 멈추어 바라보기의 사전 맥락"
       ],
       "helpfulConcepts": [
-        "오늘의 소음을 접어두기 - 도시 소리의 배경"
+        "귀 기울이기의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 11,
+          "afterPageNumber": 23
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 23,
+          "afterPageNumber": 35
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 8
+          "beforePageNumber": 35,
+          "afterPageNumber": 46
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 46,
+          "afterPageNumber": 58
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        64
+        3,
+        4,
+        63,
+        64,
+        62
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          23,
+          21
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        11,
+        23,
+        35,
+        46,
+        58
       ],
       "allowedAlternativePageNumbers": [
-        7
+        21
       ]
     },
     {
       "caseId": "AIR-V2-016",
       "bookId": 16,
-      "purpose": "우산 아래 나눈 짧은 문장에서 우산의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "손길, 함께 걷는 거리, 사람 사이의 거리, 온도 사이의 영향이 달라질 때 같은 설명을 계속 써도 되는지 따져 보고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "BALANCED",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "우산 아래 나눈 짧은 문장 - 우산의 핵심 원리"
+        "빗소리, 감각의 기록의 중심 판단"
       ],
       "helpfulConcepts": [
-        "우산 아래 나눈 짧은 문장 - 우산의 배경"
+        "우산의 적용 사례"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 11,
+          "afterPageNumber": 22
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 22,
+          "afterPageNumber": 33
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 33,
+          "afterPageNumber": 45
+        },
+        {
+          "beforePageNumber": 45,
+          "afterPageNumber": 55
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        60
+        3,
+        4,
+        59,
+        60,
+        58
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          22,
+          20
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        11,
+        22,
+        33,
+        45,
+        55
       ],
       "allowedAlternativePageNumbers": [
-        7
+        20
       ]
     },
     {
       "caseId": "AIR-V2-017",
       "bookId": 17,
-      "purpose": "마음의 서랍을 정리하는 밤에서 감정의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "기억, 침묵, 표정, 정돈 각각을 살핀 뒤 서로 영향을 주는 지점을 연결해 보고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "DEEP",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "마음의 서랍을 정리하는 밤 - 감정의 핵심 원리"
+        "이름 붙이기, 사람 사이의 거리의 구체 장면"
       ],
       "helpfulConcepts": [
-        "마음의 서랍을 정리하는 밤 - 감정의 배경"
+        "정돈의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 12,
+          "afterPageNumber": 25
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 25,
+          "afterPageNumber": 37
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 37,
+          "afterPageNumber": 50
+        },
+        {
+          "beforePageNumber": 50,
+          "afterPageNumber": 52
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        66
+        3,
+        4,
+        65,
+        66,
+        64
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          25,
+          23
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        12,
+        25,
+        37,
+        50,
+        52
       ],
       "allowedAlternativePageNumbers": [
-        7
+        23
       ]
     },
     {
       "caseId": "AIR-V2-018",
       "bookId": 18,
-      "purpose": "작은 실패를 기르는 정원에서 실패의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "냄새, 표정, 기다림, 손길 항목을 나란히 놓고 결론을 서두르지 않는 읽기 경로를 만들고 싶다.",
       "owned": false,
       "maxAdditionalInk": 0,
       "depth": null,
       "activeRentalPageNumbers": [
-        5,
-        6,
-        7,
-        8
+        8,
+        18,
+        27,
+        36,
+        38
       ],
       "requiredConcepts": [
-        "작은 실패를 기르는 정원 - 실패의 핵심 원리"
+        "실패, 작은 변화 사이의 어긋남"
       ],
       "helpfulConcepts": [
-        "작은 실패를 기르는 정원 - 실패의 배경"
+        "실패의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 8,
+          "afterPageNumber": 18
         },
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
+          "beforePageNumber": 18,
+          "afterPageNumber": 27
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 27,
+          "afterPageNumber": 36
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 36,
+          "afterPageNumber": 38
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        48
+        3,
+        4,
+        47,
+        48,
+        46
       ],
       "duplicatePageGroups": [
         [
-          6,
-          8
+          18,
+          16
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        8,
+        18,
+        27,
+        36,
+        38
       ],
       "allowedAlternativePageNumbers": [
-        8
+        16
       ]
     },
     {
       "caseId": "AIR-V2-019",
       "bookId": 19,
-      "purpose": "저녁 여섯 시의 산책자에서 저녁 산책의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "침묵, 리듬, 달라진 풍경, 사람 사이의 거리 사이의 움직임을 비교하면서 어느 단서부터 살펴야 하는지 알고 싶다.",
       "owned": false,
       "maxAdditionalInk": 5,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "저녁 여섯 시의 산책자 - 저녁 산책의 핵심 원리"
+        "귀가, 익숙함을 낯설게 보기의 종합 결론"
       ],
       "helpfulConcepts": [
-        "저녁 여섯 시의 산책자 - 저녁 산책의 배경"
+        "달라진 풍경의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 13,
+          "afterPageNumber": 27
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 27,
+          "afterPageNumber": 39
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 39,
+          "afterPageNumber": 41
+        },
+        {
+          "beforePageNumber": 41,
+          "afterPageNumber": 55
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        69
+        3,
+        4,
+        68,
+        69,
+        67
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          27,
+          25
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        13,
+        27,
+        39,
+        41,
+        55
       ],
       "allowedAlternativePageNumbers": [
-        7
+        25
       ]
     },
     {
       "caseId": "AIR-V2-020",
       "bookId": 20,
-      "purpose": "말하지 않은 친절의 모양에서 친절의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "표정, 관계, 사람 사이의 거리, 온도 사이의 움직임을 비교하면서 어느 단서부터 살펴야 하는지 알고 싶다.",
       "owned": false,
       "maxAdditionalInk": 10,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "말하지 않은 친절의 모양 - 친절의 핵심 원리"
+        "친절, 멈추어 바라보기의 사전 맥락"
       ],
       "helpfulConcepts": [
-        "말하지 않은 친절의 모양 - 친절의 배경"
+        "친절의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 12,
+          "afterPageNumber": 24
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 24,
+          "afterPageNumber": 35
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 35,
+          "afterPageNumber": 37
+        },
+        {
+          "beforePageNumber": 37,
+          "afterPageNumber": 49
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        61
+        3,
+        4,
+        60,
+        61,
+        59
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          24,
+          22
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        12,
+        24,
+        35,
+        37,
+        49
       ],
       "allowedAlternativePageNumbers": [
-        7
+        22
       ]
     },
     {
       "caseId": "AIR-V2-021",
       "bookId": 21,
-      "purpose": "별먼지 실험실의 하루에서 별먼지의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "가설, 원인, 우주 물질, 움직임과 원인 각각을 차례로 점검해 설명이 흔들리는 지점을 찾고 싶다.",
       "owned": false,
       "maxAdditionalInk": 15,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "별먼지 실험실의 하루 - 별먼지의 핵심 원리"
+        "분광 관찰, 구조와 구성의 중심 판단"
       ],
       "helpfulConcepts": [
-        "별먼지 실험실의 하루 - 별먼지의 배경"
+        "별먼지의 관련 맥락"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 12,
+          "afterPageNumber": 23
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 23,
+          "afterPageNumber": 33
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 8
+          "beforePageNumber": 33,
+          "afterPageNumber": 35
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 35,
+          "afterPageNumber": 46
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        57
+        3,
+        4,
+        56,
+        57,
+        55
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          23,
+          21
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        12,
+        23,
+        33,
+        35,
+        46
       ],
       "allowedAlternativePageNumbers": [
-        7
+        21
       ]
     },
     {
       "caseId": "AIR-V2-022",
       "bookId": 22,
-      "purpose": "보이지 않는 파동의 지도에서 파동의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "재현, 자료, 실험과 증거, 오차 각각을 차례로 점검해 설명이 흔들리는 지점을 찾고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "QUICK",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "보이지 않는 파동의 지도 - 파동의 핵심 원리"
+        "소리, 움직임과 원인의 구체 장면"
       ],
       "helpfulConcepts": [
-        "보이지 않는 파동의 지도 - 파동의 배경"
+        "진동의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 12,
+          "afterPageNumber": 24
         },
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
+          "beforePageNumber": 24,
+          "afterPageNumber": 26
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 26,
+          "afterPageNumber": 38
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 38,
+          "afterPageNumber": 47
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        58
+        3,
+        4,
+        57,
+        58,
+        56
       ],
       "duplicatePageGroups": [
         [
-          6,
-          8
+          24,
+          22
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        12,
+        24,
+        26,
+        38,
+        47
       ],
       "allowedAlternativePageNumbers": [
-        8
+        22
       ]
     },
     {
       "caseId": "AIR-V2-023",
       "bookId": 23,
-      "purpose": "도시를 움직이는 미생물에서 미생물의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "원인, 가설, 분해, 구조와 구성 가운데 결과를 가르는 단서를 골라 읽는 흐름이 필요하다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "BALANCED",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "도시를 움직이는 미생물 - 미생물의 핵심 원리"
+        "순환, 모형으로 생각하기 사이의 어긋남"
       ],
       "helpfulConcepts": [
-        "도시를 움직이는 미생물 - 미생물의 배경"
+        "미생물의 관련 맥락"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 13,
+          "afterPageNumber": 24
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 24,
+          "afterPageNumber": 26
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 26,
+          "afterPageNumber": 37
+        },
+        {
+          "beforePageNumber": 37,
+          "afterPageNumber": 48
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        58
+        3,
+        4,
+        57,
+        58,
+        56
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          24,
+          22
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        13,
+        24,
+        26,
+        37,
+        48
       ],
       "allowedAlternativePageNumbers": [
-        7
+        22
       ]
     },
     {
       "caseId": "AIR-V2-024",
       "bookId": 24,
-      "purpose": "빛보다 느린 질문들에서 빛의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "자료, 상관관계, 속도, 구조와 구성 사이를 비교해 처음의 판단을 고쳐 가는 방식을 알고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "DEEP",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "빛보다 느린 질문들 - 빛의 핵심 원리"
+        "빛, 실험과 증거의 종합 결론"
       ],
       "helpfulConcepts": [
-        "빛보다 느린 질문들 - 빛의 배경"
+        "속도의 장 결론"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 12,
+          "afterPageNumber": 14
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 14,
+          "afterPageNumber": 23
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 8
+          "beforePageNumber": 23,
+          "afterPageNumber": 34
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 34,
+          "afterPageNumber": 44
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        52
+        3,
+        4,
+        51,
+        52,
+        50
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          14,
+          16
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        12,
+        14,
+        23,
+        34,
+        44
       ],
       "allowedAlternativePageNumbers": [
-        7
+        16
       ]
     },
     {
       "caseId": "AIR-V2-025",
       "bookId": 25,
-      "purpose": "구름을 측정하는 열두 방법에서 구름의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "가설, 모형, 기압, 구조와 구성 가운데 결과를 가르는 단서를 골라 읽는 흐름이 필요하다.",
       "owned": false,
       "maxAdditionalInk": 0,
       "depth": null,
       "activeRentalPageNumbers": [
-        5,
-        6,
-        7,
-        8
+        12,
+        14,
+        23,
+        33,
+        43
       ],
       "requiredConcepts": [
-        "구름을 측정하는 열두 방법 - 구름의 핵심 원리"
+        "습도, 측정의 언어의 사전 맥락"
       ],
       "helpfulConcepts": [
-        "구름을 측정하는 열두 방법 - 구름의 배경"
+        "습도의 배경"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 12,
+          "afterPageNumber": 14
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 14,
+          "afterPageNumber": 23
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 8
+          "beforePageNumber": 23,
+          "afterPageNumber": 33
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 33,
+          "afterPageNumber": 43
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        51
+        3,
+        4,
+        50,
+        51,
+        49
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          14,
+          16
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        12,
+        14,
+        23,
+        33,
+        43
       ],
       "allowedAlternativePageNumbers": [
-        7
+        16
       ]
     },
     {
       "caseId": "AIR-V2-026",
       "bookId": 26,
-      "purpose": "심해의 작은 전구들에서 심해의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "상관관계, 오차, 어둠, 구조와 구성 사이의 영향이 달라질 때 같은 설명을 계속 써도 되는지 따져 보고 싶다.",
       "owned": false,
       "maxAdditionalInk": 5,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "심해의 작은 전구들 - 심해의 핵심 원리"
+        "생물 발광, 측정의 언어의 중심 판단"
       ],
       "helpfulConcepts": [
-        "심해의 작은 전구들 - 심해의 배경"
+        "심해의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 14,
+          "afterPageNumber": 16
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 16,
+          "afterPageNumber": 28
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 28,
+          "afterPageNumber": 40
+        },
+        {
+          "beforePageNumber": 40,
+          "afterPageNumber": 51
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        60
+        3,
+        4,
+        59,
+        60,
+        58
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          16,
+          18
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        14,
+        16,
+        28,
+        40,
+        51
       ],
       "allowedAlternativePageNumbers": [
-        7
+        18
       ]
     },
     {
       "caseId": "AIR-V2-027",
       "bookId": 27,
-      "purpose": "중력과 찻잔 사이에서 중력의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "원인, 모형, 오차, 자료 각각을 살핀 뒤 서로 영향을 주는 지점을 연결해 보고 싶다.",
       "owned": false,
       "maxAdditionalInk": 10,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "중력과 찻잔 사이 - 중력의 핵심 원리"
+        "낙하, 구조와 구성의 구체 장면"
       ],
       "helpfulConcepts": [
-        "중력과 찻잔 사이 - 중력의 배경"
+        "중력의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
-        },
-        {
           "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "afterPageNumber": 18
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 18,
+          "afterPageNumber": 31
+        },
+        {
+          "beforePageNumber": 31,
+          "afterPageNumber": 45
+        },
+        {
+          "beforePageNumber": 45,
+          "afterPageNumber": 58
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        67
+        3,
+        4,
+        66,
+        67,
+        65
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          18,
+          16
         ]
       ],
       "referencePageNumbers": [
-        5,
         6,
-        7,
-        8
+        18,
+        31,
+        45,
+        58
       ],
       "allowedAlternativePageNumbers": [
-        7
+        16
       ]
     },
     {
       "caseId": "AIR-V2-028",
       "bookId": 28,
-      "purpose": "식물의 느린 대화에서 식물 신호의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "재현, 원인, 빛 반응, 움직임과 원인 항목을 나란히 놓고 결론을 서두르지 않는 읽기 경로를 만들고 싶다.",
       "owned": false,
       "maxAdditionalInk": 15,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "식물의 느린 대화 - 식물 신호의 핵심 원리"
+        "공생, 모형으로 생각하기 사이의 어긋남"
       ],
       "helpfulConcepts": [
-        "식물의 느린 대화 - 식물 신호의 배경"
+        "뿌리의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
-        },
-        {
           "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "afterPageNumber": 20
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 20,
+          "afterPageNumber": 34
+        },
+        {
+          "beforePageNumber": 34,
+          "afterPageNumber": 48
+        },
+        {
+          "beforePageNumber": 48,
+          "afterPageNumber": 62
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        71
+        3,
+        4,
+        70,
+        71,
+        69
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          20,
+          18
         ]
       ],
       "referencePageNumbers": [
-        5,
         6,
-        7,
-        8
+        20,
+        34,
+        48,
+        62
       ],
       "allowedAlternativePageNumbers": [
-        7
+        18
       ]
     },
     {
       "caseId": "AIR-V2-029",
       "bookId": 29,
-      "purpose": "숫자로 읽는 가상 기후에서 기후 자료의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "상관관계, 측정, 변동, 구조와 구성 사이의 움직임을 비교하면서 어느 단서부터 살펴야 하는지 알고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "QUICK",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "숫자로 읽는 가상 기후 - 기후 자료의 핵심 원리"
+        "기후 자료, 실험과 증거의 종합 결론"
       ],
       "helpfulConcepts": [
-        "숫자로 읽는 가상 기후 - 기후 자료의 배경"
+        "변동의 적용 사례"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
-        },
-        {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
-        },
-        {
           "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "afterPageNumber": 20
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 34
+        },
+        {
+          "beforePageNumber": 34,
+          "afterPageNumber": 48
+        },
+        {
+          "beforePageNumber": 48,
+          "afterPageNumber": 62
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        70
+        3,
+        4,
+        69,
+        70,
+        68
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          20,
+          18
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
         7,
-        8
+        20,
+        34,
+        48,
+        62
       ],
       "allowedAlternativePageNumbers": [
-        7
+        18
       ]
     },
     {
       "caseId": "AIR-V2-030",
       "bookId": 30,
-      "purpose": "달의 뒷면에 비가 온다면에서 달의 뒷면의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "자료, 가정 실험, 움직임과 원인, 상관관계 사이의 움직임을 비교하면서 어느 단서부터 살펴야 하는지 알고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "BALANCED",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "달의 뒷면에 비가 온다면 - 달의 뒷면의 핵심 원리"
+        "달의 뒷면, 관찰에서 시작하기의 사전 맥락"
       ],
       "helpfulConcepts": [
-        "달의 뒷면에 비가 온다면 - 달의 뒷면의 배경"
+        "물의 순환의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
-        },
-        {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
-        },
-        {
           "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "afterPageNumber": 21
+        },
+        {
+          "beforePageNumber": 21,
+          "afterPageNumber": 35
+        },
+        {
+          "beforePageNumber": 35,
+          "afterPageNumber": 49
+        },
+        {
+          "beforePageNumber": 49,
+          "afterPageNumber": 63
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        71
+        3,
+        4,
+        70,
+        71,
+        69
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          21,
+          19
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
         7,
-        8
+        21,
+        35,
+        49,
+        63
       ],
       "allowedAlternativePageNumbers": [
-        7
+        19
       ]
     },
     {
       "caseId": "AIR-V2-031",
       "bookId": 31,
-      "purpose": "모래도시의 백 년 기록에서 모래도시의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "권력, 제도, 우물, 사람과 제도 각각을 차례로 점검해 설명이 흔들리는 지점을 찾고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "DEEP",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "모래도시의 백 년 기록 - 모래도시의 핵심 원리"
+        "백 년, 시간의 층위의 중심 판단"
       ],
       "helpfulConcepts": [
-        "모래도시의 백 년 기록 - 모래도시의 배경"
+        "모래도시의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
-        },
-        {
           "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "afterPageNumber": 19
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 19,
+          "afterPageNumber": 31
+        },
+        {
+          "beforePageNumber": 31,
+          "afterPageNumber": 44
+        },
+        {
+          "beforePageNumber": 44,
+          "afterPageNumber": 56
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        62
+        3,
+        4,
+        61,
+        62,
+        60
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          19,
+          17
         ]
       ],
       "referencePageNumbers": [
-        5,
         6,
-        7,
-        8
+        19,
+        31,
+        44,
+        56
       ],
       "allowedAlternativePageNumbers": [
-        7
+        17
       ]
     },
     {
       "caseId": "AIR-V2-032",
       "bookId": 32,
-      "purpose": "지도에서 사라진 항구들에서 항구의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "문서, 해석, 공백, 생활 각각을 차례로 점검해 설명이 흔들리는 지점을 찾고 싶다.",
       "owned": false,
       "maxAdditionalInk": 0,
       "depth": null,
       "activeRentalPageNumbers": [
-        5,
-        6,
-        7,
-        8
+        8,
+        22,
+        36,
+        51,
+        66
       ],
       "requiredConcepts": [
-        "지도에서 사라진 항구들 - 항구의 핵심 원리"
+        "교역, 교환과 이동의 구체 장면"
       ],
       "helpfulConcepts": [
-        "지도에서 사라진 항구들 - 항구의 배경"
+        "퇴적의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 8,
+          "afterPageNumber": 22
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 22,
+          "afterPageNumber": 36
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 36,
+          "afterPageNumber": 51
+        },
+        {
+          "beforePageNumber": 51,
+          "afterPageNumber": 66
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        72
+        3,
+        4,
+        71,
+        72,
+        70
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          22,
+          20
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        8,
+        22,
+        36,
+        51,
+        66
       ],
       "allowedAlternativePageNumbers": [
-        7
+        20
       ]
     },
     {
       "caseId": "AIR-V2-033",
       "bookId": 33,
-      "purpose": "청동 종이 울리던 시대에서 청동 종의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "제도, 문서, 왕국, 교환과 이동 가운데 결과를 가르는 단서를 골라 읽는 흐름이 필요하다.",
       "owned": false,
       "maxAdditionalInk": 5,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "청동 종이 울리던 시대 - 청동 종의 핵심 원리"
+        "청동 종, 평범한 하루 사이의 어긋남"
       ],
       "helpfulConcepts": [
-        "청동 종이 울리던 시대 - 청동 종의 배경"
+        "의례의 적용 사례"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 8,
+          "afterPageNumber": 22
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 22,
+          "afterPageNumber": 35
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 35,
+          "afterPageNumber": 50
+        },
+        {
+          "beforePageNumber": 50,
+          "afterPageNumber": 63
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        68
+        3,
+        4,
+        67,
+        68,
+        66
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          22,
+          20
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        8,
+        22,
+        35,
+        50,
+        63
       ],
       "allowedAlternativePageNumbers": [
-        7
+        20
       ]
     },
     {
       "caseId": "AIR-V2-034",
       "bookId": 34,
-      "purpose": "겨울 왕국의 세금 장부에서 세금 장부의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "교역, 권력, 행정, 갈등의 흔적 사이를 비교해 처음의 판단을 고쳐 가는 방식을 알고 싶다.",
       "owned": false,
       "maxAdditionalInk": 10,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "겨울 왕국의 세금 장부 - 세금 장부의 핵심 원리"
+        "곡물, 기록의 빈틈의 종합 결론"
       ],
       "helpfulConcepts": [
-        "겨울 왕국의 세금 장부 - 세금 장부의 배경"
+        "행정의 적용 사례"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
-        },
-        {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
-        },
-        {
           "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "afterPageNumber": 17
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 17,
+          "afterPageNumber": 27
+        },
+        {
+          "beforePageNumber": 27,
+          "afterPageNumber": 37
+        },
+        {
+          "beforePageNumber": 37,
+          "afterPageNumber": 40
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        51
+        3,
+        4,
+        50,
+        51,
+        49
       ],
-      "duplicatePageGroups": [],
+      "duplicatePageGroups": [
+        [
+          17,
+          15
+        ]
+      ],
       "referencePageNumbers": [
-        5,
         6,
-        7,
-        8
+        17,
+        27,
+        37,
+        40
       ],
-      "allowedAlternativePageNumbers": []
+      "allowedAlternativePageNumbers": [
+        15
+      ]
     },
     {
       "caseId": "AIR-V2-035",
       "bookId": 35,
-      "purpose": "다섯 다리를 건넌 제국에서 다리의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "연대, 증언, 세금, 교환과 이동 가운데 결과를 가르는 단서를 골라 읽는 흐름이 필요하다.",
       "owned": false,
       "maxAdditionalInk": 15,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "다섯 다리를 건넌 제국 - 다리의 핵심 원리"
+        "다리, 자료의 첫인상의 사전 맥락"
       ],
       "helpfulConcepts": [
-        "다섯 다리를 건넌 제국 - 다리의 배경"
+        "다리의 적용 사례"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 8,
+          "afterPageNumber": 20
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 20,
+          "afterPageNumber": 32
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 32,
+          "afterPageNumber": 45
+        },
+        {
+          "beforePageNumber": 45,
+          "afterPageNumber": 47
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        60
+        3,
+        4,
+        59,
+        60,
+        58
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          20,
+          18
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        8,
+        20,
+        32,
+        45,
+        47
       ],
       "allowedAlternativePageNumbers": [
-        7
+        18
       ]
     },
     {
       "caseId": "AIR-V2-036",
       "bookId": 36,
-      "purpose": "편지로 복원한 어느 봄에서 편지의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "해석, 문서, 전쟁 뒤, 교환과 이동 사이의 영향이 달라질 때 같은 설명을 계속 써도 되는지 따져 보고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "QUICK",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "편지로 복원한 어느 봄 - 편지의 핵심 원리"
+        "봄, 시간의 층위의 중심 판단"
       ],
       "helpfulConcepts": [
-        "편지로 복원한 어느 봄 - 편지의 배경"
+        "복원의 장 결론"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
-        },
-        {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
-        },
-        {
           "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "afterPageNumber": 19
+        },
+        {
+          "beforePageNumber": 19,
+          "afterPageNumber": 30
+        },
+        {
+          "beforePageNumber": 30,
+          "afterPageNumber": 42
+        },
+        {
+          "beforePageNumber": 42,
+          "afterPageNumber": 44
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        55
+        3,
+        4,
+        54,
+        55,
+        53
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          19,
+          17
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
         7,
-        8
+        19,
+        30,
+        42,
+        44
       ],
       "allowedAlternativePageNumbers": [
-        7
+        17
       ]
     },
     {
       "caseId": "AIR-V2-037",
       "bookId": 37,
-      "purpose": "바람길 상인의 연대기에서 바람길의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "생활, 제도, 공백, 해석 각각을 살핀 뒤 서로 영향을 주는 지점을 연결해 보고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "BALANCED",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "바람길 상인의 연대기 - 바람길의 핵심 원리"
+        "연대기, 갈등의 흔적의 구체 장면"
       ],
       "helpfulConcepts": [
-        "바람길 상인의 연대기 - 바람길의 배경"
+        "교역품의 배경"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
-        },
-        {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
-        },
-        {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
-        },
-        {
           "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "afterPageNumber": 17
+        },
+        {
+          "beforePageNumber": 17,
+          "afterPageNumber": 27
+        },
+        {
+          "beforePageNumber": 27,
+          "afterPageNumber": 36
+        },
+        {
+          "beforePageNumber": 36,
+          "afterPageNumber": 39
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        49
+        3,
+        4,
+        48,
+        49,
+        47
       ],
-      "duplicatePageGroups": [],
+      "duplicatePageGroups": [
+        [
+          17,
+          15
+        ]
+      ],
       "referencePageNumbers": [
-        5,
-        6,
         7,
-        8
+        17,
+        27,
+        36,
+        39
       ],
-      "allowedAlternativePageNumbers": []
+      "allowedAlternativePageNumbers": [
+        15
+      ]
     },
     {
       "caseId": "AIR-V2-038",
       "bookId": 38,
-      "purpose": "벽화 속 사람들의 식탁에서 벽화의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "권력, 유물, 공동체, 갈등의 흔적 항목을 나란히 놓고 결론을 서두르지 않는 읽기 경로를 만들고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "DEEP",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "벽화 속 사람들의 식탁 - 벽화의 핵심 원리"
+        "벽화, 평범한 하루 사이의 어긋남"
       ],
       "helpfulConcepts": [
-        "벽화 속 사람들의 식탁 - 벽화의 배경"
+        "곡물의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 9,
+          "afterPageNumber": 24
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 24,
+          "afterPageNumber": 37
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 8
+          "beforePageNumber": 37,
+          "afterPageNumber": 40
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 40,
+          "afterPageNumber": 54
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        67
+        3,
+        4,
+        66,
+        67,
+        65
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          24,
+          22
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        9,
+        24,
+        37,
+        40,
+        54
       ],
       "allowedAlternativePageNumbers": [
-        7
+        22
       ]
     },
     {
       "caseId": "AIR-V2-039",
       "bookId": 39,
-      "purpose": "한밤의 인쇄소 혁명에서 인쇄소의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "공백, 해석, 갈등의 흔적, 제도 사이의 움직임을 비교하면서 어느 단서부터 살펴야 하는지 알고 싶다.",
       "owned": false,
       "maxAdditionalInk": 0,
       "depth": null,
       "activeRentalPageNumbers": [
-        5,
-        6,
-        7,
-        8
+        10,
+        25,
+        38,
+        43,
+        56
       ],
       "requiredConcepts": [
-        "한밤의 인쇄소 혁명 - 인쇄소의 핵심 원리"
+        "활자, 변화의 계기의 종합 결론"
       ],
       "helpfulConcepts": [
-        "한밤의 인쇄소 혁명 - 인쇄소의 배경"
+        "혁명의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 10,
+          "afterPageNumber": 25
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 25,
+          "afterPageNumber": 38
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 38,
+          "afterPageNumber": 43
+        },
+        {
+          "beforePageNumber": 43,
+          "afterPageNumber": 56
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        68
+        3,
+        4,
+        67,
+        68,
+        66
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          25,
+          23
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        10,
+        25,
+        38,
+        43,
+        56
       ],
       "allowedAlternativePageNumbers": [
-        7
+        23
       ]
     },
     {
       "caseId": "AIR-V2-040",
       "bookId": 40,
-      "purpose": "북쪽 관문의 마지막 겨울에서 북쪽 관문의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "문서, 증언, 갈등의 흔적, 유물 사이의 움직임을 비교하면서 어느 단서부터 살펴야 하는지 알고 싶다.",
       "owned": false,
       "maxAdditionalInk": 5,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "북쪽 관문의 마지막 겨울 - 북쪽 관문의 핵심 원리"
+        "북쪽 관문, 자료의 첫인상의 사전 맥락"
       ],
       "helpfulConcepts": [
-        "북쪽 관문의 마지막 겨울 - 북쪽 관문의 배경"
+        "겨울의 적용 사례"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
-        },
-        {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
-        },
-        {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
-        },
-        {
           "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "afterPageNumber": 19
+        },
+        {
+          "beforePageNumber": 19,
+          "afterPageNumber": 29
+        },
+        {
+          "beforePageNumber": 29,
+          "afterPageNumber": 32
+        },
+        {
+          "beforePageNumber": 32,
+          "afterPageNumber": 41
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        50
+        3,
+        4,
+        49,
+        50,
+        48
       ],
-      "duplicatePageGroups": [],
+      "duplicatePageGroups": [
+        [
+          19,
+          17
+        ]
+      ],
       "referencePageNumbers": [
-        5,
-        6,
         7,
-        8
+        19,
+        29,
+        32,
+        41
       ],
-      "allowedAlternativePageNumbers": []
+      "allowedAlternativePageNumbers": [
+        17
+      ]
     },
     {
       "caseId": "AIR-V2-041",
       "bookId": 41,
-      "purpose": "빵집에서 배우는 작은 시장에서 빵집의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "지속성, 손님, 거래와 신뢰, 수요 각각을 차례로 점검해 설명이 흔들리는 지점을 찾고 싶다.",
       "owned": false,
       "maxAdditionalInk": 10,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "빵집에서 배우는 작은 시장 - 빵집의 핵심 원리"
+        "가격, 비용의 구조의 중심 판단"
       ],
       "helpfulConcepts": [
-        "빵집에서 배우는 작은 시장 - 빵집의 배경"
+        "밀가루의 배경"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 8,
+          "afterPageNumber": 19
         },
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
+          "beforePageNumber": 19,
+          "afterPageNumber": 29
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 29,
+          "afterPageNumber": 31
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 31,
+          "afterPageNumber": 42
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        50
+        3,
+        4,
+        49,
+        50,
+        48
       ],
       "duplicatePageGroups": [
         [
-          6,
-          8
+          19,
+          17
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        8,
+        19,
+        29,
+        31,
+        42
       ],
       "allowedAlternativePageNumbers": [
-        8
+        17
       ]
     },
     {
       "caseId": "AIR-V2-042",
       "bookId": 42,
-      "purpose": "신뢰의 가격표에서 신뢰의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "소득, 분배, 유인, 반복 구매 각각을 차례로 점검해 설명이 흔들리는 지점을 찾고 싶다.",
       "owned": false,
       "maxAdditionalInk": 15,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "신뢰의 가격표 - 신뢰의 핵심 원리"
+        "가격표, 거래와 신뢰의 구체 장면"
       ],
       "helpfulConcepts": [
-        "신뢰의 가격표 - 신뢰의 배경"
+        "거래 약속의 배경"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 9,
+          "afterPageNumber": 21
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 21,
+          "afterPageNumber": 32
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 8
+          "beforePageNumber": 32,
+          "afterPageNumber": 35
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 35,
+          "afterPageNumber": 47
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        55
+        3,
+        4,
+        54,
+        55,
+        53
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          21,
+          19
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        9,
+        21,
+        32,
+        35,
+        47
       ],
       "allowedAlternativePageNumbers": [
-        7
+        19
       ]
     },
     {
       "caseId": "AIR-V2-043",
       "bookId": 43,
-      "purpose": "열두 가게의 현금흐름에서 열두 가게의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "신뢰, 매출, 비용의 구조, 공급 가운데 결과를 가르는 단서를 골라 읽는 흐름이 필요하다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "QUICK",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "열두 가게의 현금흐름 - 열두 가게의 핵심 원리"
+        "잔액, 위험의 분배 사이의 어긋남"
       ],
       "helpfulConcepts": [
-        "열두 가게의 현금흐름 - 열두 가게의 배경"
+        "현금흐름의 배경"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 12,
+          "afterPageNumber": 25
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 25,
+          "afterPageNumber": 27
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 27,
+          "afterPageNumber": 40
+        },
+        {
+          "beforePageNumber": 40,
+          "afterPageNumber": 54
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        63
+        3,
+        4,
+        62,
+        63,
+        61
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          25,
+          23
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        12,
+        25,
+        27,
+        40,
+        54
       ],
       "allowedAlternativePageNumbers": [
-        7
+        23
       ]
     },
     {
       "caseId": "AIR-V2-044",
       "bookId": 44,
-      "purpose": "수요곡선 밖의 사람들에서 수요곡선의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "소득, 가격, 취향, 비용의 구조 사이를 비교해 처음의 판단을 고쳐 가는 방식을 알고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "BALANCED",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "수요곡선 밖의 사람들 - 수요곡선의 핵심 원리"
+        "수요곡선, 자료 읽기의 종합 결론"
       ],
       "helpfulConcepts": [
-        "수요곡선 밖의 사람들 - 수요곡선의 배경"
+        "취향의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 10,
+          "afterPageNumber": 22
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 22,
+          "afterPageNumber": 24
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 24,
+          "afterPageNumber": 35
+        },
+        {
+          "beforePageNumber": 35,
+          "afterPageNumber": 48
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        55
+        3,
+        4,
+        54,
+        55,
+        53
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          22,
+          20
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        10,
+        22,
+        24,
+        35,
+        48
       ],
       "allowedAlternativePageNumbers": [
-        7
+        20
       ]
     },
     {
       "caseId": "AIR-V2-045",
       "bookId": 45,
-      "purpose": "동전 하나의 긴 여행에서 동전의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "지속성, 수요, 저축, 비용의 구조 가운데 결과를 가르는 단서를 골라 읽는 흐름이 필요하다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "DEEP",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "동전 하나의 긴 여행 - 동전의 핵심 원리"
+        "동전, 선택의 출발점의 사전 맥락"
       ],
       "helpfulConcepts": [
-        "동전 하나의 긴 여행 - 동전의 배경"
+        "화폐 이동의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 13,
+          "afterPageNumber": 28
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 28,
+          "afterPageNumber": 30
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 30,
+          "afterPageNumber": 45
+        },
+        {
+          "beforePageNumber": 45,
+          "afterPageNumber": 60
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        68
+        3,
+        4,
+        67,
+        68,
+        66
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          28,
+          26
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        13,
+        28,
+        30,
+        45,
+        60
       ],
       "allowedAlternativePageNumbers": [
-        7
+        26
       ]
     },
     {
       "caseId": "AIR-V2-046",
       "bookId": 46,
-      "purpose": "작은 도시의 큰 예산에서 도시 예산의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "가격, 지속성, 자료 읽기, 수요 사이의 영향이 달라질 때 같은 설명을 계속 써도 되는지 따져 보고 싶다.",
       "owned": false,
       "maxAdditionalInk": 0,
       "depth": null,
       "activeRentalPageNumbers": [
-        5,
-        6,
-        7,
-        8
+        14,
+        29,
+        32,
+        48,
+        63
       ],
       "requiredConcepts": [
-        "작은 도시의 큰 예산 - 도시 예산의 핵심 원리"
+        "기반 시설, 거래와 신뢰의 중심 판단"
       ],
       "helpfulConcepts": [
-        "작은 도시의 큰 예산 - 도시 예산의 배경"
+        "기반 시설의 배경"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 14,
+          "afterPageNumber": 29
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 29,
+          "afterPageNumber": 32
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 8
+          "beforePageNumber": 32,
+          "afterPageNumber": 48
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 48,
+          "afterPageNumber": 63
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        71
+        3,
+        4,
+        70,
+        71,
+        69
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          29,
+          27
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        14,
+        29,
+        32,
+        48,
+        63
       ],
       "allowedAlternativePageNumbers": [
-        7
+        27
       ]
     },
     {
       "caseId": "AIR-V2-047",
       "bookId": 47,
-      "purpose": "가격은 어디에서 오는가에서 가격 형성의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "공급, 지속성, 수요, 자료 읽기 각각을 살핀 뒤 서로 영향을 주는 지점을 연결해 보고 싶다.",
       "owned": false,
       "maxAdditionalInk": 5,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "가격은 어디에서 오는가 - 가격 형성의 핵심 원리"
+        "정보, 거래와 신뢰의 구체 장면"
       ],
       "helpfulConcepts": [
-        "가격은 어디에서 오는가 - 가격 형성의 배경"
+        "협상의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 12,
+          "afterPageNumber": 15
         },
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
+          "beforePageNumber": 15,
+          "afterPageNumber": 27
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 27,
+          "afterPageNumber": 40
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 40,
+          "afterPageNumber": 53
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        59
+        3,
+        4,
+        58,
+        59,
+        57
       ],
       "duplicatePageGroups": [
         [
-          6,
-          8
+          15,
+          13
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        12,
+        15,
+        27,
+        40,
+        53
       ],
       "allowedAlternativePageNumbers": [
-        8
+        13
       ]
     },
     {
       "caseId": "AIR-V2-048",
       "bookId": 48,
-      "purpose": "공유창고의 경제학에서 공유창고의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "비용, 무임승차, 거래와 신뢰, 신뢰 항목을 나란히 놓고 결론을 서두르지 않는 읽기 경로를 만들고 싶다.",
       "owned": false,
       "maxAdditionalInk": 10,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "공유창고의 경제학 - 공유창고의 핵심 원리"
+        "협력, 위험의 분배 사이의 어긋남"
       ],
       "helpfulConcepts": [
-        "공유창고의 경제학 - 공유창고의 배경"
+        "공유 자원의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 14,
+          "afterPageNumber": 17
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 17,
+          "afterPageNumber": 31
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 31,
+          "afterPageNumber": 46
+        },
+        {
+          "beforePageNumber": 46,
+          "afterPageNumber": 61
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        67
+        3,
+        4,
+        66,
+        67,
+        65
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          17,
+          15
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        14,
+        17,
+        31,
+        46,
+        61
       ],
       "allowedAlternativePageNumbers": [
-        7
+        15
       ]
     },
     {
       "caseId": "AIR-V2-049",
       "bookId": 49,
-      "purpose": "느린 성장의 계산법에서 느린 성장의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "공급, 수요, 투자, 거래와 신뢰 사이의 움직임을 비교하면서 어느 단서부터 살펴야 하는지 알고 싶다.",
       "owned": false,
       "maxAdditionalInk": 15,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "느린 성장의 계산법 - 느린 성장의 핵심 원리"
+        "성장률, 규칙과 유인의 종합 결론"
       ],
       "helpfulConcepts": [
-        "느린 성장의 계산법 - 느린 성장의 배경"
+        "투자의 배경"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 14,
+          "afterPageNumber": 17
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 17,
+          "afterPageNumber": 30
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 30,
+          "afterPageNumber": 44
+        },
+        {
+          "beforePageNumber": 44,
+          "afterPageNumber": 59
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        64
+        3,
+        4,
+        63,
+        64,
+        62
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          17,
+          15
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        14,
+        17,
+        30,
+        44,
+        59
       ],
       "allowedAlternativePageNumbers": [
-        7
+        15
       ]
     },
     {
       "caseId": "AIR-V2-050",
       "bookId": 50,
-      "purpose": "시장 골목의 데이터 노트에서 시장 데이터의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "소득, 해석, 위험의 분배, 수요 사이의 움직임을 비교하면서 어느 단서부터 살펴야 하는지 알고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "QUICK",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "시장 골목의 데이터 노트 - 시장 데이터의 핵심 원리"
+        "거래량, 가격과 신호의 사전 맥락"
       ],
       "helpfulConcepts": [
-        "시장 골목의 데이터 노트 - 시장 데이터의 배경"
+        "표본의 적용 사례"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 14,
+          "afterPageNumber": 18
         },
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
+          "beforePageNumber": 18,
+          "afterPageNumber": 32
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 32,
+          "afterPageNumber": 47
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 47,
+          "afterPageNumber": 61
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        66
+        3,
+        4,
+        65,
+        66,
+        64
       ],
       "duplicatePageGroups": [
         [
-          6,
-          8
+          18,
+          16
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        14,
+        18,
+        32,
+        47,
+        61
       ],
       "allowedAlternativePageNumbers": [
-        8
+        16
       ]
     },
     {
       "caseId": "AIR-V2-051",
       "bookId": 51,
-      "purpose": "질문이 머무는 의자에서 질문의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "개념, 책임, 대화, 타인의 관점 각각을 차례로 점검해 설명이 흔들리는 지점을 찾고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "BALANCED",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "질문이 머무는 의자 - 질문의 핵심 원리"
+        "의자, 말의 경계의 중심 판단"
       ],
       "helpfulConcepts": [
-        "질문이 머무는 의자 - 질문의 배경"
+        "의자의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 13,
+          "afterPageNumber": 16
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 16,
+          "afterPageNumber": 28
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 8
+          "beforePageNumber": 28,
+          "afterPageNumber": 42
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 42,
+          "afterPageNumber": 45
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        58
+        3,
+        4,
+        57,
+        58,
+        56
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          16,
+          14
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        13,
+        16,
+        28,
+        42,
+        45
       ],
       "allowedAlternativePageNumbers": [
-        7
+        14
       ]
     },
     {
       "caseId": "AIR-V2-052",
       "bookId": 52,
-      "purpose": "선택하지 않은 길의 윤리에서 선택하지 않은 길의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "판단, 개념, 전제, 규칙과 예외 각각을 차례로 점검해 설명이 흔들리는 지점을 찾고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "DEEP",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "선택하지 않은 길의 윤리 - 선택하지 않은 길의 핵심 원리"
+        "후회, 타인의 관점의 구체 장면"
       ],
       "helpfulConcepts": [
-        "선택하지 않은 길의 윤리 - 선택하지 않은 길의 배경"
+        "선택하지 않은 길의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 16,
+          "afterPageNumber": 20
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 20,
+          "afterPageNumber": 36
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 36,
+          "afterPageNumber": 52
+        },
+        {
+          "beforePageNumber": 52,
+          "afterPageNumber": 56
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        72
+        3,
+        4,
+        71,
+        72,
+        70
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          20,
+          18
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        16,
+        20,
+        36,
+        52,
+        56
       ],
       "allowedAlternativePageNumbers": [
-        7
+        18
       ]
     },
     {
       "caseId": "AIR-V2-053",
       "bookId": 53,
-      "purpose": "기억은 누구의 것인가에서 기억의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "자유, 개념, 망각, 경험과 판단 가운데 결과를 가르는 단서를 골라 읽는 흐름이 필요하다.",
       "owned": false,
       "maxAdditionalInk": 0,
       "depth": null,
       "activeRentalPageNumbers": [
-        5,
-        6,
-        7,
-        8
+        12,
+        15,
+        26,
+        38,
+        40
       ],
       "requiredConcepts": [
-        "기억은 누구의 것인가 - 기억의 핵심 원리"
+        "소유, 선택과 책임 사이의 어긋남"
       ],
       "helpfulConcepts": [
-        "기억은 누구의 것인가 - 기억의 배경"
+        "소유의 관련 맥락"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 12,
+          "afterPageNumber": 15
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 15,
+          "afterPageNumber": 26
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 8
+          "beforePageNumber": 26,
+          "afterPageNumber": 38
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 38,
+          "afterPageNumber": 40
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        51
+        3,
+        4,
+        50,
+        51,
+        49
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          15,
+          13
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        12,
+        15,
+        26,
+        38,
+        40
       ],
       "allowedAlternativePageNumbers": [
-        7
+        13
       ]
     },
     {
       "caseId": "AIR-V2-054",
       "bookId": 54,
-      "purpose": "고요를 증명하는 방법에서 고요의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "자유, 경험, 언어, 타인의 관점 사이를 비교해 처음의 판단을 고쳐 가는 방식을 알고 싶다.",
       "owned": false,
       "maxAdditionalInk": 5,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "고요를 증명하는 방법 - 고요의 핵심 원리"
+        "증명, 시간과 정체성의 종합 결론"
       ],
       "helpfulConcepts": [
-        "고요를 증명하는 방법 - 고요의 배경"
+        "언어의 관련 맥락"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
-        },
-        {
           "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "afterPageNumber": 19
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 8
+          "beforePageNumber": 19,
+          "afterPageNumber": 33
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 33,
+          "afterPageNumber": 48
+        },
+        {
+          "beforePageNumber": 48,
+          "afterPageNumber": 51
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        64
+        3,
+        4,
+        63,
+        64,
+        62
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          19,
+          17
         ]
       ],
       "referencePageNumbers": [
-        5,
         6,
-        7,
-        8
+        19,
+        33,
+        48,
+        51
       ],
       "allowedAlternativePageNumbers": [
-        7
+        17
       ]
     },
     {
       "caseId": "AIR-V2-055",
       "bookId": 55,
-      "purpose": "타인의 창문을 바라볼 때에서 타인의 창문의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "경험, 정체성, 공감, 개념 가운데 결과를 가르는 단서를 골라 읽는 흐름이 필요하다.",
       "owned": false,
       "maxAdditionalInk": 10,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "타인의 창문을 바라볼 때 - 타인의 창문의 핵심 원리"
+        "타인의 창문, 질문을 세우는 법의 사전 맥락"
       ],
       "helpfulConcepts": [
-        "타인의 창문을 바라볼 때 - 타인의 창문의 배경"
+        "타인의 창문의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
           "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "afterPageNumber": 17
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 17,
+          "afterPageNumber": 29
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 29,
+          "afterPageNumber": 42
+        },
+        {
+          "beforePageNumber": 42,
+          "afterPageNumber": 45
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        56
+        3,
+        4,
+        55,
+        56,
+        54
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          17,
+          15
         ]
       ],
       "referencePageNumbers": [
         5,
-        6,
-        7,
-        8
+        17,
+        29,
+        42,
+        45
       ],
       "allowedAlternativePageNumbers": [
-        7
+        15
       ]
     },
     {
       "caseId": "AIR-V2-056",
       "bookId": 56,
-      "purpose": "행복의 최소 단위에서 행복의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "예외, 정체성, 관계, 타인의 관점 사이의 영향이 달라질 때 같은 설명을 계속 써도 되는지 따져 보고 싶다.",
       "owned": false,
       "maxAdditionalInk": 15,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "행복의 최소 단위 - 행복의 핵심 원리"
+        "최소 단위, 말의 경계의 중심 판단"
       ],
       "helpfulConcepts": [
-        "행복의 최소 단위 - 행복의 배경"
+        "행복의 관련 맥락"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
-        },
-        {
           "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "afterPageNumber": 22
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 22,
+          "afterPageNumber": 36
+        },
+        {
+          "beforePageNumber": 36,
+          "afterPageNumber": 53
+        },
+        {
+          "beforePageNumber": 53,
+          "afterPageNumber": 57
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        69
+        3,
+        4,
+        68,
+        69,
+        67
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          22,
+          20
         ]
       ],
       "referencePageNumbers": [
-        5,
         6,
-        7,
-        8
+        22,
+        36,
+        53,
+        57
       ],
       "allowedAlternativePageNumbers": [
-        7
+        20
       ]
     },
     {
       "caseId": "AIR-V2-057",
       "bookId": 57,
-      "purpose": "시간에게 빚진 문장에서 시간의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "예외, 변화, 경험, 정체성 각각을 살핀 뒤 서로 영향을 주는 지점을 연결해 보고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "QUICK",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "시간에게 빚진 문장 - 시간의 핵심 원리"
+        "변화, 선택과 책임의 구체 장면"
       ],
       "helpfulConcepts": [
-        "시간에게 빚진 문장 - 시간의 배경"
+        "빚진 문장의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
-        },
-        {
           "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "afterPageNumber": 18
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 8
+          "beforePageNumber": 18,
+          "afterPageNumber": 30
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 30,
+          "afterPageNumber": 35
+        },
+        {
+          "beforePageNumber": 35,
+          "afterPageNumber": 46
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        56
+        3,
+        4,
+        55,
+        56,
+        54
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          18,
+          16
         ]
       ],
       "referencePageNumbers": [
-        5,
         6,
-        7,
-        8
+        18,
+        30,
+        35,
+        46
       ],
       "allowedAlternativePageNumbers": [
-        7
+        16
       ]
     },
     {
       "caseId": "AIR-V2-058",
       "bookId": 58,
-      "purpose": "경계선 위의 약속에서 경계선의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "전제, 언어, 예외, 정체성 항목을 나란히 놓고 결론을 서두르지 않는 읽기 경로를 만들고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "BALANCED",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "경계선 위의 약속 - 경계선의 핵심 원리"
+        "신뢰, 선택과 책임 사이의 어긋남"
       ],
       "helpfulConcepts": [
-        "경계선 위의 약속 - 경계선의 배경"
+        "약속의 관련 맥락"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
-        },
-        {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
-        },
-        {
           "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "afterPageNumber": 18
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 18,
+          "afterPageNumber": 29
+        },
+        {
+          "beforePageNumber": 29,
+          "afterPageNumber": 32
+        },
+        {
+          "beforePageNumber": 32,
+          "afterPageNumber": 45
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        54
+        3,
+        4,
+        53,
+        54,
+        52
       ],
       "duplicatePageGroups": [
         [
-          6,
-          8
+          18,
+          16
         ]
       ],
       "referencePageNumbers": [
-        5,
         6,
-        7,
-        8
+        18,
+        29,
+        32,
+        45
       ],
       "allowedAlternativePageNumbers": [
-        8
+        16
       ]
     },
     {
       "caseId": "AIR-V2-059",
       "bookId": 59,
-      "purpose": "모르는 것을 아는 연습에서 무지의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "개념, 전제, 겸손, 선택과 책임 사이의 움직임을 비교하면서 어느 단서부터 살펴야 하는지 알고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "DEEP",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "모르는 것을 아는 연습 - 무지의 핵심 원리"
+        "질문, 의심의 쓰임의 종합 결론"
       ],
       "helpfulConcepts": [
-        "모르는 것을 아는 연습 - 무지의 배경"
+        "겸손의 관련 맥락"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
-        },
-        {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
-        },
-        {
           "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "afterPageNumber": 17
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 17,
+          "afterPageNumber": 28
+        },
+        {
+          "beforePageNumber": 28,
+          "afterPageNumber": 31
+        },
+        {
+          "beforePageNumber": 31,
+          "afterPageNumber": 43
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        51
+        3,
+        4,
+        50,
+        51,
+        49
       ],
-      "duplicatePageGroups": [],
+      "duplicatePageGroups": [
+        [
+          17,
+          15
+        ]
+      ],
       "referencePageNumbers": [
-        5,
         6,
-        7,
-        8
+        17,
+        28,
+        31,
+        43
       ],
-      "allowedAlternativePageNumbers": []
+      "allowedAlternativePageNumbers": [
+        15
+      ]
     },
     {
       "caseId": "AIR-V2-060",
       "bookId": 60,
-      "purpose": "정답 없는 방의 대화에서 정답 없는 방의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "판단, 경험, 합의, 선택과 책임 사이의 움직임을 비교하면서 어느 단서부터 살펴야 하는지 알고 싶다.",
       "owned": false,
       "maxAdditionalInk": 0,
       "depth": null,
       "activeRentalPageNumbers": [
-        5,
-        6,
-        7,
-        8
+        8,
+        25,
+        40,
+        45,
+        62
       ],
       "requiredConcepts": [
-        "정답 없는 방의 대화 - 정답 없는 방의 핵심 원리"
+        "정답 없는 방, 질문을 세우는 법의 사전 맥락"
       ],
       "helpfulConcepts": [
-        "정답 없는 방의 대화 - 정답 없는 방의 배경"
+        "관점의 장 결론"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 8,
+          "afterPageNumber": 25
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 25,
+          "afterPageNumber": 40
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 8
+          "beforePageNumber": 40,
+          "afterPageNumber": 45
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 45,
+          "afterPageNumber": 62
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        72
+        3,
+        4,
+        71,
+        72,
+        70
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          25,
+          23
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        8,
+        25,
+        40,
+        45,
+        62
       ],
       "allowedAlternativePageNumbers": [
-        7
+        23
       ]
     },
     {
       "caseId": "AIR-V2-061",
       "bookId": 61,
-      "purpose": "파란 점 하나로 시작한 그림에서 파란 점의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "감상, 질감, 확장, 리듬과 여백 각각을 차례로 점검해 설명이 흔들리는 지점을 찾고 싶다.",
       "owned": false,
       "maxAdditionalInk": 5,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "파란 점 하나로 시작한 그림 - 파란 점의 핵심 원리"
+        "형태, 재료의 성질의 중심 판단"
       ],
       "helpfulConcepts": [
-        "파란 점 하나로 시작한 그림 - 파란 점의 배경"
+        "파란 점의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 9,
+          "afterPageNumber": 25
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 25,
+          "afterPageNumber": 40
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 40,
+          "afterPageNumber": 45
+        },
+        {
+          "beforePageNumber": 45,
+          "afterPageNumber": 62
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        71
+        3,
+        4,
+        70,
+        71,
+        69
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          25,
+          23
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        9,
+        25,
+        40,
+        45,
+        62
       ],
       "allowedAlternativePageNumbers": [
-        7
+        23
       ]
     },
     {
       "caseId": "AIR-V2-062",
       "bookId": 62,
-      "purpose": "무대 뒤의 빛 설계에서 무대 조명의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "시선, 형태, 질감, 처음 만나는 형태 각각을 차례로 점검해 설명이 흔들리는 지점을 찾고 싶다.",
       "owned": false,
       "maxAdditionalInk": 10,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "무대 뒤의 빛 설계 - 무대 조명의 핵심 원리"
+        "장면, 리듬과 여백의 구체 장면"
       ],
       "helpfulConcepts": [
-        "무대 뒤의 빛 설계 - 무대 조명의 배경"
+        "무대 조명의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
-        },
-        {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
-        },
-        {
           "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "afterPageNumber": 19
+        },
+        {
+          "beforePageNumber": 19,
+          "afterPageNumber": 31
+        },
+        {
+          "beforePageNumber": 31,
+          "afterPageNumber": 35
+        },
+        {
+          "beforePageNumber": 35,
+          "afterPageNumber": 46
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        53
+        3,
+        4,
+        52,
+        53,
+        51
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          19,
+          17
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
         7,
-        8
+        19,
+        31,
+        35,
+        46
       ],
       "allowedAlternativePageNumbers": [
-        7
+        17
       ]
     },
     {
       "caseId": "AIR-V2-063",
       "bookId": 63,
-      "purpose": "침묵을 연주하는 악보에서 침묵의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "몸짓, 질감, 형태, 처음 만나는 형태 가운데 결과를 가르는 단서를 골라 읽는 흐름이 필요하다.",
       "owned": false,
       "maxAdditionalInk": 15,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "침묵을 연주하는 악보 - 침묵의 핵심 원리"
+        "침묵, 만드는 손 사이의 어긋남"
       ],
       "helpfulConcepts": [
-        "침묵을 연주하는 악보 - 침묵의 배경"
+        "호흡의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
-        },
-        {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
-        },
-        {
           "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "afterPageNumber": 18
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 18,
+          "afterPageNumber": 28
+        },
+        {
+          "beforePageNumber": 28,
+          "afterPageNumber": 32
+        },
+        {
+          "beforePageNumber": 32,
+          "afterPageNumber": 43
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        48
+        3,
+        4,
+        47,
+        48,
+        46
       ],
-      "duplicatePageGroups": [],
+      "duplicatePageGroups": [
+        [
+          18,
+          16
+        ]
+      ],
       "referencePageNumbers": [
-        5,
         6,
-        7,
-        8
+        18,
+        28,
+        32,
+        43
       ],
-      "allowedAlternativePageNumbers": []
+      "allowedAlternativePageNumbers": [
+        16
+      ]
     },
     {
       "caseId": "AIR-V2-064",
       "bookId": 64,
-      "purpose": "종이 조각의 움직임에서 종이 조각의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "형태, 여백, 균형, 빛과 색 사이를 비교해 처음의 판단을 고쳐 가는 방식을 알고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "QUICK",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "종이 조각의 움직임 - 종이 조각의 핵심 원리"
+        "종이 조각, 만드는 손의 종합 결론"
       ],
       "helpfulConcepts": [
-        "종이 조각의 움직임 - 종이 조각의 배경"
+        "균형의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 9,
+          "afterPageNumber": 24
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 24,
+          "afterPageNumber": 27
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 27,
+          "afterPageNumber": 42
+        },
+        {
+          "beforePageNumber": 42,
+          "afterPageNumber": 56
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        63
+        3,
+        4,
+        62,
+        63,
+        61
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          24,
+          22
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        9,
+        24,
+        27,
+        42,
+        56
       ],
       "allowedAlternativePageNumbers": [
-        7
+        22
       ]
     },
     {
       "caseId": "AIR-V2-065",
       "bookId": 65,
-      "purpose": "열 가지 색의 온도에서 열 가지 색의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "감상, 감정, 리듬과 여백, 여백 가운데 결과를 가르는 단서를 골라 읽는 흐름이 필요하다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "BALANCED",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "열 가지 색의 온도 - 열 가지 색의 핵심 원리"
+        "열 가지 색, 처음 만나는 형태의 사전 맥락"
       ],
       "helpfulConcepts": [
-        "열 가지 색의 온도 - 열 가지 색의 배경"
+        "대비의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 9,
+          "afterPageNumber": 23
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 23,
+          "afterPageNumber": 26
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 8
+          "beforePageNumber": 26,
+          "afterPageNumber": 41
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 41,
+          "afterPageNumber": 55
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        61
+        3,
+        4,
+        60,
+        61,
+        59
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          23,
+          21
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        9,
+        23,
+        26,
+        41,
+        55
       ],
       "allowedAlternativePageNumbers": [
-        7
+        21
       ]
     },
     {
       "caseId": "AIR-V2-066",
       "bookId": 66,
-      "purpose": "골목 벽화의 문법에서 골목 벽화의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "몸짓, 질감, 공공 공간, 리듬과 여백 사이의 영향이 달라질 때 같은 설명을 계속 써도 되는지 따져 보고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "DEEP",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "골목 벽화의 문법 - 골목 벽화의 핵심 원리"
+        "이야기, 빛과 색의 중심 판단"
       ],
       "helpfulConcepts": [
-        "골목 벽화의 문법 - 골목 벽화의 배경"
+        "이야기의 적용 사례"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 8,
+          "afterPageNumber": 21
         },
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
+          "beforePageNumber": 21,
+          "afterPageNumber": 23
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 23,
+          "afterPageNumber": 36
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 36,
+          "afterPageNumber": 48
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        53
+        3,
+        4,
+        52,
+        53,
+        51
       ],
       "duplicatePageGroups": [
         [
-          6,
-          8
+          21,
+          19
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        8,
+        21,
+        23,
+        36,
+        48
       ],
       "allowedAlternativePageNumbers": [
-        8
+        19
       ]
     },
     {
       "caseId": "AIR-V2-067",
       "bookId": 67,
-      "purpose": "한 장면을 만드는 소리에서 장면의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "감상, 시선, 질감, 처음 만나는 형태 각각을 살핀 뒤 서로 영향을 주는 지점을 연결해 보고 싶다.",
       "owned": false,
       "maxAdditionalInk": 0,
       "depth": null,
       "activeRentalPageNumbers": [
-        5,
-        6,
-        7,
-        8
+        11,
+        28,
+        32,
+        49,
+        66
       ],
       "requiredConcepts": [
-        "한 장면을 만드는 소리 - 장면의 핵심 원리"
+        "리듬, 리듬과 여백의 구체 장면"
       ],
       "helpfulConcepts": [
-        "한 장면을 만드는 소리 - 장면의 배경"
+        "거리감의 적용 사례"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 11,
+          "afterPageNumber": 28
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 28,
+          "afterPageNumber": 32
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 32,
+          "afterPageNumber": 49
+        },
+        {
+          "beforePageNumber": 49,
+          "afterPageNumber": 66
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        71
+        3,
+        4,
+        70,
+        71,
+        69
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          28,
+          26
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        11,
+        28,
+        32,
+        49,
+        66
       ],
       "allowedAlternativePageNumbers": [
-        7
+        26
       ]
     },
     {
       "caseId": "AIR-V2-068",
       "bookId": 68,
-      "purpose": "움직이는 조각의 오후에서 움직이는 조각의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "질감, 리듬과 여백, 몸짓, 형태 항목을 나란히 놓고 결론을 서두르지 않는 읽기 경로를 만들고 싶다.",
       "owned": false,
       "maxAdditionalInk": 5,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "움직이는 조각의 오후 - 움직이는 조각의 핵심 원리"
+        "움직이는 조각, 만드는 손 사이의 어긋남"
       ],
       "helpfulConcepts": [
-        "움직이는 조각의 오후 - 움직이는 조각의 배경"
+        "바람의 적용 사례"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 9,
+          "afterPageNumber": 20
         },
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
+          "beforePageNumber": 20,
+          "afterPageNumber": 23
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 23,
+          "afterPageNumber": 36
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 36,
+          "afterPageNumber": 39
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        50
+        3,
+        4,
+        49,
+        50,
+        48
       ],
-      "duplicatePageGroups": [],
+      "duplicatePageGroups": [
+        [
+          20,
+          18
+        ]
+      ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        9,
+        20,
+        23,
+        36,
+        39
       ],
-      "allowedAlternativePageNumbers": []
+      "allowedAlternativePageNumbers": [
+        18
+      ]
     },
     {
       "caseId": "AIR-V2-069",
       "bookId": 69,
-      "purpose": "사진 밖으로 걸어 나온 사람에서 사진의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "질감, 리듬, 시선, 리듬과 여백 사이의 움직임을 비교하면서 어느 단서부터 살펴야 하는지 알고 싶다.",
       "owned": false,
       "maxAdditionalInk": 10,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "사진 밖으로 걸어 나온 사람 - 사진의 핵심 원리"
+        "프레임, 작품과 공간의 종합 결론"
       ],
       "helpfulConcepts": [
-        "사진 밖으로 걸어 나온 사람 - 사진의 배경"
+        "시선의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 8,
+          "afterPageNumber": 21
         },
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
+          "beforePageNumber": 21,
+          "afterPageNumber": 24
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 24,
+          "afterPageNumber": 37
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 37,
+          "afterPageNumber": 40
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        51
+        3,
+        4,
+        50,
+        51,
+        49
       ],
       "duplicatePageGroups": [
         [
-          6,
-          8
+          21,
+          19
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        8,
+        21,
+        24,
+        37,
+        40
       ],
       "allowedAlternativePageNumbers": [
-        8
+        19
       ]
     },
     {
       "caseId": "AIR-V2-070",
       "bookId": 70,
-      "purpose": "빈 캔버스의 사용법에서 빈 캔버스의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "재료, 리듬, 망설임, 빛과 색 사이의 움직임을 비교하면서 어느 단서부터 살펴야 하는지 알고 싶다.",
       "owned": false,
       "maxAdditionalInk": 15,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "빈 캔버스의 사용법 - 빈 캔버스의 핵심 원리"
+        "빈 캔버스, 처음 만나는 형태의 사전 맥락"
       ],
       "helpfulConcepts": [
-        "빈 캔버스의 사용법 - 빈 캔버스의 배경"
+        "시작의 관련 맥락"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 12,
+          "afterPageNumber": 17
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 17,
+          "afterPageNumber": 33
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 33,
+          "afterPageNumber": 50
+        },
+        {
+          "beforePageNumber": 50,
+          "afterPageNumber": 55
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        69
+        3,
+        4,
+        68,
+        69,
+        67
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          17,
+          15
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        12,
+        17,
+        33,
+        50,
+        55
       ],
       "allowedAlternativePageNumbers": [
-        7
+        15
       ]
     },
     {
       "caseId": "AIR-V2-071",
       "bookId": 71,
-      "purpose": "작은 서버의 긴 하루에서 서버의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "경계, 응답, 흐름과 상태, 상태 각각을 차례로 점검해 설명이 흔들리는 지점을 찾고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "QUICK",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "작은 서버의 긴 하루 - 서버의 핵심 원리"
+        "요청, 입력과 출력의 중심 판단"
       ],
       "helpfulConcepts": [
-        "작은 서버의 긴 하루 - 서버의 배경"
+        "장애의 관련 맥락"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 9,
+          "afterPageNumber": 13
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 13,
+          "afterPageNumber": 24
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 8
+          "beforePageNumber": 24,
+          "afterPageNumber": 36
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 36,
+          "afterPageNumber": 40
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        50
+        3,
+        4,
+        49,
+        50,
+        48
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          13,
+          11
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        9,
+        13,
+        24,
+        36,
+        40
       ],
       "allowedAlternativePageNumbers": [
-        7
+        11
       ]
     },
     {
       "caseId": "AIR-V2-072",
       "bookId": 72,
-      "purpose": "데이터가 길을 잃지 않게에서 데이터 흐름의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "경계, 실패, 추적, 기록과 관찰 각각을 차례로 점검해 설명이 흔들리는 지점을 찾고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "BALANCED",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "데이터가 길을 잃지 않게 - 데이터 흐름의 핵심 원리"
+        "변환, 흐름과 상태의 구체 장면"
       ],
       "helpfulConcepts": [
-        "데이터가 길을 잃지 않게 - 데이터 흐름의 배경"
+        "추적의 관련 맥락"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 11,
+          "afterPageNumber": 15
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 15,
+          "afterPageNumber": 28
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 28,
+          "afterPageNumber": 43
+        },
+        {
+          "beforePageNumber": 43,
+          "afterPageNumber": 47
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        58
+        3,
+        4,
+        57,
+        58,
+        56
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          15,
+          13
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        11,
+        15,
+        28,
+        43,
+        47
       ],
       "allowedAlternativePageNumbers": [
-        7
+        13
       ]
     },
     {
       "caseId": "AIR-V2-073",
       "bookId": 73,
-      "purpose": "버그를 관찰하는 창에서 버그의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "보안, 성능, 가설, 실패를 다루는 법 가운데 결과를 가르는 단서를 골라 읽는 흐름이 필요하다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "DEEP",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "버그를 관찰하는 창 - 버그의 핵심 원리"
+        "버그, 검증 가능한 설계 사이의 어긋남"
       ],
       "helpfulConcepts": [
-        "버그를 관찰하는 창 - 버그의 배경"
+        "버그의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 14,
+          "afterPageNumber": 19
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 19,
+          "afterPageNumber": 35
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 35,
+          "afterPageNumber": 52
+        },
+        {
+          "beforePageNumber": 52,
+          "afterPageNumber": 57
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        70
+        3,
+        4,
+        69,
+        70,
+        68
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          19,
+          17
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        14,
+        19,
+        35,
+        52,
+        57
       ],
       "allowedAlternativePageNumbers": [
-        7
+        17
       ]
     },
     {
       "caseId": "AIR-V2-074",
       "bookId": 74,
-      "purpose": "함수 사이의 다리에서 함수의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "요청, 경계, 실패를 다루는 법, 실패 사이를 비교해 처음의 판단을 고쳐 가는 방식을 알고 싶다.",
       "owned": false,
       "maxAdditionalInk": 0,
       "depth": null,
       "activeRentalPageNumbers": [
-        5,
-        6,
-        7,
-        8
+        14,
+        19,
+        36,
+        54,
+        59
       ],
       "requiredConcepts": [
-        "함수 사이의 다리 - 함수의 핵심 원리"
+        "함수, 검증 가능한 설계의 종합 결론"
       ],
       "helpfulConcepts": [
-        "함수 사이의 다리 - 함수의 배경"
+        "경계의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 14,
+          "afterPageNumber": 19
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 19,
+          "afterPageNumber": 36
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 36,
+          "afterPageNumber": 54
+        },
+        {
+          "beforePageNumber": 54,
+          "afterPageNumber": 59
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        71
+        3,
+        4,
+        70,
+        71,
+        69
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          19,
+          17
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        14,
+        19,
+        36,
+        54,
+        59
       ],
       "allowedAlternativePageNumbers": [
-        7
+        17
       ]
     },
     {
       "caseId": "AIR-V2-075",
       "bookId": 75,
-      "purpose": "로그 한 줄의 여행에서 로그의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "운영, 상태, 문맥, 실패를 다루는 법 가운데 결과를 가르는 단서를 골라 읽는 흐름이 필요하다.",
       "owned": false,
       "maxAdditionalInk": 5,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "로그 한 줄의 여행 - 로그의 핵심 원리"
+        "사건, 입력과 출력의 사전 맥락"
       ],
       "helpfulConcepts": [
-        "로그 한 줄의 여행 - 로그의 배경"
+        "사건의 장 결론"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 11,
+          "afterPageNumber": 16
         },
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
+          "beforePageNumber": 16,
+          "afterPageNumber": 28
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 28,
+          "afterPageNumber": 40
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 40,
+          "afterPageNumber": 46
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        55
+        3,
+        4,
+        54,
+        55,
+        53
       ],
       "duplicatePageGroups": [
         [
-          6,
-          8
+          16,
+          14
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        11,
+        16,
+        28,
+        40,
+        46
       ],
       "allowedAlternativePageNumbers": [
-        8
+        14
       ]
     },
     {
       "caseId": "AIR-V2-076",
       "bookId": 76,
-      "purpose": "안전한 기본값의 설계에서 기본값의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "기록, 요청, 권한, 실패를 다루는 법 사이의 영향이 달라질 때 같은 설명을 계속 써도 되는지 따져 보고 싶다.",
       "owned": false,
       "maxAdditionalInk": 10,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "안전한 기본값의 설계 - 기본값의 핵심 원리"
+        "설정, 입력과 출력의 중심 판단"
       ],
       "helpfulConcepts": [
-        "안전한 기본값의 설계 - 기본값의 배경"
+        "기본값의 장 결론"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 11,
+          "afterPageNumber": 15
         },
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
+          "beforePageNumber": 15,
+          "afterPageNumber": 26
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 26,
+          "afterPageNumber": 31
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 31,
+          "afterPageNumber": 42
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        50
+        3,
+        4,
+        49,
+        50,
+        48
       ],
       "duplicatePageGroups": [
         [
-          6,
-          8
+          15,
+          13
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        11,
+        15,
+        26,
+        31,
+        42
       ],
       "allowedAlternativePageNumbers": [
-        8
+        13
       ]
     },
     {
       "caseId": "AIR-V2-077",
       "bookId": 77,
-      "purpose": "테스트가 지키는 계약에서 테스트의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "상태, 데이터, 요청, 보안 각각을 살핀 뒤 서로 영향을 주는 지점을 연결해 보고 싶다.",
       "owned": false,
       "maxAdditionalInk": 15,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "테스트가 지키는 계약 - 테스트의 핵심 원리"
+        "경계값, 실패를 다루는 법의 구체 장면"
       ],
       "helpfulConcepts": [
-        "테스트가 지키는 계약 - 테스트의 배경"
+        "테스트의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 13,
+          "afterPageNumber": 18
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 18,
+          "afterPageNumber": 32
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 32,
+          "afterPageNumber": 36
+        },
+        {
+          "beforePageNumber": 36,
+          "afterPageNumber": 52
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        60
+        3,
+        4,
+        59,
+        60,
+        58
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          18,
+          16
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        13,
+        18,
+        32,
+        36,
+        52
       ],
       "allowedAlternativePageNumbers": [
-        7
+        16
       ]
     },
     {
       "caseId": "AIR-V2-078",
       "bookId": 78,
-      "purpose": "느린 쿼리를 찾는 밤에서 느린 질의의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "실패, 경계, 요청, 운영 항목을 나란히 놓고 결론을 서두르지 않는 읽기 경로를 만들고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "QUICK",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "느린 쿼리를 찾는 밤 - 느린 질의의 핵심 원리"
+        "병목, 기록과 관찰 사이의 어긋남"
       ],
       "helpfulConcepts": [
-        "느린 쿼리를 찾는 밤 - 느린 질의의 배경"
+        "색인의 배경"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 13,
+          "afterPageNumber": 17
         },
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
+          "beforePageNumber": 17,
+          "afterPageNumber": 31
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 31,
+          "afterPageNumber": 36
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 36,
+          "afterPageNumber": 50
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        57
+        3,
+        4,
+        56,
+        57,
+        55
       ],
       "duplicatePageGroups": [
         [
-          6,
-          8
+          17,
+          15
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        13,
+        17,
+        31,
+        36,
+        50
       ],
       "allowedAlternativePageNumbers": [
-        8
+        15
       ]
     },
     {
       "caseId": "AIR-V2-079",
       "bookId": 79,
-      "purpose": "작은 화면의 접근성에서 작은 화면의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "기록, 검증, 명도, 실패를 다루는 법 사이의 움직임을 비교하면서 어느 단서부터 살펴야 하는지 알고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "BALANCED",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "작은 화면의 접근성 - 작은 화면의 핵심 원리"
+        "접근성, 성능과 비용의 종합 결론"
       ],
       "helpfulConcepts": [
-        "작은 화면의 접근성 - 작은 화면의 배경"
+        "명도의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 15,
+          "afterPageNumber": 20
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 20,
+          "afterPageNumber": 35
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 35,
+          "afterPageNumber": 40
+        },
+        {
+          "beforePageNumber": 40,
+          "afterPageNumber": 56
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        64
+        3,
+        4,
+        63,
+        64,
+        62
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          20,
+          18
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        15,
+        20,
+        35,
+        40,
+        56
       ],
       "allowedAlternativePageNumbers": [
-        7
+        18
       ]
     },
     {
       "caseId": "AIR-V2-080",
       "bookId": 80,
-      "purpose": "배포 전 마지막 점검표에서 배포의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "데이터, 성능, 되돌리기, 기록과 관찰 사이의 움직임을 비교하면서 어느 단서부터 살펴야 하는지 알고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "DEEP",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "배포 전 마지막 점검표 - 배포의 핵심 원리"
+        "점검표, 입력과 출력의 사전 맥락"
       ],
       "helpfulConcepts": [
-        "배포 전 마지막 점검표 - 배포의 배경"
+        "버전의 장 결론"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 16,
+          "afterPageNumber": 22
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 22,
+          "afterPageNumber": 37
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 8
+          "beforePageNumber": 37,
+          "afterPageNumber": 43
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 43,
+          "afterPageNumber": 59
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        67
+        3,
+        4,
+        66,
+        67,
+        65
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          22,
+          20
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        16,
+        22,
+        37,
+        43,
+        59
       ],
       "allowedAlternativePageNumbers": [
-        7
+        20
       ]
     },
     {
       "caseId": "AIR-V2-081",
       "bookId": 81,
-      "purpose": "비행기 없이 건넌 일곱 섬에서 일곱 섬의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "기억, 휴식, 부두, 사람을 만나는 방식 각각을 차례로 점검해 설명이 흔들리는 지점을 찾고 싶다.",
       "owned": false,
       "maxAdditionalInk": 0,
       "depth": null,
       "activeRentalPageNumbers": [
-        5,
         6,
-        7,
-        8
+        22,
+        37,
+        43,
+        59
       ],
       "requiredConcepts": [
-        "비행기 없이 건넌 일곱 섬 - 일곱 섬의 핵심 원리"
+        "배, 길 위의 감각의 중심 판단"
       ],
       "helpfulConcepts": [
-        "비행기 없이 건넌 일곱 섬 - 일곱 섬의 배경"
+        "배의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
-        },
-        {
           "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "afterPageNumber": 22
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 22,
+          "afterPageNumber": 37
+        },
+        {
+          "beforePageNumber": 37,
+          "afterPageNumber": 43
+        },
+        {
+          "beforePageNumber": 43,
+          "afterPageNumber": 59
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        66
+        3,
+        4,
+        65,
+        66,
+        64
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          22,
+          20
         ]
       ],
       "referencePageNumbers": [
-        5,
         6,
-        7,
-        8
+        22,
+        37,
+        43,
+        59
       ],
       "allowedAlternativePageNumbers": [
-        7
+        20
       ]
     },
     {
       "caseId": "AIR-V2-082",
       "bookId": 82,
-      "purpose": "북쪽 기차의 창가 노트에서 북쪽 기차의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "풍경, 식사, 숙소, 대화 각각을 차례로 점검해 설명이 흔들리는 지점을 찾고 싶다.",
       "owned": false,
       "maxAdditionalInk": 5,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "북쪽 기차의 창가 노트 - 북쪽 기차의 핵심 원리"
+        "노선, 음식과 장소의 구체 장면"
       ],
       "helpfulConcepts": [
-        "북쪽 기차의 창가 노트 - 북쪽 기차의 배경"
+        "간이역의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
-        },
-        {
           "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "afterPageNumber": 23
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 23,
+          "afterPageNumber": 38
+        },
+        {
+          "beforePageNumber": 38,
+          "afterPageNumber": 43
+        },
+        {
+          "beforePageNumber": 43,
+          "afterPageNumber": 61
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        67
+        3,
+        4,
+        66,
+        67,
+        65
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          23,
+          21
         ]
       ],
       "referencePageNumbers": [
-        5,
         6,
-        7,
-        8
+        23,
+        38,
+        43,
+        61
       ],
       "allowedAlternativePageNumbers": [
-        7
+        21
       ]
     },
     {
       "caseId": "AIR-V2-083",
       "bookId": 83,
-      "purpose": "시장 냄새로 기억한 도시에서 시장 냄새의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "교통, 날씨, 골목, 사람을 만나는 방식 가운데 결과를 가르는 단서를 골라 읽는 흐름이 필요하다.",
       "owned": false,
       "maxAdditionalInk": 10,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "시장 냄새로 기억한 도시 - 시장 냄새의 핵심 원리"
+        "도시 기억, 음식과 장소 사이의 어긋남"
       ],
       "helpfulConcepts": [
-        "시장 냄새로 기억한 도시 - 시장 냄새의 배경"
+        "향신료의 적용 사례"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
-        },
-        {
           "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "afterPageNumber": 21
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 21,
+          "afterPageNumber": 35
+        },
+        {
+          "beforePageNumber": 35,
+          "afterPageNumber": 40
+        },
+        {
+          "beforePageNumber": 40,
+          "afterPageNumber": 56
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        61
+        3,
+        4,
+        60,
+        61,
+        59
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          21,
+          19
         ]
       ],
       "referencePageNumbers": [
-        5,
         6,
-        7,
-        8
+        21,
+        35,
+        40,
+        56
       ],
       "allowedAlternativePageNumbers": [
-        7
+        19
       ]
     },
     {
       "caseId": "AIR-V2-084",
       "bookId": 84,
-      "purpose": "지도 없는 숲길 사흘에서 숲길의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "날씨, 대화, 비탈, 음식과 장소 사이를 비교해 처음의 판단을 고쳐 가는 방식을 알고 싶다.",
       "owned": false,
       "maxAdditionalInk": 15,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "지도 없는 숲길 사흘 - 숲길의 핵심 원리"
+        "나침반, 돌아오는 길의 종합 결론"
       ],
       "helpfulConcepts": [
-        "지도 없는 숲길 사흘 - 숲길의 배경"
+        "비탈의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
           "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "afterPageNumber": 17
         },
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
+          "beforePageNumber": 17,
+          "afterPageNumber": 28
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 28,
+          "afterPageNumber": 34
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 34,
+          "afterPageNumber": 45
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        49
+        3,
+        4,
+        48,
+        49,
+        47
       ],
-      "duplicatePageGroups": [],
+      "duplicatePageGroups": [
+        [
+          17,
+          15
+        ]
+      ],
       "referencePageNumbers": [
         5,
-        6,
-        7,
-        8
+        17,
+        28,
+        34,
+        45
       ],
-      "allowedAlternativePageNumbers": []
+      "allowedAlternativePageNumbers": [
+        15
+      ]
     },
     {
       "caseId": "AIR-V2-085",
       "bookId": 85,
-      "purpose": "바람이 강한 해안도로에서 해안도로의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "식사, 시장, 파도, 사람을 만나는 방식 가운데 결과를 가르는 단서를 골라 읽는 흐름이 필요하다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "QUICK",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "바람이 강한 해안도로 - 해안도로의 핵심 원리"
+        "해안도로, 출발 전의 지도의 사전 맥락"
       ],
       "helpfulConcepts": [
-        "바람이 강한 해안도로 - 해안도로의 배경"
+        "강한 바람의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
-        },
-        {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
-        },
-        {
           "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 28
+        },
+        {
+          "beforePageNumber": 28,
+          "afterPageNumber": 45
+        },
+        {
+          "beforePageNumber": 45,
+          "afterPageNumber": 51
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        66
+        3,
+        4,
+        65,
+        66,
+        64
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          24,
+          22
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
         7,
-        8
+        24,
+        28,
+        45,
+        51
       ],
       "allowedAlternativePageNumbers": [
-        7
+        22
       ]
     },
     {
       "caseId": "AIR-V2-086",
       "bookId": 86,
-      "purpose": "새벽 항구의 첫 식사에서 새벽 항구의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "대화, 휴식, 국물, 사람을 만나는 방식 사이의 영향이 달라질 때 같은 설명을 계속 써도 되는지 따져 보고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "BALANCED",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "새벽 항구의 첫 식사 - 새벽 항구의 핵심 원리"
+        "어선, 낯선 생활의 규칙의 중심 판단"
       ],
       "helpfulConcepts": [
-        "새벽 항구의 첫 식사 - 새벽 항구의 배경"
+        "어선의 배경"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
-        },
-        {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
-        },
-        {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
-        },
-        {
           "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "afterPageNumber": 22
+        },
+        {
+          "beforePageNumber": 22,
+          "afterPageNumber": 26
+        },
+        {
+          "beforePageNumber": 26,
+          "afterPageNumber": 42
+        },
+        {
+          "beforePageNumber": 42,
+          "afterPageNumber": 47
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        60
+        3,
+        4,
+        59,
+        60,
+        58
       ],
       "duplicatePageGroups": [
         [
-          6,
-          8
+          22,
+          20
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
         7,
-        8
+        22,
+        26,
+        42,
+        47
       ],
       "allowedAlternativePageNumbers": [
-        8
+        20
       ]
     },
     {
       "caseId": "AIR-V2-087",
       "bookId": 87,
-      "purpose": "고원 마을의 느린 우편에서 고원 마을의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "숙소, 교통, 풍경, 식사 각각을 살핀 뒤 서로 영향을 주는 지점을 연결해 보고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "DEEP",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "고원 마을의 느린 우편 - 고원 마을의 핵심 원리"
+        "우체부, 낯선 생활의 규칙의 구체 장면"
       ],
       "helpfulConcepts": [
-        "고원 마을의 느린 우편 - 고원 마을의 배경"
+        "고원 마을의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 8,
+          "afterPageNumber": 24
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 24,
+          "afterPageNumber": 28
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 28,
+          "afterPageNumber": 46
+        },
+        {
+          "beforePageNumber": 46,
+          "afterPageNumber": 52
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        65
+        3,
+        4,
+        64,
+        65,
+        63
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          24,
+          22
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        8,
+        24,
+        28,
+        46,
+        52
       ],
       "allowedAlternativePageNumbers": [
-        7
+        22
       ]
     },
     {
       "caseId": "AIR-V2-088",
       "bookId": 88,
-      "purpose": "비 오는 골목의 지도에서 비 오는 골목의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "휴식, 식사, 사람을 만나는 방식, 교통 항목을 나란히 놓고 결론을 서두르지 않는 읽기 경로를 만들고 싶다.",
       "owned": false,
       "maxAdditionalInk": 0,
       "depth": null,
       "activeRentalPageNumbers": [
-        5,
         6,
-        7,
-        8
+        20,
+        24,
+        39,
+        43
       ],
       "requiredConcepts": [
-        "비 오는 골목의 지도 - 비 오는 골목의 핵심 원리"
+        "비 오는 골목, 예상 밖의 우회 사이의 어긋남"
       ],
       "helpfulConcepts": [
-        "비 오는 골목의 지도 - 비 오는 골목의 배경"
+        "물웅덩이의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
-        },
-        {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
-        },
-        {
           "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "afterPageNumber": 20
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 20,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 39
+        },
+        {
+          "beforePageNumber": 39,
+          "afterPageNumber": 43
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        53
+        3,
+        4,
+        52,
+        53,
+        51
       ],
       "duplicatePageGroups": [
         [
-          6,
-          8
+          20,
+          18
         ]
       ],
       "referencePageNumbers": [
-        5,
         6,
-        7,
-        8
+        20,
+        24,
+        39,
+        43
       ],
       "allowedAlternativePageNumbers": [
-        8
+        18
       ]
     },
     {
       "caseId": "AIR-V2-089",
       "bookId": 89,
-      "purpose": "열두 정거장의 하루에서 열두 정거장의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "시장, 풍경, 도시 표정, 사람을 만나는 방식 사이의 움직임을 비교하면서 어느 단서부터 살펴야 하는지 알고 싶다.",
       "owned": false,
       "maxAdditionalInk": 5,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "열두 정거장의 하루 - 열두 정거장의 핵심 원리"
+        "승객, 돌아오는 길의 종합 결론"
       ],
       "helpfulConcepts": [
-        "열두 정거장의 하루 - 열두 정거장의 배경"
+        "도시 표정의 관련 맥락"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 8,
+          "afterPageNumber": 26
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 26,
+          "afterPageNumber": 30
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 8
+          "beforePageNumber": 30,
+          "afterPageNumber": 47
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 47,
+          "afterPageNumber": 54
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        66
+        3,
+        4,
+        65,
+        66,
+        64
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          26,
+          24
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        8,
+        26,
+        30,
+        47,
+        54
       ],
       "allowedAlternativePageNumbers": [
-        7
+        24
       ]
     },
     {
       "caseId": "AIR-V2-090",
       "bookId": 90,
-      "purpose": "별이 가까운 사막의 밤에서 사막의 밤의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "시장, 휴식, 야영지, 사람을 만나는 방식 사이의 움직임을 비교하면서 어느 단서부터 살펴야 하는지 알고 싶다.",
       "owned": false,
       "maxAdditionalInk": 10,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "별이 가까운 사막의 밤 - 사막의 밤의 핵심 원리"
+        "사막의 밤, 출발 전의 지도의 사전 맥락"
       ],
       "helpfulConcepts": [
-        "별이 가까운 사막의 밤 - 사막의 밤의 배경"
+        "모래바람의 적용 사례"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 8,
+          "afterPageNumber": 26
         },
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
+          "beforePageNumber": 26,
+          "afterPageNumber": 30
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 30,
+          "afterPageNumber": 48
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 48,
+          "afterPageNumber": 54
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        66
+        3,
+        4,
+        65,
+        66,
+        64
       ],
       "duplicatePageGroups": [
         [
-          6,
-          8
+          26,
+          24
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        8,
+        26,
+        30,
+        48,
+        54
       ],
       "allowedAlternativePageNumbers": [
-        8
+        24
       ]
     },
     {
       "caseId": "AIR-V2-091",
       "bookId": 91,
-      "purpose": "하루를 작게 나누는 기술에서 하루의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "선택, 환경, 목표, 기록 각각을 차례로 점검해 설명이 흔들리는 지점을 찾고 싶다.",
       "owned": false,
       "maxAdditionalInk": 15,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "하루를 작게 나누는 기술 - 하루의 핵심 원리"
+        "우선순위, 첫 행동 설계의 중심 판단"
       ],
       "helpfulConcepts": [
-        "하루를 작게 나누는 기술 - 하루의 배경"
+        "시간 블록의 적용 사례"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 8,
+          "afterPageNumber": 24
         },
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
+          "beforePageNumber": 24,
+          "afterPageNumber": 27
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 27,
+          "afterPageNumber": 43
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 43,
+          "afterPageNumber": 48
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        58
+        3,
+        4,
+        57,
+        58,
+        56
       ],
       "duplicatePageGroups": [
         [
-          6,
-          8
+          24,
+          22
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        8,
+        24,
+        27,
+        43,
+        48
       ],
       "allowedAlternativePageNumbers": [
-        8
+        22
       ]
     },
     {
       "caseId": "AIR-V2-092",
       "bookId": 92,
-      "purpose": "미루는 마음과 협상하기에서 미루는 마음의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "주의, 기록, 회복, 흔들리는 날 각각을 차례로 점검해 설명이 흔들리는 지점을 찾고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "QUICK",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "미루는 마음과 협상하기 - 미루는 마음의 핵심 원리"
+        "첫 행동, 첫 행동 설계의 구체 장면"
       ],
       "helpfulConcepts": [
-        "미루는 마음과 협상하기 - 미루는 마음의 배경"
+        "미루는 마음의 장 결론"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 9,
+          "afterPageNumber": 26
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 26,
+          "afterPageNumber": 30
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 30,
+          "afterPageNumber": 47
+        },
+        {
+          "beforePageNumber": 47,
+          "afterPageNumber": 52
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        62
+        3,
+        4,
+        61,
+        62,
+        60
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          26,
+          24
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        9,
+        26,
+        30,
+        47,
+        52
       ],
       "allowedAlternativePageNumbers": [
-        7
+        24
       ]
     },
     {
       "caseId": "AIR-V2-093",
       "bookId": 93,
-      "purpose": "집중을 위한 빈칸 만들기에서 집중의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "시간, 주의, 환경을 바꾸기, 선택 가운데 결과를 가르는 단서를 골라 읽는 흐름이 필요하다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "BALANCED",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "집중을 위한 빈칸 만들기 - 집중의 핵심 원리"
+        "회복, 반복의 리듬 사이의 어긋남"
       ],
       "helpfulConcepts": [
-        "집중을 위한 빈칸 만들기 - 집중의 배경"
+        "집중의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 10,
+          "afterPageNumber": 16
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 16,
+          "afterPageNumber": 32
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 32,
+          "afterPageNumber": 50
+        },
+        {
+          "beforePageNumber": 50,
+          "afterPageNumber": 56
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        66
+        3,
+        4,
+        65,
+        66,
+        64
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          16,
+          14
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        10,
+        16,
+        32,
+        50,
+        56
       ],
       "allowedAlternativePageNumbers": [
-        7
+        14
       ]
     },
     {
       "caseId": "AIR-V2-094",
       "bookId": 94,
-      "purpose": "기록이 습관이 되는 순간에서 기록의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "주의, 선택, 한 줄, 환경을 바꾸기 사이를 비교해 처음의 판단을 고쳐 가는 방식을 알고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "DEEP",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "기록이 습관이 되는 순간 - 기록의 핵심 원리"
+        "기록, 흔들리는 날의 종합 결론"
       ],
       "helpfulConcepts": [
-        "기록이 습관이 되는 순간 - 기록의 배경"
+        "한 줄의 관련 맥락"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 9,
+          "afterPageNumber": 13
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 13,
+          "afterPageNumber": 27
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 27,
+          "afterPageNumber": 41
+        },
+        {
+          "beforePageNumber": 41,
+          "afterPageNumber": 46
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        54
+        3,
+        4,
+        53,
+        54,
+        52
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          13,
+          15
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        9,
+        13,
+        27,
+        41,
+        46
       ],
       "allowedAlternativePageNumbers": [
-        7
+        15
       ]
     },
     {
       "caseId": "AIR-V2-095",
       "bookId": 95,
-      "purpose": "완벽하지 않은 시작의 힘에서 불완전한 시작의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "기록, 반복, 용기, 반복의 리듬 가운데 결과를 가르는 단서를 골라 읽는 흐름이 필요하다.",
       "owned": false,
       "maxAdditionalInk": 0,
       "depth": null,
       "activeRentalPageNumbers": [
-        5,
-        6,
-        7,
-        8
+        8,
+        14,
+        27,
+        32,
+        47
       ],
       "requiredConcepts": [
-        "완벽하지 않은 시작의 힘 - 불완전한 시작의 핵심 원리"
+        "불완전한 시작, 현재를 관찰하기의 사전 맥락"
       ],
       "helpfulConcepts": [
-        "완벽하지 않은 시작의 힘 - 불완전한 시작의 배경"
+        "수정의 장 결론"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 8,
+          "afterPageNumber": 14
         },
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 7
+          "beforePageNumber": 14,
+          "afterPageNumber": 27
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 27,
+          "afterPageNumber": 32
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 32,
+          "afterPageNumber": 47
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        54
+        3,
+        4,
+        53,
+        54,
+        52
       ],
       "duplicatePageGroups": [
         [
-          6,
-          8
+          14,
+          12
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        8,
+        14,
+        27,
+        32,
+        47
       ],
       "allowedAlternativePageNumbers": [
-        8
+        12
       ]
     },
     {
       "caseId": "AIR-V2-096",
       "bookId": 96,
-      "purpose": "질문으로 여는 회의에서 질문의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "시간, 경청, 첫 행동 설계, 행동 사이의 영향이 달라질 때 같은 설명을 계속 써도 되는지 따져 보고 싶다.",
       "owned": false,
       "maxAdditionalInk": 5,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "질문으로 여는 회의 - 질문의 핵심 원리"
+        "회의, 목표를 작게 만들기의 중심 판단"
       ],
       "helpfulConcepts": [
-        "질문으로 여는 회의 - 질문의 배경"
+        "회의의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 11,
+          "afterPageNumber": 16
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 16,
+          "afterPageNumber": 31
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 8
+          "beforePageNumber": 31,
+          "afterPageNumber": 37
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 37,
+          "afterPageNumber": 53
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        60
+        3,
+        4,
+        59,
+        60,
+        58
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          16,
+          14
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        11,
+        16,
+        31,
+        37,
+        53
       ],
       "allowedAlternativePageNumbers": [
-        7
+        14
       ]
     },
     {
       "caseId": "AIR-V2-097",
       "bookId": 97,
-      "purpose": "일주일을 돌아보는 열 문장에서 일주일의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "피드백, 목표, 기록, 시간 각각을 살핀 뒤 서로 영향을 주는 지점을 연결해 보고 싶다.",
       "owned": false,
       "maxAdditionalInk": 10,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "일주일을 돌아보는 열 문장 - 일주일의 핵심 원리"
+        "사실, 첫 행동 설계의 구체 장면"
       ],
       "helpfulConcepts": [
-        "일주일을 돌아보는 열 문장 - 일주일의 배경"
+        "열 문장의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 11,
+          "afterPageNumber": 16
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 16,
+          "afterPageNumber": 31
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 8
+          "beforePageNumber": 31,
+          "afterPageNumber": 36
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 36,
+          "afterPageNumber": 52
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        59
+        3,
+        4,
+        58,
+        59,
+        57
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          16,
+          14
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        11,
+        16,
+        31,
+        36,
+        52
       ],
       "allowedAlternativePageNumbers": [
-        7
+        14
       ]
     },
     {
       "caseId": "AIR-V2-098",
       "bookId": 98,
-      "purpose": "배운 것을 설명하는 연습에서 설명의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "시간, 선택, 예시, 첫 행동 설계 항목을 나란히 놓고 결론을 서두르지 않는 읽기 경로를 만들고 싶다.",
       "owned": false,
       "maxAdditionalInk": 15,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "배운 것을 설명하는 연습 - 설명의 핵심 원리"
+        "확인 질문, 반복의 리듬 사이의 어긋남"
       ],
       "helpfulConcepts": [
-        "배운 것을 설명하는 연습 - 설명의 배경"
+        "자기 말의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 11,
+          "afterPageNumber": 16
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 16,
+          "afterPageNumber": 30
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 8
+          "beforePageNumber": 30,
+          "afterPageNumber": 35
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 35,
+          "afterPageNumber": 52
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        58
+        3,
+        4,
+        57,
+        58,
+        56
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          16,
+          14
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        11,
+        16,
+        30,
+        35,
+        52
       ],
       "allowedAlternativePageNumbers": [
-        7
+        14
       ]
     },
     {
       "caseId": "AIR-V2-099",
       "bookId": 99,
-      "purpose": "작은 목표의 측정법에서 작은 목표의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "반복, 시간, 진행률, 첫 행동 설계 사이의 움직임을 비교하면서 어느 단서부터 살펴야 하는지 알고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "QUICK",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "작은 목표의 측정법 - 작은 목표의 핵심 원리"
+        "측정, 기록과 피드백의 종합 결론"
       ],
       "helpfulConcepts": [
-        "작은 목표의 측정법 - 작은 목표의 배경"
+        "진행률의 핵심 원리"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 11,
+          "afterPageNumber": 18
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 18,
+          "afterPageNumber": 33
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 8
+          "beforePageNumber": 33,
+          "afterPageNumber": 39
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 39,
+          "afterPageNumber": 55
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        61
+        3,
+        4,
+        60,
+        61,
+        59
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          18,
+          16
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        11,
+        18,
+        33,
+        39,
+        55
       ],
       "allowedAlternativePageNumbers": [
-        7
+        16
       ]
     },
     {
       "caseId": "AIR-V2-100",
       "bookId": 100,
-      "purpose": "다음 달의 나에게 보내는 계획에서 다음 달의 핵심 원리와 관련 맥락을 순서대로 이해하고 싶다.",
+      "purpose": "반복, 목표, 우선순위, 첫 행동 설계 사이의 움직임을 비교하면서 어느 단서부터 살펴야 하는지 알고 싶다.",
       "owned": true,
       "maxAdditionalInk": null,
       "depth": "BALANCED",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
-        "다음 달의 나에게 보내는 계획 - 다음 달의 핵심 원리"
+        "다음 달, 현재를 관찰하기의 사전 맥락"
       ],
       "helpfulConcepts": [
-        "다음 달의 나에게 보내는 계획 - 다음 달의 배경"
+        "계획의 적용 사례"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 5,
-          "afterPageNumber": 6
+          "beforePageNumber": 11,
+          "afterPageNumber": 16
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 7
+          "beforePageNumber": 16,
+          "afterPageNumber": 30
         },
         {
-          "beforePageNumber": 6,
-          "afterPageNumber": 8
+          "beforePageNumber": 30,
+          "afterPageNumber": 35
         },
         {
-          "beforePageNumber": 7,
-          "afterPageNumber": 8
+          "beforePageNumber": 35,
+          "afterPageNumber": 50
         }
       ],
       "irrelevantPageNumbers": [
+        1,
         2,
-        55
+        3,
+        4,
+        54,
+        55,
+        53
       ],
       "duplicatePageGroups": [
         [
-          6,
-          7
+          16,
+          14
         ]
       ],
       "referencePageNumbers": [
-        5,
-        6,
-        7,
-        8
+        11,
+        16,
+        30,
+        35,
+        50
       ],
       "allowedAlternativePageNumbers": [
-        7
+        14
       ]
     }
   ]
