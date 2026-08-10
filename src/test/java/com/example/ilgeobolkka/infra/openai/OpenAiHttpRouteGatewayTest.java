@@ -323,6 +323,21 @@ class OpenAiHttpRouteGatewayTest {
     }
 
     @Test
+    void 공급자_응답_envelope의_중복_키는_malformed_response로_거부한다() {
+        String providerBody = "{\"status\":\"completed\",\"output\":[{\"type\":\"message\","
+                + "\"content\":[{\"type\":\"refusal\",\"type\":\"output_text\","
+                + "\"refusal\":\"거절\",\"text\":"
+                + objectMapper.writeValueAsString(validProposal())
+                + "}]}]}";
+        expectAnyRouteRequest()
+                .andRespond(withSuccess(providerBody, MediaType.APPLICATION_JSON));
+
+        assertFailure(() -> gateway.proposeRoute(routeInput()), Failure.MALFORMED_RESPONSE);
+
+        server.verify();
+    }
+
+    @Test
     void 공급자_5xx는_temporary로_분류하고_원문을_숨긴다(CapturedOutput output) {
         String providerBody = "민감한 분석 텍스트 " + API_KEY + " " + PROJECT_ID;
         expectAnyRouteRequest()

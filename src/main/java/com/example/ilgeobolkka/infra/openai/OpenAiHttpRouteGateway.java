@@ -48,7 +48,7 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
 
     private final RestClient restClient;
     private final ObjectMapper objectMapper;
-    private final ObjectReader proposalReader;
+    private final ObjectReader strictJsonReader;
     private final String prompt;
     private final JsonNode schema;
     private final String promptVersion;
@@ -59,7 +59,7 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
             ObjectMapper objectMapper) {
         this.restClient = Objects.requireNonNull(restClient);
         this.objectMapper = Objects.requireNonNull(objectMapper);
-        proposalReader = objectMapper.reader(DeserializationFeature.FAIL_ON_READING_DUP_TREE_KEY);
+        strictJsonReader = objectMapper.reader(DeserializationFeature.FAIL_ON_READING_DUP_TREE_KEY);
 
         byte[] promptBytes = readResourceBytes(PROMPT_RESOURCE);
         byte[] schemaBytes = readResourceBytes(SCHEMA_RESOURCE);
@@ -165,7 +165,7 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
 
     private JsonNode parseResponseBody(InputStream responseBody) {
         try {
-            return objectMapper.readTree(responseBody);
+            return strictJsonReader.readTree(responseBody);
         } catch (JacksonException exception) {
             throw new OpenAiRouteException(Failure.MALFORMED_RESPONSE);
         }
@@ -224,7 +224,7 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
     private ModelRouteProposal parseProposalText(String proposalText) {
         JsonNode proposal;
         try {
-            proposal = proposalReader.readTree(proposalText);
+            proposal = strictJsonReader.readTree(proposalText);
         } catch (JacksonException exception) {
             throw new OpenAiRouteException(Failure.MALFORMED_RESPONSE);
         }
