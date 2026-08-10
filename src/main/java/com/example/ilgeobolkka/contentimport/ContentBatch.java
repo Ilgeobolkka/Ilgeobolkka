@@ -3,10 +3,6 @@ package com.example.ilgeobolkka.contentimport;
 import com.example.ilgeobolkka.book.entity.BookPageContentType;
 import java.util.List;
 
-record ContentManifest(String contentVersion, List<ManifestBook> books) {}
-
-record ManifestBook(long bookId, String pdfPath, String pdfSha256, int totalPageCount) {}
-
 record ContentBatch(String contentVersion, String manifestSha256, List<ConvertedBook> books) {
 
     List<ConvertedPage> pages() {
