@@ -1,6 +1,9 @@
 package com.example.ilgeobolkka.contentimport;
 
 import com.example.ilgeobolkka.book.entity.BookPageContentType;
+import com.example.ilgeobolkka.contentimport.manifest.ContentManifest;
+import com.example.ilgeobolkka.contentimport.manifest.ContentManifestParser;
+import com.example.ilgeobolkka.contentimport.manifest.InitialContentManifest;
 import com.example.ilgeobolkka.global.config.ContentStorageProperties;
 import java.io.File;
 import java.io.IOException;
@@ -20,22 +23,21 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
-import tools.jackson.core.JacksonException;
 import tools.jackson.databind.ObjectMapper;
 
 @Component
 @Profile("content-import")
 class ContentBatchConverter {
 
+    // 초기 코퍼스(initial-v1) 전용 계약이다. 이후 버전은 이 제한을 풀지 않고 버전별 검증 경로를 추가한다.
     private static final int BOOK_COUNT = 100;
     private static final int PAGE_COUNT = 400;
-    // 초기 코퍼스(initial-v1) 전용 계약이다. 이후 버전은 이 제한을 풀지 않고 버전별 검증 경로를 추가한다.
-    private static final String INITIAL_CONTENT_VERSION = "initial-v1";
     private static final String POPPLER_VERSION = "26.05.0";
 
     private final Path manifestPath;
     private final Path outputRoot;
     private final ObjectMapper objectMapper;
+    private final ContentManifestParser manifestParser;
     private final PdfTool pdfTool;
 
     @Autowired
@@ -56,13 +58,14 @@ class ContentBatchConverter {
         this.manifestPath = manifestPath;
         this.outputRoot = outputRoot;
         this.objectMapper = objectMapper;
+        this.manifestParser = new ContentManifestParser(objectMapper);
         this.pdfTool = pdfTool;
     }
 
     ContentBatch convert() {
         byte[] manifestBytes = readBytes(manifestPath);
         String manifestSha256 = sha256(manifestBytes);
-        ContentManifest manifest = readManifest(manifestBytes);
+        InitialContentManifest manifest = readManifest(manifestBytes);
         validateManifest(manifest);
         List<ResolvedBook> books = resolveAndVerifyBooks(manifest);
 
@@ -107,34 +110,26 @@ class ContentBatchConverter {
         }
     }
 
-    private ContentManifest readManifest(byte[] manifestBytes) {
-        try {
-            return objectMapper.readValue(manifestBytes, ContentManifest.class);
-        } catch (JacksonException exception) {
-            throw new IllegalStateException("콘텐츠 manifest를 읽을 수 없습니다.", exception);
+    private InitialContentManifest readManifest(byte[] manifestBytes) {
+        ContentManifest manifest = manifestParser.parseManifest(manifestBytes);
+        if (manifest instanceof InitialContentManifest initialManifest) {
+            return initialManifest;
         }
+        throw new IllegalStateException(
+                "초기 코퍼스 이외 콘텐츠는 전체 사전 검증 연결 후 변환할 수 있습니다: "
+                        + manifest.contentVersion());
     }
 
-    private void validateManifest(ContentManifest manifest) {
-        if (manifest == null || !INITIAL_CONTENT_VERSION.equals(manifest.contentVersion())) {
-            throw new IllegalStateException(
-                    "초기 콘텐츠 manifest의 contentVersion은 initial-v1이어야 합니다.");
-        }
-        if (manifest.books() == null || manifest.books().size() != BOOK_COUNT) {
+    private void validateManifest(InitialContentManifest manifest) {
+        if (manifest.books().size() != BOOK_COUNT) {
             throw new IllegalStateException("콘텐츠 manifest에는 정확히 100권이 있어야 합니다.");
         }
 
-        Set<Long> ids = new HashSet<>();
         int totalPageCount = 0;
-        for (ManifestBook book : manifest.books()) {
-            if (book == null
-                    || book.bookId() < 1
+        for (InitialContentManifest.Book book : manifest.books()) {
+            if (book.bookId() < 1
                     || book.bookId() > BOOK_COUNT
-                    || !ids.add(book.bookId())
-                    || !expectedPdfPath(book.bookId()).equals(book.pdfPath())
-                    || book.pdfSha256() == null
-                    || !book.pdfSha256().matches("[0-9a-f]{64}")
-                    || book.totalPageCount() < 1) {
+                    || !expectedPdfPath(book.bookId()).equals(book.pdfPath())) {
                 throw new IllegalStateException("콘텐츠 manifest에 유효하지 않은 도서가 있습니다.");
             }
             totalPageCount += book.totalPageCount();
@@ -144,15 +139,15 @@ class ContentBatchConverter {
         }
     }
 
-    private List<ResolvedBook> resolveAndVerifyBooks(ContentManifest manifest) {
+    private List<ResolvedBook> resolveAndVerifyBooks(InitialContentManifest manifest) {
         Path manifestDirectory = manifestPath.toAbsolutePath().normalize().getParent();
         if (manifestDirectory == null) {
             throw new IllegalStateException("콘텐츠 manifest 상위 디렉터리를 확인할 수 없습니다.");
         }
 
         List<ResolvedBook> resolvedBooks = new ArrayList<>(BOOK_COUNT);
-        for (ManifestBook book : manifest.books().stream()
-                .sorted(Comparator.comparingLong(ManifestBook::bookId))
+        for (InitialContentManifest.Book book : manifest.books().stream()
+                .sorted(Comparator.comparingLong(InitialContentManifest.Book::bookId))
                 .toList()) {
             Path pdfPath = manifestDirectory.resolve(book.pdfPath()).normalize();
             if (!pdfPath.startsWith(manifestDirectory) || !Files.isRegularFile(pdfPath)) {
@@ -176,7 +171,7 @@ class ContentBatchConverter {
             throws IOException {
         List<ConvertedBook> convertedBooks = new ArrayList<>(BOOK_COUNT);
         for (ResolvedBook resolvedBook : books) {
-            ManifestBook book = resolvedBook.manifest();
+            InitialContentManifest.Book book = resolvedBook.manifest();
             Path bookStagingDirectory =
                     stagingDirectory.resolve("book-%03d".formatted(book.bookId()));
             Files.createDirectories(bookStagingDirectory);
@@ -394,7 +389,7 @@ class ContentBatchConverter {
         }
     }
 
-    private record ResolvedBook(ManifestBook manifest, Path pdfPath) {}
+    private record ResolvedBook(InitialContentManifest.Book manifest, Path pdfPath) {}
 
     private record PageKey(long bookId, int pageNumber) {}
 }
