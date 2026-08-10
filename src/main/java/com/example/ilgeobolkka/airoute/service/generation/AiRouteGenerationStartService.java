@@ -12,6 +12,7 @@ import java.time.ZoneOffset;
 import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,17 +52,49 @@ public class AiRouteGenerationStartService {
         }
         String requestFingerprint = AiRouteRequestFingerprint.of(command);
         Instant startedAt = clock.instant();
+        // 요청이 시작된 UTC 날짜로 계수한다. 뒤에 수렴 경로를 타더라도 다시 계산하지 않는다.
         LocalDate usageDate = LocalDate.ofInstant(startedAt, ZoneOffset.UTC);
 
-        return transactionTemplate.execute(
-                status ->
-                        startOnce(
-                                readerId,
-                                idempotencyKey,
-                                command,
-                                requestFingerprint,
-                                usageDate,
-                                startedAt));
+        try {
+            return transactionTemplate.execute(
+                    status ->
+                            startOnce(
+                                    readerId,
+                                    idempotencyKey,
+                                    command,
+                                    requestFingerprint,
+                                    usageDate,
+                                    startedAt));
+        } catch (DataIntegrityViolationException conflict) {
+            return convergeOnExisting(readerId, idempotencyKey, requestFingerprint, conflict);
+        }
+    }
+
+    /**
+     * 동시 요청이 {@code uk_ai_route_generation_reader_idempotency}를 먼저 차지했을 때 그 행으로 수렴한다.
+     * duplicate key 예외가 올라왔다는 것은 상대 transaction이 이미 commit 됐다는 뜻이므로 새 transaction의
+     * 재조회는 그 행을 본다. 같은 입력이면 저장된 상태를, 다른 입력이면 키 재사용을 돌려준다.
+     *
+     * <p>행이 없으면 unique key 경합이 아니라 다른 제약 위반이다. 도서 외래 키처럼 다시 읽어도 달라지지
+     * 않는 오류를 성공으로 둔갑시키지 않도록 원래 예외를 그대로 올린다.
+     */
+    private GenerationStartResult convergeOnExisting(
+            long readerId,
+            UUID idempotencyKey,
+            String requestFingerprint,
+            DataIntegrityViolationException conflict) {
+        GenerationStartResult converged =
+                transactionTemplate.execute(
+                        status ->
+                                findExistingForUpdate(readerId, idempotencyKey)
+                                        .map(
+                                                generation ->
+                                                        resultOf(generation, requestFingerprint))
+                                        .orElse(null));
+        if (converged == null) {
+            throw conflict;
+        }
+        return converged;
     }
 
     private GenerationStartResult startOnce(
@@ -71,19 +104,16 @@ public class AiRouteGenerationStartService {
             String requestFingerprint,
             LocalDate usageDate,
             Instant startedAt) {
-        // 잠금 순서를 사용량 → 생성으로 고정한다. 반대로 잡으면 같은 독자의 동시 요청이 아직 없는
-        // 생성 행에 gap lock을 쥔 채로 사용량 행을 기다리다 서로 교착한다. 이 순서에서는 같은 독자의
-        // 시작 요청이 사용량 행 하나로 줄을 서므로 unique key 경합 자체가 생기지 않는다.
-        AiRouteDailyUsage usage = lockDailyUsage(readerId, usageDate);
-
-        Optional<AiRouteGeneration> existing =
-                generationRepository.findByReaderIdAndIdempotencyKeyForUpdate(
-                        readerId, idempotencyKey);
+        Optional<AiRouteGeneration> existing = findExistingForUpdate(readerId, idempotencyKey);
         if (existing.isPresent()) {
             // 이미 있는 요청은 성공이든 실패든 횟수를 다시 쓰지 않는다.
             return resultOf(existing.get(), requestFingerprint);
         }
 
+        // 잠금 순서는 사용량 행 → 생성 행 insert 다. 같은 독자의 동시 요청은 대개 사용량 행 하나에
+        // 줄을 서지만, UTC 자정을 사이에 둔 두 요청은 서로 다른 사용량 행을 잠그므로 줄이 서지 않는다.
+        // 그렇게 겹친 insert는 unique key 경합이 되고, start()가 기존 행 재조회로 수렴시킨다.
+        AiRouteDailyUsage usage = lockDailyUsage(readerId, usageDate);
         if (usage.getGenerationCount() >= DAILY_GENERATION_LIMIT) {
             return GenerationStartResult.dailyLimitExceeded();
         }
@@ -101,6 +131,22 @@ public class AiRouteGenerationStartService {
                         command,
                         startedAt));
         return GenerationStartResult.created(generationId);
+    }
+
+    /**
+     * 있을 때만 잠근다. 없는 행에 바로 잠금을 걸면 InnoDB가 그 자리에 gap lock을 남겨, 그 gap 안에
+     * insert하려는 다른 독자의 동시 요청과 교착한다. 존재 확인은 엔티티를 적재하지 않는 조회여야
+     * 뒤따르는 잠금 조회가 잠근 뒤의 값을 읽는다.
+     *
+     * <p>두 조회 사이에 행이 사라지는 경우는 만료 정리뿐이다. 그때는 없는 것으로 보고 새 요청으로
+     * 처리하는 것이 맞다.
+     */
+    private Optional<AiRouteGeneration> findExistingForUpdate(long readerId, UUID idempotencyKey) {
+        if (!generationRepository.existsByReaderIdAndIdempotencyKey(readerId, idempotencyKey)) {
+            return Optional.empty();
+        }
+        return generationRepository.findByReaderIdAndIdempotencyKeyForUpdate(
+                readerId, idempotencyKey);
     }
 
     /**

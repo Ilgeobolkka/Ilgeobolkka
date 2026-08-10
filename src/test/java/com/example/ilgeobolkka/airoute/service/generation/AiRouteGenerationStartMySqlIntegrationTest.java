@@ -19,9 +19,11 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -57,8 +59,11 @@ class AiRouteGenerationStartMySqlIntegrationTest {
 
     private static final int LIMIT = AiRouteGenerationStartService.DAILY_GENERATION_LIMIT;
 
-    private static final long READER_ID = 458_001L;
-    private static final long OTHER_READER_ID = 458_002L;
+    /** 여러 독자가 빈 인덱스에 동시에 insert 하는 상황을 만들려고 넷을 쓴다. */
+    private static final List<Long> READER_IDS = List.of(458_001L, 458_002L, 458_003L, 458_004L);
+
+    private static final long READER_ID = READER_IDS.get(0);
+    private static final long OTHER_READER_ID = READER_IDS.get(1);
     private static final long BOOK_ID = 458_101L;
     private static final long MISSING_BOOK_ID = 458_999L;
     private static final String CONTENT_VERSION = "ai-route-v2";
@@ -101,8 +106,7 @@ class AiRouteGenerationStartMySqlIntegrationTest {
     @BeforeEach
     void setUp() {
         테스트_데이터를_정리한다();
-        독자를_생성한다(READER_ID, "scrum-458-reader-a@example.com");
-        독자를_생성한다(OTHER_READER_ID, "scrum-458-reader-b@example.com");
+        READER_IDS.forEach(this::독자를_생성한다);
         도서를_생성한다();
         clock.set(STARTED_AT);
     }
@@ -173,6 +177,29 @@ class AiRouteGenerationStartMySqlIntegrationTest {
                 () -> assertEquals(EXPIRES_AT, retried.expiresAt()),
                 () -> assertEquals(1, 생성_수를_조회한다(READER_ID)),
                 () -> assertEquals(1, 사용량을_조회한다(READER_ID, USAGE_DATE)));
+    }
+
+    /**
+     * 생성 인덱스가 비어 있을 때 여러 독자가 동시에 처음 insert 하는 상황이다. 존재를 확인하지 않고
+     * 없는 행에 바로 잠금을 걸면 각자 gap lock을 쥔 채 서로의 insert를 기다려 교착한다. 그때는 결과가
+     * 아니라 예외가 올라와 {@code future.get()} 에서 터진다.
+     */
+    @Test
+    void 여러_독자가_빈_테이블에서_동시에_시작해도_각자_한_건씩_만든다() throws Exception {
+        List<GenerationStartResult> results = 독자별로_동시에_시작한다(READER_IDS);
+
+        assertAll(
+                () -> assertEquals(READER_IDS.size(), 개수(results, Kind.NEW)),
+                () ->
+                        assertEquals(
+                                Collections.nCopies(READER_IDS.size(), 1),
+                                READER_IDS.stream().map(this::생성_수를_조회한다).toList()),
+                () ->
+                        assertEquals(
+                                Collections.nCopies(READER_IDS.size(), 1),
+                                READER_IDS.stream()
+                                        .map(readerId -> 사용량을_조회한다(readerId, USAGE_DATE))
+                                        .toList()));
     }
 
     @Test
@@ -308,19 +335,44 @@ class AiRouteGenerationStartMySqlIntegrationTest {
 
     private List<GenerationStartResult> 동시에_시작한다(long readerId, List<UUID> keys)
             throws Exception {
-        int count = keys.size();
+        return 동시에_실행한다(
+                keys.stream()
+                        .map(
+                                key ->
+                                        (Callable<GenerationStartResult>)
+                                                () -> startService.start(readerId, key, 명령(PURPOSE)))
+                        .toList());
+    }
+
+    private List<GenerationStartResult> 독자별로_동시에_시작한다(List<Long> readerIds) throws Exception {
+        return 동시에_실행한다(
+                readerIds.stream()
+                        .map(
+                                readerId ->
+                                        (Callable<GenerationStartResult>)
+                                                () ->
+                                                        startService.start(
+                                                                readerId,
+                                                                UUID.randomUUID(),
+                                                                명령(PURPOSE)))
+                        .toList());
+    }
+
+    private List<GenerationStartResult> 동시에_실행한다(List<Callable<GenerationStartResult>> calls)
+            throws Exception {
+        int count = calls.size();
         ExecutorService executor = Executors.newFixedThreadPool(count);
         CountDownLatch ready = new CountDownLatch(count);
         CountDownLatch start = new CountDownLatch(1);
         try {
             List<Future<GenerationStartResult>> futures = new ArrayList<>();
-            for (UUID key : keys) {
+            for (Callable<GenerationStartResult> call : calls) {
                 futures.add(
                         executor.submit(
                                 () -> {
                                     ready.countDown();
                                     assertTrue(start.await(5, TimeUnit.SECONDS));
-                                    return startService.start(readerId, key, 명령(PURPOSE));
+                                    return call.call();
                                 }));
             }
 
@@ -358,14 +410,14 @@ class AiRouteGenerationStartMySqlIntegrationTest {
                 });
     }
 
-    private void 독자를_생성한다(long readerId, String email) {
+    private void 독자를_생성한다(long readerId) {
         jdbcTemplate.update(
                 """
                 INSERT INTO reader (id, email, password_hash, created_at)
                 VALUES (?, ?, 'hash', '2026-08-06 00:00:00.000000')
                 """,
                 readerId,
-                email);
+                "scrum-458-reader-" + readerId + "@example.com");
     }
 
     private void 도서를_생성한다() {
@@ -421,16 +473,14 @@ class AiRouteGenerationStartMySqlIntegrationTest {
     }
 
     private void 테스트_데이터를_정리한다() {
-        jdbcTemplate.update(
-                "DELETE FROM ai_route_generation WHERE reader_id IN (?, ?)",
-                READER_ID,
-                OTHER_READER_ID);
-        jdbcTemplate.update(
-                "DELETE FROM ai_route_daily_usage WHERE reader_id IN (?, ?)",
-                READER_ID,
-                OTHER_READER_ID);
+        for (long readerId : READER_IDS) {
+            jdbcTemplate.update("DELETE FROM ai_route_generation WHERE reader_id = ?", readerId);
+            jdbcTemplate.update("DELETE FROM ai_route_daily_usage WHERE reader_id = ?", readerId);
+        }
         jdbcTemplate.update("DELETE FROM book WHERE id = ?", BOOK_ID);
-        jdbcTemplate.update("DELETE FROM reader WHERE id IN (?, ?)", READER_ID, OTHER_READER_ID);
+        for (long readerId : READER_IDS) {
+            jdbcTemplate.update("DELETE FROM reader WHERE id = ?", readerId);
+        }
     }
 
     @TestConfiguration(proxyBeanMethods = false)
