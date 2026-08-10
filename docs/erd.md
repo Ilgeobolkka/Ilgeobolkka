@@ -365,9 +365,16 @@ erDiagram
 | `embedding_dimensions` | `INT` | 예 | 페이지 임베딩 차원 |
 | `embedding_json` | `JSON` | 예 | 고정 차원의 실수 배열 |
 | `duplicate_group_keys` | `JSON` | 예 | 의미상 중복 그룹 키 문자열 배열, 고유 페이지는 빈 배열 |
+| `ai_route_candidate` | `TINYINT(1)` | 아니오 | 이 페이지를 AI 경로 후보로 쓰는가, 기본값 `0` |
 
-AI 경로 지원 도서의 모든 페이지는 위 일곱 필드를 가져야 하고 `estimated_reading_seconds`와
-`embedding_dimensions`는 0보다 커야 합니다. 미지원 도서는 일곱 필드를 모두 `NULL`로 둘 수 있습니다.
+`ai_route_candidate`는 `NOT NULL`이며 기본값 `0`입니다. AI 경로 지원 도서에서 실제로 후보로 쓰는
+페이지만 `1`이고, 목차처럼 본문 설명이 없는 구조 페이지와 미지원 도서의 모든 페이지는 `0`입니다.
+후보 검색은 이 값이 `1`인 페이지만 대상으로 삼은 뒤 그 안에서 벡터 유효성을 검증합니다. 벡터가
+있는 페이지만 고르는 방식으로 대신하지 않습니다.
+
+`ai_route_candidate=1`인 페이지는 위 일곱 필드를 모두 가져야 하고 `estimated_reading_seconds`와
+`embedding_dimensions`는 0보다 커야 합니다. `ai_route_candidate=0`인 페이지는 임베딩 세 필드를
+`NULL`로 두고, 미지원 도서는 일곱 필드를 모두 `NULL`로 둘 수 있습니다.
 분석 텍스트·임베딩·중복 그룹은 공개 API에 반환하지 않습니다.
 generation·저장 route 항목이 페이지의 도서를 복합 FK로 확인할 수 있도록
 `(id, book_id)` 고유키를 추가합니다.

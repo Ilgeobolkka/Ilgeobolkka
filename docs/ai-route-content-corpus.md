@@ -44,21 +44,40 @@
 | --- | --- |
 | 최상위 | `contentVersion`, `dataPolicyVersion`, `embeddingModel`, `embeddingDimensions`, `books[]` |
 | `books[]` | `bookId`, `pdfPath`, `pdfSha256`, `totalPageCount`, `aiRouteCandidate`, `aiExternalTransferAllowed`, `pages[]` |
-| `aiRouteCandidate=true`인 `books[].pages[]` | `pageNumber`, `chapter`, `section`, `primaryConcepts[]`, `secondaryConcepts[]`, `contentRole`, `aiAnalysisText`, `aiAnalysisInputSha256`, `aiPublicGuideTopic`, `estimatedReadingSeconds`, `prerequisitePageNumbers[]`, `duplicateGroupKeys[]` |
+| `aiRouteCandidate=true`인 `books[].pages[]` | `pageNumber`, `chapter`, `section`, `primaryConcepts[]`, `secondaryConcepts[]`, `contentRole`, `aiRouteCandidatePage`, `aiAnalysisText`, `aiAnalysisInputSha256`, `aiPublicGuideTopic`, `estimatedReadingSeconds`, `prerequisitePageNumbers[]`, `duplicateGroupKeys[]` |
 
 재제작한 비소설 90권은 `aiRouteCandidate=true`이고 모든 페이지 메타데이터를 가지며, 소설 10권은
 `aiRouteCandidate=false`와 빈 `pages[]`를 사용합니다. 지원 후보의 `primaryConcepts[]`는 하나 이상이고 나머지
 목록 필드는 항목이 없으면 빈 배열을 사용합니다.
 
-`contentRole`은 `PREREQUISITE`, `CORE`, `EXAMPLE`, `COUNTERPOINT`, `CONCLUSION` 중 하나인 콘텐츠 제작·평가용
-분류이며 생성 결과의 경로별 `role` 정답으로 사용하지 않습니다. `chapter`, `section`, `primaryConcepts`,
-`secondaryConcepts`, `contentRole`, `aiAnalysisInputSha256`, `aiRouteCandidate`는 manifest에서 제작 완전성과
-평가 연결을 검증하는 비영속 메타데이터입니다. 런타임 후보 생성 입력이나 공개 API에 포함하지 않습니다.
+`contentRole`은 `PREREQUISITE`, `CORE`, `EXAMPLE`, `COUNTERPOINT`, `CONCLUSION`, `FRONT_MATTER` 중 하나인
+콘텐츠 제작·평가용 분류이며 생성 결과의 경로별 `role` 정답으로 사용하지 않습니다.
+
+`FRONT_MATTER`는 목차처럼 본문 설명을 담지 않는 구조 페이지를 위한 값입니다. 도서 제작 기준이 요구하는
+핵심 개념·선수 개념·적용 사례·반례·결론 역할의 존재 여부를 셀 때 `FRONT_MATTER` 페이지는 세지 않습니다.
+구조 페이지도 페이지 번호의 연속성과 전체 페이지 수에는 포함하며, 다른 페이지의 선수 관계 대상으로
+지정하지 않습니다.
+
+`aiRouteCandidatePage`는 도서 단위 `aiRouteCandidate`와 달리 페이지 하나를 후보 집합에 넣을지 정하는
+값입니다. 지원 도서 안에서도 구조 페이지는 후보가 아니므로 `contentRole=FRONT_MATTER`인 페이지는 항상
+`false`여야 하고, 나머지 역할의 페이지는 `true`여야 합니다. `false`인 페이지는 다른 페이지의
+`prerequisitePageNumbers`나 평가 데이터의 `referencePageNumbers`·`allowedAlternativePageNumbers`에 나올 수
+없습니다. 도달할 수 없는 선수 관계와 정답을 적재 전에 막기 위한 제약입니다.
+
+`false`인 페이지에는 Embeddings API를 호출하지 않고 임베딩 모델·차원·벡터를 비웁니다. 후보 검색은 이
+값이 `true`인 페이지만 고른 뒤 그 집합 안에서 벡터 유효성을 검증하며, 벡터가 있는 페이지만 고르는
+방식으로 대신하지 않습니다. 임베딩이 누락된 페이지를 조용히 건너뛰지 않고 실패로 드러내기 위해서입니다.
+
+`chapter`, `section`, `primaryConcepts`, `secondaryConcepts`, `contentRole`, `aiAnalysisInputSha256`,
+도서 단위 `aiRouteCandidate`는 manifest에서 제작 완전성과 평가 연결을 검증하는 비영속 메타데이터입니다.
+런타임 후보 생성 입력이나 공개 API에 포함하지 않습니다. 이름이 비슷한 페이지 단위
+`aiRouteCandidatePage`는 여기 해당하지 않으며 `book_page`에 저장하는 영속 값입니다.
 
 적재 시 `contentVersion`, `dataPolicyVersion`, `aiExternalTransferAllowed`는 `book`의 대응 필드로,
-`aiAnalysisText`, `aiPublicGuideTopic`, `estimatedReadingSeconds`, 임베딩 모델·차원·벡터와
-`duplicateGroupKeys`는 `book_page`의 대응 필드로 저장합니다. `prerequisitePageNumbers`는 현재 페이지를 의존
-페이지로 하는 `ai_route_prerequisite` 행으로 저장합니다. 구체적인 물리 필드는
+`aiRouteCandidatePage`, `aiAnalysisText`, `aiPublicGuideTopic`, `estimatedReadingSeconds`, 임베딩
+모델·차원·벡터와 `duplicateGroupKeys`는 `book_page`의 대응 필드로 저장합니다.
+`prerequisitePageNumbers`는 현재 페이지를 의존 페이지로 하는 `ai_route_prerequisite` 행으로
+저장합니다. 구체적인 물리 필드는
 [ERD의 AI 잉크 경로 목표 모델](./erd.md#ai-잉크-경로-2차-mvp-목표-모델-구현-전)을 따릅니다.
 
 manifest는 AI 경로 지원 후보를 정의할 뿐 `ai_route_supported=true`를 선언하지 않습니다. 적재 직후에는
