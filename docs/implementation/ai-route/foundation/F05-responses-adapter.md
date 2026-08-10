@@ -38,7 +38,8 @@
 ## 수정 허용 파일
 
 - 새 `infra/openai` route 전용 Gateway·adapter·DTO·prompt/schema resource
-- F03 공통 설정 파일과 F04 embedding 파일은 수정하지 않음
+- F03의 `openAiRestClient`를 주입받아 사용하고 공통 설정 파일과 F04 embedding 파일은 수정하지 않음
+- `RestClient.builder()` 등으로 별도 client를 생성해 F03 검증·인증 설정을 우회하지 않음
 - 새 `OpenAiHttpRouteGatewayTest`
 
 ## 구현 조건

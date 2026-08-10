@@ -21,7 +21,7 @@
 
 ## 현재 구현 기준선
 
-- `infra.openai` 패키지와 OpenAI HTTP client가 없습니다.
+- F03이 공통 `openAiRestClient`와 OpenAI 설정 Properties를 제공하고 Embeddings adapter는 아직 없습니다.
 - 기존 외부 Gateway 경계는
   [PortOnePaymentGateway](../../../../src/main/java/com/example/ilgeobolkka/infra/portone/PortOnePaymentGateway.java)와
   [PortOneSdkPaymentGateway](../../../../src/main/java/com/example/ilgeobolkka/infra/portone/PortOneSdkPaymentGateway.java)를
@@ -38,7 +38,8 @@
 ## 수정 허용 파일
 
 - 새 `infra/openai` embedding 전용 파일
-- F03의 공통 HTTP Bean 설정은 호출만 하며 수정하지 않음
+- F03의 `openAiRestClient`를 주입받아 사용하고 공통 HTTP Bean 설정은 수정하지 않음
+- `RestClient.builder()` 등으로 별도 client를 생성해 F03 검증·인증 설정을 우회하지 않음
 - 새 `OpenAiHttpEmbeddingGatewayTest`
 
 ## 구현 조건

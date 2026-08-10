@@ -111,8 +111,7 @@ S04·S05와 W02 사이에는 문서 계약뿐 아니라 컴파일 가능한 산�
 | --- | --- | --- |
 | Flyway migration | F01 | 후속 작업은 기존 migration을 수정하지 않음 |
 | `Book`, `BookPage`, AI Entity·Repository | F02 | 후속 작업은 매핑을 바꾸지 않고, leaf에 명시된 전용 Repository 조회만 추가 |
-| `application*.yaml`, `.env.example`, OpenAI 조건부 설정 | F03 | F04·F05는 설정 필드 추가 금지 |
-| `infra/openai` 공통 HTTP 설정 | F04 | F05는 route adapter 전용 파일만 추가 |
+| `application*.yaml`, `.env.example`, OpenAI 조건부 설정·공통 HTTP Bean | F03 | F04·F05는 설정 필드를 추가하거나 별도 HTTP client를 생성하지 않고 F03 Bean을 주입받아 사용 |
 | `contentimport` | C01~C04 담당 A | 다른 담당자는 manifest 타입을 복제하지 않음 |
 | generation Facade | G07 | G08은 Facade 호출만 하고 orchestration 추가 금지 |
 | `ErrorCode`, `GlobalExceptionHandler`, `SecurityConfig` | G08 | 각 작업은 **자기가 실제로 반환하는 공개 오류 코드와 그 예외 매핑만** 추가하고, **이미 정의된 코드는 재사용하고 다시 추가하지 않습니다**(같은 코드를 여러 endpoint가 반환하면 먼저 진행하는 작업이 정의). 그 밖의 변경(다른 작업 코드·`SecurityConfig`·공통 구조)은 G08에 인계. 예: S01은 G08보다 앞 파동이므로 자기 endpoint의 `AI_ROUTE_ENTITLEMENT_CHANGED`·`AI_ROUTE_CONTENT_CHANGED`·`AI_ROUTE_GENERATION_CONSUMED`를 정의하고, 뒤따르는 G08은 그중 자기도 반환하는 코드를 재사용 |
