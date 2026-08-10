@@ -129,6 +129,40 @@ class OpenAiHttpRouteGatewayTest {
     }
 
     @Test
+    void 후보_밖의_선수_폐쇄도_prompt가_포함하도록_요구한다() throws Exception {
+        RouteInput input = new RouteInput(
+                "트랜잭션 격리 수준을 이해한다",
+                List.of(new CandidatePage(12, "격리 수준별 동시성 문제 비교")),
+                List.of(new PrerequisiteEdge(7, 12)));
+        expectRouteRequest(json -> {
+                    assertRequestContract(json);
+                    assertThat(json.path("instructions").asString())
+                            .contains("후보 페이지와 prerequisiteEdges를 역방향으로 재귀 추적해 찾은 선수 페이지")
+                            .contains("역추적해 찾은 모든 선수 페이지를 포함");
+
+                    JsonNode payload = objectMapper.readTree(json.path("input").asString());
+                    assertThat(payload.path("candidates")).hasSize(1);
+                    assertThat(payload.path("candidates").get(0).path("pageNumber").asInt())
+                            .isEqualTo(12);
+                    assertThat(payload.path("prerequisiteEdges").get(0)
+                                    .path("prerequisitePageNumber").asInt())
+                            .isEqualTo(7);
+                    assertThat(payload.path("prerequisiteEdges").get(0)
+                                    .path("dependentPageNumber").asInt())
+                            .isEqualTo(12);
+                })
+                .andRespond(withSuccess(
+                        completedResponse(validProposal()), MediaType.APPLICATION_JSON));
+
+        RouteGatewayResult result = gateway.proposeRoute(input);
+
+        assertThat(result.proposal().items()).containsExactly(
+                new ModelRouteItem(7, Relevance.MEDIUM, true, Role.PREREQUISITE),
+                new ModelRouteItem(12, Relevance.HIGH, false, Role.CORE));
+        server.verify();
+    }
+
+    @Test
     void schema는_items와_각_item의_strict_계약을_모두_포함한다() {
         expectRouteRequest(this::assertRequestContract)
                 .andRespond(withSuccess(
