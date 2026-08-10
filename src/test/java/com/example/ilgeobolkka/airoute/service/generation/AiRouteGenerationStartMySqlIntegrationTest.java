@@ -180,6 +180,52 @@ class AiRouteGenerationStartMySqlIntegrationTest {
     }
 
     /**
+     * 다른 요청이 같은 {@code (readerId, idempotencyKey)} 를 아직 commit 하지 않은 채 쥐고 있는 동안
+     * 시작한다. 스냅샷 조회는 미확정 행을 보지 못하므로 이 요청은 insert 까지 밀고 갔다가 unique key 에
+     * 부딪힌다. 조건 6이 요구하는 것은 그때 500 이 아니라 기존 행으로 수렴하는 것이다.
+     *
+     * <p>수렴 분기를 탔는지 사전 조회에서 걸렀는지는 밖에서 구분할 수 없다. 두 분기가 같은 답을 내는
+     * 것이 이 설계의 목적이기 때문이다. 이 테스트가 증명하는 것은 경합을 실제로 만들어 두었을 때 계약이
+     * 지켜진다는 것이다.
+     */
+    @Test
+    void 다른_요청이_같은_키를_미확정으로_쥐고_있어도_그_행으로_수렴한다() throws Exception {
+        UUID key = UUID.randomUUID();
+        UUID 먼저_들어온_생성 = UUID.randomUUID();
+        CountDownLatch 미확정_삽입_완료 = new CountDownLatch(1);
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        try {
+            Future<?> 선행_요청 =
+                    executor.submit(
+                            () ->
+                                    transactionTemplate.executeWithoutResult(
+                                            status -> {
+                                                생성을_직접_넣는다(먼저_들어온_생성, key);
+                                                미확정_삽입_완료.countDown();
+                                                잠시_미확정으로_쥐고_있는다();
+                                            }));
+            Future<GenerationStartResult> 뒤따르는_요청 =
+                    executor.submit(
+                            () -> {
+                                assertTrue(미확정_삽입_완료.await(5, TimeUnit.SECONDS));
+                                return startService.start(READER_ID, key, 명령(PURPOSE));
+                            });
+
+            선행_요청.get(30, TimeUnit.SECONDS);
+            GenerationStartResult converged = 뒤따르는_요청.get(30, TimeUnit.SECONDS);
+
+            assertAll(
+                    () -> assertEquals(Kind.EXISTING_GENERATING, converged.kind()),
+                    () -> assertEquals(먼저_들어온_생성, converged.generationId()),
+                    () -> assertEquals(1, 생성_수를_조회한다(READER_ID)),
+                    () -> assertNull(사용량을_조회한다(READER_ID, USAGE_DATE)));
+        } finally {
+            executor.shutdownNow();
+            executor.awaitTermination(5, TimeUnit.SECONDS);
+        }
+    }
+
+    /**
      * 생성 인덱스가 비어 있을 때 여러 독자가 동시에 처음 insert 하는 상황이다. 존재를 확인하지 않고
      * 없는 행에 바로 잠금을 걸면 각자 gap lock을 쥔 채 서로의 insert를 기다려 교착한다. 그때는 결과가
      * 아니라 예외가 올라와 {@code future.get()} 에서 터진다.
@@ -408,6 +454,42 @@ class AiRouteGenerationStartMySqlIntegrationTest {
                             generationRepository.findById(generationId).orElseThrow();
                     generation.fail("AI_ROUTE_TEST_FAILURE", COMPLETED_AT, EXPIRES_AT);
                 });
+    }
+
+    /**
+     * 서비스를 거치지 않고 {@code GENERATING} 행을 넣는다. 호출자의 transaction 이 commit 하기 전까지
+     * 이 행은 다른 스냅샷 조회에 보이지 않으면서 unique key 는 이미 차지한 상태가 된다.
+     */
+    private void 생성을_직접_넣는다(UUID generationId, UUID idempotencyKey) {
+        jdbcTemplate.update(
+                """
+                INSERT INTO ai_route_generation
+                    (generation_id, reader_id, book_id, content_version, idempotency_key,
+                     request_fingerprint, normalized_purpose, request_type, max_additional_ink,
+                     status, created_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, 'INK_BUDGET', 5, 'GENERATING',
+                        '2026-08-06 23:59:59.123456')
+                """,
+                generationId.toString(),
+                READER_ID,
+                BOOK_ID,
+                CONTENT_VERSION,
+                idempotencyKey.toString(),
+                AiRouteRequestFingerprint.of(명령(PURPOSE)),
+                PURPOSE);
+    }
+
+    /**
+     * 뒤따르는 요청이 스냅샷 조회를 지나 insert 까지 도달하도록 미확정 상태를 잠깐 유지한다. 이 대기가
+     * 없으면 commit 이 먼저 끝나 애초에 경합이 만들어지지 않는다.
+     */
+    private static void 잠시_미확정으로_쥐고_있는다() {
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException interrupted) {
+            Thread.currentThread().interrupt();
+            throw new IllegalStateException("미확정 상태 유지가 중단됐습니다.", interrupted);
+        }
     }
 
     private void 독자를_생성한다(long readerId) {
