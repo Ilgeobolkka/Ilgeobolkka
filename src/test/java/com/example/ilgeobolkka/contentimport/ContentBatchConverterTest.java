@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.example.ilgeobolkka.book.entity.BookPageContentType;
+import com.example.ilgeobolkka.contentimport.manifest.InitialContentManifest;
 import com.example.ilgeobolkka.global.config.ContentStorageProperties;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -99,6 +100,24 @@ class ContentBatchConverterTest {
     }
 
     @Test
+    void 정상_AI_manifest는_전체_사전_검증_연결_전_변환을_거부한다() throws IOException {
+        Path manifestPath = createAiRouteManifest();
+        var pdfTool = new FakePdfTool();
+        var converter =
+                new ContentBatchConverter(
+                        manifestPath,
+                        tempDirectory.resolve("output"),
+                        objectMapper,
+                        pdfTool);
+
+        IllegalStateException exception =
+                assertThrows(IllegalStateException.class, converter::convert);
+
+        assertTrue(exception.getMessage().contains("전체 사전 검증 연결 후"));
+        assertEquals(0, pdfTool.extractCount);
+    }
+
+    @Test
     void 같은_manifest를_다시_변환하면_동일한_배치_디렉터리를_재사용한다()
             throws IOException {
         Path manifestPath = createManifest();
@@ -183,13 +202,13 @@ class ContentBatchConverterTest {
         Path pdfDirectory = fixtureDirectory.resolve("pdfs");
         Files.createDirectories(pdfDirectory);
 
-        List<ManifestBook> books = new ArrayList<>();
+        List<InitialContentManifest.Book> books = new ArrayList<>();
         for (long bookId = 1; bookId <= 100; bookId++) {
             String relativePath = "pdfs/book-%03d.pdf".formatted(bookId);
             byte[] content = "fake-pdf-%03d".formatted(bookId).getBytes();
             Files.write(fixtureDirectory.resolve(relativePath), content);
             books.add(
-                    new ManifestBook(
+                    new InitialContentManifest.Book(
                             bookId,
                             relativePath,
                             ContentBatchConverter.sha256(content),
@@ -201,7 +220,45 @@ class ContentBatchConverterTest {
                 .writerWithDefaultPrettyPrinter()
                 .writeValue(
                         manifestPath.toFile(),
-                        new ContentManifest(contentVersion, books));
+                        new InitialContentManifest(contentVersion, books));
+        return manifestPath;
+    }
+
+    private Path createAiRouteManifest() throws IOException {
+        Path manifestPath = tempDirectory.resolve("ai-route-v2/manifest.json");
+        Files.createDirectories(manifestPath.getParent());
+        Files.writeString(
+                manifestPath,
+                """
+                {
+                  "contentVersion": "ai-route-v2",
+                  "dataPolicyVersion": "OPENAI_DEFAULT_RETENTION_V1",
+                  "embeddingModel": "text-embedding-3-small",
+                  "embeddingDimensions": 1536,
+                  "books": [{
+                    "bookId": 1,
+                    "pdfPath": "pdfs/book-001.pdf",
+                    "pdfSha256": "%s",
+                    "totalPageCount": 1,
+                    "aiRouteCandidate": true,
+                    "aiExternalTransferAllowed": true,
+                    "pages": [{
+                      "pageNumber": 1,
+                      "chapter": "1장",
+                      "section": "1절",
+                      "primaryConcepts": ["핵심 개념"],
+                      "secondaryConcepts": [],
+                      "contentRole": "CORE",
+                      "aiAnalysisText": "분석 텍스트",
+                      "aiAnalysisInputSha256": "%s",
+                      "aiPublicGuideTopic": "공개 주제",
+                      "estimatedReadingSeconds": 60,
+                      "prerequisitePageNumbers": [],
+                      "duplicateGroupKeys": []
+                    }]
+                  }]
+                }
+                """.formatted("a".repeat(64), "b".repeat(64)));
         return manifestPath;
     }
 
