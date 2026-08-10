@@ -67,6 +67,90 @@
         38,
         41
       ]
+    },
+    {
+      "caseId": "case-book-041",
+      "bookId": 41,
+      "purpose": "작은 가게를 열려는데 여러 메뉴를 한 사람이 다 만드는 게 나을지, 한 가지에 집중하는 게 나을지 알고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 0,
+      "depth": null,
+      "activeRentalPageNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        10,
+        11,
+        12,
+        13,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "requiredConcepts": [
+        "분업",
+        "특화",
+        "비교우위"
+      ],
+      "helpfulConcepts": [
+        "절대우위",
+        "생산가능곡선"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 17
+        },
+        {
+          "beforePageNumber": 18,
+          "afterPageNumber": 20
+        }
+      ],
+      "irrelevantPageNumbers": [
+        1,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50
+      ],
+      "duplicatePageGroups": [
+        [
+          20,
+          52
+        ]
+      ],
+      "referencePageNumbers": [
+        4,
+        10,
+        12,
+        13,
+        17,
+        18,
+        20
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        11,
+        19,
+        21
+      ]
     }
   ]
 }
