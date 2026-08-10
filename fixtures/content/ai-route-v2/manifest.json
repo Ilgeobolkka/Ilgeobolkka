@@ -1051,6 +1051,974 @@
       ]
     },
     {
+      "bookId": 42,
+      "pdfPath": "pdfs/book-042.pdf",
+      "pdfSha256": "fac72db6a2a9cd81d7f2d4267b6cd25537336fcdf29a98d82a879c29a72bba79",
+      "totalPageCount": 49,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "이 도서의 장과 절 제목, 그리고 각 항목이 시작하는 페이지 번호를 나열한 목차 페이지다. 본문 설명이나 개념 서술을 담지 않으며 독자가 원하는 부분을 찾아가는 길잡이 역할만 한다.",
+          "aiAnalysisInputSha256": "8e730e4d4174ea86dd9ee6ab6c46771e63926d2d23f6d0b98edad4c93e1fb9b0",
+          "aiPublicGuideTopic": "책 전체의 장과 절 구성",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 거래에는 왜 비용이 드는가",
+          "section": "1.1 정보를 찾는 데 드는 비용",
+          "primaryConcepts": [
+            "거래비용"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "거래가 성립하기까지 드는 정보 탐색, 비교, 확인의 수고를 거래비용으로 정의하고, 가격표의 숫자가 거래 비용의 전부가 아님을 밝힌다. 거래비용이 클 때 거래 자체가 성립하지 않을 수 있다는 점을 제시하며 이 책이 다룰 신뢰 문제로 범위를 좁힌다.",
+          "aiAnalysisInputSha256": "c38705794f1b30803e240226dc6783a7464df60f07ab71dc5660b29a7a083a4c",
+          "aiPublicGuideTopic": "거래가 성립하기까지 드는 숨은 수고",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "trust-is-hidden-cost"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 거래에는 왜 비용이 드는가",
+          "section": "1.1 정보를 찾는 데 드는 비용",
+          "primaryConcepts": [
+            "거래비용"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정보 탐색 비용의 크기가 거래 범위와 습관적 거래 관계 형성에 영향을 미친다는 점을 설명한다. 정보를 안다는 것과 상대를 신뢰할 수 있다는 것이 별개의 문제임을 밝혀 다음 절로 연결한다.",
+          "aiAnalysisInputSha256": "0f84e5e80dbdddaf1c50c5a194b7e83d3ac58dca5638bed9368f415fe466f7c4",
+          "aiPublicGuideTopic": "정보 탐색 비용이 거래 방식에 미치는 영향",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 거래에는 왜 비용이 드는가",
+          "section": "1.2 상대를 확인하는 데 드는 비용",
+          "primaryConcepts": [
+            "거래비용"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "거래 상대의 신뢰성을 확인하는 데 드는 비용을 정보 탐색 비용과 구분해 제시한다. 확인 비용이 거래의 성립 여부를 결정할 수 있다는 점을 밝히며 이 비용을 줄이는 방법이 핵심 과제임을 예고한다.",
+          "aiAnalysisInputSha256": "e3bd77fdd1df16049fc49cde7405b1efa87a542b08f3622df518f15b04db36b2",
+          "aiPublicGuideTopic": "거래 상대를 확인할 때 드는 수고",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 거래에는 왜 비용이 드는가",
+          "section": "1.2 상대를 확인하는 데 드는 비용",
+          "primaryConcepts": [
+            "거래비용"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인 비용을 줄이는 대체 수단(소개, 인증)이 비용을 완전히 제거하지 않고 다른 형태로 이전시킨다는 점을 설명한다. 이 대체 수단에 대한 신뢰도 별도의 판단이 필요하다는 재귀적 성격을 밝힌다.",
+          "aiAnalysisInputSha256": "c3b10005e22109c2819929eacf273a927ed4f41aed758a923e64971cf4ee1943",
+          "aiPublicGuideTopic": "확인 비용을 줄이는 대체 수단들",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 거래에는 왜 비용이 드는가",
+          "section": "1.3 약속을 지키게 하는 데 드는 비용",
+          "primaryConcepts": [
+            "거래비용"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "약속 이행을 보장하는 데 드는 비용을 거래 이후 단계의 문제로 제시하고, 거래비용을 거래 전·중·후 세 단계로 종합 정리한다. 이 세 갈래 구조가 이후 신뢰와 관련된 여러 현상을 설명하는 틀이 됨을 밝힌다.",
+          "aiAnalysisInputSha256": "3af3ec25c251dfee3a153d1063c62847abfbcf8bb8ec376ac5d0427c55096d18",
+          "aiPublicGuideTopic": "약속의 이행을 보장하는 데 드는 비용",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 거래에는 왜 비용이 드는가",
+          "section": "1.3 약속을 지키게 하는 데 드는 비용",
+          "primaryConcepts": [
+            "거래비용"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "약속 이행 보장 비용이 즉시 거래를 선호하게 만드는 유인이 되지만, 장기간에 걸친 거래에서는 이 방식이 불가능하다는 점을 설명한다. 이후 장에서 다룰 평판·계약·감시가 모두 이 비용에 대한 서로 다른 해법이라는 점을 예고한다.",
+          "aiAnalysisInputSha256": "4b504179582ca5353d1d841e2da0bca96830f7aea96045bad26024f606a483be",
+          "aiPublicGuideTopic": "약속 이행 비용이 거래 방식에 미치는 영향",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 거래에는 왜 비용이 드는가",
+          "section": "1.4 거래비용 세 갈래 도표",
+          "primaryConcepts": [
+            "거래비용"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "거래비용이 거래 전(정보 탐색), 거래 중(상대 확인), 거래 후(약속 이행)의 세 단계에 걸쳐 순차적으로 발생하는 구조를 도표로 정리한다. 세 비용의 합이 거래 성립 여부를 가르는 기준이 된다는 1장의 결론을 시각적으로 요약한다.",
+          "aiAnalysisInputSha256": "91b4aaa8bb9b8d1ba6454aa7dccc1e0e895b7e7d33a9c1906d5fbde12edecc4a",
+          "aiPublicGuideTopic": "거래 전·중·후 세 단계에 걸친 거래비용의 구조",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 믿을 사람을 알아보는 법: 신호와 평판",
+          "section": "2.1 신뢰가 없으면 거래가 줄어드는 이유",
+          "primaryConcepts": [
+            "신뢰"
+          ],
+          "secondaryConcepts": [
+            "거래비용"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "신뢰 부족이 개인에게는 합리적인 조심스러움을 낳지만 사회 전체로는 성립 가능한 거래를 위축시키는 결과를 가져온다는 점을 설명한다. 신뢰 수준이 시장의 범위와 규모를 결정하는 경제적 요인임을 밝힌다.",
+          "aiAnalysisInputSha256": "52698573953e29a2dfd1b093b871662eb049d82c9a18b5c7bdbc6ee81a6d864a",
+          "aiPublicGuideTopic": "신뢰 부족이 거래를 축소시키는 경로",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 믿을 사람을 알아보는 법: 신호와 평판",
+          "section": "2.1 신뢰가 없으면 거래가 줄어드는 이유",
+          "primaryConcepts": [
+            "신뢰"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "신뢰 부족이 좋은 물건을 파는 판매자를 시장에서 이탈시켜 전체 품질을 낮추는 악순환을 설명한다. 이 문제가 정보 비대칭에서 비롯된 역선택과 유사한 구조를 가지며, 평판이 이를 끊는 해법이 될 수 있다는 점을 예고한다.",
+          "aiAnalysisInputSha256": "b5254b85c58d361ccf828d9d16b015eeee0fae2f0380f73f7c08efd22797a4ec",
+          "aiPublicGuideTopic": "신뢰 부족이 시장 전체의 품질을 낮추는 경로",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 믿을 사람을 알아보는 법: 신호와 평판",
+          "section": "2.2 평판이 신뢰를 대신하는 방식",
+          "primaryConcepts": [
+            "평판"
+          ],
+          "secondaryConcepts": [
+            "신뢰"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "평판을 다른 사람들의 거래 경험이 축적되어 개별 확인 비용을 대신하는 장치로 정의한다. 평판 제도가 실제로 기능하려면 그 정보가 실제 경험을 정확히 반영해야 한다는 전제 조건을 제시한다.",
+          "aiAnalysisInputSha256": "369e64ed7423c92b3bfc64896afedc02c8d7a9520643f9eeed012dfc428c8c05",
+          "aiPublicGuideTopic": "평판이 상대를 직접 알지 못해도 신뢰를 대신하는 원리",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 믿을 사람을 알아보는 법: 신호와 평판",
+          "section": "2.2 평판이 신뢰를 대신하는 방식",
+          "primaryConcepts": [
+            "평판"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "평판이 쌓이는 속도와 무너지는 속도의 비대칭성을 설명하고, 이 비대칭성이 평판 보유자에게 조심스러운 행동을 유도하는 유인으로 작동함을 밝힌다. 평판이 단순 정보를 넘어 자산으로 취급되는 이유를 제시한다.",
+          "aiAnalysisInputSha256": "7f5ba90564e303a60b12293e573314fcf1093c0e41751fc8eaff6a3a8e30939c",
+          "aiPublicGuideTopic": "평판이 지닌 정보로서의 특징",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 믿을 사람을 알아보는 법: 신호와 평판",
+          "section": "2.3 반복거래가 평판을 쌓는 원리",
+          "primaryConcepts": [
+            "평판"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복거래가 상대의 신뢰 이행 정보를 축적시켜 평판을 형성하는 메커니즘을 설명한다. 반복거래가 예상될 때 배신의 장기적 손실이 단기적 이득을 넘어서 신뢰 유지의 유인이 된다는 원리를 제시하며, 이는 5장에서 반복게임으로 정식화할 내용의 토대가 된다.",
+          "aiAnalysisInputSha256": "ffd02d49828a2dd6147cf29d6b0b7db905078e395f75f98359c47c88d852c397",
+          "aiPublicGuideTopic": "반복거래가 평판 형성에 기여하는 메커니즘",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 믿을 사람을 알아보는 법: 신호와 평판",
+          "section": "2.3 반복거래가 평판을 쌓는 원리",
+          "primaryConcepts": [
+            "평판"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "평판이 개인 차원을 넘어 지역·업종 단위의 집단 평판으로 확장되는 현상을 설명하고, 이것이 구성원 간 상호 감시의 유인을 만든다는 점을 밝힌다. 집단 평판이 책임 소재의 불명확성이라는 관리상의 어려움을 동반한다는 한계도 함께 제시한다.",
+          "aiAnalysisInputSha256": "d424e371de0f9edec115176f7ddeb81e8ed45bec49acaf75991e7a954f676ca1",
+          "aiPublicGuideTopic": "평판이 개인을 넘어 집단으로 확장되는 방식",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            13
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 믿을 사람을 알아보는 법: 신호와 평판",
+          "section": "2.4 사례: 단골 가게의 신뢰",
+          "primaryConcepts": [
+            "평판"
+          ],
+          "secondaryConcepts": [
+            "신뢰"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "가상의 정육점 사례를 통해 반복거래가 실제로 판매자의 신뢰 유지 유인과 구매자의 확인 비용 절감으로 이어지는 과정을 구체화한다. 이 관계가 강제된 규칙이 아니라 반복적 상호작용에서 자연스럽게 형성됨을 보인다.",
+          "aiAnalysisInputSha256": "500d37d1676f74a0d1837a8e6f175f92f684377cb085ee39ad4b9e2ce6d233b4",
+          "aiPublicGuideTopic": "단골 관계에서 평판이 실제로 작동하는 방식을 보이는 사례",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            13
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 믿을 사람을 알아보는 법: 신호와 평판",
+          "section": "2.4 사례: 단골 가게의 신뢰",
+          "primaryConcepts": [
+            "평판"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기존 평판을 가진 판매자와 신규 진입자 사이의 비대칭을 보여 주며, 평판이 신뢰를 보호하는 동시에 진입 장벽으로도 작동할 수 있다는 양면성을 제시한다.",
+          "aiAnalysisInputSha256": "b95abb5a8ff7170db31bbefe7cb7f14e1995b4d05cf6cdf14113993fcda27ee0",
+          "aiPublicGuideTopic": "단골 관계가 신규 진입자에게 만드는 장벽",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            15
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 계약: 약속을 문서로 만들기",
+          "section": "3.1 계약이 하는 일",
+          "primaryConcepts": [
+            "계약"
+          ],
+          "secondaryConcepts": [
+            "거래비용"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계약을 반복거래나 평판이 부족한 상황에서 약속 이행을 강제하는 대체 장치로 설명한다. 계약이 상대의 약속 위반 시 대응 수단을 제공함으로써 사전에 약속을 지키도록 압박하는 기능을 한다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "ef8ef70e4e134efeb1cd3eaf83e2c98206565710c858795e9f003cc08157484c",
+          "aiPublicGuideTopic": "계약이 신뢰 문제를 해결하는 방식",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 계약: 약속을 문서로 만들기",
+          "section": "3.1 계약이 하는 일",
+          "primaryConcepts": [
+            "계약"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계약이 평판과 달리 시간 축적 없이 즉시 신뢰 장치를 제공한다는 장점과, 매번 새로 준비해야 하는 비용이라는 단점을 대비한다. 실제 거래에서는 관계의 성격에 따라 평판과 계약을 혼합해 사용한다는 실무적 관행을 설명한다.",
+          "aiAnalysisInputSha256": "869ee3ca9c068be76ab333f28885fc258ac89ed87dac589fc4f84610dbbcd5a0",
+          "aiPublicGuideTopic": "계약이 신뢰 확보 수단으로서 갖는 장단점",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 계약: 약속을 문서로 만들기",
+          "section": "3.2 계약으로 막을 수 없는 것",
+          "primaryConcepts": [
+            "계약"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계약이 미래의 모든 상황을 사전에 명시할 수 없다는 근본적 한계와, 계약 집행에 드는 비용이 작은 거래에서는 오히려 손해가 될 수 있다는 실제적 한계를 제시한다. 계약이 신뢰를 완전히 대체하지 못하는 도구임을 밝힌다.",
+          "aiAnalysisInputSha256": "cf08254d3579c0d240b4e4779d71fae0c355580f72d05633eea3f017b530e360",
+          "aiPublicGuideTopic": "계약이 완전한 신뢰의 대체물이 될 수 없는 이유",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 계약: 약속을 문서로 만들기",
+          "section": "3.2 계약으로 막을 수 없는 것",
+          "primaryConcepts": [
+            "계약"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계약이 수치화하기 어려운 성실함이나 태도 같은 영역을 다루지 못한다는 한계를 설명하고, 계약과 신뢰가 서로 대체 관계가 아니라 상호 보완 관계에 있다는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "3bd46d08877bd5c692a289c3fc09534c8b2fa9911b38b9cf8d260909dcd34155",
+          "aiPublicGuideTopic": "계약이 다루지 못하는 신뢰의 영역",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            19
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 계약: 약속을 문서로 만들기",
+          "section": "3.3 계약 집행 비용 도표",
+          "primaryConcepts": [
+            "계약"
+          ],
+          "secondaryConcepts": [
+            "거래비용"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "거래 규모가 커질수록 계약으로 지키는 이익이 계약 집행에 드는 고정 비용을 넘어서는 지점이 있다는 관계를 그래프로 나타낸다. 거래 규모가 작은 구간에서는 계약보다 평판이나 신뢰에 의존하는 것이 더 합리적이라는 3장의 논지를 시각화한다.",
+          "aiAnalysisInputSha256": "a5b02052e0285f7cab09853e68983aa35e0f792694a3b95cda2c59251f9f6c80",
+          "aiPublicGuideTopic": "거래 규모와 계약 집행 비용의 관계",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            19
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 계약: 약속을 문서로 만들기",
+          "section": "3.4 불완전 계약의 문제",
+          "primaryConcepts": [
+            "계약"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계약의 불완전성이 해석의 여지를 남겨 분쟁을 유발하는 구체적 경로를 설명한다. 계약의 구체성을 높이는 것과 그 작성 비용 사이의 상충 관계를 제시하며, 이 여지가 4장의 도덕적 해이 문제로 이어짐을 예고한다.",
+          "aiAnalysisInputSha256": "08b1c7a82e9fa77beb4e5c8cdd1b06d4a46e323f849c807e5e39c18a9493c4e1",
+          "aiPublicGuideTopic": "계약의 불완전성이 실제로 문제를 일으키는 방식",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            19
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 계약: 약속을 문서로 만들기",
+          "section": "3.4 불완전 계약의 문제",
+          "primaryConcepts": [
+            "계약"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "불완전 계약의 문제에 대응하는 실무적 방법으로 예상 분쟁 상황의 사전 나열과 제3자 판단 절차의 사전 합의를 제시한다. 이 방법들이 계약을 완벽하게 만드는 것이 아니라 다툼으로 번질 가능성을 낮추는 실용적 대응임을 밝힌다.",
+          "aiAnalysisInputSha256": "7a99f8e0b5526d00d10ee245438bd3ff3d45e85fd04fda23b8f7d9ee5f60b92b",
+          "aiPublicGuideTopic": "불완전 계약에 대응하는 실무적 방법",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "3장 계약: 약속을 문서로 만들기",
+          "section": "3.5 사례: 애매한 조항이 낳은 다툼",
+          "primaryConcepts": [
+            "계약"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계약서의 모호한 표현이 실제로 분쟁을 유발하는 가상의 인테리어 공사 사례를 통해 3.4절의 불완전 계약 문제를 구체화한다. 계약 작성 시점의 구체성 부족이 사후 분쟁 비용으로 이어진다는 점을 보인다.",
+          "aiAnalysisInputSha256": "4ad82a12ed28905b96fc631f55386462a42027aa151a62a029a50da4e85386d9",
+          "aiPublicGuideTopic": "계약서의 모호한 조항이 실제 분쟁으로 이어지는 사례",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "3장 계약: 약속을 문서로 만들기",
+          "section": "3.5 사례: 애매한 조항이 낳은 다툼",
+          "primaryConcepts": [
+            "계약"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계약 분쟁 경험이 표준 조항의 발전으로 이어지는 개선 과정을 설명하면서도, 이런 개선이 새로운 유형의 거래에서는 다시 불완전함의 문제를 겪는다는 점을 밝혀 3.4절의 결론을 재확인한다.",
+          "aiAnalysisInputSha256": "5ae11252f2349d773c62f4b955d5a088c98c69afcd1abdb72bee038783a57e5b",
+          "aiPublicGuideTopic": "다툼 이후 계약 관행이 개선되는 과정",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 도덕적 해이: 보이지 않는 곳에서 생기는 문제",
+          "section": "4.1 정보 비대칭과 행동의 변화",
+          "primaryConcepts": [
+            "도덕적 해이"
+          ],
+          "secondaryConcepts": [
+            "계약"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도덕적 해이를 감시받지 않는 상황에서 행동이 계약이 기대한 것과 달라지는 현상으로 정의하고, 이것이 개인의 도덕성 문제가 아니라 정보 비대칭과 감시 구조에서 비롯되는 구조적 문제임을 밝힌다.",
+          "aiAnalysisInputSha256": "bf08354d4f94687cfcecbf70805a0fb77e093890765163b779cbf77433c8b8f0",
+          "aiPublicGuideTopic": "감시받지 않는다는 사실이 행동을 바꾸는 원리",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            19
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 도덕적 해이: 보이지 않는 곳에서 생기는 문제",
+          "section": "4.1 정보 비대칭과 행동의 변화",
+          "primaryConcepts": [
+            "도덕적 해이"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도덕적 해이를 거래 이전의 역선택과 구분해 거래 이후 행동 관찰의 어려움에서 비롯되는 문제로 명확히 규정한다. 두 문제가 같은 정보 비대칭에서 파생되지만 대응 방법이 다르다는 점을 밝혀 실무적 구분의 중요성을 제시한다.",
+          "aiAnalysisInputSha256": "323370d4292bfa54c96848b3be1dc09607cc8c7e63aec472481010cf1aaec142",
+          "aiPublicGuideTopic": "도덕적 해이와 정보 비대칭의 관계",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 도덕적 해이: 보이지 않는 곳에서 생기는 문제",
+          "section": "4.2 보험이 만드는 도덕적 해이",
+          "primaryConcepts": [
+            "도덕적 해이"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "보험 가입 여부가 사고 시 부담과 사전 조심성에 미치는 영향을 표로 비교해 도덕적 해이가 실제로 나타나는 경로를 보인다. 보험사가 자기부담금이나 할증 제도를 두는 이유가 이 문제에 대한 대응이라는 점을 연결한다.",
+          "aiAnalysisInputSha256": "04aa86a23c88ac709a7b74e765a10e1b8a5ee8af13cb1f8b30553bfab73694b4",
+          "aiPublicGuideTopic": "보험 가입 여부에 따른 조심성의 변화 비교",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 도덕적 해이: 보이지 않는 곳에서 생기는 문제",
+          "section": "4.3 감시와 인센티브로 줄이는 법",
+          "primaryConcepts": [
+            "도덕적 해이"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도덕적 해이를 완화하는 두 접근으로 감시 강화와 인센티브 조정을 제시하고, 각각의 한계(감시 비용, 신뢰 관계 손상)를 언급한다. 실제로는 두 접근이 상호 보완적으로 함께 사용된다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "dd2909a914e81f44c7a15f5e8578e9e9662da0f283ae31e6d14df98911ecb8ae",
+          "aiPublicGuideTopic": "도덕적 해이를 완화하는 두 가지 접근",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 도덕적 해이: 보이지 않는 곳에서 생기는 문제",
+          "section": "4.3 감시와 인센티브로 줄이는 법",
+          "primaryConcepts": [
+            "도덕적 해이"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "감시와 인센티브 중 어느 방법을 택할지가 행동의 관찰 가능성과 감시의 부작용(관계 경직화)에 따라 달라진다는 점을 설명한다. 실제 조직 설계에서 이 균형을 찾는 것이 핵심 과제라는 결론으로 4.3절을 보완한다.",
+          "aiAnalysisInputSha256": "8d09a750679643f4e8eadf8bbbc72d325508a9e9ff870419a8318f578ae9fe53",
+          "aiPublicGuideTopic": "감시와 인센티브 중 어느 쪽을 택할지 결정하는 요인",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            29
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 도덕적 해이: 보이지 않는 곳에서 생기는 문제",
+          "section": "4.4 사례: 임대한 자전거를 대하는 태도",
+          "primaryConcepts": [
+            "도덕적 해이"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공유 자전거 서비스에서 소유하지 않은 물건을 대하는 태도가 도덕적 해이로 나타나고, 후기 제도(감시)와 배상금 규정(인센티브)을 함께 도입해 완화되는 과정을 사례로 보인다. 4.3절에서 제시한 두 접근이 실제로 결합되어 쓰이는 모습을 구체화한다.",
+          "aiAnalysisInputSha256": "cc714f811dad27a37ad7e58ddad54b9c71d1ba733aac6d9b93e4d28067abc0d4",
+          "aiPublicGuideTopic": "소유 여부가 물건을 대하는 태도에 미치는 영향을 보이는 사례",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            29
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "4장 도덕적 해이: 보이지 않는 곳에서 생기는 문제",
+          "section": "4.4 사례: 임대한 자전거를 대하는 태도",
+          "primaryConcepts": [
+            "도덕적 해이"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인센티브(배상금)를 과도하게 설정했을 때 서비스 이용률 저하라는 새로운 부작용이 발생하고, 이에 대응해 감시(점검) 비중을 늘려 균형을 재조정하는 과정을 보인다. 4.3절의 균형 논의가 실제로 반복 조정되는 과정임을 구체화한다.",
+          "aiAnalysisInputSha256": "e1c5ce7b99c39cfe71ac6d11e6ab94629fbbee5b69231a56d514e062855c5969",
+          "aiPublicGuideTopic": "장치를 지나치게 강화했을 때 생기는 새로운 문제",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 신뢰가 무너질 때: 반복게임과 배신의 유인",
+          "section": "5.1 한 번뿐인 거래에서의 배신 유인",
+          "primaryConcepts": [
+            "반복게임"
+          ],
+          "secondaryConcepts": [
+            "평판"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복거래가 신뢰를 유지시키는 논리가 거래의 지속을 전제한다는 점을 밝히고, 일회성 거래에서는 배신의 상대적 이득이 평판 손실보다 커 보일 수 있다는 역전 현상을 설명한다. 2장의 결론이 성립하는 조건을 명시적으로 드러낸다.",
+          "aiAnalysisInputSha256": "1914efeb06730584b58a4a6959e7e77b9a4e355cd5aa3c6625c0f4dc5988824c",
+          "aiPublicGuideTopic": "일회성 거래에서 배신이 상대적으로 유리해지는 이유",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            13
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 신뢰가 무너질 때: 반복게임과 배신의 유인",
+          "section": "5.1 한 번뿐인 거래에서의 배신 유인",
+          "primaryConcepts": [
+            "반복게임"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일회성 거래가 여행지 소비, 중고 거래 등 실생활에서 흔히 나타나는 상황임을 예시하고, 이런 상황에서 자연적 평판 견제가 약해 제도적 신뢰 장치가 더 중요해진다는 점을 밝힌다. 6장의 인위적 신뢰 제도 논의로 연결한다.",
+          "aiAnalysisInputSha256": "49de6d26d278ca9a17908a2292da503ffedd477cd12a63df0382f92a151bb3a0",
+          "aiPublicGuideTopic": "일회성 거래가 실제로 자주 나타나는 상황들",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            33
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 신뢰가 무너질 때: 반복게임과 배신의 유인",
+          "section": "5.2 반복거래가 배신을 억제하는 원리",
+          "primaryConcepts": [
+            "반복게임"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복거래에서 신뢰 유지가 미래 거래에 대한 기대치와 그 거래에서 예상되는 이득의 크기에 의해 계산된다는 점을 설명한다. 사업 지속 의도가 신뢰 유지 유인의 강도를 결정한다는 관계를 밝히며 반복이 끝나는 시점의 문제를 예고한다.",
+          "aiAnalysisInputSha256": "390bf3ba94dda838376a5ae95ad0f17d3d1994342bd52dfb9f5d4dde2efc596c",
+          "aiPublicGuideTopic": "미래 거래에 대한 기대가 신뢰 유지의 계산에 들어가는 방식",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            33
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 신뢰가 무너질 때: 반복게임과 배신의 유인",
+          "section": "5.2 반복거래가 배신을 억제하는 원리",
+          "primaryConcepts": [
+            "반복게임"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "맞대응 전략(상대의 신뢰 유지에는 신뢰로, 배신에는 거래 축소로 대응)이 반복거래에서 신뢰 유지를 강화하는 단순한 규칙임을 설명한다. 지나치게 엄격한 맞대응이 오히려 관계를 해칠 수 있어 적절한 관용이 필요하다는 균형점을 제시한다.",
+          "aiAnalysisInputSha256": "1d67d2bda87d11fcd4b6693296a8d0958f27dc4dc2f1e842f869e81696cb7620",
+          "aiPublicGuideTopic": "배신에 대한 보복이 신뢰 유지를 강화하는 방식",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            35
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 신뢰가 무너질 때: 반복게임과 배신의 유인",
+          "section": "5.3 반복이 깨지는 순간",
+          "primaryConcepts": [
+            "반복게임"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복거래의 종료 시점이 알려질 때 마지막 거래에서 신뢰가 무너지고, 이 예상이 거슬러 퍼져 앞선 거래의 신뢰까지 약화시킬 수 있다는 이론적 문제를 설명한다. 실제 상황에서는 거래 종료 시점의 불확실성이 이 문제를 완화한다는 현실적 단서를 덧붙인다.",
+          "aiAnalysisInputSha256": "e667147fcd6369a851983311609cbd83edbb90503e4911839a0cb8fdd9f30bce",
+          "aiPublicGuideTopic": "반복거래의 끝이 예상될 때 신뢰가 무너지는 현상",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            35
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 신뢰가 무너질 때: 반복게임과 배신의 유인",
+          "section": "5.3 반복이 깨지는 순간",
+          "primaryConcepts": [
+            "반복게임"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "거래 관계가 끝나가는 상황에서 공개적 약속을 통해 신뢰 붕괴를 완화하려는 시도를 설명하고, 이 선언이 효과를 가지려면 위반 시 대가가 뒤따라야 한다는 조건을 제시한다.",
+          "aiAnalysisInputSha256": "078aa007a90c5b593ce41ecd3f6bab61eccf5b70af43534f335789e6078a8ffe",
+          "aiPublicGuideTopic": "관계를 이어 가려는 신호로 신뢰 붕괴를 막는 방법",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            37
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "5장 신뢰가 무너질 때: 반복게임과 배신의 유인",
+          "section": "5.4 신뢰 붕괴 그래프",
+          "primaryConcepts": [
+            "반복게임"
+          ],
+          "secondaryConcepts": [
+            "평판"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "남은 거래 횟수가 줄어들수록 신뢰를 유지할 유인이 감소하며 마지막 거래 근처에서 급격히 떨어지는 관계를 그래프로 나타낸다. 거래 종료 시점의 불확실성이 이 급락을 완화한다는 5.3절의 현실적 단서를 함께 표시한다.",
+          "aiAnalysisInputSha256": "7b9bb6475d35ecfae73a637f16a32dc1ecabd7f6c3048c3ac17cc5f4a7191f4f",
+          "aiPublicGuideTopic": "남은 거래 횟수와 신뢰 유지 유인의 관계",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            37
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 신뢰를 만드는 제도들",
+          "section": "6.1 평판 시스템의 등장",
+          "primaryConcepts": [
+            "신뢰"
+          ],
+          "secondaryConcepts": [
+            "평판"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "후기·평점 제도가 일회성 거래에서도 미래의 다른 상대에게 평가받는다는 인식을 심어 5장에서 다룬 신뢰 붕괴 문제를 완화하는 메커니즘을 설명한다. 이 제도가 기능하기 위한 전제 조건(조작 방지, 보복으로부터의 보호)을 제시한다.",
+          "aiAnalysisInputSha256": "f874477116d6b7bb8184b2b906f82b5a001dafeb69aba4c167f5f9fc67e49c7c",
+          "aiPublicGuideTopic": "평판을 인위적으로 축적·공개하는 제도의 등장 배경",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            13,
+            33
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 신뢰를 만드는 제도들",
+          "section": "6.1 평판 시스템의 등장",
+          "primaryConcepts": [
+            "신뢰"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "평판 시스템이 상호 눈치 보기나 평가 조작 같은 새로운 문제를 만들어 낼 수 있다는 부작용을 설명한다. 신뢰를 만드는 제도 자체도 별도의 관리와 조작 방지 장치가 필요하다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "9bd4f27c0de5faf96b8758ce71fd9abc02c7122b00d3f826f3f20b98e32b1e90",
+          "aiPublicGuideTopic": "평판 시스템이 만들어 내는 새로운 문제",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 신뢰를 만드는 제도들",
+          "section": "6.2 제3자 보증과 중개",
+          "primaryConcepts": [
+            "신뢰"
+          ],
+          "secondaryConcepts": [
+            "계약"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "신뢰할 수 있는 제3자를 중개인으로 세워 개별 확인 비용을 줄이는 방식을 설명한다. 이 방법이 신뢰 문제를 완전히 해소하는 것이 아니라 확인 대상을 하나로 집중시키는 것이라는 본질을 밝힌다.",
+          "aiAnalysisInputSha256": "c12867b4033925f5a36335bc7cd2ce750acb8354e25271345c2801e6c91353eb",
+          "aiPublicGuideTopic": "제삼자가 신뢰를 보증하는 방식",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            17,
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 신뢰를 만드는 제도들",
+          "section": "6.2 제3자 보증과 중개",
+          "primaryConcepts": [
+            "신뢰"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "중개 플랫폼의 규모가 커질수록 신뢰 검증 실패의 파급력이 커져 더 엄격한 검증과 보상 제도가 요구된다는 점을 설명한다. 이런 제도의 비용이 수수료로 반영되며, 이 수수료가 신뢰를 사는 값이라는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "77413ac2c05a35c8b3c4825ae96eec47211f7547df44f44410c2c403be3ffe23",
+          "aiPublicGuideTopic": "중개 플랫폼이 커질수록 커지는 책임의 무게",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 신뢰를 만드는 제도들",
+          "section": "6.3 제도가 대신할 수 없는 것",
+          "primaryConcepts": [
+            "신뢰"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "평판 시스템, 계약, 중개 등 신뢰 제도가 각기 비용을 수반하며 완전한 신뢰 확보 장치가 아니라는 점을 밝힌다. 거래의 규모와 성격에 맞춰 필요한 장치만 선택적으로 사용하는 실제 관행을 설명하며 7장의 결론으로 연결한다.",
+          "aiAnalysisInputSha256": "ad0e94fbc75e39496801a0a94c6959476a65ae487d8d2efc5918849b4270ce2b",
+          "aiPublicGuideTopic": "제도적 장치로도 채우지 못하는 신뢰의 영역",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 신뢰를 만드는 제도들",
+          "section": "6.3 제도가 대신할 수 없는 것",
+          "primaryConcepts": [
+            "신뢰"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "신뢰 제도가 판단에 필요한 정보를 제공하지만 최종 판단 자체를 대신하지 못한다는 점을 밝히고, 여러 제도를 조합해 판단하는 능력이 새로운 과제로 남는다는 결론을 제시하며 7장으로 연결한다.",
+          "aiAnalysisInputSha256": "39b1e9120e99ec1390dc0019cad07f14a1558e8dcfa2b997e427f88fa4f30883",
+          "aiPublicGuideTopic": "제도가 늘어도 개인의 판단이 여전히 필요한 이유",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 결론: 가격표에 없는 값",
+          "section": "7.1 신뢰의 값을 매기기 어려운 이유",
+          "primaryConcepts": [
+            "신뢰"
+          ],
+          "secondaryConcepts": [
+            "거래비용"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "신뢰가 가격표에 직접 나타나지 않지만 거래 성립의 전제 조건으로 작동한다는 점을 정리한다. 단골 관계, 계약 이용, 직거래 선호 등 실생활의 여러 선택이 모두 보이지 않는 신뢰의 값을 치르는 행위라는 관점으로 책 전체를 요약한다.",
+          "aiAnalysisInputSha256": "bc1a7a9fb793924d921419d493f1529bb1f23628adcf0894b7a76542f6c9b305",
+          "aiPublicGuideTopic": "신뢰가 가격표에 직접 드러나지 않는 이유",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": [
+            "trust-is-hidden-cost"
+          ]
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 결론: 가격표에 없는 값",
+          "section": "7.1 신뢰의 값을 매기기 어려운 이유",
+          "primaryConcepts": [
+            "신뢰"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "신뢰의 값이 평판 좋은 판매자가 받는 가격 프리미엄으로 간접적으로 드러난다는 점을 설명한다. 신뢰가 공짜가 아니라 물건값에 섞여 치러지는 대가라는 관점으로 7.1절을 보완한다.",
+          "aiAnalysisInputSha256": "f4ae9e298a4b340a89e941828a6591b43cca02c8e99a3b5443b1911140c100d2",
+          "aiPublicGuideTopic": "신뢰의 값이 간접적으로 드러나는 방식",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 결론: 가격표에 없는 값",
+          "section": "7.2 결론: 거래비용을 줄이는 것이 신뢰의 경제학",
+          "primaryConcepts": [
+            "거래비용"
+          ],
+          "secondaryConcepts": [
+            "신뢰"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "거래비용의 세 갈래 구조, 신뢰를 쌓는 자연적 방법(평판·반복거래), 신뢰를 보완하는 제도적 장치(계약·중개), 그리고 각 장치의 한계를 종합해 책 전체의 논리를 요약한다. 신뢰의 경제학의 목표가 완벽한 신뢰가 아니라 감당 가능한 수준의 거래비용 관리라는 결론으로 마무리한다.",
+          "aiAnalysisInputSha256": "6e5eed4f394b02faff1afd4af7dde1a3099317cfa87ec09baeaa39039eb5eb26",
+          "aiPublicGuideTopic": "책 전체의 논리를 거래비용 축소의 관점으로 요약",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            46,
+            29
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 결론: 가격표에 없는 값",
+          "section": "7.2 결론: 거래비용을 줄이는 것이 신뢰의 경제학",
+          "primaryConcepts": [
+            "거래비용"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이 책의 이론적 틀이 일상의 실제 거래 선택(중고 직거래, 후기 확인, 전문가 활용)을 설명하는 데 적용된다는 점을 보인다. 신뢰의 경제학이 무조건적 신뢰나 의심이 아니라 거래마다 다른 신뢰 문제의 성격을 가려내는 안목을 기르는 데 있다는 결론으로 책 전체를 마무리한다.",
+          "aiAnalysisInputSha256": "5744cfd70e65b1e651b3c8281bf23a35bbdd8564849645bee62166bda3bb4d86",
+          "aiPublicGuideTopic": "신뢰의 경제학이 일상의 판단에 주는 실질적 도움",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 47,
       "pdfPath": "pdfs/book-047.pdf",
       "pdfSha256": "57da4e679ebca508bd388db5c0a4a1e842c51f584e84fbf7f9e13cca43b622f8",

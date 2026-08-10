@@ -151,6 +151,73 @@
         19,
         21
       ]
+    },
+    {
+      "caseId": "case-book-042",
+      "bookId": 42,
+      "purpose": "큰 공사를 맡기려는데 계약서만 있으면 충분한지, 상대를 어떻게 확인해야 안심할 수 있는지 알고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "거래비용",
+        "계약",
+        "도덕적 해이"
+      ],
+      "helpfulConcepts": [
+        "신뢰",
+        "평판"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 17,
+          "afterPageNumber": 19
+        },
+        {
+          "beforePageNumber": 19,
+          "afterPageNumber": 26
+        },
+        {
+          "beforePageNumber": 26,
+          "afterPageNumber": 29
+        }
+      ],
+      "irrelevantPageNumbers": [
+        1,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          46
+        ]
+      ],
+      "referencePageNumbers": [
+        9,
+        17,
+        19,
+        26,
+        29
+      ],
+      "allowedAlternativePageNumbers": [
+        10,
+        18,
+        27,
+        30
+      ]
     }
   ]
 }
