@@ -41,6 +41,7 @@ F01 schema와 정확히 일치하는 AI Entity·Repository 기반을 만들고 �
 
 - 기존 `book/entity/Book.java`, `book/entity/BookPage.java`
 - 새 `airoute/entity/*.java`, `airoute/repository/*.java`
+- 기존 `src/test/java/com/example/ilgeobolkka/support/entity/CoreEntityMappingMySqlIntegrationTest.java`
 - 새 매핑 통합 테스트와 필요한 테스트 fixture만
 
 ## 구현 조건
@@ -53,10 +54,15 @@ F01 schema와 정확히 일치하는 AI Entity·Repository 기반을 만들고 �
 5. Repository에는 `JpaRepository` 기본 계약만 우선 두고 task-specific lock/query는 G05·S01~S05가 자기
    테스트와 함께 추가합니다. 컬럼 매핑은 후속 작업이 변경하지 않습니다.
 6. 연관관계 cascade는 ERD 삭제 경계를 넘지 않고 Entity 양방향 편의 매핑을 습관적으로 추가하지 않습니다.
+7. `Book`·`BookPage`에 매핑한 AI 확장 컬럼은
+   `CoreEntityMappingMySqlIntegrationTest.AI_ROUTE_EXTENSION_COLUMNS` 제외 목록에서 즉시 제거하고,
+   모든 확장 컬럼을 매핑한 뒤 빈 제외 상수와 관련 필터를 삭제합니다.
 
 ## 테스트
 
 - 모든 Entity가 F01 schema로 부팅·저장·조회되는 매핑 통합 테스트
+- F01의 `AUTO_INCREMENT` AI Entity가 모두 `GenerationType.IDENTITY`를 사용하는지 확인
+- AI Entity의 컬럼명과 NULL 허용이 F01 물리 schema와 양방향으로 일치하는지 확인
 - Enum의 DB 문자열과 API 철자 일치 확인
 - `BookPage` JSON 필드 round-trip과 비공개 필드 직렬화 비노출 확인
 - 명령: `./gradlew test --tests '*AiRouteEntityMappingMySqlIntegrationTest'`
