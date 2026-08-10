@@ -39,6 +39,7 @@ import com.example.ilgeobolkka.book.entity.BookPage;
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
@@ -53,6 +54,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.UUID;
+import org.hibernate.SessionFactory;
+import org.hibernate.stat.Statistics;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -115,6 +118,7 @@ class AiRouteEntityMappingMySqlIntegrationTest {
     private final EntityManager entityManager;
     private final JdbcTemplate jdbcTemplate;
     private final ObjectMapper objectMapper;
+    private final Statistics statistics;
     private final AiRoutePrerequisiteRepository prerequisiteRepository;
     private final AiRouteGenerationRepository generationRepository;
     private final AiRouteGenerationItemRepository generationItemRepository;
@@ -126,6 +130,7 @@ class AiRouteEntityMappingMySqlIntegrationTest {
     @Autowired
     AiRouteEntityMappingMySqlIntegrationTest(
             EntityManager entityManager,
+            EntityManagerFactory entityManagerFactory,
             JdbcTemplate jdbcTemplate,
             ObjectMapper objectMapper,
             AiRoutePrerequisiteRepository prerequisiteRepository,
@@ -136,6 +141,8 @@ class AiRouteEntityMappingMySqlIntegrationTest {
             AiRouteCurrentRepository currentRepository,
             AiRouteDailyUsageRepository dailyUsageRepository) {
         this.entityManager = entityManager;
+        this.statistics = entityManagerFactory.unwrap(SessionFactory.class).getStatistics();
+        this.statistics.setStatisticsEnabled(true);
         this.jdbcTemplate = jdbcTemplate;
         this.objectMapper = objectMapper;
         this.prerequisiteRepository = prerequisiteRepository;
@@ -145,6 +152,36 @@ class AiRouteEntityMappingMySqlIntegrationTest {
         this.readingRouteItemRepository = readingRouteItemRepository;
         this.currentRepository = currentRepository;
         this.dailyUsageRepository = dailyUsageRepository;
+    }
+
+    @Test
+    void 저장_경로가_있는_생성_재조회는_단일_SELECT만_실행한다() {
+        기준_독자_도서_페이지를_생성한다();
+        AiRouteGeneration generation = 잉크_예산_생성을_시작한다();
+        generation.completeRoute(COMPLETED_AT, EXPIRES_AT);
+        generation = generationRepository.saveAndFlush(generation);
+        AiReadingRoute savedRoute =
+                AiReadingRoute.createWithInkBudget(
+                        GENERATION_ID,
+                        READER_ID,
+                        BOOK_ID,
+                        "ai-route-v2",
+                        "목적",
+                        3,
+                        CREATED_AT);
+        readingRouteRepository.saveAndFlush(savedRoute);
+        generation.saveAsRoute(savedRoute);
+        entityManager.flush();
+        entityManager.clear();
+        statistics.clear();
+
+        AiRouteGeneration loadedGeneration =
+                generationRepository.findById(GENERATION_ID).orElseThrow();
+
+        assertAll(
+                () -> assertEquals(AiRouteGenerationStatus.SAVED, loadedGeneration.getStatus()),
+                () -> assertEquals(savedRoute.getId(), loadedGeneration.getSavedRouteId()),
+                () -> assertEquals(1, statistics.getPrepareStatementCount()));
     }
 
     @Test
@@ -370,7 +407,7 @@ class AiRouteEntityMappingMySqlIntegrationTest {
         dailyUsage.increment();
         dailyUsageRepository.save(dailyUsage);
 
-        assertSame(readingRoute, generation.getSavedRoute());
+        assertEquals(readingRoute.getId(), generation.getSavedRouteId());
         assertSame(readingRoute, current.getRoute());
 
         entityManager.flush();
@@ -419,7 +456,6 @@ class AiRouteEntityMappingMySqlIntegrationTest {
                 () -> assertEquals(BOOK_ID, loadedGeneration.getBook().getId()),
                 () -> assertEquals(AiRouteGenerationStatus.SAVED, loadedGeneration.getStatus()),
                 () -> assertEquals(readingRoute.getId(), loadedGeneration.getSavedRouteId()),
-                () -> assertEquals(readingRoute.getId(), loadedGeneration.getSavedRoute().getId()),
                 () -> assertEquals(FIRST_PAGE_ID, loadedGenerationItem.getBookPage().getId()),
                 () -> assertEquals(READER_ID, loadedReadingRoute.getReader().getId()),
                 () -> assertEquals(FIRST_PAGE_ID, loadedReadingRouteItem.getBookPage().getId()),
@@ -597,7 +633,7 @@ class AiRouteEntityMappingMySqlIntegrationTest {
                 () -> assertNull(generation.getNormalizedPurpose()),
                 () -> assertNull(generation.getRequestType()),
                 () -> assertNull(generation.getMaxAdditionalInk()),
-                () -> assertSame(savedRoute, generation.getSavedRoute()),
+                () -> assertEquals(savedRoute.getId(), generation.getSavedRouteId()),
                 () ->
                         assertThrows(
                                 IllegalArgumentException.class,
@@ -658,7 +694,6 @@ class AiRouteEntityMappingMySqlIntegrationTest {
         assertAll(
                 () -> assertEquals(AiRouteGenerationStatus.CONSUMED, generation.getStatus()),
                 () -> assertNull(generation.getSavedRouteId()),
-                () -> assertNull(generation.getSavedRoute()),
                 () ->
                         assertEquals(
                                 AiRouteNoRouteReason.INSUFFICIENT_BUDGET,

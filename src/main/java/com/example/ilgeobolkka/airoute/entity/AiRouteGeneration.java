@@ -13,9 +13,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinColumns;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import java.time.Instant;
@@ -131,23 +129,6 @@ public class AiRouteGeneration {
     @Column(name = "saved_route_id")
     private Long savedRouteId;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumns(
-            value = {
-                @JoinColumn(
-                        name = "saved_route_id",
-                        referencedColumnName = "id",
-                        insertable = false,
-                        updatable = false),
-                @JoinColumn(
-                        name = "generation_id",
-                        referencedColumnName = "generation_id",
-                        insertable = false,
-                        updatable = false)
-            },
-            foreignKey = @ForeignKey(name = "fk_ai_route_generation_saved_route"))
-    private AiReadingRoute savedRoute;
-
     @Column(name = "created_at", nullable = false, columnDefinition = "DATETIME(6)")
     private Instant createdAt;
 
@@ -247,7 +228,6 @@ public class AiRouteGeneration {
 
         status = AiRouteGenerationStatus.SAVED;
         savedRouteId = savedRoute.getId();
-        this.savedRoute = savedRoute;
         normalizedPurpose = null;
         requestType = null;
         maxAdditionalInk = null;
@@ -260,7 +240,6 @@ public class AiRouteGeneration {
         }
         status = AiRouteGenerationStatus.CONSUMED;
         savedRouteId = null;
-        savedRoute = null;
     }
 
     private void requireGenerating() {
