@@ -17,7 +17,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-REPO = Path("/Users/t2025-m0204/Documents/sparta/Ilgeobolkka")
+REPO = Path(__file__).resolve().parents[4]  # docs/evidence/ai-route-corpus/tools/ 기준 저장소 루트
 CORPUS = REPO / "docs/evidence/ai-route-corpus"
 FRAGMENTS = CORPUS / "_fragments"
 FIXTURE = REPO / "fixtures/content/ai-route-v2"

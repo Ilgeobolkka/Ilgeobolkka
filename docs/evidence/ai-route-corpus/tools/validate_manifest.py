@@ -7,7 +7,7 @@ import re
 import sys
 from pathlib import Path
 
-REPO = Path("/Users/t2025-m0204/Documents/sparta/Ilgeobolkka")
+REPO = Path(__file__).resolve().parents[4]  # docs/evidence/ai-route-corpus/tools/ 기준 저장소 루트
 manifest = json.loads((REPO / "fixtures/content/ai-route-v2/manifest.json").read_text("utf-8"))
 evaluation = json.loads((REPO / "fixtures/content/ai-route-v2/evaluation.json").read_text("utf-8"))
 
@@ -32,6 +32,7 @@ chk(len(ids) == len(set(ids)), f"bookId 중복 없음 (중복: {[i for i in set(
 for book in manifest["books"]:
     bid = book["bookId"]
     print(f"\n[book {bid}]")
+    chk(bool(book.get("title", "").strip()), "title 존재")
     pages = book["pages"]
     n = len(pages)
     nums = [p["pageNumber"] for p in pages]
@@ -101,9 +102,27 @@ for c in evaluation["cases"]:
     chk(all(x in nums for x in all_ev_pages), f"{c['caseId']}: 평가 페이지가 도서 범위 안")
     chk(not (set(c["referencePageNumbers"]) & set(c["irrelevantPageNumbers"])), f"{c['caseId']}: 정답∩무관=∅")
     chk(not (set(c["referencePageNumbers"]) & noncand), f"{c['caseId']}: 정답경로에 비후보 없음")
+    dupgroups = {}
+    for p in book["pages"]:
+        for g in p["duplicateGroupKeys"]:
+            dupgroups.setdefault(g, set()).add(p["pageNumber"])
+    manifest_groups = {frozenset(ps) for ps in dupgroups.values()}
+    case_groups = {frozenset(g) for g in c["duplicatePageGroups"]}
+    chk(manifest_groups == case_groups,
+        f"{c['caseId']}: duplicateGroupKeys 그룹 == duplicatePageGroups "
+        f"(manifest {sorted(sorted(g) for g in manifest_groups)}, "
+        f"평가 {sorted(sorted(g) for g in case_groups)})")
+    same_group = [sorted(set(c["referencePageNumbers"]) & g) for g in case_groups
+                  if len(set(c["referencePageNumbers"]) & g) > 1]
+    chk(not same_group, f"{c['caseId']}: 정답 경로에 같은 중복 그룹 페이지 둘 이상 없음 (위반 {same_group})")
     bad = [(e["beforePageNumber"], e["afterPageNumber"]) for e in c["requiredPrerequisites"]
            if e["beforePageNumber"] not in prereq.get(e["afterPageNumber"], [])]
     chk(not bad, f"{c['caseId']}: requiredPrerequisites가 실제 DAG (위반 {bad})")
+    if c["owned"] is False:
+        rented = set(c.get("activeRentalPageNumbers") or [])
+        charged = [p for p in c["referencePageNumbers"] if p not in rented]
+        chk(len(charged) <= c["maxAdditionalInk"],
+            f"{c['caseId']}: 추가 차감 {len(charged)}p ≤ 예산 {c['maxAdditionalInk']}")
     if c["owned"] is False and c["maxAdditionalInk"] == 0:
         chk(bool(c["activeRentalPageNumbers"]), f"{c['caseId']}: 예산0은 activeRentalPageNumbers 필요")
         chk(set(c["referencePageNumbers"]) <= set(c["activeRentalPageNumbers"]),

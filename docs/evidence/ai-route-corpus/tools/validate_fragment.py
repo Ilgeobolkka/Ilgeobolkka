@@ -14,7 +14,7 @@ import re
 import sys
 from pathlib import Path
 
-REPO = Path("/Users/t2025-m0204/Documents/sparta/Ilgeobolkka")
+REPO = Path(__file__).resolve().parents[4]  # docs/evidence/ai-route-corpus/tools/ 기준 저장소 루트
 CONTENT_ROLES = {"PREREQUISITE", "CORE", "EXAMPLE", "COUNTERPOINT", "CONCLUSION"}
 ALL_ROLES = CONTENT_ROLES | {"FRONT_MATTER"}
 
@@ -35,6 +35,7 @@ def main():
     bid = book["bookId"]
 
     print(f"[book {bid}]")
+    chk(bool(book.get("title", "").strip()), "title 존재")
     chk(book["aiRouteCandidate"] is True, "aiRouteCandidate=true")
     chk(book["aiExternalTransferAllowed"] is True, "aiExternalTransferAllowed=true")
     pages = book["pages"]
@@ -50,7 +51,7 @@ def main():
     fm = {p["pageNumber"] for p in pages if p["contentRole"] == "FRONT_MATTER"}
     noncand = {p["pageNumber"] for p in pages if not p["aiRouteCandidatePage"]}
     chk(fm == noncand, f"FRONT_MATTER=후보제외 (FM={sorted(fm)}, 비후보={sorted(noncand)})")
-    dupgroups = set()
+    dupgroups = {}
     for p in pages:
         chk(bool(p["primaryConcepts"]), f"p{p['pageNumber']} primaryConcepts")
         chk(hashlib.sha256(p["aiAnalysisText"].encode()).hexdigest() == p["aiAnalysisInputSha256"],
@@ -60,7 +61,10 @@ def main():
             f"p{p['pageNumber']} 주제문이 분석텍스트 그대로 포함되지 않음")
         chk(p["estimatedReadingSeconds"] > 0, f"p{p['pageNumber']} 독서시간 > 0")
         for g in p.get("duplicateGroupKeys", []):
-            dupgroups.add(g)
+            dupgroups.setdefault(g, set()).add(p["pageNumber"])
+
+    lone = sorted(g for g, ps in dupgroups.items() if len(ps) < 2)
+    chk(not lone, f"중복그룹은 2페이지 이상 (1페이지짜리 {lone})")
 
     prereq = {p["pageNumber"]: p["prerequisitePageNumbers"] for p in pages}
     allnum = set(nums)
@@ -107,9 +111,19 @@ def main():
     chk(all(x in allnum for x in all_ev_pages), "평가 페이지가 도서 범위 안")
     chk(not (set(case["referencePageNumbers"]) & set(case["irrelevantPageNumbers"])), "정답∩무관=∅")
     chk(not (set(case["referencePageNumbers"]) & noncand), "정답경로에 비후보 없음")
-    for g in case["duplicatePageGroups"]:
-        chk(tuple(sorted(g)) in {tuple(sorted(x)) for x in [g]} and all(x in allnum for x in g),
-            f"중복그룹 {g} 범위 안")
+    # 평가의 중복 그룹은 manifest의 duplicateGroupKeys가 실제로 묶은 페이지 집합과 같아야 한다.
+    # 한쪽만 고치면 중복 페이지를 걸러내는 평가가 조용히 다른 정답을 채점하게 된다.
+    manifest_groups = {frozenset(ps) for ps in dupgroups.values()}
+    case_groups = {frozenset(g) for g in case["duplicatePageGroups"]}
+    chk(all(len(g) == len(set(g)) for g in case["duplicatePageGroups"]),
+        "duplicatePageGroups 안에 같은 페이지가 두 번 나오지 않음")
+    chk(manifest_groups == case_groups,
+        "duplicateGroupKeys 그룹 == duplicatePageGroups "
+        f"(manifest {sorted(sorted(g) for g in manifest_groups)}, "
+        f"평가 {sorted(sorted(g) for g in case_groups)})")
+    same_group = [sorted(set(case["referencePageNumbers"]) & g) for g in case_groups
+                  if len(set(case["referencePageNumbers"]) & g) > 1]
+    chk(not same_group, f"정답 경로에 같은 중복 그룹 페이지가 둘 이상 없음 (위반 {same_group})")
     bad = [(e["beforePageNumber"], e["afterPageNumber"]) for e in case["requiredPrerequisites"]
            if e["beforePageNumber"] not in prereq.get(e["afterPageNumber"], [])]
     chk(not bad, f"requiredPrerequisites가 실제 DAG와 일치 (위반 {bad})")
@@ -123,6 +137,10 @@ def main():
     else:
         chk(case["maxAdditionalInk"] in (0, 5, 10, 15), "비소장 사례는 maxAdditionalInk∈{0,5,10,15}")
         chk(case["depth"] is None, "비소장 사례는 depth=null")
+        rented = set(case.get("activeRentalPageNumbers") or [])
+        charged = [p for p in case["referencePageNumbers"] if p not in rented]
+        chk(len(charged) <= case["maxAdditionalInk"],
+            f"정답 경로의 추가 차감 {len(charged)}p ≤ 예산 {case['maxAdditionalInk']}")
 
     print("\n" + (f"실패 {len(fails)}건" if fails else "전체 통과"))
     for f in fails:
