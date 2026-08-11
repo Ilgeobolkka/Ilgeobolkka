@@ -1,0 +1,11 @@
+apiVersion: 1
+
+providers:
+  - name: Ilgeobolkka Performance
+    orgId: 1
+    folder: Ilgeobolkka
+    type: file
+    disableDeletion: true
+    editable: false
+    options:
+      path: /var/lib/grafana/dashboards

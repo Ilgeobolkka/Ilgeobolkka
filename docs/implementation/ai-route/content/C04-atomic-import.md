@@ -31,6 +31,7 @@
 - 입력: 기존 TEXT/IMAGE 변환 결과 + C03의 `EmbeddedAiRouteContent`
 - 산출물: version별 import command와 AI metadata writer
 - DB 결과: 같은 contentVersion의 Book·BookPage AI 필드·AiRoutePrerequisite 전체, 지원 false
+- BookPage의 `ai_route_candidate`는 manifest의 `aiRouteCandidatePage`를 그대로 저장합니다
 - Q01에 넘길 것: manifest·DB model/dimensions/profile이 일치하는 평가 후보 DB
 
 ## 수정 허용 파일
@@ -47,6 +48,8 @@
 4. Book contentVersion·권리·policy·support false, BookPage의 모든 AI 필드와 prerequisite를 한 transaction에
    반영합니다.
 5. AI metadata·vector·edge 중 일부가 없거나 C03의 key가 page와 다르면 transaction 시작 전 실패합니다.
+   vector 유무는 `ai_route_candidate`로 판정합니다. `1`인 page는 ERD가 요구하는 임베딩 세 필드를 모두
+   가져야 하고, `0`인 page는 세 필드가 모두 비어 있어야 하며 어긋나면 실패합니다.
 6. 실패 시 기존 DB와 기존 공개 파일 reference를 유지하고 새 staging을 공개 경로로 승격하지 않습니다.
 7. evaluation 정답은 Repository나 BookPage에 저장하지 않습니다.
 
@@ -55,6 +58,7 @@
 - 정상 초기 fixture 적재 회귀와 정상 최소 AI fixture 원자적 적재
 - 중간 writer 실패·FK 실패·예상 외 기존 page에서 전체 rollback
 - 적재 전후 기존 BookPage.id 보존과 support false 확인
+- 목차 page가 `ai_route_candidate=0`과 빈 임베딩 세 필드로 저장되고, 후보 page만 vector를 갖는지 확인
 - 잘못된 vector/edge/profile 입력에서 DB 변경 0건
 - 명령: `./gradlew test --tests '*AiRouteContentImportMySqlIntegrationTest' --tests '*ContentImport*'`
 

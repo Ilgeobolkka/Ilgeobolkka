@@ -27,7 +27,7 @@ import org.springframework.test.context.ContextConfiguration;
 class AiRouteSchemaMigrationTest {
 
     private static final MigrationVersion AI_ROUTE_MIGRATION_VERSION =
-            MigrationVersion.fromVersion("2");
+            MigrationVersion.fromVersion("3");
     private static final long READER_ID = 51_000L;
     private static final long SECOND_READER_ID = 51_001L;
     private static final long BOOK_ID = 52_000L;
@@ -57,7 +57,7 @@ class AiRouteSchemaMigrationTest {
     }
 
     @Test
-    void 빈_스키마에는_V1과_V2가_순서대로_적용된다() {
+    void 빈_스키마에는_V1부터_V3까지_순서대로_적용된다() {
         Flyway flyway = 새_Flyway를_생성한다(AI_ROUTE_MIGRATION_VERSION);
 
         try {
@@ -66,8 +66,8 @@ class AiRouteSchemaMigrationTest {
             int migrationCount = flyway.migrate().migrationsExecuted;
 
             assertAll(
-                    () -> assertEquals(2, migrationCount),
-                    () -> assertEquals(List.of("1", "2"), 적용된_버전을_조회한다()),
+                    () -> assertEquals(3, migrationCount),
+                    () -> assertEquals(List.of("1", "2", "3"), 적용된_버전을_조회한다()),
                     () -> assertEquals(7, AI_경로_테이블_수를_조회한다()));
         } finally {
             최신_스키마로_복구한다();
@@ -75,7 +75,7 @@ class AiRouteSchemaMigrationTest {
     }
 
     @Test
-    void V1_기존_도서는_V2에서_initial_v1로_backfill되고_기존_writer_기본값을_유지한다() {
+    void V1_기존_도서는_후속_migration에서_initial_v1로_backfill되고_기존_writer_기본값을_유지한다() {
         Flyway v1Flyway = 새_Flyway를_생성한다(MigrationVersion.fromVersion("1"));
 
         try {
@@ -146,7 +146,8 @@ class AiRouteSchemaMigrationTest {
                               (table_name = 'book_page' AND column_name IN (
                                   'ai_analysis_text', 'ai_public_guide_topic',
                                   'estimated_reading_seconds', 'embedding_model',
-                                  'embedding_dimensions', 'embedding_json', 'duplicate_group_keys'
+                                  'embedding_dimensions', 'embedding_json', 'duplicate_group_keys',
+                                  'ai_route_candidate'
                               ))
                               OR table_name IN (
                                   'ai_route_prerequisite', 'ai_route_generation',
@@ -230,7 +231,8 @@ class AiRouteSchemaMigrationTest {
                         "book_page.embedding_model|varchar(100)|YES|ascii_bin|-",
                         "book_page.embedding_dimensions|int|YES|-|-",
                         "book_page.embedding_json|json|YES|-|-",
-                        "book_page.duplicate_group_keys|json|YES|-|-"),
+                        "book_page.duplicate_group_keys|json|YES|-|-",
+                        "book_page.ai_route_candidate|tinyint(1)|NO|-|-"),
                 actualContracts);
     }
 
@@ -343,7 +345,8 @@ class AiRouteSchemaMigrationTest {
                                   'ck_book_ai_route_support',
                                   'ck_book_page_ai_reading_seconds_positive',
                                   'ck_book_page_embedding_shape',
-                                  'ck_book_page_duplicate_groups_array'
+                                  'ck_book_page_duplicate_groups_array',
+                                  'ck_book_page_candidate_metadata'
                               )
                           )
                         ORDER BY table_name, constraint_name
@@ -379,9 +382,104 @@ class AiRouteSchemaMigrationTest {
                         "book.ck_book_ai_flags_boolean",
                         "book.ck_book_ai_route_support",
                         "book_page.ck_book_page_ai_reading_seconds_positive",
+                        "book_page.ck_book_page_candidate_metadata",
                         "book_page.ck_book_page_duplicate_groups_array",
                         "book_page.ck_book_page_embedding_shape"),
                 actualCheckConstraints);
+    }
+
+    @Test
+    void 후보_페이지와_임베딩이_어긋난_행을_거부한다() {
+        기본_독자_도서_페이지를_생성한다();
+
+        assertAll(
+                // 후보로 올리면서 임베딩과 메타데이터를 채우지 않은 경우
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        jdbcTemplate.update(
+                                                """
+                                                UPDATE book_page
+                                                SET ai_route_candidate = 1
+                                                WHERE id = ?
+                                                """,
+                                                FIRST_PAGE_ID)),
+                // 후보가 아닌데 임베딩을 가진 경우 — 후보 검색이 고르지 않아 조용히 버려진다
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        jdbcTemplate.update(
+                                                """
+                                                UPDATE book_page
+                                                SET embedding_model = 'text-embedding-test',
+                                                    embedding_dimensions = 1,
+                                                    embedding_json = JSON_ARRAY(0.1)
+                                                WHERE id = ?
+                                                """,
+                                                FIRST_PAGE_ID)),
+                // 임베딩은 있으나 분석 텍스트가 없는 후보
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        jdbcTemplate.update(
+                                                """
+                                                UPDATE book_page
+                                                SET ai_route_candidate = 1,
+                                                    ai_public_guide_topic = '공개 주제',
+                                                    estimated_reading_seconds = 60,
+                                                    embedding_model = 'text-embedding-test',
+                                                    embedding_dimensions = 1,
+                                                    embedding_json = JSON_ARRAY(0.1),
+                                                    duplicate_group_keys = JSON_ARRAY()
+                                                WHERE id = ?
+                                                """,
+                                                FIRST_PAGE_ID)));
+    }
+
+    @Test
+    void 후보_페이지는_일곱_필드를_모두_갖추면_저장된다() {
+        기본_독자_도서_페이지를_생성한다();
+
+        jdbcTemplate.update(
+                """
+                UPDATE book_page
+                SET ai_route_candidate = 1,
+                    ai_analysis_text = '분석 텍스트',
+                    ai_public_guide_topic = '공개 주제',
+                    estimated_reading_seconds = 60,
+                    embedding_model = 'text-embedding-test',
+                    embedding_dimensions = 1,
+                    embedding_json = JSON_ARRAY(0.1),
+                    duplicate_group_keys = JSON_ARRAY()
+                WHERE id = ?
+                """,
+                FIRST_PAGE_ID);
+
+        assertEquals(
+                1,
+                jdbcTemplate.queryForObject(
+                        "SELECT ai_route_candidate FROM book_page WHERE id = ?",
+                        Integer.class,
+                        FIRST_PAGE_ID));
+    }
+
+    @Test
+    void 기존_페이지는_새_migration에서_후보_아님으로_backfill된다() {
+        기본_독자_도서_페이지를_생성한다();
+
+        assertEquals(
+                List.of(0, 0),
+                jdbcTemplate.queryForList(
+                        """
+                        SELECT ai_route_candidate FROM book_page
+                        WHERE id IN (?, ?) ORDER BY id
+                        """,
+                        Integer.class,
+                        FIRST_PAGE_ID,
+                        SECOND_PAGE_ID));
     }
 
     @Test
@@ -460,6 +558,9 @@ class AiRouteSchemaMigrationTest {
     @Test
     void AI_페이지_JSON_CHECK_제약은_배열_원소_타입을_검증한다() {
         기본_독자_도서_페이지를_생성한다();
+        // 비후보 행은 임베딩을 가질 수 없으므로(ck_book_page_candidate_metadata) 먼저 후보로 만든다.
+        // 그래야 아래 실패가 후보 제약이 아니라 JSON 원소 타입 제약에서 난다.
+        후보_페이지로_승격한다(FIRST_PAGE_ID);
 
         assertAll(
                 () ->
@@ -1003,6 +1104,23 @@ class AiRouteSchemaMigrationTest {
                   )
                 """,
                 Integer.class);
+    }
+
+    private void 후보_페이지로_승격한다(long pageId) {
+        jdbcTemplate.update(
+                """
+                UPDATE book_page
+                SET ai_route_candidate = 1,
+                    ai_analysis_text = '분석 텍스트',
+                    ai_public_guide_topic = '공개 주제',
+                    estimated_reading_seconds = 60,
+                    embedding_model = 'text-embedding-test',
+                    embedding_dimensions = 1,
+                    embedding_json = JSON_ARRAY(0.1),
+                    duplicate_group_keys = JSON_ARRAY()
+                WHERE id = ?
+                """,
+                pageId);
     }
 
     private void 기본_독자_도서_페이지를_생성한다() {

@@ -79,7 +79,7 @@ Jira에는 담당자·일정·상태와 leaf 문서 링크만 둡니다. 정책 
 
 | ID | 작업 | 선행 | 핵심 산출물 |
 | --- | --- | --- | --- |
-| Q01 | [90건 비웹 평가 runner](./release/Q01-evaluation-runner.md) | C04, G07 | 사용자 상태 없는 동일 엔진 실행 |
+| Q01 | [비웹 평가 runner](./release/Q01-evaluation-runner.md) | C04, G07 | 사용자 상태 없는 동일 엔진 실행 |
 | Q02 | [평가 지표·지원 활성화](./release/Q02-metrics-activation.md) | Q01, [해제된 재평가와 지원 활성화 순서](../../prd/ai-ink-route.md#재평가와-지원-활성화-순서) | 지표 artifact와 후보 DB별 원자적 활성화 |
 | Q03 | [통합 회귀·출시 증거](./release/Q03-release-regression.md) | G08, [W01](./web/W01-generation-page.md), [W02](./web/W02-route-detail-page.md), [W03](./web/W03-book-library-integration.md), Q02 | 전체 테스트·패키징·smoke 증거 |
 

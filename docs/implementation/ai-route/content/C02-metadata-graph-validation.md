@@ -21,17 +21,21 @@ C01의 manifest 전체를 검증해 외부 전송 권리·파일 무결성·페�
 
 ## 현재 구현 기준선
 
-- C01 전에는 AI manifest 타입이 없고 기존 콘텐츠 검증은 PDF·페이지 수 중심입니다.
+- 이 절은 착수 시점 기록입니다. 아래 산출물은 그 뒤에 구현했습니다 —
+  [AiRouteContentValidator](../../../../src/main/java/com/example/ilgeobolkka/contentimport/validation/AiRouteContentValidator.java),
+  [PrerequisiteGraphValidator](../../../../src/main/java/com/example/ilgeobolkka/contentimport/validation/PrerequisiteGraphValidator.java),
+  [ValidatedAiRouteContent](../../../../src/main/java/com/example/ilgeobolkka/contentimport/validation/ValidatedAiRouteContent.java).
 - [ContentBatch](../../../../src/main/java/com/example/ilgeobolkka/contentimport/ContentBatch.java)은
-  AI 선수 관계·중복 그룹·분석 입력을 표현하지 않습니다.
-- 외부 호출 전 전체 graph validator가 없습니다.
+  AI 선수 관계·중복 그룹·분석 입력을 표현하지 않습니다. 적재 연결은 C04 몫입니다.
 
 ## 입력과 산출물
 
-- 입력: C01의 `AiRouteContentManifest`, 실제 fixture root, 환경 dataPolicyVersion
+- 입력: C01의 `AiRouteContentManifest`·`AiRouteEvaluationDataset`, 실제 fixture root, 환경 dataPolicyVersion
 - 산출물: `ValidatedAiRouteContent`와 도서별 위상 정렬된 prerequisite edge·검증된 page metadata
 - 산출물: `AiRouteContentValidator`, `PrerequisiteGraphValidator`
-- C03에 넘길 것: 권리·정책·SHA·DAG 검증을 통과한 분석 텍스트 입력 목록
+- C03에 넘길 것: 권리·정책·SHA·DAG 검증을 통과한 분석 텍스트 입력 목록과 페이지별
+  `aiRouteCandidatePage`. C03은 이 값으로 Gateway에 보낼 페이지를 고르므로 값을 다시 계산하거나
+  역할 이름으로 추론하지 않습니다.
 
 ## 수정 허용 파일
 
@@ -41,20 +45,33 @@ C01의 manifest 전체를 검증해 외부 전송 권리·파일 무결성·페�
 
 ## 구현 조건
 
-1. 비소설 90권은 48~72페이지·최소 장 수, 소설 10권은 AI candidate false라는 코퍼스 계약을 검사합니다.
+1. manifest에 든 도서만 검사하고 권수는 세지 않습니다. `aiRouteCandidate=true`인 도서는 48~72페이지·최소
+   장 수, `false`인 소설은 빈 `pages[]`라는 코퍼스 계약을 검사합니다. 10권짜리 부분 집합도 100권 완성본과
+   같은 코드로 통과해야 합니다.
 2. PDF·분석 입력 파일과 SHA-256, 전체 페이지 번호의 1부터 연속·중복 없음과 page count를 검사합니다.
 3. 지원 페이지의 분석 텍스트, 공개 가이드 주제, 예상 시간, embedding model·dimensions, 선수·중복 목록
-   필드를 검사합니다.
-4. 선수 edge는 같은 book·contentVersion의 존재 page만 가리키며 자기 참조·중복 edge를 거부합니다.
-5. `선수 -> 의존` 방향으로 위상 정렬해 모든 노드를 방문하지 못하면 순환으로 전체 실패합니다.
-6. `aiExternalTransferAllowed=false`, dataPolicyVersion 누락·환경 불일치는 Gateway 호출 전에 전체 실패합니다.
-7. evaluation 정답은 존재·형식 연결만 검사하고 검증 결과의 runtime candidate 입력에는 포함하지 않습니다.
+   필드를 검사합니다. 지원 도서의 페이지는 `contentRole=FRONT_MATTER`인 것만
+   `aiRouteCandidatePage=false`이고 나머지 역할은 모두 `true`인지 확인합니다. 한쪽만 맞으면 실패입니다.
+   후보 여부는 역할 이름이나 내용이 아니라 이 두 필드의 일치로만 판정합니다.
+4. `aiRouteCandidatePage=false`인 페이지는 다른 페이지의 `prerequisitePageNumbers`와 evaluation의
+   `referencePageNumbers`·`allowedAlternativePageNumbers`·`irrelevantPageNumbers` 어디에도 나올 수
+   없습니다. 앞 둘은 임베딩이 없어 도달할 수 없는 선수·정답이 되고, 무관 목록은 추천될 수 없는
+   페이지라 채점에 걸리지 않는 죽은 값입니다.
+5. 선수 edge는 같은 book·contentVersion의 존재 page만 가리키며 자기 참조·중복 edge를 거부합니다.
+6. `선수 -> 의존` 방향으로 위상 정렬해 모든 노드를 방문하지 못하면 순환으로 전체 실패합니다.
+7. `aiExternalTransferAllowed=false`, dataPolicyVersion 누락·환경 불일치는 Gateway 호출 전에 전체 실패합니다.
+8. evaluation 정답은 존재·형식 연결만 검사하고 검증 결과의 runtime candidate 입력에는 포함하지 않습니다.
 
 ## 테스트
 
 - 정상 DAG의 위상 순서와 root 빈 prerequisite 허용
+- 지원 도서 10권짜리 부분 집합 manifest가 권수 때문에 실패하지 않음
 - 미존재·다른 book·자기 참조·duplicate edge·2개 이상 cycle 실패
 - 파일 누락·SHA 불일치·페이지 공백·지원 metadata 누락·권리/프로필 불일치 실패
+- `FRONT_MATTER`인데 `aiRouteCandidatePage=true`, 반대로 다른 역할인데 `false`인 페이지 각각 실패
+- 비후보 페이지를 선수·정답 경로·대체 페이지·무관 페이지에 넣은 입력 각각 실패
+- 정본 `fixtures/content/ai-route-v2/`가 그대로 통과 (인라인 JSON만 쓰면 정본과 코드가 갈려도
+  드러나지 않는다 — C01이 실제로 그렇게 어긋난 적이 있다)
 - validator 실패 시 Gateway·DB fake 호출 0회 확인
 - 명령: `./gradlew test --tests '*AiRouteContentValidatorTest' --tests '*PrerequisiteGraphValidatorTest'`
 
@@ -63,6 +80,10 @@ C01의 manifest 전체를 검증해 외부 전송 권리·파일 무결성·페�
 - vector 생성·검증, PDF TEXT/IMAGE 변환
 - DB Entity 변환과 지원 활성화
 - runtime 후보 top-K·목적 embedding
+- [선수 밀도 상한](../../../ai-route-content-corpus.md#도서-제작-기준)과 정답 경로의 예산·깊이 상한.
+  둘 다 도서를 만들 때 지키는 제작 기준이고 코퍼스 도구
+  ([`tools/`](../../../evidence/ai-route-corpus/tools/))가 fixture를 커밋하기 전에 강제합니다.
+  임계값이 조정 가능한 값이라 적재 시점의 불변식으로 두지 않습니다.
 
 ## 완료 조건
 

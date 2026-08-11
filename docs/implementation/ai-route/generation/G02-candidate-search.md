@@ -43,19 +43,24 @@ v1에 따라 결정적인 후보 집합을 반환합니다.
 
 1. 목적·페이지 model과 dimensions가 모두 같고 vector가 유한 실수인지 계산 전에 확인합니다.
 2. zero norm vector를 similarity 0으로 조용히 처리하지 않고 잘못된 콘텐츠/입력으로 실패합니다.
-3. 한 권의 모든 지원 페이지를 메모리에서 exact cosine으로 계산하고 근사 검색·vector DB를 도입하지 않습니다.
-4. 반올림하지 않은 similarity가 `0.30` 이상인 페이지만 남기고 similarity 내림차순, `pageNumber` 오름차순으로 정렬한 최초 30개를 반환합니다.
+3. 한 권에서 `ai_route_candidate=1`인 페이지만 고른 뒤 그 집합 전체를 메모리에서 exact cosine으로
+   계산하고 근사 검색·vector DB를 도입하지 않습니다. 목차 같은 구조 페이지는 이 값이 `0`이라 애초에
+   비교 대상이 아닙니다.
+4. 후보 집합을 고른 뒤에 vector 유효성을 검사합니다. vector가 있는 페이지만 고르는 방식으로 대신하지
+   않으며, `ai_route_candidate=1`인데 vector가 없으면 조용히 건너뛰지 않고 실패합니다.
+5. 반올림하지 않은 similarity가 `0.30` 이상인 페이지만 남기고 similarity 내림차순, `pageNumber` 오름차순으로 정렬한 최초 30개를 반환합니다.
    정확히 `0.30`은 포함하고 similarity가 같을 때만 `pageNumber`를 비교합니다.
-5. 이미지 페이지도 분석 text와 vector가 있으면 동일하게 후보에 포함합니다.
-6. 평가 reference·requiredConcepts·allowedAlternativePageNumbers를 selector 타입이 받을 수 없게 합니다.
-7. similarity 백분율을 사용자 DTO로 만들지 않습니다.
-8. 선수 전이 폐쇄는 G03이 후보 선정 뒤 추가하므로 selector가 threshold·30개 상한을 선수 페이지에 다시 적용하거나 별도 후보 타입을 만들지 않습니다.
+6. 이미지 페이지도 `ai_route_candidate=1`이고 분석 text와 vector가 있으면 동일하게 후보에 포함합니다.
+7. 평가 reference·requiredConcepts·allowedAlternativePageNumbers를 selector 타입이 받을 수 없게 합니다.
+8. similarity 백분율을 사용자 DTO로 만들지 않습니다.
+9. 선수 전이 폐쇄는 G03이 후보 선정 뒤 추가하므로 selector가 threshold·30개 상한을 선수 페이지에 다시 적용하거나 별도 후보 타입을 만들지 않습니다.
 
 ## 테스트
 
 - 직교·동일·반대 vector cosine, dimensions·model 불일치, zero norm·비유한 수 실패
 - `0.30` 직전·정확 경계·직후, 29·30·31개 경계, 동일 similarity의 `pageNumber` 오름차순
 - TEXT·IMAGE 동일 처리와 다른 contentVersion 혼입 거부
+- `ai_route_candidate=0`인 페이지는 vector가 있어도 후보에서 제외, `1`인데 vector가 없으면 실패
 - 같은 입력 반복 결과 동일성, 평가 정답 타입 의존성 부재
 - 명령: `./gradlew test --tests '*AiRouteCandidateSelectorTest'`
 

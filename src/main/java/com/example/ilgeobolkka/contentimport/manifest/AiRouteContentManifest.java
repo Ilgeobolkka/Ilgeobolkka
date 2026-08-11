@@ -18,6 +18,7 @@ public record AiRouteContentManifest(
 
     public record Book(
             long bookId,
+            String title,
             String pdfPath,
             String pdfSha256,
             int totalPageCount,
@@ -39,6 +40,7 @@ public record AiRouteContentManifest(
             List<String> primaryConcepts,
             List<String> secondaryConcepts,
             ContentRole contentRole,
+            boolean aiRouteCandidatePage,
             String aiAnalysisText,
             String aiAnalysisInputSha256,
             String aiPublicGuideTopic,
@@ -67,6 +69,8 @@ public record AiRouteContentManifest(
         CORE,
         EXAMPLE,
         COUNTERPOINT,
-        CONCLUSION
+        CONCLUSION,
+        /** 목차처럼 본문 설명을 담지 않는 구조 페이지. 항상 aiRouteCandidatePage=false다. */
+        FRONT_MATTER
     }
 }

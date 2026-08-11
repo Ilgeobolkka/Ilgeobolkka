@@ -95,6 +95,14 @@ public class BookPage {
     @Column(name = "duplicate_group_keys", columnDefinition = "JSON")
     private List<String> duplicateGroupKeys;
 
+    /**
+     * AI 경로 후보 집합에 넣을 페이지인가. 목차 같은 구조 페이지와 미지원 도서의 페이지는 {@code false}다.
+     * 후보 검색은 이 값으로 대상을 고른 뒤 벡터 유효성을 검증하므로, 벡터가 있는 페이지만 고르는
+     * 방식으로 대신하지 않는다.
+     */
+    @Column(name = "ai_route_candidate", nullable = false)
+    private boolean aiRouteCandidate;
+
     public List<Double> getEmbedding() {
         return embedding == null ? null : List.copyOf(embedding);
     }
@@ -135,6 +143,8 @@ public class BookPage {
         embeddingDimensions = embedding.size();
         this.embedding = List.copyOf(embedding);
         this.duplicateGroupKeys = List.copyOf(duplicateGroupKeys);
+        // 일곱 필드를 모두 갖춘 페이지만 후보다. DB의 ck_book_page_candidate_metadata와 같은 계약이다.
+        aiRouteCandidate = true;
     }
 
     public void clearAiRouteMetadata() {
@@ -145,5 +155,6 @@ public class BookPage {
         embeddingDimensions = null;
         embedding = null;
         duplicateGroupKeys = null;
+        aiRouteCandidate = false;
     }
 }
