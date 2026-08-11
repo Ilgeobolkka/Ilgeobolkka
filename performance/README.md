@@ -66,14 +66,23 @@ Average·Peak은 공개 탐색 35%, 인증 조회 20%, 소장 콘텐츠 15%, 활
 dropped iteration이 발생하면 해당 실행을 유효 기준선으로 사용하지 않는다.
 `PERF_DURATION`은 도구 진단용 실행에만 사용하며 정식 Warm-up·Average·Peak에서는 설정하지 않는다.
 
-동시성 특화 흐름은 매번 데이터를 복원한 뒤 하나씩 실행한다.
+동시성 특화 흐름은 매번 데이터를 복원한 뒤 하나씩 실행하고, 실행 직후 같은 케이스 이름으로 검증한다.
+검증기는 공통 불변식과 함께 해당 케이스의 예상 잔액·대여·차감·서재·현재 세션 수를 대조한다.
 
 ```sh
-CONTENTION_CASE=same-page ./performance/scripts/run-k6.sh contention
-CONTENTION_CASE=different-pages ./performance/scripts/run-k6.sh contention
-CONTENTION_CASE=different-readers ./performance/scripts/run-k6.sh contention
-CONTENTION_CASE=session ./performance/scripts/run-k6.sh contention
-./performance/scripts/verify-invariants.sh
+run_contention_case() {
+  contention_case=$1
+  ./performance/scripts/stop-app.sh
+  ./performance/scripts/reset-mvp.sh
+  ./performance/scripts/start-app.sh
+  CONTENTION_CASE="$contention_case" ./performance/scripts/run-k6.sh contention
+  ./performance/scripts/verify-invariants.sh "$contention_case"
+}
+
+run_contention_case same-page
+run_contention_case different-pages
+run_contention_case different-readers
+run_contention_case session
 ```
 
 동시성 실행 뒤에는 행 수가 변하므로 초기 행 수까지 고정하는 `verify-dataset.sh`가 아니라 잔액·원장·대여·
