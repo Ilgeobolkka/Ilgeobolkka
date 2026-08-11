@@ -43,6 +43,7 @@
 ./performance/scripts/run-k6.sh spike
 ./performance/scripts/run-k6.sh soak
 ./performance/scripts/run-k6.sh browser
+./performance/scripts/run-k6.sh browser-cache
 ```
 
 Average·Peak은 공개 탐색 35%, 인증 조회 20%, 소장 콘텐츠 15%, 활성 대여 10%, 신규 대여 15%,
@@ -51,6 +52,18 @@ Average·Peak은 공개 탐색 35%, 인증 조회 20%, 소장 콘텐츠 15%, 활
 각 VU는 k6 기본 독립 cookie jar를 사용하고 CSRF를 우회하지 않는다.
 신규 대여 VU는 제품의 100잉크를 소진하지 않도록 80회마다 결정적으로 다른 신규 계정으로 순환하며,
 그 경계에서만 다시 로그인한다. 로그인 준비 요청은 `setup=true` tag로 구분한다.
+
+2단계 Average·Peak 3회는 매회 데이터 복원, 새 애플리케이션, Smoke, 고정 Warm-up을 자동으로 적용한다.
+
+```sh
+./performance/scripts/run-baseline-series.sh average-load
+./performance/scripts/run-baseline-series.sh peak-load
+```
+
+각 정식 부하 결과에는 `generator-cpu.tsv`, `generator-summary.json`,
+`prometheus-summary.json`, `prometheus-range/`, `k6.log`가 함께 저장된다. generator CPU가 90% 이상이거나
+dropped iteration이 발생하면 해당 실행을 유효 기준선으로 사용하지 않는다.
+`PERF_DURATION`은 도구 진단용 실행에만 사용하며 정식 Warm-up·Average·Peak에서는 설정하지 않는다.
 
 동시성 특화 흐름은 매번 데이터를 복원한 뒤 하나씩 실행한다.
 
@@ -64,6 +77,18 @@ CONTENTION_CASE=session ./performance/scripts/run-k6.sh contention
 
 동시성 실행 뒤에는 행 수가 변하므로 초기 행 수까지 고정하는 `verify-dataset.sh`가 아니라 잔액·원장·대여·
 소장 불변식만 확인하는 `verify-invariants.sh`를 사용한다.
+
+브라우저 cache 진단은 서로 독립된 새 context 3개에서 공개 목록과 보호 뷰어를 각각 cold→warm 순서로
+반복한다. 공개 정적 자산의 전송량·Cache-Control과 보호 콘텐츠의 `private, no-store`를 분리해
+`browser-cache.jsonl`에 저장한다.
+
+`history-heavy`는 애플리케이션을 정지한 상태에서 고정 `mvp`를 복원한 뒤 독자마다 과거 대여 500건을
+추가한다. 생성 시간 10분·DB 2GiB 경계를 넘으면 실패하며, 진단 뒤에는 다시 `reset-mvp.sh`를 실행한다.
+
+```sh
+./performance/scripts/stop-app.sh
+./performance/scripts/generate-history-heavy.sh
+```
 
 ## 관측과 진단
 

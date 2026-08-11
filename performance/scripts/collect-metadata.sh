@@ -70,13 +70,32 @@ jq -n \
         server: "app:8080; host 127.0.0.1:8080",
         management: "app:8081; host 127.0.0.1:8081",
         image: "eclipse-temurin:21-jdk-jammy@sha256:55fb9bf738f5d9b4a6c01b39337e3070d3e27370dd3c478fd1d5d3cd2233c6d8",
-        jvmOptions: [],
-        tomcat: {maxThreads: "Spring Boot default"},
-        hikari: {maximumPoolSize: "Spring Boot default"}
+        java: "21.0.11",
+        springBoot: "4.1.0",
+        jvmOptions: ["HotSpot container ergonomics", "container memory limit 2 GiB"],
+        tomcat: {maxThreads: 200, source: "Spring Boot 4.1.0 default"},
+        hikari: {maximumPoolSize: 10, source: "Spring Boot 4.1.0 default"}
       },
       database: {
         name: "ilgeobolkka_perf",
-        host: "127.0.0.1:3308"
+        host: "127.0.0.1:3308",
+        image: "mysql:8.4.11@sha256:b3b90af2a6552ae30c266fdb7d5dd55f3afb72404bb78d37fe8a23eb857fd3fb",
+        cpuLimit: 2,
+        memoryLimitBytes: 3221225472
+      },
+      generator: {
+        image: "grafana/k6:2.2.0-with-browser@sha256:defdc0a3e70c46bce010bfc10dedc03e335cc7febe01f6359552fe72827c2aa2",
+        cpuLimit: 1,
+        memoryLimitBytes: 1073741824
+      },
+      dataset: {
+        name: "mvp",
+        books: 100,
+        pages: 400,
+        readers: 1000,
+        newReaders: 334,
+        activeRentalReaders: 333,
+        ownedReaders: 333
       },
       externalServices: {
         portOne: false,

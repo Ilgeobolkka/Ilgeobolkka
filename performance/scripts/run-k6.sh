@@ -4,13 +4,13 @@ set -eu
 . "$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)/common.sh"
 
 if [ "$#" -ne 1 ]; then
-    echo "사용법: $0 <smoke|warm-up|average-load|peak-load|stress|spike|soak|contention|browser>" >&2
+    echo "사용법: $0 <smoke|warm-up|average-load|peak-load|stress|spike|soak|contention|browser|browser-cache>" >&2
     exit 1
 fi
 
 scenario_name=$1
 case "$scenario_name" in
-    smoke|warm-up|average-load|peak-load|stress|spike|soak|contention|browser) ;;
+    smoke|warm-up|average-load|peak-load|stress|spike|soak|contention|browser|browser-cache) ;;
     *)
         echo "알 수 없는 k6 시나리오입니다: $scenario_name" >&2
         exit 1
@@ -32,20 +32,55 @@ run_id="$(date -u +%Y%m%dT%H%M%SZ)-$run_label"
 output_directory="$PERFORMANCE_ROOT/var/performance/results/$run_id"
 mkdir -p "$output_directory"
 started_utc=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+sampler_stop_file="$output_directory/.generator-sampler-stop"
+rm -f "$sampler_stop_file"
+"$PERFORMANCE_SCRIPT_DIR/sample-k6-generator.sh" \
+    "$output_directory" "$sampler_stop_file" &
+sampler_pid=$!
+
+stop_sampler() {
+    : >"$sampler_stop_file"
+    wait "$sampler_pid" || true
+    rm -f "$sampler_stop_file"
+}
+trap stop_sampler 0 1 2 15
 
 set -- run --rm -e K6_SUMMARY_PATH="/results/$run_id/summary.json"
+if [ -n "${PERF_DURATION:-}" ]; then
+    set -- "$@" -e "PERF_DURATION=$PERF_DURATION"
+fi
 if [ "$scenario_name" = "contention" ]; then
     set -- "$@" -e CONTENTION_CASE="${CONTENTION_CASE:-same-page}"
 fi
 
 set +e
-performance_compose "$@" k6 run --quiet "/scripts/$scenario_name.js"
+performance_compose "$@" k6 run --log-format raw --quiet "/scripts/$scenario_name.js" \
+    >"$output_directory/k6.log" 2>&1
 k6_exit_code=$?
 set -e
+stop_sampler
+trap - 0 1 2 15
+if [ "$scenario_name" = "browser-cache" ]; then
+    rg -v '^BROWSER_CACHE_EVIDENCE ' "$output_directory/k6.log" || true
+else
+    cat "$output_directory/k6.log"
+fi
 
 finished_utc=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 "$PERFORMANCE_SCRIPT_DIR/collect-metadata.sh" \
     "$output_directory" "$scenario_name" "$started_utc" "$finished_utc"
+sleep 6
+"$PERFORMANCE_SCRIPT_DIR/collect-prometheus-summary.sh" "$output_directory"
+
+if [ "$scenario_name" = "browser-cache" ]; then
+    rg -o 'BROWSER_CACHE_EVIDENCE \{.*\}' "$output_directory/k6.log" \
+        | sed 's/^BROWSER_CACHE_EVIDENCE //' \
+        >"$output_directory/browser-cache.jsonl"
+    if [ "$(wc -l <"$output_directory/browser-cache.jsonl" | tr -d ' ')" -ne 3 ]; then
+        echo "브라우저 cache 근거가 3쌍이 아닙니다." >&2
+        exit 1
+    fi
+fi
 
 printf '%s\n' "$k6_exit_code" >"$output_directory/exit-code.txt"
 echo "k6 결과: $output_directory"
