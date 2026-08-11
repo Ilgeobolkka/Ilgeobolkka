@@ -244,7 +244,7 @@ SELECT 'contention_session_balance_mismatch',
            SELECT COUNT(*)
            FROM ink_account
            WHERE reader_id = 100007
-             AND balance = 100
+             AND balance = 99
        ) = 1, 0, 1)
 WHERE @contention_case = 'session'
 UNION ALL
@@ -253,16 +253,32 @@ SELECT 'contention_session_rental_mismatch',
            SELECT COUNT(*)
            FROM page_rental
            WHERE reader_id = 100007
-       ) = 0, 0, 1)
+             AND book_page_id = 1
+       ) = 1
+       AND (
+           SELECT COUNT(*)
+           FROM page_rental
+           WHERE reader_id = 100007
+       ) = 1, 0, 1)
 WHERE @contention_case = 'session'
 UNION ALL
 SELECT 'contention_session_deduction_mismatch',
        IF((
            SELECT COUNT(*)
+           FROM ink_ledger ledger
+           JOIN page_rental rental
+             ON rental.reader_id = ledger.reader_id
+            AND rental.id = ledger.page_rental_id
+           WHERE ledger.reader_id = 100007
+             AND ledger.type = 'DEDUCTION'
+             AND rental.book_page_id = 1
+       ) = 1
+       AND (
+           SELECT COUNT(*)
            FROM ink_ledger
            WHERE reader_id = 100007
              AND type = 'DEDUCTION'
-       ) = 0, 0, 1)
+       ) = 1, 0, 1)
 WHERE @contention_case = 'session'
 UNION ALL
 SELECT 'contention_session_library_mismatch',
@@ -270,7 +286,14 @@ SELECT 'contention_session_library_mismatch',
            SELECT COUNT(*)
            FROM library_entry
            WHERE reader_id = 100007
-       ) = 0, 0, 1)
+             AND book_id = 1
+             AND last_page_number = 1
+       ) = 1
+       AND (
+           SELECT COUNT(*)
+           FROM library_entry
+           WHERE reader_id = 100007
+       ) = 1, 0, 1)
 WHERE @contention_case = 'session'
 UNION ALL
 SELECT 'contention_session_current_session_mismatch',

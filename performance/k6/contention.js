@@ -33,6 +33,12 @@ export const options = {
     }
 };
 
+export function setup() {
+    if (contentionCase === "session") {
+        openPageOnly(7, 1, 1, "contention-session-setup");
+    }
+}
+
 export function samePage() {
     openPageOnly(1, 100, 4, "contention-same-page");
 }

@@ -17,6 +17,21 @@ case "$scenario_name" in
         ;;
 esac
 
+case "$scenario_name" in
+    stress)
+        : "${PERF_NEW_READER_OFFSET:=65}"
+        : "${PERF_NEW_READER_VU_STRIDE:=7}"
+        : "${PERF_NEW_READER_CYCLES:=37}"
+        export PERF_NEW_READER_OFFSET PERF_NEW_READER_VU_STRIDE PERF_NEW_READER_CYCLES
+        ;;
+    smoke|warm-up|average-load|peak-load|spike|soak)
+        : "${PERF_NEW_READER_OFFSET:=0}"
+        : "${PERF_NEW_READER_VU_STRIDE:=64}"
+        : "${PERF_NEW_READER_CYCLES:=4}"
+        export PERF_NEW_READER_OFFSET PERF_NEW_READER_VU_STRIDE PERF_NEW_READER_CYCLES
+        ;;
+esac
+
 require_performance_jar
 curl -fsS http://127.0.0.1:8080/api/smoke >/dev/null
 mkdir -p "$PERFORMANCE_ROOT/var/performance/results"

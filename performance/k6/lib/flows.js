@@ -83,7 +83,9 @@ export function newRental() {
     const vuIteration = exec.vu.iterationInScenario;
     const accountCycle = Math.floor(vuIteration / RENTALS_PER_NEW_READER);
     if (accountCycle >= NEW_READER_CYCLES) {
-        fail(`신규 대여 계정 pool을 소진했습니다: vu=${exec.vu.idInTest}`);
+        const message = `신규 대여 계정 pool을 소진했습니다: vu=${exec.vu.idInTest}`;
+        exec.test.fail(message);
+        fail(message);
     }
     const vuSlot = (exec.vu.idInTest - 1) % NEW_READER_VU_STRIDE;
     const readerNumber = newReaderNumber(

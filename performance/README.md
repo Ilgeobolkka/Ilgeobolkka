@@ -53,6 +53,9 @@ Average·Peak은 공개 탐색 35%, 인증 조회 20%, 소장 콘텐츠 15%, 활
 신규 대여는 VU별 시나리오 iteration을 사용해 80회마다 결정적으로 다른 신규 계정으로 순환한다.
 기준선 runner는 Smoke·Warm-up·정식 부하의 신규 계정 pool을 분리하며, 그 경계에서만 다시 로그인한다.
 로그인 준비 요청은 `setup=true` tag로 구분한다.
+Stress의 기본 신규 계정 pool은 유효 기준선과 같은 offset 65, VU stride 7, cycle 37이며,
+모든 부하 실행의 실제 pool 설정은 `metadata.json`의 `generator.newReaderPool`에 기록한다.
+실행 중 pool을 소진하면 해당 iteration뿐 아니라 전체 k6 실행도 실패로 판정한다.
 
 2단계 Average·Peak 3회는 매회 데이터 복원, 새 애플리케이션, Smoke, 고정 Warm-up을 자동으로 적용한다.
 

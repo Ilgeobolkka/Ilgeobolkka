@@ -29,6 +29,9 @@ host_memory_bytes=$(sysctl -n hw.memsize)
 docker_cpu=$(docker info --format '{{.NCPU}}')
 docker_memory_bytes=$(docker info --format '{{.MemTotal}}')
 observation_mode=${OBSERVATION_MODE:-normal}
+new_reader_offset=${PERF_NEW_READER_OFFSET:-}
+new_reader_vu_stride=${PERF_NEW_READER_VU_STRIDE:-}
+new_reader_cycles=${PERF_NEW_READER_CYCLES:-}
 
 jq -n \
     --arg scenario "$scenario_name" \
@@ -45,6 +48,9 @@ jq -n \
     --argjson dockerCpu "$docker_cpu" \
     --argjson dockerMemoryBytes "$docker_memory_bytes" \
     --arg observationMode "$observation_mode" \
+    --arg newReaderOffset "$new_reader_offset" \
+    --arg newReaderVuStride "$new_reader_vu_stride" \
+    --arg newReaderCycles "$new_reader_cycles" \
     '{
       scenario: $scenario,
       observationMode: $observationMode,
@@ -86,7 +92,12 @@ jq -n \
       generator: {
         image: "grafana/k6:2.2.0-with-browser@sha256:defdc0a3e70c46bce010bfc10dedc03e335cc7febe01f6359552fe72827c2aa2",
         cpuLimit: 1,
-        memoryLimitBytes: 1073741824
+        memoryLimitBytes: 1073741824,
+        newReaderPool: (if $newReaderOffset == "" then null else {
+          offset: ($newReaderOffset | tonumber),
+          vuStride: ($newReaderVuStride | tonumber),
+          cycles: ($newReaderCycles | tonumber)
+        } end)
       },
       dataset: {
         name: "mvp",
