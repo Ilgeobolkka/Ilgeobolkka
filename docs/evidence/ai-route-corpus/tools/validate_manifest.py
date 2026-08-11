@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 """manifest.json 전체(모든 도서)와 evaluation.json을 검사. 90권 확장에서 book-047 전용
-check.py 대신 쓰는 일반화된 버전."""
+check.py 대신 쓰는 일반화된 버전.
+
+사용: python3 validate_manifest.py [fixture디렉터리]   # 기본값은 fixtures/content/ai-route-v2
+
+검사 항목은 validate_fragment.py의 도서·평가 단위 검사와 같은 집합이어야 한다. 한쪽에만 검사를
+넣으면 조각으로 들어온 도서와 정본을 손으로 고친 도서의 기준이 달라진다.
+"""
 import hashlib
 import json
 import re
@@ -8,8 +14,9 @@ import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[4]  # docs/evidence/ai-route-corpus/tools/ 기준 저장소 루트
-manifest = json.loads((REPO / "fixtures/content/ai-route-v2/manifest.json").read_text("utf-8"))
-evaluation = json.loads((REPO / "fixtures/content/ai-route-v2/evaluation.json").read_text("utf-8"))
+FIXTURE = Path(sys.argv[1]) if len(sys.argv) > 1 else REPO / "fixtures/content/ai-route-v2"
+manifest = json.loads((FIXTURE / "manifest.json").read_text("utf-8"))
+evaluation = json.loads((FIXTURE / "evaluation.json").read_text("utf-8"))
 
 fails = []
 
@@ -20,12 +27,19 @@ def chk(cond, msg):
         fails.append(msg)
 
 
+from corpus_lib import DEPTH_PAGE_LIMITS, density_failures, prereq_closure  # noqa: E402
+
 CONTENT_ROLES = {"PREREQUISITE", "CORE", "EXAMPLE", "COUNTERPOINT", "CONCLUSION"}
 ALL_ROLES = CONTENT_ROLES | {"FRONT_MATTER"}
 
 print("[manifest 최상위]")
+chk(manifest["contentVersion"] == "ai-route-v2", f"contentVersion (실제 {manifest['contentVersion']})")
+chk(manifest["dataPolicyVersion"] == "OPENAI_DEFAULT_RETENTION_V1",
+    f"dataPolicyVersion (실제 {manifest['dataPolicyVersion']})")
 chk(manifest["embeddingModel"] == "text-embedding-3-small", "embeddingModel")
 chk(manifest["embeddingDimensions"] == 1536, "embeddingDimensions")
+chk(evaluation["contentVersion"] == manifest["contentVersion"],
+    f"evaluation contentVersion이 manifest와 일치 (실제 {evaluation['contentVersion']})")
 ids = [b["bookId"] for b in manifest["books"]]
 chk(len(ids) == len(set(ids)), f"bookId 중복 없음 (중복: {[i for i in set(ids) if ids.count(i)>1]})")
 
@@ -50,15 +64,25 @@ for book in manifest["books"]:
     fm = {p["pageNumber"] for p in pages if p["contentRole"] == "FRONT_MATTER"}
     noncand = {p["pageNumber"] for p in pages if not p["aiRouteCandidatePage"]}
     chk(fm == noncand, f"FRONT_MATTER=후보제외 (FM={sorted(fm)}, 비후보={sorted(noncand)})")
+    chk(book["totalPageCount"] == n, f"totalPageCount({book['totalPageCount']})==pages 길이({n})")
+    dupgroups = {}
     for p in pages:
         chk(bool(p["primaryConcepts"]), f"p{p['pageNumber']} primaryConcepts")
         chk(hashlib.sha256(p["aiAnalysisText"].encode()).hexdigest() == p["aiAnalysisInputSha256"],
             f"p{p['pageNumber']} sha256")
         chk(not re.search(r"\d", p["aiPublicGuideTopic"]), f"p{p['pageNumber']} 주제문 숫자없음")
+        chk(p["aiPublicGuideTopic"].strip() not in p["aiAnalysisText"],
+            f"p{p['pageNumber']} 주제문이 분석텍스트 그대로")
+        chk(p["estimatedReadingSeconds"] > 0, f"p{p['pageNumber']} 독서시간 > 0")
+        for g in p["duplicateGroupKeys"]:
+            dupgroups.setdefault(g, set()).add(p["pageNumber"])
+    lone = sorted(g for g, ps in dupgroups.items() if len(ps) < 2)
+    chk(not lone, f"중복그룹은 2페이지 이상 (1페이지짜리 {lone})")
     prereq = {p["pageNumber"]: p["prerequisitePageNumbers"] for p in pages}
     allnum = set(nums)
     ok_ref = all(all(q in allnum for q in qs) for qs in prereq.values())
     chk(ok_ref, "선수 참조가 모두 범위 안")
+    chk(all(p not in qs for p, qs in prereq.items()), "자기 참조 없음")
     ok_noncand = not any(set(qs) & noncand for qs in prereq.values())
     chk(ok_noncand, "선수에 FRONT_MATTER/비후보 없음")
     indeg = {p: len(q) for p, q in prereq.items()}
@@ -76,7 +100,9 @@ for book in manifest["books"]:
             if indeg[m] == 0:
                 queue.append(m)
     chk(seen == n, f"위상 정렬 {seen}/{n} (순환 없음)")
-    pdf = REPO / "fixtures/content/ai-route-v2" / book["pdfPath"]
+    density = density_failures(pages, prereq)
+    chk(not density, f"book-{bid:03d} 선수 밀도 상한" + ("" if not density else " — " + "; ".join(density)))
+    pdf = FIXTURE / book["pdfPath"]
     chk(pdf.is_file(), f"PDF 존재: {book['pdfPath']}")
     if pdf.is_file():
         chk(hashlib.sha256(pdf.read_bytes()).hexdigest() == book["pdfSha256"], "PDF SHA-256 일치")
@@ -98,10 +124,14 @@ for c in evaluation["cases"]:
     missing = [x for x in c["requiredConcepts"] + c["helpfulConcepts"] if x not in concepts]
     chk(not missing, f"{c['caseId']}: 개념 실재 (누락 {missing})")
     all_ev_pages = (c["irrelevantPageNumbers"] + c["referencePageNumbers"]
-                     + c["allowedAlternativePageNumbers"] + [x for g in c["duplicatePageGroups"] for x in g])
+                     + c["allowedAlternativePageNumbers"] + [x for g in c["duplicatePageGroups"] for x in g]
+                     + (c.get("activeRentalPageNumbers") or []))
     chk(all(x in nums for x in all_ev_pages), f"{c['caseId']}: 평가 페이지가 도서 범위 안")
     chk(not (set(c["referencePageNumbers"]) & set(c["irrelevantPageNumbers"])), f"{c['caseId']}: 정답∩무관=∅")
+    # 정본은 비후보 페이지가 정답 경로와 대체 페이지 어디에도 못 나오게 한다. 대체 페이지를 빼면
+    # 임베딩이 없는 목차가 대체 정답으로 채점돼 도달할 수 없는 경로를 통과시킨다.
     chk(not (set(c["referencePageNumbers"]) & noncand), f"{c['caseId']}: 정답경로에 비후보 없음")
+    chk(not (set(c["allowedAlternativePageNumbers"]) & noncand), f"{c['caseId']}: 대체 페이지에 비후보 없음")
     dupgroups = {}
     for p in book["pages"]:
         for g in p["duplicateGroupKeys"]:
@@ -118,15 +148,26 @@ for c in evaluation["cases"]:
     bad = [(e["beforePageNumber"], e["afterPageNumber"]) for e in c["requiredPrerequisites"]
            if e["beforePageNumber"] not in prereq.get(e["afterPageNumber"], [])]
     chk(not bad, f"{c['caseId']}: requiredPrerequisites가 실제 DAG (위반 {bad})")
-    if c["owned"] is False:
+    route = prereq_closure(c["referencePageNumbers"], prereq)
+    extra = sorted(route - set(c["referencePageNumbers"]))
+    if c["owned"] is True:
+        chk(c["maxAdditionalInk"] is None, f"{c['caseId']}: 소장 사례는 maxAdditionalInk=null")
+        chk(c["depth"] in DEPTH_PAGE_LIMITS, f"{c['caseId']}: 소장 사례는 depth 지정")
+        limit = DEPTH_PAGE_LIMITS.get(c["depth"])
+        if limit is not None:
+            chk(len(route) <= limit,
+                f"{c['caseId']}: 소장 경로 {len(route)}p ≤ {c['depth']} 상한 {limit}p "
+                f"(정답 {len(c['referencePageNumbers'])}p + 선수 폐쇄 {extra})")
+    else:
+        chk(c["maxAdditionalInk"] in (0, 5, 10, 15), f"{c['caseId']}: 비소장 사례는 maxAdditionalInk∈{{0,5,10,15}}")
+        chk(c["depth"] is None, f"{c['caseId']}: 비소장 사례는 depth=null")
         rented = set(c.get("activeRentalPageNumbers") or [])
-        charged = [p for p in c["referencePageNumbers"] if p not in rented]
+        charged = sorted(route - rented)
         chk(len(charged) <= c["maxAdditionalInk"],
-            f"{c['caseId']}: 추가 차감 {len(charged)}p ≤ 예산 {c['maxAdditionalInk']}")
+            f"{c['caseId']}: 선수 폐쇄 포함 추가 차감 {len(charged)}p ≤ 예산 {c['maxAdditionalInk']} "
+            f"(정답 {len(c['referencePageNumbers'])}p + 선수 폐쇄 {extra}, 차감 {charged})")
     if c["owned"] is False and c["maxAdditionalInk"] == 0:
         chk(bool(c["activeRentalPageNumbers"]), f"{c['caseId']}: 예산0은 activeRentalPageNumbers 필요")
-        chk(set(c["referencePageNumbers"]) <= set(c["activeRentalPageNumbers"]),
-            f"{c['caseId']}: 예산0 정답경로가 활성대여 안")
 
 print("\n" + (f"실패 {len(fails)}건" if fails else "전체 통과"))
 for f in fails:

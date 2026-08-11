@@ -15,6 +15,8 @@ import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[4]  # docs/evidence/ai-route-corpus/tools/ 기준 저장소 루트
+from corpus_lib import DEPTH_PAGE_LIMITS, density_failures, prereq_closure  # noqa: E402
+
 CONTENT_ROLES = {"PREREQUISITE", "CORE", "EXAMPLE", "COUNTERPOINT", "CONCLUSION"}
 ALL_ROLES = CONTENT_ROLES | {"FRONT_MATTER"}
 
@@ -89,6 +91,8 @@ def main():
             if indeg[m] == 0:
                 queue.append(m)
     chk(seen == n, f"위상 정렬 {seen}/{n} (순환 없음)")
+    density = density_failures(pages, prereq)
+    chk(not density, "선수 밀도 상한" + ("" if not density else " — " + "; ".join(density)))
 
     chk(bool(re.fullmatch(r"[0-9a-f]{64}", book["pdfSha256"])), "pdfSha256 형식(64자 hex)")
     chk(book["totalPageCount"] == n, f"totalPageCount({book['totalPageCount']})==pages 길이({n})")
@@ -110,7 +114,10 @@ def main():
                      + case.get("activeRentalPageNumbers", []))
     chk(all(x in allnum for x in all_ev_pages), "평가 페이지가 도서 범위 안")
     chk(not (set(case["referencePageNumbers"]) & set(case["irrelevantPageNumbers"])), "정답∩무관=∅")
+    # 정본은 비후보 페이지가 정답 경로와 대체 페이지 어디에도 못 나오게 한다. 대체 페이지를 빼면
+    # 임베딩이 없는 목차가 대체 정답으로 채점돼 도달할 수 없는 경로를 통과시킨다.
     chk(not (set(case["referencePageNumbers"]) & noncand), "정답경로에 비후보 없음")
+    chk(not (set(case["allowedAlternativePageNumbers"]) & noncand), "대체 페이지에 비후보 없음")
     # 평가의 중복 그룹은 manifest의 duplicateGroupKeys가 실제로 묶은 페이지 집합과 같아야 한다.
     # 한쪽만 고치면 중복 페이지를 걸러내는 평가가 조용히 다른 정답을 채점하게 된다.
     manifest_groups = {frozenset(ps) for ps in dupgroups.values()}
@@ -127,20 +134,26 @@ def main():
     bad = [(e["beforePageNumber"], e["afterPageNumber"]) for e in case["requiredPrerequisites"]
            if e["beforePageNumber"] not in prereq.get(e["afterPageNumber"], [])]
     chk(not bad, f"requiredPrerequisites가 실제 DAG와 일치 (위반 {bad})")
+    route = prereq_closure(case["referencePageNumbers"], prereq)
+    extra = sorted(route - set(case["referencePageNumbers"]))
     if case["owned"] is False and case["maxAdditionalInk"] == 0:
         chk(bool(case["activeRentalPageNumbers"]), "예산0은 activeRentalPageNumbers 필요")
-        chk(set(case["referencePageNumbers"]) <= set(case.get("activeRentalPageNumbers", [])),
-            "예산0 정답경로가 활성대여 안에 있음")
     if case["owned"] is True:
         chk(case["maxAdditionalInk"] is None, "소장 사례는 maxAdditionalInk=null")
-        chk(case["depth"] in {"QUICK", "BALANCED", "DEEP"}, "소장 사례는 depth 지정")
+        chk(case["depth"] in DEPTH_PAGE_LIMITS, "소장 사례는 depth 지정")
+        limit = DEPTH_PAGE_LIMITS.get(case["depth"])
+        if limit is not None:
+            chk(len(route) <= limit,
+                f"소장 경로 {len(route)}p ≤ {case['depth']} 상한 {limit}p "
+                f"(정답 {len(case['referencePageNumbers'])}p + 선수 폐쇄 {extra})")
     else:
         chk(case["maxAdditionalInk"] in (0, 5, 10, 15), "비소장 사례는 maxAdditionalInk∈{0,5,10,15}")
         chk(case["depth"] is None, "비소장 사례는 depth=null")
         rented = set(case.get("activeRentalPageNumbers") or [])
-        charged = [p for p in case["referencePageNumbers"] if p not in rented]
+        charged = sorted(route - rented)
         chk(len(charged) <= case["maxAdditionalInk"],
-            f"정답 경로의 추가 차감 {len(charged)}p ≤ 예산 {case['maxAdditionalInk']}")
+            f"선수 폐쇄 포함 추가 차감 {len(charged)}p ≤ 예산 {case['maxAdditionalInk']} "
+            f"(정답 {len(case['referencePageNumbers'])}p + 선수 폐쇄 {extra}, 차감 {charged})")
 
     print("\n" + (f"실패 {len(fails)}건" if fails else "전체 통과"))
     for f in fails:

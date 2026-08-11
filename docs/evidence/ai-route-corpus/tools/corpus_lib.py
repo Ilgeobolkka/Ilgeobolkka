@@ -17,6 +17,52 @@ READING_CHARS_PER_MINUTE = 330
 IMAGE_PAGE_SECONDS = 45
 TOC_SECONDS = 40
 
+# 소장 경로의 깊이별 페이지 수 상한 (PRD "독서 목적과 예산 입력")
+DEPTH_PAGE_LIMITS = {"QUICK": 5, "BALANCED": 10, "DEEP": 15}
+# 선수 밀도 상한 (코퍼스 정본 "도서 제작 기준"). 시나리오의 최소·최대 상한 5·15에서 온 값이다.
+SHALLOW_CLOSURE, SHALLOW_MIN_CHAPTERS = 5, 3
+REACHABLE_CLOSURE, REACHABLE_MIN_RATIO = 15, 0.75
+
+
+def prereq_closure(pages, prereq):
+    """경로에 든 페이지의 전이적 선수 페이지까지 펼친다.
+
+    PRD 경로 생성 정책은 최종 경로에 선수 페이지가 모두 포함되고 그 누적 비용이 예산 안이어야
+    한다고 정한다. 따라서 경로의 실제 차감량과 분량은 고른 페이지가 아니라 이 폐쇄로 세야 한다.
+    """
+    closed = set(pages)
+    stack = list(closed)
+    while stack:
+        for q in prereq.get(stack.pop(), []):
+            if q not in closed:
+                closed.add(q)
+                stack.append(q)
+    return closed
+
+
+def density_failures(pages, prereq):
+    """선수 밀도 상한 위반 목록. 위반이 없으면 빈 리스트.
+
+    `pages`는 `chapter`·`aiRouteCandidatePage`·`pageNumber`를 가진 manifest 페이지들이다.
+    선수를 촘촘히 걸면 어떤 예산으로도 열 수 없는 페이지가 생기므로, 원고를 쓰기 전 구조 단계에서
+    막는다.
+    """
+    cand = [p for p in pages if p["aiRouteCandidatePage"]]
+    if not cand:
+        return ["후보 페이지가 하나도 없음"]
+    size = {p["pageNumber"]: len(prereq_closure([p["pageNumber"]], prereq)) for p in cand}
+    fails = []
+    chapters = {p["chapter"] for p in cand if size[p["pageNumber"]] <= SHALLOW_CLOSURE}
+    if len(chapters) < SHALLOW_MIN_CHAPTERS:
+        fails.append(f"선수 폐쇄 {SHALLOW_CLOSURE}p 이하 페이지가 덮는 장 {len(chapters)}개 "
+                     f"< {SHALLOW_MIN_CHAPTERS}개 (가장 작은 예산·빠른 깊이로 만들 재료가 없음)")
+    reachable = sum(1 for p in cand if size[p["pageNumber"]] <= REACHABLE_CLOSURE)
+    ratio = reachable / len(cand)
+    if ratio < REACHABLE_MIN_RATIO:
+        fails.append(f"선수 폐쇄 {REACHABLE_CLOSURE}p 이하 비율 {ratio:.0%} < {REACHABLE_MIN_RATIO:.0%} "
+                     f"(가장 큰 예산으로도 닿지 못하는 페이지가 너무 많음)")
+    return fails
+
 
 def sha256_text(text):
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
@@ -27,17 +73,6 @@ def reading_seconds(fmt, body):
         return IMAGE_PAGE_SECONDS
     seconds = len(body) / READING_CHARS_PER_MINUTE * 60
     return max(60, round(seconds / 5) * 5)
-
-
-def _section_first_pages(pages):
-    """pages: n이 배정된 뒤의 리스트. 절별 첫 페이지 번호를 반환."""
-    first_of = {}
-    cur_sec, cur_first = None, None
-    for p in pages:
-        if p["sec"] != cur_sec:
-            cur_sec, cur_first = p["sec"], p["n"]
-        first_of[p["n"]] = cur_first
-    return first_of
 
 
 def assemble(pages, section_edges, *, toc=True):
@@ -65,6 +100,10 @@ def assemble(pages, section_edges, *, toc=True):
             deps = section_edges.get(sec)
             if deps is None:
                 raise SystemExit(f"절 '{sec}'의 선수 관계가 section_edges에 없음 (빈 리스트라도 명시 필요)")
+            ahead = [d for d in deps if d not in first_of_sec]
+            if ahead:
+                raise SystemExit(f"절 '{sec}'의 선수 절 {ahead}이 아직 나오지 않음 "
+                                 "(선수 절은 페이지 순서상 앞에 있어야 함)")
             prereq[p["n"]] = [first_of_sec[d] for d in deps]
         else:
             prereq[p["n"]] = [prev_of_sec[sec]]
@@ -101,20 +140,6 @@ def toc_body(entries, width=60):
             lines.append("")
         lines.append(f"{prefix}{label} {dots} {page}")
     return "\n".join(lines)
-
-
-def build_manifest_book(*, book_id, title, pdf_path, pdf_sha256, total_page_count,
-                          ai_route_candidate, ai_external_transfer_allowed, pages):
-    return {
-        "bookId": book_id,
-        "title": title,
-        "pdfPath": pdf_path,
-        "pdfSha256": pdf_sha256,
-        "totalPageCount": total_page_count,
-        "aiRouteCandidate": ai_route_candidate,
-        "aiExternalTransferAllowed": ai_external_transfer_allowed,
-        "pages": pages,
-    }
 
 
 def build_pages(numbered, prereq, *, toc_topic=None, toc_analysis=None,
@@ -201,6 +226,8 @@ def validate_book(manifest_pages, manuscript_pages, *, min_pages=48, max_pages=7
             if indeg[m] == 0:
                 queue.append(m)
     chk(visited == n, f"위상 정렬 {visited}/{n} — 순환 의심")
+    for msg in density_failures(manifest_pages, prereq):
+        chk(False, msg)
 
     mp = {p["pageNumber"]: p for p in manuscript_pages}
     chk(set(mp) == all_nums, "원고·manifest 페이지 번호 불일치")
