@@ -21,14 +21,16 @@ C01의 manifest 전체를 검증해 외부 전송 권리·파일 무결성·페�
 
 ## 현재 구현 기준선
 
-- C01 전에는 AI manifest 타입이 없고 기존 콘텐츠 검증은 PDF·페이지 수 중심입니다.
+- 이 절은 착수 시점 기록입니다. 아래 산출물은 그 뒤에 구현했습니다 —
+  [AiRouteContentValidator](../../../../src/main/java/com/example/ilgeobolkka/contentimport/validation/AiRouteContentValidator.java),
+  [PrerequisiteGraphValidator](../../../../src/main/java/com/example/ilgeobolkka/contentimport/validation/PrerequisiteGraphValidator.java),
+  [ValidatedAiRouteContent](../../../../src/main/java/com/example/ilgeobolkka/contentimport/validation/ValidatedAiRouteContent.java).
 - [ContentBatch](../../../../src/main/java/com/example/ilgeobolkka/contentimport/ContentBatch.java)은
-  AI 선수 관계·중복 그룹·분석 입력을 표현하지 않습니다.
-- 외부 호출 전 전체 graph validator가 없습니다.
+  AI 선수 관계·중복 그룹·분석 입력을 표현하지 않습니다. 적재 연결은 C04 몫입니다.
 
 ## 입력과 산출물
 
-- 입력: C01의 `AiRouteContentManifest`, 실제 fixture root, 환경 dataPolicyVersion
+- 입력: C01의 `AiRouteContentManifest`·`AiRouteEvaluationDataset`, 실제 fixture root, 환경 dataPolicyVersion
 - 산출물: `ValidatedAiRouteContent`와 도서별 위상 정렬된 prerequisite edge·검증된 page metadata
 - 산출물: `AiRouteContentValidator`, `PrerequisiteGraphValidator`
 - C03에 넘길 것: 권리·정책·SHA·DAG 검증을 통과한 분석 텍스트 입력 목록과 페이지별
