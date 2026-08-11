@@ -172,13 +172,21 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
                 generationId, AiRouteNoRouteReason.INSUFFICIENT_BUDGET, BUDGET + 3);
 
         Map<String, Object> row = 생성을_조회한다(generationId);
+        AiRouteGenerationView view = 소유자로_조회한다(generationId).orElseThrow();
         assertAll(
                 () -> assertEquals("NO_ROUTE", row.get("status")),
                 () -> assertEquals("INSUFFICIENT_BUDGET", row.get("no_route_reason")),
                 () ->
                         assertEquals(
                                 BUDGET + 3,
-                                ((Number) row.get("minimum_required_ink")).intValue()));
+                                ((Number) row.get("minimum_required_ink")).intValue()),
+                () -> assertEquals(AiRouteGenerationStatus.NO_ROUTE, view.status()),
+                () ->
+                        assertEquals(
+                                AiRouteNoRouteReason.INSUFFICIENT_BUDGET, view.noRouteReason()),
+                () -> assertEquals(BUDGET + 3, view.minimumRequiredInk()),
+                () -> assertNull(view.failureCode()),
+                () -> assertNull(view.savedRouteId()));
     }
 
     @Test
@@ -327,6 +335,25 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
                         assertThrows(
                                 IllegalStateException.class,
                                 () -> 같은_경로로_다시_저장한다(generationId, routeId)));
+    }
+
+    /**
+     * leaf 가 요구하는 {@code SAVED → CONSUMED → 만료 삭제} 사슬이다. 마지막에 저장 경로가 남아야 한다.
+     * 만료가 지우는 것은 최소 멱등 상태뿐이고 기한 없는 저장 경로는 건드리지 않는다.
+     */
+    @Test
+    void 소비까지_끝난_생성은_만료하면_지우고_저장_경로는_남긴다() {
+        UUID generationId = 완료된_생성을_만든다();
+        clock.set(COMPLETED_AT);
+        long routeId = 저장_경로로_전환한다(generationId);
+        lifecycleService.markConsumed(generationId);
+
+        clock.set(EXPIRES_AT);
+
+        assertAll(
+                () -> assertEquals(1, cleanupService.removeExpired()),
+                () -> assertEquals(false, generationRepository.existsById(generationId)),
+                () -> assertEquals(true, readingRouteRepository.existsById(routeId)));
     }
 
     @Test
