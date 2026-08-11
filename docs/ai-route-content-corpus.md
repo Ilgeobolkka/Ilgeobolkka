@@ -74,8 +74,9 @@
 `aiRouteCandidatePage`는 도서 단위 `aiRouteCandidate`와 달리 페이지 하나를 후보 집합에 넣을지 정하는
 값입니다. 지원 도서 안에서도 구조 페이지는 후보가 아니므로 `contentRole=FRONT_MATTER`인 페이지는 항상
 `false`여야 하고, 나머지 역할의 페이지는 `true`여야 합니다. `false`인 페이지는 다른 페이지의
-`prerequisitePageNumbers`나 평가 데이터의 `referencePageNumbers`·`allowedAlternativePageNumbers`에 나올 수
-없습니다. 도달할 수 없는 선수 관계와 정답을 적재 전에 막기 위한 제약입니다.
+`prerequisitePageNumbers`나 평가 데이터의 어느 페이지 목록에도 나올 수 없습니다. 정답 경로와 대체
+페이지에서는 도달할 수 없는 정답을 적재 전에 막기 위해서고, `irrelevantPageNumbers`에서는 애초에
+추천될 수 없는 페이지라 무관으로 적어도 채점에 걸리지 않는 죽은 값이기 때문입니다.
 
 `false`인 페이지에는 Embeddings API를 호출하지 않고 임베딩 모델·차원·벡터를 비웁니다. 후보 검색은 이
 값이 `true`인 페이지만 고른 뒤 그 집합 안에서 벡터 유효성을 검증하며, 벡터가 있는 페이지만 고르는
@@ -104,7 +105,7 @@ manifest는 AI 경로 지원 후보를 정의할 뿐 `ai_route_supported=true`�
 `ai-route-v2`의 `embeddingModel`은
 [ADR-0014](./adr/application/0014-use-openai-and-mysql-for-ai-route-generation.md)가 정한
 `text-embedding-3-small`이고 `embeddingDimensions`는 그 모델의 기본 차원인 `1536`입니다. 한 콘텐츠 버전의
-모든 페이지 vector를 이 모델·차원으로 생성하며, 목적 vector와 model·dimensions가 다르면 후보 검색을
+모든 후보 페이지 vector를 이 모델·차원으로 생성하며, 목적 vector와 model·dimensions가 다르면 후보 검색을
 시작하지 않고 실패합니다. 값을 바꾸면 해당 콘텐츠 버전의 페이지 임베딩을 전부 다시 생성해야 하므로
 기존 콘텐츠 버전에서 바꾸지 않고 새 콘텐츠 버전에서만 변경합니다.
 

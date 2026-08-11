@@ -13,6 +13,8 @@ import re
 import sys
 from pathlib import Path
 
+from corpus_lib import DEPTH_PAGE_LIMITS, density_failures, prereq_closure
+
 REPO = Path(__file__).resolve().parents[4]  # docs/evidence/ai-route-corpus/tools/ 기준 저장소 루트
 FIXTURE = Path(sys.argv[1]) if len(sys.argv) > 1 else REPO / "fixtures/content/ai-route-v2"
 manifest = json.loads((FIXTURE / "manifest.json").read_text("utf-8"))
@@ -26,8 +28,6 @@ def chk(cond, msg):
     if not cond:
         fails.append(msg)
 
-
-from corpus_lib import DEPTH_PAGE_LIMITS, density_failures, prereq_closure  # noqa: E402
 
 CONTENT_ROLES = {"PREREQUISITE", "CORE", "EXAMPLE", "COUNTERPOINT", "CONCLUSION"}
 ALL_ROLES = CONTENT_ROLES | {"FRONT_MATTER"}
@@ -54,6 +54,7 @@ for book in manifest["books"]:
         chk(pages == [], f"소설/미지원 도서 pages[] 빈 배열")
         chk(bool(re.fullmatch(r"[0-9a-f]{64}", book["pdfSha256"])), "pdfSha256 형식")
         continue
+    chk(book["aiExternalTransferAllowed"] is True, "aiExternalTransferAllowed=true")
     chk(48 <= n <= 72, f"페이지 수 {n} (48~72)")
     chk(nums == list(range(1, n + 1)), "pageNumber 1..N 연속")
     chapters = {p["chapter"] for p in pages if p["contentRole"] != "FRONT_MATTER"}
@@ -132,12 +133,17 @@ for c in evaluation["cases"]:
     # 임베딩이 없는 목차가 대체 정답으로 채점돼 도달할 수 없는 경로를 통과시킨다.
     chk(not (set(c["referencePageNumbers"]) & noncand), f"{c['caseId']}: 정답경로에 비후보 없음")
     chk(not (set(c["allowedAlternativePageNumbers"]) & noncand), f"{c['caseId']}: 대체 페이지에 비후보 없음")
+    # 비후보 페이지는 추천될 수 없으므로 무관으로 적어도 채점에 걸리지 않는 죽은 값이다.
+    chk(not (set(c["irrelevantPageNumbers"]) & noncand), f"{c['caseId']}: 무관 페이지에 비후보 없음")
     dupgroups = {}
     for p in book["pages"]:
         for g in p["duplicateGroupKeys"]:
             dupgroups.setdefault(g, set()).add(p["pageNumber"])
     manifest_groups = {frozenset(ps) for ps in dupgroups.values()}
     case_groups = {frozenset(g) for g in c["duplicatePageGroups"]}
+    # 집합으로 비교하면 그룹 안의 같은 페이지 중복이 지워지므로 따로 본다.
+    chk(all(len(g) == len(set(g)) for g in c["duplicatePageGroups"]),
+        f"{c['caseId']}: duplicatePageGroups 안에 같은 페이지가 두 번 나오지 않음")
     chk(manifest_groups == case_groups,
         f"{c['caseId']}: duplicateGroupKeys 그룹 == duplicatePageGroups "
         f"(manifest {sorted(sorted(g) for g in manifest_groups)}, "

@@ -14,8 +14,9 @@ import re
 import sys
 from pathlib import Path
 
+from corpus_lib import DEPTH_PAGE_LIMITS, density_failures, prereq_closure
+
 REPO = Path(__file__).resolve().parents[4]  # docs/evidence/ai-route-corpus/tools/ 기준 저장소 루트
-from corpus_lib import DEPTH_PAGE_LIMITS, density_failures, prereq_closure  # noqa: E402
 
 CONTENT_ROLES = {"PREREQUISITE", "CORE", "EXAMPLE", "COUNTERPOINT", "CONCLUSION"}
 ALL_ROLES = CONTENT_ROLES | {"FRONT_MATTER"}
@@ -118,6 +119,8 @@ def main():
     # 임베딩이 없는 목차가 대체 정답으로 채점돼 도달할 수 없는 경로를 통과시킨다.
     chk(not (set(case["referencePageNumbers"]) & noncand), "정답경로에 비후보 없음")
     chk(not (set(case["allowedAlternativePageNumbers"]) & noncand), "대체 페이지에 비후보 없음")
+    # 비후보 페이지는 추천될 수 없으므로 무관으로 적어도 채점에 걸리지 않는 죽은 값이다.
+    chk(not (set(case["irrelevantPageNumbers"]) & noncand), "무관 페이지에 비후보 없음")
     # 평가의 중복 그룹은 manifest의 duplicateGroupKeys가 실제로 묶은 페이지 집합과 같아야 한다.
     # 한쪽만 고치면 중복 페이지를 걸러내는 평가가 조용히 다른 정답을 채점하게 된다.
     manifest_groups = {frozenset(ps) for ps in dupgroups.values()}

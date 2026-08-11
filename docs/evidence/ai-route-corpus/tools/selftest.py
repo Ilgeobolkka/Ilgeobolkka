@@ -174,6 +174,22 @@ def check_fragment(workdir):
     expect("대체 페이지에 비후보를 넣으면 실패", broken, workdir,
            should_pass=False, needle="대체 페이지에 비후보")
 
+    broken = copy.deepcopy(base)
+    broken["evaluationCase"]["irrelevantPageNumbers"] = [fm]
+    expect("무관 페이지에 비후보를 넣으면 실패", broken, workdir,
+           should_pass=False, needle="무관 페이지에 비후보")
+
+    broken = copy.deepcopy(base)
+    group = broken["evaluationCase"]["duplicatePageGroups"][0]
+    broken["evaluationCase"]["duplicatePageGroups"][0] = [group[0]] + group
+    expect("중복 그룹 안에 같은 페이지를 두 번 넣으면 실패", broken, workdir,
+           should_pass=False, needle="같은 페이지가 두 번")
+
+    broken = copy.deepcopy(base)
+    broken["manifestBook"]["aiExternalTransferAllowed"] = False
+    expect("외부 전송 권리가 false면 실패", broken, workdir,
+           should_pass=False, needle="aiExternalTransferAllowed")
+
     # 정답에서 선수 페이지를 빼고 대여에서도 빼면, 폐쇄가 그 페이지를 되살려 예산 0을 넘긴다.
     broken = copy.deepcopy(base)
     hidden = prerequisite_inside_route(broken["manifestBook"], broken["evaluationCase"])
@@ -236,6 +252,26 @@ def check_manifest(workdir):
     broken["contentVersion"] = "ai-route-v3"
     expect_manifest("evaluation contentVersion이 어긋나면 실패", manifest, broken, workdir,
                     should_pass=False, needle="evaluation contentVersion")
+
+    # 아래 셋은 한동안 조각 검증기에만 있던 검사다. 두 검증기의 기준이 갈리지 않는지 함께 본다.
+    broken = copy.deepcopy(manifest)
+    broken["books"][0]["aiExternalTransferAllowed"] = False
+    expect_manifest("외부 전송 권리가 false면 실패", broken, evaluation, workdir,
+                    should_pass=False, needle="aiExternalTransferAllowed")
+
+    broken = copy.deepcopy(evaluation)
+    case = broken["cases"][0]
+    book = next(b for b in manifest["books"] if b["bookId"] == case["bookId"])
+    case["irrelevantPageNumbers"] = [
+        p["pageNumber"] for p in book["pages"] if not p["aiRouteCandidatePage"]]
+    expect_manifest("무관 페이지에 비후보를 넣으면 실패", manifest, broken, workdir,
+                    should_pass=False, needle="무관 페이지에 비후보")
+
+    broken = copy.deepcopy(evaluation)
+    group = broken["cases"][0]["duplicatePageGroups"][0]
+    broken["cases"][0]["duplicatePageGroups"][0] = [group[0]] + group
+    expect_manifest("중복 그룹 안에 같은 페이지를 두 번 넣으면 실패", manifest, broken, workdir,
+                    should_pass=False, needle="같은 페이지가 두 번")
 
     broken = copy.deepcopy(evaluation)
     case = next(c for c in broken["cases"] if c["maxAdditionalInk"] == 0)

@@ -373,8 +373,10 @@ erDiagram
 있는 페이지만 고르는 방식으로 대신하지 않습니다.
 
 `ai_route_candidate=1`인 페이지는 위 일곱 필드를 모두 가져야 하고 `estimated_reading_seconds`와
-`embedding_dimensions`는 0보다 커야 합니다. `ai_route_candidate=0`인 페이지는 임베딩 세 필드를
-`NULL`로 두고, 미지원 도서는 일곱 필드를 모두 `NULL`로 둘 수 있습니다.
+`embedding_dimensions`는 0보다 커야 합니다. 지원 도서의 `ai_route_candidate=0`인 페이지는 임베딩 세
+필드만 `NULL`이고 `ai_analysis_text`·`ai_public_guide_topic`·`estimated_reading_seconds`·
+`duplicate_group_keys`는 manifest 값을 그대로 저장합니다 — 목차도 예상 독서 시간을 가지며 화면에
+쓰입니다. 미지원 도서는 일곱 필드를 모두 `NULL`로 둘 수 있습니다.
 분석 텍스트·임베딩·중복 그룹은 공개 API에 반환하지 않습니다.
 generation·저장 route 항목이 페이지의 도서를 복합 FK로 확인할 수 있도록
 `(id, book_id)` 고유키를 추가합니다.

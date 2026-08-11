@@ -48,6 +48,10 @@ AI 경로 목표 ERD의 기존 테이블 확장과 일곱 새 테이블을 다�
    테스트 fixture 호환을 위해 `NOT NULL DEFAULT 'initial-v1'`로 적용하며 일부 ID만 선별하거나 nullable
    중간 계약을 남기지 않습니다.
 2. `book`, `book_page` 확장 컬럼의 타입·ASCII collation·JSON·NULL 계약을 ERD와 일치시킵니다.
+   `book_page.ai_route_candidate`는 `V2__create_ai_route_domain.sql`이 나간 뒤 ERD에 추가된 컬럼이라
+   그 migration에 없습니다. V2를 고치지 않고 다음 번호의 migration으로 `NOT NULL DEFAULT 0`을
+   추가하며, 기존 행은 기본값으로 backfill됩니다. 적재가 이 컬럼에 값을 넣는 계약은
+   [C04 원자적 적재](../content/C04-atomic-import.md)에 있습니다.
 3. `ai_route_prerequisite`, `ai_route_generation`, `ai_route_generation_item`, `ai_reading_route`,
    `ai_reading_route_item`, `ai_route_current`, `ai_route_daily_usage`를 빠짐없이 만듭니다.
 4. 같은 독자·멱등 키, generation·route의 position·page, generation과 저장 route, 현재 route의 고유성과

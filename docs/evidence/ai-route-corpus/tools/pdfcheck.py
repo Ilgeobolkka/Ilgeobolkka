@@ -86,7 +86,7 @@ for idx, pn in enumerate(ordered, start=1):
         continue
     cs = stream_of(objs.get(int(cm.group(1)), b"")) or b""
     has_text = bool(re.search(rb"\bT[jJ]\b", cs))
-    has_image = bool(re.search(rb"/(Image|I\d|X\d)\s*Do\b", cs) or re.search(rb"\bDo\b", cs))
+    has_image = bool(re.search(rb"\bDo\b", cs))  # XObject를 그리는 연산자
     if has_text:
         text_pages.append(idx)
     elif has_image:
