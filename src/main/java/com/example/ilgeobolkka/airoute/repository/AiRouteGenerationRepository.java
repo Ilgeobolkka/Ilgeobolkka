@@ -2,6 +2,7 @@ package com.example.ilgeobolkka.airoute.repository;
 
 import com.example.ilgeobolkka.airoute.entity.AiRouteGeneration;
 import jakarta.persistence.LockModeType;
+import java.time.Instant;
 import java.util.Optional;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -46,4 +47,43 @@ public interface AiRouteGenerationRepository extends JpaRepository<AiRouteGenera
             """)
     Optional<AiRouteGeneration> findByReaderIdAndIdempotencyKeyForUpdate(
             @Param("readerId") long readerId, @Param("idempotencyKey") UUID idempotencyKey);
+
+    /**
+     * 소유자의 아직 유효한 생성만 돌려준다. 다른 독자의 식별자와 만료한 식별자를 같은 빈 결과로 만들어,
+     * 존재 여부가 응답에서 갈리지 않게 한다.
+     *
+     * <p>만료 판정을 조건에 넣는 이유는 cleanup 실행 여부에 기대지 않기 위해서다. 정리 배치가 아직 안
+     * 돌았어도 만료 시각을 지난 행은 여기서 보이지 않는다.
+     *
+     * <p>경계는 {@code now < expiresAt} 이 유효다. {@code expiresAt} 그 시각부터 만료이며
+     * {@code PageRental#isActive} 와 같은 관례다. {@code GENERATING} 은 아직 만료 시각이 없어
+     * {@code NULL} 이고 유효로 본다.
+     */
+    @Query(
+            """
+            SELECT generation
+            FROM AiRouteGeneration generation
+            WHERE generation.generationId = :generationId
+              AND generation.readerId = :readerId
+              AND (generation.expiresAt IS NULL OR generation.expiresAt > :now)
+            """)
+    Optional<AiRouteGeneration> findOwnedNotExpired(
+            @Param("generationId") UUID generationId,
+            @Param("readerId") long readerId,
+            @Param("now") Instant now);
+
+    /**
+     * 상태를 옮기려고 잠금 조회한다. 전이는 이미 만들어진 생성에만 일어나므로
+     * {@link #existsByReaderIdAndIdempotencyKey} 같은 존재 확인을 앞에 두지 않는다. 없는 행은 정상 경로가
+     * 아니라 호출자의 잘못이고, 기본 키 조회라 없을 때 잡히는 gap 도 임의의 UUID 자리 하나뿐이다.
+     */
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @Query(
+            """
+            SELECT generation
+            FROM AiRouteGeneration generation
+            WHERE generation.generationId = :generationId
+            """)
+    Optional<AiRouteGeneration> findByGenerationIdForUpdate(
+            @Param("generationId") UUID generationId);
 }
