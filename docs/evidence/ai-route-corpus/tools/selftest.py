@@ -19,10 +19,8 @@ from pathlib import Path
 TOOLS = Path(__file__).resolve().parent
 REPO = TOOLS.parents[3]
 FIXTURE = REPO / "fixtures/content/ai-route-v2"
-# 정상 표본은 선수 폐쇄까지 예산 안에 드는 도서여야 한다. 현재 정본 10권 중 book-041뿐이고
-# 나머지 9권은 정답 경로의 선수 페이지가 예산·깊이 상한을 넘어 검증기가 FAIL로 잡는다.
-SAMPLE_BOOK_ID = 41
-VALID_SUBSET_BOOK_IDS = {41}
+# 조각 검사의 표본은 예산 0 사례여야 예산·대여를 깨뜨리는 음성 검사를 만들 수 있다.
+SAMPLE_BOOK_ID = 11
 
 sys.path.insert(0, str(TOOLS))
 import corpus_lib  # noqa: E402  (경로를 붙인 뒤에만 import할 수 있다)
@@ -52,31 +50,15 @@ def load_fragment(book_id):
     return {"manifestBook": book, "evaluationCase": case}
 
 
-def load_valid_subset():
-    """모든 계약을 만족하는 도서만 남긴 정본의 부분 집합.
+def prerequisite_inside_route(book, case):
+    """정답 경로 안에서 다른 경로 페이지의 선수인 페이지 하나.
 
-    정본 전체는 지금 선수 폐쇄 예산 계약을 만족하지 않고, `validate_manifest.py`가 그것을
-    FAIL로 드러내는 것이 정상이다. 도구 자체의 회귀를 보는 양성 검사에는 통과가 보장된 입력이
-    필요하므로 부분 집합을 쓴다. 검증이 권수를 세지 않으므로 부분 집합도 정상 입력이다.
+    정답 경로는 이제 선수 폐쇄로 적으므로, 이 페이지를 정답과 대여에서 함께 빼도 폐쇄가 되살린다.
+    폐쇄를 세지 않는 검증기라면 통과시켰을 입력이라 음성 검사로 쓴다.
     """
-    manifest, evaluation = load_manifest(), load_evaluation()
-    manifest["books"] = [b for b in manifest["books"] if b["bookId"] in VALID_SUBSET_BOOK_IDS]
-    evaluation["cases"] = [c for c in evaluation["cases"] if c["bookId"] in VALID_SUBSET_BOOK_IDS]
-    return manifest, evaluation
-
-
-def closure_only_pages(fragment):
-    """정답 경로에는 없고 선수 폐쇄로만 끌려 들어오는 페이지."""
-    book = fragment["manifestBook"]
+    route = set(case["referencePageNumbers"])
     prereq = {p["pageNumber"]: p["prerequisitePageNumbers"] for p in book["pages"]}
-    ref = set(fragment["evaluationCase"]["referencePageNumbers"])
-    closed, stack = set(ref), list(ref)
-    while stack:
-        for q in prereq.get(stack.pop(), []):
-            if q not in closed:
-                closed.add(q)
-                stack.append(q)
-    return sorted(closed - ref)
+    return next(q for n in sorted(route) for q in sorted(prereq[n]) if q in route)
 
 
 def run_tool(argv, workdir):
@@ -191,12 +173,13 @@ def check_fragment(workdir):
     expect("대체 페이지에 비후보를 넣으면 실패", broken, workdir,
            should_pass=False, needle="대체 페이지에 비후보")
 
-    # 정답 페이지 자체는 모두 대여 상태여도, 그 선수 페이지 하나가 대여 밖이면 예산 0으로 열 수 없다.
+    # 정답에서 선수 페이지를 빼고 대여에서도 빼면, 폐쇄가 그 페이지를 되살려 예산 0을 넘긴다.
     broken = copy.deepcopy(base)
-    hidden = closure_only_pages(broken)[0]
-    broken["evaluationCase"]["activeRentalPageNumbers"] = [
-        p for p in broken["evaluationCase"]["activeRentalPageNumbers"] if p != hidden]
-    expect("정답 경로의 선수 페이지가 대여 밖이면 실패", broken, workdir,
+    hidden = prerequisite_inside_route(broken["manifestBook"], broken["evaluationCase"])
+    for field in ("referencePageNumbers", "activeRentalPageNumbers"):
+        broken["evaluationCase"][field] = [
+            p for p in broken["evaluationCase"][field] if p != hidden]
+    expect("정답에서 선수 페이지를 빼도 폐쇄가 되살린다", broken, workdir,
            should_pass=False, needle="선수 폐쇄 포함")
 
     broken = copy.deepcopy(base)
@@ -212,8 +195,8 @@ def check_fragment(workdir):
 
 def check_manifest(workdir):
     print("\n[validate_manifest.py]")
-    manifest, evaluation = load_valid_subset()
-    expect_manifest("계약을 만족하는 부분 집합은 통과", manifest, evaluation, workdir, should_pass=True)
+    manifest, evaluation = load_manifest(), load_evaluation()
+    expect_manifest("정상 정본은 통과", manifest, evaluation, workdir, should_pass=True)
 
     broken = copy.deepcopy(manifest)
     broken["books"][0]["totalPageCount"] += 1
@@ -254,25 +237,21 @@ def check_manifest(workdir):
                     should_pass=False, needle="evaluation contentVersion")
 
     broken = copy.deepcopy(evaluation)
-    case = broken["cases"][0]
-    hidden = closure_only_pages({"manifestBook": manifest["books"][0], "evaluationCase": case})[0]
-    case["activeRentalPageNumbers"] = [p for p in case["activeRentalPageNumbers"] if p != hidden]
-    expect_manifest("정답 경로의 선수 페이지가 대여 밖이면 실패", manifest, broken, workdir,
+    case = next(c for c in broken["cases"] if c["maxAdditionalInk"] == 0)
+    book = next(b for b in manifest["books"] if b["bookId"] == case["bookId"])
+    hidden = prerequisite_inside_route(book, case)
+    for field in ("referencePageNumbers", "activeRentalPageNumbers"):
+        case[field] = [p for p in case[field] if p != hidden]
+    expect_manifest("정답에서 선수 페이지를 빼도 폐쇄가 되살린다", manifest, broken, workdir,
                     should_pass=False, needle="선수 폐쇄 포함")
 
-    # 부분 집합에 소장 사례가 없으므로 비소장 사례를 소장으로 바꿔 소장 계약만 따로 확인한다.
-    owned_evaluation = copy.deepcopy(evaluation)
-    owned_evaluation["cases"][0].update(owned=True, maxAdditionalInk=None, depth="DEEP")
-    expect_manifest("소장 사례로 바꾼 부분 집합은 통과", manifest, owned_evaluation, workdir,
-                    should_pass=True)
-
-    broken = copy.deepcopy(owned_evaluation)
-    broken["cases"][0]["depth"] = None
+    broken = copy.deepcopy(evaluation)
+    next(c for c in broken["cases"] if c["owned"] is True)["depth"] = None
     expect_manifest("소장 사례에 depth가 없으면 실패", manifest, broken, workdir,
                     should_pass=False, needle="소장 사례는 depth 지정")
 
-    broken = copy.deepcopy(owned_evaluation)
-    broken["cases"][0]["depth"] = "QUICK"
+    broken = copy.deepcopy(evaluation)
+    next(c for c in broken["cases"] if c["depth"] == "DEEP")["depth"] = "QUICK"
     expect_manifest("소장 경로가 깊이 상한을 넘으면 실패", manifest, broken, workdir,
                     should_pass=False, needle="QUICK 상한")
 

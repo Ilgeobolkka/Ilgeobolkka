@@ -134,6 +134,12 @@ manifest는 AI 경로 지원 후보를 정의할 뿐 `ai_route_supported=true`�
 사용합니다. `requiredPrerequisites[]`의 각 항목은 `beforePageNumber`와 `afterPageNumber`를 가집니다.
 `duplicatePageGroups[]`의 각 항목은 중복으로 판정할 페이지 번호 배열입니다.
 
+`referencePageNumbers`는 필수 개념을 덮는 페이지와 그 전이적 선수 페이지를 모두 담은 **선수 폐쇄**로
+적습니다. 경로 생성 정책이 최종 경로에 선수 페이지를 모두 포함하도록 요구하므로, 고른 페이지만 적으면
+실현할 수 없는 정답이 됩니다. 따라서 비소장 사례는 `referencePageNumbers` 중 활성 대여가 아닌 페이지
+수가 `maxAdditionalInk` 이하여야 하고, 소장 사례는 `referencePageNumbers` 전체가 선택한 깊이의 페이지 수
+상한 이하여야 합니다. `requiredPrerequisites`는 그 경로 안의 실제 선수 간선입니다.
+
 정답 필드는 후보 검색이나 경로 구성 입력에 사용하지 않습니다. 독서 목적만 일반 사용자 입력과 같은
 경계로 전달하며 정확한 페이지 번호 일치보다 개념 충족 여부를 우선 판정합니다.
 

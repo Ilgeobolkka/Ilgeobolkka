@@ -9,14 +9,19 @@
       "maxAdditionalInk": 0,
       "depth": null,
       "activeRentalPageNumbers": [
+        2,
+        3,
         4,
         10,
+        11,
         18,
+        23,
         24,
+        25,
+        28,
+        29,
         33,
-        39,
-        44,
-        47
+        44
       ],
       "requiredConcepts": [
         "느림",
@@ -32,28 +37,52 @@
       ],
       "requiredPrerequisites": [
         {
+          "beforePageNumber": 2,
+          "afterPageNumber": 3
+        },
+        {
+          "beforePageNumber": 3,
+          "afterPageNumber": 4
+        },
+        {
           "beforePageNumber": 4,
           "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 11
         },
         {
           "beforePageNumber": 10,
           "afterPageNumber": 18
         },
         {
+          "beforePageNumber": 11,
+          "afterPageNumber": 23
+        },
+        {
           "beforePageNumber": 18,
           "afterPageNumber": 24
         },
         {
-          "beforePageNumber": 33,
-          "afterPageNumber": 39
+          "beforePageNumber": 23,
+          "afterPageNumber": 25
+        },
+        {
+          "beforePageNumber": 25,
+          "afterPageNumber": 28
+        },
+        {
+          "beforePageNumber": 28,
+          "afterPageNumber": 29
+        },
+        {
+          "beforePageNumber": 29,
+          "afterPageNumber": 33
         },
         {
           "beforePageNumber": 33,
           "afterPageNumber": 44
-        },
-        {
-          "beforePageNumber": 44,
-          "afterPageNumber": 47
         }
       ],
       "irrelevantPageNumbers": [
@@ -74,40 +103,30 @@
         ]
       ],
       "referencePageNumbers": [
+        2,
+        3,
         4,
         10,
+        11,
         18,
+        23,
         24,
+        25,
+        28,
+        29,
         33,
-        39,
-        44,
-        47
+        44
       ],
       "allowedAlternativePageNumbers": []
     },
     {
       "caseId": "case-book-041",
       "bookId": 41,
-      "purpose": "작은 가게를 열려는데 여러 메뉴를 한 사람이 다 만드는 게 나을지, 한 가지에 집중하는 게 나을지 알고 싶다",
-      "owned": false,
-      "maxAdditionalInk": 0,
-      "depth": null,
-      "activeRentalPageNumbers": [
-        2,
-        3,
-        4,
-        5,
-        6,
-        10,
-        11,
-        12,
-        13,
-        17,
-        18,
-        19,
-        20,
-        21
-      ],
+      "purpose": "이 책을 소장하고 있는데, 작은 가게를 열기 전에 여러 메뉴를 한 사람이 다 만드는 게 나을지 한 가지에 집중하는 게 나을지 핵심만 빠르게 확인하고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
       "requiredConcepts": [
         "분업",
         "특화",
@@ -119,16 +138,16 @@
       ],
       "requiredPrerequisites": [
         {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
           "beforePageNumber": 4,
           "afterPageNumber": 10
         },
         {
           "beforePageNumber": 10,
           "afterPageNumber": 17
-        },
-        {
-          "beforePageNumber": 18,
-          "afterPageNumber": 20
         }
       ],
       "irrelevantPageNumbers": [
@@ -153,13 +172,10 @@
         ]
       ],
       "referencePageNumbers": [
+        2,
         4,
         10,
-        12,
-        13,
-        17,
-        18,
-        20
+        17
       ],
       "allowedAlternativePageNumbers": [
         3,
@@ -179,25 +195,25 @@
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
         "거래비용",
-        "계약",
-        "도덕적 해이"
+        "계약"
       ],
       "helpfulConcepts": [
         "신뢰",
-        "평판"
+        "평판",
+        "도덕적 해이"
       ],
       "requiredPrerequisites": [
         {
-          "beforePageNumber": 17,
-          "afterPageNumber": 19
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
         },
         {
-          "beforePageNumber": 19,
-          "afterPageNumber": 26
+          "beforePageNumber": 4,
+          "afterPageNumber": 6
         },
         {
-          "beforePageNumber": 26,
-          "afterPageNumber": 29
+          "beforePageNumber": 6,
+          "afterPageNumber": 17
         }
       ],
       "irrelevantPageNumbers": [
@@ -223,11 +239,10 @@
         ]
       ],
       "referencePageNumbers": [
-        9,
-        17,
-        19,
-        26,
-        29
+        2,
+        4,
+        6,
+        17
       ],
       "allowedAlternativePageNumbers": [
         10,
@@ -239,10 +254,10 @@
     {
       "caseId": "case-book-043",
       "bookId": 43,
-      "purpose": "이 책을 이미 소장하고 있는데, 시간이 없어 매출·비용·이익과 현금흐름의 핵심만 빠르게 훑어보고 싶다",
+      "purpose": "이 책을 이미 소장하고 있는데, 매출·비용·이익이 현금흐름과 어떻게 이어지는지 개념과 사례를 균형 있게 훑어보고 싶다",
       "owned": true,
       "maxAdditionalInk": null,
-      "depth": "QUICK",
+      "depth": "BALANCED",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
         "매출",
@@ -257,8 +272,32 @@
       ],
       "requiredPrerequisites": [
         {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
           "beforePageNumber": 8,
           "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 14
         },
         {
           "beforePageNumber": 14,
@@ -286,14 +325,15 @@
         ]
       ],
       "referencePageNumbers": [
+        2,
         4,
         6,
         8,
         10,
+        12,
         14,
         17,
-        19,
-        23
+        19
       ],
       "allowedAlternativePageNumbers": [
         5,
@@ -317,15 +357,47 @@
       "requiredConcepts": [
         "수요의 법칙",
         "공급의 법칙",
-        "균형가격",
-        "수요의 가격탄력성"
+        "균형가격"
       ],
       "helpfulConcepts": [
         "기회비용",
         "초과수요",
-        "탄력성과 매출"
+        "탄력성과 매출",
+        "수요의 가격탄력성"
       ],
       "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 11
+        },
+        {
+          "beforePageNumber": 11,
+          "afterPageNumber": 13
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 17
+        },
+        {
+          "beforePageNumber": 17,
+          "afterPageNumber": 19
+        },
+        {
+          "beforePageNumber": 19,
+          "afterPageNumber": 21
+        },
         {
           "beforePageNumber": 13,
           "afterPageNumber": 25
@@ -333,10 +405,6 @@
         {
           "beforePageNumber": 21,
           "afterPageNumber": 25
-        },
-        {
-          "beforePageNumber": 25,
-          "afterPageNumber": 35
         }
       ],
       "irrelevantPageNumbers": [
@@ -357,13 +425,16 @@
         ]
       ],
       "referencePageNumbers": [
+        2,
+        4,
+        6,
+        9,
         11,
         13,
+        17,
         19,
         21,
-        25,
-        37,
-        40
+        25
       ],
       "allowedAlternativePageNumbers": [
         12,
@@ -389,16 +460,9 @@
         7,
         8,
         9,
-        10,
         16,
         17,
-        18,
-        19,
-        20,
-        24,
-        25,
-        50,
-        51
+        18
       ],
       "requiredConcepts": [
         "점",
@@ -424,6 +488,38 @@
           "afterPageNumber": 4
         },
         {
+          "beforePageNumber": 2,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 3,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 9
+        },
+        {
           "beforePageNumber": 9,
           "afterPageNumber": 16
         },
@@ -434,10 +530,6 @@
         {
           "beforePageNumber": 16,
           "afterPageNumber": 18
-        },
-        {
-          "beforePageNumber": 9,
-          "afterPageNumber": 50
         }
       ],
       "irrelevantPageNumbers": [
@@ -456,15 +548,16 @@
         2,
         3,
         4,
+        5,
+        6,
+        7,
+        8,
         9,
         16,
         17,
-        18,
-        50
+        18
       ],
       "allowedAlternativePageNumbers": [
-        6,
-        8,
         19,
         24,
         25
@@ -473,10 +566,10 @@
     {
       "caseId": "case-book-064",
       "bookId": 64,
-      "purpose": "종이를 접어 바닥에 스스로 서고 손으로 밀면 움직이는 조형을 만들어 보고 싶다. 어떤 것은 서고 어떤 것은 넘어지는 이유, 그리고 접은 자리가 어떻게 움직임의 축이 되는지를 원리부터 알고 싶다",
-      "owned": false,
-      "maxAdditionalInk": 15,
-      "depth": null,
+      "purpose": "이 책을 소장하고 있다. 종이를 접어 바닥에 스스로 서고 손으로 밀면 움직이는 조형을 만들어 보고 싶다. 어떤 것은 서고 어떤 것은 넘어지는 이유, 그리고 접은 자리가 어떻게 움직임의 축이 되는지를 원리부터 깊이 알고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
         "접기 구조",
@@ -495,12 +588,52 @@
       ],
       "requiredPrerequisites": [
         {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 17
+        },
+        {
           "beforePageNumber": 10,
           "afterPageNumber": 18
         },
         {
+          "beforePageNumber": 17,
+          "afterPageNumber": 18
+        },
+        {
           "beforePageNumber": 18,
-          "afterPageNumber": 20
+          "afterPageNumber": 21
+        },
+        {
+          "beforePageNumber": 18,
+          "afterPageNumber": 23
+        },
+        {
+          "beforePageNumber": 21,
+          "afterPageNumber": 23
+        },
+        {
+          "beforePageNumber": 23,
+          "afterPageNumber": 25
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 26
         },
         {
           "beforePageNumber": 25,
@@ -508,11 +641,19 @@
         },
         {
           "beforePageNumber": 26,
-          "afterPageNumber": 31
+          "afterPageNumber": 27
         },
         {
-          "beforePageNumber": 35,
-          "afterPageNumber": 37
+          "beforePageNumber": 4,
+          "afterPageNumber": 34
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 34
+        },
+        {
+          "beforePageNumber": 34,
+          "afterPageNumber": 35
         }
       ],
       "irrelevantPageNumbers": [
@@ -526,22 +667,23 @@
         ]
       ],
       "referencePageNumbers": [
+        2,
         4,
+        7,
+        9,
         10,
+        17,
         18,
-        20,
+        21,
+        23,
         25,
         26,
-        31,
-        35,
-        37,
-        54
-      ],
-      "allowedAlternativePageNumbers": [
-        17,
-        19,
         27,
         34,
+        35
+      ],
+      "allowedAlternativePageNumbers": [
+        19,
         36,
         55
       ]
@@ -550,9 +692,9 @@
       "caseId": "case-book-066",
       "bookId": 66,
       "purpose": "동네 큰길가의 낡은 벽에 그림을 그려 달라는 부탁을 받았다. 가까이서는 괜찮은데 길 건너에서 보면 뭉개져 버리는 이유, 울퉁불퉁하고 창이 뚫린 벽면을 어떻게 다뤄야 하는지, 색을 어느 정도 넓이로 나눠야 하는지를 원리부터 알고 싶다",
-      "owned": true,
-      "maxAdditionalInk": null,
-      "depth": "BALANCED",
+      "owned": false,
+      "maxAdditionalInk": 15,
+      "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
         "공공 벽화",
@@ -574,20 +716,72 @@
       ],
       "requiredPrerequisites": [
         {
+          "beforePageNumber": 2,
+          "afterPageNumber": 3
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 11
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 17
+        },
+        {
           "beforePageNumber": 10,
           "afterPageNumber": 17
+        },
+        {
+          "beforePageNumber": 3,
+          "afterPageNumber": 20
+        },
+        {
+          "beforePageNumber": 11,
+          "afterPageNumber": 20
+        },
+        {
+          "beforePageNumber": 11,
+          "afterPageNumber": 22
         },
         {
           "beforePageNumber": 20,
           "afterPageNumber": 22
         },
         {
+          "beforePageNumber": 11,
+          "afterPageNumber": 24
+        },
+        {
           "beforePageNumber": 22,
           "afterPageNumber": 24
         },
         {
-          "beforePageNumber": 10,
-          "afterPageNumber": 26
+          "beforePageNumber": 24,
+          "afterPageNumber": 25
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 28
         },
         {
           "beforePageNumber": 24,
@@ -605,23 +799,23 @@
         ]
       ],
       "referencePageNumbers": [
+        2,
         3,
+        5,
+        6,
+        9,
         10,
+        11,
         12,
         17,
+        20,
         22,
         24,
-        26,
-        28,
-        35,
-        52
+        25,
+        28
       ],
       "allowedAlternativePageNumbers": [
         4,
-        9,
-        11,
-        20,
-        25,
         27,
         30,
         53
@@ -656,6 +850,22 @@
           "afterPageNumber": 3
         },
         {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 3,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 10
+        },
+        {
           "beforePageNumber": 10,
           "afterPageNumber": 11
         },
@@ -664,12 +874,12 @@
           "afterPageNumber": 18
         },
         {
-          "beforePageNumber": 20,
-          "afterPageNumber": 21
-        },
-        {
           "beforePageNumber": 11,
           "afterPageNumber": 26
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 28
         },
         {
           "beforePageNumber": 26,
@@ -681,15 +891,19 @@
         },
         {
           "beforePageNumber": 33,
+          "afterPageNumber": 34
+        },
+        {
+          "beforePageNumber": 33,
           "afterPageNumber": 35
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 41
         },
         {
           "beforePageNumber": 28,
           "afterPageNumber": 41
-        },
-        {
-          "beforePageNumber": 41,
-          "afterPageNumber": 42
         }
       ],
       "irrelevantPageNumbers": [
@@ -705,18 +919,20 @@
         ]
       ],
       "referencePageNumbers": [
+        2,
         3,
+        4,
         5,
+        6,
         10,
         11,
         18,
-        21,
         26,
         28,
         33,
+        34,
         35,
-        41,
-        42
+        41
       ],
       "allowedAlternativePageNumbers": [
         7,
@@ -724,7 +940,6 @@
         19,
         22,
         27,
-        34,
         36,
         43,
         44,
@@ -736,7 +951,7 @@
       "bookId": 71,
       "purpose": "사용자가 보낸 메시지가 어느 입구를 지나 결과로 돌아오는지, 여러 메시지가 겹칠 때도 서로 섞이지 않는 이유와 실행 공간을 교체해도 업무가 이어지는 원리를 함께 이해하고 싶다",
       "owned": false,
-      "maxAdditionalInk": 10,
+      "maxAdditionalInk": 15,
       "depth": null,
       "activeRentalPageNumbers": [],
       "requiredConcepts": [
@@ -753,6 +968,10 @@
         "외부 상태 저장소"
       ],
       "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 3
+        },
         {
           "beforePageNumber": 3,
           "afterPageNumber": 11
@@ -771,22 +990,33 @@
         },
         {
           "beforePageNumber": 33,
-          "afterPageNumber": 44
+          "afterPageNumber": 34
         },
         {
-          "beforePageNumber": 39,
-          "afterPageNumber": 44
+          "beforePageNumber": 34,
+          "afterPageNumber": 35
         },
         {
-          "beforePageNumber": 44,
-          "afterPageNumber": 48
+          "beforePageNumber": 35,
+          "afterPageNumber": 36
+        },
+        {
+          "beforePageNumber": 36,
+          "afterPageNumber": 37
+        },
+        {
+          "beforePageNumber": 37,
+          "afterPageNumber": 38
+        },
+        {
+          "beforePageNumber": 38,
+          "afterPageNumber": 39
         }
       ],
       "irrelevantPageNumbers": [
         1,
         6,
         20,
-        34,
         43,
         46
       ],
@@ -797,20 +1027,22 @@
         ]
       ],
       "referencePageNumbers": [
+        2,
         3,
         11,
         18,
         26,
         33,
-        39,
-        44,
-        48
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
       ],
       "allowedAlternativePageNumbers": [
-        2,
         16,
         30,
-        37,
         49
       ]
     }

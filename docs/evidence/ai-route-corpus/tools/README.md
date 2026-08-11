@@ -15,7 +15,7 @@ SCRUM-485 90권 확장에서 재사용하는 Python 스크립트다. 애플리�
 | `pdfcheck.py` | Poppler 없이 PDF 객체를 직접 파싱해 페이지 수·TEXT/IMAGE 구성을 확인한다. `python3 pdfcheck.py <pdf경로> <기대페이지수> <기대이미지목록,쉼표구분>`. |
 | `figures0NN.py` | 도서별 도표 SVG 생성 스크립트(011·041·042·061·064·066·067·071). 새 도서의 도표를 그릴 때 `head()`/`svg()` 헬퍼를 그대로 가져다 쓴다. |
 | `build_pdf_generic.py` | 원고 JSON을 A4 조판 HTML 한 장으로 조립해 저장한다. PDF 출력은 하지 않으므로 저장된 HTML을 Chrome Headless로 인쇄하는 단계가 따로 필요하다. `python3 build_pdf_generic.py <bookId> <이미지페이지,쉼표>`로 바로 실행. |
-| `selftest.py` | 검증 도구가 깨진 입력을 실제로 잡는지 확인하는 음성 테스트. 정본 fixture에서 입력을 만들어 한 곳씩 고의로 깨뜨리고 각각 FAIL로 걸리는지 본다. `validate_fragment.py`·`validate_manifest.py`·`corpus_lib.validate_book()` 셋을 모두 덮는다. `python3 selftest.py`. 양성 표본은 모든 계약을 만족하는 `book-041`과 그 한 권짜리 부분 집합이다 — 정본 전체는 아직 선수 폐쇄 계약을 만족하지 않아 양성 입력으로 쓸 수 없다. |
+| `selftest.py` | 검증 도구가 깨진 입력을 실제로 잡는지 확인하는 음성 테스트. 정본 fixture에서 입력을 만들어 한 곳씩 고의로 깨뜨리고 각각 FAIL로 걸리는지 본다. `validate_fragment.py`·`validate_manifest.py`·`corpus_lib.validate_book()` 셋을 모두 덮는다. `python3 selftest.py`. 양성 표본은 정본 전체이고, 조각 단위 음성 검사는 예산·대여를 깨뜨릴 수 있는 예산 0 사례(`book-011`)에서 만든다. |
 
 ## 새 도서를 만드는 순서
 
@@ -45,8 +45,9 @@ SCRUM-485 90권 확장에서 재사용하는 Python 스크립트다. 애플리�
 - 비소장: `|폐쇄 − activeRentalPageNumbers| ≤ maxAdditionalInk`
 - 소장: `|폐쇄| ≤` 깊이별 상한 (QUICK 5 · BALANCED 10 · DEEP 15)
 
-예산 0 사례는 결국 `폐쇄 ⊆ activeRentalPageNumbers`가 되므로, 대여 목록을 정답 페이지가 아니라 폐쇄
-전체에 맞춰 잡아야 한다. `book-041`이 그 형태다.
+정답 경로는 폐쇄 자체를 적는다. 고른 페이지만 적으면 검증기가 폐쇄를 펼칠 때 값이 달라지고, 폐쇄를
+적으면 정답이 스스로 실현 가능해진다. 예산 0 사례는 결국 `폐쇄 ⊆ activeRentalPageNumbers`가 되므로
+대여 목록도 폐쇄 전체에 맞춰 잡는다.
 
 정답을 어떻게 골라도 상한에 못 맞추는 도서는 선수 관계를 너무 촘촘히 건 것이다. 그래서 도서 단위로
 [선수 밀도 상한](../../../ai-route-content-corpus.md#도서-제작-기준)을 함께 검사한다.
