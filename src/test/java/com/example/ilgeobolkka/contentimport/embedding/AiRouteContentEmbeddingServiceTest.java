@@ -164,7 +164,9 @@ class AiRouteContentEmbeddingServiceTest {
                         new ValidatedAiRouteContent.ValidatedBook(
                                 41,
                                 true,
-                                List.of(new ValidatedAiRouteContent.ValidatedPage(2, true, secret)),
+                                List.of(
+                                        new ValidatedAiRouteContent.ValidatedPage(
+                                                2, true, secret, "주제", 60, List.of())),
                                 List.of()));
 
         AiRouteContentEmbeddingException exception =
@@ -229,7 +231,12 @@ class AiRouteContentEmbeddingServiceTest {
 
     private ValidatedAiRouteContent.ValidatedPage page(int pageNumber, boolean candidate) {
         return new ValidatedAiRouteContent.ValidatedPage(
-                pageNumber, candidate, "p%d 분석".formatted(pageNumber));
+                pageNumber,
+                candidate,
+                "p%d 분석".formatted(pageNumber),
+                "p%d 주제".formatted(pageNumber),
+                60,
+                List.of());
     }
 
     private static final class RecordingGateway implements OpenAiEmbeddingGateway {

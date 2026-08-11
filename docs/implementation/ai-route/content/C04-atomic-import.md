@@ -20,6 +20,15 @@
 
 ## 현재 구현 기준선
 
+- 이 절은 착수 시점 기록입니다. **적재 계층(구현 조건 3~7)은 구현했고 변환 분기(1~2)는 남아 있습니다.**
+  [AiRouteContentWriter](../../../../src/main/java/com/example/ilgeobolkka/contentimport/AiRouteContentWriter.java)가
+  AI 메타데이터·선수 관계를 한 트랜잭션으로 반영하고,
+  [BookPage.updateStructuralPageMetadata](../../../../src/main/java/com/example/ilgeobolkka/book/entity/BookPage.java)가
+  목차처럼 후보가 아니면서 분석 메타데이터는 가지는 페이지를 표현합니다.
+- **남은 것**: `ContentBatchConverter`의 version별 변환 분기. 이 작업은 `ai-route-v2` PDF를
+  TEXT/IMAGE로 바꾸는 Poppler 실행이 필요하고, 개발 환경에 `pdftoppm`·`pdftotext`가 없어 미검증
+  상태로 두지 않으려고 분리했습니다. 기존 `ContentImportFullMySqlIntegrationTest`가 같은 이유로 환경
+  변수 게이트를 씁니다.
 - [ContentImportService](../../../../src/main/java/com/example/ilgeobolkka/contentimport/ContentImportService.java)는
   변환 batch를 DB writer에 전달합니다.
 - [ContentPageWriter](../../../../src/main/java/com/example/ilgeobolkka/contentimport/ContentPageWriter.java)는

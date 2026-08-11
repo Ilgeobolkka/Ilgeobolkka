@@ -130,7 +130,12 @@ public final class AiRouteContentValidator {
             AiRouteContentManifest.Page page = byNumber.get(pageNumber);
             validatedPages.add(
                     new ValidatedAiRouteContent.ValidatedPage(
-                            page.pageNumber(), page.aiRouteCandidatePage(), page.aiAnalysisText()));
+                            page.pageNumber(),
+                            page.aiRouteCandidatePage(),
+                            page.aiAnalysisText(),
+                            page.aiPublicGuideTopic(),
+                            page.estimatedReadingSeconds(),
+                            page.duplicateGroupKeys()));
         }
         List<ValidatedAiRouteContent.PrerequisiteEdge> edges = new ArrayList<>();
         for (Integer pageNumber : order) {
