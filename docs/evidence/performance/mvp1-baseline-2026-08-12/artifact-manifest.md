@@ -45,6 +45,10 @@ DB 접속 문자열은 문서에 기록하지 않았고, 원시 진단 파일의
 
 ## 무효·진단 실행
 
+- 기준선 뒤 management 보안 보완 Smoke는
+  `20260811T123545Z-post-baseline-management-fix-smoke`에 분리했다. `summary.json` SHA-256은
+  `a2a6ab426235db6880e581e386c9989b8e54edac3ebfd7741aa69626c6606385`, `metadata.json`은
+  `598de68623cf901822617efe83260df19ba633b1f57e04da5391bb5f8413b499`다.
 - `20260811T112717Z-baseline-stress`는 15분을 완료했지만 신규 대여 계정 pool 소진 오류가 3,940회여서
   무효 처리했다. 계정 offset·stride·cycles를 충돌 없이 고정한 뒤 `baseline-stress-rerun` 전체를 다시
   실행했다.

@@ -11,6 +11,15 @@ import org.springframework.core.io.ClassPathResource;
 class PerformanceProfileConfigurationTest {
 
     @Test
+    void performance_외_프로필은_management_HTTP를_비활성화한다() throws IOException {
+        PropertySource<?> properties = new YamlPropertySourceLoader()
+                .load("default", new ClassPathResource("application.yaml"))
+                .getFirst();
+
+        assertEquals(-1, properties.getProperty("management.server.port"));
+    }
+
+    @Test
     void management_포트와_외부_서비스_차단이_고정된다() throws IOException {
         PropertySource<?> properties = new YamlPropertySourceLoader()
                 .load("performance", new ClassPathResource("application-performance.yaml"))

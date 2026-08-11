@@ -22,7 +22,7 @@
 | JFR과 느린 SQL 실행 계획 | 분리된 120초 JFR, 1분 Performance Schema, 0.2초 slow log와 대표 최신순 원장 `EXPLAIN ANALYZE`를 보존했다. |
 | 부하 뒤 도메인 불변식 | 잔액 불일치·음수 잔액·대여 없는 차감·중복 소장·서재 연결 위반이 모두 0이다. |
 | 관측 기반 병목만 다음 단계로 전달 | 아래 3개만 기록하고, Hikari·Tomcat·GC·generator·DB 포화는 근거가 없어 후보로 올리지 않았다. |
-| 변경 완료 게이트 | Compose config와 성능 script 구문, `mvp` 행 수·불변식, `./gradlew test`, `check`, `build`가 통과했다. 테스트 리포트는 608건 중 실패·오류 0, 조건부 1건 skip이다. |
+| 변경 완료 게이트 | Compose config와 성능 script 구문, `mvp` 행 수·불변식, `./gradlew test`, `check`, `build`가 통과했다. 테스트 리포트는 609건 중 실패·오류 0, 조건부 1건 skip이다. |
 
 ## 우선 병목
 
@@ -51,5 +51,15 @@ Redis·Spring Session Redis·다중 인스턴스·가상 스레드는 현재 진
 
 성능 Compose는 증거 작성과 검증을 마친 뒤 container·network만 정지한다. 성능 전용 MySQL·Prometheus
 volume은 다음 단계의 동일 입력 재현을 위해 보존한다.
+
+## 기준선 뒤 보안 회귀 보완
+
+PR 전 전체 영향 검토에서 Actuator 기본값이 `performance` 외 profile의 애플리케이션 포트에도 health를
+노출할 수 있음을 확인했다. 기본 `management.server.port=-1`과 회귀 테스트를 추가했고,
+`performance` profile만 기존 8081 override를 유지한다. 이 변경은 정식 부하 수치에 섞지 않았다.
+
+- 보완 뒤 JAR SHA-256: `559eaa3719c0546834d4c720bb36539bb9b356c4f861d4868d1fc6cd45b68423`
+- 별도 Smoke: `20260811T123545Z-post-baseline-management-fix-smoke`, checks 32/32, HTTP 오류 0
+- management health·prometheus·loopback·label 경계와 복원한 `mvp` 행 수·불변식을 다시 확인했다.
 
 3단계 — 새 상태 인프라 없는 1차 개선은 아직 실행하지 않았다.
