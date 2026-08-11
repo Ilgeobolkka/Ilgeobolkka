@@ -2,6 +2,7 @@ package com.example.ilgeobolkka.airoute.scheduler;
 
 import com.example.ilgeobolkka.airoute.service.generation.AiRouteGenerationCleanupService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -21,6 +22,7 @@ import org.springframework.scheduling.annotation.Scheduled;
  * <p>기동 직후 한 번과 그 뒤 주기 실행을 이 하나로 처리한다. {@code fixedDelay} 는 기본
  * {@code initialDelay} 가 0이라 첫 실행이 기동 직후다.
  */
+@Slf4j
 @Configuration(proxyBeanMethods = false)
 @EnableScheduling
 @RequiredArgsConstructor
@@ -39,6 +41,9 @@ public class AiRouteGenerationMaintenanceScheduler {
      * 복구를 먼저 한다. 복구가 매긴 만료 시각은 지금부터 15분 뒤라 이번 정리 대상이 아니고, 다음
      * 주기부터 자연히 대상이 된다.
      *
+     * <p>건수를 남기지 않으면 이 배치가 도는지 운영에서 확인할 방법이 없다. 아무 일도 없던 주기까지
+     * 찍으면 1분마다 소음이 되므로 무언가 처리했을 때만 남긴다.
+     *
      * <p>{@code initialDelay} 만 밖에서 바꿀 수 있게 열어 두었다. 통합 테스트가 만료 데이터를 만들어
      * 두고 단언하는 동안 이 배치가 끼어들어 지워 버리면 안 되기 때문이다. 운영에서는 기본값 0으로 기동
      * 직후 한 번 돈다.
@@ -47,7 +52,11 @@ public class AiRouteGenerationMaintenanceScheduler {
             fixedDelay = SWEEP_INTERVAL_MILLIS,
             initialDelayString = "${ai-route.maintenance-initial-delay-millis:0}")
     public void sweep() {
-        cleanupService.recoverAbandoned();
-        cleanupService.removeExpired();
+        int recovered = cleanupService.recoverAbandoned();
+        int removed = cleanupService.removeExpired();
+        if (recovered > 0 || removed > 0) {
+            // 건수만 남긴다. 멱등 키·지문·목적은 어떤 형태로도 로그에 넣지 않는다.
+            log.info("AI 경로 유지보수: 중단 복구 {}건, 만료 정리 {}건", recovered, removed);
+        }
     }
 }

@@ -5,3 +5,9 @@ spring:
       # Hikari의 minimum-idle 기본값은 maximum-pool-size다. 통합 테스트는 컨텍스트를 십여 개
       # 캐시하므로 그대로 두면 유휴 커넥션만으로 MySQL max_connections에 닿는다.
       minimum-idle: 2
+
+ai-route:
+  # AI 경로 유지보수 배치는 기능 플래그와 무관하게 등록되고 기동 직후부터 60초마다 돈다. 테스트는
+  # 과거 시각 픽스처를 커밋해 두고 단언하므로, 배치가 끼어들면 만료 행을 지우거나 중단된 GENERATING을
+  # FAILED로 바꿔 버린다. 테스트에서는 첫 실행을 한 시간 뒤로 밀어 아예 돌지 않게 한다.
+  maintenance-initial-delay-millis: 3600000

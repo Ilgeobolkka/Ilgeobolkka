@@ -1,12 +1,14 @@
 package com.example.ilgeobolkka.airoute.scheduler;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 
 import com.example.ilgeobolkka.airoute.service.generation.AiRouteGenerationCleanupService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.mockito.InOrder;
 import org.springframework.boot.test.context.runner.ApplicationContextRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -47,11 +49,34 @@ class AiRouteGenerationMaintenanceSchedulerTest {
     }
 
     /**
+     * 복구를 먼저, 정리를 나중에 부른다. 순서가 뒤집히면 이번 주기에 복구된 생성이 만료 시각을 받기
+     * 전에 정리를 지나쳐, 다음 주기까지 한 바퀴를 더 기다린다.
+     */
+    @Test
+    void 복구를_먼저_하고_정리를_나중에_한다() {
+        schedulerContextRunner()
+                .run(
+                        context -> {
+                            AiRouteGenerationCleanupService cleanupService =
+                                    context.getBean(AiRouteGenerationCleanupService.class);
+                            context.getBean(AiRouteGenerationMaintenanceScheduler.class).sweep();
+
+                            InOrder 순서 = inOrder(cleanupService);
+                            순서.verify(cleanupService).recoverAbandoned();
+                            순서.verify(cleanupService).removeExpired();
+                            순서.verifyNoMoreInteractions();
+                        });
+    }
+
+    /**
      * 스케줄러를 {@code @Bean} 으로 직접 만들지 않고 {@link Import} 로 올린다. 직접 만들면 클래스에 붙는
      * 조건 애너테이션이 평가되지 않아, 나중에 누가 조건을 도로 붙여도 이 테스트가 통과해 버린다.
      */
     private ApplicationContextRunner schedulerContextRunner() {
         return new ApplicationContextRunner()
+                // 이 runner 는 application-test.yaml 을 읽지 않아 첫 실행이 기동 즉시다. 배치가 배경에서
+                // 돌면 아래 호출 순서 단언에 제 호출과 섞여 들어온다.
+                .withPropertyValues("ai-route.maintenance-initial-delay-millis=3600000")
                 .withUserConfiguration(SchedulerTestConfiguration.class);
     }
 

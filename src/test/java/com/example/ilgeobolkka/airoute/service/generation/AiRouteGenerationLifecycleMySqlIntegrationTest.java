@@ -51,11 +51,10 @@ import org.springframework.transaction.support.TransactionTemplate;
  * 만료 경계와 정리 전후 동작을 실제 MySQL 로 확인한다. 클래스에 {@code @Transactional} 을 붙이지 않는다.
  * 붙이면 모든 작업이 한 transaction 에 갇혀 정리의 commit·rollback 결과를 볼 수 없다.
  *
- * <p>유지보수 스케줄러는 기능 플래그와 무관하게 등록되므로 첫 실행을 한 시간 뒤로 미뤄 둔다. 그러지
- * 않으면 만료 데이터를 만들어 두고 단언하는 사이 배치가 끼어들어 지워 버린다. 정리·복구는 테스트가
- * 직접 부른다.
+ * <p>유지보수 배치는 {@code application-test.yaml} 이 첫 실행을 한 시간 뒤로 미뤄 두어 돌지 않는다.
+ * 정리·복구는 테스트가 직접 부른다.
  */
-@SpringBootTest(properties = "ai-route.maintenance-initial-delay-millis=3600000")
+@SpringBootTest
 @ActiveProfiles("test")
 @ContextConfiguration(initializers = DedicatedTestDatabaseInitializer.class)
 @Import(AiRouteGenerationLifecycleMySqlIntegrationTest.MutableClockConfiguration.class)
