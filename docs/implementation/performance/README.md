@@ -3,8 +3,11 @@
 - 작성일: 2026-08-11 KST
 - 실행 기한: 2026-08-15 KST
 - 대상: 초기 MVP의 Spring Boot HTTP 애플리케이션과 MySQL 8.4
-- 실행 주체: AI 코딩 에이전트
+- 실행 주체: AI 코딩 에이전트와 사람 승인자
 - 상태: 실행 대기
+
+실제 작업은 [순차 실행 runbook](./RUNBOOK.md)에 따라 한 단계씩 진행한다. 각 단계의 종료 조건을 AI가
+검증해 보고하고, 사람의 확인 없이 다음 단계로 넘어가지 않는다.
 
 ## 1. 목표와 완료 기준
 
@@ -20,14 +23,16 @@
 4. 느린 원인을 추측하지 않고 지표·프로파일·실행 계획으로 확인한 뒤 개선한다.
 5. 채택한 개선마다 재현 테스트와 변경 전후 동일 시나리오 비교가 있다.
 6. 잉크 잔액·원장·대여·소장·세션 불변식이 부하 뒤에도 모두 유지된다.
-7. 깨끗하게 다시 만든 동일 환경에서 최종 시나리오를 3회 실행하고 중앙값과 실행 간 편차를 기록한다.
+7. 깨끗하게 다시 만든 동일 환경에서 최종 Average·Peak를 각각 3회 실행해 중앙값과 실행 간 편차를
+   기록하고, Stress·Spike·Soak는 부하 단계에 정한 횟수로 실행한다.
 8. `./gradlew test`, `./gradlew check`, `./gradlew build`와 패키징 애플리케이션 부팅 검증이 통과한다.
-9. 채택하지 않은 Redis·가상 스레드 등의 실험도 측정값과 폐기 이유를 남긴다.
+9. 실행한 뒤 채택하지 않은 Redis·가상 스레드 등의 실험은 측정값과 폐기 이유를 남기고, 실행하지 않은
+   조건부 후보는 진입 조건을 충족하지 않은 근거를 남긴다.
 10. 결과 문서가 기준선, 변경별 효과, 최종 결과, 남은 병목과 다음 용량 한계를 구분해 설명한다.
 
-성능 수치는 실행 환경이 정해지기 전까지 운영 SLO나 운영 최대 용량으로 부르지 않는다. 현재
-[배포 가이드](../../deployment.md)는 애플리케이션 실행 환경이 아직 결정되지 않았다고 명시하므로, 로컬
-Compose 결과는 코드 회귀 기준선이며 AWS 용량 기준선은 실행 환경을 결정한 뒤 별도로 만든다.
+이번 계획은 로컬 Compose에서 코드 회귀 기준선과 개선 전후 비교만 수행한다. 결과를 운영 SLO나 운영 최대
+용량으로 부르지 않으며 AWS 용량 검증은 실행하지 않는다. 실제 배포 용량이 필요해지면
+[배포 가이드](../../deployment.md)의 애플리케이션 실행 환경을 먼저 결정하고 별도 계획으로 검증한다.
 
 ## 2. 전제와 작업 경계
 
@@ -111,7 +116,6 @@ Compose 결과는 코드 회귀 기준선이며 AWS 용량 기준선은 실행 �
 | `EXPLAIN ANALYZE` | 실제 rows, loops, iterator별 시간과 인덱스 효과 | 느린 SQL마다 필수 |
 | MySQL slow query log | 기준을 넘는 SQL 수집 | 측정 환경에서만 일시 활성화 |
 | Docker stats 또는 호스트 지표 | CPU·메모리·네트워크·블록 I/O | 로컬 기준선에서 필수 |
-| CloudWatch Database Insights | RDS DB Load·wait·상위 SQL | AWS 기준선을 실행할 때 필수 |
 | Caffeine | 단일 인스턴스의 불변·저변경 공개 데이터 캐시 실험 | Redis 전에 먼저 비교한다 |
 | Redis | 공유 캐시 또는 다중 인스턴스 세션 실험 | 조건부. 원장·잔액 정본으로 사용 금지 |
 | Kafka | 이벤트 스트리밍 | 이번 계획에서는 사용하지 않는다 |
@@ -134,12 +138,34 @@ MBean registry를 활성화한다.
 5. 배포 환경 측정에서는 부하 생성기를 애플리케이션 호스트와 분리한다.
 6. 코드 개선 비교 중에는 인프라 사양을 바꾸지 않는다. 인프라 개선 비교 중에는 애플리케이션 이미지를
    바꾸지 않는다.
-7. 각 정식 시나리오는 워밍업 뒤 3회 실행하고 p50·p95·p99·RPS의 중앙값과 최솟값·최댓값을 기록한다.
+7. 정식 전후 비교의 Average·Peak는 워밍업 뒤 각각 3회 실행하고 p50·p95·p99·RPS의 중앙값과
+   최솟값·최댓값을 기록한다. Stress·Spike·Soak는 [부하 단계](#62-부하-단계)에 적힌 횟수를 따른다.
 8. k6 generator CPU가 포화되거나 `dropped_iterations`가 발생하면 서버 한계라고 판정하지 않는다.
 9. Prometheus scrape와 JFR의 관측 오버헤드를 Average 1회 on/off로 확인한다. 정식 전후 3회 비교에서는
    관측 설정을 같게 유지하며, 진단용 JFR 실행을 일반 결과와 섞지 않는다.
 
-### 5.2 데이터 세트
+### 5.2 워밍업과 캐시 상태
+
+뒤 실행이 앞 실행보다 빨라지는 효과를 개선 효과와 섞지 않도록 다음 상태를 분리한다.
+
+1. 애플리케이션 캐시를 비운 뒤 첫 요청의 `cold miss`와 고정 워밍업 뒤의 `warm steady-state`를 별도
+   결과로 기록한다. 워밍업 요청은 정식 지연 통계에서 제외한다.
+2. 정식 3회는 매번 같은 애플리케이션·성능 캐시·업무 데이터 출발점으로 복원한 뒤 같은 워밍업을 수행한다.
+   Caffeine은 애플리케이션 재시작으로 비우고, Redis는 성능 전용 인스턴스와 실행별 namespace만 초기화한다.
+   다른 환경과 키를 공유하거나 `FLUSHALL`로 범위를 넓히지 않는다.
+3. 애플리케이션 캐시 효과를 비교할 때는 DB buffer pool과 JVM JIT의 워밍업 조건을 전후에 같게 유지한다.
+   MySQL 재시작 뒤의 cold buffer pool은 별도 진단으로만 측정하고 정식 steady-state 결과와 합치지 않는다.
+4. 캐시 후보는 같은 측정 구간에서 cache off와 on을 각각 3회 실행하고 실행 순서를 번갈아 배치한다. 이전
+   단계의 오래된 기준선만 cache off 대조군으로 재사용하지 않는다. 첫 요청 지연, 캐시 채움 시간, hit
+   ratio, warm p95·p99, DB statement rate와 메모리 사용량을 기록하며 첫 실행과 이후 실행을 한 평균으로
+   합치지 않는다.
+5. 브라우저는 새 context의 첫 탐색을 cold cache, 같은 context에서 같은 경로를 반복한 탐색을 warm cache로
+   묶어 3쌍 측정한다. 보호 콘텐츠의 `private, no-store`는 warm 측정에서도 재사용되지 않아야 하며, 공개
+   정적 자산과 분리한다.
+6. 각 결과에는 애플리케이션 재시작 여부, 캐시 초기화 방법, 워밍업 요청 수·시간, DB와 JVM의 상태를
+   기록한다. 이 정보가 다르면 전후 비교를 무효로 하고 다시 실행한다.
+
+### 5.3 데이터 세트
 
 두 데이터 세트를 결정적으로 생성한다. 모든 생성기 입력과 예상 행 수를 Git에 보존한다.
 
@@ -151,7 +177,7 @@ MBean registry를 활성화한다.
 `history-heavy`의 정확한 이력 건수는 생성 시간 10분, DB 크기 2GB 이내에서 가능한 최대치로 한 번
 결정한 뒤 바꾸지 않는다. 최초 결정값과 생성 시간·행 수·DB 크기를 `environment.md`에 기록한다.
 
-### 5.3 저장 구조
+### 5.4 저장 구조
 
 ```text
 performance/
@@ -432,7 +458,9 @@ Java 21 가상 스레드는 I/O 대기가 크고 HikariCP에 여유가 있을 �
 
 전체 목표는 정확성을 유지하며 가장 느린 내부 endpoint 두 개의 p95를 기준선보다 30% 이상 줄이거나,
 이미 잠정 지연 게이트를 만족한다면 같은 지연 게이트에서 지속 처리량을 1.5배 이상 높이는 것이다. 새
-상태 인프라 없이 이 목표를 만족하면 Redis·다중 인스턴스를 추가하지 않는 결과가 더 낫다.
+상태 인프라 없이 이 목표를 만족하면 Redis·다중 인스턴스를 추가하지 않는 결과가 더 낫다. 다만 기준선이
+이미 정확성·잠정 품질 게이트를 만족하고, 근거가 있는 후보가 채택 하한을 넘지 못했다면 수치를 만들기 위해
+복잡도를 추가하지 않고 단순 구성을 유지하는 것도 완료로 판정한다.
 
 ## 10. 2026-08-11~15 실행 일정
 
@@ -453,11 +481,12 @@ Java 21 가상 스레드는 I/O 대기가 크고 HikariCP에 여유가 있을 �
 ### 8월 12일 — MVP1 기준선과 병목 확정
 
 - [ ] 패키징 JAR로 깨끗한 성능 환경 부팅
-- [ ] Smoke → Warm-up → Average 3회 → Peak 3회 → Stress 실행
+- [ ] Smoke → (Warm-up → Average) 3회 → (Warm-up → Peak) 3회 → Stress 실행
 - [ ] 동시성 특화 4종 실행 후 불변식 대조
 - [ ] `history-heavy` 데이터 생성 규모 고정
 - [ ] JFR과 MySQL Performance Schema·slow query 수집
 - [ ] 느린 SQL마다 `EXPLAIN ANALYZE` 저장
+- [ ] 새 브라우저 context의 cold cache와 반복 탐색의 warm cache를 각각 3회 측정
 - [ ] 기준선 `result.md`에 상위 병목 3개와 근거 작성
 
 산출물: `mvp1-baseline-2026-08-12`, 우선순위가 있는 병목 목록. 근거 없는 개선은 다음 단계에 올리지 않는다.
@@ -468,7 +497,7 @@ Java 21 가상 스레드는 I/O 대기가 크고 HikariCP에 여유가 있을 �
 - [ ] 각 변경 전 재현 테스트 작성
 - [ ] 후보마다 대상 테스트와 동일 k6 Average 1회 실행
 - [ ] 효과가 채택 하한보다 작거나 정확성이 깨지면 제거
-- [ ] 채택 후보를 합친 뒤 전체 test·check·build와 Average·Peak 각 3회 실행
+- [ ] 채택 후보를 합친 뒤 전체 test·check·build와 (Warm-up → Average)·(Warm-up → Peak) 각 3회 실행
 
 산출물: 변경별 전후 표, 채택·폐기 이유, 1차 후보 이미지/JAR SHA.
 
@@ -488,9 +517,9 @@ Java 21 가상 스레드는 I/O 대기가 크고 HikariCP에 여유가 있을 �
 
 - [ ] 이전 컨테이너·프로세스가 아닌 깨끗한 성능 환경을 동일 사양으로 생성
 - [ ] 같은 데이터 생성 입력 또는 스냅샷 복원
-- [ ] Smoke → Warm-up → Average 3회 → Peak 3회 → Stress → Spike → Soak 실행
+- [ ] Smoke → (Warm-up → Average) 3회 → (Warm-up → Peak) 3회 → Stress → Spike → Soak 실행
 - [ ] 동시성 특화 흐름과 부하 뒤 불변식 전체 대조
-- [ ] 브라우저 전후 각 3회 비교
+- [ ] 기준선과 같은 브라우저 조건으로 cold cache와 warm cache를 각각 3회 측정해 전후 비교
 - [ ] 전체 `./gradlew test`, `./gradlew check`, `./gradlew build` 통과
 - [ ] 패키징 JAR 부팅과 `/api/smoke` 확인
 - [ ] `comparison.md`에 기준선·변경별 효과·최종값·남은 병목·다음 용량 한계 작성
@@ -501,8 +530,10 @@ Java 21 가상 스레드는 I/O 대기가 크고 HikariCP에 여유가 있을 �
 ## 11. AI 에이전트 실행 규칙
 
 1. 매 단계 시작 시 완료 기준을 한 문장으로 다시 적고 현재 SHA·dirty 상태를 확인한다.
-2. 사용자에게 다시 물어야 하는 경우는 유료 클라우드 자원 생성, 새 secret·외부 계정 필요, 제품 정책 변경,
-   운영 데이터 접근뿐이다. 나머지는 이 문서의 우선순위와 채택 게이트로 진행한다.
+2. 유료 클라우드 자원 생성과 운영 데이터 접근은 이번 계획에서 실행하지 않는다. 새 secret·외부 계정,
+   제품 정책 변경, 새 의존성 추가, 대규모 리팩터링과 기존 죽은 코드 삭제가 필요하면 실행 전에 사용자
+   승인을 받는다. 미리 승인할 수 있는 정확한 의존성·컨테이너와 사람 준비 작업은 runbook 0단계에서 한
+   번에 제시한다.
 3. 새 성능 버그는 재현 테스트를 먼저 만들고 수정한다.
 4. 한 실험에서 독립 변수는 하나만 바꾼다.
 5. 좋은 실행 하나를 고르지 않고 같은 조건 3회 중앙값과 범위를 사용한다.
@@ -536,7 +567,7 @@ Java 21 가상 스레드는 I/O 대기가 크고 HikariCP에 여유가 있을 �
 - 잠정 품질 게이트를 통과했는지
 - 기준선 대비 p95·p99·지속 RPS가 몇 % 변했는지
 - Redis·다중 인스턴스·가상 스레드·Kafka를 각각 왜 유지하거나 제외했는지
-- 운영 용량으로 해석할 수 있는 환경인지
+- 로컬 결과를 운영 용량으로 해석할 수 없는 이유
 - 다음 1순위 개선 한 건과 예상 효과
 
 ## 13. 공식 참고 자료
@@ -551,7 +582,6 @@ Java 21 가상 스레드는 I/O 대기가 크고 HikariCP에 여유가 있을 �
 - [Java 21 `jcmd`](https://docs.oracle.com/en/java/javase/21/docs/specs/man/jcmd.html)
 - [MySQL 8.4 `EXPLAIN ANALYZE`](https://dev.mysql.com/doc/refman/8.4/en/explain.html)
 - [MySQL 8.4 slow query log](https://dev.mysql.com/doc/refman/8.4/en/slow-query-log.html)
-- [CloudWatch Database Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Database-Insights.html)
 - [Spring Session Redis 구성](https://docs.spring.io/spring-session/reference/configuration/redis.html)
 - [Spring Boot 캐시 공급자](https://docs.spring.io/spring-boot/reference/io/caching.html)
 - [Spring Boot 가상 스레드](https://docs.spring.io/spring-boot/reference/features/spring-application.html#features.spring-application.virtual-threads)
