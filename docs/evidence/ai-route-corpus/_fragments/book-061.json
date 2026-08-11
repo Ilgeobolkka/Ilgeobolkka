@@ -1,0 +1,1315 @@
+{
+  "manifestBook": {
+    "bookId": 61,
+    "pdfPath": "pdfs/book-061.pdf",
+    "pdfSha256": "472d676a8e8bea86b0d1d657198f6c7c449bfd1c7facfad1367092ff7703114d",
+    "totalPageCount": 52,
+    "aiRouteCandidate": true,
+    "aiExternalTransferAllowed": true,
+    "pages": [
+      {
+        "pageNumber": 1,
+        "chapter": "앞부분",
+        "section": "목차",
+        "primaryConcepts": [
+          "목차"
+        ],
+        "secondaryConcepts": [],
+        "contentRole": "FRONT_MATTER",
+        "aiRouteCandidatePage": false,
+        "aiAnalysisText": "이 페이지는 형태요소와 구도, 균형, 스케일을 다루는 이 책의 장과 절 제목, 각 항목이 시작하는 페이지 번호를 나열한 목차다. 본문 설명이나 개념 서술을 담지 않으며 독자가 원하는 부분을 찾아가는 길잡이 역할만 한다.",
+        "aiAnalysisInputSha256": "d66ea3b3a63f4c94c089525fdaf763e8e9a078168c2040adead308b0f3ddf1a5",
+        "aiPublicGuideTopic": "이 책의 장과 절 구성 안내",
+        "estimatedReadingSeconds": 40,
+        "prerequisitePageNumbers": [],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 2,
+        "chapter": "1장 점 하나가 그림이 되는 순간",
+        "section": "1.1 점: 화면 위의 첫 자리",
+        "primaryConcepts": [
+          "점"
+        ],
+        "secondaryConcepts": [
+          "형태요소",
+          "무게중심"
+        ],
+        "contentRole": "PREREQUISITE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "점을 길이도 넓이도 없이 위치만 가지는 최소 형태요소로 정의하고, 점 하나가 화면의 무게중심과 시선이 모이는 자리를 결정한다고 설명한다. 같은 화면이라도 정중앙에 찍은 점과 구석에 찍은 점이 서로 다른 인상을 만든다는 비교를 들고, 점은 넓이를 가진 요소보다 옮기기 쉬워 구도를 미리 가늠하는 수단으로 쓰인다고 덧붙인다.",
+        "aiAnalysisInputSha256": "b645e7a5d356581163187db3b55b3eaef8cf338d5ec5f2b27d7548769610b1aa",
+        "aiPublicGuideTopic": "그림에서 점이 자리를 정하는 방식",
+        "estimatedReadingSeconds": 80,
+        "prerequisitePageNumbers": [],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 3,
+        "chapter": "1장 점 하나가 그림이 되는 순간",
+        "section": "1.2 선: 점들이 이어져 방향을 얻다",
+        "primaryConcepts": [
+          "선"
+        ],
+        "secondaryConcepts": [
+          "점",
+          "방향",
+          "형태요소"
+        ],
+        "contentRole": "PREREQUISITE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "점 두 개를 이으면 방향이 생긴다는 관찰에서 출발해, 선을 시작과 끝을 가지며 길이와 방향이라는 성질을 얻은 형태요소로 정의한다. 수평·수직·대각 방향이 각각 안정감, 듬직함, 움직임이라는 다른 인상을 만든다고 정리하고, 굵기와 흔들림이 선의 표현 폭을 넓힌다는 점을 설명한다.",
+        "aiAnalysisInputSha256": "500c3ad8030af67321a2deae618d5d379adad17f208334999e9068e0049f36c4",
+        "aiPublicGuideTopic": "선이 화면에 방향을 만드는 원리",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          2
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 4,
+        "chapter": "1장 점 하나가 그림이 되는 순간",
+        "section": "1.3 면: 선이 닫혀 공간이 되다",
+        "primaryConcepts": [
+          "면"
+        ],
+        "secondaryConcepts": [
+          "선",
+          "시각적 무게",
+          "여백"
+        ],
+        "contentRole": "PREREQUISITE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "선이 닫혀 넓이를 가지면 면이 된다고 정의하고, 점이 위치를, 선이 방향을 준다면 면은 무게와 부피감을 준다고 구분한다. 면의 크기가 시선이 머무는 시간과 연결되고 채워진 색이 무게를 더한다고 설명하며, 면이 커질수록 비워 둔 공간의 존재감도 함께 커진다는 관계를 덧붙인다.",
+        "aiAnalysisInputSha256": "0b7e7dbc00e42e87ff3614baf639fb16810554a0b64ac0b29baec0a387c667ec",
+        "aiPublicGuideTopic": "면이 화면에서 무게를 갖는 방식",
+        "estimatedReadingSeconds": 80,
+        "prerequisitePageNumbers": [
+          3
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 5,
+        "chapter": "1장 점 하나가 그림이 되는 순간",
+        "section": "1.4 세 요소가 이어지는 순서",
+        "primaryConcepts": [
+          "형태요소"
+        ],
+        "secondaryConcepts": [
+          "점",
+          "선",
+          "면"
+        ],
+        "contentRole": "PREREQUISITE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "점에서 선으로, 선에서 면으로 이어지는 형성 순서를 왼쪽에서 오른쪽으로 배치한 도표다. 각 단계 아래에 위치만 있음, 방향과 길이가 생김, 넓이와 무게가 생김이라는 성질 변화를 붙이고, 뒤의 요소가 앞의 요소를 포함하면서 새 성질을 더한다는 결론을 상단에 배치했다.",
+        "aiAnalysisInputSha256": "a2bd227b876b36880a8fdfd054f65adfb08b6b62bb4e97d7ca2eb3a7dda74a72",
+        "aiPublicGuideTopic": "형태요소가 단계마다 성질을 더해 가는 흐름",
+        "estimatedReadingSeconds": 45,
+        "prerequisitePageNumbers": [
+          2,
+          3,
+          4
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 6,
+        "chapter": "1장 점 하나가 그림이 되는 순간",
+        "section": "1.5 세 요소를 함께 보는 법",
+        "primaryConcepts": [
+          "형태요소"
+        ],
+        "secondaryConcepts": [
+          "크기 대비",
+          "구도"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "점·선·면이 설명 순서와 달리 실제 그림에서는 동시에 존재하며 위계가 아니라 역할의 차이라고 정리한다. 큰 면 위의 작은 점이 강조되고 촘촘한 점들이 멀리서 면처럼 보이듯, 요소 사이의 크기 대비가 화면의 리듬을 만든다고 설명한다. 형태요소를 재료로, 구도를 그 재료를 배치하는 규칙으로 구분하며 다음 단계를 예고한다.",
+        "aiAnalysisInputSha256": "dbbfdbeab73dc60df0a68b400aa7ee388c5467b29e4c350a4a48ae6b829e4dc6",
+        "aiPublicGuideTopic": "세 형태요소가 한 화면에서 협력하는 방식",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          5
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 7,
+        "chapter": "1장 점 하나가 그림이 되는 순간",
+        "section": "1.6 화면이라는 그릴 공간",
+        "primaryConcepts": [
+          "화면"
+        ],
+        "secondaryConcepts": [
+          "프레임",
+          "구도",
+          "형태요소"
+        ],
+        "contentRole": "PREREQUISITE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "화면을 형태요소가 놓이는 그릴 공간으로 정의하고, 가장자리가 있어야 그 안쪽의 점·선·면이 의미를 갖는다고 설명한다. 화면의 크기와 비율이 그 안에 놓일 배치를 미리 제한해 좁고 긴 화면은 세로 방향을, 넓은 화면은 가로 흐름을 강조하게 된다고 정리한다.",
+        "aiAnalysisInputSha256": "3f151a63e535f9bee39352a6f4c48da212e044a39e3bb171d079da0b0d8952af",
+        "aiPublicGuideTopic": "형태요소가 놓이는 공간으로서의 화면",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          6
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 8,
+        "chapter": "2장 화면이라는 틀: 프레임과 구도",
+        "section": "2.1 프레임이 정하는 것: 안과 밖",
+        "primaryConcepts": [
+          "프레임"
+        ],
+        "secondaryConcepts": [
+          "화면",
+          "구도"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "프레임을 무엇을 보여주고 무엇을 잘라낼지 가르는 경계로 정의하고, 같은 스케치도 서로 다른 틀에 대면 담기는 내용이 달라진다는 관찰을 든다. 프레임 가까이 놓인 형태는 밖으로 나가려는 힘을, 중심에 놓인 형태는 안정감을 만든다고 설명하며, 프레임이 없으면 배치의 적절함을 판단할 기준 자체가 사라진다고 덧붙인다.",
+        "aiAnalysisInputSha256": "ed56f9b2f03b3072a5ab0eba1a5147d8fcc365211049e286d5e7431ff802fd93",
+        "aiPublicGuideTopic": "프레임이 화면의 안과 밖을 가르는 방식",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          7
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 9,
+        "chapter": "2장 화면이라는 틀: 프레임과 구도",
+        "section": "2.2 구도란 무엇인가: 형태를 배치하는 규칙",
+        "primaryConcepts": [
+          "구도"
+        ],
+        "secondaryConcepts": [
+          "프레임",
+          "형태요소",
+          "여백",
+          "균형"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "구도를 프레임 안에 형태요소를 배치하는 규칙이자 그 결과로 정의하고, 같은 재료로도 배치에 따라 전혀 다른 그림이 나온다고 설명한다. 시선이 먼저 닿을 자리, 강조할 형태, 남길 여백을 동시에 고려해야 하며 한 요소를 옮기면 나머지도 다시 조정된다는 상호 의존을 정리한다. 요소를 빼거나 옮겼을 때 전체가 흔들리는 느낌이 균형의 신호라고 덧붙인다.",
+        "aiAnalysisInputSha256": "2ba1686a1938d91604eea981f1777091e765bb4fa27297a2322dd67478620d99",
+        "aiPublicGuideTopic": "형태를 배치하는 규칙으로서의 구도",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          8,
+          6
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 10,
+        "chapter": "2장 화면이라는 틀: 프레임과 구도",
+        "section": "2.3 화면을 나누는 기본 격자",
+        "primaryConcepts": [
+          "격자"
+        ],
+        "secondaryConcepts": [
+          "구도",
+          "화면"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "화면을 균등하게 나눈 격자가 형태를 어디에 둘지 가늠하는 기준선이 된다고 설명하고, 삼등분 격자의 교차점 근처가 정중앙보다 자연스러운 긴장을 만든다고 정리한다. 격자는 정답이 아니라 출발점이며 격자선에서 살짝 벗어난 위치가 더 생동감을 준다고 조언한다. 구역별로 형태 개수를 미리 계획해 공간이 부족해지거나 한쪽으로 몰리는 일을 줄인다는 실용적 이유를 덧붙인다.",
+        "aiAnalysisInputSha256": "09a7697fb77b6d42b946e89a7dc2779da4a54b181761d8db626b8730a184c8b7",
+        "aiPublicGuideTopic": "화면을 나눠 배치를 가늠하는 기준선",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          9
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 11,
+        "chapter": "2장 화면이라는 틀: 프레임과 구도",
+        "section": "2.4 구도를 가늠하는 격자 도식",
+        "primaryConcepts": [
+          "격자"
+        ],
+        "secondaryConcepts": [
+          "구도",
+          "점",
+          "선"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "정사각형 화면을 아홉 칸으로 나눈 격자와 네 교차점을 굵게 표시한 도표다. 정중앙에 반투명한 점을 겹쳐 교차점 배치와 대비시키고, 오른쪽 절반에는 왼쪽 위 교차점 근처의 점 하나와 오른쪽 아래로 흐르는 선 하나로 실제 배치 예시를 보여 준다.",
+        "aiAnalysisInputSha256": "02029873c6695753457a9e4a78c00bfdae91e85aa967769b103962160a74d3a4",
+        "aiPublicGuideTopic": "삼등분 격자와 교차점 배치를 보여 주는 도식",
+        "estimatedReadingSeconds": 45,
+        "prerequisitePageNumbers": [
+          10
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 12,
+        "chapter": "2장 화면이라는 틀: 프레임과 구도",
+        "section": "2.5 시선이 움직이는 길: 구도의 동선",
+        "primaryConcepts": [
+          "시선 동선"
+        ],
+        "secondaryConcepts": [
+          "구도",
+          "선",
+          "방향"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "관람자의 시선이 화면을 한 번에 보지 않고 큰 형태에서 선을 따라 세부로 옮겨 간다고 설명하며 이 순서를 구도의 동선으로 정의한다. 대각선은 시선을 빠르게 이끌고 곡선으로 배치한 점들은 시선을 천천히 움직이게 한다고 정리한다. 동선이 없으면 산만해지고 지나치게 강하면 한쪽만 보게 되므로, 전체를 골고루 보게 하면서 순서를 갖게 하는 지점이 적절하다고 덧붙인다.",
+        "aiAnalysisInputSha256": "c98fcd5319932866acfdf9cdae0263e8598130ac08a341e0c621fc2299de0795",
+        "aiPublicGuideTopic": "관람자의 시선이 화면을 훑는 순서",
+        "estimatedReadingSeconds": 75,
+        "prerequisitePageNumbers": [
+          9
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 13,
+        "chapter": "2장 화면이라는 틀: 프레임과 구도",
+        "section": "2.6 구도가 만드는 긴장과 안정",
+        "primaryConcepts": [
+          "긴장과 안정"
+        ],
+        "secondaryConcepts": [
+          "구도",
+          "시각적 무게"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "같은 형태요소도 가장자리에 몰리면 긴장이, 중심에 모이면 안정이 생기지만 자칫 지루해질 수 있다고 설명한다. 한쪽에 안정된 큰 면을, 다른 쪽에 긴장을 주는 작은 점들을 두어 두 인상을 공존시키는 방법을 소개하고, 두 인상의 비율은 그림의 주제에 따라 달라진다고 정리한다.",
+        "aiAnalysisInputSha256": "2c2923c990eed9eed7031144de716cb432c6766f35a346d2a29cd52a0d219185",
+        "aiPublicGuideTopic": "배치가 만드는 긴장감과 안정감의 차이",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          9
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 14,
+        "chapter": "2장 화면이라는 틀: 프레임과 구도",
+        "section": "2.7 가장자리와 중심의 관계",
+        "primaryConcepts": [
+          "가장자리와 중심"
+        ],
+        "secondaryConcepts": [
+          "여백",
+          "시각적 무게",
+          "프레임"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "중심과 가장자리가 서로를 규정하는 짝이라고 설명하고 저울의 받침점과 양 끝에 비유한다. 중심에 무거운 형태를 두면 가장자리가 여백처럼 느껴지고, 중심을 비우면 빈 중심이 오히려 강한 존재감을 갖는다고 대비한다. 형태 하나의 위치가 나머지 공간에 주는 영향까지 함께 살펴야 한다고 정리한다.",
+        "aiAnalysisInputSha256": "1ee98ab72a7b61ee5e98ae825f8c3c58767f0272a8833513e899abf937487d62",
+        "aiPublicGuideTopic": "화면의 중심과 가장자리가 서로를 규정하는 관계",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          8
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 15,
+        "chapter": "2장 화면이라는 틀: 프레임과 구도",
+        "section": "2.8 구도를 정하는 순서",
+        "primaryConcepts": [
+          "구도"
+        ],
+        "secondaryConcepts": [
+          "격자",
+          "시선 동선",
+          "프레임",
+          "형태요소"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "프레임과 비율을 정하고 격자로 구역을 가늠한 뒤 무게가 큰 면부터 자리를 잡고, 동선을 고려해 선을 놓고 마지막에 점으로 세부를 더하는 순서를 제시한다. 작은 요소부터 정하면 균형이 흔들릴 때 큰 요소를 다시 옮기는 부담이 커지기 때문이라고 근거를 밝힌다. 절대 규칙이 아니라 시행착오를 줄이는 방법이며 요소들이 서로 맞물려 있다는 사실을 의식하는 것이 핵심이라고 덧붙인다.",
+        "aiAnalysisInputSha256": "fb5c018ff817c10f72754eab7edddc9525636cd7a3f1debb37114198388b1445",
+        "aiPublicGuideTopic": "구도를 단계로 나눠 정하는 절차",
+        "estimatedReadingSeconds": 80,
+        "prerequisitePageNumbers": [
+          10,
+          12,
+          13
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 16,
+        "chapter": "3장 무게를 맞추는 법: 대칭과 비대칭 균형",
+        "section": "3.1 균형이란 무엇인가",
+        "primaryConcepts": [
+          "균형"
+        ],
+        "secondaryConcepts": [
+          "시각적 무게",
+          "구도"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "균형을 화면의 여러 부분이 시각적으로 같은 무게로 느껴지는 상태로 정의하고, 여기서 무게는 물리적 무게가 아니라 눈이 느끼는 무게감이라고 구분한다. 크고 진하고 복잡한 형태는 무겁게, 작고 옅고 단순한 형태는 가볍게 느껴진다고 정리한다. 저울 비유로 서로 다른 형태여도 무게감이 같으면 균형이 생긴다고 설명하고 대칭과 비대칭이라는 두 방법을 예고한다.",
+        "aiAnalysisInputSha256": "2e4dae08da30e901a618835e2e37bd556160f88c48ebcac90c78f4e0ba0eb95f",
+        "aiPublicGuideTopic": "화면 양쪽이 같은 무게로 느껴지는 상태",
+        "estimatedReadingSeconds": 75,
+        "prerequisitePageNumbers": [
+          9
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 17,
+        "chapter": "3장 무게를 맞추는 법: 대칭과 비대칭 균형",
+        "section": "3.2 대칭 균형: 좌우를 맞추다",
+        "primaryConcepts": [
+          "대칭 균형"
+        ],
+        "secondaryConcepts": [
+          "균형",
+          "화면"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "중심에 가상의 선을 긋고 양쪽에 같거나 비슷한 형태를 배치하는 방식으로 대칭 균형을 정의한다. 만들기 쉽고 즉시 안정감을 준다는 장점과, 예측하기 쉬워 단조로워지고 시선이 머물 이유가 줄어든다는 위험을 함께 든다. 그래서 미세하게 다른 요소를 하나 끼워 넣어 단조로움을 깨는 경우가 많다고 덧붙인다.",
+        "aiAnalysisInputSha256": "5ca613a1b8516f9fe8d35464e4aa6dbad00b21060143313adf1813678892756e",
+        "aiPublicGuideTopic": "중심선을 기준으로 좌우를 맞추는 방법",
+        "estimatedReadingSeconds": 75,
+        "prerequisitePageNumbers": [
+          16
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 18,
+        "chapter": "3장 무게를 맞추는 법: 대칭과 비대칭 균형",
+        "section": "3.3 비대칭 균형: 무게로 맞추다",
+        "primaryConcepts": [
+          "비대칭 균형"
+        ],
+        "secondaryConcepts": [
+          "균형",
+          "시각적 무게",
+          "점",
+          "면"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "양쪽에 서로 다른 모양과 크기의 형태를 두면서 무게감을 같게 맞추는 방식으로 비대칭 균형을 정의한다. 작고 진한 점 하나가 크고 옅은 면과 맞먹을 수 있다는 원리를 들고, 색의 진하기와 형태의 복잡함과 가장자리까지의 거리가 함께 무게감을 만들므로 크기만으로 판단하면 안 된다고 경고한다. 대칭보다 어렵지만 완성되면 더 생동감 있는 인상을 준다고 정리한다.",
+        "aiAnalysisInputSha256": "7d0d653c1102e6e5f197f194dddb3a9b7d5a9a5ca1d1f6fe6e4e3697ba5c7145",
+        "aiPublicGuideTopic": "서로 다른 형태의 무게를 맞추는 방법",
+        "estimatedReadingSeconds": 75,
+        "prerequisitePageNumbers": [
+          16
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 19,
+        "chapter": "3장 무게를 맞추는 법: 대칭과 비대칭 균형",
+        "section": "3.4 대칭과 비대칭을 나란히 보기",
+        "primaryConcepts": [
+          "대칭 균형",
+          "비대칭 균형"
+        ],
+        "secondaryConcepts": [
+          "균형",
+          "시각적 무게"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "왼쪽에는 중심선을 점선으로 긋고 좌우에 같은 크기의 원을 배치해 안정적이지만 단조로운 대칭을, 오른쪽에는 크고 옅은 면과 작고 진한 점을 저울대 모양 선으로 이어 무게감이 상쇄되는 비대칭을 보여 주는 도표다. 아래에는 둘 다 균형이지만 만드는 방식이 다르다는 결론을 배치했다.",
+        "aiAnalysisInputSha256": "bc3f839b67258ee2348f403aa54feb2bc2f887a793d3c3aaf4a170a03dd8173a",
+        "aiPublicGuideTopic": "두 가지 균형 방식을 나란히 놓은 비교 도식",
+        "estimatedReadingSeconds": 45,
+        "prerequisitePageNumbers": [
+          17,
+          18
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 20,
+        "chapter": "3장 무게를 맞추는 법: 대칭과 비대칭 균형",
+        "section": "3.5 색과 크기도 무게가 된다",
+        "primaryConcepts": [
+          "시각적 무게"
+        ],
+        "secondaryConcepts": [
+          "균형",
+          "색",
+          "형태의 복잡성"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "무게감을 크기만으로 판단하기 쉽지만 색의 진하기, 형태의 복잡성, 화면 안에서의 위치가 함께 작용한다고 설명한다. 작아도 진한 색을 쓰면 큰 옅은 면과 무게가 비슷해지고 톱니 모양의 복잡한 윤곽이 매끈한 원보다 시선을 오래 붙잡는다는 예를 든다. 요인을 따로 보지 말고 각 형태가 실제로 얼마나 시선을 끄는지를 기준으로 판단하라고 정리한다.",
+        "aiAnalysisInputSha256": "4001482bd9a8b70a231f016e1d8c30ea695c3a541aebf3ed34d656c01e43706f",
+        "aiPublicGuideTopic": "무게감을 결정하는 여러 요인",
+        "estimatedReadingSeconds": 75,
+        "prerequisitePageNumbers": [
+          16
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 21,
+        "chapter": "3장 무게를 맞추는 법: 대칭과 비대칭 균형",
+        "section": "3.6 균형이 무너지면 생기는 일",
+        "primaryConcepts": [
+          "균형"
+        ],
+        "secondaryConcepts": [
+          "시각적 무게",
+          "긴장과 안정"
+        ],
+        "contentRole": "COUNTERPOINT",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "균형이 무너진 화면이 한쪽으로 기울어진 저울처럼 불안정해 보인다고 설명하고, 한쪽 구석에 무거운 면을 몰아넣은 실험작이 쏠려 떨어질 듯한 인상을 준 사례를 든다. 이런 쏠림이 실수일 수도 있지만 불안이나 긴장을 표현하려고 의도적으로 쓰이기도 하며, 그때도 균형을 알아야 얼마나 깨뜨릴지 조절할 수 있다고 정리한다. 한쪽에만 세부를 많이 그려 넣는 것이 의도치 않은 붕괴의 흔한 원인이라고 덧붙인다.",
+        "aiAnalysisInputSha256": "4a82ca7c6482aedf64ac04ace843328951fc86e7dee0859766f9d10c5e871c5f",
+        "aiPublicGuideTopic": "균형이 무너진 화면에서 벌어지는 일",
+        "estimatedReadingSeconds": 80,
+        "prerequisitePageNumbers": [
+          16
+        ],
+        "duplicateGroupKeys": [
+          "intentional-imbalance"
+        ]
+      },
+      {
+        "pageNumber": 22,
+        "chapter": "3장 무게를 맞추는 법: 대칭과 비대칭 균형",
+        "section": "3.7 균형을 맞추는 순서",
+        "primaryConcepts": [
+          "균형"
+        ],
+        "secondaryConcepts": [
+          "시각적 무게",
+          "구도"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "균형을 마지막에만 확인하지 않고 형태를 하나 배치할 때마다 전체를 훑어 쏠림을 점검한다고 설명한다. 좌우로 한 번, 위아래로 한 번 나눠 무게감을 비교하고, 한쪽이 무거우면 반대쪽에 형태를 더하거나 무거운 쪽의 색을 옅게 하거나 그 형태를 중심 쪽으로 옮기는 세 가지 대응을 제시한다. 새로 더한 형태가 또 다른 쏠림을 만들 수 있어 완성까지 반복되는 과정이라고 정리한다.",
+        "aiAnalysisInputSha256": "900cee44f0a415131c1a0676d609ab1d9df30b54d5cbba9fba3c547e58e10a7c",
+        "aiPublicGuideTopic": "그리는 동안 무게를 점검하는 절차",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          20
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 23,
+        "chapter": "3장 무게를 맞추는 법: 대칭과 비대칭 균형",
+        "section": "3.8 사례: 점 하나의 무게",
+        "primaryConcepts": [
+          "균형",
+          "점"
+        ],
+        "secondaryConcepts": [
+          "여백",
+          "시각적 무게"
+        ],
+        "contentRole": "EXAMPLE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "넓은 여백 위에 진한 점 하나만 찍은 습작에서 점을 정중앙에 두었을 때의 정적인 인상과 모서리 쪽으로 옮겼을 때의 생동감을 비교한 사례다. 점이 중앙을 벗어나자 빈 공간이 단순한 여백이 아니라 점이 밀어낸 무게를 받아내는 공간으로 느껴졌다고 기록한다. 형태가 적을수록 위치 하나하나의 무게가 더 크게 작동한다는 점을 보여 준다.",
+        "aiAnalysisInputSha256": "66130b84d7919c4ee3608c83d1a4d03507190cf4aa0525fe79bcc0e5d5963121",
+        "aiPublicGuideTopic": "형태 하나와 빈 공간만으로 이루어진 균형 사례",
+        "estimatedReadingSeconds": 75,
+        "prerequisitePageNumbers": [
+          18
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 24,
+        "chapter": "3장 무게를 맞추는 법: 대칭과 비대칭 균형",
+        "section": "3.9 균형과 구도의 관계",
+        "primaryConcepts": [
+          "균형",
+          "구도"
+        ],
+        "secondaryConcepts": [
+          "긴장과 안정"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "구도가 배치 규칙 전체를 가리킨다면 균형은 그 배치가 얼마나 안정적으로 느껴지는지 판단하는 기준 가운데 하나라고 구분한다. 좋은 구도라고 반드시 균형이 잡혀야 하는 것은 아니며 의도적으로 깨뜨리는 구도도 있지만, 깨뜨리려면 먼저 잡힌 상태를 알아야 그 차이를 계산할 수 있다고 정리한다. 균형은 구도를 제한하는 규칙이 아니라 의식적으로 조절하게 해 주는 기준선이라고 덧붙인다.",
+        "aiAnalysisInputSha256": "d8a8e55b090129915cd5750863c93231def2a205ac1375fba5545b3641c8e1f6",
+        "aiPublicGuideTopic": "균형이 구도를 평가하는 기준이 되는 방식",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          16,
+          9
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 25,
+        "chapter": "3장 무게를 맞추는 법: 대칭과 비대칭 균형",
+        "section": "3.10 이 장의 정리",
+        "primaryConcepts": [
+          "균형",
+          "대칭 균형",
+          "비대칭 균형"
+        ],
+        "secondaryConcepts": [
+          "시각적 무게",
+          "스케일"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "균형의 정의와 대칭·비대칭이라는 두 방식, 각각의 장단점을 다시 정리한 장 마무리다. 무게감을 결정하는 요인이 크기만이 아니라 색의 진하기와 형태의 복잡성과 위치까지 포함한다는 점, 균형이 완성 시점의 확인이 아니라 배치할 때마다 반복하는 과정이라는 점을 확인한다. 화면 크기가 달라지면 같은 원리를 적용하는 방식이 달라진다며 다음 장을 예고한다.",
+        "aiAnalysisInputSha256": "544de1937c29f8a5d6e057b338394bf676680252ca593c8cd79d16832e0b695f",
+        "aiPublicGuideTopic": "균형을 다룬 장의 요약",
+        "estimatedReadingSeconds": 75,
+        "prerequisitePageNumbers": [
+          17,
+          18,
+          20,
+          22
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 26,
+        "chapter": "4장 커질수록 달라지는 것: 크기와 스케일 관계",
+        "section": "4.1 캔버스가 커지면 무엇이 달라지는가",
+        "primaryConcepts": [
+          "스케일"
+        ],
+        "secondaryConcepts": [
+          "화면",
+          "관람 거리",
+          "형태요소"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "같은 구도라도 화면 크기를 키우면 형태요소의 인상이 달라진다고 설명하고, 작은 종이 위의 점과 벽만한 캔버스 위의 같은 비율의 점이 전혀 다른 존재감을 갖는다는 예를 든다. 크기가 달라지면 관람자와의 거리 감각도 달라져 작은 그림은 가까이, 큰 그림은 물러나 보게 된다고 정리한다. 화면이 커져도 반드시 채워야 하는 것은 아니며 단순함이 오히려 크게 다가온다는 관찰을 덧붙인다.",
+        "aiAnalysisInputSha256": "44819a880fea72cdfba75903acfe23ab8bb94ed42b9865054d7717ec6b7706dd",
+        "aiPublicGuideTopic": "화면이 커질 때 달라지는 인상",
+        "estimatedReadingSeconds": 80,
+        "prerequisitePageNumbers": [
+          7
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 27,
+        "chapter": "4장 커질수록 달라지는 것: 크기와 스케일 관계",
+        "section": "4.2 확대할 때 생기는 문제",
+        "primaryConcepts": [
+          "스케일",
+          "균형"
+        ],
+        "secondaryConcepts": [
+          "여백",
+          "시각적 무게"
+        ],
+        "contentRole": "COUNTERPOINT",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "작은 화면에서 맞던 균형이 확대만으로는 유지되지 않고 한쪽이 허전해지는 문제를 다룬다. 화면이 커지면 형태 사이의 빈 공간도 함께 커져 그 자체로 무게를 갖는 요소가 되기 때문이라고 원인을 밝힌다. 형태의 개수나 세부를 늘리거나 색의 농도를 조정해 커진 빈 공간과 균형을 다시 맞춰야 하며, 단순 비율 확대는 출발점일 뿐이라고 정리한다.",
+        "aiAnalysisInputSha256": "d76aa5c79e707bdc95d86408e3add86b60710982fce55bd4a373b8b8bc2ce412",
+        "aiPublicGuideTopic": "비율만 확대했을 때 균형이 깨지는 이유",
+        "estimatedReadingSeconds": 75,
+        "prerequisitePageNumbers": [
+          26,
+          16
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 28,
+        "chapter": "4장 커질수록 달라지는 것: 크기와 스케일 관계",
+        "section": "4.3 작은 화면과 큰 화면의 비교",
+        "primaryConcepts": [
+          "스케일"
+        ],
+        "secondaryConcepts": [
+          "여백",
+          "시각적 무게"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "왼쪽에 작은 정사각형과 그 안에 가깝게 놓인 점과 선을, 오른쪽에 같은 비율로 확대한 큰 정사각형과 같은 위치의 점과 선을 배치한 도표다. 큰 화면 쪽의 빈 공간을 옅은 회색으로 강조해 같은 비율이어도 빈 공간이 하나의 무게로 느껴진다는 차이를 보이고, 비율은 같지만 인상은 다르다는 결론을 두 화면 사이에 배치했다.",
+        "aiAnalysisInputSha256": "4b31cf0512ed7f19e816b4bea0446ebb5f6cd2cb39a3035c13a5c8741470cfdd",
+        "aiPublicGuideTopic": "같은 배치를 두 크기로 나란히 놓은 비교 도식",
+        "estimatedReadingSeconds": 45,
+        "prerequisitePageNumbers": [
+          27
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 29,
+        "chapter": "4장 커질수록 달라지는 것: 크기와 스케일 관계",
+        "section": "4.4 스케일과 관람 거리",
+        "primaryConcepts": [
+          "관람 거리"
+        ],
+        "secondaryConcepts": [
+          "스케일",
+          "화면"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "화면의 크기가 관람자가 서야 할 적절한 거리를 함께 정한다고 설명하고, 작은 그림은 가까이서 세부를, 큰 그림은 멀리서 전체 구도를 먼저 보게 된다고 정리한다. 큰 화면에 촘촘한 세부를 넣으면 멀리서 본 전체와 가까이서 본 세부라는 두 경험을 의도적으로 설계할 수 있고, 반대로 작은 화면에 단순한 형태만 있으면 가까이 볼 이유가 줄어든다고 대비한다.",
+        "aiAnalysisInputSha256": "70d1f183ec6bb7553778c0897e5ccbffc5e595b5797cfc0abca6544c3389c7a1",
+        "aiPublicGuideTopic": "화면 크기가 관람 거리를 함께 정하는 방식",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          26
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 30,
+        "chapter": "4장 커질수록 달라지는 것: 크기와 스케일 관계",
+        "section": "4.5 형태요소의 스케일 관계",
+        "primaryConcepts": [
+          "크기 관계"
+        ],
+        "secondaryConcepts": [
+          "스케일",
+          "점",
+          "면"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "스케일이 화면 전체의 크기뿐 아니라 형태요소 사이의 상대적 크기 관계도 가리킨다고 설명한다. 크기 차이를 극단적으로 벌리면 작은 형태가 유독 강조되고 비슷하게 맞추면 두 형태가 대등하게 경쟁하는 인상을 준다는 실험을 든다. 이 상대적 관계는 화면 전체 크기와 독립적으로 작동하므로 스케일이 두 층위에서 함께 작동하는 개념이라고 정리한다.",
+        "aiAnalysisInputSha256": "e0cad26207fdfe86e84bb62348ae7d9fe66ddf897c71419601e280ea49462473",
+        "aiPublicGuideTopic": "형태요소 사이의 상대적 크기가 만드는 효과",
+        "estimatedReadingSeconds": 80,
+        "prerequisitePageNumbers": [
+          26
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 31,
+        "chapter": "4장 커질수록 달라지는 것: 크기와 스케일 관계",
+        "section": "4.6 스케일을 조정하는 방법",
+        "primaryConcepts": [
+          "스케일"
+        ],
+        "secondaryConcepts": [
+          "여백",
+          "시각적 무게",
+          "크기 관계"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "화면 크기를 바꿀 때 구도를 그대로 옮기지 않고 조정하는 세 가지 방법을 제시한다. 빈 공간에 미묘한 색 변화나 흐린 형태를 더해 무게를 보충하는 방법, 가장 무거운 형태를 화면 비율보다 조금 더 키우는 방법, 세부 요소의 개수를 늘리는 방법이다. 어느 것을 쓸지는 전달하려는 인상에 따라 다르며 축소 스케치를 여러 장 그려 미리 시험한다고 덧붙인다.",
+        "aiAnalysisInputSha256": "f0a12f37a52b4b1828d5205a33f07f114797d23811da31c69ec5b27647701a2b",
+        "aiPublicGuideTopic": "화면 크기를 바꿀 때 함께 조정하는 항목",
+        "estimatedReadingSeconds": 80,
+        "prerequisitePageNumbers": [
+          27,
+          30
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 32,
+        "chapter": "4장 커질수록 달라지는 것: 크기와 스케일 관계",
+        "section": "4.7 스케일과 균형의 상호작용",
+        "primaryConcepts": [
+          "스케일",
+          "균형"
+        ],
+        "secondaryConcepts": [
+          "시각적 무게",
+          "색"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "스케일과 균형이 독립된 개념이 아니라 함께 작동한다고 설명하고, 작은 화면에서는 색의 진하기가 무게감에 크게 기여하지만 큰 화면에서는 형태의 절대적 크기가 더 큰 영향을 미친다고 비교한다. 균형을 맞추는 저울의 눈금이 화면 크기에 따라 달라진다는 비유로, 원리는 유지되지만 계산 방식은 다시 조정해야 한다고 정리한다.",
+        "aiAnalysisInputSha256": "b2063e5828933c1004910fcbb3f4cd6740df94c058d7c46fba1f3cdd35052420",
+        "aiPublicGuideTopic": "화면 크기에 따라 무게 계산이 달라지는 관계",
+        "estimatedReadingSeconds": 75,
+        "prerequisitePageNumbers": [
+          31,
+          16
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 33,
+        "chapter": "5장 실전: 점에서 화면까지",
+        "section": "5.1 작업 전 스케치 준비",
+        "primaryConcepts": [
+          "구도"
+        ],
+        "secondaryConcepts": [
+          "프레임",
+          "격자",
+          "스케일"
+        ],
+        "contentRole": "EXAMPLE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "작은 종이에 여러 장의 스케치를 먼저 그려 보는 준비 단계를 다룬다. 정사각형과 가로로 긴 형태와 세로로 긴 형태를 각각 그려 원하는 인상에 가까운 비율을 고르고, 이번 작업에서는 위아래로 시선이 움직이는 느낌을 원해 세로로 약간 긴 비율을 골랐다고 기록한다. 비율을 정한 뒤에는 격자를 그려 무게가 실릴 자리만 사각형으로 표시해 둔다.",
+        "aiAnalysisInputSha256": "ef5f6260fc9bec23edcb869de51954490acd4937a7a104ee65905272a399e52e",
+        "aiPublicGuideTopic": "본 작업 전에 스케치로 비율을 고르는 단계",
+        "estimatedReadingSeconds": 75,
+        "prerequisitePageNumbers": [
+          15
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 34,
+        "chapter": "5장 실전: 점에서 화면까지",
+        "section": "5.2 첫 점을 놓는 자리 정하기",
+        "primaryConcepts": [
+          "점",
+          "격자"
+        ],
+        "secondaryConcepts": [
+          "무게중심",
+          "구도"
+        ],
+        "contentRole": "EXAMPLE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "격자의 교차점 가운데 화면 위쪽에서 약간 오른쪽으로 벗어난 자리를 첫 점의 위치로 고른 과정을 기록한다. 정중앙 대신 교차점을 고른 이유로 교차점 근처가 더 자연스러운 긴장을 만든다는 앞 장의 원리를 든다. 진한 파란색을 골라 이후 모든 색 관계의 기준으로 삼았고, 물러나 살펴보며 점 하나가 무게중심을 어디로 끌고 가는지 확인했다고 적는다.",
+        "aiAnalysisInputSha256": "c6d11f9f144beaab5fcee295a12bbe0954af2971500c824ab00c30c839ae6374",
+        "aiPublicGuideTopic": "첫 형태를 놓을 자리를 고르는 단계",
+        "estimatedReadingSeconds": 75,
+        "prerequisitePageNumbers": [
+          33,
+          10
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 35,
+        "chapter": "5장 실전: 점에서 화면까지",
+        "section": "5.3 선으로 방향 잡기",
+        "primaryConcepts": [
+          "선",
+          "시선 동선"
+        ],
+        "secondaryConcepts": [
+          "점",
+          "방향"
+        ],
+        "contentRole": "EXAMPLE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "점에서 화면 아래쪽으로 완만하게 흐르는 곡선을 그려 위에서 아래로, 오른쪽에서 왼쪽으로 이어지는 동선을 만든 과정을 기록한다. 선의 굵기를 점 근처에서는 얇게 아래로 갈수록 굵게 그려 무게가 쌓여 가는 흐름처럼 보이게 했다고 설명한다. 면을 채우기 전인데도 점과 선만으로 화면에 대각선 동선이 생겨 비어 보이지 않게 되었다고 정리한다.",
+        "aiAnalysisInputSha256": "04776166882500bf0e5d111e02a3c723497e45df6a94a8c7424c86c35fc2b648",
+        "aiPublicGuideTopic": "첫 형태에서 시선의 흐름을 뻗어 내는 단계",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          34,
+          3
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 36,
+        "chapter": "5장 실전: 점에서 화면까지",
+        "section": "5.4 점과 선이 만든 첫 동선",
+        "primaryConcepts": [
+          "시선 동선"
+        ],
+        "secondaryConcepts": [
+          "점",
+          "선"
+        ],
+        "contentRole": "EXAMPLE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "세로로 약간 긴 화면에 위쪽 교차점의 진한 점과 거기서 왼쪽 아래로 휘어지는 곡선을 그린 작업 도표다. 점 근처는 가늘고 아래로 갈수록 굵어지는 선의 변화를 반영하고, 곡선을 따라 옅은 화살표를 겹쳐 시선의 이동 방향을 표시했다. 아래에는 점의 위치와 선의 방향만으로 동선이 생긴다는 단계 설명을 배치했다.",
+        "aiAnalysisInputSha256": "f11c586e659586cd62e231f93d4277b428eac5df704aba3df782beedcf5acebf",
+        "aiPublicGuideTopic": "점과 선만으로 동선이 생긴 첫 단계 도식",
+        "estimatedReadingSeconds": 45,
+        "prerequisitePageNumbers": [
+          35
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 37,
+        "chapter": "5장 실전: 점에서 화면까지",
+        "section": "5.5 면으로 공간 채우기",
+        "primaryConcepts": [
+          "면",
+          "비대칭 균형"
+        ],
+        "secondaryConcepts": [
+          "시각적 무게",
+          "크기 관계"
+        ],
+        "contentRole": "EXAMPLE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "곡선이 끝나는 자리 근처에 넓고 옅은 면을 더해 점의 무게를 받아내는 그릇 역할을 맡긴 과정을 기록한다. 면이 너무 크면 중심이 아래로 옮겨 가고 너무 작으면 무게를 받아내지 못하므로, 점보다 훨씬 크되 화면의 일부를 넘지 않는 크기로 정했다고 설명한다. 작지만 진한 것과 크지만 옅은 것이 맞먹는다는 앞 장의 원리가 실제로 작동한 예라고 정리한다.",
+        "aiAnalysisInputSha256": "c9211225c57aee17748c2f44b72e474c2eec5ee39834057e81060d92a05a60a0",
+        "aiPublicGuideTopic": "무게를 받아낼 넓은 형태를 더하는 단계",
+        "estimatedReadingSeconds": 80,
+        "prerequisitePageNumbers": [
+          36,
+          4
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 38,
+        "chapter": "5장 실전: 점에서 화면까지",
+        "section": "5.6 균형 점검하기",
+        "primaryConcepts": [
+          "균형"
+        ],
+        "secondaryConcepts": [
+          "시각적 무게",
+          "구도"
+        ],
+        "contentRole": "EXAMPLE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "물러나 좌우와 위아래로 나눠 무게를 비교한 점검 과정을 기록한다. 좌우는 대체로 상쇄되었지만 위쪽이 다소 가벼워 보였고, 형태를 더하는 대신 무거운 쪽을 중심에 가깝게 옮기는 방법을 골라 왼쪽 아래 면을 중심 쪽으로 옮겼더니 차이가 줄었다고 적는다. 형태를 더하면 또 다른 쏠림을 만들 위험이 있어 최소한의 조정을 우선한다는 원칙을 덧붙인다.",
+        "aiAnalysisInputSha256": "da3b6695a8039c101bcf267abcf2775ebaf808e2d355f8e8586f2b0953aae4d7",
+        "aiPublicGuideTopic": "배치를 마친 화면의 쏠림을 점검하는 단계",
+        "estimatedReadingSeconds": 75,
+        "prerequisitePageNumbers": [
+          37,
+          22
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 39,
+        "chapter": "5장 실전: 점에서 화면까지",
+        "section": "5.7 스케일 확인과 조정",
+        "primaryConcepts": [
+          "스케일"
+        ],
+        "secondaryConcepts": [
+          "여백",
+          "균형",
+          "관람 거리"
+        ],
+        "contentRole": "EXAMPLE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "스케치를 훨씬 큰 캔버스로 옮기면서 단순 비율 확대만으로는 부족했던 과정을 기록한다. 점과 면 사이의 빈 공간이 예상대로 크게 느껴져 아주 흐린 얇은 선 몇 개를 더해 완전히 비어 보이지 않게 하고, 중심 역할을 하는 점의 크기를 비율보다 조금 키워 존재감이 옅어지지 않게 했다고 설명한다. 조정 뒤 물러나 균형이 유지되는지 확인하고 채색으로 넘어갔다고 정리한다.",
+        "aiAnalysisInputSha256": "1c339aff53377e4e5b1adaa3181fced1304ffcd7447ce8b2bbb3118c1ba43b46",
+        "aiPublicGuideTopic": "스케치를 실제 크기로 옮기며 조정하는 단계",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          38,
+          31
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 40,
+        "chapter": "5장 실전: 점에서 화면까지",
+        "section": "5.8 완성된 화면 연습 12호",
+        "primaryConcepts": [
+          "구도",
+          "균형"
+        ],
+        "secondaryConcepts": [
+          "점",
+          "선",
+          "면",
+          "스케일"
+        ],
+        "contentRole": "EXAMPLE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "세로로 긴 캔버스에 위쪽 교차점의 진한 점, 왼쪽 아래로 흐르는 곡선, 곡선이 끝나는 자리의 옅은 면을 배치한 완성 도표다. 면은 중심 쪽으로 옮겨진 위치에 그리고 빈 공간에는 흐린 선 두세 개를 얇게 겹쳤다. 오른쪽에 첫 단계 도표를 나란히 놓아 형태 하나에서 균형 잡힌 전체 화면까지의 진행 순서를 한눈에 비교하게 했다.",
+        "aiAnalysisInputSha256": "4443f1d0025ffc76666ab449d28920a62dc6a2b029e79a351541e0cd9ca3f8d0",
+        "aiPublicGuideTopic": "완성된 화면과 첫 단계를 나란히 놓은 도식",
+        "estimatedReadingSeconds": 45,
+        "prerequisitePageNumbers": [
+          39
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 41,
+        "chapter": "5장 실전: 점에서 화면까지",
+        "section": "5.9 완성 전 재검토",
+        "primaryConcepts": [
+          "구도"
+        ],
+        "secondaryConcepts": [
+          "시선 동선",
+          "프레임"
+        ],
+        "contentRole": "EXAMPLE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "개별 형태를 보지 않고 눈을 가늘게 떠 큰 덩어리의 무게 분포만 확인하는 재검토 방법을 기록한다. 이번 검토에서 곡선의 시작 부분이 급하게 꺾여 흐름이 부드럽지 않다는 점을 발견해 더 완만하게 다시 그렸다고 적는다. 프레임 가장자리에 너무 가까이 붙은 형태가 없는지도 함께 확인하고 필요하면 안쪽으로 옮긴다고 덧붙인다.",
+        "aiAnalysisInputSha256": "bf399829d83e934480b2ce556ca648dd3c42ce7fea8ef26f8d9f93084d1390cd",
+        "aiPublicGuideTopic": "채색 전에 전체 인상을 다시 살피는 단계",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          40
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 42,
+        "chapter": "5장 실전: 점에서 화면까지",
+        "section": "5.10 실전에서 자주 하는 실수",
+        "primaryConcepts": [
+          "구도",
+          "스케일"
+        ],
+        "secondaryConcepts": [
+          "균형",
+          "시선 동선"
+        ],
+        "contentRole": "COUNTERPOINT",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "수강생들에게서 되풀이되는 실수 네 가지를 정리한다. 형태를 정중앙에만 두어 지루해지는 습관, 균형을 맞추려다 형태를 너무 많이 더해 복잡해지는 경우, 스케일을 무시하고 작은 스케치의 비율만 확대해 허전해지는 경우, 동선을 고려하지 않아 시선이 갈 곳을 잃는 경우다. 형태를 놓기 전에 시선이 어디서 시작해 어디로 갈지 먼저 그려 보라는 조언을 덧붙인다.",
+        "aiAnalysisInputSha256": "27a65f1731f1184610d6610bb823330a7e6f58c58bf6acc3e245a59a1800b8ba",
+        "aiPublicGuideTopic": "실전에서 되풀이되는 배치 실수",
+        "estimatedReadingSeconds": 75,
+        "prerequisitePageNumbers": [
+          41
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 43,
+        "chapter": "5장 실전: 점에서 화면까지",
+        "section": "5.11 사례 정리",
+        "primaryConcepts": [
+          "구도",
+          "형태요소"
+        ],
+        "secondaryConcepts": [
+          "균형",
+          "스케일"
+        ],
+        "contentRole": "EXAMPLE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "형태 하나에서 시작해 방향을 얻고 무게를 더한 뒤 균형을 점검하고 스케일에 맞춰 조정한 순서를 되짚는다. 각 단계가 이전 단계의 결정에 영향을 받아 점의 위치가 선의 방향을, 선의 방향이 면의 자리를, 면의 크기가 균형 점검의 기준을 정했다고 정리한다. 어느 한 단계도 독립적으로 결정되지 않았다는 점을 강조하며 원리의 한계를 다루는 다음 장을 예고한다.",
+        "aiAnalysisInputSha256": "eca105bac92c247a27bc42c74f13560431621b4f7272c82bb471f1a9953a09eb",
+        "aiPublicGuideTopic": "작업 과정 전체를 되짚은 사례 정리",
+        "estimatedReadingSeconds": 75,
+        "prerequisitePageNumbers": [
+          41
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 44,
+        "chapter": "6장 균형이 통하지 않는 순간",
+        "section": "6.1 의도적으로 무너뜨리는 균형",
+        "primaryConcepts": [
+          "균형"
+        ],
+        "secondaryConcepts": [
+          "긴장과 안정",
+          "구도"
+        ],
+        "contentRole": "COUNTERPOINT",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "모든 그림이 균형을 목표로 하지는 않으며 처음부터 균형을 깨뜨리려 그린 연작을 사례로 든다. 한쪽 구석에 무거운 형태를 몰아넣어 떨어질 듯한 인상을 의도적으로 만들었고, 이때도 균형의 원리는 필요하지만 원리를 향해 나아가는 대신 얼마나 벗어날지를 계산하는 데 쓰인다고 설명한다. 균형이 통하지 않는다는 것은 원리가 사라지는 것이 아니라 방향이 뒤집히는 것이라고 정리한다.",
+        "aiAnalysisInputSha256": "f337c04a720cae0b996c9d8db50bca498bcef1527e483289e3452970b21630d3",
+        "aiPublicGuideTopic": "균형을 목표로 삼지 않는 작업 방식",
+        "estimatedReadingSeconds": 90,
+        "prerequisitePageNumbers": [
+          16
+        ],
+        "duplicateGroupKeys": [
+          "intentional-imbalance"
+        ]
+      },
+      {
+        "pageNumber": 45,
+        "chapter": "6장 균형이 통하지 않는 순간",
+        "section": "6.2 우연에 맡기는 작업",
+        "primaryConcepts": [
+          "균형"
+        ],
+        "secondaryConcepts": [
+          "우연 기반 작업"
+        ],
+        "contentRole": "COUNTERPOINT",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "눈을 감고 붓을 떨어뜨려 형태를 남기는 워크숍 방식처럼 위치를 미리 계산하지 않는 작업을 다룬다. 이때도 균형이 완전히 사라지지는 않고 완성된 결과를 보는 관람자의 판단 틀로는 남지만 작업 과정에는 영향을 주지 못한다고 구분한다. 통제하려는 습관에서 벗어나는 훈련으로 쓰이며 자신이 무의식적으로 만들어 온 균형의 습관을 거꾸로 발견하게 된다고 덧붙인다.",
+        "aiAnalysisInputSha256": "aac6b0cfe35b4243cf003ecdc8a43daebc522d7f53c5bb48adf6a9d1e75c1162",
+        "aiPublicGuideTopic": "배치를 계산하지 않는 작업에서 균형의 위치",
+        "estimatedReadingSeconds": 75,
+        "prerequisitePageNumbers": [
+          44
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 46,
+        "chapter": "6장 균형이 통하지 않는 순간",
+        "section": "6.3 균형 원리가 통하지 않는 매체",
+        "primaryConcepts": [
+          "균형",
+          "화면"
+        ],
+        "secondaryConcepts": [
+          "관람 거리",
+          "우연 기반 작업"
+        ],
+        "contentRole": "COUNTERPOINT",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "지금까지의 균형 원리가 고정된 화면과 한 시점의 관람을 전제한다고 밝히고, 너무 길어 한 번에 볼 수 없는 화면에서는 좌우 균형이라는 개념 자체를 적용하기 어렵다고 설명한다. 이런 화면에서는 걸어가며 만나는 형태들이 시간 순서로 만드는 리듬이 더 중요해진다고 정리한다. 원리가 틀린 것이 아니라 원리가 전제하는 조건이 성립하지 않는 것이라고 구분한다.",
+        "aiAnalysisInputSha256": "5b43c708f1a0d6ee920d2604d790c962e62ecd058f352c73391d97091b70182f",
+        "aiPublicGuideTopic": "원리가 전제하는 조건이 성립하지 않는 경우",
+        "estimatedReadingSeconds": 75,
+        "prerequisitePageNumbers": [
+          44
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 47,
+        "chapter": "6장 균형이 통하지 않는 순간",
+        "section": "6.4 규칙을 깨는 것도 규칙을 안 뒤에",
+        "primaryConcepts": [
+          "균형"
+        ],
+        "secondaryConcepts": [
+          "구도",
+          "우연 기반 작업"
+        ],
+        "contentRole": "COUNTERPOINT",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "규칙을 깨려면 먼저 규칙을 익혀야 한다는 조언을 중심으로, 균형을 무시한 듯 보이는 그림도 실제로는 어느 방향으로 얼마나 벗어날지 계산한 결과인 경우가 많다고 설명한다. 균형을 모른 채 아무렇게나 배치한 그림과 알고 의도적으로 무너뜨린 그림은 결과가 비슷해 보여도 통제력에서 차이가 나며, 후자는 어디를 조정하면 회복될지 알고 있다고 대비한다. 반례가 원리를 부정하는 것이 아니라는 점을 다시 강조한다.",
+        "aiAnalysisInputSha256": "57c41afae84f29ceda81e5e44652965ee5838a6f3de9dd7cf5da19317bbf2962",
+        "aiPublicGuideTopic": "원리를 익힌 뒤에야 가능한 의도적 이탈",
+        "estimatedReadingSeconds": 80,
+        "prerequisitePageNumbers": [
+          44,
+          45,
+          46
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 48,
+        "chapter": "6장 균형이 통하지 않는 순간",
+        "section": "6.5 예외의 조건",
+        "primaryConcepts": [
+          "균형"
+        ],
+        "secondaryConcepts": [
+          "우연 기반 작업",
+          "화면"
+        ],
+        "contentRole": "COUNTERPOINT",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "의도적 붕괴와 우연 기반 작업과 고정되지 않은 화면이라는 세 예외를 나란히 놓고 공통 조건을 정리한다. 의도적 붕괴는 균형을 안다는 전제에서만 성립하고, 우연 기반 작업은 균형을 결과 판단의 틀로만 남기며, 고정되지 않은 화면은 전제 자체가 성립하지 않는 경우다. 원리가 아예 쓸모없어지는 경우는 없고 작동하는 층위가 달라질 뿐이므로 지금 어떤 층위에서 다루는지 의식해야 한다고 정리한다.",
+        "aiAnalysisInputSha256": "10053d21934f6697ca59ccd3bc7175199d2a51022c0b43cf815edbd430911b41",
+        "aiPublicGuideTopic": "예외들이 공유하는 조건의 정리",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          44,
+          45,
+          46
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 49,
+        "chapter": "6장 균형이 통하지 않는 순간",
+        "section": "6.6 예외를 다루는 태도",
+        "primaryConcepts": [
+          "균형",
+          "구도"
+        ],
+        "secondaryConcepts": [
+          "스케일"
+        ],
+        "contentRole": "COUNTERPOINT",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "원리를 따르지 않아도 좋은 그림을 그릴 수 있으며 원리는 선택할 수 있는 도구 가운데 하나이지 반드시 지켜야 하는 규범은 아니라고 밝힌다. 다만 도구를 잘 쓰려면 그 도구가 무엇을 하는지 먼저 알아야 하고, 원리를 몰랐다면 의도적으로 무너뜨리는 선택 자체를 할 수 없었을 것이라고 설명한다. 원리를 안다는 것은 선택의 폭을 넓히는 일이라고 정리한다.",
+        "aiAnalysisInputSha256": "af9ef44b3380ac2869a155371d0e821605b9155e8d2852862743e762128c4d18",
+        "aiPublicGuideTopic": "원리를 도구로 다루는 태도",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          48
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 50,
+        "chapter": "7장 결론: 화면을 채우는 순서",
+        "section": "7.1 결론: 점에서 화면까지",
+        "primaryConcepts": [
+          "형태요소",
+          "구도",
+          "균형",
+          "스케일"
+        ],
+        "secondaryConcepts": [
+          "점",
+          "선",
+          "면"
+        ],
+        "contentRole": "CONCLUSION",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "위치만 가진 형태에서 방향을 얻은 형태로, 다시 무게와 넓이를 얻은 형태로 이어지는 출발점을 되짚고, 이 요소들이 화면에 놓이는 방식을 구도로, 그 배치의 안정을 판단하는 기준을 균형으로 정리한다. 균형이 두 방식으로 만들어지고 무게감이 여러 요인으로 결정된다는 점, 화면 크기가 달라지면 다시 계산해야 한다는 점을 확인한다. 실전 사례가 이 원리들이 하나의 연쇄로 이어짐을 보여 주었다고 마무리한다.",
+        "aiAnalysisInputSha256": "c4fbe3f725d8687eebb8d7d02c516d30b598d1819d8a2bb57f839a39fe4f5738",
+        "aiPublicGuideTopic": "책 전체 개념을 잇는 마무리",
+        "estimatedReadingSeconds": 80,
+        "prerequisitePageNumbers": [
+          6,
+          9,
+          25,
+          32
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 51,
+        "chapter": "7장 결론: 화면을 채우는 순서",
+        "section": "7.2 형태요소에서 시작해 완성까지 이어지는 순서",
+        "primaryConcepts": [
+          "구도",
+          "형태요소"
+        ],
+        "secondaryConcepts": [
+          "균형",
+          "스케일"
+        ],
+        "contentRole": "CONCLUSION",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "구도가 언제나 형태요소를 화면에 배치하는 데서 시작한다는 사실을 반복해 확인한다. 균형이나 스케일 같은 개념은 그 배치를 평가하고 조정하는 도구일 뿐 배치 자체를 대신하지 못하므로, 원리를 잘 알아도 실제로 형태를 놓는 결정이 없으면 그림은 시작되지 않는다고 정리한다. 계산을 먼저 하려 애쓰지 말고 우선 형태 하나를 화면에 놓아 보라는 조언으로 맺는다.",
+        "aiAnalysisInputSha256": "1cee967a437614e8963bf35772a9d094035c5ae76a0103d132111de89262371d",
+        "aiPublicGuideTopic": "배치라는 출발점을 다시 강조하는 정리",
+        "estimatedReadingSeconds": 75,
+        "prerequisitePageNumbers": [
+          50
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 52,
+        "chapter": "7장 결론: 화면을 채우는 순서",
+        "section": "7.3 다음 그림을 그리기 전에",
+        "primaryConcepts": [
+          "구도",
+          "균형"
+        ],
+        "secondaryConcepts": [
+          "프레임",
+          "스케일",
+          "관람 거리"
+        ],
+        "contentRole": "CONCLUSION",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "다음 그림을 그리기 전 스스로에게 던지는 질문들을 남긴다. 화면의 비율과 크기가 어떤 관람 거리를 전제하는지, 첫 형태를 어디에 놓아 무게중심을 만들지, 그 형태를 중심으로 한 균형이 대칭에 가까울지 비대칭에 가까울지를 묻는다. 질문에 답하는 과정 자체가 책에서 다룬 원리를 순서대로 되짚는 일이며, 원리를 알면 그림이 왜 마음에 들지 않는지 짚어낼 언어를 갖게 된다고 맺는다.",
+        "aiAnalysisInputSha256": "ff5964d03590ee654be0ddc0971ffe1010fb6dafde3842e555cbfbf528c29de0",
+        "aiPublicGuideTopic": "다음 작업을 시작하기 전의 점검 질문",
+        "estimatedReadingSeconds": 80,
+        "prerequisitePageNumbers": [
+          51
+        ],
+        "duplicateGroupKeys": []
+      }
+    ]
+  },
+  "evaluationCase": {
+    "caseId": "case-book-061",
+    "bookId": 61,
+    "purpose": "그림을 처음 그리려는데 화면에 무엇을 어디에 놓아야 할지 막막하다. 가장 단순한 형태에서 시작해 화면을 채워 가는 순서와, 다 그린 뒤 한쪽으로 쏠려 보이지 않게 맞추는 기준을 이미 빌려 둔 앞부분 안에서 익히고 싶다",
+    "owned": false,
+    "maxAdditionalInk": 0,
+    "depth": null,
+    "activeRentalPageNumbers": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      16,
+      17,
+      18,
+      19,
+      20,
+      24,
+      25,
+      50,
+      51
+    ],
+    "requiredConcepts": [
+      "점",
+      "선",
+      "면",
+      "구도",
+      "균형",
+      "대칭 균형",
+      "비대칭 균형"
+    ],
+    "helpfulConcepts": [
+      "형태요소",
+      "시각적 무게",
+      "프레임"
+    ],
+    "requiredPrerequisites": [
+      {
+        "beforePageNumber": 2,
+        "afterPageNumber": 3
+      },
+      {
+        "beforePageNumber": 3,
+        "afterPageNumber": 4
+      },
+      {
+        "beforePageNumber": 9,
+        "afterPageNumber": 16
+      },
+      {
+        "beforePageNumber": 16,
+        "afterPageNumber": 17
+      },
+      {
+        "beforePageNumber": 16,
+        "afterPageNumber": 18
+      },
+      {
+        "beforePageNumber": 9,
+        "afterPageNumber": 50
+      }
+    ],
+    "irrelevantPageNumbers": [
+      29,
+      42,
+      45,
+      46
+    ],
+    "duplicatePageGroups": [
+      [
+        21,
+        44
+      ]
+    ],
+    "referencePageNumbers": [
+      2,
+      3,
+      4,
+      9,
+      16,
+      17,
+      18,
+      50
+    ],
+    "allowedAlternativePageNumbers": [
+      6,
+      8,
+      19,
+      24,
+      25
+    ]
+  }
+}
