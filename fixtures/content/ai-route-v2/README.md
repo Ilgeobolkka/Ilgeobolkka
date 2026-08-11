@@ -90,7 +90,8 @@
 `false`인 페이지는 임베딩을 만들지 않고 다른 페이지의 선수 관계 대상이나 평가 정답이 될 수 없다.
 
 이 필드는 정본·ERD와 C03·C04·G02 구현 가이드에 반영했고 C01 파서가 읽는다.
-`book_page.ai_route_candidate` 컬럼 추가 마이그레이션과 C02 검증이 남아 있다.
+`book_page.ai_route_candidate` 컬럼은 V3 마이그레이션으로 추가했으며, C02 검증기와 C03 임베딩 배치도
+이 값을 기준으로 동작한다. 남은 것은 C04 적재다.
 
 `bookId`·저자·카테고리·소개는 `src/main/resources/demo/books.json`의 기존 값을 유지하고 본문만 새로
 제작했다. 기존 플레이스홀더 본문 3~5페이지는 보존하지 않았다. 제목은 과학·경제·철학·예술·기술
@@ -100,10 +101,11 @@
 
 ## 검증 결과
 
-작성 시점에 도서마다 다음을 확인했다. C02 validator 구현 전이므로
+작성 시점에는 C02 validator 구현 전이었으므로
 [`docs/evidence/ai-route-corpus/tools/`](../../../docs/evidence/ai-route-corpus/tools/)의 스크립트로
-검사했다. 병합 전 도서 단위 검사는 `validate_fragment.py`, 병합 후 전체 검사는 `validate_manifest.py`,
-검증 도구 자체의 음성 검사는 `selftest.py`다.
+도서마다 다음을 확인했다. 병합 전 도서 단위 검사는 `validate_fragment.py`, 병합 후 전체 검사는
+`validate_manifest.py`, 검증 도구 자체의 음성 검사는 `selftest.py`다. 이후 구현한 C02 검증기
+(`AiRouteContentValidator`)가 적재 경로에서 같은 계약을 다시 검사한다.
 
 - manifest 최상위·book·page 필수 필드 존재와 목록 필드의 빈 배열 사용
 - `pageNumber` 1부터 연속, 중복 없음, `totalPageCount`와 일치
@@ -142,4 +144,4 @@ PDF SHA-256은 도서마다 `manifest.json`의 `pdfSha256`에 있다.
 ## 남은 작업
 
 1. 비소설 80권 확장과 평가 80건 배분
-2. `aiRouteCandidatePage` 적재 구현 (C02 검증, C03 임베딩, C04 적재 — 컬럼·매핑은 V3로 완료)
+2. `aiRouteCandidatePage` 적재 구현 — C04 원자적 적재 (컬럼·매핑 V3, C02 검증, C03 임베딩은 완료)
