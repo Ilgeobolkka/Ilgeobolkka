@@ -9,8 +9,8 @@ SCRUM-485 `ai-route-v2` 파일럿 ③단계 기록입니다. 구조 설계는
 | 항목 | 값 |
 | --- | --- |
 | 경로 | `fixtures/content/ai-route-v2/pdfs/book-047.pdf` |
-| 크기 | 1,229,724 bytes |
-| SHA-256 | `57da4e679ebca508bd388db5c0a4a1e842c51f584e84fbf7f9e13cca43b622f8` |
+| 크기 | 1,241,544 bytes |
+| SHA-256 | `623059899344c50614acb053da2de906d0ab80eef0215cacfd8c4751cdd8d483` |
 | 페이지 | 57 (목차 1 + 본문 56) |
 | `TEXT` 페이지 | 51 |
 | `IMAGE` 페이지 | 6 (8, 13, 21, 27, 39, 46) |
