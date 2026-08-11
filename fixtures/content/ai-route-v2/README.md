@@ -142,4 +142,4 @@ PDF SHA-256은 도서마다 `manifest.json`의 `pdfSha256`에 있다.
 ## 남은 작업
 
 1. 비소설 80권 확장과 평가 80건 배분
-2. `aiRouteCandidatePage` 적재 구현 (F01 후속 마이그레이션, F02 매핑, C02 검증, C03·C04)
+2. `aiRouteCandidatePage` 적재 구현 (C02 검증, C03 임베딩, C04 적재 — 컬럼·매핑은 V3로 완료)

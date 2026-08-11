@@ -21,9 +21,17 @@ F01 schema와 정확히 일치하는 AI Entity·Repository 기반을 만들고 �
 
 ## 현재 구현 기준선
 
-- 기존 [Book](../../../../src/main/java/com/example/ilgeobolkka/book/entity/Book.java)과
-  [BookPage](../../../../src/main/java/com/example/ilgeobolkka/book/entity/BookPage.java)에는
-  AI 필드가 없습니다.
+- 이 절은 착수 시점 기록입니다. 그 뒤 [Book](../../../../src/main/java/com/example/ilgeobolkka/book/entity/Book.java)과
+  [BookPage](../../../../src/main/java/com/example/ilgeobolkka/book/entity/BookPage.java)에 AI 필드가
+  들어갔습니다.
+- `BookPage.aiRouteCandidate`는 V3 migration과 같은 변경에서 매핑했습니다.
+  `CoreEntityMappingMySqlIntegrationTest`가 물리 컬럼과 Entity 필드 집합이 같은지 검사하므로 컬럼만
+  추가하면 그 테스트가 깨집니다. 값은 `updateAiRouteMetadata()`가 `true`,
+  `clearAiRouteMetadata()`가 `false`로 두며, 이는 DB의 `ck_book_page_candidate_metadata`와 같은
+  계약입니다 — 일곱 필드를 모두 갖춘 페이지만 후보입니다.
+- 지원 도서의 목차처럼 **후보가 아니면서 분석 텍스트·공개 주제·예상 시간·중복 그룹은 가지는 페이지**를
+  만드는 방법은 아직 없습니다. 그 상태가 필요한 [C04 원자적 적재](../content/C04-atomic-import.md)에서
+  추가합니다.
 - AI 패키지와 Repository는 아직 없습니다.
 - 기존 매핑 검증은
   [CoreEntityMappingMySqlIntegrationTest](../../../../src/test/java/com/example/ilgeobolkka/support/entity/CoreEntityMappingMySqlIntegrationTest.java)를
