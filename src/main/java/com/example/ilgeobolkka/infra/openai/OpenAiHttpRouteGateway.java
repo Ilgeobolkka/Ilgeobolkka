@@ -167,27 +167,35 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
         try {
             return strictJsonReader.readTree(responseBody);
         } catch (JacksonException exception) {
-            throw new OpenAiRouteException(Failure.MALFORMED_RESPONSE);
+            throw malformedResponse("RESPONSE_BODY");
         }
     }
 
     private ModelRouteProposal parseProposal(JsonNode response) {
         if (response == null || !response.isObject()) {
-            throw new OpenAiRouteException(Failure.MALFORMED_RESPONSE);
+            throw malformedResponse("RESPONSE_ENVELOPE");
         }
 
         String status = response.path("status").asString("");
 
         if ("incomplete".equals(status)) {
+            log.warn(
+                    "OpenAI Responses 응답 처리 실패 providerStatus=incomplete "
+                            + "failure=TIMEOUT_OR_INCOMPLETE reason={}",
+                    safeIncompleteReason(response));
             throw new OpenAiRouteException(Failure.TIMEOUT_OR_INCOMPLETE);
         }
 
         if ("failed".equals(status)) {
+            log.warn(
+                    "OpenAI Responses 응답 처리 실패 providerStatus=failed "
+                            + "failure=TEMPORARY errorCode={}",
+                    safeErrorCode(response.path("error").path("code")));
             throw new OpenAiRouteException(Failure.TEMPORARY);
         }
 
         if (!"completed".equals(status) || !response.path("output").isArray()) {
-            throw new OpenAiRouteException(Failure.MALFORMED_RESPONSE);
+            throw malformedResponse("RESPONSE_ENVELOPE");
         }
 
         List<JsonNode> messages = new ArrayList<>();
@@ -198,16 +206,19 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
         }
 
         if (messages.size() != 1) {
-            throw new OpenAiRouteException(Failure.MALFORMED_RESPONSE);
+            throw malformedResponse("OUTPUT_MESSAGES");
         }
 
         JsonNode content = messages.get(0).path("content");
         if (!content.isArray()) {
-            throw new OpenAiRouteException(Failure.MALFORMED_RESPONSE);
+            throw malformedResponse("OUTPUT_CONTENT");
         }
 
         for (JsonNode item : content) {
             if ("refusal".equals(item.path("type").asString())) {
+                log.warn(
+                        "OpenAI Responses 응답 처리 실패 "
+                                + "providerStatus=completed failure=REFUSAL");
                 throw new OpenAiRouteException(Failure.REFUSAL);
             }
         }
@@ -215,7 +226,7 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
         if (content.size() != 1
                 || !"output_text".equals(content.get(0).path("type").asString())
                 || !content.get(0).path("text").isString()) {
-            throw new OpenAiRouteException(Failure.MALFORMED_RESPONSE);
+            throw malformedResponse("OUTPUT_CONTENT");
         }
 
         return parseProposalText(content.get(0).path("text").asString());
@@ -226,14 +237,14 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
         try {
             proposal = strictJsonReader.readTree(proposalText);
         } catch (JacksonException exception) {
-            throw new OpenAiRouteException(Failure.MALFORMED_RESPONSE);
+            throw malformedResponse("PROPOSAL_JSON");
         }
 
         if (!hasExactlyFields(proposal, PROPOSAL_FIELDS)
                 || !proposal.path("items").isArray()
                 || proposal.path("items").isEmpty()
                 || proposal.path("items").size() > 72) {
-            throw new OpenAiRouteException(Failure.MALFORMED_RESPONSE);
+            throw malformedResponse("PROPOSAL_SCHEMA");
         }
 
         List<ModelRouteItem> items = new ArrayList<>();
@@ -258,7 +269,7 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
                 || !relevance.isString()
                 || !prerequisite.isBoolean()
                 || !role.isString()) {
-            throw new OpenAiRouteException(Failure.MALFORMED_RESPONSE);
+            throw malformedResponse("PROPOSAL_ITEM");
         }
 
         try {
@@ -268,8 +279,39 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
                     prerequisite.asBoolean(),
                     Role.valueOf(role.asString()));
         } catch (IllegalArgumentException exception) {
-            throw new OpenAiRouteException(Failure.MALFORMED_RESPONSE);
+            throw malformedResponse("PROPOSAL_ITEM");
         }
+    }
+
+    private OpenAiRouteException malformedResponse(String stage) {
+        log.warn(
+                "OpenAI Responses 응답 처리 실패 "
+                        + "failure=MALFORMED_RESPONSE stage={}",
+                stage);
+        return new OpenAiRouteException(Failure.MALFORMED_RESPONSE);
+    }
+
+    private String safeIncompleteReason(JsonNode response) {
+        return switch (response.path("incomplete_details").path("reason").asString("")) {
+            case "max_output_tokens" -> "MAX_OUTPUT_TOKENS";
+            case "content_filter" -> "CONTENT_FILTER";
+            default -> "-";
+        };
+    }
+
+    private String safeErrorCode(JsonNode errorCodeNode) {
+        if (!errorCodeNode.isString()) {
+            return "-";
+        }
+
+        return switch (errorCodeNode.asString()) {
+            case "unsupported_parameter" -> "INVALID_REQUEST";
+            case "invalid_api_key" -> "AUTHENTICATION_FAILED";
+            case "project_permission_denied" -> "PERMISSION_DENIED";
+            case "server_error" -> "SERVER_ERROR";
+            case "rate_limit_exceeded" -> "RATE_LIMIT";
+            default -> "-";
+        };
     }
 
     private boolean hasExactlyFields(JsonNode node, Set<String> expectedFields) {
@@ -331,16 +373,7 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
                     .path("error")
                     .path("code");
 
-            if (!errorCodeNode.isString()) {
-                return "-";
-            }
-
-            return switch (errorCodeNode.asString()) {
-                case "unsupported_parameter" -> "INVALID_REQUEST";
-                case "invalid_api_key" -> "AUTHENTICATION_FAILED";
-                case "project_permission_denied" -> "PERMISSION_DENIED";
-                default -> "-";
-            };
+            return safeErrorCode(errorCodeNode);
         } catch (RuntimeException exception) {
             return "-";
         }

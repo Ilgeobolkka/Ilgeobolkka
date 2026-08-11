@@ -188,7 +188,8 @@ class OpenAiHttpRouteGatewayTest {
     }
 
     @Test
-    void proposal_items가_73개면_malformed_response로_실패한다() {
+    void proposal_items가_73개면_malformed_response로_로그를_남기고_실패한다(
+            CapturedOutput output) {
         expectAnyRouteRequest()
                 .andRespond(withSuccess(
                         completedResponse(proposalWithItemCount(73)),
@@ -196,6 +197,8 @@ class OpenAiHttpRouteGatewayTest {
 
         assertFailure(() -> gateway.proposeRoute(routeInput()), Failure.MALFORMED_RESPONSE);
 
+        assertThat(output.getAll())
+                .contains("WARN", "failure=MALFORMED_RESPONSE", "stage=PROPOSAL_SCHEMA");
         server.verify();
     }
 
@@ -244,6 +247,8 @@ class OpenAiHttpRouteGatewayTest {
         OpenAiRouteException exception = assertFailure(
                 () -> gateway.proposeRoute(routeInput()), Failure.MALFORMED_RESPONSE);
 
+        assertThat(output.getAll())
+                .contains("WARN", "failure=MALFORMED_RESPONSE", "stage=PROPOSAL_JSON");
         assertNoSensitiveText(exception, output, providerBody);
         server.verify();
     }
@@ -274,7 +279,8 @@ class OpenAiHttpRouteGatewayTest {
     }
 
     @Test
-    void incomplete는_검증_재시도_대상이_아닌_timeout_or_incomplete로_분류한다() {
+    void incomplete는_안전한_reason을_로그에_남기고_timeout_or_incomplete로_분류한다(
+            CapturedOutput output) {
         expectAnyRouteRequest()
                 .andRespond(withSuccess(
                         "{\"status\":\"incomplete\",\"incomplete_details\":{\"reason\":\"max_output_tokens\"},\"output\":[]}",
@@ -284,6 +290,29 @@ class OpenAiHttpRouteGatewayTest {
                 () -> gateway.proposeRoute(routeInput()),
                 Failure.TIMEOUT_OR_INCOMPLETE);
 
+        assertThat(output.getAll())
+                .contains(
+                        "WARN",
+                        "providerStatus=incomplete",
+                        "failure=TIMEOUT_OR_INCOMPLETE",
+                        "reason=MAX_OUTPUT_TOKENS");
+        server.verify();
+    }
+
+    @Test
+    void 알_수_없는_incomplete_reason은_로그에_노출하지_않는다(CapturedOutput output) {
+        String providerBody = "{\"status\":\"incomplete\",\"incomplete_details\":{\"reason\":\""
+                + API_KEY + "\"},\"output\":[]}";
+        expectAnyRouteRequest()
+                .andRespond(withSuccess(providerBody, MediaType.APPLICATION_JSON));
+
+        OpenAiRouteException exception = assertFailure(
+                () -> gateway.proposeRoute(routeInput()),
+                Failure.TIMEOUT_OR_INCOMPLETE);
+
+        assertThat(output.getAll())
+                .contains("WARN", "providerStatus=incomplete", "reason=-");
+        assertNoSensitiveText(exception, output, providerBody);
         server.verify();
     }
 
@@ -300,6 +329,28 @@ class OpenAiHttpRouteGatewayTest {
         OpenAiRouteException exception = assertFailure(
                 () -> gateway.proposeRoute(routeInput()), Failure.TEMPORARY);
 
+        assertThat(output.getAll())
+                .contains(
+                        "WARN",
+                        "providerStatus=failed",
+                        "failure=TEMPORARY",
+                        "errorCode=SERVER_ERROR");
+        assertNoSensitiveText(exception, output, providerBody);
+        server.verify();
+    }
+
+    @Test
+    void 알_수_없는_failed_error_code는_로그에_노출하지_않는다(CapturedOutput output) {
+        String providerBody = "{\"status\":\"failed\",\"error\":{\"code\":\""
+                + API_KEY + "\",\"message\":\"" + PROJECT_ID + "\"},\"output\":[]}";
+        expectAnyRouteRequest()
+                .andRespond(withSuccess(providerBody, MediaType.APPLICATION_JSON));
+
+        OpenAiRouteException exception = assertFailure(
+                () -> gateway.proposeRoute(routeInput()), Failure.TEMPORARY);
+
+        assertThat(output.getAll())
+                .contains("WARN", "providerStatus=failed", "errorCode=-");
         assertNoSensitiveText(exception, output, providerBody);
         server.verify();
     }
@@ -318,12 +369,15 @@ class OpenAiHttpRouteGatewayTest {
         OpenAiRouteException exception = assertFailure(
                 () -> gateway.proposeRoute(routeInput()), Failure.REFUSAL);
 
+        assertThat(output.getAll())
+                .contains("WARN", "providerStatus=completed", "failure=REFUSAL");
         assertNoSensitiveText(exception, output, providerBody);
         server.verify();
     }
 
     @Test
-    void 공급자_응답_envelope의_중복_키는_malformed_response로_거부한다() {
+    void 공급자_응답_envelope의_중복_키는_malformed_response로_로그를_남기고_거부한다(
+            CapturedOutput output) {
         String providerBody = "{\"status\":\"completed\",\"output\":[{\"type\":\"message\","
                 + "\"content\":[{\"type\":\"refusal\",\"type\":\"output_text\","
                 + "\"refusal\":\"거절\",\"text\":"
@@ -334,6 +388,8 @@ class OpenAiHttpRouteGatewayTest {
 
         assertFailure(() -> gateway.proposeRoute(routeInput()), Failure.MALFORMED_RESPONSE);
 
+        assertThat(output.getAll())
+                .contains("WARN", "failure=MALFORMED_RESPONSE", "stage=RESPONSE_BODY");
         server.verify();
     }
 
