@@ -74,3 +74,17 @@ GENERATING 이후 ROUTE·NO_ROUTE·FAILED·SAVED·CONSUMED 전이와 15분 보�
 
 G07에 complete/fail API를, S01에 SAVED API를, S03에 CONSUMED API를 전달합니다. 후속 작업은 Entity status를
 직접 변경하지 않습니다.
+
+- 만료 판정은 두 경계가 서로 다릅니다. 조회·저장은 `now < expiresAt`만 유효로 보고(`expiresAt`부터 만료),
+  중단 복구는 나이가 제한 시간을 **넘은** 것만 대상으로 봅니다. 정본이 "만료 시각부터"와 "20초를 넘으면"
+  으로 다르게 정하기 때문이며, 어느 한쪽에 맞춰 통일하면 안 됩니다.
+- `AiRouteGenerationCleanupService.GENERATION_TIME_LIMIT`이 전체 요청 제한 20초를 들고 있습니다. G07이
+  자기 타임아웃에 같은 값을 써야 하는데, 이 작업의 수정 허용 파일 안에 공용 정책 타입을 둘 자리가 없어
+  cleanup service에 두었습니다. G07 착수 때 옮길지 정합니다.
+- `AiRouteGenerationView`에 경로 항목이 없습니다. 항목까지 필요한 화면 응답은 G08이 따로 조회합니다.
+- `markConsumed`에 소유자 조건이 없습니다. 저장 경로와 생성이 1:1이라 S03이 경로 소유권을 확인하면
+  전이적으로 막히지만, 이 API 자체는 `generationId`만으로 상태를 옮깁니다.
+- `@EnableScheduling`을 조건부 스케줄러 클래스 안에 두었습니다. `AI_ROUTE_ENABLED=false`인 환경에서는
+  스케줄링 자체가 꺼지므로, 다른 도메인이 `@Scheduled`를 추가하면 그 환경에서 아무 오류 없이 돌지
+  않습니다. 그 시점에 `@EnableScheduling`을 전역 설정으로 옮기는 것이 맞습니다.
+- 스케줄러가 복구·정리 건수를 로그로 남기지 않습니다. 운영에서 배치가 도는지 확인할 방법이 없습니다.
