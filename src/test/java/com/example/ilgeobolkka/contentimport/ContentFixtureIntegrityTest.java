@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.example.ilgeobolkka.contentimport.manifest.InitialContentManifest;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -24,12 +25,13 @@ class ContentFixtureIntegrityTest {
     void 고정_PDF_100권과_manifest_SHA_페이지_계약이_일치한다() throws IOException {
         Path fixtureDirectory = Path.of("fixtures/content");
         Path manifestPath = fixtureDirectory.resolve("manifest.json");
-        ContentManifest manifest =
-                new ObjectMapper().readValue(manifestPath.toFile(), ContentManifest.class);
+        InitialContentManifest manifest =
+                new ObjectMapper()
+                        .readValue(manifestPath.toFile(), InitialContentManifest.class);
         Set<Long> bookIds = new HashSet<>();
         int totalPageCount = 0;
 
-        for (ManifestBook book : manifest.books()) {
+        for (InitialContentManifest.Book book : manifest.books()) {
             Path pdfPath = fixtureDirectory.resolve(book.pdfPath());
             assertAll(
                     () -> assertTrue(bookIds.add(book.bookId())),
