@@ -27,10 +27,9 @@ p { font-size: 11.6pt; line-height: 1.85; margin: 0 0 4.6mm; text-align: justify
 .toc h1 { font-size: 22pt; margin: 0 0 14mm; letter-spacing: .04em; }
 .toc pre { font-family: 'SF Mono','Menlo',monospace; font-size: 9.6pt; line-height: 2.0;
            margin: 0; white-space: pre; }
-.toc.compact { padding: 24mm 18mm; }
-.toc.compact h1 { margin-bottom: 9mm; }
-.toc.compact pre { columns: 2; column-gap: 12mm; column-rule: .4pt solid #d8dce0;
-                   font-size: 8.2pt; line-height: 1.55; }
+/* 목차 pre의 글자 크기·행간은 줄 수에 맞춰 파이썬이 인라인으로 계산해 넣는다.
+   2단(columns) 조판은 white-space:pre 줄이 열 너비를 넘으면 이웃 열 위에 겹쳐
+   그려져 쓰지 않는다. */
 .img { padding: 0; }
 .img img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .pn { position: absolute; bottom: 12mm; left: 0; right: 0; text-align: center;
@@ -40,6 +39,23 @@ p { font-size: 11.6pt; line-height: 1.85; margin: 0 0 4.6mm; text-align: justify
 
 def data_uri(path):
     return "data:image/png;base64," + base64.b64encode(path.read_bytes()).decode("ascii")
+
+
+# 목차 pre가 쓸 수 있는 세로 공간: A4 297mm - 상하 여백 60mm - 제목 블록 22mm
+TOC_USABLE_PX = 215 * 3.7795
+TOC_MAX_PT = 9.6
+
+
+def toc_style(entries):
+    """목차 줄 수에 맞는 글자 크기·행간을 계산한다.
+
+    절이 많은 책은 목차가 길어져 한 페이지를 넘치므로, 줄 수로 크기를 역산해
+    항상 한 페이지에 담는다. 가로는 1단이라 가장 긴 줄도 여유가 있다.
+    """
+    lines = entries.count("\n") + 1
+    line_height = 1.9 if lines <= 30 else 1.5 if lines <= 45 else 1.3
+    font_px = min(TOC_MAX_PT * 1.3333, TOC_USABLE_PX / (lines * line_height))
+    return f"font-size:{font_px / 1.3333:.2f}pt;line-height:{line_height}"
 
 
 def main():
@@ -58,10 +74,9 @@ def main():
             parts.append(f"<section class='page img'><img src='{uri}' alt=''></section>")
             continue
         if page["section"] == "목차":
-            body = html.escape(page["body"])
-            toc_class = "page toc compact" if page["body"].count("\n") > 45 else "page toc"
-            parts.append(f"<section class='{toc_class}'><h1>목차</h1>"
-                         f"<pre>{body.split(chr(10), 2)[2]}</pre>"
+            entries = html.escape(page["body"]).split(chr(10), 2)[2]
+            parts.append(f"<section class='page toc'><h1>목차</h1>"
+                         f"<pre style='{toc_style(entries)}'>{entries}</pre>"
                          f"<div class='pn'>{n}</div></section>")
             continue
         paras = "".join(f"<p>{html.escape(t)}</p>" for t in page["body"].split("\n\n") if t.strip())

@@ -2,7 +2,7 @@
   "manifestBook": {
     "bookId": 11,
     "pdfPath": "pdfs/book-011.pdf",
-    "pdfSha256": "371741b0007e7693c91b7314eb63dcdc8528deb8f344a156f9471a9849a75efb",
+    "pdfSha256": "9b6ca0e24462913b8e86c1bf9cff97d822f9c2f0cbdb21f27170d5254c428eba",
     "totalPageCount": 50,
     "aiRouteCandidate": true,
     "aiExternalTransferAllowed": true,

@@ -100,8 +100,8 @@ TEXT 본문 45페이지는 모두 3문단이며 501~666자, 평균 568.3자입�
 - `validate_fragment.py` 단일 도서 검증 통과
 - 50페이지, 7개 장, 내용 역할 5종과 목차 역할 포함
 - PDF 구조: TEXT 46페이지(목차 포함), IMAGE 4페이지(6·20·34·43)
-- PDF 규격: A4, 953,721 bytes, PDF 1.4
-- PDF SHA-256: `c35c3e2a5894769004e2f5369ccf5bf468de719abfc838f1ece1ada68834687a`
+- PDF 규격: A4, 953,806 bytes, PDF 1.4
+- PDF SHA-256: `5d8c386eb5c2555e91ae876a6acf13b49bac89ed58bdc100bb1a227f6495e41b`
 
 PDF는 Chrome Headless 출력이므로 다시 생성하면 바이트와 SHA-256이 달라질 수 있습니다. 재생성 시
 fragment의 `pdfSha256`과 이 문서의 검증 값을 함께 갱신해야 합니다.

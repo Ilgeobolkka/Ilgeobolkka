@@ -85,7 +85,7 @@
 
 PDF 조립 도구와 검증 절차는
 [`docs/evidence/ai-route-corpus/book-047-assembly.md`](../../../docs/evidence/ai-route-corpus/book-047-assembly.md)에 있다.
-PDF SHA-256은 `623059899344c50614acb053da2de906d0ab80eef0215cacfd8c4751cdd8d483`다.
+PDF SHA-256은 `dc98ae6f923797f78c6fa5fd47f10284dd8c1165916cd665e4790916cf4e3289`다.
 
 ## 권리와 개인정보
 
