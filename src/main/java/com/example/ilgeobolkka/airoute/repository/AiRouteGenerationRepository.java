@@ -3,6 +3,7 @@ package com.example.ilgeobolkka.airoute.repository;
 import com.example.ilgeobolkka.airoute.entity.AiRouteGeneration;
 import jakarta.persistence.LockModeType;
 import java.time.Instant;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -86,4 +87,19 @@ public interface AiRouteGenerationRepository extends JpaRepository<AiRouteGenera
             """)
     Optional<AiRouteGeneration> findByGenerationIdForUpdate(
             @Param("generationId") UUID generationId);
+
+    /**
+     * 정리 대상 식별자. 만료 시각을 지난 행이며 경계는 조회·저장 거부와 같은 {@code now >= expiresAt} 이다.
+     *
+     * <p>{@code expiresAt} 이 {@code null} 인 {@code GENERATING} 은 대상이 아니다. 중단된 생성은 먼저
+     * 복구가 {@code FAILED} 로 바꾸면서 만료 시각을 매기고, 그다음 정리 대상이 된다.
+     */
+    @Query(
+            """
+            SELECT generation.generationId
+            FROM AiRouteGeneration generation
+            WHERE generation.expiresAt IS NOT NULL
+              AND generation.expiresAt <= :now
+            """)
+    List<UUID> findExpiredGenerationIds(@Param("now") Instant now);
 }
