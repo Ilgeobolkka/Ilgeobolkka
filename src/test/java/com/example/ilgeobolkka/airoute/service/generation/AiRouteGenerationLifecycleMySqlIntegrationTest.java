@@ -17,6 +17,7 @@ import com.example.ilgeobolkka.airoute.entity.AiRouteNoRouteReason;
 import com.example.ilgeobolkka.airoute.exception.AiRouteGenerationNotFoundException;
 import com.example.ilgeobolkka.airoute.repository.AiReadingRouteRepository;
 import com.example.ilgeobolkka.airoute.repository.AiRouteGenerationRepository;
+import com.example.ilgeobolkka.airoute.scheduler.AiRouteGenerationMaintenanceScheduler;
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
 import java.time.Clock;
 import java.time.Instant;
@@ -50,10 +51,11 @@ import org.springframework.transaction.support.TransactionTemplate;
  * 만료 경계와 정리 전후 동작을 실제 MySQL 로 확인한다. 클래스에 {@code @Transactional} 을 붙이지 않는다.
  * 붙이면 모든 작업이 한 transaction 에 갇혀 정리의 commit·rollback 결과를 볼 수 없다.
  *
- * <p>유지보수 스케줄러는 {@code ai-route.enabled} 기본값이 거짓이라 등록되지 않는다. 배치가 테스트와
- * 겹쳐 도는 일이 없으므로 정리·복구는 테스트가 직접 부른다.
+ * <p>유지보수 스케줄러는 기능 플래그와 무관하게 등록되므로 첫 실행을 한 시간 뒤로 미뤄 둔다. 그러지
+ * 않으면 만료 데이터를 만들어 두고 단언하는 사이 배치가 끼어들어 지워 버린다. 정리·복구는 테스트가
+ * 직접 부른다.
  */
-@SpringBootTest
+@SpringBootTest(properties = "ai-route.maintenance-initial-delay-millis=3600000")
 @ActiveProfiles("test")
 @ContextConfiguration(initializers = DedicatedTestDatabaseInitializer.class)
 @Import(AiRouteGenerationLifecycleMySqlIntegrationTest.MutableClockConfiguration.class)
@@ -82,6 +84,7 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
 
     private final AiRouteGenerationLifecycleService lifecycleService;
     private final AiRouteGenerationCleanupService cleanupService;
+    private final AiRouteGenerationMaintenanceScheduler maintenanceScheduler;
     private final AiRouteGenerationRepository generationRepository;
     private final AiReadingRouteRepository readingRouteRepository;
     private final JdbcTemplate jdbcTemplate;
@@ -92,6 +95,7 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
     AiRouteGenerationLifecycleMySqlIntegrationTest(
             AiRouteGenerationLifecycleService lifecycleService,
             AiRouteGenerationCleanupService cleanupService,
+            AiRouteGenerationMaintenanceScheduler maintenanceScheduler,
             AiRouteGenerationRepository generationRepository,
             AiReadingRouteRepository readingRouteRepository,
             JdbcTemplate jdbcTemplate,
@@ -99,6 +103,7 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
             MutableClock clock) {
         this.lifecycleService = lifecycleService;
         this.cleanupService = cleanupService;
+        this.maintenanceScheduler = maintenanceScheduler;
         this.generationRepository = generationRepository;
         this.readingRouteRepository = readingRouteRepository;
         this.jdbcTemplate = jdbcTemplate;
@@ -402,6 +407,25 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
     }
 
     // --- 정리 ---------------------------------------------------------------
+
+    /**
+     * 이 컨텍스트에는 {@code ai-route.enabled} 를 주지 않아 기본값 거짓이다. 그래도 유지보수 배치 빈이
+     * 있어야 하고, 그 배치를 돌리면 만료 데이터가 지워져야 한다.
+     *
+     * <p>기능을 켠 채 임시 결과를 만들어 두고 나중에 끄는 경우가 실제 위험이다. 그때 정리 주체가
+     * 사라지면 임시 목적·페이지 결과·멱등 상태가 영구히 남아 15분 보관 계약이 깨진다.
+     */
+    @Test
+    void AI_경로가_꺼져_있어도_유지보수_배치가_만료_데이터를_지운다() {
+        UUID generationId = 완료된_생성을_만든다();
+        clock.set(EXPIRES_AT);
+
+        maintenanceScheduler.sweep();
+
+        assertAll(
+                () -> assertEquals(false, generationRepository.existsById(generationId)),
+                () -> assertEquals(0, 항목_수를_조회한다(generationId)));
+    }
 
     @Test
     void 만료하지_않은_생성은_정리하지_않는다() {
