@@ -49,6 +49,15 @@ set -- run --rm -e K6_SUMMARY_PATH="/results/$run_id/summary.json"
 if [ -n "${PERF_DURATION:-}" ]; then
     set -- "$@" -e "PERF_DURATION=$PERF_DURATION"
 fi
+if [ -n "${PERF_NEW_READER_OFFSET:-}" ]; then
+    set -- "$@" -e "PERF_NEW_READER_OFFSET=$PERF_NEW_READER_OFFSET"
+fi
+if [ -n "${PERF_NEW_READER_VU_STRIDE:-}" ]; then
+    set -- "$@" -e "PERF_NEW_READER_VU_STRIDE=$PERF_NEW_READER_VU_STRIDE"
+fi
+if [ -n "${PERF_NEW_READER_CYCLES:-}" ]; then
+    set -- "$@" -e "PERF_NEW_READER_CYCLES=$PERF_NEW_READER_CYCLES"
+fi
 if [ "$scenario_name" = "contention" ]; then
     set -- "$@" -e CONTENTION_CASE="${CONTENTION_CASE:-same-page}"
 fi

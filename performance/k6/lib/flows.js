@@ -1,5 +1,6 @@
 import http from "k6/http";
 import {check, fail} from "k6";
+import exec from "k6/execution";
 import {csrfHeaders, login} from "./auth.js";
 
 const BASE_URL = __ENV.BASE_URL || "http://127.0.0.1:8080";
@@ -8,6 +9,21 @@ const ACTIVE_READER_COUNT = 333;
 const OWNED_READER_COUNT = 333;
 const BOOK_COUNT = 100;
 const PAGES_PER_BOOK = 4;
+const NEW_READER_OFFSET = Number(__ENV.PERF_NEW_READER_OFFSET || 0);
+const NEW_READER_VU_STRIDE = Number(__ENV.PERF_NEW_READER_VU_STRIDE || 64);
+const NEW_READER_CYCLES = Number(__ENV.PERF_NEW_READER_CYCLES || 4);
+const RENTALS_PER_NEW_READER = 80;
+
+if (!Number.isInteger(NEW_READER_OFFSET)
+        || !Number.isInteger(NEW_READER_VU_STRIDE)
+        || !Number.isInteger(NEW_READER_CYCLES)
+        || NEW_READER_OFFSET < 0
+        || NEW_READER_VU_STRIDE < 1
+        || NEW_READER_CYCLES < 1
+        || NEW_READER_OFFSET + NEW_READER_VU_STRIDE * NEW_READER_CYCLES
+            > NEW_READER_COUNT) {
+    throw new Error("신규 대여 계정 pool 설정이 334개 신규 독자 경계를 벗어났습니다.");
+}
 
 const authenticatedReaders = new Map();
 
@@ -64,9 +80,15 @@ export function activeRentalRead() {
 }
 
 export function newRental() {
-    const accountCycle = Math.floor(__ITER / 80);
-    const readerNumber = newReaderNumber(__VU + accountCycle * 37);
-    const slot = __ITER % 80;
+    const vuIteration = exec.vu.iterationInScenario;
+    const accountCycle = Math.floor(vuIteration / RENTALS_PER_NEW_READER);
+    if (accountCycle >= NEW_READER_CYCLES) {
+        fail(`신규 대여 계정 pool을 소진했습니다: vu=${exec.vu.idInTest}`);
+    }
+    const vuSlot = (exec.vu.idInTest - 1) % NEW_READER_VU_STRIDE;
+    const readerNumber = newReaderNumber(
+        NEW_READER_OFFSET + accountCycle * NEW_READER_VU_STRIDE + vuSlot + 1);
+    const slot = vuIteration % RENTALS_PER_NEW_READER;
     const bookId = Math.floor(slot / PAGES_PER_BOOK) + 1;
     const pageNumber = slot % PAGES_PER_BOOK + 1;
     ensureLogin(readerNumber, "new-rental");

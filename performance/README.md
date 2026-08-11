@@ -50,8 +50,9 @@ Average·Peak은 공개 탐색 35%, 인증 조회 20%, 소장 콘텐츠 15%, 활
 로그인 5%를 서로 다른 k6 scenario로 실행한다. 표의 20/50 RPS는 k6 flow iteration 도착률이며 한 flow가
 여러 HTTP 요청을 포함할 수 있으므로 실제 HTTP RPS는 summary와 Prometheus 값으로 별도 기록한다.
 각 VU는 k6 기본 독립 cookie jar를 사용하고 CSRF를 우회하지 않는다.
-신규 대여 VU는 제품의 100잉크를 소진하지 않도록 80회마다 결정적으로 다른 신규 계정으로 순환하며,
-그 경계에서만 다시 로그인한다. 로그인 준비 요청은 `setup=true` tag로 구분한다.
+신규 대여는 VU별 시나리오 iteration을 사용해 80회마다 결정적으로 다른 신규 계정으로 순환한다.
+기준선 runner는 Smoke·Warm-up·정식 부하의 신규 계정 pool을 분리하며, 그 경계에서만 다시 로그인한다.
+로그인 준비 요청은 `setup=true` tag로 구분한다.
 
 2단계 Average·Peak 3회는 매회 데이터 복원, 새 애플리케이션, Smoke, 고정 Warm-up을 자동으로 적용한다.
 

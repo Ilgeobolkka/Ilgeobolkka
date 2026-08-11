@@ -24,12 +24,15 @@ for repetition in 1 2 3; do
     "$PERFORMANCE_SCRIPT_DIR/reset-mvp.sh"
     "$PERFORMANCE_SCRIPT_DIR/start-app.sh"
 
-    PERFORMANCE_RUN_LABEL="baseline-$series_name-r$repetition-smoke" \
+    PERF_NEW_READER_OFFSET=0 PERF_NEW_READER_VU_STRIDE=1 PERF_NEW_READER_CYCLES=1 \
+        PERFORMANCE_RUN_LABEL="baseline-$series_name-r$repetition-smoke" \
         "$PERFORMANCE_SCRIPT_DIR/run-k6.sh" smoke
-    PERFORMANCE_RUN_LABEL="baseline-$series_name-r$repetition-warm-up" \
+    PERF_NEW_READER_OFFSET=1 PERF_NEW_READER_VU_STRIDE=16 PERF_NEW_READER_CYCLES=4 \
+        PERFORMANCE_RUN_LABEL="baseline-$series_name-r$repetition-warm-up" \
         "$PERFORMANCE_SCRIPT_DIR/run-k6.sh" warm-up
     target_label="baseline-$series_name-r$repetition"
-    PERFORMANCE_RUN_LABEL="$target_label" \
+    PERF_NEW_READER_OFFSET=65 PERF_NEW_READER_VU_STRIDE=50 PERF_NEW_READER_CYCLES=5 \
+        PERFORMANCE_RUN_LABEL="$target_label" \
         "$PERFORMANCE_SCRIPT_DIR/run-k6.sh" "$scenario_name"
     "$PERFORMANCE_SCRIPT_DIR/verify-invariants.sh"
 
