@@ -102,4 +102,21 @@ public interface AiRouteGenerationRepository extends JpaRepository<AiRouteGenera
               AND generation.expiresAt <= :now
             """)
     List<UUID> findExpiredGenerationIds(@Param("now") Instant now);
+
+    /**
+     * 전체 요청 제한을 지나도록 {@code GENERATING} 에 머문 생성. 생성 중 서버가 내려갔거나 호출자가
+     * 완료를 남기지 못한 경우다.
+     *
+     * <p>여기서 나온 뒤 잠글 때까지 사이에 호출자가 정상 완료할 수 있으므로, 복구는 잠근 다음 상태를 다시
+     * 보고 그때도 {@code GENERATING} 인 것만 바꾼다.
+     */
+    @Query(
+            """
+            SELECT generation.generationId
+            FROM AiRouteGeneration generation
+            WHERE generation.status
+                = com.example.ilgeobolkka.airoute.entity.AiRouteGenerationStatus.GENERATING
+              AND generation.createdAt <= :startedBefore
+            """)
+    List<UUID> findAbandonedGenerationIds(@Param("startedBefore") Instant startedBefore);
 }
