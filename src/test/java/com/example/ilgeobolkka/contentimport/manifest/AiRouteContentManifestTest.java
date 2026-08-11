@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 import tools.jackson.databind.ObjectMapper;
@@ -24,8 +25,10 @@ class AiRouteContentManifestTest {
         assertEquals("ai-route-v2", manifest.contentVersion());
         assertEquals(1536, manifest.embeddingDimensions());
         assertEquals(1, manifest.books().size());
+        assertEquals("도서 제목", manifest.books().getFirst().title());
         assertEquals(AiRouteContentManifest.ContentRole.CORE,
                 manifest.books().getFirst().pages().getFirst().contentRole());
+        assertTrue(manifest.books().getFirst().pages().getFirst().aiRouteCandidatePage());
 
         AiRouteEvaluationDataset evaluation = parser.parseEvaluation(validEvaluation());
 
@@ -51,6 +54,34 @@ class AiRouteContentManifestTest {
         assertEquals(AiRouteEvaluationDataset.Depth.DEEP, evaluationCase.depth());
         assertEquals(1, evaluationCase.requiredPrerequisites().size());
         assertEquals(2, evaluationCase.duplicatePageGroups().getFirst().size());
+    }
+
+    @Test
+    void 구조_페이지의_FRONT_MATTER와_후보_제외를_읽는다() {
+        AiRouteContentManifest manifest =
+                assertInstanceOf(
+                        AiRouteContentManifest.class,
+                        parser.parseManifest(validManifest(validBook(validFrontMatterPage()))));
+        AiRouteContentManifest.Page page = manifest.books().getFirst().pages().getFirst();
+
+        assertEquals(AiRouteContentManifest.ContentRole.FRONT_MATTER, page.contentRole());
+        assertFalse(page.aiRouteCandidatePage());
+    }
+
+    @Test
+    void 도서_title_누락과_공백을_거부한다() {
+        String missingTitle = validManifest().replace("\"title\": \"도서 제목\",", "");
+        String blankTitle = validManifest().replace("\"title\": \"도서 제목\"", "\"title\": \" \"");
+
+        assertThrows(
+                ContentManifestFormatException.class,
+                () -> parser.parseManifest(missingTitle));
+        assertEquals(
+                "title는 필수 문자열입니다.",
+                assertThrows(
+                                ContentManifestFormatException.class,
+                                () -> parser.parseManifest(blankTitle))
+                        .getMessage());
     }
 
     @Test
@@ -331,6 +362,7 @@ class AiRouteContentManifestTest {
         return """
                 {
                   "bookId": 1,
+                  "title": "도서 제목",
                   "pdfPath": "pdfs/book-001.pdf",
                   "pdfSha256": "%s",
                   "totalPageCount": 1,
@@ -345,6 +377,7 @@ class AiRouteContentManifestTest {
         return """
                 {
                   "bookId": 1,
+                  "title": "소설 제목",
                   "pdfPath": "pdfs/book-001.pdf",
                   "pdfSha256": "%s",
                   "totalPageCount": 4,
@@ -364,6 +397,7 @@ class AiRouteContentManifestTest {
                   "primaryConcepts": ["핵심 개념"],
                   "secondaryConcepts": [],
                   "contentRole": "CORE",
+                  "aiRouteCandidatePage": true,
                   "aiAnalysisText": "분석 텍스트",
                   "aiAnalysisInputSha256": "%s",
                   "aiPublicGuideTopic": "공개 주제",
@@ -372,6 +406,12 @@ class AiRouteContentManifestTest {
                   "duplicateGroupKeys": []
                 }
                 """.formatted(SHA_B);
+    }
+
+    private String validFrontMatterPage() {
+        return validPage()
+                .replace("\"contentRole\": \"CORE\"", "\"contentRole\": \"FRONT_MATTER\"")
+                .replace("\"aiRouteCandidatePage\": true", "\"aiRouteCandidatePage\": false");
     }
 
     private String validEvaluation() {

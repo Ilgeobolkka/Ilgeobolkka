@@ -91,8 +91,8 @@
 `book_page.ai_route_candidate`로 저장하는 영속 값이며, `FRONT_MATTER` 페이지는 항상 `false`다.
 `false`인 페이지는 임베딩을 만들지 않고 다른 페이지의 선수 관계 대상이나 평가 정답이 될 수 없다.
 
-이 필드는 정본·ERD와 C03·C04·G02 구현 가이드에 반영했으나 구현은 아직 없다.
-`book_page.ai_route_candidate` 컬럼 추가 마이그레이션과 C01 파싱·C02 검증이 남아 있다.
+이 필드는 정본·ERD와 C03·C04·G02 구현 가이드에 반영했고 C01 파서가 읽는다.
+`book_page.ai_route_candidate` 컬럼 추가 마이그레이션과 C02 검증이 남아 있다.
 
 `bookId`·저자·카테고리·소개는 `src/main/resources/demo/books.json`의 기존 값을 유지하고 본문만 새로
 제작했다. 기존 플레이스홀더 본문 3~5페이지는 보존하지 않았다. 제목은 과학·경제·철학·예술·기술
@@ -142,8 +142,6 @@ PDF SHA-256은 도서마다 `manifest.json`의 `pdfSha256`에 있다.
 ## 남은 작업
 
 1. 평가 9건의 정답 경로를 선수 폐쇄 기준으로 다시 맞춰 `validate_manifest.py` 통과
-2. `title`·`aiRouteCandidatePage`·`FRONT_MATTER`를 C01 파서에 추가 (지금은 미지 필드로 거부돼 이
-   manifest가 파싱되지 않는다)
-3. 비소설 80권 확장과 평가 80건 배분
-4. 소설 10권을 기존 PDF·SHA-256으로 편입
-5. `aiRouteCandidatePage` 적재 구현 (컬럼 마이그레이션, C02 검증)
+2. 비소설 80권 확장과 평가 80건 배분
+3. 소설 10권을 기존 PDF·SHA-256으로 편입
+4. `aiRouteCandidatePage` 적재 구현 (컬럼 마이그레이션, C02 검증)

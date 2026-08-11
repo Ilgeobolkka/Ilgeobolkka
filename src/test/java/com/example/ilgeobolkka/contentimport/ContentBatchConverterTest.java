@@ -223,6 +223,7 @@ class ContentBatchConverterTest {
                   "embeddingDimensions": 1536,
                   "books": [{
                     "bookId": 1,
+                    "title": "도서 제목",
                     "pdfPath": "pdfs/book-001.pdf",
                     "pdfSha256": "%s",
                     "totalPageCount": 1,
@@ -235,6 +236,7 @@ class ContentBatchConverterTest {
                       "primaryConcepts": ["핵심 개념"],
                       "secondaryConcepts": [],
                       "contentRole": "CORE",
+                      "aiRouteCandidatePage": true,
                       "aiAnalysisText": "분석 텍스트",
                       "aiAnalysisInputSha256": "%s",
                       "aiPublicGuideTopic": "공개 주제",
