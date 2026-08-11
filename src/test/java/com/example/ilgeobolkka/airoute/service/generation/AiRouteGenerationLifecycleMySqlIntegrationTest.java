@@ -26,6 +26,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -62,6 +67,9 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
     private static final String CONTENT_VERSION = "ai-route-v2";
     private static final String PURPOSE = "핵심 개념만 빠르게";
     private static final int BUDGET = 5;
+
+    /** 복구가 매기는 코드와 구분하려고 다른 값을 쓴다. */
+    private static final String 호출자_실패_코드 = "AI_ROUTE_INVALID_OUTPUT";
 
     private static final Instant STARTED_AT = Instant.parse("2026-08-06T00:00:00.123456Z");
     private static final Instant COMPLETED_AT = STARTED_AT.plusSeconds(5);
@@ -454,6 +462,62 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
                 () -> assertEquals("GENERATING", 생성을_조회한다(generationId).get("status")));
     }
 
+    /**
+     * 목록을 뽑은 뒤 잠그기 전에 호출자가 정상 완료하는 경합이다. 복구는 잠금을 얻고 나서 상태를 다시
+     * 보고 건너뛰어야 한다. 건너뛰지 않으면 Entity 전이 가드가 예외를 올려 스윕 한 사이클이 통째로
+     * 롤백된다.
+     *
+     * <p>순서를 MVCC 로 만든다. 앞선 transaction 이 commit 하기 전에 상태를 바꿔 잠금을 쥐고 있으면,
+     * 복구의 목록 조회는 아직 {@code GENERATING} 을 보고 뒤이은 잠금 조회는 최신 commit 인
+     * {@code FAILED} 를 본다. 시계 읽기 래치로 복구가 목록 조회 직전에 왔음을 확인한 뒤에 놓아준다.
+     *
+     * <p>G05 수렴 테스트와 같은 한계가 있다. 건너뛰기로 빠졌는지 목록에서 이미 빠졌는지는 밖에서
+     * 구분할 수 없다. 두 경우가 같은 결과를 내는 것이 설계 의도이기 때문이다.
+     */
+    @Test
+    void 잠그기_전에_정상_완료된_생성은_복구하지_않는다() throws Exception {
+        UUID generationId = 생성을_시작한다();
+        clock.set(ABANDONED_AT);
+        CountDownLatch 완료_보류 = new CountDownLatch(1);
+        CountDownLatch 완료_해제 = new CountDownLatch(1);
+        CountDownLatch 복구_진입 = clock.다음_읽기를_알린다();
+
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        try {
+            Future<?> 먼저_완료하는_요청 =
+                    executor.submit(
+                            () ->
+                                    transactionTemplate.executeWithoutResult(
+                                            status -> {
+                                                lifecycleService.fail(generationId, 호출자_실패_코드);
+                                                완료_보류.countDown();
+                                                해제를_기다린다(완료_해제);
+                                            }));
+            Future<Integer> 복구 =
+                    executor.submit(
+                            () -> {
+                                assertTrue(완료_보류.await(5, TimeUnit.SECONDS));
+                                return cleanupService.recoverAbandoned();
+                            });
+
+            assertTrue(복구_진입.await(10, TimeUnit.SECONDS));
+            완료_해제.countDown();
+
+            먼저_완료하는_요청.get(30, TimeUnit.SECONDS);
+            int 복구된_수 = 복구.get(30, TimeUnit.SECONDS);
+
+            Map<String, Object> row = 생성을_조회한다(generationId);
+            assertAll(
+                    () -> assertEquals(0, 복구된_수),
+                    () -> assertEquals("FAILED", row.get("status")),
+                    () -> assertEquals(호출자_실패_코드, row.get("failure_code")));
+        } finally {
+            완료_해제.countDown();
+            executor.shutdownNow();
+            executor.awaitTermination(5, TimeUnit.SECONDS);
+        }
+    }
+
     @Test
     void 복구된_생성은_재조회에_진행_중이_아니라_실패로_보인다() {
         UUID generationId = 생성을_시작한다();
@@ -560,6 +624,17 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
                         lifecycleService.markSaved(
                                 generationId,
                                 readingRouteRepository.findById(routeId).orElseThrow()));
+    }
+
+    private static void 해제를_기다린다(CountDownLatch 해제) {
+        try {
+            if (!해제.await(10, TimeUnit.SECONDS)) {
+                throw new IllegalStateException("해제 신호를 기다리다 시간이 지났습니다.");
+            }
+        } catch (InterruptedException interrupted) {
+            Thread.currentThread().interrupt();
+            throw new IllegalStateException("대기가 중단됐습니다.", interrupted);
+        }
     }
 
     private void 독자를_생성한다(long readerId) {
@@ -673,6 +748,7 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
     static class MutableClock extends Clock {
 
         private volatile Instant instant;
+        private volatile CountDownLatch 읽힘 = new CountDownLatch(0);
 
         MutableClock(Instant instant) {
             this.instant = instant;
@@ -682,8 +758,19 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
             this.instant = instant;
         }
 
+        /**
+         * 다음 읽기를 관측할 래치를 건다. 경합 순서를 시간이 아니라 신호로 고정할 때 쓴다. 첫 읽기 뒤에는
+         * 열린 래치라 아무 일도 하지 않는다.
+         */
+        CountDownLatch 다음_읽기를_알린다() {
+            CountDownLatch 신호 = new CountDownLatch(1);
+            읽힘 = 신호;
+            return 신호;
+        }
+
         @Override
         public Instant instant() {
+            읽힘.countDown();
             return instant;
         }
 
