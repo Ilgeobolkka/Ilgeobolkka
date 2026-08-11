@@ -107,8 +107,9 @@ public class AiRouteGenerationStartService {
         }
         usage.increment();
 
-        // 계수 날짜와 달리 created_at 은 행을 만드는 시점의 값이 맞다. 둘은 같은 질문이 아니라서
-        // 위에서 확정한 날짜를 여기에 다시 쓰지 않는다.
+        // 계수 날짜를 확정한 뒤에 읽는다. 그래서 DATE(created_at) >= usage_date 가 항상 성립하고
+        // 반대는 불가능하다. created_at 으로 일일 집계를 재구성하면 ai_route_daily_usage 보다 뒤로
+        // 밀릴 수는 있어도 앞당겨지지 않는다.
         Instant startedAt = clock.instant();
         UUID generationId = UUID.randomUUID();
         // flush를 미루면 insert가 commit 시점에 실행돼 제약 위반이 transaction 종료 예외로 뒤바뀐다.
@@ -149,17 +150,27 @@ public class AiRouteGenerationStartService {
      * 시점의 UTC 날짜로 규정한다.
      *
      * <p>이미 잡은 잠금은 transaction 이 끝나야 풀리므로 지나간 날짜의 행도 함께 쥔 채로 진행한다.
-     * 날짜는 앞으로만 가고 모든 요청이 같은 오름차순으로 잠그므로 교착하지 않는다. 자정을 넘긴 요청은
-     * 어제 날짜에 0회 행을 남기는데, 그날 생성이 0건이라는 사실 그대로라 지우지 않는다.
+     * 넘긴 뒤에는 한 번만 더 잠그고 끝낸다. 반복해도 정밀도는 늘지 않는다 — 재확인이 보장하는 것은
+     * "잠금이 승인된 순간 날짜가 유효했다" 이지 "계수하는 순간 유효하다" 가 아니라서
+     * {@code increment} 와 commit 사이의 창은 그대로 남는다. 반면 시계가 뒤로 가면 반복은 끝나지 않고
+     * 행 잠금만 쌓는다. 한 번으로 묶으면 그런 시계에서도 피해가 행 두 개와 재시도 한 번에 그친다.
+     *
+     * <p>자정을 넘긴 요청은 어제 날짜에 0회 행을 남긴다. 계수 관점에서는 행이 없는 것과 같은 값이지만,
+     * 다른 경로는 실패 시 rollback 되므로 <b>커밋된 0회 행이 생기는 경로는 이 자정 통과뿐이다.</b>
+     * 사실상 "여기서 transaction 이 자정을 넘었다" 는 표식이다. 정리 배치는 0회 행을 지워도 잃는 정보가
+     * 없고, 이 테이블을 {@code COUNT(*)} 로 세는 지표는 활동한 날을 과다 계상한다.
      */
     private AiRouteDailyUsage lockCurrentDailyUsage(long readerId) {
-        while (true) {
-            LocalDate usageDate = currentUsageDate();
-            AiRouteDailyUsage usage = lockDailyUsage(readerId, usageDate);
-            if (usageDate.equals(currentUsageDate())) {
-                return usage;
-            }
+        LocalDate usageDate = currentUsageDate();
+        AiRouteDailyUsage usage = lockDailyUsage(readerId, usageDate);
+
+        LocalDate confirmed = currentUsageDate();
+        if (usageDate.equals(confirmed)) {
+            return usage;
         }
+        // 자정을 넘긴 뒤 한 번 더 잠근다. 한 transaction 이 자정을 두 번 넘지는 않으므로 여기서
+        // 끝난다. 두 번 어긋난다면 시계가 뒤로 갔다는 뜻이라 잠금을 더 쌓지 않고 멈춘다.
+        return lockDailyUsage(readerId, confirmed);
     }
 
     private LocalDate currentUsageDate() {
