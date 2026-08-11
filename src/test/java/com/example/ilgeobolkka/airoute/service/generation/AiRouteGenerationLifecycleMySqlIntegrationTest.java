@@ -134,6 +134,32 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
                 () -> assertEquals(2, 항목_수를_조회한다(generationId)));
     }
 
+    /**
+     * 항목 수만 세면 필드를 뒤바꿔 매핑해도 통과한다. 넘긴 값이 그대로 들어갔는지 열 단위로 확인한다.
+     * 두 항목의 관련도·선수 여부·역할을 서로 다르게 둔 이유도 그것이다.
+     */
+    @Test
+    void 저장한_항목은_넘긴_값을_그대로_담는다() {
+        UUID generationId = 생성을_시작한다();
+        clock.set(COMPLETED_AT);
+
+        lifecycleService.completeWithRoute(generationId, 두_항목());
+
+        List<Map<String, Object>> items = 항목을_조회한다(generationId);
+        assertAll(
+                () -> assertEquals(2, items.size()),
+                () -> assertEquals(FIRST_PAGE_ID, 정수(items.get(0).get("book_page_id"))),
+                () -> assertEquals(1, 정수(items.get(0).get("position"))),
+                () -> assertEquals("HIGH", items.get(0).get("relevance")),
+                () -> assertEquals(false, 참(items.get(0).get("prerequisite"))),
+                () -> assertEquals("CORE", items.get(0).get("role")),
+                () -> assertEquals(SECOND_PAGE_ID, 정수(items.get(1).get("book_page_id"))),
+                () -> assertEquals(2, 정수(items.get(1).get("position"))),
+                () -> assertEquals("MEDIUM", items.get(1).get("relevance")),
+                () -> assertEquals(true, 참(items.get(1).get("prerequisite"))),
+                () -> assertEquals("PREREQUISITE", items.get(1).get("role")));
+    }
+
     @Test
     void 항목이_없으면_ROUTE로_완료할_수_없다() {
         UUID generationId = 생성을_시작한다();
@@ -581,6 +607,26 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
                 WHERE generation_id = ?
                 """,
                 generationId.toString());
+    }
+
+    private List<Map<String, Object>> 항목을_조회한다(UUID generationId) {
+        return jdbcTemplate.queryForList(
+                """
+                SELECT book_page_id, `position`, relevance, prerequisite, role
+                FROM ai_route_generation_item
+                WHERE generation_id = ?
+                ORDER BY `position`
+                """,
+                generationId.toString());
+    }
+
+    /** {@code BOOLEAN} 은 {@code TINYINT(1)} 이라 드라이버 설정에 따라 {@code Boolean} 또는 수로 온다. */
+    private static boolean 참(Object value) {
+        return value instanceof Boolean flag ? flag : ((Number) value).intValue() != 0;
+    }
+
+    private static long 정수(Object value) {
+        return ((Number) value).longValue();
     }
 
     private int 항목_수를_조회한다(UUID generationId) {
