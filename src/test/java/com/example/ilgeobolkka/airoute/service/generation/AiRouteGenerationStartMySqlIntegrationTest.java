@@ -236,6 +236,62 @@ class AiRouteGenerationStartMySqlIntegrationTest {
     }
 
     /**
+     * 사용량 잠금을 기다리는 사이 같은 멱등 키의 요청이 그날의 마지막 한 건을 가져간 상황이다. 잠금을
+     * 얻었을 때 한도는 이미 찼지만, 이 요청은 앞선 요청과 같은 요청이므로 거절이 아니라 그 생성 상태를
+     * 받아야 한다. 이미 시작된 생성을 두고 429로 거절하면 15분 안의 같은 요청은 저장된 상태를 돌려준다는
+     * 계약이 깨진다.
+     *
+     * <p>순서를 신호로 고정한다. 사용량 행을 미리 잠가 두면 요청은 기존 생성 조회를 마치고(없음) 날짜를
+     * 확정한 직후 멈춘다. 그 지점을 확인한 뒤에 앞선 생성을 commit 하므로, 이 요청의 존재 확인은 항상
+     * 빈손으로 지나간다.
+     */
+    @Test
+    void 한도에_닿았어도_같은_키의_생성이_이미_있으면_그_상태를_돌려준다() throws Exception {
+        UUID key = UUID.randomUUID();
+        UUID 먼저_들어온_생성 = UUID.randomUUID();
+        사용량을_심는다(READER_ID, USAGE_DATE, LIMIT);
+        CountDownLatch 사용량_잠금_확보 = new CountDownLatch(1);
+        CountDownLatch 사용량_잠금_해제 = new CountDownLatch(1);
+        CountDownLatch 날짜_확정 = clock.다음_읽기를_알린다();
+
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        try {
+            Future<?> 길목 =
+                    executor.submit(
+                            () ->
+                                    transactionTemplate.executeWithoutResult(
+                                            status -> {
+                                                사용량_행을_잠근다(READER_ID, USAGE_DATE);
+                                                사용량_잠금_확보.countDown();
+                                                해제를_기다린다(사용량_잠금_해제);
+                                            }));
+            Future<GenerationStartResult> 뒤따르는_요청 =
+                    executor.submit(
+                            () -> {
+                                assertTrue(사용량_잠금_확보.await(5, TimeUnit.SECONDS));
+                                return startService.start(READER_ID, key, 명령(PURPOSE));
+                            });
+
+            assertTrue(날짜_확정.await(10, TimeUnit.SECONDS));
+            생성을_직접_넣는다(먼저_들어온_생성, key);
+            사용량_잠금_해제.countDown();
+
+            길목.get(30, TimeUnit.SECONDS);
+            GenerationStartResult result = 뒤따르는_요청.get(30, TimeUnit.SECONDS);
+
+            assertAll(
+                    () -> assertEquals(Kind.EXISTING_GENERATING, result.kind()),
+                    () -> assertEquals(먼저_들어온_생성, result.generationId()),
+                    () -> assertEquals(1, 생성_수를_조회한다(READER_ID)),
+                    () -> assertEquals(LIMIT, 사용량을_조회한다(READER_ID, USAGE_DATE)));
+        } finally {
+            사용량_잠금_해제.countDown();
+            executor.shutdownNow();
+            executor.awaitTermination(5, TimeUnit.SECONDS);
+        }
+    }
+
+    /**
      * 전날 한도를 다 쓴 상태에서 자정 직전에 시작해, 사용량 잠금을 기다리는 사이 자정을 넘긴다. 진입
      * 시점 날짜로 계수하면 이미 초기화된 어제 한도로 거절해 {@code 매일 00:00 UTC 초기화} 계약을 깬다.
      *

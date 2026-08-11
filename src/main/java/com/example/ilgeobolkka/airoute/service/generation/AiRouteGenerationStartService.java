@@ -103,7 +103,7 @@ public class AiRouteGenerationStartService {
         // 그렇게 겹친 insert는 unique key 경합이 되고, start()가 기존 행 재조회로 수렴시킨다.
         AiRouteDailyUsage usage = lockCurrentDailyUsage(readerId);
         if (usage.getGenerationCount() >= DAILY_GENERATION_LIMIT) {
-            return GenerationStartResult.dailyLimitExceeded();
+            return existingOrDailyLimit(readerId, idempotencyKey, requestFingerprint);
         }
         usage.increment();
 
@@ -123,6 +123,30 @@ public class AiRouteGenerationStartService {
                         command,
                         startedAt));
         return GenerationStartResult.created(generationId);
+    }
+
+    /**
+     * 한도에 닿았을 때, 거절하기 전에 같은 키의 생성이 이미 있는지 다시 본다.
+     *
+     * <p>사용량 잠금을 기다리는 동안 같은 멱등 키의 요청이 그날의 마지막 한 건을 가져갔을 수 있다.
+     * insert 까지 가는 경로는 unique key 경합이 기존 행으로 수렴시켜 주지만, 이 경로는 아무것도 넣지
+     * 않고 돌아가므로 스스로 확인해야 한다. 확인하지 않으면 이미 시작된 생성을 두고 클라이언트에게
+     * 한도 초과로 거절했다고 알려, 15분 안의 같은 요청은 저장된 상태를 돌려준다는 계약을 깬다.
+     *
+     * <p>{@link #findExistingForUpdate} 를 쓰지 않고 잠금 조회로 바로 간다. 이 transaction 의 read view는
+     * 맨 앞의 존재 확인에서 이미 만들어졌으므로, 일반 조회로는 그 뒤에 commit 된 행을 볼 수 없다.
+     * 잠금 조회만 최신 commit 을 읽는다.
+     *
+     * <p>없는 행을 잠그면 gap lock 이 남지만 여기서는 교착으로 가지 않는다. 이 경로는 잠금을 잡은 뒤
+     * 아무것도 기다리지 않고 바로 돌아가므로 대기 고리가 만들어지지 않는다. 한도에 닿은 독자만
+     * 지나가는 길이라 빈도도 낮다.
+     */
+    private GenerationStartResult existingOrDailyLimit(
+            long readerId, UUID idempotencyKey, String requestFingerprint) {
+        return generationRepository
+                .findByReaderIdAndIdempotencyKeyForUpdate(readerId, idempotencyKey)
+                .map(generation -> resultOf(generation, requestFingerprint))
+                .orElseGet(GenerationStartResult::dailyLimitExceeded);
     }
 
     /**

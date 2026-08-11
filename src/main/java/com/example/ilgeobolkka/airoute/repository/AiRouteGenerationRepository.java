@@ -26,9 +26,15 @@ public interface AiRouteGenerationRepository extends JpaRepository<AiRouteGenera
      *
      * <p>행을 잠그는 것은 G06이 같은 행의 상태를 옮기는 중에 반쯤 바뀐 상태를 읽지 않기 위해서다.
      *
-     * <p><b>{@link #existsByReaderIdAndIdempotencyKey}가 참일 때만 부른다.</b> 없는 행에 잠금을 걸면
-     * InnoDB가 그 자리에 gap lock을 남기고, 그 gap 안에 insert하려는 다른 독자의 요청과 교착한다.
-     * 인덱스가 비어 있을수록 두 요청이 같은 gap에 떨어질 확률이 높아 초기 운영과 테스트가 최악 조건이다.
+     * <p><b>뒤에 insert 할 수 있는 경로에서는 {@link #existsByReaderIdAndIdempotencyKey}가 참일 때만
+     * 부른다.</b> 없는 행에 잠금을 걸면 InnoDB가 그 자리에 gap lock을 남기고, 그 gap 안에 insert하려는
+     * 다른 요청과 교착한다. 인덱스가 비어 있을수록 두 요청이 같은 gap에 떨어질 확률이 높아 초기 운영과
+     * 테스트가 최악 조건이다.
+     *
+     * <p>예외는 잠금을 잡고 아무것도 기다리지 않은 채 돌아가는 경로다. 대기 고리가 만들어지지 않아
+     * gap lock이 교착으로 이어지지 않는다. 그런 곳에서는 존재 확인을 건너뛰고 바로 부른다. 존재 확인은
+     * 일반 조회라 transaction 의 read view 에 묶여 있어서, 그 view 가 만들어진 뒤에 commit 된 행을
+     * 놓치기 때문이다.
      */
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query(
