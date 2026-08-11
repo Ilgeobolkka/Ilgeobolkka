@@ -11,11 +11,11 @@ SCRUM-485 90권 확장에서 재사용하는 Python 스크립트다. 애플리�
 | `corpus_lib.py` | 절 식별자로 선수 관계를 걸고 페이지 순서에서 최종 번호를 자동 계산하는 빌더. 페이지를 끼워 넣어도 번호가 깨지지 않는다. `validate_book()`으로 생성 즉시 검증한다. |
 | `validate_manifest.py` | `manifest.json`의 모든 도서와 `evaluation.json`을 한 번에 검사한다. 인자 없이 실행하면 정본 fixture를, 디렉터리를 주면 그 fixture를 검사한다. 검사 집합은 `validate_fragment.py`와 같게 유지한다 — 한쪽에만 넣으면 조각으로 들어온 도서와 손으로 고친 정본의 기준이 갈린다. |
 | `validate_fragment.py` | 공유 파일에 합치기 전 도서 하나를 독립 검증한다. `python3 validate_fragment.py ../_fragments/book-0NN.json`. |
-| `merge_fragments.py` | `_fragments/`의 조각을 `manifest.json`·`evaluation.json`에 병합한다. bookId·caseId 중복을 병합 전에 막고, 합친 뒤 전체를 재검증하며, 성공하면 역할이 끝난 조각을 지운다. `--dry-run`으로 미리 확인하고 bookId를 인자로 주면 그 권만 병합한다. |
+| `merge_fragments.py` | `_fragments/`의 조각을 `manifest.json`·`evaluation.json`에 병합한다. bookId·caseId 중복을 병합 전에 막고, **병합 결과를 임시 디렉터리에서 먼저 검증해 통과한 경우에만 정본에 쓰며**, 성공하면 역할이 끝난 조각을 지운다. `--dry-run`으로 미리 확인하고 bookId를 인자로 주면 그 권만 병합한다. |
 | `pdfcheck.py` | Poppler 없이 PDF 객체를 직접 파싱해 페이지 수·TEXT/IMAGE 구성을 확인한다. `python3 pdfcheck.py <pdf경로> <기대페이지수> <기대이미지목록,쉼표구분>`. |
 | `figures0NN.py` | 도서별 도표 SVG 생성 스크립트(011·041·042·061·064·066·067·071). 새 도서의 도표를 그릴 때 `head()`/`svg()` 헬퍼를 그대로 가져다 쓴다. |
 | `build_pdf_generic.py` | 원고 JSON을 A4 조판 HTML 한 장으로 조립해 저장한다. PDF 출력은 하지 않으므로 저장된 HTML을 Chrome Headless로 인쇄하는 단계가 따로 필요하다. `python3 build_pdf_generic.py <bookId> <이미지페이지,쉼표>`로 바로 실행. |
-| `selftest.py` | 검증 도구가 깨진 입력을 실제로 잡는지 확인하는 음성 테스트. 정본 fixture에서 입력을 만들어 한 곳씩 고의로 깨뜨리고 각각 FAIL로 걸리는지 본다. `validate_fragment.py`·`validate_manifest.py`·`corpus_lib.validate_book()` 셋을 모두 덮는다. `python3 selftest.py`. 양성 표본은 정본 전체이고, 조각 단위 음성 검사는 예산·대여를 깨뜨릴 수 있는 예산 0 사례(`book-011`)에서 만든다. |
+| `selftest.py` | 검증 도구가 깨진 입력을 실제로 잡는지 확인하는 음성 테스트. 정본 fixture에서 입력을 만들어 한 곳씩 고의로 깨뜨리고 각각 FAIL로 걸리는지 본다. `validate_fragment.py`·`validate_manifest.py`·`corpus_lib.validate_book()` 셋과 `merge_fragments.py`의 실패 경로를 덮는다. `python3 selftest.py`. 양성 표본은 정본 전체이고, 조각 단위 음성 검사는 예산·대여를 깨뜨릴 수 있는 예산 0 사례(`book-011`)에서 만든다. |
 
 ## 새 도서를 만드는 순서
 

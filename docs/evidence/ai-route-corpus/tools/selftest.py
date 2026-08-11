@@ -11,6 +11,7 @@
 """
 import copy
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -261,6 +262,46 @@ def check_manifest(workdir):
                     should_pass=False, needle="선수 폐쇄")
 
 
+def check_merge(workdir):
+    """병합이 실패했을 때 정본을 건드리지 않는지 본다.
+
+    정본 사본과 조각을 임시 디렉터리에 만들고, 검증을 통과할 수 없는 상태(평가 파일의
+    contentVersion을 어긋나게 둔 정본)에서 병합을 시도한다. 손으로 고친 정본이 이미 깨져 있는
+    상황이 실제로 이 경로를 밟는 경우다.
+    """
+    print("\n[merge_fragments.py]")
+    root = Path(workdir) / "merge"
+    fixture, fragments = root / "fixture", root / "_fragments"
+    fragments.mkdir(parents=True)
+    fixture.mkdir(parents=True)
+    (fixture / "pdfs").symlink_to(FIXTURE / "pdfs")
+
+    manifest, evaluation = load_manifest(), load_evaluation()
+    moved = manifest["books"].pop()
+    moved_case = next(c for c in evaluation["cases"] if c["bookId"] == moved["bookId"])
+    evaluation["cases"].remove(moved_case)
+    evaluation["contentVersion"] = "ai-route-v3"  # 병합 뒤 전체 검증이 반드시 실패하는 조건
+    for path, data in ((fixture / "manifest.json", manifest),
+                       (fixture / "evaluation.json", evaluation)):
+        path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (fragments / f"book-{moved['bookId']:03d}.json").write_text(
+        json.dumps({"manifestBook": moved, "evaluationCase": moved_case}, ensure_ascii=False),
+        encoding="utf-8")
+
+    before = {p: p.read_text("utf-8") for p in
+              (fixture / "manifest.json", fixture / "evaluation.json")}
+    env = dict(os.environ, CORPUS_FIXTURE=str(fixture), CORPUS_FRAGMENTS=str(fragments))
+    result = subprocess.run([sys.executable, str(TOOLS / "merge_fragments.py")],
+                            capture_output=True, text=True, cwd=workdir, env=env)
+
+    unchanged = all(path.read_text("utf-8") == text for path, text in before.items())
+    fragment_kept = any(fragments.iterdir())
+    ok = result.returncode != 0 and unchanged and fragment_kept
+    report("병합이 실패하면 정본과 조각을 그대로 둔다", ok,
+           f"종료코드 {result.returncode} · 정본 무변경 {unchanged} · 조각 보존 {fragment_kept}\n"
+           + (result.stdout or result.stderr))
+
+
 def check_validate_book():
     print("\n[corpus_lib.validate_book()]")
     book = next(b for b in load_manifest()["books"] if b["bookId"] == SAMPLE_BOOK_ID)
@@ -300,6 +341,7 @@ def main():
     with tempfile.TemporaryDirectory() as workdir:
         check_fragment(workdir)
         check_manifest(workdir)
+        check_merge(workdir)
     check_validate_book()
 
     print("\n" + (f"실패 {len(failures)}건" if failures else "전체 통과"))

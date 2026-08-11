@@ -9,21 +9,27 @@
     python3 merge_fragments.py 61 71           # 지정한 bookId만 병합
     python3 merge_fragments.py --dry-run       # 무엇이 병합될지만 확인
 
+병합 결과는 임시 디렉터리에서 먼저 `validate_manifest.py`로 검증하고, 통과한 경우에만 정본에 쓴다.
+정본에 먼저 쓰고 검증하면 실패했을 때 반쯤 병합된 파일이 남는다.
+
 병합에 성공하면 역할이 끝난 조각 파일을 지운다. 남겨 두면 다음 실행에서 bookId 중복으로
 걸리고, 정본과 조각 중 어느 쪽이 최신인지 알 수 없게 된다. 되돌리려면 Git으로 복원한다.
 """
 import json
+import os
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[4]  # docs/evidence/ai-route-corpus/tools/ 기준 저장소 루트
 CORPUS = REPO / "docs/evidence/ai-route-corpus"
-FRAGMENTS = CORPUS / "_fragments"
-FIXTURE = REPO / "fixtures/content/ai-route-v2"
+TOOLS = CORPUS / "tools"
+# 정본 경로. selftest가 임시 사본을 대신 넣어 병합 실패 경로를 확인할 때만 환경 변수로 바꾼다.
+FRAGMENTS = Path(os.environ.get("CORPUS_FRAGMENTS", CORPUS / "_fragments"))
+FIXTURE = Path(os.environ.get("CORPUS_FIXTURE", REPO / "fixtures/content/ai-route-v2"))
 MANIFEST = FIXTURE / "manifest.json"
 EVALUATION = FIXTURE / "evaluation.json"
-TOOLS = CORPUS / "tools"
 
 
 def die(msg):
@@ -117,18 +123,27 @@ def main():
     manifest["books"].sort(key=lambda b: b["bookId"])
     evaluation["cases"].sort(key=lambda c: c["bookId"])
 
-    dump_json(MANIFEST, manifest)
-    dump_json(EVALUATION, evaluation)
     print(f"\n[병합] manifest {len(manifest['books'])}권 · evaluation {len(evaluation['cases'])}건")
 
+    # 병합 결과를 임시 디렉터리에서 먼저 검증한다. 정본에 바로 쓰고 나서 검증하면, 실패했을 때
+    # 반쯤 병합된 파일이 남아 사람이 Git으로 되돌려야 한다. PDF는 용량이 크므로 심링크로 잇는다.
     print("[전체 재검증]")
-    result = subprocess.run([sys.executable, str(TOOLS / "validate_manifest.py")],
-                            capture_output=True, text=True)
+    with tempfile.TemporaryDirectory() as staging:
+        staged = Path(staging)
+        (staged / "pdfs").symlink_to(FIXTURE / "pdfs")
+        dump_json(staged / "manifest.json", manifest)
+        dump_json(staged / "evaluation.json", evaluation)
+        result = subprocess.run(
+            [sys.executable, str(TOOLS / "validate_manifest.py"), str(staged)],
+            capture_output=True, text=True)
     if result.returncode != 0:
         failed = [l for l in result.stdout.split("\n") if l.startswith("  FAIL")]
-        die("병합 결과가 validate_manifest를 통과하지 못했다. 정본을 Git으로 되돌려라.\n    "
+        die("병합 결과가 validate_manifest를 통과하지 못했다. 정본은 그대로다.\n    "
             + "\n    ".join(failed or [result.stderr.strip()]))
     print("  validate_manifest 전체 통과")
+
+    dump_json(MANIFEST, manifest)
+    dump_json(EVALUATION, evaluation)
 
     for path, _ in picked:
         path.unlink()
