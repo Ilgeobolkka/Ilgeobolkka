@@ -9,13 +9,14 @@ SCRUM-485 `ai-route-v2` 코퍼스 파일럿 1권의 ①단계 산출물입니다
 
 ## 대상 도서
 
-기존 메타데이터를 유지합니다. 출처는 `src/main/resources/demo/books.json`입니다.
+제목을 뺀 기존 메타데이터를 유지합니다. 출처는 `src/main/resources/demo/books.json`이며, 갱신한
+제목의 정본은 `ai-route-v2` manifest의 `books[].title`입니다.
 
 | 필드 | 값 | 처리 |
 | --- | --- | --- |
 | `bookId` | 47 | 유지 |
 | `category` | 경제 | 유지 |
-| `title` | 가격 형성의 원리: 수요·공급과 시장실패 | 유지 |
+| `title` | 가격 형성의 원리: 수요·공급과 시장실패 | 카테고리 톤에 맞게 갱신 |
 | `author` | 가상 작가 047 | 유지 |
 | `description` | 가격 형성의 기본 원리를 사례로 푸는 가상 경제서입니다. | 유지 |
 | `totalPageCount` | 5 → **57** | 재제작 |

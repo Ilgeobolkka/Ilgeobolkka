@@ -9,12 +9,14 @@ SCRUM-485 90권 확장 중 기술 카테고리 첫 번째 도서입니다. 현�
 | --- | --- | --- |
 | `bookId` | 71 | 유지 |
 | `category` | 기술 | 유지 |
-| `title` | 요청과 응답: 서버 처리의 구조 | 유지 |
+| `title` | 요청과 응답: 서버 처리의 구조 | 카테고리 톤에 맞게 갱신 |
 | `author` | 가상 작가 071 | 유지 |
 | `description` | 가상 서비스 요청이 처리되는 과정을 설명하는 기술서입니다. | 유지 |
 | `totalPageCount` | 5 → **50** | 재제작 |
 
-제목·저자·카테고리·소개는 `src/main/resources/demo/books.json`의 기존 값을 유지했습니다.
+저자·카테고리·소개는 `src/main/resources/demo/books.json`의 기존 값을 유지했습니다. 제목은 기술
+카테고리 제목 갱신에 따른 새 값이며 정본은 `ai-route-v2` manifest의 `books[].title`입니다.
+`books.json`은 `initial-v1` 동결 fixture이므로 고치지 않습니다.
 
 ## 개념 범위와 독자 수준
 

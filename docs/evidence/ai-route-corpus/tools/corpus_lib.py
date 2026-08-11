@@ -103,10 +103,11 @@ def toc_body(entries, width=60):
     return "\n".join(lines)
 
 
-def build_manifest_book(*, book_id, pdf_path, pdf_sha256, total_page_count,
+def build_manifest_book(*, book_id, title, pdf_path, pdf_sha256, total_page_count,
                           ai_route_candidate, ai_external_transfer_allowed, pages):
     return {
         "bookId": book_id,
+        "title": title,
         "pdfPath": pdf_path,
         "pdfSha256": pdf_sha256,
         "totalPageCount": total_page_count,

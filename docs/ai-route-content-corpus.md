@@ -10,8 +10,12 @@
 ## 범위
 
 - 기존 도서 ID, 저자, 카테고리와 소개를 유지합니다.
-- 제목은 과학·경제·철학·예술·기술 카테고리 50권에 한해 카테고리 톤에 맞게 갱신했으며
-  `src/main/resources/demo/books.json`의 값을 정본으로 따릅니다. 나머지 50권은 기존 제목을 유지합니다.
+- 제목은 과학·경제·철학·예술·기술 카테고리 50권에 한해 카테고리 톤에 맞게 갱신하며, 갱신한 제목은
+  `ai-route-v2` manifest의 `books[].title`을 정본으로 따릅니다. 나머지 50권은 기존 제목을 그대로
+  `title`에 적습니다.
+- `initial-v1`의 `src/main/resources/demo/books.json`은 고치지 않습니다. 그 파일의 제목은 동결된
+  `fixtures/content/pdfs/` PDF 본문에 함께 합성돼 있고 PDF를 다시 만드는 경로가 없어서, 제목만 바꾸면
+  `ContentImportFullMySqlIntegrationTest`의 본문 대조와 `DemoBookWriter`의 기존 시연 DB 대조가 깨집니다.
 - 소설 카테고리 10권은 기존 콘텐츠를 유지하고 AI 경로를 지원하지 않습니다.
 - 소설을 제외한 90권의 본문과 PDF를 새로 제작합니다.
 - 기존 3~5페이지 본문은 새 본문의 소재 참고용으로만 사용하며 페이지를 그대로 보존하지 않습니다.
@@ -45,7 +49,7 @@
 | 위치 | 필수 필드 |
 | --- | --- |
 | 최상위 | `contentVersion`, `dataPolicyVersion`, `embeddingModel`, `embeddingDimensions`, `books[]` |
-| `books[]` | `bookId`, `pdfPath`, `pdfSha256`, `totalPageCount`, `aiRouteCandidate`, `aiExternalTransferAllowed`, `pages[]` |
+| `books[]` | `bookId`, `title`, `pdfPath`, `pdfSha256`, `totalPageCount`, `aiRouteCandidate`, `aiExternalTransferAllowed`, `pages[]` |
 | `aiRouteCandidate=true`인 `books[].pages[]` | `pageNumber`, `chapter`, `section`, `primaryConcepts[]`, `secondaryConcepts[]`, `contentRole`, `aiRouteCandidatePage`, `aiAnalysisText`, `aiAnalysisInputSha256`, `aiPublicGuideTopic`, `estimatedReadingSeconds`, `prerequisitePageNumbers[]`, `duplicateGroupKeys[]` |
 
 재제작한 비소설 90권은 `aiRouteCandidate=true`이고 모든 페이지 메타데이터를 가지며, 소설 10권은
@@ -75,7 +79,7 @@
 런타임 후보 생성 입력이나 공개 API에 포함하지 않습니다. 이름이 비슷한 페이지 단위
 `aiRouteCandidatePage`는 여기 해당하지 않으며 `book_page`에 저장하는 영속 값입니다.
 
-적재 시 `contentVersion`, `dataPolicyVersion`, `aiExternalTransferAllowed`는 `book`의 대응 필드로,
+적재 시 `title`, `contentVersion`, `dataPolicyVersion`, `aiExternalTransferAllowed`는 `book`의 대응 필드로,
 `aiRouteCandidatePage`, `aiAnalysisText`, `aiPublicGuideTopic`, `estimatedReadingSeconds`, 임베딩
 모델·차원·벡터와 `duplicateGroupKeys`는 `book_page`의 대응 필드로 저장합니다.
 `prerequisitePageNumbers`는 현재 페이지를 의존 페이지로 하는 `ai_route_prerequisite` 행으로

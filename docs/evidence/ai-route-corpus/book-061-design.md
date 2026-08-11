@@ -14,8 +14,9 @@ SCRUM-485 90권 확장 중 예술 카테고리 첫 번째 도서입니다. 다�
 | `description` | 작은 형태에서 화면을 확장하는 가상 미술서입니다. | 유지 |
 | `totalPageCount` | 5 → **52** | 재제작 |
 
-저자·카테고리·소개는 `src/main/resources/demo/books.json`의 기존 값을 유지했습니다. 제목은
-예술 카테고리 제목 갱신에 따라 같은 파일의 새 값을 따릅니다.
+저자·카테고리·소개는 `src/main/resources/demo/books.json`의 기존 값을 유지했습니다. 제목은 예술
+카테고리 제목 갱신에 따른 새 값이며 정본은 `ai-route-v2` manifest의 `books[].title`입니다.
+`books.json`은 `initial-v1` 동결 fixture이므로 고치지 않습니다.
 
 ## 개념 범위와 독자 수준
 

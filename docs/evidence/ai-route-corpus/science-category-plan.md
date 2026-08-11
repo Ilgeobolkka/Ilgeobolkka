@@ -3,7 +3,8 @@
 SCRUM-485 90권 확장의 과학 카테고리 착수 문서입니다. `economics-category-plan.md`와 같은 형식으로,
 10권 착수 전에 각 권의 핵심 개념 범위를 먼저 고정해 같은 개념이 여러 책에서 표현만 바꿔 반복되지
 않도록 배분합니다. 저자·소개는 `src/main/resources/demo/books.json`의 기존 값을 유지하고, 제목은 카테고리 톤에
-맞게 갱신한 같은 파일의 값을 따릅니다.
+맞게 갱신합니다. 갱신한 제목의 정본은 이 문서의 표와 `ai-route-v2` manifest의 `books[].title`이며,
+`initial-v1` 동결 fixture인 `books.json`은 고치지 않습니다.
 
 ## 10권 개념 범위
 
