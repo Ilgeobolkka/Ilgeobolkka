@@ -62,4 +62,15 @@ PR 전 전체 영향 검토에서 Actuator 기본값이 `performance` 외 profil
 - 별도 Smoke: `20260811T123545Z-post-baseline-management-fix-smoke`, checks 32/32, HTTP 오류 0
 - management health·prometheus·loopback·label 경계와 복원한 `mvp` 행 수·불변식을 다시 확인했다.
 
+## 다중 세션 로그아웃 검증 보완
+
+초기 session 동시성 실행은 대상 독자의 현재 세션을 먼저 만들지 않아 빈 상태의 로그아웃만 확인했다.
+보완된 harness에서 페이지 열기 setup을 추가하고 다음 조건으로 session 케이스만 다시 실행했다.
+
+- 검증 Git SHA: `0203b7e8497ee7fe8e3c710cefcbec7a068c820b`, dirty `false`
+- 패키징 JAR SHA-256: `087a1ac3282ade7ca21e2a4d90333401540594fbbfc7d69474496312e0d83d29`
+- 결과: `20260811T150246Z-post-fix-contention-session-final`, checks 84/84, HTTP 오류 0,
+  p95 665.367ms, exit code 0
+- SQL 대조: 잔액 99, 대상 페이지 대여·차감·서재 각 1, 현재 세션 0이며 공통 불변식 6종도 모두 0
+
 3단계 — 새 상태 인프라 없는 1차 개선은 아직 실행하지 않았다.

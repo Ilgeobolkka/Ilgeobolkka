@@ -28,7 +28,9 @@ token·session ID와 DB 접속 문자열은 문서에 기록하지 않았고, �
 | `results/20260811T122029Z-baseline-contention-same-page-final/summary.json` | 5,700 | `7f956718456bf961cd9ee46df4099e406592f1829f31373244f2e9e54e17e549` |
 | `results/20260811T122055Z-baseline-contention-different-pages-final/summary.json` | 5,661 | `ad28de8facac4f43ab3b553f2b715cfb060bfedbea5a247f73f73a15b4cde6a8` |
 | `results/20260811T122121Z-baseline-contention-different-readers-final/summary.json` | 5,688 | `d621ae158df2f1d8a072aba06b99d43f583c5e6569365891a0c37d121b951f86` |
-| `results/20260811T122150Z-baseline-contention-session-final/summary.json` | 5,677 | `d20e27d1ec477ea802e374aa7862b8979beed036477fe5c0a95328dc4bbcf660` |
+| `results/20260811T150246Z-post-fix-contention-session-final/summary.json` | 6,463 | `ebef1c73cfeeda147bfa28b1a3fa8045820457f4d97e57d203311f3b88bb5e62` |
+| `results/20260811T150246Z-post-fix-contention-session-final/metadata.json` | 1,855 | `afb4d9a87b48c4c648e2590f2ec116f78e5ea07430f9120d4f1a02775c99a3fa` |
+| `results/20260811T150246Z-post-fix-contention-session-final/exit-code.txt` | 2 | `9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa` |
 | `results/20260811T120616Z-baseline-browser-cache/summary.json` | 8,734 | `14e482e099e638681e2f54c9aabfb1fab39c269ab3f8a6e9598b8098c4fe5b2e` |
 | `results/20260811T120616Z-baseline-browser-cache/browser-cache.jsonl` | 16,721 | `9c9996df9d3fe5e767632187e81924b86c753280a496937cfb8f655d3d997b5c` |
 | `results/20260811T120703Z-history-heavy/metadata.json` | 363 | `8e5f9cbe6038b2e2a7a78afee849c04d851a4121e3668b58e18c470034732783` |
@@ -53,6 +55,9 @@ token·session ID와 DB 접속 문자열은 문서에 기록하지 않았고, �
 - `20260811T112717Z-baseline-stress`는 15분을 완료했지만 신규 대여 계정 pool 소진 오류가 3,940회여서
   무효 처리했다. 계정 offset·stride·cycles를 충돌 없이 고정한 뒤 `baseline-stress-rerun` 전체를 다시
   실행했다.
+- `20260811T122150Z-baseline-contention-session-final`은 대상 독자의 현재 세션을 먼저 만들지 않아 빈 초기
+  상태의 로그아웃만 확인했으므로 무효 처리했다. `setup()`과 SQL 기대값을 보완한 뒤 clean SHA
+  `0203b7e8497ee7fe8e3c710cefcbec7a068c820b`에서 `post-fix-contention-session-final`을 다시 실행했다.
 - 초기 동시성 SQL 대조는 업무 키 대신 잘못 가정한 PK와 잘못된 초기 잔액을 사용했다. k6 자체는
   통과했지만 검증 근거로 채택하지 않았고, 업무 키·정확한 잔액으로 4종을 모두 다시 실행했다.
 - `debug-*`, `baseline-diagnostic-*`, history-heavy 준비 실행은 측정 장치 확인 또는 진단용이며 정식
