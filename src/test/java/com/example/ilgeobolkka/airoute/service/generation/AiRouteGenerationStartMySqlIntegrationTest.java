@@ -51,7 +51,11 @@ import org.springframework.transaction.support.TransactionTemplate;
  * 한도 경계는 실제 동시 요청으로만 증명된다. 테스트 클래스에 {@code @Transactional}을 붙이지 않는 이유도
  * 같다. 붙이면 모든 작업이 한 트랜잭션에 갇혀 commit·rollback 결과를 볼 수 없다.
  */
-@SpringBootTest(properties = "spring.datasource.hikari.maximum-pool-size=12")
+@SpringBootTest(
+        properties = {
+            "spring.datasource.hikari.maximum-pool-size=12",
+            "ai-route.maintenance-initial-delay-millis=3600000"
+        })
 @ActiveProfiles("test")
 @ContextConfiguration(initializers = DedicatedTestDatabaseInitializer.class)
 @Import(AiRouteGenerationStartMySqlIntegrationTest.MutableClockConfiguration.class)
