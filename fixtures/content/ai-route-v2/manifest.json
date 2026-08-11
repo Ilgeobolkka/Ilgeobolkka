@@ -5592,7 +5592,7 @@
           "aiPublicGuideTopic": "형태요소가 놓이는 공간으로서의 화면",
           "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
-            6
+            4
           ],
           "duplicateGroupKeys": []
         },
@@ -9362,8 +9362,7 @@
           "aiPublicGuideTopic": "들으면서도 듣고 있다고 느끼지 않는 상태",
           "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
-            4,
-            5
+            4
           ],
           "duplicateGroupKeys": []
         },

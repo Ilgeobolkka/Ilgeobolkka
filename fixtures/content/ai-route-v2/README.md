@@ -21,10 +21,9 @@
 > 적재 전에 각 사례의 `activeRentalPageNumbers`·`maxAdditionalInk`·`referencePageNumbers`를 폐쇄
 > 기준으로 다시 맞춰야 한다. 실패 메시지가 부족한 선수 페이지를 그대로 알려준다.
 >
-> 그중 `book-061`·`book-067` 두 권은 정답을 어떻게 골라도 상한에 못 맞춰
-> [선수 밀도 상한](../../../docs/ai-route-content-corpus.md#도서-제작-기준)에도 걸린다. 061은 폐쇄 5p
-> 이하 페이지가 한 장에만 몰려 있고, 067은 폐쇄 15p 이하가 69%뿐이다. 선수 관계는 manifest에만 있으므로
-> `prerequisitePageNumbers`를 다시 걸면 되고 원고와 PDF는 그대로 둔다.
+> [선수 밀도 상한](../../../docs/ai-route-content-corpus.md#도서-제작-기준)에 걸리던 `book-061`·`book-067`은
+> 각각 간선 하나를 옮겨 해결했다(설계 근거는 `book-0NN-design.md`). 선수 관계는 manifest에만 있어
+> 원고와 PDF는 그대로다.
 
 | 항목 | 정본 최종 목표 | 현재 |
 | --- | --- | --- |
@@ -123,7 +122,7 @@
 - **정답 경로를 선수 전이 폐쇄까지 펼친 뒤** 비소장은 미대여 페이지 수가 예산 이하, 소장은 경로 전체가
   깊이 상한(QUICK 5·BALANCED 10·DEEP 15) 이하 — 현재 10건 중 9건이 여기서 실패한다(위 현재 상태 참고)
 - 도서 단위 선수 밀도 상한 — 폐쇄 ≤5인 페이지가 서로 다른 장 3개 이상, 폐쇄 ≤15가 후보의 75% 이상
-  (현재 061·067 위반)
+  (10권 모두 통과)
 - 원고와 manifest의 페이지 번호·장·절 일치
 - PDF가 존재하고 0바이트를 넘으며 실제 SHA-256이 `manifest.json`의 `pdfSha256`과 일치
 - PDF 페이지 수가 manifest 페이지 수와 일치, 텍스트·이미지 페이지 구성이 설계와 일치
@@ -142,8 +141,9 @@ PDF SHA-256은 도서마다 `manifest.json`의 `pdfSha256`에 있다.
 
 ## 남은 작업
 
-1. `book-061`·`book-067`의 `prerequisitePageNumbers` 재설계 (원고·PDF는 유지)
-2. 평가 9건의 정답 경로를 선수 폐쇄 기준으로 다시 맞춰 `validate_manifest.py` 통과
+1. 평가 9건의 정답 경로를 선수 폐쇄 기준으로 다시 맞춰 `validate_manifest.py` 통과
+2. `title`·`aiRouteCandidatePage`·`FRONT_MATTER`를 C01 파서에 추가 (지금은 미지 필드로 거부돼 이
+   manifest가 파싱되지 않는다)
 3. 비소설 80권 확장과 평가 80건 배분
 4. 소설 10권을 기존 PDF·SHA-256으로 편입
-5. `aiRouteCandidatePage` 구현 (컬럼 마이그레이션, C01 파싱, C02 검증)
+5. `aiRouteCandidatePage` 적재 구현 (컬럼 마이그레이션, C02 검증)
