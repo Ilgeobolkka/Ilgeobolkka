@@ -27,6 +27,10 @@ p { font-size: 11.6pt; line-height: 1.85; margin: 0 0 4.6mm; text-align: justify
 .toc h1 { font-size: 22pt; margin: 0 0 14mm; letter-spacing: .04em; }
 .toc pre { font-family: 'SF Mono','Menlo',monospace; font-size: 9.6pt; line-height: 2.0;
            margin: 0; white-space: pre; }
+.toc.compact { padding: 24mm 18mm; }
+.toc.compact h1 { margin-bottom: 9mm; }
+.toc.compact pre { columns: 2; column-gap: 12mm; column-rule: .4pt solid #d8dce0;
+                   font-size: 8.2pt; line-height: 1.55; }
 .img { padding: 0; }
 .img img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .pn { position: absolute; bottom: 12mm; left: 0; right: 0; text-align: center;
@@ -55,7 +59,8 @@ def main():
             continue
         if page["section"] == "목차":
             body = html.escape(page["body"])
-            parts.append(f"<section class='page toc'><h1>목차</h1>"
+            toc_class = "page toc compact" if page["body"].count("\n") > 45 else "page toc"
+            parts.append(f"<section class='{toc_class}'><h1>목차</h1>"
                          f"<pre>{body.split(chr(10), 2)[2]}</pre>"
                          f"<div class='pn'>{n}</div></section>")
             continue
