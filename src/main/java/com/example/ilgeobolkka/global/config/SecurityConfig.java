@@ -120,7 +120,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    @Profile("!content-import")
+    @Profile("!content-import & !performance-seed")
     SecurityFilterChain securityFilterChain(
             HttpSecurity http,
             ApiSecurityErrorHandler securityErrorHandler,

@@ -1,0 +1,28 @@
+server:
+  address: 127.0.0.1
+  port: 8080
+  tomcat:
+    mbeanregistry:
+      enabled: true
+
+management:
+  server:
+    address: 127.0.0.1
+    port: 8081
+  endpoints:
+    web:
+      exposure:
+        include: health,prometheus
+  endpoint:
+    health:
+      show-details: never
+  metrics:
+    tags:
+      application: ilgeobolkka
+
+ai-route:
+  enabled: false
+
+portone:
+  payment:
+    enabled: false
