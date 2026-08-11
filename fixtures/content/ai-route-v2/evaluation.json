@@ -547,6 +547,191 @@
       ]
     },
     {
+      "caseId": "case-book-066",
+      "bookId": 66,
+      "purpose": "동네 큰길가의 낡은 벽에 그림을 그려 달라는 부탁을 받았다. 가까이서는 괜찮은데 길 건너에서 보면 뭉개져 버리는 이유, 울퉁불퉁하고 창이 뚫린 벽면을 어떻게 다뤄야 하는지, 색을 어느 정도 넓이로 나눠야 하는지를 원리부터 알고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "공공 벽화",
+        "표면 요철",
+        "거리대",
+        "시야각",
+        "벽면 스케일",
+        "색면 분할",
+        "면적 배분",
+        "구조선"
+      ],
+      "helpfulConcepts": [
+        "가독 단위",
+        "앙각",
+        "개구부",
+        "장소 맥락",
+        "동선",
+        "지배면"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 17
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 22
+        },
+        {
+          "beforePageNumber": 22,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 26
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 28
+        }
+      ],
+      "irrelevantPageNumbers": [
+        37,
+        50
+      ],
+      "duplicatePageGroups": [
+        [
+          15,
+          23
+        ]
+      ],
+      "referencePageNumbers": [
+        3,
+        10,
+        12,
+        17,
+        22,
+        24,
+        26,
+        28,
+        35,
+        52
+      ],
+      "allowedAlternativePageNumbers": [
+        4,
+        9,
+        11,
+        20,
+        25,
+        27,
+        30,
+        53
+      ]
+    },
+    {
+      "caseId": "case-book-067",
+      "bookId": 67,
+      "purpose": "영상 편집을 배우는 중인데 같은 화면인데도 소리를 어떻게 얹느냐에 따라 장면이 완전히 달라지는 게 신기하다. 화면과 소리를 맞추거나 일부러 어긋내는 원리부터 한순간을 세우는 소리, 소리를 거두는 선택, 멀고 가까움을 만드는 방법까지 빠짐없이 이해하고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "동조 사운드",
+        "비동조 사운드",
+        "동조점",
+        "스팅어",
+        "소리의 원근",
+        "잔향",
+        "무음"
+      ],
+      "helpfulConcepts": [
+        "소리의 층",
+        "화면 밖 소리",
+        "음향적 강조",
+        "공간감"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 3
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 11
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 18
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 21
+        },
+        {
+          "beforePageNumber": 11,
+          "afterPageNumber": 26
+        },
+        {
+          "beforePageNumber": 26,
+          "afterPageNumber": 28
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 33
+        },
+        {
+          "beforePageNumber": 33,
+          "afterPageNumber": 35
+        },
+        {
+          "beforePageNumber": 28,
+          "afterPageNumber": 41
+        },
+        {
+          "beforePageNumber": 41,
+          "afterPageNumber": 42
+        }
+      ],
+      "irrelevantPageNumbers": [
+        1,
+        9,
+        13,
+        49
+      ],
+      "duplicatePageGroups": [
+        [
+          16,
+          31
+        ]
+      ],
+      "referencePageNumbers": [
+        3,
+        5,
+        10,
+        11,
+        18,
+        21,
+        26,
+        28,
+        33,
+        35,
+        41,
+        42
+      ],
+      "allowedAlternativePageNumbers": [
+        7,
+        14,
+        19,
+        22,
+        27,
+        34,
+        36,
+        43,
+        44,
+        54
+      ]
+    },
+    {
       "caseId": "case-book-071",
       "bookId": 71,
       "purpose": "사용자가 보낸 메시지가 어느 입구를 지나 결과로 돌아오는지, 여러 메시지가 겹칠 때도 서로 섞이지 않는 이유와 실행 공간을 교체해도 업무가 이어지는 원리를 함께 이해하고 싶다",
