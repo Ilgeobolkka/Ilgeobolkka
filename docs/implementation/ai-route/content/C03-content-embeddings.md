@@ -21,7 +21,10 @@ DB 트랜잭션을 열기 전에 완전한 vector batch를 만듭니다.
 
 ## 현재 구현 기준선
 
-- 기존 content-import는 OpenAI를 호출하지 않습니다.
+- 이 절은 착수 시점 기록입니다. 아래 산출물은 그 뒤에 구현했습니다 —
+  [AiRouteContentEmbeddingService](../../../../src/main/java/com/example/ilgeobolkka/contentimport/embedding/AiRouteContentEmbeddingService.java),
+  [EmbeddedAiRouteContent](../../../../src/main/java/com/example/ilgeobolkka/contentimport/embedding/EmbeddedAiRouteContent.java).
+  아직 어디에도 연결하지 않았고 적재 연결은 C04 몫입니다.
 - F04가 content 전용 Embeddings Gateway를, C02가 검증된 분석 입력을 제공합니다.
 - [ContentImportRunner](../../../../src/main/java/com/example/ilgeobolkka/contentimport/ContentImportRunner.java)는
   비웹 `content-import` profile에서 실행됩니다.
