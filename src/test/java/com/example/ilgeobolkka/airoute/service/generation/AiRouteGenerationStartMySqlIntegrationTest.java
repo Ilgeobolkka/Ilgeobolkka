@@ -184,55 +184,23 @@ class AiRouteGenerationStartMySqlIntegrationTest {
      * 순서를 만든다. 이 요청은 insert 까지 밀고 갔다가 unique key 에 부딪히고, 조건 6이 요구하는 것은
      * 그때 500 이 아니라 기존 행으로 수렴하는 것이다.
      *
-     * <p>순서를 시간이 아니라 신호로 고정한다. 사용량 행을 미리 잠가 두면 요청은 기존 생성 조회를 마치고
-     * (없음) 날짜를 확정한 직후 사용량 행에서 반드시 멈춘다. 그 지점을 시계 읽기 래치로 관측한 뒤에
-     * 경합 상대를 commit 하므로, 실행이 느려도 사전 조회로 빠지지 않는다.
+     * <p>한도에는 여유가 있으므로 요청은 insert 까지 밀고 간다. 아래 한도 테스트와 다른 것은 사용량
+     * 시드값뿐이고, 그 하나가 unique key 경합 경로와 한도 경로를 가른다.
      */
     @Test
     void 조회_뒤에_확정된_같은_키가_있으면_그_행으로_수렴한다() throws Exception {
         UUID key = UUID.randomUUID();
         UUID 먼저_들어온_생성 = UUID.randomUUID();
         사용량을_심는다(READER_ID, USAGE_DATE, 0);
-        CountDownLatch 사용량_잠금_확보 = new CountDownLatch(1);
-        CountDownLatch 사용량_잠금_해제 = new CountDownLatch(1);
-        CountDownLatch 날짜_확정 = clock.다음_읽기를_알린다();
 
-        ExecutorService executor = Executors.newFixedThreadPool(2);
-        try {
-            Future<?> 길목 =
-                    executor.submit(
-                            () ->
-                                    transactionTemplate.executeWithoutResult(
-                                            status -> {
-                                                사용량_행을_잠근다(READER_ID, USAGE_DATE);
-                                                사용량_잠금_확보.countDown();
-                                                해제를_기다린다(사용량_잠금_해제);
-                                            }));
-            Future<GenerationStartResult> 뒤따르는_요청 =
-                    executor.submit(
-                            () -> {
-                                assertTrue(사용량_잠금_확보.await(5, TimeUnit.SECONDS));
-                                return startService.start(READER_ID, key, 명령(PURPOSE));
-                            });
+        GenerationStartResult converged =
+                사용량_잠금_뒤에_시작한다(key, () -> 생성을_직접_넣는다(먼저_들어온_생성, key));
 
-            // 여기까지 오면 뒤따르는 요청은 기존 생성 조회를 이미 마쳤고 사용량 행에서 막혀 있다.
-            assertTrue(날짜_확정.await(10, TimeUnit.SECONDS));
-            생성을_직접_넣는다(먼저_들어온_생성, key);
-            사용량_잠금_해제.countDown();
-
-            길목.get(30, TimeUnit.SECONDS);
-            GenerationStartResult converged = 뒤따르는_요청.get(30, TimeUnit.SECONDS);
-
-            assertAll(
-                    () -> assertEquals(Kind.EXISTING_GENERATING, converged.kind()),
-                    () -> assertEquals(먼저_들어온_생성, converged.generationId()),
-                    () -> assertEquals(1, 생성_수를_조회한다(READER_ID)),
-                    () -> assertEquals(0, 사용량을_조회한다(READER_ID, USAGE_DATE)));
-        } finally {
-            사용량_잠금_해제.countDown();
-            executor.shutdownNow();
-            executor.awaitTermination(5, TimeUnit.SECONDS);
-        }
+        assertAll(
+                () -> assertEquals(Kind.EXISTING_GENERATING, converged.kind()),
+                () -> assertEquals(먼저_들어온_생성, converged.generationId()),
+                () -> assertEquals(1, 생성_수를_조회한다(READER_ID)),
+                () -> assertEquals(0, 사용량을_조회한다(READER_ID, USAGE_DATE)));
     }
 
     /**
@@ -241,54 +209,23 @@ class AiRouteGenerationStartMySqlIntegrationTest {
      * 받아야 한다. 이미 시작된 생성을 두고 429로 거절하면 15분 안의 같은 요청은 저장된 상태를 돌려준다는
      * 계약이 깨진다.
      *
-     * <p>순서를 신호로 고정한다. 사용량 행을 미리 잠가 두면 요청은 기존 생성 조회를 마치고(없음) 날짜를
-     * 확정한 직후 멈춘다. 그 지점을 확인한 뒤에 앞선 생성을 commit 하므로, 이 요청의 존재 확인은 항상
-     * 빈손으로 지나간다.
+     * <p>한도에 닿아 있으므로 요청은 insert 까지 가지 못하고 돌아간다. unique key 경합이 잡아 줄 수 없는
+     * 유일한 경로라 거절 직전에 스스로 확인해야 한다.
      */
     @Test
     void 한도에_닿았어도_같은_키의_생성이_이미_있으면_그_상태를_돌려준다() throws Exception {
         UUID key = UUID.randomUUID();
         UUID 먼저_들어온_생성 = UUID.randomUUID();
         사용량을_심는다(READER_ID, USAGE_DATE, LIMIT);
-        CountDownLatch 사용량_잠금_확보 = new CountDownLatch(1);
-        CountDownLatch 사용량_잠금_해제 = new CountDownLatch(1);
-        CountDownLatch 날짜_확정 = clock.다음_읽기를_알린다();
 
-        ExecutorService executor = Executors.newFixedThreadPool(2);
-        try {
-            Future<?> 길목 =
-                    executor.submit(
-                            () ->
-                                    transactionTemplate.executeWithoutResult(
-                                            status -> {
-                                                사용량_행을_잠근다(READER_ID, USAGE_DATE);
-                                                사용량_잠금_확보.countDown();
-                                                해제를_기다린다(사용량_잠금_해제);
-                                            }));
-            Future<GenerationStartResult> 뒤따르는_요청 =
-                    executor.submit(
-                            () -> {
-                                assertTrue(사용량_잠금_확보.await(5, TimeUnit.SECONDS));
-                                return startService.start(READER_ID, key, 명령(PURPOSE));
-                            });
+        GenerationStartResult result =
+                사용량_잠금_뒤에_시작한다(key, () -> 생성을_직접_넣는다(먼저_들어온_생성, key));
 
-            assertTrue(날짜_확정.await(10, TimeUnit.SECONDS));
-            생성을_직접_넣는다(먼저_들어온_생성, key);
-            사용량_잠금_해제.countDown();
-
-            길목.get(30, TimeUnit.SECONDS);
-            GenerationStartResult result = 뒤따르는_요청.get(30, TimeUnit.SECONDS);
-
-            assertAll(
-                    () -> assertEquals(Kind.EXISTING_GENERATING, result.kind()),
-                    () -> assertEquals(먼저_들어온_생성, result.generationId()),
-                    () -> assertEquals(1, 생성_수를_조회한다(READER_ID)),
-                    () -> assertEquals(LIMIT, 사용량을_조회한다(READER_ID, USAGE_DATE)));
-        } finally {
-            사용량_잠금_해제.countDown();
-            executor.shutdownNow();
-            executor.awaitTermination(5, TimeUnit.SECONDS);
-        }
+        assertAll(
+                () -> assertEquals(Kind.EXISTING_GENERATING, result.kind()),
+                () -> assertEquals(먼저_들어온_생성, result.generationId()),
+                () -> assertEquals(1, 생성_수를_조회한다(READER_ID)),
+                () -> assertEquals(LIMIT, 사용량을_조회한다(READER_ID, USAGE_DATE)));
     }
 
     /**
@@ -301,46 +238,15 @@ class AiRouteGenerationStartMySqlIntegrationTest {
     @Test
     void 사용량_잠금을_기다리다_자정을_넘기면_새_날짜로_계수한다() throws Exception {
         사용량을_심는다(READER_ID, USAGE_DATE, LIMIT);
-        CountDownLatch 사용량_잠금_확보 = new CountDownLatch(1);
-        CountDownLatch 사용량_잠금_해제 = new CountDownLatch(1);
-        CountDownLatch 날짜_확정 = clock.다음_읽기를_알린다();
 
-        ExecutorService executor = Executors.newFixedThreadPool(2);
-        try {
-            Future<?> 길목 =
-                    executor.submit(
-                            () ->
-                                    transactionTemplate.executeWithoutResult(
-                                            status -> {
-                                                사용량_행을_잠근다(READER_ID, USAGE_DATE);
-                                                사용량_잠금_확보.countDown();
-                                                해제를_기다린다(사용량_잠금_해제);
-                                            }));
-            Future<GenerationStartResult> 뒤따르는_요청 =
-                    executor.submit(
-                            () -> {
-                                assertTrue(사용량_잠금_확보.await(5, TimeUnit.SECONDS));
-                                return startService.start(
-                                        READER_ID, UUID.randomUUID(), 명령(PURPOSE));
-                            });
+        GenerationStartResult result =
+                사용량_잠금_뒤에_시작한다(UUID.randomUUID(), () -> clock.set(NEXT_UTC_DAY));
 
-            assertTrue(날짜_확정.await(10, TimeUnit.SECONDS));
-            clock.set(NEXT_UTC_DAY);
-            사용량_잠금_해제.countDown();
-
-            길목.get(30, TimeUnit.SECONDS);
-            GenerationStartResult result = 뒤따르는_요청.get(30, TimeUnit.SECONDS);
-
-            assertAll(
-                    () -> assertEquals(Kind.NEW, result.kind()),
-                    () -> assertEquals(LIMIT, 사용량을_조회한다(READER_ID, USAGE_DATE)),
-                    () -> assertEquals(1, 사용량을_조회한다(READER_ID, NEXT_USAGE_DATE)),
-                    () -> assertEquals(1, 생성_수를_조회한다(READER_ID)));
-        } finally {
-            사용량_잠금_해제.countDown();
-            executor.shutdownNow();
-            executor.awaitTermination(5, TimeUnit.SECONDS);
-        }
+        assertAll(
+                () -> assertEquals(Kind.NEW, result.kind()),
+                () -> assertEquals(LIMIT, 사용량을_조회한다(READER_ID, USAGE_DATE)),
+                () -> assertEquals(1, 사용량을_조회한다(READER_ID, NEXT_USAGE_DATE)),
+                () -> assertEquals(1, 생성_수를_조회한다(READER_ID)));
     }
 
     /**
@@ -496,6 +402,54 @@ class AiRouteGenerationStartMySqlIntegrationTest {
     }
 
     // --- 동시 실행 ---------------------------------------------------------
+
+    /**
+     * 사용량 행을 미리 잠가 시작 요청을 그 앞에 세우고, 멈춰 있는 동안 {@code 잠금_중_동작} 을 실행한 뒤
+     * 잠금을 풀어 준다. 요청은 기존 생성 조회를 마치고(없음) 사용량 날짜를 확정한 직후 멈추므로, 동작은
+     * 항상 그 두 지점 사이에 끼어든다.
+     *
+     * <p>멈춘 지점을 시계 읽기 래치로 관측하는 것이 핵심이다. 고정 시간 대기였다면 실행이 느릴 때 요청이
+     * 경합 지점에 닿기 전에 동작이 끝나 회귀를 놓친다.
+     *
+     * <p>세 경합 테스트가 같은 인터리빙을 쓰므로 여기 한 번만 적는다. 각 테스트가 다른 것은 사용량
+     * 시드값과 이 동작, 그리고 단언뿐이다.
+     */
+    private GenerationStartResult 사용량_잠금_뒤에_시작한다(UUID key, Runnable 잠금_중_동작)
+            throws Exception {
+        CountDownLatch 사용량_잠금_확보 = new CountDownLatch(1);
+        CountDownLatch 사용량_잠금_해제 = new CountDownLatch(1);
+        CountDownLatch 날짜_확정 = clock.다음_읽기를_알린다();
+
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        try {
+            Future<?> 길목 =
+                    executor.submit(
+                            () ->
+                                    transactionTemplate.executeWithoutResult(
+                                            status -> {
+                                                사용량_행을_잠근다(READER_ID, USAGE_DATE);
+                                                사용량_잠금_확보.countDown();
+                                                해제를_기다린다(사용량_잠금_해제);
+                                            }));
+            Future<GenerationStartResult> 뒤따르는_요청 =
+                    executor.submit(
+                            () -> {
+                                assertTrue(사용량_잠금_확보.await(5, TimeUnit.SECONDS));
+                                return startService.start(READER_ID, key, 명령(PURPOSE));
+                            });
+
+            assertTrue(날짜_확정.await(10, TimeUnit.SECONDS));
+            잠금_중_동작.run();
+            사용량_잠금_해제.countDown();
+
+            길목.get(30, TimeUnit.SECONDS);
+            return 뒤따르는_요청.get(30, TimeUnit.SECONDS);
+        } finally {
+            사용량_잠금_해제.countDown();
+            executor.shutdownNow();
+            executor.awaitTermination(5, TimeUnit.SECONDS);
+        }
+    }
 
     private List<GenerationStartResult> 동시에_시작한다(long readerId, List<UUID> keys)
             throws Exception {
