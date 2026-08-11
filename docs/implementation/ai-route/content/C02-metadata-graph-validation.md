@@ -41,7 +41,9 @@ C01의 manifest 전체를 검증해 외부 전송 권리·파일 무결성·페�
 
 ## 구현 조건
 
-1. 비소설 90권은 48~72페이지·최소 장 수, 소설 10권은 AI candidate false라는 코퍼스 계약을 검사합니다.
+1. manifest에 든 도서만 검사하고 권수는 세지 않습니다. `aiRouteCandidate=true`인 도서는 48~72페이지·최소
+   장 수, `false`인 소설은 빈 `pages[]`라는 코퍼스 계약을 검사합니다. 10권짜리 부분 집합도 100권 완성본과
+   같은 코드로 통과해야 합니다.
 2. PDF·분석 입력 파일과 SHA-256, 전체 페이지 번호의 1부터 연속·중복 없음과 page count를 검사합니다.
 3. 지원 페이지의 분석 텍스트, 공개 가이드 주제, 예상 시간, embedding model·dimensions, 선수·중복 목록
    필드를 검사합니다.
@@ -53,6 +55,7 @@ C01의 manifest 전체를 검증해 외부 전송 권리·파일 무결성·페�
 ## 테스트
 
 - 정상 DAG의 위상 순서와 root 빈 prerequisite 허용
+- 지원 도서 10권짜리 부분 집합 manifest가 권수 때문에 실패하지 않음
 - 미존재·다른 book·자기 참조·duplicate edge·2개 이상 cycle 실패
 - 파일 누락·SHA 불일치·페이지 공백·지원 metadata 누락·권리/프로필 불일치 실패
 - validator 실패 시 Gateway·DB fake 호출 0회 확인
