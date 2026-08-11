@@ -31,6 +31,17 @@ def chk(cond, msg):
 
 CONTENT_ROLES = {"PREREQUISITE", "CORE", "EXAMPLE", "COUNTERPOINT", "CONCLUSION"}
 ALL_ROLES = CONTENT_ROLES | {"FRONT_MATTER"}
+# 소설은 initial-v1의 PDF·SHA-256·페이지 수를 그대로 쓰므로 그 manifest와 대조한다.
+INITIAL = json.loads((REPO / "fixtures/content/manifest.json").read_text("utf-8"))
+INITIAL_BOOKS = {b["bookId"]: b for b in INITIAL["books"]}
+
+
+def check_pdf(book):
+    pdf = FIXTURE / book["pdfPath"]
+    chk(pdf.is_file(), f"PDF 존재: {book['pdfPath']}")
+    if pdf.is_file():
+        chk(hashlib.sha256(pdf.read_bytes()).hexdigest() == book["pdfSha256"], "PDF SHA-256 일치")
+
 
 print("[manifest 최상위]")
 chk(manifest["contentVersion"] == "ai-route-v2", f"contentVersion (실제 {manifest['contentVersion']})")
@@ -51,8 +62,16 @@ for book in manifest["books"]:
     n = len(pages)
     nums = [p["pageNumber"] for p in pages]
     if not book["aiRouteCandidate"]:
-        chk(pages == [], f"소설/미지원 도서 pages[] 빈 배열")
+        chk(pages == [], "소설/미지원 도서 pages[] 빈 배열")
         chk(bool(re.fullmatch(r"[0-9a-f]{64}", book["pdfSha256"])), "pdfSha256 형식")
+        check_pdf(book)
+        prev = INITIAL_BOOKS.get(bid)
+        chk(prev is not None, f"initial-v1에 bookId {bid} 존재")
+        if prev:
+            chk(book["pdfSha256"] == prev["pdfSha256"], "pdfSha256이 initial-v1과 같음")
+            chk(book["totalPageCount"] == prev["totalPageCount"],
+                f"totalPageCount가 initial-v1과 같음 (실제 {book['totalPageCount']}, "
+                f"initial-v1 {prev['totalPageCount']})")
         continue
     chk(book["aiExternalTransferAllowed"] is True, "aiExternalTransferAllowed=true")
     chk(48 <= n <= 72, f"페이지 수 {n} (48~72)")
@@ -103,10 +122,7 @@ for book in manifest["books"]:
     chk(seen == n, f"위상 정렬 {seen}/{n} (순환 없음)")
     density = density_failures(pages, prereq)
     chk(not density, f"book-{bid:03d} 선수 밀도 상한" + ("" if not density else " — " + "; ".join(density)))
-    pdf = FIXTURE / book["pdfPath"]
-    chk(pdf.is_file(), f"PDF 존재: {book['pdfPath']}")
-    if pdf.is_file():
-        chk(hashlib.sha256(pdf.read_bytes()).hexdigest() == book["pdfSha256"], "PDF SHA-256 일치")
+    check_pdf(book)
 
 print("\n[evaluation]")
 caseids = [c["caseId"] for c in evaluation["cases"]]

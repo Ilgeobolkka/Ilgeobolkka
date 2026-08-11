@@ -5,6 +5,106 @@
   "embeddingDimensions": 1536,
   "books": [
     {
+      "bookId": 1,
+      "title": "Aether% Archive",
+      "pdfPath": "pdfs/book-001.pdf",
+      "pdfSha256": "b5c7acde5060bc21c42f1112b4a26dca79dca87b5579947a9e71f03ad5dd52e9",
+      "totalPageCount": 4,
+      "aiRouteCandidate": false,
+      "aiExternalTransferAllowed": false,
+      "pages": []
+    },
+    {
+      "bookId": 2,
+      "title": "유리숲의 마지막 우체국",
+      "pdfPath": "pdfs/book-002.pdf",
+      "pdfSha256": "86b5e1c12ebd5a7e335089e178e6873e0061a804abf1173a9a2f10a63f6bf84d",
+      "totalPageCount": 5,
+      "aiRouteCandidate": false,
+      "aiExternalTransferAllowed": false,
+      "pages": []
+    },
+    {
+      "bookId": 3,
+      "title": "MixedCase Atlas",
+      "pdfPath": "pdfs/book-003.pdf",
+      "pdfSha256": "9ec53ac2791ff05c94ef4f32501e9686dac7e6f2d07b3db762c5d8281d162c9d",
+      "totalPageCount": 3,
+      "aiRouteCandidate": false,
+      "aiExternalTransferAllowed": false,
+      "pages": []
+    },
+    {
+      "bookId": 4,
+      "title": "두  개의 내부 공백",
+      "pdfPath": "pdfs/book-004.pdf",
+      "pdfSha256": "6b921a79fc46064844122c84e1853a41ca870592abfb66ae3afe2af156961560",
+      "totalPageCount": 4,
+      "aiRouteCandidate": false,
+      "aiExternalTransferAllowed": false,
+      "pages": []
+    },
+    {
+      "bookId": 5,
+      "title": "달빛 아래 종이정원",
+      "pdfPath": "pdfs/book-005.pdf",
+      "pdfSha256": "6703032cc38e845ef7369297bf6c6cf843c7548743d2d01b5c223323a3845722",
+      "totalPageCount": 5,
+      "aiRouteCandidate": false,
+      "aiExternalTransferAllowed": false,
+      "pages": []
+    },
+    {
+      "bookId": 6,
+      "title": "비가 멈춘 역의 승객들",
+      "pdfPath": "pdfs/book-006.pdf",
+      "pdfSha256": "d3caf2bd31d6902f399a5175ae78b619738ff257a80667487862183faa924b06",
+      "totalPageCount": 3,
+      "aiRouteCandidate": false,
+      "aiExternalTransferAllowed": false,
+      "pages": []
+    },
+    {
+      "bookId": 7,
+      "title": "겨울 바다의 시계공",
+      "pdfPath": "pdfs/book-007.pdf",
+      "pdfSha256": "ca0b7cdf1dbd17bb7c35389bb1c544990ff055278caf19a3561f6743147d3c7a",
+      "totalPageCount": 4,
+      "aiRouteCandidate": false,
+      "aiExternalTransferAllowed": false,
+      "pages": []
+    },
+    {
+      "bookId": 8,
+      "title": "열세 번째 창문의 밤",
+      "pdfPath": "pdfs/book-008.pdf",
+      "pdfSha256": "0808c50fcba251ac8620b73051f2c53387fa2b009918a111e849d2f32f8ecb4d",
+      "totalPageCount": 5,
+      "aiRouteCandidate": false,
+      "aiExternalTransferAllowed": false,
+      "pages": []
+    },
+    {
+      "bookId": 9,
+      "title": "같은 제목의 경계",
+      "pdfPath": "pdfs/book-009.pdf",
+      "pdfSha256": "91e475b162ed569444d2a885204675f4d22aea317d47679dde5b4658aac12e48",
+      "totalPageCount": 3,
+      "aiRouteCandidate": false,
+      "aiExternalTransferAllowed": false,
+      "pages": []
+    },
+    {
+      "bookId": 10,
+      "title": "같은 제목의 경계",
+      "pdfPath": "pdfs/book-010.pdf",
+      "pdfSha256": "115ca928d51b3dfce3c286ffab3a8c3da2418639b21c25a98107d8f658ff0ab5",
+      "totalPageCount": 4,
+      "aiRouteCandidate": false,
+      "aiExternalTransferAllowed": false,
+      "pages": []
+    },
+    {
       "bookId": 11,
       "title": "느린 아침을 수집하는 법",
       "pdfPath": "pdfs/book-011.pdf",

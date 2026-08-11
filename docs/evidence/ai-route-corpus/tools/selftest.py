@@ -108,6 +108,11 @@ def expect_book(name, manifest_pages, manuscript_pages, should_pass, needle=None
     report(name, ok, detail or "통과해 버림")
 
 
+def candidate_book(manifest):
+    """AI 경로 후보 도서 중 첫 권. 정본 앞머리는 pages[]가 빈 소설이라 그대로 쓰면 안 된다."""
+    return next(b for b in manifest["books"] if b["aiRouteCandidate"])
+
+
 def chain_prerequisites(pages):
     """후보 페이지를 한 줄 사슬로 이어 선수 폐쇄를 페이지 번호만큼 키운다.
 
@@ -216,18 +221,18 @@ def check_manifest(workdir):
     expect_manifest("정상 정본은 통과", manifest, evaluation, workdir, should_pass=True)
 
     broken = copy.deepcopy(manifest)
-    broken["books"][0]["totalPageCount"] += 1
+    candidate_book(broken)["totalPageCount"] += 1
     expect_manifest("totalPageCount가 페이지 수와 다르면 실패", broken, evaluation, workdir,
                     should_pass=False, needle="totalPageCount")
 
     broken = copy.deepcopy(manifest)
-    page = next(p for p in broken["books"][0]["pages"] if p["prerequisitePageNumbers"])
+    page = next(p for p in candidate_book(broken)["pages"] if p["prerequisitePageNumbers"])
     page["prerequisitePageNumbers"] = [page["pageNumber"]]
     expect_manifest("선수 관계가 자기 자신을 가리키면 실패", broken, evaluation, workdir,
                     should_pass=False, needle="자기 참조 없음")
 
     broken = copy.deepcopy(manifest)
-    for p in broken["books"][0]["pages"]:
+    for p in candidate_book(broken)["pages"]:
         if p["duplicateGroupKeys"]:
             p["duplicateGroupKeys"] = []
             break
@@ -235,7 +240,7 @@ def check_manifest(workdir):
                     should_pass=False, needle="중복그룹은 2페이지 이상")
 
     broken = copy.deepcopy(manifest)
-    page = broken["books"][0]["pages"][1]
+    page = candidate_book(broken)["pages"][1]
     page["estimatedReadingSeconds"] = 0
     expect_manifest("독서시간이 0이면 실패", broken, evaluation, workdir,
                     should_pass=False, needle="독서시간 > 0")
@@ -255,7 +260,7 @@ def check_manifest(workdir):
 
     # 아래 셋은 한동안 조각 검증기에만 있던 검사다. 두 검증기의 기준이 갈리지 않는지 함께 본다.
     broken = copy.deepcopy(manifest)
-    broken["books"][0]["aiExternalTransferAllowed"] = False
+    candidate_book(broken)["aiExternalTransferAllowed"] = False
     expect_manifest("외부 전송 권리가 false면 실패", broken, evaluation, workdir,
                     should_pass=False, needle="aiExternalTransferAllowed")
 
@@ -272,6 +277,19 @@ def check_manifest(workdir):
     broken["cases"][0]["duplicatePageGroups"][0] = [group[0]] + group
     expect_manifest("중복 그룹 안에 같은 페이지를 두 번 넣으면 실패", manifest, broken, workdir,
                     should_pass=False, needle="같은 페이지가 두 번")
+
+    # 소설(비후보 도서)은 initial-v1의 PDF·SHA-256·페이지 수를 그대로 써야 한다.
+    broken = copy.deepcopy(manifest)
+    novel = next(b for b in broken["books"] if not b["aiRouteCandidate"])
+    novel["totalPageCount"] += 1
+    expect_manifest("소설 페이지 수가 initial-v1과 다르면 실패", broken, evaluation, workdir,
+                    should_pass=False, needle="initial-v1과 같음")
+
+    broken = copy.deepcopy(manifest)
+    novel = next(b for b in broken["books"] if not b["aiRouteCandidate"])
+    novel["pdfPath"] = "pdfs/book-없는파일.pdf"
+    expect_manifest("소설 PDF가 없으면 실패", broken, evaluation, workdir,
+                    should_pass=False, needle="PDF 존재")
 
     broken = copy.deepcopy(evaluation)
     case = next(c for c in broken["cases"] if c["maxAdditionalInk"] == 0)
@@ -293,7 +311,7 @@ def check_manifest(workdir):
                     should_pass=False, needle="QUICK 상한")
 
     broken = copy.deepcopy(manifest)
-    chain_prerequisites(broken["books"][0]["pages"])
+    chain_prerequisites(candidate_book(broken)["pages"])
     expect_manifest("선수를 한 줄로 길게 이으면 밀도 상한에 걸림", broken, evaluation, workdir,
                     should_pass=False, needle="선수 폐쇄")
 
