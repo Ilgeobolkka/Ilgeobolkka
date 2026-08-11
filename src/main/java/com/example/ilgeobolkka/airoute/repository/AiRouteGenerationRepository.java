@@ -109,6 +109,10 @@ public interface AiRouteGenerationRepository extends JpaRepository<AiRouteGenera
      *
      * <p>여기서 나온 뒤 잠글 때까지 사이에 호출자가 정상 완료할 수 있으므로, 복구는 잠근 다음 상태를 다시
      * 보고 그때도 {@code GENERATING} 인 것만 바꾼다.
+     *
+     * <p>경계는 배제다. PRD 가 제한 시간을 "넘으면" 실패로 규정하므로 나이가 정확히 제한 시간인 생성은
+     * 아직 대상이 아니다. "만료 시각부터" 거부하는 {@link #findExpiredGenerationIds} 와 방향이 반대인데,
+     * 정본이 두 경계를 서로 다른 말로 정하기 때문이다.
      */
     @Query(
             """
@@ -116,7 +120,7 @@ public interface AiRouteGenerationRepository extends JpaRepository<AiRouteGenera
             FROM AiRouteGeneration generation
             WHERE generation.status
                 = com.example.ilgeobolkka.airoute.entity.AiRouteGenerationStatus.GENERATING
-              AND generation.createdAt <= :startedBefore
+              AND generation.createdAt < :startedBefore
             """)
     List<UUID> findAbandonedGenerationIds(@Param("startedBefore") Instant startedBefore);
 }
