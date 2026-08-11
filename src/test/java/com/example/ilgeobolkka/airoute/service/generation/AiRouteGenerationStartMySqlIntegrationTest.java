@@ -10,6 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.example.ilgeobolkka.airoute.AiRouteGenerationCommand;
 import com.example.ilgeobolkka.airoute.entity.AiRouteGeneration;
 import com.example.ilgeobolkka.airoute.entity.AiRouteGenerationStatus;
+import com.example.ilgeobolkka.airoute.entity.AiRouteItemRelevance;
+import com.example.ilgeobolkka.airoute.entity.AiRouteItemRole;
 import com.example.ilgeobolkka.airoute.repository.AiRouteGenerationRepository;
 import com.example.ilgeobolkka.airoute.service.generation.GenerationStartResult.Kind;
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
@@ -51,11 +53,7 @@ import org.springframework.transaction.support.TransactionTemplate;
  * 한도 경계는 실제 동시 요청으로만 증명된다. 테스트 클래스에 {@code @Transactional}을 붙이지 않는 이유도
  * 같다. 붙이면 모든 작업이 한 트랜잭션에 갇혀 commit·rollback 결과를 볼 수 없다.
  */
-@SpringBootTest(
-        properties = {
-            "spring.datasource.hikari.maximum-pool-size=12",
-            "ai-route.maintenance-initial-delay-millis=3600000"
-        })
+@SpringBootTest(properties = "spring.datasource.hikari.maximum-pool-size=12")
 @ActiveProfiles("test")
 @ContextConfiguration(initializers = DedicatedTestDatabaseInitializer.class)
 @Import(AiRouteGenerationStartMySqlIntegrationTest.MutableClockConfiguration.class)
@@ -70,6 +68,8 @@ class AiRouteGenerationStartMySqlIntegrationTest {
     private static final long OTHER_READER_ID = READER_IDS.get(1);
     private static final long BOOK_ID = 458_101L;
     private static final long MISSING_BOOK_ID = 458_999L;
+    private static final long FIRST_PAGE_ID = 458_201L;
+    private static final long SECOND_PAGE_ID = 458_202L;
     private static final String CONTENT_VERSION = "ai-route-v2";
     private static final String PURPOSE = "핵심 개념만 빠르게";
 
@@ -88,6 +88,7 @@ class AiRouteGenerationStartMySqlIntegrationTest {
     private static final Instant EXPIRES_AT = Instant.parse("2026-08-07T00:15:09.123456Z");
 
     private final AiRouteGenerationStartService startService;
+    private final AiRouteGenerationLifecycleService lifecycleService;
     private final AiRouteGenerationRepository generationRepository;
     private final JdbcTemplate jdbcTemplate;
     private final TransactionTemplate transactionTemplate;
@@ -96,11 +97,13 @@ class AiRouteGenerationStartMySqlIntegrationTest {
     @Autowired
     AiRouteGenerationStartMySqlIntegrationTest(
             AiRouteGenerationStartService startService,
+            AiRouteGenerationLifecycleService lifecycleService,
             AiRouteGenerationRepository generationRepository,
             JdbcTemplate jdbcTemplate,
             PlatformTransactionManager transactionManager,
             MutableClock clock) {
         this.startService = startService;
+        this.lifecycleService = lifecycleService;
         this.generationRepository = generationRepository;
         this.jdbcTemplate = jdbcTemplate;
         this.transactionTemplate = new TransactionTemplate(transactionManager);
@@ -298,6 +301,28 @@ class AiRouteGenerationStartMySqlIntegrationTest {
                 // 앞선 요청은 8/6에, 새 요청은 8/7에. 되돌리지 않고 새로 한 건을 더 센다.
                 () -> assertEquals(1, 사용량을_조회한다(READER_ID, USAGE_DATE)),
                 () -> assertEquals(1, 사용량을_조회한다(READER_ID, NEXT_USAGE_DATE)));
+    }
+
+    /**
+     * 항목이 딸린 만료 행을 지우는 경로다. 앞의 재요청 테스트는 {@code FAILED} 라 항목이 0건이어서,
+     * 항목을 먼저 지우고 생성을 지운 뒤 insert 하는 순서가 실제로 외래 키를 통과하는지 확인하지 못한다.
+     */
+    @Test
+    void 항목이_있는_만료_경로도_같은_키로_다시_시작할_수_있다() {
+        UUID key = UUID.randomUUID();
+        GenerationStartResult first = startService.start(READER_ID, key, 명령(PURPOSE));
+        clock.set(COMPLETED_AT);
+        lifecycleService.completeWithRoute(first.generationId(), 두_항목());
+        clock.set(EXPIRES_AT);
+
+        GenerationStartResult retried = startService.start(READER_ID, key, 명령(PURPOSE));
+
+        assertAll(
+                () -> assertEquals(Kind.NEW, retried.kind()),
+                () -> assertNotEquals(first.generationId(), retried.generationId()),
+                () -> assertEquals(1, 생성_수를_조회한다(READER_ID)),
+                () -> assertEquals(0, 항목_수를_조회한다(first.generationId())),
+                () -> assertEquals(0, 항목_수를_조회한다(retried.generationId())));
     }
 
     @Test
@@ -559,6 +584,25 @@ class AiRouteGenerationStartMySqlIntegrationTest {
 
     // --- fixture -----------------------------------------------------------
 
+    private static List<AiRouteResultItem> 두_항목() {
+        return List.of(
+                new AiRouteResultItem(
+                        FIRST_PAGE_ID, 1, AiRouteItemRelevance.HIGH, false, AiRouteItemRole.CORE),
+                new AiRouteResultItem(
+                        SECOND_PAGE_ID,
+                        2,
+                        AiRouteItemRelevance.MEDIUM,
+                        true,
+                        AiRouteItemRole.PREREQUISITE));
+    }
+
+    private int 항목_수를_조회한다(UUID generationId) {
+        return jdbcTemplate.queryForObject(
+                "SELECT COUNT(*) FROM ai_route_generation_item WHERE generation_id = ?",
+                Integer.class,
+                generationId.toString());
+    }
+
     private static AiRouteGenerationCommand 명령(String rawPurpose) {
         return AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, rawPurpose, 5, 100);
     }
@@ -634,8 +678,22 @@ class AiRouteGenerationStartMySqlIntegrationTest {
         jdbcTemplate.update(
                 """
                 INSERT INTO book (id, category, title, author, total_page_count, price_won)
-                VALUES (?, '소설', 'SCRUM-458 테스트 도서', '테스트 저자', 1, 10000)
+                VALUES (?, '인문', 'SCRUM-458 테스트 도서', '테스트 저자', 2, 10000)
                 """,
+                BOOK_ID);
+        jdbcTemplate.update(
+                """
+                INSERT INTO book_page (id, book_id, page_number, content_type, text_content)
+                VALUES (?, ?, 1, 'TEXT', '첫 페이지')
+                """,
+                FIRST_PAGE_ID,
+                BOOK_ID);
+        jdbcTemplate.update(
+                """
+                INSERT INTO book_page (id, book_id, page_number, content_type, text_content)
+                VALUES (?, ?, 2, 'TEXT', '둘째 페이지')
+                """,
+                SECOND_PAGE_ID,
                 BOOK_ID);
     }
 
@@ -684,9 +742,18 @@ class AiRouteGenerationStartMySqlIntegrationTest {
 
     private void 테스트_데이터를_정리한다() {
         for (long readerId : READER_IDS) {
+            jdbcTemplate.update(
+                    """
+                    DELETE FROM ai_route_generation_item
+                    WHERE generation_id IN (
+                        SELECT generation_id FROM ai_route_generation WHERE reader_id = ?
+                    )
+                    """,
+                    readerId);
             jdbcTemplate.update("DELETE FROM ai_route_generation WHERE reader_id = ?", readerId);
             jdbcTemplate.update("DELETE FROM ai_route_daily_usage WHERE reader_id = ?", readerId);
         }
+        jdbcTemplate.update("DELETE FROM book_page WHERE book_id = ?", BOOK_ID);
         jdbcTemplate.update("DELETE FROM book WHERE id = ?", BOOK_ID);
         for (long readerId : READER_IDS) {
             jdbcTemplate.update("DELETE FROM reader WHERE id = ?", readerId);

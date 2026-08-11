@@ -68,7 +68,9 @@ public class AiRouteGenerationStartService {
      * 재조회는 그 행을 본다. 같은 입력이면 저장된 상태를, 다른 입력이면 키 재사용을 돌려준다.
      *
      * <p>행이 없으면 unique key 경합이 아니라 다른 제약 위반이다. 도서 외래 키처럼 다시 읽어도 달라지지
-     * 않는 오류를 성공으로 둔갑시키지 않도록 원래 예외를 그대로 올린다.
+     * 않는 오류를 성공으로 둔갑시키지 않도록 원래 예외를 그대로 올린다. 만료한 행도 없는 것으로 본다.
+     * 만료 행을 지운 뒤 insert 가 다른 제약으로 실패하면 rollback 으로 그 행이 되살아나는데, 그것을
+     * 기존 결과라고 돌려주면 원래 예외까지 삼킨다.
      */
     private GenerationStartResult convergeOnExisting(
             long readerId,
@@ -79,6 +81,7 @@ public class AiRouteGenerationStartService {
                 transactionTemplate.execute(
                         status ->
                                 findExistingForUpdate(readerId, idempotencyKey)
+                                        .filter(this::isUsable)
                                         .map(
                                                 generation ->
                                                         resultOf(generation, requestFingerprint))
