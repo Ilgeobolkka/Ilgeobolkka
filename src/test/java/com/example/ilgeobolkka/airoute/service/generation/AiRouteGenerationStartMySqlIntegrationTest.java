@@ -272,6 +272,46 @@ class AiRouteGenerationStartMySqlIntegrationTest {
                                         .toList()));
     }
 
+    /**
+     * 보관 기간이 지난 멱등 상태는 정리 배치가 아직 안 돌았어도 없는 것으로 봐야 한다. 15분 뒤에는 같은
+     * 키도 새 요청으로 취급한다는 것이 계약이고, 그 판정이 배치 주기에 달려 있으면 만료 정각부터 다음
+     * 스윕까지 클라이언트가 지난 결과에 갇힌다.
+     */
+    @Test
+    void 만료_정각에는_정리_전이라도_같은_키가_새_요청이_된다() {
+        UUID key = UUID.randomUUID();
+        GenerationStartResult first = startService.start(READER_ID, key, 명령(PURPOSE));
+        생성을_실패로_끝낸다(first.generationId());
+        clock.set(EXPIRES_AT);
+
+        GenerationStartResult retried = startService.start(READER_ID, key, 명령(PURPOSE));
+
+        assertAll(
+                () -> assertEquals(Kind.NEW, retried.kind()),
+                () -> assertNotEquals(first.generationId(), retried.generationId()),
+                // 만료 행을 지우고 새로 넣었으므로 여전히 한 행이다.
+                () -> assertEquals(1, 생성_수를_조회한다(READER_ID)),
+                // 앞선 요청은 8/6에, 새 요청은 8/7에. 되돌리지 않고 새로 한 건을 더 센다.
+                () -> assertEquals(1, 사용량을_조회한다(READER_ID, USAGE_DATE)),
+                () -> assertEquals(1, 사용량을_조회한다(READER_ID, NEXT_USAGE_DATE)));
+    }
+
+    @Test
+    void 만료_직전에는_같은_키가_아직_기존_결과를_받는다() {
+        UUID key = UUID.randomUUID();
+        GenerationStartResult first = startService.start(READER_ID, key, 명령(PURPOSE));
+        생성을_실패로_끝낸다(first.generationId());
+        clock.set(EXPIRES_AT.minusNanos(1000));
+
+        GenerationStartResult retried = startService.start(READER_ID, key, 명령(PURPOSE));
+
+        assertAll(
+                () -> assertEquals(Kind.EXISTING_FINAL, retried.kind()),
+                () -> assertEquals(first.generationId(), retried.generationId()),
+                () -> assertEquals(1, 생성_수를_조회한다(READER_ID)),
+                () -> assertEquals(1, 사용량을_조회한다(READER_ID, USAGE_DATE)));
+    }
+
     @Test
     void 다른_독자가_같은_멱등_키를_써도_각자_새로_시작한다() {
         UUID key = UUID.randomUUID();

@@ -4,6 +4,7 @@ import com.example.ilgeobolkka.airoute.AiRouteGenerationCommand;
 import com.example.ilgeobolkka.airoute.entity.AiRouteDailyUsage;
 import com.example.ilgeobolkka.airoute.entity.AiRouteGeneration;
 import com.example.ilgeobolkka.airoute.repository.AiRouteDailyUsageRepository;
+import com.example.ilgeobolkka.airoute.repository.AiRouteGenerationItemRepository;
 import com.example.ilgeobolkka.airoute.repository.AiRouteGenerationRepository;
 import java.time.Clock;
 import java.time.Instant;
@@ -33,6 +34,7 @@ public class AiRouteGenerationStartService {
     public static final int DAILY_GENERATION_LIMIT = 10;
 
     private final AiRouteGenerationRepository generationRepository;
+    private final AiRouteGenerationItemRepository generationItemRepository;
     private final AiRouteDailyUsageRepository dailyUsageRepository;
     private final TransactionTemplate transactionTemplate;
     private final Clock clock;
@@ -94,8 +96,12 @@ public class AiRouteGenerationStartService {
             String requestFingerprint) {
         Optional<AiRouteGeneration> existing = findExistingForUpdate(readerId, idempotencyKey);
         if (existing.isPresent()) {
-            // 이미 있는 요청은 성공이든 실패든 횟수를 다시 쓰지 않는다.
-            return resultOf(existing.get(), requestFingerprint);
+            AiRouteGeneration generation = existing.get();
+            if (isUsable(generation)) {
+                // 아직 유효한 요청은 성공이든 실패든 횟수를 다시 쓰지 않는다.
+                return resultOf(generation, requestFingerprint);
+            }
+            discardExpired(generation);
         }
 
         // 잠금 순서는 사용량 행 → 생성 행 insert 다. 같은 독자의 동시 요청은 대개 사용량 행 하나에
@@ -145,8 +151,38 @@ public class AiRouteGenerationStartService {
             long readerId, UUID idempotencyKey, String requestFingerprint) {
         return generationRepository
                 .findByReaderIdAndIdempotencyKeyForUpdate(readerId, idempotencyKey)
+                .filter(this::isUsable)
                 .map(generation -> resultOf(generation, requestFingerprint))
                 .orElseGet(GenerationStartResult::dailyLimitExceeded);
+    }
+
+    /**
+     * 만료한 멱등 상태는 남아 있어도 없는 것으로 본다. 15분이 지나면 임시 결과와 멱등 상태를 함께
+     * 지우고 같은 키가 다시 오면 새 요청으로 취급한다는 것이 계약이며, 그 판정이 정리 배치가 돌았는지에
+     * 달려 있으면 안 된다.
+     *
+     * <p>{@code expiresAt} 이 {@code null} 인 {@code GENERATING} 은 아직 만료 대상이 아니다.
+     */
+    private boolean isUsable(AiRouteGeneration generation) {
+        Instant expiresAt = generation.getExpiresAt();
+        return expiresAt == null || clock.instant().isBefore(expiresAt);
+    }
+
+    /**
+     * 만료한 행을 그 자리에서 지운다. 남겨 두면 뒤따르는 새 생성 insert 가
+     * {@code uk_ai_route_generation_reader_idempotency} 에 걸려 같은 키로 다시 시작할 수 없다.
+     *
+     * <p>지우고 바로 flush 한다. 미루면 Hibernate 가 같은 flush 안에서 INSERT 를 DELETE 보다 먼저
+     * 내보내 unique key 가 깨진다.
+     *
+     * <p>일일 사용량은 되돌리지 않는다. 만료 전 요청은 이미 한 건으로 계수됐고, 같은 키로 다시 오는
+     * 요청도 새 요청 한 건으로 계수하는 것이 계약이다. 저장 경로는 이 행을 외래 키로 참조하지 않으므로
+     * 기한 없는 경로는 그대로 남는다.
+     */
+    private void discardExpired(AiRouteGeneration generation) {
+        generationItemRepository.deleteByGenerationId(generation.getGenerationId());
+        generationRepository.delete(generation);
+        generationRepository.flush();
     }
 
     /**
