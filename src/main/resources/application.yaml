@@ -48,6 +48,10 @@ server:
         http-only: true
         same-site: lax
 
+management:
+  server:
+    port: -1
+
 portone:
   payment:
     enabled: ${PORTONE_PAYMENT_ENABLED:false}

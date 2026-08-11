@@ -49,3 +49,4 @@ out/
 
 ### Generated content ###
 /var/content/pages/
+/var/performance/
