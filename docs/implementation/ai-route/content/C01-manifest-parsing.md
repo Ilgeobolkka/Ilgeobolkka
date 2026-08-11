@@ -56,6 +56,9 @@
 - 정상 최소 AI manifest와 evaluation parse
 - 필수 필드 누락, unknown field, duplicate ID, 잘못된 Enum·차원·배타 입력 실패
 - 초기 manifest parse 결과와 기존 테스트 회귀
+- 정본 `fixtures/content/ai-route-v2/`를 실제 parser로 읽어 통과 (`ContentFixtureIntegrityTest`).
+  나머지 parser 테스트는 인라인 JSON을 쓰므로, 이 검사가 없으면 manifest에 새 필드를 넣고 parser에
+  반영하지 않아도 드러나지 않는다
 - 명령: `./gradlew test --tests '*AiRouteContentManifestTest' --tests '*ContentBatchConverterTest'`
 
 ## 제외 범위
