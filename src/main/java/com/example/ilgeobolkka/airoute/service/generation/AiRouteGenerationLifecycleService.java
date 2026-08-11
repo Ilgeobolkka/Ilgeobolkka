@@ -1,5 +1,6 @@
 package com.example.ilgeobolkka.airoute.service.generation;
 
+import com.example.ilgeobolkka.airoute.entity.AiReadingRoute;
 import com.example.ilgeobolkka.airoute.entity.AiRouteGeneration;
 import com.example.ilgeobolkka.airoute.entity.AiRouteGenerationItem;
 import com.example.ilgeobolkka.airoute.entity.AiRouteNoRouteReason;
@@ -88,6 +89,41 @@ public class AiRouteGenerationLifecycleService {
     }
 
     /**
+     * 저장 경로로 전환한다. 임시 목적·입력은 Entity 가 지우고, 임시 항목은 여기서 지운다. 멱등 키·요청
+     * 지문·저장 경로 식별자는 원래 {@code expiresAt} 까지 그대로 남아, 그 사이 같은 키로 다시 생성을
+     * 요청해도 저장된 경로를 돌려줄 수 있다.
+     *
+     * <p>소유자 확인은 Entity 가 한다. 넘어온 경로의 독자·도서·요청이 생성과 하나라도 다르면 거부한다.
+     *
+     * @throws AiRouteGenerationNotFoundException 생성이 없거나 이미 만료했을 때. 만료한 식별자와 남의
+     *     식별자를 같은 결과로 만들어 존재 여부가 응답에서 갈리지 않게 한다.
+     * @throws IllegalStateException {@code ROUTE} 가 아닐 때
+     */
+    @Transactional
+    public void markSaved(UUID generationId, AiReadingRoute savedRoute) {
+        AiRouteGeneration generation = lockForTransition(generationId);
+        requireNotExpired(generation);
+
+        generation.saveAsRoute(savedRoute);
+        generationItemRepository.deleteByGenerationId(generationId);
+    }
+
+    /**
+     * 저장 경로가 삭제됐음을 남긴다. 저장 경로 식별자를 비워 같은 생성으로 다시 저장하지 못하게 한다.
+     *
+     * <p>임시 상태가 이미 정리됐으면 아무 일도 하지 않는다. 저장 경로는 기한이 없어 15분이 한참 지난
+     * 뒤에도 삭제될 수 있는데, 그때 남아 있지 않은 멱등 상태 때문에 경로 삭제가 실패하면 안 된다.
+     *
+     * @throws IllegalStateException 남아 있는데 {@code SAVED} 가 아닐 때
+     */
+    @Transactional
+    public void markConsumed(UUID generationId) {
+        generationRepository
+                .findByGenerationIdForUpdate(generationId)
+                .ifPresent(AiRouteGeneration::consume);
+    }
+
+    /**
      * 소유자의 아직 유효한 생성을 읽는다. 다른 독자의 식별자와 만료한 식별자는 모두 빈 결과다. 호출자는
      * 둘을 구분하지 않고 같은 404 로 응답한다.
      *
@@ -116,5 +152,19 @@ public class AiRouteGenerationLifecycleService {
         return generationRepository
                 .findByGenerationIdForUpdate(generationId)
                 .orElseThrow(() -> new AiRouteGenerationNotFoundException(generationId));
+    }
+
+    /**
+     * 만료 판정을 정리 배치 실행 여부에 기대지 않는다. 만료 시각을 지난 행은 아직 지워지지 않았어도 없는
+     * 것으로 본다. 경계는 {@code now < expiresAt} 이 유효다.
+     *
+     * <p>{@code expiresAt} 이 {@code null} 인 {@code GENERATING} 은 만료 대상이 아니다. 이 검사를 지나가도
+     * 뒤따르는 Entity 전이가 상태를 보고 거부한다.
+     */
+    private void requireNotExpired(AiRouteGeneration generation) {
+        Instant expiresAt = generation.getExpiresAt();
+        if (expiresAt != null && !clock.instant().isBefore(expiresAt)) {
+            throw new AiRouteGenerationNotFoundException(generation.getGenerationId());
+        }
     }
 }
