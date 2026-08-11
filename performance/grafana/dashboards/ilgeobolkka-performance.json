@@ -1,0 +1,85 @@
+{
+  "annotations": { "list": [] },
+  "editable": false,
+  "graphTooltip": 1,
+  "panels": [
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "reqps" }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 8, "x": 0, "y": 0 },
+      "id": 1,
+      "targets": [
+        { "expr": "sum(rate(http_server_requests_seconds_count[1m])) by (uri, status)", "legendFormat": "{{uri}} {{status}}", "refId": "A" }
+      ],
+      "title": "HTTP 요청률",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "s" }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 8, "x": 8, "y": 0 },
+      "id": 2,
+      "targets": [
+        { "expr": "histogram_quantile(0.95, sum(rate(http_server_requests_seconds_bucket[5m])) by (le, uri))", "legendFormat": "{{uri}}", "refId": "A" }
+      ],
+      "title": "HTTP p95",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "bytes" }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 8, "x": 16, "y": 0 },
+      "id": 3,
+      "targets": [
+        { "expr": "sum(jvm_memory_used_bytes) by (area)", "legendFormat": "{{area}}", "refId": "A" }
+      ],
+      "title": "JVM 메모리",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "short" }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 8, "x": 0, "y": 8 },
+      "id": 4,
+      "targets": [
+        { "expr": "tomcat_threads_busy_threads", "legendFormat": "Tomcat busy", "refId": "A" },
+        { "expr": "hikaricp_connections_active", "legendFormat": "Hikari active", "refId": "B" },
+        { "expr": "hikaricp_connections_pending", "legendFormat": "Hikari pending", "refId": "C" }
+      ],
+      "title": "Tomcat · Hikari",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "short" }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 8, "x": 8, "y": 8 },
+      "id": 5,
+      "targets": [
+        { "expr": "mysql_global_status_threads_connected", "legendFormat": "connected", "refId": "A" },
+        { "expr": "mysql_global_status_threads_running", "legendFormat": "running", "refId": "B" }
+      ],
+      "title": "MySQL 연결",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "ops" }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 8, "x": 16, "y": 8 },
+      "id": 6,
+      "targets": [
+        { "expr": "rate(mysql_global_status_questions[1m])", "legendFormat": "questions/s", "refId": "A" },
+        { "expr": "rate(mysql_global_status_innodb_row_lock_time[1m])", "legendFormat": "row lock time/s", "refId": "B" }
+      ],
+      "title": "MySQL 처리·잠금",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 42,
+  "tags": ["ilgeobolkka", "performance"],
+  "templating": { "list": [] },
+  "time": { "from": "now-30m", "to": "now" },
+  "title": "Ilgeobolkka Performance",
+  "uid": "ilgeobolkka-performance",
+  "version": 1
+}

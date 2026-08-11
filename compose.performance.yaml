@@ -1,0 +1,165 @@
+name: ilgeobolkka-performance
+
+services:
+  app:
+    image: eclipse-temurin:21-jdk-jammy@sha256:55fb9bf738f5d9b4a6c01b39337e3070d3e27370dd3c478fd1d5d3cd2233c6d8
+    command:
+      - java
+      - -jar
+      - /app/Ilgeobolkka.jar
+    ports:
+      - "127.0.0.1:8080:8080"
+      - "127.0.0.1:8081:8081"
+    environment:
+      SPRING_PROFILES_ACTIVE: performance
+      SERVER_ADDRESS: 0.0.0.0
+      MANAGEMENT_SERVER_ADDRESS: 0.0.0.0
+      DB_URL: jdbc:mysql://mysql:3306/ilgeobolkka_perf?allowPublicKeyRetrieval=true&sslMode=DISABLED
+      DB_USERNAME: ${DB_USERNAME:?DB_USERNAME must be set}
+      DB_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD must be set}
+      DEMO_VALIDATION_PASSWORD: ${DEMO_VALIDATION_PASSWORD:?DEMO_VALIDATION_PASSWORD must be set}
+      PORTONE_PAYMENT_ENABLED: "false"
+      AI_ROUTE_ENABLED: "false"
+    volumes:
+      - ./build/libs/Ilgeobolkka-0.0.1-SNAPSHOT.jar:/app/Ilgeobolkka.jar:ro
+      - ./var/performance:/var/performance
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      default:
+        aliases:
+          - ilgeobolkka.test
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "bash",
+          "-c",
+          "exec 3<>/dev/tcp/127.0.0.1/8080 && printf 'GET /api/smoke HTTP/1.1\\r\\nHost: localhost\\r\\nConnection: close\\r\\n\\r\\n' >&3 && head -n 1 <&3 | grep -q ' 204 '",
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 15s
+    cpus: 2.0
+    mem_limit: 2g
+
+  mysql:
+    image: mysql:8.4.11@sha256:b3b90af2a6552ae30c266fdb7d5dd55f3afb72404bb78d37fe8a23eb857fd3fb
+    ports:
+      - "127.0.0.1:3308:3306"
+    environment:
+      MYSQL_DATABASE: ilgeobolkka_perf
+      MYSQL_USER: ${DB_USERNAME:?DB_USERNAME must be set}
+      MYSQL_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD must be set}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?DB_ROOT_PASSWORD must be set}
+      PERF_MYSQL_EXPORTER_PASSWORD: ${PERF_MYSQL_EXPORTER_PASSWORD:?PERF_MYSQL_EXPORTER_PASSWORD must be set}
+    command:
+      - --performance-schema=ON
+      - --slow-query-log=ON
+      - --long-query-time=0.2
+      - --log-output=FILE
+    volumes:
+      - mysql-perf-data:/var/lib/mysql
+      - ./performance/mysql/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "MYSQL_PWD=$${MYSQL_PASSWORD} mysqladmin ping -h 127.0.0.1 -u$${MYSQL_USER} --silent",
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 15s
+    cpus: 2.0
+    mem_limit: 3g
+
+  mysql-exporter:
+    image: prom/mysqld-exporter:v0.19.0@sha256:eacb4b18e2ec1e0abdf2d64851b68526c964f6d9cb3e9458fb5d5f5062ea94c1
+    environment:
+      MYSQLD_EXPORTER_PASSWORD: ${PERF_MYSQL_EXPORTER_PASSWORD:?PERF_MYSQL_EXPORTER_PASSWORD must be set}
+    command:
+      - --mysqld.address=mysql:3306
+      - --mysqld.username=exporter
+      - --collect.info_schema.innodb_metrics
+      - --collect.info_schema.processlist
+      - --collect.perf_schema.eventsstatements
+      - --collect.perf_schema.eventswaits
+      - --collect.perf_schema.tableiowaits
+      - --collect.perf_schema.tablelocks
+    depends_on:
+      mysql:
+        condition: service_healthy
+    expose:
+      - "9104"
+    read_only: true
+    tmpfs:
+      - /tmp
+    cpus: 0.25
+    mem_limit: 256m
+
+  prometheus:
+    image: prom/prometheus:v3.13.2@sha256:508729e0e2d18e11fd742a5a5ca70e557b940a93948c3c95fd0123a6fd538b69
+    ports:
+      - "127.0.0.1:9090:9090"
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=7d
+      - --web.enable-lifecycle
+    volumes:
+      - ./performance/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    depends_on:
+      - mysql-exporter
+    cpus: 0.5
+    mem_limit: 1g
+
+  grafana:
+    image: grafana/grafana:13.1.3@sha256:ab5cb380e3ff3172d6c8bd2e7cfd31cce977d2881b260e1f5bc089bf0b759b43
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Viewer
+      GF_AUTH_DISABLE_LOGIN_FORM: "true"
+      GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION: "true"
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_ANALYTICS_REPORTING_ENABLED: "false"
+      GF_ANALYTICS_CHECK_FOR_UPDATES: "false"
+      GF_ANALYTICS_CHECK_FOR_PLUGIN_UPDATES: "false"
+      GF_PLUGINS_PREINSTALL_DISABLED: "true"
+    volumes:
+      - ./performance/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./performance/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    depends_on:
+      - prometheus
+    cpus: 0.5
+    mem_limit: 512m
+
+  k6:
+    image: grafana/k6:2.2.0-with-browser@sha256:defdc0a3e70c46bce010bfc10dedc03e335cc7febe01f6359552fe72827c2aa2
+    profiles:
+      - tools
+    environment:
+      BASE_URL: http://ilgeobolkka.test:8080
+      PERF_USER_PASSWORD: ${DEMO_VALIDATION_PASSWORD:?DEMO_VALIDATION_PASSWORD must be set}
+      NO_PROXY: ilgeobolkka.test,app,localhost,127.0.0.1
+      no_proxy: ilgeobolkka.test,app,localhost,127.0.0.1
+      K6_BROWSER_ARGS: no-proxy-server,no-sandbox
+      K6_SUMMARY_TREND_STATS: avg,min,med,max,p(50),p(90),p(95),p(99)
+    volumes:
+      - ./performance/k6:/scripts:ro
+      - ./var/performance/results:/results
+    working_dir: /scripts
+    depends_on:
+      app:
+        condition: service_healthy
+    cpus: 1.0
+    mem_limit: 1g
+
+volumes:
+  mysql-perf-data:
+  prometheus-data:
