@@ -63,6 +63,36 @@
 - Grafana provision: `ilgeobolkka-performance` dashboard와 `prometheus` datasource 확인
 - management: 공개 포트의 actuator 404, management는 host loopback과 Compose 사설망에서만 접근
 
-## 다음 단계에서 채울 근거
+## 2단계 고정점
 
-- 2단계 기준선 3회 결과와 원시 artifact의 SHA-256
+- 정식 측정 Git SHA: `8cf53f29f28923ef778583df6fe61d0dc90c7ae5`
+- 정식 측정 dirty 상태: 모든 metadata에서 `false`
+- 패키징 JAR SHA-256: `ad025a61983f583c94cfc8eb8b8a0e006ed43bac8cdf2c6db8c531c696071f0b`
+- 측정 시간: 2026-08-11 10:02~12:22 UTC, 2026-08-11 19:02~21:22 KST
+- 정식 Average·Peak 매회 `mvp` 데이터와 새 애플리케이션에서 Smoke → 3분 Warm-up을 거쳤고 Warm-up 표본은 버렸다.
+- 승인 범위대로 성능 전용 MySQL·Prometheus volume만 재생성했다. 개발 Compose와
+  `ilgeobolkka_mysql-data`는 삭제하지 않았다.
+- PortOne·OpenAI는 모든 정식 실행에서 비활성화했다.
+
+## cold 시작 상태
+
+성능 전용 volume을 재생성하고 동일 JAR을 처음 기동한 진단값이며 steady-state 기준선에 합치지 않았다.
+
+| 항목 | 값 |
+| --- | ---: |
+| 컨테이너 시작부터 ready까지 | 6.31초 |
+| Spring startup | 3.35초 |
+| 첫 공개 API 요청 | 65.597ms |
+| 첫 요청 전후 buffer pool read requests | +27 |
+| 첫 요청 전후 buffer pool physical reads | +0 |
+| JIT compiled / failed / invalid | 11,143 / 1 / 0 |
+| JIT compile time | 4.71초 |
+| code cache used / full count | 23,032 KiB / 0 |
+
+## 2단계 근거
+
+- 부하·동시성·브라우저 요약: [summary.md](./summary.md)
+- 같은 시간대 자원 지표: [dashboard.md](./dashboard.md)
+- history-heavy·JFR·MySQL 진단: [diagnostics.md](./diagnostics.md)
+- 원시 artifact 위치·해시: [artifact-manifest.md](./artifact-manifest.md)
+- 단계 판정과 병목: [result.md](./result.md)
