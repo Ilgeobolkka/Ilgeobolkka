@@ -74,3 +74,18 @@
 ## 인계
 
 G06에 상태별 잠금 조회와 fingerprint 계약을, G07에 NEW만 외부 호출한다는 결과 타입을 전달합니다.
+
+- 잠금 순서는 `ai_route_daily_usage` 행 → `ai_route_generation` 행입니다. 반대로 잡으면 아직 없는 생성
+  행의 gap lock을 쥔 채 사용량 행을 기다려 같은 독자의 동시 요청끼리 교착합니다. 두 행을 함께 잠그는
+  후속 작업은 이 순서를 따릅니다.
+- fingerprint는 `AiRouteRequestFingerprint.of(command)` 하나로만 계산하며 필드마다 길이를 앞에 붙여
+  이어 붙인 SHA-256입니다. 이미 저장된 `request_fingerprint`와 재계산 값이 같아야 재시도가 멱등하므로
+  인코딩을 바꾸면 보관 중인 생성이 모두 키 재사용으로 판정됩니다.
+- `remainingDailyGenerations`는 이 작업의 결과 타입에 없습니다. `GenerationStartResult`가 사용량 값을
+  들고 나오지 않으므로 G06·G08이 응답을 만들 때 별도로 조회합니다.
+- `EXISTING_FINAL`은 `FAILED`와 `CONSUMED`도 실어 나릅니다. `api-spec.md`의 응답 `status`는
+  `GENERATING`·`ROUTE`·`NO_ROUTE`·`SAVED` 넷뿐이므로 `FAILED` 재시도는 상태 응답이 아니라 최초 오류
+  응답으로 나가야 합니다. G08이 매핑할 때 이 넷만 보고 만들면 실패 재시도가 빠집니다.
+- 보관 만료 판정도 이 작업에 없습니다. 만료한 생성 행이 아직 남아 있으면 같은 키가 `EXISTING_FINAL`로
+  돌아옵니다. `T-AIR-008`의 "만료 정리 뒤" 계약을 정리 시점에 의존하지 않고 지키려면 만료 판정을
+  G06이 맡을지 cleanup이 맡을지 정해야 합니다.
