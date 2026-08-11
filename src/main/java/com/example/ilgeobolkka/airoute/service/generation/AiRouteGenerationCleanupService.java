@@ -45,6 +45,9 @@ public class AiRouteGenerationCleanupService {
      * 버려진 {@code GENERATING} 을 {@code FAILED} 로 되돌린다. 정상 실패와 같은 모양으로 만들어, 보관
      * 기간 동안 같은 멱등 키가 최초 오류를 그대로 받고 외부 호출을 다시 시작하지 않게 한다.
      *
+     * <p>대상을 나눠 담지 않는 이유는 {@link #removeExpired} 와 같다. 버려진 생성은 정상 완료하지 못한
+     * 요청만 남으므로 한 스윕에서 볼 양이 정리 대상보다도 적다.
+     *
      * <p>잠근 뒤 상태를 다시 본다. 목록을 뽑은 시점과 잠그는 시점 사이에 호출자가 정상 완료했을 수
      * 있는데, 그때는 이미 결과가 있으므로 건너뛴다. 반대로 복구가 이겼다면 호출자의 완료가
      * {@code GENERATING} 이 아니라며 거부되는데 그것도 맞는 결과다. 어느 쪽도 오류가 아니다.
@@ -94,6 +97,9 @@ public class AiRouteGenerationCleanupService {
             return 0;
         }
 
+        // 생성 행을 먼저 잠근다. 시작 경로가 만료 행을 지울 때도 생성 → 항목 순서라, 반대로 잡으면
+        // 같은 generationId 에 동시에 닿았을 때 교착한다.
+        generationRepository.lockAllByGenerationIdIn(expired);
         generationItemRepository.deleteByGenerationIdIn(expired);
         generationRepository.deleteAllByIdInBatch(expired);
         return expired.size();

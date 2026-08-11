@@ -3,6 +3,7 @@ package com.example.ilgeobolkka.airoute.repository;
 import com.example.ilgeobolkka.airoute.entity.AiRouteGeneration;
 import jakarta.persistence.LockModeType;
 import java.time.Instant;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -123,4 +124,25 @@ public interface AiRouteGenerationRepository extends JpaRepository<AiRouteGenera
               AND generation.createdAt < :startedBefore
             """)
     List<UUID> findAbandonedGenerationIds(@Param("startedBefore") Instant startedBefore);
+
+    /**
+     * 정리 대상 생성 행을 한 번에 잠근다. 항목보다 <b>먼저</b> 잠그려고 둔다.
+     *
+     * <p>생성 시작 경로도 만료 행을 지울 때 생성 행을 먼저 잠그고 항목을 지운다. 정리 배치가 반대
+     * 순서로 잡으면 같은 {@code generationId} 에 동시에 닿았을 때 교착하고, 그 예외는 시작 경로의 unique
+     * key 수렴 catch 에 걸리지 않아 그대로 올라간다. 두 경로의 대상 조건이 완전히 같으므로 순서를
+     * 맞춰 둔다.
+     *
+     * <p>{@code generationId} 순으로 잠가 한 배치 안에서도 순서를 고정한다.
+     */
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @Query(
+            """
+            SELECT generation
+            FROM AiRouteGeneration generation
+            WHERE generation.generationId IN :generationIds
+            ORDER BY generation.generationId
+            """)
+    List<AiRouteGeneration> lockAllByGenerationIdIn(
+            @Param("generationIds") Collection<UUID> generationIds);
 }
