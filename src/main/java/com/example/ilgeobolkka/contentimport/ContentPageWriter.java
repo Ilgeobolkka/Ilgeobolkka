@@ -1,5 +1,6 @@
 package com.example.ilgeobolkka.contentimport;
 
+import com.example.ilgeobolkka.contentimport.manifest.ContentManifest;
 import com.example.ilgeobolkka.demo.DemoBookCatalog;
 import com.example.ilgeobolkka.demo.DemoBookWriter;
 import java.util.ArrayList;
@@ -35,6 +36,10 @@ class ContentPageWriter {
 
     @Transactional
     public void write(ContentBatch batch) {
+        if (ContentManifest.AI_ROUTE_CONTENT_VERSION.equals(batch.contentVersion())) {
+            writeAiRoute(batch);
+            return;
+        }
         Map<Long, Integer> expectedPageCounts = expectedPageCounts(batch);
         demoBookWriter.ensureBooks(demoBookCatalog.books());
         validateBooks(expectedPageCounts);
@@ -42,9 +47,13 @@ class ContentPageWriter {
         Map<PageKey, StoredPage> storedPages = loadStoredPages();
         validateExistingPages(storedPages, batch);
 
+        writePages(batch.pages(), storedPages);
+    }
+
+    private void writePages(List<ConvertedPage> pages, Map<PageKey, StoredPage> storedPages) {
         List<Object[]> updates = new ArrayList<>();
         List<Object[]> inserts = new ArrayList<>();
-        for (ConvertedPage page : batch.pages()) {
+        for (ConvertedPage page : pages) {
             StoredPage storedPage = storedPages.get(new PageKey(page.bookId(), page.pageNumber()));
             if (storedPage == null) {
                 inserts.add(
@@ -84,6 +93,62 @@ class ContentPageWriter {
                         inserts);
         requireSingleRowChanges(updateCounts);
         requireSingleRowChanges(insertCounts);
+    }
+
+    /**
+     * `ai-route-v2`는 권수를 세지 않고 manifest에 든 도서만 적재한다.
+     *
+     * <p>본문이 초기 fixture보다 길어지므로 `total_page_count`를 새 값으로 올리고, 기존 페이지 행은
+     * ID를 보존한 채 갱신한다. manifest에 없는 도서는 확장이 아직 닿지 않은 것이므로 건드리지 않는다.
+     *
+     * <p>시연 도서를 여기서 만들지 않는다. {@code ensureBooks}는 기존 도서가 시드와 다르면 실패하는데,
+     * 이 적재가 `total_page_count`를 올리고 나면 두 번째 실행부터 반드시 어긋난다. 도서는 앞선 시연
+     * 데이터 단계에서 만들어져 있어야 하고, 없으면 아래에서 실패한다.
+     */
+    private void writeAiRoute(ContentBatch batch) {
+        for (ConvertedBook book : batch.books()) {
+            if (book.pages().size() != book.totalPageCount()) {
+                throw new IllegalStateException(
+                        "변환 페이지 수가 manifest와 다릅니다: book " + book.bookId());
+            }
+            int updated =
+                    jdbcTemplate.update(
+                            "UPDATE book SET total_page_count = ? WHERE id = ?",
+                            book.totalPageCount(),
+                            book.bookId());
+            if (updated != 1) {
+                throw new IllegalStateException("적재 대상 도서를 찾지 못했습니다: " + book.bookId());
+            }
+
+            Map<PageKey, StoredPage> storedPages = loadStoredPages(book.bookId());
+            Set<Integer> expectedNumbers = new HashSet<>();
+            book.pages().forEach(page -> expectedNumbers.add(page.pageNumber()));
+            for (StoredPage storedPage : storedPages.values()) {
+                if (!expectedNumbers.contains(storedPage.pageNumber())) {
+                    throw new IllegalStateException(
+                            "예상하지 않은 기존 페이지가 있어 적재를 중단합니다: "
+                                    + storedPage.bookId()
+                                    + "-"
+                                    + storedPage.pageNumber());
+                }
+            }
+            writePages(book.pages(), storedPages);
+        }
+    }
+
+    private Map<PageKey, StoredPage> loadStoredPages(long bookId) {
+        Map<PageKey, StoredPage> storedPages = new HashMap<>();
+        jdbcTemplate
+                .query(
+                        "SELECT id, book_id, page_number FROM book_page WHERE book_id = ?",
+                        (resultSet, rowNumber) ->
+                                new StoredPage(
+                                        resultSet.getLong("id"),
+                                        resultSet.getLong("book_id"),
+                                        resultSet.getInt("page_number")),
+                        bookId)
+                .forEach(page -> storedPages.put(page.key(), page));
+        return storedPages;
     }
 
     private Map<Long, Integer> expectedPageCounts(ContentBatch batch) {

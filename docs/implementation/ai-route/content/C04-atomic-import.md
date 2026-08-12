@@ -28,9 +28,13 @@
 - `ContentBatchConverter`는 콘텐츠 버전별로 manifest 계약을 분기하고 변환에 필요한 값만 뽑습니다.
   `ai-route-v2`는 권수를 세지 않아 확장 중의 부분 집합도 변환합니다. 정본 20권 569페이지를 실제
   Poppler로 변환하는 검사는 `RUN_CONTENT_IMPORT_INTEGRATION=true`에서 돕니다.
-- **남은 것**: 변환 결과를 AI 적재 경로에 잇는 배선. `ContentPageWriter`가 아직 초기 fixture의
-  100권·400페이지와 `book_id BETWEEN 1 AND 100`을 전제하므로, `ai-route-v2` 본문 페이지를 쓰려면
-  그 분기가 필요합니다.
+- `ContentPageWriter`도 콘텐츠 버전별로 나뉩니다. `ai-route-v2`는 권수를 세지 않고 manifest에 든
+  도서만 적재하며 `total_page_count`를 새 값으로 올립니다. 시연 도서는 여기서 만들지 않습니다 —
+  `ensureBooks`가 기존 도서와 시드를 비교하는데, 이 적재가 페이지 수를 올리고 나면 두 번째 실행부터
+  반드시 어긋나기 때문입니다. 도서는 앞선 시연 데이터 단계에서 만들어져 있어야 합니다.
+- **남은 것**: 본문 적재 뒤 C02 검증 → C03 임베딩 → `AiRouteContentWriter`를 잇는 배치 오케스트레이션.
+  C03이 후보 페이지마다 Embeddings를 호출하므로 실제 OpenAI 키와 비용이 필요하고, 그 경계를 정하는
+  것은 배포 절차 결정입니다.
 - [ContentImportService](../../../../src/main/java/com/example/ilgeobolkka/contentimport/ContentImportService.java)는
   변환 batch를 DB writer에 전달합니다.
 - [ContentPageWriter](../../../../src/main/java/com/example/ilgeobolkka/contentimport/ContentPageWriter.java)는
