@@ -44,6 +44,7 @@ final class ContentManifestFormatValidator {
             require(book != null, "AI 경로 manifest의 book은 null일 수 없습니다.");
             validateBookIdentity(
                     book.bookId(), book.pdfPath(), book.pdfSha256(), book.totalPageCount());
+            requireNonBlank(book.title(), "title");
             require(bookIds.add(book.bookId()), "AI 경로 manifest의 bookId가 중복됩니다.");
             require(book.pages() != null, "AI 경로 manifest의 pages는 배열이어야 합니다.");
             validatePages(book.pages());

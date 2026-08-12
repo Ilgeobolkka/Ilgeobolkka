@@ -5,6 +5,7 @@ set -euo pipefail
 app_jar="${1:-}"
 smoke_url="${SMOKE_URL:-http://127.0.0.1:8080/api/smoke}"
 browser_smoke_url="${BROWSER_SMOKE_URL:-http://127.0.0.1:8080/browser-smoke.html}"
+browser_smoke_timeout_seconds="${BROWSER_SMOKE_TIMEOUT_SECONDS:-30}"
 log_file="${SMOKE_LOG_FILE:-build/boot-smoke.log}"
 raw_log="$(mktemp)"
 browser_dom="$(mktemp)"
@@ -106,48 +107,68 @@ find_browser() {
 
 run_browser_smoke() {
   local attempt
+  local browser_attempt
   local browser_bin
 
   browser_bin="$(find_browser)" || return 1
-  "$browser_bin" \
-      --headless=new \
-      --disable-background-networking \
-      --disable-dev-shm-usage \
-      --disable-gpu \
-      --disable-sync \
-      --metrics-recording-only \
-      --no-default-browser-check \
-      --no-first-run \
-      --user-data-dir="$browser_profile" \
-      --virtual-time-budget=15000 \
-      --dump-dom \
-      "$browser_smoke_url" >"$browser_dom" 2>"$browser_log" &
-  browser_pid=$!
 
-  for ((attempt = 1; attempt <= 30; attempt++)); do
-    if grep -Eq 'data-browser-smoke="(passed|failed)"' "$browser_dom"; then
-      break
-    fi
-    if ! kill -0 "$browser_pid" 2>/dev/null; then
-      break
-    fi
-    sleep 1
-  done
-
-  if kill -0 "$browser_pid" 2>/dev/null; then
-    kill "$browser_pid"
-  fi
-  wait "$browser_pid" 2>/dev/null || true
-  browser_pid=""
-
-  if ! grep -Fq 'data-browser-smoke="passed"' "$browser_dom"; then
-    printf '브라우저 smoke 검증이 통과 상태를 반환하지 않았습니다.\n' >&2
-    cat "$browser_dom" >&2
-    cat "$browser_log" >&2
+  if [[ ! "$browser_smoke_timeout_seconds" =~ ^[1-9][0-9]*$ ]]; then
+    printf 'BROWSER_SMOKE_TIMEOUT_SECONDS는 양의 정수여야 합니다: %s\n' "$browser_smoke_timeout_seconds" >&2
     return 1
   fi
 
-  printf '공통 브라우저 smoke 검증 성공: %s\n' "$browser_smoke_url"
+  for browser_attempt in 1 2; do
+    : >"$browser_dom"
+    : >"$browser_log"
+    rm -rf "$browser_profile"
+    browser_profile="$(mktemp -d)"
+
+    "$browser_bin" \
+        --headless=new \
+        --disable-background-networking \
+        --disable-dev-shm-usage \
+        --disable-gpu \
+        --disable-sync \
+        --metrics-recording-only \
+        --no-default-browser-check \
+        --no-first-run \
+        --user-data-dir="$browser_profile" \
+        --virtual-time-budget=15000 \
+        --dump-dom \
+        "$browser_smoke_url" >"$browser_dom" 2>"$browser_log" &
+    browser_pid=$!
+
+    for ((attempt = 1; attempt <= browser_smoke_timeout_seconds; attempt++)); do
+      if grep -Eq 'data-browser-smoke="(passed|failed)"' "$browser_dom"; then
+        break
+      fi
+      if ! kill -0 "$browser_pid" 2>/dev/null; then
+        break
+      fi
+      sleep 1
+    done
+
+    if kill -0 "$browser_pid" 2>/dev/null; then
+      kill "$browser_pid"
+    fi
+    wait "$browser_pid" 2>/dev/null || true
+    browser_pid=""
+
+    if grep -Fq 'data-browser-smoke="passed"' "$browser_dom"; then
+      printf '공통 브라우저 smoke 검증 성공: %s\n' "$browser_smoke_url"
+      return 0
+    fi
+
+    if grep -Fq 'data-browser-smoke="failed"' "$browser_dom" || [[ "$browser_attempt" == "2" ]]; then
+      printf '브라우저 smoke 검증이 통과 상태를 반환하지 않았습니다.\n' >&2
+      cat "$browser_dom" >&2
+      cat "$browser_log" >&2
+      return 1
+    fi
+
+    printf '브라우저 smoke 검증이 최종 상태를 반환하지 않아 새 프로필로 한 번 재시도합니다.\n' >&2
+    cat "$browser_log" >&2
+  done
 }
 
 trap cleanup EXIT

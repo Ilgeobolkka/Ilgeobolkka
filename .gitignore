@@ -36,6 +36,9 @@ out/
 ### VS Code ###
 .vscode/
 
+### macOS ###
+.DS_Store
+
 ### AI coding agents ###
 .claude/settings.local.json
 
@@ -46,3 +49,4 @@ out/
 
 ### Generated content ###
 /var/content/pages/
+/var/performance/
