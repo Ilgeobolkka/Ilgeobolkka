@@ -164,7 +164,7 @@ class ContentBatchConverterTest {
     }
 
     @Test
-    void Poppler_버전이_26050이_아니면_변환을_거부한다() throws IOException {
+    void Poppler_버전이_기준과_다르면_변환을_거부한다() throws IOException {
         Path manifestPath = createManifest();
         var pdfTool = new FakePdfTool();
         pdfTool.pdftotextVersion = "25.12.0";
@@ -252,7 +252,7 @@ class ContentBatchConverterTest {
 
     private static class FakePdfTool implements PdfTool {
 
-        private String pdftotextVersion = "26.05.0";
+        private String pdftotextVersion = "26.08.0";
         private boolean hasUnexpectedPage;
         private int extractCount;
 
@@ -263,7 +263,7 @@ class ContentBatchConverterTest {
 
         @Override
         public String pdftoppmVersion() {
-            return "26.05.0";
+            return "26.08.0";
         }
 
         @Override
