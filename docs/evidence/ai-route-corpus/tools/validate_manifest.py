@@ -130,6 +130,18 @@ print("\n[evaluation]")
 caseids = [c["caseId"] for c in evaluation["cases"]]
 chk(len(caseids) == len(set(caseids)), "caseId 중복 없음")
 book_by_id = {b["bookId"]: b for b in manifest["books"]}
+candidate_book_ids = {b["bookId"] for b in manifest["books"] if b["aiRouteCandidate"]}
+case_book_ids = [c["bookId"] for c in evaluation["cases"]]
+duplicate_case_book_ids = sorted(
+    book_id for book_id in set(case_book_ids) if case_book_ids.count(book_id) > 1
+)
+chk(not duplicate_case_book_ids,
+    f"지원 도서별 평가 case 중복 없음 (중복 {duplicate_case_book_ids})")
+missing_case_book_ids = sorted(candidate_book_ids - set(case_book_ids))
+unsupported_case_book_ids = sorted(set(case_book_ids) - candidate_book_ids)
+chk(not missing_case_book_ids and not unsupported_case_book_ids,
+    "AI 경로 지원 도서와 평가 case 1:1 "
+    f"(누락 {missing_case_book_ids}, 비지원 {unsupported_case_book_ids})")
 for c in evaluation["cases"]:
     book = book_by_id.get(c["bookId"])
     chk(book is not None, f"{c['caseId']}: bookId {c['bookId']} manifest에 존재")
@@ -187,10 +199,37 @@ for c in evaluation["cases"]:
     same_group = [sorted(set(c["referencePageNumbers"]) & g) for g in case_groups
                   if len(set(c["referencePageNumbers"]) & g) > 1]
     chk(not same_group, f"{c['caseId']}: 정답 경로에 같은 중복 그룹 페이지 둘 이상 없음 (위반 {same_group})")
-    bad = [(e["beforePageNumber"], e["afterPageNumber"]) for e in c["requiredPrerequisites"]
-           if e["beforePageNumber"] not in prereq.get(e["afterPageNumber"], [])]
+    required_prerequisites = [
+        (e["beforePageNumber"], e["afterPageNumber"])
+        for e in c["requiredPrerequisites"]
+    ]
+    seen_prerequisites = set()
+    duplicate_prerequisites = []
+    for edge in required_prerequisites:
+        if edge in seen_prerequisites:
+            duplicate_prerequisites.append(edge)
+        seen_prerequisites.add(edge)
+    chk(not duplicate_prerequisites,
+        f"{c['caseId']}: requiredPrerequisites에 중복 간선 없음 "
+        f"(중복 {sorted(duplicate_prerequisites)})")
+    bad = [edge for edge in required_prerequisites
+           if edge[0] not in prereq.get(edge[1], [])]
     chk(not bad, f"{c['caseId']}: requiredPrerequisites가 실제 DAG (위반 {bad})")
     route = prereq_closure(c["referencePageNumbers"], prereq)
+    missing_route_pages = sorted(route - reference)
+    chk(not missing_route_pages,
+        f"{c['caseId']}: referencePageNumbers가 선수 폐쇄 (누락 페이지 {missing_route_pages})")
+    expected_prerequisites = {
+        (before, after)
+        for after in reference
+        for before in prereq.get(after, [])
+    }
+    actual_prerequisites = set(required_prerequisites)
+    missing_prerequisites = sorted(expected_prerequisites - actual_prerequisites)
+    unexpected_prerequisites = sorted(actual_prerequisites - expected_prerequisites)
+    chk(not missing_prerequisites and not unexpected_prerequisites,
+        f"{c['caseId']}: requiredPrerequisites가 referencePageNumbers 선수 간선 전체와 일치 "
+        f"(누락 {missing_prerequisites}, 초과 {unexpected_prerequisites})")
     extra = sorted(route - set(c["referencePageNumbers"]))
     if c["owned"] is True:
         chk(c["maxAdditionalInk"] is None, f"{c['caseId']}: 소장 사례는 maxAdditionalInk=null")

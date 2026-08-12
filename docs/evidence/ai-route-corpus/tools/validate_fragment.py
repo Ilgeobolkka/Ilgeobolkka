@@ -154,10 +154,36 @@ def main():
     same_group = [sorted(set(case["referencePageNumbers"]) & g) for g in case_groups
                   if len(set(case["referencePageNumbers"]) & g) > 1]
     chk(not same_group, f"정답 경로에 같은 중복 그룹 페이지가 둘 이상 없음 (위반 {same_group})")
-    bad = [(e["beforePageNumber"], e["afterPageNumber"]) for e in case["requiredPrerequisites"]
-           if e["beforePageNumber"] not in prereq.get(e["afterPageNumber"], [])]
+    required_prerequisites = [
+        (e["beforePageNumber"], e["afterPageNumber"])
+        for e in case["requiredPrerequisites"]
+    ]
+    seen_prerequisites = set()
+    duplicate_prerequisites = []
+    for edge in required_prerequisites:
+        if edge in seen_prerequisites:
+            duplicate_prerequisites.append(edge)
+        seen_prerequisites.add(edge)
+    chk(not duplicate_prerequisites,
+        f"requiredPrerequisites에 중복 간선 없음 (중복 {sorted(duplicate_prerequisites)})")
+    bad = [edge for edge in required_prerequisites
+           if edge[0] not in prereq.get(edge[1], [])]
     chk(not bad, f"requiredPrerequisites가 실제 DAG와 일치 (위반 {bad})")
     route = prereq_closure(case["referencePageNumbers"], prereq)
+    missing_route_pages = sorted(route - reference)
+    chk(not missing_route_pages,
+        f"referencePageNumbers가 선수 폐쇄 (누락 페이지 {missing_route_pages})")
+    expected_prerequisites = {
+        (before, after)
+        for after in reference
+        for before in prereq.get(after, [])
+    }
+    actual_prerequisites = set(required_prerequisites)
+    missing_prerequisites = sorted(expected_prerequisites - actual_prerequisites)
+    unexpected_prerequisites = sorted(actual_prerequisites - expected_prerequisites)
+    chk(not missing_prerequisites and not unexpected_prerequisites,
+        "requiredPrerequisites가 referencePageNumbers 선수 간선 전체와 일치 "
+        f"(누락 {missing_prerequisites}, 초과 {unexpected_prerequisites})")
     extra = sorted(route - set(case["referencePageNumbers"]))
     if case["owned"] is False and case["maxAdditionalInk"] == 0:
         chk(bool(case["activeRentalPageNumbers"]), "예산0은 activeRentalPageNumbers 필요")

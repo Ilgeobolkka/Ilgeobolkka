@@ -62,6 +62,20 @@ def prerequisite_inside_route(book, case):
     return next(q for n in sorted(route) for q in sorted(prereq[n]) if q in route)
 
 
+def prerequisite_outside_required(book, case):
+    """실제 DAG에는 있지만 평가 정답의 필수 선수 간선에는 없는 간선 하나."""
+    required = {
+        (e["beforePageNumber"], e["afterPageNumber"])
+        for e in case["requiredPrerequisites"]
+    }
+    return next(
+        {"beforePageNumber": before, "afterPageNumber": page["pageNumber"]}
+        for page in book["pages"]
+        for before in page["prerequisitePageNumbers"]
+        if (before, page["pageNumber"]) not in required
+    )
+
+
 def run_tool(argv, workdir):
     return subprocess.run([sys.executable] + argv, capture_output=True, text=True, cwd=workdir)
 
@@ -241,6 +255,24 @@ def check_fragment(workdir):
            should_pass=False, needle="같은 페이지가 두 번")
 
     broken = copy.deepcopy(base)
+    broken["evaluationCase"]["requiredPrerequisites"].pop()
+    expect("선수 폐쇄에서 필수 간선을 누락하면 실패", broken, workdir,
+           should_pass=False, needle="누락")
+
+    broken = copy.deepcopy(base)
+    required = broken["evaluationCase"]["requiredPrerequisites"]
+    required.append(copy.deepcopy(required[0]))
+    expect("requiredPrerequisites에 같은 간선을 중복하면 실패", broken, workdir,
+           should_pass=False, needle="requiredPrerequisites에 중복")
+
+    broken = copy.deepcopy(base)
+    required = prerequisite_outside_required(
+        broken["manifestBook"], broken["evaluationCase"])
+    broken["evaluationCase"]["requiredPrerequisites"].append(required)
+    expect("선수 폐쇄 밖 실제 DAG 간선을 추가하면 실패", broken, workdir,
+           should_pass=False, needle="초과")
+
+    broken = copy.deepcopy(base)
     broken["manifestBook"]["aiExternalTransferAllowed"] = False
     expect("외부 전송 권리가 false면 실패", broken, workdir,
            should_pass=False, needle="aiExternalTransferAllowed")
@@ -269,6 +301,18 @@ def check_manifest(workdir):
     print("\n[validate_manifest.py]")
     manifest, evaluation = load_manifest(), load_evaluation()
     expect_manifest("정상 정본은 통과", manifest, evaluation, workdir, should_pass=True)
+
+    broken = copy.deepcopy(evaluation)
+    broken["cases"].pop()
+    expect_manifest("지원 도서의 평가 케이스가 누락되면 실패", manifest, broken, workdir,
+                    should_pass=False, needle="평가 case 1:1")
+
+    broken = copy.deepcopy(evaluation)
+    duplicate = copy.deepcopy(broken["cases"][0])
+    duplicate["caseId"] += "-duplicate"
+    broken["cases"].append(duplicate)
+    expect_manifest("지원 도서의 평가 케이스가 중복되면 실패", manifest, broken, workdir,
+                    should_pass=False, needle="평가 case 중복 없음")
 
     broken = copy.deepcopy(manifest)
     candidate_book(broken)["totalPageCount"] += 1
@@ -383,6 +427,25 @@ def check_manifest(workdir):
     broken["cases"][0]["duplicatePageGroups"][0] = [group[0]] + group
     expect_manifest("중복 그룹 안에 같은 페이지를 두 번 넣으면 실패", manifest, broken, workdir,
                     should_pass=False, needle="같은 페이지가 두 번")
+
+    broken = copy.deepcopy(evaluation)
+    case = next(c for c in broken["cases"] if c["requiredPrerequisites"])
+    case["requiredPrerequisites"].pop()
+    expect_manifest("선수 폐쇄에서 필수 간선을 누락하면 실패", manifest, broken, workdir,
+                    should_pass=False, needle="누락")
+
+    broken = copy.deepcopy(evaluation)
+    case = next(c for c in broken["cases"] if c["requiredPrerequisites"])
+    case["requiredPrerequisites"].append(copy.deepcopy(case["requiredPrerequisites"][0]))
+    expect_manifest("requiredPrerequisites에 같은 간선을 중복하면 실패", manifest, broken, workdir,
+                    should_pass=False, needle="requiredPrerequisites에 중복")
+
+    broken = copy.deepcopy(evaluation)
+    case = next(c for c in broken["cases"] if c["requiredPrerequisites"])
+    book = next(b for b in manifest["books"] if b["bookId"] == case["bookId"])
+    case["requiredPrerequisites"].append(prerequisite_outside_required(book, case))
+    expect_manifest("선수 폐쇄 밖 실제 DAG 간선을 추가하면 실패", manifest, broken, workdir,
+                    should_pass=False, needle="초과")
 
     # 소설(비후보 도서)은 initial-v1의 PDF·SHA-256·페이지 수를 그대로 써야 한다.
     broken = copy.deepcopy(manifest)
