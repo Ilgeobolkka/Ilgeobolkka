@@ -236,6 +236,45 @@ class AiRouteGenerationStartMySqlIntegrationTest {
     }
 
     /**
+     * 앞 테스트와 같은 인터리빙인데, 사용량 잠금을 기다리는 시간이 보관 기간을 넘긴 경우다. 잠금을
+     * 얻었을 때 같은 키의 생성은 이미 시작·완료·만료까지 끝나 있다. 만료한 멱등 상태는 없는 것이므로
+     * 이 요청은 새 요청이고, 쓸 횟수가 없으니 한도 초과로 거절해야 한다. 걸러 내지 않으면 15분이 지나
+     * 사라졌어야 할 결과를 {@code EXISTING_FINAL} 로 돌려준다.
+     *
+     * <p>잠금 조회는 read view 가 아니라 최신 commit 을 읽으므로, 이 만료 행은 요청이 앞머리에서 존재
+     * 확인을 마친 <b>뒤에</b> 생겼는데도 여기서 보인다. 그 확인이 참이었을 때 만료 행을 지우는 경로로는
+     * 막을 수 없는 자리다.
+     *
+     * <p>두 날짜의 사용량을 모두 한도로 채운다. 대기가 15분이라 자정을 넘고, 넘긴 요청은 새 날짜의
+     * 사용량 행으로 옮겨 잠그기 때문이다. 새 날짜에 여유가 있으면 한도 경로가 아니라 insert 로 간다.
+     */
+    @Test
+    void 한도에_닿아_기다리는_사이_같은_키가_만료하면_기존_결과를_돌려주지_않는다() throws Exception {
+        UUID key = UUID.randomUUID();
+        UUID 먼저_들어온_생성 = UUID.randomUUID();
+        사용량을_심는다(READER_ID, USAGE_DATE, LIMIT);
+        사용량을_심는다(READER_ID, NEXT_USAGE_DATE, LIMIT);
+
+        GenerationStartResult result =
+                사용량_잠금_뒤에_시작한다(
+                        key,
+                        () -> {
+                            생성을_직접_넣는다(먼저_들어온_생성, key);
+                            생성을_실패로_끝낸다(먼저_들어온_생성);
+                            clock.set(EXPIRES_AT);
+                        });
+
+        assertAll(
+                () -> assertEquals(Kind.DAILY_LIMIT, result.kind()),
+                () -> assertNull(result.generationId()),
+                () -> assertNull(result.status()),
+                // 거절만 하고 돌아가는 경로라 만료 행은 정리 배치 몫으로 남는다.
+                () -> assertEquals(1, 생성_수를_조회한다(READER_ID)),
+                () -> assertEquals(LIMIT, 사용량을_조회한다(READER_ID, USAGE_DATE)),
+                () -> assertEquals(LIMIT, 사용량을_조회한다(READER_ID, NEXT_USAGE_DATE)));
+    }
+
+    /**
      * 전날 한도를 다 쓴 상태에서 자정 직전에 시작해, 사용량 잠금을 기다리는 사이 자정을 넘긴다. 진입
      * 시점 날짜로 계수하면 이미 초기화된 어제 한도로 거절해 {@code 매일 00:00 UTC 초기화} 계약을 깬다.
      *

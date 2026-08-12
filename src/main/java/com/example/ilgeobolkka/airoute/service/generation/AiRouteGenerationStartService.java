@@ -146,11 +146,19 @@ public class AiRouteGenerationStartService {
      * 맨 앞의 존재 확인에서 이미 만들어졌으므로, 일반 조회로는 그 뒤에 commit 된 행을 볼 수 없다.
      * 잠금 조회만 최신 commit 을 읽는다.
      *
-     * <p>다른 두 조회와 달리 만료 필터를 두지 않는다. 여기로 만료 행이 올 길이 없기 때문이다. 앞머리
-     * 존재 확인이 참이었다면 만료 행은 이미 그 자리에서 지워졌고, 거짓이었다면 이 transaction 의 read
-     * view 뒤에 commit 된 행이어야 한다. 그런 행이 만료이려면 삽입·완료·15분 경과가 모두 이 transaction
-     * 이 사는 동안 일어나야 하는데, 이 메서드까지 오는 길은 짧은 질의 몇 개뿐이다. 인스턴스 사이 시계가
-     * 보관 기간보다 크게 어긋나지 않는 한 도달하지 않는다. 필터를 다시 넣기 전에 이 논증부터 깨 보라.
+     * <p>다른 두 조회와 <b>같이</b> 만료 필터를 둔다. 앞머리 존재 확인이 참이었다면 만료 행은 이미 그
+     * 자리에서 지워졌지만, 거짓이었다면 이 transaction 의 read view 뒤에 commit 된 행이 여기서 처음
+     * 보인다. 그 행이 만료일 시간은 충분하다 — 이 메서드에 닿기 전에 사용량 행 잠금을 기다리고, 그
+     * 대기는 앞선 transaction 이 쥔 시간만큼 길어진다. 기다리는 동안 같은 키의 요청이 시작하고, 별개
+     * transaction 이 그것을 완료하고, 보관 기간까지 지날 수 있다. 그때 이 잠금 조회는 read view 가
+     * 아니라 최신 commit 을 읽으므로 만료한 결과를 그대로 집어 온다.
+     *
+     * <p>걸러진 뒤 한도 초과로 거절하는 것이 맞는 답이다. 만료한 멱등 상태는 없는 것이고, 없으면 이
+     * 요청은 새 요청이며, 새 요청에 쓸 횟수가 남아 있지 않다.
+     *
+     * <p>{@link #discardExpired} 로 지우지는 않는다. 이 경로는 아무것도 넣지 않고 거절만 하고 돌아간다.
+     * 그 행은 정리 배치가 지우거나, 한도가 풀린 뒤 같은 키의 다음 시작이 지운다. 만료 <b>판정</b>이
+     * 정리 실행 여부에 기대지 않는다는 조건은 여기서도 지켜진다.
      *
      * <p>없는 행을 잠그면 gap lock 이 남지만 여기서는 교착으로 가지 않는다. 이 경로는 잠금을 잡은 뒤
      * 아무것도 기다리지 않고 바로 돌아가므로 대기 고리가 만들어지지 않는다. 한도에 닿은 독자만
@@ -160,6 +168,7 @@ public class AiRouteGenerationStartService {
             long readerId, UUID idempotencyKey, String requestFingerprint) {
         return generationRepository
                 .findByReaderIdAndIdempotencyKeyForUpdate(readerId, idempotencyKey)
+                .filter(this::isUsable)
                 .map(generation -> resultOf(generation, requestFingerprint))
                 .orElseGet(GenerationStartResult::dailyLimitExceeded);
     }
