@@ -4,7 +4,6 @@ import com.example.ilgeobolkka.airoute.AiRouteAdditionalCostStatus;
 import com.example.ilgeobolkka.airoute.entity.AiRouteItemRelevance;
 import com.example.ilgeobolkka.airoute.entity.AiRouteItemRole;
 import com.example.ilgeobolkka.airoute.repository.AiRouteItemProjection;
-import com.example.ilgeobolkka.airoute.service.query.AiRouteItemGuideAssembler;
 import java.time.Instant;
 
 /**
@@ -14,6 +13,9 @@ import java.time.Instant;
  * 싣지 않는다.
  *
  * <p>{@code additionalCostStatus}만 조회 시점 권한으로 다시 계산한 값이고 나머지는 저장한 값이다.
+ *
+ * <p>{@code guide}·{@code estimatedMinutes}는 조립을 마친 값으로 받는다. 문구 규칙을 여기서 부르면 dto 가
+ * {@code service.query}를, {@code service.query}가 다시 dto 를 임포트해 두 패키지가 순환한다.
  */
 public record AiRouteItemResponse(
         int position,
@@ -28,6 +30,8 @@ public record AiRouteItemResponse(
 
     public static AiRouteItemResponse of(
             AiRouteItemProjection item,
+            int estimatedMinutes,
+            String guide,
             AiRouteAdditionalCostStatus additionalCostStatus) {
         return new AiRouteItemResponse(
                 item.getPosition(),
@@ -35,8 +39,8 @@ public record AiRouteItemResponse(
                 item.getRelevance(),
                 item.isPrerequisite(),
                 item.getRole(),
-                AiRouteItemGuideAssembler.estimatedMinutes(item.getEstimatedReadingSeconds()),
-                AiRouteItemGuideAssembler.guide(item.getRole(), item.getGuideTopic()),
+                estimatedMinutes,
+                guide,
                 additionalCostStatus,
                 item.getOpenedAt());
     }

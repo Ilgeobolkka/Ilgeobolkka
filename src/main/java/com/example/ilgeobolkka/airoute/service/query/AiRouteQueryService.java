@@ -80,6 +80,9 @@ public class AiRouteQueryService {
      *
      * <p>소장 여부는 도서 단위라 경로마다 한 번만 확인한다. 대여는 페이지 단위여서 항목마다 확인해야 하는데,
      * 경로 항목 수는 정본이 정한 깊이 상한(최대 15) 안이라 상세 한 건의 조회 수가 예측 범위를 벗어나지 않는다.
+     *
+     * <p>가이드 문구와 예상 시간도 여기서 조립해 넘긴다. 응답 record 가 문구 규칙을 직접 부르면 dto 와
+     * {@code service.query}가 서로를 임포트한다.
      */
     private List<AiRouteItemResponse> findItems(long readerId, AiRouteSummaryProjection route) {
         boolean owned = ownershipService.isOwned(readerId, route.getBookId());
@@ -89,6 +92,10 @@ public class AiRouteQueryService {
                 .map(item ->
                         AiRouteItemResponse.of(
                                 item,
+                                AiRouteItemGuideAssembler.estimatedMinutes(
+                                        item.getEstimatedReadingSeconds()),
+                                AiRouteItemGuideAssembler.guide(
+                                        item.getRole(), item.getGuideTopic()),
                                 additionalCostStatus(readerId, item.getBookPageId(), owned, now)))
                 .toList();
     }
