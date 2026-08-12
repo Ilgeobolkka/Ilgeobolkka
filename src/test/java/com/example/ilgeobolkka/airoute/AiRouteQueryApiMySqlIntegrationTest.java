@@ -267,6 +267,32 @@ class AiRouteQueryApiMySqlIntegrationTest {
                 .andExpect(jsonPath("$.items[2].guide").value("결론을 다루는 페이지입니다."));
     }
 
+    /**
+     * 현재 경로 판정이 경로마다 갈리는지 본다.
+     *
+     * <p>같은 도서에 경로가 둘일 때 현재로 지정하지 않은 쪽이 {@code false}여야 한다. 상세가 {@code true}만
+     * 단언하면 현재 경로 join 조건이 경로 식별자를 잃어도 테스트가 그대로 통과한다.
+     */
+    @Test
+    void 같은_도서의_비현재_경로_상세는_current가_거짓이다() throws Exception {
+        long currentRouteId = ROUTE_ID_BASE + 1;
+        long previousRouteId = ROUTE_ID_BASE + 2;
+        경로를_생성한다(READER_ID, currentRouteId, BOOK_ID, "재무제표 읽기", "2026-08-02 09:00:00.123456");
+        경로를_생성한다(READER_ID, previousRouteId, BOOK_ID, "손익 구조", "2026-08-01 09:00:00.123456");
+        현재_경로로_지정한다(READER_ID, BOOK_ID, currentRouteId);
+
+        mockMvc.perform(get("/api/ai-routes/" + previousRouteId)
+                        .with(authentication(인증된_독자(READER_ID))))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.routeId").value(previousRouteId))
+                .andExpect(jsonPath("$.current").value(false));
+        mockMvc.perform(get("/api/ai-routes/" + currentRouteId)
+                        .with(authentication(인증된_독자(READER_ID))))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.routeId").value(currentRouteId))
+                .andExpect(jsonPath("$.current").value(true));
+    }
+
     @Test
     void 상세는_분석_텍스트와_내부_식별자를_노출하지_않는다() throws Exception {
         long routeId = ROUTE_ID_BASE + 1;
