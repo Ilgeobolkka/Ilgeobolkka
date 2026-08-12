@@ -109,3 +109,6 @@ S03에 current 지정 방식과 route 삭제 시 G06 CONSUMED 호출 계약을, 
   현재 경로 변경도 같은 문장을 씁니다.
 - 저장은 generation 행을 `findOwnedNotExpiredForUpdate`로 먼저 잠그고 route insert → current upsert
   순서로 진행합니다. S03이 삭제에서 같은 행들을 잡을 때 순서를 맞춰야 교착하지 않습니다.
+- `AiRouteCurrent.select`·`changeRoute`와 그 소유자 가드는 upsert를 쓰면서 production 호출자가 없어졌고
+  실제 불변식은 복합 FK `fk_ai_route_current_route`가 지킵니다. S03도 같은 upsert를 쓰면 제거 대상이므로
+  S03에서 판단합니다(F02 산출물이라 S01의 수정 허용 파일이 아닙니다).
