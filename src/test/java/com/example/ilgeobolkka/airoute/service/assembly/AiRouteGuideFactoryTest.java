@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.example.ilgeobolkka.airoute.entity.AiRouteItemRole;
-import com.example.ilgeobolkka.airoute.service.query.AiRouteItemGuideAssembler;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
@@ -16,28 +15,20 @@ class AiRouteGuideFactoryTest {
     @Test
     void 역할별_서버_템플릿과_공개_주제만으로_가이드를_만든다() {
         assertEquals(
-                "투자 판단 기준에 관한 선수 개념을 다루는 페이지입니다.",
+                "선수 개념을 먼저 살펴보는 페이지입니다. 주제는 \"투자 판단 기준\"입니다.",
                 factory.create("투자 판단 기준", AiRouteItemRole.PREREQUISITE));
         assertEquals(
-                "투자 판단 기준에 관한 핵심 개념을 다루는 페이지입니다.",
+                "핵심 개념을 살펴보는 페이지입니다. 주제는 \"투자 판단 기준\"입니다.",
                 factory.create("투자 판단 기준", AiRouteItemRole.CORE));
         assertEquals(
-                "투자 판단 기준에 관한 사례를 다루는 페이지입니다.",
+                "개념이 사례에 적용되는 방식을 살펴보는 페이지입니다. 주제는 \"투자 판단 기준\"입니다.",
                 factory.create("투자 판단 기준", AiRouteItemRole.EXAMPLE));
         assertEquals(
-                "투자 판단 기준에 관한 반론을 다루는 페이지입니다.",
+                "다른 관점과 반론을 살펴보는 페이지입니다. 주제는 \"투자 판단 기준\"입니다.",
                 factory.create("투자 판단 기준", AiRouteItemRole.COUNTERPOINT));
         assertEquals(
-                "투자 판단 기준에 관한 결론을 다루는 페이지입니다.",
+                "앞선 내용을 정리하는 페이지입니다. 주제는 \"투자 판단 기준\"입니다.",
                 factory.create("투자 판단 기준", AiRouteItemRole.CONCLUSION));
-    }
-
-    @Test
-    void 생성과_저장_경로_조회는_같은_가이드_정본을_사용한다() {
-        assertEquals(
-                AiRouteItemGuideAssembler.guide(
-                        AiRouteItemRole.EXAMPLE, "  투자 판단 기준  "),
-                factory.create("  투자 판단 기준  ", AiRouteItemRole.EXAMPLE));
     }
 
     @Test

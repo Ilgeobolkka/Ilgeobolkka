@@ -1,10 +1,9 @@
 package com.example.ilgeobolkka.airoute.service.assembly;
 
-import com.example.ilgeobolkka.airoute.AiRouteAdditionalCostStatus;
 import com.example.ilgeobolkka.airoute.AiRouteGenerationCommand;
 import com.example.ilgeobolkka.airoute.AiRouteRequestType;
+import com.example.ilgeobolkka.airoute.service.assembly.AiRouteGenerationResult.AdditionalCostStatus;
 import com.example.ilgeobolkka.airoute.service.assembly.AiRouteGenerationResult.Item;
-import com.example.ilgeobolkka.airoute.service.query.AiRouteItemGuideAssembler;
 import com.example.ilgeobolkka.airoute.service.validation.ValidatedRouteProposal;
 import com.example.ilgeobolkka.airoute.service.validation.ValidatedRouteProposal.ValidatedRouteItem;
 import java.util.ArrayList;
@@ -142,8 +141,7 @@ public final class AiRouteAssembler {
                     validatedItem.relevance(),
                     validatedItem.prerequisite(),
                     validatedItem.role(),
-                    AiRouteItemGuideAssembler.estimatedMinutes(
-                            page.estimatedReadingSeconds()),
+                    estimatedMinutes(page.estimatedReadingSeconds()),
                     guideFactory.create(page.publicGuideTopic(), validatedItem.role()),
                     additionalCostStatus(validatedItem.pageNumber(), entitlement)));
         }
@@ -275,14 +273,18 @@ public final class AiRouteAssembler {
         };
     }
 
-    private AiRouteAdditionalCostStatus additionalCostStatus(
+    private int estimatedMinutes(int estimatedReadingSeconds) {
+        return (int) Math.max(1L, (estimatedReadingSeconds + 59L) / 60L);
+    }
+
+    private AdditionalCostStatus additionalCostStatus(
             int pageNumber, AiRouteEntitlementSnapshot entitlement) {
         if (entitlement.owned()) {
-            return AiRouteAdditionalCostStatus.OWNED;
+            return AdditionalCostStatus.OWNED;
         }
         if (entitlement.activeRentalPageNumbers().contains(pageNumber)) {
-            return AiRouteAdditionalCostStatus.ACTIVE_RENTAL;
+            return AdditionalCostStatus.ACTIVE_RENTAL;
         }
-        return AiRouteAdditionalCostStatus.ONE_INK;
+        return AdditionalCostStatus.ONE_INK;
     }
 }

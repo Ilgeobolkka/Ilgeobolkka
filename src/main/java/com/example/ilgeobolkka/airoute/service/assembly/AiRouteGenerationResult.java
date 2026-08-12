@@ -1,6 +1,5 @@
 package com.example.ilgeobolkka.airoute.service.assembly;
 
-import com.example.ilgeobolkka.airoute.AiRouteAdditionalCostStatus;
 import com.example.ilgeobolkka.airoute.entity.AiRouteItemRelevance;
 import com.example.ilgeobolkka.airoute.entity.AiRouteItemRole;
 import com.example.ilgeobolkka.airoute.entity.AiRouteNoRouteReason;
@@ -63,6 +62,12 @@ public record AiRouteGenerationResult(
         NO_ROUTE
     }
 
+    public enum AdditionalCostStatus {
+        ONE_INK,
+        ACTIVE_RENTAL,
+        OWNED
+    }
+
     /**
      * 최종 경로 항목. {@code additionalCostStatus}는 조회 시 다시 계산하지 않는 생성 시점 사본이다.
      */
@@ -75,5 +80,5 @@ public record AiRouteGenerationResult(
             AiRouteItemRole role,
             int estimatedMinutes,
             String guide,
-            AiRouteAdditionalCostStatus additionalCostStatus) {}
+            AdditionalCostStatus additionalCostStatus) {}
 }

@@ -6,12 +6,12 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.example.ilgeobolkka.airoute.AiRouteAdditionalCostStatus;
 import com.example.ilgeobolkka.airoute.AiRouteDepth;
 import com.example.ilgeobolkka.airoute.AiRouteGenerationCommand;
 import com.example.ilgeobolkka.airoute.entity.AiRouteItemRelevance;
 import com.example.ilgeobolkka.airoute.entity.AiRouteItemRole;
 import com.example.ilgeobolkka.airoute.entity.AiRouteNoRouteReason;
+import com.example.ilgeobolkka.airoute.service.assembly.AiRouteGenerationResult.AdditionalCostStatus;
 import com.example.ilgeobolkka.airoute.service.assembly.AiRouteGenerationResult.Item;
 import com.example.ilgeobolkka.airoute.service.assembly.AiRouteGenerationResult.Status;
 import com.example.ilgeobolkka.airoute.service.validation.ValidatedRouteProposal;
@@ -51,8 +51,7 @@ class AiRouteAssemblerTest {
                 () -> assertEquals(Status.ROUTE, result.status()),
                 () -> assertEquals(budget, result.items().size()),
                 () -> assertTrue(result.items().stream()
-                        .allMatch(item -> item.additionalCostStatus()
-                                == AiRouteAdditionalCostStatus.ONE_INK)),
+                        .allMatch(item -> item.additionalCostStatus() == AdditionalCostStatus.ONE_INK)),
                 () -> assertEquals(
                         IntStream.rangeClosed(1, budget).boxed().toList(),
                         pageNumbers(result)));
@@ -70,7 +69,7 @@ class AiRouteAssemblerTest {
                 () -> assertEquals(List.of(1, 3), pageNumbers(result)),
                 () -> assertTrue(result.items().stream()
                         .allMatch(item -> item.additionalCostStatus()
-                                == AiRouteAdditionalCostStatus.ACTIVE_RENTAL)));
+                                == AdditionalCostStatus.ACTIVE_RENTAL)));
     }
 
     @Test
@@ -102,8 +101,7 @@ class AiRouteAssemblerTest {
         assertAll(
                 () -> assertEquals(expectedPageCount, result.items().size()),
                 () -> assertTrue(result.items().stream()
-                        .allMatch(item -> item.additionalCostStatus()
-                                == AiRouteAdditionalCostStatus.OWNED)));
+                        .allMatch(item -> item.additionalCostStatus() == AdditionalCostStatus.OWNED)));
     }
 
     @Test
@@ -269,9 +267,9 @@ class AiRouteAssemblerTest {
                         .toList()),
                 () -> assertEquals(
                         List.of(
-                                AiRouteAdditionalCostStatus.ACTIVE_RENTAL,
-                                AiRouteAdditionalCostStatus.ONE_INK,
-                                AiRouteAdditionalCostStatus.ONE_INK),
+                                AdditionalCostStatus.ACTIVE_RENTAL,
+                                AdditionalCostStatus.ONE_INK,
+                                AdditionalCostStatus.ONE_INK),
                         result.items().stream().map(Item::additionalCostStatus).toList()),
                 () -> assertTrue(result.items().stream()
                         .allMatch(item -> item.guide().contains("공개 주제"))));
