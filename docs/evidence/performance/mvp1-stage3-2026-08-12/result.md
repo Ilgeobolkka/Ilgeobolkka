@@ -11,6 +11,7 @@
   - `ink_ledger(reader_id, occurred_at DESC, id DESC)`
 - 최종 판정: **이력 조회 복합 인덱스 2개 채택**
 - 범위: 로컬 Compose의 백엔드 코드 회귀 비교. 운영 SLO·운영 용량 근거가 아니다.
+- 환경: [environment.md](./environment.md)
 
 첫 판정은 전체 HTTP p95 15%를 인덱스의 필수 채택 하한으로 적용해 두 후보를 제거했다. 이후 검토에서
 실행 계획은 `history-heavy`에서 확인했지만 HTTP Average 직전 `reset-mvp.sh`가 이력 데이터를 제거한 사실과,
@@ -81,7 +82,7 @@ probe 시간은 `0.71ms → 0.0196ms`였다. 기본 MVP Average 전체 p95는 2.
 ## 동일 조건 재검증
 
 재검증 상세 수치와 실행 계획 해석은 [history-index-revalidation.md](./history-index-revalidation.md)에
-기록했다.
+기록했다. 표에 사용한 작은 k6 summary는 이 폴더의 `summary-history-*.json`에 보존했다.
 
 ### 실제 제품 SQL
 
@@ -230,4 +231,5 @@ dropped iteration 0, Hikari pending 최대 0이며 실행 뒤 도메인 불변�
 - 폐기 migration·테스트·DB 상태는 남지 않았다. 채택 V4와 그 회귀 테스트·재현 scenario만 남겼다.
 - `docs/implementation/performance/RUNBOOK.md`는 수정하지 않았다.
 
-원시 결과 위치와 SHA-256은 [artifact-manifest.md](./artifact-manifest.md)에 기록했다.
+작은 k6 summary는 이 evidence 폴더에 보존했고, 큰 원시 결과 위치와 SHA-256은
+[artifact-manifest.md](./artifact-manifest.md)에 기록했다.

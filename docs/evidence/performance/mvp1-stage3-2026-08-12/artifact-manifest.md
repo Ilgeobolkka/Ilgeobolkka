@@ -9,9 +9,14 @@
 2. 각 파일의 `SHA-256  상대경로` 행을 만든다.
 3. 행 전체를 `shasum -a 256`에 입력한다.
 
-Git에는 큰 원시 결과를 복사하지 않고 위치·전체 크기·집계 SHA-256과 판정에 직접 사용한 주요 파일의
-SHA-256만 기록한다. `var/performance/`가 정리되면 아래 해시만으로 원시 파일을 복구할 수는 없으므로 로컬
-보존이 필요한 동안 해당 경로를 유지한다.
+Git에는 판정에 직접 사용한 작은 k6 summary를 이 evidence 폴더의 `summary-*.json`으로 보존한다. 큰
+Prometheus 시계열·전체 로그는 복사하지 않고 위치·전체 크기·집계 SHA-256과 주요 파일의 SHA-256만
+기록한다. `var/performance/`가 정리되면 큰 원시 파일은 아래 해시만으로 복구할 수 없으므로 로컬 보존이
+필요한 동안 해당 경로를 유지한다.
+
+Git 보존 summary는 control과 초기 후보 Average, 이력 endpoint control/candidate 각 3회, history-heavy
+mixed control/candidate, 결합 Average 3회, 무효 Peak 1회와 유효 Peak 3회다. 파일명은 실행 목적과 회차를
+그대로 반영한다.
 
 ## 실행별 위치와 집계 SHA-256
 

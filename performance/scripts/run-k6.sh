@@ -46,6 +46,16 @@ esac
 run_id="$(date -u +%Y%m%dT%H%M%SZ)-$run_label"
 output_directory="$PERFORMANCE_ROOT/var/performance/results/$run_id"
 mkdir -p "$output_directory"
+dataset_metadata_file="$output_directory/dataset.json"
+if [ "$scenario_name" = "history-index" ]; then
+    performance_compose exec -T mysql sh -c \
+        'MYSQL_PWD="$MYSQL_PASSWORD" mysql --batch --skip-column-names -u"$MYSQL_USER" "$MYSQL_DATABASE"' \
+        <"$PERFORMANCE_ROOT/performance/data/history-heavy-counts.sql" \
+        | "$PERFORMANCE_SCRIPT_DIR/render-dataset-metadata.sh" history-heavy \
+            >"$dataset_metadata_file"
+else
+    "$PERFORMANCE_SCRIPT_DIR/render-dataset-metadata.sh" mvp >"$dataset_metadata_file"
+fi
 started_utc=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 sampler_stop_file="$output_directory/.generator-sampler-stop"
 rm -f "$sampler_stop_file"
@@ -92,7 +102,8 @@ fi
 
 finished_utc=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 "$PERFORMANCE_SCRIPT_DIR/collect-metadata.sh" \
-    "$output_directory" "$scenario_name" "$started_utc" "$finished_utc"
+    "$output_directory" "$scenario_name" "$started_utc" "$finished_utc" \
+    "$dataset_metadata_file"
 sleep 6
 "$PERFORMANCE_SCRIPT_DIR/collect-prometheus-summary.sh" "$output_directory"
 

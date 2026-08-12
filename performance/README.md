@@ -99,7 +99,8 @@ run_contention_case session
 `history-index`는 `history-heavy` 데이터에서 서재와 원장 API를 각각 10 iteration/s로 분리 측정한다.
 인덱스 전후 비교는 같은 데이터에서 대상 인덱스의 visible 상태만 바꾸고, 매 실행 새 애플리케이션과 버리는
 Warm-up을 사용한다. 로그인 준비 요청은 endpoint 통계에서 제외하고 `history-library`, `history-ledger`
-measurement tag의 p50·p95·p99를 비교한다.
+measurement tag의 p50·p95·p99를 비교한다. 실행 전 `history-heavy`의 고정 행 수를 확인하고 실제 행 수를
+결과의 `dataset.json`과 `metadata.json`에 기록하며, 불일치하면 부하를 시작하지 않는다.
 
 `history-heavy`는 애플리케이션을 정지한 상태에서 고정 `mvp`를 복원한 뒤 독자마다 과거 대여 500건을
 추가한다. 생성 시간 10분·DB 2GiB 경계를 넘으면 실패하며, 진단 뒤에는 다시 `reset-mvp.sh`를 실행한다.
