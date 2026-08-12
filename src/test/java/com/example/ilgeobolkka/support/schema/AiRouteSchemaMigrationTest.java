@@ -27,7 +27,7 @@ import org.springframework.test.context.ContextConfiguration;
 class AiRouteSchemaMigrationTest {
 
     private static final MigrationVersion AI_ROUTE_MIGRATION_VERSION =
-            MigrationVersion.fromVersion("4");
+            MigrationVersion.fromVersion("5");
     private static final long READER_ID = 51_000L;
     private static final long SECOND_READER_ID = 51_001L;
     private static final long BOOK_ID = 52_000L;
@@ -57,7 +57,7 @@ class AiRouteSchemaMigrationTest {
     }
 
     @Test
-    void 빈_스키마에는_V1부터_V4까지_순서대로_적용된다() {
+    void 빈_스키마에는_V1부터_V5까지_순서대로_적용된다() {
         Flyway flyway = 새_Flyway를_생성한다(AI_ROUTE_MIGRATION_VERSION);
 
         try {
@@ -66,8 +66,8 @@ class AiRouteSchemaMigrationTest {
             int migrationCount = flyway.migrate().migrationsExecuted;
 
             assertAll(
-                    () -> assertEquals(4, migrationCount),
-                    () -> assertEquals(List.of("1", "2", "3", "4"), 적용된_버전을_조회한다()),
+                    () -> assertEquals(5, migrationCount),
+                    () -> assertEquals(List.of("1", "2", "3", "4", "5"), 적용된_버전을_조회한다()),
                     () -> assertEquals(7, AI_경로_테이블_수를_조회한다()));
         } finally {
             최신_스키마로_복구한다();
