@@ -31,6 +31,7 @@ class AiRoutePageWriterMySqlIntegrationTest {
 
     private static final long BOOK_ID = 11L;
     private static final int NEW_PAGE_COUNT = 5;
+    private static final long OTHER_BOOK_ID = 11_001L;
 
     private final ContentPageWriter pageWriter;
     private final JdbcTemplate jdbcTemplate;
@@ -47,8 +48,9 @@ class AiRoutePageWriterMySqlIntegrationTest {
 
     @BeforeEach
     void 초기_상태를_기록한다() {
-        jdbcTemplate.update("DELETE FROM book_page WHERE book_id = ?", BOOK_ID);
-        jdbcTemplate.update("DELETE FROM book WHERE id = ?", BOOK_ID);
+        jdbcTemplate.update(
+                "DELETE FROM book_page WHERE book_id IN (?, ?)", BOOK_ID, OTHER_BOOK_ID);
+        jdbcTemplate.update("DELETE FROM book WHERE id IN (?, ?)", BOOK_ID, OTHER_BOOK_ID);
         // 도서는 앞선 시연 데이터 단계에서 만들어져 있어야 한다. 적재는 만들지 않는다.
         jdbcTemplate.update(
                 """
@@ -62,6 +64,19 @@ class AiRoutePageWriterMySqlIntegrationTest {
                 VALUES (?, 1, 'TEXT', '기존 본문')
                 """,
                 BOOK_ID);
+        // manifest에 들지 않은 도서. 적재가 건드리지 않아야 한다.
+        jdbcTemplate.update(
+                """
+                INSERT INTO book (id, category, title, author, total_page_count, price_won)
+                VALUES (?, '에세이', '대상 아닌 도서', '저자', 1, 10000)
+                """,
+                OTHER_BOOK_ID);
+        jdbcTemplate.update(
+                """
+                INSERT INTO book_page (book_id, page_number, content_type, text_content)
+                VALUES (?, 1, 'TEXT', '남아 있어야 하는 본문')
+                """,
+                OTHER_BOOK_ID);
         originalPageCount =
                 jdbcTemplate.queryForObject(
                         "SELECT total_page_count FROM book WHERE id = ?", Integer.class, BOOK_ID);
@@ -70,8 +85,9 @@ class AiRoutePageWriterMySqlIntegrationTest {
 
     @AfterEach
     void 초기_상태로_되돌린다() {
-        jdbcTemplate.update("DELETE FROM book_page WHERE book_id = ?", BOOK_ID);
-        jdbcTemplate.update("DELETE FROM book WHERE id = ?", BOOK_ID);
+        jdbcTemplate.update(
+                "DELETE FROM book_page WHERE book_id IN (?, ?)", BOOK_ID, OTHER_BOOK_ID);
+        jdbcTemplate.update("DELETE FROM book WHERE id IN (?, ?)", BOOK_ID, OTHER_BOOK_ID);
     }
 
     @Test
@@ -96,11 +112,11 @@ class AiRoutePageWriterMySqlIntegrationTest {
                 // manifest에 없는 도서의 페이지는 건드리지 않는다.
                 () ->
                         assertEquals(
-                                0,
+                                1,
                                 jdbcTemplate.queryForObject(
-                                        "SELECT COUNT(*) FROM book_page WHERE book_id <> ?",
+                                        "SELECT COUNT(*) FROM book_page WHERE book_id = ?",
                                         Integer.class,
-                                        BOOK_ID)));
+                                        OTHER_BOOK_ID)));
     }
 
     @Test

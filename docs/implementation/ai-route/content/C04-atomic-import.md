@@ -32,9 +32,12 @@
   도서만 적재하며 `total_page_count`를 새 값으로 올립니다. 시연 도서는 여기서 만들지 않습니다 —
   `ensureBooks`가 기존 도서와 시드를 비교하는데, 이 적재가 페이지 수를 올리고 나면 두 번째 실행부터
   반드시 어긋나기 때문입니다. 도서는 앞선 시연 데이터 단계에서 만들어져 있어야 합니다.
-- **남은 것**: 본문 적재 뒤 C02 검증 → C03 임베딩 → `AiRouteContentWriter`를 잇는 배치 오케스트레이션.
-  C03이 후보 페이지마다 Embeddings를 호출하므로 실제 OpenAI 키와 비용이 필요하고, 그 경계를 정하는
-  것은 배포 절차 결정입니다.
+- `AiRouteContentImporter`가 검증 → embedding → 적재를 잇습니다. 파일 I/O와 Embeddings 호출은
+  트랜잭션 **밖**에서 끝내고 본문 페이지와 AI 메타데이터는 **한 트랜잭션**에 함께 씁니다. 준비와 쓰기를
+  두 메서드로 나눈 것은 같은 빈 안에서 부르면 프록시를 거치지 않아 트랜잭션이 걸리지 않기 때문입니다.
+- 평가 데이터 경로는 `content-import.evaluation` 설정으로 받습니다.
+- **남은 것**: 실제 실행. 후보 페이지마다 Embeddings를 호출하므로 OpenAI 키·프로젝트·지출 한도가 필요하고,
+  언제 어느 환경에서 돌릴지는 [배포 절차](../../../deployment.md#콘텐츠-변환적재) 결정입니다.
 - [ContentImportService](../../../../src/main/java/com/example/ilgeobolkka/contentimport/ContentImportService.java)는
   변환 batch를 DB writer에 전달합니다.
 - [ContentPageWriter](../../../../src/main/java/com/example/ilgeobolkka/contentimport/ContentPageWriter.java)는

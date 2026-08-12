@@ -4,5 +4,6 @@ spring:
 
 content-import:
   manifest: ${CONTENT_IMPORT_MANIFEST:fixtures/content/manifest.json}
+  evaluation: ${CONTENT_IMPORT_EVALUATION:fixtures/content/ai-route-v2/evaluation.json}
   pdftotext-command: ${PDFTOTEXT_COMMAND:pdftotext}
   pdftoppm-command: ${PDFTOPPM_COMMAND:pdftoppm}
