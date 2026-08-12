@@ -285,6 +285,16 @@ class AiRouteContentEmbeddingServiceTest {
                                 () -> embedded.vectorOf(41, 2).add(0.9)));
     }
 
+    @Test
+    void 결과_batch는_null_key가_있으면_즉시_실패한다() {
+        Map<EmbeddedAiRouteContent.PageKey, List<Double>> sourceVectors = new LinkedHashMap<>();
+        sourceVectors.put(null, List.of(0.1, 0.2, 0.3));
+
+        assertThrows(
+                NullPointerException.class,
+                () -> new EmbeddedAiRouteContent(VERSION, MODEL, DIMENSIONS, sourceVectors));
+    }
+
     private AiRouteContentEmbeddingException embedFailure(
             Function<OpenAiEmbeddingGateway.PageAnalysisInput, OpenAiEmbeddingGateway.Embedding>
                     responder) {
