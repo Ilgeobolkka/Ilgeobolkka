@@ -7,6 +7,7 @@ import static org.mockito.Mockito.timeout;
 import static org.mockito.Mockito.verify;
 
 import com.example.ilgeobolkka.airoute.service.generation.AiRouteGenerationCleanupService;
+import com.example.ilgeobolkka.global.config.SchedulingConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -91,6 +92,9 @@ class AiRouteGenerationMaintenanceSchedulerTest {
     /**
      * 스케줄러를 {@code @Bean} 으로 직접 만들지 않고 {@link Import} 로 올린다. 직접 만들면 클래스에 붙는
      * 조건 애너테이션이 평가되지 않아, 나중에 누가 조건을 도로 붙여도 이 테스트가 통과해 버린다.
+     *
+     * <p>{@code SchedulingConfig} 도 함께 올린다. 전역 스위치가 도메인 밖으로 나가서, 그것 없이는
+     * {@code @Scheduled} 가 붙어 있어도 돌지 않는다.
      */
     private ApplicationContextRunner schedulerContextRunner() {
         return new ApplicationContextRunner()
@@ -101,7 +105,7 @@ class AiRouteGenerationMaintenanceSchedulerTest {
     }
 
     @Configuration(proxyBeanMethods = false)
-    @Import(AiRouteGenerationMaintenanceScheduler.class)
+    @Import({AiRouteGenerationMaintenanceScheduler.class, SchedulingConfig.class})
     static class SchedulerTestConfiguration {
 
         @Bean

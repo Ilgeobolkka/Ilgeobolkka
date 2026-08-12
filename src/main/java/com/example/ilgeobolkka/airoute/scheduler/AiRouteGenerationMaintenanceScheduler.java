@@ -3,9 +3,8 @@ package com.example.ilgeobolkka.airoute.scheduler;
 import com.example.ilgeobolkka.airoute.service.generation.AiRouteGenerationCleanupService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
 /**
  * 버려진 생성 복구와 만료 정리를 주기적으로 돌린다.
@@ -19,12 +18,14 @@ import org.springframework.scheduling.annotation.Scheduled;
  * <p>기능 플래그는 controller 와 외부 호출에만 걸린다. 새 데이터가 더 생기지 않을 뿐, 남은 데이터는
  * 계속 정리한다.
  *
+ * <p>스케줄링 자체를 켜는 것은 {@code SchedulingConfig} 다. 전역 스위치를 도메인 클래스가 들고 있으면
+ * 이 클래스를 지울 때 다른 도메인의 배치까지 조용히 멈춘다.
+ *
  * <p>기동 직후 한 번과 그 뒤 주기 실행을 이 하나로 처리한다. {@code fixedDelay} 는 기본
  * {@code initialDelay} 가 0이라 첫 실행이 기동 직후다.
  */
 @Slf4j
-@Configuration(proxyBeanMethods = false)
-@EnableScheduling
+@Component
 @RequiredArgsConstructor
 public class AiRouteGenerationMaintenanceScheduler {
 
