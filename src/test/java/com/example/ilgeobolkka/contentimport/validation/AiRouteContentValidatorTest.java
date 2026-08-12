@@ -284,16 +284,24 @@ class AiRouteContentValidatorTest {
                 fail(manifest, evaluationWith(List.of(2), List.of(), List.of(1)))
                         .getMessage()
                         .contains("irrelevantPageNumbers에 후보가 아닌 페이지"));
+        assertTrue(
+                fail(manifest, evaluationWithActiveRentals(List.of(1)))
+                        .getMessage()
+                        .contains("activeRentalPageNumbers에 후보가 아닌 페이지"));
     }
 
     @Test
-    void 평가의_정답과_무관_페이지가_겹치면_실패한다() {
+    void 평가의_허용_페이지와_무관_페이지가_겹치면_실패한다() {
         AiRouteContentManifest manifest = manifest(candidateBook());
 
         assertTrue(
                 fail(manifest, evaluationWith(List.of(2), List.of(), List.of(2)))
                         .getMessage()
                         .contains("정답과 무관 페이지가 겹칩니다"));
+        assertTrue(
+                fail(manifest, evaluationWith(List.of(2), List.of(3), List.of(3)))
+                        .getMessage()
+                        .contains("대체와 무관 페이지가 겹칩니다"));
     }
 
     @Test
@@ -342,7 +350,33 @@ class AiRouteContentValidatorTest {
     }
 
     @Test
-    void 필수_개념은_도서의_primary나_secondary에_존재하면_통과한다() {
+    void 평가_개념이_후보가_아닌_페이지에만_있으면_실패한다() {
+        AiRouteContentManifest manifest = manifest(candidateBook());
+
+        assertTrue(
+                fail(
+                                manifest,
+                                evaluationWithAnswers(
+                                        List.of("개념 1"),
+                                        List.of(),
+                                        List.of(),
+                                        List.of()))
+                        .getMessage()
+                        .contains("requiredConcepts"));
+        assertTrue(
+                fail(
+                                manifest,
+                                evaluationWithAnswers(
+                                        List.of("개념 2"),
+                                        List.of("개념 1"),
+                                        List.of(),
+                                        List.of()))
+                        .getMessage()
+                        .contains("helpfulConcepts"));
+    }
+
+    @Test
+    void 필수_개념은_후보_primary에_있어야_하고_도움_개념은_secondary도_허용한다() {
         AiRouteContentManifest.Page page = candidateBook().pages().get(1);
         AiRouteContentManifest secondaryOnly =
                 manifestWithReplacedPage(
@@ -353,24 +387,44 @@ class AiRouteContentValidatorTest {
                                 List.of("보조 전용 개념"),
                                 page.duplicateGroupKeys()));
 
+        assertTrue(
+                fail(
+                                secondaryOnly,
+                                evaluationWithAnswers(
+                                        List.of("보조 전용 개념"),
+                                        List.of(),
+                                        List.of(),
+                                        List.of()))
+                        .getMessage()
+                        .contains("requiredConcepts"));
         validator.validate(
                 secondaryOnly,
                 evaluationWithAnswers(
+                        List.of("다른 필수 개념"),
                         List.of("보조 전용 개념"),
                         List.of(),
-                        List.of(),
                         List.of()),
                 fixtureRoot,
                 POLICY);
-        validator.validate(
-                manifest(candidateBook()),
-                evaluationWithAnswers(
-                        List.of("개념 3"),
-                        List.of(),
-                        List.of(),
-                        List.of()),
-                fixtureRoot,
-                POLICY);
+    }
+
+    @Test
+    void 정답_경로가_필수_개념을_덮지_않으면_실패한다() {
+        AiRouteContentManifest manifest = manifest(candidateBook());
+
+        assertTrue(
+                fail(
+                                manifest,
+                                evaluationWithAnswers(
+                                        List.of("개념 4"),
+                                        List.of(),
+                                        List.of(),
+                                        List.of(),
+                                        List.of(2),
+                                        List.of(),
+                                        List.of()))
+                        .getMessage()
+                        .contains("referencePageNumbers"));
     }
 
     @Test
@@ -424,7 +478,7 @@ class AiRouteContentValidatorTest {
                                         List.of(),
                                         List.of()))
                         .getMessage()
-                        .contains("전체와 다릅니다"));
+                        .contains("누락="));
         assertTrue(
                 fail(
                                 manifest,
@@ -434,7 +488,7 @@ class AiRouteContentValidatorTest {
                                         List.of(edge),
                                         List.of()))
                         .getMessage()
-                        .contains("전체와 다릅니다"));
+                        .contains("초과="));
         assertTrue(
                 fail(
                                 manifest,
@@ -485,7 +539,7 @@ class AiRouteContentValidatorTest {
                                         List.of(),
                                         List.of(List.of(2, 3))))
                         .getMessage()
-                        .contains("duplicatePageGroups"));
+                        .contains("초과="));
     }
 
     @Test
@@ -495,6 +549,16 @@ class AiRouteContentValidatorTest {
         AiRouteEvaluationDataset.RequiredPrerequisite edge =
                 new AiRouteEvaluationDataset.RequiredPrerequisite(2, 3);
 
+        assertTrue(
+                fail(
+                                duplicatePair,
+                                evaluationWithAnswers(
+                                        List.of("개념 2"),
+                                        List.of(),
+                                        List.of(),
+                                        List.of()))
+                        .getMessage()
+                        .contains("누락="));
         assertTrue(
                 fail(singleton, emptyEvaluation())
                         .getMessage()
@@ -551,6 +615,22 @@ class AiRouteContentValidatorTest {
                         List.of(List.of(2, 3))),
                 fixtureRoot,
                 POLICY);
+    }
+
+    @Test
+    void 후보가_아닌_페이지는_중복_그룹을_가질_수_없다() {
+        AiRouteContentManifest manifest = manifestWithDuplicateGroup(List.of(1, 2));
+
+        assertTrue(
+                fail(
+                                manifest,
+                                evaluationWithAnswers(
+                                        List.of("개념 2"),
+                                        List.of(),
+                                        List.of(),
+                                        List.of(List.of(1, 2))))
+                        .getMessage()
+                        .contains("후보가 아닌 페이지의 duplicateGroupKeys"));
     }
 
     private AiRouteContentValidationException fail(
@@ -656,6 +736,18 @@ class AiRouteContentValidatorTest {
                 irrelevant);
     }
 
+    private AiRouteEvaluationDataset evaluationWithActiveRentals(List<Integer> activeRentals) {
+        return evaluationWithAnswers(
+                List.of("개념 2"),
+                List.of(),
+                List.of(),
+                List.of(),
+                activeRentals,
+                List.of(2),
+                List.of(),
+                List.of());
+    }
+
     private AiRouteEvaluationDataset evaluationWithAnswers(
             List<String> requiredConcepts,
             List<String> helpfulConcepts,
@@ -679,6 +771,26 @@ class AiRouteContentValidatorTest {
             List<Integer> reference,
             List<Integer> alternative,
             List<Integer> irrelevant) {
+        return evaluationWithAnswers(
+                requiredConcepts,
+                helpfulConcepts,
+                requiredPrerequisites,
+                duplicatePageGroups,
+                List.of(),
+                reference,
+                alternative,
+                irrelevant);
+    }
+
+    private AiRouteEvaluationDataset evaluationWithAnswers(
+            List<String> requiredConcepts,
+            List<String> helpfulConcepts,
+            List<AiRouteEvaluationDataset.RequiredPrerequisite> requiredPrerequisites,
+            List<List<Integer>> duplicatePageGroups,
+            List<Integer> activeRentalPageNumbers,
+            List<Integer> reference,
+            List<Integer> alternative,
+            List<Integer> irrelevant) {
         return new AiRouteEvaluationDataset(
                 "ai-route-v2",
                 List.of(
@@ -689,7 +801,7 @@ class AiRouteContentValidatorTest {
                                 false,
                                 5,
                                 null,
-                                List.of(),
+                                activeRentalPageNumbers,
                                 requiredConcepts,
                                 helpfulConcepts,
                                 requiredPrerequisites,

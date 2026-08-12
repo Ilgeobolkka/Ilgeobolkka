@@ -54,6 +54,9 @@ def main():
     fm = {p["pageNumber"] for p in pages if p["contentRole"] == "FRONT_MATTER"}
     noncand = {p["pageNumber"] for p in pages if not p["aiRouteCandidatePage"]}
     chk(fm == noncand, f"FRONT_MATTER=후보제외 (FM={sorted(fm)}, 비후보={sorted(noncand)})")
+    chk(all(not p.get("duplicateGroupKeys", []) for p in pages
+            if not p["aiRouteCandidatePage"]),
+        "비후보 페이지 duplicateGroupKeys 비어 있음")
     dupgroups = {}
     for p in pages:
         chk(bool(p["primaryConcepts"]), f"p{p['pageNumber']} primaryConcepts")
@@ -105,22 +108,39 @@ def main():
 
     print(f"\n[evaluation case {case['caseId']}]")
     chk(case["bookId"] == bid, "caseId의 bookId가 manifestBook과 일치")
-    concepts = {x for p in pages for x in p["primaryConcepts"] + p["secondaryConcepts"]}
+    candidate_pages = [p for p in pages if p["aiRouteCandidatePage"]]
+    candidate_primary = {x for p in candidate_pages for x in p["primaryConcepts"]}
+    candidate_concepts = {
+        x for p in candidate_pages for x in p["primaryConcepts"] + p["secondaryConcepts"]
+    }
     chk(bool(case["requiredConcepts"]), "requiredConcepts 비어있지 않음")
-    missing = [x for x in case["requiredConcepts"] + case["helpfulConcepts"] if x not in concepts]
-    chk(not missing, f"개념이 실제 페이지에 존재 (누락 {missing})")
+    missing_required = [x for x in case["requiredConcepts"] if x not in candidate_primary]
+    chk(not missing_required,
+        f"requiredConcepts가 후보 primaryConcepts에 존재 (누락 {missing_required})")
+    missing_helpful = [x for x in case["helpfulConcepts"] if x not in candidate_concepts]
+    chk(not missing_helpful,
+        f"helpfulConcepts가 후보 primary/secondaryConcepts에 존재 (누락 {missing_helpful})")
+    reference = set(case["referencePageNumbers"])
+    reference_primary = {
+        x for p in candidate_pages if p["pageNumber"] in reference for x in p["primaryConcepts"]
+    }
+    uncovered_required = [x for x in case["requiredConcepts"] if x not in reference_primary]
+    chk(not uncovered_required,
+        f"referencePageNumbers가 requiredConcepts를 덮음 (누락 {uncovered_required})")
     all_ev_pages = (case["irrelevantPageNumbers"] + case["referencePageNumbers"]
                      + case["allowedAlternativePageNumbers"]
                      + [x for g in case["duplicatePageGroups"] for x in g]
                      + case.get("activeRentalPageNumbers", []))
     chk(all(x in allnum for x in all_ev_pages), "평가 페이지가 도서 범위 안")
     chk(not (set(case["referencePageNumbers"]) & set(case["irrelevantPageNumbers"])), "정답∩무관=∅")
-    # 정본은 비후보 페이지가 정답 경로와 대체 페이지 어디에도 못 나오게 한다. 대체 페이지를 빼면
-    # 임베딩이 없는 목차가 대체 정답으로 채점돼 도달할 수 없는 경로를 통과시킨다.
+    chk(not (set(case["allowedAlternativePageNumbers"]) & set(case["irrelevantPageNumbers"])),
+        "대체∩무관=∅")
+    # 정본은 비후보 페이지가 경로 비용·추천·채점 목록 어디에도 못 나오게 한다.
     chk(not (set(case["referencePageNumbers"]) & noncand), "정답경로에 비후보 없음")
     chk(not (set(case["allowedAlternativePageNumbers"]) & noncand), "대체 페이지에 비후보 없음")
     # 비후보 페이지는 추천될 수 없으므로 무관으로 적어도 채점에 걸리지 않는 죽은 값이다.
     chk(not (set(case["irrelevantPageNumbers"]) & noncand), "무관 페이지에 비후보 없음")
+    chk(not (set(case.get("activeRentalPageNumbers", [])) & noncand), "activeRental에 비후보 없음")
     # 평가의 중복 그룹은 manifest의 duplicateGroupKeys가 실제로 묶은 페이지 집합과 같아야 한다.
     # 한쪽만 고치면 중복 페이지를 걸러내는 평가가 조용히 다른 정답을 채점하게 된다.
     manifest_groups = {frozenset(ps) for ps in dupgroups.values()}

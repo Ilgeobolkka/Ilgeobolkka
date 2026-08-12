@@ -156,6 +156,32 @@ def check_fragment(workdir):
     expect("title이 없으면 실패", broken, workdir, should_pass=False, needle="title 존재")
 
     broken = copy.deepcopy(base)
+    front_matter = next(p for p in broken["manifestBook"]["pages"]
+                        if not p["aiRouteCandidatePage"])
+    front_matter["primaryConcepts"] = ["비후보 전용 필수 개념"]
+    broken["evaluationCase"]["requiredConcepts"] = ["비후보 전용 필수 개념"]
+    expect("필수 개념이 비후보 페이지에만 있으면 실패", broken, workdir,
+           should_pass=False, needle="requiredConcepts가 후보 primaryConcepts")
+
+    broken = copy.deepcopy(base)
+    front_matter = next(p for p in broken["manifestBook"]["pages"]
+                        if not p["aiRouteCandidatePage"])
+    front_matter["secondaryConcepts"] = ["비후보 전용 도움 개념"]
+    broken["evaluationCase"]["helpfulConcepts"] = ["비후보 전용 도움 개념"]
+    expect("도움 개념이 비후보 페이지에만 있으면 실패", broken, workdir,
+           should_pass=False, needle="helpfulConcepts가 후보 primary/secondaryConcepts")
+
+    broken = copy.deepcopy(base)
+    case = broken["evaluationCase"]
+    outside = next(p for p in broken["manifestBook"]["pages"]
+                   if p["aiRouteCandidatePage"]
+                   and p["pageNumber"] not in case["referencePageNumbers"])
+    outside["primaryConcepts"] = ["정답 경로 밖 필수 개념"]
+    case["requiredConcepts"] = ["정답 경로 밖 필수 개념"]
+    expect("정답 경로가 필수 개념을 덮지 않으면 실패", broken, workdir,
+           should_pass=False, needle="referencePageNumbers가 requiredConcepts")
+
+    broken = copy.deepcopy(base)
     group = broken["evaluationCase"]["duplicatePageGroups"][0]
     broken["evaluationCase"]["referencePageNumbers"] = sorted(
         set(broken["evaluationCase"]["referencePageNumbers"]) | set(group))
@@ -183,6 +209,30 @@ def check_fragment(workdir):
     broken["evaluationCase"]["irrelevantPageNumbers"] = [fm]
     expect("무관 페이지에 비후보를 넣으면 실패", broken, workdir,
            should_pass=False, needle="무관 페이지에 비후보")
+
+    broken = copy.deepcopy(base)
+    case = broken["evaluationCase"]
+    outside = next(p["pageNumber"] for p in broken["manifestBook"]["pages"]
+                   if p["aiRouteCandidatePage"]
+                   and p["pageNumber"] not in case["referencePageNumbers"])
+    case["allowedAlternativePageNumbers"] = [outside]
+    case["irrelevantPageNumbers"] = [outside]
+    expect("대체 페이지와 무관 페이지가 겹치면 실패", broken, workdir,
+           should_pass=False, needle="대체∩무관")
+
+    broken = copy.deepcopy(base)
+    front_matter = next(p for p in broken["manifestBook"]["pages"]
+                        if not p["aiRouteCandidatePage"])
+    broken["evaluationCase"]["activeRentalPageNumbers"].append(front_matter["pageNumber"])
+    expect("활성 대여에 비후보를 넣으면 실패", broken, workdir,
+           should_pass=False, needle="activeRental에 비후보")
+
+    broken = copy.deepcopy(base)
+    front_matter = next(p for p in broken["manifestBook"]["pages"]
+                        if not p["aiRouteCandidatePage"])
+    front_matter["duplicateGroupKeys"] = ["비후보 중복 그룹"]
+    expect("비후보 페이지에 중복 그룹을 넣으면 실패", broken, workdir,
+           should_pass=False, needle="비후보 페이지 duplicateGroupKeys")
 
     broken = copy.deepcopy(base)
     group = broken["evaluationCase"]["duplicatePageGroups"][0]
@@ -245,6 +295,37 @@ def check_manifest(workdir):
     expect_manifest("독서시간이 0이면 실패", broken, evaluation, workdir,
                     should_pass=False, needle="독서시간 > 0")
 
+    broken_manifest, broken_evaluation = copy.deepcopy(manifest), copy.deepcopy(evaluation)
+    book = candidate_book(broken_manifest)
+    case = next(c for c in broken_evaluation["cases"] if c["bookId"] == book["bookId"])
+    front_matter = next(p for p in book["pages"] if not p["aiRouteCandidatePage"])
+    front_matter["primaryConcepts"] = ["비후보 전용 필수 개념"]
+    case["requiredConcepts"] = ["비후보 전용 필수 개념"]
+    expect_manifest("필수 개념이 비후보 페이지에만 있으면 실패",
+                    broken_manifest, broken_evaluation, workdir,
+                    should_pass=False, needle="requiredConcepts가 후보 primaryConcepts")
+
+    broken_manifest, broken_evaluation = copy.deepcopy(manifest), copy.deepcopy(evaluation)
+    book = candidate_book(broken_manifest)
+    case = next(c for c in broken_evaluation["cases"] if c["bookId"] == book["bookId"])
+    front_matter = next(p for p in book["pages"] if not p["aiRouteCandidatePage"])
+    front_matter["secondaryConcepts"] = ["비후보 전용 도움 개념"]
+    case["helpfulConcepts"] = ["비후보 전용 도움 개념"]
+    expect_manifest("도움 개념이 비후보 페이지에만 있으면 실패",
+                    broken_manifest, broken_evaluation, workdir,
+                    should_pass=False, needle="helpfulConcepts가 후보 primary/secondaryConcepts")
+
+    broken_manifest, broken_evaluation = copy.deepcopy(manifest), copy.deepcopy(evaluation)
+    book = candidate_book(broken_manifest)
+    case = next(c for c in broken_evaluation["cases"] if c["bookId"] == book["bookId"])
+    outside = next(p for p in book["pages"] if p["aiRouteCandidatePage"]
+                   and p["pageNumber"] not in case["referencePageNumbers"])
+    outside["primaryConcepts"] = ["정답 경로 밖 필수 개념"]
+    case["requiredConcepts"] = ["정답 경로 밖 필수 개념"]
+    expect_manifest("정답 경로가 필수 개념을 덮지 않으면 실패",
+                    broken_manifest, broken_evaluation, workdir,
+                    should_pass=False, needle="referencePageNumbers가 requiredConcepts")
+
     broken = copy.deepcopy(evaluation)
     case = broken["cases"][0]
     book = next(b for b in manifest["books"] if b["bookId"] == case["bookId"])
@@ -271,6 +352,31 @@ def check_manifest(workdir):
         p["pageNumber"] for p in book["pages"] if not p["aiRouteCandidatePage"]]
     expect_manifest("무관 페이지에 비후보를 넣으면 실패", manifest, broken, workdir,
                     should_pass=False, needle="무관 페이지에 비후보")
+
+    broken = copy.deepcopy(evaluation)
+    case = broken["cases"][0]
+    book = next(b for b in manifest["books"] if b["bookId"] == case["bookId"])
+    outside = next(p["pageNumber"] for p in book["pages"] if p["aiRouteCandidatePage"]
+                   and p["pageNumber"] not in case["referencePageNumbers"])
+    case["allowedAlternativePageNumbers"] = [outside]
+    case["irrelevantPageNumbers"] = [outside]
+    expect_manifest("대체 페이지와 무관 페이지가 겹치면 실패", manifest, broken, workdir,
+                    should_pass=False, needle="대체∩무관")
+
+    broken = copy.deepcopy(evaluation)
+    case = broken["cases"][0]
+    book = next(b for b in manifest["books"] if b["bookId"] == case["bookId"])
+    front_matter = next(p for p in book["pages"] if not p["aiRouteCandidatePage"])
+    case["activeRentalPageNumbers"].append(front_matter["pageNumber"])
+    expect_manifest("활성 대여에 비후보를 넣으면 실패", manifest, broken, workdir,
+                    should_pass=False, needle="activeRental에 비후보")
+
+    broken = copy.deepcopy(manifest)
+    book = candidate_book(broken)
+    front_matter = next(p for p in book["pages"] if not p["aiRouteCandidatePage"])
+    front_matter["duplicateGroupKeys"] = ["비후보 중복 그룹"]
+    expect_manifest("비후보 페이지에 중복 그룹을 넣으면 실패", broken, evaluation, workdir,
+                    should_pass=False, needle="비후보 페이지 duplicateGroupKeys")
 
     broken = copy.deepcopy(evaluation)
     group = broken["cases"][0]["duplicatePageGroups"][0]

@@ -184,6 +184,10 @@ public final class AiRouteContentValidator {
                 !page.primaryConcepts().isEmpty(),
                 "book %d p%d primaryConcepts가 비어 있습니다.".formatted(bookId, pageNumber));
         require(
+                page.aiRouteCandidatePage() || page.duplicateGroupKeys().isEmpty(),
+                "book %d p%d 후보가 아닌 페이지의 duplicateGroupKeys는 비어 있어야 합니다."
+                        .formatted(bookId, pageNumber));
+        require(
                 sha256(page.aiAnalysisText().getBytes(StandardCharsets.UTF_8))
                         .equals(page.aiAnalysisInputSha256()),
                 "book %d p%d aiAnalysisInputSha256이 분석 텍스트와 다릅니다.".formatted(bookId, pageNumber));
@@ -210,22 +214,31 @@ public final class AiRouteContentValidator {
                     "book %d의 평가 케이스가 둘 이상입니다.".formatted(book.bookId()));
             Set<Integer> pageNumbers = new HashSet<>();
             Set<Integer> nonCandidates = new HashSet<>();
-            Set<String> allConcepts = new HashSet<>();
+            Set<Integer> referencePageNumbers =
+                    new HashSet<>(evaluationCase.referencePageNumbers());
+            Set<String> candidatePrimaryConcepts = new HashSet<>();
+            Set<String> candidateConcepts = new HashSet<>();
+            Set<String> referencePrimaryConcepts = new HashSet<>();
             Map<Integer, Set<Integer>> prerequisitesByPage = new HashMap<>();
             Map<String, Set<Integer>> pagesByDuplicateGroup = new HashMap<>();
             for (AiRouteContentManifest.Page page : book.pages()) {
                 pageNumbers.add(page.pageNumber());
-                allConcepts.addAll(page.primaryConcepts());
-                allConcepts.addAll(page.secondaryConcepts());
+                if (page.aiRouteCandidatePage()) {
+                    candidatePrimaryConcepts.addAll(page.primaryConcepts());
+                    candidateConcepts.addAll(page.primaryConcepts());
+                    candidateConcepts.addAll(page.secondaryConcepts());
+                    if (referencePageNumbers.contains(page.pageNumber())) {
+                        referencePrimaryConcepts.addAll(page.primaryConcepts());
+                    }
+                } else {
+                    nonCandidates.add(page.pageNumber());
+                }
                 prerequisitesByPage.put(
                         page.pageNumber(), Set.copyOf(page.prerequisitePageNumbers()));
                 for (String groupKey : page.duplicateGroupKeys()) {
                     pagesByDuplicateGroup
                             .computeIfAbsent(groupKey, ignored -> new HashSet<>())
                             .add(page.pageNumber());
-                }
-                if (!page.aiRouteCandidatePage()) {
-                    nonCandidates.add(page.pageNumber());
                 }
             }
             requirePagesExist(caseId, "activeRentalPageNumbers",
@@ -243,10 +256,19 @@ public final class AiRouteContentValidator {
                     conflictingPages.isEmpty(),
                     "%s 정답과 무관 페이지가 겹칩니다: %s"
                             .formatted(caseId, conflictingPages));
+            Set<Integer> conflictingAlternativePages =
+                    new HashSet<>(evaluationCase.allowedAlternativePageNumbers());
+            conflictingAlternativePages.retainAll(evaluationCase.irrelevantPageNumbers());
+            require(
+                    conflictingAlternativePages.isEmpty(),
+                    "%s 대체와 무관 페이지가 겹칩니다: %s"
+                            .formatted(caseId, conflictingAlternativePages));
             for (List<Integer> group : evaluationCase.duplicatePageGroups()) {
                 requirePagesExist(caseId, "duplicatePageGroups", group, pageNumbers);
             }
-            // 후보가 아닌 페이지는 추천될 수 없으므로 정답·대체·무관 어디에도 나올 수 없다.
+            // 후보가 아닌 페이지는 경로 비용·추천·채점 대상이 될 수 없다.
+            requireNoNonCandidate(caseId, "activeRentalPageNumbers",
+                    evaluationCase.activeRentalPageNumbers(), nonCandidates);
             requireNoNonCandidate(caseId, "referencePageNumbers",
                     evaluationCase.referencePageNumbers(), nonCandidates);
             requireNoNonCandidate(caseId, "allowedAlternativePageNumbers",
@@ -254,9 +276,23 @@ public final class AiRouteContentValidator {
             requireNoNonCandidate(caseId, "irrelevantPageNumbers",
                     evaluationCase.irrelevantPageNumbers(), nonCandidates);
             requireConceptsExist(
-                    caseId, "requiredConcepts", evaluationCase.requiredConcepts(), allConcepts);
+                    caseId,
+                    "requiredConcepts",
+                    evaluationCase.requiredConcepts(),
+                    candidatePrimaryConcepts,
+                    "후보 페이지 primaryConcepts");
             requireConceptsExist(
-                    caseId, "helpfulConcepts", evaluationCase.helpfulConcepts(), allConcepts);
+                    caseId,
+                    "requiredConcepts",
+                    evaluationCase.requiredConcepts(),
+                    referencePrimaryConcepts,
+                    "referencePageNumbers의 후보 페이지 primaryConcepts");
+            requireConceptsExist(
+                    caseId,
+                    "helpfulConcepts",
+                    evaluationCase.helpfulConcepts(),
+                    candidateConcepts,
+                    "후보 페이지 primaryConcepts 또는 secondaryConcepts");
             requirePrerequisitesMatch(
                     caseId,
                     evaluationCase.requiredPrerequisites(),
@@ -281,12 +317,16 @@ public final class AiRouteContentValidator {
     }
 
     private void requireConceptsExist(
-            String caseId, String field, List<String> expected, Set<String> concepts) {
+            String caseId,
+            String field,
+            List<String> expected,
+            Set<String> concepts,
+            String conceptSource) {
         for (String concept : expected) {
             require(
                     concepts.contains(concept),
-                    "%s %s의 개념 '%s'이 도서 메타데이터에 없습니다."
-                            .formatted(caseId, field, concept));
+                    "%s %s의 개념 '%s'이 %s에 없습니다."
+                            .formatted(caseId, field, concept, conceptSource));
         }
     }
 
@@ -325,10 +365,15 @@ public final class AiRouteContentValidator {
                 expected.add(new AiRouteEvaluationDataset.RequiredPrerequisite(before, after));
             }
         }
+        Set<AiRouteEvaluationDataset.RequiredPrerequisite> missing = new HashSet<>(expected);
+        missing.removeAll(actual);
+        Set<AiRouteEvaluationDataset.RequiredPrerequisite> unexpected = new HashSet<>(actual);
+        unexpected.removeAll(expected);
         require(
                 actual.equals(expected),
-                "%s requiredPrerequisites가 referencePageNumbers 선수 간선 전체와 다릅니다."
-                        .formatted(caseId));
+                "%s requiredPrerequisites가 referencePageNumbers 선수 간선 전체와 다릅니다: "
+                                .formatted(caseId)
+                        + "누락=%s, 초과=%s".formatted(missing, unexpected));
     }
 
     private void requireDuplicateGroupsMatch(
@@ -357,10 +402,15 @@ public final class AiRouteContentValidator {
                     "%s duplicatePageGroups에 같은 그룹이 중복됩니다: %s"
                             .formatted(caseId, group));
         }
+        Set<Set<Integer>> missing = new HashSet<>(manifestGroups);
+        missing.removeAll(expectedGroups);
+        Set<Set<Integer>> unexpected = new HashSet<>(expectedGroups);
+        unexpected.removeAll(manifestGroups);
         require(
                 manifestGroups.equals(expectedGroups),
-                "%s duplicatePageGroups가 manifest의 duplicateGroupKeys와 다릅니다."
-                        .formatted(caseId));
+                "%s duplicatePageGroups가 manifest의 duplicateGroupKeys와 다릅니다: "
+                                .formatted(caseId)
+                        + "누락=%s, 초과=%s".formatted(missing, unexpected));
 
         Set<Integer> referencePages = new HashSet<>(referencePageNumbers);
         for (Set<Integer> group : manifestGroups) {

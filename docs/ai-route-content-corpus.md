@@ -74,9 +74,10 @@
 `aiRouteCandidatePage`는 도서 단위 `aiRouteCandidate`와 달리 페이지 하나를 후보 집합에 넣을지 정하는
 값입니다. 지원 도서 안에서도 구조 페이지는 후보가 아니므로 `contentRole=FRONT_MATTER`인 페이지는 항상
 `false`여야 하고, 나머지 역할의 페이지는 `true`여야 합니다. `false`인 페이지는 다른 페이지의
-`prerequisitePageNumbers`나 평가 데이터의 어느 페이지 목록에도 나올 수 없습니다. 정답 경로와 대체
-페이지에서는 도달할 수 없는 정답을 적재 전에 막기 위해서고, `irrelevantPageNumbers`에서는 애초에
-추천될 수 없는 페이지라 무관으로 적어도 채점에 걸리지 않는 죽은 값이기 때문입니다.
+`prerequisitePageNumbers`나 평가 데이터의 어느 페이지 목록에도 나올 수 없고 `duplicateGroupKeys`도 비어
+있어야 합니다. 정답 경로와 대체 페이지에서는 도달할 수 없는 정답을 적재 전에 막기 위해서고,
+`irrelevantPageNumbers`에서는 애초에 추천될 수 없는 페이지라 무관으로 적어도 채점에 걸리지 않는 죽은
+값이기 때문입니다.
 
 `false`인 페이지에는 Embeddings API를 호출하지 않고 임베딩 모델·차원·벡터를 비웁니다. 후보 검색은 이
 값이 `true`인 페이지만 고른 뒤 그 집합 안에서 벡터 유효성을 검증하며, 벡터가 있는 페이지만 고르는
@@ -131,9 +132,17 @@ manifest는 AI 경로 지원 후보를 정의할 뿐 `ai_route_supported=true`�
 
 `caseId`는 파일 안에서 고유합니다. 비소장 사례는 `owned=false`, `maxAdditionalInk`에 0·5·10·15 중 하나,
 `depth=null`을 사용하고, 소장 사례는 `owned=true`, `maxAdditionalInk=null`, `depth`에 `QUICK`, `BALANCED`,
-`DEEP` 중 하나를 사용합니다. `requiredConcepts[]`는 하나 이상이고 나머지 목록 필드는 항목이 없으면 빈 배열을
-사용합니다. `requiredPrerequisites[]`의 각 항목은 `beforePageNumber`와 `afterPageNumber`를 가집니다.
-`duplicatePageGroups[]`의 각 항목은 중복으로 판정할 페이지 번호 배열입니다.
+`DEEP` 중 하나를 사용합니다. `requiredConcepts[]`는 하나 이상이고 각 값은 후보 페이지의
+`primaryConcepts[]`에 문자열 완전 일치로 존재해야 합니다. `helpfulConcepts[]`의 각 값은 후보 페이지의
+`primaryConcepts[]` 또는 `secondaryConcepts[]`에 같은 기준으로 존재해야 합니다. 나머지 목록 필드는 항목이
+없으면 빈 배열을 사용합니다. `requiredPrerequisites[]`의 각 항목은 `beforePageNumber`와
+`afterPageNumber`를 가집니다.
+
+`duplicatePageGroups[]`는 manifest의 `duplicateGroupKeys[]`가 키별로 만드는 페이지 번호 집합 전체와 집합
+단위로 일치해야 합니다. 각 그룹은 서로 다른 페이지를 2개 이상 가지며 같은 페이지 집합을 평가 데이터에
+중복해서 적지 않습니다. `referencePageNumbers[]`에는 같은 중복 그룹의 페이지를 최대 하나만 넣습니다.
+`referencePageNumbers[]`와 `allowedAlternativePageNumbers[]`는 각각 `irrelevantPageNumbers[]`와 겹칠 수
+없습니다.
 
 `referencePageNumbers`는 필수 개념을 덮는 페이지와 그 전이적 선수 페이지를 모두 담은 **선수 폐쇄**로
 적습니다. 경로 생성 정책이 최종 경로에 선수 페이지를 모두 포함하도록 요구하므로, 고른 페이지만 적으면
