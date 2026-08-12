@@ -3,6 +3,7 @@ package com.example.ilgeobolkka.contentimport;
 import com.example.ilgeobolkka.book.entity.BookPageContentType;
 import com.example.ilgeobolkka.contentimport.manifest.ContentManifest;
 import com.example.ilgeobolkka.contentimport.manifest.ContentManifestParser;
+import com.example.ilgeobolkka.contentimport.manifest.AiRouteContentManifest;
 import com.example.ilgeobolkka.contentimport.manifest.InitialContentManifest;
 import com.example.ilgeobolkka.global.config.ContentStorageProperties;
 import java.io.File;
@@ -65,9 +66,9 @@ class ContentBatchConverter {
     ContentBatch convert() {
         byte[] manifestBytes = readBytes(manifestPath);
         String manifestSha256 = sha256(manifestBytes);
-        InitialContentManifest manifest = readManifest(manifestBytes);
-        validateManifest(manifest);
-        List<ResolvedBook> books = resolveAndVerifyBooks(manifest);
+        ContentManifest manifest = manifestParser.parseManifest(manifestBytes);
+        List<SourceBook> sourceBooks = validateAndCollect(manifest);
+        List<ResolvedBook> books = resolveAndVerifyBooks(sourceBooks);
 
         String pdftotextVersion = pdfTool.pdftotextVersion();
         String pdftoppmVersion = pdfTool.pdftoppmVersion();
@@ -110,21 +111,26 @@ class ContentBatchConverter {
         }
     }
 
-    private InitialContentManifest readManifest(byte[] manifestBytes) {
-        ContentManifest manifest = manifestParser.parseManifest(manifestBytes);
-        if (manifest instanceof InitialContentManifest initialManifest) {
-            return initialManifest;
-        }
-        throw new IllegalStateException(
-                "초기 코퍼스 이외 콘텐츠는 전체 사전 검증 연결 후 변환할 수 있습니다: "
-                        + manifest.contentVersion());
+    /**
+     * 콘텐츠 버전별 manifest 계약을 검사하고 변환에 필요한 값만 뽑는다.
+     *
+     * <p>변환은 도서마다 PDF 경로·해시·페이지 수만 있으면 되므로, 버전에 따라 다른 것은 계약 검사와
+     * 이 값을 꺼내는 방법뿐이다.
+     */
+    private List<SourceBook> validateAndCollect(ContentManifest manifest) {
+        return switch (manifest) {
+            case InitialContentManifest initial -> collectInitial(initial);
+            case AiRouteContentManifest aiRoute -> collectAiRoute(aiRoute);
+        };
     }
 
-    private void validateManifest(InitialContentManifest manifest) {
+    /** 초기 fixture는 100권·400페이지와 고정 PDF 경로가 계약이다. */
+    private List<SourceBook> collectInitial(InitialContentManifest manifest) {
         if (manifest.books().size() != BOOK_COUNT) {
             throw new IllegalStateException("콘텐츠 manifest에는 정확히 100권이 있어야 합니다.");
         }
 
+        List<SourceBook> books = new ArrayList<>(BOOK_COUNT);
         int totalPageCount = 0;
         for (InitialContentManifest.Book book : manifest.books()) {
             if (book.bookId() < 1
@@ -133,21 +139,60 @@ class ContentBatchConverter {
                 throw new IllegalStateException("콘텐츠 manifest에 유효하지 않은 도서가 있습니다.");
             }
             totalPageCount += book.totalPageCount();
+            books.add(
+                    new SourceBook(
+                            book.bookId(),
+                            book.pdfPath(),
+                            book.pdfSha256(),
+                            book.totalPageCount()));
         }
         if (totalPageCount != PAGE_COUNT) {
             throw new IllegalStateException("콘텐츠 manifest의 전체 페이지 수는 400이어야 합니다.");
         }
+        return books;
     }
 
-    private List<ResolvedBook> resolveAndVerifyBooks(InitialContentManifest manifest) {
+    /**
+     * `ai-route-v2`는 권수를 세지 않는다. 확장 중의 부분 집합도 변환할 수 있어야 하므로 manifest에
+     * 든 도서만 그 합계 계약대로 검사한다.
+     *
+     * <p>페이지 메타데이터·선수 그래프·평가 연결은 C02 검증기가 보므로 여기서 다시 보지 않는다.
+     * 변환이 확인할 것은 도서마다 페이지 수가 있고 중복 bookId가 없다는 것뿐이다.
+     */
+    private List<SourceBook> collectAiRoute(AiRouteContentManifest manifest) {
+        List<SourceBook> books = new ArrayList<>(manifest.books().size());
+        Set<Long> bookIds = new HashSet<>();
+        for (AiRouteContentManifest.Book book : manifest.books()) {
+            if (book.totalPageCount() < 1) {
+                throw new IllegalStateException(
+                        "AI 경로 manifest 도서의 페이지 수가 없습니다: " + book.bookId());
+            }
+            if (!bookIds.add(book.bookId())) {
+                throw new IllegalStateException(
+                        "AI 경로 manifest에 bookId가 중복됩니다: " + book.bookId());
+            }
+            books.add(
+                    new SourceBook(
+                            book.bookId(),
+                            book.pdfPath(),
+                            book.pdfSha256(),
+                            book.totalPageCount()));
+        }
+        if (books.isEmpty()) {
+            throw new IllegalStateException("AI 경로 manifest에 도서가 없습니다.");
+        }
+        return books;
+    }
+
+    private List<ResolvedBook> resolveAndVerifyBooks(List<SourceBook> sourceBooks) {
         Path manifestDirectory = manifestPath.toAbsolutePath().normalize().getParent();
         if (manifestDirectory == null) {
             throw new IllegalStateException("콘텐츠 manifest 상위 디렉터리를 확인할 수 없습니다.");
         }
 
-        List<ResolvedBook> resolvedBooks = new ArrayList<>(BOOK_COUNT);
-        for (InitialContentManifest.Book book : manifest.books().stream()
-                .sorted(Comparator.comparingLong(InitialContentManifest.Book::bookId))
+        List<ResolvedBook> resolvedBooks = new ArrayList<>(sourceBooks.size());
+        for (SourceBook book : sourceBooks.stream()
+                .sorted(Comparator.comparingLong(SourceBook::bookId))
                 .toList()) {
             Path pdfPath = manifestDirectory.resolve(book.pdfPath()).normalize();
             if (!pdfPath.startsWith(manifestDirectory) || !Files.isRegularFile(pdfPath)) {
@@ -169,9 +214,9 @@ class ContentBatchConverter {
             String manifestSha256,
             Path stagingDirectory)
             throws IOException {
-        List<ConvertedBook> convertedBooks = new ArrayList<>(BOOK_COUNT);
+        List<ConvertedBook> convertedBooks = new ArrayList<>(books.size());
         for (ResolvedBook resolvedBook : books) {
-            InitialContentManifest.Book book = resolvedBook.manifest();
+            SourceBook book = resolvedBook.manifest();
             Path bookStagingDirectory =
                     stagingDirectory.resolve("book-%03d".formatted(book.bookId()));
             Files.createDirectories(bookStagingDirectory);
@@ -234,7 +279,10 @@ class ContentBatchConverter {
 
     private void validateConvertedBatch(ContentBatch batch) {
         List<ConvertedPage> pages = batch.pages();
-        if (batch.books().size() != BOOK_COUNT || pages.size() != PAGE_COUNT) {
+        // 권수·전체 페이지 수 계약은 초기 fixture에만 있다. ai-route-v2는 확장 중의 부분 집합도
+        // 변환해야 하므로 도서별 페이지 수만 아래에서 검사한다.
+        if (ContentManifest.INITIAL_CONTENT_VERSION.equals(batch.contentVersion())
+                && (batch.books().size() != BOOK_COUNT || pages.size() != PAGE_COUNT)) {
             throw new IllegalStateException("변환 결과는 100권·400페이지여야 합니다.");
         }
 
@@ -389,7 +437,11 @@ class ContentBatchConverter {
         }
     }
 
-    private record ResolvedBook(InitialContentManifest.Book manifest, Path pdfPath) {}
+    /** 콘텐츠 버전과 무관하게 변환에 필요한 값만 담는다. */
+    private record SourceBook(
+            long bookId, String pdfPath, String pdfSha256, int totalPageCount) {}
+
+    private record ResolvedBook(SourceBook manifest, Path pdfPath) {}
 
     private record PageKey(long bookId, int pageNumber) {}
 }

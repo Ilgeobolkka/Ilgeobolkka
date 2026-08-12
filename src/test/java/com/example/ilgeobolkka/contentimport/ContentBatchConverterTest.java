@@ -14,6 +14,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.junit.jupiter.api.io.TempDir;
 import tools.jackson.databind.ObjectMapper;
 
@@ -85,21 +86,56 @@ class ContentBatchConverterTest {
     }
 
     @Test
-    void initial_v1이_아닌_정상_AI_manifest는_전체_사전_검증_연결_전_변환을_거부한다()
-            throws IOException {
+    void ai_route_v2는_권수를_세지_않고_manifest에_든_도서만_변환한다() throws IOException {
         Path manifestPath = createAiRouteManifest();
+        Path outputRoot = tempDirectory.resolve("output");
+        var pdfTool = new FakePdfTool();
+        var converter =
+                new ContentBatchConverter(manifestPath, outputRoot, objectMapper, pdfTool);
+
+        ContentBatch batch = converter.convert();
+
+        assertEquals("ai-route-v2", batch.contentVersion());
+        assertEquals(1, batch.books().size());
+        assertEquals(1, batch.pages().size());
+        assertEquals(1, batch.pages().getFirst().bookId());
+    }
+
+    @Test
+    @EnabledIfEnvironmentVariable(named = "RUN_CONTENT_IMPORT_INTEGRATION", matches = "true")
+    void 정본_ai_route_v2_코퍼스를_실제_Poppler로_변환한다() throws IOException {
+        var importProperties = new ContentImportProperties();
+        importProperties.setManifest(Path.of("fixtures/content/ai-route-v2/manifest.json"));
+        var storageProperties = new ContentStorageProperties();
+        storageProperties.setRoot(tempDirectory.resolve("output"));
+        var converter =
+                new ContentBatchConverter(
+                        importProperties, storageProperties, objectMapper, new PopplerPdfTool(
+                                new ContentImportProperties()));
+
+        ContentBatch batch = converter.convert();
+
+        assertEquals("ai-route-v2", batch.contentVersion());
+        assertEquals(20, batch.books().size());
+        assertEquals(569, batch.pages().size());
+        // 비소설 10권의 도표 50페이지 + 소설 10권이 initial-v1에서 그대로 쓰는 이미지 10페이지
+        assertEquals(
+                60,
+                batch.pages().stream()
+                        .filter(page -> page.contentType() == BookPageContentType.IMAGE)
+                        .count());
+    }
+
+    @Test
+    void ai_route_v2_manifest의_페이지_수가_없거나_bookId가_중복이면_변환을_거부한다()
+            throws IOException {
+        Path noPages = createAiRouteManifest(0);
         var pdfTool = new FakePdfTool();
         var converter =
                 new ContentBatchConverter(
-                        manifestPath,
-                        tempDirectory.resolve("output"),
-                        objectMapper,
-                        pdfTool);
+                        noPages, tempDirectory.resolve("output"), objectMapper, pdfTool);
 
-        IllegalStateException exception =
-                assertThrows(IllegalStateException.class, converter::convert);
-
-        assertTrue(exception.getMessage().contains("전체 사전 검증 연결 후"));
+        assertThrows(IllegalStateException.class, converter::convert);
         assertEquals(0, pdfTool.extractCount);
     }
 
@@ -211,8 +247,14 @@ class ContentBatchConverterTest {
     }
 
     private Path createAiRouteManifest() throws IOException {
+        return createAiRouteManifest(1);
+    }
+
+    private Path createAiRouteManifest(int totalPageCount) throws IOException {
         Path manifestPath = tempDirectory.resolve("ai-route-v2/manifest.json");
-        Files.createDirectories(manifestPath.getParent());
+        Files.createDirectories(manifestPath.getParent().resolve("pdfs"));
+        byte[] pdfContent = "fake-ai-pdf-001".getBytes();
+        Files.write(manifestPath.getParent().resolve("pdfs/book-001.pdf"), pdfContent);
         Files.writeString(
                 manifestPath,
                 """
@@ -226,7 +268,7 @@ class ContentBatchConverterTest {
                     "title": "도서 제목",
                     "pdfPath": "pdfs/book-001.pdf",
                     "pdfSha256": "%s",
-                    "totalPageCount": 1,
+                    "totalPageCount": %d,
                     "aiRouteCandidate": true,
                     "aiExternalTransferAllowed": true,
                     "pages": [{
@@ -246,7 +288,7 @@ class ContentBatchConverterTest {
                     }]
                   }]
                 }
-                """.formatted("a".repeat(64), "b".repeat(64)));
+                """.formatted(ContentBatchConverter.sha256(pdfContent), totalPageCount, "b".repeat(64)));
         return manifestPath;
     }
 
