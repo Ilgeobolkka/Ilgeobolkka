@@ -111,13 +111,16 @@
 - `pageNumber` 1부터 연속, 중복 없음, `totalPageCount`와 일치
 - 48~72페이지, 최소 6개 장, 내용 역할 5종 모두 사용, 목차만 `FRONT_MATTER`
 - `FRONT_MATTER`와 `aiRouteCandidatePage=false`가 정확히 일치
-- 후보 제외 페이지가 선수 관계 대상·정답 경로·대체 페이지 어디에도 없음
+- 후보 제외 페이지가 선수 관계 대상·평가의 모든 페이지 목록·중복 그룹 어디에도 없음
 - 목차의 장·절 항목이 실제 시작 페이지 번호와 일치
 - `aiAnalysisInputSha256`이 `aiAnalysisText`의 SHA-256과 일치, 페이지마다 분석 텍스트가 서로 다름
 - `aiPublicGuideTopic`에 수치 없음, 분석 텍스트를 그대로 옮기지 않음, 500자 이내
 - 선수 관계가 존재 페이지만 참조, 자기 참조·중복 간선 없음, 위상 정렬로 전체 페이지 방문
-- 중복 그룹이 각각 2개 이상 페이지를 가지고 `evaluation.json`의 그룹과 집합 단위로 일치
-- 평가 정답 개념이 도서의 `primaryConcepts`·`secondaryConcepts`에 실재
+- 중복 그룹이 각각 2개 이상 페이지를 가지고 `evaluation.json`의 그룹 전체와 집합 단위로 일치
+- 필수 개념은 후보 페이지의 `primaryConcepts`에, 도움 개념은 후보 페이지의 `primaryConcepts` 또는
+  `secondaryConcepts`에 실재
+- 정답 경로가 필수 개념을 실제로 덮음
+- 정답·대체 페이지가 각각 무관 페이지와 겹치지 않음
 - 정답 경로에 같은 중복 그룹 페이지가 둘 이상 없음
 - **정답 경로를 선수 전이 폐쇄까지 펼친 뒤** 비소장은 미대여 페이지 수가 예산 이하, 소장은 경로 전체가
   깊이 상한(QUICK 5·BALANCED 10·DEEP 15) 이하
