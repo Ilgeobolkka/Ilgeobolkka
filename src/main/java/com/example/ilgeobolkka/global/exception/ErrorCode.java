@@ -14,6 +14,10 @@ public enum ErrorCode {
     BOOK_ALREADY_OWNED(HttpStatus.CONFLICT, "이미 소장한 도서입니다."),
     PAYMENT_STATE_CONFLICT(HttpStatus.CONFLICT, "현재 결제 상태에서는 요청을 처리할 수 없습니다."),
     VIEWER_SESSION_REPLACED(HttpStatus.CONFLICT, "새 뷰어로 교체된 열람 세션입니다."),
+    AI_ROUTE_ENTITLEMENT_CHANGED(
+            HttpStatus.CONFLICT, "대여·소장 상태가 바뀌었습니다. 경로를 다시 생성해 주세요."),
+    AI_ROUTE_CONTENT_CHANGED(HttpStatus.CONFLICT, "도서 콘텐츠가 바뀌었습니다. 경로를 다시 생성해 주세요."),
+    AI_ROUTE_GENERATION_CONSUMED(HttpStatus.CONFLICT, "이미 사용한 생성 결과입니다."),
     RESOURCE_NOT_FOUND(HttpStatus.NOT_FOUND, "요청한 리소스를 찾을 수 없습니다."),
     INSUFFICIENT_INK(HttpStatus.UNPROCESSABLE_CONTENT, "잉크가 부족합니다. 잉크를 충전해 주세요."),
     PAYMENT_VERIFICATION_FAILED(HttpStatus.UNPROCESSABLE_CONTENT, "결제 검증에 실패했습니다."),

@@ -1,5 +1,9 @@
 package com.example.ilgeobolkka.global.exception;
 
+import com.example.ilgeobolkka.airoute.exception.AiRouteContentChangedException;
+import com.example.ilgeobolkka.airoute.exception.AiRouteEntitlementChangedException;
+import com.example.ilgeobolkka.airoute.exception.AiRouteGenerationConsumedException;
+import com.example.ilgeobolkka.airoute.exception.AiRouteGenerationNotFoundException;
 import com.example.ilgeobolkka.airoute.exception.AiRouteNotFoundException;
 import com.example.ilgeobolkka.auth.exception.InvalidCredentialsException;
 import com.example.ilgeobolkka.book.exception.BookNotFoundException;
@@ -93,7 +97,29 @@ public class GlobalExceptionHandler {
         return response(ErrorCode.VIEWER_SESSION_REPLACED);
     }
 
+    @ExceptionHandler(AiRouteEntitlementChangedException.class)
+    ResponseEntity<ApiErrorResponse> handleAiRouteEntitlementChanged(
+            AiRouteEntitlementChangedException exception) {
+        logFailure(ErrorCode.AI_ROUTE_ENTITLEMENT_CHANGED, exception);
+        return response(ErrorCode.AI_ROUTE_ENTITLEMENT_CHANGED);
+    }
+
+    @ExceptionHandler(AiRouteContentChangedException.class)
+    ResponseEntity<ApiErrorResponse> handleAiRouteContentChanged(
+            AiRouteContentChangedException exception) {
+        logFailure(ErrorCode.AI_ROUTE_CONTENT_CHANGED, exception);
+        return response(ErrorCode.AI_ROUTE_CONTENT_CHANGED);
+    }
+
+    @ExceptionHandler(AiRouteGenerationConsumedException.class)
+    ResponseEntity<ApiErrorResponse> handleAiRouteGenerationConsumed(
+            AiRouteGenerationConsumedException exception) {
+        logFailure(ErrorCode.AI_ROUTE_GENERATION_CONSUMED, exception);
+        return response(ErrorCode.AI_ROUTE_GENERATION_CONSUMED);
+    }
+
     @ExceptionHandler({
+        AiRouteGenerationNotFoundException.class,
         AiRouteNotFoundException.class,
         BookNotFoundException.class,
         BookPageNotFoundException.class,
