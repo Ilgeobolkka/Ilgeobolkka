@@ -1,5 +1,6 @@
 package com.example.ilgeobolkka.global.exception;
 
+import com.example.ilgeobolkka.airoute.exception.AiRouteNotFoundException;
 import com.example.ilgeobolkka.auth.exception.InvalidCredentialsException;
 import com.example.ilgeobolkka.book.exception.BookNotFoundException;
 import com.example.ilgeobolkka.book.exception.BookPageNotFoundException;
@@ -93,6 +94,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler({
+        AiRouteNotFoundException.class,
         BookNotFoundException.class,
         BookPageNotFoundException.class,
         InkPurchaseNotFoundException.class,
