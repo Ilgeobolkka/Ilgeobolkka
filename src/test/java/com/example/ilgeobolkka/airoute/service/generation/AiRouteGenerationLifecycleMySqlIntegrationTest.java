@@ -334,13 +334,11 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
                 () -> assertEquals(2, items.size()),
                 () -> assertEquals(1, items.get(0).position()),
                 () -> assertEquals(1, items.get(0).pageNumber()),
-                () -> assertEquals(FIRST_PAGE_ID, items.get(0).bookPageId()),
                 () -> assertEquals(AiRouteItemRelevance.HIGH, items.get(0).relevance()),
                 () -> assertEquals(false, items.get(0).prerequisite()),
                 () -> assertEquals(AiRouteItemRole.CORE, items.get(0).role()),
                 () -> assertEquals(2, items.get(1).position()),
                 () -> assertEquals(2, items.get(1).pageNumber()),
-                () -> assertEquals(SECOND_PAGE_ID, items.get(1).bookPageId()),
                 () -> assertEquals(AiRouteItemRole.PREREQUISITE, items.get(1).role()));
     }
 

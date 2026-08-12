@@ -7,7 +7,7 @@ spring:
       minimum-idle: 2
 
 # 이 파일은 공유 파일 소유권 표에서 F03 단일 소유다. 아래 항목은 G06(SCRUM-462)이 별도 승인을 받고
-# 추가했다. 테스트 클래스별 속성으로 옮기면 AiRouteSchemaMigrationTest 처럼 다른 담당자의 파일에도
+# 추가받았다. 테스트 클래스별 속성으로 옮기면 AiRouteSchemaMigrationTest 처럼 다른 담당자의 파일에도
 # 붙여야 해서 여기로 모았다.
 ai-route:
   # AI 경로 유지보수 배치는 기능 플래그와 무관하게 등록되고 기동 직후부터 60초마다 돈다. 테스트는

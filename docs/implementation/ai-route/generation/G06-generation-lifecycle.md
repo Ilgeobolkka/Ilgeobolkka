@@ -85,26 +85,30 @@ G07에 complete/fail API를, S01에 SAVED API를, S03에 CONSUMED API를 전달�
 - `AiRouteGenerationCleanupService.GENERATION_TIME_LIMIT`이 전체 요청 제한 20초를 들고 있습니다. G07이
   자기 타임아웃에 같은 값을 써야 하는데, 이 작업의 수정 허용 파일 안에 공용 정책 타입을 둘 자리가 없어
   cleanup service에 두었습니다. G07 착수 때 옮길지 정합니다.
-- `AiRouteGenerationView`가 정렬된 경로 항목을 함께 담습니다. `position`·`pageNumber`·`bookPageId`·
-  `relevance`·`prerequisite`·`role`이며 `ROUTE`가 아니면 빈 목록입니다.
-- **미결**: `api-spec.md`는 `items[]`에 `estimatedMinutes`·`guide`·`additionalCostStatus`도 요구하는데
-  셋 다 저장 열이 없고 `src/main`에 구현이 없습니다. 특히 `additionalCostStatus`는 정본이 **생성 시점
-  스냅샷**으로 규정해(재조회해도 재계산하지 않음) 조회 때 계산하면 계약 위반인데, 그 스냅샷을 담을
-  자리가 스키마에 없습니다. 정본과 스키마 중 어느 쪽을 갱신할지 확인이 필요합니다(README 15행).
-  `bookPageId`를 projection에 넣어 둔 것은 G08이 "이력 기반 재구성"을 택할 경우를 대비해 그 선택지를
-  살려 두려는 것이며, 실현 방식이 정해지면 불필요할 수 있습니다.
-- **허용 파일 밖 변경**: `AiRouteGenerationStartService`와 그 통합 테스트(G05 소유),
+- `AiRouteGenerationView`가 정렬된 경로 항목을 함께 담습니다. `position`·`pageNumber`·`relevance`·
+  `prerequisite`·`role`이며 `ROUTE`가 아니면 빈 목록입니다.
+- `api-spec.md`의 `items[]`가 요구하는 `estimatedMinutes`·`guide`·`additionalCostStatus`는 이 projection에
+  없습니다. 앞의 둘은 이미 저장된 값으로 만듭니다 — 예상 시간은 페이지 콘텐츠 길이·형식(PRD 예상 독서
+  시간), 가이드는 `book_page.ai_public_guide_topic`과 `role`을 고정 템플릿에 넣어 만듭니다(PRD AI 페이지
+  가이드). `additionalCostStatus`의 실현 방식은 **G08 leaf가 자기 결정으로 명시**해 두었으므로
+  (컬럼 없이 `page_rental` 이력으로 재구성하거나, 저장 방식이면 그때 F01 migration 승인) 여기서 미리
+  정하지 않습니다. 그 결정이 나면 필요한 필드를 projection에 추가하세요.
+- **허용 파일 밖 변경(승인 완료)**: `AiRouteGenerationStartService`와 그 통합 테스트(G05 소유),
   `src/test/resources/application-test.yaml`(F03 소유)을 바꿨습니다. 앞은 완료 조건의 만료 판정 요구
-  때문이고, 뒤는 배치가 다른 담당자의 테스트 픽스처를 훼손하는 것을 막기 위해서입니다. 각각 G05 인계와
-  해당 파일 주석에 사유를 남겼고 별도 승인 대상입니다.
+  때문이고, 뒤는 배치가 F01의 `AiRouteSchemaMigrationTest` 픽스처를 훼손하는 것을 막기 위해서입니다.
+  각각 G05 인계와 해당 파일 주석에 사유를 남겼습니다.
 - `markConsumed`에 소유자 조건이 없습니다. 저장 경로와 생성이 1:1이라 S03이 경로 소유권을 확인하면
-  전이적으로 막히지만, 이 API 자체는 `generationId`만으로 상태를 옮깁니다.
+  전이적으로 막히지만, 이 API 자체는 `generationId`만으로 상태를 옮깁니다. **S03은 이 전제를 테스트로
+  고정하세요** — 남의 경로를 삭제하려는 요청이 소비 처리까지 가지 않는지 확인해야 합니다.
+- `completeWithRoute`가 던지면 생성은 `GENERATING`으로 남습니다. 항목 unique 제약 위반 등으로 실패하면
+  `ROUTE` 전이가 함께 롤백되기 때문입니다. G07은 예외를 잡아 `fail()`로 마감하세요. 방치하면 20초 뒤
+  복구가 `AI_ROUTE_GENERATION_TIMEOUT`으로 처리하는데, 실제 원인과 다른 코드가 남습니다.
 - 유지보수 스케줄러는 `ai-route.enabled`로 막지 않습니다. 이 배치는 기능을 제공하는 것이 아니라 이미
   쓰인 데이터를 보관 계약대로 지웁니다. 기능을 켠 채 임시 결과를 만들어 두고 끄면 지울 주체가 사라져
   임시 목적·페이지 결과·멱등 상태가 영구히 남습니다. **조건을 도로 붙이면 안 됩니다.** 플래그는
   controller와 외부 호출에만 겁니다.
-- 이 클래스가 `@EnableScheduling`을 들고 있고 무조건 등록되므로 애플리케이션 전역 스케줄링이 항상
-  켜집니다. 다른 도메인이 `@Scheduled`를 추가할 때 별도 설정이 필요 없습니다.
+- 전역 스케줄링 스위치는 `global/config/SchedulingConfig`에 있습니다. 도메인 클래스가 들고 있으면 그
+  클래스를 지울 때 다른 도메인의 배치까지 조용히 멈추므로 분리했습니다.
 - 첫 실행 지연만 `ai-route.maintenance-initial-delay-millis`로 바꿀 수 있습니다. 통합 테스트가 만료
   데이터를 만들어 두고 단언하는 동안 배치가 끼어드는 것을 막는 용도이고, 운영 기본값은 0입니다.
 - 스케줄러는 무언가 처리한 주기에만 건수를 로그로 남깁니다. 멱등 키·요청 지문·정규화한 목적은 어떤
