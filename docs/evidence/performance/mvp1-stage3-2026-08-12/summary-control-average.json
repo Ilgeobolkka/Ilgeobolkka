@@ -1,0 +1,374 @@
+{
+  "state": {
+    "isStdOutTTY": false,
+    "isStdErrTTY": false,
+    "testRunDurationMs": 600064.186375
+  },
+  "metrics": {
+    "http_req_tls_handshaking": {
+      "values": {
+        "p(50)": 0,
+        "p(90)": 0,
+        "p(95)": 0,
+        "p(99)": 0,
+        "avg": 0,
+        "min": 0,
+        "med": 0,
+        "max": 0
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "http_req_duration{flow:public}": {
+      "contains": "time",
+      "values": {
+        "p(50)": 3.654833,
+        "p(90)": 5.454166,
+        "p(95)": 6.370541,
+        "p(99)": 9.27975,
+        "avg": 3.8312836005712856,
+        "min": 1.010917,
+        "med": 3.654833,
+        "max": 34.676625
+      },
+      "thresholds": {
+        "p(95)<300": {
+          "ok": true
+        }
+      },
+      "type": "trend"
+    },
+    "http_req_duration{expected_response:true}": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 153.852084,
+        "p(50)": 4.1041455,
+        "p(90)": 12.4676543,
+        "p(95)": 17.167860199999993,
+        "p(99)": 82.1847155,
+        "avg": 8.37201222732971,
+        "min": 0.615917,
+        "med": 4.1041455
+      }
+    },
+    "http_req_connecting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 1.665042,
+        "p(50)": 0,
+        "p(90)": 0,
+        "p(95)": 0,
+        "p(99)": 0.08468435999999982,
+        "avg": 0.0023276108132770615,
+        "min": 0,
+        "med": 0
+      }
+    },
+    "data_received": {
+      "contains": "data",
+      "values": {
+        "count": 19600442,
+        "rate": 32663.90903680933
+      },
+      "type": "counter"
+    },
+    "data_sent": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 3868972,
+        "rate": 6447.596920210384
+      }
+    },
+    "iteration_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(99)": 89.17146831999999,
+        "avg": 12.601132864223258,
+        "min": 0.904208,
+        "med": 5.942958,
+        "max": 179.552708,
+        "p(50)": 5.942958,
+        "p(90)": 18.653516800000002,
+        "p(95)": 75.26069139999991
+      }
+    },
+    "http_req_receiving": {
+      "values": {
+        "max": 5.477041,
+        "p(50)": 0.0757085,
+        "p(90)": 0.1409587,
+        "p(95)": 0.18863969999999997,
+        "p(99)": 0.5920474999999997,
+        "avg": 0.09712028886734371,
+        "min": 0.005709,
+        "med": 0.0757085
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "iterations": {
+      "values": {
+        "count": 12005,
+        "rate": 20.006193124976264
+      },
+      "type": "counter",
+      "contains": "default"
+    },
+    "vus": {
+      "contains": "default",
+      "values": {
+        "value": 0,
+        "min": 0,
+        "max": 0
+      },
+      "type": "gauge"
+    },
+    "http_reqs": {
+      "values": {
+        "rate": 29.220207434680034,
+        "count": 17534
+      },
+      "type": "counter",
+      "contains": "default"
+    },
+    "vus_max": {
+      "values": {
+        "value": 40,
+        "min": 40,
+        "max": 40
+      },
+      "type": "gauge",
+      "contains": "default"
+    },
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 0.0005,
+        "med": 0.005625,
+        "max": 1.779875,
+        "p(50)": 0.005625,
+        "p(90)": 0.01075,
+        "p(95)": 0.013889349999999969,
+        "p(99)": 0.14829582999999982,
+        "avg": 0.010223090623930571
+      }
+    },
+    "http_req_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 153.852084,
+        "p(50)": 4.1041455,
+        "p(90)": 12.4676543,
+        "p(95)": 17.167860199999993,
+        "p(99)": 82.1847155,
+        "avg": 8.37201222732971,
+        "min": 0.615917,
+        "med": 4.1041455
+      },
+      "thresholds": {
+        "p(99)<1500": {
+          "ok": true
+        }
+      }
+    },
+    "http_req_failed": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 17534
+      },
+      "thresholds": {
+        "rate<0.001": {
+          "ok": true
+        }
+      }
+    },
+    "http_req_duration{flow:new-rental}": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(99)": 25.892156249999996,
+        "avg": 7.878327295590643,
+        "min": 0.615917,
+        "med": 5.4152705,
+        "max": 153.852084,
+        "p(50)": 5.4152705,
+        "p(90)": 14.3554045,
+        "p(95)": 16.818222899999995
+      },
+      "thresholds": {
+        "p(95)<800": {
+          "ok": true
+        }
+      }
+    },
+    "http_req_waiting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 3.9613329999999998,
+        "max": 153.827417,
+        "p(50)": 3.9613329999999998,
+        "p(90)": 12.3232295,
+        "p(95)": 17.051406249999996,
+        "p(99)": 82.09415564,
+        "avg": 8.247915476959012,
+        "min": 0.5645
+      }
+    },
+    "checks": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 1,
+        "passes": 31940,
+        "fails": 0
+      },
+      "thresholds": {
+        "rate==1": {
+          "ok": true
+        }
+      }
+    },
+    "http_req_sending": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 3.000833,
+        "p(50)": 0.018833,
+        "p(90)": 0.040292,
+        "p(95)": 0.05284834999999997,
+        "p(99)": 0.23679499999999984,
+        "avg": 0.026976461503364853,
+        "min": 0.001542,
+        "med": 0.018833
+      }
+    },
+    "http_req_duration{flow:authenticated-read}": {
+      "thresholds": {
+        "p(95)<500": {
+          "ok": true
+        }
+      },
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 146.024958,
+        "p(50)": 3.436167,
+        "p(90)": 5.827374600000001,
+        "p(95)": 7.256257799999999,
+        "p(99)": 11.239094999999995,
+        "avg": 4.0241991315464,
+        "min": 0.781875,
+        "med": 3.436167
+      }
+    }
+  },
+  "root_group": {
+    "groups": [],
+    "checks": [
+        {
+          "path": "::CSRF 페이지 조회 성공",
+          "id": "68214d485ae192e42b52794653bf5b47",
+          "passes": 685,
+          "fails": 0,
+          "name": "CSRF 페이지 조회 성공"
+        },
+        {
+          "name": "도서 목록 성공",
+          "path": "::도서 목록 성공",
+          "id": "fee20650e6a2f1cea122727836d3d0c2",
+          "passes": 1401,
+          "fails": 0
+        },
+        {
+          "name": "로그인 성공",
+          "path": "::로그인 성공",
+          "id": "18fdb27d845d7c75f4ecb28a4922d978",
+          "passes": 643,
+          "fails": 0
+        },
+        {
+          "passes": 4802,
+          "fails": 0,
+          "name": "페이지 열기 성공",
+          "path": "::페이지 열기 성공",
+          "id": "599f3d448ee8bec6477729d3cf59453c"
+        },
+        {
+          "name": "소장 상태 일치",
+          "path": "::소장 상태 일치",
+          "id": "d0147317b3f1b7a79ce2ccb1bcc9bd83",
+          "passes": 4802,
+          "fails": 0
+        },
+        {
+          "id": "08fd70a9bf2d28eca30c6f8deb250a4d",
+          "passes": 4802,
+          "fails": 0,
+          "name": "잉크 차감 일치",
+          "path": "::잉크 차감 일치"
+        },
+        {
+          "name": "페이지 콘텐츠 성공",
+          "path": "::페이지 콘텐츠 성공",
+          "id": "18cf41b3f9b7e61f216726d35111f324",
+          "passes": 4802,
+          "fails": 0
+        },
+        {
+          "path": "::페이지 콘텐츠 no-store",
+          "id": "92cf0dc1fb9847ca6733ceac3b6dcb31",
+          "passes": 4802,
+          "fails": 0,
+          "name": "페이지 콘텐츠 no-store"
+        },
+        {
+          "name": "인증 조회 성공",
+          "path": "::인증 조회 성공",
+          "id": "92cd8bc120f46e67a7ae5366e5ef31e2",
+          "passes": 2401,
+          "fails": 0
+        },
+        {
+          "id": "47bec4ddfe99e1ab237685f3b7ab6329",
+          "passes": 1400,
+          "fails": 0,
+          "name": "도서 검색 성공",
+          "path": "::도서 검색 성공"
+        },
+        {
+          "path": "::도서 상세 성공",
+          "id": "832cb07e6a320f2dd54aa527df558705",
+          "passes": 1400,
+          "fails": 0,
+          "name": "도서 상세 성공"
+        }
+      ],
+    "name": "",
+    "path": "",
+    "id": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "options": {
+    "summaryTimeUnit": "",
+    "noColor": false,
+    "summaryTrendStats": [
+      "avg",
+      "min",
+      "med",
+      "max",
+      "p(50)",
+      "p(90)",
+      "p(95)",
+      "p(99)"
+    ]
+  }
+}
