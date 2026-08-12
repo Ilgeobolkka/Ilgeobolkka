@@ -159,7 +159,7 @@ docker compose exec -T mysql sh /docker-entrypoint-initdb.d/01-create-test-datab
 
 ### 콘텐츠 변환·적재
 
-`pdftotext`와 `pdftoppm`은 모두 Poppler `26.05.0`이어야 합니다. 먼저 실제 실행 경로와 버전을
+`pdftotext`와 `pdftoppm`은 모두 Poppler `26.08.0`이어야 합니다. 먼저 실제 실행 경로와 버전을
 확인합니다.
 
 ```bash

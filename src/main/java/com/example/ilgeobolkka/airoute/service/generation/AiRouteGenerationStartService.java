@@ -4,6 +4,7 @@ import com.example.ilgeobolkka.airoute.AiRouteGenerationCommand;
 import com.example.ilgeobolkka.airoute.entity.AiRouteDailyUsage;
 import com.example.ilgeobolkka.airoute.entity.AiRouteGeneration;
 import com.example.ilgeobolkka.airoute.repository.AiRouteDailyUsageRepository;
+import com.example.ilgeobolkka.airoute.repository.AiRouteGenerationItemRepository;
 import com.example.ilgeobolkka.airoute.repository.AiRouteGenerationRepository;
 import java.time.Clock;
 import java.time.Instant;
@@ -33,6 +34,7 @@ public class AiRouteGenerationStartService {
     public static final int DAILY_GENERATION_LIMIT = 10;
 
     private final AiRouteGenerationRepository generationRepository;
+    private final AiRouteGenerationItemRepository generationItemRepository;
     private final AiRouteDailyUsageRepository dailyUsageRepository;
     private final TransactionTemplate transactionTemplate;
     private final Clock clock;
@@ -66,7 +68,9 @@ public class AiRouteGenerationStartService {
      * 재조회는 그 행을 본다. 같은 입력이면 저장된 상태를, 다른 입력이면 키 재사용을 돌려준다.
      *
      * <p>행이 없으면 unique key 경합이 아니라 다른 제약 위반이다. 도서 외래 키처럼 다시 읽어도 달라지지
-     * 않는 오류를 성공으로 둔갑시키지 않도록 원래 예외를 그대로 올린다.
+     * 않는 오류를 성공으로 둔갑시키지 않도록 원래 예외를 그대로 올린다. 만료한 행도 없는 것으로 본다.
+     * 만료 행을 지운 뒤 insert 가 다른 제약으로 실패하면 rollback 으로 그 행이 되살아나는데, 그것을
+     * 기존 결과라고 돌려주면 원래 예외까지 삼킨다.
      */
     private GenerationStartResult convergeOnExisting(
             long readerId,
@@ -77,6 +81,7 @@ public class AiRouteGenerationStartService {
                 transactionTemplate.execute(
                         status ->
                                 findExistingForUpdate(readerId, idempotencyKey)
+                                        .filter(this::isUsable)
                                         .map(
                                                 generation ->
                                                         resultOf(generation, requestFingerprint))
@@ -94,8 +99,12 @@ public class AiRouteGenerationStartService {
             String requestFingerprint) {
         Optional<AiRouteGeneration> existing = findExistingForUpdate(readerId, idempotencyKey);
         if (existing.isPresent()) {
-            // 이미 있는 요청은 성공이든 실패든 횟수를 다시 쓰지 않는다.
-            return resultOf(existing.get(), requestFingerprint);
+            AiRouteGeneration generation = existing.get();
+            if (isUsable(generation)) {
+                // 아직 유효한 요청은 성공이든 실패든 횟수를 다시 쓰지 않는다.
+                return resultOf(generation, requestFingerprint);
+            }
+            discardExpired(generation);
         }
 
         // 잠금 순서는 사용량 행 → 생성 행 insert 다. 같은 독자의 동시 요청은 대개 사용량 행 하나에
@@ -137,6 +146,20 @@ public class AiRouteGenerationStartService {
      * 맨 앞의 존재 확인에서 이미 만들어졌으므로, 일반 조회로는 그 뒤에 commit 된 행을 볼 수 없다.
      * 잠금 조회만 최신 commit 을 읽는다.
      *
+     * <p>다른 두 조회와 <b>같이</b> 만료 필터를 둔다. 앞머리 존재 확인이 참이었다면 만료 행은 이미 그
+     * 자리에서 지워졌지만, 거짓이었다면 이 transaction 의 read view 뒤에 commit 된 행이 여기서 처음
+     * 보인다. 그 행이 만료일 시간은 충분하다 — 이 메서드에 닿기 전에 사용량 행 잠금을 기다리고, 그
+     * 대기는 앞선 transaction 이 쥔 시간만큼 길어진다. 기다리는 동안 같은 키의 요청이 시작하고, 별개
+     * transaction 이 그것을 완료하고, 보관 기간까지 지날 수 있다. 그때 이 잠금 조회는 read view 가
+     * 아니라 최신 commit 을 읽으므로 만료한 결과를 그대로 집어 온다.
+     *
+     * <p>걸러진 뒤 한도 초과로 거절하는 것이 맞는 답이다. 만료한 멱등 상태는 없는 것이고, 없으면 이
+     * 요청은 새 요청이며, 새 요청에 쓸 횟수가 남아 있지 않다.
+     *
+     * <p>{@link #discardExpired} 로 지우지는 않는다. 이 경로는 아무것도 넣지 않고 거절만 하고 돌아간다.
+     * 그 행은 정리 배치가 지우거나, 한도가 풀린 뒤 같은 키의 다음 시작이 지운다. 만료 <b>판정</b>이
+     * 정리 실행 여부에 기대지 않는다는 조건은 여기서도 지켜진다.
+     *
      * <p>없는 행을 잠그면 gap lock 이 남지만 여기서는 교착으로 가지 않는다. 이 경로는 잠금을 잡은 뒤
      * 아무것도 기다리지 않고 바로 돌아가므로 대기 고리가 만들어지지 않는다. 한도에 닿은 독자만
      * 지나가는 길이라 빈도도 낮다.
@@ -145,8 +168,38 @@ public class AiRouteGenerationStartService {
             long readerId, UUID idempotencyKey, String requestFingerprint) {
         return generationRepository
                 .findByReaderIdAndIdempotencyKeyForUpdate(readerId, idempotencyKey)
+                .filter(this::isUsable)
                 .map(generation -> resultOf(generation, requestFingerprint))
                 .orElseGet(GenerationStartResult::dailyLimitExceeded);
+    }
+
+    /**
+     * 만료한 멱등 상태는 남아 있어도 없는 것으로 본다. 15분이 지나면 임시 결과와 멱등 상태를 함께
+     * 지우고 같은 키가 다시 오면 새 요청으로 취급한다는 것이 계약이며, 그 판정이 정리 배치가 돌았는지에
+     * 달려 있으면 안 된다.
+     *
+     * <p>{@code expiresAt} 이 {@code null} 인 {@code GENERATING} 은 아직 만료 대상이 아니다.
+     */
+    private boolean isUsable(AiRouteGeneration generation) {
+        Instant expiresAt = generation.getExpiresAt();
+        return expiresAt == null || clock.instant().isBefore(expiresAt);
+    }
+
+    /**
+     * 만료한 행을 그 자리에서 지운다. 남겨 두면 뒤따르는 새 생성 insert 가
+     * {@code uk_ai_route_generation_reader_idempotency} 에 걸려 같은 키로 다시 시작할 수 없다.
+     *
+     * <p>지우고 바로 flush 한다. 미루면 Hibernate 가 같은 flush 안에서 INSERT 를 DELETE 보다 먼저
+     * 내보내 unique key 가 깨진다.
+     *
+     * <p>일일 사용량은 되돌리지 않는다. 만료 전 요청은 이미 한 건으로 계수됐고, 같은 키로 다시 오는
+     * 요청도 새 요청 한 건으로 계수하는 것이 계약이다. 저장 경로는 이 행을 외래 키로 참조하지 않으므로
+     * 기한 없는 경로는 그대로 남는다.
+     */
+    private void discardExpired(AiRouteGeneration generation) {
+        generationItemRepository.deleteByGenerationId(generation.getGenerationId());
+        generationRepository.delete(generation);
+        generationRepository.flush();
     }
 
     /**
