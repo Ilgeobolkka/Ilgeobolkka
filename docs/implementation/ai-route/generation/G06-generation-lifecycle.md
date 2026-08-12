@@ -93,10 +93,18 @@ G07에 complete/fail API를, S01에 SAVED API를, S03에 CONSUMED API를 전달�
   가이드). `additionalCostStatus`의 실현 방식은 **G08 leaf가 자기 결정으로 명시**해 두었으므로
   (컬럼 없이 `page_rental` 이력으로 재구성하거나, 저장 방식이면 그때 F01 migration 승인) 여기서 미리
   정하지 않습니다. 그 결정이 나면 필요한 필드를 projection에 추가하세요.
-- **허용 파일 밖 변경(승인 완료)**: `AiRouteGenerationStartService`와 그 통합 테스트(G05 소유),
-  `src/test/resources/application-test.yaml`(F03 소유)을 바꿨습니다. 앞은 완료 조건의 만료 판정 요구
-  때문이고, 뒤는 배치가 F01의 `AiRouteSchemaMigrationTest` 픽스처를 훼손하는 것을 막기 위해서입니다.
-  각각 G05 인계와 해당 파일 주석에 사유를 남겼습니다.
+- **허용 파일 밖 변경** 셋입니다.
+  1. `AiRouteGenerationStartService`와 그 통합 테스트(G05 소유) — 완료 조건의 만료 판정 요구 때문.
+     승인 완료.
+  2. `src/test/resources/application-test.yaml`(F03 소유) — 배치가 F01의
+     `AiRouteSchemaMigrationTest` 픽스처를 훼손하는 것을 막으려고. 승인 완료.
+  3. `global/config/SchedulingConfig`(F03 소유) — 전역 스케줄링 스위치를 도메인 밖으로 뺀 새 파일.
+     승인 완료. G06의 "이 작업 전용 새 파일" 예외로는 안 덮입니다. 도메인 전용이 아니라는 것이
+     이 파일을 만든 이유 전부이기 때문입니다.
+- 위 3번과 관련해 문서 불일치가 있습니다. `README.md`의 소유권 표는 F03 행을 "`application*.yaml`,
+  `.env.example`, OpenAI 조건부 설정·공통 HTTP Bean"으로 적었는데, `F03-openai-configuration.md:39`는
+  "`global/config` 또는 `infra/openai`의 새 설정·Properties 파일"로 더 넓습니다. 표만 보면 안 걸리고
+  leaf를 보면 걸립니다. 어느 쪽으로 맞출지 정리가 필요합니다.
 - `markConsumed`에 소유자 조건이 없습니다. 저장 경로와 생성이 1:1이라 S03이 경로 소유권을 확인하면
   전이적으로 막히지만, 이 API 자체는 `generationId`만으로 상태를 옮깁니다. **S03은 이 전제를 테스트로
   고정하세요** — 남의 경로를 삭제하려는 요청이 소비 처리까지 가지 않는지 확인해야 합니다.
