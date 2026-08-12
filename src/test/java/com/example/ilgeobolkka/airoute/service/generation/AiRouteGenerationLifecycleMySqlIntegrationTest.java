@@ -27,14 +27,18 @@ import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Predicate;
+import org.hibernate.resource.jdbc.spi.StatementInspector;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -57,7 +61,11 @@ import org.springframework.transaction.support.TransactionTemplate;
  * <p>유지보수 배치는 {@code application-test.yaml} 이 첫 실행을 한 시간 뒤로 미뤄 두어 돌지 않는다.
  * 정리·복구는 테스트가 직접 부른다.
  */
-@SpringBootTest
+@SpringBootTest(
+        properties =
+                "spring.jpa.properties.hibernate.session_factory.statement_inspector="
+                        + "com.example.ilgeobolkka.airoute.service.generation"
+                        + ".AiRouteGenerationLifecycleMySqlIntegrationTest$SqlRecorder")
 @ActiveProfiles("test")
 @ContextConfiguration(initializers = DedicatedTestDatabaseInitializer.class)
 @Import(AiRouteGenerationLifecycleMySqlIntegrationTest.MutableClockConfiguration.class)
@@ -483,6 +491,37 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
                 () -> assertEquals(0, 생성_수를_조회한다()));
     }
 
+    /**
+     * 잠금 순서는 주석 세 군데가 유일한 방어였다. {@code removeExpired} 에서 두 줄만 바꿔도 모든 테스트가
+     * 통과해 버리므로, 실제로 나간 SQL 순서를 단언한다. 교착을 재현하는 것보다 결정적이다.
+     */
+    @Test
+    void 정리는_생성_행을_항목보다_먼저_잠근다() {
+        완료된_생성을_만든다();
+        clock.set(EXPIRES_AT);
+
+        SqlRecorder.start();
+        cleanupService.removeExpired();
+        List<String> sql = SqlRecorder.stop();
+
+        int 생성_잠금 =
+                첫_위치(
+                        sql,
+                        statement ->
+                                statement.contains("ai_route_generation ")
+                                        && statement.contains("for update"));
+        int 항목_삭제 =
+                첫_위치(
+                        sql,
+                        statement ->
+                                statement.startsWith("delete")
+                                        && statement.contains("ai_route_generation_item"));
+        assertAll(
+                () -> assertTrue(생성_잠금 >= 0, "생성 행 잠금 문장이 없습니다: " + sql),
+                () -> assertTrue(항목_삭제 >= 0, "항목 삭제 문장이 없습니다: " + sql),
+                () -> assertTrue(생성_잠금 < 항목_삭제, "생성 잠금이 항목 삭제보다 뒤입니다: " + sql));
+    }
+
     @Test
     void 만료하지_않은_생성은_정리하지_않는다() {
         UUID generationId = 완료된_생성을_만든다();
@@ -748,6 +787,15 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
                 .format(instant);
     }
 
+    private static int 첫_위치(List<String> sql, Predicate<String> 조건) {
+        for (int index = 0; index < sql.size(); index++) {
+            if (조건.test(sql.get(index))) {
+                return index;
+            }
+        }
+        return -1;
+    }
+
     private static void 해제를_기다린다(CountDownLatch 해제) {
         try {
             if (!해제.await(10, TimeUnit.SECONDS)) {
@@ -879,6 +927,34 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
         jdbcTemplate.update("DELETE FROM book WHERE id = ?", BOOK_ID);
         for (long readerId : List.of(READER_ID, OTHER_READER_ID)) {
             jdbcTemplate.update("DELETE FROM reader WHERE id = ?", readerId);
+        }
+    }
+
+    /**
+     * Hibernate 가 이름으로 만들 수 있어야 해서 public 무인자 생성자가 필요하다. 그래서 수집 지점이
+     * 정적이다. 켠 구간에서만 모으므로 다른 테스트의 SQL 이 섞이지 않는다.
+     */
+    public static class SqlRecorder implements StatementInspector {
+
+        private static final List<String> STATEMENTS = new CopyOnWriteArrayList<>();
+        private static volatile boolean recording;
+
+        static void start() {
+            STATEMENTS.clear();
+            recording = true;
+        }
+
+        static List<String> stop() {
+            recording = false;
+            return List.copyOf(STATEMENTS);
+        }
+
+        @Override
+        public String inspect(String sql) {
+            if (recording) {
+                STATEMENTS.add(sql.toLowerCase(Locale.ROOT));
+            }
+            return sql;
         }
     }
 
