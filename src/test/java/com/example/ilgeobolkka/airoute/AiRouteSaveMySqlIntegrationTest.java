@@ -1,5 +1,6 @@
 package com.example.ilgeobolkka.airoute;
 
+import static org.hamcrest.Matchers.nullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -176,8 +177,8 @@ class AiRouteSaveMySqlIntegrationTest {
                         .andExpect(jsonPath("$.bookId").value(BOOK_ID))
                         .andExpect(jsonPath("$.purpose").value(PURPOSE))
                         .andExpect(jsonPath("$.current").value(true))
-                        .andExpect(jsonPath("$.completedAt").doesNotExist())
-                        .andExpect(jsonPath("$.rating").doesNotExist())
+                        .andExpect(jsonPath("$.completedAt").value(nullValue()))
+                        .andExpect(jsonPath("$.rating").value(nullValue()))
                         .andExpect(jsonPath("$.items.length()").value(2))
                         .andExpect(jsonPath("$.items[0].position").value(1))
                         .andExpect(jsonPath("$.items[0].pageNumber").value(1))
@@ -185,7 +186,7 @@ class AiRouteSaveMySqlIntegrationTest {
                         .andExpect(jsonPath("$.items[0].prerequisite").value(false))
                         .andExpect(jsonPath("$.items[0].role").value("CORE"))
                         .andExpect(jsonPath("$.items[0].additionalCostStatus").value("ACTIVE_RENTAL"))
-                        .andExpect(jsonPath("$.items[0].openedAt").doesNotExist())
+                        .andExpect(jsonPath("$.items[0].openedAt").value(nullValue()))
                         .andExpect(jsonPath("$.items[1].position").value(2))
                         .andExpect(jsonPath("$.items[1].prerequisite").value(true))
                         .andExpect(jsonPath("$.items[1].additionalCostStatus").value("ONE_INK"))
@@ -205,6 +206,32 @@ class AiRouteSaveMySqlIntegrationTest {
                 () -> assertNull(route.get("completed_at")),
                 () -> assertEquals(2, 경로_항목_수(routeId)),
                 () -> assertEquals(Long.valueOf(routeId), 현재_경로_식별자(READER_ID, BOOK_ID)),
+                // 성공 바디도 키 집합 전체를 고정한다. api-spec 이 nullable 필드를 생략하지 않고 null 로
+                // 반환하라고 정했으므로, 필드가 빠지거나 새로 생기면 여기서 실패해야 한다.
+                () -> assertEquals(
+                        Set.of(
+                                "routeId",
+                                "bookId",
+                                "bookTitle",
+                                "purpose",
+                                "current",
+                                "createdAt",
+                                "completedAt",
+                                "rating",
+                                "items"),
+                        응답_키_집합(result)),
+                () -> assertEquals(
+                        Set.of(
+                                "position",
+                                "pageNumber",
+                                "relevance",
+                                "prerequisite",
+                                "role",
+                                "estimatedMinutes",
+                                "guide",
+                                "additionalCostStatus",
+                                "openedAt"),
+                        항목_키_집합(result, 0)),
                 // 저장은 권한을 만들지 않는다. 성공해도 잉크·원장·대여·세션·서재가 그대로여야 한다.
                 () -> assertEquals(이전, 잉크와_대여_상태()));
     }
@@ -260,6 +287,29 @@ class AiRouteSaveMySqlIntegrationTest {
                 .andExpect(jsonPath("$.current").value(false));
 
         assertEquals(Long.valueOf(다른_경로), 현재_경로_식별자(READER_ID, BOOK_ID));
+    }
+
+    /**
+     * 같은 도서를 다시 저장하면 현재 경로가 새 경로로 바뀐다. current upsert 의 UPDATE 분기이며, 재시도가
+     * 되돌리지 않는다는 위 계약과 짝으로 "새 저장은 바꾼다"를 고정한다.
+     */
+    @Test
+    void 같은_도서를_다시_저장하면_현재_경로가_교체된다() throws Exception {
+        페이지를_대여한다(READER_ID, FIRST_RENTAL_ID, FIRST_PAGE_ID, STARTED_AT);
+        long 첫_경로 = 경로_식별자(저장을_요청한다(READER_ID, 완료된_생성을_만든다()).andReturn());
+
+        MvcResult 둘째 =
+                저장을_요청한다(READER_ID, 완료된_생성을_만든다())
+                        .andExpect(status().isCreated())
+                        .andExpect(jsonPath("$.current").value(true))
+                        .andReturn();
+
+        long 둘째_경로 = 경로_식별자(둘째);
+        assertAll(
+                () -> assertEquals(2, 경로_수(READER_ID, BOOK_ID)),
+                () -> assertEquals(1, 현재_경로_수(READER_ID, BOOK_ID)),
+                () -> assertEquals(Long.valueOf(둘째_경로), 현재_경로_식별자(READER_ID, BOOK_ID)),
+                () -> assertTrue(첫_경로 != 둘째_경로));
     }
 
     @Test
@@ -846,6 +896,10 @@ class AiRouteSaveMySqlIntegrationTest {
 
     private Set<String> 응답_키_집합(MvcResult result) throws Exception {
         return new LinkedHashSet<>(응답(result).propertyNames());
+    }
+
+    private Set<String> 항목_키_집합(MvcResult result, int index) throws Exception {
+        return new LinkedHashSet<>(응답(result).get("items").get(index).propertyNames());
     }
 
     private JsonNode 응답(MvcResult result) throws Exception {
