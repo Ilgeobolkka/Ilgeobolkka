@@ -3,6 +3,7 @@ package com.example.ilgeobolkka.airoute.service.generation;
 import com.example.ilgeobolkka.airoute.entity.AiReadingRoute;
 import com.example.ilgeobolkka.airoute.entity.AiRouteGeneration;
 import com.example.ilgeobolkka.airoute.entity.AiRouteGenerationItem;
+import com.example.ilgeobolkka.airoute.entity.AiRouteGenerationStatus;
 import com.example.ilgeobolkka.airoute.entity.AiRouteNoRouteReason;
 import com.example.ilgeobolkka.airoute.exception.AiRouteGenerationNotFoundException;
 import com.example.ilgeobolkka.airoute.repository.AiRouteGenerationItemRepository;
@@ -134,7 +135,15 @@ public class AiRouteGenerationLifecycleService {
     public Optional<AiRouteGenerationView> findOwnedResult(UUID generationId, long readerId) {
         return generationRepository
                 .findOwnedNotExpired(generationId, readerId, clock.instant())
-                .map(AiRouteGenerationView::from);
+                .map(generation -> AiRouteGenerationView.from(generation, itemsOf(generation)));
+    }
+
+    /** 항목은 {@code ROUTE} 에서만 남는다. 다른 상태에 조회를 날려도 늘 비어 있으므로 아예 묻지 않는다. */
+    private List<AiRouteGenerationItem> itemsOf(AiRouteGeneration generation) {
+        if (generation.getStatus() != AiRouteGenerationStatus.ROUTE) {
+            return List.of();
+        }
+        return generationItemRepository.findAllOrderedByGenerationId(generation.getGenerationId());
     }
 
     private AiRouteGenerationItem toEntity(AiRouteGeneration generation, AiRouteResultItem item) {
