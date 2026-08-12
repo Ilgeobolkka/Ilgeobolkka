@@ -1,15 +1,15 @@
 package com.example.ilgeobolkka.airoute.service.assembly;
 
+import com.example.ilgeobolkka.airoute.AiRouteAdditionalCostStatus;
 import com.example.ilgeobolkka.airoute.entity.AiRouteItemRelevance;
 import com.example.ilgeobolkka.airoute.entity.AiRouteItemRole;
-import com.example.ilgeobolkka.airoute.entity.AiRouteNoRouteReason;
 import java.util.List;
 
 /** 공급자와 영속 계층에 독립적인 경로 조립 결과. */
 public record AiRouteGenerationResult(
         Status status,
         List<Item> items,
-        AiRouteNoRouteReason noRouteReason,
+        NoRouteReason noRouteReason,
         Integer minimumRequiredInk) {
 
     public AiRouteGenerationResult {
@@ -25,11 +25,11 @@ public record AiRouteGenerationResult(
         if (status == Status.NO_ROUTE && (!items.isEmpty() || noRouteReason == null)) {
             throw new IllegalArgumentException("NO_ROUTE 결과는 사유만 가져야 합니다.");
         }
-        if (noRouteReason != AiRouteNoRouteReason.INSUFFICIENT_BUDGET
+        if (noRouteReason != NoRouteReason.INSUFFICIENT_BUDGET
                 && minimumRequiredInk != null) {
             throw new IllegalArgumentException("예산 부족 외의 경로 없음에는 최소 필요 잉크가 없습니다.");
         }
-        if (noRouteReason == AiRouteNoRouteReason.INSUFFICIENT_BUDGET
+        if (noRouteReason == NoRouteReason.INSUFFICIENT_BUDGET
                 && (minimumRequiredInk == null || minimumRequiredInk <= 0)) {
             throw new IllegalArgumentException("예산 부족에는 양수인 최소 필요 잉크가 필요합니다.");
         }
@@ -41,20 +41,15 @@ public record AiRouteGenerationResult(
 
     public static AiRouteGenerationResult noRelevantPages() {
         return new AiRouteGenerationResult(
-                Status.NO_ROUTE, List.of(), AiRouteNoRouteReason.NO_RELEVANT_PAGES, null);
+                Status.NO_ROUTE, List.of(), NoRouteReason.NO_RELEVANT_PAGES, null);
     }
 
     public static AiRouteGenerationResult insufficientBudget(int minimumRequiredInk) {
         return new AiRouteGenerationResult(
                 Status.NO_ROUTE,
                 List.of(),
-                AiRouteNoRouteReason.INSUFFICIENT_BUDGET,
+                NoRouteReason.INSUFFICIENT_BUDGET,
                 minimumRequiredInk);
-    }
-
-    public static AiRouteGenerationResult insufficientDepth() {
-        return new AiRouteGenerationResult(
-                Status.NO_ROUTE, List.of(), AiRouteNoRouteReason.INSUFFICIENT_DEPTH, null);
     }
 
     public enum Status {
@@ -62,10 +57,10 @@ public record AiRouteGenerationResult(
         NO_ROUTE
     }
 
-    public enum AdditionalCostStatus {
-        ONE_INK,
-        ACTIVE_RENTAL,
-        OWNED
+    /** G04 조립 단계 안에서만 사용하는 경로 없음 사유. 공개 API·DB 계약과 독립적이다. */
+    public enum NoRouteReason {
+        NO_RELEVANT_PAGES,
+        INSUFFICIENT_BUDGET
     }
 
     /**
@@ -80,5 +75,5 @@ public record AiRouteGenerationResult(
             AiRouteItemRole role,
             int estimatedMinutes,
             String guide,
-            AdditionalCostStatus additionalCostStatus) {}
+            AiRouteAdditionalCostStatus additionalCostStatus) {}
 }

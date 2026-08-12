@@ -410,7 +410,7 @@ generation·저장 route 항목이 페이지의 도서를 복합 FK로 확인할
 | `max_additional_ink` | `INT` | 예 | - | 비소장 예산 |
 | `depth` | `VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin` | 예 | - | `QUICK`, `BALANCED`, `DEEP` 중 하나 |
 | `status` | `VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | - | `GENERATING`, `ROUTE`, `NO_ROUTE`, `FAILED`, `SAVED`, `CONSUMED` 중 하나 |
-| `no_route_reason` | `VARCHAR(40) CHARACTER SET ascii COLLATE ascii_bin` | 예 | - | `NO_RELEVANT_PAGES`, `INSUFFICIENT_BUDGET` 또는 `INSUFFICIENT_DEPTH` |
+| `no_route_reason` | `VARCHAR(40) CHARACTER SET ascii COLLATE ascii_bin` | 예 | - | `NO_RELEVANT_PAGES` 또는 `INSUFFICIENT_BUDGET` |
 | `minimum_required_ink` | `INT` | 예 | - | 예산 부족 `NO_ROUTE`의 최소 추가 잉크 |
 | `failure_code` | `VARCHAR(100) CHARACTER SET ascii COLLATE ascii_bin` | 예 | - | `FAILED` 재조회에 사용할 공개 오류 코드 |
 | `saved_route_id` | `BIGINT` | 예 | UK, 복합 FK → `ai_reading_route(id, generation_id)` 구성 | `SAVED`가 반환할 저장 경로 |
@@ -420,8 +420,8 @@ generation·저장 route 항목이 페이지의 도서를 복합 FK로 확인할
 
 저장 전 상태는 `normalized_purpose`, `request_type`과 그에 맞는 `max_additional_ink` 또는 `depth` 중 하나를
 가집니다. `ROUTE`만 결과 항목을 가집니다. `NO_ROUTE`는 `no_route_reason`을 반드시 가지며
-`NO_RELEVANT_PAGES`와 소장 요청의 `INSUFFICIENT_DEPTH`이면 `minimum_required_ink`가 `NULL`, 비소장 요청의
-`INSUFFICIENT_BUDGET`이면 선택 예산보다 큰 최소 추가 잉크를 가집니다. 다른 상태에서는 두 필드가 모두 `NULL`입니다.
+`NO_RELEVANT_PAGES`이면 `minimum_required_ink`가 `NULL`, `INSUFFICIENT_BUDGET`이면 선택 예산보다 큰 최소
+추가 잉크를 가집니다. 다른 상태에서는 두 필드가 모두 `NULL`입니다.
 `FAILED`는 임시 경로 없이 멱등 오류만 재현합니다. 저장 성공 시 임시 항목과 목적·입력 필드를 제거하고
 `SAVED`·`saved_route_id`·`request_fingerprint`만 원래 만료 시각까지 보존합니다. `saved_route_id`와
 `generation_id` 복합 FK는 포인터가 같은 임시 생성을 소비한 저장 경로만 가리키게 합니다. 저장 경로가 먼저

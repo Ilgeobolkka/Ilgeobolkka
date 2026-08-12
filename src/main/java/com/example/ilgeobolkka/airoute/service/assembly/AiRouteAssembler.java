@@ -1,8 +1,8 @@
 package com.example.ilgeobolkka.airoute.service.assembly;
 
+import com.example.ilgeobolkka.airoute.AiRouteAdditionalCostStatus;
 import com.example.ilgeobolkka.airoute.AiRouteGenerationCommand;
 import com.example.ilgeobolkka.airoute.AiRouteRequestType;
-import com.example.ilgeobolkka.airoute.service.assembly.AiRouteGenerationResult.AdditionalCostStatus;
 import com.example.ilgeobolkka.airoute.service.assembly.AiRouteGenerationResult.Item;
 import com.example.ilgeobolkka.airoute.service.validation.ValidatedRouteProposal;
 import com.example.ilgeobolkka.airoute.service.validation.ValidatedRouteProposal.ValidatedRouteItem;
@@ -99,7 +99,7 @@ public final class AiRouteAssembler {
             }
 
             if (command.requestType() == AiRouteRequestType.OWNED_DEPTH) {
-                return AiRouteGenerationResult.insufficientDepth();
+                throw new IllegalStateException("소장 경로를 선택한 깊이 상한 안에서 완성할 수 없습니다.");
             }
 
             int minimumRequiredInk = duplicateFreeRequiredPageNumbers.stream()
@@ -277,14 +277,14 @@ public final class AiRouteAssembler {
         return (int) Math.max(1L, (estimatedReadingSeconds + 59L) / 60L);
     }
 
-    private AdditionalCostStatus additionalCostStatus(
+    private AiRouteAdditionalCostStatus additionalCostStatus(
             int pageNumber, AiRouteEntitlementSnapshot entitlement) {
         if (entitlement.owned()) {
-            return AdditionalCostStatus.OWNED;
+            return AiRouteAdditionalCostStatus.OWNED;
         }
         if (entitlement.activeRentalPageNumbers().contains(pageNumber)) {
-            return AdditionalCostStatus.ACTIVE_RENTAL;
+            return AiRouteAdditionalCostStatus.ACTIVE_RENTAL;
         }
-        return AdditionalCostStatus.ONE_INK;
+        return AiRouteAdditionalCostStatus.ONE_INK;
     }
 }

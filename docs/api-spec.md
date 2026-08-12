@@ -158,7 +158,7 @@
 | `expiresAt` | UTC 시각 또는 `null` | `GENERATING`에서는 `null`, 그 밖에는 임시 상태·결과 만료 시각 |
 | `routeId` | 숫자 또는 `null` | `SAVED`에서만 저장 경로 식별자 |
 | `remainingDailyGenerations` | 정수 | 응답 시점의 남은 계정별 생성 횟수 |
-| `noRouteReason` | 문자열 또는 `null` | `NO_ROUTE`에서만 `NO_RELEVANT_PAGES`, `INSUFFICIENT_BUDGET` 또는 `INSUFFICIENT_DEPTH` |
+| `noRouteReason` | 문자열 또는 `null` | `NO_ROUTE`에서만 `NO_RELEVANT_PAGES` 또는 `INSUFFICIENT_BUDGET` |
 | `minimumRequiredInk` | 정수 또는 `null` | 예산 부족 `NO_ROUTE`에서만 값이 있음 |
 | `items` | 배열 | `ROUTE`에서만 경로 항목, 그 밖에는 빈 배열 |
 
@@ -170,10 +170,8 @@
 다시 조회해도 현재 권한으로 재계산하지 않습니다(저장 거부 뒤 재조회도 같습니다). 재계산은 저장 경로 상세
 조회에서만 수행합니다.
 
-`NO_RELEVANT_PAGES`와 `INSUFFICIENT_DEPTH`는 `minimumRequiredInk=null`입니다. `INSUFFICIENT_BUDGET`은
-선택한 예산보다 큰 최소 추가 잉크를 `minimumRequiredInk`로 반환합니다. `INSUFFICIENT_DEPTH`는 소장 도서의
-검색 후보와 모든 선수를 선택한 깊이 상한 안에 함께 담을 수 없다는 뜻입니다. `NO_ROUTE`가 아닌 상태에서는
-두 필드가 모두 `null`입니다.
+`NO_RELEVANT_PAGES`는 `minimumRequiredInk=null`이고, `INSUFFICIENT_BUDGET`은 선택한 예산보다 큰 최소
+추가 잉크를 `minimumRequiredInk`로 반환합니다. `NO_ROUTE`가 아닌 상태에서는 두 필드가 모두 `null`입니다.
 
 새 요청이 완료되면 `201`, 같은 멱등 요청의 완료 결과를 반환하면 `200`, 먼저 시작한 같은 요청이 아직
 진행 중이면 `202`와 `GENERATING`을 반환합니다. `NO_ROUTE`는 오류가 아닌 정상 결과입니다. 실패한 키는

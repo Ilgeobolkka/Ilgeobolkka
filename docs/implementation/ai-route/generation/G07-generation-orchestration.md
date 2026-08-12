@@ -29,6 +29,8 @@
   `TransactionTemplate` 단계를 참고합니다.
 - F04·F05·G04·G06은 공급자·계산·영속 경계를 각각 제공합니다.
 - AI Facade와 지원 도서 query·권한 snapshot 조합은 없습니다.
+- G04는 소장 후보·선수 묶음을 depth 상한 안에서 완성할 수 없는 경우를 기존 두 NO_ROUTE로 잘못 분류하지
+  않고 내부 예외로 인계합니다. 이 작업에서 `INSUFFICIENT_DEPTH`를 정상 결과 계약으로 승격해야 합니다.
 
 ## 입력과 산출물
 
@@ -37,11 +39,14 @@
 - 공통 호출 순서: 사전 검증 → G05 start → F04 → G02
 - 후보 없음: G04의 `NO_RELEVANT_PAGES` → G06 complete
 - 후보 있음: F05 → G03 → G04 → G06 complete/fail
+- 소장 depth 부족: G04의 내부 예외 분기를 `INSUFFICIENT_DEPTH` 정상 결과로 승격 → G06 complete
 - G08에 넘길 것: NEW/REPLAY/GENERATING/FINAL과 공개 실패 종류의 HTTP 독립 결과
 
 ## 수정 허용 파일
 
 - 새 generation Facade·snapshot factory·호출 시간 budget helper
+- `INSUFFICIENT_DEPTH` 계약 연결에 필요한 generation 결과·Entity enum·새 Flyway migration·정본 문서와
+  전용 테스트. 기존 migration은 수정하지 않음
 - 필요한 Book/Ownership/Rental/Ink Service public 조회는 기존 API를 우선 사용하며 기존 Facade는 수정 금지
 - 새 `AiRouteGenerationFacadeMySqlIntegrationTest`
 
@@ -60,11 +65,17 @@
    20초 초과와 재시도 불가 실패, 두 번째 invalid output을 G06 FAILED 공개 code로 확정합니다.
 8. 외부 호출 후 contentVersion이 바뀌어도 임시 생성 snapshot은 유지하고 저장 단계가 다시 검증합니다.
 9. 생성 전후 InkAccount·Ledger·Rental·Ownership·ReadingSession·LibraryEntry가 바뀌지 않습니다.
+10. 소장 후보와 모든 선수를 depth 상한 안에 담을 수 없으면 G04 결과 타입과 assembler를 확장해 내부 예외
+    대신 `INSUFFICIENT_DEPTH`, `minimumRequiredInk=null`의 정상 NO_ROUTE를 반환하고 G06으로 완료합니다.
+    공개 API·ERD·Entity enum과 새 Flyway migration을 같은 계약으로 맞추며 기존 migration은 수정하지
+    않습니다.
 
 ## 테스트
 
-- NEW 정상 ROUTE·`INSUFFICIENT_BUDGET`·`INSUFFICIENT_DEPTH`는 Responses 1회,
+- NEW 정상 ROUTE·`INSUFFICIENT_BUDGET`은 Responses 1회,
   `NO_RELEVANT_PAGES`와 기존 key replay는 Responses 0회
+- owned depth 상한 초과는 Responses 1회 뒤 `INSUFFICIENT_DEPTH`와 `minimumRequiredInk=null`로 영속되고
+  재조회됨
 - 첫 malformed/semantic invalid→정상과 두 번 invalid에서 Responses 호출 수 2회,
   두 호출의 후보 순서·graph·model·candidate/prompt/schema version 동일성
 - refusal·incomplete·provider·budget·timeout은 Responses 호출 수 1회
@@ -82,6 +93,7 @@
 ## 완료 조건
 
 - T-AIR-009·010·015 orchestration 경계와 20초·1회 재시도가 통합 테스트됩니다.
+- `INSUFFICIENT_DEPTH`가 조립 결과부터 generation 영속화까지 정상 NO_ROUTE로 연결됩니다.
 - 외부 호출 구간에 DB transaction이 없습니다.
 - `./gradlew check`가 통과합니다.
 

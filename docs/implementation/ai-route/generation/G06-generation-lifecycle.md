@@ -43,7 +43,6 @@ GENERATING 이후 ROUTE·NO_ROUTE·FAILED·SAVED·CONSUMED 전이와 15분 보�
 1. `GENERATING -> ROUTE|NO_ROUTE|FAILED`만 첫 최종 전이로 허용하고 completedAt·expiresAt=+15분을 같은
    Clock 값으로 기록합니다.
 2. ROUTE만 item을, NO_ROUTE만 사유·조건부 minimumRequiredInk를, FAILED만 공개 failureCode를 저장합니다.
-   INSUFFICIENT_DEPTH는 소장 요청에서만 허용하고 minimumRequiredInk는 저장하지 않습니다.
 3. 만료 시각부터 조회·저장을 거부하고 cleanup 실행 전이라도 404 대상 projection을 반환합니다.
 4. 저장 성공 호출은 임시 목적·입력·item을 지우고 SAVED+routeId+fingerprint를 원래 expiresAt까지 남깁니다.
 5. route 삭제 호출은 CONSUMED로 전이하고 pointer를 비워 재저장을 막습니다.

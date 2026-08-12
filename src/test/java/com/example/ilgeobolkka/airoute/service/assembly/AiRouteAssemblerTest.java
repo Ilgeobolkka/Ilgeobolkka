@@ -6,14 +6,15 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.example.ilgeobolkka.airoute.AiRouteAdditionalCostStatus;
 import com.example.ilgeobolkka.airoute.AiRouteDepth;
 import com.example.ilgeobolkka.airoute.AiRouteGenerationCommand;
 import com.example.ilgeobolkka.airoute.entity.AiRouteItemRelevance;
 import com.example.ilgeobolkka.airoute.entity.AiRouteItemRole;
-import com.example.ilgeobolkka.airoute.entity.AiRouteNoRouteReason;
-import com.example.ilgeobolkka.airoute.service.assembly.AiRouteGenerationResult.AdditionalCostStatus;
 import com.example.ilgeobolkka.airoute.service.assembly.AiRouteGenerationResult.Item;
+import com.example.ilgeobolkka.airoute.service.assembly.AiRouteGenerationResult.NoRouteReason;
 import com.example.ilgeobolkka.airoute.service.assembly.AiRouteGenerationResult.Status;
+import com.example.ilgeobolkka.airoute.service.query.AiRouteItemGuideAssembler;
 import com.example.ilgeobolkka.airoute.service.validation.ValidatedRouteProposal;
 import com.example.ilgeobolkka.airoute.service.validation.ValidatedRouteProposal.ValidatedRouteItem;
 import java.util.ArrayList;
@@ -51,7 +52,8 @@ class AiRouteAssemblerTest {
                 () -> assertEquals(Status.ROUTE, result.status()),
                 () -> assertEquals(budget, result.items().size()),
                 () -> assertTrue(result.items().stream()
-                        .allMatch(item -> item.additionalCostStatus() == AdditionalCostStatus.ONE_INK)),
+                        .allMatch(item -> item.additionalCostStatus()
+                                == AiRouteAdditionalCostStatus.ONE_INK)),
                 () -> assertEquals(
                         IntStream.rangeClosed(1, budget).boxed().toList(),
                         pageNumbers(result)));
@@ -69,7 +71,7 @@ class AiRouteAssemblerTest {
                 () -> assertEquals(List.of(1, 3), pageNumbers(result)),
                 () -> assertTrue(result.items().stream()
                         .allMatch(item -> item.additionalCostStatus()
-                                == AdditionalCostStatus.ACTIVE_RENTAL)));
+                                == AiRouteAdditionalCostStatus.ACTIVE_RENTAL)));
     }
 
     @Test
@@ -101,7 +103,8 @@ class AiRouteAssemblerTest {
         assertAll(
                 () -> assertEquals(expectedPageCount, result.items().size()),
                 () -> assertTrue(result.items().stream()
-                        .allMatch(item -> item.additionalCostStatus() == AdditionalCostStatus.OWNED)));
+                        .allMatch(item -> item.additionalCostStatus()
+                                == AiRouteAdditionalCostStatus.OWNED)));
     }
 
     @Test
@@ -116,7 +119,7 @@ class AiRouteAssemblerTest {
     }
 
     @Test
-    void 소장_후보의_선수_묶음이_깊이_상한보다_크면_INSUFFICIENT_DEPTH를_반환한다() {
+    void 소장_후보의_선수_묶음이_깊이_상한보다_크면_현재_결과_계약으로_표현하지_않는다() {
         ValidatedRouteProposal proposal = proposal(
                 List.of(
                         item(1, true),
@@ -127,19 +130,16 @@ class AiRouteAssemblerTest {
                         item(6, false)),
                 Map.of(6, Set.of(1, 2, 3, 4, 5)));
 
-        AiRouteGenerationResult result = assembler.assemble(
-                proposal,
-                ownedCommand(AiRouteDepth.QUICK),
-                AiRouteEntitlementSnapshot.forOwned(),
-                pages(6));
+        IllegalStateException exception = assertThrows(
+                IllegalStateException.class,
+                () -> assembler.assemble(
+                        proposal,
+                        ownedCommand(AiRouteDepth.QUICK),
+                        AiRouteEntitlementSnapshot.forOwned(),
+                        pages(6)));
 
-        assertAll(
-                () -> assertEquals(Status.NO_ROUTE, result.status()),
-                () -> assertEquals(
-                        AiRouteNoRouteReason.INSUFFICIENT_DEPTH,
-                        result.noRouteReason()),
-                () -> assertNull(result.minimumRequiredInk()),
-                () -> assertTrue(result.items().isEmpty()));
+        assertEquals(
+                "소장 경로를 선택한 깊이 상한 안에서 완성할 수 없습니다.", exception.getMessage());
     }
 
     @Test
@@ -220,7 +220,7 @@ class AiRouteAssemblerTest {
 
         assertAll(
                 () -> assertEquals(Status.NO_ROUTE, result.status()),
-                () -> assertEquals(AiRouteNoRouteReason.NO_RELEVANT_PAGES, result.noRouteReason()),
+                () -> assertEquals(NoRouteReason.NO_RELEVANT_PAGES, result.noRouteReason()),
                 () -> assertNull(result.minimumRequiredInk()),
                 () -> assertTrue(result.items().isEmpty()));
     }
@@ -241,7 +241,7 @@ class AiRouteAssemblerTest {
         assertAll(
                 () -> assertEquals(Status.NO_ROUTE, insufficient.status()),
                 () -> assertEquals(
-                        AiRouteNoRouteReason.INSUFFICIENT_BUDGET,
+                        NoRouteReason.INSUFFICIENT_BUDGET,
                         insufficient.noRouteReason()),
                 () -> assertEquals(2, insufficient.minimumRequiredInk()),
                 () -> assertEquals(List.of(1, 2, 3), pageNumbers(boundary)));
@@ -267,12 +267,31 @@ class AiRouteAssemblerTest {
                         .toList()),
                 () -> assertEquals(
                         List.of(
-                                AdditionalCostStatus.ACTIVE_RENTAL,
-                                AdditionalCostStatus.ONE_INK,
-                                AdditionalCostStatus.ONE_INK),
+                                AiRouteAdditionalCostStatus.ACTIVE_RENTAL,
+                                AiRouteAdditionalCostStatus.ONE_INK,
+                                AiRouteAdditionalCostStatus.ONE_INK),
                         result.items().stream().map(Item::additionalCostStatus).toList()),
                 () -> assertTrue(result.items().stream()
                         .allMatch(item -> item.guide().contains("공개 주제"))));
+    }
+
+    @ParameterizedTest
+    @EnumSource(AiRouteItemRole.class)
+    void 생성_미리보기와_저장_경로_조회는_같은_가이드_문구를_사용한다(AiRouteItemRole role) {
+        ValidatedRouteProposal proposal = proposal(
+                List.of(new ValidatedRouteItem(
+                        1001L, 1, 1, AiRouteItemRelevance.HIGH, false, role)),
+                Map.of(1, Set.of()));
+
+        AiRouteGenerationResult result = assembler.assemble(
+                proposal,
+                inkCommand(1, INK_BALANCE),
+                AiRouteEntitlementSnapshot.forNonOwned(INK_BALANCE, Set.of()),
+                pages(1));
+
+        assertEquals(
+                AiRouteItemGuideAssembler.guide(role, "공개 주제 1"),
+                result.items().getFirst().guide());
     }
 
     @Test
@@ -304,17 +323,6 @@ class AiRouteAssemblerTest {
         assertThrows(
                 IllegalArgumentException.class,
                 () -> new AiRouteGenerationResult(null, List.of(), null, null));
-    }
-
-    @Test
-    void 깊이_부족_결과에는_최소_필요_잉크를_넣을_수_없다() {
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> new AiRouteGenerationResult(
-                        Status.NO_ROUTE,
-                        List.of(),
-                        AiRouteNoRouteReason.INSUFFICIENT_DEPTH,
-                        1));
     }
 
     private AiRouteGenerationCommand inkCommand(int budget, int balance) {

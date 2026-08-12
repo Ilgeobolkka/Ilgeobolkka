@@ -68,7 +68,7 @@
 - UUID의 새 실행/동일 retry 재사용과 저장 request body 비어 있음 확인
 - 저장 `409 AI_ROUTE_ENTITLEMENT_CHANGED` fixture에서 재생성 안내만 표시되고(다른 복구 경로 안내 없음)
   비용·권한 상세가 DOM에 없으며, 저장 버튼이 `disabled`가 되고 항목별 cost status가 무효 표시로 바뀜 확인
-- 수동 브라우저: 입력→202 polling→preview→저장, 세 NO_ROUTE, 409 권한 변동 거부, 429·503 오류
+- 수동 브라우저: 입력→202 polling→preview→저장, 두 NO_ROUTE, 409 권한 변동 거부, 429·503 오류
 - 명령: `./gradlew test --tests '*AiRouteGenerationPageTest'`
 
 ## 제외 범위

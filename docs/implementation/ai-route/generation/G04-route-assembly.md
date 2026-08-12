@@ -8,7 +8,7 @@
 
 ## 목표
 
-검증된 proposal을 현재 권한 snapshot의 비용·선수 조건으로 순회해 ROUTE 또는 세 NO_ROUTE 결과를 만들고,
+검증된 proposal을 현재 권한 snapshot의 비용·선수 조건으로 순회해 ROUTE 또는 두 NO_ROUTE 결과를 만들고,
 공개 metadata만으로 표시 항목을 조립합니다.
 
 ## 정본 링크
@@ -31,7 +31,7 @@
 - 입력: `ValidatedRouteProposal`, request command, owned 또는 balance·activeRentalPageNumbers snapshot,
   publicGuideTopic·estimatedReadingSeconds
 - 산출물: `AiRouteAssembler`, `AiRouteGuideFactory`, `AiRouteGenerationResult`
-- 결과: ROUTE items 또는 NO_RELEVANT_PAGES/INSUFFICIENT_BUDGET/INSUFFICIENT_DEPTH
+- 결과: ROUTE items 또는 NO_RELEVANT_PAGES/INSUFFICIENT_BUDGET+minimumRequiredInk
 - G07·S01에 넘길 것: 영속화 가능한 공급자 중립 결과와 생성 때 사용한 비용 snapshot
 
 ## 수정 허용 파일
@@ -47,11 +47,9 @@
 3. 선수를 비용 때문에 제외하면 그 선수에 의존하는 page도 제외합니다.
 4. 상한·예산을 채우려고 무관 page를 추가하지 않고 같은 page를 중복 포함하지 않습니다.
 5. 관련 후보가 없으면 NO_RELEVANT_PAGES/null, 비소장 관련 후보 묶음의 최소 비용이 선택 예산보다 크면
-   minimumRequiredInk와 INSUFFICIENT_BUDGET을 반환합니다. 소장 관련 후보와 모든 선수를 깊이 상한 안에
-   함께 담을 수 없으면 INSUFFICIENT_DEPTH/null을 반환합니다. ROUTE에는 관련 후보가 최소 한 개 있어야 하며
-   선수 페이지만 있는 앞부분 경로는 반환하지 않습니다.
-   모든 후보 묶음이 내부 duplicate group 충돌로 완성 불가능하면 예산·깊이 부족으로 위장하지 않고 조립
-   입력 오류로 실패합니다.
+   minimumRequiredInk의 INSUFFICIENT_BUDGET을 반환합니다. 소장 후보 묶음을 깊이 상한 안에서 완성할 수
+   없는 경우는 현재 두 NO_ROUTE 계약으로 잘못 분류하지 않고 내부 예외로 중단하며, G07이
+   INSUFFICIENT_DEPTH를 정식 결과 계약으로 연결합니다.
 6. guide는 publicGuideTopic과 server role 템플릿으로만 만들고 analysisText·모델 문구를 입력받지 않습니다.
 7. estimated minutes와 `ONE_INK|ACTIVE_RENTAL|OWNED`를 정본 계산으로 만들며 상태를 변경하지 않습니다.
 
@@ -59,8 +57,9 @@
 
 - non-owned 0·5·10·15 예산, active rental 혼합과 잔액 상한
 - owned 세 depth와 관련 page 부족
+- owned 후보·선수 묶음이 depth 상한을 넘을 때 내부 예외
 - 다단계 선수 비용 제외·의존 제거, duplicate group 중복 억제
-- 세 NO_ROUTE와 minimumRequiredInk 경계
+- 두 NO_ROUTE와 minimumRequiredInk 경계
 - guide에 공개 topic·role만 있고 분석 text·결론·수치가 없는지 확인
 - 명령: `./gradlew test --tests '*AiRouteAssemblerTest' --tests '*AiRouteGuideFactoryTest'`
 
@@ -78,5 +77,6 @@
 
 ## 인계
 
-G07 담당자에게 필요한 권한 snapshot 필드와 결과 타입을 전달합니다. S01 담당자에게 저장 시 재계산할 비용
-입력과 생성 예산 필드를 전달합니다.
+G07 담당자에게 필요한 권한 snapshot 필드와 결과 타입을 전달합니다. G07은 소장 후보·선수 묶음이 depth
+상한을 넘는 내부 예외를 `INSUFFICIENT_DEPTH` 정상 결과로 승격하고 API·영속 계약까지 함께 연결합니다.
+S01 담당자에게 저장 시 재계산할 비용 입력과 생성 예산 필드를 전달합니다.

@@ -21,7 +21,6 @@ public final class AiRouteInvalidOutputException extends RuntimeException {
         DUPLICATE_PAGE("모델 출력에 중복 페이지가 있습니다.", true),
         MISSING_PREREQUISITE("모델 출력에 필요한 선수 페이지가 누락되었습니다.", true),
         INVALID_PREREQUISITE_ORDER("모델 출력의 선수 페이지 순서가 올바르지 않습니다.", true),
-        MISSING_CANDIDATE("모델 출력에 검색 후보 페이지가 없습니다.", true),
         INVALID_ENUM("모델 출력의 열거값이 올바르지 않습니다.", true);
 
         private final String message;
