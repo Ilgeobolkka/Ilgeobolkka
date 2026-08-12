@@ -45,12 +45,25 @@ public class AiRouteGenerationCleanupService {
      *
      * <p>이 상한은 <b>호출 하나</b>의 크기만 정한다. 밀린 backlog 를 모두 비우는 책임은 호출자에게
      * 있다. {@link com.example.ilgeobolkka.airoute.scheduler.AiRouteGenerationMaintenanceScheduler}
-     * 는 반환 건수가 이 상한과 같은 동안 같은 sweep 안에서 반복해 부른다. 상한보다 적게 돌아오면 그
-     * 순간 대상이 모두 처리된 것이므로 멈춘다.
+     * 는 {@link BatchOutcome#selected()} 가 이 상한과 같은 동안 같은 sweep 안에서 반복해 부른다. 고른
+     * 수가 상한보다 적으면 그 순간 대상이 모두 소진된 것이므로 멈춘다.
      */
     public static final int BATCH_SIZE = 200;
 
     private static final Pageable BATCH = PageRequest.ofSize(BATCH_SIZE);
+
+    /**
+     * 한 번의 호출이 고른 수와 실제로 처리한 수. 두 값은 {@link #recoverAbandoned} 에서 갈린다.
+     *
+     * <p>호출자는 <b>반복 여부를 {@code selected} 로, 로그를 {@code processed} 로</b> 판단한다. 반복을
+     * {@code processed} 로 판단하면 상한 200 건 중 한 건만 경합으로 건너뛰어도 199 가 돌아와, 아직 대상이
+     * 남아 있는데 상한보다 적다는 이유로 멈춘다. 반대로 {@code selected} 를 로그에 남기면 실제로 옮기지
+     * 않은 건까지 처리했다고 적힌다.
+     */
+    public record BatchOutcome(int selected, int processed) {
+
+        static final BatchOutcome NONE = new BatchOutcome(0, 0);
+    }
 
     private final AiRouteGenerationRepository generationRepository;
     private final AiRouteGenerationItemRepository generationItemRepository;
@@ -79,15 +92,19 @@ public class AiRouteGenerationCleanupService {
      * 여기서 건너뛰지 않으면 그 가드가 예외를 올려 호출 한 번이 통째로 롤백된다. 다음 호출에는 그
      * 행이 조회 결과에서 빠지므로 저절로 정상화되지만, 그 사이 다른 행의 복구까지 밀린다.
      *
-     * @return 실패로 되돌린 수
+     * <p>건너뛴 건 때문에 고른 수와 되돌린 수가 갈린다. 그래서 두 값을 함께 돌려준다. 되돌린 수 하나만
+     * 돌려주면 호출자는 상한만큼 골라 놓고 한 건을 건너뛴 호출과 대상이 마침 상한보다 적었던 호출을
+     * 구분할 수 없어, 남은 backlog 를 다음 주기로 미룬다.
+     *
+     * @return 고른 수와 실패로 되돌린 수
      */
     @Transactional
-    public int recoverAbandoned() {
+    public BatchOutcome recoverAbandoned() {
         List<UUID> abandoned =
                 generationRepository.findAbandonedGenerationIds(
                         clock.instant().minus(GENERATION_TIME_LIMIT), BATCH);
         if (abandoned.isEmpty()) {
-            return 0;
+            return BatchOutcome.NONE;
         }
 
         int recovered = 0;
@@ -104,7 +121,7 @@ public class AiRouteGenerationCleanupService {
                     failedAt.plus(AiRouteGenerationLifecycleService.RESULT_RETENTION));
             recovered++;
         }
-        return recovered;
+        return new BatchOutcome(abandoned.size(), recovered);
     }
 
     /**
@@ -115,13 +132,13 @@ public class AiRouteGenerationCleanupService {
      *
      * <p>한 번에 {@link #BATCH} 건까지만 지운다. 남으면 다음 주기가 이어받는다.
      *
-     * @return 지운 생성 수
+     * @return 고른 수와 지운 수. 고른 식별자를 그대로 지우므로 두 값이 같다.
      */
     @Transactional
-    public int removeExpired() {
+    public BatchOutcome removeExpired() {
         List<UUID> expired = generationRepository.findExpiredGenerationIds(clock.instant(), BATCH);
         if (expired.isEmpty()) {
-            return 0;
+            return BatchOutcome.NONE;
         }
 
         // 생성 행을 먼저 잠근다. 시작 경로가 만료 행을 지울 때도 생성 → 항목 순서라, 반대로 잡으면
@@ -129,6 +146,6 @@ public class AiRouteGenerationCleanupService {
         generationRepository.lockAllByGenerationIdIn(expired);
         generationItemRepository.deleteByGenerationIdIn(expired);
         generationRepository.deleteAllByIdInBatch(expired);
-        return expired.size();
+        return new BatchOutcome(expired.size(), expired.size());
     }
 }

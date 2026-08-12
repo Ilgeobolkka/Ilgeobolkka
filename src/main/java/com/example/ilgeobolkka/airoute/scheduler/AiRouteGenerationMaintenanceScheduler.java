@@ -1,7 +1,8 @@
 package com.example.ilgeobolkka.airoute.scheduler;
 
 import com.example.ilgeobolkka.airoute.service.generation.AiRouteGenerationCleanupService;
-import java.util.function.IntSupplier;
+import com.example.ilgeobolkka.airoute.service.generation.AiRouteGenerationCleanupService.BatchOutcome;
+import java.util.function.Supplier;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -69,25 +70,33 @@ public class AiRouteGenerationMaintenanceScheduler {
 
     /**
      * {@code batch} 한 번은 {@link AiRouteGenerationCleanupService#BATCH_SIZE} 건을 짧은 transaction
-     * 하나로 처리한다. 여기서는 그 짧은 호출을 그대로 두면서, 반환 건수가 상한과 같은 동안 — 즉 더
-     * 남았을 수 있는 동안 — 같은 sweep 안에서 반복해 부른다. 상한보다 적게 돌아오면 대상이 이미 모두
-     * 처리된 것이므로 멈춘다.
+     * 하나로 처리한다. 여기서는 그 짧은 호출을 그대로 두면서, <b>고른</b> 수가 상한과 같은 동안 — 즉 더
+     * 남았을 수 있는 동안 — 같은 sweep 안에서 반복해 부른다. 상한보다 적게 골랐으면 그 순간 대상이 모두
+     * 소진된 것이므로 멈춘다.
+     *
+     * <p>반복 여부를 <b>처리한</b> 수로 판단하면 안 된다. 복구는 목록을 뽑은 뒤 잠그기 전에 호출자가
+     * 정상 완료한 건을 건너뛰므로, 200건을 고르고 한 건만 건너뛰어도 199가 돌아온다. 그것을 "대상이
+     * 상한보다 적었다" 로 읽으면 뒤에 남은 backlog 를 통째로 다음 주기(1분 뒤)로 미룬다. 밀리는 것은
+     * 아직 복구되지 않은 {@code GENERATING} 이고, 복구는 만료 시각을 논리적 실패 시각부터 매기므로
+     * 오래 방치된 건일수록 이미 보관 기간을 넘긴 상태다. 한 주기를 더 기다릴 여유가 없다.
+     *
+     * <p>반대로 로그에는 처리한 수를 쌓는다. 고른 수를 쌓으면 실제로 옮기지 않은 건까지 복구했다고
+     * 남아, 운영에서 건수를 근거로 판단할 수 없게 된다.
+     *
+     * <p>반복은 끝난다. 고른 행은 이 호출 안에서 {@code GENERATING} 을 벗어나거나(복구) 사라지고(정리),
+     * 건너뛴 행은 이미 남이 벗어나게 만든 것이다. 상태가 {@code GENERATING} 으로 되돌아오는 전이는 없어
+     * 매 반복마다 대상 집합이 상한만큼 줄어든다.
      *
      * <p>매 반복은 {@code cleanupService} 빈을 통해 나가므로 각자 새 transaction 으로 열린다. 이
      * 클래스 안에서 반복하며 대상 하나를 여러 transaction 에 걸쳐 붙들지 않는다.
-     *
-     * <p>{@code recoverAbandoned} 에서는 이 판정이 느슨하다. 되돌린 수만 돌려주므로 경합으로 건너뛴
-     * 건이 있으면 대상이 남아 있어도 상한보다 적게 돌아와 일찍 멈춘다. 건너뛴 건은 이미 정상 완료된
-     * 것이라 다음 조회에서 빠지고, 남은 대상은 다음 주기가 가져간다. 만료 정리와 달리 보관 계약이
-     * 걸린 시각이 없어 한 주기를 더 기다려도 계약을 깨지 않는다.
      */
-    private int drain(IntSupplier batch) {
+    private int drain(Supplier<BatchOutcome> batch) {
         int total = 0;
-        int processed;
+        BatchOutcome outcome;
         do {
-            processed = batch.getAsInt();
-            total += processed;
-        } while (processed == AiRouteGenerationCleanupService.BATCH_SIZE);
+            outcome = batch.get();
+            total += outcome.processed();
+        } while (outcome.selected() == AiRouteGenerationCleanupService.BATCH_SIZE);
         return total;
     }
 }

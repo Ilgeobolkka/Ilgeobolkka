@@ -314,7 +314,7 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
 
         boolean 정리_전_조회 = lifecycleService.findOwnedResult(generationId, READER_ID).isPresent();
         boolean 정리_전_행 = generationRepository.existsById(generationId);
-        int 지운_수 = cleanupService.removeExpired();
+        int 지운_수 = cleanupService.removeExpired().processed();
         boolean 정리_후_조회 = lifecycleService.findOwnedResult(generationId, READER_ID).isPresent();
         boolean 정리_후_행 = generationRepository.existsById(generationId);
 
@@ -433,7 +433,7 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
         clock.set(EXPIRES_AT);
 
         assertAll(
-                () -> assertEquals(1, cleanupService.removeExpired()),
+                () -> assertEquals(1, cleanupService.removeExpired().processed()),
                 () -> assertEquals(false, generationRepository.existsById(generationId)),
                 () -> assertEquals(true, readingRouteRepository.existsById(routeId)));
     }
@@ -480,9 +480,9 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
         만료된_생성을_여러_개_넣는다(상한 + 1);
         clock.set(STARTED_AT);
 
-        int 첫_스윕 = cleanupService.removeExpired();
+        int 첫_스윕 = cleanupService.removeExpired().processed();
         int 남은_수 = 생성_수를_조회한다();
-        int 둘째_스윕 = cleanupService.removeExpired();
+        int 둘째_스윕 = cleanupService.removeExpired().processed();
 
         assertAll(
                 () -> assertEquals(상한, 첫_스윕),
@@ -545,7 +545,7 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
         clock.set(EXPIRES_AT.minusNanos(1000));
 
         assertAll(
-                () -> assertEquals(0, cleanupService.removeExpired()),
+                () -> assertEquals(0, cleanupService.removeExpired().processed()),
                 () -> assertEquals(true, generationRepository.existsById(generationId)),
                 () -> assertEquals(2, 항목_수를_조회한다(generationId)));
     }
@@ -575,7 +575,7 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
         UUID generationId = 생성을_시작한다();
         clock.set(ABANDONED_AT);
 
-        assertEquals(1, cleanupService.recoverAbandoned());
+        assertEquals(1, cleanupService.recoverAbandoned().processed());
 
         Map<String, Object> row = 생성을_조회한다(generationId);
         assertAll(
@@ -646,7 +646,7 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
         clock.set(STARTED_AT.plus(AiRouteGenerationCleanupService.GENERATION_TIME_LIMIT));
 
         assertAll(
-                () -> assertEquals(0, cleanupService.recoverAbandoned()),
+                () -> assertEquals(0, cleanupService.recoverAbandoned().processed()),
                 () -> assertEquals("GENERATING", 생성을_조회한다(generationId).get("status")));
     }
 
@@ -685,7 +685,7 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
                     executor.submit(
                             () -> {
                                 assertTrue(완료_보류.await(5, TimeUnit.SECONDS));
-                                return cleanupService.recoverAbandoned();
+                                return cleanupService.recoverAbandoned().processed();
                             });
 
             assertTrue(복구_진입.await(10, TimeUnit.SECONDS));
@@ -733,7 +733,7 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
         clock.set(ABANDONED_AT.plus(AiRouteGenerationLifecycleService.RESULT_RETENTION));
 
         assertAll(
-                () -> assertEquals(1, cleanupService.removeExpired()),
+                () -> assertEquals(1, cleanupService.removeExpired().processed()),
                 () -> assertEquals(false, generationRepository.existsById(generationId)));
     }
 

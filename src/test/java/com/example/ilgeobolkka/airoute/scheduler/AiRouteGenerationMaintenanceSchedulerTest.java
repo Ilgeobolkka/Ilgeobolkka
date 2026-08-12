@@ -9,6 +9,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.example.ilgeobolkka.airoute.service.generation.AiRouteGenerationCleanupService;
+import com.example.ilgeobolkka.airoute.service.generation.AiRouteGenerationCleanupService.BatchOutcome;
 import com.example.ilgeobolkka.global.config.SchedulingConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -57,7 +58,7 @@ class AiRouteGenerationMaintenanceSchedulerTest {
      * 복구를 먼저, 정리를 나중에 부른다. 순서가 뒤집히면 이번 주기에 복구된 생성이 만료 시각을 받기
      * 전에 정리를 지나쳐, 다음 주기까지 한 바퀴를 더 기다린다.
      *
-     * <p>각 대상이 상한(200) 보다 적게 돌아오는 기본값(mock 은 {@code 0} 을 돌려준다) 이라 {@link
+     * <p>기본 stub 이 0건을 골라 상한(200) 에 못 미치므로 {@link
      * #정리_대상이_상한을_넘으면_같은_sweep_안에서_반복해_모두_처리한다} 와 달리 각 메서드가 정확히 한
      * 번씩만 불려야 한다.
      */
@@ -79,8 +80,8 @@ class AiRouteGenerationMaintenanceSchedulerTest {
 
     /**
      * 대상이 상한을 넘으면 한 번의 호출로는 다 처리되지 않는다. 예전에는 그 남은 몫을 다음 주기(1분
-     * 뒤)로 미뤄, 밀린 만큼 15분 보관 계약을 넘겨 DB 에 남았다. 이제는 반환 건수가 상한과 같은 동안
-     * 같은 sweep 안에서 반복해, 상한보다 적게 돌아온 순간에만 멈춘다.
+     * 뒤)로 미뤄, 밀린 만큼 15분 보관 계약을 넘겨 DB 에 남았다. 이제는 고른 건수가 상한과 같은 동안
+     * 같은 sweep 안에서 반복해, 상한보다 적게 골라 온 순간에만 멈춘다.
      */
     @Test
     void 정리_대상이_상한을_넘으면_같은_sweep_안에서_반복해_모두_처리한다() {
@@ -90,16 +91,45 @@ class AiRouteGenerationMaintenanceSchedulerTest {
                             AiRouteGenerationCleanupService cleanupService =
                                     context.getBean(AiRouteGenerationCleanupService.class);
                             int 상한 = AiRouteGenerationCleanupService.BATCH_SIZE;
-                            when(cleanupService.recoverAbandoned()).thenReturn(0);
                             when(cleanupService.removeExpired())
-                                    .thenReturn(상한)
-                                    .thenReturn(상한)
-                                    .thenReturn(1);
+                                    .thenReturn(배치(상한, 상한))
+                                    .thenReturn(배치(상한, 상한))
+                                    .thenReturn(배치(1, 1));
 
                             context.getBean(AiRouteGenerationMaintenanceScheduler.class).sweep();
 
                             verify(cleanupService, times(1)).recoverAbandoned();
                             verify(cleanupService, times(3)).removeExpired();
+                        });
+    }
+
+    /**
+     * 복구는 목록을 뽑은 뒤 잠그기 전에 호출자가 정상 완료한 건을 건너뛴다. 그래서 상한만큼 골라도
+     * 되돌린 수는 그보다 적을 수 있다.
+     *
+     * <p>반복 여부를 되돌린 수로 판단하면 200건 중 한 건만 건너뛰어도 199가 돌아와 "대상이 상한보다
+     * 적었다" 로 읽히고, 뒤에 남은 backlog 가 통째로 다음 주기로 밀린다. 밀리는 것은 아직 복구되지 않은
+     * {@code GENERATING} 이고 만료는 논리적 실패 시각부터 매기므로, 오래 방치된 건일수록 이미 보관
+     * 기간을 넘긴 상태다. 고른 수로 판단해야 같은 sweep 에서 끝까지 비운다.
+     *
+     * <p>두 번째 호출은 고른 200건을 <b>전부</b> 건너뛴 경우다. 되돌린 수가 0이어도 멈추면 안 된다.
+     */
+    @Test
+    void 복구가_경합으로_건너뛰어도_고른_수가_상한이면_계속_반복한다() {
+        schedulerContextRunner()
+                .run(
+                        context -> {
+                            AiRouteGenerationCleanupService cleanupService =
+                                    context.getBean(AiRouteGenerationCleanupService.class);
+                            int 상한 = AiRouteGenerationCleanupService.BATCH_SIZE;
+                            when(cleanupService.recoverAbandoned())
+                                    .thenReturn(배치(상한, 상한 - 1))
+                                    .thenReturn(배치(상한, 0))
+                                    .thenReturn(배치(3, 3));
+
+                            context.getBean(AiRouteGenerationMaintenanceScheduler.class).sweep();
+
+                            verify(cleanupService, times(3)).recoverAbandoned();
                         });
     }
 
@@ -136,13 +166,25 @@ class AiRouteGenerationMaintenanceSchedulerTest {
                 .withUserConfiguration(SchedulerTestConfiguration.class);
     }
 
+    private static BatchOutcome 배치(int selected, int processed) {
+        return new BatchOutcome(selected, processed);
+    }
+
     @Configuration(proxyBeanMethods = false)
     @Import({AiRouteGenerationMaintenanceScheduler.class, SchedulingConfig.class})
     static class SchedulerTestConfiguration {
 
+        /**
+         * 배치가 record 를 돌려주므로 mock 기본값은 {@code null} 이다. 그대로 두면 스케줄러가 첫 호출에서
+         * NPE 로 터져 모든 테스트가 같은 이유로 깨진다. 아무것도 처리하지 않은 결과를 기본값으로 둔다.
+         */
         @Bean
         AiRouteGenerationCleanupService cleanupService() {
-            return mock(AiRouteGenerationCleanupService.class);
+            AiRouteGenerationCleanupService cleanupService =
+                    mock(AiRouteGenerationCleanupService.class);
+            when(cleanupService.recoverAbandoned()).thenReturn(배치(0, 0));
+            when(cleanupService.removeExpired()).thenReturn(배치(0, 0));
+            return cleanupService;
         }
     }
 }
