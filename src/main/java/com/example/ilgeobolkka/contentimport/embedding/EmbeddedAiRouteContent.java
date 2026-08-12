@@ -1,5 +1,7 @@
 package com.example.ilgeobolkka.contentimport.embedding;
 
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +18,9 @@ public record EmbeddedAiRouteContent(
         Map<PageKey, List<Double>> vectors) {
 
     public EmbeddedAiRouteContent {
-        vectors = Map.copyOf(vectors);
+        Map<PageKey, List<Double>> copiedVectors = new LinkedHashMap<>();
+        vectors.forEach((key, vector) -> copiedVectors.put(key, List.copyOf(vector)));
+        vectors = Collections.unmodifiableMap(copiedVectors);
     }
 
     /** vector key. 같은 페이지 번호라도 도서·콘텐츠 버전이 다르면 다른 vector다. */
