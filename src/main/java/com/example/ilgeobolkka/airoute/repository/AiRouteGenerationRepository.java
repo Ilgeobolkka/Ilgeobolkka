@@ -91,6 +91,40 @@ public interface AiRouteGenerationRepository extends JpaRepository<AiRouteGenera
             @Param("generationId") UUID generationId);
 
     /**
+     * 저장하려고 소유자의 아직 유효한 생성을 잠금 조회한다. {@link #findOwnedNotExpired} 와 조건이 같고
+     * 잠금만 더한 것이라, 다른 독자의 식별자와 만료한 식별자가 모두 빈 결과이고 호출자는 둘을 같은 404 로
+     * 응답한다.
+     *
+     * <p>소유자 조건을 잠금 조회 자체에 둔다. {@link #findByGenerationIdForUpdate} 로 먼저 잠그고 뒤에서
+     * 소유자를 확인하면 남의 {@code generationId} 를 찍은 요청이 그사이 소유자의 저장을 기다리게 만들 수
+     * 있기 때문이다.
+     *
+     * <p>다만 이 조건이 남의 행을 <b>아예 잠그지 않는다</b>는 뜻은 아니다. {@code generationId} 가 PK 라
+     * InnoDB 는 행을 먼저 잠근 뒤 인덱스에 없는 {@code readerId}·{@code expiresAt} 을 평가하며, 조건에
+     * 맞지 않는 행의 잠금을 곧바로 푸는 동작은 정본이 {@code UPDATE}·{@code DELETE} 기준으로만 밝혀 두어
+     * 잠금 조회에 그대로 적용된다고 보기 어렵다. 실제 보장은 잠금 범위가 아니라, 맞지 않으면 빈 결과로
+     * 돌아와 404 를 던지고 transaction 이 곧바로 끝나 오래 붙들지 않는다는 데 있다.
+     *
+     * <p>존재 확인 없이 잠그는 예외다. 저장은 {@code READ_COMMITTED} 로 열리고 이 격리 수준의 InnoDB 는
+     * 없는 식별자를 잠금 조회해도 gap lock 을 남기지 않으므로, 앞의 존재 확인이 막아야 할 교착 자체가 없다.
+     * 격리 수준과 무관하게도 이 조회는 저장 경로의 첫 잠금이고 그 뒤로는 자기가 만든 행과 자기
+     * {@code (reader, book)} current 만 건드려 대기 고리가 만들어지지 않는다.
+     */
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @Query(
+            """
+            SELECT generation
+            FROM AiRouteGeneration generation
+            WHERE generation.generationId = :generationId
+              AND generation.readerId = :readerId
+              AND (generation.expiresAt IS NULL OR generation.expiresAt > :now)
+            """)
+    Optional<AiRouteGeneration> findOwnedNotExpiredForUpdate(
+            @Param("generationId") UUID generationId,
+            @Param("readerId") long readerId,
+            @Param("now") Instant now);
+
+    /**
      * 정리 대상 식별자. 만료 시각을 지난 행이며 경계는 조회·저장 거부와 같은 {@code now >= expiresAt} 이다.
      *
      * <p>{@code expiresAt} 이 {@code null} 인 {@code GENERATING} 은 대상이 아니다. 중단된 생성은 먼저
