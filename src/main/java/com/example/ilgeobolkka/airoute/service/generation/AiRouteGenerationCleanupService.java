@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,6 +39,15 @@ public class AiRouteGenerationCleanupService {
     /** 제한 시간 초과의 공개 실패 코드. 공급자 정보를 담지 않는다. */
     public static final String TIMEOUT_FAILURE_CODE = "AI_ROUTE_GENERATION_TIMEOUT";
 
+    /**
+     * 한 스윕이 다룰 최대 건수. 계정당 하루 10회 제한은 계정 수를 제한하지 않으므로 전체 대상 수에
+     * 상한이 없다. 배치가 한동안 멈췄다 살아나면 backlog 를 한 transaction 에 담게 되어 메모리와
+     * {@code IN} 절 크기, 잠금 유지 시간이 함께 커진다. 나눠서 주기마다 조금씩 흘려보낸다.
+     */
+    static final int BATCH_SIZE = 200;
+
+    private static final Pageable BATCH = PageRequest.ofSize(BATCH_SIZE);
+
     private final AiRouteGenerationRepository generationRepository;
     private final AiRouteGenerationItemRepository generationItemRepository;
     private final Clock clock;
@@ -45,8 +56,13 @@ public class AiRouteGenerationCleanupService {
      * 버려진 {@code GENERATING} 을 {@code FAILED} 로 되돌린다. 정상 실패와 같은 모양으로 만들어, 보관
      * 기간 동안 같은 멱등 키가 최초 오류를 그대로 받고 외부 호출을 다시 시작하지 않게 한다.
      *
-     * <p>대상을 나눠 담지 않는 이유는 {@link #removeExpired} 와 같다. 버려진 생성은 정상 완료하지 못한
-     * 요청만 남으므로 한 스윕에서 볼 양이 정리 대상보다도 적다.
+     * <p>보관 기간은 <b>복구를 돌린 시각이 아니라 논리적으로 실패한 시각</b>부터 잰다. 제한 시간을 넘긴
+     * 순간 이미 실패한 요청이므로 완료 시각은 {@code createdAt + 제한 시간} 이고 만료는 거기서 15분
+     * 뒤다. 지금 시각을 기준으로 잡으면 한참 전에 사라졌어야 할 멱등 상태가 복구할 때마다 15분씩
+     * 되살아나고, {@code completed_at} 에도 "그때 완료됐다" 는 거짓이 남는다.
+     *
+     * <p>그래서 오래 방치된 생성은 복구되자마자 이미 만료 상태이며, 같은 스윕의 {@link #removeExpired}
+     * 가 바로 지운다.
      *
      * <p>잠근 뒤 상태를 다시 본다. 목록을 뽑은 시점과 잠그는 시점 사이에 호출자가 정상 완료했을 수
      * 있는데, 그때는 이미 결과가 있으므로 건너뛴다. 반대로 복구가 이겼다면 호출자의 완료가
@@ -60,10 +76,9 @@ public class AiRouteGenerationCleanupService {
      */
     @Transactional
     public int recoverAbandoned() {
-        Instant now = clock.instant();
-        Instant expiresAt = now.plus(AiRouteGenerationLifecycleService.RESULT_RETENTION);
         List<UUID> abandoned =
-                generationRepository.findAbandonedGenerationIds(now.minus(GENERATION_TIME_LIMIT));
+                generationRepository.findAbandonedGenerationIds(
+                        clock.instant().minus(GENERATION_TIME_LIMIT), BATCH);
 
         int recovered = 0;
         for (UUID generationId : abandoned) {
@@ -73,7 +88,13 @@ public class AiRouteGenerationCleanupService {
                     || locked.get().getStatus() != AiRouteGenerationStatus.GENERATING) {
                 continue;
             }
-            locked.get().fail(TIMEOUT_FAILURE_CODE, now, expiresAt);
+
+            AiRouteGeneration generation = locked.get();
+            Instant failedAt = generation.getCreatedAt().plus(GENERATION_TIME_LIMIT);
+            generation.fail(
+                    TIMEOUT_FAILURE_CODE,
+                    failedAt,
+                    failedAt.plus(AiRouteGenerationLifecycleService.RESULT_RETENTION));
             recovered++;
         }
         return recovered;
@@ -85,14 +106,13 @@ public class AiRouteGenerationCleanupService {
      * <p>항목을 먼저 지운다. {@code fk_ai_route_generation_item_generation_book} 이 생성 행을 가리키므로
      * 순서를 바꾸면 제약에 걸린다.
      *
-     * <p>대상을 나눠 담지 않는다. 보관 기간이 15분이고 계정당 하루 10건이라 한 번에 도는 양이 이미
-     * 작다. 쌓이는 일이 생기면 그때 나누는 것이 맞다.
+     * <p>한 번에 {@link #BATCH} 건까지만 지운다. 남으면 다음 주기가 이어받는다.
      *
      * @return 지운 생성 수
      */
     @Transactional
     public int removeExpired() {
-        List<UUID> expired = generationRepository.findExpiredGenerationIds(clock.instant());
+        List<UUID> expired = generationRepository.findExpiredGenerationIds(clock.instant(), BATCH);
         if (expired.isEmpty()) {
             return 0;
         }
