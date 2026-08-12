@@ -61,7 +61,10 @@ route를 현재 경로로 지정합니다. 저장 재시도는 같은 route를 �
    `ROUTE`로 남습니다([GATE-AIR-03](../00-implementation-gates.md#gate-air-03-저장-전-권한-변동-오류)).
 5. 같은 reader·book current PK를 원자적 upsert/lock하고 route·items·current·G06 SAVED를 한 transaction에
    처리합니다.
-6. generationId UK로 동시 저장을 route 한 건으로 수렴시키고 재시도는 저장 route를 다시 현재로 만들지 않습니다.
+6. 같은 generation의 동시 저장은 generation 행 잠금(`PESSIMISTIC_WRITE`)으로 직렬화해 route 한 건으로
+   수렴시킵니다. 진 쪽은 잠금을 얻은 시점에 `SAVED`를 읽어 이미 만들어진 route를 그대로 반환하므로 UK
+   위반을 잡아 수렴시키는 경로를 따로 두지 않으며, `uk_ai_reading_route_generation`은 그 뒤를 받치는
+   백스톱입니다. 재시도는 저장 route를 다시 현재로 만들지 않습니다.
 7. 저장은 잉크·원장·대여·열람 세션·서재 위치를 변경하지 않습니다.
 
 ## 테스트
@@ -97,5 +100,12 @@ route를 현재 경로로 지정합니다. 저장 재시도는 같은 route를 �
 
 ## 인계
 
-S03에 current lock/upsert 방식과 route 삭제 시 G06 CONSUMED 호출 계약을, W01에 201/200 응답 fixture를
+S03에 current 지정 방식과 route 삭제 시 G06 CONSUMED 호출 계약을, W01에 201/200 응답 fixture를
 전달합니다.
+
+- current 지정은 `AiRouteCurrentRepository.selectAsCurrent`의 PK 원자 upsert(`INSERT ... ON DUPLICATE
+  KEY UPDATE`)로 확정했습니다. 저장 Facade가 `READ_COMMITTED`로 열려 없는 행을 잠금 조회해도 잠금이
+  남지 않으므로, 조회로 잠그고 없으면 insert하는 방식은 동시 첫 저장에서 중복 키 오류가 됩니다. S03의
+  현재 경로 변경도 같은 문장을 씁니다.
+- 저장은 generation 행을 `findOwnedNotExpiredForUpdate`로 먼저 잠그고 route insert → current upsert
+  순서로 진행합니다. S03이 삭제에서 같은 행들을 잡을 때 순서를 맞춰야 교착하지 않습니다.
