@@ -10,6 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.example.ilgeobolkka.airoute.AiRouteGenerationCommand;
 import com.example.ilgeobolkka.airoute.entity.AiRouteGeneration;
 import com.example.ilgeobolkka.airoute.entity.AiRouteGenerationStatus;
+import com.example.ilgeobolkka.airoute.entity.AiRouteItemRelevance;
+import com.example.ilgeobolkka.airoute.entity.AiRouteItemRole;
 import com.example.ilgeobolkka.airoute.repository.AiRouteGenerationRepository;
 import com.example.ilgeobolkka.airoute.service.generation.GenerationStartResult.Kind;
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
@@ -66,6 +68,8 @@ class AiRouteGenerationStartMySqlIntegrationTest {
     private static final long OTHER_READER_ID = READER_IDS.get(1);
     private static final long BOOK_ID = 458_101L;
     private static final long MISSING_BOOK_ID = 458_999L;
+    private static final long FIRST_PAGE_ID = 458_201L;
+    private static final long SECOND_PAGE_ID = 458_202L;
     private static final String CONTENT_VERSION = "ai-route-v2";
     private static final String PURPOSE = "핵심 개념만 빠르게";
 
@@ -84,6 +88,7 @@ class AiRouteGenerationStartMySqlIntegrationTest {
     private static final Instant EXPIRES_AT = Instant.parse("2026-08-07T00:15:09.123456Z");
 
     private final AiRouteGenerationStartService startService;
+    private final AiRouteGenerationLifecycleService lifecycleService;
     private final AiRouteGenerationRepository generationRepository;
     private final JdbcTemplate jdbcTemplate;
     private final TransactionTemplate transactionTemplate;
@@ -92,11 +97,13 @@ class AiRouteGenerationStartMySqlIntegrationTest {
     @Autowired
     AiRouteGenerationStartMySqlIntegrationTest(
             AiRouteGenerationStartService startService,
+            AiRouteGenerationLifecycleService lifecycleService,
             AiRouteGenerationRepository generationRepository,
             JdbcTemplate jdbcTemplate,
             PlatformTransactionManager transactionManager,
             MutableClock clock) {
         this.startService = startService;
+        this.lifecycleService = lifecycleService;
         this.generationRepository = generationRepository;
         this.jdbcTemplate = jdbcTemplate;
         this.transactionTemplate = new TransactionTemplate(transactionManager);
@@ -229,6 +236,45 @@ class AiRouteGenerationStartMySqlIntegrationTest {
     }
 
     /**
+     * 앞 테스트와 같은 인터리빙인데, 사용량 잠금을 기다리는 시간이 보관 기간을 넘긴 경우다. 잠금을
+     * 얻었을 때 같은 키의 생성은 이미 시작·완료·만료까지 끝나 있다. 만료한 멱등 상태는 없는 것이므로
+     * 이 요청은 새 요청이고, 쓸 횟수가 없으니 한도 초과로 거절해야 한다. 걸러 내지 않으면 15분이 지나
+     * 사라졌어야 할 결과를 {@code EXISTING_FINAL} 로 돌려준다.
+     *
+     * <p>잠금 조회는 read view 가 아니라 최신 commit 을 읽으므로, 이 만료 행은 요청이 앞머리에서 존재
+     * 확인을 마친 <b>뒤에</b> 생겼는데도 여기서 보인다. 그 확인이 참이었을 때 만료 행을 지우는 경로로는
+     * 막을 수 없는 자리다.
+     *
+     * <p>두 날짜의 사용량을 모두 한도로 채운다. 대기가 15분이라 자정을 넘고, 넘긴 요청은 새 날짜의
+     * 사용량 행으로 옮겨 잠그기 때문이다. 새 날짜에 여유가 있으면 한도 경로가 아니라 insert 로 간다.
+     */
+    @Test
+    void 한도에_닿아_기다리는_사이_같은_키가_만료하면_기존_결과를_돌려주지_않는다() throws Exception {
+        UUID key = UUID.randomUUID();
+        UUID 먼저_들어온_생성 = UUID.randomUUID();
+        사용량을_심는다(READER_ID, USAGE_DATE, LIMIT);
+        사용량을_심는다(READER_ID, NEXT_USAGE_DATE, LIMIT);
+
+        GenerationStartResult result =
+                사용량_잠금_뒤에_시작한다(
+                        key,
+                        () -> {
+                            생성을_직접_넣는다(먼저_들어온_생성, key);
+                            생성을_실패로_끝낸다(먼저_들어온_생성);
+                            clock.set(EXPIRES_AT);
+                        });
+
+        assertAll(
+                () -> assertEquals(Kind.DAILY_LIMIT, result.kind()),
+                () -> assertNull(result.generationId()),
+                () -> assertNull(result.status()),
+                // 거절만 하고 돌아가는 경로라 만료 행은 정리 배치 몫으로 남는다.
+                () -> assertEquals(1, 생성_수를_조회한다(READER_ID)),
+                () -> assertEquals(LIMIT, 사용량을_조회한다(READER_ID, USAGE_DATE)),
+                () -> assertEquals(LIMIT, 사용량을_조회한다(READER_ID, NEXT_USAGE_DATE)));
+    }
+
+    /**
      * 전날 한도를 다 쓴 상태에서 자정 직전에 시작해, 사용량 잠금을 기다리는 사이 자정을 넘긴다. 진입
      * 시점 날짜로 계수하면 이미 초기화된 어제 한도로 거절해 {@code 매일 00:00 UTC 초기화} 계약을 깬다.
      *
@@ -270,6 +316,90 @@ class AiRouteGenerationStartMySqlIntegrationTest {
                                 READER_IDS.stream()
                                         .map(readerId -> 사용량을_조회한다(readerId, USAGE_DATE))
                                         .toList()));
+    }
+
+    /**
+     * 보관 기간이 지난 멱등 상태는 정리 배치가 아직 안 돌았어도 없는 것으로 봐야 한다. 15분 뒤에는 같은
+     * 키도 새 요청으로 취급한다는 것이 계약이고, 그 판정이 배치 주기에 달려 있으면 만료 정각부터 다음
+     * 스윕까지 클라이언트가 지난 결과에 갇힌다.
+     */
+    @Test
+    void 만료_정각에는_정리_전이라도_같은_키가_새_요청이_된다() {
+        UUID key = UUID.randomUUID();
+        GenerationStartResult first = startService.start(READER_ID, key, 명령(PURPOSE));
+        생성을_실패로_끝낸다(first.generationId());
+        clock.set(EXPIRES_AT);
+
+        GenerationStartResult retried = startService.start(READER_ID, key, 명령(PURPOSE));
+
+        assertAll(
+                () -> assertEquals(Kind.NEW, retried.kind()),
+                () -> assertNotEquals(first.generationId(), retried.generationId()),
+                // 만료 행을 지우고 새로 넣었으므로 여전히 한 행이다.
+                () -> assertEquals(1, 생성_수를_조회한다(READER_ID)),
+                // 앞선 요청은 8/6에, 새 요청은 8/7에. 되돌리지 않고 새로 한 건을 더 센다.
+                () -> assertEquals(1, 사용량을_조회한다(READER_ID, USAGE_DATE)),
+                () -> assertEquals(1, 사용량을_조회한다(READER_ID, NEXT_USAGE_DATE)));
+    }
+
+    /**
+     * 항목이 딸린 만료 행을 지우는 경로다. 앞의 재요청 테스트는 {@code FAILED} 라 항목이 0건이어서,
+     * 항목을 먼저 지우고 생성을 지운 뒤 insert 하는 순서가 실제로 외래 키를 통과하는지 확인하지 못한다.
+     */
+    @Test
+    void 항목이_있는_만료_경로도_같은_키로_다시_시작할_수_있다() {
+        UUID key = UUID.randomUUID();
+        GenerationStartResult first = startService.start(READER_ID, key, 명령(PURPOSE));
+        clock.set(COMPLETED_AT);
+        lifecycleService.completeWithRoute(first.generationId(), 두_항목());
+        clock.set(EXPIRES_AT);
+
+        GenerationStartResult retried = startService.start(READER_ID, key, 명령(PURPOSE));
+
+        assertAll(
+                () -> assertEquals(Kind.NEW, retried.kind()),
+                () -> assertNotEquals(first.generationId(), retried.generationId()),
+                () -> assertEquals(1, 생성_수를_조회한다(READER_ID)),
+                () -> assertEquals(0, 항목_수를_조회한다(first.generationId())),
+                () -> assertEquals(0, 항목_수를_조회한다(retried.generationId())));
+    }
+
+    /**
+     * 만료 행을 지운 뒤 insert 가 unique key 가 아닌 제약으로 실패하면, rollback 으로 그 만료 행이
+     * 되살아난다. 수렴 경로가 그 행을 기존 결과라고 돌려주면 원래 예외를 삼킨다. 되살아난 행은 만료
+     * 상태이므로 걸러져야 하고, 호출자는 제약 위반을 그대로 받아야 한다.
+     */
+    @Test
+    void 만료_행을_지운_뒤_다른_제약으로_실패하면_원래_예외를_올린다() {
+        UUID key = UUID.randomUUID();
+        GenerationStartResult first = startService.start(READER_ID, key, 명령(PURPOSE));
+        생성을_실패로_끝낸다(first.generationId());
+        clock.set(EXPIRES_AT);
+
+        AiRouteGenerationCommand 없는_도서 =
+                AiRouteGenerationCommand.forInkBudget(
+                        MISSING_BOOK_ID, CONTENT_VERSION, PURPOSE, 5, 100);
+
+        assertThrows(
+                DataIntegrityViolationException.class,
+                () -> startService.start(READER_ID, key, 없는_도서));
+        assertEquals(1, 생성_수를_조회한다(READER_ID));
+    }
+
+    @Test
+    void 만료_직전에는_같은_키가_아직_기존_결과를_받는다() {
+        UUID key = UUID.randomUUID();
+        GenerationStartResult first = startService.start(READER_ID, key, 명령(PURPOSE));
+        생성을_실패로_끝낸다(first.generationId());
+        clock.set(EXPIRES_AT.minusNanos(1000));
+
+        GenerationStartResult retried = startService.start(READER_ID, key, 명령(PURPOSE));
+
+        assertAll(
+                () -> assertEquals(Kind.EXISTING_FINAL, retried.kind()),
+                () -> assertEquals(first.generationId(), retried.generationId()),
+                () -> assertEquals(1, 생성_수를_조회한다(READER_ID)),
+                () -> assertEquals(1, 사용량을_조회한다(READER_ID, USAGE_DATE)));
     }
 
     @Test
@@ -515,6 +645,25 @@ class AiRouteGenerationStartMySqlIntegrationTest {
 
     // --- fixture -----------------------------------------------------------
 
+    private static List<AiRouteResultItem> 두_항목() {
+        return List.of(
+                new AiRouteResultItem(
+                        FIRST_PAGE_ID, 1, AiRouteItemRelevance.HIGH, false, AiRouteItemRole.CORE),
+                new AiRouteResultItem(
+                        SECOND_PAGE_ID,
+                        2,
+                        AiRouteItemRelevance.MEDIUM,
+                        true,
+                        AiRouteItemRole.PREREQUISITE));
+    }
+
+    private int 항목_수를_조회한다(UUID generationId) {
+        return jdbcTemplate.queryForObject(
+                "SELECT COUNT(*) FROM ai_route_generation_item WHERE generation_id = ?",
+                Integer.class,
+                generationId.toString());
+    }
+
     private static AiRouteGenerationCommand 명령(String rawPurpose) {
         return AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, rawPurpose, 5, 100);
     }
@@ -590,8 +739,22 @@ class AiRouteGenerationStartMySqlIntegrationTest {
         jdbcTemplate.update(
                 """
                 INSERT INTO book (id, category, title, author, total_page_count, price_won)
-                VALUES (?, '소설', 'SCRUM-458 테스트 도서', '테스트 저자', 1, 10000)
+                VALUES (?, '인문', 'SCRUM-458 테스트 도서', '테스트 저자', 2, 10000)
                 """,
+                BOOK_ID);
+        jdbcTemplate.update(
+                """
+                INSERT INTO book_page (id, book_id, page_number, content_type, text_content)
+                VALUES (?, ?, 1, 'TEXT', '첫 페이지')
+                """,
+                FIRST_PAGE_ID,
+                BOOK_ID);
+        jdbcTemplate.update(
+                """
+                INSERT INTO book_page (id, book_id, page_number, content_type, text_content)
+                VALUES (?, ?, 2, 'TEXT', '둘째 페이지')
+                """,
+                SECOND_PAGE_ID,
                 BOOK_ID);
     }
 
@@ -640,9 +803,18 @@ class AiRouteGenerationStartMySqlIntegrationTest {
 
     private void 테스트_데이터를_정리한다() {
         for (long readerId : READER_IDS) {
+            jdbcTemplate.update(
+                    """
+                    DELETE FROM ai_route_generation_item
+                    WHERE generation_id IN (
+                        SELECT generation_id FROM ai_route_generation WHERE reader_id = ?
+                    )
+                    """,
+                    readerId);
             jdbcTemplate.update("DELETE FROM ai_route_generation WHERE reader_id = ?", readerId);
             jdbcTemplate.update("DELETE FROM ai_route_daily_usage WHERE reader_id = ?", readerId);
         }
+        jdbcTemplate.update("DELETE FROM book_page WHERE book_id = ?", BOOK_ID);
         jdbcTemplate.update("DELETE FROM book WHERE id = ?", BOOK_ID);
         for (long readerId : READER_IDS) {
             jdbcTemplate.update("DELETE FROM reader WHERE id = ?", readerId);

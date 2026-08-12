@@ -10,9 +10,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.example.ilgeobolkka.contentimport.validation.ValidatedAiRouteContent;
 import com.example.ilgeobolkka.infra.openai.OpenAiEmbeddingGateway;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.boot.test.system.CapturedOutput;
+import org.springframework.boot.test.system.OutputCaptureExtension;
 
 /**
  * C03 embedding batch 테스트.
@@ -20,6 +25,7 @@ import org.junit.jupiter.api.Test;
  * <p>서비스는 Gateway 하나만 주입받는다. Repository·transaction을 부를 경로가 타입 수준에서 없으므로
  * 실패 시 DB 변경 0건은 구조로 보장된다.
  */
+@ExtendWith(OutputCaptureExtension.class)
 class AiRouteContentEmbeddingServiceTest {
 
     private static final String VERSION = "ai-route-v2";
@@ -45,6 +51,13 @@ class AiRouteContentEmbeddingServiceTest {
                 () -> assertEquals(List.of(MODEL, MODEL, MODEL), gateway.models),
                 () -> assertEquals(List.of(DIMENSIONS, DIMENSIONS, DIMENSIONS), gateway.dimensions),
                 () -> assertEquals(3, embedded.vectors().size()),
+                () ->
+                        assertEquals(
+                                List.of(
+                                        new EmbeddedAiRouteContent.PageKey(41, 2, VERSION),
+                                        new EmbeddedAiRouteContent.PageKey(42, 2, VERSION),
+                                        new EmbeddedAiRouteContent.PageKey(42, 3, VERSION)),
+                                new ArrayList<>(embedded.vectors().keySet())),
                 () -> assertEquals(MODEL, embedded.embeddingModel()),
                 () -> assertEquals(DIMENSIONS, embedded.embeddingDimensions()));
     }
@@ -93,6 +106,28 @@ class AiRouteContentEmbeddingServiceTest {
     }
 
     @Test
+    void 환경_데이터_정책이_누락되면_Gateway를_한_번도_부르지_않는다() {
+        RecordingGateway gateway = new RecordingGateway(input -> vector(0.1, 0.2, 0.3));
+        AiRouteContentEmbeddingService service = new AiRouteContentEmbeddingService(gateway);
+
+        assertThrows(
+                AiRouteContentEmbeddingException.class,
+                () -> service.embed(content(book(41, page(2, true))), null));
+
+        assertTrue(gateway.analysisTexts.isEmpty());
+    }
+
+    @Test
+    void 검증된_콘텐츠가_누락되면_Gateway를_한_번도_부르지_않는다() {
+        RecordingGateway gateway = new RecordingGateway(input -> vector(0.1, 0.2, 0.3));
+        AiRouteContentEmbeddingService service = new AiRouteContentEmbeddingService(gateway);
+
+        assertThrows(AiRouteContentEmbeddingException.class, () -> service.embed(null, POLICY));
+
+        assertTrue(gateway.analysisTexts.isEmpty());
+    }
+
+    @Test
     void 중간에_한_페이지가_실패하면_batch를_만들지_않는다() {
         RecordingGateway gateway =
                 new RecordingGateway(
@@ -108,6 +143,23 @@ class AiRouteContentEmbeddingServiceTest {
                 IllegalStateException.class,
                 () -> service.embed(content(book(41, page(2, true), page(3, true))), POLICY));
         assertEquals(2, gateway.analysisTexts.size());
+    }
+
+    @Test
+    void 후보_페이지_키가_중복되면_batch를_만들지_않는다() {
+        RecordingGateway gateway = new RecordingGateway(input -> vector(0.1, 0.2, 0.3));
+        AiRouteContentEmbeddingService service = new AiRouteContentEmbeddingService(gateway);
+
+        AiRouteContentEmbeddingException exception =
+                assertThrows(
+                        AiRouteContentEmbeddingException.class,
+                        () ->
+                                service.embed(
+                                        content(book(41, page(2, true), page(2, true))), POLICY));
+
+        assertAll(
+                () -> assertEquals(2, gateway.analysisTexts.size()),
+                () -> assertTrue(exception.getMessage().contains("후보 페이지 2개 중 1개")));
     }
 
     @Test
@@ -149,11 +201,24 @@ class AiRouteContentEmbeddingServiceTest {
                                 embedFailure(input -> vector(0.1, Double.POSITIVE_INFINITY, 0.3))
                                         .getMessage()
                                         .contains("유한하지 않은")),
+                () ->
+                        assertTrue(
+                                embedFailure(input -> vectorWithNull())
+                                        .getMessage()
+                                        .contains("유한하지 않은")),
+                () ->
+                        assertTrue(
+                                embedFailure(
+                                                input ->
+                                                        new OpenAiEmbeddingGateway.Embedding(
+                                                                null, MODEL, DIMENSIONS))
+                                        .getMessage()
+                                        .contains("vector가 비어 있습니다")),
                 () -> assertTrue(embedFailure(input -> null).getMessage().contains("응답이 없습니다")));
     }
 
     @Test
-    void 실패_메시지에_분석_텍스트나_vector_원문을_남기지_않는다() {
+    void 실패_메시지와_로그에_분석_텍스트나_vector_원문을_남기지_않는다(CapturedOutput output) {
         String secret = "비공개 분석 텍스트 원문";
         RecordingGateway gateway =
                 new RecordingGateway(
@@ -174,7 +239,10 @@ class AiRouteContentEmbeddingServiceTest {
         assertAll(
                 () -> assertFalse(exception.getMessage().contains(secret)),
                 () -> assertFalse(exception.getMessage().contains("0.5")),
-                () -> assertTrue(exception.getMessage().contains("book 41 p2")));
+                () -> assertTrue(exception.getMessage().contains("book 41 p2")),
+                () -> assertFalse(output.getAll().contains(secret)),
+                () -> assertFalse(output.getAll().contains("0.5")),
+                () -> assertFalse(output.getAll().contains("book 41 p2")));
     }
 
     @Test
@@ -196,6 +264,37 @@ class AiRouteContentEmbeddingServiceTest {
                                 () -> embedded.vectorOf(41, 2).add(0.9)));
     }
 
+    @Test
+    void 결과_batch는_생성자에_전달한_vector와_분리된_깊은_불변_복사다() {
+        EmbeddedAiRouteContent.PageKey key =
+                new EmbeddedAiRouteContent.PageKey(41, 2, VERSION);
+        List<Double> sourceVector = new ArrayList<>(List.of(0.1, 0.2, 0.3));
+        Map<EmbeddedAiRouteContent.PageKey, List<Double>> sourceVectors = new LinkedHashMap<>();
+        sourceVectors.put(key, sourceVector);
+
+        EmbeddedAiRouteContent embedded =
+                new EmbeddedAiRouteContent(VERSION, MODEL, DIMENSIONS, sourceVectors);
+        sourceVector.set(0, 9.9);
+        sourceVectors.clear();
+
+        assertAll(
+                () -> assertEquals(List.of(0.1, 0.2, 0.3), embedded.vectorOf(41, 2)),
+                () ->
+                        assertThrows(
+                                UnsupportedOperationException.class,
+                                () -> embedded.vectorOf(41, 2).add(0.9)));
+    }
+
+    @Test
+    void 결과_batch는_null_key가_있으면_즉시_실패한다() {
+        Map<EmbeddedAiRouteContent.PageKey, List<Double>> sourceVectors = new LinkedHashMap<>();
+        sourceVectors.put(null, List.of(0.1, 0.2, 0.3));
+
+        assertThrows(
+                NullPointerException.class,
+                () -> new EmbeddedAiRouteContent(VERSION, MODEL, DIMENSIONS, sourceVectors));
+    }
+
     private AiRouteContentEmbeddingException embedFailure(
             Function<OpenAiEmbeddingGateway.PageAnalysisInput, OpenAiEmbeddingGateway.Embedding>
                     responder) {
@@ -211,6 +310,12 @@ class AiRouteContentEmbeddingServiceTest {
         for (double value : values) {
             vector.add(value);
         }
+        return new OpenAiEmbeddingGateway.Embedding(vector, MODEL, DIMENSIONS);
+    }
+
+    private static OpenAiEmbeddingGateway.Embedding vectorWithNull() {
+        List<Double> vector = new ArrayList<>(List.of(0.1, 0.2, 0.3));
+        vector.set(1, null);
         return new OpenAiEmbeddingGateway.Embedding(vector, MODEL, DIMENSIONS);
     }
 

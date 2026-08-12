@@ -53,14 +53,19 @@ C01의 manifest 전체를 검증해 외부 전송 권리·파일 무결성·페�
    필드를 검사합니다. 지원 도서의 페이지는 `contentRole=FRONT_MATTER`인 것만
    `aiRouteCandidatePage=false`이고 나머지 역할은 모두 `true`인지 확인합니다. 한쪽만 맞으면 실패입니다.
    후보 여부는 역할 이름이나 내용이 아니라 이 두 필드의 일치로만 판정합니다.
-4. `aiRouteCandidatePage=false`인 페이지는 다른 페이지의 `prerequisitePageNumbers`와 evaluation의
-   `referencePageNumbers`·`allowedAlternativePageNumbers`·`irrelevantPageNumbers` 어디에도 나올 수
-   없습니다. 앞 둘은 임베딩이 없어 도달할 수 없는 선수·정답이 되고, 무관 목록은 추천될 수 없는
-   페이지라 채점에 걸리지 않는 죽은 값입니다.
+4. `aiRouteCandidatePage=false`인 페이지는 `duplicateGroupKeys`가 비어 있어야 하며, 다른 페이지의
+   `prerequisitePageNumbers`와 evaluation의 `activeRentalPageNumbers`·`referencePageNumbers`·
+   `allowedAlternativePageNumbers`·`irrelevantPageNumbers`·`duplicatePageGroups` 어디에도 나올 수
+   없습니다. 후보가 아닌 페이지는 임베딩이 없어 경로 비용·추천·채점 대상이 될 수 없습니다.
 5. 선수 edge는 같은 book·contentVersion의 존재 page만 가리키며 자기 참조·중복 edge를 거부합니다.
 6. `선수 -> 의존` 방향으로 위상 정렬해 모든 노드를 방문하지 못하면 순환으로 전체 실패합니다.
 7. `aiExternalTransferAllowed=false`, dataPolicyVersion 누락·환경 불일치는 Gateway 호출 전에 전체 실패합니다.
-8. evaluation 정답은 존재·형식 연결만 검사하고 검증 결과의 runtime candidate 입력에는 포함하지 않습니다.
+8. 지원 도서마다 evaluation case가 정확히 하나인지 확인합니다. 필수 개념은 후보 페이지의
+   `primaryConcepts`, 도움 개념은 후보 페이지의 `primaryConcepts` 또는 `secondaryConcepts`에 있어야 하며,
+   정답 경로가 필수 개념을 실제로 덮어야 합니다. 정답 경로는 선수 폐쇄이고 `requiredPrerequisites`는 그
+   경로 안의 실제 선수 간선 전체여야 합니다. 중복 그룹은 manifest의 그룹 전체와 일치하고 정답 경로에서는
+   그룹마다 최대 한 페이지만 고릅니다. 정답·대체 페이지는 각각 무관 페이지와 겹칠 수 없습니다. 이 정답
+   데이터는 검증 결과의 runtime candidate 입력에는 포함하지 않습니다.
 
 ## 테스트
 
@@ -70,6 +75,9 @@ C01의 manifest 전체를 검증해 외부 전송 권리·파일 무결성·페�
 - 파일 누락·SHA 불일치·페이지 공백·지원 metadata 누락·권리/프로필 불일치 실패
 - `FRONT_MATTER`인데 `aiRouteCandidatePage=true`, 반대로 다른 역할인데 `false`인 페이지 각각 실패
 - 비후보 페이지를 선수·정답 경로·대체 페이지·무관 페이지에 넣은 입력 각각 실패
+- 비후보 페이지를 활성 대여·중복 그룹에 넣은 입력 각각 실패
+- 필수·도움 개념이 후보 페이지의 허용된 개념 필드에 없거나 정답 경로가 필수 개념을 덮지 않으면 실패
+- 정답·대체와 무관 페이지의 교집합, manifest와 다른 중복 그룹, 불완전한 선수 폐쇄·간선 목록 실패
 - 정본 `fixtures/content/ai-route-v2/`가 그대로 통과 (인라인 JSON만 쓰면 정본과 코드가 갈려도
   드러나지 않는다 — C01이 실제로 그렇게 어긋난 적이 있다)
 - validator 실패 시 Gateway·DB fake 호출 0회 확인
