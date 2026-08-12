@@ -168,6 +168,7 @@ class AiRouteSaveMySqlIntegrationTest {
     void 유효한_생성은_201과_저장_경로를_반환하고_현재_경로가_된다() throws Exception {
         페이지를_대여한다(READER_ID, FIRST_RENTAL_ID, FIRST_PAGE_ID, STARTED_AT);
         UUID generationId = 완료된_생성을_만든다();
+        Map<String, Object> 이전 = 잉크와_대여_상태();
 
         MvcResult result =
                 저장을_요청한다(READER_ID, generationId)
@@ -203,7 +204,9 @@ class AiRouteSaveMySqlIntegrationTest {
                 () -> assertNull(route.get("depth")),
                 () -> assertNull(route.get("completed_at")),
                 () -> assertEquals(2, 경로_항목_수(routeId)),
-                () -> assertEquals(Long.valueOf(routeId), 현재_경로_식별자(READER_ID, BOOK_ID)));
+                () -> assertEquals(Long.valueOf(routeId), 현재_경로_식별자(READER_ID, BOOK_ID)),
+                // 저장은 권한을 만들지 않는다. 성공해도 잉크·원장·대여·세션·서재가 그대로여야 한다.
+                () -> assertEquals(이전, 잉크와_대여_상태()));
     }
 
     /** 저장은 생성의 임시 목적·입력·항목을 지우고 최소 멱등 상태만 원래 만료까지 남긴다. */
