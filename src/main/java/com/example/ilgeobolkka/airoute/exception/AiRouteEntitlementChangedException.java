@@ -9,8 +9,11 @@ import java.util.UUID;
  * 변경·입력 오류·잉크 부족과는 원인이 달라 그 코드로 대신하지 않는다.
  *
  * <p>메시지에 재계산한 비용과 어느 페이지가 유료인지를 넣지 않는다. 응답 바디는 {@code code}·
- * {@code message}뿐이고 그 둘은 권한 상세를 담지 않는다는 것이 GATE-AIR-03 의 결정이다. 로그도 예외 타입만
- * 남기므로 여기 문자열이 곧 노출 경계다.
+ * {@code message}뿐이고 그 둘은 권한 상세를 담지 않는다는 것이 GATE-AIR-03 의 결정이다.
+ *
+ * <p>노출 경계는 이 문자열이 아니다. 응답은 {@code ErrorCode#message} 를 쓰고 실패 로그는 예외 타입만
+ * 남기므로 여기 메시지는 스택 트레이스 밖으로 나가지 않는다. 운영에서 {@code generationId} 를 찾을 때는
+ * 같은 {@code requestId} 로 남은 요청 로그의 {@code path} 를 본다.
  */
 public class AiRouteEntitlementChangedException extends RuntimeException {
 

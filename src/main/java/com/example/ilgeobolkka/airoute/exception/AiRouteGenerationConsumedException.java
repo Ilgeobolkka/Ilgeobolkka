@@ -11,6 +11,10 @@ import java.util.UUID;
  *
  * <p>생성 endpoint 의 멱등 재조회도 같은 코드를 반환한다. 정의는 먼저 진행하는 S01 에서 하고 G08 은
  * 재사용한다.
+ *
+ * <p>메시지는 응답으로 나가지 않는다. 응답 바디는 {@code ErrorCode#message} 를 쓰고 실패 로그는 예외
+ * 타입만 남긴다. 운영에서 {@code generationId} 를 찾을 때는 같은 {@code requestId} 로 남은 요청 로그의
+ * {@code path} 를 본다.
  */
 public class AiRouteGenerationConsumedException extends RuntimeException {
 
