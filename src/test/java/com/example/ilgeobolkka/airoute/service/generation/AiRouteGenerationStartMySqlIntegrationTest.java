@@ -325,6 +325,28 @@ class AiRouteGenerationStartMySqlIntegrationTest {
                 () -> assertEquals(0, 항목_수를_조회한다(retried.generationId())));
     }
 
+    /**
+     * 만료 행을 지운 뒤 insert 가 unique key 가 아닌 제약으로 실패하면, rollback 으로 그 만료 행이
+     * 되살아난다. 수렴 경로가 그 행을 기존 결과라고 돌려주면 원래 예외를 삼킨다. 되살아난 행은 만료
+     * 상태이므로 걸러져야 하고, 호출자는 제약 위반을 그대로 받아야 한다.
+     */
+    @Test
+    void 만료_행을_지운_뒤_다른_제약으로_실패하면_원래_예외를_올린다() {
+        UUID key = UUID.randomUUID();
+        GenerationStartResult first = startService.start(READER_ID, key, 명령(PURPOSE));
+        생성을_실패로_끝낸다(first.generationId());
+        clock.set(EXPIRES_AT);
+
+        AiRouteGenerationCommand 없는_도서 =
+                AiRouteGenerationCommand.forInkBudget(
+                        MISSING_BOOK_ID, CONTENT_VERSION, PURPOSE, 5, 100);
+
+        assertThrows(
+                DataIntegrityViolationException.class,
+                () -> startService.start(READER_ID, key, 없는_도서));
+        assertEquals(1, 생성_수를_조회한다(READER_ID));
+    }
+
     @Test
     void 만료_직전에는_같은_키가_아직_기존_결과를_받는다() {
         UUID key = UUID.randomUUID();

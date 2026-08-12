@@ -48,6 +48,7 @@ GENERATING 이후 ROUTE·NO_ROUTE·FAILED·SAVED·CONSUMED 전이와 15분 보�
 5. route 삭제 호출은 CONSUMED로 전이하고 pointer를 비워 재저장을 막습니다.
 6. cleanup은 item 후 generation 순서로 만료 상태를 삭제하고 과거 key 사용 여부를 남기지 않습니다.
 7. 전체 제한을 지난 GENERATING은 FAILED로 복구하고 같은 key가 외부 호출을 다시 시작하지 않게 합니다.
+   이 보장은 보관 창 안에서만 성립합니다. 창을 넘긴 같은 key는 새 요청이므로 일일 횟수를 다시 씁니다.
 
 ## 테스트
 
@@ -75,13 +76,27 @@ GENERATING 이후 ROUTE·NO_ROUTE·FAILED·SAVED·CONSUMED 전이와 15분 보�
 G07에 complete/fail API를, S01에 SAVED API를, S03에 CONSUMED API를 전달합니다. 후속 작업은 Entity status를
 직접 변경하지 않습니다.
 
+- 중단 복구는 보관 기간을 복구를 돌린 시각이 아니라 `createdAt + 전체 제한`부터 잽니다. 지금 시각을
+  기준으로 잡으면 사라졌어야 할 멱등 상태가 복구할 때마다 되살아납니다. 그래서 오래 방치된 생성은
+  복구된 같은 스윕에서 정리됩니다.
 - 만료 판정은 두 경계가 서로 다릅니다. 조회·저장은 `now < expiresAt`만 유효로 보고(`expiresAt`부터 만료),
   중단 복구는 나이가 제한 시간을 **넘은** 것만 대상으로 봅니다. 정본이 "만료 시각부터"와 "20초를 넘으면"
   으로 다르게 정하기 때문이며, 어느 한쪽에 맞춰 통일하면 안 됩니다.
 - `AiRouteGenerationCleanupService.GENERATION_TIME_LIMIT`이 전체 요청 제한 20초를 들고 있습니다. G07이
   자기 타임아웃에 같은 값을 써야 하는데, 이 작업의 수정 허용 파일 안에 공용 정책 타입을 둘 자리가 없어
   cleanup service에 두었습니다. G07 착수 때 옮길지 정합니다.
-- `AiRouteGenerationView`에 경로 항목이 없습니다. 항목까지 필요한 화면 응답은 G08이 따로 조회합니다.
+- `AiRouteGenerationView`가 정렬된 경로 항목을 함께 담습니다. `position`·`pageNumber`·`bookPageId`·
+  `relevance`·`prerequisite`·`role`이며 `ROUTE`가 아니면 빈 목록입니다.
+- **미결**: `api-spec.md`는 `items[]`에 `estimatedMinutes`·`guide`·`additionalCostStatus`도 요구하는데
+  셋 다 저장 열이 없고 `src/main`에 구현이 없습니다. 특히 `additionalCostStatus`는 정본이 **생성 시점
+  스냅샷**으로 규정해(재조회해도 재계산하지 않음) 조회 때 계산하면 계약 위반인데, 그 스냅샷을 담을
+  자리가 스키마에 없습니다. 정본과 스키마 중 어느 쪽을 갱신할지 확인이 필요합니다(README 15행).
+  `bookPageId`를 projection에 넣어 둔 것은 G08이 "이력 기반 재구성"을 택할 경우를 대비해 그 선택지를
+  살려 두려는 것이며, 실현 방식이 정해지면 불필요할 수 있습니다.
+- **허용 파일 밖 변경**: `AiRouteGenerationStartService`와 그 통합 테스트(G05 소유),
+  `src/test/resources/application-test.yaml`(F03 소유)을 바꿨습니다. 앞은 완료 조건의 만료 판정 요구
+  때문이고, 뒤는 배치가 다른 담당자의 테스트 픽스처를 훼손하는 것을 막기 위해서입니다. 각각 G05 인계와
+  해당 파일 주석에 사유를 남겼고 별도 승인 대상입니다.
 - `markConsumed`에 소유자 조건이 없습니다. 저장 경로와 생성이 1:1이라 S03이 경로 소유권을 확인하면
   전이적으로 막히지만, 이 API 자체는 `generationId`만으로 상태를 옮깁니다.
 - 유지보수 스케줄러는 `ai-route.enabled`로 막지 않습니다. 이 배치는 기능을 제공하는 것이 아니라 이미

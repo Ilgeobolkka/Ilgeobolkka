@@ -3,6 +3,8 @@ package com.example.ilgeobolkka.airoute.scheduler;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.timeout;
+import static org.mockito.Mockito.verify;
 
 import com.example.ilgeobolkka.airoute.service.generation.AiRouteGenerationCleanupService;
 import org.junit.jupiter.api.Test;
@@ -65,6 +67,24 @@ class AiRouteGenerationMaintenanceSchedulerTest {
                             순서.verify(cleanupService).recoverAbandoned();
                             순서.verify(cleanupService).removeExpired();
                             순서.verifyNoMoreInteractions();
+                        });
+    }
+
+    /**
+     * {@code @Scheduled} 가 실제로 붙어 도는지 본다. 등록 테스트만으로는 애너테이션을 떼도 통과한다.
+     *
+     * <p>주기가 아니라 <b>첫 실행</b>만 확인한다. 두 번째 발화까지 기다리면 1분짜리 테스트가 된다.
+     */
+    @Test
+    void 등록된_스케줄러는_기동_직후_한_번_스스로_돈다() {
+        new ApplicationContextRunner()
+                .withPropertyValues("ai-route.maintenance-initial-delay-millis=0")
+                .withUserConfiguration(SchedulerTestConfiguration.class)
+                .run(
+                        context -> {
+                            AiRouteGenerationCleanupService cleanupService =
+                                    context.getBean(AiRouteGenerationCleanupService.class);
+                            verify(cleanupService, timeout(5000)).removeExpired();
                         });
     }
 

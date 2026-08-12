@@ -20,9 +20,12 @@ import com.example.ilgeobolkka.airoute.repository.AiRouteGenerationRepository;
 import com.example.ilgeobolkka.airoute.scheduler.AiRouteGenerationMaintenanceScheduler;
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
 import java.time.Clock;
+import java.time.Duration;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -316,6 +319,41 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
                 () -> assertEquals(0, 항목_수를_조회한다(generationId)));
     }
 
+    /**
+     * API 계약이 항목을 생략할 수 없는 필드로 두고, 응답을 만드는 쪽은 Repository 를 직접 부르지
+     * 않는다. 소유자·만료 확인과 같은 조회에서 정렬된 항목이 함께 나와야 한다.
+     */
+    @Test
+    void 조회_결과는_추천_순서대로_정렬된_항목을_함께_준다() {
+        UUID generationId = 완료된_생성을_만든다();
+        clock.set(COMPLETED_AT);
+
+        List<AiRouteGenerationItemView> items = 소유자로_조회한다(generationId).orElseThrow().items();
+
+        assertAll(
+                () -> assertEquals(2, items.size()),
+                () -> assertEquals(1, items.get(0).position()),
+                () -> assertEquals(1, items.get(0).pageNumber()),
+                () -> assertEquals(FIRST_PAGE_ID, items.get(0).bookPageId()),
+                () -> assertEquals(AiRouteItemRelevance.HIGH, items.get(0).relevance()),
+                () -> assertEquals(false, items.get(0).prerequisite()),
+                () -> assertEquals(AiRouteItemRole.CORE, items.get(0).role()),
+                () -> assertEquals(2, items.get(1).position()),
+                () -> assertEquals(2, items.get(1).pageNumber()),
+                () -> assertEquals(SECOND_PAGE_ID, items.get(1).bookPageId()),
+                () -> assertEquals(AiRouteItemRole.PREREQUISITE, items.get(1).role()));
+    }
+
+    @Test
+    void ROUTE가_아닌_결과의_항목은_빈_목록이다() {
+        UUID generationId = 생성을_시작한다();
+        clock.set(COMPLETED_AT);
+        lifecycleService.completeWithoutRoute(
+                generationId, AiRouteNoRouteReason.NO_RELEVANT_PAGES, null);
+
+        assertEquals(List.of(), 소유자로_조회한다(generationId).orElseThrow().items());
+    }
+
     @Test
     void 다른_독자는_유효한_생성도_조회할_수_없다() {
         UUID generationId = 완료된_생성을_만든다();
@@ -426,6 +464,27 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
                 () -> assertEquals(0, 항목_수를_조회한다(generationId)));
     }
 
+    /**
+     * 상한이 실제로 적용되는지 본다. {@code Pageable} 이 무시돼도 결과만 보면 한 번에 다 지워져 통과해
+     * 버리므로, 두 스윕으로 나뉘는 것까지 확인해야 잡힌다.
+     */
+    @Test
+    void 정리는_한_번에_상한만큼만_지우고_나머지는_다음_주기로_넘긴다() {
+        int 상한 = AiRouteGenerationCleanupService.BATCH_SIZE;
+        만료된_생성을_여러_개_넣는다(상한 + 1);
+        clock.set(STARTED_AT);
+
+        int 첫_스윕 = cleanupService.removeExpired();
+        int 남은_수 = 생성_수를_조회한다();
+        int 둘째_스윕 = cleanupService.removeExpired();
+
+        assertAll(
+                () -> assertEquals(상한, 첫_스윕),
+                () -> assertEquals(1, 남은_수),
+                () -> assertEquals(1, 둘째_스윕),
+                () -> assertEquals(0, 생성_수를_조회한다()));
+    }
+
     @Test
     void 만료하지_않은_생성은_정리하지_않는다() {
         UUID generationId = 완료된_생성을_만든다();
@@ -473,6 +532,42 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
                                 row.get("failure_code")),
                 () -> assertNotNull(row.get("completed_at")),
                 () -> assertNotNull(row.get("expires_at")));
+    }
+
+    /**
+     * 보관 기간의 기준점은 복구를 돌린 시각이 아니라 논리적으로 실패한 시각이다. 지금 시각으로 잡으면
+     * 오래전에 사라졌어야 할 멱등 상태가 복구할 때마다 15분씩 되살아난다.
+     */
+    @Test
+    void 복구는_논리적_실패_시각부터_보관_기간을_잰다() {
+        UUID generationId = 생성을_시작한다();
+        clock.set(STARTED_AT.plus(Duration.ofHours(1)));
+
+        cleanupService.recoverAbandoned();
+
+        Instant 논리적_실패 = STARTED_AT.plus(AiRouteGenerationCleanupService.GENERATION_TIME_LIMIT);
+        Map<String, Object> row = 생성을_조회한다(generationId);
+        assertAll(
+                () -> assertEquals("FAILED", row.get("status")),
+                () -> assertEquals(UTC_문자열(논리적_실패), row.get("completed_at")),
+                () ->
+                        assertEquals(
+                                UTC_문자열(
+                                        논리적_실패.plus(
+                                                AiRouteGenerationLifecycleService
+                                                        .RESULT_RETENTION)),
+                                row.get("expires_at")));
+    }
+
+    /** 보관 기간까지 이미 지난 중단 생성은 다음 주기를 기다리지 않고 같은 스윕에서 사라져야 한다. */
+    @Test
+    void 오래_방치된_생성은_복구된_같은_스윕에서_지워진다() {
+        UUID generationId = 생성을_시작한다();
+        clock.set(STARTED_AT.plus(Duration.ofHours(1)));
+
+        maintenanceScheduler.sweep();
+
+        assertEquals(false, generationRepository.existsById(generationId));
     }
 
     @Test
@@ -649,6 +744,12 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
                                 readingRouteRepository.findById(routeId).orElseThrow()));
     }
 
+    private static String UTC_문자열(Instant instant) {
+        return DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS")
+                .withZone(ZoneOffset.UTC)
+                .format(instant);
+    }
+
     private static void 해제를_기다린다(CountDownLatch 해제) {
         try {
             if (!해제.await(10, TimeUnit.SECONDS)) {
@@ -658,6 +759,35 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
             Thread.currentThread().interrupt();
             throw new IllegalStateException("대기가 중단됐습니다.", interrupted);
         }
+    }
+
+    /** 이미 만료한 {@code FAILED} 행을 한꺼번에 넣는다. 시각은 {@link #STARTED_AT} 보다 앞이다. */
+    private void 만료된_생성을_여러_개_넣는다(int count) {
+        List<Object[]> rows = new ArrayList<>();
+        for (int index = 0; index < count; index++) {
+            rows.add(new Object[] {UUID.randomUUID().toString(), UUID.randomUUID().toString()});
+        }
+        jdbcTemplate.batchUpdate(
+                """
+                INSERT INTO ai_route_generation
+                    (generation_id, reader_id, book_id, content_version, idempotency_key,
+                     request_fingerprint, normalized_purpose, request_type, max_additional_ink,
+                     status, failure_code, created_at, completed_at, expires_at)
+                VALUES (?, %d, %d, '%s', ?, REPEAT('a', 64), '%s', 'INK_BUDGET', %d,
+                        'FAILED', 'AI_ROUTE_GENERATION_TIMEOUT',
+                        '2026-08-05 00:00:00.000000',
+                        '2026-08-05 00:00:00.000000',
+                        '2026-08-05 00:15:00.000000')
+                """
+                        .formatted(READER_ID, BOOK_ID, CONTENT_VERSION, PURPOSE, BUDGET),
+                rows);
+    }
+
+    private int 생성_수를_조회한다() {
+        return jdbcTemplate.queryForObject(
+                "SELECT COUNT(*) FROM ai_route_generation WHERE reader_id = ?",
+                Integer.class,
+                READER_ID);
     }
 
     private void 독자를_생성한다(long readerId) {

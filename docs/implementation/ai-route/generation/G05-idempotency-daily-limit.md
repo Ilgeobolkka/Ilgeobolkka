@@ -86,5 +86,8 @@ G06에 상태별 잠금 조회와 fingerprint 계약을, G07에 NEW만 외부 �
 - `EXISTING_FINAL`은 `FAILED`와 `CONSUMED`도 실어 나릅니다. `api-spec.md`의 응답 `status`는
   `GENERATING`·`ROUTE`·`NO_ROUTE`·`SAVED` 넷뿐이므로 `FAILED` 재시도는 상태 응답이 아니라 최초 오류
   응답으로 나가야 합니다. G08이 매핑할 때 이 넷만 보고 만들면 실패 재시도가 빠집니다.
+- **G06(SCRUM-462)이 이 작업의 수정 허용 파일 밖에서 `AiRouteGenerationStartService`와 그 통합 테스트를
+  바꿨습니다.** 조회만 만료를 보고 시작은 보지 않으면 같은 행에 두 경로가 다른 답을 내기 때문이며,
+  G06 완료 조건이 "만료 판정이 cleanup 실행 여부에 의존하지 않는다"를 요구합니다. 아래가 그 내용입니다.
 - 보관 만료 판정은 G06에서 시작 경로까지 들어왔습니다. 만료한 행은 정리 배치 전이라도 없는 것으로 보고
   그 자리에서 지운 뒤 새 요청으로 시작합니다. 남겨 두면 새 insert 가 멱등 unique key 에 걸립니다.

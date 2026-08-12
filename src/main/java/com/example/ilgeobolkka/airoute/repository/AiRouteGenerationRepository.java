@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Query;
@@ -94,6 +95,8 @@ public interface AiRouteGenerationRepository extends JpaRepository<AiRouteGenera
      *
      * <p>{@code expiresAt} 이 {@code null} 인 {@code GENERATING} 은 대상이 아니다. 중단된 생성은 먼저
      * 복구가 {@code FAILED} 로 바꾸면서 만료 시각을 매기고, 그다음 정리 대상이 된다.
+     *
+     * <p>{@code generationId} 순으로 잘라 배치를 나눠도 같은 행을 되풀이하거나 건너뛰지 않는다.
      */
     @Query(
             """
@@ -101,8 +104,9 @@ public interface AiRouteGenerationRepository extends JpaRepository<AiRouteGenera
             FROM AiRouteGeneration generation
             WHERE generation.expiresAt IS NOT NULL
               AND generation.expiresAt <= :now
+            ORDER BY generation.generationId
             """)
-    List<UUID> findExpiredGenerationIds(@Param("now") Instant now);
+    List<UUID> findExpiredGenerationIds(@Param("now") Instant now, Pageable batch);
 
     /**
      * 전체 요청 제한을 지나도록 {@code GENERATING} 에 머문 생성. 생성 중 서버가 내려갔거나 호출자가
@@ -122,8 +126,10 @@ public interface AiRouteGenerationRepository extends JpaRepository<AiRouteGenera
             WHERE generation.status
                 = com.example.ilgeobolkka.airoute.entity.AiRouteGenerationStatus.GENERATING
               AND generation.createdAt < :startedBefore
+            ORDER BY generation.generationId
             """)
-    List<UUID> findAbandonedGenerationIds(@Param("startedBefore") Instant startedBefore);
+    List<UUID> findAbandonedGenerationIds(
+            @Param("startedBefore") Instant startedBefore, Pageable batch);
 
     /**
      * 정리 대상 생성 행을 한 번에 잠근다. 항목보다 <b>먼저</b> 잠그려고 둔다.
@@ -133,7 +139,13 @@ public interface AiRouteGenerationRepository extends JpaRepository<AiRouteGenera
      * key 수렴 catch 에 걸리지 않아 그대로 올라간다. 두 경로의 대상 조건이 완전히 같으므로 순서를
      * 맞춰 둔다.
      *
-     * <p>{@code generationId} 순으로 잠가 한 배치 안에서도 순서를 고정한다.
+     * <p>{@code ORDER BY} 는 의도를 적어 둔 것이지 잠금 획득 순서를 보장하지 않는다. InnoDB 는 실행
+     * 계획이 행을 훑는 순서로 잠그고 정렬은 그 뒤에 적용될 수 있다. 이 메서드가 실제로 막는 것은 배치와
+     * 시작 경로 사이의 <b>문장 순서</b>(생성 먼저, 항목 나중)뿐이다.
+     *
+     * <p>존재 확인 없이 잠그는 예외다. 목록은 방금 실행한 조회에서 나왔고, 그사이 사라진 식별자가 있으면
+     * 그 자리에 gap lock 이 남는다. 그래도 이 경로는 잠근 뒤 지우고 바로 transaction 을 끝내며 아무것도
+     * 기다리지 않아 대기 고리가 만들어지지 않는다.
      */
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query(
