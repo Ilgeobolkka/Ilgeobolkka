@@ -91,6 +91,33 @@ public interface AiRouteGenerationRepository extends JpaRepository<AiRouteGenera
             @Param("generationId") UUID generationId);
 
     /**
+     * 저장하려고 소유자의 아직 유효한 생성을 잠금 조회한다. {@link #findOwnedNotExpired} 와 조건이 같고
+     * 잠금만 더한 것이라, 다른 독자의 식별자와 만료한 식별자가 모두 빈 결과이고 호출자는 둘을 같은 404 로
+     * 응답한다.
+     *
+     * <p>소유자 조건을 잠금 조회 자체에 두는 이유는 남의 생성 행을 잠그지 않기 위해서다.
+     * {@link #findByGenerationIdForUpdate} 로 먼저 잠그고 뒤에서 소유자를 확인하면, 남의
+     * {@code generationId} 를 찍은 요청이 그사이 소유자의 저장을 기다리게 만들 수 있다.
+     *
+     * <p>존재 확인 없이 잠그는 예외다. 없는 식별자에는 임의의 UUID 자리 하나에 gap lock 이 남지만, 저장
+     * 경로는 이 조회가 첫 잠금이고 그 뒤로는 자기가 만든 행과 자기 {@code (reader, book)} current 만
+     * 건드리므로 이 gap 을 쥔 채 도는 대기 고리가 만들어지지 않는다.
+     */
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @Query(
+            """
+            SELECT generation
+            FROM AiRouteGeneration generation
+            WHERE generation.generationId = :generationId
+              AND generation.readerId = :readerId
+              AND (generation.expiresAt IS NULL OR generation.expiresAt > :now)
+            """)
+    Optional<AiRouteGeneration> findOwnedNotExpiredForUpdate(
+            @Param("generationId") UUID generationId,
+            @Param("readerId") long readerId,
+            @Param("now") Instant now);
+
+    /**
      * 정리 대상 식별자. 만료 시각을 지난 행이며 경계는 조회·저장 거부와 같은 {@code now >= expiresAt} 이다.
      *
      * <p>{@code expiresAt} 이 {@code null} 인 {@code GENERATING} 은 대상이 아니다. 중단된 생성은 먼저
