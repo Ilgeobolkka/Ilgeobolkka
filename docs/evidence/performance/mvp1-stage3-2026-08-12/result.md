@@ -226,7 +226,7 @@ p50·p95의 일관된 개선을 근거로 한다. RUNBOOK의 4단계와 최종 5
 - 첫 전체 `./gradlew test --rerun-tasks`는 V4 SQL 주석 수정 전에 적용된 로컬 테스트 DB checksum이 남아
   Flyway `Migration checksum mismatch for migration version 4`로 무효였다. 아직 미커밋인 최초 V4이므로
   개발 DB나 성능 DB는 건드리지 않고 `ilgeobolkka_test`만 재생성했다.
-- 전체 테스트 재실행: 679건, 성공 678건, skip 1건, 실패·오류 0건.
+- 전체 테스트 재실행: 683건, 성공 682건, skip 1건, 실패·오류 0건.
 - `./gradlew check`: `BUILD SUCCESSFUL in 513ms`.
 - `./gradlew build`: `BUILD SUCCESSFUL in 770ms`.
 - 최종 실행 JAR: `build/libs/Ilgeobolkka-0.0.1-SNAPSHOT.jar`, 87,823,059 bytes,
@@ -236,7 +236,8 @@ p50·p95의 일관된 개선을 근거로 한다. RUNBOOK의 4단계와 최종 5
 - 테스트 DB와 새로 복원한 성능 DB 모두 Flyway V1~V4가 success이며, 두 복합 index는 정확한 열 순서로
   `VISIBLE`이다.
 - 폐기 migration·테스트·DB 상태는 남지 않았다. 채택 V4와 그 회귀 테스트·재현 scenario만 남겼다.
-- `docs/implementation/performance/RUNBOOK.md`는 수정하지 않았다.
+- `docs/implementation/performance/RUNBOOK.md`는 2026-08-12 사용자 결정에 맞춰 공통 하한 표현을 후보별
+  채택 기준으로 정정했다.
 
 작은 k6 summary는 이 evidence 폴더에 보존했고, 큰 원시 결과 위치와 SHA-256은
 [artifact-manifest.md](./artifact-manifest.md)에 기록했다.
