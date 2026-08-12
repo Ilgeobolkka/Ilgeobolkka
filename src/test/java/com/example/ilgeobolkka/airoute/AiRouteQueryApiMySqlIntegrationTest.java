@@ -32,9 +32,17 @@ import org.springframework.transaction.annotation.Transactional;
  * <p>경로 저장 API 가 아직 없어 픽스처를 SQL 로 직접 넣는다. 저장이 들어오면 그 API 로 바꾸는 편이 낫지만,
  * 지금 그것을 기다리면 조회 계약이 검증되지 않은 채로 남는다.
  *
- * <p>{@code ai-route.enabled}를 켠다. 기본값이 꺼짐이라 켜지 않으면 경로 자체가 등록되지 않는다.
+ * <p>{@code ai-route.enabled}를 켠다. 기본값이 꺼짐이라 켜지 않으면 경로 자체가 등록되지 않는다. 켜면
+ * {@code OpenAiConfiguration}이 OpenAI 세 설정을 기동 시점에 검증하므로(활성 서버가 키 없이 뜨는 것을 막는
+ * 계약이다) 자리만 채운 값을 함께 넣는다. 조회는 외부를 호출하지 않아 값의 내용은 쓰이지 않는다.
  */
-@SpringBootTest(properties = "ai-route.enabled=true")
+@SpringBootTest(
+        properties = {
+            "ai-route.enabled=true",
+            "openai.project-id=proj-scrum465-test",
+            "openai.api-key=not-a-real-key-scrum465-test",
+            "openai.data-policy-version=policy-test"
+        })
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
 @ContextConfiguration(initializers = DedicatedTestDatabaseInitializer.class)
