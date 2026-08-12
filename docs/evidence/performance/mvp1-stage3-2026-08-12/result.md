@@ -10,13 +10,16 @@
   - `page_rental(reader_id, book_page_id, rented_at DESC, id DESC)`
   - `ink_ledger(reader_id, occurred_at DESC, id DESC)`
 - 최종 판정: **이력 조회 복합 인덱스 2개 채택**
+- 채택 기준 결정: 2026-08-12 사용자 확인으로 고정 p95 15% 하한을 폐기하고, 제품 SQL 실행 계획 개선·
+  대상 endpoint 반복 측정의 일관된 p50·p95 개선·정확성 및 쓰기 비회귀를 적용
 - 범위: 로컬 Compose의 백엔드 코드 회귀 비교. 운영 SLO·운영 용량 근거가 아니다.
 - 환경: [environment.md](./environment.md)
 
 첫 판정은 전체 HTTP p95 15%를 인덱스의 필수 채택 하한으로 적용해 두 후보를 제거했다. 이후 검토에서
 실행 계획은 `history-heavy`에서 확인했지만 HTTP Average 직전 `reset-mvp.sh`가 이력 데이터를 제거한 사실과,
-변경 후 계획이 단순 `SELECT id` probe였다는 한계를 확인했다. 고정 15% 하한은 인덱스 채택 조건에서
-제외하고, 동일 `history-heavy` 데이터의 실제 제품 SQL·분리 endpoint·mixed 회귀를 다시 측정했다.
+변경 후 계획이 단순 `SELECT id` probe였다는 한계를 확인했다. 2026-08-12 사용자 확인으로 고정 15%
+하한을 인덱스 채택 조건에서 폐기하고, 동일 `history-heavy` 데이터의 실제 제품 SQL·분리 endpoint·mixed
+회귀를 다시 측정했다.
 
 재검증에서 기본 optimizer가 두 인덱스를 실제 선택했고, 제품 SQL 중앙 실행 시간이 각각 약 25.5배,
 42.2배, 4.9배 빨라졌다. 분리 API 3회 중앙값도 서재 p95 17.8%, 원장 p95 14.1% 개선됐으며 mixed
@@ -118,6 +121,10 @@ p50 중앙값은 서재 `7.416 → 5.862ms`(21.0%), 원장 `7.437 → 6.011ms`(1
 두 상태를 각각 결정적으로 `reset-mvp → history-heavy`로 만들고 새 앱·1분 Warm-up 뒤 동일 3분 Average를
 실행했다. 이 결과는 채택 하한이 아니라 읽기 외 흐름과 쓰기 경로의 회귀 감시다.
 
+두 Average 원시 metadata의 `dataset.name`은 공통 수집기의 고정값 때문에 `mvp`로 오기록됐다. 직전
+`history-heavy` 생성 artifact와 행 수로 실제 데이터셋을 확인했으며, 이는 라벨 오류라 p50·p95·RPS와
+인덱스 효과에는 영향이 없다.
+
 | 지표 | control | candidate | 변화 |
 | --- | ---: | ---: | ---: |
 | 실제 HTTP RPS | 29.528 | 29.530 | 동일 |
@@ -208,8 +215,8 @@ dropped iteration 0, Hikari pending 최대 0이며 실행 뒤 도메인 불변�
 좋은 지연 수치를 채택하지 않았다. 이후 Smoke, Warm-up, 본 측정의 신규 독자 offset을 서로 겹치지 않게
 분리하고 Peak 3회를 처음부터 유효하게 다시 실행했다.
 
-인덱스 채택은 고정 15% 전체 p95 하한이 아니라 읽은 행 수·정렬·제품 SQL 개선 배수와 endpoint 비회귀를
-근거로 한다. RUNBOOK의 4단계와 최종 5단계 시나리오는 실행하지 않았다.
+인덱스 채택은 고정 15% 전체 p95 하한이 아니라 읽은 행 수·정렬·제품 SQL 개선 배수와 반복 측정한 endpoint
+p50·p95의 일관된 개선을 근거로 한다. RUNBOOK의 4단계와 최종 5단계 시나리오는 실행하지 않았다.
 
 ## 최종 검증
 

@@ -38,8 +38,11 @@
 
 기존 `history-index` 원시 `metadata.json`은 공통 수집기의 고정값 때문에 데이터셋 이름을 `mvp`로
 잘못 기록했다. 해당 여섯 실행의 데이터셋 근거는 직전 `history-heavy` 생성 artifact의 행 수와 동일 DB
-실행 기록이며, 결과 수치를 사후 수정하지 않았다. 이번 수정은 `history-index` 시작 전에 위 고정 행 수를
-검증하고 실제 행 수를 `dataset.json`과 `metadata.json`에 기록한다.
+실행 기록이며, 결과 수치를 사후 수정하지 않았다. `history-heavy` mixed control/candidate의 Average
+metadata도 같은 이유로 이름만 `mvp`로 기록됐지만, 직전 생성 artifact와 행 수가 실제
+`history-heavy`였음을 입증하므로 p50·p95·RPS와 인덱스 효과에는 영향이 없다. 이번 수정은
+`history-index` 시작 전에 위 고정 행 수를 검증하고 실제 행 수를 `dataset.json`과 `metadata.json`에
+기록한다.
 
 ## 비교 조건과 Git 보존 결과
 
