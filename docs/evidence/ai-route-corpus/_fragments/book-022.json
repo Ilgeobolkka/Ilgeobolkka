@@ -1,0 +1,1086 @@
+{
+  "manifestBook": {
+    "bookId": 22,
+    "title": "파동의 기초: 흔들림에서 무늬까지",
+    "pdfPath": "pdfs/book-022.pdf",
+    "pdfSha256": "af7ec9809458e0bc7867b69a3d97c468a34f126e54cdd556afb89328073ac4df",
+    "totalPageCount": 49,
+    "aiRouteCandidate": true,
+    "aiExternalTransferAllowed": true,
+    "pages": [
+      {
+        "pageNumber": 1,
+        "chapter": "앞부분",
+        "section": "목차",
+        "primaryConcepts": [
+          "목차"
+        ],
+        "secondaryConcepts": [],
+        "contentRole": "FRONT_MATTER",
+        "aiRouteCandidatePage": false,
+        "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+        "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+        "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+        "estimatedReadingSeconds": 40,
+        "prerequisitePageNumbers": [],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 2,
+        "chapter": "1장 제자리에서 흔들리는 것",
+        "section": "1.1 제자리에서 오가는 움직임",
+        "primaryConcepts": [
+          "진동"
+        ],
+        "secondaryConcepts": [],
+        "contentRole": "PREREQUISITE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "진동을 제자리로 돌아오는 반복 운동으로 정의하고 굴러가는 운동과 구분한다. 복원력의 존재가 이후 모든 논의의 전제임을 밝히는 도입 페이지다.",
+        "aiAnalysisInputSha256": "43f3c73f9a52f5f5a6847e97558d32f3deb8066c23c09abb3a71e3038f00ef34",
+        "aiPublicGuideTopic": "한 자리를 중심으로 오갔다가 되돌아오는 움직임을 진동으로 정의한다",
+        "estimatedReadingSeconds": 75,
+        "prerequisitePageNumbers": [],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 3,
+        "chapter": "1장 제자리에서 흔들리는 것",
+        "section": "1.1 제자리에서 오가는 움직임",
+        "primaryConcepts": [
+          "진동"
+        ],
+        "secondaryConcepts": [
+          "복원력"
+        ],
+        "contentRole": "PREREQUISITE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "복원력과 관성의 크기가 진동의 빠르기를 정하고 밀어 준 세기는 폭만 바꾼다는 사실을 정리한다. 빠르기와 폭의 독립성이 다음 두 절의 갈래를 만든다.",
+        "aiAnalysisInputSha256": "f29ebd4613ed79fea635f472c31d00f3e7b2734c77dd32296db0dc3bf2dd747b",
+        "aiPublicGuideTopic": "되돌리는 힘의 세기에 따라 흔들림이 빨라지거나 느려지는 까닭을 설명한다",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          2
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 4,
+        "chapter": "1장 제자리에서 흔들리는 것",
+        "section": "1.2 얼마나 자주 오가는가",
+        "primaryConcepts": [
+          "주파수"
+        ],
+        "secondaryConcepts": [
+          "진동"
+        ],
+        "contentRole": "PREREQUISITE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "주파수와 주기를 서로의 역수 관계로 소개하고 실제로 세는 절차와 오차를 줄이는 요령을 덧붙인다. 이후 파장·속도 관계의 한 축이 되는 양이다.",
+        "aiAnalysisInputSha256": "08194eb8d050b843c9361563caa68cf333f7b64ab916700aabc54153c920113c",
+        "aiPublicGuideTopic": "일정한 시간 동안 흔들림이 몇 번 오갔는지 세는 방법을 다룬다",
+        "estimatedReadingSeconds": 80,
+        "prerequisitePageNumbers": [
+          2
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 5,
+        "chapter": "1장 제자리에서 흔들리는 것",
+        "section": "1.2 얼마나 자주 오가는가",
+        "primaryConcepts": [
+          "주파수"
+        ],
+        "secondaryConcepts": [],
+        "contentRole": "PREREQUISITE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "시간축 위의 진동 곡선에서 주기와 진폭을 각각 어느 길이로 읽는지 보인다. 폭이 같고 간격만 다른 두 곡선을 나란히 두어 둘이 별개의 양임을 드러낸다.",
+        "aiAnalysisInputSha256": "69189a21383666742936c807292eb7f19fbeb55bc54992391da318edaf63d9f2",
+        "aiPublicGuideTopic": "시간에 따라 흔들림이 오르내리는 모습을 그림으로 보인다",
+        "estimatedReadingSeconds": 45,
+        "prerequisitePageNumbers": [
+          4
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 6,
+        "chapter": "1장 제자리에서 흔들리는 것",
+        "section": "1.3 얼마나 크게 오가는가",
+        "primaryConcepts": [
+          "진폭"
+        ],
+        "secondaryConcepts": [
+          "진동"
+        ],
+        "contentRole": "PREREQUISITE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "진폭을 최대 변위로 정의하고 진동의 세기와 연결한다. 감쇠는 뒤 장으로 미루되 존재만 알려 두어 이상적인 그림과 실제의 차이를 예고한다.",
+        "aiAnalysisInputSha256": "5ff9ecf8c104e7014bdc2f838a17572df73fc4393883bc44b96a53ad80804198",
+        "aiPublicGuideTopic": "제자리에서 얼마나 멀리 벗어나는지를 나타내는 양을 소개한다",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          2
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 7,
+        "chapter": "1장 제자리에서 흔들리는 것",
+        "section": "1.3 얼마나 크게 오가는가",
+        "primaryConcepts": [
+          "진폭"
+        ],
+        "secondaryConcepts": [],
+        "contentRole": "PREREQUISITE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "높낮이와 크기를 혼동하는 일상 어법을 바로잡고 기록 양식에서 두 양을 분리해 적을 것을 권한다. 측정 항목의 분리가 질문을 만들어 낸다는 관점을 덧붙인다.",
+        "aiAnalysisInputSha256": "fc9ed6526b317196b9a5552e7c322a32c901b4cb3885b6d19ffd173cff80710b",
+        "aiPublicGuideTopic": "폭과 빠르기를 섞어 말할 때 생기는 혼란을 정리한다",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          6
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 8,
+        "chapter": "2장 흔들림이 옮겨 갈 때",
+        "section": "2.1 파동이란 무엇인가",
+        "primaryConcepts": [
+          "파동"
+        ],
+        "secondaryConcepts": [
+          "진동"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "파동을 진동의 전달로 정의하고 매질의 연결성이 전달의 조건임을 밝힌다. 무엇이 흔들리는가와 어디로 전달되는가를 함께 보라는 관찰 지침을 제시한다.",
+        "aiAnalysisInputSha256": "ac867341a583b9f63c2af8337a2fe85fce87d06910087bb835bc9968645e5c8a",
+        "aiPublicGuideTopic": "한자리의 흔들림이 이웃으로 옮겨 가며 퍼지는 현상을 정의한다",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          2
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 9,
+        "chapter": "2장 흔들림이 옮겨 갈 때",
+        "section": "2.1 파동이란 무엇인가",
+        "primaryConcepts": [
+          "파동"
+        ],
+        "secondaryConcepts": [],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "파동이 물질이 아니라 에너지를 전달한다는 점을 명확히 하고, 퍼짐에 따른 세기 감소를 소멸이 아닌 분배로 설명한다. 6장의 감쇠 논의와 구분하기 위한 사전 정리다.",
+        "aiAnalysisInputSha256": "716a6963dac44a672550af422139d9331260418ce52dd0ba208dc42e9f4ecfad",
+        "aiPublicGuideTopic": "흔들림이 옮겨 갈 때 함께 옮겨 가는 것과 그렇지 않은 것을 가른다",
+        "estimatedReadingSeconds": 75,
+        "prerequisitePageNumbers": [
+          8
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 10,
+        "chapter": "2장 흔들림이 옮겨 갈 때",
+        "section": "2.2 매질은 제자리에 남는다",
+        "primaryConcepts": [
+          "매질"
+        ],
+        "secondaryConcepts": [
+          "파동"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "매질을 정의하고 부표 관찰로 매질이 이동하지 않음을 확인하는 방법을 제시한다. 관중석 파도타기 비유로 전달되는 것이 차례임을 보인다.",
+        "aiAnalysisInputSha256": "66e60b4da6a23a7208e6014650cf56ad3a8936af84dde7aacaa7a378a99016c4",
+        "aiPublicGuideTopic": "흔들림을 전달하는 물질이 실제로는 이동하지 않는다는 점을 다룬다",
+        "estimatedReadingSeconds": 65,
+        "prerequisitePageNumbers": [
+          8
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 11,
+        "chapter": "2장 흔들림이 옮겨 갈 때",
+        "section": "2.2 매질은 제자리에 남는다",
+        "primaryConcepts": [
+          "매질"
+        ],
+        "secondaryConcepts": [],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "부표 실험을 흐름과 파동을 가르는 판정 기준으로 제시하고 두 현상이 중첩될 수 있음을 밝힌다. 무엇이 이동하는가를 먼저 묻는 태도를 강조한다.",
+        "aiAnalysisInputSha256": "3b032ad713c8d6624f3997380350815030c0e587474c8ad79255efa0242d60fb",
+        "aiPublicGuideTopic": "흐름과 파동을 가르는 기준을 세운다",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          10
+        ],
+        "duplicateGroupKeys": [
+          "carrier-stays-put"
+        ]
+      },
+      {
+        "pageNumber": 12,
+        "chapter": "2장 흔들림이 옮겨 갈 때",
+        "section": "2.3 파장과 속도",
+        "primaryConcepts": [
+          "파장"
+        ],
+        "secondaryConcepts": [
+          "주파수"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "파장을 공간 주기로 정의하고 주파수와 함께 전파 속도를 정하는 관계를 서술한다. 셋 중 둘이 정해지면 나머지가 따라온다는 구조를 강조한다.",
+        "aiAnalysisInputSha256": "d7b69b9b2ed78ecb67bfc9c5cc03a86295782a2389192d7e8ec5132392b5e328",
+        "aiPublicGuideTopic": "이웃한 마루 사이의 거리와 파동이 나아가는 빠르기를 잇는다",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          8,
+          4
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 13,
+        "chapter": "2장 흔들림이 옮겨 갈 때",
+        "section": "2.3 파장과 속도",
+        "primaryConcepts": [
+          "파장"
+        ],
+        "secondaryConcepts": [],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "옆에서 본 단면과 위에서 본 동심원에서 같은 파장을 각각 어디서 재는지 대응시킨다. 자주 흔든 경우를 곁에 두어 간격 변화가 눈에 들어오게 한다.",
+        "aiAnalysisInputSha256": "a53df1ba42ee099f7c037268a1711f88bbaa831ef2ef5116e4477c9d1acbceaa",
+        "aiPublicGuideTopic": "물결의 테와 테 사이를 어디서 어디까지 재는지 그림으로 보인다",
+        "estimatedReadingSeconds": 45,
+        "prerequisitePageNumbers": [
+          12
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 14,
+        "chapter": "2장 흔들림이 옮겨 갈 때",
+        "section": "2.4 두 가지 흔들림 방향",
+        "primaryConcepts": [
+          "횡파와 종파"
+        ],
+        "secondaryConcepts": [
+          "파동"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "진동 방향과 진행 방향의 관계로 횡파와 종파를 구분하고 소리와 물결의 사례를 든다. 이후 성질이 종류에 따라 갈린다는 점을 예고한다.",
+        "aiAnalysisInputSha256": "40ad875e4fde4d1836fd6238985dd309858619bfffbd7814f252f95599266a95",
+        "aiPublicGuideTopic": "나아가는 방향과 흔들리는 방향의 관계로 파동을 둘로 나눈다",
+        "estimatedReadingSeconds": 65,
+        "prerequisitePageNumbers": [
+          8
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 15,
+        "chapter": "2장 흔들림이 옮겨 갈 때",
+        "section": "2.4 두 가지 흔들림 방향",
+        "primaryConcepts": [
+          "횡파와 종파"
+        ],
+        "secondaryConcepts": [],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "종파를 횡파처럼 그리는 관례를 설명하고 세로축이 무엇을 나타내는지 명시할 것을 요구한다. 기록 양식에서 축의 의미를 적어 두는 습관과 연결한다.",
+        "aiAnalysisInputSha256": "3c72ce7ae1e26637abd2811fe47fbf4d7a97fc0f35aac54403241f63247e95b2",
+        "aiPublicGuideTopic": "그림으로 그릴 때 두 종류가 같은 모양으로 보이는 까닭을 다룬다",
+        "estimatedReadingSeconds": 65,
+        "prerequisitePageNumbers": [
+          14
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 16,
+        "chapter": "3장 파동이 무언가를 만나면",
+        "section": "3.1 되돌아오는 파동",
+        "primaryConcepts": [
+          "반사"
+        ],
+        "secondaryConcepts": [
+          "파동"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "반사를 경계에서의 되돌아옴으로 설명하고 입사각과 반사각의 대칭을 관찰로 확인한다. 부분 반사와 거리 측정 응용을 함께 언급한다.",
+        "aiAnalysisInputSha256": "47069b8efd33f1200ee5c25c1259a990d20f0453ce51a4b978115c3f4df992f7",
+        "aiPublicGuideTopic": "경계에 부딪힌 파동이 되돌아오는 현상을 다룬다",
+        "estimatedReadingSeconds": 65,
+        "prerequisitePageNumbers": [
+          8
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 17,
+        "chapter": "3장 파동이 무언가를 만나면",
+        "section": "3.1 되돌아오는 파동",
+        "primaryConcepts": [
+          "반사"
+        ],
+        "secondaryConcepts": [],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "반사파와 입사파의 중첩이 관측을 어지럽힌다는 점을 지적하고 흡수재로 반사를 줄이는 처치를 소개한다. 4장 중첩 논의로 이어지는 다리 역할이다.",
+        "aiAnalysisInputSha256": "2d5e26e20532ed9dff885b0efce86da359242899615a08265a6dd6b39f6cac22",
+        "aiPublicGuideTopic": "되돌아온 파동이 원래 파동과 겹칠 때 생기는 일을 예고한다",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          16
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 18,
+        "chapter": "3장 파동이 무언가를 만나면",
+        "section": "3.2 꺾이는 파동",
+        "primaryConcepts": [
+          "굴절"
+        ],
+        "secondaryConcepts": [
+          "파장"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "굴절을 속도 차이에 따른 진행 방향 변화로 설명하고 주파수 불변과 파장 변화의 관계를 정리한다. 수직 입사 사례로 인과를 분리한다.",
+        "aiAnalysisInputSha256": "0edaedf620f229066b6da1b33c2d5b44a33821ea58a162bc8c978eb69151caf1",
+        "aiPublicGuideTopic": "성질이 다른 곳으로 넘어가며 방향이 꺾이는 현상을 다룬다",
+        "estimatedReadingSeconds": 65,
+        "prerequisitePageNumbers": [
+          12
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 19,
+        "chapter": "3장 파동이 무언가를 만나면",
+        "section": "3.2 꺾이는 파동",
+        "primaryConcepts": [
+          "굴절"
+        ],
+        "secondaryConcepts": [],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "비스듬한 입사와 수직 입사를 나란히 놓아 방향 변화와 간격 변화를 분리해 보인다. 각도 수치 없이 관계만 드러내는 구성이다.",
+        "aiAnalysisInputSha256": "6b92aa52a807166c4930dc2f86ba218b0fde3129a54ae374965b879f1de151b8",
+        "aiPublicGuideTopic": "경계를 넘으며 방향과 간격이 함께 달라지는 모습을 보인다",
+        "estimatedReadingSeconds": 45,
+        "prerequisitePageNumbers": [
+          18
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 20,
+        "chapter": "3장 파동이 무언가를 만나면",
+        "section": "3.3 돌아 들어가는 파동",
+        "primaryConcepts": [
+          "회절"
+        ],
+        "secondaryConcepts": [
+          "파장"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "회절을 가장자리를 돌아 퍼지는 현상으로 설명하고 틈 크기와 파장의 비가 정도를 정함을 밝힌다. 소리와 빛의 차이를 같은 기준으로 설명한다.",
+        "aiAnalysisInputSha256": "d01294102f1a370ef259260071ae8cc5a6e95512265f294ff6a5667cbfe6479d",
+        "aiPublicGuideTopic": "장애물의 가장자리를 돌아 뒤쪽까지 퍼지는 현상을 다룬다",
+        "estimatedReadingSeconds": 65,
+        "prerequisitePageNumbers": [
+          12
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 21,
+        "chapter": "3장 파동이 무언가를 만나면",
+        "section": "3.3 돌아 들어가는 파동",
+        "primaryConcepts": [
+          "회절"
+        ],
+        "secondaryConcepts": [],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "장애물 크기와 파장의 비로 그림자 형성 여부를 설명하고 저음 차단이 어려운 이유를 같은 원리로 제시한다. 차폐 설계의 기준으로 연결한다.",
+        "aiAnalysisInputSha256": "162c5b7c1d28fbd7c8f5bc63ebda34ca920235e41b4b8ff486f6d4c60e9185fd",
+        "aiPublicGuideTopic": "가려도 들리는 일과 가리면 보이지 않는 일을 같은 원리로 설명한다",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          20
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 22,
+        "chapter": "3장 파동이 무언가를 만나면",
+        "section": "3.4 갇히는 파동",
+        "primaryConcepts": [
+          "경계 조건"
+        ],
+        "secondaryConcepts": [
+          "반사"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "고정 경계가 허용 파장을 이산적으로 제한한다는 점을 설명하고 악기의 음높이와 연결한다. 제약이 도구의 조건이 된다는 관점을 제시한다.",
+        "aiAnalysisInputSha256": "de4b82a52900a8bdbfa0272a0216b7740c637619016cbf9d72819ed2153ff37a",
+        "aiPublicGuideTopic": "양쪽이 막힌 곳에서 파동이 특정한 모습만 남는 까닭을 다룬다",
+        "estimatedReadingSeconds": 65,
+        "prerequisitePageNumbers": [
+          16
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 23,
+        "chapter": "3장 파동이 무언가를 만나면",
+        "section": "3.4 갇히는 파동",
+        "primaryConcepts": [
+          "경계 조건"
+        ],
+        "secondaryConcepts": [],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "공명을 담는 공간의 크기가 특정 진동을 선택하는 현상으로 설명하고 방의 웅웅거림을 예로 든다. 원인을 발생원과 공간 양쪽에서 찾으라는 지침을 덧붙인다.",
+        "aiAnalysisInputSha256": "5f2851b26f1c89ca20467e41f1e12f63a7679f32b52d1d6a97f439bc5a13ff6c",
+        "aiPublicGuideTopic": "막힌 곳의 크기가 그곳에서 잘 울리는 흔들림을 정한다는 점을 다룬다",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          22
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 24,
+        "chapter": "4장 파동끼리 만나면",
+        "section": "4.1 겹침의 원리",
+        "primaryConcepts": [
+          "중첩"
+        ],
+        "secondaryConcepts": [
+          "파동"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "중첩 원리를 변위의 합으로 서술하고 통과 후 형태가 보존됨을 강조한다. 복잡한 파형을 단순한 성분의 합으로 분해하는 접근의 근거가 된다.",
+        "aiAnalysisInputSha256": "60aeac426ad85db4a01be9cacb892197f2eec96ff618b2fa83c2a3f494d25677",
+        "aiPublicGuideTopic": "두 흔들림이 같은 자리에 있을 때 결과를 구하는 방법을 다룬다",
+        "estimatedReadingSeconds": 65,
+        "prerequisitePageNumbers": [
+          8
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 25,
+        "chapter": "4장 파동끼리 만나면",
+        "section": "4.1 겹침의 원리",
+        "primaryConcepts": [
+          "중첩"
+        ],
+        "secondaryConcepts": [],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "선형 중첩이 작은 진폭에서만 성립함을 밝히고 실험 조건 설정과 연결한다. 적용 범위를 명시하는 태도를 6장의 논조와 맞춰 둔다.",
+        "aiAnalysisInputSha256": "d4d9048c48d4fcb55120265f33bfc5d5044fe286d8248a576568f02dbb165a23",
+        "aiPublicGuideTopic": "겹침이 성립하지 않는 경우를 미리 짚어 둔다",
+        "estimatedReadingSeconds": 65,
+        "prerequisitePageNumbers": [
+          24
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 26,
+        "chapter": "4장 파동끼리 만나면",
+        "section": "4.2 서로 키우고 지우고",
+        "primaryConcepts": [
+          "간섭"
+        ],
+        "secondaryConcepts": [
+          "중첩"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "간섭을 경로차에 따른 보강과 상쇄로 설명하고 안정된 무늬의 조건을 제시한다. 두 파원의 동기화가 관측 가능성을 좌우함을 밝힌다.",
+        "aiAnalysisInputSha256": "0229701d449df4a42c9674c6a1dd86e4e9752f36fb440698609d32638d671404",
+        "aiPublicGuideTopic": "겹친 결과가 자리마다 세지거나 약해지는 현상을 다룬다",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          24
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 27,
+        "chapter": "4장 파동끼리 만나면",
+        "section": "4.2 서로 키우고 지우고",
+        "primaryConcepts": [
+          "간섭"
+        ],
+        "secondaryConcepts": [],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "두 파원의 동심원이 겹치는 지점을 이어 보강선과 상쇄선을 드러낸다. 경로차 표시를 함께 두어 무늬의 위치가 무엇으로 정해지는지 보인다.",
+        "aiAnalysisInputSha256": "451c4bb606f9919ed21ee8a7ba1f07ee70e0c0a32d03623830e38e242830bc6e",
+        "aiPublicGuideTopic": "두 곳에서 퍼진 물결이 만드는 무늬를 그림으로 보인다",
+        "estimatedReadingSeconds": 45,
+        "prerequisitePageNumbers": [
+          26
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 28,
+        "chapter": "4장 파동끼리 만나면",
+        "section": "4.3 제자리에 서는 파동",
+        "primaryConcepts": [
+          "정상파"
+        ],
+        "secondaryConcepts": [
+          "간섭"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "정상파를 서로 반대 방향으로 진행하는 두 파동의 중첩으로 설명하고 마디와 배를 정의한다. 마디 간격으로 파장을 측정하는 실용적 이점을 밝힌다.",
+        "aiAnalysisInputSha256": "35d947821e111909d3862f5f71ae0c083481e4f0b579c7d68787f738f799764c",
+        "aiPublicGuideTopic": "나아가지 않고 제자리에서 오르내리기만 하는 파동을 다룬다",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          26
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 29,
+        "chapter": "4장 파동끼리 만나면",
+        "section": "4.3 제자리에 서는 파동",
+        "primaryConcepts": [
+          "정상파"
+        ],
+        "secondaryConcepts": [],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "정상파의 마디와 배를 표시하고 마디 간격이 반 파장임을 보인다. 마디 수가 다른 두 모습을 같은 길이의 줄에 나란히 두어 허용 형태가 여럿임을 드러낸다.",
+        "aiAnalysisInputSha256": "456f847b7990e59eb4186aaa92fd50160bbb5a56efdc2a35fdf061b119269f0d",
+        "aiPublicGuideTopic": "움직이지 않는 자리와 크게 움직이는 자리가 번갈아 나타나는 모습을 보인다",
+        "estimatedReadingSeconds": 45,
+        "prerequisitePageNumbers": [
+          28
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 30,
+        "chapter": "4장 파동끼리 만나면",
+        "section": "4.4 맥놀이",
+        "primaryConcepts": [
+          "맥놀이"
+        ],
+        "secondaryConcepts": [
+          "간섭"
+        ],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "맥놀이를 진동수 차에 따른 느린 보강·상쇄 반복으로 설명하고 조율에 쓰이는 원리로 연결한다. 차이를 직접 재지 않고 영점을 찾는 측정 방식의 예다.",
+        "aiAnalysisInputSha256": "6495c3ccd4d07aa8c571e3d5fac04515ff8d8053c5241846b14df1acccdd82b0",
+        "aiPublicGuideTopic": "빠르기가 조금 다른 두 흔들림이 겹칠 때 생기는 주기적인 커짐과 작아짐을 다룬다",
+        "estimatedReadingSeconds": 65,
+        "prerequisitePageNumbers": [
+          26
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 31,
+        "chapter": "4장 파동끼리 만나면",
+        "section": "4.4 맥놀이",
+        "primaryConcepts": [
+          "맥놀이"
+        ],
+        "secondaryConcepts": [],
+        "contentRole": "CORE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "맥놀이 관측만으로는 진동수 차의 크기는 알아도 부호는 알 수 없음을 지적하고 개입을 통한 판별을 제시한다. 관측 기록에 조작 내용을 함께 남기는 습관과 연결한다.",
+        "aiAnalysisInputSha256": "e29174f06b54a0e1e0c74811cae18e0f6f1f2e392e860185032d58f5568abcfc",
+        "aiPublicGuideTopic": "겹친 결과만 보고 원래 흔들림을 되짚을 때의 한계를 다룬다",
+        "estimatedReadingSeconds": 65,
+        "prerequisitePageNumbers": [
+          30
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 32,
+        "chapter": "5장 실제로 재어 보기",
+        "section": "5.1 물결 수조에서",
+        "primaryConcepts": [
+          "관측 절차"
+        ],
+        "secondaryConcepts": [
+          "파동"
+        ],
+        "contentRole": "EXAMPLE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "물결 수조 실험의 준비와 조작 순서를 정리하고 변인을 하나씩 바꾸는 원칙을 제시한다. 이후 기록·정리 절차의 기준점이 되는 페이지다.",
+        "aiAnalysisInputSha256": "13ef8482db8ef4350ae37bfda130456e38b2bfbd16087a1ad0378b5f27502e02",
+        "aiPublicGuideTopic": "얕은 물에서 파동의 성질을 눈으로 확인하는 과정을 따라간다",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          8
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 33,
+        "chapter": "5장 실제로 재어 보기",
+        "section": "5.1 물결 수조에서",
+        "primaryConcepts": [
+          "관측 절차"
+        ],
+        "secondaryConcepts": [
+          "회절"
+        ],
+        "contentRole": "EXAMPLE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "반사·굴절·회절·간섭을 확인하는 배치를 순서대로 소개한다. 각 성질에 대응하는 최소한의 장치 구성을 보여 재현 가능한 관측으로 만든다.",
+        "aiAnalysisInputSha256": "6e4df1f8e0d49219d6b1183cc0b763375387f00c5215f5db19d2c73be8a7edfd",
+        "aiPublicGuideTopic": "판과 틈을 놓아 앞 장에서 다룬 성질을 차례로 확인한다",
+        "estimatedReadingSeconds": 65,
+        "prerequisitePageNumbers": [
+          32
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 34,
+        "chapter": "5장 실제로 재어 보기",
+        "section": "5.2 소리로 재는 방법",
+        "primaryConcepts": [
+          "측정 방법"
+        ],
+        "secondaryConcepts": [
+          "주파수"
+        ],
+        "contentRole": "EXAMPLE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "소리 측정을 위해 진동을 관찰 가능한 형태로 변환하는 방식과 맥놀이·공명관을 이용한 비교 측정을 소개한다. 직접 재기 어려운 양을 길이로 옮기는 전략이다.",
+        "aiAnalysisInputSha256": "1dc66fab32f7517d70213306af08e1c7437d733ca87976f4bec6f74c53d36e15",
+        "aiPublicGuideTopic": "눈에 보이지 않는 파동을 다른 방법으로 재는 과정을 다룬다",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          4
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 35,
+        "chapter": "5장 실제로 재어 보기",
+        "section": "5.2 소리로 재는 방법",
+        "primaryConcepts": [
+          "측정 방법"
+        ],
+        "secondaryConcepts": [],
+        "contentRole": "EXAMPLE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "측정 장치가 대상을 교란하는 문제와 감도·간섭의 상충을 설명한다. 사용 기구를 기록에 남겨야 비교가 가능하다는 결론으로 이어진다.",
+        "aiAnalysisInputSha256": "08490468920c88077ccfaa2b6a988c5cd740c918388eb2f007187a75a68524c8",
+        "aiPublicGuideTopic": "재는 도구가 재려는 것을 바꾸어 놓는 문제를 다룬다",
+        "estimatedReadingSeconds": 65,
+        "prerequisitePageNumbers": [
+          34
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 36,
+        "chapter": "5장 실제로 재어 보기",
+        "section": "5.3 그림으로 옮기기",
+        "primaryConcepts": [
+          "관측 기록"
+        ],
+        "secondaryConcepts": [
+          "관측 절차"
+        ],
+        "contentRole": "EXAMPLE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "관측 기록 양식을 조건·그림·변화표의 세 부분으로 구성해 보인다. 바꾼 것과 달라진 것을 짝지어 적는 칸이 변인 통제를 기록 단계에서 강제한다.",
+        "aiAnalysisInputSha256": "5a6eb2d61344639899dcdb334a4b2f948f39878d38d8e184583b497e74655486",
+        "aiPublicGuideTopic": "관측한 물결을 종이에 옮겨 적는 양식을 보인다",
+        "estimatedReadingSeconds": 45,
+        "prerequisitePageNumbers": [
+          32
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 37,
+        "chapter": "5장 실제로 재어 보기",
+        "section": "5.4 관측을 표로 옮기기",
+        "primaryConcepts": [
+          "관측 기록"
+        ],
+        "secondaryConcepts": [],
+        "contentRole": "EXAMPLE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "관측 결과를 조작-변화 짝으로 표에 정리하는 방법과 불변 사항·실패 기록을 남기는 이유를 설명한다. 비교 가능한 기록이 다음 관측의 설계를 돕는다.",
+        "aiAnalysisInputSha256": "3de01b221eb426f1bbfba31334362ea77fb4081417ca2b534f4223d6069e95b5",
+        "aiPublicGuideTopic": "그림으로 남긴 관측을 견줄 수 있는 형태로 정리한다",
+        "estimatedReadingSeconds": 65,
+        "prerequisitePageNumbers": [
+          32
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 38,
+        "chapter": "5장 실제로 재어 보기",
+        "section": "5.5 관측을 마무리하며",
+        "primaryConcepts": [
+          "관측 기록"
+        ],
+        "secondaryConcepts": [
+          "중첩"
+        ],
+        "contentRole": "EXAMPLE",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "단일 관측의 한계를 인정하면서 반복 비교의 가치를 강조한다. 최종 산출물이 수치가 아니라 재현 가능한 양식이라는 결론으로 5장을 닫는다.",
+        "aiAnalysisInputSha256": "41ed3957237c28156f96dc99a94db7fcdaf9d9b05d31d2f3a31bf0134d7b9d18",
+        "aiPublicGuideTopic": "한 차례의 관측에서 무엇을 얻었고 무엇은 얻지 못했는지 정리한다",
+        "estimatedReadingSeconds": 65,
+        "prerequisitePageNumbers": [
+          32
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 39,
+        "chapter": "6장 그림이 어긋나는 순간",
+        "section": "6.1 파동이 아닌 것",
+        "primaryConcepts": [
+          "파동의 오인"
+        ],
+        "secondaryConcepts": [
+          "파동"
+        ],
+        "contentRole": "COUNTERPOINT",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "전달되는 모습만으로 파동을 판정하는 오류를 지적하고 복원력의 유무를 기준으로 제시한다. 용어의 동일성이 성질의 동일성을 뜻하지 않음을 밝힌다.",
+        "aiAnalysisInputSha256": "35215b967ca22f33fe1e4c09a7b752afa84bfcb79d9b735156d7083b8fc02ba2",
+        "aiPublicGuideTopic": "파동처럼 보이지만 파동이 아닌 현상들을 가려낸다",
+        "estimatedReadingSeconds": 65,
+        "prerequisitePageNumbers": [
+          10
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 40,
+        "chapter": "6장 그림이 어긋나는 순간",
+        "section": "6.1 파동이 아닌 것",
+        "primaryConcepts": [
+          "파동의 오인"
+        ],
+        "secondaryConcepts": [
+          "매질"
+        ],
+        "contentRole": "COUNTERPOINT",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "이동 대상을 묻는 기준을 다시 적용해 파동과 흐름을 가른다. 두 현상이 겹칠 때 분리 측정이 필요함을 강조하며 판정 절차를 마무리한다.",
+        "aiAnalysisInputSha256": "cf24da242b105cbb6f7867c52ea3114393456b0991a34030cbe0be49c725099e",
+        "aiPublicGuideTopic": "무엇이 옮겨 가는지를 다시 묻는다",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          39
+        ],
+        "duplicateGroupKeys": [
+          "carrier-stays-put"
+        ]
+      },
+      {
+        "pageNumber": 41,
+        "chapter": "6장 그림이 어긋나는 순간",
+        "section": "6.2 잦아드는 흔들림",
+        "primaryConcepts": [
+          "감쇠"
+        ],
+        "secondaryConcepts": [
+          "진폭"
+        ],
+        "contentRole": "COUNTERPOINT",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "감쇠를 매질 내 손실로 정의하고 기하학적 퍼짐과 구분하는 방법을 제시한다. 손실이 큰 매질의 용도를 언급해 성질의 상대적 유용성을 밝힌다.",
+        "aiAnalysisInputSha256": "6b7754ef612b5f0828ccf64f2ac94355d4cf05c4530fe1fa290e1c7f922fba09",
+        "aiPublicGuideTopic": "실제 파동의 폭이 시간이 지나며 줄어드는 까닭을 다룬다",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          6
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 42,
+        "chapter": "6장 그림이 어긋나는 순간",
+        "section": "6.2 잦아드는 흔들림",
+        "primaryConcepts": [
+          "감쇠"
+        ],
+        "secondaryConcepts": [],
+        "contentRole": "COUNTERPOINT",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "감쇠를 무시할 수 있는 조건을 거리 비교로 판단하는 절차를 서술한다. 근사 조건을 기록에 남기는 태도를 측정 기록 원칙과 연결한다.",
+        "aiAnalysisInputSha256": "dc2b28c93174381e65f33715036746583d608cbeea38f7d9b261fe0d445e30e1",
+        "aiPublicGuideTopic": "잦아듦을 무시해도 되는 경우와 그렇지 않은 경우를 가른다",
+        "estimatedReadingSeconds": 65,
+        "prerequisitePageNumbers": [
+          41
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 43,
+        "chapter": "6장 그림이 어긋나는 순간",
+        "section": "6.3 매질이 고르지 않을 때",
+        "primaryConcepts": [
+          "불균일 매질"
+        ],
+        "secondaryConcepts": [
+          "굴절"
+        ],
+        "contentRole": "COUNTERPOINT",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "연속적으로 변하는 매질에서의 굴절을 다루고 직진 가정이 무너지는 사례를 든다. 매질 상태를 함께 측정해야 경로를 복원할 수 있음을 밝힌다.",
+        "aiAnalysisInputSha256": "29346986e0d9b0757059a4fbe3969f238e6e7d6f7a61b7f257ef3bce16b0a72f",
+        "aiPublicGuideTopic": "성질이 자리마다 다른 곳에서 파동이 휘어 가는 현상을 다룬다",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          18
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 44,
+        "chapter": "6장 그림이 어긋나는 순간",
+        "section": "6.3 매질이 고르지 않을 때",
+        "primaryConcepts": [
+          "불균일 매질"
+        ],
+        "secondaryConcepts": [],
+        "contentRole": "COUNTERPOINT",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "불균일 조건에서 통제 대신 기록으로 대응하는 관측 전략을 제시한다. 조건과 결과의 대응 축적이 통제 실험과 다른 종류의 정보를 준다는 점을 밝힌다.",
+        "aiAnalysisInputSha256": "d62045f10dd27ebe71003bc73826ed14e732ec1b40f65337f528dadadab5275c",
+        "aiPublicGuideTopic": "고르지 않은 곳에서 관측할 때의 요령을 다룬다",
+        "estimatedReadingSeconds": 65,
+        "prerequisitePageNumbers": [
+          43
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 45,
+        "chapter": "6장 그림이 어긋나는 순간",
+        "section": "6.4 그래도 그림을 쓰는 이유",
+        "primaryConcepts": [
+          "모형의 한계"
+        ],
+        "secondaryConcepts": [
+          "중첩"
+        ],
+        "contentRole": "COUNTERPOINT",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "모형의 유용성을 측정 대상을 지정하는 기능에서 찾고 적용 범위 명시로 한계를 다룬다. 모형 없는 관측이 비교 불가능해진다는 점을 근거로 든다.",
+        "aiAnalysisInputSha256": "6af91c5ca1a7943bba672bb3b0b803cec02322d95762569c3c7a22a00435e9a9",
+        "aiPublicGuideTopic": "실제와 어긋나는 데도 단순한 그림을 계속 쓰는 까닭을 다룬다",
+        "estimatedReadingSeconds": 65,
+        "prerequisitePageNumbers": [
+          24
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 46,
+        "chapter": "6장 그림이 어긋나는 순간",
+        "section": "6.4 그래도 그림을 쓰는 이유",
+        "primaryConcepts": [
+          "모형의 한계"
+        ],
+        "secondaryConcepts": [],
+        "contentRole": "COUNTERPOINT",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "모형의 적용 조건을 명시적으로 기록하는 실무 방법을 제시하고 조건이 다른 기록을 비교하지 않는 원칙을 덧붙인다. 불완전한 모형을 계속 쓰는 근거로 마무리한다.",
+        "aiAnalysisInputSha256": "637e11c93a63bf64aefce4bb0998c0e89d0e9404c6f857eb3a8b782c6d838cf2",
+        "aiPublicGuideTopic": "그림에 조건을 붙여 두는 방법을 다룬다",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          45
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 47,
+        "chapter": "7장 무엇을 그리고 무엇을 남기나",
+        "section": "7.1 순서대로 다시 보기",
+        "primaryConcepts": [
+          "파동"
+        ],
+        "secondaryConcepts": [
+          "간섭"
+        ],
+        "contentRole": "CONCLUSION",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "진동에서 파동, 상호작용, 중첩으로 이어지는 전개를 요약한다. 관측된 무늬를 소수의 양과 규칙으로 환원하는 것이 책의 목표였음을 밝힌다.",
+        "aiAnalysisInputSha256": "b1cb12c4a8b169ee7528cd1ac09bee1909665bcaa83e139c828157dec9012488",
+        "aiPublicGuideTopic": "제자리 흔들림에서 무늬까지 이어진 순서를 되짚는다",
+        "estimatedReadingSeconds": 65,
+        "prerequisitePageNumbers": [
+          26
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 48,
+        "chapter": "7장 무엇을 그리고 무엇을 남기나",
+        "section": "7.2 이 그림으로 답할 수 없는 것",
+        "primaryConcepts": [
+          "모형의 한계"
+        ],
+        "secondaryConcepts": [],
+        "contentRole": "CONCLUSION",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "발생 기원, 매질의 미시 구조, 매질 없는 전파를 다루지 않았음을 명시한다. 적용 범위를 좁혀 두는 마무리로 다음 학습의 경계를 표시한다.",
+        "aiAnalysisInputSha256": "cf1852d784eb5c6aa38bea53971eb30818deaecf54d764365312652f02c6ffba",
+        "aiPublicGuideTopic": "이 책의 방법이 다루지 못하는 물음을 적어 둔다",
+        "estimatedReadingSeconds": 65,
+        "prerequisitePageNumbers": [
+          45
+        ],
+        "duplicateGroupKeys": []
+      },
+      {
+        "pageNumber": 49,
+        "chapter": "7장 무엇을 그리고 무엇을 남기나",
+        "section": "7.3 다음 관측을 위한 질문",
+        "primaryConcepts": [
+          "관측 기록"
+        ],
+        "secondaryConcepts": [
+          "모형의 한계"
+        ],
+        "contentRole": "CONCLUSION",
+        "aiRouteCandidatePage": true,
+        "aiAnalysisText": "반복 관측에서 조건 동일성이 장치 정밀도보다 앞선다는 결론으로 책을 닫는다. 기록에 조건을 남겨야 재현이 가능하다는 점을 마지막 요구로 제시한다.",
+        "aiAnalysisInputSha256": "8bcb1f8f335bc89d8940e27dc63c9eef4f5c4bfc186ad10c7608d04aeedf47e4",
+        "aiPublicGuideTopic": "다음에 다시 볼 때 무엇을 같게 두어야 하는지 남긴다",
+        "estimatedReadingSeconds": 70,
+        "prerequisitePageNumbers": [
+          32
+        ],
+        "duplicateGroupKeys": []
+      }
+    ]
+  },
+  "evaluationCase": {
+    "caseId": "case-book-022",
+    "bookId": 22,
+    "purpose": "물결이 서로 만나면 잔잔한 줄과 크게 이는 줄이 번갈아 생기는데, 그 까닭을 흔들림에서부터 차근차근 이해하고 싶다",
+    "owned": false,
+    "maxAdditionalInk": 10,
+    "depth": null,
+    "activeRentalPageNumbers": [],
+    "requiredConcepts": [
+      "진동",
+      "파동",
+      "중첩",
+      "간섭",
+      "정상파"
+    ],
+    "helpfulConcepts": [
+      "주파수",
+      "파장",
+      "맥놀이",
+      "관측 절차"
+    ],
+    "requiredPrerequisites": [
+      {
+        "beforePageNumber": 2,
+        "afterPageNumber": 4
+      },
+      {
+        "beforePageNumber": 2,
+        "afterPageNumber": 8
+      },
+      {
+        "beforePageNumber": 4,
+        "afterPageNumber": 12
+      },
+      {
+        "beforePageNumber": 8,
+        "afterPageNumber": 12
+      },
+      {
+        "beforePageNumber": 8,
+        "afterPageNumber": 24
+      },
+      {
+        "beforePageNumber": 24,
+        "afterPageNumber": 26
+      },
+      {
+        "beforePageNumber": 26,
+        "afterPageNumber": 28
+      }
+    ],
+    "irrelevantPageNumbers": [
+      16,
+      17,
+      20,
+      21,
+      22,
+      23,
+      41,
+      42
+    ],
+    "duplicatePageGroups": [
+      [
+        11,
+        40
+      ]
+    ],
+    "referencePageNumbers": [
+      2,
+      4,
+      8,
+      12,
+      24,
+      26,
+      28
+    ],
+    "allowedAlternativePageNumbers": [
+      3,
+      5,
+      9,
+      13,
+      25,
+      27,
+      29,
+      33
+    ]
+  }
+}
