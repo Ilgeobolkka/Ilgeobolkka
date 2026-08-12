@@ -36,7 +36,8 @@ page_rental	500333
 ink_ledger	506333
 reader	1000
 book	100
-book_page	400'
+book_page	400
+library_entry	666'
 actual_counts=$(cat "$output_directory/counts.tsv")
 if [ "$actual_counts" != "$expected_counts" ]; then
     echo "history-heavy 행 수가 예상과 다릅니다." >&2
