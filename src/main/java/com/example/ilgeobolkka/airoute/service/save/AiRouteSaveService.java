@@ -137,6 +137,10 @@ public class AiRouteSaveService {
      *
      * <p>이 계산은 아무것도 바꾸지 않는다. 대여를 새로 만들거나 잉크를 미리 잡아 두지 않으며, 저장 자체도
      * 페이지 접근권한을 만들지 않는다.
+     *
+     * <p>항목마다 대여 조회가 나가고, 같은 transaction 에서 응답을 만드는 상세 조회가 같은 독자·페이지
+     * 조합을 한 번 더 돈다. 한 요청이 schema 상한인 item 72 개를 두 벌 조회하는 셈이다. 유계라 이번 범위
+     * 에서는 두었고, 일괄 조회는 {@code RentalService} 를 고쳐야 해서 상세 조회와 같은 별도 과제로 묶는다.
      */
     private int additionalInk(
             long readerId, long bookId, List<AiRouteGenerationItem> items, Instant now) {

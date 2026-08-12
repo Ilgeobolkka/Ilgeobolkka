@@ -99,9 +99,10 @@ public interface AiRouteGenerationRepository extends JpaRepository<AiRouteGenera
      * {@link #findByGenerationIdForUpdate} 로 먼저 잠그고 뒤에서 소유자를 확인하면, 남의
      * {@code generationId} 를 찍은 요청이 그사이 소유자의 저장을 기다리게 만들 수 있다.
      *
-     * <p>존재 확인 없이 잠그는 예외다. 없는 식별자에는 임의의 UUID 자리 하나에 gap lock 이 남지만, 저장
-     * 경로는 이 조회가 첫 잠금이고 그 뒤로는 자기가 만든 행과 자기 {@code (reader, book)} current 만
-     * 건드리므로 이 gap 을 쥔 채 도는 대기 고리가 만들어지지 않는다.
+     * <p>존재 확인 없이 잠그는 예외다. 저장은 {@code READ_COMMITTED} 로 열리고 이 격리 수준의 InnoDB 는
+     * 없는 식별자를 잠금 조회해도 gap lock 을 남기지 않으므로, 앞의 존재 확인이 막아야 할 교착 자체가 없다.
+     * 격리 수준과 무관하게도 이 조회는 저장 경로의 첫 잠금이고 그 뒤로는 자기가 만든 행과 자기
+     * {@code (reader, book)} current 만 건드려 대기 고리가 만들어지지 않는다.
      */
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query(
