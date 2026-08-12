@@ -39,11 +39,16 @@ public class AiRouteGenerationCleanupService {
     public static final String TIMEOUT_FAILURE_CODE = "AI_ROUTE_GENERATION_TIMEOUT";
 
     /**
-     * 한 스윕이 다룰 최대 건수. 계정당 하루 10회 제한은 계정 수를 제한하지 않으므로 전체 대상 수에
-     * 상한이 없다. 배치가 한동안 멈췄다 살아나면 backlog 를 한 transaction 에 담게 되어 메모리와
-     * {@code IN} 절 크기, 잠금 유지 시간이 함께 커진다. 나눠서 주기마다 조금씩 흘려보낸다.
+     * 한 번의 호출이 다룰 최대 건수. 계정당 하루 10회 제한은 계정 수를 제한하지 않으므로 전체 대상 수에
+     * 상한이 없다. 대상을 하나의 transaction 에 통째로 담으면 메모리와 {@code IN} 절 크기, 잠금 유지
+     * 시간이 대상 수를 따라 함께 커진다. 그래서 한 번의 호출은 이 건수로 짧게 끝낸다.
+     *
+     * <p>이 상한은 <b>호출 하나</b>의 크기만 정한다. 밀린 backlog 를 모두 비우는 책임은 호출자에게
+     * 있다. {@link com.example.ilgeobolkka.airoute.scheduler.AiRouteGenerationMaintenanceScheduler}
+     * 는 반환 건수가 이 상한과 같은 동안 같은 sweep 안에서 반복해 부른다. 상한보다 적게 돌아오면 그
+     * 순간 대상이 모두 처리된 것이므로 멈춘다.
      */
-    static final int BATCH_SIZE = 200;
+    public static final int BATCH_SIZE = 200;
 
     private static final Pageable BATCH = PageRequest.ofSize(BATCH_SIZE);
 
@@ -63,7 +68,7 @@ public class AiRouteGenerationCleanupService {
      * <p>그래서 오래 방치된 생성은 복구되자마자 이미 만료 상태이며, 같은 스윕의 {@link #removeExpired}
      * 가 바로 지운다.
      *
-     * <p>대상을 한 번에 잠근다. 건마다 잠금 조회를 돌리면 한 스윕이 상한만큼 쿼리를 낸다.
+     * <p>대상을 한 번에 잠근다. 건마다 잠금 조회를 돌리면 한 호출이 상한만큼 쿼리를 낸다.
      *
      * <p>잠근 뒤 상태를 다시 본다. 목록을 뽑은 시점과 잠그는 시점 사이에 호출자가 정상 완료했을 수
      * 있는데, 그때는 이미 결과가 있으므로 건너뛴다. 그사이 사라진 행은 잠금 결과에 아예 나오지 않는다.
@@ -71,7 +76,7 @@ public class AiRouteGenerationCleanupService {
      * 결과다. 어느 쪽도 오류가 아니다.
      *
      * <p>이 재확인이 막는 것은 잘못된 상태 덮어쓰기가 아니다. 그쪽은 Entity 의 전이 가드가 이미 막는다.
-     * 여기서 건너뛰지 않으면 그 가드가 예외를 올려 스윕 한 사이클이 통째로 롤백된다. 다음 주기에는 그
+     * 여기서 건너뛰지 않으면 그 가드가 예외를 올려 호출 한 번이 통째로 롤백된다. 다음 호출에는 그
      * 행이 조회 결과에서 빠지므로 저절로 정상화되지만, 그 사이 다른 행의 복구까지 밀린다.
      *
      * @return 실패로 되돌린 수

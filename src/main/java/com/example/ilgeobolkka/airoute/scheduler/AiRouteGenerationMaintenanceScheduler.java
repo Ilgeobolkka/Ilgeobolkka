@@ -1,6 +1,7 @@
 package com.example.ilgeobolkka.airoute.scheduler;
 
 import com.example.ilgeobolkka.airoute.service.generation.AiRouteGenerationCleanupService;
+import java.util.function.IntSupplier;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -43,6 +44,10 @@ public class AiRouteGenerationMaintenanceScheduler {
      * 복구되자마자 이미 만료 상태다. 정리를 나중에 두면 그런 행이 같은 주기에 사라진다. 순서를 뒤집으면
      * 다음 주기를 한 바퀴 더 기다린다.
      *
+     * <p>복구·정리 각각은 {@link #drain} 으로 이번 sweep 안에서 backlog 를 끝까지 비운다. 전역
+     * 사용자 수에 상한이 없어 한 주기의 대상 건수도 상한이 없는데, 호출을 한 번만 하고 끝내면 밀린
+     * 만큼 15분 보관 계약을 넘겨 임시 목적·결과·멱등 상태가 DB 에 계속 남는다.
+     *
      * <p>건수를 남기지 않으면 이 배치가 도는지 운영에서 확인할 방법이 없다. 아무 일도 없던 주기까지
      * 찍으면 1분마다 소음이 되므로 무언가 처리했을 때만 남긴다.
      *
@@ -54,11 +59,35 @@ public class AiRouteGenerationMaintenanceScheduler {
             fixedDelay = SWEEP_INTERVAL_MILLIS,
             initialDelayString = "${ai-route.maintenance-initial-delay-millis:0}")
     public void sweep() {
-        int recovered = cleanupService.recoverAbandoned();
-        int removed = cleanupService.removeExpired();
+        int recovered = drain(cleanupService::recoverAbandoned);
+        int removed = drain(cleanupService::removeExpired);
         if (recovered > 0 || removed > 0) {
             // 건수만 남긴다. 멱등 키·지문·목적은 어떤 형태로도 로그에 넣지 않는다.
             log.info("AI 경로 유지보수: 중단 복구 {}건, 만료 정리 {}건", recovered, removed);
         }
+    }
+
+    /**
+     * {@code batch} 한 번은 {@link AiRouteGenerationCleanupService#BATCH_SIZE} 건을 짧은 transaction
+     * 하나로 처리한다. 여기서는 그 짧은 호출을 그대로 두면서, 반환 건수가 상한과 같은 동안 — 즉 더
+     * 남았을 수 있는 동안 — 같은 sweep 안에서 반복해 부른다. 상한보다 적게 돌아오면 대상이 이미 모두
+     * 처리된 것이므로 멈춘다.
+     *
+     * <p>매 반복은 {@code cleanupService} 빈을 통해 나가므로 각자 새 transaction 으로 열린다. 이
+     * 클래스 안에서 반복하며 대상 하나를 여러 transaction 에 걸쳐 붙들지 않는다.
+     *
+     * <p>{@code recoverAbandoned} 에서는 이 판정이 느슨하다. 되돌린 수만 돌려주므로 경합으로 건너뛴
+     * 건이 있으면 대상이 남아 있어도 상한보다 적게 돌아와 일찍 멈춘다. 건너뛴 건은 이미 정상 완료된
+     * 것이라 다음 조회에서 빠지고, 남은 대상은 다음 주기가 가져간다. 만료 정리와 달리 보관 계약이
+     * 걸린 시각이 없어 한 주기를 더 기다려도 계약을 깨지 않는다.
+     */
+    private int drain(IntSupplier batch) {
+        int total = 0;
+        int processed;
+        do {
+            processed = batch.getAsInt();
+            total += processed;
+        } while (processed == AiRouteGenerationCleanupService.BATCH_SIZE);
+        return total;
     }
 }

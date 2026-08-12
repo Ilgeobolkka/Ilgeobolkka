@@ -3,8 +3,10 @@ package com.example.ilgeobolkka.airoute.scheduler;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.timeout;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import com.example.ilgeobolkka.airoute.service.generation.AiRouteGenerationCleanupService;
 import com.example.ilgeobolkka.global.config.SchedulingConfig;
@@ -54,6 +56,10 @@ class AiRouteGenerationMaintenanceSchedulerTest {
     /**
      * 복구를 먼저, 정리를 나중에 부른다. 순서가 뒤집히면 이번 주기에 복구된 생성이 만료 시각을 받기
      * 전에 정리를 지나쳐, 다음 주기까지 한 바퀴를 더 기다린다.
+     *
+     * <p>각 대상이 상한(200) 보다 적게 돌아오는 기본값(mock 은 {@code 0} 을 돌려준다) 이라 {@link
+     * #정리_대상이_상한을_넘으면_같은_sweep_안에서_반복해_모두_처리한다} 와 달리 각 메서드가 정확히 한
+     * 번씩만 불려야 한다.
      */
     @Test
     void 복구를_먼저_하고_정리를_나중에_한다() {
@@ -68,6 +74,32 @@ class AiRouteGenerationMaintenanceSchedulerTest {
                             순서.verify(cleanupService).recoverAbandoned();
                             순서.verify(cleanupService).removeExpired();
                             순서.verifyNoMoreInteractions();
+                        });
+    }
+
+    /**
+     * 대상이 상한을 넘으면 한 번의 호출로는 다 처리되지 않는다. 예전에는 그 남은 몫을 다음 주기(1분
+     * 뒤)로 미뤄, 밀린 만큼 15분 보관 계약을 넘겨 DB 에 남았다. 이제는 반환 건수가 상한과 같은 동안
+     * 같은 sweep 안에서 반복해, 상한보다 적게 돌아온 순간에만 멈춘다.
+     */
+    @Test
+    void 정리_대상이_상한을_넘으면_같은_sweep_안에서_반복해_모두_처리한다() {
+        schedulerContextRunner()
+                .run(
+                        context -> {
+                            AiRouteGenerationCleanupService cleanupService =
+                                    context.getBean(AiRouteGenerationCleanupService.class);
+                            int 상한 = AiRouteGenerationCleanupService.BATCH_SIZE;
+                            when(cleanupService.recoverAbandoned()).thenReturn(0);
+                            when(cleanupService.removeExpired())
+                                    .thenReturn(상한)
+                                    .thenReturn(상한)
+                                    .thenReturn(1);
+
+                            context.getBean(AiRouteGenerationMaintenanceScheduler.class).sweep();
+
+                            verify(cleanupService, times(1)).recoverAbandoned();
+                            verify(cleanupService, times(3)).removeExpired();
                         });
     }
 

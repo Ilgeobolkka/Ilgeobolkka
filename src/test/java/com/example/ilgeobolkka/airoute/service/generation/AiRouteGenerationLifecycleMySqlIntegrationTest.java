@@ -492,6 +492,23 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
     }
 
     /**
+     * 예전에는 스윕이 한 번의 호출로 상한만큼만 지우고 나머지를 다음 주기(1분 뒤)로 미뤄, 대상이
+     * 상한을 넘는 만큼 15분 보관 계약을 넘겨 DB 에 남았다. {@code sweep} 은 이제 반환 건수가 상한과
+     * 같은 동안 같은 sweep 안에서 반복해 부르므로, 대상이 상한을 넘어도 한 번의 스윕으로 모두
+     * 지워져야 한다.
+     */
+    @Test
+    void 정리_대상이_상한을_넘어도_한_스윕_안에서_모두_지운다() {
+        int 상한 = AiRouteGenerationCleanupService.BATCH_SIZE;
+        만료된_생성을_여러_개_넣는다(상한 + 1);
+        clock.set(STARTED_AT);
+
+        maintenanceScheduler.sweep();
+
+        assertEquals(0, 생성_수를_조회한다());
+    }
+
+    /**
      * 잠금 순서는 주석 세 군데가 유일한 방어였다. {@code removeExpired} 에서 두 줄만 바꿔도 모든 테스트가
      * 통과해 버리므로, 실제로 나간 SQL 순서를 단언한다. 교착을 재현하는 것보다 결정적이다.
      */
@@ -605,6 +622,22 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
         maintenanceScheduler.sweep();
 
         assertEquals(false, generationRepository.existsById(generationId));
+    }
+
+    /**
+     * 중단 복구도 정리와 같은 문제를 가지고 있었다: 대상이 상한(200) 을 넘으면 남은 몫이 다음 주기로
+     * 밀렸다. {@link #drain} 과 같은 방식으로 {@code sweep} 이 반복해 부르므로, 대상이 상한을 넘어도
+     * 한 번의 스윕에서 모두 복구되고 — 이미 만료 상태이므로 — 곧바로 지워져야 한다.
+     */
+    @Test
+    void 중단_복구_대상이_상한을_넘어도_한_스윕_안에서_모두_복구하고_지운다() {
+        int 상한 = AiRouteGenerationCleanupService.BATCH_SIZE;
+        중단된_GENERATING을_여러_개_넣는다(상한 + 1);
+        clock.set(STARTED_AT);
+
+        maintenanceScheduler.sweep();
+
+        assertEquals(0, 생성_수를_조회한다());
     }
 
     @Test
@@ -824,6 +857,29 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
                         '2026-08-05 00:00:00.000000',
                         '2026-08-05 00:00:00.000000',
                         '2026-08-05 00:15:00.000000')
+                """
+                        .formatted(READER_ID, BOOK_ID, CONTENT_VERSION, PURPOSE, BUDGET),
+                rows);
+    }
+
+    /**
+     * 아직 복구되지 않은 채 오래 멈춘 {@code GENERATING} 행을 한꺼번에 넣는다. 생성 시각은
+     * {@link #STARTED_AT} 보다 훨씬 앞이라, 스윕을 {@link #STARTED_AT} 기준으로 돌리면 전체 제한을
+     * 한참 넘긴 상태다.
+     */
+    private void 중단된_GENERATING을_여러_개_넣는다(int count) {
+        List<Object[]> rows = new ArrayList<>();
+        for (int index = 0; index < count; index++) {
+            rows.add(new Object[] {UUID.randomUUID().toString(), UUID.randomUUID().toString()});
+        }
+        jdbcTemplate.batchUpdate(
+                """
+                INSERT INTO ai_route_generation
+                    (generation_id, reader_id, book_id, content_version, idempotency_key,
+                     request_fingerprint, normalized_purpose, request_type, max_additional_ink,
+                     status, created_at)
+                VALUES (?, %d, %d, '%s', ?, REPEAT('a', 64), '%s', 'INK_BUDGET', %d,
+                        'GENERATING', '2026-08-05 00:00:00.000000')
                 """
                         .formatted(READER_ID, BOOK_ID, CONTENT_VERSION, PURPOSE, BUDGET),
                 rows);
