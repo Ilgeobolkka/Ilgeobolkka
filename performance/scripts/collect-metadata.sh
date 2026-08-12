@@ -3,8 +3,8 @@ set -eu
 
 . "$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)/common.sh"
 
-if [ "$#" -ne 4 ]; then
-    echo "사용법: $0 <output-directory> <scenario> <started-utc> <finished-utc>" >&2
+if [ "$#" -ne 5 ]; then
+    echo "사용법: $0 <output-directory> <scenario> <started-utc> <finished-utc> <dataset-metadata>" >&2
     exit 1
 fi
 
@@ -12,7 +12,9 @@ output_directory=$1
 scenario_name=$2
 started_utc=$3
 finished_utc=$4
+dataset_metadata_file=$5
 mkdir -p "$output_directory"
+dataset_metadata=$(jq -c '.' "$dataset_metadata_file")
 
 git_sha=$(git -C "$PERFORMANCE_ROOT" rev-parse HEAD)
 if [ -n "$(git -C "$PERFORMANCE_ROOT" status --porcelain)" ]; then
@@ -51,6 +53,7 @@ jq -n \
     --arg newReaderOffset "$new_reader_offset" \
     --arg newReaderVuStride "$new_reader_vu_stride" \
     --arg newReaderCycles "$new_reader_cycles" \
+    --argjson dataset "$dataset_metadata" \
     '{
       scenario: $scenario,
       observationMode: $observationMode,
@@ -99,15 +102,7 @@ jq -n \
           cycles: ($newReaderCycles | tonumber)
         } end)
       },
-      dataset: {
-        name: "mvp",
-        books: 100,
-        pages: 400,
-        readers: 1000,
-        newReaders: 334,
-        activeRentalReaders: 333,
-        ownedReaders: 333
-      },
+      dataset: $dataset,
       externalServices: {
         portOne: false,
         openAi: false
