@@ -8,7 +8,6 @@ import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -64,9 +63,12 @@ public class AiRouteGenerationCleanupService {
      * <p>그래서 오래 방치된 생성은 복구되자마자 이미 만료 상태이며, 같은 스윕의 {@link #removeExpired}
      * 가 바로 지운다.
      *
+     * <p>대상을 한 번에 잠근다. 건마다 잠금 조회를 돌리면 한 스윕이 상한만큼 쿼리를 낸다.
+     *
      * <p>잠근 뒤 상태를 다시 본다. 목록을 뽑은 시점과 잠그는 시점 사이에 호출자가 정상 완료했을 수
-     * 있는데, 그때는 이미 결과가 있으므로 건너뛴다. 반대로 복구가 이겼다면 호출자의 완료가
-     * {@code GENERATING} 이 아니라며 거부되는데 그것도 맞는 결과다. 어느 쪽도 오류가 아니다.
+     * 있는데, 그때는 이미 결과가 있으므로 건너뛴다. 그사이 사라진 행은 잠금 결과에 아예 나오지 않는다.
+     * 반대로 복구가 이겼다면 호출자의 완료가 {@code GENERATING} 이 아니라며 거부되는데 그것도 맞는
+     * 결과다. 어느 쪽도 오류가 아니다.
      *
      * <p>이 재확인이 막는 것은 잘못된 상태 덮어쓰기가 아니다. 그쪽은 Entity 의 전이 가드가 이미 막는다.
      * 여기서 건너뛰지 않으면 그 가드가 예외를 올려 스윕 한 사이클이 통째로 롤백된다. 다음 주기에는 그
@@ -79,17 +81,17 @@ public class AiRouteGenerationCleanupService {
         List<UUID> abandoned =
                 generationRepository.findAbandonedGenerationIds(
                         clock.instant().minus(GENERATION_TIME_LIMIT), BATCH);
+        if (abandoned.isEmpty()) {
+            return 0;
+        }
 
         int recovered = 0;
-        for (UUID generationId : abandoned) {
-            Optional<AiRouteGeneration> locked =
-                    generationRepository.findByGenerationIdForUpdate(generationId);
-            if (locked.isEmpty()
-                    || locked.get().getStatus() != AiRouteGenerationStatus.GENERATING) {
+        for (AiRouteGeneration generation :
+                generationRepository.lockAllByGenerationIdIn(abandoned)) {
+            if (generation.getStatus() != AiRouteGenerationStatus.GENERATING) {
                 continue;
             }
 
-            AiRouteGeneration generation = locked.get();
             Instant failedAt = generation.getCreatedAt().plus(GENERATION_TIME_LIMIT);
             generation.fail(
                     TIMEOUT_FAILURE_CODE,

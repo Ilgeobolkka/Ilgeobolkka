@@ -132,7 +132,8 @@ public interface AiRouteGenerationRepository extends JpaRepository<AiRouteGenera
             @Param("startedBefore") Instant startedBefore, Pageable batch);
 
     /**
-     * 정리 대상 생성 행을 한 번에 잠근다. 항목보다 <b>먼저</b> 잠그려고 둔다.
+     * 여러 생성 행을 한 번에 잠근다. 정리는 항목보다 <b>먼저</b> 잠그려고, 복구는 건마다 조회를 내지
+     * 않으려고 쓴다.
      *
      * <p>생성 시작 경로도 만료 행을 지울 때 생성 행을 먼저 잠그고 항목을 지운다. 정리 배치가 반대
      * 순서로 잡으면 같은 {@code generationId} 에 동시에 닿았을 때 교착하고, 그 예외는 시작 경로의 unique
