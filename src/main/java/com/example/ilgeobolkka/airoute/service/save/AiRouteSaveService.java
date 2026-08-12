@@ -15,10 +15,9 @@ import com.example.ilgeobolkka.airoute.repository.AiReadingRouteRepository;
 import com.example.ilgeobolkka.airoute.repository.AiRouteCurrentRepository;
 import com.example.ilgeobolkka.airoute.repository.AiRouteGenerationItemRepository;
 import com.example.ilgeobolkka.airoute.repository.AiRouteGenerationRepository;
+import com.example.ilgeobolkka.airoute.service.AiRouteAdditionalCostCalculator;
 import com.example.ilgeobolkka.airoute.service.generation.AiRouteGenerationLifecycleService;
 import com.example.ilgeobolkka.book.service.BookService;
-import com.example.ilgeobolkka.ownership.service.OwnershipService;
-import com.example.ilgeobolkka.rental.service.RentalService;
 import java.time.Clock;
 import java.time.Instant;
 import java.util.List;
@@ -49,8 +48,7 @@ public class AiRouteSaveService {
     private final AiRouteCurrentRepository currentRepository;
     private final AiRouteGenerationLifecycleService lifecycleService;
     private final BookService bookService;
-    private final OwnershipService ownershipService;
-    private final RentalService rentalService;
+    private final AiRouteAdditionalCostCalculator additionalCostCalculator;
     private final Clock clock;
 
     @Transactional(propagation = Propagation.MANDATORY)
@@ -116,6 +114,10 @@ public class AiRouteSaveService {
      * <p>소장 도서 요청({@code OWNED_DEPTH})에는 예산 열이 없다. 소장은 도서 전체를 덮고 취소되지 않아
      * 재계산 비용이 0 이므로 예산을 0 으로 본다. 소장이 사라져야만 거부에 닿는데 그런 전이가 없어
      * 콘텐츠 버전 검사와 같은 성격의 불변식 방어다.
+     *
+     * <p>판정은 {@link AiRouteAdditionalCostCalculator} 하나로 한다. 같은 요청이 응답을 만들 때 쓰는
+     * {@code additionalCostStatus} 와 규칙이 갈라지면, 예산 안이라 저장은 됐는데 그 응답의 항목은 유료로
+     * 나오는 조합이 생긴다. 저장 자체는 페이지 접근권한을 만들지 않으므로 이 계산도 아무것도 바꾸지 않는다.
      */
     private void requireEntitlementWithinBudget(
             AiRouteGeneration generation, List<AiRouteGenerationItem> items, Instant now) {
@@ -123,38 +125,16 @@ public class AiRouteSaveService {
                 generation.getRequestType() == AiRouteRequestType.INK_BUDGET
                         ? generation.getMaxAdditionalInk()
                         : 0;
+        int additionalInk =
+                additionalCostCalculator.additionalInk(
+                        generation.getReaderId(),
+                        generation.getBookId(),
+                        items.stream().map(AiRouteGenerationItem::getBookPageId).toList(),
+                        now);
 
-        if (additionalInk(generation.getReaderId(), generation.getBookId(), items, now) > budget) {
+        if (additionalInk > budget) {
             throw new AiRouteEntitlementChangedException(generation.getGenerationId());
         }
-    }
-
-    /**
-     * 권한 없는 페이지 수가 곧 추가 잉크다. 페이지 열기가 권한 없는 페이지에만 1 잉크를 쓰기 때문이다.
-     *
-     * <p>판정 순서와 기준은 저장 경로 상세의 {@code additionalCostStatus} 와 같다. 소장은 도서 단위라 한 번,
-     * 대여는 페이지 단위라 항목마다 확인한다.
-     *
-     * <p>이 계산은 아무것도 바꾸지 않는다. 대여를 새로 만들거나 잉크를 미리 잡아 두지 않으며, 저장 자체도
-     * 페이지 접근권한을 만들지 않는다.
-     *
-     * <p>항목마다 대여 조회가 나가고, 같은 transaction 에서 응답을 만드는 상세 조회가 같은 독자·페이지
-     * 조합을 한 번 더 돈다. 한 요청이 schema 상한인 item 72 개를 두 벌 조회하는 셈이다. 유계라 이번 범위
-     * 에서는 두었고, 일괄 조회는 {@code RentalService} 를 고쳐야 해서 상세 조회와 같은 별도 과제로 묶는다.
-     */
-    private int additionalInk(
-            long readerId, long bookId, List<AiRouteGenerationItem> items, Instant now) {
-        if (ownershipService.isOwned(readerId, bookId)) {
-            return 0;
-        }
-
-        return (int)
-                items.stream()
-                        .filter(item ->
-                                rentalService
-                                        .findActiveRental(readerId, item.getBookPageId(), now)
-                                        .isEmpty())
-                        .count();
     }
 
     /**
