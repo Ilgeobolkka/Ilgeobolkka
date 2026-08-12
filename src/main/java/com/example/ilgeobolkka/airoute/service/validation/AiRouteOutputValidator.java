@@ -162,8 +162,8 @@ public final class AiRouteOutputValidator {
             ModelRouteProposal proposal,
             Map<Integer, AiRouteCandidatePage> pagesByNumber,
             Set<Integer> allowedPageNumbers) {
-        if (proposal == null || proposal.items() == null || proposal.items().isEmpty()) {
-            throw fail(Failure.INVALID_ENUM);
+        if (proposal == null || proposal.items().isEmpty()) {
+            throw fail(Failure.EMPTY_PROPOSAL);
         }
 
         Set<Integer> seenPageNumbers = new HashSet<>();
