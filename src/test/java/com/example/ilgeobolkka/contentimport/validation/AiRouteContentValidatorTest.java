@@ -71,7 +71,8 @@ class AiRouteContentValidatorTest {
     @Test
     void 도서_한_권짜리_부분_집합도_권수_때문에_실패하지_않는다() {
         ValidatedAiRouteContent validated =
-                validator.validate(manifest(candidateBook()), emptyEvaluation(), fixtureRoot, POLICY);
+                validator.validate(
+                        manifest(candidateBook()), defaultEvaluation(), fixtureRoot, POLICY);
 
         assertEquals(1, validated.books().size());
         assertEquals(48, validated.books().getFirst().pages().size());
@@ -80,7 +81,8 @@ class AiRouteContentValidatorTest {
     @Test
     void 검증_결과의_페이지는_선수가_앞에_오는_순서다() {
         ValidatedAiRouteContent validated =
-                validator.validate(manifest(candidateBook()), emptyEvaluation(), fixtureRoot, POLICY);
+                validator.validate(
+                        manifest(candidateBook()), defaultEvaluation(), fixtureRoot, POLICY);
         ValidatedAiRouteContent.ValidatedBook book = validated.books().getFirst();
 
         List<Integer> order =
@@ -160,6 +162,21 @@ class AiRouteContentValidatorTest {
                                                 "OTHER_POLICY"))
                         .getMessage()
                         .contains("dataPolicyVersion"));
+    }
+
+    @Test
+    void embedding_모델과_차원이_지원_프로필과_다르면_실패한다() {
+        AiRouteContentManifest.Book book = candidateBook();
+        AiRouteContentManifest wrongModel = manifest(book, "다른-model", 1536);
+        AiRouteContentManifest wrongDimensions =
+                manifest(book, "text-embedding-3-small", 3072);
+
+        assertTrue(
+                fail(wrongModel, defaultEvaluation()).getMessage().contains("embeddingModel"));
+        assertTrue(
+                fail(wrongDimensions, defaultEvaluation())
+                        .getMessage()
+                        .contains("embeddingDimensions"));
     }
 
     @Test
@@ -269,6 +286,273 @@ class AiRouteContentValidatorTest {
                         .contains("irrelevantPageNumbers에 후보가 아닌 페이지"));
     }
 
+    @Test
+    void 평가의_정답과_무관_페이지가_겹치면_실패한다() {
+        AiRouteContentManifest manifest = manifest(candidateBook());
+
+        assertTrue(
+                fail(manifest, evaluationWith(List.of(2), List.of(), List.of(2)))
+                        .getMessage()
+                        .contains("정답과 무관 페이지가 겹칩니다"));
+    }
+
+    @Test
+    void 지원_도서마다_평가_케이스가_정확히_하나여야_한다() {
+        AiRouteContentManifest manifest = manifest(candidateBook());
+        AiRouteEvaluationDataset evaluation = defaultEvaluation();
+        AiRouteEvaluationDataset duplicate =
+                new AiRouteEvaluationDataset(
+                        "ai-route-v2",
+                        List.of(evaluation.cases().getFirst(), evaluation.cases().getFirst()));
+
+        assertTrue(
+                fail(manifest, emptyEvaluation())
+                        .getMessage()
+                        .contains("평가 케이스가 없습니다"));
+        assertTrue(
+                fail(manifest, duplicate)
+                        .getMessage()
+                        .contains("평가 케이스가 둘 이상"));
+    }
+
+    @Test
+    void 평가_개념이_도서_메타데이터에_없으면_실패한다() {
+        AiRouteContentManifest manifest = manifest(candidateBook());
+
+        assertTrue(
+                fail(
+                                manifest,
+                                evaluationWithAnswers(
+                                        List.of("없는 필수 개념"),
+                                        List.of(),
+                                        List.of(),
+                                        List.of()))
+                        .getMessage()
+                        .contains("requiredConcepts"));
+        assertTrue(
+                fail(
+                                manifest,
+                                evaluationWithAnswers(
+                                        List.of("개념 2"),
+                                        List.of("없는 도움 개념"),
+                                        List.of(),
+                                        List.of()))
+                        .getMessage()
+                        .contains("helpfulConcepts"));
+    }
+
+    @Test
+    void 필수_개념은_도서의_primary나_secondary에_존재하면_통과한다() {
+        AiRouteContentManifest.Page page = candidateBook().pages().get(1);
+        AiRouteContentManifest secondaryOnly =
+                manifestWithReplacedPage(
+                        2,
+                        copyPage(
+                                page,
+                                List.of("다른 필수 개념"),
+                                List.of("보조 전용 개념"),
+                                page.duplicateGroupKeys()));
+
+        validator.validate(
+                secondaryOnly,
+                evaluationWithAnswers(
+                        List.of("보조 전용 개념"),
+                        List.of(),
+                        List.of(),
+                        List.of()),
+                fixtureRoot,
+                POLICY);
+        validator.validate(
+                manifest(candidateBook()),
+                evaluationWithAnswers(
+                        List.of("개념 3"),
+                        List.of(),
+                        List.of(),
+                        List.of()),
+                fixtureRoot,
+                POLICY);
+    }
+
+    @Test
+    void 평가의_필수_선수_관계가_실제_DAG_간선이_아니면_실패한다() {
+        AiRouteContentManifest manifest = manifest(candidateBook());
+        AiRouteEvaluationDataset.RequiredPrerequisite notAnEdge =
+                new AiRouteEvaluationDataset.RequiredPrerequisite(2, 4);
+
+        assertTrue(
+                fail(
+                                manifest,
+                                evaluationWithAnswers(
+                                        List.of("개념 2"),
+                                        List.of(),
+                                        List.of(notAnEdge),
+                                        List.of()))
+                        .getMessage()
+                        .contains("실제 선수 간선이 아닙니다"));
+    }
+
+    @Test
+    void 필수_선수_관계는_정답_경로의_선수_폐쇄_전체여야_한다() {
+        AiRouteContentManifest manifest = manifest(candidateBook());
+        AiRouteEvaluationDataset.RequiredPrerequisite edge =
+                new AiRouteEvaluationDataset.RequiredPrerequisite(2, 3);
+        AiRouteEvaluationDataset.RequiredPrerequisite missingPage =
+                new AiRouteEvaluationDataset.RequiredPrerequisite(999, 2);
+
+        assertTrue(
+                fail(
+                                manifest,
+                                evaluationWithAnswers(
+                                        List.of("개념 3"),
+                                        List.of(),
+                                        List.of(edge),
+                                        List.of(),
+                                        List.of(3),
+                                        List.of(),
+                                        List.of()))
+                        .getMessage()
+                        .contains("선수 폐쇄"));
+        assertTrue(
+                fail(
+                                manifest,
+                                evaluationWithAnswers(
+                                        List.of("개념 3"),
+                                        List.of(),
+                                        List.of(),
+                                        List.of(),
+                                        List.of(2, 3),
+                                        List.of(),
+                                        List.of()))
+                        .getMessage()
+                        .contains("전체와 다릅니다"));
+        assertTrue(
+                fail(
+                                manifest,
+                                evaluationWithAnswers(
+                                        List.of("개념 2"),
+                                        List.of(),
+                                        List.of(edge),
+                                        List.of()))
+                        .getMessage()
+                        .contains("전체와 다릅니다"));
+        assertTrue(
+                fail(
+                                manifest,
+                                evaluationWithAnswers(
+                                        List.of("개념 2"),
+                                        List.of(),
+                                        List.of(missingPage),
+                                        List.of()))
+                        .getMessage()
+                        .contains("페이지가 도서에 없습니다"));
+        assertTrue(
+                fail(
+                                manifest,
+                                evaluationWithAnswers(
+                                        List.of("개념 3"),
+                                        List.of(),
+                                        List.of(edge, edge),
+                                        List.of(),
+                                        List.of(2, 3),
+                                        List.of(),
+                                        List.of()))
+                        .getMessage()
+                        .contains("중복됩니다"));
+        validator.validate(
+                manifest,
+                evaluationWithAnswers(
+                        List.of("개념 3"),
+                        List.of(),
+                        List.of(edge),
+                        List.of(),
+                        List.of(2, 3),
+                        List.of(),
+                        List.of()),
+                fixtureRoot,
+                POLICY);
+    }
+
+    @Test
+    void 평가의_중복_페이지_그룹이_manifest와_다르면_실패한다() {
+        AiRouteContentManifest manifest = manifest(candidateBook());
+
+        assertTrue(
+                fail(
+                                manifest,
+                                evaluationWithAnswers(
+                                        List.of("개념 2"),
+                                        List.of(),
+                                        List.of(),
+                                        List.of(List.of(2, 3))))
+                        .getMessage()
+                        .contains("duplicatePageGroups"));
+    }
+
+    @Test
+    void 중복_페이지_그룹은_두_페이지_이상이고_정답_경로에서는_하나만_고른다() {
+        AiRouteContentManifest singleton = manifestWithDuplicateGroup(List.of(2));
+        AiRouteContentManifest duplicatePair = manifestWithDuplicateGroup(List.of(2, 3));
+        AiRouteEvaluationDataset.RequiredPrerequisite edge =
+                new AiRouteEvaluationDataset.RequiredPrerequisite(2, 3);
+
+        assertTrue(
+                fail(singleton, emptyEvaluation())
+                        .getMessage()
+                        .contains("2페이지 이상"));
+        assertTrue(
+                fail(
+                                duplicatePair,
+                                evaluationWithAnswers(
+                                        List.of("개념 2"),
+                                        List.of(),
+                                        List.of(),
+                                        List.of(List.of(2))))
+                        .getMessage()
+                        .contains("그룹마다 2페이지 이상"));
+        assertTrue(
+                fail(
+                                duplicatePair,
+                                evaluationWithAnswers(
+                                        List.of("개념 2"),
+                                        List.of(),
+                                        List.of(),
+                                        List.of(List.of(2, 2))))
+                        .getMessage()
+                        .contains("같은 페이지가 중복됩니다"));
+        assertTrue(
+                fail(
+                                duplicatePair,
+                                evaluationWithAnswers(
+                                        List.of("개념 2"),
+                                        List.of(),
+                                        List.of(),
+                                        List.of(List.of(2, 3), List.of(3, 2))))
+                        .getMessage()
+                        .contains("같은 그룹이 중복됩니다"));
+        assertTrue(
+                fail(
+                                duplicatePair,
+                                evaluationWithAnswers(
+                                        List.of("개념 3"),
+                                        List.of(),
+                                        List.of(edge),
+                                        List.of(List.of(2, 3)),
+                                        List.of(2, 3),
+                                        List.of(),
+                                        List.of()))
+                        .getMessage()
+                        .contains("같은 중복 그룹 페이지"));
+        validator.validate(
+                duplicatePair,
+                evaluationWithAnswers(
+                        List.of("개념 2"),
+                        List.of(),
+                        List.of(),
+                        List.of(List.of(2, 3))),
+                fixtureRoot,
+                POLICY);
+    }
+
     private AiRouteContentValidationException fail(
             AiRouteContentManifest manifest, AiRouteEvaluationDataset evaluation) {
         return assertThrows(
@@ -297,17 +581,104 @@ class AiRouteContentValidatorTest {
                         pages));
     }
 
+    private AiRouteContentManifest manifestWithDuplicateGroup(List<Integer> pageNumbers) {
+        AiRouteContentManifest.Book book = candidateBook();
+        List<AiRouteContentManifest.Page> pages = new ArrayList<>(book.pages());
+        pages.replaceAll(
+                page ->
+                        pageNumbers.contains(page.pageNumber())
+                                ? copyPage(
+                                        page,
+                                        page.primaryConcepts(),
+                                        page.secondaryConcepts(),
+                                        List.of("같은 내용"))
+                                : page);
+        return manifest(
+                new AiRouteContentManifest.Book(
+                        book.bookId(),
+                        book.title(),
+                        book.pdfPath(),
+                        book.pdfSha256(),
+                        book.totalPageCount(),
+                        true,
+                        true,
+                        pages));
+    }
+
+    private AiRouteContentManifest.Page copyPage(
+            AiRouteContentManifest.Page page,
+            List<String> primaryConcepts,
+            List<String> secondaryConcepts,
+            List<String> duplicateGroupKeys) {
+        return new AiRouteContentManifest.Page(
+                page.pageNumber(),
+                page.chapter(),
+                page.section(),
+                primaryConcepts,
+                secondaryConcepts,
+                page.contentRole(),
+                page.aiRouteCandidatePage(),
+                page.aiAnalysisText(),
+                page.aiAnalysisInputSha256(),
+                page.aiPublicGuideTopic(),
+                page.estimatedReadingSeconds(),
+                page.prerequisitePageNumbers(),
+                duplicateGroupKeys);
+    }
+
     private AiRouteContentManifest manifest(AiRouteContentManifest.Book book) {
+        return manifest(book, "text-embedding-3-small", 1536);
+    }
+
+    private AiRouteContentManifest manifest(
+            AiRouteContentManifest.Book book, String embeddingModel, int embeddingDimensions) {
         return new AiRouteContentManifest(
-                "ai-route-v2", POLICY, "text-embedding-3-small", 1536, List.of(book));
+                "ai-route-v2", POLICY, embeddingModel, embeddingDimensions, List.of(book));
     }
 
     private AiRouteEvaluationDataset emptyEvaluation() {
         return new AiRouteEvaluationDataset("ai-route-v2", List.of());
     }
 
+    private AiRouteEvaluationDataset defaultEvaluation() {
+        return evaluationWith(List.of(2), List.of(), List.of());
+    }
+
     private AiRouteEvaluationDataset evaluationWith(
             List<Integer> reference, List<Integer> alternative, List<Integer> irrelevant) {
+        return evaluationWithAnswers(
+                List.of("개념 2"),
+                List.of(),
+                List.of(),
+                List.of(),
+                reference,
+                alternative,
+                irrelevant);
+    }
+
+    private AiRouteEvaluationDataset evaluationWithAnswers(
+            List<String> requiredConcepts,
+            List<String> helpfulConcepts,
+            List<AiRouteEvaluationDataset.RequiredPrerequisite> requiredPrerequisites,
+            List<List<Integer>> duplicatePageGroups) {
+        return evaluationWithAnswers(
+                requiredConcepts,
+                helpfulConcepts,
+                requiredPrerequisites,
+                duplicatePageGroups,
+                List.of(2),
+                List.of(),
+                List.of());
+    }
+
+    private AiRouteEvaluationDataset evaluationWithAnswers(
+            List<String> requiredConcepts,
+            List<String> helpfulConcepts,
+            List<AiRouteEvaluationDataset.RequiredPrerequisite> requiredPrerequisites,
+            List<List<Integer>> duplicatePageGroups,
+            List<Integer> reference,
+            List<Integer> alternative,
+            List<Integer> irrelevant) {
         return new AiRouteEvaluationDataset(
                 "ai-route-v2",
                 List.of(
@@ -319,11 +690,11 @@ class AiRouteContentValidatorTest {
                                 5,
                                 null,
                                 List.of(),
-                                List.of("개념 2"),
-                                List.of(),
-                                List.of(),
+                                requiredConcepts,
+                                helpfulConcepts,
+                                requiredPrerequisites,
                                 irrelevant,
-                                List.of(),
+                                duplicatePageGroups,
                                 reference,
                                 alternative)));
     }
