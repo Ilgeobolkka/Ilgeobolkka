@@ -27,7 +27,7 @@ import org.springframework.test.context.ContextConfiguration;
 class AiRouteSchemaMigrationTest {
 
     private static final MigrationVersion AI_ROUTE_MIGRATION_VERSION =
-            MigrationVersion.fromVersion("3");
+            MigrationVersion.fromVersion("4");
     private static final long READER_ID = 51_000L;
     private static final long SECOND_READER_ID = 51_001L;
     private static final long BOOK_ID = 52_000L;
@@ -57,7 +57,7 @@ class AiRouteSchemaMigrationTest {
     }
 
     @Test
-    void 빈_스키마에는_V1부터_V3까지_순서대로_적용된다() {
+    void 빈_스키마에는_V1부터_V4까지_순서대로_적용된다() {
         Flyway flyway = 새_Flyway를_생성한다(AI_ROUTE_MIGRATION_VERSION);
 
         try {
@@ -66,8 +66,8 @@ class AiRouteSchemaMigrationTest {
             int migrationCount = flyway.migrate().migrationsExecuted;
 
             assertAll(
-                    () -> assertEquals(3, migrationCount),
-                    () -> assertEquals(List.of("1", "2", "3"), 적용된_버전을_조회한다()),
+                    () -> assertEquals(4, migrationCount),
+                    () -> assertEquals(List.of("1", "2", "3", "4"), 적용된_버전을_조회한다()),
                     () -> assertEquals(7, AI_경로_테이블_수를_조회한다()));
         } finally {
             최신_스키마로_복구한다();
@@ -648,6 +648,11 @@ class AiRouteSchemaMigrationTest {
                 "INSUFFICIENT_BUDGET",
                 null,
                 4);
+        최종_소장_생성을_생성한다(
+                식별자를_생성한다(51_107),
+                식별자를_생성한다(1_107),
+                "INSUFFICIENT_DEPTH",
+                null);
         저장_상태_생성을_생성한다(
                 식별자를_생성한다(51_104),
                 식별자를_생성한다(1_104),
@@ -666,7 +671,7 @@ class AiRouteSchemaMigrationTest {
                 "CONSUMED",
                 null);
 
-        assertEquals(7, 행_수를_조회한다("ai_route_generation"));
+        assertEquals(8, 행_수를_조회한다("ai_route_generation"));
     }
 
     @Test
@@ -709,6 +714,26 @@ class AiRouteSchemaMigrationTest {
                                                 "INSUFFICIENT_BUDGET",
                                                 null,
                                                 3)),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        최종_생성을_생성한다(
+                                                식별자를_생성한다(51_116),
+                                                식별자를_생성한다(1_116),
+                                                "NO_ROUTE",
+                                                "INSUFFICIENT_DEPTH",
+                                                null,
+                                                null)),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        최종_소장_생성을_생성한다(
+                                                식별자를_생성한다(51_117),
+                                                식별자를_생성한다(1_117),
+                                                "INSUFFICIENT_DEPTH",
+                                                1)),
                 () ->
                         assertThrows(
                                 DataAccessException.class,
@@ -1213,6 +1238,32 @@ class AiRouteSchemaMigrationTest {
                 noRouteReason,
                 minimumRequiredInk,
                 failureCode);
+    }
+
+    private void 최종_소장_생성을_생성한다(
+            String generationId,
+            String idempotencyKey,
+            String noRouteReason,
+            Integer minimumRequiredInk) {
+        jdbcTemplate.update(
+                """
+                INSERT INTO ai_route_generation
+                    (generation_id, reader_id, book_id, content_version,
+                     idempotency_key, request_fingerprint, normalized_purpose,
+                     request_type, depth, status, no_route_reason,
+                     minimum_required_ink, created_at, completed_at, expires_at)
+                VALUES (?, ?, ?, 'initial-v1', ?, ?, '테스트 목적',
+                        'OWNED_DEPTH', 'QUICK', 'NO_ROUTE', ?, ?,
+                        '2026-08-07 00:00:00.000000',
+                        '2026-08-07 00:00:01.000000', '2026-08-07 00:10:01.000000')
+                """,
+                generationId,
+                READER_ID,
+                BOOK_ID,
+                idempotencyKey,
+                "a".repeat(64),
+                noRouteReason,
+                minimumRequiredInk);
     }
 
     private void 저장_상태_생성을_생성한다(

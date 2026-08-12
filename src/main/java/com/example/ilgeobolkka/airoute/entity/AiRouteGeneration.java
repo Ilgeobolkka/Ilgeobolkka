@@ -179,14 +179,26 @@ public class AiRouteGeneration {
         if (reason == null) {
             throw new IllegalArgumentException("경로 없음 사유는 필수입니다.");
         }
-        if (reason == AiRouteNoRouteReason.NO_RELEVANT_PAGES && minimumRequiredInk != null) {
-            throw new IllegalArgumentException("관련 페이지 없음 결과에는 최소 잉크가 없어야 합니다.");
-        }
-        if (reason == AiRouteNoRouteReason.INSUFFICIENT_BUDGET
-                && (minimumRequiredInk == null
+        switch (reason) {
+            case NO_RELEVANT_PAGES -> {
+                if (minimumRequiredInk != null) {
+                    throw new IllegalArgumentException("관련 페이지 없음 결과에는 최소 잉크가 없어야 합니다.");
+                }
+            }
+            case INSUFFICIENT_BUDGET -> {
+                if (minimumRequiredInk == null
+                        || requestType != AiRouteRequestType.INK_BUDGET
                         || maxAdditionalInk == null
-                        || minimumRequiredInk <= maxAdditionalInk)) {
-            throw new IllegalArgumentException("예산 부족 결과에는 예산보다 큰 최소 잉크가 필요합니다.");
+                        || minimumRequiredInk <= maxAdditionalInk) {
+                    throw new IllegalArgumentException("예산 부족 결과에는 예산보다 큰 최소 잉크가 필요합니다.");
+                }
+            }
+            case INSUFFICIENT_DEPTH -> {
+                if (minimumRequiredInk != null
+                        || requestType != AiRouteRequestType.OWNED_DEPTH) {
+                    throw new IllegalArgumentException("깊이 부족 결과에는 소장 깊이 요청이 필요합니다.");
+                }
+            }
         }
 
         setCompletionTimes(completedAt, expiresAt);

@@ -302,7 +302,10 @@ class AiRouteEntityMappingMySqlIntegrationTest {
                                 이름을_조회한다(AiRouteGenerationStatus.values())),
                 () ->
                         assertEquals(
-                                List.of("NO_RELEVANT_PAGES", "INSUFFICIENT_BUDGET"),
+                                List.of(
+                                        "NO_RELEVANT_PAGES",
+                                        "INSUFFICIENT_BUDGET",
+                                        "INSUFFICIENT_DEPTH"),
                                 이름을_조회한다(AiRouteNoRouteReason.values())),
                 () ->
                         assertEquals(
@@ -656,6 +659,9 @@ class AiRouteEntityMappingMySqlIntegrationTest {
         AiRouteGeneration insufficientBudget = 잉크_예산_생성을_시작한다();
         insufficientBudget.completeNoRoute(
                 AiRouteNoRouteReason.INSUFFICIENT_BUDGET, 4, COMPLETED_AT, EXPIRES_AT);
+        AiRouteGeneration insufficientDepth = 소장_깊이_생성을_시작한다();
+        insufficientDepth.completeNoRoute(
+                AiRouteNoRouteReason.INSUFFICIENT_DEPTH, null, COMPLETED_AT, EXPIRES_AT);
         AiRouteGeneration failed = 잉크_예산_생성을_시작한다();
         failed.fail("AI_ROUTE_PROVIDER_ERROR", COMPLETED_AT, EXPIRES_AT);
         AiReadingRoute route =
@@ -699,6 +705,11 @@ class AiRouteEntityMappingMySqlIntegrationTest {
                                 AiRouteNoRouteReason.INSUFFICIENT_BUDGET,
                                 insufficientBudget.getNoRouteReason()),
                 () -> assertEquals(4, insufficientBudget.getMinimumRequiredInk()),
+                () ->
+                        assertEquals(
+                                AiRouteNoRouteReason.INSUFFICIENT_DEPTH,
+                                insufficientDepth.getNoRouteReason()),
+                () -> assertNull(insufficientDepth.getMinimumRequiredInk()),
                 () -> assertEquals(AiRouteGenerationStatus.FAILED, failed.getStatus()),
                 () -> assertEquals("AI_ROUTE_PROVIDER_ERROR", failed.getFailureCode()),
                 () -> assertEquals(AiReadingRouteFeedback.HELPFUL, route.getFeedback()),
@@ -713,6 +724,16 @@ class AiRouteEntityMappingMySqlIntegrationTest {
                                                 .completeNoRoute(
                                                         AiRouteNoRouteReason.INSUFFICIENT_BUDGET,
                                                         3,
+                                                        COMPLETED_AT,
+                                                        EXPIRES_AT)),
+                () ->
+                        assertThrows(
+                                IllegalArgumentException.class,
+                                () ->
+                                        잉크_예산_생성을_시작한다()
+                                                .completeNoRoute(
+                                                        AiRouteNoRouteReason.INSUFFICIENT_DEPTH,
+                                                        null,
                                                         COMPLETED_AT,
                                                         EXPIRES_AT)),
                 () ->
@@ -964,6 +985,17 @@ class AiRouteEntityMappingMySqlIntegrationTest {
                 "a".repeat(64),
                 AiRouteGenerationCommand.forInkBudget(
                         BOOK_ID, "ai-route-v2", "목적", 3, 3),
+                CREATED_AT);
+    }
+
+    private AiRouteGeneration 소장_깊이_생성을_시작한다() {
+        return AiRouteGeneration.start(
+                UUID.randomUUID(),
+                READER_ID,
+                UUID.randomUUID(),
+                "a".repeat(64),
+                AiRouteGenerationCommand.forOwnedDepth(
+                        BOOK_ID, "ai-route-v2", "목적", AiRouteDepth.QUICK),
                 CREATED_AT);
     }
 

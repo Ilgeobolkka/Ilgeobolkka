@@ -46,6 +46,7 @@ public final class AiRouteOutputValidator {
 
         List<ModelRouteItem> proposalItems = requireSemanticItems(
                 proposal, pagesByNumber, allowedPageNumbers);
+        requireCandidateIncluded(proposalItems, closureByCandidate.keySet());
         Map<Integer, Integer> positionByPageNumber = positionsOf(proposalItems);
         requirePrerequisitesBeforeDependents(
                 proposalItems, positionByPageNumber, pagesByNumber, closureMemo);
@@ -187,6 +188,16 @@ public final class AiRouteOutputValidator {
         }
 
         return proposal.items();
+    }
+
+    private void requireCandidateIncluded(
+            List<ModelRouteItem> items, Set<Integer> candidatePageNumbers) {
+        boolean candidateIncluded = items.stream()
+                .map(ModelRouteItem::pageNumber)
+                .anyMatch(candidatePageNumbers::contains);
+        if (!candidateIncluded) {
+            throw fail(Failure.MISSING_CANDIDATE);
+        }
     }
 
     private Map<Integer, Integer> positionsOf(List<ModelRouteItem> items) {

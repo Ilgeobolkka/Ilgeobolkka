@@ -106,8 +106,22 @@ class AiRouteOutputValidatorTest {
                 () -> assertTrue(Failure.DUPLICATE_PAGE.retryable()),
                 () -> assertTrue(Failure.MISSING_PREREQUISITE.retryable()),
                 () -> assertTrue(Failure.INVALID_PREREQUISITE_ORDER.retryable()),
+                () -> assertTrue(Failure.MISSING_CANDIDATE.retryable()),
                 () -> assertTrue(Failure.EMPTY_PROPOSAL.retryable()),
                 () -> assertTrue(Failure.INVALID_ENUM.retryable()));
+    }
+
+    @Test
+    void 검색_후보_없이_선수_페이지만_제안하면_전체_거부한다() {
+        AiRouteCandidatePage prerequisite = page(5, List.of());
+        AiRouteCandidatePage candidatePage = page(10, List.of(5));
+
+        assertFailure(
+                Failure.MISSING_CANDIDATE,
+                () -> validate(
+                        List.of(prerequisite, candidatePage),
+                        List.of(candidate(candidatePage)),
+                        proposal(item(5, false))));
     }
 
     @Test

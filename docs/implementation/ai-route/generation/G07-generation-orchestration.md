@@ -63,7 +63,7 @@
 
 ## 테스트
 
-- NEW 정상 ROUTE·`INSUFFICIENT_BUDGET`은 Responses 1회,
+- NEW 정상 ROUTE·`INSUFFICIENT_BUDGET`·`INSUFFICIENT_DEPTH`는 Responses 1회,
   `NO_RELEVANT_PAGES`와 기존 key replay는 Responses 0회
 - 첫 malformed/semantic invalid→정상과 두 번 invalid에서 Responses 호출 수 2회,
   두 호출의 후보 순서·graph·model·candidate/prompt/schema version 동일성
