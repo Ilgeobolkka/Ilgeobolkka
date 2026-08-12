@@ -6,7 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.example.ilgeobolkka.airoute.controller.AiRouteQueryController;
+import com.example.ilgeobolkka.airoute.controller.AiRouteSaveController;
 import com.example.ilgeobolkka.airoute.facade.AiRouteQueryFacade;
+import com.example.ilgeobolkka.airoute.facade.AiRouteSaveFacade;
 import com.example.ilgeobolkka.infra.portone.PortOnePaymentGateway;
 import com.example.ilgeobolkka.ink.controller.InkPurchaseController;
 import com.example.ilgeobolkka.ink.facade.InkPurchaseFacade;
@@ -99,13 +101,19 @@ class IlgeobolkkaApplicationTests {
     // 조건부로 등록하는 빈이라 조건이 꺼진 서버에서 실제로 빠지는지 확인한다. 결제 단언과 한 메서드에 섞으면
     // 실패 메시지가 원인을 잘못 가리키므로 나누되, 같은 클래스라 컨텍스트는 그대로 재사용한다.
     @Test
-    void AI_경로를_활성화하지_않으면_저장_경로_조회_API를_노출하지_않는다() {
+    void AI_경로를_활성화하지_않으면_저장_경로_API를_노출하지_않는다() {
         assertAll(
                 () -> assertTrue(applicationContext
                         .getBeansOfType(AiRouteQueryController.class)
                         .isEmpty()),
                 () -> assertTrue(applicationContext
                         .getBeansOfType(AiRouteQueryFacade.class)
+                        .isEmpty()),
+                () -> assertTrue(applicationContext
+                        .getBeansOfType(AiRouteSaveController.class)
+                        .isEmpty()),
+                () -> assertTrue(applicationContext
+                        .getBeansOfType(AiRouteSaveFacade.class)
                         .isEmpty()));
     }
 }
