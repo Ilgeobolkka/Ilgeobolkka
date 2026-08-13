@@ -346,16 +346,77 @@ class ContentBatchConverterTest {
     @Test
     void 허용_목록에_있는_다른_Poppler_버전으로도_변환한다() throws IOException {
         Path manifestPath = createManifest();
+        Path outputRoot = tempDirectory.resolve("output");
         var pdfTool = new FakePdfTool();
         pdfTool.pdftotextVersion = "26.08.0";
+        pdfTool.pdftoppmVersion = "26.08.0";
+        var converter =
+                new ContentBatchConverter(manifestPath, outputRoot, objectMapper, pdfTool);
+
+        ContentBatch batch = converter.convert();
+
+        assertEquals(400, batch.pages().size());
+        ContentResultManifest resultManifest = readResultManifest(outputRoot, batch);
+        assertEquals("26.08.0", resultManifest.pdftotextVersion());
+        assertEquals("26.08.0", resultManifest.pdftoppmVersion());
+    }
+
+    @Test
+    void pdftotext와_pdftoppm_버전이_다르면_변환을_거부한다() throws IOException {
+        Path manifestPath = createManifest();
+        var pdfTool = new FakePdfTool();
+        pdfTool.pdftotextVersion = "26.05.0";
         pdfTool.pdftoppmVersion = "26.08.0";
         var converter =
                 new ContentBatchConverter(
                         manifestPath, tempDirectory.resolve("output"), objectMapper, pdfTool);
 
-        ContentBatch batch = converter.convert();
+        assertThrows(IllegalStateException.class, converter::convert);
+        assertEquals(0, pdfTool.extractCount);
+    }
 
-        assertEquals(400, batch.pages().size());
+    /** 로컬 26.08.0과 CI 26.05.0이 같은 배치 디렉터리를 두고 부딪히는 경우다. */
+    @Test
+    void 허용_목록의_다른_버전으로_다시_변환해도_같은_배치_디렉터리를_재사용한다() throws IOException {
+        Path manifestPath = createManifest();
+        Path outputRoot = tempDirectory.resolve("output");
+        var pdfTool = new FakePdfTool();
+        var converter =
+                new ContentBatchConverter(manifestPath, outputRoot, objectMapper, pdfTool);
+        ContentBatch first = converter.convert();
+
+        pdfTool.pdftotextVersion = "26.08.0";
+        pdfTool.pdftoppmVersion = "26.08.0";
+        ContentBatch second = converter.convert();
+
+        assertEquals(first.manifestSha256(), second.manifestSha256());
+        assertEquals(
+                1,
+                Files.list(outputRoot)
+                        .filter(path -> !path.getFileName().toString().startsWith("."))
+                        .count());
+        // 재사용이므로 먼저 게시한 배치의 기록을 그대로 둔다.
+        assertEquals("26.05.0", readResultManifest(outputRoot, second).pdftoppmVersion());
+    }
+
+    @Test
+    void 기존_배치가_허용_목록_밖_버전으로_기록돼_있으면_재사용하지_않는다() throws IOException {
+        Path manifestPath = createManifest();
+        Path outputRoot = tempDirectory.resolve("output");
+        var converter =
+                new ContentBatchConverter(manifestPath, outputRoot, objectMapper, new FakePdfTool());
+        ContentBatch batch = converter.convert();
+        Path resultPath = outputRoot.resolve(batch.manifestSha256()).resolve("manifest.json");
+        Files.writeString(
+                resultPath, Files.readString(resultPath).replace("26.05.0", "25.12.0"));
+
+        assertThrows(IllegalStateException.class, converter::convert);
+    }
+
+    private ContentResultManifest readResultManifest(Path outputRoot, ContentBatch batch) {
+        return objectMapper.readValue(
+                outputRoot.resolve(batch.manifestSha256()).resolve("manifest.json").toFile(),
+                ContentResultManifest.class);
     }
 
     private Path createManifest() throws IOException {
