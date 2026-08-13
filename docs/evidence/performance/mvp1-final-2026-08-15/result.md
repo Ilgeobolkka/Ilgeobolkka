@@ -3,6 +3,7 @@
 ## 최종 판정
 
 - 단계 결과: **통과**
+- 진행 상태: **5단계 완료·6단계 대기**
 - 정확성·잠정 품질 게이트: **통과**
 - 성능 목표: **기준선 충족으로 단순 구성 유지**
 - 기준 Git SHA: `f3a62809099ba660ce980b006d71c833bbd849fa`
@@ -69,39 +70,88 @@ DB 공통 불변식은 모두 0이어서 좋은 지연값만 골라 채택하지
 사실이며 브라우저·동시성·외부 서비스 수용 검증을 대신하지 않는다. PortOne·OpenAI는 성능 프로필에서
 비활성화했다.
 
-## 재현 명령 묶음
+## 재현 명령
 
-비밀값은 Git 제외 `.env`에 두고 아래 명령은 프로젝트 루트에서 실행한다. Average·Peak의 각 회차는
-`reset-mvp.sh`, `start-app.sh`, Smoke, Warm-up, 본 부하 순서를 반복하며 신규 독자 pool offset은 겹치지
-않게 실행 metadata에 기록한다.
+비밀값은 Git 제외 `.env`에 두고 아래 명령은 프로젝트 루트의 Bash에서 실행한다. 각 정식 실행은 앱을
+중지하고 `mvp` 데이터와 새 앱을 복원해 앞 실행의 대여·세션 상태를 제거한다. Smoke·Warm-up·본 부하는
+실제 유효 실행과 같은 신규 독자 pool 값을 사용하고, 본 부하 뒤에는 SQL 불변식을 검증한다.
 
 ```bash
 ./gradlew bootJar
 ./performance/scripts/recreate-environment.sh
 ./performance/scripts/reset-mvp.sh
 ./performance/scripts/generate-history-heavy.sh
+
+run_final_series() {
+    local series=$1
+    local scenario=$2
+
+    for repetition in 1 2 3; do
+        ./performance/scripts/stop-app.sh
+        ./performance/scripts/reset-mvp.sh
+        ./performance/scripts/start-app.sh
+        PERF_NEW_READER_OFFSET=0 PERF_NEW_READER_VU_STRIDE=1 PERF_NEW_READER_CYCLES=1 \
+            PERFORMANCE_RUN_LABEL="final-$series-r$repetition-smoke" \
+            ./performance/scripts/run-k6.sh smoke
+        PERF_NEW_READER_OFFSET=1 PERF_NEW_READER_VU_STRIDE=16 PERF_NEW_READER_CYCLES=4 \
+            PERFORMANCE_RUN_LABEL="final-$series-r$repetition-warm-up" \
+            ./performance/scripts/run-k6.sh warm-up
+        PERF_NEW_READER_OFFSET=65 PERF_NEW_READER_VU_STRIDE=50 PERF_NEW_READER_CYCLES=5 \
+            PERFORMANCE_RUN_LABEL="final-$series-r$repetition" \
+            ./performance/scripts/run-k6.sh "$scenario"
+        ./performance/scripts/verify-invariants.sh
+    done
+}
+
+run_final_load() {
+    local scenario=$1
+    local label=$2
+    local offset=$3
+    local stride=$4
+    local cycles=$5
+
+    ./performance/scripts/stop-app.sh
+    ./performance/scripts/reset-mvp.sh
+    ./performance/scripts/start-app.sh
+    PERF_NEW_READER_OFFSET=0 PERF_NEW_READER_VU_STRIDE=1 PERF_NEW_READER_CYCLES=1 \
+        PERFORMANCE_RUN_LABEL="$label-smoke" ./performance/scripts/run-k6.sh smoke
+    PERF_NEW_READER_OFFSET="$offset" PERF_NEW_READER_VU_STRIDE="$stride" \
+        PERF_NEW_READER_CYCLES="$cycles" PERFORMANCE_RUN_LABEL="$label" \
+        ./performance/scripts/run-k6.sh "$scenario"
+    ./performance/scripts/verify-invariants.sh
+}
+
+run_final_series average average-load
+run_final_series peak peak-load
+run_final_load stress final-stress 65 7 37
+run_final_load spike final-spike-rerun 0 20 16
+run_final_load soak final-soak-rerun 0 24 13
+
+for contention_case in same-page different-pages different-readers session; do
+    ./performance/scripts/stop-app.sh
+    ./performance/scripts/reset-mvp.sh
+    ./performance/scripts/start-app.sh
+    CONTENTION_CASE="$contention_case" \
+        PERFORMANCE_RUN_LABEL="final-contention-$contention_case" \
+        ./performance/scripts/run-k6.sh contention
+    ./performance/scripts/verify-invariants.sh "$contention_case"
+done
+
+./performance/scripts/stop-app.sh
 ./performance/scripts/reset-mvp.sh
 ./performance/scripts/start-app.sh
-PERFORMANCE_RUN_LABEL=final-smoke ./performance/scripts/run-k6.sh smoke
-PERFORMANCE_RUN_LABEL=final-warm-up ./performance/scripts/run-k6.sh warm-up
-PERFORMANCE_RUN_LABEL=final-average ./performance/scripts/run-k6.sh average-load
-PERFORMANCE_RUN_LABEL=final-peak ./performance/scripts/run-k6.sh peak-load
-PERFORMANCE_RUN_LABEL=final-stress ./performance/scripts/run-k6.sh stress
-PERFORMANCE_RUN_LABEL=final-spike ./performance/scripts/run-k6.sh spike
-PERF_NEW_READER_VU_STRIDE=24 PERF_NEW_READER_CYCLES=13 PERFORMANCE_RUN_LABEL=final-soak ./performance/scripts/run-k6.sh soak
-CONTENTION_CASE=same-page PERFORMANCE_RUN_LABEL=final-contention-same-page ./performance/scripts/run-k6.sh contention
-CONTENTION_CASE=different-pages PERFORMANCE_RUN_LABEL=final-contention-different-pages ./performance/scripts/run-k6.sh contention
-CONTENTION_CASE=different-readers PERFORMANCE_RUN_LABEL=final-contention-different-readers ./performance/scripts/run-k6.sh contention
-CONTENTION_CASE=session PERFORMANCE_RUN_LABEL=final-contention-session ./performance/scripts/run-k6.sh contention
 PERFORMANCE_RUN_LABEL=final-browser-cache ./performance/scripts/run-k6.sh browser-cache
+./performance/scripts/verify-invariants.sh
+
 docker compose up -d --wait
 ./gradlew test --rerun-tasks
 ./gradlew check
 ./gradlew build
 ```
 
-실제 고정 pool offset·stride·cycles, 시작·종료 UTC, image, JAR, Git·dirty 상태는 각 원시
-`metadata.json`에 있다. 원시 위치와 집계 SHA-256은 [artifact-manifest.md](./artifact-manifest.md)에서
+위 명령은 유효한 재실행의 label과 고정 pool 값을 사용한다. 첫 Spike·Soak 무효 실행의 명령과 원인은
+[실패·무효 실행](#실패무효-실행)에 별도로 기록했다. 시작·종료 UTC, image, JAR, Git·dirty 상태는 각 원시
+`metadata.json`에 있고, 원시 위치와 집계 SHA-256은 [artifact-manifest.md](./artifact-manifest.md)에서
 찾을 수 있다.
 
 ## 5단계 종료 조건
