@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -44,7 +45,9 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.transaction.support.TransactionSynchronizationManager;
+import org.springframework.transaction.IllegalTransactionStateException;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.support.TransactionTemplate;
 
 /** G07의 짧은 DB 단계와 트랜잭션 밖 Gateway 호출을 실제 MySQL 상태 전이로 검증한다. */
 @SpringBootTest(
@@ -72,6 +75,7 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
     private final FakeEmbeddingGateway embeddingGateway;
     private final FakeRouteGateway routeGateway;
     private final MutableClock clock;
+    private final TransactionTemplate transactionTemplate;
 
     @Autowired
     AiRouteGenerationFacadeMySqlIntegrationTest(
@@ -79,12 +83,14 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
             JdbcTemplate jdbcTemplate,
             FakeEmbeddingGateway embeddingGateway,
             FakeRouteGateway routeGateway,
-            MutableClock clock) {
+            MutableClock clock,
+            PlatformTransactionManager transactionManager) {
         this.facade = facade;
         this.jdbcTemplate = jdbcTemplate;
         this.embeddingGateway = embeddingGateway;
         this.routeGateway = routeGateway;
         this.clock = clock;
+        transactionTemplate = new TransactionTemplate(transactionManager);
     }
 
     @BeforeEach
@@ -117,24 +123,93 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
                 () -> assertEquals(2, result.generation().items().size()),
                 () -> assertEquals(1, embeddingGateway.calls()),
                 () -> assertEquals(1, routeGateway.calls()),
-                () -> assertTrue(embeddingGateway.allCallsWithoutTransaction()),
-                () -> assertTrue(routeGateway.allCallsWithoutTransaction()),
                 () -> assertEquals(before, 사용자_상태()));
     }
 
     @Test
-    void 외부_호출_중_contentVersion이_바뀌어도_최초_snapshot으로_완료한다() {
+    void 호출자가_transaction을_열면_생성과_Gateway_호출_전에_거부한다() {
+        UUID key = UUID.randomUUID();
+
+        assertThrows(
+                IllegalTransactionStateException.class,
+                () -> transactionTemplate.executeWithoutResult(
+                        status -> facade.generate(READER_ID, key, 잉크_명령(1))));
+
+        assertAll(
+                () -> assertEquals(0, 생성_수()),
+                () -> assertEquals(0, 일일_사용량()),
+                () -> assertEquals(0, embeddingGateway.calls()),
+                () -> assertEquals(0, routeGateway.calls()));
+    }
+
+    @Test
+    void 후보_선수에서_비후보_의존_페이지로_향하는_간선은_생성을_막지_않는다() {
+        jdbcTemplate.update(
+                """
+                UPDATE book_page
+                SET ai_analysis_text = NULL,
+                    ai_public_guide_topic = NULL,
+                    estimated_reading_seconds = NULL,
+                    embedding_model = NULL,
+                    embedding_dimensions = NULL,
+                    embedding_json = NULL,
+                    duplicate_group_keys = NULL,
+                    ai_route_candidate = FALSE
+                WHERE book_id = ? AND page_number = 2
+                """,
+                BOOK_ID);
+        선수를_생성한다(1, 2);
         routeGateway.then(정상_응답(1));
-        routeGateway.beforeReturn(() -> jdbcTemplate.update(
-                "UPDATE book SET content_version = 'ai-route-v2' WHERE id = ?", BOOK_ID));
 
         GenerationExecutionResult result = facade.generate(
                 READER_ID, UUID.randomUUID(), 잉크_명령(1));
 
         assertAll(
                 () -> assertEquals(AiRouteGenerationStatus.ROUTE, result.generation().status()),
-                () -> assertEquals(CONTENT_VERSION, result.generation().contentVersion()),
-                () -> assertEquals(1, result.generation().items().size()),
+                () -> assertEquals(1, embeddingGateway.calls()),
+                () -> assertEquals(1, routeGateway.calls()));
+    }
+
+    @Test
+    void 비후보_선수에서_후보_의존_페이지로_향하는_간선은_원인을_담아_거부한다() {
+        jdbcTemplate.update(
+                """
+                UPDATE book_page
+                SET ai_analysis_text = NULL,
+                    ai_public_guide_topic = NULL,
+                    estimated_reading_seconds = NULL,
+                    embedding_model = NULL,
+                    embedding_dimensions = NULL,
+                    embedding_json = NULL,
+                    duplicate_group_keys = NULL,
+                    ai_route_candidate = FALSE
+                WHERE book_id = ? AND page_number = 1
+                """,
+                BOOK_ID);
+        선수를_생성한다(1, 2);
+
+        지원_거부를_검증한다("선수 페이지가 AI 경로 후보가 아닙니다: prerequisitePageNumber=1");
+    }
+
+    @Test
+    void 외부_호출_중_contentVersion이_바뀌어도_완료와_멱등_재요청은_최초_snapshot을_쓴다() {
+        UUID key = UUID.randomUUID();
+        routeGateway.then(정상_응답(1));
+        routeGateway.beforeReturn(() -> jdbcTemplate.update(
+                "UPDATE book SET content_version = 'ai-route-v2' WHERE id = ?", BOOK_ID));
+
+        GenerationExecutionResult first = facade.generate(READER_ID, key, 잉크_명령(1));
+        GenerationExecutionResult replay = facade.generate(READER_ID, key, 잉크_명령(1));
+
+        assertAll(
+                () -> assertEquals(AiRouteGenerationStatus.ROUTE, first.generation().status()),
+                () -> assertEquals(CONTENT_VERSION, first.generation().contentVersion()),
+                () -> assertEquals(1, first.generation().items().size()),
+                () -> assertEquals(GenerationExecutionResult.Execution.REPLAY, replay.execution()),
+                () -> assertEquals(first.generation().generationId(), replay.generation().generationId()),
+                () -> assertEquals(CONTENT_VERSION, replay.generation().contentVersion()),
+                () -> assertEquals(1, embeddingGateway.calls()),
+                () -> assertEquals(1, routeGateway.calls()),
                 () -> assertEquals(
                         "ai-route-v2",
                         jdbcTemplate.queryForObject(
@@ -415,7 +490,7 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
     void 미지원_도서는_생성_행과_Gateway_호출_없이_거부한다() {
         jdbcTemplate.update("UPDATE book SET ai_route_supported = FALSE WHERE id = ?", BOOK_ID);
 
-        지원_거부를_검증한다();
+        지원_거부를_검증한다("도서의 AI 경로 지원이 비활성화되어 있습니다");
     }
 
     @Test
@@ -429,7 +504,7 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
                 """,
                 BOOK_ID);
 
-        지원_거부를_검증한다();
+        지원_거부를_검증한다("도서의 외부 전송 권리가 확인되지 않았습니다");
     }
 
     @Test
@@ -437,7 +512,16 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
         jdbcTemplate.update(
                 "UPDATE book SET ai_data_policy_version = 'policy-v2' WHERE id = ?", BOOK_ID);
 
-        지원_거부를_검증한다();
+        지원_거부를_검증한다("도서와 서버의 데이터 정책 버전이 다릅니다");
+    }
+
+    @Test
+    void 후보_페이지의_분석_텍스트가_비어_있으면_원인을_담아_거부한다() {
+        jdbcTemplate.update(
+                "UPDATE book_page SET ai_analysis_text = ' ' WHERE book_id = ? AND page_number = 1",
+                BOOK_ID);
+
+        지원_거부를_검증한다("후보 페이지의 분석 텍스트가 비어 있습니다. pageNumber=1");
     }
 
     private AiRouteGenerationCommand 잉크_명령(int budget) {
@@ -445,11 +529,12 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
                 BOOK_ID, CONTENT_VERSION, PURPOSE, budget, 5);
     }
 
-    private void 지원_거부를_검증한다() {
-        assertThrows(
+    private void 지원_거부를_검증한다(String expectedReason) {
+        AiRouteNotSupportedException exception = assertThrows(
                 AiRouteNotSupportedException.class,
                 () -> facade.generate(READER_ID, UUID.randomUUID(), 잉크_명령(1)));
         assertAll(
+                () -> assertTrue(exception.getMessage().contains(expectedReason)),
                 () -> assertEquals(0, 생성_수()),
                 () -> assertEquals(0, embeddingGateway.calls()),
                 () -> assertEquals(0, routeGateway.calls()));
@@ -652,13 +737,13 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
 
     static final class FakeEmbeddingGateway implements OpenAiEmbeddingGateway {
 
-        private final List<Boolean> transactionStates = new CopyOnWriteArrayList<>();
+        private final AtomicInteger callCount = new AtomicInteger();
         private volatile double[] vector = {1.0, 0.0};
         private volatile OpenAiEmbeddingException.Failure failure;
         private volatile MutableClock clock;
 
         void reset(MutableClock clock) {
-            transactionStates.clear();
+            callCount.set(0);
             vector = new double[] {1.0, 0.0};
             failure = null;
             this.clock = clock;
@@ -673,16 +758,12 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
         }
 
         int calls() {
-            return transactionStates.size();
-        }
-
-        boolean allCallsWithoutTransaction() {
-            return transactionStates.stream().noneMatch(Boolean::booleanValue);
+            return callCount.get();
         }
 
         @Override
         public Embedding embedPurpose(PurposeInput input, String model, int dimensions) {
-            transactionStates.add(TransactionSynchronizationManager.isActualTransactionActive());
+            callCount.incrementAndGet();
             if (failure != null) {
                 throw new OpenAiEmbeddingException(failure);
             }
@@ -699,7 +780,6 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
 
         private final Deque<Object> results = new ArrayDeque<>();
         private final List<RouteInput> inputs = new CopyOnWriteArrayList<>();
-        private final List<Boolean> transactionStates = new CopyOnWriteArrayList<>();
         private volatile long advanceSeconds;
         private volatile MutableClock clock;
         private Runnable beforeReturn = () -> {};
@@ -707,7 +787,6 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
         synchronized void reset(MutableClock clock) {
             results.clear();
             inputs.clear();
-            transactionStates.clear();
             advanceSeconds = 0;
             this.clock = clock;
             beforeReturn = () -> {};
@@ -733,14 +812,9 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
             return List.copyOf(inputs);
         }
 
-        boolean allCallsWithoutTransaction() {
-            return transactionStates.stream().noneMatch(Boolean::booleanValue);
-        }
-
         @Override
         public synchronized RouteGatewayResult proposeRoute(RouteInput input) {
             inputs.add(input);
-            transactionStates.add(TransactionSynchronizationManager.isActualTransactionActive());
             if (advanceSeconds > 0) {
                 clock.advanceSeconds(advanceSeconds);
             }

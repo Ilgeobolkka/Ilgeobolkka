@@ -40,6 +40,27 @@ public class AiRouteGenerationStartService {
     private final Clock clock;
 
     /**
+     * 아직 유효한 같은 키가 있으면 현재 도서·권한을 다시 검증하기 전에 기존 판정을 반환한다.
+     *
+     * <p>멱등 재요청은 완료 뒤 콘텐츠 버전이나 권한이 바뀌어도 최초 상태·결과를 재생해야 한다. 기존 행이
+     * 없으면 아무것도 만들거나 계수하지 않고 빈 결과를 반환하며, 호출자는 현재 입력 snapshot을 준비한 뒤
+     * {@link #startBefore}를 호출한다. 그사이 동시 요청이 행을 만들 수 있으므로 {@code startBefore}도 기존
+     * 행을 다시 확인하는 최종 판정 책임을 그대로 가진다.
+     */
+    @Transactional(propagation = Propagation.NEVER)
+    public Optional<GenerationStartResult> findExisting(
+            long readerId, UUID idempotencyKey, AiRouteGenerationCommand command) {
+        if (idempotencyKey == null) {
+            throw new IllegalArgumentException("멱등 키는 필수입니다.");
+        }
+        String requestFingerprint = AiRouteRequestFingerprint.of(command);
+        return transactionTemplate.execute(
+                status -> findExistingForUpdate(readerId, idempotencyKey)
+                        .filter(this::isUsable)
+                        .map(generation -> resultOf(generation, requestFingerprint)));
+    }
+
+    /**
      * {@code Propagation.NEVER}는 호출자가 자기 transaction으로 감싸는 것을 막는다. 감싸면 아래
      * {@link TransactionTemplate}이 그 transaction에 합류해 commit이 이 메서드 반환 뒤로 밀리고, G07이
      * 아직 확정되지 않은 {@code NEW}로 외부 호출을 시작하게 된다. 계약을 주석이 아니라 예외로 지킨다.

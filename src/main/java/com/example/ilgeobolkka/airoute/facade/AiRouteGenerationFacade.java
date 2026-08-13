@@ -54,6 +54,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
@@ -126,7 +127,16 @@ public class AiRouteGenerationFacade {
 
     public GenerationExecutionResult generate(
             long readerId, UUID idempotencyKey, AiRouteGenerationCommand command) {
+        if (command == null) {
+            throw new InvalidAiRouteGenerationInputException("생성 명령이 필요합니다.");
+        }
         GenerationTimeBudget timeBudget = GenerationTimeBudget.start(clock, externalCallExecutor);
+        Optional<GenerationStartResult> existing =
+                startService.findExisting(readerId, idempotencyKey, command);
+        if (existing.isPresent()) {
+            return existingResult(readerId, existing.get());
+        }
+
         GenerationContext context = transactionTemplate.execute(
                 status -> prepare(readerId, command));
         if (context == null) {
@@ -283,9 +293,6 @@ public class AiRouteGenerationFacade {
     }
 
     private GenerationContext prepare(long readerId, AiRouteGenerationCommand command) {
-        if (command == null) {
-            throw new InvalidAiRouteGenerationInputException("생성 명령이 필요합니다.");
-        }
         Book book = bookService.findBook(command.bookId());
         requireSupported(book, command);
 
@@ -293,7 +300,8 @@ public class AiRouteGenerationFacade {
                 .filter(BookPage::isAiRouteCandidate)
                 .toList();
         if (pages.isEmpty()) {
-            throw new AiRouteNotSupportedException(command.bookId());
+            throw new AiRouteNotSupportedException(
+                    command.bookId(), "AI 경로 후보 페이지가 없습니다.");
         }
         List<PrerequisiteEdge> prerequisites = prerequisiteService.findByBookId(command.bookId());
         requirePageMetadata(command, pages, prerequisites);
@@ -315,11 +323,22 @@ public class AiRouteGenerationFacade {
     }
 
     private void requireSupported(Book book, AiRouteGenerationCommand command) {
-        if (!featureProperties.enabled()
-                || !book.isAiRouteSupported()
-                || !book.isAiExternalTransferAllowed()
-                || !Objects.equals(book.getAiDataPolicyVersion(), openAiProperties.dataPolicyVersion())) {
-            throw new AiRouteNotSupportedException(command.bookId());
+        if (!featureProperties.enabled()) {
+            throw new AiRouteNotSupportedException(
+                    command.bookId(), "서버의 AI 경로 기능이 비활성화되어 있습니다.");
+        }
+        if (!book.isAiExternalTransferAllowed()) {
+            throw new AiRouteNotSupportedException(
+                    command.bookId(), "도서의 외부 전송 권리가 확인되지 않았습니다.");
+        }
+        if (!book.isAiRouteSupported()) {
+            throw new AiRouteNotSupportedException(
+                    command.bookId(), "도서의 AI 경로 지원이 비활성화되어 있습니다.");
+        }
+        if (!Objects.equals(
+                book.getAiDataPolicyVersion(), openAiProperties.dataPolicyVersion())) {
+            throw new AiRouteNotSupportedException(
+                    command.bookId(), "도서와 서버의 데이터 정책 버전이 다릅니다.");
         }
         if (!Objects.equals(book.getContentVersion(), command.contentVersion())) {
             throw new InvalidAiRouteGenerationInputException("도서의 현재 콘텐츠 버전과 입력이 다릅니다.");
@@ -334,32 +353,64 @@ public class AiRouteGenerationFacade {
         Integer dimensions = pages.getFirst().getEmbeddingDimensions();
         Set<Integer> pageNumbers = new HashSet<>();
         for (BookPage page : pages) {
-            if (page.getId() == null
-                    || page.getAiAnalysisText() == null
-                    || page.getAiAnalysisText().isBlank()
-                    || page.getAiPublicGuideTopic() == null
-                    || page.getAiPublicGuideTopic().isBlank()
-                    || page.getEstimatedReadingSeconds() == null
-                    || page.getEstimatedReadingSeconds() <= 0
-                    || page.getEmbeddingModel() == null
-                    || !page.getEmbeddingModel().equals(model)
-                    || page.getEmbeddingDimensions() == null
-                    || !page.getEmbeddingDimensions().equals(dimensions)
-                    || page.getEmbedding() == null
-                    || page.getDuplicateGroupKeys() == null
-                    || !pageNumbers.add(page.getPageNumber())) {
-                throw new AiRouteNotSupportedException(command.bookId());
+            int pageNumber = page.getPageNumber();
+            if (page.getId() == null) {
+                throw invalidPageMetadata(command, pageNumber, "페이지 식별자가 없습니다.");
+            }
+            if (page.getAiAnalysisText() == null || page.getAiAnalysisText().isBlank()) {
+                throw invalidPageMetadata(command, pageNumber, "후보 페이지의 분석 텍스트가 비어 있습니다.");
+            }
+            if (page.getAiPublicGuideTopic() == null || page.getAiPublicGuideTopic().isBlank()) {
+                throw invalidPageMetadata(command, pageNumber, "후보 페이지의 공개 가이드 주제가 비어 있습니다.");
+            }
+            if (page.getEstimatedReadingSeconds() == null
+                    || page.getEstimatedReadingSeconds() <= 0) {
+                throw invalidPageMetadata(command, pageNumber, "후보 페이지의 예상 독서 시간이 양수가 아닙니다.");
+            }
+            if (page.getEmbeddingModel() == null) {
+                throw invalidPageMetadata(command, pageNumber, "후보 페이지의 embedding 모델이 없습니다.");
+            }
+            if (!page.getEmbeddingModel().equals(model)) {
+                throw invalidPageMetadata(command, pageNumber, "후보 페이지의 embedding 모델이 서로 다릅니다.");
+            }
+            if (page.getEmbeddingDimensions() == null) {
+                throw invalidPageMetadata(command, pageNumber, "후보 페이지의 embedding 차원이 없습니다.");
+            }
+            if (!page.getEmbeddingDimensions().equals(dimensions)) {
+                throw invalidPageMetadata(command, pageNumber, "후보 페이지의 embedding 차원이 서로 다릅니다.");
+            }
+            if (page.getEmbedding() == null) {
+                throw invalidPageMetadata(command, pageNumber, "후보 페이지의 embedding vector가 없습니다.");
+            }
+            if (page.getDuplicateGroupKeys() == null) {
+                throw invalidPageMetadata(command, pageNumber, "후보 페이지의 중복 그룹 목록이 없습니다.");
+            }
+            if (!pageNumbers.add(pageNumber)) {
+                throw invalidPageMetadata(command, pageNumber, "후보 페이지 번호가 중복됩니다.");
             }
         }
-        if (model == null || model.isBlank() || dimensions == null || dimensions <= 0) {
-            throw new AiRouteNotSupportedException(command.bookId());
+        if (model == null || model.isBlank()) {
+            throw new AiRouteNotSupportedException(
+                    command.bookId(), "후보 페이지의 embedding 모델이 비어 있습니다.");
+        }
+        if (dimensions == null || dimensions <= 0) {
+            throw new AiRouteNotSupportedException(
+                    command.bookId(), "후보 페이지의 embedding 차원이 양수가 아닙니다.");
         }
         for (PrerequisiteEdge edge : prerequisites) {
-            if (!pageNumbers.contains(edge.prerequisitePageNumber())
-                    || !pageNumbers.contains(edge.dependentPageNumber())) {
-                throw new AiRouteNotSupportedException(command.bookId());
+            if (!pageNumbers.contains(edge.prerequisitePageNumber())) {
+                throw new AiRouteNotSupportedException(
+                        command.bookId(),
+                        "선수 페이지가 AI 경로 후보가 아닙니다: prerequisitePageNumber="
+                                + edge.prerequisitePageNumber());
             }
         }
+    }
+
+    private AiRouteNotSupportedException invalidPageMetadata(
+            AiRouteGenerationCommand command, int pageNumber, String reason) {
+        return new AiRouteNotSupportedException(
+                command.bookId(), reason + " pageNumber=" + pageNumber);
     }
 
     private GenerationContext contextOf(

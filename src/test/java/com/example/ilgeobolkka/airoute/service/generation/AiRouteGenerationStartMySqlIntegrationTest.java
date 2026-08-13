@@ -171,6 +171,43 @@ class AiRouteGenerationStartMySqlIntegrationTest {
     }
 
     @Test
+    void 기존_생성_선조회는_같은_입력과_다른_입력을_구분하고_없는_키를_바꾸지_않는다() {
+        UUID key = UUID.randomUUID();
+        GenerationStartResult started = startService.start(READER_ID, key, 명령(PURPOSE));
+
+        GenerationStartResult same =
+                startService.findExisting(READER_ID, key, 명령(PURPOSE)).orElseThrow();
+        GenerationStartResult reused = startService
+                .findExisting(READER_ID, key, 명령("다른 목적으로 읽는다"))
+                .orElseThrow();
+
+        assertAll(
+                () -> assertEquals(Kind.EXISTING_GENERATING, same.kind()),
+                () -> assertEquals(started.generationId(), same.generationId()),
+                () -> assertEquals(Kind.KEY_REUSED, reused.kind()),
+                () -> assertTrue(startService
+                        .findExisting(READER_ID, UUID.randomUUID(), 명령(PURPOSE))
+                        .isEmpty()),
+                () -> assertEquals(1, 생성_수를_조회한다(READER_ID)),
+                () -> assertEquals(1, 사용량을_조회한다(READER_ID, USAGE_DATE)));
+    }
+
+    @Test
+    void 만료한_생성은_선조회에서_기존_결과로_재생하지_않는다() {
+        UUID key = UUID.randomUUID();
+        GenerationStartResult started = startService.start(READER_ID, key, 명령(PURPOSE));
+        생성을_실패로_끝낸다(started.generationId());
+        clock.set(EXPIRES_AT);
+
+        assertAll(
+                () -> assertTrue(startService
+                        .findExisting(READER_ID, key, 명령(PURPOSE))
+                        .isEmpty()),
+                () -> assertEquals(1, 생성_수를_조회한다(READER_ID)),
+                () -> assertEquals(1, 사용량을_조회한다(READER_ID, USAGE_DATE)));
+    }
+
+    @Test
     void 실패로_끝난_생성을_다시_시작해도_횟수를_더_쓰지_않는다() {
         UUID key = UUID.randomUUID();
         GenerationStartResult started = startService.start(READER_ID, key, 명령(PURPOSE));
@@ -526,9 +563,13 @@ class AiRouteGenerationStartMySqlIntegrationTest {
 
     @Test
     void 멱등_키가_없으면_거부한다() {
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> startService.start(READER_ID, null, 명령(PURPOSE)));
+        assertAll(
+                () -> assertThrows(
+                        IllegalArgumentException.class,
+                        () -> startService.start(READER_ID, null, 명령(PURPOSE))),
+                () -> assertThrows(
+                        IllegalArgumentException.class,
+                        () -> startService.findExisting(READER_ID, null, 명령(PURPOSE))));
     }
 
     @Test

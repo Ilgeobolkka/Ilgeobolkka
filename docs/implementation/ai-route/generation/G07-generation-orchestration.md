@@ -35,7 +35,7 @@
 - 입력: readerId, idempotencyKey, G01 command
 - 산출물: `AiRouteGenerationFacade`, `AiRouteEntitlementSnapshotFactory`, `GenerationTimeBudget`,
   `GenerationExecutionResult`
-- 공통 호출 순서: 사전 검증 → G05 start → F04 → G02
+- 호출 순서: G05 기존 키 선조회 → 기존 행이 없으면 사전 검증 → G05 start → F04 → G02
 - 후보 없음: G04의 `NO_RELEVANT_PAGES` → G06 complete
 - 후보 있음: F05 → G03 → G04 → G06 complete/fail
 - G08에 넘길 것: NEW/REPLAY/GENERATING/FINAL, 시작 전 TIMEOUT과 공개 실패 종류의 HTTP 독립 결과
@@ -49,9 +49,11 @@
 
 ## 구현 조건
 
-1. feature flag·도서 지원·권리·DB/environment policy profile을 G05와 외부 호출 전에 검사합니다.
+1. 기존 멱등 결과가 없는 새 요청은 feature flag·도서 지원·권리·DB/environment policy profile을 G05
+   start와 외부 호출 전에 검사합니다.
 2. 소장·활성 대여·잔액 snapshot은 서버 계산에만 쓰고 F04·F05 입력에 넣지 않습니다.
-3. G05가 NEW일 때만 외부 호출하며 같은 key의 기존 상태는 Gateway 0회로 반환합니다.
+3. 같은 key의 기존 상태는 현재 도서·권한을 다시 검증하기 전에 Gateway 0회로 반환합니다. 기존 행이 없으면
+   사전 검증 뒤 G05 start가 동시 요청을 다시 확인하며, NEW일 때만 외부 호출합니다.
 4. G05 transaction commit 뒤 F04·G02를 실행하고, G02 후보가 있을 때만 F05를 호출합니다.
    외부 호출 중 transaction active=false를 테스트합니다.
 5. G02 후보가 없으면 F05·G03을 호출하지 않고 G04의 `NO_RELEVANT_PAGES`를 G06으로 완료합니다.
@@ -73,6 +75,7 @@
 
 - NEW 정상 ROUTE·`INSUFFICIENT_BUDGET`은 Responses 1회,
   `NO_RELEVANT_PAGES`와 기존 key replay는 Responses 0회
+- 완료 뒤 콘텐츠 버전이 바뀐 기존 key replay도 최초 상태·결과를 반환
 - QUICK에서 후보와 선수 폐쇄가 6페이지인 소장 요청은 `INSUFFICIENT_DEPTH` 정상 완료
 - 첫 malformed/semantic invalid→정상과 두 번 invalid에서 Responses 호출 수 2회,
   두 호출의 후보 순서·graph·model·candidate/prompt/schema version 동일성

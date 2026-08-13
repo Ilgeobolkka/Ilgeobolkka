@@ -2,13 +2,17 @@ package com.example.ilgeobolkka.airoute.service.generation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Clock;
+import java.time.Duration;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
@@ -45,6 +49,31 @@ class GenerationTimeBudgetTest {
                 }));
     }
 
+    @Test
+    void 외부_호출이_남은_시간보다_오래_걸리면_작업을_취소한다() throws InterruptedException {
+        MutableClock clock = new MutableClock(Instant.parse("2026-08-13T00:00:00Z"));
+        GenerationTimeBudget budget = GenerationTimeBudget.start(clock, executor);
+        clock.advance(Duration.ofSeconds(19).plusMillis(800));
+        CountDownLatch operationStarted = new CountDownLatch(1);
+        CountDownLatch operationInterrupted = new CountDownLatch(1);
+
+        assertThrows(
+                GenerationTimeBudget.TimeLimitExceededException.class,
+                () -> budget.call(() -> {
+                    operationStarted.countDown();
+                    try {
+                        new CountDownLatch(1).await();
+                        return "도달할 수 없는 결과";
+                    } catch (InterruptedException exception) {
+                        operationInterrupted.countDown();
+                        throw exception;
+                    }
+                }));
+
+        assertTrue(operationStarted.await(1, TimeUnit.SECONDS));
+        assertTrue(operationInterrupted.await(1, TimeUnit.SECONDS));
+    }
+
     private static final class MutableClock extends Clock {
 
         private volatile Instant instant;
@@ -54,7 +83,11 @@ class GenerationTimeBudgetTest {
         }
 
         private void advanceSeconds(long seconds) {
-            instant = instant.plusSeconds(seconds);
+            advance(Duration.ofSeconds(seconds));
+        }
+
+        private void advance(Duration duration) {
+            instant = instant.plus(duration);
         }
 
         @Override
