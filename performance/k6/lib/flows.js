@@ -81,6 +81,12 @@ export function activeRentalRead() {
 
 export function newRental() {
     const vuIteration = exec.vu.iterationInScenario;
+    if (vuIteration === 0) {
+        console.info(`신규 대여 VU 할당: ${JSON.stringify({
+            vuIdInTest: exec.vu.idInTest,
+            vuSlot: (exec.vu.idInTest - 1) % NEW_READER_VU_STRIDE
+        })}`);
+    }
     const accountCycle = Math.floor(vuIteration / RENTALS_PER_NEW_READER);
     if (accountCycle >= NEW_READER_CYCLES) {
         const message = `신규 대여 계정 pool을 소진했습니다: vu=${exec.vu.idInTest}`;
@@ -160,11 +166,28 @@ function openAndRead(readerNumber, bookId, pageNumber, owned, deductedInk, flow)
             tags: {flow, name: "POST /api/books/{bookId}/reading-sessions"}
         }
     );
+    const actualOwned = jsonField(openResponse, "owned");
+    const actualDeductedInk = jsonField(openResponse, "deductedInk");
     if (!check(openResponse, {
         "페이지 열기 성공": (result) => result.status === 201,
-        "소장 상태 일치": (result) => jsonField(result, "owned") === owned,
-        "잉크 차감 일치": (result) => jsonField(result, "deductedInk") === deductedInk
+        "소장 상태 일치": () => actualOwned === owned,
+        "잉크 차감 일치": () => actualDeductedInk === deductedInk
     })) {
+        console.error(`페이지 열기 계약 불일치: ${JSON.stringify({
+            flow,
+            readerNumber,
+            bookId,
+            pageNumber,
+            status: openResponse.status,
+            expectedOwned: owned,
+            actualOwned,
+            expectedDeductedInk: deductedInk,
+            actualDeductedInk,
+            scenario: exec.scenario.name,
+            scenarioIterationInTest: exec.scenario.iterationInTest,
+            vuIdInTest: exec.vu.idInTest,
+            vuIterationInScenario: exec.vu.iterationInScenario
+        })}`);
         return;
     }
 
@@ -192,7 +215,7 @@ function seededBookId(readerNumber) {
 
 function jsonField(response, field) {
     try {
-        return response.json(field);
+        return response.json(field) ?? null;
     } catch (_) {
         return null;
     }
