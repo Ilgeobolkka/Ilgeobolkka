@@ -33,8 +33,9 @@
 ## 입력과 산출물
 
 - 입력: readerId, idempotencyKey, G01 command
-- 산출물: `AiRouteGenerationFacade`, `AiRouteEntitlementSnapshotFactory`, `GenerationTimeBudget`,
-  `GenerationExecutionResult`
+- 산출물: `AiRouteGenerationFacade`, 사용자 영속화와 분리된 `AiRouteGenerationEngine`,
+  `AiRouteGenerationSnapshot`, `AiRouteEngineResult`, `AiRouteEntitlementSnapshotFactory`,
+  `GenerationTimeBudget`, `GenerationExecutionResult`
 - 호출 순서: G05 기존 키 선조회 → 기존 행이 없으면 사전 검증 → G05 start → F04 → G02
 - 후보 없음: G04의 `NO_RELEVANT_PAGES` → G06 complete
 - 후보 있음: F05 → G03 → G04 → G06 complete/fail
@@ -43,7 +44,7 @@
 
 ## 수정 허용 파일
 
-- 새 generation Facade·snapshot factory·호출 시간 budget helper
+- 새 generation Facade·공급자 중립 engine·snapshot/result·호출 시간 budget helper
 - 필요한 Book/Ownership/Rental/Ink Service public 조회는 기존 API를 우선 사용하며 기존 Facade는 수정 금지
 - 새 `AiRouteGenerationFacadeMySqlIntegrationTest`
 
@@ -101,5 +102,8 @@
 
 ## 인계
 
-G08에 상태별 result와 공개 failure 종류를, Q01에 사용자 persistence를 우회하고 같은 내부 생성 엔진을
-호출할 평가 진입점을 전달합니다.
+G08에 상태별 result와 공개 failure 종류를 전달합니다. Q01은
+`AiRouteGenerationEngine.generate(command, entitlement)`를 호출해 사용자 persistence를 우회하고 production
+Facade와 같은 Embeddings·후보 선택·Responses·재시도·검증·조립 코드를 사용합니다. 반환된
+`AiRouteEngineResult`의 embeddingModel·routeModel·candidatePolicyVersion·promptVersion·schemaVersion을
+평가 artifact의 재현 조건으로 기록합니다.

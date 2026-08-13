@@ -11,6 +11,9 @@ import com.example.ilgeobolkka.airoute.AiRouteGenerationCommand;
 import com.example.ilgeobolkka.airoute.entity.AiRouteGenerationStatus;
 import com.example.ilgeobolkka.airoute.entity.AiRouteNoRouteReason;
 import com.example.ilgeobolkka.airoute.exception.AiRouteNotSupportedException;
+import com.example.ilgeobolkka.airoute.service.assembly.AiRouteEntitlementSnapshot;
+import com.example.ilgeobolkka.airoute.service.generation.AiRouteEngineResult;
+import com.example.ilgeobolkka.airoute.service.generation.AiRouteGenerationEngine;
 import com.example.ilgeobolkka.airoute.service.generation.AiRouteGenerationFailureCode;
 import com.example.ilgeobolkka.airoute.service.generation.GenerationExecutionResult;
 import com.example.ilgeobolkka.infra.openai.OpenAiEmbeddingException;
@@ -28,6 +31,7 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -71,6 +75,7 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
     private static final Instant STARTED_AT = Instant.parse("2026-08-13T00:00:00Z");
 
     private final AiRouteGenerationFacade facade;
+    private final AiRouteGenerationEngine engine;
     private final JdbcTemplate jdbcTemplate;
     private final FakeEmbeddingGateway embeddingGateway;
     private final FakeRouteGateway routeGateway;
@@ -80,12 +85,14 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
     @Autowired
     AiRouteGenerationFacadeMySqlIntegrationTest(
             AiRouteGenerationFacade facade,
+            AiRouteGenerationEngine engine,
             JdbcTemplate jdbcTemplate,
             FakeEmbeddingGateway embeddingGateway,
             FakeRouteGateway routeGateway,
             MutableClock clock,
             PlatformTransactionManager transactionManager) {
         this.facade = facade;
+        this.engine = engine;
         this.jdbcTemplate = jdbcTemplate;
         this.embeddingGateway = embeddingGateway;
         this.routeGateway = routeGateway;
@@ -124,6 +131,36 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
                 () -> assertEquals(1, embeddingGateway.calls()),
                 () -> assertEquals(1, routeGateway.calls()),
                 () -> assertEquals(before, 사용자_상태()));
+    }
+
+    @Test
+    void 평가용_Engine은_사용자와_생성_영속화_없이_운영_경로와_버전을_반환한다() {
+        jdbcTemplate.update("DELETE FROM ink_account WHERE reader_id = ?", READER_ID);
+        jdbcTemplate.update("DELETE FROM reader WHERE id = ?", READER_ID);
+        jdbcTemplate.update("UPDATE book SET ai_route_supported = FALSE WHERE id = ?", BOOK_ID);
+        routeGateway.then(정상_응답(1, 2));
+
+        AiRouteEngineResult result = engine.generate(
+                잉크_명령(2),
+                AiRouteEntitlementSnapshot.forNonOwned(2, Set.of()));
+
+        assertAll(
+                () -> assertEquals(
+                        com.example.ilgeobolkka.airoute.service.assembly.AiRouteGenerationResult.Status.ROUTE,
+                        result.generation().status()),
+                () -> assertEquals(2, result.generation().items().size()),
+                () -> assertEquals("embedding-v1", result.embeddingModel()),
+                () -> assertEquals("route-v1", result.routeModel()),
+                () -> assertEquals("air-candidate-v1", result.candidatePolicyVersion()),
+                () -> assertEquals("prompt-v1", result.promptVersion()),
+                () -> assertEquals("schema-v1", result.schemaVersion()),
+                () -> assertEquals(1, embeddingGateway.calls()),
+                () -> assertEquals(1, routeGateway.calls()),
+                () -> assertEquals(0, 개수("reader")),
+                () -> assertEquals(0, 개수("ink_account")),
+                () -> assertEquals(0, 개수("ai_route_generation")),
+                () -> assertEquals(0, 개수("ai_route_generation_item")),
+                () -> assertEquals(0, 개수("ai_route_daily_usage")));
     }
 
     @Test
@@ -810,6 +847,11 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
 
         List<RouteInput> inputs() {
             return List.copyOf(inputs);
+        }
+
+        @Override
+        public RouteContract routeContract() {
+            return new RouteContract("route-v1", "prompt-v1", "schema-v1");
         }
 
         @Override
