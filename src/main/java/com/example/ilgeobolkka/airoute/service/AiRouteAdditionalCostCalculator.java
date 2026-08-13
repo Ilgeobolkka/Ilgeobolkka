@@ -20,6 +20,9 @@ import org.springframework.stereotype.Service;
  * 1 잉크를 쓰기 때문이다.
  *
  * <p>이 계산은 아무것도 바꾸지 않는다. 대여를 새로 만들거나 잉크를 미리 잡아 두지 않는다.
+ *
+ * <p>생성 시점 권한 사본을 쓰는 G04 조립기와 공통 순수 판정 규칙을 추출하는 작업은 SCRUM-487에서
+ * 추적한다.
  */
 @Service
 @RequiredArgsConstructor

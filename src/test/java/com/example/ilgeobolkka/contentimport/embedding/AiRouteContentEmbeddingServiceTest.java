@@ -228,8 +228,18 @@ class AiRouteContentEmbeddingServiceTest {
                 content(
                         new ValidatedAiRouteContent.ValidatedBook(
                                 41,
+                                "도서 41",
+                                1,
                                 true,
-                                List.of(new ValidatedAiRouteContent.ValidatedPage(2, true, secret)),
+                                true,
+                                List.of(
+                                        new ValidatedAiRouteContent.ValidatedPage(
+                                                2,
+                                                true,
+                                                secret,
+                                                "공개 주제",
+                                                60,
+                                                List.of())),
                                 List.of()));
 
         AiRouteContentEmbeddingException exception =
@@ -325,16 +335,29 @@ class AiRouteContentEmbeddingServiceTest {
 
     private ValidatedAiRouteContent.ValidatedBook book(
             long bookId, ValidatedAiRouteContent.ValidatedPage... pages) {
-        return new ValidatedAiRouteContent.ValidatedBook(bookId, true, List.of(pages), List.of());
+        return new ValidatedAiRouteContent.ValidatedBook(
+                bookId,
+                "도서 " + bookId,
+                pages.length,
+                true,
+                true,
+                List.of(pages),
+                List.of());
     }
 
     private ValidatedAiRouteContent.ValidatedBook novel(long bookId) {
-        return new ValidatedAiRouteContent.ValidatedBook(bookId, false, List.of(), List.of());
+        return new ValidatedAiRouteContent.ValidatedBook(
+                bookId, "도서 " + bookId, 4, false, false, List.of(), List.of());
     }
 
     private ValidatedAiRouteContent.ValidatedPage page(int pageNumber, boolean candidate) {
         return new ValidatedAiRouteContent.ValidatedPage(
-                pageNumber, candidate, "p%d 분석".formatted(pageNumber));
+                pageNumber,
+                candidate,
+                "p%d 분석".formatted(pageNumber),
+                "p%d 공개 주제".formatted(pageNumber),
+                60,
+                List.of());
     }
 
     private static final class RecordingGateway implements OpenAiEmbeddingGateway {

@@ -21,7 +21,10 @@ public record ValidatedAiRouteContent(
 
     public record ValidatedBook(
             long bookId,
+            String title,
+            int totalPageCount,
             boolean aiRouteCandidate,
+            boolean aiExternalTransferAllowed,
             List<ValidatedPage> pages,
             List<PrerequisiteEdge> prerequisiteEdges) {
 
@@ -32,12 +35,25 @@ public record ValidatedAiRouteContent(
     }
 
     /**
+     * 적재가 {@code book_page}에 저장하는 값만 담는다. 장·절·역할·개념처럼 제작 완전성 검증에만 쓰는
+     * 비영속 메타데이터는 여기 없다.
+     *
      * @param aiRouteCandidatePage 후보 집합에 넣을 페이지인가. C03은 이 값으로 Gateway에 보낼 페이지를
      *     고르고 역할 이름이나 내용으로 추론하지 않는다.
      * @param analysisText 후보 검색용 비공개 분석 텍스트. 임베딩 입력이다.
      */
     public record ValidatedPage(
-            int pageNumber, boolean aiRouteCandidatePage, String analysisText) {}
+            int pageNumber,
+            boolean aiRouteCandidatePage,
+            String analysisText,
+            String publicGuideTopic,
+            int estimatedReadingSeconds,
+            List<String> duplicateGroupKeys) {
+
+        public ValidatedPage {
+            duplicateGroupKeys = List.copyOf(duplicateGroupKeys);
+        }
+    }
 
     /** {@code 선수 -> 의존} 방향 간선. */
     public record PrerequisiteEdge(int beforePageNumber, int afterPageNumber) {}
