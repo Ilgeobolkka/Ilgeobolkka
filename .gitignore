@@ -39,6 +39,10 @@ out/
 ### macOS ###
 .DS_Store
 
+### 코퍼스 제작 스크래치 ###
+# build_pdf_generic.py가 만드는 조판 작업 디렉터리 (HTML·PDF·PNG)
+docs/evidence/ai-route-corpus/tools/pdfbuild*/
+
 ### AI coding agents ###
 .claude/settings.local.json
 

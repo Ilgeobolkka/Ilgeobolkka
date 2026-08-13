@@ -1223,6 +1223,2001 @@
       ]
     },
     {
+      "bookId": 22,
+      "title": "파동의 기초: 흔들림에서 무늬까지",
+      "pdfPath": "pdfs/book-022.pdf",
+      "pdfSha256": "af7ec9809458e0bc7867b69a3d97c468a34f126e54cdd556afb89328073ac4df",
+      "totalPageCount": 49,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 제자리에서 흔들리는 것",
+          "section": "1.1 제자리에서 오가는 움직임",
+          "primaryConcepts": [
+            "진동"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "진동을 제자리로 돌아오는 반복 운동으로 정의하고 굴러가는 운동과 구분한다. 복원력의 존재가 이후 모든 논의의 전제임을 밝히는 도입 페이지다.",
+          "aiAnalysisInputSha256": "43f3c73f9a52f5f5a6847e97558d32f3deb8066c23c09abb3a71e3038f00ef34",
+          "aiPublicGuideTopic": "한 자리를 중심으로 오갔다가 되돌아오는 움직임을 진동으로 정의한다",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 제자리에서 흔들리는 것",
+          "section": "1.1 제자리에서 오가는 움직임",
+          "primaryConcepts": [
+            "진동"
+          ],
+          "secondaryConcepts": [
+            "복원력"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복원력과 관성의 크기가 진동의 빠르기를 정하고 밀어 준 세기는 폭만 바꾼다는 사실을 정리한다. 빠르기와 폭의 독립성이 다음 두 절의 갈래를 만든다.",
+          "aiAnalysisInputSha256": "f29ebd4613ed79fea635f472c31d00f3e7b2734c77dd32296db0dc3bf2dd747b",
+          "aiPublicGuideTopic": "되돌리는 힘의 세기에 따라 흔들림이 빨라지거나 느려지는 까닭을 설명한다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 제자리에서 흔들리는 것",
+          "section": "1.2 얼마나 자주 오가는가",
+          "primaryConcepts": [
+            "주파수"
+          ],
+          "secondaryConcepts": [
+            "진동"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "주파수와 주기를 서로의 역수 관계로 소개하고 실제로 세는 절차와 오차를 줄이는 요령을 덧붙인다. 이후 파장·속도 관계의 한 축이 되는 양이다.",
+          "aiAnalysisInputSha256": "08194eb8d050b843c9361563caa68cf333f7b64ab916700aabc54153c920113c",
+          "aiPublicGuideTopic": "일정한 시간 동안 흔들림이 몇 번 오갔는지 세는 방법을 다룬다",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 제자리에서 흔들리는 것",
+          "section": "1.2 얼마나 자주 오가는가",
+          "primaryConcepts": [
+            "주파수"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시간축 위의 진동 곡선에서 주기와 진폭을 각각 어느 길이로 읽는지 보인다. 폭이 같고 간격만 다른 두 곡선을 나란히 두어 둘이 별개의 양임을 드러낸다.",
+          "aiAnalysisInputSha256": "69189a21383666742936c807292eb7f19fbeb55bc54992391da318edaf63d9f2",
+          "aiPublicGuideTopic": "시간에 따라 흔들림이 오르내리는 모습을 그림으로 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 제자리에서 흔들리는 것",
+          "section": "1.3 얼마나 크게 오가는가",
+          "primaryConcepts": [
+            "진폭"
+          ],
+          "secondaryConcepts": [
+            "진동"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "진폭을 최대 변위로 정의하고 진동의 세기와 연결한다. 감쇠는 뒤 장으로 미루되 존재만 알려 두어 이상적인 그림과 실제의 차이를 예고한다.",
+          "aiAnalysisInputSha256": "5ff9ecf8c104e7014bdc2f838a17572df73fc4393883bc44b96a53ad80804198",
+          "aiPublicGuideTopic": "제자리에서 얼마나 멀리 벗어나는지를 나타내는 양을 소개한다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 제자리에서 흔들리는 것",
+          "section": "1.3 얼마나 크게 오가는가",
+          "primaryConcepts": [
+            "진폭"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "높낮이와 크기를 혼동하는 일상 어법을 바로잡고 기록 양식에서 두 양을 분리해 적을 것을 권한다. 측정 항목의 분리가 질문을 만들어 낸다는 관점을 덧붙인다.",
+          "aiAnalysisInputSha256": "fc9ed6526b317196b9a5552e7c322a32c901b4cb3885b6d19ffd173cff80710b",
+          "aiPublicGuideTopic": "폭과 빠르기를 섞어 말할 때 생기는 혼란을 정리한다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "2장 흔들림이 옮겨 갈 때",
+          "section": "2.1 파동이란 무엇인가",
+          "primaryConcepts": [
+            "파동"
+          ],
+          "secondaryConcepts": [
+            "진동"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "파동을 진동의 전달로 정의하고 매질의 연결성이 전달의 조건임을 밝힌다. 무엇이 흔들리는가와 어디로 전달되는가를 함께 보라는 관찰 지침을 제시한다.",
+          "aiAnalysisInputSha256": "ac867341a583b9f63c2af8337a2fe85fce87d06910087bb835bc9968645e5c8a",
+          "aiPublicGuideTopic": "한자리의 흔들림이 이웃으로 옮겨 가며 퍼지는 현상을 정의한다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 흔들림이 옮겨 갈 때",
+          "section": "2.1 파동이란 무엇인가",
+          "primaryConcepts": [
+            "파동"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "파동이 물질이 아니라 에너지를 전달한다는 점을 명확히 하고, 퍼짐에 따른 세기 감소를 소멸이 아닌 분배로 설명한다. 6장의 감쇠 논의와 구분하기 위한 사전 정리다.",
+          "aiAnalysisInputSha256": "716a6963dac44a672550af422139d9331260418ce52dd0ba208dc42e9f4ecfad",
+          "aiPublicGuideTopic": "흔들림이 옮겨 갈 때 함께 옮겨 가는 것과 그렇지 않은 것을 가른다",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 흔들림이 옮겨 갈 때",
+          "section": "2.2 매질은 제자리에 남는다",
+          "primaryConcepts": [
+            "매질"
+          ],
+          "secondaryConcepts": [
+            "파동"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "매질을 정의하고 부표 관찰로 매질이 이동하지 않음을 확인하는 방법을 제시한다. 관중석 파도타기 비유로 전달되는 것이 차례임을 보인다.",
+          "aiAnalysisInputSha256": "66e60b4da6a23a7208e6014650cf56ad3a8936af84dde7aacaa7a378a99016c4",
+          "aiPublicGuideTopic": "흔들림을 전달하는 물질이 실제로는 이동하지 않는다는 점을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 흔들림이 옮겨 갈 때",
+          "section": "2.2 매질은 제자리에 남는다",
+          "primaryConcepts": [
+            "매질"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "부표 실험을 흐름과 파동을 가르는 판정 기준으로 제시하고 두 현상이 중첩될 수 있음을 밝힌다. 무엇이 이동하는가를 먼저 묻는 태도를 강조한다.",
+          "aiAnalysisInputSha256": "3b032ad713c8d6624f3997380350815030c0e587474c8ad79255efa0242d60fb",
+          "aiPublicGuideTopic": "흐름과 파동을 가르는 기준을 세운다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": [
+            "carrier-stays-put"
+          ]
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 흔들림이 옮겨 갈 때",
+          "section": "2.3 파장과 속도",
+          "primaryConcepts": [
+            "파장"
+          ],
+          "secondaryConcepts": [
+            "주파수"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "파장을 공간 주기로 정의하고 주파수와 함께 전파 속도를 정하는 관계를 서술한다. 셋 중 둘이 정해지면 나머지가 따라온다는 구조를 강조한다.",
+          "aiAnalysisInputSha256": "d7b69b9b2ed78ecb67bfc9c5cc03a86295782a2389192d7e8ec5132392b5e328",
+          "aiPublicGuideTopic": "이웃한 마루 사이의 거리와 파동이 나아가는 빠르기를 잇는다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            8,
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 흔들림이 옮겨 갈 때",
+          "section": "2.3 파장과 속도",
+          "primaryConcepts": [
+            "파장"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "옆에서 본 단면과 위에서 본 동심원에서 같은 파장을 각각 어디서 재는지 대응시킨다. 자주 흔든 경우를 곁에 두어 간격 변화가 눈에 들어오게 한다.",
+          "aiAnalysisInputSha256": "a53df1ba42ee099f7c037268a1711f88bbaa831ef2ef5116e4477c9d1acbceaa",
+          "aiPublicGuideTopic": "물결의 테와 테 사이를 어디서 어디까지 재는지 그림으로 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 흔들림이 옮겨 갈 때",
+          "section": "2.4 두 가지 흔들림 방향",
+          "primaryConcepts": [
+            "횡파와 종파"
+          ],
+          "secondaryConcepts": [
+            "파동"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "진동 방향과 진행 방향의 관계로 횡파와 종파를 구분하고 소리와 물결의 사례를 든다. 이후 성질이 종류에 따라 갈린다는 점을 예고한다.",
+          "aiAnalysisInputSha256": "40ad875e4fde4d1836fd6238985dd309858619bfffbd7814f252f95599266a95",
+          "aiPublicGuideTopic": "나아가는 방향과 흔들리는 방향의 관계로 파동을 둘로 나눈다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 흔들림이 옮겨 갈 때",
+          "section": "2.4 두 가지 흔들림 방향",
+          "primaryConcepts": [
+            "횡파와 종파"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "종파를 횡파처럼 그리는 관례를 설명하고 세로축이 무엇을 나타내는지 명시할 것을 요구한다. 기록 양식에서 축의 의미를 적어 두는 습관과 연결한다.",
+          "aiAnalysisInputSha256": "3c72ce7ae1e26637abd2811fe47fbf4d7a97fc0f35aac54403241f63247e95b2",
+          "aiPublicGuideTopic": "그림으로 그릴 때 두 종류가 같은 모양으로 보이는 까닭을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 파동이 무언가를 만나면",
+          "section": "3.1 되돌아오는 파동",
+          "primaryConcepts": [
+            "반사"
+          ],
+          "secondaryConcepts": [
+            "파동"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반사를 경계에서의 되돌아옴으로 설명하고 입사각과 반사각의 대칭을 관찰로 확인한다. 부분 반사와 거리 측정 응용을 함께 언급한다.",
+          "aiAnalysisInputSha256": "47069b8efd33f1200ee5c25c1259a990d20f0453ce51a4b978115c3f4df992f7",
+          "aiPublicGuideTopic": "경계에 부딪힌 파동이 되돌아오는 현상을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 파동이 무언가를 만나면",
+          "section": "3.1 되돌아오는 파동",
+          "primaryConcepts": [
+            "반사"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반사파와 입사파의 중첩이 관측을 어지럽힌다는 점을 지적하고 흡수재로 반사를 줄이는 처치를 소개한다. 4장 중첩 논의로 이어지는 다리 역할이다.",
+          "aiAnalysisInputSha256": "2d5e26e20532ed9dff885b0efce86da359242899615a08265a6dd6b39f6cac22",
+          "aiPublicGuideTopic": "되돌아온 파동이 원래 파동과 겹칠 때 생기는 일을 예고한다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 파동이 무언가를 만나면",
+          "section": "3.2 꺾이는 파동",
+          "primaryConcepts": [
+            "굴절"
+          ],
+          "secondaryConcepts": [
+            "파장"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "굴절을 속도 차이에 따른 진행 방향 변화로 설명하고 주파수 불변과 파장 변화의 관계를 정리한다. 수직 입사 사례로 인과를 분리한다.",
+          "aiAnalysisInputSha256": "0edaedf620f229066b6da1b33c2d5b44a33821ea58a162bc8c978eb69151caf1",
+          "aiPublicGuideTopic": "성질이 다른 곳으로 넘어가며 방향이 꺾이는 현상을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 파동이 무언가를 만나면",
+          "section": "3.2 꺾이는 파동",
+          "primaryConcepts": [
+            "굴절"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비스듬한 입사와 수직 입사를 나란히 놓아 방향 변화와 간격 변화를 분리해 보인다. 각도 수치 없이 관계만 드러내는 구성이다.",
+          "aiAnalysisInputSha256": "6b92aa52a807166c4930dc2f86ba218b0fde3129a54ae374965b879f1de151b8",
+          "aiPublicGuideTopic": "경계를 넘으며 방향과 간격이 함께 달라지는 모습을 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 파동이 무언가를 만나면",
+          "section": "3.3 돌아 들어가는 파동",
+          "primaryConcepts": [
+            "회절"
+          ],
+          "secondaryConcepts": [
+            "파장"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회절을 가장자리를 돌아 퍼지는 현상으로 설명하고 틈 크기와 파장의 비가 정도를 정함을 밝힌다. 소리와 빛의 차이를 같은 기준으로 설명한다.",
+          "aiAnalysisInputSha256": "d01294102f1a370ef259260071ae8cc5a6e95512265f294ff6a5667cbfe6479d",
+          "aiPublicGuideTopic": "장애물의 가장자리를 돌아 뒤쪽까지 퍼지는 현상을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 파동이 무언가를 만나면",
+          "section": "3.3 돌아 들어가는 파동",
+          "primaryConcepts": [
+            "회절"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장애물 크기와 파장의 비로 그림자 형성 여부를 설명하고 저음 차단이 어려운 이유를 같은 원리로 제시한다. 차폐 설계의 기준으로 연결한다.",
+          "aiAnalysisInputSha256": "162c5b7c1d28fbd7c8f5bc63ebda34ca920235e41b4b8ff486f6d4c60e9185fd",
+          "aiPublicGuideTopic": "가려도 들리는 일과 가리면 보이지 않는 일을 같은 원리로 설명한다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 파동이 무언가를 만나면",
+          "section": "3.4 갇히는 파동",
+          "primaryConcepts": [
+            "경계 조건"
+          ],
+          "secondaryConcepts": [
+            "반사"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "고정 경계가 허용 파장을 이산적으로 제한한다는 점을 설명하고 악기의 음높이와 연결한다. 제약이 도구의 조건이 된다는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "de4b82a52900a8bdbfa0272a0216b7740c637619016cbf9d72819ed2153ff37a",
+          "aiPublicGuideTopic": "양쪽이 막힌 곳에서 파동이 특정한 모습만 남는 까닭을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 파동이 무언가를 만나면",
+          "section": "3.4 갇히는 파동",
+          "primaryConcepts": [
+            "경계 조건"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공명을 담는 공간의 크기가 특정 진동을 선택하는 현상으로 설명하고 방의 웅웅거림을 예로 든다. 원인을 발생원과 공간 양쪽에서 찾으라는 지침을 덧붙인다.",
+          "aiAnalysisInputSha256": "5f2851b26f1c89ca20467e41f1e12f63a7679f32b52d1d6a97f439bc5a13ff6c",
+          "aiPublicGuideTopic": "막힌 곳의 크기가 그곳에서 잘 울리는 흔들림을 정한다는 점을 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 파동끼리 만나면",
+          "section": "4.1 겹침의 원리",
+          "primaryConcepts": [
+            "중첩"
+          ],
+          "secondaryConcepts": [
+            "파동"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "중첩 원리를 변위의 합으로 서술하고 통과 후 형태가 보존됨을 강조한다. 복잡한 파형을 단순한 성분의 합으로 분해하는 접근의 근거가 된다.",
+          "aiAnalysisInputSha256": "60aeac426ad85db4a01be9cacb892197f2eec96ff618b2fa83c2a3f494d25677",
+          "aiPublicGuideTopic": "두 흔들림이 같은 자리에 있을 때 결과를 구하는 방법을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 파동끼리 만나면",
+          "section": "4.1 겹침의 원리",
+          "primaryConcepts": [
+            "중첩"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선형 중첩이 작은 진폭에서만 성립함을 밝히고 실험 조건 설정과 연결한다. 적용 범위를 명시하는 태도를 6장의 논조와 맞춰 둔다.",
+          "aiAnalysisInputSha256": "d4d9048c48d4fcb55120265f33bfc5d5044fe286d8248a576568f02dbb165a23",
+          "aiPublicGuideTopic": "겹침이 성립하지 않는 경우를 미리 짚어 둔다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 파동끼리 만나면",
+          "section": "4.2 서로 키우고 지우고",
+          "primaryConcepts": [
+            "간섭"
+          ],
+          "secondaryConcepts": [
+            "중첩"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "간섭을 경로차에 따른 보강과 상쇄로 설명하고 안정된 무늬의 조건을 제시한다. 두 파원의 동기화가 관측 가능성을 좌우함을 밝힌다.",
+          "aiAnalysisInputSha256": "0229701d449df4a42c9674c6a1dd86e4e9752f36fb440698609d32638d671404",
+          "aiPublicGuideTopic": "겹친 결과가 자리마다 세지거나 약해지는 현상을 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 파동끼리 만나면",
+          "section": "4.2 서로 키우고 지우고",
+          "primaryConcepts": [
+            "간섭"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "두 파원의 동심원이 겹치는 지점을 이어 보강선과 상쇄선을 드러낸다. 경로차 표시를 함께 두어 무늬의 위치가 무엇으로 정해지는지 보인다.",
+          "aiAnalysisInputSha256": "451c4bb606f9919ed21ee8a7ba1f07ee70e0c0a32d03623830e38e242830bc6e",
+          "aiPublicGuideTopic": "두 곳에서 퍼진 물결이 만드는 무늬를 그림으로 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 파동끼리 만나면",
+          "section": "4.3 제자리에 서는 파동",
+          "primaryConcepts": [
+            "정상파"
+          ],
+          "secondaryConcepts": [
+            "간섭"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정상파를 서로 반대 방향으로 진행하는 두 파동의 중첩으로 설명하고 마디와 배를 정의한다. 마디 간격으로 파장을 측정하는 실용적 이점을 밝힌다.",
+          "aiAnalysisInputSha256": "35d947821e111909d3862f5f71ae0c083481e4f0b579c7d68787f738f799764c",
+          "aiPublicGuideTopic": "나아가지 않고 제자리에서 오르내리기만 하는 파동을 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 파동끼리 만나면",
+          "section": "4.3 제자리에 서는 파동",
+          "primaryConcepts": [
+            "정상파"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정상파의 마디와 배를 표시하고 마디 간격이 반 파장임을 보인다. 마디 수가 다른 두 모습을 같은 길이의 줄에 나란히 두어 허용 형태가 여럿임을 드러낸다.",
+          "aiAnalysisInputSha256": "456f847b7990e59eb4186aaa92fd50160bbb5a56efdc2a35fdf061b119269f0d",
+          "aiPublicGuideTopic": "움직이지 않는 자리와 크게 움직이는 자리가 번갈아 나타나는 모습을 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 파동끼리 만나면",
+          "section": "4.4 맥놀이",
+          "primaryConcepts": [
+            "맥놀이"
+          ],
+          "secondaryConcepts": [
+            "간섭"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "맥놀이를 진동수 차에 따른 느린 보강·상쇄 반복으로 설명하고 조율에 쓰이는 원리로 연결한다. 차이를 직접 재지 않고 영점을 찾는 측정 방식의 예다.",
+          "aiAnalysisInputSha256": "6495c3ccd4d07aa8c571e3d5fac04515ff8d8053c5241846b14df1acccdd82b0",
+          "aiPublicGuideTopic": "빠르기가 조금 다른 두 흔들림이 겹칠 때 생기는 주기적인 커짐과 작아짐을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 파동끼리 만나면",
+          "section": "4.4 맥놀이",
+          "primaryConcepts": [
+            "맥놀이"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "맥놀이 관측만으로는 진동수 차의 크기는 알아도 부호는 알 수 없음을 지적하고 개입을 통한 판별을 제시한다. 관측 기록에 조작 내용을 함께 남기는 습관과 연결한다.",
+          "aiAnalysisInputSha256": "e29174f06b54a0e1e0c74811cae18e0f6f1f2e392e860185032d58f5568abcfc",
+          "aiPublicGuideTopic": "겹친 결과만 보고 원래 흔들림을 되짚을 때의 한계를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 실제로 재어 보기",
+          "section": "5.1 물결 수조에서",
+          "primaryConcepts": [
+            "관측 절차"
+          ],
+          "secondaryConcepts": [
+            "파동"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "물결 수조 실험의 준비와 조작 순서를 정리하고 변인을 하나씩 바꾸는 원칙을 제시한다. 이후 기록·정리 절차의 기준점이 되는 페이지다.",
+          "aiAnalysisInputSha256": "13ef8482db8ef4350ae37bfda130456e38b2bfbd16087a1ad0378b5f27502e02",
+          "aiPublicGuideTopic": "얕은 물에서 파동의 성질을 눈으로 확인하는 과정을 따라간다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 실제로 재어 보기",
+          "section": "5.1 물결 수조에서",
+          "primaryConcepts": [
+            "관측 절차"
+          ],
+          "secondaryConcepts": [
+            "회절"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반사·굴절·회절·간섭을 확인하는 배치를 순서대로 소개한다. 각 성질에 대응하는 최소한의 장치 구성을 보여 재현 가능한 관측으로 만든다.",
+          "aiAnalysisInputSha256": "6e4df1f8e0d49219d6b1183cc0b763375387f00c5215f5db19d2c73be8a7edfd",
+          "aiPublicGuideTopic": "판과 틈을 놓아 앞 장에서 다룬 성질을 차례로 확인한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 실제로 재어 보기",
+          "section": "5.2 소리로 재는 방법",
+          "primaryConcepts": [
+            "측정 방법"
+          ],
+          "secondaryConcepts": [
+            "주파수"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "소리 측정을 위해 진동을 관찰 가능한 형태로 변환하는 방식과 맥놀이·공명관을 이용한 비교 측정을 소개한다. 직접 재기 어려운 양을 길이로 옮기는 전략이다.",
+          "aiAnalysisInputSha256": "1dc66fab32f7517d70213306af08e1c7437d733ca87976f4bec6f74c53d36e15",
+          "aiPublicGuideTopic": "눈에 보이지 않는 파동을 다른 방법으로 재는 과정을 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 실제로 재어 보기",
+          "section": "5.2 소리로 재는 방법",
+          "primaryConcepts": [
+            "측정 방법"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "측정 장치가 대상을 교란하는 문제와 감도·간섭의 상충을 설명한다. 사용 기구를 기록에 남겨야 비교가 가능하다는 결론으로 이어진다.",
+          "aiAnalysisInputSha256": "08490468920c88077ccfaa2b6a988c5cd740c918388eb2f007187a75a68524c8",
+          "aiPublicGuideTopic": "재는 도구가 재려는 것을 바꾸어 놓는 문제를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 실제로 재어 보기",
+          "section": "5.3 그림으로 옮기기",
+          "primaryConcepts": [
+            "관측 기록"
+          ],
+          "secondaryConcepts": [
+            "관측 절차"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 기록 양식을 조건·그림·변화표의 세 부분으로 구성해 보인다. 바꾼 것과 달라진 것을 짝지어 적는 칸이 변인 통제를 기록 단계에서 강제한다.",
+          "aiAnalysisInputSha256": "5a6eb2d61344639899dcdb334a4b2f948f39878d38d8e184583b497e74655486",
+          "aiPublicGuideTopic": "관측한 물결을 종이에 옮겨 적는 양식을 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 실제로 재어 보기",
+          "section": "5.4 관측을 표로 옮기기",
+          "primaryConcepts": [
+            "관측 기록"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 결과를 조작-변화 짝으로 표에 정리하는 방법과 불변 사항·실패 기록을 남기는 이유를 설명한다. 비교 가능한 기록이 다음 관측의 설계를 돕는다.",
+          "aiAnalysisInputSha256": "3de01b221eb426f1bbfba31334362ea77fb4081417ca2b534f4223d6069e95b5",
+          "aiPublicGuideTopic": "그림으로 남긴 관측을 견줄 수 있는 형태로 정리한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 실제로 재어 보기",
+          "section": "5.5 관측을 마무리하며",
+          "primaryConcepts": [
+            "관측 기록"
+          ],
+          "secondaryConcepts": [
+            "중첩"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단일 관측의 한계를 인정하면서 반복 비교의 가치를 강조한다. 최종 산출물이 수치가 아니라 재현 가능한 양식이라는 결론으로 5장을 닫는다.",
+          "aiAnalysisInputSha256": "41ed3957237c28156f96dc99a94db7fcdaf9d9b05d31d2f3a31bf0134d7b9d18",
+          "aiPublicGuideTopic": "한 차례의 관측에서 무엇을 얻었고 무엇은 얻지 못했는지 정리한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 그림이 어긋나는 순간",
+          "section": "6.1 파동이 아닌 것",
+          "primaryConcepts": [
+            "파동의 오인"
+          ],
+          "secondaryConcepts": [
+            "파동"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "전달되는 모습만으로 파동을 판정하는 오류를 지적하고 복원력의 유무를 기준으로 제시한다. 용어의 동일성이 성질의 동일성을 뜻하지 않음을 밝힌다.",
+          "aiAnalysisInputSha256": "35215b967ca22f33fe1e4c09a7b752afa84bfcb79d9b735156d7083b8fc02ba2",
+          "aiPublicGuideTopic": "파동처럼 보이지만 파동이 아닌 현상들을 가려낸다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 그림이 어긋나는 순간",
+          "section": "6.1 파동이 아닌 것",
+          "primaryConcepts": [
+            "파동의 오인"
+          ],
+          "secondaryConcepts": [
+            "매질"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이동 대상을 묻는 기준을 다시 적용해 파동과 흐름을 가른다. 두 현상이 겹칠 때 분리 측정이 필요함을 강조하며 판정 절차를 마무리한다.",
+          "aiAnalysisInputSha256": "cf24da242b105cbb6f7867c52ea3114393456b0991a34030cbe0be49c725099e",
+          "aiPublicGuideTopic": "무엇이 옮겨 가는지를 다시 묻는다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": [
+            "carrier-stays-put"
+          ]
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 그림이 어긋나는 순간",
+          "section": "6.2 잦아드는 흔들림",
+          "primaryConcepts": [
+            "감쇠"
+          ],
+          "secondaryConcepts": [
+            "진폭"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "감쇠를 매질 내 손실로 정의하고 기하학적 퍼짐과 구분하는 방법을 제시한다. 손실이 큰 매질의 용도를 언급해 성질의 상대적 유용성을 밝힌다.",
+          "aiAnalysisInputSha256": "6b7754ef612b5f0828ccf64f2ac94355d4cf05c4530fe1fa290e1c7f922fba09",
+          "aiPublicGuideTopic": "실제 파동의 폭이 시간이 지나며 줄어드는 까닭을 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 그림이 어긋나는 순간",
+          "section": "6.2 잦아드는 흔들림",
+          "primaryConcepts": [
+            "감쇠"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "감쇠를 무시할 수 있는 조건을 거리 비교로 판단하는 절차를 서술한다. 근사 조건을 기록에 남기는 태도를 측정 기록 원칙과 연결한다.",
+          "aiAnalysisInputSha256": "dc2b28c93174381e65f33715036746583d608cbeea38f7d9b261fe0d445e30e1",
+          "aiPublicGuideTopic": "잦아듦을 무시해도 되는 경우와 그렇지 않은 경우를 가른다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 그림이 어긋나는 순간",
+          "section": "6.3 매질이 고르지 않을 때",
+          "primaryConcepts": [
+            "불균일 매질"
+          ],
+          "secondaryConcepts": [
+            "굴절"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연속적으로 변하는 매질에서의 굴절을 다루고 직진 가정이 무너지는 사례를 든다. 매질 상태를 함께 측정해야 경로를 복원할 수 있음을 밝힌다.",
+          "aiAnalysisInputSha256": "29346986e0d9b0757059a4fbe3969f238e6e7d6f7a61b7f257ef3bce16b0a72f",
+          "aiPublicGuideTopic": "성질이 자리마다 다른 곳에서 파동이 휘어 가는 현상을 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 그림이 어긋나는 순간",
+          "section": "6.3 매질이 고르지 않을 때",
+          "primaryConcepts": [
+            "불균일 매질"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "불균일 조건에서 통제 대신 기록으로 대응하는 관측 전략을 제시한다. 조건과 결과의 대응 축적이 통제 실험과 다른 종류의 정보를 준다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "d62045f10dd27ebe71003bc73826ed14e732ec1b40f65337f528dadadab5275c",
+          "aiPublicGuideTopic": "고르지 않은 곳에서 관측할 때의 요령을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 그림이 어긋나는 순간",
+          "section": "6.4 그래도 그림을 쓰는 이유",
+          "primaryConcepts": [
+            "모형의 한계"
+          ],
+          "secondaryConcepts": [
+            "중첩"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "모형의 유용성을 측정 대상을 지정하는 기능에서 찾고 적용 범위 명시로 한계를 다룬다. 모형 없는 관측이 비교 불가능해진다는 점을 근거로 든다.",
+          "aiAnalysisInputSha256": "6af91c5ca1a7943bba672bb3b0b803cec02322d95762569c3c7a22a00435e9a9",
+          "aiPublicGuideTopic": "실제와 어긋나는 데도 단순한 그림을 계속 쓰는 까닭을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 그림이 어긋나는 순간",
+          "section": "6.4 그래도 그림을 쓰는 이유",
+          "primaryConcepts": [
+            "모형의 한계"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "모형의 적용 조건을 명시적으로 기록하는 실무 방법을 제시하고 조건이 다른 기록을 비교하지 않는 원칙을 덧붙인다. 불완전한 모형을 계속 쓰는 근거로 마무리한다.",
+          "aiAnalysisInputSha256": "637e11c93a63bf64aefce4bb0998c0e89d0e9404c6f857eb3a8b782c6d838cf2",
+          "aiPublicGuideTopic": "그림에 조건을 붙여 두는 방법을 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 무엇을 그리고 무엇을 남기나",
+          "section": "7.1 순서대로 다시 보기",
+          "primaryConcepts": [
+            "파동"
+          ],
+          "secondaryConcepts": [
+            "간섭"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "진동에서 파동, 상호작용, 중첩으로 이어지는 전개를 요약한다. 관측된 무늬를 소수의 양과 규칙으로 환원하는 것이 책의 목표였음을 밝힌다.",
+          "aiAnalysisInputSha256": "b1cb12c4a8b169ee7528cd1ac09bee1909665bcaa83e139c828157dec9012488",
+          "aiPublicGuideTopic": "제자리 흔들림에서 무늬까지 이어진 순서를 되짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 무엇을 그리고 무엇을 남기나",
+          "section": "7.2 이 그림으로 답할 수 없는 것",
+          "primaryConcepts": [
+            "모형의 한계"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발생 기원, 매질의 미시 구조, 매질 없는 전파를 다루지 않았음을 명시한다. 적용 범위를 좁혀 두는 마무리로 다음 학습의 경계를 표시한다.",
+          "aiAnalysisInputSha256": "cf1852d784eb5c6aa38bea53971eb30818deaecf54d764365312652f02c6ffba",
+          "aiPublicGuideTopic": "이 책의 방법이 다루지 못하는 물음을 적어 둔다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 무엇을 그리고 무엇을 남기나",
+          "section": "7.3 다음 관측을 위한 질문",
+          "primaryConcepts": [
+            "관측 기록"
+          ],
+          "secondaryConcepts": [
+            "모형의 한계"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복 관측에서 조건 동일성이 장치 정밀도보다 앞선다는 결론으로 책을 닫는다. 기록에 조건을 남겨야 재현이 가능하다는 점을 마지막 요구로 제시한다.",
+          "aiAnalysisInputSha256": "8bcb1f8f335bc89d8940e27dc63c9eef4f5c4bfc186ad10c7608d04aeedf47e4",
+          "aiPublicGuideTopic": "다음에 다시 볼 때 무엇을 같게 두어야 하는지 남긴다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
+      "bookId": 34,
+      "title": "장부로 읽는 사회사: 기록에서 구조로",
+      "pdfPath": "pdfs/book-034.pdf",
+      "pdfSha256": "0a0f9811631507b012a500bdbc86ced2841d995e7fd5f340b356fca4a4eb56f4",
+      "totalPageCount": 49,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 남은 것과 사라진 것",
+          "section": "1.1 장부는 무엇을 적는가",
+          "primaryConcepts": [
+            "기록의 목적"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장부가 행정 목적으로 작성된 문서임을 밝히고 작성 목적이 기재 범위를 정한다는 점을 제시한다. 독자의 관심과 작성자의 관심이 다르다는 전제를 세우는 도입이다.",
+          "aiAnalysisInputSha256": "f6042a03167996bd9ad3c85bf627053a75f80fd0ff85d103e07793557127e1c2",
+          "aiPublicGuideTopic": "장부가 애초에 무엇을 위해 만들어진 문서인지부터 확인한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 남은 것과 사라진 것",
+          "section": "1.1 장부는 무엇을 적는가",
+          "primaryConcepts": [
+            "기록의 목적"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기재 여부와 상세도가 행정적 필요와 분쟁 가능성에서 나온다는 점을 정리한다. 기록의 밀도 차이를 사회적 중요도로 오독하지 않도록 경고한다.",
+          "aiAnalysisInputSha256": "965561cad69b1930150268894a8743995c024127af3004699e04f8459b506a2b",
+          "aiPublicGuideTopic": "적을 이유가 있던 것과 없던 것을 가르는 기준을 세운다",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 남은 것과 사라진 것",
+          "section": "1.2 남은 기록은 우연이 아니다",
+          "primaryConcepts": [
+            "잔존 편향"
+          ],
+          "secondaryConcepts": [
+            "기록의 목적"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "잔존 편향을 보존 조건의 차이에서 오는 체계적 치우침으로 설명하고 표본을 늘려도 해소되지 않음을 밝힌다. 결론에 단서를 붙이는 태도를 요구한다.",
+          "aiAnalysisInputSha256": "81cb92b6226ce29b2657077cafba5aaf932b82f34f7cec650681248a88991ae0",
+          "aiPublicGuideTopic": "오늘까지 전해진 문서가 어떤 성질을 공유하는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": [
+            "silence-is-not-absence"
+          ]
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 남은 것과 사라진 것",
+          "section": "1.2 남은 기록은 우연이 아니다",
+          "primaryConcepts": [
+            "잔존 편향"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록의 생성부터 잔존까지를 단계별 축소로 표현하고 각 단계에서 무엇이 탈락하는지 명시한다. 알고 싶은 범위와 근거의 범위 차이를 시각화한다.",
+          "aiAnalysisInputSha256": "aff2f6e8d89a21e15aedf43d53c69623d1eae14c9cf6ebc11f4cbaab708f7a4d",
+          "aiPublicGuideTopic": "만들어진 기록에서 오늘 남은 기록까지 걸러지는 과정을 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 남은 것과 사라진 것",
+          "section": "1.3 누가 적었는가",
+          "primaryConcepts": [
+            "기록 주체"
+          ],
+          "secondaryConcepts": [
+            "기록의 목적"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "작성 주체에 따라 분류 기준과 강조점이 달라진다는 점을 필적 구분 사례로 보인다. 기준이 다른 구간을 합산하지 않는 원칙을 세운다.",
+          "aiAnalysisInputSha256": "7a5546b896c87f6cf53c0ece8cfba5a87e79a75fd370621c89f197eb0d511448",
+          "aiPublicGuideTopic": "장부를 작성한 사람의 자리가 기록에 남긴 자국을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 남은 것과 사라진 것",
+          "section": "1.3 누가 적었는가",
+          "primaryConcepts": [
+            "기록 주체"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "서식 변경이 수치의 불연속을 만든다는 점을 사례로 설명하고 변화의 원인을 대상과 계측 방식으로 나누어 확인할 것을 요구한다.",
+          "aiAnalysisInputSha256": "13e94c772b8fcd26d0b5eb69c9c75fbe67f69fdde62f8289de7dd84cbe09ff84",
+          "aiPublicGuideTopic": "받는 쪽이 정해 둔 틀이 적히는 내용을 정한다는 점을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "2장 장부를 읽는 법",
+          "section": "2.1 항목과 단위",
+          "primaryConcepts": [
+            "기재 항목"
+          ],
+          "secondaryConcepts": [
+            "기록의 목적"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장부 항목을 인적·품목·수량·이행 여부로 분해하고 호 단위 기재와 지역별 단위 차이를 지적한다. 이후 모든 해석의 기본 단위를 정의하는 페이지다.",
+          "aiAnalysisInputSha256": "3f67bc2e32db06eb4f202d7ff977b304594fc325c1cf7f7c928c02d79201479a",
+          "aiPublicGuideTopic": "장부 한 줄이 어떤 요소로 이루어져 있는지 분해한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 장부를 읽는 법",
+          "section": "2.1 항목과 단위",
+          "primaryConcepts": [
+            "기재 항목"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장부 한 면의 세로 칸 구성을 나타내고 각 칸이 담는 정보를 지시한다. 이행 여부가 비어 있는 줄을 함께 두어 결락도 자료임을 보인다.",
+          "aiAnalysisInputSha256": "8f9b9b9fd81e12e55a90fb6eb11a92f88a5be5fbb1cacc45c0d27452b3494946",
+          "aiPublicGuideTopic": "장부 한 장의 짜임을 그림으로 옮긴다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 장부를 읽는 법",
+          "section": "2.2 세금의 종류",
+          "primaryConcepts": [
+            "조세 항목"
+          ],
+          "secondaryConcepts": [
+            "기재 항목"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "토지·호·역의 세 갈래 부담을 근거의 차이로 구분하고 각 항목이 장부에 남기는 정보의 한계를 밝힌다. 환산 비율의 변동이 비교를 어렵게 한다는 점을 예고한다.",
+          "aiAnalysisInputSha256": "452515502e0b281764cbecaaf57481388a23d00acf314797c18b42a050491d9e",
+          "aiPublicGuideTopic": "장부에 나오는 부담의 갈래를 나눈다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 장부를 읽는 법",
+          "section": "2.2 세금의 종류",
+          "primaryConcepts": [
+            "조세 항목"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이질적 부담을 합산할 때 필요한 환산 가정과 그로 인한 불확실성을 설명한다. 사용한 환산율을 명시해 재계산 가능성을 남기는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "ad4f76493ec2651fb1e3760069a50686f8ac48fc6ecfd57008817fa025e0f09b",
+          "aiPublicGuideTopic": "갈래가 다른 부담을 하나로 합칠 때 생기는 문제를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 장부를 읽는 법",
+          "section": "2.3 빠진 칸 읽기",
+          "primaryConcepts": [
+            "결락"
+          ],
+          "secondaryConcepts": [
+            "기재 항목"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결락의 유형을 네 가지로 구분하고 주변 정보로 유형을 좁히는 방법을 제시한다. 유형 미상을 미상으로 남기는 원칙이 통계적 누락을 막는다.",
+          "aiAnalysisInputSha256": "7693890b45e98a4c90c007c46ee36197bdd42ba09d1b0c61599744945b4623ed",
+          "aiPublicGuideTopic": "비어 있는 칸이 무엇을 뜻할 수 있는지 갈래를 나눈다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 장부를 읽는 법",
+          "section": "2.3 빠진 칸 읽기",
+          "primaryConcepts": [
+            "결락"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결측을 영으로 대체하는 처리의 위험을 지적하고 하한·상한을 함께 제시하는 방식을 권한다. 처리 규칙을 사전에 정하는 절차적 원칙을 덧붙인다.",
+          "aiAnalysisInputSha256": "3e4674fda4ec25673eeea22a72cdf2c793e0d66842dc80124d2d3e6faadaac2c",
+          "aiPublicGuideTopic": "빈칸을 숫자로 다룰 때의 규칙을 정한다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": [
+            "silence-is-not-absence"
+          ]
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 장부를 읽는 법",
+          "section": "2.4 숫자를 견주는 자리",
+          "primaryConcepts": [
+            "비교 기준"
+          ],
+          "secondaryConcepts": [
+            "조세 항목"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비교 가능성의 조건을 단위·범위·서식의 일치로 정리하고 범위 변동이 만드는 착시를 예로 든다. 비교 불가를 명시하는 선택을 권한다.",
+          "aiAnalysisInputSha256": "2cb39b7bb5633d8b4515ca25e2505f2abab571ec140387d44ec3e5951edcc240",
+          "aiPublicGuideTopic": "두 숫자를 나란히 놓기 전에 맞춰 두어야 할 것을 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 장부를 읽는 법",
+          "section": "2.4 숫자를 견주는 자리",
+          "primaryConcepts": [
+            "비교 기준"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분모 선택이 결론을 좌우한다는 점을 호당·결당 부담의 대비로 보인다. 복수 지표를 병기해 해석의 견고함을 확인하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "6de4d2d77f2162e82c2863e74ec1cee20f71a1f609e48fcf4acb4e19404714dc",
+          "aiPublicGuideTopic": "무엇으로 나누어 보는지가 결론을 바꾸는 문제를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 장부에서 사회로",
+          "section": "3.1 누가 얼마를 냈는가",
+          "primaryConcepts": [
+            "부담의 분포"
+          ],
+          "secondaryConcepts": [
+            "조세 항목"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "부담 분포의 편중을 관찰하고 항목별로 누진성이 다르다는 점을 지적한다. 총액 평균보다 항목별 분포가 정보량이 크다는 결론을 제시한다.",
+          "aiAnalysisInputSha256": "f09f26c373eb04cb1729fa15cfdecefb15f2bf79f1fd3b5c9b4b23136b26abeb",
+          "aiPublicGuideTopic": "부담이 사람들 사이에 어떻게 나뉘어 있었는지 살핀다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 장부에서 사회로",
+          "section": "3.1 누가 얼마를 냈는가",
+          "primaryConcepts": [
+            "부담의 분포"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "부담 분포를 내림차순 막대로 나타내고 항목별로 기울기가 다름을 두 작은 그림으로 대비한다. 총액 분포와 항목 분포의 차이를 한 화면에서 보인다.",
+          "aiAnalysisInputSha256": "266ccc0f915725eef2f0bd61784d49a8413154d230f089d34549a834045ddf25",
+          "aiPublicGuideTopic": "부담이 큰 쪽부터 늘어세운 모습을 그림으로 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 장부에서 사회로",
+          "section": "3.2 무엇으로 냈는가",
+          "primaryConcepts": [
+            "납부 수단"
+          ],
+          "secondaryConcepts": [
+            "조세 항목"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "납부 수단의 변화가 흉년 등 상황을 반영하는 단서임을 밝히면서 환산 조건이 기록되지 않는 한계를 함께 지적한다.",
+          "aiAnalysisInputSha256": "07a0f0586f239131026d1c4acecf60c036ed90a4661df9d08a14a21efc57c67a",
+          "aiPublicGuideTopic": "부담을 갚는 데 쓰인 물건과 방식을 살핀다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 장부에서 사회로",
+          "section": "3.2 무엇으로 냈는가",
+          "primaryConcepts": [
+            "납부 수단"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 수량이라도 조달 방식에 따라 실질 부담이 달라짐을 설명하고 지역 간 비교의 함정을 지적한다. 수치 비교에 앞서 조건 비교가 필요함을 강조한다.",
+          "aiAnalysisInputSha256": "3e7fe65b2a9ecd5d94a5fb6e8ba5b926dfee7d80d2f7d088c1c9207c11158f24",
+          "aiPublicGuideTopic": "내는 물건이 달라지면 부담의 무게도 달라진다는 점을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 장부에서 사회로",
+          "section": "3.3 언제 냈는가",
+          "primaryConcepts": [
+            "납부 시기"
+          ],
+          "secondaryConcepts": [
+            "기재 항목"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "납부 시기의 계절적 집중과 그 원인을 설명하고 시기 이탈을 사정 변화의 단서로 제시한다. 날짜 기재 여부의 선택성도 함께 경고한다.",
+          "aiAnalysisInputSha256": "7133ea5b2e3a0f5ea9b7ae552d780fb5883d0b5468cf5fee4865dcdc99d89133",
+          "aiPublicGuideTopic": "납부가 몰리는 시기와 그것이 뜻하는 바를 살핀다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 장부에서 사회로",
+          "section": "3.3 언제 냈는가",
+          "primaryConcepts": [
+            "납부 시기"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지연 납부와 미납을 연도 간 연결로 구분하는 절차를 제시하고 연결 실패분의 크기를 결론의 신뢰도로 환산해 기록할 것을 권한다.",
+          "aiAnalysisInputSha256": "5893fd647a411f0d6e6a2af3c41f494c4fda9c99b797ac86b93b97896797d3ba",
+          "aiPublicGuideTopic": "늦게 내는 일과 못 내는 일을 가른다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 장부에서 사회로",
+          "section": "3.4 내지 못한 사람들",
+          "primaryConcepts": [
+            "체납"
+          ],
+          "secondaryConcepts": [
+            "부담의 분포"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "체납의 이월과 전가 구조를 설명하고 부담 급증의 원인을 장부 내부에서 확인하는 방법을 제시한다. 부담이 횡적으로 확산되는 경로를 밝힌다.",
+          "aiAnalysisInputSha256": "fb37f7773ad857ca2429f24d7f8e01f205d3a080ac1d128cea2ed33f9f870465",
+          "aiPublicGuideTopic": "부담을 갚지 못한 기록이 어떻게 남는지 살핀다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 장부에서 사회로",
+          "section": "3.4 내지 못한 사람들",
+          "primaryConcepts": [
+            "체납"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "체납 소멸의 세 경로를 구분하고 동시 소멸 여부로 감면을 식별하는 방법을 제시한다. 미구분이 미납 규모를 과소평가하게 만든다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "0b58e2c7ea6a16d7824a18ca94b2bc700cf5a068768fff86afacba2f4d97d7a4",
+          "aiPublicGuideTopic": "쌓인 몫이 사라지는 여러 방식을 가른다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 겨울이라는 조건",
+          "section": "4.1 계절이 정한 일정",
+          "primaryConcepts": [
+            "계절 일정"
+          ],
+          "secondaryConcepts": [
+            "기재 항목"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계절 조건이 수취 일정과 장부 서식을 규정한 사례를 제시한다. 지역 고유 항목이 비교 가능성을 낮추는 대신 지역 정보를 제공한다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "3216a5e844907d9d9191f8264b05a90ce3459289b79890cf3cd9ab14eda7b853",
+          "aiPublicGuideTopic": "겨울이라는 조건이 한 해의 일정을 어떻게 묶어 두었는지 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 겨울이라는 조건",
+          "section": "4.1 계절이 정한 일정",
+          "primaryConcepts": [
+            "계절 일정"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "농사와 수취 일정을 하나의 시간 띠 위아래에 배치해 계절적 집중을 드러낸다. 결빙 시점이 만든 마감이 양쪽 일정을 동시에 압박함을 보인다.",
+          "aiAnalysisInputSha256": "469ca9e7662b58d0974e96277a7cb946a69ef84c704a5f517d1794c43aa93f89",
+          "aiPublicGuideTopic": "한 해의 일정이 계절에 따라 어떻게 배치되었는지 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 겨울이라는 조건",
+          "section": "4.2 흉년과 감면",
+          "primaryConcepts": [
+            "감면"
+          ],
+          "secondaryConcepts": [
+            "체납"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "감면 기록이 피해 규모가 아니라 신청·확인 접근성을 반영한다는 점을 설명한다. 신청 기반 자료를 필요 분포로 읽는 오류를 일반화해 경고한다.",
+          "aiAnalysisInputSha256": "0270b890243edde9d6d8b9ee5dc67ae52a22716e5b19ecc1d19841250aacdd16",
+          "aiPublicGuideTopic": "거둘 것이 모자란 해에 장부가 어떻게 달라지는지 살핀다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 겨울이라는 조건",
+          "section": "4.2 흉년과 감면",
+          "primaryConcepts": [
+            "감면"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "감면 대상 선정 기준을 범위에서 역추적하는 방법을 보이고 과거 등급이 현재 판단을 규정하는 경로를 지적한다. 기록 오류가 실제 불이익으로 이어짐을 밝힌다.",
+          "aiAnalysisInputSha256": "06a91c6ae97d5a3a0e2240f1f6c5f15a3e2f730fb1c72fd91a91df6e53a24413",
+          "aiPublicGuideTopic": "감면의 범위에서 판단의 기준을 되짚는다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 겨울이라는 조건",
+          "section": "4.3 이동과 도망",
+          "primaryConcepts": [
+            "인구 이동"
+          ],
+          "secondaryConcepts": [
+            "체납"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인구 이탈이 본인 기록이 아니라 주변 기록에 흔적을 남긴다는 점을 설명하고 복수 지역 자료의 필요성을 제시한다. 판별 불가를 명시하는 태도를 유지한다.",
+          "aiAnalysisInputSha256": "6193de10ab939068b21e387b08b207a10fea1a91aa45928a30990968f029e76b",
+          "aiPublicGuideTopic": "사람이 고을을 떠날 때 장부에 남는 흔적을 살핀다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 겨울이라는 조건",
+          "section": "4.3 이동과 도망",
+          "primaryConcepts": [
+            "인구 이동"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "호수 감소를 인구 감소로 직결하는 오류를 지적하고 호의 병합 유인을 설명한다. 이름 연속성 추적을 대안 지표로 제시한다.",
+          "aiAnalysisInputSha256": "38a823e41ba1cfee027a5aaf6ca8a6e65770a6feab71a70b1e53510c0d117543",
+          "aiPublicGuideTopic": "줄 수의 변화를 인구 변화로 읽을 때의 문제를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 겨울이라는 조건",
+          "section": "4.4 국경의 부담",
+          "primaryConcepts": [
+            "변경 부담"
+          ],
+          "secondaryConcepts": [
+            "조세 항목"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "변경 지역의 역 부담이 대납 불가와 계절 중첩으로 실질 무게를 키운다는 점을 설명한다. 시기 정보의 결락이 부담 평가를 제약함을 밝힌다.",
+          "aiAnalysisInputSha256": "5b77f507909800aab614250dbe68bcbdcb78f774a266fa130a366401554ef71d",
+          "aiPublicGuideTopic": "국경에 가까운 고을이 따로 지던 몫을 살핀다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 겨울이라는 조건",
+          "section": "4.4 국경의 부담",
+          "primaryConcepts": [
+            "변경 부담"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "항목 간 상호작용과 시기 중첩이 실질 부담을 증폭한다는 점을 설명한다. 합계 지표가 중첩을 반영하지 못하는 한계를 지적한다.",
+          "aiAnalysisInputSha256": "f99f1fae70629ae68a38754e8b227736e9c611cb38a4464f5adab59e44e53690",
+          "aiPublicGuideTopic": "특별한 부담이 다른 항목에 미치는 영향을 살핀다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 실제로 읽어 보기",
+          "section": "5.1 한 마을의 한 해",
+          "primaryConcepts": [
+            "사례 읽기"
+          ],
+          "secondaryConcepts": [
+            "기재 항목"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사례 분석의 준비 단계로 필적 확인, 서식 일관성 점검, 결락 유형 정리를 순서대로 수행한다. 집계 이전에 자료의 동질성을 확보하는 절차를 보인다.",
+          "aiAnalysisInputSha256": "9721ffe37761eab8a805ac54b6b1d82cdf84cfb49bf0d4e47684b0c4211fcc17",
+          "aiPublicGuideTopic": "장부의 한 부분을 골라 처음부터 끝까지 읽어 본다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 실제로 읽어 보기",
+          "section": "5.1 한 마을의 한 해",
+          "primaryConcepts": [
+            "사례 읽기"
+          ],
+          "secondaryConcepts": [
+            "결락"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "항목별 집계와 결락 줄의 후속 추적 결과를 제시하고 판별 불가 줄을 미상으로 남긴다. 진술 범위를 자료가 지지하는 만큼으로 한정한다.",
+          "aiAnalysisInputSha256": "763729efdbb43b82ea6e7fe8c1b5ad9f6908fe71ee348472b5b2219016da9593",
+          "aiPublicGuideTopic": "준비를 마친 뒤 실제로 세어 본 결과를 정리한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 실제로 읽어 보기",
+          "section": "5.2 두 해를 견주기",
+          "primaryConcepts": [
+            "연도 비교"
+          ],
+          "secondaryConcepts": [
+            "비교 기준"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비교 가능성 확인 후 호수·이름·항목별 총량을 나란히 대조한다. 다른 방향으로 움직인 항목을 후속 조사 대상으로 특정하는 판단을 보인다.",
+          "aiAnalysisInputSha256": "cc0ec04c59712fd92371975f905bee7f8dc1d098add364e6b93f60abd2db261f",
+          "aiPublicGuideTopic": "같은 마을의 다른 해와 나란히 놓아 본다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 실제로 읽어 보기",
+          "section": "5.2 두 해를 견주기",
+          "primaryConcepts": [
+            "연도 비교"
+          ],
+          "secondaryConcepts": [
+            "변경 부담"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "특정 항목 증가의 원인을 외부 자료로 확인하고 부담 증가가 특정 계층에 집중되었음을 보인다. 평균이 분포 변화를 은폐한다는 점을 사례로 확인한다.",
+          "aiAnalysisInputSha256": "7273420b0c4bb82f60694d05be69e09dade90a66a1d80cdee43460f0fcce330b",
+          "aiPublicGuideTopic": "다르게 움직인 항목을 따라가 본다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 실제로 읽어 보기",
+          "section": "5.3 두 해를 나란히 놓기",
+          "primaryConcepts": [
+            "정리 양식"
+          ],
+          "secondaryConcepts": [
+            "연도 비교"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연도 비교표에 항목별 대조 칸과 기준 일치 확인란을 함께 배치한다. 비교 가능성 점검을 양식 안에서 강제하는 구성이다.",
+          "aiAnalysisInputSha256": "0bcfd28fa72cfdc6194adec1574b1b4239dbc7eb5d41480c389f0c19b4d292d4",
+          "aiPublicGuideTopic": "두 해의 장부를 견주기 위한 정리 양식을 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 실제로 읽어 보기",
+          "section": "5.4 견줌을 표로 정리하기",
+          "primaryConcepts": [
+            "정리 양식"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정리 표에 분모, 제외 줄, 미상, 가정을 함께 기재하는 원칙을 제시한다. 재계산과 이견 제기가 가능한 형태로 결과를 남기는 것이 목적임을 밝힌다.",
+          "aiAnalysisInputSha256": "844d550b416d5a1d1331b5485753915b8c650d3ca1417005ef8e960ebb82e150",
+          "aiPublicGuideTopic": "읽은 결과를 남에게 넘길 수 있는 형태로 만든다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 실제로 읽어 보기",
+          "section": "5.5 읽기를 마무리하며",
+          "primaryConcepts": [
+            "정리 양식"
+          ],
+          "secondaryConcepts": [
+            "사례 읽기"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단일 사례의 결론 범위를 한정하면서 동일 방식 반복이 만드는 비교 가치를 강조한다. 최종 산출물이 재사용 가능한 양식이라는 결론으로 장을 닫는다.",
+          "aiAnalysisInputSha256": "f9ed2a85b5bb5f621a2909f308bfa193b0f3de2f7909caa094f1df948640f98c",
+          "aiPublicGuideTopic": "한 차례의 읽기에서 얻은 것과 얻지 못한 것을 정리한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 장부가 말하지 않는 것",
+          "section": "6.1 적히지 않은 사람들",
+          "primaryConcepts": [
+            "기록의 침묵"
+          ],
+          "secondaryConcepts": [
+            "잔존 편향"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기재 대상의 한정성 때문에 다수가 기록에서 배제된다는 점을 설명하고 호와 인구를 혼동하지 않을 것을 요구한다. 미상을 비워 두는 편이 낫다는 원칙을 제시한다.",
+          "aiAnalysisInputSha256": "6c6bba4b49d939d3d40caf09cad1b0743bb324534ca01abc389f258f373d5a22",
+          "aiPublicGuideTopic": "장부에 이름이 없는 사람들을 어떻게 다루어야 하는지 논한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 장부가 말하지 않는 것",
+          "section": "6.1 적히지 않은 사람들",
+          "primaryConcepts": [
+            "기록의 침묵"
+          ],
+          "secondaryConcepts": [
+            "기록의 목적"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결락 해석의 기준을 자료 전체 수준으로 확장해 적용하고 판단 불가를 명시하는 원칙을 반복한다. 기록 목적을 묻는 습관을 일반 자료로 넓힌다.",
+          "aiAnalysisInputSha256": "f56d8bb0bcc993e1d4a970c57bc21087855bf66a3806995bf90ccbfed43b0cf8",
+          "aiPublicGuideTopic": "없음과 적히지 않음을 가르는 물음을 다시 세운다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": [
+            "silence-is-not-absence"
+          ]
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 장부가 말하지 않는 것",
+          "section": "6.2 숫자가 부풀려질 때",
+          "primaryConcepts": [
+            "수치의 왜곡"
+          ],
+          "secondaryConcepts": [
+            "기록 주체"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "보고 유인에 따른 계통 오차의 방향성을 설명하고 항목 간 정합성으로 왜곡을 탐지하는 방법을 제시한다. 크기를 모르는 편향의 취급 방식을 밝힌다.",
+          "aiAnalysisInputSha256": "cd9c9a7173becabdeb4aa1f1e3dca86221d8c46875f3030bf45b0a66d0e38c6a",
+          "aiPublicGuideTopic": "적는 쪽의 사정이 숫자를 밀거나 당기는 경우를 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 장부가 말하지 않는 것",
+          "section": "6.2 숫자가 부풀려질 때",
+          "primaryConcepts": [
+            "수치의 왜곡"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자료 생성 단계마다 작용하는 편향의 방향을 흐름도로 배치한다. 역추적으로 방향은 알 수 있으나 크기는 알 수 없다는 한계를 명시한다.",
+          "aiAnalysisInputSha256": "41919136f091c9be4fa33fb1d88690ffccc993d95d3a2cb6b2cb92db02c78316",
+          "aiPublicGuideTopic": "숫자가 어느 자리에서 어느 방향으로 밀리는지 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 장부가 말하지 않는 것",
+          "section": "6.3 하나의 장부만 있을 때",
+          "primaryConcepts": [
+            "단일 사료의 한계"
+          ],
+          "secondaryConcepts": [
+            "비교 기준"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단일 사료에서 가능한 내부 비교와 불가능한 외부 위치 판단을 구분한다. 두 진술의 혼동이 일반화 오류를 낳는다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "805a3bfd8b8d05365828e373c15150651e3e30c5dabf9f849d07e3acfc58ae9d",
+          "aiPublicGuideTopic": "견줄 자료가 없을 때 할 수 있는 일과 없는 일을 가른다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 장부가 말하지 않는 것",
+          "section": "6.3 하나의 장부만 있을 때",
+          "primaryConcepts": [
+            "단일 사료의 한계"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이종 자료 연결의 절차와 연결 강도를 결론에 반영하는 방법을 제시한다. 자료 간 불일치를 제거 대상이 아니라 해석 단서로 다루는 태도를 권한다.",
+          "aiAnalysisInputSha256": "303f7e679b6432bf932288ca323a921579f9882621637c4f5b8cbe08c1da9a5c",
+          "aiPublicGuideTopic": "다른 종류의 기록을 이어 붙이는 방법을 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 장부가 말하지 않는 것",
+          "section": "6.4 그래도 장부를 읽는 이유",
+          "primaryConcepts": [
+            "사료의 쓸모"
+          ],
+          "secondaryConcepts": [
+            "기록의 침묵"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장부의 가치를 계측 대상과 방식의 변화를 남긴다는 점에서 찾는다. 사료를 사회의 상이 아니라 사회를 보던 시선의 기록으로 다루는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "fc82cae810fc2cb389fafbbca2df8b0ecbb832264a142422601513dfa4302f5d",
+          "aiPublicGuideTopic": "한계가 많은 자료를 계속 읽는 까닭을 밝힌다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 장부가 말하지 않는 것",
+          "section": "6.4 그래도 장부를 읽는 이유",
+          "primaryConcepts": [
+            "사료의 쓸모"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결론에 적용 범위를 명시하는 실무 방법과 조건이 다른 결과를 비교하지 않는 원칙을 제시한다. 불완전한 사료를 계속 사용하는 근거로 마무리한다.",
+          "aiAnalysisInputSha256": "3d8ea45146d3969f592815262c28c0bae13fef80c73f466c29e2f3e98cd0fc1d",
+          "aiPublicGuideTopic": "결론에 한계를 함께 붙여 두는 방법을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 무엇을 읽고 무엇을 남기나",
+          "section": "7.1 순서대로 다시 보기",
+          "primaryConcepts": [
+            "비교 기준"
+          ],
+          "secondaryConcepts": [
+            "부담의 분포"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사료 비판에서 구조 해석으로 이어지는 전개를 요약한다. 자료의 성격 파악이 질문의 범위를 정한다는 방법론적 결론을 제시한다.",
+          "aiAnalysisInputSha256": "ea68e8d574fe8d1f1d16abf913387b83c039e1ae60b6ef9244db961d88dd06d7",
+          "aiPublicGuideTopic": "기록의 성격에서 사회의 구조까지 이어진 순서를 되짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 무엇을 읽고 무엇을 남기나",
+          "section": "7.2 이 장부로 답할 수 없는 것",
+          "primaryConcepts": [
+            "단일 사료의 한계"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인식·정당성·대표성에 관한 물음이 이 사료의 범위 밖임을 명시한다. 적용 범위를 좁혀 두는 마무리로 후속 연구의 경계를 표시한다.",
+          "aiAnalysisInputSha256": "8e962a63bba8b21fe3a83dd4312272988bcaf4f3e32412a672e314d267694589",
+          "aiPublicGuideTopic": "이 자료가 다루지 못하는 물음을 적어 둔다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 무엇을 읽고 무엇을 남기나",
+          "section": "7.3 다음 읽기를 위한 질문",
+          "primaryConcepts": [
+            "정리 양식"
+          ],
+          "secondaryConcepts": [
+            "단일 사료의 한계"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복 연구에서 절차 동일성이 정교함보다 앞선다는 결론으로 책을 닫는다. 방법을 기록으로 남겨야 재현이 가능하다는 점을 마지막 요구로 제시한다.",
+          "aiAnalysisInputSha256": "0f70157ff1a53db04a58d90b86b654ea85356cb37954b6f1ff1f31b55398575f",
+          "aiPublicGuideTopic": "다음에 다시 읽을 때 무엇을 같게 두어야 하는지 남긴다",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 41,
       "title": "분업과 비교우위: 교환은 왜 이익인가",
       "pdfPath": "pdfs/book-041.pdf",
@@ -4333,6 +6328,1001 @@
             52
           ],
           "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
+      "bookId": 44,
+      "title": "소비자잉여와 후생의 측정",
+      "pdfPath": "pdfs/book-044.pdf",
+      "pdfSha256": "ee92b2fb3da069bf8595147432420367243aa2217af1bae08f48ad1ae88ed187",
+      "totalPageCount": 49,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 값어치를 매긴다는 것",
+          "section": "1.1 지불용의란 무엇인가",
+          "primaryConcepts": [
+            "지불용의"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지불용의를 원가나 시세와 무관한 개인의 상한선으로 정의하는 도입 페이지. 뒤 장의 잉여 계산이 모두 이 값에서 출발하므로 후보 검색에서 잉여의 기초 개념을 찾을 때 첫 자리에 온다.",
+          "aiAnalysisInputSha256": "ff8dbc12ef5f88e133129d8d1d7f9843a6298fd363565a7642f719e6bd47d0df",
+          "aiPublicGuideTopic": "물건을 사기 전에 마음속으로 정해 두는 최대 금액이라는 개념을 소개한다",
+          "estimatedReadingSeconds": 105,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 값어치를 매긴다는 것",
+          "section": "1.1 지불용의란 무엇인가",
+          "primaryConcepts": [
+            "지불용의"
+          ],
+          "secondaryConcepts": [
+            "유보가격"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사는 쪽 상한선과 파는 쪽 하한선을 대칭으로 배치해 거래 가능 구간이라는 틀을 만든다. 이 틀이 총잉여 계산의 뼈대이므로 두 잉여를 함께 묻는 목적에서 이 페이지가 후보로 걸린다.",
+          "aiAnalysisInputSha256": "ea5febff3d0aa6a9d8e17a20737c9ef6bec988d952f8f8026e8e9a4ac12fd77a",
+          "aiPublicGuideTopic": "사는 쪽의 상한선과 파는 쪽의 하한선을 같은 자리에서 나란히 본다",
+          "estimatedReadingSeconds": 95,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 값어치를 매긴다는 것",
+          "section": "1.2 값과 값어치는 다르다",
+          "primaryConcepts": [
+            "가격과 가치의 구분"
+          ],
+          "secondaryConcepts": [
+            "지불용의"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "가격과 주관적 가치를 분리하지 않으면 잉여가 정의되지 않는다는 점을 못박는 개념 페이지. 두 개념을 혼동한 질문이 들어올 때 바로잡는 자리로 후보에 든다.",
+          "aiAnalysisInputSha256": "db2ab150fdc0e32d160d8815f6c2ebbdde1b7ccaf09d755e1a3b5a2b0f2d7f1b",
+          "aiPublicGuideTopic": "가격표에 적힌 숫자와 사람이 느끼는 값어치가 왜 서로 다른지 설명한다",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 값어치를 매긴다는 것",
+          "section": "1.2 값과 값어치는 다르다",
+          "primaryConcepts": [
+            "가격과 가치의 구분"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지불용의가 사람마다 흩어져 있고 가격은 하나라는 관계를 그림으로 고정한다. 잉여가 왜 사람마다 다른 길이로 생기는지 묻는 목적에서 이 도표가 후보로 필요하다.",
+          "aiAnalysisInputSha256": "b3f0993ce4445e5e86cd63b3548c92d7b8bcf31d1d6982bb40d5416376455da9",
+          "aiPublicGuideTopic": "값 하나에 사람마다 다른 값어치가 걸리는 모습을 그림으로 보여 준다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 값어치를 매긴다는 것",
+          "section": "1.3 사람마다 다른 선",
+          "primaryConcepts": [
+            "지불용의의 분포"
+          ],
+          "secondaryConcepts": [
+            "지불용의"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "개인의 상한선을 정렬해 수요를 층계로 재구성한다. 곡선 아래 넓이라는 표현이 실제로는 사람별 차이의 합이라는 연결을 만드는 페이지라 분포를 묻는 목적에서 후보가 된다.",
+          "aiAnalysisInputSha256": "a8296f47a03bcdf135297e28e293ce40208a2b96e79c8d32286e0a214e63c4b7",
+          "aiPublicGuideTopic": "여러 사람의 상한선을 높은 순서로 늘어세우면 무엇이 보이는지 다룬다",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 값어치를 매긴다는 것",
+          "section": "1.3 사람마다 다른 선",
+          "primaryConcepts": [
+            "지불용의의 분포"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분포의 폭이 가격 선택의 여지를 좌우한다는 점을 서술한다. 뒤의 가격 변화와 잉여 계산에서 왜 구간마다 몫의 변화가 다른지를 미리 준비하는 자리다.",
+          "aiAnalysisInputSha256": "dcd138130b86d512af5462549a54f101fb1b65ec80980f2f9dcc38344f037604",
+          "aiPublicGuideTopic": "상한선이 흩어진 정도가 가게의 선택에 어떤 차이를 만드는지 살핀다",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "2장 사는 쪽이 남기는 몫",
+          "section": "2.1 소비자잉여의 정의",
+          "primaryConcepts": [
+            "소비자잉여"
+          ],
+          "secondaryConcepts": [
+            "지불용의"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "소비자잉여를 상한선과 지불액의 차이로 정의하는 핵심 페이지. 이 책의 필수 개념 중 하나이며 사는 쪽의 이득을 묻는 거의 모든 목적에서 경로에 포함된다.",
+          "aiAnalysisInputSha256": "1b5ca1d46337cb1f20c1806a89489cfddf3c3afe01ceb3b03228db7631bbd8ea",
+          "aiPublicGuideTopic": "사는 쪽이 상한선과 실제 값의 차이만큼 남기는 몫을 정의한다",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 사는 쪽이 남기는 몫",
+          "section": "2.1 소비자잉여의 정의",
+          "primaryConcepts": [
+            "소비자잉여"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "잉여를 두 선 사이의 간격으로 시각화하고 가격이 오르면 그 간격만 줄어든다는 관계를 보인다. 상한선은 그대로라는 점이 도표의 핵심이라 개념 확인 목적에서 후보가 된다.",
+          "aiAnalysisInputSha256": "a5a4e395096e87c96f1fcb17a5957a7c4c87c4bc3b1e2790371f1a6cc3bf5380",
+          "aiPublicGuideTopic": "한 손님의 상한선과 지불액 사이 간격을 잉여로 표시한 그림이다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 사는 쪽이 남기는 몫",
+          "section": "2.2 한 사람에서 여러 사람으로",
+          "primaryConcepts": [
+            "소비자잉여의 합"
+          ],
+          "secondaryConcepts": [
+            "지불용의의 분포"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "개별 잉여를 합산해 집계량으로 넘어가는 페이지. 곡선 아래 넓이라는 관용 표현을 계단의 합으로 환원해 두어 뒤의 넓이 해석과 이어진다.",
+          "aiAnalysisInputSha256": "11c861fc666b8e9d6b0e1e5d441b96ed6ec38455689af57ce6c92111d24ff9cc",
+          "aiPublicGuideTopic": "여러 손님의 몫을 더해 가게 전체의 소비자 몫을 구하는 방법을 다룬다",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            8,
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 사는 쪽이 남기는 몫",
+          "section": "2.2 한 사람에서 여러 사람으로",
+          "primaryConcepts": [
+            "소비자잉여의 합"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "합산 범위를 실제 거래로 한정하고 경계에 선 소비자를 어떻게 다루는지 정한다. 잉여 계산에서 자주 나오는 오류를 미리 막는 자리라 측정 절차를 묻는 목적에서도 걸린다.",
+          "aiAnalysisInputSha256": "5938d0da3ddd66958aebf7f2e19ada0aded09861a2268c5f9d89ed1cbda877db",
+          "aiPublicGuideTopic": "합을 구할 때 누구를 세고 누구를 빼야 하는지 경계를 정리한다",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 사는 쪽이 남기는 몫",
+          "section": "2.3 값이 내려가면 몫은 어떻게 되나",
+          "primaryConcepts": [
+            "가격 변화와 잉여"
+          ],
+          "secondaryConcepts": [
+            "소비자잉여"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "가격 인하의 효과를 기존 구매자분과 신규 진입분으로 분해한다. 인하 정책의 수혜가 어디로 가는지 묻는 목적에서 이 분해가 경로의 중심에 온다.",
+          "aiAnalysisInputSha256": "f9a886b97169dde5890ac0530adc1a678215442639b080cfa05d5283b916215c",
+          "aiPublicGuideTopic": "값을 내렸을 때 기존 손님과 새 손님에게 생기는 몫을 나누어 본다",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 사는 쪽이 남기는 몫",
+          "section": "2.3 값이 내려가면 몫은 어떻게 되나",
+          "primaryConcepts": [
+            "가격 변화와 잉여"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "가격 인상의 효과를 유지 구매자의 몫 감소와 이탈로 나누어 서술한다. 매출 지표만으로 읽히지 않는 변화가 있다는 점이 이 페이지의 핵심 주장이다.",
+          "aiAnalysisInputSha256": "64578ed2814f7e4de46b18a3a64f6ade2e3149bbf23290d07cfb3838d6a8507d",
+          "aiPublicGuideTopic": "값을 올렸을 때 몫이 줄어드는 방향을 같은 틀로 되짚는다",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 사는 쪽이 남기는 몫",
+          "section": "2.4 몫을 넓이로 보기",
+          "primaryConcepts": [
+            "잉여의 넓이 해석"
+          ],
+          "secondaryConcepts": [
+            "소비자잉여의 합"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "넓이 표현이 근사임을 밝히고 표본이 작을 때는 직접 합산이 옳다고 정리한다. 계산 방법 선택을 묻는 목적에서 이 페이지가 판단 기준을 준다.",
+          "aiAnalysisInputSha256": "2dd733f3bd0de9c36dcfb43a1da89c48766c7ba050feef8f08cd0f5a732373b7",
+          "aiPublicGuideTopic": "층계와 가로선 사이의 넓이가 무엇을 더한 값인지 되짚는다",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "3장 파는 쪽이 남기는 몫",
+          "section": "3.1 받아들일 수 있는 최저선",
+          "primaryConcepts": [
+            "수용가격"
+          ],
+          "secondaryConcepts": [
+            "가격과 가치의 구분"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수용가격을 매입가가 아니라 기회비용까지 포함한 하한선으로 정의한다. 파는 쪽의 몫을 계산하기 전에 반드시 세워야 하는 기준이라 생산자 쪽 목적에서 앞자리에 온다.",
+          "aiAnalysisInputSha256": "a474544a7d8c90f55e3e28cacf4ec741e8d2aecb6994a6d08ef638e12d742f96",
+          "aiPublicGuideTopic": "파는 쪽이 이 아래로는 넘기지 않겠다고 정하는 금액을 다룬다",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 파는 쪽이 남기는 몫",
+          "section": "3.1 받아들일 수 있는 최저선",
+          "primaryConcepts": [
+            "수용가격"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "하한선을 정렬해 공급을 층계로 세우고 수요 층계와의 교차를 예고한다. 두 층계의 대칭이 총잉여 계산의 준비이므로 양쪽 몫을 함께 묻는 목적에서 걸린다.",
+          "aiAnalysisInputSha256": "124b833e1726584e16e4d134e0e3102ab7744aa7425a3ae2b957de8140dff3ee",
+          "aiPublicGuideTopic": "여러 물건의 하한선을 낮은 순서로 늘어세우면 무엇이 보이는지 본다",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            15
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 파는 쪽이 남기는 몫",
+          "section": "3.2 생산자잉여의 정의",
+          "primaryConcepts": [
+            "생산자잉여"
+          ],
+          "secondaryConcepts": [
+            "수용가격"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "생산자잉여를 지불액과 하한선의 차이로 정의하고 소비자 쪽과의 대칭을 강조한다. 이 책의 필수 개념이며 파는 쪽의 이득을 묻는 목적에서 반드시 포함된다.",
+          "aiAnalysisInputSha256": "6b8f3ee82c4fb698f51d2d89c8a45e456a8c294017838b9d086d58800209a0bc",
+          "aiPublicGuideTopic": "파는 쪽이 하한선과 실제 값의 차이만큼 남기는 몫을 정의한다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            15
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 파는 쪽이 남기는 몫",
+          "section": "3.2 생산자잉여의 정의",
+          "primaryConcepts": [
+            "생산자잉여"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수요와 공급 층계의 교차를 중심으로 두 잉여 영역을 나란히 배치한다. 총잉여의 구성을 눈으로 확인하는 도표라 두 몫의 관계를 묻는 목적에서 후보가 된다.",
+          "aiAnalysisInputSha256": "baf8445e9356ab81a5146418a8bf8cf6e65af4eeeef1c8e4f9ccf384e7b5bfd0",
+          "aiPublicGuideTopic": "두 계단이 만나는 지점과 양쪽 몫이 놓이는 자리를 함께 그린다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 파는 쪽이 남기는 몫",
+          "section": "3.3 비용과 잉여를 혼동하지 않기",
+          "primaryConcepts": [
+            "잉여와 이익의 구분"
+          ],
+          "secondaryConcepts": [
+            "생산자잉여"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "잉여와 회계상 이익이 답하는 질문이 다르다는 점을 분리한다. 고정비를 포함하지 않는다는 차이가 핵심이며 두 지표를 혼동한 질문을 바로잡는 자리다.",
+          "aiAnalysisInputSha256": "fa9315a370cd42bb93b40a34df6b8fe52185dcf18cba73c0b58f817802cae345",
+          "aiPublicGuideTopic": "가게의 이익과 파는 쪽의 몫이 서로 다른 셈이라는 점을 갈라 둔다",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 파는 쪽이 남기는 몫",
+          "section": "3.3 비용과 잉여를 혼동하지 않기",
+          "primaryConcepts": [
+            "잉여와 이익의 구분"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결정의 층위에 따라 잉여와 이익 중 어느 지표를 쓸지 정하는 실무 기준을 제시한다. 매몰비용을 판단에서 제외한다는 원칙이 사례로 연결된다.",
+          "aiAnalysisInputSha256": "3f465c608c3616044327ed568b14827664d9fb9545e009bc382d7bbe02703f3a",
+          "aiPublicGuideTopic": "잉여로 판단해야 하는 상황과 이익으로 판단해야 하는 상황을 나눈다",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            19
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 파는 쪽이 남기는 몫",
+          "section": "3.4 파는 쪽의 몫이 커지는 때",
+          "primaryConcepts": [
+            "생산자잉여의 변동"
+          ],
+          "secondaryConcepts": [
+            "생산자잉여"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "생산자잉여를 키우는 두 경로를 가격 인상과 하한선 인하로 나누고 소비자 쪽 영향의 차이를 대비한다. 총잉여 변화를 묻는 목적으로 이어지는 다리 역할을 한다.",
+          "aiAnalysisInputSha256": "cc4337e679fc5d9efee24fdd9fd47bd2f65e53465e18f81caf3b3664f779fa4e",
+          "aiPublicGuideTopic": "값이 오르거나 원가가 내릴 때 파는 쪽의 몫이 어떻게 달라지는지 본다",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 파는 쪽이 남기는 몫",
+          "section": "3.4 파는 쪽의 몫이 커지는 때",
+          "primaryConcepts": [
+            "생산자잉여의 변동"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단위당 몫과 총합의 구분, 그리고 이탈 손님의 지속 효과를 다룬다. 몫을 키우는 선택이 항상 유리한 것은 아니라는 반례 성격의 서술이다.",
+          "aiAnalysisInputSha256": "ccc5e4c25e42ae368b23cb913633ea491b4940af236c5ab7eec22d2e91af0826",
+          "aiPublicGuideTopic": "몫이 커졌다고 해서 언제나 가게에 좋은 것은 아닌 경우를 짚는다",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            21
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "4장 두 몫을 더하면",
+          "section": "4.1 총잉여라는 자",
+          "primaryConcepts": [
+            "총잉여"
+          ],
+          "secondaryConcepts": [
+            "소비자잉여",
+            "생산자잉여"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "총잉여를 두 몫의 합으로 정의하고 이전과 소멸을 구분하는 기준으로 제시한다. 이 책의 필수 개념 중 가장 위 층위이며 후생 판단을 묻는 목적의 중심에 놓인다.",
+          "aiAnalysisInputSha256": "7ee7a60ae79446c948e4a7c78117e61461e5c32f71c38ea17f7ff05c373601fa",
+          "aiPublicGuideTopic": "두 몫을 더한 값이 무엇을 재는 자인지 정의한다",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            8,
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 두 몫을 더하면",
+          "section": "4.1 총잉여라는 자",
+          "primaryConcepts": [
+            "총잉여"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이전과 소멸을 두 그림의 대비로 보인다. 색이 옮겨 간 부분과 비어 버린 삼각형을 구분해 두어 사중손실 개념으로 넘어가는 다리가 된다.",
+          "aiAnalysisInputSha256": "1e542b3da8d8bf6f7323735c57ba8ad2e631204284b0d00fc373867e03e810e5",
+          "aiPublicGuideTopic": "값이 달라져도 합이 유지되는 경우와 줄어드는 경우를 나란히 그린다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 두 몫을 더하면",
+          "section": "4.2 거래가 만들어 내는 것",
+          "primaryConcepts": [
+            "교환의 이익"
+          ],
+          "secondaryConcepts": [
+            "총잉여"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "교환이 생산 없이 가치를 늘린다는 점을 총잉여로 설명한다. 거래의 존재 이유를 묻는 목적에서 이 페이지가 답의 중심에 온다.",
+          "aiAnalysisInputSha256": "4587728eeacacf6652a15a868a75bba524663f132b45731134de60a97cb773a9",
+          "aiPublicGuideTopic": "거래가 없던 상태와 있는 상태를 견주어 무엇이 새로 생기는지 본다",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 두 몫을 더하면",
+          "section": "4.2 거래가 만들어 내는 것",
+          "primaryConcepts": [
+            "교환의 이익"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "교환 이익이 성립할 조건을 상한선과 하한선의 관계, 자발성, 정보로 나열한다. 마지막 조건이 뒤의 반례 장으로 이어지는 예고 역할을 한다.",
+          "aiAnalysisInputSha256": "8060214236d80ada2bd2a50233e98929360becaf26bdb8c8634b5e2c2b42595c",
+          "aiPublicGuideTopic": "이익이 생기려면 어떤 조건이 갖춰져야 하는지 정리한다",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            25
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 두 몫을 더하면",
+          "section": "4.3 몫이 사라지는 자리",
+          "primaryConcepts": [
+            "사중손실"
+          ],
+          "secondaryConcepts": [
+            "총잉여"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사중손실을 미성사 거래의 몫으로 정의하고 이전과 구별한다. 가격 개입의 비용을 묻는 목적에서 이 페이지가 핵심 근거가 된다.",
+          "aiAnalysisInputSha256": "9e0eba5cda498b28d6d3249e771520f576c2d24b27e39801eaa4e0857e69f200",
+          "aiPublicGuideTopic": "일어날 수 있었던 거래가 막힐 때 생기는 손실을 다룬다",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 두 몫을 더하면",
+          "section": "4.3 몫이 사라지는 자리",
+          "primaryConcepts": [
+            "사중손실"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사중손실의 크기를 가격 이탈 폭과 해당 구간의 밀집도로 설명한다. 물건마다 개입 비용이 다른 이유를 대체 가능성과 연결한다.",
+          "aiAnalysisInputSha256": "4d80b8fdfa1da8876e0be7c1881442503f5926850c4f7da384fb527564d351a0",
+          "aiPublicGuideTopic": "손실의 크기가 무엇에 따라 달라지는지 살핀다",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            27
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 두 몫을 더하면",
+          "section": "4.4 누구의 몫인가",
+          "primaryConcepts": [
+            "잉여의 분배"
+          ],
+          "secondaryConcepts": [
+            "총잉여"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "총잉여가 분배를 담지 못한다는 한계를 밝히고 기울기와 분배의 관계를 서술한다. 정책 판단에서 합과 나눔을 함께 보라는 이 책의 입장이 여기서 정리된다.",
+          "aiAnalysisInputSha256": "54f151693e28f3d41144833df94a040237f1660ab1642cc23cf50dad8e66ca86",
+          "aiPublicGuideTopic": "합이 같아도 나뉘는 방식이 다를 수 있다는 점을 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 두 몫을 더하면",
+          "section": "4.4 누구의 몫인가",
+          "primaryConcepts": [
+            "잉여의 분배"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분배 해석의 두 함정을 이탈자 누락과 단기 시점으로 정리한다. 측정 결과를 읽는 태도에 관한 서술이라 한계를 묻는 목적에서도 걸린다.",
+          "aiAnalysisInputSha256": "7d9a9743cfc1ac6f82a6b741757046babb095b6833e13fa3f044350d4390cbe1",
+          "aiPublicGuideTopic": "분배를 읽을 때 흔히 빠지는 함정을 짚는다",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            29
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "5장 실제로 재어 보기",
+          "section": "5.1 문구점의 하루",
+          "primaryConcepts": [
+            "잉여 측정 절차"
+          ],
+          "secondaryConcepts": [
+            "소비자잉여"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실제 측정의 첫 단계로 상한선 수집과 하한선 산정을 서술한다. 뒤의 계산 페이지들이 이 자료를 이어받으므로 절차를 묻는 목적에서 경로의 시작점이 된다.",
+          "aiAnalysisInputSha256": "05c3902d687de4de3335cb6ed7815d0c7877bd2ea6ddd63871d375aa7500f0dc",
+          "aiPublicGuideTopic": "실제 가게의 하루 거래를 재료로 계산 절차를 따라간다",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 실제로 재어 보기",
+          "section": "5.1 문구점의 하루",
+          "primaryConcepts": [
+            "잉여 측정 절차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수집한 값으로 양쪽 잉여를 합산하고 무응답을 제외해 하한 추정임을 밝힌다. 계산 결과를 어떻게 읽어야 하는지가 이 페이지의 요지다.",
+          "aiAnalysisInputSha256": "fc6e9644d23b7ee64b8bee7fc3bc987c5849d3e8ad573bb6f8359ffa6a847de4",
+          "aiPublicGuideTopic": "모은 숫자로 양쪽 몫을 실제로 더해 본다",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 실제로 재어 보기",
+          "section": "5.2 물어봐서 알아내는 값",
+          "primaryConcepts": [
+            "지불용의 조사"
+          ],
+          "secondaryConcepts": [
+            "지불용의"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "직접 질문법의 편향을 물음의 시점과 제시 순서로 나누어 설명한다. 편향의 방향을 알고 쓰라는 권고가 이 페이지의 실무 지침이다.",
+          "aiAnalysisInputSha256": "4a340c2b1700bd9adce04b7fba7774d6b9753ec57807a01257e5332b60f57409",
+          "aiPublicGuideTopic": "상한선을 직접 묻는 방법과 그 방법이 흔들리는 이유를 다룬다",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 실제로 재어 보기",
+          "section": "5.2 물어봐서 알아내는 값",
+          "primaryConcepts": [
+            "지불용의 조사"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선택형 질문과 비교형 질문으로 편향을 줄이는 대안을 제시한다. 정확도보다 오차 방향의 파악을 목표로 삼는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "b0a92b12aea44992dfb3dce6043f5a613f8350e96a00c0fb0335db2686152830",
+          "aiPublicGuideTopic": "묻는 방식을 조금 바꿔 답의 쏠림을 줄이는 방법을 살핀다",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            33
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 실제로 재어 보기",
+          "section": "5.3 값을 바꿔 보고 아는 값",
+          "primaryConcepts": [
+            "가격 실험"
+          ],
+          "secondaryConcepts": [
+            "가격 변화와 잉여"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "가격 변동 관찰로 수요 계단을 복원하는 방법과 그 비용을 다룬다. 실제 행동에서 얻는 값이라는 장점과 교란 요인이라는 한계를 함께 제시한다.",
+          "aiAnalysisInputSha256": "1cb566639f3f2f030379fa01413c748675b74bb1331570f42399a92cbc7212ad",
+          "aiPublicGuideTopic": "값을 실제로 움직여 보고 반응에서 상한선을 되짚는 방법이다",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 실제로 재어 보기",
+          "section": "5.3 값을 바꿔 보고 아는 값",
+          "primaryConcepts": [
+            "가격 실험"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대조 품목과 기간 교차 배치로 교란을 줄이는 소규모 설계를 제시한다. 견준 대상을 기록하라는 원칙이 결과 해석의 전제가 된다.",
+          "aiAnalysisInputSha256": "6dabdfc5da0b7b23cd96c472ad7523f8fb8b322e948cd7f1279eb8578366cc5d",
+          "aiPublicGuideTopic": "다른 요인이 섞였는지 가려내는 최소한의 장치를 다룬다",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            35
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 실제로 재어 보기",
+          "section": "5.4 계산을 표로 옮기기",
+          "primaryConcepts": [
+            "잉여 측정 절차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "측정 자료를 표로 정리하고 합계로 모으는 흐름을 보인다. 무응답 처리 표시가 결과가 하한임을 드러내는 장치이며 절차 재현의 기준이 된다.",
+          "aiAnalysisInputSha256": "5d913d16310281dbd63cd4799849d86b6444c0f5c69a41308b05c8dde0dfb4e9",
+          "aiPublicGuideTopic": "수집한 값을 계산표에 옮겨 몫을 구하는 순서를 보여 준다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 실제로 재어 보기",
+          "section": "5.5 문구점 계산을 마무리하며",
+          "primaryConcepts": [
+            "잉여 측정 절차"
+          ],
+          "secondaryConcepts": [
+            "총잉여"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사례 계산을 하한 추정으로 마무리하고 반복 측정의 비교 가치를 강조한다. 절차의 일관성이 정밀도보다 우선한다는 결론이 이 장을 닫는다. 7.3과 같은 주장을 다른 표현으로 담은 의도된 유사 페이지 한 쌍이며, 중복 후보를 걸러 내는지 평가하기 위해 둔다.",
+          "aiAnalysisInputSha256": "a36eae81f9b80da0061bda88042906f9697d1c9219f33e24475718c1fffc2dd4",
+          "aiPublicGuideTopic": "하루치 계산에서 무엇을 알았고 무엇은 알 수 없었는지 정리한다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": [
+            "measure-same-way"
+          ]
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 계산이 어긋나는 순간",
+          "section": "6.1 기준점이 값을 바꾼다",
+          "primaryConcepts": [
+            "준거점"
+          ],
+          "secondaryConcepts": [
+            "지불용의"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "준거점이 지불용의를 변동시킨다는 관찰로 앞 장들의 전제를 흔든다. 측정 결과가 맥락에 의존한다는 점이 이 장 전체의 출발점이 된다.",
+          "aiAnalysisInputSha256": "4f5618416f7bbe44b4047e0012f16836ce3013077ac6b33407d5856cfcb4fd1a",
+          "aiPublicGuideTopic": "어떤 숫자를 먼저 보았는지에 따라 상한선이 흔들리는 현상을 다룬다",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 계산이 어긋나는 순간",
+          "section": "6.1 기준점이 값을 바꾼다",
+          "primaryConcepts": [
+            "준거점"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "준거점의 인위적 조작 가능성이 잉여 해석을 무너뜨릴 수 있음을 지적한다. 전제의 성립 조건을 따지는 이 장의 문제의식이 여기서 명시된다.",
+          "aiAnalysisInputSha256": "cff04c678cd162d9fe63bd6307b01f14a9cf7112517cd17e5feb86d9e752345f",
+          "aiPublicGuideTopic": "가게가 준거점을 만들 수 있다는 사실이 계산에 미치는 영향을 본다",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 계산이 어긋나는 순간",
+          "section": "6.2 잃는 쪽이 더 크게 느껴진다",
+          "primaryConcepts": [
+            "손실회피"
+          ],
+          "secondaryConcepts": [
+            "준거점"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "손실회피가 가격 변화의 대칭성을 깨뜨린다는 점을 서술한다. 앞 장 계산의 전제가 어디서 어긋나는지 짚는 반례이며 필수 개념 중 하나다.",
+          "aiAnalysisInputSha256": "8832096c0781ebb4abd38598b27b7e9428f73b9ee193927d19f316dc700373a2",
+          "aiPublicGuideTopic": "같은 크기라도 잃는 쪽을 더 무겁게 느끼는 성향을 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 계산이 어긋나는 순간",
+          "section": "6.2 잃는 쪽이 더 크게 느껴진다",
+          "primaryConcepts": [
+            "손실회피"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이득과 손실의 반응 곡선을 비대칭으로 그려 기울기 차이를 보인다. 축에 값을 넣지 않아 성향의 모양만 전달하도록 했다.",
+          "aiAnalysisInputSha256": "3e7decb85990617ab1253864989ce138e3045c18f16e4c60e3fb010b014e21b0",
+          "aiPublicGuideTopic": "얻음과 잃음에 대한 반응의 크기가 다른 모습을 곡선으로 나타낸다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 계산이 어긋나는 순간",
+          "section": "6.3 같은 물건, 다른 값",
+          "primaryConcepts": [
+            "보유효과"
+          ],
+          "secondaryConcepts": [
+            "손실회피"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "보유효과를 손실회피의 귀결로 설명하고 상한선과 하한선의 불일치를 지적한다. 거래 구간 자체가 흔들린다는 점에서 앞 장의 틀을 겨냥한 반례다.",
+          "aiAnalysisInputSha256": "b4739ad991e57ebdc1f04bee57ebafa2c5152d031c478e96240dae657bbdd077",
+          "aiPublicGuideTopic": "이미 가진 물건에 더 높은 값을 매기는 현상을 살핀다",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 계산이 어긋나는 순간",
+          "section": "6.3 같은 물건, 다른 값",
+          "primaryConcepts": [
+            "보유효과"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "보유효과의 발현 조건을 재판매 목적과 사용 이력으로 구분한다. 적용 범위를 좁혀 두어 앞 장 계산이 여전히 유효한 영역을 남긴다.",
+          "aiAnalysisInputSha256": "bf61effb941700df21d9a6b46993150fde2e76266f8e051cb9a1b5eb779421eb",
+          "aiPublicGuideTopic": "보유효과가 잘 나타나는 경우와 그렇지 않은 경우를 갈라 본다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 계산이 어긋나는 순간",
+          "section": "6.4 그래도 자를 쓰는 이유",
+          "primaryConcepts": [
+            "측정의 한계"
+          ],
+          "secondaryConcepts": [
+            "총잉여"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "측정 한계를 인정하면서도 비교 도구로서의 유용성을 옹호한다. 대안 부재라는 논거로 이 책의 방법을 정당화하는 자리다.",
+          "aiAnalysisInputSha256": "7eb7bd71937d35804e4bec0d79ed0da5617e898195dd4858e92729c1f8699a8d",
+          "aiPublicGuideTopic": "흔들리는 값을 재는 자를 왜 계속 쓰는지 밝힌다",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 계산이 어긋나는 순간",
+          "section": "6.4 그래도 자를 쓰는 이유",
+          "primaryConcepts": [
+            "측정의 한계"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "측정 조건의 기록을 비교 가능성의 전제로 제시한다. 조건이 달라지면 비교를 포기하라는 규칙이 이 책이 권하는 실무 태도다.",
+          "aiAnalysisInputSha256": "a9894c870761d65a111e686a40cb0898de78ab1540378d045b89ced79ba36904",
+          "aiPublicGuideTopic": "자를 쓸 때 함께 적어 두어야 할 조건을 정리한다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 무엇을 재고 무엇을 남기나",
+          "section": "7.1 순서대로 다시 보기",
+          "primaryConcepts": [
+            "잉여 측정 절차"
+          ],
+          "secondaryConcepts": [
+            "총잉여"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "전체 논의를 정의에서 측정, 한계까지 순서대로 요약한다. 경로 마무리에 놓이는 정리 페이지이며 앞 장들의 개념을 한 줄로 잇는다.",
+          "aiAnalysisInputSha256": "30b43b215c19a9970ccf73d46a23c23a2b705c6601227642ca57f0b441daac0f",
+          "aiPublicGuideTopic": "책 전체의 계산 순서를 처음부터 끝까지 되짚는다",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 무엇을 재고 무엇을 남기나",
+          "section": "7.2 이 자로 답할 수 없는 것",
+          "primaryConcepts": [
+            "측정의 한계"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "총잉여가 다루지 못하는 규범적 질문과 배제된 사람, 맥락을 명시한다. 이 책의 적용 범위를 좁혀 두는 마무리 서술이다.",
+          "aiAnalysisInputSha256": "ceb403ac125b3a76453f62510cd06a1be6c2fe2ae11eea456b2f808781394dfe",
+          "aiPublicGuideTopic": "이 책의 방법이 다루지 않는 질문의 범위를 밝힌다",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 무엇을 재고 무엇을 남기나",
+          "section": "7.3 다음 계산을 위한 질문",
+          "primaryConcepts": [
+            "잉여 측정 절차"
+          ],
+          "secondaryConcepts": [
+            "측정의 한계"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복 측정의 조건을 같게 두는 일이 정밀도보다 앞선다는 결론으로 책을 닫는다. 5.5와 같은 주장을 다른 표현으로 담은 의도된 유사 페이지 한 쌍이며, 중복 후보를 걸러 내는지 평가하기 위해 둔다.",
+          "aiAnalysisInputSha256": "58f56702c3c324fe9bcd6c0d383db4dcc8a3d83ebf7a73e4c3a50c7d7a1d6b95",
+          "aiPublicGuideTopic": "다음에 다시 잴 때 무엇을 같게 두어야 하는지 남긴다",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": [
+            "measure-same-way"
+          ]
         }
       ]
     },
