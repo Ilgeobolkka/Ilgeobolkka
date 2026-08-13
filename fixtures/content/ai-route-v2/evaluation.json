@@ -1531,6 +1531,74 @@
       ]
     },
     {
+      "caseId": "case-book-065",
+      "bookId": 65,
+      "purpose": "이 책을 소장하고 있는데, 같은 색이 자리에 따라 다르게 보이는 이유만 빠르게 짚고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "색의 관계성",
+        "색의 세 성질",
+        "명도 대비"
+      ],
+      "helpfulConcepts": [
+        "바탕과 도형",
+        "배색",
+        "색조 대비"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 9
+        }
+      ],
+      "irrelevantPageNumbers": [
+        28,
+        29,
+        32,
+        33,
+        40,
+        41,
+        44,
+        45
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          52
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        5,
+        8,
+        9
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        6,
+        7,
+        12,
+        13,
+        20
+      ]
+    },
+    {
       "caseId": "case-book-066",
       "bookId": 66,
       "purpose": "동네 큰길가의 낡은 벽에 그림을 그려 달라는 부탁을 받았다. 가까이서는 괜찮은데 길 건너에서 보면 뭉개져 버리는 이유, 울퉁불퉁하고 창이 뚫린 벽면을 어떻게 다뤄야 하는지, 색을 어느 정도 넓이로 나눠야 하는지를 원리부터 알고 싶다",

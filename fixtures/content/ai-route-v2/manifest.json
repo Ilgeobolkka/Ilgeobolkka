@@ -19000,6 +19000,1191 @@
       ]
     },
     {
+      "bookId": 65,
+      "title": "색채 지각과 배색의 원리",
+      "pdfPath": "pdfs/book-065.pdf",
+      "pdfSha256": "9bcff8360e292eb4bf0ff073df752748276285b15e77115be826d6305fe522e1",
+      "totalPageCount": 55,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 색은 혼자 있지 않다",
+          "section": "1.1 같은 색이 다르게 보인다",
+          "primaryConcepts": [
+            "색의 관계성"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "색 지각이 절대적 측정이 아니라 인접 색과의 비교로 이뤄진다는 사실을 같은 염색 천 사례로 도입한다. 단일 색만 놓고 평가하는 일이 성립하지 않는 이유를 밝히고, 이 책이 색을 항상 둘 이상의 관계로 다룬다는 구성 원칙을 제시한다.",
+          "aiAnalysisInputSha256": "d8f0df887b704ee51050c3170a59fe66c782af4498619510704b75f1e06781d6",
+          "aiPublicGuideTopic": "색을 하나만 떼어 볼 수 없다는 점",
+          "estimatedReadingSeconds": 100,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "color-is-relation"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 색은 혼자 있지 않다",
+          "section": "1.1 같은 색이 다르게 보인다",
+          "primaryConcepts": [
+            "색의 관계성"
+          ],
+          "secondaryConcepts": [
+            "색의 세 성질"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인접색이 색조뿐 아니라 밝기와 선명도까지 함께 바꾼다는 점을 회색·분홍 사례로 설명한다. 색을 순차적으로 고르면 앞선 선택 때문에 재작업이 생긴다는 실무적 결과와, 색 자체 대신 주변을 조정하는 우회로가 유효하다는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "6593d0d40c7cbf32a8e604d073ed6ebe89235be5214ad2acdc89d23f2cbaefb7",
+          "aiPublicGuideTopic": "관계가 바뀌면 무엇까지 달라지는가",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 색은 혼자 있지 않다",
+          "section": "1.2 색을 가르는 세 성질",
+          "primaryConcepts": [
+            "색의 세 성질"
+          ],
+          "secondaryConcepts": [
+            "색의 관계성"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "색을 색조·밝기·선명도 세 성질로 분해해 기술하는 방법을 다룬다. 각 성질이 무엇을 구분하는지 설명하고, 배색 문제를 수정할 때 어느 성질을 조정할지 선택지가 갈린다는 점에서 세 성질을 함께 기록해야 재현이 가능하다는 결론을 낸다.",
+          "aiAnalysisInputSha256": "37c32e73b7fa7fd803be4ecf6da523bc1246b120e7d9d73b29dd95e9c34a1b84",
+          "aiPublicGuideTopic": "색을 말로 나누어 적는 방법",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 색은 혼자 있지 않다",
+          "section": "1.2 색을 가르는 세 성질",
+          "primaryConcepts": [
+            "색의 세 성질"
+          ],
+          "secondaryConcepts": [
+            "명도 대비"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관찰 거리에 따라 세 성질의 지각 순서가 달라진다는 점을 다룬다. 원거리에서는 밝기가 먼저, 선명도가 가장 늦게 구별된다는 사실에서 멀리서 보게 될 작업의 밝기 차이를 우선 정해야 한다는 기준과, 거리를 바꿔 확인하는 실무 습관을 제시한다.",
+          "aiAnalysisInputSha256": "dfd3e65bdff2d8895b2cf4103b24776a6ad9d6105ae2d948521af0dbd5db1209",
+          "aiPublicGuideTopic": "세 성질 가운데 무엇이 먼저 보이는가",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 색은 혼자 있지 않다",
+          "section": "1.3 바탕과 도형",
+          "primaryConcepts": [
+            "바탕과 도형"
+          ],
+          "secondaryConcepts": [
+            "색의 관계성"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "두 색이 놓이면 지각적으로 바탕과 도형으로 분리되며 그 관계가 비대칭이라는 점을 설명한다. 바탕이 놓인 색을 밀어내는 영향이 훨씬 크다는 근거로 넓은 면을 우선 조정하는 방법을 제시하고, 면적 외에 선명도가 전경·배경 분리에 관여한다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "d56502d70f50745c65d9f1f04f398b814793d8ab2169db0c9c68b46f5becc270",
+          "aiPublicGuideTopic": "어느 쪽이 바탕이고 어느 쪽이 놓인 것인가",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 색은 혼자 있지 않다",
+          "section": "1.3 바탕과 도형",
+          "primaryConcepts": [
+            "바탕과 도형"
+          ],
+          "secondaryConcepts": [
+            "색의 세 성질"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 색이 면적에 따라 선명도와 농도가 다르게 지각된다는 점을 다룬다. 넓게 쓸 색은 견본보다 흐리게, 좁게 쓸 색은 더 선명하게 고르는 보정 방향을 제시하고, 실제 사용 면적 비율로 견본을 만들어야 배색 판단이 유효하다는 실무 원칙을 세운다.",
+          "aiAnalysisInputSha256": "86bc19a447e791bfde8905b78481bf35869afd45910df62f2e6cfb238a068783",
+          "aiPublicGuideTopic": "면적이 인상을 바꾸는 방식",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 색은 혼자 있지 않다",
+          "section": "1.4 대비라는 말",
+          "primaryConcepts": [
+            "명도 대비"
+          ],
+          "secondaryConcepts": [
+            "바탕과 도형",
+            "색의 세 성질"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 중간 회색을 밝은 바탕과 어두운 바탕 위에 배치해 명도 대비를 보이는 도표다. 두 작은 정사각형을 같은 색의 띠로 연결해 물리적 동일성을 함께 제시함으로써, 차이가 색 자체가 아니라 바탕과의 관계에서 생긴다는 점을 드러낸다.",
+          "aiAnalysisInputSha256": "64e705d496963c90f7adb4ce15f97ffe6d16a85ec7dd2f547c30959529723fa6",
+          "aiPublicGuideTopic": "같은 회색을 두 바탕 위에 올린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 색은 혼자 있지 않다",
+          "section": "1.4 대비라는 말",
+          "primaryConcepts": [
+            "명도 대비"
+          ],
+          "secondaryConcepts": [
+            "색의 관계성"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "밝기 차이가 색 구별의 가장 강력한 수단이라는 점과 흑백 변환으로 이를 점검하는 방법을 제시한다. 대비를 키울수록 시각 피로가 커지므로 장시간 노출되는 대상에서는 밝기 차를 절제하고 색조로 보완한다는 판단 기준을 함께 다룬다.",
+          "aiAnalysisInputSha256": "741ad73da5bf50cd94e8cfb75ddbeae15f5b973673f69fe8f89f6e14a4727edf",
+          "aiPublicGuideTopic": "밝기 차이가 만드는 가장 강한 구별",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "1장 색은 혼자 있지 않다",
+          "section": "1.5 배색이라는 일",
+          "primaryConcepts": [
+            "배색"
+          ],
+          "secondaryConcepts": [
+            "색의 관계성",
+            "바탕과 도형"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배색을 색 선택이 아니라 각 색의 역할과 비율을 정하는 일로 규정한다. 넓게 까는 색·받치는 색·소량만 쓰는 색으로 나누어 구조를 만드는 방법과, 색 수가 늘면 관계의 조합이 급증해 문제 추적이 어려워진다는 이유로 적은 색을 권한다.",
+          "aiAnalysisInputSha256": "36092c2dcc20d1dd66e779515f4d544391bd0dd845df9e7357c155fe83dfe6d8",
+          "aiPublicGuideTopic": "여러 색을 함께 쓰기로 정하는 일",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "1장 색은 혼자 있지 않다",
+          "section": "1.5 배색이라는 일",
+          "primaryConcepts": [
+            "배색"
+          ],
+          "secondaryConcepts": [
+            "명도 대비"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배색 수정 시 색 교체 이전에 비율·밝기·선명도 순으로 조정하는 절차를 제시한다. 유사한 면적으로 맞선 두 색이 주종 관계를 잃어 불안정해진다는 문제를 예로 들고, 되돌리기 쉬운 조정부터 시도해야 앞선 결정을 재검토하지 않아도 된다는 근거를 밝힌다.",
+          "aiAnalysisInputSha256": "35d26a9cf557c66c623c722ab96c71692cedb8d47119f470700b094c2b3b6463",
+          "aiPublicGuideTopic": "배색을 고칠 때 무엇부터 손대는가",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 곁의 색이 바꾸는 것",
+          "section": "2.1 곁의 색이 미는 방향",
+          "primaryConcepts": [
+            "색조 대비"
+          ],
+          "secondaryConcepts": [
+            "색의 관계성",
+            "명도 대비"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인접색이 상대를 자신의 반대 방향으로 밀어내는 색조 대비 현상을 사례로 설명한다. 효과가 경계에서 가장 강하고 면적이 좁을수록 크게 작용한다는 점을 밝히고, 색을 다시 만들지 않고 주변 색으로 원하는 방향을 얻는 활용법을 제시한다.",
+          "aiAnalysisInputSha256": "9759d469c80dfe9f82ffb0bb08f9c03c8e312252067319a231f4f7882cf99ece",
+          "aiPublicGuideTopic": "곁의 색이 반대쪽으로 밀어내는 현상",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 곁의 색이 바꾸는 것",
+          "section": "2.1 곁의 색이 미는 방향",
+          "primaryConcepts": [
+            "색조 대비"
+          ],
+          "secondaryConcepts": [
+            "바탕과 도형"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 색이 서로 다른 이웃과 만나 균질하지 않게 보이는 문제를 다룬다. 중립색 경계선을 삽입하는 방법과 이웃 색 계열을 한쪽으로 모으는 방법을 비교하고, 경계선이 두꺼워지면 그 자체가 배색 요소가 되어 비율에 포함된다는 점을 지적한다.",
+          "aiAnalysisInputSha256": "e252ed2002f3f8bd1b5b9c6c15c2887a9301a10ed53443bb9ecf0dd3e479cff6",
+          "aiPublicGuideTopic": "밀어냄이 문제가 되는 자리",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 곁의 색이 바꾸는 것",
+          "section": "2.2 경계에서 일어나는 일",
+          "primaryConcepts": [
+            "경계의 떨림"
+          ],
+          "secondaryConcepts": [
+            "색조 대비",
+            "명도 대비"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "밝기가 비슷한 두 색이 직접 맞닿을 때 경계 부근에서 발생하는 시각적 흔들림과, 중립색 띠를 삽입해 이를 차단한 경우를 나란히 보인 도표다. 경계 양옆의 옅은 띠 유무로 두 조건의 차이를 나타낸다.",
+          "aiAnalysisInputSha256": "a561f3b92feb19bcfef68e91ccf37275695ae8615cb1604222705fa8885ba1a2",
+          "aiPublicGuideTopic": "두 색이 맞닿은 자리를 확대해 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 곁의 색이 바꾸는 것",
+          "section": "2.2 경계에서 일어나는 일",
+          "primaryConcepts": [
+            "경계의 떨림"
+          ],
+          "secondaryConcepts": [
+            "명도 대비"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "색조 차이는 크고 밝기 차이는 작은 두 색이 맞닿을 때 경계가 불안정해지는 현상과 그 원인을 설명한다. 밝기를 벌리는 일차적 해결과, 두 색을 모두 유지해야 할 때 중간 밝기의 경계선을 삽입하는 대안을 제시한다.",
+          "aiAnalysisInputSha256": "d88592bb4f77eb653622da77791ce0dcee50d72371c78bad500be1f11e257183",
+          "aiPublicGuideTopic": "밝기가 비슷한 두 색이 만날 때",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 곁의 색이 바꾸는 것",
+          "section": "2.3 나란히와 겹침",
+          "primaryConcepts": [
+            "배색 구조"
+          ],
+          "secondaryConcepts": [
+            "배색",
+            "바탕과 도형"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 색 집합이라도 대등 배치와 바탕·전경 배치에서 다른 결과를 낸다는 점을 다룬다. 대등 배치는 안정적이나 주목점을 만들지 못하고 바탕을 정하면 전경 색들의 관계가 분명해진다는 차이를 설명하며, 실패한 조합을 배치 변경으로 되살리는 접근을 제시한다.",
+          "aiAnalysisInputSha256": "b79a937c1ddd9dcf9c1d3ead2694c2127f15ae449bd9e1a1a2fcab3dcd47f3fd",
+          "aiPublicGuideTopic": "색을 늘어놓는 방식이 만드는 차이",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "2장 곁의 색이 바꾸는 것",
+          "section": "2.3 나란히와 겹침",
+          "primaryConcepts": [
+            "배색 구조"
+          ],
+          "secondaryConcepts": [
+            "색조 대비"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 색의 반복이 흩어진 요소들을 하나의 흐름으로 묶고 시선을 유도한다는 점을 설명한다. 반복 역할은 선명한 소면적 색이 맡아야 효과가 있으며, 반복 횟수와 배치의 편중 정도가 흐름과 무늬를 가른다는 기준을 제시한다.",
+          "aiAnalysisInputSha256": "22a406c5c5f34a8c8835f9aaa5d85930b46f04a778b198aecfd4bb2f49e3b048",
+          "aiPublicGuideTopic": "반복이 만드는 흐름",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "2장 곁의 색이 바꾸는 것",
+          "section": "2.4 색을 덜어 내기",
+          "primaryConcepts": [
+            "색 줄이기"
+          ],
+          "secondaryConcepts": [
+            "배색",
+            "배색 구조"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "색 수를 줄이면 관계의 조합이 급감해 남은 색의 역할이 분명해진다는 점을 다룬다. 제거 대상은 색조가 아니라 역할이 겹치는 색이라는 기준을 제시하고, 제거 후 남은 색의 밝기나 선명도를 조정해 빈자리를 메워야 한다는 후속 작업을 함께 설명한다.",
+          "aiAnalysisInputSha256": "73c6cb2fa9a91d7f3485e25c6dd27a137da47d3689e85cb136d916c9f007319e",
+          "aiPublicGuideTopic": "색의 개수를 줄여 얻는 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "2장 곁의 색이 바꾸는 것",
+          "section": "2.4 색을 덜어 내기",
+          "primaryConcepts": [
+            "색 줄이기"
+          ],
+          "secondaryConcepts": [
+            "색의 세 성질"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단일 색조 계열 안에서 밝기와 선명도만 달리해 색 수를 늘리지 않고 자리를 만드는 방법을 다룬다. 계열 통일이 경계 안정과 실패 위험 감소를 가져오는 반면 인상이 약해진다는 한계와, 소면적에만 다른 계열을 두는 절충을 제시한다.",
+          "aiAnalysisInputSha256": "1e5657ad5ebeb073609e70a248ccfda94142b8c60441129ef1731de3ab41d4c5",
+          "aiPublicGuideTopic": "한 계열 안에서 여러 색을 만드는 방법",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 따뜻함과 차가움",
+          "section": "3.1 온감이라는 느낌",
+          "primaryConcepts": [
+            "색의 온감"
+          ],
+          "secondaryConcepts": [
+            "색의 관계성"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "색의 온감이 물리적 온도가 아니라 경험적 연결에서 비롯된 지각임을 설명한다. 방향성이 대체로 일치해 배색 도구로 쓸 수 있고 거리감 조절에 활용된다는 점, 그러나 온감 자체도 인접 색과의 관계에서 상대적으로 정해진다는 한계를 함께 다룬다.",
+          "aiAnalysisInputSha256": "6a2898c4e5834b490e1a7de753d7abb97311ff1baa800e3bea0fc783cd7427c6",
+          "aiPublicGuideTopic": "색에서 따뜻함과 차가움을 느끼는 일",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 따뜻함과 차가움",
+          "section": "3.1 온감이라는 느낌",
+          "primaryConcepts": [
+            "색의 온감"
+          ],
+          "secondaryConcepts": [
+            "바탕과 도형"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "온감이 만드는 진출·후퇴 효과로 평면에 깊이를 부여하는 방법을 다룬다. 배경과 전경의 온감을 뒤집으면 지각적 불편이 생긴다는 점을 지적하고, 온감과 밝기를 같은 방향으로 함께 쓸 때 효과가 분명해진다는 결합 원칙을 제시한다.",
+          "aiAnalysisInputSha256": "4711aef4ce4ca47040b77d05a71325c4a4e366f8166bf90014d6f1e241a2e081",
+          "aiPublicGuideTopic": "온감으로 앞뒤를 만드는 방법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 따뜻함과 차가움",
+          "section": "3.2 계열을 나누는 자리",
+          "primaryConcepts": [
+            "온감의 경계"
+          ],
+          "secondaryConcepts": [
+            "색의 온감",
+            "색의 세 성질"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "온감이 뚜렷하지 않고 인접 색에 따라 양쪽으로 읽히는 중간 계열의 성질을 다룬다. 그 가변성이 대비되는 두 계열을 잇는 완충 역할로 활용된다는 점과, 견본 상태의 판단이 실제 배색에서 뒤집히므로 배치 후 확인해야 한다는 점을 설명한다.",
+          "aiAnalysisInputSha256": "fa4fb784cadcff73733423509b6ab12b78e99dfe6d21b29becebd9ffd91790ce",
+          "aiPublicGuideTopic": "따뜻함과 차가움이 갈리는 지점",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 따뜻함과 차가움",
+          "section": "3.2 계열을 나누는 자리",
+          "primaryConcepts": [
+            "온감의 경계"
+          ],
+          "secondaryConcepts": [
+            "색의 온감",
+            "색조 대비"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 초록을 붉은 계열과 푸른 계열 옆에 각각 배치해 온감의 지각이 뒤집히는 것을 보인 도표다. 두 초록을 같은 색의 띠로 이어 물리적 동일성을 함께 제시하고, 중간 계열의 색이 이웃에 따라 양쪽으로 읽힌다는 점을 드러낸다.",
+          "aiAnalysisInputSha256": "4139a20dbb1cd8e09602663f2608ed305a29f88e26c34ed73da31b889408431b",
+          "aiPublicGuideTopic": "같은 초록을 두 이웃 옆에 놓은 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "3장 따뜻함과 차가움",
+          "section": "3.3 온감의 비율",
+          "primaryConcepts": [
+            "온감의 비율"
+          ],
+          "secondaryConcepts": [
+            "온감의 경계",
+            "배색"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "따뜻한 계열과 차가운 계열의 면적 비율이 배색의 긴장과 주목점을 결정한다는 점을 다룬다. 소수 계열이 시선을 받고 다수 계열이 분위기를 맡는 역할 분담을 설명하며, 주목 대상을 먼저 정한 뒤 비율을 배정하는 순서를 제시한다.",
+          "aiAnalysisInputSha256": "f60b43809818b628a625c70108e70063aa1202f0c0a0da329024d5dc81556596",
+          "aiPublicGuideTopic": "두 계열을 얼마씩 쓸 것인가",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "3장 따뜻함과 차가움",
+          "section": "3.3 온감의 비율",
+          "primaryConcepts": [
+            "온감의 비율"
+          ],
+          "secondaryConcepts": [
+            "색 줄이기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배색의 인상 문제를 색 교체가 아니라 온감 비율 조정으로 해결하는 방법을 다룬다. 실제 면적 변경과 선명도 저하를 통한 존재감 조절이라는 두 수단을 제시하고, 점진적으로 옮기며 인상이 바뀌는 지점을 찾는 절차를 설명한다.",
+          "aiAnalysisInputSha256": "3d8f76bca56733c11bdd9fb6bdffd677a9423d01660405706b42e87a982b81a9",
+          "aiPublicGuideTopic": "비율을 바꿔 인상을 고치는 일",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "3장 따뜻함과 차가움",
+          "section": "3.4 계열 안의 온감",
+          "primaryConcepts": [
+            "계열 내 온감"
+          ],
+          "secondaryConcepts": [
+            "색의 온감",
+            "색의 세 성질"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 색조 계열 내부에서도 인접 색상 쪽으로의 기울기에 따라 온감이 갈린다는 점을 다룬다. 비교를 통해서만 확인 가능하다는 실무 조건과, 한 작업에서 기울기를 한쪽으로 모아야 배색이 정돈된다는 원칙을 제시한다.",
+          "aiAnalysisInputSha256": "9efb43063dca9c0e128315ce0a236c4d299cc71a8bd03f57c12f9b46af732eca",
+          "aiPublicGuideTopic": "같은 계열 안에서도 갈리는 따뜻함",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "3장 따뜻함과 차가움",
+          "section": "3.4 계열 안의 온감",
+          "primaryConcepts": [
+            "계열 내 온감"
+          ],
+          "secondaryConcepts": [
+            "경계의 떨림"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계열 내 온감 기울기가 어긋난 색들이 맞닿을 때 경계가 탁해지는 현상을 다룬다. 중간 면을 삽입하는 사후 처리와, 물감을 기울기별로 분류해 선택 단계에서 문제를 차단하는 예방적 방법을 비교해 후자의 이점을 밝힌다.",
+          "aiAnalysisInputSha256": "94bb4649262970a33e819de939f9fad179105ae42b7ef9086f30661e523c2f29",
+          "aiPublicGuideTopic": "기울기가 어긋날 때 생기는 문제",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 색이 부르는 것",
+          "section": "4.1 색이 불러오는 기억",
+          "primaryConcepts": [
+            "색채 연상"
+          ],
+          "secondaryConcepts": [
+            "색의 온감"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "색채 연상이 색 자체의 속성이 아니라 관람자의 경험과 결합해 생긴다는 점을 설명한다. 사회적으로 겹치는 범위 안에서만 기대할 수 있다는 한계를 밝히고, 단일 색보다 색의 조합이 더 좁은 의미 범위를 지시한다는 활용 방향을 제시한다.",
+          "aiAnalysisInputSha256": "1f26d230f70e2be508801345b7755734feaa88475cbcace456754c7cd0cf11b4",
+          "aiPublicGuideTopic": "색과 경험이 이어져 있다는 점",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 색이 부르는 것",
+          "section": "4.1 색이 불러오는 기억",
+          "primaryConcepts": [
+            "색채 연상"
+          ],
+          "secondaryConcepts": [
+            "배색 구조"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "색의 개수가 늘수록 연상의 범위가 좁아진다는 관계를 다룬다. 첫 색으로 방향을, 둘째 색으로 범위를 정하고 셋째부터는 오히려 흐려진다는 점을 설명하며, 의미를 좁힐지 열어 둘지에 따라 색 수와 선명도를 초반에 정해야 한다는 판단을 제시한다.",
+          "aiAnalysisInputSha256": "ae6eb1f14b624d95c551dd8a4d503578c31c3670c9ece3812a2ad7340913418a",
+          "aiPublicGuideTopic": "조합이 가리키는 범위",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 색이 부르는 것",
+          "section": "4.2 조합이 만드는 인상",
+          "primaryConcepts": [
+            "배색 인상"
+          ],
+          "secondaryConcepts": [
+            "색채 연상",
+            "온감의 비율"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 붉은색을 짙은 초록·밝은 회색·짙은 남색 세 이웃과 조합해 인상이 달라지는 것을 보인 도표다. 세 붉은 사각형을 같은 색의 띠로 이어 물리적 동일성을 명시하고, 연상이 색 자체가 아니라 조합에서 나온다는 점을 드러낸다.",
+          "aiAnalysisInputSha256": "130d8045dba39030987cdeba18b5083917adc126625bdad50c97f8592ef7c0ab",
+          "aiPublicGuideTopic": "같은 붉은색을 세 조합에 넣은 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 색이 부르는 것",
+          "section": "4.2 조합이 만드는 인상",
+          "primaryConcepts": [
+            "배색 인상"
+          ],
+          "secondaryConcepts": [
+            "색 줄이기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "제작자가 자기 배색의 인상을 판단하기 어려운 이유와 제삼자 확인 방법을 다룬다. 유도 질문 대신 열린 질문을 써야 실제 지각을 알 수 있다는 점, 답변이 의도와 달라도 반드시 수정할 필요는 없으나 그 사실을 기록해 두어야 한다는 원칙을 제시한다.",
+          "aiAnalysisInputSha256": "d5286c085f67b904dd9429f8d8e979feadd1c12d63bb77fc3e8b92b0278dd0c6",
+          "aiPublicGuideTopic": "인상을 확인하는 방법",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "4장 색이 부르는 것",
+          "section": "4.3 익숙한 배색",
+          "primaryConcepts": [
+            "관습적 배색"
+          ],
+          "secondaryConcepts": [
+            "색채 연상",
+            "배색"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관습적으로 굳어진 색 조합이 즉각적 가독성과 의미 고착이라는 양면을 갖는다는 점을 다룬다. 유사 조합의 어중간한 사용이 관습적 해석에 흡수된다는 위험을 지적하고, 한 색의 밝기나 선명도를 크게 어긋내 익숙함을 깨는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "beaa92000934b7884f78662b50335ffe3bf15743a025984ffee9281897cdde16",
+          "aiPublicGuideTopic": "이미 뜻이 붙어 있는 조합",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "4장 색이 부르는 것",
+          "section": "4.3 익숙한 배색",
+          "primaryConcepts": [
+            "관습적 배색"
+          ],
+          "secondaryConcepts": [
+            "계열 내 온감"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관습적 색 조합의 의미가 지역과 시기에 따라 달라진다는 점을 다룬다. 사용처를 알 수 없는 작업에서는 관습 대신 색 관계로 인상을 만들어야 한다는 기준과, 관습 의존 배색이 관습 변화와 함께 낡는다는 수명 관점을 제시한다.",
+          "aiAnalysisInputSha256": "9017800d591b1d487a67a24bfa73d95a184e30556f72cda2674104afd7185548",
+          "aiPublicGuideTopic": "익숙함이 지역과 시기를 탄다는 점",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "4장 색이 부르는 것",
+          "section": "4.4 연상을 쓰지 않는 선택",
+          "primaryConcepts": [
+            "중립 배색"
+          ],
+          "secondaryConcepts": [
+            "색 줄이기",
+            "명도 대비"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "특정 연상을 유발하지 않는 중립적 배색을 만드는 방법을 다룬다. 계열 통일과 선명도 저하로 발언을 줄이되 밝기 차이로 구별을 확보해야 하며, 소면적의 또렷한 색 하나가 있어야 조용함이 의도로 읽힌다는 점을 설명한다.",
+          "aiAnalysisInputSha256": "72a1cef134b50b8d7da3ea7434ba1082c30114b0cc4c3efa3f448410c95bf0a4",
+          "aiPublicGuideTopic": "아무것도 부르지 않게 만드는 배색",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "4장 색이 부르는 것",
+          "section": "4.4 연상을 쓰지 않는 선택",
+          "primaryConcepts": [
+            "중립 배색"
+          ],
+          "secondaryConcepts": [
+            "배색 인상"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대상 자체를 주목시키는 배색과 담긴 내용을 살리는 배색의 목표가 상충한다는 점을 다룬다. 내용물을 알 수 없을 때 계열 통일과 낮은 선명도가 안전한 선택이라는 기준과, 목표 설정이 색 선택보다 선행해야 한다는 순서를 제시한다.",
+          "aiAnalysisInputSha256": "1b0b36c87cee23830ab649bb289eb88ca291b8cb30295874b75f09875899e14f",
+          "aiPublicGuideTopic": "담는 배색과 보여 주는 배색",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 공방에서 배색하기",
+          "section": "5.1 견본을 만드는 일",
+          "primaryConcepts": [
+            "견본"
+          ],
+          "secondaryConcepts": [
+            "색의 세 성질",
+            "바탕과 도형"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실제 재료와 면적 비율로 견본을 제작하는 절차를 다룬다. 조명 조건이 다른 두 장소에서 함께 확인해야 한다는 점과, 날짜와 색의 세 성질을 병기해야 이후 재현이 가능하다는 기록 원칙을 제시한다.",
+          "aiAnalysisInputSha256": "53e45fbab457ee669f4d83249d47a4976fb3ee6d7bb27683ae7e93a3797376bb",
+          "aiPublicGuideTopic": "색을 종이 위에서 확인하는 절차",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 공방에서 배색하기",
+          "section": "5.1 견본을 만드는 일",
+          "primaryConcepts": [
+            "견본"
+          ],
+          "secondaryConcepts": [
+            "배색"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "견본 비교를 두 장씩 토너먼트 방식으로 진행해 상호 간섭을 줄이는 방법을 다룬다. 배경 조건을 실제 사용 환경과 맞춰 통일해야 한다는 점과, 시각 순응 때문에 하루 뒤 재확인이 필요하다는 절차를 설명한다.",
+          "aiAnalysisInputSha256": "ce90e96e09bdff3240b881d487a580a56b9dbfe35b47071b341e371e20e2ada9",
+          "aiPublicGuideTopic": "견본을 견주는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 공방에서 배색하기",
+          "section": "5.2 세 색으로 짜기",
+          "primaryConcepts": [
+            "세 색 배색"
+          ],
+          "secondaryConcepts": [
+            "배색 구조",
+            "온감의 비율"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 세 색을 균등 분할한 배치와 넓게 까는 색·받치는 색·소량만 쓰는 색으로 역할을 나눈 배치로 비교한 도표다. 면적 배분이 구조와 주목점을 만든다는 점을 지시선과 함께 나타낸다.",
+          "aiAnalysisInputSha256": "90f48a0e9fdb714b3b5491ca826075b898533c4e89b5e219e7166067eafb3f2e",
+          "aiPublicGuideTopic": "세 색의 넓이를 다르게 배분한 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "5장 공방에서 배색하기",
+          "section": "5.2 세 색으로 짜기",
+          "primaryConcepts": [
+            "세 색 배색"
+          ],
+          "secondaryConcepts": [
+            "색 줄이기"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "세 색 배색에서 균등 면적 배분이 실패하는 이유와 역할 분담 방식을 다룬다. 넓은 면은 흐린 색, 좁은 면은 선명한 색이 맡는 면적별 보정 원칙과, 중간 역할의 색을 마지막에 정하는 순서를 제시한다.",
+          "aiAnalysisInputSha256": "80f8d0b2628be1d0efe85bb59ed939a9b3805c5e02b0b3c0a31cff1f6b89dcce",
+          "aiPublicGuideTopic": "세 색에 역할을 나누어 주는 방법",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "5장 공방에서 배색하기",
+          "section": "5.3 재료가 바꾸는 색",
+          "primaryConcepts": [
+            "재료와 색"
+          ],
+          "secondaryConcepts": [
+            "견본",
+            "색의 세 성질"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재료의 표면 성질이 색의 선명도를 크게 바꾼다는 점을 종이와 천의 비교로 설명한다. 재료를 옮길 때 밝기 차이로 대비를 보완하는 방법과, 복수 재료가 섞이는 작업에서 재료별 견본을 따로 만들어야 한다는 절차를 제시한다.",
+          "aiAnalysisInputSha256": "a48ba83066466aa99998d1746be2443eb2c69a105f4b731b65e3db5cf37d5055",
+          "aiPublicGuideTopic": "같은 색이 재료에 따라 달라지는 일",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "5장 공방에서 배색하기",
+          "section": "5.3 재료가 바꾸는 색",
+          "primaryConcepts": [
+            "재료와 색"
+          ],
+          "secondaryConcepts": [
+            "명도 대비"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결이 있는 재료에서 관찰 각도에 따라 밝기가 달라지는 현상을 다룬다. 동일 색 조각의 방향이 섞이면 염색 오류처럼 보인다는 문제와, 결 방향을 재단 도면에 표시해 공정 간에 전달해야 한다는 실무 절차를 제시한다.",
+          "aiAnalysisInputSha256": "7baf4e85db52341dfce6d112e4e2d2a2713b644a4d2df1c55278076b669d72a7",
+          "aiPublicGuideTopic": "빛이 닿는 방식이 바꾸는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "5장 공방에서 배색하기",
+          "section": "5.4 배색 노트",
+          "primaryConcepts": [
+            "배색 기록"
+          ],
+          "secondaryConcepts": [
+            "견본",
+            "배색"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배색 기록에 색 이름 대신 세 성질·비율·용도를 남겨야 재현과 인수인계가 가능하다는 점을 다룬다. 실패 사례와 그 원인, 제삼자 반응까지 기록해 두면 반복 실패를 막고 제작자와 관람자의 지각 차이를 다음 작업에 반영할 수 있다는 이점을 제시한다.",
+          "aiAnalysisInputSha256": "67c2ba45eabdd74f699d1e4a48c8811a0dae0fcaead21683e039ac506df8d709",
+          "aiPublicGuideTopic": "정한 것을 남기는 방법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "5장 공방에서 배색하기",
+          "section": "5.4 배색 노트",
+          "primaryConcepts": [
+            "배색 기록"
+          ],
+          "secondaryConcepts": [
+            "재료와 색"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "축적된 배색 기록을 재사용하기 위한 색인 방법과 실제 활용 양상을 다룬다. 계열·온감·재료를 머리말에 두어 검색 가능하게 하고, 그대로 쓰기보다 출발점으로 삼는다는 점, 특히 실패 기록이 사진으로 남지 않는 정보라는 가치를 설명한다.",
+          "aiAnalysisInputSha256": "e679c8fe0ad0e4b4e9ff85f6e7f5a4b12c0ad0a495e8bfa035d1219d9be24e18",
+          "aiPublicGuideTopic": "기록을 다시 꺼내 쓰는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "5장 공방에서 배색하기",
+          "section": "5.5 함께 정하는 배색",
+          "primaryConcepts": [
+            "협업 배색"
+          ],
+          "secondaryConcepts": [
+            "배색 기록",
+            "배색 인상"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복수 인원이 배색을 결정할 때 취향 대립을 피하는 절차를 다룬다. 주목 대상·노출 시간·설치 장소를 문장으로 먼저 적어 판단 기준을 공유하고, 이견이 남으면 양쪽 견본을 만들어 비교하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "2927c94ba4c2fa2a61b1a2ebef7e62a7fccd0e38b06ae998510d1139beda0be2",
+          "aiPublicGuideTopic": "여럿이 색을 정할 때의 절차",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "5장 공방에서 배색하기",
+          "section": "5.5 함께 정하는 배색",
+          "primaryConcepts": [
+            "협업 배색"
+          ],
+          "secondaryConcepts": [
+            "견본"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배색 결정자와 제작자가 분리될 때 근거 정보가 유실되는 문제를 다룬다. 재료 사정으로 조정이 필요할 때 무엇을 지켜야 하는지 판단하려면 제약 조건이 함께 전달돼야 하며, 지켜야 할 항목을 하나로 좁혀 적어야 실제로 지켜진다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "99e541979fc749e8019561e14254f2a5bcee08bfec1d2bf44102c80a2353bfb2",
+          "aiPublicGuideTopic": "결정을 넘겨주는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 눈이 속는 자리",
+          "section": "6.1 빛이 바꾸는 색",
+          "primaryConcepts": [
+            "조명과 색"
+          ],
+          "secondaryConcepts": [
+            "색의 세 성질",
+            "견본"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 배색을 따뜻한 조명과 차가운 조명 아래에 놓았을 때 두 계열의 존재감이 뒤바뀌는 것을 옅은 색막으로 표현한 도표다. 배색의 결과가 색 선택만이 아니라 관람 조건까지 포함해 정해진다는 점을 보인다.",
+          "aiAnalysisInputSha256": "8de07b04895e1c0368a8514bef7fff08bd75f863ae63d6f1b85bf4deb923e6d2",
+          "aiPublicGuideTopic": "같은 배색을 두 빛 아래 놓은 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "6장 눈이 속는 자리",
+          "section": "6.1 빛이 바꾸는 색",
+          "primaryConcepts": [
+            "조명과 색"
+          ],
+          "secondaryConcepts": [
+            "색의 온감"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조명의 색이 배색 결과를 바꾸는 이유와 실제 설치 조건에서 색을 정해야 하는 필요를 다룬다. 설치 환경을 알 수 없을 때는 계열 편중을 피하고 밝기 차이로 구조를 확보해야 조명 변화에 덜 흔들린다는 대안을 제시한다.",
+          "aiAnalysisInputSha256": "8084a623b97c52790c2973cced111b8dc72e7b70373a6765129951383f8eac0a",
+          "aiPublicGuideTopic": "어느 빛 아래에서 고를 것인가",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "6장 눈이 속는 자리",
+          "section": "6.2 눈이 지치는 자리",
+          "primaryConcepts": [
+            "잔상과 피로"
+          ],
+          "secondaryConcepts": [
+            "경계의 떨림",
+            "명도 대비"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장시간 응시에 따른 색순응과 잔상이 제작자의 판단을 왜곡한다는 점을 다룬다. 넓은 면의 선명한 색에서 특히 크게 나타나며 작업이 길어질수록 색이 과하게 선명해지는 경향을 지적하고, 휴지와 재확인이라는 절차적 대응을 제시한다.",
+          "aiAnalysisInputSha256": "d30f6f5aee2763e75533ac86480b194a1132325977107a890ced4b51b158e7bf",
+          "aiPublicGuideTopic": "오래 보면 색이 달라 보이는 현상",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "6장 눈이 속는 자리",
+          "section": "6.2 눈이 지치는 자리",
+          "primaryConcepts": [
+            "잔상과 피로"
+          ],
+          "secondaryConcepts": [
+            "색의 온감"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장시간 노출되는 대상에서 시각 피로가 배색의 제약 조건이 된다는 점을 다룬다. 선명색 면적 축소·밝기 차 확보·중립 면 삽입 세 가지 완화 방법을 정리하고, 노출 시간을 결정하는 용도를 색 선택보다 먼저 확인해야 한다는 순서를 제시한다.",
+          "aiAnalysisInputSha256": "b32104fb7ff32de693dd150276dea2acd888f3ef3a09bd612d5d322180144598",
+          "aiPublicGuideTopic": "보는 사람의 피로를 줄이는 배색",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "6장 눈이 속는 자리",
+          "section": "6.3 사람마다 다른 눈",
+          "primaryConcepts": [
+            "색각의 차이"
+          ],
+          "secondaryConcepts": [
+            "명도 대비",
+            "색조 대비"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "색각 차이로 인해 특정 색조 구별이 사람마다 다르게 작동한다는 점을 다룬다. 색조에만 의존한 구분이 일부에게 전달되지 않으므로 밝기 차이를 함께 두어야 하며, 색 이외의 모양이나 위치를 병행해야 한다는 설계 원칙을 제시한다.",
+          "aiAnalysisInputSha256": "1e67db0ac1b16348d4f63ae77f0f2edcaef9caac02017a2df5d4c8f98c99acfb",
+          "aiPublicGuideTopic": "같은 배색이 모두에게 같지 않다는 점",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 51,
+          "chapter": "6장 눈이 속는 자리",
+          "section": "6.3 사람마다 다른 눈",
+          "primaryConcepts": [
+            "색각의 차이"
+          ],
+          "secondaryConcepts": [
+            "배색 인상"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "제작자가 모든 관람자의 지각을 확인할 수 없다는 한계에서 개별 확인 대신 일반 규칙을 적용하는 접근을 다룬다. 규칙이 확인보다 약하지만 항상 적용 가능하다는 이점과, 규칙을 문서 첫머리에 두어 매 작업에서 상기시키는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "24a6482f2d5fe06a50953f80b1579dc6dacfce071e8301400343bfa9f8b5134b",
+          "aiPublicGuideTopic": "확인할 수 없는 것을 다루는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            50
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 52,
+          "chapter": "7장 결론: 색은 관계로 정해진다",
+          "section": "7.1 색은 관계로 정해진다",
+          "primaryConcepts": [
+            "색의 관계성"
+          ],
+          "secondaryConcepts": [
+            "배색",
+            "온감의 비율"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "여섯 장의 논의를 색이 관계 속에서만 정해진다는 하나의 명제로 묶어 정리한다. 배색 수정이 색 교체가 아니라 관계 조정이라는 관점을 재확인하고, 고정된 색 목록이 성립하지 않는 이유를 이웃·재료·조명 의존성에서 찾는다.",
+          "aiAnalysisInputSha256": "c78f878b6ac46f716204e9c4e8932ea98388263b832292e048f11ee620e9c56a",
+          "aiPublicGuideTopic": "책 전체를 지나온 뒤 다시 보는 색",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "color-is-relation"
+          ]
+        },
+        {
+          "pageNumber": 53,
+          "chapter": "7장 결론: 색은 관계로 정해진다",
+          "section": "7.1 색은 관계로 정해진다",
+          "primaryConcepts": [
+            "색의 관계성"
+          ],
+          "secondaryConcepts": [
+            "배색 기록",
+            "협업 배색"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "색이 아니라 관계를 기록해야 재현이 가능하다는 점을 배색 노트의 성격에서 설명한다. 판단 근거가 없으면 조건 변화 시 수정이 불가능해 배색이 폐기된다는 위험을 들고, 관계와 이유의 기록을 최종 권고로 제시한다.",
+          "aiAnalysisInputSha256": "b0a4483941912e31a6cd481cc27cf4d2e2cb5bc474d03f4fced00cfed9b91405",
+          "aiPublicGuideTopic": "관계를 기록으로 남기는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            52
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 54,
+          "chapter": "7장 결론: 색은 관계로 정해진다",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "배색 점검"
+          ],
+          "secondaryConcepts": [
+            "명도 대비",
+            "색각의 차이"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "새 배색을 설계할 때 적용할 다섯 가지 점검 질문을 순서대로 제시한다. 주목 대상과 노출 시간으로 대비와 색 수를 정하고, 설치 조명과 재료로 실제 지각을 예측하며, 색 이외 수단의 병행 여부를 확인하는 절차를 정리한다.",
+          "aiAnalysisInputSha256": "9f5c4b480b366d63579d639ba08af1da8b47043ca9b21d02272e7472a42631f8",
+          "aiPublicGuideTopic": "새 배색을 만났을 때 차례로 던질 물음",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            52
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 55,
+          "chapter": "7장 결론: 색은 관계로 정해진다",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "배색 점검"
+          ],
+          "secondaryConcepts": [
+            "견본",
+            "조명과 색"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도입부의 두 천 조각 사례를 다시 해석하며 책 전체를 닫는다. 색을 다시 만드는 방법과 이웃을 바꾸는 방법 가운데 후자가 이 책의 주제였음을 확인하고, 실제 설치 자리에서 하루 뒤 확인하는 것을 완료 판정 기준으로 제시한다.",
+          "aiAnalysisInputSha256": "1b2adf53e0527ea42cad9fe9ee89a2e694272066e8df0367fce8ed0085f5ca2a",
+          "aiPublicGuideTopic": "첫 장면으로 돌아가는 마무리",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            54
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 66,
       "title": "공공 벽화의 구성 원리",
       "pdfPath": "pdfs/book-066.pdf",
