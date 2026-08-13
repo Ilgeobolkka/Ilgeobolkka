@@ -1,0 +1,6 @@
+balance_mismatch	0
+negative_balance	0
+deduction_without_rental	0
+duplicate_ownership	0
+active_rental_without_library	0
+ownership_without_library	0

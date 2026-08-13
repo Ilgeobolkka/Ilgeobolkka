@@ -1,0 +1,11 @@
+{
+  "dataset": "history-heavy",
+  "historyRentalsPerReader": 500,
+  "startedUtc": "2026-08-13T03:36:44Z",
+  "finishedUtc": "2026-08-13T03:36:50Z",
+  "durationSeconds": 6,
+  "databaseSizeBytes": 333807616,
+  "gitSha": "f3a62809099ba660ce980b006d71c833bbd849fa",
+  "dirty": false,
+  "jarSha256": "5c4e146b2a98d85cd4465b204a64660911dd72b3965b807791e868d66a2b9eb0"
+}
