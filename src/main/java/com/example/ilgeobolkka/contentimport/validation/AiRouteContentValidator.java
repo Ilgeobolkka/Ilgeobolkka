@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.HexFormat;
@@ -173,7 +174,8 @@ public final class AiRouteContentValidator {
             for (Integer prerequisite : page.prerequisitePageNumbers()) {
                 closure.addAll(closureByPageNumber.get(prerequisite));
             }
-            closureByPageNumber.put(pageNumber, Set.copyOf(closure));
+            closureByPageNumber.put(
+                    pageNumber, Collections.unmodifiableSet(new LinkedHashSet<>(closure)));
 
             if (!page.aiRouteCandidatePage()) {
                 continue;

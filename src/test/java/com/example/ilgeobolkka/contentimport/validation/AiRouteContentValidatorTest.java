@@ -622,12 +622,16 @@ class AiRouteContentValidatorTest {
     @Test
     void 후보와_전이적_선수_폐쇄에_같은_중복_그룹이_둘_이상이면_실패한다() {
         AiRouteContentManifest directConflict = manifestWithDuplicateGroup(List.of(2, 3));
+        AiRouteContentManifest indirectConflict = manifestWithDuplicateGroup(List.of(2, 4));
         AiRouteContentManifest convergingConflict = manifestWithConvergingDuplicatePrerequisites();
 
         assertTrue(
                 fail(directConflict, defaultEvaluation())
                         .getMessage()
                         .contains("선수 폐쇄에 중복 그룹"));
+        assertEquals(
+                "book 41 p4 후보와 선수 폐쇄에 중복 그룹 '같은 내용' 페이지가 둘 이상입니다: 4, 2",
+                fail(indirectConflict, defaultEvaluation()).getMessage());
         assertTrue(
                 fail(convergingConflict, defaultEvaluation())
                         .getMessage()
