@@ -106,12 +106,19 @@ class ContentBatchConverterTest {
     void 정본_ai_route_v2_코퍼스를_실제_Poppler로_변환한다() throws IOException {
         var importProperties = new ContentImportProperties();
         importProperties.setManifest(Path.of("fixtures/content/ai-route-v2/manifest.json"));
+        // CI는 Poppler를 PATH가 아니라 별도 경로에 설치하므로 앱과 같은 환경 변수를 따른다.
+        importProperties.setPdftotextCommand(
+                System.getenv().getOrDefault("PDFTOTEXT_COMMAND", "pdftotext"));
+        importProperties.setPdftoppmCommand(
+                System.getenv().getOrDefault("PDFTOPPM_COMMAND", "pdftoppm"));
         var storageProperties = new ContentStorageProperties();
         storageProperties.setRoot(tempDirectory.resolve("output"));
         var converter =
                 new ContentBatchConverter(
-                        importProperties, storageProperties, objectMapper, new PopplerPdfTool(
-                                new ContentImportProperties()));
+                        importProperties,
+                        storageProperties,
+                        objectMapper,
+                        new PopplerPdfTool(importProperties));
 
         ContentBatch batch = converter.convert();
 
