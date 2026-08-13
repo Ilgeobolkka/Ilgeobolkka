@@ -29,4 +29,23 @@ record ContentResultManifest(
         ImageConversion imageConversion,
         List<ConvertedBook> books) {}
 
+record AiRouteContentResultManifest(
+        String contentVersion,
+        String manifestSha256,
+        String pdftotextVersion,
+        String pdftoppmVersion,
+        ImageConversion imageConversion,
+        String dataPolicyVersion,
+        String embeddingModel,
+        int embeddingDimensions,
+        List<ConvertedBook> books,
+        List<AiRoutePageResult> aiPages) {}
+
+record AiRoutePageResult(
+        long bookId,
+        int pageNumber,
+        boolean aiRouteCandidate,
+        String analysisInputSha256,
+        String embeddingSha256) {}
+
 record ImageConversion(String format, int dpi, int quality) {}

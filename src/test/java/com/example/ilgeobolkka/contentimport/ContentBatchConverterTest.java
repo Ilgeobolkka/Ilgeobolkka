@@ -2,17 +2,26 @@ package com.example.ilgeobolkka.contentimport;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.example.ilgeobolkka.book.entity.BookPageContentType;
+import com.example.ilgeobolkka.contentimport.embedding.EmbeddedAiRouteContent;
+import com.example.ilgeobolkka.contentimport.manifest.AiRouteContentManifest;
 import com.example.ilgeobolkka.contentimport.manifest.InitialContentManifest;
+import com.example.ilgeobolkka.contentimport.validation.ValidatedAiRouteContent;
 import com.example.ilgeobolkka.global.config.ContentStorageProperties;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import tools.jackson.databind.ObjectMapper;
@@ -85,22 +94,119 @@ class ContentBatchConverterTest {
     }
 
     @Test
-    void initial_v1이_아닌_정상_AI_manifest는_전체_사전_검증_연결_전_변환을_거부한다()
+    void ai_route_v2는_manifest_합계로_변환하고_DB_성공_전에는_staging만_둔다()
             throws IOException {
         Path manifestPath = createAiRouteManifest();
+        Path outputRoot = tempDirectory.resolve("output");
         var pdfTool = new FakePdfTool();
         var converter =
                 new ContentBatchConverter(
                         manifestPath,
-                        tempDirectory.resolve("output"),
+                        outputRoot,
                         objectMapper,
                         pdfTool);
 
-        IllegalStateException exception =
-                assertThrows(IllegalStateException.class, converter::convert);
+        try (ContentBatchConverter.PreparedBatch prepared = converter.prepare()) {
+            ContentBatch batch = prepared.batch();
 
-        assertTrue(exception.getMessage().contains("전체 사전 검증 연결 후"));
-        assertEquals(0, pdfTool.extractCount);
+            assertInstanceOf(AiRouteContentManifest.class, prepared.manifest());
+            assertEquals(1, batch.books().size());
+            assertEquals(1, batch.pages().size());
+            assertFalse(Files.exists(outputRoot.resolve(batch.manifestSha256())));
+            assertTrue(
+                    Files.list(outputRoot)
+                            .anyMatch(
+                                    path ->
+                                            path.getFileName()
+                                                    .toString()
+                                                    .contains(".staging-")));
+        }
+
+        assertFalse(
+                Files.exists(outputRoot)
+                        && Files.list(outputRoot).findAny().isPresent());
+    }
+
+    @Test
+    void ai_route_v2_결과_manifest에_정책과_페이지별_분석_vector_SHA를_기록한다()
+            throws IOException {
+        Path manifestPath = createAiRouteManifest();
+        Path outputRoot = tempDirectory.resolve("output");
+        var converter =
+                new ContentBatchConverter(
+                        manifestPath,
+                        outputRoot,
+                        objectMapper,
+                        new FakePdfTool());
+
+        try (ContentBatchConverter.PreparedBatch prepared = converter.prepare()) {
+            AiRouteContentImportCommand command = aiCommand(prepared.batch());
+
+            prepared.writeAiResultManifest(command);
+            prepared.publish();
+
+            Path resultPath =
+                    outputRoot.resolve(prepared.batch().manifestSha256()).resolve("manifest.json");
+            AiRouteContentResultManifest result =
+                    objectMapper.readValue(resultPath.toFile(), AiRouteContentResultManifest.class);
+            assertEquals("OPENAI_DEFAULT_RETENTION_V1", result.dataPolicyVersion());
+            assertEquals("text-embedding-3-small", result.embeddingModel());
+            assertEquals(3, result.embeddingDimensions());
+            assertEquals(1, result.aiPages().size());
+            assertEquals("c".repeat(64), result.aiPages().getFirst().analysisInputSha256());
+            assertEquals(
+                    ContentBatchConverter.sha256(
+                            objectMapper.writeValueAsBytes(List.of(0.1, 0.2, 0.3))),
+                    result.aiPages().getFirst().embeddingSha256());
+
+            prepared.rollbackPublication();
+            assertFalse(Files.exists(resultPath.getParent()));
+        }
+    }
+
+    @Test
+    void ai_route_v2를_같은_결과로_다시_게시하면_배치_디렉터리를_재사용한다() throws IOException {
+        Path manifestPath = createAiRouteManifest();
+        Path outputRoot = tempDirectory.resolve("output");
+        var converter =
+                new ContentBatchConverter(
+                        manifestPath, outputRoot, objectMapper, new FakePdfTool());
+
+        String first = publishAiRoute(converter, List.of(0.1, 0.2, 0.3));
+        String second = publishAiRoute(converter, List.of(0.1, 0.2, 0.3));
+
+        assertEquals(first, second);
+        assertEquals(
+                1,
+                Files.list(outputRoot)
+                        .filter(path -> !path.getFileName().toString().startsWith("."))
+                        .count());
+    }
+
+    @Test
+    void ai_route_v2_결과가_이전_게시와_다르면_기존_배치를_덮어쓰지_않는다() throws IOException {
+        Path manifestPath = createAiRouteManifest();
+        Path outputRoot = tempDirectory.resolve("output");
+        var converter =
+                new ContentBatchConverter(
+                        manifestPath, outputRoot, objectMapper, new FakePdfTool());
+        String manifestSha256 = publishAiRoute(converter, List.of(0.1, 0.2, 0.3));
+
+        assertThrows(
+                IllegalStateException.class,
+                () -> publishAiRoute(converter, List.of(0.4, 0.5, 0.6)));
+
+        AiRouteContentResultManifest result =
+                objectMapper.readValue(
+                        outputRoot.resolve(manifestSha256).resolve("manifest.json").toFile(),
+                        AiRouteContentResultManifest.class);
+        assertEquals(
+                ContentBatchConverter.sha256(
+                        objectMapper.writeValueAsBytes(List.of(0.1, 0.2, 0.3))),
+                result.aiPages().getFirst().embeddingSha256());
+        assertFalse(
+                Files.list(outputRoot)
+                        .anyMatch(path -> path.getFileName().toString().contains(".staging-")));
     }
 
     @Test
@@ -124,6 +230,63 @@ class ContentBatchConverterTest {
                 Files.list(outputRoot)
                         .filter(path -> !path.getFileName().toString().startsWith("."))
                         .count());
+    }
+
+    @Test
+    void 같은_manifest의_게시와_rollback은_잠금으로_직렬화해_다른_실행의_파일을_지우지_않는다()
+            throws Exception {
+        Path manifestPath = createManifest();
+        Path outputRoot = tempDirectory.resolve("output");
+        var converter =
+                new ContentBatchConverter(
+                        manifestPath,
+                        outputRoot,
+                        objectMapper,
+                        new FakePdfTool());
+        ContentBatchConverter.PreparedBatch first = converter.prepare();
+        ContentBatchConverter.PreparedBatch second = converter.prepare();
+        CountDownLatch firstPublished = new CountDownLatch(1);
+        CountDownLatch releaseFirst = new CountDownLatch(1);
+        CountDownLatch secondAttempted = new CountDownLatch(1);
+        CountDownLatch secondEntered = new CountDownLatch(1);
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+
+        try (first; second) {
+            Future<?> firstRun =
+                    executor.submit(
+                            () ->
+                                    first.withPublicationLock(
+                                            () -> {
+                                                first.publishWhileLocked();
+                                                firstPublished.countDown();
+                                                await(releaseFirst);
+                                                first.rollbackPublicationWhileLocked();
+                                            }));
+            assertTrue(firstPublished.await(1, TimeUnit.SECONDS));
+
+            Future<?> secondRun =
+                    executor.submit(
+                            () -> {
+                                secondAttempted.countDown();
+                                second.withPublicationLock(
+                                        () -> {
+                                            secondEntered.countDown();
+                                            second.publishWhileLocked();
+                                        });
+                            });
+            assertTrue(secondAttempted.await(1, TimeUnit.SECONDS));
+            assertFalse(secondEntered.await(200, TimeUnit.MILLISECONDS));
+
+            releaseFirst.countDown();
+            firstRun.get(1, TimeUnit.SECONDS);
+            secondRun.get(1, TimeUnit.SECONDS);
+
+            Path finalDirectory = outputRoot.resolve(first.batch().manifestSha256());
+            assertTrue(Files.isRegularFile(finalDirectory.resolve("manifest.json")));
+        } finally {
+            releaseFirst.countDown();
+            executor.shutdownNow();
+        }
     }
 
     @Test
@@ -229,6 +392,9 @@ class ContentBatchConverterTest {
     private Path createAiRouteManifest() throws IOException {
         Path manifestPath = tempDirectory.resolve("ai-route-v2/manifest.json");
         Files.createDirectories(manifestPath.getParent());
+        byte[] pdf = "fake-ai-pdf".getBytes();
+        Files.createDirectories(manifestPath.getParent().resolve("pdfs"));
+        Files.write(manifestPath.getParent().resolve("pdfs/book-001.pdf"), pdf);
         Files.writeString(
                 manifestPath,
                 """
@@ -236,7 +402,7 @@ class ContentBatchConverterTest {
                   "contentVersion": "ai-route-v2",
                   "dataPolicyVersion": "OPENAI_DEFAULT_RETENTION_V1",
                   "embeddingModel": "text-embedding-3-small",
-                  "embeddingDimensions": 1536,
+                  "embeddingDimensions": 3,
                   "books": [{
                     "bookId": 1,
                     "title": "도서 제목",
@@ -262,8 +428,63 @@ class ContentBatchConverterTest {
                     }]
                   }]
                 }
-                """.formatted("a".repeat(64), "b".repeat(64)));
+                """.formatted(ContentBatchConverter.sha256(pdf), "c".repeat(64)));
         return manifestPath;
+    }
+
+    /** 게시까지 끝낸 뒤 배치 디렉터리 이름을 돌려준다. */
+    private String publishAiRoute(ContentBatchConverter converter, List<Double> vector) {
+        try (ContentBatchConverter.PreparedBatch prepared = converter.prepare()) {
+            prepared.writeAiResultManifest(aiCommand(prepared.batch(), vector));
+            prepared.publish();
+            return prepared.batch().manifestSha256();
+        }
+    }
+
+    private AiRouteContentImportCommand aiCommand(ContentBatch batch) {
+        return aiCommand(batch, List.of(0.1, 0.2, 0.3));
+    }
+
+    private AiRouteContentImportCommand aiCommand(ContentBatch batch, List<Double> vector) {
+        ValidatedAiRouteContent content =
+                new ValidatedAiRouteContent(
+                        "ai-route-v2",
+                        "OPENAI_DEFAULT_RETENTION_V1",
+                        "text-embedding-3-small",
+                        3,
+                        List.of(
+                                new ValidatedAiRouteContent.ValidatedBook(
+                                        1,
+                                        "도서 제목",
+                                        1,
+                                        true,
+                                        true,
+                                        List.of(
+                                                new ValidatedAiRouteContent.ValidatedPage(
+                                                        1,
+                                                        true,
+                                                        "분석 텍스트",
+                                                        "공개 주제",
+                                                        60,
+                                                        List.of())),
+                                        List.of())));
+        EmbeddedAiRouteContent embedded =
+                new EmbeddedAiRouteContent(
+                        "ai-route-v2",
+                        "text-embedding-3-small",
+                        3,
+                        java.util.Map.of(
+                                new EmbeddedAiRouteContent.PageKey(1, 1, "ai-route-v2"), vector));
+        return AiRouteContentImportCommand.create(batch, content, embedded);
+    }
+
+    private void await(CountDownLatch latch) {
+        try {
+            latch.await();
+        } catch (InterruptedException exception) {
+            Thread.currentThread().interrupt();
+            throw new IllegalStateException("테스트 대기 중 interrupt됐습니다.", exception);
+        }
     }
 
     private static class FakePdfTool implements PdfTool {

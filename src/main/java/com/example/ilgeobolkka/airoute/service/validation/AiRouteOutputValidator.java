@@ -45,7 +45,10 @@ public final class AiRouteOutputValidator {
         }
 
         List<ModelRouteItem> proposalItems = requireSemanticItems(
-                proposal, pagesByNumber, allowedPageNumbers);
+                proposal,
+                pagesByNumber,
+                allowedPageNumbers,
+                closureByCandidate.keySet());
         Map<Integer, Integer> positionByPageNumber = positionsOf(proposalItems);
         requirePrerequisitesBeforeDependents(
                 proposalItems, positionByPageNumber, pagesByNumber, closureMemo);
@@ -161,7 +164,8 @@ public final class AiRouteOutputValidator {
     private List<ModelRouteItem> requireSemanticItems(
             ModelRouteProposal proposal,
             Map<Integer, AiRouteCandidatePage> pagesByNumber,
-            Set<Integer> allowedPageNumbers) {
+            Set<Integer> allowedPageNumbers,
+            Set<Integer> candidatePageNumbers) {
         if (proposal == null || proposal.items().isEmpty()) {
             throw fail(Failure.EMPTY_PROPOSAL);
         }
@@ -184,6 +188,10 @@ public final class AiRouteOutputValidator {
             if (!seenPageNumbers.add(item.pageNumber())) {
                 throw fail(Failure.DUPLICATE_PAGE);
             }
+        }
+
+        if (seenPageNumbers.stream().noneMatch(candidatePageNumbers::contains)) {
+            throw fail(Failure.MISSING_CANDIDATE);
         }
 
         return proposal.items();

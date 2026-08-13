@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.HexFormat;
@@ -29,6 +30,8 @@ public final class AiRouteContentValidator {
     private static final int MIN_PAGES = 48;
     private static final int MAX_PAGES = 72;
     private static final int MIN_CHAPTERS = 6;
+    private static final int MAX_BOOK_TITLE_LENGTH = 255;
+    private static final int MAX_PUBLIC_GUIDE_TOPIC_LENGTH = 500;
     private static final String EXPECTED_EMBEDDING_MODEL = "text-embedding-3-small";
     private static final int EXPECTED_EMBEDDING_DIMENSIONS = 1536;
 
@@ -83,12 +86,26 @@ public final class AiRouteContentValidator {
             AiRouteContentManifest.Book book, Path fixtureRoot) {
         long bookId = book.bookId();
         validatePdf(book, fixtureRoot);
+        require(
+                book.title() != null && !book.title().isBlank(),
+                "book %d의 제목이 필요합니다.".formatted(bookId));
+        require(
+                characterCount(book.title()) <= MAX_BOOK_TITLE_LENGTH,
+                "book %d의 제목은 %d자 이하여야 합니다."
+                        .formatted(bookId, MAX_BOOK_TITLE_LENGTH));
 
         if (!book.aiRouteCandidate()) {
             require(
                     book.pages().isEmpty(),
                     "book %d는 AI 경로 후보가 아니므로 pages[]가 비어 있어야 합니다.".formatted(bookId));
-            return new ValidatedAiRouteContent.ValidatedBook(bookId, false, List.of(), List.of());
+            return new ValidatedAiRouteContent.ValidatedBook(
+                    bookId,
+                    book.title(),
+                    book.totalPageCount(),
+                    false,
+                    book.aiExternalTransferAllowed(),
+                    List.of(),
+                    List.of());
         }
 
         require(
@@ -143,12 +160,19 @@ public final class AiRouteContentValidator {
         for (AiRouteContentManifest.Page page : pages) {
             byNumber.put(page.pageNumber(), page);
         }
+        requireDuplicateGroupsOutsidePrerequisiteClosures(
+                bookId, order, byNumber);
         List<ValidatedAiRouteContent.ValidatedPage> validatedPages = new ArrayList<>();
         for (Integer pageNumber : order) {
             AiRouteContentManifest.Page page = byNumber.get(pageNumber);
             validatedPages.add(
                     new ValidatedAiRouteContent.ValidatedPage(
-                            page.pageNumber(), page.aiRouteCandidatePage(), page.aiAnalysisText()));
+                            page.pageNumber(),
+                            page.aiRouteCandidatePage(),
+                            page.aiAnalysisText(),
+                            page.aiPublicGuideTopic(),
+                            page.estimatedReadingSeconds(),
+                            page.duplicateGroupKeys()));
         }
         List<ValidatedAiRouteContent.PrerequisiteEdge> edges = new ArrayList<>();
         for (Integer pageNumber : order) {
@@ -156,7 +180,53 @@ public final class AiRouteContentValidator {
                 edges.add(new ValidatedAiRouteContent.PrerequisiteEdge(before, pageNumber));
             }
         }
-        return new ValidatedAiRouteContent.ValidatedBook(bookId, true, validatedPages, edges);
+        return new ValidatedAiRouteContent.ValidatedBook(
+                bookId,
+                book.title(),
+                book.totalPageCount(),
+                true,
+                book.aiExternalTransferAllowed(),
+                validatedPages,
+                edges);
+    }
+
+    private void requireDuplicateGroupsOutsidePrerequisiteClosures(
+            long bookId,
+            List<Integer> topologicalOrder,
+            Map<Integer, AiRouteContentManifest.Page> pagesByNumber) {
+        Map<Integer, Set<Integer>> closureByPageNumber = new HashMap<>();
+        for (Integer pageNumber : topologicalOrder) {
+            AiRouteContentManifest.Page page = pagesByNumber.get(pageNumber);
+            Set<Integer> closure = new LinkedHashSet<>();
+            closure.add(pageNumber);
+            for (Integer prerequisite : page.prerequisitePageNumbers()) {
+                closure.addAll(closureByPageNumber.get(prerequisite));
+            }
+            closureByPageNumber.put(
+                    pageNumber, Collections.unmodifiableSet(new LinkedHashSet<>(closure)));
+
+            if (!page.aiRouteCandidatePage()) {
+                continue;
+            }
+            Map<String, Integer> firstPageByDuplicateGroup = new HashMap<>();
+            for (Integer requiredPageNumber : closure) {
+                for (String groupKey :
+                        pagesByNumber.get(requiredPageNumber).duplicateGroupKeys()) {
+                    Integer firstPageNumber =
+                            firstPageByDuplicateGroup.putIfAbsent(groupKey, requiredPageNumber);
+                    if (firstPageNumber != null) {
+                        throw new AiRouteContentValidationException(
+                                "book %d p%d 후보와 선수 폐쇄에 중복 그룹 '%s' 페이지가 둘 이상입니다: %d, %d"
+                                        .formatted(
+                                                bookId,
+                                                pageNumber,
+                                                groupKey,
+                                                firstPageNumber,
+                                                requiredPageNumber));
+                    }
+                }
+            }
+        }
     }
 
     private void requireDuplicateGroupsHaveMultiplePages(
@@ -183,6 +253,23 @@ public final class AiRouteContentValidator {
         require(
                 !page.primaryConcepts().isEmpty(),
                 "book %d p%d primaryConcepts가 비어 있습니다.".formatted(bookId, pageNumber));
+        // 적재가 book_page에 그대로 저장하는 값이라 Embeddings 호출 전에 여기서 막는다.
+        require(
+                page.aiAnalysisText() != null && !page.aiAnalysisText().isBlank(),
+                "book %d p%d의 분석 텍스트가 필요합니다.".formatted(bookId, pageNumber));
+        require(
+                page.aiPublicGuideTopic() != null && !page.aiPublicGuideTopic().isBlank(),
+                "book %d p%d의 공개 가이드 주제가 필요합니다.".formatted(bookId, pageNumber));
+        require(
+                characterCount(page.aiPublicGuideTopic()) <= MAX_PUBLIC_GUIDE_TOPIC_LENGTH,
+                "book %d p%d의 공개 가이드 주제는 %d자 이하여야 합니다."
+                        .formatted(bookId, pageNumber, MAX_PUBLIC_GUIDE_TOPIC_LENGTH));
+        require(
+                page.estimatedReadingSeconds() > 0,
+                "book %d p%d의 예상 독서 시간은 양수여야 합니다.".formatted(bookId, pageNumber));
+        require(
+                page.duplicateGroupKeys() != null,
+                "book %d p%d의 중복 그룹 목록이 필요합니다.".formatted(bookId, pageNumber));
         require(
                 page.aiRouteCandidatePage() || page.duplicateGroupKeys().isEmpty(),
                 "book %d p%d 후보가 아닌 페이지의 duplicateGroupKeys는 비어 있어야 합니다."
@@ -463,6 +550,10 @@ public final class AiRouteContentValidator {
         } catch (NoSuchAlgorithmException exception) {
             throw new IllegalStateException("SHA-256을 사용할 수 없습니다.", exception);
         }
+    }
+
+    private static int characterCount(String value) {
+        return value.codePointCount(0, value.length());
     }
 
     private static void require(boolean condition, String message) {

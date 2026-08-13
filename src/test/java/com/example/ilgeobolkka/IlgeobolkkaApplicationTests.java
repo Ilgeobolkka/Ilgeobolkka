@@ -5,8 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.example.ilgeobolkka.airoute.controller.AiRouteCurrentController;
+import com.example.ilgeobolkka.airoute.controller.AiRouteDeleteController;
 import com.example.ilgeobolkka.airoute.controller.AiRouteQueryController;
 import com.example.ilgeobolkka.airoute.controller.AiRouteSaveController;
+import com.example.ilgeobolkka.airoute.facade.AiRouteCurrentFacade;
+import com.example.ilgeobolkka.airoute.facade.AiRouteDeleteFacade;
 import com.example.ilgeobolkka.airoute.facade.AiRouteQueryFacade;
 import com.example.ilgeobolkka.airoute.facade.AiRouteSaveFacade;
 import com.example.ilgeobolkka.infra.portone.PortOnePaymentGateway;
@@ -114,6 +118,18 @@ class IlgeobolkkaApplicationTests {
                         .isEmpty()),
                 () -> assertTrue(applicationContext
                         .getBeansOfType(AiRouteSaveFacade.class)
+                        .isEmpty()),
+                () -> assertTrue(applicationContext
+                        .getBeansOfType(AiRouteCurrentController.class)
+                        .isEmpty()),
+                () -> assertTrue(applicationContext
+                        .getBeansOfType(AiRouteCurrentFacade.class)
+                        .isEmpty()),
+                () -> assertTrue(applicationContext
+                        .getBeansOfType(AiRouteDeleteController.class)
+                        .isEmpty()),
+                () -> assertTrue(applicationContext
+                        .getBeansOfType(AiRouteDeleteFacade.class)
                         .isEmpty()));
     }
 }
