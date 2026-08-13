@@ -91,6 +91,10 @@ W02에 PUT/DELETE 계약을, W03에 book별 current projection을 전달합니�
 - 잠금 순서는 route → generation → current입니다. S01 저장이 generation → current 순이고 기존 route
   행을 잠그지 않으므로 대기 고리가 생기지 않습니다. 순서를 바꾸는 후속 작업은 이 근거를 다시 확인해야
   합니다.
+- 삭제의 후속 current insert는 복합 FK 검사로 부모 route 행에 공유 잠금을 잡습니다. 그 잠금이 FK가 참조하는
+  `uk_ai_reading_route_owner` 보조 인덱스 레코드에 걸리고 소유자 확인은 PK 클러스터드 레코드를 잠그기
+  때문에, 두 잠금이 부딪히지 않아 순환이 없습니다(MySQL 8.4 실측). 소유자 확인의 실행 계획이 바뀌거나
+  잠금 순서를 손대면 지정×삭제·삭제×삭제에서 교착이 생기므로 다시 재야 합니다.
 - `selectAsCurrent` upsert는 호출자가 소유자를 먼저 확인했다는 전제 위에 있습니다. 어긋난 route를 넘기면
   MySQL이 PK가 아니라 `uk_ai_route_current_route`로 매칭해 다른 독자의 current 행을 예외 없이 갱신합니다.
   호출자를 늘리는 후속 작업(W02·W03)은 소유자 확인을 먼저 붙입니다.

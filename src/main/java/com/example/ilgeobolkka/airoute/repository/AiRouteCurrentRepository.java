@@ -32,6 +32,17 @@ public interface AiRouteCurrentRepository
      * 저장만 호출자였을 때는 방금 만든 경로라 이 조건이 저절로 성립했지만, 지금은 기존 경로를 넘기는
      * 호출자(현재 경로 지정과 삭제의 후속 선택)가 있다.
      *
+     * <p>이 insert 는 복합 FK {@code fk_ai_route_current_route} 검사 때문에 부모 경로 행에 공유 잠금을
+     * 잡는다. 그 잠금은 FK 가 참조하는 {@code uk_ai_reading_route_owner} 보조 인덱스 레코드에 걸리고,
+     * 소유자 확인({@link AiReadingRouteRepository#findOwnedByIdForUpdate})은 PK 로 클러스터드 레코드에
+     * 배타 잠금을 잡는다. 서로 다른 레코드라 부딪히지 않는다. 실제 MySQL 8.4 에서 확인했다 — 한 세션이
+     * 경로를 PK 로 잠근 상태에서 다른 세션이 그 경로를 가리키는 현재 포인터를 넣어도 대기하지 않는다.
+     *
+     * <p><b>이 두 잠금이 같은 레코드가 되면 교착이 생긴다.</b> 삭제는 현재 포인터를 쥔 채 이 insert 로
+     * 후속 경로의 공유 잠금을 기다리게 되고, 그 경로를 이미 배타 잠금한 지정 요청은 현재 포인터를 기다리기
+     * 때문이다. 소유자 확인의 실행 계획이 {@code uk_ai_reading_route_owner} 로 바뀌거나 잠금 순서를
+     * 손대는 후속 작업은 이 조합을 다시 재어 봐야 한다.
+     *
      * <p>native 인 이유는 JPA 에 upsert 가 없어서다. 영속성 컨텍스트를 거치지 않으므로 이 문장 뒤에
      * {@link AiRouteCurrent} 를 같은 transaction 에서 Entity 로 읽지 않는다.
      */

@@ -94,6 +94,11 @@ public interface AiReadingRouteRepository extends JpaRepository<AiReadingRoute, 
      * 요청이 남긴 gap 과 저장의 insert 가 같은 자리에서 만나므로, 이 조회를 부르는 경로의 격리 수준을
      * 바꾸는 후속 작업은 {@link AiRouteGenerationRepository#findOwnedNotExpiredForUpdate} 와 같은 근거를
      * 다시 확인해야 한다.
+     *
+     * <p><b>이 잠금은 PK 로 클러스터드 레코드에만 걸려야 한다.</b> 실행 계획이
+     * {@code uk_ai_reading_route_owner} 로 바뀌면, 삭제가 현재 포인터를 쥔 채 내는 후속 경로 insert 의 FK
+     * 공유 잠금과 같은 레코드에서 만나 지정×삭제가 교착한다. 근거는
+     * {@link AiRouteCurrentRepository#selectAsCurrent} 에 적어 두었다.
      */
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query(
