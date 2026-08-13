@@ -26,7 +26,7 @@
   [BookPage.updateStructuralPageMetadata](../../../../src/main/java/com/example/ilgeobolkka/book/entity/BookPage.java)가
   목차처럼 후보가 아니면서 분석 메타데이터는 가지는 페이지를 표현합니다.
 - `ContentBatchConverter`는 콘텐츠 버전별로 manifest 계약을 분기하고 변환에 필요한 값만 뽑습니다.
-  `ai-route-v2`는 권수를 세지 않아 확장 중의 부분 집합도 변환합니다. 정본 20권 569페이지를 실제
+  `ai-route-v2`는 권수를 세지 않아 확장 중의 부분 집합도 변환합니다. 정본 23권 716페이지를 실제
   Poppler로 변환하는 검사는 `RUN_CONTENT_IMPORT_INTEGRATION=true`에서 돕니다.
 - `ContentPageWriter`도 콘텐츠 버전별로 나뉩니다. `ai-route-v2`는 권수를 세지 않고 manifest에 든
   도서만 적재하며 `total_page_count`를 새 값으로 올립니다. 시연 도서는 여기서 만들지 않습니다 —
@@ -36,8 +36,13 @@
   트랜잭션 **밖**에서 끝내고 본문 페이지와 AI 메타데이터는 **한 트랜잭션**에 함께 씁니다. 준비와 쓰기를
   두 메서드로 나눈 것은 같은 빈 안에서 부르면 프록시를 거치지 않아 트랜잭션이 걸리지 않기 때문입니다.
 - 평가 데이터 경로는 `content-import.evaluation` 설정으로 받습니다.
-- **남은 것**: 실제 실행. 후보 페이지마다 Embeddings를 호출하므로 OpenAI 키·프로젝트·지출 한도가 필요하고,
-  언제 어느 환경에서 돌릴지는 [배포 절차](../../../deployment.md#콘텐츠-변환적재) 결정입니다.
+- **실행했습니다** (2026-08-13, 로컬 MySQL). `manifestSha256=fdcc65b244f104644fa265105378ba952e3a9362544a404924b7473d6a430adb`,
+  23권 716페이지를 3분 54초에 적재했고 후보 663페이지에 Embeddings를 호출했습니다. 결과는 아래
+  [실행 기록](#실행-기록)에 있습니다. 공개 환경에서 언제 돌릴지는
+  [배포 절차](../../../deployment.md#콘텐츠-변환적재) 결정으로 남아 있습니다.
+- 이 실행에서 배치가 적재를 마치고도 종료되지 않는 것을 확인해 `SchedulingConfig`를
+  `content-import`에서 끄도록 고쳤습니다. `@EnableScheduling`의 스케줄러 스레드가 비데몬이라
+  JVM을 붙잡고 있었습니다.
 - [ContentImportService](../../../../src/main/java/com/example/ilgeobolkka/contentimport/ContentImportService.java)는
   변환 batch를 DB writer에 전달합니다.
 - [ContentPageWriter](../../../../src/main/java/com/example/ilgeobolkka/contentimport/ContentPageWriter.java)는
@@ -79,6 +84,54 @@
 - 목차 page가 `ai_route_candidate=0`과 빈 임베딩 세 필드로 저장되고, 후보 page만 vector를 갖는지 확인
 - 잘못된 vector/edge/profile 입력에서 DB 변경 0건
 - 명령: `./gradlew test --tests '*AiRouteContentImportMySqlIntegrationTest' --tests '*ContentImport*'`
+
+## 실행 기록
+
+2026-08-13 로컬 MySQL에 `ai-route-v2`를 적재한 기록입니다. Q01에 넘기는 값도 이 절입니다.
+
+적재 명령 (`.env`는 값에 `&`가 있어 셸 소싱 대신 한 줄씩 export 합니다):
+
+```bash
+SPRING_PROFILES_ACTIVE=content-import \
+CONTENT_IMPORT_MANIFEST=fixtures/content/ai-route-v2/manifest.json \
+CONTENT_IMPORT_EVALUATION=fixtures/content/ai-route-v2/evaluation.json \
+PDFTOTEXT_COMMAND="$(command -v pdftotext)" PDFTOPPM_COMMAND="$(command -v pdftoppm)" \
+./gradlew bootRun
+```
+
+| 항목 | 값 |
+| --- | --- |
+| `contentVersion` | `ai-route-v2` |
+| `manifestSha256` | `fdcc65b244f104644fa265105378ba952e3a9362544a404924b7473d6a430adb` |
+| 적재 결과 | 23권 716페이지, 후보 663 · 비후보 358, 선수 관계 818 |
+| 소요 | 3분 54초 (임베딩 663건 포함), WARN·ERROR 0건 |
+| Poppler | `pdftotext`·`pdftoppm` 모두 26.08.0 |
+
+manifest·DB 일치와 support false를 확인하는 쿼리입니다. 앞의 세 값은 manifest 합계와 같아야 하고
+`지원 true`는 0이어야 합니다.
+
+```sql
+select 'book v2', count(*) from book where content_version = 'ai-route-v2'
+union all select '후보 페이지', count(*) from book_page where ai_route_candidate = 1
+union all select '선수 관계', count(*) from ai_route_prerequisite
+union all select '지원 true', count(*) from book where ai_route_supported = 1
+union all select '후보인데 임베딩 결손', count(*) from book_page
+    where ai_route_candidate = 1
+      and (embedding_model is null or embedding_dimensions is null or embedding_json is null)
+union all select '비후보인데 임베딩 존재', count(*) from book_page
+    where ai_route_candidate = 0
+      and (embedding_model is not null or embedding_dimensions is not null
+           or embedding_json is not null);
+```
+
+적재 직후 실측은 23 · 663 · 818 · 0 · 0 · 0이었고, 후보 페이지의 `embedding_dimensions`와
+`json_length(embedding_json)`이 모두 1536으로 일치했습니다. 기존 page ID도 보존됐습니다 —
+`initial-v1`과 소설 10권의 page id 최댓값이 적재 전 범위인 400 그대로이고, 대상이 아닌 77권의
+페이지 수는 초기 manifest와 한 권도 어긋나지 않았습니다.
+
+이미 적재된 DB에 같은 manifest를 다시 넣으면 `uk_ai_route_prerequisite_edge` 중복으로 실패합니다.
+재적재는 제외 범위이고 실패해도 DB는 변화 0건으로 남지만, 임베딩을 모두 호출한 뒤 DB 제약에서
+멈추므로 비용이 먼저 나갑니다.
 
 ## 제외 범위
 

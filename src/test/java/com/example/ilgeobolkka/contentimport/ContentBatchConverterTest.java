@@ -116,11 +116,11 @@ class ContentBatchConverterTest {
         ContentBatch batch = converter.convert();
 
         assertEquals("ai-route-v2", batch.contentVersion());
-        assertEquals(20, batch.books().size());
-        assertEquals(569, batch.pages().size());
-        // 비소설 10권의 도표 50페이지 + 소설 10권이 initial-v1에서 그대로 쓰는 이미지 10페이지
+        assertEquals(23, batch.books().size());
+        assertEquals(716, batch.pages().size());
+        // 비소설 13권의 도표 68페이지 + 소설 10권이 initial-v1에서 그대로 쓰는 이미지 10페이지
         assertEquals(
-                60,
+                78,
                 batch.pages().stream()
                         .filter(page -> page.contentType() == BookPageContentType.IMAGE)
                         .count());
