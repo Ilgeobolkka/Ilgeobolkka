@@ -1,5 +1,6 @@
 package com.example.ilgeobolkka.contentimport;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
@@ -16,13 +17,17 @@ import com.example.ilgeobolkka.contentimport.embedding.EmbeddedAiRouteContent;
 import com.example.ilgeobolkka.contentimport.manifest.AiRouteContentManifest;
 import com.example.ilgeobolkka.contentimport.manifest.InitialContentManifest;
 import com.example.ilgeobolkka.contentimport.validation.ValidatedAiRouteContent;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.system.CapturedOutput;
+import org.springframework.boot.test.system.OutputCaptureExtension;
 import org.springframework.transaction.IllegalTransactionStateException;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.UnexpectedRollbackException;
@@ -30,14 +35,23 @@ import org.springframework.transaction.support.TransactionSynchronization;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 import org.springframework.transaction.support.TransactionTemplate;
 
-@ExtendWith(MockitoExtension.class)
+@ExtendWith({MockitoExtension.class, OutputCaptureExtension.class})
 class ContentImportServiceTest {
 
     @Mock private ContentBatchConverter converter;
     @Mock private ContentBatchConverter.PreparedBatch preparedBatch;
     @Mock private ContentPageWriter pageWriter;
     @Mock private AiRouteContentImportPreparer aiRoutePreparer;
+    @Mock private ContentImportLock importLock;
     @Mock private TransactionTemplate transactionTemplate;
+
+    private void 적재_잠금_callback을_즉시_실행한다() {
+        doAnswer(
+                        invocation ->
+                                invocation.<Supplier<ContentBatch>>getArgument(0).get())
+                .when(importLock)
+                .executeLocked(any());
+    }
 
     private void 잠금_callback을_즉시_실행한다() {
         doAnswer(
@@ -85,7 +99,13 @@ class ContentImportServiceTest {
             TransactionSynchronizationManager.clear();
         }
 
-        verifyNoInteractions(converter, preparedBatch, pageWriter, aiRoutePreparer, transactionTemplate);
+        verifyNoInteractions(
+                converter,
+                preparedBatch,
+                pageWriter,
+                aiRoutePreparer,
+                importLock,
+                transactionTemplate);
     }
 
     @Test
@@ -98,12 +118,15 @@ class ContentImportServiceTest {
         when(preparedBatch.batch()).thenReturn(batch);
         잠금_callback을_즉시_실행한다();
         트랜잭션_callback을_즉시_실행한다();
+        적재_잠금_callback을_즉시_실행한다();
         var service = service();
 
         ContentBatch result = service.importContent();
 
         assertSame(batch, result);
-        var order = inOrder(pageWriter, preparedBatch);
+        var order = inOrder(importLock, converter, pageWriter, preparedBatch);
+        order.verify(importLock).executeLocked(any());
+        order.verify(converter).prepare();
         order.verify(pageWriter).write(batch);
         order.verify(preparedBatch).publishWhileLocked();
         verifyNoInteractions(aiRoutePreparer);
@@ -128,6 +151,7 @@ class ContentImportServiceTest {
         when(aiRoutePreparer.embed(content)).thenReturn(embedded);
         잠금_callback을_즉시_실행한다();
         트랜잭션_callback을_즉시_실행한다();
+        적재_잠금_callback을_즉시_실행한다();
         var service = service();
 
         ContentBatch result = service.importContent();
@@ -144,6 +168,7 @@ class ContentImportServiceTest {
     @Test
     void 변환이_실패하면_DB_적재와_파일_공개를_시작하지_않는다() {
         when(converter.prepare()).thenThrow(new IllegalStateException("변환 실패"));
+        적재_잠금_callback을_즉시_실행한다();
         var service = service();
 
         assertThrows(IllegalStateException.class, service::importContent);
@@ -164,6 +189,7 @@ class ContentImportServiceTest {
         when(preparedBatch.manifest()).thenReturn(manifest);
         when(aiRoutePreparer.validate(manifest))
                 .thenThrow(new IllegalStateException("프로필 불일치"));
+        적재_잠금_callback을_즉시_실행한다();
         var service = service();
 
         assertThrows(IllegalStateException.class, service::importContent);
@@ -183,6 +209,7 @@ class ContentImportServiceTest {
         doThrow(new IllegalStateException("DB 실패")).when(pageWriter).write(batch);
         잠금_callback을_즉시_실행한다();
         트랜잭션_callback을_즉시_실행한다();
+        적재_잠금_callback을_즉시_실행한다();
         var service = service();
 
         assertThrows(IllegalStateException.class, service::importContent);
@@ -192,12 +219,15 @@ class ContentImportServiceTest {
     }
 
     @Test
-    void DB_commit_결과가_불명확하면_커밋된_DB_경로를_깨뜨리지_않도록_파일을_보존한다() {
+    void DB_commit_결과가_불명확하면_파일을_보존하고_복구할_배치를_경고한다(
+            CapturedOutput output) {
         ContentBatch batch = ContentBatchTestFixture.demoPageCountBatch();
+        Path finalDirectory = Path.of("/var/content/pages", batch.manifestSha256());
         when(converter.prepare()).thenReturn(preparedBatch);
         when(preparedBatch.manifest())
                 .thenReturn(new InitialContentManifest("initial-v1", List.of()));
         when(preparedBatch.batch()).thenReturn(batch);
+        when(preparedBatch.finalDirectory()).thenReturn(finalDirectory);
         잠금_callback을_즉시_실행한다();
         doAnswer(
                         invocation -> {
@@ -212,6 +242,7 @@ class ContentImportServiceTest {
                         })
                 .when(transactionTemplate)
                 .executeWithoutResult(any());
+        적재_잠금_callback을_즉시_실행한다();
         var service = service();
 
         assertThrows(IllegalStateException.class, service::importContent);
@@ -220,6 +251,12 @@ class ContentImportServiceTest {
         order.verify(pageWriter).write(batch);
         order.verify(preparedBatch).publishWhileLocked();
         verify(preparedBatch, never()).rollbackPublicationWhileLocked();
+        assertThat(output.getAll())
+                .contains(
+                        "WARN",
+                        "DB commit 결과가 불명확해 콘텐츠 파일을 보존합니다",
+                        "manifestSha256=" + batch.manifestSha256(),
+                        "finalDirectory=" + finalDirectory);
     }
 
     @Test
@@ -245,6 +282,7 @@ class ContentImportServiceTest {
                         })
                 .when(transactionTemplate)
                 .executeWithoutResult(any());
+        적재_잠금_callback을_즉시_실행한다();
         var service = service();
 
         assertThrows(UnexpectedRollbackException.class, service::importContent);
@@ -264,6 +302,7 @@ class ContentImportServiceTest {
         when(preparedBatch.batch()).thenReturn(batch);
         잠금_callback을_즉시_실행한다();
         트랜잭션_callback을_즉시_실행한다();
+        적재_잠금_callback을_즉시_실행한다();
         doThrow(new IllegalStateException("게시 실패"))
                 .when(preparedBatch)
                 .publishWhileLocked();
@@ -279,7 +318,7 @@ class ContentImportServiceTest {
 
     private ContentImportService service() {
         return new ContentImportService(
-                converter, pageWriter, aiRoutePreparer, transactionTemplate);
+                converter, pageWriter, aiRoutePreparer, importLock, transactionTemplate);
     }
 
     private ContentBatch aiBatch() {

@@ -486,6 +486,10 @@ class ContentBatchConverter {
             return batch;
         }
 
+        Path finalDirectory() {
+            return finalDirectory;
+        }
+
         void writeAiResultManifest(AiRouteContentImportCommand command) {
             if (!(manifest instanceof AiRouteContentManifest aiManifest)
                     || !batch.equals(command.batch())

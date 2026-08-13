@@ -6,6 +6,8 @@ import com.example.ilgeobolkka.contentimport.manifest.InitialContentManifest;
 import com.example.ilgeobolkka.contentimport.validation.ValidatedAiRouteContent;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.IllegalTransactionStateException;
@@ -17,19 +19,24 @@ import org.springframework.transaction.support.TransactionTemplate;
 @Profile("content-import")
 class ContentImportService {
 
+    private static final Logger log = LoggerFactory.getLogger(ContentImportService.class);
+
     private final ContentBatchConverter converter;
     private final ContentPageWriter pageWriter;
     private final AiRouteContentImportPreparer aiRoutePreparer;
+    private final ContentImportLock importLock;
     private final TransactionTemplate transactionTemplate;
 
     ContentImportService(
             ContentBatchConverter converter,
             ContentPageWriter pageWriter,
             AiRouteContentImportPreparer aiRoutePreparer,
+            ContentImportLock importLock,
             TransactionTemplate transactionTemplate) {
         this.converter = converter;
         this.pageWriter = pageWriter;
         this.aiRoutePreparer = aiRoutePreparer;
+        this.importLock = importLock;
         this.transactionTemplate = transactionTemplate;
     }
 
@@ -38,6 +45,10 @@ class ContentImportService {
             throw new IllegalTransactionStateException(
                     "콘텐츠 적재는 기존 transaction 안에서 시작할 수 없습니다.");
         }
+        return importLock.executeLocked(this::importContentWhileLocked);
+    }
+
+    private ContentBatch importContentWhileLocked() {
         try (ContentBatchConverter.PreparedBatch prepared = converter.prepare()) {
             if (prepared.manifest() instanceof InitialContentManifest) {
                 writeAndPublish(prepared, () -> pageWriter.write(prepared.batch()));
@@ -85,6 +96,12 @@ class ContentImportService {
                                 || completionStatus.get()
                                         == TransactionSynchronization.STATUS_ROLLED_BACK) {
                             rollbackPublication(prepared, failure);
+                        } else if (completionStatus.get()
+                                == TransactionSynchronization.STATUS_UNKNOWN) {
+                            log.warn(
+                                    "DB commit 결과가 불명확해 콘텐츠 파일을 보존합니다: manifestSha256={}, finalDirectory={}",
+                                    prepared.batch().manifestSha256(),
+                                    prepared.finalDirectory());
                         }
                         throw failure;
                     }

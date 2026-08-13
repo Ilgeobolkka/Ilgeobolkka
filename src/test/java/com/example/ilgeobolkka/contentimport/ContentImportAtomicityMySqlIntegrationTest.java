@@ -51,6 +51,7 @@ class ContentImportAtomicityMySqlIntegrationTest {
     private final ContentPageWriter pageWriter;
     private final DemoBookCatalog demoBookCatalog;
     private final DemoBookWriter demoBookWriter;
+    private final ContentImportLock importLock;
     private final JdbcTemplate jdbcTemplate;
     private final ObjectMapper objectMapper;
     private final TransactionTemplate transactionTemplate;
@@ -60,12 +61,14 @@ class ContentImportAtomicityMySqlIntegrationTest {
             ContentPageWriter pageWriter,
             DemoBookCatalog demoBookCatalog,
             DemoBookWriter demoBookWriter,
+            ContentImportLock importLock,
             JdbcTemplate jdbcTemplate,
             ObjectMapper objectMapper,
             TransactionTemplate transactionTemplate) {
         this.pageWriter = pageWriter;
         this.demoBookCatalog = demoBookCatalog;
         this.demoBookWriter = demoBookWriter;
+        this.importLock = importLock;
         this.jdbcTemplate = jdbcTemplate;
         this.objectMapper = objectMapper;
         this.transactionTemplate = transactionTemplate;
@@ -172,6 +175,7 @@ class ContentImportAtomicityMySqlIntegrationTest {
                 converter,
                 pageWriter,
                 aiRoutePreparer,
+                importLock,
                 transactionTemplate);
     }
 
