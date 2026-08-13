@@ -23,6 +23,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.junit.jupiter.api.io.TempDir;
 import tools.jackson.databind.ObjectMapper;
 
@@ -207,6 +208,47 @@ class ContentBatchConverterTest {
         assertFalse(
                 Files.list(outputRoot)
                         .anyMatch(path -> path.getFileName().toString().contains(".staging-")));
+    }
+
+    /**
+     * 정본 코퍼스를 실제 Poppler로 변환한다. 나머지 변환 테스트는 {@code FakePdfTool}을 쓰므로,
+     * manifest가 선언한 페이지 수·구성이 실제 PDF와 어긋나도 드러나지 않는다. 도서를 추가할 때 PDF만
+     * 넣고 manifest를 고치지 않는 실수를 잡는 것이 이 테스트다.
+     *
+     * <p>기본은 건너뛴다. Poppler 실행 파일과 수십 초의 변환이 필요해 CI에서만 켠다.
+     */
+    @Test
+    @EnabledIfEnvironmentVariable(named = "RUN_CONTENT_IMPORT_INTEGRATION", matches = "true")
+    void 정본_ai_route_v2_코퍼스를_실제_Poppler로_변환한다() throws IOException {
+        var importProperties = new ContentImportProperties();
+        importProperties.setManifest(Path.of("fixtures/content/ai-route-v2/manifest.json"));
+        // CI는 Poppler를 PATH가 아니라 별도 경로에 설치하므로 앱과 같은 환경 변수를 따른다.
+        importProperties.setPdftotextCommand(
+                System.getenv().getOrDefault("PDFTOTEXT_COMMAND", "pdftotext"));
+        importProperties.setPdftoppmCommand(
+                System.getenv().getOrDefault("PDFTOPPM_COMMAND", "pdftoppm"));
+        var storageProperties = new ContentStorageProperties();
+        storageProperties.setRoot(tempDirectory.resolve("output"));
+        var converter =
+                new ContentBatchConverter(
+                        importProperties,
+                        storageProperties,
+                        objectMapper,
+                        new PopplerPdfTool(importProperties));
+
+        try (ContentBatchConverter.PreparedBatch prepared = converter.prepare()) {
+            ContentBatch batch = prepared.batch();
+
+            assertEquals("ai-route-v2", batch.contentVersion());
+            assertEquals(23, batch.books().size());
+            assertEquals(716, batch.pages().size());
+            // 비소설 13권의 도표 68페이지 + 소설 10권이 initial-v1에서 그대로 쓰는 이미지 10페이지
+            assertEquals(
+                    78,
+                    batch.pages().stream()
+                            .filter(page -> page.contentType() == BookPageContentType.IMAGE)
+                            .count());
+        }
     }
 
     @Test
