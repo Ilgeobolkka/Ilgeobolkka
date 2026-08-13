@@ -215,6 +215,7 @@
 | 같은 멱등 키의 다른 입력·저장 전 콘텐츠 버전 변경 | 409 | `AI_ROUTE_IDEMPOTENCY_KEY_REUSED`, `AI_ROUTE_CONTENT_CHANGED` |
 | 저장 뒤 경로를 삭제한 생성 결과 재사용 | 409 | `AI_ROUTE_GENERATION_CONSUMED` |
 | 저장 전 권한 변동으로 추가 잉크가 생성 예산 초과 | 409 | `AI_ROUTE_ENTITLEMENT_CHANGED` |
+| 미완료 경로에 피드백 시도 | 409 | `AI_ROUTE_NOT_COMPLETED` |
 | 만료한 임시 결과 | 404 | `RESOURCE_NOT_FOUND` |
 | 계정별 생성 횟수 초과 | 429 | `AI_ROUTE_DAILY_LIMIT_EXCEEDED` |
 | OpenAI 지출·사용량 한도 또는 크레딧 소진 | 503 | `AI_ROUTE_PROVIDER_BUDGET_UNAVAILABLE` |
