@@ -219,6 +219,21 @@ class AiRouteAssemblerTest {
     }
 
     @Test
+    void 두_후보가_공유하는_선수는_추가_잉크를_한_번만_센다() {
+        ValidatedRouteProposal proposal = proposal(
+                List.of(item(1, true), item(3, false), item(4, false)),
+                Map.of(3, Set.of(1), 4, Set.of(1)));
+
+        AiRouteGenerationResult result = assembler.assemble(
+                proposal,
+                inkCommand(3, INK_BALANCE),
+                AiRouteEntitlementSnapshot.forNonOwned(INK_BALANCE, Set.of()),
+                pages(4));
+
+        assertEquals(List.of(1, 3, 4), pageNumbers(result));
+    }
+
+    @Test
     void 같은_중복_그룹에서는_먼저_선택한_페이지_하나만_포함한다() {
         List<AiRouteAssemblyPage> pages = List.of(
                 page(1, 60, List.of("same-concept")),
