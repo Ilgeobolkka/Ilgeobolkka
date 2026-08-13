@@ -3,6 +3,7 @@ package com.example.ilgeobolkka.airoute.repository;
 import com.example.ilgeobolkka.airoute.entity.AiReadingRouteItem;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -34,4 +35,18 @@ public interface AiReadingRouteItemRepository extends JpaRepository<AiReadingRou
             ORDER BY item.position ASC
             """)
     List<AiRouteItemProjection> findItemsByRouteId(@Param("routeId") long routeId);
+
+    /**
+     * 경로 삭제가 항목을 지운다. 항목이 들고 있던 열람 시각도 여기서 함께 사라진다. 경로 행보다 먼저
+     * 지워야 {@code fk_ai_reading_route_item_route_book} 이 걸리지 않는다.
+     *
+     * <p>소유자 확인은 호출 전에 경로 단위로 끝낸다. 조회와 같은 이유로, 항목은 소유자 조건으로 찾은
+     * 경로를 통해서만 이 문장에 닿는다.
+     *
+     * <p>{@code clearAutomatically} 는 켜지 않는다. 삭제 transaction 은 항목을 Entity 로 읽지 않고,
+     * 켜면 잠금 조회로 들고 있던 경로 Entity 까지 떨어져 나가 뒤따르는 삭제가 merge 를 거치게 된다.
+     */
+    @Modifying(flushAutomatically = true)
+    @Query("DELETE FROM AiReadingRouteItem item WHERE item.routeId = :routeId")
+    int deleteByRouteId(@Param("routeId") long routeId);
 }
