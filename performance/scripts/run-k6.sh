@@ -24,7 +24,13 @@ case "$scenario_name" in
         : "${PERF_NEW_READER_CYCLES:=37}"
         export PERF_NEW_READER_OFFSET PERF_NEW_READER_VU_STRIDE PERF_NEW_READER_CYCLES
         ;;
-    smoke|warm-up|average-load|peak-load|spike|soak)
+    spike)
+        : "${PERF_NEW_READER_OFFSET:=0}"
+        : "${PERF_NEW_READER_VU_STRIDE:=20}"
+        : "${PERF_NEW_READER_CYCLES:=16}"
+        export PERF_NEW_READER_OFFSET PERF_NEW_READER_VU_STRIDE PERF_NEW_READER_CYCLES
+        ;;
+    smoke|warm-up|average-load|peak-load|soak)
         : "${PERF_NEW_READER_OFFSET:=0}"
         : "${PERF_NEW_READER_VU_STRIDE:=64}"
         : "${PERF_NEW_READER_CYCLES:=4}"
