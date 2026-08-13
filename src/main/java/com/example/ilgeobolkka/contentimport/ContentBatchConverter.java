@@ -34,6 +34,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.node.ObjectNode;
 
 @Component
 @Profile("content-import")
@@ -42,7 +43,14 @@ class ContentBatchConverter {
     // initial-v1에만 적용한다. ai-route-v2는 manifest의 도서·페이지 합계를 그대로 쓴다.
     private static final int INITIAL_BOOK_COUNT = 100;
     private static final int INITIAL_PAGE_COUNT = 400;
-    private static final String POPPLER_VERSION = "26.05.0";
+    /**
+     * 산출물이 바이트 단위로 같음을 확인한 버전만 넣는다. 목록을 늘리려면 같은 표본을 다시 변환해
+     * 비교하고 근거를 남긴 뒤에 넣는다.
+     *
+     * <p>한 값으로 고정하지 않는 이유와 목록에 드는 조건은 ADR-0015에 있다.
+     */
+    private static final List<String> POPPLER_VERSIONS = List.of("26.05.0", "26.08.0");
+
     private static final ConcurrentMap<Path, ReentrantLock> LOCAL_PUBLICATION_LOCKS =
             new ConcurrentHashMap<>();
 
@@ -95,8 +103,7 @@ class ContentBatchConverter {
 
         String pdftotextVersion = pdfTool.pdftotextVersion();
         String pdftoppmVersion = pdfTool.pdftoppmVersion();
-        validatePopplerVersion("pdftotext", pdftotextVersion);
-        validatePopplerVersion("pdftoppm", pdftoppmVersion);
+        validatePopplerVersions(pdftotextVersion, pdftoppmVersion);
 
         Path normalizedOutputRoot = outputRoot.toAbsolutePath().normalize();
         Path finalDirectory = normalizedOutputRoot.resolve(manifestSha256);
@@ -351,8 +358,42 @@ class ContentBatchConverter {
             Path stagingDirectory, Path finalDirectory, ContentBatch batch) throws IOException {
         Path expectedManifest = stagingDirectory.resolve("manifest.json");
         Path existingManifest = finalDirectory.resolve("manifest.json");
-        if (!Files.isRegularFile(existingManifest)
-                || Files.mismatch(expectedManifest, existingManifest) != -1) {
+        if (!Files.isRegularFile(existingManifest)) {
+            throw new IllegalStateException(
+                    "같은 manifest 배치 디렉터리에 다른 결과가 있습니다: " + finalDirectory);
+        }
+        ObjectNode expectedResult = readResultManifest(expectedManifest);
+        ObjectNode existingResult = readResultManifest(existingManifest);
+        // 기존 배치도 같은 허용 목록 버전으로 만든 것이어야 버전 필드를 빼고 비교할 수 있다.
+        String existingPdftotextVersion = existingResult.path("pdftotextVersion").asString("");
+        String existingPdftoppmVersion = existingResult.path("pdftoppmVersion").asString("");
+        if (!POPPLER_VERSIONS.contains(existingPdftotextVersion)
+                || !POPPLER_VERSIONS.contains(existingPdftoppmVersion)) {
+            throw new IllegalStateException(
+                    "기존 배치의 Poppler 버전이 허용 목록에 없습니다: "
+                            + finalDirectory
+                            + " ("
+                            + existingPdftotextVersion
+                            + ", "
+                            + existingPdftoppmVersion
+                            + ")");
+        }
+        if (!existingPdftotextVersion.equals(existingPdftoppmVersion)) {
+            throw new IllegalStateException(
+                    "기존 배치의 pdftotext와 pdftoppm 버전이 다릅니다: "
+                            + finalDirectory
+                            + " ("
+                            + existingPdftotextVersion
+                            + ", "
+                            + existingPdftoppmVersion
+                            + ")");
+        }
+        // 허용 목록의 버전들은 같은 산출물을 내므로 기록한 버전 문자열이 달라도 같은 배치다.
+        expectedResult.remove("pdftotextVersion");
+        expectedResult.remove("pdftoppmVersion");
+        existingResult.remove("pdftotextVersion");
+        existingResult.remove("pdftoppmVersion");
+        if (!expectedResult.equals(existingResult)) {
             throw new IllegalStateException(
                     "같은 manifest 배치 디렉터리에 다른 결과가 있습니다: " + finalDirectory);
         }
@@ -375,6 +416,14 @@ class ContentBatchConverter {
         }
     }
 
+    private ObjectNode readResultManifest(Path manifestFile) throws IOException {
+        if (!(objectMapper.readTree(Files.readAllBytes(manifestFile))
+                instanceof ObjectNode resultManifest)) {
+            throw new IllegalStateException("결과 manifest를 읽을 수 없습니다: " + manifestFile);
+        }
+        return resultManifest;
+    }
+
     private String logicalImagePath(String manifestSha256, long bookId, int pageNumber) {
         return outputRoot
                 .resolve(manifestSha256)
@@ -385,13 +434,26 @@ class ContentBatchConverter {
                 .replace(File.separatorChar, '/');
     }
 
+    private void validatePopplerVersions(String pdftotextVersion, String pdftoppmVersion) {
+        validatePopplerVersion("pdftotext", pdftotextVersion);
+        validatePopplerVersion("pdftoppm", pdftoppmVersion);
+        // 산출물 동일성은 같은 버전끼리 확인했으므로 한 배치는 한 툴체인으로 변환한다.
+        if (!pdftotextVersion.equals(pdftoppmVersion)) {
+            throw new IllegalStateException(
+                    "pdftotext와 pdftoppm은 같은 Poppler 버전이어야 합니다: "
+                            + pdftotextVersion
+                            + ", "
+                            + pdftoppmVersion);
+        }
+    }
+
     private void validatePopplerVersion(String command, String actualVersion) {
-        if (!POPPLER_VERSION.equals(actualVersion)) {
+        if (!POPPLER_VERSIONS.contains(actualVersion)) {
             throw new IllegalStateException(
                     command
                             + " 버전은 "
-                            + POPPLER_VERSION
-                            + "이어야 합니다: "
+                            + String.join(", ", POPPLER_VERSIONS)
+                            + " 중 하나여야 합니다: "
                             + actualVersion);
         }
     }
