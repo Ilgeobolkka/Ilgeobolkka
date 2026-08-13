@@ -40,10 +40,10 @@ Git에는 판정에 직접 사용한 작은 k6 summary, 브라우저 JSONL과 hi
 | Peak r3 | `var/performance/results/20260813T045122Z-final-peak-r3` | 38,416 | `836c2256f5910ee03148ceb122af269ec3f715cee957880be6c0cb6447dda03d` |
 | Stress Smoke | `var/performance/results/20260813T050205Z-final-stress-smoke` | 11,875 | `47ea8f40f3b8258fb58cdba0f3315078f652dc5d9bd69ed6b210bddf10a3b434` |
 | Stress | `var/performance/results/20260813T050215Z-final-stress` | 49,039 | `f46c06fecaaf38f940410f6fd7483c8a3f4454d83b691e68dedca931c1ea526d` |
-| 무효 Spike Smoke | `var/performance/results/20260813T051750Z-final-spike-smoke` | 12,043 | `fbc88df7ed3529f8c920e01278248e9aa4e2faabf6912ef5338c2c53746f5bc9` |
-| 무효 Spike | `var/performance/results/20260813T051801Z-final-spike` | 35,552 | `38a19360e25c4c23f44a3cb4c1f3ad1d7d3e487b2ea4a934c9c8c92cdd6c8e72` |
+| 실패 Spike Smoke | `var/performance/results/20260813T051750Z-final-spike-smoke` | 12,043 | `fbc88df7ed3529f8c920e01278248e9aa4e2faabf6912ef5338c2c53746f5bc9` |
+| 실패 Spike | `var/performance/results/20260813T051801Z-final-spike` | 35,552 | `38a19360e25c4c23f44a3cb4c1f3ad1d7d3e487b2ea4a934c9c8c92cdd6c8e72` |
 | Spike 재실행 Smoke | `var/performance/results/20260813T052807Z-final-spike-rerun-smoke` | 11,492 | `af75ca6e740eb1ba2de9c4a1dc6dea2296d302f0c7036a0863e9e906f30ebab6` |
-| 유효 Spike | `var/performance/results/20260813T052817Z-final-spike-rerun` | 35,563 | `5c634be2fb8ce28e3d082b166bc3f3bcb52882798afa680efb0a52478a41dede` |
+| Spike 재실행 | `var/performance/results/20260813T052817Z-final-spike-rerun` | 35,563 | `5c634be2fb8ce28e3d082b166bc3f3bcb52882798afa680efb0a52478a41dede` |
 | 무효 Soak Smoke | `var/performance/results/20260813T053835Z-final-soak-smoke` | 11,850 | `bb913d018e7411f57f54fe599538146644d087dfc108c7116d7d624aeba17bac` |
 | 무효 Soak | `var/performance/results/20260813T053846Z-final-soak` | 86,010 | `18571dadd05d463ecd5fc043de6ee417e70d745fb473c221eb650e7196777656` |
 | Soak 재실행 Smoke | `var/performance/results/20260813T061123Z-final-soak-rerun-smoke` | 11,780 | `a3e3616d83964f365aa19a834fd52f48e37645abc046de4d42c596568a0cf1b5` |
@@ -53,6 +53,15 @@ Git에는 판정에 직접 사용한 작은 k6 summary, 브라우저 JSONL과 hi
 | 경합 다른 독자 | `var/performance/results/20260813T064342Z-final-contention-different-readers` | 10,792 | `1de673cde2acb93531ec497cf0c6d97e30a14c45231dcbe3514c8ef92446a738` |
 | 경합 세션 | `var/performance/results/20260813T064418Z-final-contention-session` | 11,721 | `e9e82a91bcb0a104c27db2e89332e957b33395d65eae47df5cae5236ccde7a5c` |
 | 브라우저 cache | `var/performance/results/20260813T064503Z-final-browser-cache` | 47,426 | `3148cf79660d1a0d6b80777bb051c3b4c69649e8de7ff5fdc83e16e25c1f737a` |
+| 후속 진단 Spike | `var/performance/results/20260813T075738Z-diagnostic-spike-contract` | 35,704 | `553b6d46f262834303b45fa015161a674cf8a2e19caefe0fb932644de81cb0d2` |
+| 진단 로그 Red | `var/performance/results/20260813T081619Z-diagnostic-contract-log-red` | 12,296 | `4b75192c539f934e2a6e067677463005b7d57b440024a0f0d37324731d425114` |
+| 진단 로그 Green | `var/performance/results/20260813T081701Z-diagnostic-contract-log-green` | 11,627 | `58b2fdcd7baaadc28992de93b010c14394cf626f91e2ea65363c1d52bb9f4448` |
+
+후속 진단 Spike는 리뷰 수정 중 계약 불일치 로그를 보강한 dirty 하네스와 통합 뒤 JAR SHA-256
+`d9adc84a30f9bf42c0a4f9f6b664c18f2fdc19f005d49589f293152bf6583c26`으로 실행했다. 과거 첫 Spike의
+원인 규명이나 정식 성능 수치에는 사용하지 않고, 현재 경로의 통과와 재발 진단 가능성만 확인한다.
+진단 로그 Red/Green도 같은 dirty 하네스와 JAR을 사용한 smoke이며, 실패 로그 필드와 정상 경로를 확인한
+테스트 근거로만 사용한다.
 
 ## Git 보존 파일 SHA-256
 
@@ -65,7 +74,7 @@ Git에는 판정에 직접 사용한 작은 k6 summary, 브라우저 JSONL과 hi
 | `summary-peak-2.json` | `8694f8c779b6941848c595e022b9f098ef20272df586aacf9c89ead4abdd7193` |
 | `summary-peak-3.json` | `38f3027f26e3fcbe2ad131649f312ffe36257c407daacc0e4c1981b744245614` |
 | `summary-stress.json` | `574a6daa5b3755a89a806d58b1e722f04bf06750da5fb510f2043725bc1dca16` |
-| `summary-spike-invalid.json` | `fb51c65ff0b167c39a7922df331edef1bc1b109a1a42786fe6dc2098dfda7b42` |
+| `summary-spike-failed.json` | `5d7ec313f4ae6e2d0bf13d67475ccfd5ab544ddd5acfc21317e3dfc69580f0d9` |
 | `summary-spike.json` | `f5fcf4fd042284a43129788c1b5b519caadd0917e5e5d7acf0e60344d60e7dd7` |
 | `summary-soak-invalid.json` | `51381c1cab4a14a63e495be7adb8abd8090b2d95cbf1e0668b09c8cbe2f51d55` |
 | `summary-soak.json` | `a14d9fc4bcf1fb28b524bc82cd4b50572f32f9a847019c0f3480c3c92ddb6a9d` |

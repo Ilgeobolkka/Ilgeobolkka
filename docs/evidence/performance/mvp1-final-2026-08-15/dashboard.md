@@ -33,8 +33,9 @@ Soak에서 Tomcat busy와 Hikari active가 모두 0인 것은 5초 scrape가 낮
 
 ## 용량 판정
 
-- Stress 계획 상한 200 flow iteration/s에서도 앱 CPU 평균 17.16%, 최대 36.90%, Hikari pending 0,
-  Tomcat busy 최대 3, generator CPU 최대 4.18%였다.
+- Stress 전체 15분(10→25→50→100→200 flow/s) 표본에서 앱 CPU 평균은 17.16%, 최대는 36.90%였고,
+  Hikari pending 0, Tomcat busy 최대 3, generator CPU 최대 4.18%였다. 17.16%는 200 flow/s 구간만의
+  평균이 아니다.
 - MySQL QPS 최대 2,593.63은 단계 전환을 포함한 5초 표본이며 지속 HTTP 처리량이 아니다. slow query
   counter는 3에서 증가하지 않았다.
 - Spike의 100 flow/s 구간도 Hikari pending 0이고 급증 뒤 20 flow/s로 회복했다.

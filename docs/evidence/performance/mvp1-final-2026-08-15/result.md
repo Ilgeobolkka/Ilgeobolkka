@@ -2,9 +2,9 @@
 
 ## 최종 판정
 
-- 단계 결과: **통과**
-- 진행 상태: **5단계 완료·6단계 대기**
-- 정확성·잠정 품질 게이트: **통과**
+- 단계 결과: **조건부 통과**
+- 진행 상태: **5단계 종료·6단계 대기**
+- 정확성·잠정 품질 게이트: **조건부 통과** — 첫 Spike의 기능 check 1건 실패를 잔여 위험으로 유지
 - 성능 목표: **기준선 충족으로 단순 구성 유지**
 - 기준 Git SHA: `f3a62809099ba660ce980b006d71c833bbd849fa`
 - 최종 JAR SHA-256: `5c4e146b2a98d85cd4465b204a64660911dd72b3965b807791e868d66a2b9eb0`
@@ -14,9 +14,11 @@
 
 5단계는 성능 전용 MySQL·Prometheus volume만 재생성한 깨끗한 환경에서 시작했다. 정식 Average·Peak는
 매회 동일 JAR로 `mvp 복원 → 새 앱 → Smoke → 3분 Warm-up → 10분 본 측정`을 수행했고, Stress·Spike·
-Soak·동시성·브라우저·전체 빌드·패키징 부팅까지 완료했다. 새 병목이나 포화가 없어 JFR·Performance
-Schema·`EXPLAIN ANALYZE` 진단은 정식 실행에 추가하지 않았다. 이력 인덱스의 분리 진단 근거는 3단계
-evidence를 그대로 사용한다.
+Soak·동시성·브라우저·전체 빌드·패키징 부팅까지 실행했다. 다만 첫 Spike가 기능 check 1건 실패한 뒤
+원인이나 설정 변경 없이 같은 계획의 재실행과 후속 진단이 통과했다. 첫 실패를 지우거나 원인을 규명한
+것으로 해석하지 않고 잔여 위험으로 보존하는 조건으로 5단계를 닫는다. 새 병목이나 포화가 없어 JFR·
+Performance Schema·`EXPLAIN ANALYZE` 진단은 정식 실행에 추가하지 않았다. 이력 인덱스의 분리 진단
+근거는 3단계 evidence를 그대로 사용한다.
 
 ## 시나리오 결과
 
@@ -26,7 +28,8 @@ evidence를 그대로 사용한다.
   p99 중앙값 81.960ms
 - Stress: 10→25→50→100→200 flow/s 전 단계 완료, checks 142,452/142,452, 오류·dropped 0,
   p95 12.857ms
-- Spike: 재실행 checks 73,356/73,356, 오류·dropped 0, p95 15.193ms
+- Spike: 첫 실행 check 1건 실패, 재실행 checks 73,356/73,356·오류·dropped 0·p95 15.193ms;
+  실패 원인 미확인을 잔여 위험으로 유지
 - Soak: 30분 재실행 checks 95,689/95,689, 오류·dropped 0, p95 14.734ms, Hikari pending 0
 - 동시성 4종: 모든 k6 check와 잔액·원장·대여·소장·마지막 위치·세션 계약 통과
 - 브라우저: feature checks 15/15, 공개 자산 전송량 cold/warm 각각 329,581 bytes, 보호 콘텐츠
@@ -37,12 +40,34 @@ evidence를 그대로 사용한다.
 
 ## 실패·무효 실행
 
-### 첫 Spike와 첫 Soak
+### 첫 Spike — 실패 실행
 
-첫 Spike와 첫 Soak는 각각 기능 check 1건이 실패해 exit code 99로 무효 처리했다. HTTP 오류·dropped와
-DB 공통 불변식은 모두 0이어서 좋은 지연값만 골라 채택하지 않았다. 데이터·앱을 고정 출발점으로 복원하고
-전체 시간을 재실행했다. Soak는 최대 VU보다 작은 신규 독자 `vuStride`가 slot 충돌을 허용하는 harness
-조건을 바로잡았고 제품 코드·부하 단계는 바꾸지 않았다. 무효·유효 원본을 모두 보존했다.
+첫 Spike `20260813T051801Z-final-spike`는 `잉크 차감 일치` check 1건이 실패해 exit code 99였다. JAR·
+데이터·자원·MySQL이 바뀌거나 generator가 포화됐다는 증거가 없고, 상태 누출·외부 쓰기·secret 포함도
+확인되지 않아 Runbook의 무효 조건에는 해당하지 않는다. 따라서 이 실행은 **무효가 아니라 기능 실패
+실행**이다. 당시 `--quiet` 로그에는 실패 flow·독자·페이지·기대값·실제값이 없어 원인을 사후 복원할 수
+없다. 데이터와 앱을 복원한 같은 계획의 재실행이 통과했지만, 변경 없이 통과한 재실행은 첫 실패를 지우는
+근거가 아니므로 원인 미확인 상태를 잔여 위험으로 유지했다.
+
+후속 리뷰에서는 `performance/k6/lib/flows.js`가 계약 불일치 시 flow·독자·도서·페이지·기대값·실제값·
+scenario/VU iteration을 기록하도록 보강했다. 보강한 dirty 하네스와 후속 통합 JAR의 진단 Spike
+`20260813T075738Z-diagnostic-spike-contract`는 checks 73,356/73,356, 오류·dropped 0, SQL 공통 불변식
+6종 0으로 통과했다. 실제 신규 대여 VU `31, 32, 33, 34, 35, 37`의 modulo-20 slot도 모두 달랐다. 이
+진단은 현재 경로가 통과하고 VU slot 충돌이 없었다는 사실만 증명하며, 정식 측정 JAR과 다른 후속 JAR·
+dirty 하네스 실행이므로 과거 실패의 원인 규명이나 정식 성능 수치로 사용하지 않는다.
+
+계약 불일치 진단 분기는 별도 smoke red/green으로 확인했다. Red
+`20260813T081619Z-diagnostic-contract-log-red`는 의도적으로 `deductedInk` 기대값을 어긋나게 해 exit code
+99와 flow·독자·도서·페이지·기대값·실제값·scenario/VU iteration 로그를 남겼고, 원복한 Green
+`20260813T081701Z-diagnostic-contract-log-green`은 checks 32/32와 exit code 0을 확인했다. 두 실행은
+진단 코드 검증 전용이며 정식 성능 수치에는 포함하지 않는다.
+
+### 첫 Soak — 무효 실행
+
+첫 Soak는 기능 check 1건이 실패했고 최대 VU보다 작은 신규 독자 `vuStride`가 slot 충돌을 허용하는
+harness 조건을 확인했다. `vuStride=24`, `cycles=13`으로 독립 slot을 부여하고 제품 코드·부하 단계는
+바꾸지 않은 채 전체 시간을 재실행했다. 원인과 설정 변경이 연결되므로 첫 Soak는 무효 실행으로 분리하고
+무효·유효 원본을 모두 보존했다.
 
 ### 첫 전체 테스트
 
@@ -77,7 +102,12 @@ DB 공통 불변식은 모두 0이어서 좋은 지연값만 골라 채택하지
 실제 유효 실행과 같은 신규 독자 pool 값을 사용하고, 본 부하 뒤에는 SQL 불변식을 검증한다.
 
 ```bash
+set -Eeuo pipefail
+trap './performance/scripts/stop-app.sh' EXIT
+
 ./gradlew bootJar
+final_jar=build/libs/Ilgeobolkka-0.0.1-SNAPSHOT.jar
+measurement_jar_sha=$(shasum -a 256 "$final_jar" | awk '{print $1}')
 ./performance/scripts/recreate-environment.sh
 ./performance/scripts/reset-mvp.sh
 ./performance/scripts/generate-history-heavy.sh
@@ -147,9 +177,19 @@ docker compose up -d --wait
 ./gradlew test --rerun-tasks
 ./gradlew check
 ./gradlew build
+test "$(shasum -a 256 "$final_jar" | awk '{print $1}')" = "$measurement_jar_sha"
+
+./performance/scripts/stop-app.sh
+./performance/scripts/start-app.sh
+curl -fsS http://127.0.0.1:8080/api/smoke >/dev/null
+curl -fsS http://127.0.0.1:8081/actuator/health >/dev/null
+./performance/scripts/stop-app.sh
+trap - EXIT
 ```
 
-위 명령은 유효한 재실행의 label과 고정 pool 값을 사용한다. 첫 Spike·Soak 무효 실행의 명령과 원인은
+위 명령은 각 하위 명령이 실패하면 즉시 중단하고, 처음 측정한 JAR SHA-256과 전체 build 뒤 JAR을 대조한
+다음 그 최종 패키지를 새로 부팅해 smoke·management health·종료까지 확인한다. Spike 재실행과 Soak 유효
+실행의 label·고정 pool 값을 사용하며, 첫 Spike 실패와 첫 Soak 무효의 판정은
 [실패·무효 실행](#실패무효-실행)에 별도로 기록했다. 시작·종료 UTC, image, JAR, Git·dirty 상태는 각 원시
 `metadata.json`에 있고, 원시 위치와 집계 SHA-256은 [artifact-manifest.md](./artifact-manifest.md)에서
 찾을 수 있다.
@@ -159,15 +199,15 @@ docker compose up -d --wait
 | 종료 조건 | 근거 |
 | --- | --- |
 | Average·Peak 각 3회 | 모두 같은 출발점·Warm-up, 유효 checks 100%, 중앙값·범위 기록 |
-| Stress·Spike·Soak 각 1회 | 유효 전체 시간 실행과 중단선 판정 기록, 무효 실행 별도 보존 |
+| Stress·Spike·Soak 각 1회 | 충족 — Spike 실패 실행과 같은 계획의 재실행을 모두 보존하고 중단선 결과를 기록 |
 | cold·warm 브라우저 분리 | 새 context cold와 같은 context warm 3쌍, 전송량·cache 계약 기록 |
 | 동시성 4종·불변식 | k6 check와 SQL 업무 계약·공통 불변식 전부 통과 |
 | 전체 test·check·build·JAR smoke | 개발 MySQL 기동 뒤 전체 재실행과 패키징 부팅 통과 |
 | 최종 evidence | 환경·summary·dashboard·artifact metadata·comparison 작성 |
 | 운영 해석 경계 | 모든 요약과 비교에 로컬 회귀 근거임을 명시 |
 
-5단계 종료 시점에는 6단계 완료 감사·민감정보/diff 전수 감사·container 종료 및 인계, 커밋·push·PR을
-실행하지 않았다.
+5단계는 첫 Spike 기능 실패의 원인 미확인을 잔여 위험으로 남기고 조건부 통과로 종료했다. 6단계 완료
+감사·민감정보/diff 전수 감사·container 종료 및 인계는 아직 실행하지 않았다.
 
 ## 후속 `develop` 통합 경계
 
@@ -181,5 +221,5 @@ docker compose up -d --wait
 
 통합된 13개 커밋은 AI 경로·콘텐츠 적재 코드와 테스트이며 성능 원시 결과를 다시 생성하지 않았다. 따라서
 이 문서의 부하 수치와 정확성 판정은 계속 정식 측정 SHA `f3a62809099ba660ce980b006d71c833bbd849fa`의
-근거이고, `b5b4c58`의 성능 수치라고 확장 해석하지 않는다. 후속 로컬 커밋은 evidence 보존만 포함하며
-push·PR·6단계 감사는 별도 승인 경계다.
+근거이고, `b5b4c58`의 성능 수치라고 확장 해석하지 않는다. 후속 로컬 커밋은 evidence 보존과 계약 불일치
+진단 하네스만 포함하며 push·PR·6단계 감사는 별도 승인 경계다.
