@@ -126,6 +126,9 @@ class OpenAiHttpRouteGatewayTest {
                 .isEqualTo(expectedVersion("air-route-prompt-v1", PROMPT_RESOURCE));
         assertThat(result.schemaVersion())
                 .isEqualTo(expectedVersion("air-route-schema-v1", SCHEMA_RESOURCE));
+        assertThat(gateway.routeContract().model()).isEqualTo(MODEL);
+        assertThat(gateway.routeContract().promptVersion()).isEqualTo(result.promptVersion());
+        assertThat(gateway.routeContract().schemaVersion()).isEqualTo(result.schemaVersion());
         server.verify();
     }
 

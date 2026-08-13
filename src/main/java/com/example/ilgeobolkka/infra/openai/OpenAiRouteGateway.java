@@ -4,7 +4,12 @@ import java.util.List;
 
 public interface OpenAiRouteGateway {
 
+    /** 실행 전에도 평가 결과의 재현 조건을 기록할 수 있는 고정 모델·prompt·schema 계약이다. */
+    RouteContract routeContract();
+
     RouteGatewayResult proposeRoute(RouteInput input);
+
+    record RouteContract(String model, String promptVersion, String schemaVersion) {}
 
     record RouteInput(
             String normalizedPurpose,
