@@ -14,7 +14,12 @@ import re
 import sys
 from pathlib import Path
 
-from corpus_lib import DEPTH_PAGE_LIMITS, density_failures, prereq_closure
+from corpus_lib import (
+    DEPTH_PAGE_LIMITS,
+    density_failures,
+    duplicate_closure_failures,
+    prereq_closure,
+)
 
 REPO = Path(__file__).resolve().parents[4]  # docs/evidence/ai-route-corpus/tools/ 기준 저장소 루트
 
@@ -97,6 +102,10 @@ def main():
     chk(seen == n, f"위상 정렬 {seen}/{n} (순환 없음)")
     density = density_failures(pages, prereq)
     chk(not density, "선수 밀도 상한" + ("" if not density else " — " + "; ".join(density)))
+    duplicate_closures = duplicate_closure_failures(pages, prereq)
+    chk(not duplicate_closures,
+        "후보 선수 폐쇄의 중복 그룹 충돌 없음"
+        + ("" if not duplicate_closures else " — " + "; ".join(duplicate_closures)))
 
     chk(bool(re.fullmatch(r"[0-9a-f]{64}", book["pdfSha256"])), "pdfSha256 형식(64자 hex)")
     chk(book["totalPageCount"] == n, f"totalPageCount({book['totalPageCount']})==pages 길이({n})")

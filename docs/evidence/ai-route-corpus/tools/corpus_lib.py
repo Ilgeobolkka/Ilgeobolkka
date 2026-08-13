@@ -64,6 +64,35 @@ def density_failures(pages, prereq):
     return fails
 
 
+def duplicate_closure_failures(pages, prereq):
+    """후보와 전이적 선수 폐쇄 안의 중복 그룹 충돌 목록을 반환한다.
+
+    최종 경로는 선수 폐쇄를 모두 포함하면서 중복 그룹에서는 최대 한 페이지만 포함해야 한다.
+    한 후보의 폐쇄 자체가 이 두 조건을 동시에 만족하지 못하면 런타임 조립 순서나 예산과 무관하게
+    도달할 수 없으므로 콘텐츠 제작 단계에서 막는다.
+    """
+    pages_by_number = {p["pageNumber"]: p for p in pages}
+    failures = []
+    for page in pages:
+        if not page["aiRouteCandidatePage"]:
+            continue
+        pages_by_group = {}
+        for page_number in prereq_closure([page["pageNumber"]], prereq):
+            for group_key in pages_by_number[page_number]["duplicateGroupKeys"]:
+                pages_by_group.setdefault(group_key, []).append(page_number)
+        conflicts = {
+            group_key: sorted(set(page_numbers))
+            for group_key, page_numbers in pages_by_group.items()
+            if len(set(page_numbers)) > 1
+        }
+        if conflicts:
+            failures.append(
+                f"p{page['pageNumber']} 후보와 선수 폐쇄에 같은 중복 그룹 페이지가 둘 이상임: "
+                f"{conflicts}"
+            )
+    return failures
+
+
 def sha256_text(text):
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
@@ -227,6 +256,8 @@ def validate_book(manifest_pages, manuscript_pages, *, min_pages=48, max_pages=7
                 queue.append(m)
     chk(visited == n, f"위상 정렬 {visited}/{n} — 순환 의심")
     for msg in density_failures(manifest_pages, prereq):
+        chk(False, msg)
+    for msg in duplicate_closure_failures(manifest_pages, prereq):
         chk(False, msg)
 
     mp = {p["pageNumber"]: p for p in manuscript_pages}

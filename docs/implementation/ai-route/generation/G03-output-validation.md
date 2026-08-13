@@ -42,7 +42,8 @@
 
 1. G02의 최대 30개 후보를 받은 뒤 후보마다 DAG의 전이적 선수 page를 계산하고 후보와 선수 폐쇄의 합집합을
    허용 집합으로 고정합니다. 선수 폐쇄에는 similarity threshold와 30개 상한을 적용하지 않습니다.
-2. proposal page가 다른 book/version, 미존재, 허용 집합 밖, 중복이면 전체 거부합니다.
+2. proposal page가 다른 book/version, 미존재, 허용 집합 밖, 중복이면 전체 거부합니다. 허용 집합 안의
+   선수 페이지만 있고 실제 검색 후보가 하나도 없을 때도 전체 거부합니다.
 3. position은 입력 배열 순서로 고정하고 선수 page가 의존 page보다 뒤거나 누락되면 전체 거부합니다.
 4. relevance·role·prerequisite가 F05 허용 Enum과 일치하는지 검증합니다.
 5. 모델이 prerequisite=false로 보냈더라도 graph상 선수로 포함된 page의 서버 판정을 우선합니다.
@@ -52,7 +53,7 @@
 ## 테스트
 
 - 정상 후보+`0.30` 미만 선수 폐쇄, 30개 후보 뒤 추가된 다단계 선수 순서
-- 다른 book/version·미존재·허용 집합 밖·duplicate·선수 누락·역순 각각 전체 실패
+- 다른 book/version·미존재·허용 집합 밖·검색 후보 없이 선수만 있음·duplicate·선수 누락·역순 각각 전체 실패
 - 자유 필드/Enum은 F05에서, semantic 허용 경계는 G03에서 실패하는 역할 분리
 - 실패 결과에 부분 proposal·분석 text가 없는지 확인
 - 명령: `./gradlew test --tests '*AiRouteOutputValidatorTest'`

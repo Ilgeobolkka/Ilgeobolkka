@@ -103,6 +103,7 @@ class AiRouteOutputValidatorTest {
                 () -> assertFalse(Failure.CONTEXT_MISMATCH.retryable()),
                 () -> assertTrue(Failure.PAGE_NOT_FOUND.retryable()),
                 () -> assertTrue(Failure.PAGE_OUTSIDE_ALLOWED_SET.retryable()),
+                () -> assertTrue(Failure.MISSING_CANDIDATE.retryable()),
                 () -> assertTrue(Failure.DUPLICATE_PAGE.retryable()),
                 () -> assertTrue(Failure.MISSING_PREREQUISITE.retryable()),
                 () -> assertTrue(Failure.INVALID_PREREQUISITE_ORDER.retryable()),
@@ -170,6 +171,19 @@ class AiRouteOutputValidatorTest {
                         List.of(candidatePage, unrelatedPage),
                         List.of(candidate(candidatePage)),
                         proposal(item(20, false))));
+    }
+
+    @Test
+    void 검색_후보_없이_선수_페이지만_있으면_전체_거부한다() {
+        AiRouteCandidatePage prerequisite = page(5, List.of());
+        AiRouteCandidatePage candidatePage = page(10, List.of(5));
+
+        assertFailure(
+                Failure.MISSING_CANDIDATE,
+                () -> validate(
+                        List.of(prerequisite, candidatePage),
+                        List.of(candidate(candidatePage)),
+                        proposal(item(5, true))));
     }
 
     @Test

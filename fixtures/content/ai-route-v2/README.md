@@ -116,6 +116,7 @@
 - `aiAnalysisInputSha256`이 `aiAnalysisText`의 SHA-256과 일치, 페이지마다 분석 텍스트가 서로 다름
 - `aiPublicGuideTopic`에 수치 없음, 분석 텍스트를 그대로 옮기지 않음, 500자 이내
 - 선수 관계가 존재 페이지만 참조, 자기 참조·중복 간선 없음, 위상 정렬로 전체 페이지 방문
+- 후보와 전이적 선수 폐쇄에 같은 중복 그룹 페이지가 둘 이상 없음
 - 중복 그룹이 각각 2개 이상 페이지를 가지고 `evaluation.json`의 그룹 전체와 집합 단위로 일치
 - 필수 개념은 후보 페이지의 `primaryConcepts`에, 도움 개념은 후보 페이지의 `primaryConcepts` 또는
   `secondaryConcepts`에 실재
