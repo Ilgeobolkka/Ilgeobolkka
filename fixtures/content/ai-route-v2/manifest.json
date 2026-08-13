@@ -15450,6 +15450,1149 @@
       ]
     },
     {
+      "bookId": 62,
+      "title": "무대조명 설계의 기초",
+      "pdfPath": "pdfs/book-062.pdf",
+      "pdfSha256": "e7a61bc80062ab874a0820a79b448ec7afdcd417be6625977a6488f048167c71",
+      "totalPageCount": 53,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 빛을 놓기 전에 정하는 것",
+          "section": "1.1 조명이 맡는 일",
+          "primaryConcepts": [
+            "조명의 역할"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "무대조명의 기능을 조도 확보가 아니라 관객의 시선 배분으로 규정하는 도입 페이지다. 전면 균일 조명이 선택을 지우는 결과를 근거로 삼아, 밝히지 않는 영역을 정하는 일이 조명 설계의 본질임을 세운다. 이어지는 여섯 장을 방향·세기·색온도·큐 네 변수로 나누는 책 전체의 뼈대를 여기서 제시한다.",
+          "aiAnalysisInputSha256": "7ae6f34c02fa210f324780585f04c64d8164ea7fd0b4234dcbd62837d7a4ea61",
+          "aiPublicGuideTopic": "무대의 빛이 밝히는 일 말고 무엇을 더 하는지",
+          "estimatedReadingSeconds": 95,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "light-decides-what-is-seen"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 빛을 놓기 전에 정하는 것",
+          "section": "1.1 조명이 맡는 일",
+          "primaryConcepts": [
+            "조명의 역할"
+          ],
+          "secondaryConcepts": [
+            "빛의 방향"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조명의 기능을 시선 배분에 더해 시간·장소의 전달과 분위기 형성까지 셋으로 확장한다. 창틀 그림자의 각도가 시각을 알리는 사례와 같은 연기가 빛의 폭에 따라 다르게 읽히는 사례를 들고, 세 기능이 하나의 선택에서 동시에 결정된다는 점을 설계의 난점이자 힘으로 정리한다.",
+          "aiAnalysisInputSha256": "5f230edcf9d7687874a7c056ef4f752835bec0d393b65e782742276e2e98a6b1",
+          "aiPublicGuideTopic": "빛이 시간과 장소를 알려 주는 방식",
+          "estimatedReadingSeconds": 105,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 빛을 놓기 전에 정하는 것",
+          "section": "1.2 등기구와 광원",
+          "primaryConcepts": [
+            "등기구"
+          ],
+          "secondaryConcepts": [
+            "빛의 세기"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "무대 등기구를 빛의 경계가 또렷한 계열과 부드럽게 퍼지는 계열로 나누고, 구분의 실익이 명칭이 아니라 비출 범위를 감독이 통제할 수 있는지 여부에 있음을 설명한다. 등기구 선택이 광원의 성질까지 함께 결정하므로 이후 장의 색온도 논의와 이어진다는 연결도 함께 둔다.",
+          "aiAnalysisInputSha256": "2c6b011211ac09c8a65e8867fb1655f14c588ac886746dbaa4b649422372f365",
+          "aiPublicGuideTopic": "무대에서 쓰는 등기구를 가르는 기준",
+          "estimatedReadingSeconds": 95,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 빛을 놓기 전에 정하는 것",
+          "section": "1.2 등기구와 광원",
+          "primaryConcepts": [
+            "등기구"
+          ],
+          "secondaryConcepts": [
+            "조명의 역할"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "등기구 설치 위치가 극장의 고정 구조물로 미리 제한된다는 사실과, 그 제약이 설계의 출발점이라는 점을 다룬다. 원하는 각도를 얻지 못할 때 배우의 위치를 바꾸는 선택지를 제시하고, 연출 단계와 조명 설계를 동시에 진행해야 실현 불가능한 계획을 피할 수 있다는 절차적 결론으로 잇는다.",
+          "aiAnalysisInputSha256": "f8568eee65ca003290d7c574017d92b1df72482fa1b59048da9cb9e157a25f53",
+          "aiPublicGuideTopic": "등기구를 매다는 자리가 먼저 제한을 만든다는 점",
+          "estimatedReadingSeconds": 100,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 빛을 놓기 전에 정하는 것",
+          "section": "1.3 빛의 방향",
+          "primaryConcepts": [
+            "빛의 방향"
+          ],
+          "secondaryConcepts": [
+            "그림자"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "빛의 방향을 수평면의 방위각과 수직면의 고도각 두 성분으로 분해해 기술한다. 두 각이 배우 얼굴의 명암 배치와 바닥 그림자의 길이·방향을 함께 결정한다는 점을 들어, 방향이 세기나 색보다 먼저 확정돼야 하는 설계 순서를 근거와 함께 제시한다.",
+          "aiAnalysisInputSha256": "b8ad62517456ca35dcc4552560d19aa7fc3e6fa50dd28e745ec23be6612129d1",
+          "aiPublicGuideTopic": "빛이 오는 쪽을 재는 두 개의 각",
+          "estimatedReadingSeconds": 100,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 빛을 놓기 전에 정하는 것",
+          "section": "1.3 빛의 방향",
+          "primaryConcepts": [
+            "빛의 방향"
+          ],
+          "secondaryConcepts": [
+            "등기구"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "방향 결정이 배우뿐 아니라 소품·배경·바닥 반사·객석 시야까지 동시에 영향을 준다는 점을 사례로 보인다. 객석의 좌우 끝이 서로 다른 각도로 무대를 본다는 조건을 들어, 단일 방향으로는 모든 좌석에서 같은 장면을 만들 수 없고 복수 방향의 중첩이 필요함을 예고한다.",
+          "aiAnalysisInputSha256": "43105f5588f4a1e697b444eeb7ab68b9c43c4ba38563ba6f39db2ea91a229754",
+          "aiPublicGuideTopic": "방향 하나를 정하면 따라서 정해지는 것들",
+          "estimatedReadingSeconds": 105,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 빛을 놓기 전에 정하는 것",
+          "section": "1.4 빛의 세기",
+          "primaryConcepts": [
+            "빛의 세기"
+          ],
+          "secondaryConcepts": [
+            "빛의 방향"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "빛의 방향과 배우 위치를 고정한 채 세기만 세 단계로 바꾼 무대 평면 비교 도표다. 세기가 커질수록 밝은 영역이 배우에서 주변 바닥으로, 다시 무대 전체로 확장되는 것을 화살표 굵기와 밝은 원의 지름으로 나타내, 조도 조절이 밝기가 아니라 가시 범위를 정하는 조작임을 보인다.",
+          "aiAnalysisInputSha256": "d516dc02e481772973a2c7622b62ddc80de98b76aad1c7e7ea226d67eb8daa91",
+          "aiPublicGuideTopic": "같은 무대를 세기만 달리해 세 번 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 빛을 놓기 전에 정하는 것",
+          "section": "1.4 빛의 세기",
+          "primaryConcepts": [
+            "빛의 세기"
+          ],
+          "secondaryConcepts": [
+            "조명의 역할"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조도 상승을 밝기 증가가 아니라 가시 범위의 확장으로 재해석한다. 독백 장면에서 세기를 낮추는 선택이 어둡게 만들기 위해서가 아니라 주변 요소를 지우기 위한 것임을 사례로 들고, 세기의 적정값은 단독으로 정해지지 않고 큐와 대비의 맥락에서만 결정된다는 한계를 밝힌다.",
+          "aiAnalysisInputSha256": "7074e68e9dcf29760cf00d6d2e2a310a6ba3c8c9e59b24c293fdd4e4899aab70",
+          "aiPublicGuideTopic": "밝기를 올린다는 말이 실제로 바꾸는 것",
+          "estimatedReadingSeconds": 100,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "1장 빛을 놓기 전에 정하는 것",
+          "section": "1.5 조명 큐",
+          "primaryConcepts": [
+            "조명 큐"
+          ],
+          "secondaryConcepts": [
+            "조명의 역할"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조명 큐를 무대 상태의 변화를 끊어 기록하는 최소 단위로 정의한다. 반복 공연에서 동일한 결과를 재현하려면 감각이 아니라 기록된 값이 필요하다는 점을 근거로 들고, 조명 설계의 산출물이 정적인 그림이 아니라 순서를 가진 목록이라는 관점을 세운다.",
+          "aiAnalysisInputSha256": "1aeb62ea51a91775466fe106ead0f5852515659cfdcf5c4fe942b03d8e76c703",
+          "aiPublicGuideTopic": "무대의 빛이 바뀌는 시점을 적어 두는 단위",
+          "estimatedReadingSeconds": 95,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "1장 빛을 놓기 전에 정하는 것",
+          "section": "1.5 조명 큐",
+          "primaryConcepts": [
+            "조명 큐"
+          ],
+          "secondaryConcepts": [
+            "빛의 세기"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공연 중 큐의 시점 판단과 실행이 서로 다른 담당자에게 나뉘는 구조와 그 이유를 설명한다. 두 작업이 요구하는 주의의 종류가 다르다는 점을 근거로 들고, 모호한 서술 대신 수치와 시간으로 큐를 적는 관행이 두 사람의 이해를 일치시키기 위한 장치임을 밝힌다.",
+          "aiAnalysisInputSha256": "42dc8a6b5deb08b6332dbe7ea38b9a5331af9a43a11794612a15f51fc274b2a4",
+          "aiPublicGuideTopic": "큐를 부르는 사람과 실행하는 사람이 나뉘는 이유",
+          "estimatedReadingSeconds": 95,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 방향이 얼굴을 만든다",
+          "section": "2.1 정면광",
+          "primaryConcepts": [
+            "정면광"
+          ],
+          "secondaryConcepts": [
+            "빛의 방향",
+            "그림자"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정면광의 이점을 표정 가독성으로, 한계를 입체감 상실로 정리한다. 얼굴의 굴곡이 그림자에 의존해 지각된다는 사실을 근거로 삼아 단독 사용 시 인물이 평면적으로 보이는 이유를 설명하고, 다른 방향의 빛과 병용해야 하며 세기 결정도 그 조합 이후에 가능하다는 결론을 낸다.",
+          "aiAnalysisInputSha256": "a6d6b0c9e8683e0778830ea96bf3c2a3cdde9ba1ab33a05d8b6dc9d910c0c3cc",
+          "aiPublicGuideTopic": "앞에서 오는 빛이 얼굴에 하는 일",
+          "estimatedReadingSeconds": 95,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 방향이 얼굴을 만든다",
+          "section": "2.1 정면광",
+          "primaryConcepts": [
+            "정면광"
+          ],
+          "secondaryConcepts": [
+            "등기구"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정면광을 좌우 두 방향으로 분할해 배치하는 기법과 그 두 가지 효과를 다룬다. 양쪽에서 비스듬히 들어온 빛이 옅은 음영을 만들어 평면화를 완화하고, 배우가 좌우로 이동해도 얼굴 밝기가 급격히 변하지 않도록 받쳐 준다는 점을 설명하며 기본 배치의 역할을 정리한다.",
+          "aiAnalysisInputSha256": "355241e529a0bf1074b8deee4088d20ba3ae56d59d343c897a8f4a6e9f461330",
+          "aiPublicGuideTopic": "정면광을 두 갈래로 갈라 놓는 방법",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 방향이 얼굴을 만든다",
+          "section": "2.2 측면광",
+          "primaryConcepts": [
+            "측면광"
+          ],
+          "secondaryConcepts": [
+            "빛의 방향",
+            "그림자"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 세기의 광원을 배우 기준 앞·옆·뒤 세 위치에 놓았을 때 얼굴에 나타나는 명암 분포를 평면도와 정면도로 함께 보인 도표다. 앞은 균일한 밝기, 옆은 중앙을 가르는 명암 경계, 뒤는 윤곽선만 남는 실루엣이 되는 세 결과를 한 화면에서 견주게 한다.",
+          "aiAnalysisInputSha256": "c7293d36f6206e3e89424fcd12c5f97c4c1a48320cb990b1c29c9f05e006815b",
+          "aiPublicGuideTopic": "옆에서 온 빛이 얼굴을 반으로 가르는 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 방향이 얼굴을 만든다",
+          "section": "2.2 측면광",
+          "primaryConcepts": [
+            "측면광"
+          ],
+          "secondaryConcepts": [
+            "정면광"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "측면광이 명암 경계를 만들어 얼굴의 입체를 드러내는 원리와, 세기 변화에 따라 효과가 급격히 달라지는 성질을 설명한다. 어두운 면이 객석 일부에서 정면으로 보이는 문제를 지적하고 좌우 세기 차등이나 약한 정면광 보강으로 대응하는 실무적 해법을 제시한다.",
+          "aiAnalysisInputSha256": "0c5a7c821eaf3db69532ac75c0d3807fdea0e9f048a64540f7dfca6f16e4507c",
+          "aiPublicGuideTopic": "옆에서 오는 빛이 굴곡을 만드는 방식",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 방향이 얼굴을 만든다",
+          "section": "2.3 역광",
+          "primaryConcepts": [
+            "역광"
+          ],
+          "secondaryConcepts": [
+            "빛의 방향"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "역광이 인물의 윤곽선을 만들어 배경과의 분리를 얻는 원리를 다룬다. 배우와 배경의 밝기가 비슷할 때 생기는 시각적 융합을 문제로 제시하고 적은 세기로도 분리 효과가 크다는 점을 설명하며, 단독 사용 시 실루엣이 되어 표정 정보가 사라지는 조건과 그 활용 장면을 함께 든다.",
+          "aiAnalysisInputSha256": "999bd9a66d817b08d0ccb829236c19da066506649821f46b6eb32c2883f92fb0",
+          "aiPublicGuideTopic": "뒤에서 오는 빛이 만드는 테두리",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "2장 방향이 얼굴을 만든다",
+          "section": "2.3 역광",
+          "primaryConcepts": [
+            "역광"
+          ],
+          "secondaryConcepts": [
+            "측면광",
+            "등기구"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "역광의 고도각이 낮을 때 빛이 객석으로 직접 들어와 눈부심을 유발하는 문제와, 각도를 높여 해결할 때 윤곽 효과가 정수리로 몰리는 상충을 다룬다. 천장이 낮은 극장에서는 가용 각도 폭이 좁아 후방 측면 각도로 목적을 대체한다는 대안을 사례로 제시한다.",
+          "aiAnalysisInputSha256": "f22b3a8b6f432889724be83fa290ad39f19eddbefd3f859369dc39b511586803",
+          "aiPublicGuideTopic": "역광이 객석으로 새어 나가는 문제",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "2장 방향이 얼굴을 만든다",
+          "section": "2.4 상부광과 하부광",
+          "primaryConcepts": [
+            "상부광"
+          ],
+          "secondaryConcepts": [
+            "빛의 방향",
+            "그림자"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "상부광이 좁은 조명 영역을 만들어 인물을 고립시키는 효과와 그 대가로 표정 가독성이 떨어지는 성질을 설명한다. 배우의 작은 이동으로도 얼굴이 조명 밖으로 벗어나므로 위치를 고정해 연습해야 하고, 조명이 연기 동선을 제약하는 사례로서 연출과의 사전 합의가 필요함을 강조한다.",
+          "aiAnalysisInputSha256": "881a63c362879024b21d391b47a9df3117acf562b681917051ca5a7b77aecec2",
+          "aiPublicGuideTopic": "머리 위에서 내리는 빛이 만드는 좁은 자리",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "2장 방향이 얼굴을 만든다",
+          "section": "2.4 상부광과 하부광",
+          "primaryConcepts": [
+            "하부광"
+          ],
+          "secondaryConcepts": [
+            "상부광",
+            "그림자"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "하부광이 일상적 광원 방향과 반대라는 이유로 이질감을 만든다는 점과, 그 성질을 비일상적 장면의 신호로 쓰는 용법을 다룬다. 과장으로 읽히기 쉬워 약하게 혼합한다는 실무 기준과 함께, 무대 앞 바닥을 비춰 배우의 발밑 안전을 확보하는 실용적 기능도 함께 든다.",
+          "aiAnalysisInputSha256": "1871b3114a878e342230533c597c5d8258a419ff01a838f89120c12de8db70ec",
+          "aiPublicGuideTopic": "아래에서 올라오는 빛이 낯설게 보이는 이유",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 세기와 대비",
+          "section": "3.1 밝기는 견주어 보인다",
+          "primaryConcepts": [
+            "밝기의 상대성"
+          ],
+          "secondaryConcepts": [
+            "빛의 세기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "무대 밝기 지각이 절대적 광량이 아니라 직전 장면 및 주변 영역과의 비교로 이뤄진다는 점을 설명한다. 주변을 낮춰 대상 세기를 올리지 않고도 상대적 밝기를 얻는 기법을 사례로 들고, 개별 등의 값보다 값들 사이의 차이를 먼저 정해야 전체 조도를 조정해도 장면이 유지된다는 설계 순서를 제시한다.",
+          "aiAnalysisInputSha256": "66547f235d57eb2a460cf1c05eeb39b352078579d18086632199ef831b85211e",
+          "aiPublicGuideTopic": "같은 밝기가 장면마다 다르게 보이는 까닭",
+          "estimatedReadingSeconds": 95,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 세기와 대비",
+          "section": "3.1 밝기는 견주어 보인다",
+          "primaryConcepts": [
+            "밝기의 상대성"
+          ],
+          "secondaryConcepts": [
+            "조명 큐"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "밝기를 공연 전체를 관통하는 배분 문제로 다룬다. 초반에 최대 밝기를 소진하면 후반 절정에서 상승 여지가 사라진다는 점을 근거로, 대본 검토 단계에서 최대·최소 장면을 먼저 정하고 나머지를 그 사이에 배치하는 순서를 제시하며 장면별 개별 설계가 초래하는 균질화를 경고한다.",
+          "aiAnalysisInputSha256": "43d56095abac348a838bf919943e029cc08f3bace18cced4f178787d66610326",
+          "aiPublicGuideTopic": "장면을 잇는 동안 밝기를 관리하는 방법",
+          "estimatedReadingSeconds": 100,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 세기와 대비",
+          "section": "3.2 대비비",
+          "primaryConcepts": [
+            "대비비"
+          ],
+          "secondaryConcepts": [
+            "밝기의 상대성",
+            "빛의 세기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대비비를 밝은 영역과 어두운 영역의 세기 비율로 정의하고, 낮은 비율의 안정감과 높은 비율의 긴장·정보 손실을 상충 관계로 제시한다. 적정값이 미학적 관습이 아니라 해당 장면이 동시에 전달해야 하는 정보의 가짓수에 따라 결정된다는 판단 기준을 세운다.",
+          "aiAnalysisInputSha256": "68aa214d37c230acb0cd58aa2c336531f6513004d5ea60a28f3b7f278045cd64",
+          "aiPublicGuideTopic": "밝은 쪽과 어두운 쪽의 비율을 정하는 일",
+          "estimatedReadingSeconds": 100,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 세기와 대비",
+          "section": "3.2 대비비",
+          "primaryConcepts": [
+            "대비비"
+          ],
+          "secondaryConcepts": [
+            "밝기의 상대성"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배우 세 명의 배치를 고정한 채 대비비만 달리한 두 무대를 나란히 놓은 비교 도표다. 낮은 대비에서는 세 인물의 관계가 모두 보이고 높은 대비에서는 가운데 인물만 남는 결과를 통해, 대비 선택이 장면에서 동시에 전달할 정보의 가짓수를 정하는 일임을 보인다.",
+          "aiAnalysisInputSha256": "537480c48ddd806f4842dcd160c34280bc3f08f8a48a191eb3a61129c39fb469",
+          "aiPublicGuideTopic": "대비를 낮췄을 때와 높였을 때를 나란히 둔 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "3장 세기와 대비",
+          "section": "3.3 그림자의 자리",
+          "primaryConcepts": [
+            "그림자"
+          ],
+          "secondaryConcepts": [
+            "빛의 방향",
+            "대비비"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "그림자를 방향 결정에 수반되는 설계 대상으로 규정하고, 배경 천의 과대 그림자·배우 간 그림자 간섭·소품 그림자 등 전형적 문제 지점을 열거한다. 반대로 그림자를 의도적으로 확대해 인물을 이중으로 보이게 하는 기법과 반복 사용 시 효과가 소멸한다는 제한을 함께 다룬다.",
+          "aiAnalysisInputSha256": "d1e874f2b5d9f08f2f47cf1d394f1a2e61d90b34d46a5ceb514050d0f6e65040",
+          "aiPublicGuideTopic": "그림자를 남길 곳을 고르는 일",
+          "estimatedReadingSeconds": 95,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "3장 세기와 대비",
+          "section": "3.3 그림자의 자리",
+          "primaryConcepts": [
+            "그림자"
+          ],
+          "secondaryConcepts": [
+            "측면광",
+            "상부광"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "그림자 제거를 위해 반대 방향에서 보조광을 넣는 기법과 그 세기 조절 기준을 설명한다. 보조광이 주변 표면까지 밝혀 전체 대비를 떨어뜨리는 대가를 지적하고, 등을 추가하기보다 기존 등의 고도각을 조정해 그림자를 이동시키는 방법을 우선 검토하라는 실무 순서를 제시한다.",
+          "aiAnalysisInputSha256": "728e223983703f8ce0967ec483ef13133a6582aa824ee07a6b5a77463908e877",
+          "aiPublicGuideTopic": "그림자를 지우는 방법과 그 대가",
+          "estimatedReadingSeconds": 95,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "3장 세기와 대비",
+          "section": "3.4 어둠을 남기는 선택",
+          "primaryConcepts": [
+            "암전"
+          ],
+          "secondaryConcepts": [
+            "대비비",
+            "조명 큐"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "완전 암전을 장면 전환의 실무 수단이자 서사적 장치로 함께 다룬다. 암전이 길어질 때 관객의 주의가 무대에서 이탈하는 현상을 근거로 미세 잔광이나 배경 색을 남기는 대안을 제시하고, 동일한 암전이라도 하강 속도에 따라 여운과 단절로 갈린다는 점을 설명한다.",
+          "aiAnalysisInputSha256": "f27a959ca39e1c7c6eca7b5806d6ce29fd9eb7154f0824dcb4537026c6641e9a",
+          "aiPublicGuideTopic": "무대를 완전히 끄는 순간을 다루는 법",
+          "estimatedReadingSeconds": 95,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "3장 세기와 대비",
+          "section": "3.4 어둠을 남기는 선택",
+          "primaryConcepts": [
+            "암전"
+          ],
+          "secondaryConcepts": [
+            "밝기의 상대성"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "암전 직후 관객의 시각이 예민해진 상태에서 이전과 동일한 세기로 복귀하면 과도하게 밝게 지각되는 문제를 다룬다. 목표 세기보다 낮게 시작해 점진적으로 올리는 대응과 암전 길이에 따른 필요 시간의 차이를 들고, 설계자의 순응 때문에 리허설에서 반복 확인이 필요하다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "c6bdfae999b7dfd0301915bb0a5a4272a4a5a5a89b804896f5d06f8327c888f6",
+          "aiPublicGuideTopic": "어둠에서 다시 밝아질 때 생기는 문제",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 색온도라는 눈금",
+          "section": "4.1 켈빈이라는 눈금",
+          "primaryConcepts": [
+            "색온도"
+          ],
+          "secondaryConcepts": [
+            "등기구"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "색온도를 광원이 띠는 색의 치우침을 켈빈 값으로 나타낸 물리량으로 정의한다. 언어적 지시를 재현 가능한 수치로 바꾼다는 실무적 이점을 큐 기록과 같은 맥락에서 설명하고, 이 눈금이 관객의 정서 반응이 아니라 광원의 성질을 측정한다는 범위 한계를 명시한다.",
+          "aiAnalysisInputSha256": "38431f784bbc1744dbb999aebb814fe9fa4a76896b44a77537515804d41175e3",
+          "aiPublicGuideTopic": "빛의 색을 하나의 수직선 위에 놓는 방법",
+          "estimatedReadingSeconds": 95,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 색온도라는 눈금",
+          "section": "4.1 켈빈이라는 눈금",
+          "primaryConcepts": [
+            "색온도"
+          ],
+          "secondaryConcepts": [
+            "빛의 세기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조광 시 광원 특성에 따라 색온도가 함께 변하는 현상을 다룬다. 동일하게 맞춘 두 등의 밝기를 다르게 조정했을 때 색이 갈라져 배우의 얼굴색이 이동 중 변하는 사례를 들고, 등기구와 조광 방식을 사전 확인하거나 등 수·조사 범위 조정으로 대체하라는 대응을 제시한다.",
+          "aiAnalysisInputSha256": "f5f4dba361ff4f029250724424d55af518d43d4ed79d74ae61a117322153d9e1",
+          "aiPublicGuideTopic": "색온도와 세기를 따로 다뤄야 하는 이유",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 색온도라는 눈금",
+          "section": "4.2 광원마다 다른 값",
+          "primaryConcepts": [
+            "색온도"
+          ],
+          "secondaryConcepts": [
+            "등기구"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "무대에서 쓰는 광원 다섯 종류를 색온도 축 위에 배치한 도표다. 축의 왼쪽을 붉은 기, 오른쪽을 푸른 기로 칠하고 각 광원을 해당 위치에 놓아, 흰빛으로 뭉뚱그려 부르는 광원들이 실제로는 서로 다른 자리에 있음을 한눈에 보이게 한다.",
+          "aiAnalysisInputSha256": "59811874063c86978e2ef6bf874434ced59c5e171916c14611b7a223cf4a32eb",
+          "aiPublicGuideTopic": "여러 광원을 하나의 눈금 위에 늘어놓은 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 색온도라는 눈금",
+          "section": "4.2 광원마다 다른 값",
+          "primaryConcepts": [
+            "색온도"
+          ],
+          "secondaryConcepts": [
+            "조명의 역할"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "색온도가 다른 광원이 한 무대에 혼재할 때 위치에 따라 인물의 색이 달라지는 문제를 다룬다. 도입 시기가 다른 등기구가 원인이 되는 사례와 흰 종이로 차이를 확인하는 점검 방법을 제시하고, 의도된 혼재는 장면의 장치가 되지만 인지하지 못한 혼재는 결함이 된다는 기준을 세운다.",
+          "aiAnalysisInputSha256": "783f6729e36ad5c229acabe3da70404d0b07f69acc9a29c9e08f090d4a2150a2",
+          "aiPublicGuideTopic": "여러 광원을 한 무대에서 섞을 때 생기는 일",
+          "estimatedReadingSeconds": 95,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "4장 색온도라는 눈금",
+          "section": "4.3 색필터",
+          "primaryConcepts": [
+            "색필터"
+          ],
+          "secondaryConcepts": [
+            "색온도",
+            "빛의 세기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "색필터가 빛에 색을 더하는 것이 아니라 특정 성분을 차단해 남은 성분만 통과시키는 감산 방식임을 설명한다. 필터 장착이 언제나 광량 손실을 수반하고 색이 짙을수록 손실이 크다는 점을 근거로, 색을 먼저 결정하고 세기를 나중에 확정하는 작업 순서를 제시한다.",
+          "aiAnalysisInputSha256": "d34cb016d7a090d1537583a9382b3a36760b82186c9ca3ae3ac6d9bb1d28c602",
+          "aiPublicGuideTopic": "빛에서 무언가를 덜어 내는 방식",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "4장 색온도라는 눈금",
+          "section": "4.3 색필터",
+          "primaryConcepts": [
+            "색필터"
+          ],
+          "secondaryConcepts": [
+            "그림자"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "필터 선택 시 의상·바닥·피부색 등 빛을 받는 표면과의 상호작용을 함께 검토해야 한다는 점을 다룬다. 필터 색만으로 결과를 예측하기 어려워 의상과 분장 확정 이후로 결정을 미루는 편이 낫다는 절차와, 무대의 다른 요소가 이미 색을 갖고 있을 때 무색을 택하는 선택지를 함께 제시한다.",
+          "aiAnalysisInputSha256": "44ccefe3309fd311e618679270f8fb90296bd20d7caf561e07b9b30ba4c005bb",
+          "aiPublicGuideTopic": "필터를 고를 때 함께 보는 것들",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "4장 색온도라는 눈금",
+          "section": "4.4 값이 섞일 때",
+          "primaryConcepts": [
+            "혼합 색온도"
+          ],
+          "secondaryConcepts": [
+            "색온도",
+            "색필터"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "서로 다른 색온도를 한 무대에 배치해 공간을 분할하는 설계를 다룬다. 결과를 좌우하는 값이 개별 색온도가 아니라 두 값의 차이라는 점과, 경계에서 두 빛이 겹치는 폭이 인물의 전환 속도를 시각적으로 규정한다는 관계를 설명한다.",
+          "aiAnalysisInputSha256": "995748e33c2d0caef7f9d31573a63174cba02a25855b2cc6a08e8aafe49ae84a",
+          "aiPublicGuideTopic": "서로 다른 색온도를 한 장면에 함께 쓰는 설계",
+          "estimatedReadingSeconds": 95,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "4장 색온도라는 눈금",
+          "section": "4.4 값이 섞일 때",
+          "primaryConcepts": [
+            "혼합 색온도"
+          ],
+          "secondaryConcepts": [
+            "밝기의 상대성"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "색온도가 다른 빛 사이에서 지각 밝기가 물리적 세기와 어긋나는 현상을 다룬다. 수치 일치 대신 객석 여러 위치에서 육안으로 균형을 맞추고 그 결과를 기록해야 재현할 수 있다는 절차를 제시하며, 사용 색이 늘수록 균형 조합이 급증해 통제가 어려워진다는 제한을 든다.",
+          "aiAnalysisInputSha256": "9e520f52a8a084ad8f1c7bde2e57fd1f36ec3fd64bcb3de58f2ae52adef32cb8",
+          "aiPublicGuideTopic": "색이 다르면 밝기 판단도 흔들린다는 점",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 큐를 짜는 일",
+          "section": "5.1 큐시트를 적는다",
+          "primaryConcepts": [
+            "큐시트"
+          ],
+          "secondaryConcepts": [
+            "조명 큐"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "큐시트의 구성 항목을 번호·시점·목표 상태·전환 시간으로 나누어 설명한다. 시점 기술의 모호성이 가장 빈번한 오류 원인임을 지적하고 대본의 특정 단어를 그대로 옮겨 적는 방법을 제시하며, 공연 중 읽는 문서라는 성격상 근거와 배경은 분리해야 한다는 원칙을 든다.",
+          "aiAnalysisInputSha256": "a2c63039bcf30dc439ee285579a65ec37fbadef9d7a9c49f524af9df058f88bd",
+          "aiPublicGuideTopic": "큐 하나에 적히는 항목들",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 큐를 짜는 일",
+          "section": "5.1 큐시트를 적는다",
+          "primaryConcepts": [
+            "큐시트"
+          ],
+          "secondaryConcepts": [
+            "빛의 세기",
+            "밝기의 상대성"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "큐 번호를 간격을 두고 부여하는 관행과 그 이유를 설명한다. 번호가 조작 장비와 진행 대본에 이중으로 기록돼 재번호가 불일치 위험을 낳는다는 점을 근거로 들고, 리허설에서 큐가 추가되는 것이 정상이므로 미리 여유를 확보해 두는 것이 설계의 일부임을 밝힌다.",
+          "aiAnalysisInputSha256": "1bab765155d18a2034faf87ca4a9d64048908ca4408b12cb8a504893be984ad4",
+          "aiPublicGuideTopic": "큐 번호를 매기는 방식이 만드는 여유",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 큐를 짜는 일",
+          "section": "5.2 전환 시간",
+          "primaryConcepts": [
+            "페이드"
+          ],
+          "secondaryConcepts": [
+            "조명 큐",
+            "빛의 세기"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시작점과 끝점이 같은 세 개의 밝기 변화 곡선을 겹쳐 그린 도표다. 초반 집중형·균등형·후반 집중형 세 형태를 통해 전환에 배정한 총시간이 같아도 관객이 변화를 느끼는 시점이 달라진다는 점을 보인다.",
+          "aiAnalysisInputSha256": "e72d2f80062020f76076de9eadaf799410b436c3568f583e93cb5b81ed2ed05f",
+          "aiPublicGuideTopic": "같은 목표 상태로 가는 세 가지 속도를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "5장 큐를 짜는 일",
+          "section": "5.2 전환 시간",
+          "primaryConcepts": [
+            "페이드"
+          ],
+          "secondaryConcepts": [
+            "암전"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "전환 시간의 결정 기준을 관객이 변화를 인지해야 하는지 여부로 제시하고, 짧은 전환과 긴 전환의 지각 차이를 설명한다. 중간 길이가 어느 쪽 목적도 달성하지 못한다는 점을 지적하며, 대사와 겹치는 전환에서는 시간 대신 대사의 특정 지점을 종료 기준으로 삼는 방법을 든다.",
+          "aiAnalysisInputSha256": "4c6c8403f63522721386589e835194ad6eb30fee002515b5322c0d5a64ba904d",
+          "aiPublicGuideTopic": "몇 초를 쓸지 정하는 기준",
+          "estimatedReadingSeconds": 95,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "5장 큐를 짜는 일",
+          "section": "5.3 장면 전환의 실제",
+          "primaryConcepts": [
+            "장면 전환"
+          ],
+          "secondaryConcepts": [
+            "큐시트",
+            "페이드"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단일 전환을 복수의 큐로 분할해 실행하는 사례를 부엌에서 마당으로의 장면 전환으로 제시한다. 일괄 전환이 무대 전체를 동시에 흔드는 문제와 분할이 관객의 시선을 순차적으로 이동시키는 효과를 대비하고, 인접 큐가 겹치는 정도가 전환의 매끄러움을 결정한다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "fd1d144f35d2797353442a155509de7348913c8aae2169dd02ae24a2bf8d819a",
+          "aiPublicGuideTopic": "한 전환을 세 개의 큐로 나눈 사례",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "5장 큐를 짜는 일",
+          "section": "5.3 장면 전환의 실제",
+          "primaryConcepts": [
+            "장면 전환"
+          ],
+          "secondaryConcepts": [
+            "정면광",
+            "색온도"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장면 전환에서 일부 광원을 변경하지 않고 유지해 장면 간 연속성을 만드는 기법을 다룬다. 전환이 잦은 공연에서 관객에게 기준점을 제공하는 효과를 설명하고, 유지 대상은 두 장면이 공유하는 장소나 인물에 따라 정하며 관계가 없는 장면 사이에서는 쓰지 않는다는 판단 기준을 제시한다.",
+          "aiAnalysisInputSha256": "63dcda586ed7ab64005139ac8abe788267a6e3254c5f5b88d396a2671d5abb64",
+          "aiPublicGuideTopic": "전환에서 남겨 두는 하나",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "5장 큐를 짜는 일",
+          "section": "5.4 리허설에서 고친다",
+          "primaryConcepts": [
+            "리허설 조정"
+          ],
+          "secondaryConcepts": [
+            "큐시트",
+            "장면 전환"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "리허설에서 수정되는 항목을 시점·범위·세기 순으로 정리하고 각각이 바뀌는 이유를 든다. 실제 연기의 타이밍과 배우 위치가 설계 가정과 어긋난다는 점을 근거로 삼아, 세기를 마지막에 조정해야 중복 작업을 피할 수 있다는 작업 순서를 제시한다.",
+          "aiAnalysisInputSha256": "627040c9cb55edfdf611b3935a4edec8a652af02143b5bdf1138d35816125ca1",
+          "aiPublicGuideTopic": "설계한 값이 리허설에서 바뀌는 지점",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "5장 큐를 짜는 일",
+          "section": "5.4 리허설에서 고친다",
+          "primaryConcepts": [
+            "리허설 조정"
+          ],
+          "secondaryConcepts": [
+            "암전",
+            "밝기의 상대성"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "리허설 수정 사항을 즉시 문서에 반영해야 하는 이유를 조작 장비와 종이 기록의 불일치 위험으로 설명한다. 값과 함께 변경 사유를 남겨야 값들 사이의 의존 관계를 나중에 복원할 수 있다는 점을 들고, 공연 기간 중 값이 계속 조정되는 것을 설계 실패가 아닌 정상 과정으로 규정한다.",
+          "aiAnalysisInputSha256": "12ea426c8548519041f8b9b86d6997bd106e525817241c119ada031c6b996e49",
+          "aiPublicGuideTopic": "고친 값을 다시 적어 두는 일",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 계획이 어긋나는 순간",
+          "section": "6.1 배우가 자리를 벗어날 때",
+          "primaryConcepts": [
+            "배우 동선"
+          ],
+          "secondaryConcepts": [
+            "정면광",
+            "상부광"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조명이 공간에 고정되고 연기는 인물을 따라 움직인다는 차이에서 발생하는 불일치를 다룬다. 조명 영역을 넓히는 해법이 장면의 고립 효과를 함께 없앤다는 상충을 지적하고, 동선 고정이나 추적 큐 추가처럼 연출과 공동으로 해결해야 하는 문제임을 밝힌다.",
+          "aiAnalysisInputSha256": "930934dbca04db8cd21afc36122c789fc725b3289512735d372a42a6d6699dd3",
+          "aiPublicGuideTopic": "빛의 자리와 사람의 자리가 어긋나는 경우",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 계획이 어긋나는 순간",
+          "section": "6.1 배우가 자리를 벗어날 때",
+          "primaryConcepts": [
+            "배우 동선"
+          ],
+          "secondaryConcepts": [
+            "조명 큐"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이동하는 배우를 조명이 따라가는 두 방식, 즉 수동 추적과 복수 등의 순차 전환을 비교하고 각각의 실패 양상을 제시한다. 어느 방식도 배우의 자유로운 이동을 완전히 보장하지 못하므로 시작과 끝만 정밀하게 잡고 중간을 넓은 빛으로 덮는 절충이 쓰인다는 결론을 낸다.",
+          "aiAnalysisInputSha256": "5daeb0447379abb8025ed0c4ff0c1c55ca2340b2c13c905e048dba61b3ce9ddb",
+          "aiPublicGuideTopic": "움직임을 따라가는 빛의 한계",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 계획이 어긋나는 순간",
+          "section": "6.2 공간이 계획과 다를 때",
+          "primaryConcepts": [
+            "공간 제약"
+          ],
+          "secondaryConcepts": [
+            "빛의 방향",
+            "등기구"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "천장 높이만 다른 두 극장의 단면을 나란히 놓고 같은 위치의 등기구에서 배우에게 내려오는 광선을 그린 도표다. 낮은 천장에서 입사각이 눕고 바닥 그림자가 객석 쪽으로 길게 뻗는 결과를 통해, 동일한 설계값이 공간 조건에 따라 다른 결과를 낳는다는 점을 보인다.",
+          "aiAnalysisInputSha256": "a9161a4f6a7198486aa0fb9d406db44ada0a19fbc06a94dc8df9f4c541be90ae",
+          "aiPublicGuideTopic": "같은 설계를 천장 높이가 다른 두 극장에 놓은 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "6장 계획이 어긋나는 순간",
+          "section": "6.2 공간이 계획과 다를 때",
+          "primaryConcepts": [
+            "공간 제약"
+          ],
+          "secondaryConcepts": [
+            "역광",
+            "그림자"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 조명 설계를 다른 극장으로 이전할 때 천장 높이와 무대 폭 변화로 결과가 달라지는 문제를 다룬다. 수치가 아니라 장면이 달성해야 할 의도를 이전 대상으로 삼아야 한다는 원칙을 세우고, 실행용 큐시트와 판단 근거를 담은 설계 문서를 분리해 유지하는 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "54caab674f0143f4b51a3d0a9e59a301f53282e0e8b1e432a3872f6303accddb",
+          "aiPublicGuideTopic": "다른 극장으로 옮길 때 다시 정해야 하는 것",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "6장 계획이 어긋나는 순간",
+          "section": "6.3 눈이 적응해 버릴 때",
+          "primaryConcepts": [
+            "시각 순응"
+          ],
+          "secondaryConcepts": [
+            "밝기의 상대성",
+            "암전"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복 관람으로 설계자의 시각이 순응해 관객의 첫인상과 어긋나는 문제를 다룬다. 리허설이 길어질수록 무대가 어두워지는 경향을 지적하고 밝은 공간을 거쳐 재확인하거나 초견자의 판단을 빌리는 절차적 대응을 제시하며, 관객의 순응 때문에 밝기가 선행 장면들의 누적으로 결정된다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "43b90f3798eeb4cc8057d75d47fad2f4a59160d6b978f0326a454065e5a7655f",
+          "aiPublicGuideTopic": "설계자의 눈이 관객의 눈과 달라지는 문제",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "6장 계획이 어긋나는 순간",
+          "section": "6.3 눈이 적응해 버릴 때",
+          "primaryConcepts": [
+            "시각 순응"
+          ],
+          "secondaryConcepts": [
+            "대비비"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "무대 밖 광원인 객석 조명·비상 표시·작업등 누광이 관객의 순응 상태를 바꿔 무대의 대비 설계를 무력화하는 문제를 다룬다. 최종 점검을 객석에서 수행해야 하는 이유를 들고, 관객 수에 따른 반사·흡수 차이처럼 값으로 관리할 수 없는 변동에는 여유를 두어 대응한다는 한계를 인정한다.",
+          "aiAnalysisInputSha256": "0042a1cd6568100a35be9a1811ed2788735351a1313bc63cfbe39efbc6068769",
+          "aiPublicGuideTopic": "객석 조건이 바뀌면 같이 흔들리는 값",
+          "estimatedReadingSeconds": 95,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 결론: 빛은 무엇을 보게 할지 정한다",
+          "section": "7.1 네 변수를 다시 놓는다",
+          "primaryConcepts": [
+            "조명의 역할"
+          ],
+          "secondaryConcepts": [
+            "빛의 방향",
+            "빛의 세기"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "네 변수가 서로 독립적이지 않고 하나의 결정이 나머지의 선택 범위를 제한한다는 점을 근거로, 설계가 개별 값의 최적화가 아니라 장면 목적에 대한 공동 조율임을 정리한다. 고정된 정답표가 성립하지 않는 이유를 극장과 선행 장면의 의존성에서 찾고 기록의 필요로 마무리한다.",
+          "aiAnalysisInputSha256": "83f5093558ab54833471040743117f0ca0aafe3eff1e8cd053bb9c483e1a8d7a",
+          "aiPublicGuideTopic": "책 전체를 지나온 뒤 다시 보는 조명의 일",
+          "estimatedReadingSeconds": 105,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "light-decides-what-is-seen"
+          ]
+        },
+        {
+          "pageNumber": 51,
+          "chapter": "7장 결론: 빛은 무엇을 보게 할지 정한다",
+          "section": "7.1 네 변수를 다시 놓는다",
+          "primaryConcepts": [
+            "조명의 역할"
+          ],
+          "secondaryConcepts": [
+            "큐시트",
+            "리허설 조정"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "설계 종료 시점을 값의 확정이 아니라 각 값의 근거를 설명할 수 있는 상태로 정의한다. 근거가 남아야 극장 이전이나 배우 교체 시 무엇을 유지하고 무엇을 고칠지 판단할 수 있다는 점을 들어, 값 자체보다 선택 이유의 기록을 최종 권고로 제시한다.",
+          "aiAnalysisInputSha256": "b6ebf73c7a868f114ef73d0e472a8eccef5beb4c79e98356b9f7e32a8eb46d02",
+          "aiPublicGuideTopic": "설계가 끝나는 시점에 대하여",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            50
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 52,
+          "chapter": "7장 결론: 빛은 무엇을 보게 할지 정한다",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "설계 점검"
+          ],
+          "secondaryConcepts": [
+            "대비비",
+            "색온도"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "새로운 장면을 설계할 때 순서대로 적용할 다섯 가지 점검 질문을 제시한다. 필수 가시 요소와 배제 요소로 대비 범위를 정하고 얼굴 가독성으로 방향을 좁히며 선행 장면과의 연결로 전환 방식을, 반복 여부로 값의 고정 정도를 정하는 순서를 정리한다.",
+          "aiAnalysisInputSha256": "91f804fd494ab0a5cb566cb167ab07672af62a69faeaf077eccd0eb18a666840",
+          "aiPublicGuideTopic": "새 장면을 만났을 때 차례로 던질 물음",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            50
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 53,
+          "chapter": "7장 결론: 빛은 무엇을 보게 할지 정한다",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "설계 점검"
+          ],
+          "secondaryConcepts": [
+            "조명 큐",
+            "공간 제약"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도입부의 첫 장면을 네 변수로 되짚어 해석하며 책 전체를 닫는다. 각 값이 조금만 달랐을 때 관객이 보게 될 것이 달라진다는 대비를 통해 변수 간 결합을 재확인하고, 설계의 검증이 무대가 아니라 객석의 여러 위치에서 이뤄진다는 기준으로 마무리한다.",
+          "aiAnalysisInputSha256": "0f6425082ec5659eecddbafbe191ce4a0cdbc7735fa44ce73d8df4787d6eff8b",
+          "aiPublicGuideTopic": "첫 장면으로 돌아가는 마무리",
+          "estimatedReadingSeconds": 95,
+          "prerequisitePageNumbers": [
+            52
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 64,
       "title": "종이 조형: 접기 구조와 안정",
       "pdfPath": "pdfs/book-064.pdf",
