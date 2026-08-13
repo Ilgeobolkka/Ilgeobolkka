@@ -12,7 +12,7 @@
 Git에는 판정에 직접 사용한 작은 k6 summary, 브라우저 JSONL과 history-heavy metadata·counts·invariants를
 이 evidence 폴더에 복사했다. 큰 Prometheus 시계열·generator 표본·전체 로그는 복사하지 않고 위치·전체
 크기·집계 SHA-256으로 연결한다. `var/performance/results/`를 정리하면 아래 해시만으로 원본을 복구할 수
-없으므로 6단계 보존 여부 결정 전까지 삭제하지 않는다.
+없다. 6단계에서는 로컬 재현 인계를 위해 보존하기로 했으며 별도 승인 없이 삭제하지 않는다.
 
 ## 실행별 위치와 집계 SHA-256
 
