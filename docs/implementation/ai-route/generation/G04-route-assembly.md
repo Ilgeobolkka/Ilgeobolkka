@@ -28,7 +28,7 @@
 
 ## 입력과 산출물
 
-- 입력: `ValidatedRouteProposal`, request command, owned 또는 balance·activeRentalPageNumbers snapshot,
+- 입력: `ValidatedRouteProposal`, request command, owned 또는 balance·activeRentalPageIds snapshot,
   publicGuideTopic·estimatedReadingSeconds
 - 산출물: `AiRouteAssembler`, `AiRouteGuideFactory`, `AiRouteGenerationResult`
 - 결과: ROUTE items 또는 NO_RELEVANT_PAGES/INSUFFICIENT_BUDGET+minimumRequiredInk
@@ -43,13 +43,13 @@
 ## 구현 조건
 
 1. owned는 모든 page 추가 비용 0, QUICK 5·BALANCED 10·DEEP 15 상한을 적용합니다.
-2. non-owned는 active rental page 0, 나머지 1로 계산하고 누적 새 비용이 예산을 넘지 않게 합니다.
+2. non-owned는 `bookPageId`로 active rental page를 판정해 0, 나머지를 1로 계산하고 누적 새 비용이
+   예산을 넘지 않게 합니다.
 3. 선수를 비용 때문에 제외하면 그 선수에 의존하는 page도 제외합니다.
 4. 상한·예산을 채우려고 무관 page를 추가하지 않고 같은 page를 중복 포함하지 않습니다.
 5. 관련 후보가 없으면 NO_RELEVANT_PAGES/null, 비소장 관련 후보 묶음의 최소 비용이 선택 예산보다 크면
    minimumRequiredInk의 INSUFFICIENT_BUDGET을 반환합니다. 소장 후보 묶음을 깊이 상한 안에서 완성할 수
-   없는 경우는 현재 두 NO_ROUTE 계약으로 잘못 분류하지 않고 내부 예외로 중단하며, G07이
-   INSUFFICIENT_DEPTH를 정식 결과 계약으로 연결합니다.
+   없는 경우는 현재 두 NO_ROUTE 계약으로 잘못 분류하지 않고 내부 예외로 중단하며 G07에 인계합니다.
 6. guide는 publicGuideTopic과 server role 템플릿으로만 만들고 analysisText·모델 문구를 입력받지 않습니다.
 7. estimated minutes와 `ONE_INK|ACTIVE_RENTAL|OWNED`를 정본 계산으로 만들며 상태를 변경하지 않습니다.
 
@@ -77,6 +77,6 @@
 
 ## 인계
 
-G07 담당자에게 필요한 권한 snapshot 필드와 결과 타입을 전달합니다. G07은 소장 후보·선수 묶음이 depth
-상한을 넘는 내부 예외를 `INSUFFICIENT_DEPTH` 정상 결과로 승격하고 API·영속 계약까지 함께 연결합니다.
-S01 담당자에게 저장 시 재계산할 비용 입력과 생성 예산 필드를 전달합니다.
+G07 담당자에게 `bookPageId` 기반 권한 snapshot과 결과 타입을 전달합니다. 소장 후보·선수 묶음이 depth
+상한을 넘는 내부 예외의 정상 결과 계약은 G07에서 결정합니다. S01 담당자에게 저장 시 재계산할 비용 입력과
+생성 예산 필드를 전달합니다.
