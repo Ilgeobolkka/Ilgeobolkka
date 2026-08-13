@@ -34,6 +34,25 @@ public class AiRouteContentWriter {
     }
 
     /**
+     * 이 contentVersion 이 이미 적재된 DB 인지 본다.
+     *
+     * <p>재적재는 지원 범위가 아니라 두 번째 실행은 실패해야 하는데, 그대로 두면 Embeddings 를 모두
+     * 호출하고 본문까지 쓴 뒤에야 선수 관계 고유 제약에 걸린다. rollback 되므로 DB 는 그대로지만
+     * 외부 호출은 이미 나간 뒤이고, 남는 것은 원인을 알려 주지 않는 중복 키 오류다.
+     *
+     * <p>판정을 {@code book.content_version} 으로 하는 것은 이 writer 가 올리는 값이 그것이기
+     * 때문이다. 후보 도서가 없는 manifest 를 적재해도 이 값은 올라간다.
+     */
+    public boolean alreadyImported(String contentVersion) {
+        Integer imported =
+                jdbcTemplate.queryForObject(
+                        "SELECT COUNT(*) FROM book WHERE content_version = ?",
+                        Integer.class,
+                        contentVersion);
+        return imported != null && imported > 0;
+    }
+
+    /**
      * @throws AiRouteContentImportException 트랜잭션을 열기 전 입력이 어긋난 경우. 이때 DB는 그대로다.
      */
     @Transactional

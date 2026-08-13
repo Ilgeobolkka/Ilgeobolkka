@@ -11,6 +11,7 @@ import com.example.ilgeobolkka.infra.openai.OpenAiEmbeddingGateway;
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -57,6 +58,9 @@ class AiRouteContentImporterMySqlIntegrationTest {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    /** 준비 단계가 Embeddings를 부르기 전에 멈추는지 보려면 호출 여부를 세어야 한다. */
+    static final AtomicInteger 페이지_embedding_호출 = new AtomicInteger();
+
     @TestConfiguration
     static class FakeGatewayConfiguration {
 
@@ -73,6 +77,7 @@ class AiRouteContentImporterMySqlIntegrationTest {
                 @Override
                 public Embedding embedPageAnalysis(
                         PageAnalysisInput input, String model, int dimensions) {
+                    페이지_embedding_호출.incrementAndGet();
                     List<Double> vector = new ArrayList<>();
                     for (int index = 0; index < dimensions; index++) {
                         vector.add(0.1);
@@ -85,6 +90,7 @@ class AiRouteContentImporterMySqlIntegrationTest {
 
     @BeforeEach
     void 도서를_준비한다() {
+        페이지_embedding_호출.set(0);
         테스트_도서를_지운다();
         jdbcTemplate.update(
                 """
@@ -141,6 +147,21 @@ class AiRouteContentImporterMySqlIntegrationTest {
                                         Boolean.class,
                                         VERSION,
                                         BOOK_ID)));
+    }
+
+    /**
+     * 재적재는 지원 범위가 아니다. 막지 않으면 Embeddings를 다 부른 뒤 선수 관계 고유 제약에서 터진다.
+     */
+    @Test
+    void 이미_적재된_DB에서는_embedding_전에_거부한다() {
+        jdbcTemplate.update("UPDATE book SET content_version = ? WHERE id = ?", VERSION, BOOK_ID);
+
+        AiRouteContentImportException exception =
+                assertThrows(AiRouteContentImportException.class, importer::prepare);
+
+        assertAll(
+                () -> assertTrue(exception.getMessage().contains("이미 " + VERSION)),
+                () -> assertEquals(0, 페이지_embedding_호출.get()));
     }
 
     private int 페이지_수() {

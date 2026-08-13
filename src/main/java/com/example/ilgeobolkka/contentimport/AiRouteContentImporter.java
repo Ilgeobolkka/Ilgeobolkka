@@ -53,9 +53,11 @@ class AiRouteContentImporter {
     }
 
     /**
-     * 검증과 embedding까지 끝낸다. 파일 I/O와 외부 호출이 여기서 모두 일어나며 DB는 건드리지 않는다.
+     * 검증과 embedding까지 끝낸다. 파일 I/O와 외부 호출이 여기서 모두 일어나며 DB는 이미 적재됐는지
+     * 확인만 하고 쓰지 않는다.
      */
     PreparedContent prepare() {
+        requireNotImported();
         String dataPolicyVersion = openAiProperties.dataPolicyVersion();
         AiRouteContentManifest manifest = readManifest();
         AiRouteEvaluationDataset evaluation = readEvaluation();
@@ -80,6 +82,29 @@ class AiRouteContentImporter {
 
     record PreparedContent(
             ValidatedAiRouteContent validated, EmbeddedAiRouteContent embedded) {}
+
+    /**
+     * 이미 적재된 DB면 아무것도 시작하지 않는다.
+     *
+     * <p>재적재는 지원 범위가 아니다. 콘텐츠를 다시 넣는 재평가는 사용자 기록이 없는 새 DB를 준비해
+     * 최초 적재와 같은 순서로 돌린다. 그래서 두 번째 실행은 실패하는 것이 맞는데, 막지 않으면 후보
+     * 페이지마다 Embeddings 를 호출하고 본문까지 쓴 뒤 선수 관계 고유 제약에 걸린다. rollback 되므로
+     * DB 는 그대로여도 외부 호출은 이미 나갔고, 남는 것은 원인을 말해 주지 않는 중복 키 오류다.
+     *
+     * <p>manifest 를 읽기 전에 본다. 이 importer 는 {@code ai-route-v2} 전용이라 버전을 파일에서
+     * 알아낼 필요가 없고, 가장 이른 곳에서 멈추는 편이 "외부 호출과 DB 변경 전에 거부한다"는 계약에
+     * 가깝다.
+     */
+    private void requireNotImported() {
+        String contentVersion = ContentManifest.AI_ROUTE_CONTENT_VERSION;
+        if (aiRouteContentWriter.alreadyImported(contentVersion)) {
+            throw new AiRouteContentImportException(
+                    "이미 "
+                            + contentVersion
+                            + " 콘텐츠가 적재된 DB입니다. 재적재는 사용자 기록이 없는 새 DB에서"
+                            + " 최초 적재 절차로 실행합니다.");
+        }
+    }
 
     private AiRouteContentManifest readManifest() {
         ContentManifest manifest = manifestParser.parseManifest(readString(properties.manifest()));

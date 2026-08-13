@@ -91,6 +91,15 @@ class AiRouteContentImportMySqlIntegrationTest {
     }
 
     @Test
+    void 같은_contentVersion이_이미_적재됐는지_판정한다() {
+        assertFalse(writer.alreadyImported(VERSION));
+
+        writer.write(content(), embedded(Map.of(2, vector(), 3, vector())));
+
+        assertTrue(writer.alreadyImported(VERSION));
+    }
+
+    @Test
     void 도서_메타데이터와_선수_관계를_저장하고_지원은_false로_둔다() {
         writer.write(content(), embedded(Map.of(2, vector(), 3, vector())));
 
