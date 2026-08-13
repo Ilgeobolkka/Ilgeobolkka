@@ -859,6 +859,8 @@ class AiRouteContentValidatorTest {
                 true,
                 true,
                 pages));
+    }
+
     /** 적재가 book_page에 그대로 넣는 세 값만 바꾼다. 해시는 분석 텍스트에 맞춰 다시 계산한다. */
     private AiRouteContentManifest.Page storedValues(
             AiRouteContentManifest.Page page,
