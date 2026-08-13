@@ -1293,6 +1293,124 @@
       ]
     },
     {
+      "caseId": "case-book-063",
+      "bookId": 63,
+      "purpose": "이 책을 사지는 않았고, 악보를 어디서 끊어 읽어야 하는지와 쉼을 얼마나 두어야 하는지를 익히고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 15,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "악구",
+        "숨의 자리",
+        "쉼표",
+        "긴 쉼"
+      ],
+      "helpfulConcepts": [
+        "음악적 침묵",
+        "악구의 경계",
+        "박 안의 쉼",
+        "늘임"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 13
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 15
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 17
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 20
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 21
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 22
+        },
+        {
+          "beforePageNumber": 22,
+          "afterPageNumber": 23
+        },
+        {
+          "beforePageNumber": 22,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 25
+        }
+      ],
+      "irrelevantPageNumbers": [
+        28,
+        29,
+        34,
+        35,
+        42,
+        43
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          50
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        6,
+        8,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        11,
+        19,
+        27,
+        37
+      ]
+    },
+    {
       "caseId": "case-book-064",
       "bookId": 64,
       "purpose": "이 책을 소장하고 있다. 종이를 접어 바닥에 스스로 서고 손으로 밀면 움직이는 조형을 만들어 보고 싶다. 어떤 것은 서고 어떤 것은 넘어지는 이유, 그리고 접은 자리가 어떻게 움직임의 축이 되는지를 원리부터 깊이 알고 싶다",
