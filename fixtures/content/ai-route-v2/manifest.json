@@ -22760,6 +22760,1148 @@
       ]
     },
     {
+      "bookId": 68,
+      "title": "움직이는 조형: 균형과 자연 동력",
+      "pdfPath": "pdfs/book-068.pdf",
+      "pdfSha256": "8ce58b88a5e1938dbe7756860f5a17dd00d4b9879de479677d52603c41b39637",
+      "totalPageCount": 53,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 매달린 것은 다르게 선다",
+          "section": "1.1 서는 것과 매달리는 것",
+          "primaryConcepts": [
+            "매달린 구조"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "매달린 조형과 서 있는 조형의 근본적 차이를 하중의 방향과 형태의 가변성으로 설명하는 도입 페이지다. 서 있는 구조에서는 전도 방지가 과제이고 형태가 고정되는 반면, 매달린 구조에서는 회전이 필연이므로 움직임의 설계가 형태의 설계와 분리되지 않는다는 책 전체의 관점을 세운다.",
+          "aiAnalysisInputSha256": "6be2636595441bfbb16f6e9d3102307aee55baa04e6b0b0648b929edfd184427",
+          "aiPublicGuideTopic": "바닥에 세우는 조형과 천장에 다는 조형의 차이",
+          "estimatedReadingSeconds": 110,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "balance-keeps-moving"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 매달린 것은 다르게 선다",
+          "section": "1.1 서는 것과 매달리는 것",
+          "primaryConcepts": [
+            "매달린 구조"
+          ],
+          "secondaryConcepts": [
+            "무게중심"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "매달린 조형의 정지 자세가 제작자의 설정이 아니라 무게 분포에 의해 결정된다는 점을 설명한다. 자세 조정이 실을 다시 매는 대신 무게를 옮기는 방식으로 이뤄져야 하는 이유와, 무게 편중의 정도가 복원력의 세기를 정해 이후 흔들림의 성격을 가른다는 연결을 제시한다.",
+          "aiAnalysisInputSha256": "fe4b1e28637b16f10199038ed0a898de545ef3bc9f526832f9d41bf1e146d5da",
+          "aiPublicGuideTopic": "매달린 조형이 스스로 자세를 찾는 방식",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 매달린 것은 다르게 선다",
+          "section": "1.2 무게중심",
+          "primaryConcepts": [
+            "무게중심"
+          ],
+          "secondaryConcepts": [
+            "매달린 구조"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "무게중심을 하중을 대표하는 한 점으로 정의하고 두 번 매달아 교점을 찾는 실물 측정법을 제시한다. 지지점과 무게중심의 상대 높이에 따라 안정·불안정·중립 상태가 갈린다는 점을 설명하고, 중립 상태가 지속적 회전을 만들어 움직이는 조형에서 유용하다는 결론을 낸다.",
+          "aiAnalysisInputSha256": "25c5bf51eafd7282fd85a9bcfb93f80a12313789fd3d627decbdf635d51167ef",
+          "aiPublicGuideTopic": "무게가 모여 있다고 볼 수 있는 한 점",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 매달린 것은 다르게 선다",
+          "section": "1.2 무게중심",
+          "primaryConcepts": [
+            "무게중심"
+          ],
+          "secondaryConcepts": [
+            "균형점"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "무게중심이 물체 외부에 위치할 수 있는 형태와 그 경우 가로대를 덧대어 지지점을 만드는 대응을 다룬다. 덧댄 부재의 무게가 전체 중심을 다시 이동시킨다는 점, 복수 조각의 합성 중심 계산과 무거운 조각부터 배치하는 순서, 그리고 접착제·마감재 무게 누락으로 도면과 실물이 어긋나는 문제를 함께 설명한다.",
+          "aiAnalysisInputSha256": "9c577e7e7e1431872ea1f44cf5dea83eb13c06dea21591ea2b29fd30473e0dd6",
+          "aiPublicGuideTopic": "무게중심이 몸 밖에 있을 수 있다는 점",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 매달린 것은 다르게 선다",
+          "section": "1.3 팔과 균형점",
+          "primaryConcepts": [
+            "균형점"
+          ],
+          "secondaryConcepts": [
+            "무게중심"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "가로대 양쪽의 무게와 거리의 곱이 같아야 수평이 유지된다는 규칙을 제시하고, 균형을 맞추는 수단이 무게 조정과 거리 조정 두 가지로 갈린다는 점을 설명한다. 실무에서는 거리 조정이 간편하지만 팔 길이가 형태 요소이기도 해 형태 의도와 충돌할 수 있다는 한계를 다룬다.",
+          "aiAnalysisInputSha256": "ec9825ee8b43d9468171a735803641d3fdf824b1eb99280935985bc3e8c1b947",
+          "aiPublicGuideTopic": "가로대 위에서 두 무게가 맞서는 방식",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 매달린 것은 다르게 선다",
+          "section": "1.3 팔과 균형점",
+          "primaryConcepts": [
+            "균형점"
+          ],
+          "secondaryConcepts": [
+            "매달린 구조"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다층 구조에서 하위 조립체 전체가 상위 가로대의 한쪽 하중이 되므로 아래부터 위로 맞춰야 한다는 순서를 설명한다. 도장과 실 교체 같은 마감 작업이 균형을 깨뜨리므로 마감 후 재조정이 필요하다는 점, 재료별 흡습·변형 차이가 장기적 균형을 흔든다는 점을 함께 다룬다.",
+          "aiAnalysisInputSha256": "5d8627d2e376868314433303a0eef05e00e5940c11b8839a31a80c306cdf192b",
+          "aiPublicGuideTopic": "맞춘 균형이 쉽게 깨지는 이유",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 매달린 것은 다르게 선다",
+          "section": "1.4 도는 자유",
+          "primaryConcepts": [
+            "회전의 자유"
+          ],
+          "secondaryConcepts": [
+            "무게중심",
+            "균형점"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 조각에 지지점만 달리해 안정·준중립·중립 세 상태를 나란히 보인 도표다. 지지점이 무게중심보다 높을수록 복원력이 커지고 두 점이 겹치면 복원력이 사라져 정지 자세가 정해지지 않는다는 관계를 곡선 화살표의 크기와 형태로 나타낸다.",
+          "aiAnalysisInputSha256": "9b7dbdef8921e05b029ce423377369d67719327dcfae8d25d5d3f6f7fce861aa",
+          "aiPublicGuideTopic": "매다는 점의 높이에 따라 갈리는 세 상태를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 매달린 것은 다르게 선다",
+          "section": "1.4 도는 자유",
+          "primaryConcepts": [
+            "회전의 자유"
+          ],
+          "secondaryConcepts": [
+            "매달린 구조"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단일 실 지지가 허용하는 회전·진동·복합 운동을 구분하고 각각을 지배하는 변수를 설명한다. 무게의 분산 정도가 회전의 속도와 지속을, 실 길이가 진동 주기를 정한다는 관계를 제시하며, 두 운동이 서로 간섭하므로 보여 줄 움직임을 먼저 정해야 한다는 설계 순서를 다룬다.",
+          "aiAnalysisInputSha256": "ad3e40bf4ff99f3f6a8b49b9e08d0e67a805592cdcf674a7ca824fa00e25eae2",
+          "aiPublicGuideTopic": "실 하나가 허용하는 움직임의 종류",
+          "estimatedReadingSeconds": 95,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "1장 매달린 것은 다르게 선다",
+          "section": "1.5 자연 동력",
+          "primaryConcepts": [
+            "자연 동력"
+          ],
+          "secondaryConcepts": [
+            "회전의 자유"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자연 동력을 이미 공간에 존재하는 약하고 불규칙한 공기 흐름으로 규정하고, 이를 활용하려면 경량화와 저마찰이 필수 조건이 되어 재료 선택이 제약된다는 점을 설명한다. 기계 동력과 달리 반복되지 않는 움직임을 얻는 대신 정확한 연출을 포기해야 한다는 교환 관계를 제시한다.",
+          "aiAnalysisInputSha256": "0c693c5ff1ab4d0ef7cf89764047b233230c34a2fd8c4880a5f3cf97193cfc53",
+          "aiPublicGuideTopic": "사람이 밀지 않아도 움직이게 하는 힘",
+          "estimatedReadingSeconds": 95,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "1장 매달린 것은 다르게 선다",
+          "section": "1.5 자연 동력",
+          "primaryConcepts": [
+            "자연 동력"
+          ],
+          "secondaryConcepts": [
+            "매달린 구조"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공기 흐름을 회전력으로 바꾸려면 수풍면이 필요하며 면적과 무게의 상충 속에서 재료를 고른다는 점을 다룬다. 면과 흐름의 각도에 따라 받는 힘이 달라지는데 회전 중에는 그 각도가 계속 변하므로 회전이 불규칙해진다는 결과를 설명하고 삼장으로 연결한다.",
+          "aiAnalysisInputSha256": "6a2f514a36405029a68c132c876d5cd85bddb3f03ec5806fca6f0f3ff09a0242",
+          "aiPublicGuideTopic": "동력을 받을 자리를 만드는 일",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 팔과 층",
+          "section": "2.1 두 조각을 맞세우기",
+          "primaryConcepts": [
+            "모빌 균형"
+          ],
+          "secondaryConcepts": [
+            "균형점",
+            "무게중심"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "가로대 하나에 조각 둘을 매단 최소 균형 단위의 구성과 그 단위를 상위 층의 한 조각으로 다루는 재귀적 구조를 설명한다. 무게·팔 길이·지지점 세 변수 가운데 둘이 정해지면 나머지가 결정되며, 가로대와 매듭의 무게 때문에 계산값을 실물에서 미세 조정해야 한다는 점과 조정 결과의 표시 방법을 다룬다.",
+          "aiAnalysisInputSha256": "3a0130f81f4d7429cf3603e42271a00af18a051f39ca8b1a6c90553377151484",
+          "aiPublicGuideTopic": "가장 작은 단위의 균형을 만드는 일",
+          "estimatedReadingSeconds": 95,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 팔과 층",
+          "section": "2.1 두 조각을 맞세우기",
+          "primaryConcepts": [
+            "모빌 균형"
+          ],
+          "secondaryConcepts": [
+            "회전의 자유"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "균형이 맞은 단위도 지지실을 축으로 자유롭게 회전한다는 점과 그 회전이 관람 각도를 계속 바꾼다는 효과를 다룬다. 두 조각의 높이를 달리해 겹침을 줄이는 기법과, 그 조정이 무게중심을 낮춰 회전을 둔하게 만든다는 상충을 함께 제시한다.",
+          "aiAnalysisInputSha256": "3b2d5cd16720c2aa24cdd386398dd77f17d09dc3f53d9024f0df07d054b0ef25",
+          "aiPublicGuideTopic": "균형이 맞은 단위가 어떻게 도는가",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 팔과 층",
+          "section": "2.2 층을 쌓기",
+          "primaryConcepts": [
+            "다층 구조"
+          ],
+          "secondaryConcepts": [
+            "모빌 균형",
+            "균형점"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이층 구조에서 하위 가로대와 그에 매달린 조각 전체가 상위 가로대의 한쪽 하중으로 작용하는 관계를 점선 묶음과 화살표로 나타낸 도표다. 좌우 팔 길이가 다르게 그려져 무거운 쪽이 짧은 팔에 걸린다는 규칙과 조립 순서가 아래에서 위로 향한다는 점을 함께 보인다.",
+          "aiAnalysisInputSha256": "b5f6eea4bb8f2bc4549eee18c0b2a46d60ce5090cb24149ae1bca551a16b197a",
+          "aiPublicGuideTopic": "아래 단위가 위층의 한쪽 무게가 되는 구조를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 팔과 층",
+          "section": "2.2 층을 쌓기",
+          "primaryConcepts": [
+            "다층 구조"
+          ],
+          "secondaryConcepts": [
+            "매달린 구조"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "층 수 증가가 크기뿐 아니라 층 간 운동 전달을 통해 움직임의 예측 가능성을 낮춘다는 점을 설명한다. 하위 층 수정이 상위 전체를 어긋나게 하므로 층 수를 제한하고 팔 길이로 규모를 얻는 대안, 그리고 긴 팔의 휨과 보강에 따른 중량 증가라는 순환 문제를 다룬다.",
+          "aiAnalysisInputSha256": "aea2393c1c832b4750e5c1cdc9174373858b00b60048d381138b6eb282151da6",
+          "aiPublicGuideTopic": "층이 늘어날수록 달라지는 것",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 팔과 층",
+          "section": "2.3 매다는 점을 옮기기",
+          "primaryConcepts": [
+            "지지점 조정"
+          ],
+          "secondaryConcepts": [
+            "균형점",
+            "무게중심"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "완성된 조형의 기울기를 보정하는 세 방법을 되돌리기 쉬운 순서로 제시한다. 지지점 이동이 최우선이며 팔이 길수록 작은 이동이 큰 효과를 낸다는 점, 보정용 부가 중량이 형태의 일부로 보여야 한다는 조건, 재료 제거는 비가역적이므로 최후에 둔다는 원칙을 다룬다.",
+          "aiAnalysisInputSha256": "5098290adbbb54eb74e72711d643c5083db984f93c3f6836d867cd07094a964f",
+          "aiPublicGuideTopic": "완성한 뒤에 균형을 손보는 방법",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "2장 팔과 층",
+          "section": "2.3 매다는 점을 옮기기",
+          "primaryConcepts": [
+            "지지점 조정"
+          ],
+          "secondaryConcepts": [
+            "회전의 자유"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지지점과 무게중심의 거리가 안정성과 회전성을 반대 방향으로 움직인다는 상충을 다룬다. 손으로 돌려 회전 수를 세는 실무적 판정 기준을 제시하고, 적정 범위가 설치 장소의 공기 조건에 따라 달라지므로 설치 전 현장 확인이 필요하다는 점을 설명한다.",
+          "aiAnalysisInputSha256": "7c33a7f4631b4ac9c347a82fd7447ef426f151c8eb73bbdc4cc4721afea910ca",
+          "aiPublicGuideTopic": "균형을 맞추면서 회전을 지키는 일",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "2장 팔과 층",
+          "section": "2.4 흔들림의 주기",
+          "primaryConcepts": [
+            "흔들림의 주기"
+          ],
+          "secondaryConcepts": [
+            "회전의 자유",
+            "다층 구조"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "진자 주기가 실 길이에만 의존하고 질량과 무관하다는 성질을 설명한다. 길이를 통일하면 전체가 동조해 움직이고 다르게 하면 위상이 어긋나 예측 불가능한 조합이 만들어진다는 대비를 제시하며, 길이 차이가 형태를 해치지 않는 범위 안에서 최대화한다는 기준을 다룬다.",
+          "aiAnalysisInputSha256": "18a3681a798a41c7f83d57f55ce35f9e58cd481f89a5bcd47a6fb5835524138d",
+          "aiPublicGuideTopic": "실 길이가 정하는 움직임의 속도",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "2장 팔과 층",
+          "section": "2.4 흔들림의 주기",
+          "primaryConcepts": [
+            "흔들림의 주기"
+          ],
+          "secondaryConcepts": [
+            "자연 동력"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "외력의 박자가 고유 진동과 맞을 때 진폭이 증폭되는 현상과 그로 인한 실 꼬임·충돌·이음매 손상 위험을 다룬다. 조각 간 간격을 설계 초반에 확보하는 대응과, 간격 확보가 어려울 때 실 길이를 달리해 진동 위상을 어긋내는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "dc282f6e1921ebd69af14558261b86417bd98681b3f7b19a2b753be1827865ad",
+          "aiPublicGuideTopic": "밀어 주는 힘과 흔들림이 맞을 때",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 바람이 하는 일",
+          "section": "3.1 방 안의 흐름",
+          "primaryConcepts": [
+            "공기 흐름"
+          ],
+          "secondaryConcepts": [
+            "자연 동력"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실내 공기가 온도 차에 의해 상시 순환한다는 사실과 매달린 조형이 그 흐름을 가시화한다는 점을 다룬다. 위치별 흐름 세기의 차이를 들고, 종이 조각으로 사전 관측하는 방법과 설치 위치를 먼저 정한 뒤 제작해야 하는 이유를 제시한다.",
+          "aiAnalysisInputSha256": "ad9ca32a8f8b6ad1e665a670abeb7f12e380d2271391915fac595dc909c4a30c",
+          "aiPublicGuideTopic": "가만히 있는 것처럼 보이는 공기가 실제로 하는 일",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 바람이 하는 일",
+          "section": "3.1 방 안의 흐름",
+          "primaryConcepts": [
+            "공기 흐름"
+          ],
+          "secondaryConcepts": [
+            "매달린 구조"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실내에서 가장 강한 공기 흐름이 사람의 이동과 문 개폐에서 발생한다는 점과, 그 결과 조형의 움직임이 간헐적이고 큰 형태를 띤다는 특성을 설명한다. 관람자의 이동에 반응하게 할지 피하게 할지에 따라 설치 높이와 균형 설정이 갈린다는 선택을 제시한다.",
+          "aiAnalysisInputSha256": "f91993e45b8e16124f26b0cea924166743bc6cff37c45805a02ab59df06997c9",
+          "aiPublicGuideTopic": "사람이 만드는 흐름",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 바람이 하는 일",
+          "section": "3.2 힘을 받는 면",
+          "primaryConcepts": [
+            "수풍면"
+          ],
+          "secondaryConcepts": [
+            "공기 흐름",
+            "자연 동력"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공기의 힘이 회전으로 전환되려면 작용점이 회전축에서 벗어나야 한다는 원리를 설명한다. 수풍면의 거리와 기울기가 회전력의 크기를 정하고, 회전 중 각도 변화로 힘을 받지 못하는 구간이 생기므로 여러 면을 서로 다른 각도로 배치해 연속성을 얻는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "07241a9e26116440b4dfa7d7ac364fbfde4db3821dd8efea7886e6e1fe348ad5",
+          "aiPublicGuideTopic": "공기의 힘을 회전으로 바꾸는 자리",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 바람이 하는 일",
+          "section": "3.2 힘을 받는 면",
+          "primaryConcepts": [
+            "수풍면"
+          ],
+          "secondaryConcepts": [
+            "공기 흐름",
+            "회전의 자유"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 바람이 회전축을 지나는 경우와 축에서 벗어난 위치에 작용하는 경우, 그리고 면이 기울어진 경우를 평면도로 비교한 도표다. 회전 화살표의 유무와 크기로 작용점과 면 각도가 회전력에 미치는 영향을 나타낸다.",
+          "aiAnalysisInputSha256": "df6d993a0bba1a8f721497eadd216027dc10437073cc483d948300e2df2637ba",
+          "aiPublicGuideTopic": "같은 바람이 세 자리에서 다르게 작용하는 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "3장 바람이 하는 일",
+          "section": "3.3 고르지 않은 회전",
+          "primaryConcepts": [
+            "불규칙 회전"
+          ],
+          "secondaryConcepts": [
+            "수풍면",
+            "흔들림의 주기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자연 동력 회전이 본질적으로 불규칙하다는 점을 흐름과 각도의 변동에서 설명하고, 이를 제거 대상이 아니라 설계 조건으로 규정한다. 관람에 적합한 회전 속도 범위와, 무게의 반경 방향 분포를 조정해 형태를 바꾸지 않고 속도를 제어하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "8cae191f5275bc9a833be8705c4f89086dd3c696935c33ac2d117f08900f878c",
+          "aiPublicGuideTopic": "일정하게 돌지 않는다는 성질",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "3장 바람이 하는 일",
+          "section": "3.3 고르지 않은 회전",
+          "primaryConcepts": [
+            "불규칙 회전"
+          ],
+          "secondaryConcepts": [
+            "매달린 구조"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "예측 불가능성이 관람 지속 시간을 늘린다는 효과와, 완전한 무질서가 오히려 흥미를 잃게 한다는 한계를 함께 다룬다. 부분은 규칙적이고 전체는 비반복적인 구조를 층과 실 길이 배치로 만드는 방법과, 반복 주기를 관찰해 실 길이를 미세 조정하는 절차를 제시한다.",
+          "aiAnalysisInputSha256": "4dfbfb79d04e4262333801ccebcfd3af1cd368ae262d93d1dba981961a0b3dbf",
+          "aiPublicGuideTopic": "예측할 수 없다는 것의 값",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "3장 바람이 하는 일",
+          "section": "3.4 멈춤과 다시 돌기",
+          "primaryConcepts": [
+            "정지와 재개"
+          ],
+          "secondaryConcepts": [
+            "불규칙 회전",
+            "공기 흐름"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자연 동력 조형이 필연적으로 갖는 정지 구간을 작품의 일부로 다루는 관점을 제시한다. 정지 자세가 무게 배치로 결정되므로 사전 확인과 조정이 가능하다는 점, 그리고 정지 마찰이 운동 마찰보다 커서 약한 흐름에서는 재기동이 어렵다는 조건과 그 대응을 설명한다.",
+          "aiAnalysisInputSha256": "cfb48166def25e99638d91fd1f7c55a8347b55001b2248da61534d6871f30455",
+          "aiPublicGuideTopic": "움직이지 않는 시간도 작품의 일부라는 점",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "3장 바람이 하는 일",
+          "section": "3.4 멈춤과 다시 돌기",
+          "primaryConcepts": [
+            "정지와 재개"
+          ],
+          "secondaryConcepts": [
+            "지지점 조정"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회전을 방해하는 요인으로 이음부 마찰과 실의 비틀림을 들고, 자유 회전 이음을 사용하는 대응을 제시한다. 마찰이 시간에 따라 증가해 교체 가능성을 설계에 포함해야 한다는 점과, 저꼬임 재료가 매듭 유지력을 잃는다는 재료 선택의 교환 관계를 다룬다.",
+          "aiAnalysisInputSha256": "6a57e14ec60198f2d304c9c17343f95d8b40f38a7cc8a78a4fae59c20bda3bc5",
+          "aiPublicGuideTopic": "잘 멈추고 잘 시작하게 만드는 이음",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 도는 동안 보이는 것",
+          "section": "4.1 각도가 바꾸는 형태",
+          "primaryConcepts": [
+            "보이는 형태"
+          ],
+          "secondaryConcepts": [
+            "회전의 자유",
+            "매달린 구조"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "납작한 조각이 회전하며 정면과 측면에서 크게 다른 실루엣을 보인다는 점을 설명한다. 단일 시점 기준 설계의 위험과 제작 중 회전 확인의 필요를 제시하고, 여러 조각의 각도를 어긋내 어느 순간에도 형태가 유지되도록 조합으로 해결하는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "0ad6ac74647ff16594cc06bac857f381d86d8084e4211135146b0948ba43b960",
+          "aiPublicGuideTopic": "도는 동안 같은 조각이 다르게 보이는 일",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 도는 동안 보이는 것",
+          "section": "4.1 각도가 바꾸는 형태",
+          "primaryConcepts": [
+            "보이는 형태"
+          ],
+          "secondaryConcepts": [
+            "다층 구조"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회전 중 조각들이 겹쳐 설계에 없던 형태가 나타나는 현상을 다룬다. 겹침 자체는 통제 불가능하나 크기와 간격이 그 범위를 정한다는 점, 관람 거리에 따라 적정 간격이 달라진다는 조건, 그리고 관찰 후 간격을 조정하는 절차를 제시한다.",
+          "aiAnalysisInputSha256": "528a8d5098be0284ead90d12a83e2a9c20d3833b25e29702d2110acd0482aafc",
+          "aiPublicGuideTopic": "겹침이 만드는 새로운 모양",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 도는 동안 보이는 것",
+          "section": "4.2 빛을 되돌려 보내기",
+          "primaryConcepts": [
+            "반사"
+          ],
+          "secondaryConcepts": [
+            "보이는 형태",
+            "회전의 자유"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회전하는 반사면이 광원과 이루는 각도에 따라 반사광이 나타나고 사라지는 순환을 네 단계로 나눠 보인 도표다. 입사 화살표를 동일하게 유지하고 반사 화살표의 방향과 밝은 면적만 바꿔, 밝기의 변화가 조명이 아니라 각도에서 온다는 점을 나타낸다.",
+          "aiAnalysisInputSha256": "9ebfc012c0edddb4a96443227f2858f37ce98a0dfd146512ea7d13ac68d4bb13",
+          "aiPublicGuideTopic": "각도에 따라 반사가 나타났다 사라지는 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 도는 동안 보이는 것",
+          "section": "4.2 빛을 되돌려 보내기",
+          "primaryConcepts": [
+            "반사"
+          ],
+          "secondaryConcepts": [
+            "보이는 형태"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "매끄러운 면의 정반사가 특정 방향에서만 관측되며 회전에 따라 간헐적으로 나타난다는 원리를 설명한다. 반짝임이 시선을 끄는 강한 사건이므로 매끄러운 면의 수를 제한한다는 기준과, 광원과 관람 위치에 맞춰 면 각도를 조정하는 절차를 다룬다.",
+          "aiAnalysisInputSha256": "8c8fc5392e10a91e72f36c4f80948462d028fcb4d7f1e1c747c7179bc916d1aa",
+          "aiPublicGuideTopic": "반짝임을 언제 보이게 할 것인가",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "4장 도는 동안 보이는 것",
+          "section": "4.3 그림자도 돈다",
+          "primaryConcepts": [
+            "그림자 변화"
+          ],
+          "secondaryConcepts": [
+            "보이는 형태",
+            "반사"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회전하는 조형이 만드는 그림자가 실물과 다른 시점의 형태를 제공한다는 점을 다룬다. 그림자가 세부를 잃고 윤곽만 남기며 광원 거리에 따라 확대된다는 성질, 확산 조명에서는 또렷한 그림자가 생기지 않는다는 조건, 그리고 그림자를 주로 쓸 때 윤곽을 단순화해야 한다는 설계 지침을 제시한다.",
+          "aiAnalysisInputSha256": "41cd8b89db71a842290a285e97aa40445e92d9a5fcdf04087d2a4cd1a5ff0572",
+          "aiPublicGuideTopic": "조형이 벽에 그리는 또 하나의 형태",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "4장 도는 동안 보이는 것",
+          "section": "4.3 그림자도 돈다",
+          "primaryConcepts": [
+            "그림자 변화"
+          ],
+          "secondaryConcepts": [
+            "공기 흐름"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "광원과 벽 사이의 거리 때문에 미세한 회전이 그림자에서 크게 증폭된다는 기하학적 관계를 설명한다. 약한 공기 흐름 환경에서 그림자를 주된 표현으로 삼는 활용과, 광원 소멸 시 표현이 사라진다는 한계, 벽면 상태가 그림자 가독성을 좌우한다는 조건을 다룬다.",
+          "aiAnalysisInputSha256": "d73ed0644b5cc0cad4a47a721b92906388d13e84303a3e9b8c6ecac452ac606f",
+          "aiPublicGuideTopic": "그림자가 실물보다 크게 움직이는 이유",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "4장 도는 동안 보이는 것",
+          "section": "4.4 시간이 만드는 형태",
+          "primaryConcepts": [
+            "시간의 형태"
+          ],
+          "secondaryConcepts": [
+            "보이는 형태",
+            "불규칙 회전"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "매달린 조형의 형태가 단일 순간이 아니라 시간의 경과 속에서 성립한다는 관점을 제시한다. 완성 판단 기준을 최고의 순간이 아니라 나쁜 순간의 빈도로 두는 이유를 상시 노출이라는 조건에서 찾고, 그 결과 개별 조각이 절제되고 조합과 움직임이 표현을 맡게 된다는 귀결을 설명한다.",
+          "aiAnalysisInputSha256": "4af292cd5b38c9eb9e8523d48d8cedc289396ee0dc4928e23749cbad4d2f95b1",
+          "aiPublicGuideTopic": "한 순간이 아니라 시간에 걸쳐 완성되는 것",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "4장 도는 동안 보이는 것",
+          "section": "4.4 시간이 만드는 형태",
+          "primaryConcepts": [
+            "시간의 형태"
+          ],
+          "secondaryConcepts": [
+            "정지와 재개"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장기간 설치되는 특성상 초기 인상보다 반복 관람의 피로도가 중요하다는 점을 다룬다. 강한 색과 형태가 빨리 질린다는 경향, 경년 변화가 결함으로 남지 않는 재료 선택, 그리고 청소와 부품 교체가 가능한 구조와 관리 방법 인계의 필요를 설명한다.",
+          "aiAnalysisInputSha256": "4492ef532a28b0d4c6e149ff0a5a3c85a2e63fa0f330b19b9370a4e1b60da53f",
+          "aiPublicGuideTopic": "오래 두고 보는 물건의 조건",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 작업실에서 만들기",
+          "section": "5.1 재료 고르기",
+          "primaryConcepts": [
+            "재료 선택"
+          ],
+          "secondaryConcepts": [
+            "자연 동력",
+            "수풍면"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "면적 대비 중량을 기준으로 재료를 선택하는 과정과 금속·종이·박판 목재의 특성을 비교한다. 흡습 차이로 계절마다 균형이 달라지므로 이종 재료를 같은 팔에 두지 않는다는 배치 규칙과, 재료가 조각 크기의 상한을 함께 정한다는 제약을 다룬다.",
+          "aiAnalysisInputSha256": "75fd7d5918fa50c052e3e69b6ee479270c787861f01df95fc020b70be9b71f25",
+          "aiPublicGuideTopic": "가볍고 넓은 것을 찾는 일",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 작업실에서 만들기",
+          "section": "5.1 재료 고르기",
+          "primaryConcepts": [
+            "재료 선택"
+          ],
+          "secondaryConcepts": [
+            "매달린 구조"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "경량화 수단인 박형화와 천공의 장단점을 비교하고, 천공 배치가 형태 요소로도 기능한다는 점을 다룬다. 지지점 인근을 남기고 말단을 비우는 방식이 무게를 축 가까이 모아 회전을 빠르게 하며, 반대 배치가 느리고 오래 도는 성격을 만든다는 운동학적 귀결을 설명한다.",
+          "aiAnalysisInputSha256": "762020e047189fcab512e54bf6f2ed9c0354c5494f34b33283ed0bc0dbc6f326",
+          "aiPublicGuideTopic": "무게를 줄이는 방법",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 작업실에서 만들기",
+          "section": "5.2 시험 매달기",
+          "primaryConcepts": [
+            "시험 매달기"
+          ],
+          "secondaryConcepts": [
+            "무게중심",
+            "지지점 조정"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "가로대의 지지점을 미세하게 이동시켜 수평을 찾는 세 단계를 순서대로 보인 도표다. 기울기 방향과 이동 방향의 관계, 그리고 확정된 자리를 표시로 남기는 마무리까지 포함해 계산이 아니라 실물 조정으로 균형이 확정된다는 점을 나타낸다.",
+          "aiAnalysisInputSha256": "754dcab4eedc167e53609aff7678d6c0142c9cfdba7fe4a64b0f3ac9ce39974b",
+          "aiPublicGuideTopic": "작업실 가로줄에서 균형을 찾는 절차를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "5장 작업실에서 만들기",
+          "section": "5.2 시험 매달기",
+          "primaryConcepts": [
+            "시험 매달기"
+          ],
+          "secondaryConcepts": [
+            "모빌 균형"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "층 단위로 균형을 검증한 뒤 상위에 결합하는 조립 순서와 수평·회전 수·정지 자세라는 세 확인 항목을 제시한다. 상위 결합이 하위 균형을 훼손하지 않는 구조적 이유를 밝히고, 회전 속도는 전체 조립 후 다시 확인해야 한다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "1f4f6dedfd0bbb29399b9099f5785d3ffe21b58117090dc171bb74a8296f37d3",
+          "aiPublicGuideTopic": "조립하기 전에 확인하는 순서",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "5장 작업실에서 만들기",
+          "section": "5.3 실과 이음",
+          "primaryConcepts": [
+            "연결부"
+          ],
+          "secondaryConcepts": [
+            "정지와 재개",
+            "지지점 조정"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실과 이음이 회전 성능과 수명을 결정하는 핵심 부품이라는 점을 다룬다. 실 굵기의 하중 대비 선택 기준, 재조정 가능성을 위해 매듭을 고정하지 않는 원칙, 그리고 장기 유지를 위한 예비 부품 제공까지 인계 범위에 포함해야 한다는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "85bd6795a72d2077945b49d5a411e31c5070ae6572e62981bf3a979ee4e6c305",
+          "aiPublicGuideTopic": "가장 작은 부품이 전체를 정하는 자리",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "5장 작업실에서 만들기",
+          "section": "5.3 실과 이음",
+          "primaryConcepts": [
+            "연결부"
+          ],
+          "secondaryConcepts": [
+            "다층 구조"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다층 구조에서 실 길이를 기록해야 재설치가 가능하다는 점과 매듭 여유를 남기는 실무를 다룬다. 실 간 엉킴을 막기 위해 층의 방향을 어긋내 실 경로가 겹치지 않게 배치하는 방법과, 엉킴이 자연 해소되지 않으므로 설치 초기의 반복 점검이 필요하다는 점을 설명한다.",
+          "aiAnalysisInputSha256": "b167d16316fe30093460528817da346e912375d6269dd1d220a95a3b5ab6e9cc",
+          "aiPublicGuideTopic": "여러 층의 실을 관리하는 방법",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "5장 작업실에서 만들기",
+          "section": "5.4 설치와 인계",
+          "primaryConcepts": [
+            "설치"
+          ],
+          "secondaryConcepts": [
+            "공기 흐름",
+            "재료 선택"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "설치 장소의 공기 조건이 작업실과 달라 재조정이 필수라는 점과 시간대별 흐름을 관측하는 절차를 다룬다. 조정 대상이 주로 실 길이와 이음이라는 실무와, 조정 근거를 문서로 인계하지 않으면 이동 후 복원이 불가능해 작품이 폐기된다는 위험을 제시한다.",
+          "aiAnalysisInputSha256": "26379c73050c5935409d1e033b5ec2bbd58cac8b7f08a730a80cf0ce316bbed2",
+          "aiPublicGuideTopic": "만든 자리와 걸릴 자리가 다르다는 점",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "5장 작업실에서 만들기",
+          "section": "5.4 설치와 인계",
+          "primaryConcepts": [
+            "설치"
+          ],
+          "secondaryConcepts": [
+            "시간의 형태"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "설치 이후에도 재료와 이음이 안정화되며 움직임이 변한다는 점과 한 달·여섯 달 시점의 재방문 점검을 제시한다. 방문이 불가능할 때 한 장 분량의 관리 지침으로 대체하며, 작품의 수명이 고장보다 관리 지식의 부재로 결정된다는 관점을 다룬다.",
+          "aiAnalysisInputSha256": "f01fee278b1b6778ceee92667e5ec535a484508ee524ef08a3059c9d5865ac61",
+          "aiPublicGuideTopic": "걸어 둔 뒤에 남는 일",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 계획대로 돌지 않을 때",
+          "section": "6.1 흐름이 없는 방",
+          "primaryConcepts": [
+            "공기 조건"
+          ],
+          "secondaryConcepts": [
+            "공기 흐름",
+            "자연 동력"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 조형을 개구부가 있는 공간과 밀폐된 공간에 설치했을 때의 차이를 방 단면도로 비교한 도표다. 흐름 화살표의 수와 회전 화살표의 유무로, 작품의 성립 조건에 설치 공간의 공기 상태가 포함된다는 점을 나타낸다.",
+          "aiAnalysisInputSha256": "841d080208155199493ea26e34c66b290e1526edc87d9ce0df4fab64f7a39302",
+          "aiPublicGuideTopic": "같은 조형을 흐름이 다른 두 자리에 건 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 계획대로 돌지 않을 때",
+          "section": "6.1 흐름이 없는 방",
+          "primaryConcepts": [
+            "공기 조건"
+          ],
+          "secondaryConcepts": [
+            "재료 선택"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공기 흐름이 없는 공간에서 조형이 사실상 정지한 조각이 된다는 문제와 사후 보정의 한계를 다룬다. 경량화 재제작 또는 정지 상태를 전제한 형태 변경이라는 두 선택지를 제시하고, 설치 전 조건을 설명해 오해를 막는 것이 인계에 포함된다는 점을 강조한다.",
+          "aiAnalysisInputSha256": "c272e3363715f748009bd485a9b559d73cff2d5198fa17ee92a0bdc452245af4",
+          "aiPublicGuideTopic": "움직이지 않는 조형이 되는 경우",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 계획대로 돌지 않을 때",
+          "section": "6.2 엉킴과 마찰",
+          "primaryConcepts": [
+            "마찰과 엉킴"
+          ],
+          "secondaryConcepts": [
+            "연결부",
+            "정지와 재개"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장기 사용 중 회전이 저하되는 두 원인인 실의 단방향 감김과 이음부 마찰 증가를 다룬다. 일정 방향의 기류가 감김을 누적시킨다는 조건과 이음의 촉감 점검·교체라는 대응을 제시하고, 유지보수 접근성이 설치 높이 결정에 반영돼야 한다는 점을 설명한다.",
+          "aiAnalysisInputSha256": "47ea483fad8a6d3a9275ca32cef41eaa3924ebf0dd8d18bd52bab67f10212eff",
+          "aiPublicGuideTopic": "시간이 지나며 움직임을 갉아먹는 것들",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "6장 계획대로 돌지 않을 때",
+          "section": "6.2 엉킴과 마찰",
+          "primaryConcepts": [
+            "마찰과 엉킴"
+          ],
+          "secondaryConcepts": [
+            "연결부"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단방향 회전이 누적되며 실이 꼬이고 그 비틀림이 역방향 복원력으로 작용해 회전을 막는 과정을 세 단계로 보인 도표다. 회전 화살표의 크기 변화와 마지막 단계의 역방향 화살표로 기능 저하의 진행을 나타낸다.",
+          "aiAnalysisInputSha256": "2be19a9da71fc7f12285129b938f0a68ff32edcd4673245142e41d3026efe821",
+          "aiPublicGuideTopic": "실이 감기며 회전을 막는 과정을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "6장 계획대로 돌지 않을 때",
+          "section": "6.3 사람이 만지는 일",
+          "primaryConcepts": [
+            "관람자 접촉"
+          ],
+          "secondaryConcepts": [
+            "매달린 구조",
+            "설치"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관람자의 접촉이 불가피한 낮은 설치 높이에서 발생하는 문제와 두 가지 대응을 다룬다. 접촉 허용 설계가 요구하는 강도와 간격이 경량 자연 동력 조건과 상충한다는 점, 관람·유지보수·비접촉을 함께 만족하는 높이 선택, 그리고 복원력을 다소 크게 잡는 조정을 제시한다.",
+          "aiAnalysisInputSha256": "82580ba009a8d2b5f023b31268b2a407265a1681982166e56cc26af5a7a42c54",
+          "aiPublicGuideTopic": "손이 닿는 자리에 걸었을 때 생기는 일",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "6장 계획대로 돌지 않을 때",
+          "section": "6.3 사람이 만지는 일",
+          "primaryConcepts": [
+            "관람자 접촉"
+          ],
+          "secondaryConcepts": [
+            "불규칙 회전"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관람자의 통행에 반응하는 설계와 반응을 억제하는 설계를 대비하고 각각의 조정 방향을 제시한다. 반응형은 시간대별 이용자 수에 따라 성격이 달라진다는 점을 지적하며, 통행 공간인지 체류 공간인지에 따라 선택이 갈리므로 사전 관찰이 필요하다는 결론을 낸다.",
+          "aiAnalysisInputSha256": "2d93adb9815435c38d926101a5559749f6325505c40fa870af637448c3af0605",
+          "aiPublicGuideTopic": "반응을 설계에 넣을 것인가",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 결론: 멈춰 있지 않은 균형",
+          "section": "7.1 멈춰 있지 않은 균형",
+          "primaryConcepts": [
+            "매달린 구조"
+          ],
+          "secondaryConcepts": [
+            "모빌 균형",
+            "시간의 형태"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "여섯 장의 논의를 매달린 구조가 정지하지 않는다는 하나의 성질로 묶어 정리한다. 균형을 정지가 아니라 이탈 후 복귀가 가능한 상태로 재정의하고, 형태·설치·유지가 하나의 작업으로 이어진다는 점과 고정된 수치표가 성립하지 않는 이유를 설명한다.",
+          "aiAnalysisInputSha256": "c3d3efc4f7eab6c149b31e1ed816573235281d0dac871985358ddd2b8cc7a692",
+          "aiPublicGuideTopic": "책 전체를 지나온 뒤 다시 보는 균형",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "balance-keeps-moving"
+          ]
+        },
+        {
+          "pageNumber": 51,
+          "chapter": "7장 결론: 멈춰 있지 않은 균형",
+          "section": "7.1 멈춰 있지 않은 균형",
+          "primaryConcepts": [
+            "매달린 구조"
+          ],
+          "secondaryConcepts": [
+            "설치",
+            "연결부"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "제작자가 상시 관리할 수 없다는 전제에서 인계 준비를 실 길이·지지점 기록, 예비 이음 제공, 결정 근거 한 장으로 정리한다. 근거가 있어야 이전이나 조건 변화 시 판단이 가능하다는 점을 들어, 재가동 가능성이 작품 수명을 정한다는 결론을 제시한다.",
+          "aiAnalysisInputSha256": "27550e8bf90af9d1a253030793849ec1f51a54bf2e99b8b5d400f0d06aac36dd",
+          "aiPublicGuideTopic": "넘겨줄 수 있게 만드는 일",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            50
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 52,
+          "chapter": "7장 결론: 멈춰 있지 않은 균형",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "설계 점검"
+          ],
+          "secondaryConcepts": [
+            "공기 조건",
+            "회전의 자유"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "새 조형 설계 시 적용할 다섯 가지 점검 질문을 순서대로 제시한다. 공기 흐름과 동선으로 무게·크기 상한을 정하고, 표현 대상으로 재료와 면 각도를, 접촉 여부와 설치 기간으로 강도와 관리 계획을 정하는 절차를 정리하며 조건 우선 순서의 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "cda08bcce422e4f83267dc2f098ea77557c4cf2772810fb27b57ed367e0f46e7",
+          "aiPublicGuideTopic": "새 조형을 만들 때 차례로 던질 물음",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            50
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 53,
+          "chapter": "7장 결론: 멈춰 있지 않은 균형",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "설계 점검"
+          ],
+          "secondaryConcepts": [
+            "정지와 재개",
+            "시간의 형태"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도입부의 회전 장면을 지지점 위치·수풍면 배치·이음 마찰 세 조건으로 되짚으며 책을 닫는다. 세 조건 가운데 하나만 어긋나도 운동이 성립하지 않는다는 점을 강조하고, 완성 판정을 설치 장소에서 하루 동안의 실제 거동으로 삼는다는 기준을 제시한다.",
+          "aiAnalysisInputSha256": "8dd39faec0efd257db60e1a30f39d699d6d35550d937d6cd2444e24b6781c169",
+          "aiPublicGuideTopic": "첫 장면으로 돌아가는 마무리",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            52
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 71,
       "title": "요청과 응답: 서버 처리의 구조",
       "pdfPath": "pdfs/book-071.pdf",

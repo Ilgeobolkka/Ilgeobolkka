@@ -1851,6 +1851,73 @@
       ]
     },
     {
+      "caseId": "case-book-068",
+      "bookId": 68,
+      "purpose": "이 책을 사지는 않았고, 매달아 만드는 조형에서 균형을 어떻게 맞추는지 기본만 확인하고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "매달린 구조",
+        "무게중심",
+        "균형점",
+        "모빌 균형"
+      ],
+      "helpfulConcepts": [
+        "회전의 자유",
+        "지지점 조정",
+        "다층 구조"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 13
+        }
+      ],
+      "irrelevantPageNumbers": [
+        30,
+        31,
+        32,
+        33,
+        42,
+        43
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          50
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        6,
+        12,
+        13
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        7,
+        16,
+        17,
+        36
+      ]
+    },
+    {
       "caseId": "case-book-071",
       "bookId": 71,
       "purpose": "사용자가 보낸 메시지가 어느 입구를 지나 결과로 돌아오는지, 여러 메시지가 겹칠 때도 서로 섞이지 않는 이유와 실행 공간을 교체해도 업무가 이어지는 원리를 함께 이해하고 싶다",
