@@ -205,6 +205,138 @@ class AiRouteContentValidatorTest {
     }
 
     @Test
+    void 적재가_저장하는_페이지_값이_비면_Embeddings_호출_전에_실패한다() {
+        AiRouteContentManifest.Page page = candidateBook().pages().get(2);
+
+        assertTrue(
+                fail(
+                                manifestWithReplacedPage(
+                                        3, storedValues(page, "  ", "공개 주제", 60)),
+                                emptyEvaluation())
+                        .getMessage()
+                        .contains("분석 텍스트가 필요합니다"));
+        assertTrue(
+                fail(
+                                manifestWithReplacedPage(
+                                        3, storedValues(page, "분석", "  ", 60)),
+                                emptyEvaluation())
+                        .getMessage()
+                        .contains("공개 가이드 주제가 필요합니다"));
+        assertTrue(
+                fail(
+                                manifestWithReplacedPage(
+                                        3, storedValues(page, "분석", "공개 주제", 0)),
+                                emptyEvaluation())
+                        .getMessage()
+                        .contains("예상 독서 시간은 양수"));
+    }
+
+    @Test
+    void 도서_제목이_비면_후보_여부와_무관하게_실패한다() {
+        AiRouteContentManifest.Book candidate = candidateBook();
+        AiRouteContentManifest blankCandidateTitle =
+                manifest(
+                        new AiRouteContentManifest.Book(
+                                BOOK_ID,
+                                "  ",
+                                candidate.pdfPath(),
+                                candidate.pdfSha256(),
+                                candidate.totalPageCount(),
+                                true,
+                                true,
+                                candidate.pages()));
+        AiRouteContentManifest blankNovelTitle =
+                manifest(
+                        new AiRouteContentManifest.Book(
+                                BOOK_ID,
+                                "  ",
+                                "pdfs/book-041.pdf",
+                                pdfSha256,
+                                4,
+                                false,
+                                false,
+                                List.of()));
+
+        assertTrue(
+                fail(blankCandidateTitle, emptyEvaluation()).getMessage().contains("제목이 필요합니다"));
+        assertTrue(
+                fail(blankNovelTitle, emptyEvaluation()).getMessage().contains("제목이 필요합니다"));
+    }
+
+    @Test
+    void 도서_제목이_DB_VARCHAR_길이를_넘으면_실패한다() {
+        AiRouteContentManifest.Book candidate = candidateBook();
+        AiRouteContentManifest maxLengthTitle =
+                manifest(
+                        new AiRouteContentManifest.Book(
+                                BOOK_ID,
+                                "가".repeat(255),
+                                candidate.pdfPath(),
+                                candidate.pdfSha256(),
+                                candidate.totalPageCount(),
+                                true,
+                                true,
+                                candidate.pages()));
+        AiRouteContentManifest tooLongTitle =
+                manifest(
+                        new AiRouteContentManifest.Book(
+                                BOOK_ID,
+                                "가".repeat(256),
+                                candidate.pdfPath(),
+                                candidate.pdfSha256(),
+                                candidate.totalPageCount(),
+                                true,
+                                true,
+                                candidate.pages()));
+
+        assertEquals(
+                255,
+                validator.validate(maxLengthTitle, defaultEvaluation(), fixtureRoot, POLICY)
+                        .books()
+                        .getFirst()
+                        .title()
+                        .length());
+        assertTrue(
+                fail(tooLongTitle, emptyEvaluation()).getMessage().contains("255자 이하"));
+    }
+
+    @Test
+    void 공개_가이드_주제가_DB_VARCHAR_길이를_넘으면_실패한다() {
+        AiRouteContentManifest.Page page = candidateBook().pages().get(2);
+        AiRouteContentManifest maxLengthTopic =
+                manifestWithReplacedPage(
+                        3,
+                        storedValues(
+                                page,
+                                page.aiAnalysisText(),
+                                "가".repeat(500),
+                                page.estimatedReadingSeconds()));
+        AiRouteContentManifest tooLongTopic =
+                manifestWithReplacedPage(
+                        3,
+                        storedValues(
+                                page,
+                                page.aiAnalysisText(),
+                                "가".repeat(501),
+                                page.estimatedReadingSeconds()));
+
+        assertEquals(
+                500,
+                validator.validate(maxLengthTopic, defaultEvaluation(), fixtureRoot, POLICY)
+                        .books()
+                        .getFirst()
+                        .pages()
+                        .stream()
+                        .filter(candidatePage -> candidatePage.pageNumber() == 3)
+                        .findFirst()
+                        .orElseThrow()
+                        .publicGuideTopic()
+                        .length());
+        assertTrue(
+                fail(tooLongTopic, emptyEvaluation()).getMessage().contains("500자 이하"));
+    }
+
+    @Test
     void 페이지_수_장_수_분석해시_개념_계약_위반은_실패한다() {
         List<AiRouteContentManifest.Page> pages =
                 new ArrayList<>(candidateBook().pages().subList(0, 10));
@@ -727,6 +859,26 @@ class AiRouteContentValidatorTest {
                 true,
                 true,
                 pages));
+    /** 적재가 book_page에 그대로 넣는 세 값만 바꾼다. 해시는 분석 텍스트에 맞춰 다시 계산한다. */
+    private AiRouteContentManifest.Page storedValues(
+            AiRouteContentManifest.Page page,
+            String analysisText,
+            String publicGuideTopic,
+            int estimatedReadingSeconds) {
+        return new AiRouteContentManifest.Page(
+                page.pageNumber(),
+                page.chapter(),
+                page.section(),
+                page.primaryConcepts(),
+                page.secondaryConcepts(),
+                page.contentRole(),
+                page.aiRouteCandidatePage(),
+                analysisText,
+                AiRouteContentPages.sha256(analysisText.getBytes(StandardCharsets.UTF_8)),
+                publicGuideTopic,
+                estimatedReadingSeconds,
+                page.prerequisitePageNumbers(),
+                page.duplicateGroupKeys());
     }
 
     private AiRouteContentManifest.Page copyPage(
