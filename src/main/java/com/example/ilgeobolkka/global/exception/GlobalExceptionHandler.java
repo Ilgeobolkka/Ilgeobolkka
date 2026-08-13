@@ -4,6 +4,7 @@ import com.example.ilgeobolkka.airoute.exception.AiRouteContentChangedException;
 import com.example.ilgeobolkka.airoute.exception.AiRouteEntitlementChangedException;
 import com.example.ilgeobolkka.airoute.exception.AiRouteGenerationConsumedException;
 import com.example.ilgeobolkka.airoute.exception.AiRouteGenerationNotFoundException;
+import com.example.ilgeobolkka.airoute.exception.AiRouteNotCompletedException;
 import com.example.ilgeobolkka.airoute.exception.AiRouteNotFoundException;
 import com.example.ilgeobolkka.auth.exception.InvalidCredentialsException;
 import com.example.ilgeobolkka.book.exception.BookNotFoundException;
@@ -49,7 +50,8 @@ public class GlobalExceptionHandler {
         MethodArgumentTypeMismatchException.class,
         ServletRequestBindingException.class,
         HttpMessageNotReadableException.class,
-        HttpMediaTypeNotSupportedException.class
+        HttpMediaTypeNotSupportedException.class,
+        AiRouteNotCompletedException.class
     })
     ResponseEntity<ApiErrorResponse> handleInvalidInput(Exception exception) {
         logFailure(ErrorCode.INVALID_INPUT, exception);
