@@ -410,7 +410,34 @@ class ContentBatchConverterTest {
         Files.writeString(
                 resultPath, Files.readString(resultPath).replace("26.05.0", "25.12.0"));
 
-        assertThrows(IllegalStateException.class, converter::convert);
+        IllegalStateException exception =
+                assertThrows(IllegalStateException.class, converter::convert);
+        assertTrue(
+                exception.getMessage().contains("허용 목록에 없습니다"),
+                "원인과 다른 메시지: " + exception.getMessage());
+    }
+
+    /** 두 명령의 기록 버전이 서로 다르면 둘 다 목록 안이어도 재사용하지 않는다. */
+    @Test
+    void 기존_배치의_두_명령_버전이_서로_다르면_재사용하지_않는다() throws IOException {
+        Path manifestPath = createManifest();
+        Path outputRoot = tempDirectory.resolve("output");
+        var converter =
+                new ContentBatchConverter(manifestPath, outputRoot, objectMapper, new FakePdfTool());
+        ContentBatch batch = converter.convert();
+        Path resultPath = outputRoot.resolve(batch.manifestSha256()).resolve("manifest.json");
+        Files.writeString(
+                resultPath,
+                Files.readString(resultPath)
+                        .replace(
+                                "\"pdftoppmVersion\" : \"26.05.0\"",
+                                "\"pdftoppmVersion\" : \"26.08.0\""));
+
+        IllegalStateException exception =
+                assertThrows(IllegalStateException.class, converter::convert);
+        assertTrue(
+                exception.getMessage().contains("pdftotext와 pdftoppm 버전이 다릅니다"),
+                "원인과 다른 메시지: " + exception.getMessage());
     }
 
     private ContentResultManifest readResultManifest(Path outputRoot, ContentBatch batch) {

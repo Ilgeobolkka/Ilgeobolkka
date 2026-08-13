@@ -51,13 +51,6 @@ class ContentBatchConverter {
      */
     private static final List<String> POPPLER_VERSIONS = List.of("26.05.0", "26.08.0");
 
-    /**
-     * 배치 재사용 판정에서 제외하는 결과 manifest 필드. 허용 목록의 버전들은 같은 산출물을 내므로
-     * 기록한 버전 문자열이 달라도 같은 배치다.
-     */
-    private static final List<String> POPPLER_VERSION_FIELDS =
-            List.of("pdftotextVersion", "pdftoppmVersion");
-
     private static final ConcurrentMap<Path, ReentrantLock> LOCAL_PUBLICATION_LOCKS =
             new ConcurrentHashMap<>();
 
@@ -375,7 +368,7 @@ class ContentBatchConverter {
         String existingPdftotextVersion = existingResult.path("pdftotextVersion").asString("");
         String existingPdftoppmVersion = existingResult.path("pdftoppmVersion").asString("");
         if (!POPPLER_VERSIONS.contains(existingPdftotextVersion)
-                || !existingPdftotextVersion.equals(existingPdftoppmVersion)) {
+                || !POPPLER_VERSIONS.contains(existingPdftoppmVersion)) {
             throw new IllegalStateException(
                     "기존 배치의 Poppler 버전이 허용 목록에 없습니다: "
                             + finalDirectory
@@ -385,11 +378,21 @@ class ContentBatchConverter {
                             + existingPdftoppmVersion
                             + ")");
         }
-        POPPLER_VERSION_FIELDS.forEach(
-                field -> {
-                    expectedResult.remove(field);
-                    existingResult.remove(field);
-                });
+        if (!existingPdftotextVersion.equals(existingPdftoppmVersion)) {
+            throw new IllegalStateException(
+                    "기존 배치의 pdftotext와 pdftoppm 버전이 다릅니다: "
+                            + finalDirectory
+                            + " ("
+                            + existingPdftotextVersion
+                            + ", "
+                            + existingPdftoppmVersion
+                            + ")");
+        }
+        // 허용 목록의 버전들은 같은 산출물을 내므로 기록한 버전 문자열이 달라도 같은 배치다.
+        expectedResult.remove("pdftotextVersion");
+        expectedResult.remove("pdftoppmVersion");
+        existingResult.remove("pdftotextVersion");
+        existingResult.remove("pdftoppmVersion");
         if (!expectedResult.equals(existingResult)) {
             throw new IllegalStateException(
                     "같은 manifest 배치 디렉터리에 다른 결과가 있습니다: " + finalDirectory);
