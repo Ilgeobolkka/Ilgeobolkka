@@ -9,6 +9,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.example.ilgeobolkka.airoute.AiRouteAdditionalCostStatus;
 import com.example.ilgeobolkka.airoute.AiRouteDepth;
 import com.example.ilgeobolkka.airoute.AiRouteGenerationCommand;
+import com.example.ilgeobolkka.airoute.exception.AiRouteDepthLimitExceededException;
+import com.example.ilgeobolkka.airoute.exception.InvalidAiRouteCandidateInputException;
 import com.example.ilgeobolkka.airoute.entity.AiRouteItemRelevance;
 import com.example.ilgeobolkka.airoute.entity.AiRouteItemRole;
 import com.example.ilgeobolkka.airoute.service.assembly.AiRouteGenerationResult.Item;
@@ -130,8 +132,8 @@ class AiRouteAssemblerTest {
                         item(6, false)),
                 Map.of(6, Set.of(1, 2, 3, 4, 5)));
 
-        IllegalStateException exception = assertThrows(
-                IllegalStateException.class,
+        AiRouteDepthLimitExceededException exception = assertThrows(
+                AiRouteDepthLimitExceededException.class,
                 () -> assembler.assemble(
                         proposal,
                         ownedCommand(AiRouteDepth.QUICK),
@@ -178,7 +180,60 @@ class AiRouteAssemblerTest {
     }
 
     @Test
-    void 내부_중복_충돌_후보는_건너뛰고_완전한_다른_후보를_선택한다() {
+    void 앞선_중복_형제보다_뒤_후보를_완성하는_선수_묶음을_우선한다() {
+        ValidatedRouteProposal proposal = proposal(
+                List.of(item(1, false), item(3, true), item(2, false)),
+                Map.of(1, Set.of(), 2, Set.of(3)));
+        List<AiRouteAssemblyPage> pages = List.of(
+                page(1, 60, List.of("same-concept")),
+                page(2, 60, List.of()),
+                page(3, 60, List.of("same-concept")));
+
+        AiRouteGenerationResult result = assembler.assemble(
+                proposal,
+                inkCommand(3, INK_BALANCE),
+                AiRouteEntitlementSnapshot.forNonOwned(INK_BALANCE, Set.of()),
+                pages);
+
+        assertEquals(List.of(3, 2), pageNumbers(result));
+    }
+
+    @Test
+    void 같은_비용이면_HIGH_후보를_MEDIUM_후보보다_먼저_선택한다() {
+        ValidatedRouteProposal proposal = proposal(
+                List.of(
+                        item(1, AiRouteItemRelevance.MEDIUM, false),
+                        item(2, AiRouteItemRelevance.HIGH, false)),
+                Map.of(1, Set.of(), 2, Set.of()));
+
+        AiRouteGenerationResult result = assembler.assemble(
+                proposal,
+                inkCommand(1, INK_BALANCE),
+                AiRouteEntitlementSnapshot.forNonOwned(INK_BALANCE, Set.of()),
+                pages(2));
+
+        assertEquals(List.of(2), pageNumbers(result));
+    }
+
+    @Test
+    void 선택_우선순위와_무관하게_최종_항목은_proposal_읽기_순서를_유지한다() {
+        ValidatedRouteProposal proposal = proposal(
+                List.of(
+                        item(1, AiRouteItemRelevance.MEDIUM, false),
+                        item(2, AiRouteItemRelevance.HIGH, false)),
+                Map.of(1, Set.of(), 2, Set.of()));
+
+        AiRouteGenerationResult result = assembler.assemble(
+                proposal,
+                inkCommand(2, INK_BALANCE),
+                AiRouteEntitlementSnapshot.forNonOwned(INK_BALANCE, Set.of()),
+                pages(2));
+
+        assertEquals(List.of(1, 2), pageNumbers(result));
+    }
+
+    @Test
+    void 후보_하나라도_선수_폐쇄에_내부_중복_충돌이_있으면_입력을_거부한다() {
         ValidatedRouteProposal proposal = proposal(
                 List.of(item(1, true), item(2, false), item(3, false)),
                 Map.of(2, Set.of(1), 3, Set.of()));
@@ -187,13 +242,13 @@ class AiRouteAssemblerTest {
                 page(2, 60, List.of("same-concept")),
                 page(3, 60, List.of()));
 
-        AiRouteGenerationResult result = assembler.assemble(
-                proposal,
-                inkCommand(1, INK_BALANCE),
-                AiRouteEntitlementSnapshot.forNonOwned(INK_BALANCE, Set.of()),
-                pages);
-
-        assertEquals(List.of(3), pageNumbers(result));
+        assertThrows(
+                InvalidAiRouteCandidateInputException.class,
+                () -> assembler.assemble(
+                        proposal,
+                        inkCommand(1, INK_BALANCE),
+                        AiRouteEntitlementSnapshot.forNonOwned(INK_BALANCE, Set.of()),
+                        pages));
     }
 
     @Test
@@ -206,7 +261,7 @@ class AiRouteAssemblerTest {
                 page(2, 60, List.of("same-concept")));
 
         assertThrows(
-                IllegalStateException.class,
+                InvalidAiRouteCandidateInputException.class,
                 () -> assembler.assemble(
                         proposal,
                         inkCommand(0, INK_BALANCE),
@@ -339,6 +394,14 @@ class AiRouteAssemblerTest {
                 () -> new AiRouteGenerationResult(null, List.of(), null, null));
     }
 
+    @Test
+    void 경로_조립_결과의_항목은_null일_수_없다() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new AiRouteGenerationResult(
+                        Status.ROUTE, null, null, null));
+    }
+
     private AiRouteGenerationCommand inkCommand(int budget, int balance) {
         return AiRouteGenerationCommand.forInkBudget(
                 BOOK_ID, CONTENT_VERSION, "투자 판단 기준", budget, balance);
@@ -371,11 +434,16 @@ class AiRouteAssemblerTest {
     }
 
     private ValidatedRouteItem item(int pageNumber, boolean prerequisite) {
+        return item(pageNumber, AiRouteItemRelevance.HIGH, prerequisite);
+    }
+
+    private ValidatedRouteItem item(
+            int pageNumber, AiRouteItemRelevance relevance, boolean prerequisite) {
         return new ValidatedRouteItem(
                 1000L + pageNumber,
                 pageNumber,
                 pageNumber,
-                AiRouteItemRelevance.HIGH,
+                relevance,
                 prerequisite,
                 prerequisite ? AiRouteItemRole.PREREQUISITE : AiRouteItemRole.CORE);
     }

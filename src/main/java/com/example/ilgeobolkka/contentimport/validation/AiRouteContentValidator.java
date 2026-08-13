@@ -143,6 +143,8 @@ public final class AiRouteContentValidator {
         for (AiRouteContentManifest.Page page : pages) {
             byNumber.put(page.pageNumber(), page);
         }
+        requireDuplicateGroupsOutsidePrerequisiteClosures(
+                bookId, order, byNumber);
         List<ValidatedAiRouteContent.ValidatedPage> validatedPages = new ArrayList<>();
         for (Integer pageNumber : order) {
             AiRouteContentManifest.Page page = byNumber.get(pageNumber);
@@ -157,6 +159,44 @@ public final class AiRouteContentValidator {
             }
         }
         return new ValidatedAiRouteContent.ValidatedBook(bookId, true, validatedPages, edges);
+    }
+
+    private void requireDuplicateGroupsOutsidePrerequisiteClosures(
+            long bookId,
+            List<Integer> topologicalOrder,
+            Map<Integer, AiRouteContentManifest.Page> pagesByNumber) {
+        Map<Integer, Set<Integer>> closureByPageNumber = new HashMap<>();
+        for (Integer pageNumber : topologicalOrder) {
+            AiRouteContentManifest.Page page = pagesByNumber.get(pageNumber);
+            Set<Integer> closure = new LinkedHashSet<>();
+            closure.add(pageNumber);
+            for (Integer prerequisite : page.prerequisitePageNumbers()) {
+                closure.addAll(closureByPageNumber.get(prerequisite));
+            }
+            closureByPageNumber.put(pageNumber, Set.copyOf(closure));
+
+            if (!page.aiRouteCandidatePage()) {
+                continue;
+            }
+            Map<String, Integer> firstPageByDuplicateGroup = new HashMap<>();
+            for (Integer requiredPageNumber : closure) {
+                for (String groupKey :
+                        pagesByNumber.get(requiredPageNumber).duplicateGroupKeys()) {
+                    Integer firstPageNumber =
+                            firstPageByDuplicateGroup.putIfAbsent(groupKey, requiredPageNumber);
+                    if (firstPageNumber != null) {
+                        throw new AiRouteContentValidationException(
+                                "book %d p%d 후보와 선수 폐쇄에 중복 그룹 '%s' 페이지가 둘 이상입니다: %d, %d"
+                                        .formatted(
+                                                bookId,
+                                                pageNumber,
+                                                groupKey,
+                                                firstPageNumber,
+                                                requiredPageNumber));
+                    }
+                }
+            }
+        }
     }
 
     private void requireDuplicateGroupsHaveMultiplePages(

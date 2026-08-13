@@ -13,7 +13,12 @@ import re
 import sys
 from pathlib import Path
 
-from corpus_lib import DEPTH_PAGE_LIMITS, density_failures, prereq_closure
+from corpus_lib import (
+    DEPTH_PAGE_LIMITS,
+    density_failures,
+    duplicate_closure_failures,
+    prereq_closure,
+)
 
 REPO = Path(__file__).resolve().parents[4]  # docs/evidence/ai-route-corpus/tools/ 기준 저장소 루트
 FIXTURE = Path(sys.argv[1]) if len(sys.argv) > 1 else REPO / "fixtures/content/ai-route-v2"
@@ -124,6 +129,10 @@ for book in manifest["books"]:
     chk(seen == n, f"위상 정렬 {seen}/{n} (순환 없음)")
     density = density_failures(pages, prereq)
     chk(not density, f"book-{bid:03d} 선수 밀도 상한" + ("" if not density else " — " + "; ".join(density)))
+    duplicate_closures = duplicate_closure_failures(pages, prereq)
+    chk(not duplicate_closures,
+        f"book-{bid:03d} 후보 선수 폐쇄의 중복 그룹 충돌 없음"
+        + ("" if not duplicate_closures else " — " + "; ".join(duplicate_closures)))
     check_pdf(book)
 
 print("\n[evaluation]")

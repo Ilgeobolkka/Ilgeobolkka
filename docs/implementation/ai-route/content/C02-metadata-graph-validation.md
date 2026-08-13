@@ -58,7 +58,9 @@ C01의 manifest 전체를 검증해 외부 전송 권리·파일 무결성·페�
    `allowedAlternativePageNumbers`·`irrelevantPageNumbers`·`duplicatePageGroups` 어디에도 나올 수
    없습니다. 후보가 아닌 페이지는 임베딩이 없어 경로 비용·추천·채점 대상이 될 수 없습니다.
 5. 선수 edge는 같은 book·contentVersion의 존재 page만 가리키며 자기 참조·중복 edge를 거부합니다.
-6. `선수 -> 의존` 방향으로 위상 정렬해 모든 노드를 방문하지 못하면 순환으로 전체 실패합니다.
+6. `선수 -> 의존` 방향으로 위상 정렬해 모든 노드를 방문하지 못하면 순환으로 전체 실패합니다. 각 후보와
+   전이적 선수 폐쇄에는 같은 중복 그룹 페이지가 최대 하나인지 검사하고, 직접·간접 선수 또는 서로 다른
+   두 선수가 같은 그룹으로 합류하면 전체 실패합니다.
 7. `aiExternalTransferAllowed=false`, dataPolicyVersion 누락·환경 불일치는 Gateway 호출 전에 전체 실패합니다.
 8. 지원 도서마다 evaluation case가 정확히 하나인지 확인합니다. 필수 개념은 후보 페이지의
    `primaryConcepts`, 도움 개념은 후보 페이지의 `primaryConcepts` 또는 `secondaryConcepts`에 있어야 하며,
@@ -70,6 +72,7 @@ C01의 manifest 전체를 검증해 외부 전송 권리·파일 무결성·페�
 ## 테스트
 
 - 정상 DAG의 위상 순서와 root 빈 prerequisite 허용
+- 후보와 전이적 선수 폐쇄의 직접·간접·합류 경로에 같은 중복 그룹 페이지가 둘이면 실패
 - 지원 도서 10권짜리 부분 집합 manifest가 권수 때문에 실패하지 않음
 - 미존재·다른 book·자기 참조·duplicate edge·2개 이상 cycle 실패
 - 파일 누락·SHA 불일치·페이지 공백·지원 metadata 누락·권리/프로필 불일치 실패
@@ -80,6 +83,8 @@ C01의 manifest 전체를 검증해 외부 전송 권리·파일 무결성·페�
 - 정답·대체와 무관 페이지의 교집합, manifest와 다른 중복 그룹, 불완전한 선수 폐쇄·간선 목록 실패
 - 정본 `fixtures/content/ai-route-v2/`가 그대로 통과 (인라인 JSON만 쓰면 정본과 코드가 갈려도
   드러나지 않는다 — C01이 실제로 그렇게 어긋난 적이 있다)
+- `validate_fragment.py`·`validate_manifest.py`·`corpus_lib.validate_book()`도 같은 선수 폐쇄 중복
+  불변식을 검사하고 `selftest.py`가 각 실패 경로를 확인
 - validator 실패 시 Gateway·DB fake 호출 0회 확인
 - 명령: `./gradlew test --tests '*AiRouteContentValidatorTest' --tests '*PrerequisiteGraphValidatorTest'`
 

@@ -545,9 +545,11 @@ class AiRouteContentValidatorTest {
     @Test
     void 중복_페이지_그룹은_두_페이지_이상이고_정답_경로에서는_하나만_고른다() {
         AiRouteContentManifest singleton = manifestWithDuplicateGroup(List.of(2));
-        AiRouteContentManifest duplicatePair = manifestWithDuplicateGroup(List.of(2, 3));
-        AiRouteEvaluationDataset.RequiredPrerequisite edge =
-                new AiRouteEvaluationDataset.RequiredPrerequisite(2, 3);
+        AiRouteContentManifest duplicatePair = manifestWithDuplicateGroup(List.of(3, 10));
+        List<AiRouteEvaluationDataset.RequiredPrerequisite> edges = List.of(
+                new AiRouteEvaluationDataset.RequiredPrerequisite(2, 3),
+                new AiRouteEvaluationDataset.RequiredPrerequisite(2, 9),
+                new AiRouteEvaluationDataset.RequiredPrerequisite(9, 10));
 
         assertTrue(
                 fail(
@@ -570,7 +572,7 @@ class AiRouteContentValidatorTest {
                                         List.of("개념 2"),
                                         List.of(),
                                         List.of(),
-                                        List.of(List.of(2))))
+                                        List.of(List.of(3))))
                         .getMessage()
                         .contains("그룹마다 2페이지 이상"));
         assertTrue(
@@ -580,7 +582,7 @@ class AiRouteContentValidatorTest {
                                         List.of("개념 2"),
                                         List.of(),
                                         List.of(),
-                                        List.of(List.of(2, 2))))
+                                        List.of(List.of(3, 3))))
                         .getMessage()
                         .contains("같은 페이지가 중복됩니다"));
         assertTrue(
@@ -590,18 +592,18 @@ class AiRouteContentValidatorTest {
                                         List.of("개념 2"),
                                         List.of(),
                                         List.of(),
-                                        List.of(List.of(2, 3), List.of(3, 2))))
+                                        List.of(List.of(3, 10), List.of(10, 3))))
                         .getMessage()
                         .contains("같은 그룹이 중복됩니다"));
         assertTrue(
                 fail(
                                 duplicatePair,
                                 evaluationWithAnswers(
-                                        List.of("개념 3"),
+                                        List.of("개념 10"),
                                         List.of(),
-                                        List.of(edge),
-                                        List.of(List.of(2, 3)),
-                                        List.of(2, 3),
+                                        edges,
+                                        List.of(List.of(3, 10)),
+                                        List.of(2, 3, 9, 10),
                                         List.of(),
                                         List.of()))
                         .getMessage()
@@ -612,9 +614,24 @@ class AiRouteContentValidatorTest {
                         List.of("개념 2"),
                         List.of(),
                         List.of(),
-                        List.of(List.of(2, 3))),
+                        List.of(List.of(3, 10))),
                 fixtureRoot,
                 POLICY);
+    }
+
+    @Test
+    void 후보와_전이적_선수_폐쇄에_같은_중복_그룹이_둘_이상이면_실패한다() {
+        AiRouteContentManifest directConflict = manifestWithDuplicateGroup(List.of(2, 3));
+        AiRouteContentManifest convergingConflict = manifestWithConvergingDuplicatePrerequisites();
+
+        assertTrue(
+                fail(directConflict, defaultEvaluation())
+                        .getMessage()
+                        .contains("선수 폐쇄에 중복 그룹"));
+        assertTrue(
+                fail(convergingConflict, defaultEvaluation())
+                        .getMessage()
+                        .contains("선수 폐쇄에 중복 그룹"));
     }
 
     @Test
@@ -685,11 +702,48 @@ class AiRouteContentValidatorTest {
                         pages));
     }
 
+    private AiRouteContentManifest manifestWithConvergingDuplicatePrerequisites() {
+        AiRouteContentManifest grouped = manifestWithDuplicateGroup(List.of(3, 10));
+        AiRouteContentManifest.Book book = grouped.books().getFirst();
+        List<AiRouteContentManifest.Page> pages = new ArrayList<>(book.pages());
+        pages.replaceAll(page -> page.pageNumber() == 11
+                ? copyPage(
+                        page,
+                        page.primaryConcepts(),
+                        page.secondaryConcepts(),
+                        page.duplicateGroupKeys(),
+                        List.of(3, 10))
+                : page);
+        return manifest(new AiRouteContentManifest.Book(
+                book.bookId(),
+                book.title(),
+                book.pdfPath(),
+                book.pdfSha256(),
+                book.totalPageCount(),
+                true,
+                true,
+                pages));
+    }
+
     private AiRouteContentManifest.Page copyPage(
             AiRouteContentManifest.Page page,
             List<String> primaryConcepts,
             List<String> secondaryConcepts,
             List<String> duplicateGroupKeys) {
+        return copyPage(
+                page,
+                primaryConcepts,
+                secondaryConcepts,
+                duplicateGroupKeys,
+                page.prerequisitePageNumbers());
+    }
+
+    private AiRouteContentManifest.Page copyPage(
+            AiRouteContentManifest.Page page,
+            List<String> primaryConcepts,
+            List<String> secondaryConcepts,
+            List<String> duplicateGroupKeys,
+            List<Integer> prerequisitePageNumbers) {
         return new AiRouteContentManifest.Page(
                 page.pageNumber(),
                 page.chapter(),
@@ -702,7 +756,7 @@ class AiRouteContentValidatorTest {
                 page.aiAnalysisInputSha256(),
                 page.aiPublicGuideTopic(),
                 page.estimatedReadingSeconds(),
-                page.prerequisitePageNumbers(),
+                prerequisitePageNumbers,
                 duplicateGroupKeys);
     }
 

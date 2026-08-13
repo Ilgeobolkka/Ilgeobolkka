@@ -16,6 +16,9 @@ public record AiRouteGenerationResult(
         if (status == null) {
             throw new IllegalArgumentException("경로 조립 결과 상태가 필요합니다.");
         }
+        if (items == null) {
+            throw new IllegalArgumentException("경로 조립 결과 항목이 필요합니다.");
+        }
         items = List.copyOf(items);
 
         if (status == Status.ROUTE

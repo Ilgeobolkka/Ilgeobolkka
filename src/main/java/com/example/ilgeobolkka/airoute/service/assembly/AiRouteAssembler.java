@@ -1,13 +1,18 @@
 package com.example.ilgeobolkka.airoute.service.assembly;
 
 import com.example.ilgeobolkka.airoute.AiRouteAdditionalCostStatus;
+import com.example.ilgeobolkka.airoute.AiRouteDepth;
 import com.example.ilgeobolkka.airoute.AiRouteGenerationCommand;
 import com.example.ilgeobolkka.airoute.AiRouteRequestType;
+import com.example.ilgeobolkka.airoute.entity.AiRouteItemRelevance;
+import com.example.ilgeobolkka.airoute.exception.AiRouteDepthLimitExceededException;
+import com.example.ilgeobolkka.airoute.exception.InvalidAiRouteCandidateInputException;
 import com.example.ilgeobolkka.airoute.service.assembly.AiRouteGenerationResult.Item;
 import com.example.ilgeobolkka.airoute.service.query.AiRouteItemGuideAssembler;
 import com.example.ilgeobolkka.airoute.service.validation.ValidatedRouteProposal;
 import com.example.ilgeobolkka.airoute.service.validation.ValidatedRouteProposal.ValidatedRouteItem;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -51,14 +56,32 @@ public final class AiRouteAssembler {
             throw new IllegalArgumentException("검증된 경로에 관련 후보 페이지가 없습니다.");
         }
 
-        Set<Integer> selectedPageNumbers = new LinkedHashSet<>();
-        Set<String> selectedDuplicateGroups = new HashSet<>();
-        int selectedAdditionalInk = 0;
-        int pageLimit = pageLimit(command);
-
+        Map<Integer, List<Integer>> requiredPageNumbersByCandidate = new LinkedHashMap<>();
         for (Integer candidatePageNumber : proposalCandidatePageNumbers) {
             List<Integer> requiredPageNumbers = requiredPageNumbers(
                     candidatePageNumber, proposal, itemsByPageNumber);
+            if (hasInternalDuplicate(requiredPageNumbers, pagesByNumber)) {
+                throw new InvalidAiRouteCandidateInputException(
+                        "후보와 선수 폐쇄에는 같은 중복 그룹 페이지가 둘 이상일 수 없습니다.");
+            }
+            requiredPageNumbersByCandidate.put(candidatePageNumber, requiredPageNumbers);
+        }
+
+        List<Integer> selectionOrder = proposalCandidatePageNumbers.stream()
+                .sorted(Comparator
+                        .comparingInt((Integer pageNumber) -> relevancePriority(
+                                itemsByPageNumber.get(pageNumber).relevance()))
+                        .thenComparing(
+                                pageNumber -> requiredPageNumbersByCandidate.get(pageNumber).size(),
+                                Comparator.reverseOrder()))
+                .toList();
+
+        Set<Integer> selectedPageNumbers = new LinkedHashSet<>();
+        Set<String> selectedDuplicateGroups = new HashSet<>();
+        int selectedAdditionalInk = 0;
+
+        for (Integer candidatePageNumber : selectionOrder) {
+            List<Integer> requiredPageNumbers = requiredPageNumbersByCandidate.get(candidatePageNumber);
             List<Integer> missingPageNumbers = requiredPageNumbers.stream()
                     .filter(pageNumber -> !selectedPageNumbers.contains(pageNumber))
                     .toList();
@@ -75,8 +98,7 @@ public final class AiRouteAssembler {
                     selectedPageNumbers.size(),
                     missingPageNumbers.size(),
                     selectedAdditionalInk,
-                    additionalInk,
-                    pageLimit)) {
+                    additionalInk)) {
                 continue;
             }
 
@@ -89,30 +111,15 @@ public final class AiRouteAssembler {
         }
 
         if (selectedPageNumbers.isEmpty()) {
-            List<List<Integer>> duplicateFreeRequiredPageNumbers = proposalCandidatePageNumbers.stream()
-                    .map(candidatePageNumber -> requiredPageNumbers(
-                            candidatePageNumber, proposal, itemsByPageNumber))
-                    .filter(requiredPageNumbers ->
-                            !hasInternalDuplicate(requiredPageNumbers, pagesByNumber))
-                    .toList();
-
-            if (duplicateFreeRequiredPageNumbers.isEmpty()) {
-                throw new IllegalStateException("중복 없이 완성할 수 있는 관련 후보 묶음이 없습니다.");
-            }
-
             if (command.requestType() == AiRouteRequestType.OWNED_DEPTH) {
-                throw new IllegalStateException("소장 경로를 선택한 깊이 상한 안에서 완성할 수 없습니다.");
+                throw new AiRouteDepthLimitExceededException();
             }
 
-            int minimumRequiredInk = duplicateFreeRequiredPageNumbers.stream()
+            int minimumRequiredInk = requiredPageNumbersByCandidate.values().stream()
                     .mapToInt(requiredPageNumbers ->
                             additionalInk(requiredPageNumbers, pagesByNumber, entitlement))
                     .min()
                     .orElseThrow();
-
-            if (minimumRequiredInk <= command.maxAdditionalInk()) {
-                throw new IllegalStateException("최소 필요 잉크가 선택 예산보다 크지 않습니다.");
-            }
             return AiRouteGenerationResult.insufficientBudget(minimumRequiredInk);
         }
 
@@ -124,12 +131,6 @@ public final class AiRouteAssembler {
             AiRouteEntitlementSnapshot entitlement,
             Map<Integer, AiRouteAssemblyPage> pagesByNumber,
             Set<Integer> selectedPageNumbers) {
-        boolean candidateIncluded = selectedPageNumbers.stream()
-                .anyMatch(proposal.prerequisiteClosureByCandidate()::containsKey);
-        if (!candidateIncluded) {
-            throw new IllegalStateException("경로에는 관련 후보 페이지가 필요합니다.");
-        }
-
         List<Item> resultItems = new ArrayList<>();
         for (ValidatedRouteItem validatedItem : proposal.items()) {
             if (!selectedPageNumbers.contains(validatedItem.pageNumber())) {
@@ -261,19 +262,22 @@ public final class AiRouteAssembler {
             int selectedPageCount,
             int missingPageCount,
             int selectedAdditionalInk,
-            int additionalInk,
-            int pageLimit) {
+            int additionalInk) {
         if (command.requestType() == AiRouteRequestType.OWNED_DEPTH) {
-            return selectedPageCount + missingPageCount <= pageLimit;
+            return selectedPageCount + missingPageCount <= pageLimit(command.depth());
         }
         return selectedAdditionalInk + additionalInk <= command.maxAdditionalInk();
     }
 
-    private int pageLimit(AiRouteGenerationCommand command) {
-        if (command.requestType() == AiRouteRequestType.INK_BUDGET) {
-            return Integer.MAX_VALUE;
-        }
-        return switch (command.depth()) {
+    private int relevancePriority(AiRouteItemRelevance relevance) {
+        return switch (relevance) {
+            case HIGH -> 0;
+            case MEDIUM -> 1;
+        };
+    }
+
+    private int pageLimit(AiRouteDepth depth) {
+        return switch (depth) {
             case QUICK -> 5;
             case BALANCED -> 10;
             case DEEP -> 15;
