@@ -33,7 +33,14 @@ class ContentBatchConverter {
     // 초기 코퍼스(initial-v1) 전용 계약이다. 이후 버전은 이 제한을 풀지 않고 버전별 검증 경로를 추가한다.
     private static final int BOOK_COUNT = 100;
     private static final int PAGE_COUNT = 400;
-    private static final String POPPLER_VERSION = "26.08.0";
+    /**
+     * 산출물이 바이트 단위로 같음을 확인한 버전만 넣는다. 목록을 늘리려면 같은 표본을 다시 변환해
+     * 비교하고 근거를 남긴 뒤에 넣는다.
+     *
+     * <p>한 버전으로 고정하지 않는 것은 배포판마다 시차가 있기 때문이다. Homebrew 는 26.08.0 을 주는데
+     * conda-forge 는 26.07.0 이 최신이라, 하나만 허용하면 로컬과 CI 가 동시에 만족할 수 없다.
+     */
+    private static final List<String> POPPLER_VERSIONS = List.of("26.05.0", "26.08.0");
 
     private final Path manifestPath;
     private final Path outputRoot;
@@ -383,12 +390,12 @@ class ContentBatchConverter {
     }
 
     private void validatePopplerVersion(String command, String actualVersion) {
-        if (!POPPLER_VERSION.equals(actualVersion)) {
+        if (!POPPLER_VERSIONS.contains(actualVersion)) {
             throw new IllegalStateException(
                     command
                             + " 버전은 "
-                            + POPPLER_VERSION
-                            + "이어야 합니다: "
+                            + String.join("·", POPPLER_VERSIONS)
+                            + " 중 하나여야 합니다: "
                             + actualVersion);
         }
     }
