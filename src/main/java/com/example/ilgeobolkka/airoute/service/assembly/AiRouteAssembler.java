@@ -4,6 +4,7 @@ import com.example.ilgeobolkka.airoute.AiRouteAdditionalCostStatus;
 import com.example.ilgeobolkka.airoute.AiRouteGenerationCommand;
 import com.example.ilgeobolkka.airoute.AiRouteRequestType;
 import com.example.ilgeobolkka.airoute.service.assembly.AiRouteGenerationResult.Item;
+import com.example.ilgeobolkka.airoute.service.query.AiRouteItemGuideAssembler;
 import com.example.ilgeobolkka.airoute.service.validation.ValidatedRouteProposal;
 import com.example.ilgeobolkka.airoute.service.validation.ValidatedRouteProposal.ValidatedRouteItem;
 import java.util.ArrayList;
@@ -68,7 +69,7 @@ public final class AiRouteAssembler {
             }
 
             int additionalInk = additionalInk(
-                    missingPageNumbers, entitlement);
+                    missingPageNumbers, pagesByNumber, entitlement);
             if (!fits(
                     command,
                     selectedPageNumbers.size(),
@@ -91,7 +92,8 @@ public final class AiRouteAssembler {
             List<List<Integer>> duplicateFreeRequiredPageNumbers = proposalCandidatePageNumbers.stream()
                     .map(candidatePageNumber -> requiredPageNumbers(
                             candidatePageNumber, proposal, itemsByPageNumber))
-                    .filter(requiredPageNumbers -> !hasInternalDuplicate(requiredPageNumbers, pagesByNumber))
+                    .filter(requiredPageNumbers ->
+                            !hasInternalDuplicate(requiredPageNumbers, pagesByNumber))
                     .toList();
 
             if (duplicateFreeRequiredPageNumbers.isEmpty()) {
@@ -103,7 +105,8 @@ public final class AiRouteAssembler {
             }
 
             int minimumRequiredInk = duplicateFreeRequiredPageNumbers.stream()
-                    .mapToInt(requiredPageNumbers -> additionalInk(requiredPageNumbers, entitlement))
+                    .mapToInt(requiredPageNumbers ->
+                            additionalInk(requiredPageNumbers, pagesByNumber, entitlement))
                     .min()
                     .orElseThrow();
 
@@ -141,9 +144,9 @@ public final class AiRouteAssembler {
                     validatedItem.relevance(),
                     validatedItem.prerequisite(),
                     validatedItem.role(),
-                    estimatedMinutes(page.estimatedReadingSeconds()),
+                    AiRouteItemGuideAssembler.estimatedMinutes(page.estimatedReadingSeconds()),
                     guideFactory.create(page.publicGuideTopic(), validatedItem.role()),
-                    additionalCostStatus(validatedItem.pageNumber(), entitlement)));
+                    additionalCostStatus(page.pageId(), entitlement)));
         }
 
         return AiRouteGenerationResult.route(resultItems);
@@ -240,12 +243,16 @@ public final class AiRouteAssembler {
     }
 
     private int additionalInk(
-            List<Integer> pageNumbers, AiRouteEntitlementSnapshot entitlement) {
+            List<Integer> pageNumbers,
+            Map<Integer, AiRouteAssemblyPage> pagesByNumber,
+            AiRouteEntitlementSnapshot entitlement) {
         if (entitlement.owned()) {
             return 0;
         }
         return (int) pageNumbers.stream()
-                .filter(pageNumber -> !entitlement.activeRentalPageNumbers().contains(pageNumber))
+                .map(pagesByNumber::get)
+                .map(AiRouteAssemblyPage::pageId)
+                .filter(pageId -> !entitlement.activeRentalPageIds().contains(pageId))
                 .count();
     }
 
@@ -273,16 +280,12 @@ public final class AiRouteAssembler {
         };
     }
 
-    private int estimatedMinutes(int estimatedReadingSeconds) {
-        return (int) Math.max(1L, (estimatedReadingSeconds + 59L) / 60L);
-    }
-
     private AiRouteAdditionalCostStatus additionalCostStatus(
-            int pageNumber, AiRouteEntitlementSnapshot entitlement) {
+            long pageId, AiRouteEntitlementSnapshot entitlement) {
         if (entitlement.owned()) {
             return AiRouteAdditionalCostStatus.OWNED;
         }
-        if (entitlement.activeRentalPageNumbers().contains(pageNumber)) {
+        if (entitlement.activeRentalPageIds().contains(pageId)) {
             return AiRouteAdditionalCostStatus.ACTIVE_RENTAL;
         }
         return AiRouteAdditionalCostStatus.ONE_INK;

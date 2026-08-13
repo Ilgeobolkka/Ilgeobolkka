@@ -4,9 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.example.ilgeobolkka.airoute.entity.AiRouteItemRole;
-import java.lang.reflect.Method;
-import java.util.Arrays;
+import com.example.ilgeobolkka.airoute.service.query.AiRouteItemGuideAssembler;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 
 class AiRouteGuideFactoryTest {
 
@@ -31,16 +32,12 @@ class AiRouteGuideFactoryTest {
                 factory.create("투자 판단 기준", AiRouteItemRole.CONCLUSION));
     }
 
-    @Test
-    void 공개_메서드는_분석_텍스트나_모델_문구를_입력받지_않는다() {
-        Method create = Arrays.stream(AiRouteGuideFactory.class.getDeclaredMethods())
-                .filter(method -> method.getName().equals("create"))
-                .findFirst()
-                .orElseThrow();
-
+    @ParameterizedTest
+    @EnumSource(AiRouteItemRole.class)
+    void 조회와_생성은_같은_정본_가이드_문구를_사용한다(AiRouteItemRole role) {
         assertEquals(
-                Arrays.asList(String.class, AiRouteItemRole.class),
-                Arrays.asList(create.getParameterTypes()));
+                AiRouteItemGuideAssembler.guide(role, "투자 판단 기준"),
+                factory.create("투자 판단 기준", role));
     }
 
     @Test

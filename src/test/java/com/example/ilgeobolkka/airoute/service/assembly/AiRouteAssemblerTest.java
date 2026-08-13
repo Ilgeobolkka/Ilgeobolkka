@@ -64,7 +64,7 @@ class AiRouteAssemblerTest {
         AiRouteGenerationResult result = assembler.assemble(
                 independentCandidates(3),
                 inkCommand(0, INK_BALANCE),
-                AiRouteEntitlementSnapshot.forNonOwned(INK_BALANCE, Set.of(1, 3)),
+                AiRouteEntitlementSnapshot.forNonOwned(INK_BALANCE, Set.of(1001L, 1003L)),
                 pages(3));
 
         assertAll(
@@ -231,7 +231,7 @@ class AiRouteAssemblerTest {
                 List.of(item(1, true), item(2, true), item(3, false)),
                 Map.of(3, Set.of(1, 2)));
         AiRouteEntitlementSnapshot entitlement =
-                AiRouteEntitlementSnapshot.forNonOwned(INK_BALANCE, Set.of(1));
+                AiRouteEntitlementSnapshot.forNonOwned(INK_BALANCE, Set.of(1001L));
 
         AiRouteGenerationResult insufficient = assembler.assemble(
                 proposal, inkCommand(1, INK_BALANCE), entitlement, pages(3));
@@ -248,6 +248,20 @@ class AiRouteAssemblerTest {
     }
 
     @Test
+    void 활성_대여가_없는_0잉크_예산은_최소_1잉크가_필요하다() {
+        AiRouteGenerationResult result = assembler.assemble(
+                independentCandidates(1),
+                inkCommand(0, INK_BALANCE),
+                AiRouteEntitlementSnapshot.forNonOwned(INK_BALANCE, Set.of()),
+                pages(1));
+
+        assertAll(
+                () -> assertEquals(Status.NO_ROUTE, result.status()),
+                () -> assertEquals(NoRouteReason.INSUFFICIENT_BUDGET, result.noRouteReason()),
+                () -> assertEquals(1, result.minimumRequiredInk()));
+    }
+
+    @Test
     void 예상_시간은_올림해_최소_1분이며_비용_상태는_생성_사본에서_정한다() {
         ValidatedRouteProposal proposal = independentCandidates(3);
         List<AiRouteAssemblyPage> pages = List.of(
@@ -258,7 +272,7 @@ class AiRouteAssemblerTest {
         AiRouteGenerationResult result = assembler.assemble(
                 proposal,
                 inkCommand(2, INK_BALANCE),
-                AiRouteEntitlementSnapshot.forNonOwned(INK_BALANCE, Set.of(1)),
+                AiRouteEntitlementSnapshot.forNonOwned(INK_BALANCE, Set.of(1001L)),
                 pages);
 
         assertAll(
@@ -297,7 +311,7 @@ class AiRouteAssemblerTest {
     @Test
     void 입력_목록과_권한_집합을_변경하지_않는다() {
         List<AiRouteAssemblyPage> pages = new ArrayList<>(pages(2));
-        Set<Integer> activeRentals = new LinkedHashSet<>(Set.of(1));
+        Set<Long> activeRentals = new LinkedHashSet<>(Set.of(1001L));
         AiRouteEntitlementSnapshot entitlement =
                 AiRouteEntitlementSnapshot.forNonOwned(INK_BALANCE, activeRentals);
 
@@ -307,8 +321,8 @@ class AiRouteAssemblerTest {
                 () -> assertEquals(List.of(1, 2), pages.stream()
                         .map(AiRouteAssemblyPage::pageNumber)
                         .toList()),
-                () -> assertEquals(Set.of(1), activeRentals),
-                () -> assertEquals(Set.of(1), entitlement.activeRentalPageNumbers()));
+                () -> assertEquals(Set.of(1001L), activeRentals),
+                () -> assertEquals(Set.of(1001L), entitlement.activeRentalPageIds()));
     }
 
     @Test
