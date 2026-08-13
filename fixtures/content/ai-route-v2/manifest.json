@@ -23902,6 +23902,1191 @@
       ]
     },
     {
+      "bookId": 69,
+      "title": "사진의 프레이밍과 시선",
+      "pdfPath": "pdfs/book-069.pdf",
+      "pdfSha256": "396683bff5a2effd8bccb73214ecd20a9a9cd15cbb0349f2e3cc4773a8652640",
+      "totalPageCount": 55,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 자르는 일에서 시작한다",
+          "section": "1.1 프레임이라는 선택",
+          "primaryConcepts": [
+            "프레이밍"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사진의 프레이밍을 빈 화면을 채우는 회화적 구성과 대비해 이미 존재하는 장면에서 남길 부분을 고르는 감산적 행위로 규정하는 도입 페이지다. 화면의 네 변이 선택의 도구라는 관점을 세우고, 배제된 요소가 보이지 않으면서도 의미에 작용한다는 점을 책 전체의 출발점으로 제시한다.",
+          "aiAnalysisInputSha256": "8648f6ab5ac2d06f5b97398b8e3b3939811ef4b8156969e6f073ac5684ec4d6f",
+          "aiPublicGuideTopic": "화면의 네 변이 하는 일",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "photo-is-choosing"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 자르는 일에서 시작한다",
+          "section": "1.1 프레임이라는 선택",
+          "primaryConcepts": [
+            "프레이밍"
+          ],
+          "secondaryConcepts": [
+            "포함과 배제"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 장소와 시간에도 프레임 선택에 따라 결과가 갈린다는 점을 설명한다. 복수 프레임을 촬영해 사후에 비교하는 실무와, 말하려는 내용이 정해져야 프레임 선택이 좁혀진다는 판단 기준을 제시하며 의도 설정이 촬영에 선행해야 하는 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "22506dfa0064bb727a2e3cdf60067c7c5b796f5065d5045b5774ee0461c528c0",
+          "aiPublicGuideTopic": "같은 자리에서 다른 사진이 나오는 이유",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 자르는 일에서 시작한다",
+          "section": "1.2 담는 것과 자르는 것",
+          "primaryConcepts": [
+            "포함과 배제"
+          ],
+          "secondaryConcepts": [
+            "프레이밍"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "프레임 크기 선택이 포함 요소의 수와 개별 요소의 크기 사이의 교환 관계라는 점을 설명한다. 넓은 프레임과 좁은 프레임이 각각 재관람성과 첫인상에서 갖는 강점을 대비하고, 용도에 따라 선택이 갈린다는 기준과 배제가 포함보다 어렵다는 문제를 제시한다.",
+          "aiAnalysisInputSha256": "2400cc5d20f500c1299e804a0706e99e16ada27267e89feabc1f60d7f74d0ba3",
+          "aiPublicGuideTopic": "한 장에 들어올 수 있는 양",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 자르는 일에서 시작한다",
+          "section": "1.2 담는 것과 자르는 것",
+          "primaryConcepts": [
+            "포함과 배제"
+          ],
+          "secondaryConcepts": [
+            "가장자리"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배제된 요소가 가장자리의 절단 흔적을 통해 화면 밖의 존재를 암시한다는 점을 다룬다. 절단을 의도적으로 남겨 개방감을 만드는 기법과 가장자리를 비워 닫힌 화면을 만드는 대비를 제시하고, 가장자리가 처리 대상이라는 관점을 세운다.",
+          "aiAnalysisInputSha256": "08bea72d6f27159f22a2f9829fc92b177546cb0561e4159bbff6cca12d0529d1",
+          "aiPublicGuideTopic": "빼기로 한 것이 남기는 자국",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 자르는 일에서 시작한다",
+          "section": "1.3 화면의 가장자리",
+          "primaryConcepts": [
+            "가장자리"
+          ],
+          "secondaryConcepts": [
+            "포함과 배제"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "화면 가장자리가 미세한 이동에 민감하게 반응하고 절단된 요소가 시선을 끌어당긴다는 점을 설명한다. 촬영 전 네 변을 훑는 점검 습관과, 절반만 걸린 상태를 피해 완전히 배제하거나 포함하는 세 가지 정리 방법을 제시한다.",
+          "aiAnalysisInputSha256": "a7de5a7925c7837a1474b61abbd5afac37a9e52261e68eab37f1ad48b71f791f",
+          "aiPublicGuideTopic": "네 변 가까이에서 일어나는 일",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 자르는 일에서 시작한다",
+          "section": "1.3 화면의 가장자리",
+          "primaryConcepts": [
+            "가장자리"
+          ],
+          "secondaryConcepts": [
+            "프레이밍"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "가장자리에 수직 요소를 두어 화면을 닫는 처리와 개방된 변으로 시선을 유출시키는 처리를 대비한다. 세 변을 닫고 한 변만 여는 배치로 시선의 출구를 단일화하는 기법과, 여는 방향에 따라 사진이 암시하는 시간이 달라진다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "a2f64b6bf7672d2d6f7d6413de09e6488ebccbf469d6c4dd1bd4bf4d857f79d6",
+          "aiPublicGuideTopic": "화면을 여닫는 장치로서의 가장자리",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 자르는 일에서 시작한다",
+          "section": "1.4 시선의 방향",
+          "primaryConcepts": [
+            "응시선"
+          ],
+          "secondaryConcepts": [
+            "프레이밍",
+            "가장자리"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 인물을 화면 좌우에 각각 배치해 시선 방향 앞의 여백 유무를 비교한 도표다. 시선 방향에 공간이 있는 경우와 가장자리에 막힌 경우를 점선 화살표와 채색으로 구분해, 응시 방향이 화면 내 여백 배분을 요구한다는 점을 보인다.",
+          "aiAnalysisInputSha256": "384faad6f8cda78f8567d78b8d80d9a73d78fde9a30e1c15bd4fa58536634b5d",
+          "aiPublicGuideTopic": "인물이 보는 쪽에 남긴 여백을 비교한 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 자르는 일에서 시작한다",
+          "section": "1.4 시선의 방향",
+          "primaryConcepts": [
+            "응시선"
+          ],
+          "secondaryConcepts": [
+            "네거티브 스페이스"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인물의 응시 방향이 관람자의 시선 이동을 유도하며 그 방향에 여백을 배정해야 한다는 원칙을 설명한다. 동일한 여백이 시선 앞과 뒤에서 다르게 지각된다는 점, 규칙을 의도적으로 위반할 때는 분명해야 한다는 조건, 그리고 여백 배정이 구도 결정에 선행한다는 순서를 제시한다.",
+          "aiAnalysisInputSha256": "160f688400fa5d66c1fef74311200bb1b7f641040c41850a9f8ea3d33ec62a2e",
+          "aiPublicGuideTopic": "사람이 보는 곳으로 시선이 따라간다는 점",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "1장 자르는 일에서 시작한다",
+          "section": "1.5 빈자리",
+          "primaryConcepts": [
+            "네거티브 스페이스"
+          ],
+          "secondaryConcepts": [
+            "프레이밍"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "빈 영역을 잔여가 아니라 의도적으로 확보하는 구성 요소로 규정한다. 여백이 대상을 부각하고 시각적 휴지를 만든다는 기능, 여백이 놓일 위치가 의미를 가져야 한다는 조건, 그리고 촬영 단계의 여백과 사후 크롭으로 만든 여백이 다르게 지각된다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "9dc99afaa404065cb5bab88cf796dcede1bf36cb80fe5085e2d669e0ea35bf1b",
+          "aiPublicGuideTopic": "아무것도 없는 부분이 하는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "1장 자르는 일에서 시작한다",
+          "section": "1.5 빈자리",
+          "primaryConcepts": [
+            "네거티브 스페이스"
+          ],
+          "secondaryConcepts": [
+            "응시선"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "여백의 크기가 주제의 무게를 조절한다는 관계를 설명한다. 인물 중심인지 장소 중심인지에 따라 여백 폭이 달라진다는 기준과, 여백은 물리적 공백이 아니라 시선을 붙들지 않는 저정보 영역이라는 정의, 그리고 작은 고휘도 요소가 여백 기능을 깨뜨린다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "87d65ff0cac66d5800ae8cc44434e5bf190cca0507e65256f230cb8158d0e001",
+          "aiPublicGuideTopic": "빈자리의 크기를 정하는 일",
+          "estimatedReadingSeconds": 95,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 무엇을 뺄 것인가",
+          "section": "2.1 뺄 것을 고르는 기준",
+          "primaryConcepts": [
+            "배제의 기준"
+          ],
+          "secondaryConcepts": [
+            "포함과 배제",
+            "프레이밍"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배제 판단을 감각이 아니라 기준으로 바꾸는 방법으로 주제 문장을 적고 그 문장에 쓰이지 않는 요소를 제거하는 절차를 제시한다. 장소와 시간을 알리는 맥락 요소는 예외로 남긴다는 단서와, 판단이 서지 않을 때 두 버전을 촬영해 사후에 고르는 실무를 함께 다룬다.",
+          "aiAnalysisInputSha256": "887d6a8fa7751e05058caec9dd7b1b1c828948c300c9eda1632581b5e738e3ee",
+          "aiPublicGuideTopic": "무엇을 빼야 할지 판단하는 방법",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 무엇을 뺄 것인가",
+          "section": "2.1 뺄 것을 고르는 기준",
+          "primaryConcepts": [
+            "배제의 기준"
+          ],
+          "secondaryConcepts": [
+            "가장자리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배제를 실행하는 두 수단인 프레임 축소와 촬영 위치 이동을 비교한다. 이동이 대상 크기를 유지하면서 특정 요소만 제외할 수 있으나 다른 요소들의 관계를 함께 바꾼다는 점, 그리고 높이 변화가 배경 전환에 특히 효과적이라는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "54df82d1e1e41797dcfd9abc749acde1ab5f77998c04378d33899229141a7d6e",
+          "aiPublicGuideTopic": "빼기 위해 움직이는 방법",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 무엇을 뺄 것인가",
+          "section": "2.2 가장자리에서 잘리는 것",
+          "primaryConcepts": [
+            "경계 처리"
+          ],
+          "secondaryConcepts": [
+            "가장자리",
+            "배제의 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 부수 요소를 절반만 걸치게 둔 경우와 완전히 배제하거나 포함한 경우를 비교한 도표다. 절반 절단에서만 시선 유도 화살표를 그려, 미완성 형태가 관람자의 주의를 빼앗는다는 점과 두 극단 중 하나를 택해야 한다는 원칙을 보인다.",
+          "aiAnalysisInputSha256": "019898a0ec43f8ca1d387ce1343c07cc32e1ace941f47e2bd0b2dcc214cc3e1c",
+          "aiPublicGuideTopic": "같은 대상을 세 가지로 자른 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 무엇을 뺄 것인가",
+          "section": "2.2 가장자리에서 잘리는 것",
+          "primaryConcepts": [
+            "경계 처리"
+          ],
+          "secondaryConcepts": [
+            "프레이밍"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "가장자리 절단 위치가 인상에 미치는 영향을 관절 회피 원칙으로 설명하고, 형태가 변하는 지점을 피해 연속 구간에서 자르는 규칙을 사물에도 확장한다. 잔여 부분이 식별 가능해야 한다는 조건과, 사전에 절단 구간을 정해 두는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "e111ee176dc01f9f8cd971215b159b5c585172204a5c02a451fc5a82246126e6",
+          "aiPublicGuideTopic": "잘리는 자리를 고르는 일",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 무엇을 뺄 것인가",
+          "section": "2.3 앞과 뒤",
+          "primaryConcepts": [
+            "겹침과 층"
+          ],
+          "secondaryConcepts": [
+            "배제의 기준",
+            "네거티브 스페이스"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "겹침이 평면 화면에 깊이를 만드는 기본 수단이라는 점과 겹침의 과부족이 각각 평면화와 판독 불가를 낳는다는 상충을 다룬다. 우연한 배경 겹침이 촬영 시점에 잘 인지되지 않는다는 문제와, 인물 주변을 훑는 사전 점검 습관을 제시한다.",
+          "aiAnalysisInputSha256": "19b49b12b6826aa13061ce3268dc02a602c01f6e72fca1485000fa2b926f2775",
+          "aiPublicGuideTopic": "평면 위에서 앞뒤가 만들어지는 방식",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "2장 무엇을 뺄 것인가",
+          "section": "2.3 앞과 뒤",
+          "primaryConcepts": [
+            "겹침과 층"
+          ],
+          "secondaryConcepts": [
+            "응시선"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "화면을 전경·중경·배경 세 층으로 구획해 겹침을 계획적으로 다루는 방법을 제시한다. 전경의 프레이밍 기능과 배경의 맥락 제공 역할, 배경이 과도하게 선명할 때의 간섭을 설명하고, 층을 의식적으로 배제하는 것과 고려하지 않는 것의 차이를 강조한다.",
+          "aiAnalysisInputSha256": "80b125dafe54ba507cb66e54762b2c876f7146199498a556a6f621ce1f2ee7f8",
+          "aiPublicGuideTopic": "층을 몇 개로 만들 것인가",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "2장 무엇을 뺄 것인가",
+          "section": "2.4 프레임 안의 프레임",
+          "primaryConcepts": [
+            "이중 프레임"
+          ],
+          "secondaryConcepts": [
+            "가장자리",
+            "겹침과 층"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "전경의 둘러싸는 형태로 이중 프레임을 만들어 시선을 집중시키는 기법과 그 형식이 쉽게 상투화된다는 위험을 다룬다. 테두리가 완전히 닫힐 필요가 없다는 점과, 내부 테두리와 화면 네 변 사이 간격의 균등함이 완성도를 좌우한다는 기준을 제시한다.",
+          "aiAnalysisInputSha256": "b00f8c8210dde483e0bad40373254b27be192883e3b3b93768aefb4131aa416a",
+          "aiPublicGuideTopic": "화면 안에 또 하나의 테두리를 두는 방법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "2장 무엇을 뺄 것인가",
+          "section": "2.4 프레임 안의 프레임",
+          "primaryConcepts": [
+            "이중 프레임"
+          ],
+          "secondaryConcepts": [
+            "네거티브 스페이스"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이중 프레임의 테두리 영역이 여백 기능을 겸한다는 점을 설명한다. 테두리에 세부가 남으면 시선을 붙들어 여백 역할을 잃으므로 노출이나 각도로 세부를 줄이고, 안팎의 밝기 차를 크게 확보해야 테두리로 읽힌다는 실무 기준을 제시한다.",
+          "aiAnalysisInputSha256": "c72e0e165bad9439354a492383ef9ac244c052e19cd1e874557fe22786181852",
+          "aiPublicGuideTopic": "테두리와 빈자리를 함께 쓰는 일",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 시선이 만드는 방향",
+          "section": "3.1 사람이 보는 곳",
+          "primaryConcepts": [
+            "응시의 힘"
+          ],
+          "secondaryConcepts": [
+            "응시선",
+            "겹침과 층"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "화면 내 인물의 눈이 가장 강한 주목 대상이며 그 응시 방향이 구도의 다른 요소를 압도한다는 점을 설명한다. 카메라를 직시하는 시선이 관람자와의 관계를 바꾼다는 차이와, 성격이 다른 두 유형을 한 묶음에 섞지 않는다는 편집 원칙을 제시한다.",
+          "aiAnalysisInputSha256": "b57c89aaf589730688bb273b84161fb3fabe511f26c9f9b8033cc01a6c2077b6",
+          "aiPublicGuideTopic": "화면 안의 시선이 가장 강한 이유",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 시선이 만드는 방향",
+          "section": "3.1 사람이 보는 곳",
+          "primaryConcepts": [
+            "응시의 힘"
+          ],
+          "secondaryConcepts": [
+            "프레이밍"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복수 인물의 시선이 동일 방향으로 정렬될 때와 분산될 때의 차이를 설명한다. 상호 응시가 두 인물 사이의 빈 공간을 화면의 중심으로 만든다는 점, 그리고 프레임 조정의 목표가 인원 감축이 아니라 시선 방향 수의 감소라는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "c3cfd3b5d16fb94b7d666887a804117a9e7e48e3cfef85dc83f44d5225322018",
+          "aiPublicGuideTopic": "여러 사람의 시선이 있을 때",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 시선이 만드는 방향",
+          "section": "3.2 시선이 만드는 방향",
+          "primaryConcepts": [
+            "시선 유도"
+          ],
+          "secondaryConcepts": [
+            "응시의 힘",
+            "네거티브 스페이스"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "화면 내 사선 요소가 시선을 주제까지 안내하는 경우와 그런 유도선 없이 산재한 요소들 사이를 헤매는 경우를 점선 경로로 비교한 도표다. 주제의 위치를 동일하게 두고 경로의 직진성과 굴절만 달리해 유도 구조의 효과를 보인다.",
+          "aiAnalysisInputSha256": "a077fc0ee67aea481849c278a0f3638d64d47d84afb030c1a6027308ea0e850c",
+          "aiPublicGuideTopic": "화면 안의 선과 시선이 눈을 이끄는 경로를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 시선이 만드는 방향",
+          "section": "3.2 시선이 만드는 방향",
+          "primaryConcepts": [
+            "시선 유도"
+          ],
+          "secondaryConcepts": [
+            "가장자리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "화면 내 선형 요소가 시선을 유도한다는 원리와 주제를 향하지 않는 강한 선이 방해가 된다는 점을 설명한다. 촬영 위치와 각도로 선의 방향을 조정하는 방법, 그리고 명암과 색의 변화가 가시적 선을 대체할 수 있다는 확장을 제시한다.",
+          "aiAnalysisInputSha256": "349e8451369fc987ccf1aa4a25f60ffe900f5b2800b67e1008c2cfda91b349b5",
+          "aiPublicGuideTopic": "선을 써서 시선을 이끄는 방법",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "3장 시선이 만드는 방향",
+          "section": "3.3 움직임의 여백",
+          "primaryConcepts": [
+            "진행 방향 여백"
+          ],
+          "secondaryConcepts": [
+            "네거티브 스페이스",
+            "응시선"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이동하는 대상의 진행 방향에 여백을 배정하는 원칙과 그 크기를 속도에 비례시키는 기준을 다룬다. 시선 방향과 이동 방향이 충돌할 때 시선을 우선한다는 판단, 그리고 규칙을 의도적으로 위반할 때 반대편 여백으로 균형을 맞춘다는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "5c1f1352d7212f14e62189dac13e60b085b6263684fcae735a4ad8aa8bbc5ae6",
+          "aiPublicGuideTopic": "달리는 것 앞에 두는 공간",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "3장 시선이 만드는 방향",
+          "section": "3.3 움직임의 여백",
+          "primaryConcepts": [
+            "진행 방향 여백"
+          ],
+          "secondaryConcepts": [
+            "프레이밍"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정지한 대상에서도 기울기와 형태가 방향성을 만들어 여백을 요구한다는 점을 다룬다. 화면 내 방향들이 대체로 일치해야 하며 상충하는 강한 방향은 배제하는 편이 낫다는 판단과, 시선·이동·기울기·선을 모두 방향 표시로 읽는 접근을 제시한다.",
+          "aiAnalysisInputSha256": "10cb9c993eb0ce5471349079622673b5ff009dd98282bd88568ebabca2a210f4",
+          "aiPublicGuideTopic": "멈춘 것에서도 방향이 보이는 경우",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "3장 시선이 만드는 방향",
+          "section": "3.4 마주 보는 시선",
+          "primaryConcepts": [
+            "시선의 관계"
+          ],
+          "secondaryConcepts": [
+            "응시의 힘",
+            "시선 유도"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "상호 응시가 두 인물 사이의 빈 공간을 시각적 중심으로 만든다는 점을 설명한다. 실제 거리보다 촬영 각도가 지각되는 간격을 크게 좌우한다는 사실을 들고, 각도 선택이 관계에 대한 해석 행위라는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "86047c48d20bf984e84ac35dc75c44142d4f092e1f60e88828ef1e777d3212d6",
+          "aiPublicGuideTopic": "두 사람 사이에 생기는 자리",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "3장 시선이 만드는 방향",
+          "section": "3.4 마주 보는 시선",
+          "primaryConcepts": [
+            "시선의 관계"
+          ],
+          "secondaryConcepts": [
+            "겹침과 층"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "응시 대상이 프레임 바깥에 있을 경우의 개방성과 그 대상을 포함했을 때의 명확성을 대비한다. 대상의 일부만 노출하는 중간 단계들을 제시하고, 적정 노출 정도가 관람자의 사전 지식과 사진이 놓이는 맥락에 따라 달라진다는 점을 설명한다.",
+          "aiAnalysisInputSha256": "781949c6d1641d9199c07d0ae9d4227d3fb9c93178042501277d2cfd429ec4f7",
+          "aiPublicGuideTopic": "시선이 화면 밖을 향할 때",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 찍은 뒤에 고르기",
+          "section": "4.1 잘라 내기",
+          "primaryConcepts": [
+            "크롭"
+          ],
+          "secondaryConcepts": [
+            "포함과 배제",
+            "프레이밍"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "촬영 후 크롭이 배제만 가능하고 포함은 불가능하다는 비대칭을 설명한다. 사후 조정 여지를 남기는 촬영 관행과 과도한 여유가 해상도 손실을 낳는다는 균형, 그리고 사후 수정 의존이 현장 판단을 느슨하게 만든다는 부작용을 다룬다.",
+          "aiAnalysisInputSha256": "81aa53cc2ee43b4af92c3dcf82f9cb281ef695f6022686134b60210240c9e90c",
+          "aiPublicGuideTopic": "찍은 뒤에 프레임을 다시 정하는 일",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 찍은 뒤에 고르기",
+          "section": "4.1 잘라 내기",
+          "primaryConcepts": [
+            "크롭"
+          ],
+          "secondaryConcepts": [
+            "가장자리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "크롭이 주제 위치·여백 크기·가장자리 구성·화면 비율을 동시에 바꾼다는 점을 설명한다. 새로 생긴 절단선을 재점검해야 하는 이유와, 제거 대상 결정과 비율·여백 조정을 두 단계로 나누어 수행하는 절차를 제시한다.",
+          "aiAnalysisInputSha256": "0d12f0369d391c38b9113d0fdeaaf6e57023ef8a961fb3bb4f8ef46c00a14ee9",
+          "aiPublicGuideTopic": "자르면서 바뀌는 것들",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 찍은 뒤에 고르기",
+          "section": "4.2 비율 바꾸기",
+          "primaryConcepts": [
+            "화면 비율"
+          ],
+          "secondaryConcepts": [
+            "크롭",
+            "네거티브 스페이스"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 인물 배치를 가로형·정방형·세로형 세 비율로 자른 결과를 비교한 도표다. 인물의 크기와 방향을 고정하고 화면 비율만 달리해, 비율 선택이 시선 방향 앞의 여백 배분을 직접 바꾼다는 점을 채색으로 보인다.",
+          "aiAnalysisInputSha256": "93e9564a1d4d4c00d3fda1ab8b6876e6c65be2d037a33ec3f82fd3b765b08e84",
+          "aiPublicGuideTopic": "같은 사진을 세 비율로 자른 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 찍은 뒤에 고르기",
+          "section": "4.2 비율 바꾸기",
+          "primaryConcepts": [
+            "화면 비율"
+          ],
+          "secondaryConcepts": [
+            "프레이밍"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "가로형과 세로형 화면이 각각 수평·수직 시선 이동과 대응한다는 원리를 설명한다. 정방형이 방향성을 만들지 않아 중앙 배치와 균형에 민감해진다는 특성, 그리고 비율을 촬영 전에 정해야 필요한 여백을 확보할 수 있다는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "583a02f38415002025659b87861832175297535391958b623d50183f06916cfb",
+          "aiPublicGuideTopic": "가로와 세로가 만드는 차이",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "4장 찍은 뒤에 고르기",
+          "section": "4.3 현장과 사후의 차이",
+          "primaryConcepts": [
+            "촬영과 크롭"
+          ],
+          "secondaryConcepts": [
+            "크롭",
+            "겹침과 층"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "크롭으로 조정 가능한 범위가 화면 경계에 한정되며 겹침·원근·조명은 촬영 시점에 확정된다는 구분을 제시한다. 이 구분에 따라 현장에서 시간을 배분해야 한다는 실무 원칙과, 우연한 겹침이 사후 보정으로 해결되지 않는다는 사례를 다룬다.",
+          "aiAnalysisInputSha256": "ed987af80c96d85c81337c8df04d324e572cb0b6572289277b1ac3c693b3d144",
+          "aiPublicGuideTopic": "자를 수 없는 것이 무엇인가",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "4장 찍은 뒤에 고르기",
+          "section": "4.3 현장과 사후의 차이",
+          "primaryConcepts": [
+            "촬영과 크롭"
+          ],
+          "secondaryConcepts": [
+            "배제의 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사후 보정 가능성에 대한 기대가 현장 판단을 유예시키고 그 유예가 회복되지 않는다는 점을 다룬다. 프레임·가장자리·겹침을 확인하는 절차의 습관화와, 복수 버전 촬영과 판단 유예의 차이, 그리고 촬영 후 회고를 통한 개선 방법을 제시한다.",
+          "aiAnalysisInputSha256": "21dda9f788558f7cf3b6cdbc0e84b5bb6a5cbe4959dce1177ce94cba06d1eb63",
+          "aiPublicGuideTopic": "고칠 수 있다는 생각이 만드는 습관",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "4장 찍은 뒤에 고르기",
+          "section": "4.4 여백을 다시 나누기",
+          "primaryConcepts": [
+            "여백 배분"
+          ],
+          "secondaryConcepts": [
+            "네거티브 스페이스",
+            "화면 비율"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "크롭 시 주제 위치·여백 크기·비율의 결정 순서를 제시하고 순서를 뒤집을 때의 문제를 설명한다. 여백을 한쪽으로 몰아 방향을 만드는 기법과, 사후 확보 가능한 여백에 해상도상의 한계가 있어 촬영 단계의 확보가 유리하다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "6cbc98e38e63bae34b896f1d6226d797e00ad8de9bcced8b1e4095efa40c6725",
+          "aiPublicGuideTopic": "자를 때 여백을 정하는 순서",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "4장 찍은 뒤에 고르기",
+          "section": "4.4 여백을 다시 나누기",
+          "primaryConcepts": [
+            "여백 배분"
+          ],
+          "secondaryConcepts": [
+            "시선 유도"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "여백의 위치가 인물의 방향성 해석을 바꾼다는 점에서 크롭이 의미를 결정하는 행위임을 설명한다. 동일 원본에서 상이한 해석을 만들 수 있다는 가능성과, 원본이 담지 않은 주장을 만들 위험을 지적하며 원본과의 대조 검토를 제시한다.",
+          "aiAnalysisInputSha256": "2a2d8f71dc3a18bb30558b91d1d8b5e7d05c36ba24e510ceffa9bdae973580d0",
+          "aiPublicGuideTopic": "여백이 방향을 바꾸는 경우",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 여러 장으로 말하기",
+          "section": "5.1 한 장과 여러 장",
+          "primaryConcepts": [
+            "연작"
+          ],
+          "secondaryConcepts": [
+            "프레이밍",
+            "배제의 기준"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단일 사진의 자기 완결성과 연작에서의 상호 보완을 대비한다. 앞선 사진이 제공한 정보를 반복하는 사진이 제외 대상이 된다는 기준과, 연작 구성이 우수한 사진의 수집이 아니라 서로 다른 역할의 배치라는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "f188100ee287fb75d27e99266a7f5aa6c1b266f46a0897f82210690ab0c9987b",
+          "aiPublicGuideTopic": "여러 장이 함께 놓일 때 달라지는 것",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 여러 장으로 말하기",
+          "section": "5.1 한 장과 여러 장",
+          "primaryConcepts": [
+            "연작"
+          ],
+          "secondaryConcepts": [
+            "포함과 배제"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연작 내에서 프레임 크기를 교차시켜 관람 리듬을 만드는 방법을 다룬다. 동일 크기 반복이 초래하는 단조로움과 넓은 화면의 삽입 효과, 교차에도 규칙이 필요하다는 점, 그리고 크기 분포가 연작의 주제를 드러낸다는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "7a91019ca298cebd9a60d22950e44a183cb4dca39aded7159ce052aea9961d7e",
+          "aiPublicGuideTopic": "묶음 안에서 프레임을 다르게 잡는 일",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 여러 장으로 말하기",
+          "section": "5.2 순서 정하기",
+          "primaryConcepts": [
+            "시퀀스"
+          ],
+          "secondaryConcepts": [
+            "연작",
+            "프레이밍"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 세 장의 사진을 두 가지 순서로 배열해 시퀀스가 만드는 의미 차이를 보인 도표다. 넓은 장면에서 세부로 좁혀 가는 배열과 그 역순을 나란히 놓아, 개별 사진이 아니라 순서가 이야기를 만든다는 점을 나타낸다.",
+          "aiAnalysisInputSha256": "be28265a92fa042133d2b7a65df8172a561eb01200f2062c8d26a7260200e2ec",
+          "aiPublicGuideTopic": "같은 세 장을 다른 순서로 놓은 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "5장 여러 장으로 말하기",
+          "section": "5.2 순서 정하기",
+          "primaryConcepts": [
+            "시퀀스"
+          ],
+          "secondaryConcepts": [
+            "연작"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인접 사진이 서로의 해석을 바꾼다는 점을 빈 의자 사례로 설명하고, 배열 작업이 촬영에 준하는 영향력을 갖는다는 관점을 제시한다. 시간·거리·밝기 가운데 하나를 축으로 삼는 배열 원칙과, 규칙을 한두 번 의도적으로 깨는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "68c63db3bd7b41688b599d02612ac3c584b6140647b0ac4feba3e721dbe33d9a",
+          "aiPublicGuideTopic": "앞뒤가 뜻을 바꾸는 방식",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "5장 여러 장으로 말하기",
+          "section": "5.3 반복과 변주",
+          "primaryConcepts": [
+            "반복과 변주"
+          ],
+          "secondaryConcepts": [
+            "시퀀스",
+            "연작"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 형식의 반복이 차이를 부각하는 구조를 만든다는 점과 그 지속 한계를 다룬다. 형식 파괴 사진을 하나만 배치해야 반복 구조가 유지된다는 원칙과, 반복 구간의 적정 길이가 전시·게재 맥락에 따라 달라진다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "29cf821bc67c4a45ffd4705f3f48845f9239ac8d7c5c2ed94b02b0ae593f0849",
+          "aiPublicGuideTopic": "같은 형식을 여러 번 쓰는 방법",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "5장 여러 장으로 말하기",
+          "section": "5.3 반복과 변주",
+          "primaryConcepts": [
+            "반복과 변주"
+          ],
+          "secondaryConcepts": [
+            "화면 비율"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복 형식을 유지하기 위해 거리·높이·비율·시간대 등의 기준을 문서화하고 기준 사진을 참조하는 방법을 제시한다. 고정 항목을 최소화해 현장의 우연을 남긴다는 원칙과, 고정과 개방의 선택이 곧 연작의 주제 설정이라는 관점을 다룬다.",
+          "aiAnalysisInputSha256": "3d7ba146fd3fdff6ad3c1b9faf2c2610cd73d958e6ba64fbd2d84d20b75007db",
+          "aiPublicGuideTopic": "형식을 유지하는 데 필요한 것",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "5장 여러 장으로 말하기",
+          "section": "5.4 묶음의 크기",
+          "primaryConcepts": [
+            "묶음의 크기"
+          ],
+          "secondaryConcepts": [
+            "연작",
+            "시퀀스"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연작의 장수를 관람 형식에 따른 인내 한계로 결정한다는 기준을 제시한다. 장수가 적을수록 개별 사진의 부담이 커진다는 관계와, 다수에서 줄여 가며 필수 사진의 수를 확인하는 방법이 장수를 먼저 정하는 방식보다 낫다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "32dfa6a8fbf79b9fde286b59803290e5ed6163e7d987a443ff7c03f1422e7326",
+          "aiPublicGuideTopic": "몇 장으로 묶을 것인가",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "5장 여러 장으로 말하기",
+          "section": "5.4 묶음의 크기",
+          "primaryConcepts": [
+            "묶음의 크기"
+          ],
+          "secondaryConcepts": [
+            "반복과 변주"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다수의 사진을 복수 묶음으로 분할하는 기준을 축의 전환 지점에서 찾고, 묶음 사이 여백이 분할을 인지시킨다는 점을 설명한다. 각 묶음의 독립적 성립 여부를 검증하고 미달하는 묶음은 분할 대신 폐기한다는 판단을 제시한다.",
+          "aiAnalysisInputSha256": "f06a1b899b8db07939abf729b4cbc295461f5b94234bf7d023661da5f05570dd",
+          "aiPublicGuideTopic": "묶음을 나누는 일",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "5장 여러 장으로 말하기",
+          "section": "5.5 편집 노트",
+          "primaryConcepts": [
+            "편집 기록"
+          ],
+          "secondaryConcepts": [
+            "묶음의 크기",
+            "크롭"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연작 편집 과정의 판단을 기록하는 항목을 주제 문장·개별 사진의 역할·제외 사진과 사유 셋으로 정리한다. 제외 목록이 다른 묶음에서의 활용을 가능하게 한다는 점과, 분량을 한 장으로 제한해 기록이 유지되게 하는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "4632688527a88b73b7adba92de368068ebb2a845b49fbdc5f785d02ec26eeca6",
+          "aiPublicGuideTopic": "고른 이유를 남기는 일",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "5장 여러 장으로 말하기",
+          "section": "5.5 편집 노트",
+          "primaryConcepts": [
+            "편집 기록"
+          ],
+          "secondaryConcepts": [
+            "여백 배분"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "크롭한 사진의 원본과 결과를 함께 보관하고 절단 사유를 기록해야 재편집이 가능하다는 점을 다룬다. 사후 판단이 뒤집힐 수 있어 원본을 보존하되 관리 부담을 고려해 채택 사진의 원본만 선별 보관한다는 절충을 제시한다.",
+          "aiAnalysisInputSha256": "084588b06a039868fc3c2d0525899cd6ee73f04caae4c5fa05de31a2ff940be7",
+          "aiPublicGuideTopic": "자른 기록을 함께 남기는 일",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 프레임이 감추는 것",
+          "section": "6.1 프레임 밖의 사실",
+          "primaryConcepts": [
+            "맥락 상실"
+          ],
+          "secondaryConcepts": [
+            "프레이밍",
+            "포함과 배제"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 장면에서 두 가지 프레임을 선택했을 때 서로 다른 사실이 전달되는 구조를 넓은 원장면과 두 결과 사진으로 보인 도표다. 점선 프레임과 실선 결과를 함께 배치해 배제가 사실 자체를 바꾸지 않으면서도 전달되는 내용을 바꾼다는 점을 나타낸다.",
+          "aiAnalysisInputSha256": "6dad3aea8fb8c002e2e166dfbb660e0d5570c74ec94be5190576e26d7cb5c988",
+          "aiPublicGuideTopic": "같은 장면을 두 프레임으로 자른 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "6장 프레임이 감추는 것",
+          "section": "6.1 프레임 밖의 사실",
+          "primaryConcepts": [
+            "맥락 상실"
+          ],
+          "secondaryConcepts": [
+            "배제의 기준"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "프레임 축소가 정돈과 함께 이해에 필요한 정보를 제거할 수 있다는 문제를 다룬다. 정돈을 위한 배제와 의미를 바꾸는 배제를 구분하는 기준으로 제거 후에도 동일한 장면으로 남는지를 제시하고, 자기 점검 절차를 설명한다.",
+          "aiAnalysisInputSha256": "ae40d42160a6dd3d2e1cc05730eabb5bf1d0602351e09af74168e5e0f96f8193",
+          "aiPublicGuideTopic": "자르면 사라지는 정보",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "6장 프레임이 감추는 것",
+          "section": "6.2 자르면 달라지는 뜻",
+          "primaryConcepts": [
+            "의미 변형"
+          ],
+          "secondaryConcepts": [
+            "크롭",
+            "맥락 상실"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "크롭이 동일 원본에서 상이한 주장을 만들 수 있다는 힘과 그 경계를 다룬다. 원본이 담은 사실의 범위를 넘어서는지를 기준으로 정리와 왜곡을 가르고, 기록 목적과 작품 목적에서 도구 사용 강도를 달리한다는 실무 원칙을 제시한다.",
+          "aiAnalysisInputSha256": "d4a1c12514ffbf9141b60abca4a057ed856527bb6ed631bc52b4180f51c079d1",
+          "aiPublicGuideTopic": "사후 선택이 만드는 주장",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "6장 프레임이 감추는 것",
+          "section": "6.2 자르면 달라지는 뜻",
+          "primaryConcepts": [
+            "의미 변형"
+          ],
+          "secondaryConcepts": [
+            "시퀀스"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배열과 인접이 사진들 사이에 없던 관계를 생성한다는 점과 그것이 기록에서 갖는 위험을 다룬다. 촬영 시간과 장소를 병기해 시간순 오독을 줄이는 방법과, 작품 묶음에서도 최소 정보를 후미에 배치하는 절충을 제시한다.",
+          "aiAnalysisInputSha256": "823ed96c15a8091d0a4a4ad09f30fcc7902d39b95f588397dbba47d3c8989f9f",
+          "aiPublicGuideTopic": "묶음이 만드는 뜻의 변형",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "6장 프레임이 감추는 것",
+          "section": "6.3 보는 사람의 채움",
+          "primaryConcepts": [
+            "관람자 해석"
+          ],
+          "secondaryConcepts": [
+            "네거티브 스페이스",
+            "맥락 상실"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관람자가 프레임 밖을 상상으로 보완하며 그 내용이 개인마다 달라 다의성이 발생한다는 점을 설명한다. 정보를 추가해 해석을 좁히는 방법과 다의성을 의도적으로 유지하는 선택을 대비하고, 방향을 먼저 정하지 않으면 어느 쪽도 달성되지 않는다는 점을 지적한다.",
+          "aiAnalysisInputSha256": "ef8210d9496a266e882aeadd8360a664da5832ec5e5dfb34c450624170827ab2",
+          "aiPublicGuideTopic": "빠진 것을 상상으로 메우는 일",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 51,
+          "chapter": "6장 프레임이 감추는 것",
+          "section": "6.3 보는 사람의 채움",
+          "primaryConcepts": [
+            "관람자 해석"
+          ],
+          "secondaryConcepts": [
+            "연작"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "설명 텍스트가 해석 범위를 좁히며 사진의 일부로 작동한다는 점을 다룬다. 일부에만 설명을 붙일 때 생기는 위계, 설명 길이에 따른 관람 순서 변화, 그리고 짧은 캡션과 후미의 상세 정보를 분리하는 배치를 제시한다.",
+          "aiAnalysisInputSha256": "74e0fd9dc0ea106df1cfde52b85410c95639b16cedbdef12a3e3830180c2594a",
+          "aiPublicGuideTopic": "설명을 붙일 것인가",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            50
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 52,
+          "chapter": "7장 결론: 사진은 고르는 일이다",
+          "section": "7.1 사진은 고르는 일이다",
+          "primaryConcepts": [
+            "프레이밍"
+          ],
+          "secondaryConcepts": [
+            "배제의 기준",
+            "크롭"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "여섯 장의 논의를 사진이 감산적 선택 행위라는 하나의 명제로 묶어 정리한다. 촬영·크롭·편집이 같은 판단의 다른 단계라는 관점과 선택에 수반되는 배제의 책임, 그리고 고정된 구도 공식이 성립하지 않는 이유를 설명한다.",
+          "aiAnalysisInputSha256": "c86b670ee19961dd87428a1e765eab9da776a060bb0c6fb0b8722811df93de14",
+          "aiPublicGuideTopic": "책 전체를 지나온 뒤 다시 보는 프레임",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "photo-is-choosing"
+          ]
+        },
+        {
+          "pageNumber": 53,
+          "chapter": "7장 결론: 사진은 고르는 일이다",
+          "section": "7.1 사진은 고르는 일이다",
+          "primaryConcepts": [
+            "프레이밍"
+          ],
+          "secondaryConcepts": [
+            "편집 기록",
+            "관람자 해석"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선택의 결과만 남고 근거는 소실된다는 문제에서 단계별 기록의 필요를 정리한다. 촬영·크롭·편집 각 단계에서 남길 항목과 분량 제한을 제시하고, 기록이 인수인계뿐 아니라 제작자 자신의 반복 개선을 위한 것임을 밝힌다.",
+          "aiAnalysisInputSha256": "75c7a163f6b63b0ef162566463d3447bf5c86e65c7b3fe55e4cd72f61ff85d01",
+          "aiPublicGuideTopic": "고른 이유를 남기는 일",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            52
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 54,
+          "chapter": "7장 결론: 사진은 고르는 일이다",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "촬영 점검"
+          ],
+          "secondaryConcepts": [
+            "가장자리",
+            "겹침과 층"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "촬영 직전에 적용할 다섯 가지 점검 질문을 순서대로 제시한다. 주제 문장으로 배제 기준을 세우고 가장자리와 우연한 겹침을 확인하며 방향성 여백을 검토하는 절차를 정리하고, 사후 보정이 불가능한 항목을 우선한다는 근거를 밝힌다.",
+          "aiAnalysisInputSha256": "9201aa77d29cef624eb75a469b78985e9abaf2daa47c11d51d93e62b3e596977",
+          "aiPublicGuideTopic": "셔터를 누르기 전에 차례로 던질 물음",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            52
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 55,
+          "chapter": "7장 결론: 사진은 고르는 일이다",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "촬영 점검"
+          ],
+          "secondaryConcepts": [
+            "여백 배분",
+            "묶음의 크기"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도입부의 프레이밍 장면을 첫 번째 선택으로 재해석하며 책을 닫는다. 촬영·크롭·편집 각 단계에서 조정 가능한 항목이 다르다는 실용적 요지를 정리하고, 시간을 둔 뒤에도 주제를 한 문장으로 말할 수 있는지를 완료 판정 기준으로 제시한다.",
+          "aiAnalysisInputSha256": "58a26f7e95609d99d925b8a548949bbb207dced07fe6663c21dd79b5e489ad9d",
+          "aiPublicGuideTopic": "첫 장면으로 돌아가는 마무리",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            54
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 71,
       "title": "요청과 응답: 서버 처리의 구조",
       "pdfPath": "pdfs/book-071.pdf",
