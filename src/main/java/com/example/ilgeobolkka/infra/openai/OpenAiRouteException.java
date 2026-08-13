@@ -4,7 +4,7 @@ public final class OpenAiRouteException extends RuntimeException {
 
     private final Failure failure;
 
-    OpenAiRouteException(Failure failure) {
+    public OpenAiRouteException(Failure failure) {
         super(failure.message());
         this.failure = failure;
     }

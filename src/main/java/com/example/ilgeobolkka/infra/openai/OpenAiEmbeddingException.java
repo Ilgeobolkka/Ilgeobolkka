@@ -4,7 +4,7 @@ public final class OpenAiEmbeddingException extends RuntimeException {
 
     private final Failure failure;
 
-    OpenAiEmbeddingException(Failure failure) {
+    public OpenAiEmbeddingException(Failure failure) {
         super(failure.message());
         this.failure = failure;
     }

@@ -531,6 +531,14 @@ class AiRouteGenerationStartMySqlIntegrationTest {
                 () -> startService.start(READER_ID, null, 명령(PURPOSE)));
     }
 
+    @Test
+    void 외부_호출_마감_시각이_없으면_거부한다() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> startService.startBefore(
+                        READER_ID, UUID.randomUUID(), 명령(PURPOSE), null));
+    }
+
     // --- 동시 실행 ---------------------------------------------------------
 
     /**

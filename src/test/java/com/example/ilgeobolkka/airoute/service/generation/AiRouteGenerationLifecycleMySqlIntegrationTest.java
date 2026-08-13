@@ -276,6 +276,44 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
     }
 
     @Test
+    void ROUTE_완료_transaction이_rollback되면_상태와_항목을_모두_복구한다() {
+        UUID generationId = 생성을_시작한다();
+        clock.set(COMPLETED_AT);
+
+        assertThrows(
+                IllegalStateException.class,
+                () -> transactionTemplate.executeWithoutResult(status -> {
+                    lifecycleService.completeWithRoute(generationId, 두_항목());
+                    throw new IllegalStateException("테스트용 rollback");
+                }));
+
+        assertAll(
+                () -> assertEquals("GENERATING", 생성을_조회한다(generationId).get("status")),
+                () -> assertEquals(0, 항목_수를_조회한다(generationId)));
+    }
+
+    @Test
+    void FAILED_완료_transaction이_rollback되면_GENERATING으로_복구한다() {
+        UUID generationId = 생성을_시작한다();
+        clock.set(COMPLETED_AT);
+
+        assertThrows(
+                IllegalStateException.class,
+                () -> transactionTemplate.executeWithoutResult(status -> {
+                    lifecycleService.fail(
+                            generationId, AiRouteGenerationCleanupService.TIMEOUT_FAILURE_CODE);
+                    throw new IllegalStateException("테스트용 rollback");
+                }));
+
+        Map<String, Object> row = 생성을_조회한다(generationId);
+        assertAll(
+                () -> assertEquals("GENERATING", row.get("status")),
+                () -> assertNull(row.get("failure_code")),
+                () -> assertNull(row.get("completed_at")),
+                () -> assertNull(row.get("expires_at")));
+    }
+
+    @Test
     void 이미_완료한_생성은_다시_완료할_수_없다() {
         UUID generationId = 생성을_시작한다();
         clock.set(COMPLETED_AT);
