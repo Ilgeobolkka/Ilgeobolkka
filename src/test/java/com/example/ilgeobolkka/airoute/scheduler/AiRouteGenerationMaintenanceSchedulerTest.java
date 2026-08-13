@@ -19,6 +19,7 @@ import org.springframework.boot.test.context.runner.ApplicationContextRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.scheduling.config.TaskManagementConfigUtils;
 
 /**
  * 유지보수 배치가 기능 플래그와 무관하게 등록되는지 확인한다.
@@ -51,6 +52,23 @@ class AiRouteGenerationMaintenanceSchedulerTest {
                             assertThat(context).hasNotFailed();
                             assertThat(context)
                                     .hasSingleBean(AiRouteGenerationMaintenanceScheduler.class);
+                        });
+    }
+
+    /** 일회성 비웹 프로세스에 scheduler thread가 남으면 작업이 끝나도 JVM이 종료되지 않는다. */
+    @ParameterizedTest
+    @ValueSource(strings = {"performance-seed", "content-import"})
+    void 일회성_비웹_프로필에서는_스케줄링을_활성화하지_않는다(String profile) {
+        new ApplicationContextRunner()
+                .withPropertyValues("spring.profiles.active=" + profile)
+                .withUserConfiguration(SchedulerTestConfiguration.class)
+                .run(
+                        context -> {
+                            assertThat(context).hasNotFailed();
+                            assertThat(context)
+                                    .doesNotHaveBean(
+                                            TaskManagementConfigUtils
+                                                    .SCHEDULED_ANNOTATION_PROCESSOR_BEAN_NAME);
                         });
     }
 
