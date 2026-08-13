@@ -216,8 +216,7 @@ public final class AiRouteAssembler {
                 .map(ValidatedRouteItem::pageNumber)
                 .filter(required::contains)
                 .toList();
-        if (orderedRequired.size() != required.size()
-                || !itemsByPageNumber.keySet().containsAll(required)) {
+        if (!itemsByPageNumber.keySet().containsAll(required)) {
             throw new IllegalArgumentException("후보의 선수 페이지가 검증 결과에서 누락되었습니다.");
         }
         return orderedRequired;

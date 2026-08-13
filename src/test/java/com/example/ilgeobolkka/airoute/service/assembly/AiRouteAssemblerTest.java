@@ -87,6 +87,65 @@ class AiRouteAssemblerTest {
                         pages(1)));
     }
 
+    @Test
+    void 소장_깊이_요청은_비소장_권한_사본으로_조립할_수_없다() {
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> assembler.assemble(
+                        independentCandidates(1),
+                        ownedCommand(AiRouteDepth.QUICK),
+                        AiRouteEntitlementSnapshot.forNonOwned(INK_BALANCE, Set.of()),
+                        pages(1)));
+
+        assertEquals("소장 깊이 요청에는 소장 권한 사본이 필요합니다.", exception.getMessage());
+    }
+
+    @Test
+    void 잉크_예산_요청은_소장_권한_사본으로_조립할_수_없다() {
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> assembler.assemble(
+                        independentCandidates(1),
+                        inkCommand(1, INK_BALANCE),
+                        AiRouteEntitlementSnapshot.forOwned(),
+                        pages(1)));
+
+        assertEquals("잉크 예산 요청에는 비소장 권한 사본이 필요합니다.", exception.getMessage());
+    }
+
+    @Test
+    void 검증_결과와_페이지_자료의_페이지_식별자가_다르면_거부한다() {
+        AiRouteAssemblyPage mismatchedPage = new AiRouteAssemblyPage(
+                9999L, 1, "공개 주제 1", 60, List.of());
+
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> assembler.assemble(
+                        independentCandidates(1),
+                        inkCommand(1, INK_BALANCE),
+                        AiRouteEntitlementSnapshot.forNonOwned(INK_BALANCE, Set.of()),
+                        List.of(mismatchedPage)));
+
+        assertEquals("검증 결과와 페이지 자료가 일치하지 않습니다.", exception.getMessage());
+    }
+
+    @Test
+    void 후보의_선수_페이지가_검증_결과에_없으면_거부한다() {
+        ValidatedRouteProposal proposal = proposal(
+                List.of(item(2, false)),
+                Map.of(2, Set.of(1)));
+
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> assembler.assemble(
+                        proposal,
+                        inkCommand(2, INK_BALANCE),
+                        AiRouteEntitlementSnapshot.forNonOwned(INK_BALANCE, Set.of()),
+                        pages(2)));
+
+        assertEquals("후보의 선수 페이지가 검증 결과에서 누락되었습니다.", exception.getMessage());
+    }
+
     @ParameterizedTest
     @EnumSource(AiRouteDepth.class)
     void 소장_경로는_깊이별_페이지_상한과_소장_비용_상태를_적용한다(AiRouteDepth depth) {
@@ -196,6 +255,34 @@ class AiRouteAssemblerTest {
                 pages);
 
         assertEquals(List.of(3, 2), pageNumbers(result));
+    }
+
+    @Test
+    void 선택된_중복_형제를_뒤_후보의_선수로_대체하지_않는다() {
+        ValidatedRouteProposal proposal = proposal(
+                List.of(
+                        item(1, true),
+                        item(2, true),
+                        item(3, true),
+                        item(4, false),
+                        item(5, true),
+                        item(6, false)),
+                Map.of(4, Set.of(1, 2, 3), 6, Set.of(5)));
+        List<AiRouteAssemblyPage> pages = List.of(
+                page(1, 60, List.of()),
+                page(2, 60, List.of()),
+                page(3, 60, List.of("same-concept")),
+                page(4, 60, List.of()),
+                page(5, 60, List.of("same-concept")),
+                page(6, 60, List.of()));
+
+        AiRouteGenerationResult result = assembler.assemble(
+                proposal,
+                ownedCommand(AiRouteDepth.DEEP),
+                AiRouteEntitlementSnapshot.forOwned(),
+                pages);
+
+        assertEquals(List.of(1, 2, 3, 4), pageNumbers(result));
     }
 
     @Test
@@ -385,21 +472,6 @@ class AiRouteAssemblerTest {
         assertThrows(
                 IllegalArgumentException.class,
                 () -> page(1, 60, List.of("same-concept", "same-concept")));
-    }
-
-    @Test
-    void 경로_조립_결과의_상태는_필수다() {
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> new AiRouteGenerationResult(null, List.of(), null, null));
-    }
-
-    @Test
-    void 경로_조립_결과의_항목은_null일_수_없다() {
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> new AiRouteGenerationResult(
-                        Status.ROUTE, null, null, null));
     }
 
     private AiRouteGenerationCommand inkCommand(int budget, int balance) {
