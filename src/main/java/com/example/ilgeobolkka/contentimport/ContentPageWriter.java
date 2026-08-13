@@ -6,6 +6,7 @@ import com.example.ilgeobolkka.contentimport.validation.ValidatedAiRouteContent;
 import com.example.ilgeobolkka.demo.DemoBookCatalog;
 import com.example.ilgeobolkka.demo.DemoBookWriter;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -73,7 +74,7 @@ class ContentPageWriter {
         }
         ContentBatch batch = command.batch();
         Map<Long, Integer> expectedPageCounts = expectedPageCounts(batch);
-        ensureAiBooks(command.content().books());
+        ensureAiBooks(booksInLockOrder(command.content()));
         Map<PageKey, StoredPage> storedPages = loadStoredPages(expectedPageCounts.keySet());
         validateExistingPages(storedPages, batch);
 
@@ -81,6 +82,17 @@ class ContentPageWriter {
         writePages(batch, storedPages);
         updateAiPages(command);
         replacePrerequisites(command.content());
+    }
+
+    /**
+     * manifest 기재 순서 대신 항상 bookId 오름차순으로 {@code book}·{@code ai_route_prerequisite} 행을
+     * 잠근다. 겹치는 도서를 다른 순서로 나열한 manifest끼리 동시에 적재해도 잠금 순서가 엇갈리지 않는다.
+     */
+    private List<ValidatedAiRouteContent.ValidatedBook> booksInLockOrder(
+            ValidatedAiRouteContent content) {
+        return content.books().stream()
+                .sorted(Comparator.comparingLong(ValidatedAiRouteContent.ValidatedBook::bookId))
+                .toList();
     }
 
     private Map<Long, Integer> expectedPageCounts(ContentBatch batch) {
@@ -199,7 +211,7 @@ class ContentPageWriter {
 
     private void updateAiBooks(ValidatedAiRouteContent content) {
         List<Object[]> updates = new ArrayList<>();
-        for (ValidatedAiRouteContent.ValidatedBook book : content.books()) {
+        for (ValidatedAiRouteContent.ValidatedBook book : booksInLockOrder(content)) {
             updates.add(
                     new Object[] {
                         book.title(),
@@ -379,13 +391,14 @@ class ContentPageWriter {
     }
 
     private void replacePrerequisites(ValidatedAiRouteContent content) {
-        for (ValidatedAiRouteContent.ValidatedBook book : content.books()) {
+        List<ValidatedAiRouteContent.ValidatedBook> books = booksInLockOrder(content);
+        for (ValidatedAiRouteContent.ValidatedBook book : books) {
             jdbcTemplate.update(
                     "DELETE FROM ai_route_prerequisite WHERE book_id = ?", book.bookId());
         }
 
         List<Object[]> inserts = new ArrayList<>();
-        for (ValidatedAiRouteContent.ValidatedBook book : content.books()) {
+        for (ValidatedAiRouteContent.ValidatedBook book : books) {
             for (ValidatedAiRouteContent.PrerequisiteEdge edge : book.prerequisiteEdges()) {
                 inserts.add(
                         new Object[] {
