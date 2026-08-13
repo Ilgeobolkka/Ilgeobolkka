@@ -9,17 +9,20 @@ import com.example.ilgeobolkka.airoute.repository.AiReadingRouteRepository;
 import java.time.Clock;
 import java.time.Instant;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@ConditionalOnProperty(prefix = "ai-route", name = "enabled", havingValue = "true")
 public class AiRouteFeedbackFacade {
 
     private final AiReadingRouteRepository aiReadingRouteRepository;
     private final Clock clock;
 
-    @Transactional
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public AiRouteFeedbackResponse changeFeedback(long routeId, long readerId, AiRouteFeedbackRequest request) {
         AiReadingRoute route = aiReadingRouteRepository.findOwnedByIdForUpdate(readerId, routeId)
                 .orElseThrow(() -> new AiRouteNotFoundException(routeId));

@@ -123,8 +123,8 @@ class AiRouteFeedbackApiMySqlIntegrationTest {
                         .content("{\"rating\":\"HELPFUL\"}")
                         .with(authentication(인증된_독자(READER_ID)))
                         .with(csrf()))
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.code").value("INVALID_INPUT"));
+                .andExpect(status().isConflict())
+                .andExpect(jsonPath("$.code").value("AI_ROUTE_NOT_COMPLETED"));
 
         long routeId = ROUTE_ID_BASE + 2;
         완료한_경로를_생성한다(READER_ID, routeId, "재무제표 읽기 2");

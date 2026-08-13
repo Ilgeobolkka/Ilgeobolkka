@@ -50,12 +50,18 @@ public class GlobalExceptionHandler {
         MethodArgumentTypeMismatchException.class,
         ServletRequestBindingException.class,
         HttpMessageNotReadableException.class,
-        HttpMediaTypeNotSupportedException.class,
-        AiRouteNotCompletedException.class
+        HttpMediaTypeNotSupportedException.class
     })
     ResponseEntity<ApiErrorResponse> handleInvalidInput(Exception exception) {
         logFailure(ErrorCode.INVALID_INPUT, exception);
         return response(ErrorCode.INVALID_INPUT);
+    }
+
+    @ExceptionHandler(AiRouteNotCompletedException.class)
+    ResponseEntity<ApiErrorResponse> handleAiRouteNotCompleted(
+            AiRouteNotCompletedException exception) {
+        logFailure(ErrorCode.AI_ROUTE_NOT_COMPLETED, exception);
+        return response(ErrorCode.AI_ROUTE_NOT_COMPLETED);
     }
 
     @ExceptionHandler(PortOneWebhookVerificationException.class)
