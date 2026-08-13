@@ -1,9 +1,9 @@
 package com.example.ilgeobolkka.contentimport;
 
 import com.example.ilgeobolkka.book.entity.BookPageContentType;
+import com.example.ilgeobolkka.contentimport.manifest.AiRouteContentManifest;
 import com.example.ilgeobolkka.contentimport.manifest.ContentManifest;
 import com.example.ilgeobolkka.contentimport.manifest.ContentManifestParser;
-import com.example.ilgeobolkka.contentimport.manifest.AiRouteContentManifest;
 import com.example.ilgeobolkka.contentimport.manifest.InitialContentManifest;
 import com.example.ilgeobolkka.global.config.ContentStorageProperties;
 import java.io.File;
@@ -37,8 +37,7 @@ class ContentBatchConverter {
      * 산출물이 바이트 단위로 같음을 확인한 버전만 넣는다. 목록을 늘리려면 같은 표본을 다시 변환해
      * 비교하고 근거를 남긴 뒤에 넣는다.
      *
-     * <p>한 버전으로 고정하지 않는 것은 배포판마다 시차가 있기 때문이다. Homebrew 는 26.08.0 을 주는데
-     * conda-forge 는 26.07.0 이 최신이라, 하나만 허용하면 로컬과 CI 가 동시에 만족할 수 없다.
+     * <p>한 값으로 고정하지 않는 이유와 목록에 드는 조건은 ADR-0015에 있다.
      */
     private static final List<String> POPPLER_VERSIONS = List.of("26.05.0", "26.08.0");
 
@@ -161,32 +160,24 @@ class ContentBatchConverter {
 
     /**
      * `ai-route-v2`는 권수를 세지 않는다. 확장 중의 부분 집합도 변환할 수 있어야 하므로 manifest에
-     * 든 도서만 그 합계 계약대로 검사한다.
+     * 든 도서를 그대로 가져간다.
      *
-     * <p>페이지 메타데이터·선수 그래프·평가 연결은 C02 검증기가 보므로 여기서 다시 보지 않는다.
-     * 변환이 확인할 것은 도서마다 페이지 수가 있고 중복 bookId가 없다는 것뿐이다.
+     * <p>도서마다의 페이지 수·중복 bookId는 {@code ContentManifestFormatValidator}가 파싱 단계에서
+     * 이미 거부하고, 페이지 메타데이터·선수 그래프·평가 연결은 C02 검증기가 본다. 여기서 다시 보지
+     * 않는다. 변환이 직접 확인할 것은 변환할 도서가 하나라도 있다는 것뿐이다.
      */
     private List<SourceBook> collectAiRoute(AiRouteContentManifest manifest) {
+        if (manifest.books().isEmpty()) {
+            throw new IllegalStateException("AI 경로 manifest에 도서가 없습니다.");
+        }
         List<SourceBook> books = new ArrayList<>(manifest.books().size());
-        Set<Long> bookIds = new HashSet<>();
         for (AiRouteContentManifest.Book book : manifest.books()) {
-            if (book.totalPageCount() < 1) {
-                throw new IllegalStateException(
-                        "AI 경로 manifest 도서의 페이지 수가 없습니다: " + book.bookId());
-            }
-            if (!bookIds.add(book.bookId())) {
-                throw new IllegalStateException(
-                        "AI 경로 manifest에 bookId가 중복됩니다: " + book.bookId());
-            }
             books.add(
                     new SourceBook(
                             book.bookId(),
                             book.pdfPath(),
                             book.pdfSha256(),
                             book.totalPageCount()));
-        }
-        if (books.isEmpty()) {
-            throw new IllegalStateException("AI 경로 manifest에 도서가 없습니다.");
         }
         return books;
     }

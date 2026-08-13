@@ -147,40 +147,6 @@ public class BookPage {
         aiRouteCandidate = true;
     }
 
-    /**
-     * 목차처럼 후보가 아니면서 분석 메타데이터는 가지는 구조 페이지를 채운다.
-     *
-     * <p>임베딩 세 필드는 비운다. DB의 {@code ck_book_page_candidate_metadata}가 후보가 아닌 페이지의
-     * 임베딩을 금지하므로 이 메서드와 제약이 같은 계약이다.
-     */
-    public void updateStructuralPageMetadata(
-            String analysisText,
-            String publicGuideTopic,
-            int estimatedReadingSeconds,
-            List<String> duplicateGroupKeys) {
-        if (analysisText == null
-                || analysisText.isBlank()
-                || publicGuideTopic == null
-                || publicGuideTopic.isBlank()) {
-            throw new IllegalArgumentException("구조 페이지도 분석 텍스트와 공개 가이드는 필수입니다.");
-        }
-        if (estimatedReadingSeconds <= 0) {
-            throw new IllegalArgumentException("예상 독서 시간은 양수여야 합니다.");
-        }
-        if (duplicateGroupKeys == null) {
-            throw new IllegalArgumentException("중복 그룹은 필수입니다.");
-        }
-
-        aiAnalysisText = analysisText;
-        aiPublicGuideTopic = publicGuideTopic;
-        this.estimatedReadingSeconds = estimatedReadingSeconds;
-        this.duplicateGroupKeys = List.copyOf(duplicateGroupKeys);
-        embeddingModel = null;
-        embeddingDimensions = null;
-        embedding = null;
-        aiRouteCandidate = false;
-    }
-
     public void clearAiRouteMetadata() {
         aiAnalysisText = null;
         aiPublicGuideTopic = null;

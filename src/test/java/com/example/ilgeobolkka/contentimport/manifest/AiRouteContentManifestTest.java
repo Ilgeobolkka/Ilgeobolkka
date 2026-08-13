@@ -221,6 +221,8 @@ class AiRouteContentManifestTest {
                         .replace(
                                 "\"estimatedReadingSeconds\": 60",
                                 "\"estimatedReadingSeconds\": 0");
+        String invalidPageCount =
+                validManifest().replace("\"totalPageCount\": 1", "\"totalPageCount\": 0");
 
         assertThrows(
                 ContentManifestFormatException.class,
@@ -231,6 +233,9 @@ class AiRouteContentManifestTest {
         assertThrows(
                 ContentManifestFormatException.class,
                 () -> parser.parseManifest(invalidReadingSeconds));
+        assertThrows(
+                ContentManifestFormatException.class,
+                () -> parser.parseManifest(invalidPageCount));
     }
 
     @Test

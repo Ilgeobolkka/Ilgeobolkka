@@ -23,7 +23,7 @@ import tools.jackson.databind.ObjectMapper;
  */
 @Component
 @Profile("!prod & (content-import | test)")
-public class AiRouteContentWriter {
+class AiRouteContentWriter {
 
     private final JdbcTemplate jdbcTemplate;
     private final ObjectMapper objectMapper;
@@ -43,7 +43,7 @@ public class AiRouteContentWriter {
      * <p>판정을 {@code book.content_version} 으로 하는 것은 이 writer 가 올리는 값이 그것이기
      * 때문이다. 후보 도서가 없는 manifest 를 적재해도 이 값은 올라간다.
      */
-    public boolean alreadyImported(String contentVersion) {
+    boolean alreadyImported(String contentVersion) {
         Integer imported =
                 jdbcTemplate.queryForObject(
                         "SELECT COUNT(*) FROM book WHERE content_version = ?",
@@ -53,10 +53,11 @@ public class AiRouteContentWriter {
     }
 
     /**
-     * @throws AiRouteContentImportException 트랜잭션을 열기 전 입력이 어긋난 경우. 이때 DB는 그대로다.
+     * @throws AiRouteContentImportException 아무것도 쓰기 전에 입력이 어긋난 경우. 트랜잭션은 열려
+     *     있지만 아직 아무 문장도 실행하지 않았으므로 DB는 그대로다.
      */
     @Transactional
-    public void write(ValidatedAiRouteContent content, EmbeddedAiRouteContent embedded) {
+    void write(ValidatedAiRouteContent content, EmbeddedAiRouteContent embedded) {
         requireConsistentVectors(content, embedded);
 
         for (ValidatedAiRouteContent.ValidatedBook book : content.books()) {
@@ -72,7 +73,7 @@ public class AiRouteContentWriter {
 
     /**
      * 후보 페이지에 vector가 없거나 후보가 아닌 페이지에 vector가 있으면 실패한다. DB의
-     * {@code ck_book_page_candidate_metadata}와 같은 계약을 트랜잭션 전에 먼저 확인해, 부분 적재 뒤
+     * {@code ck_book_page_candidate_metadata}와 같은 계약을 첫 문장보다 먼저 확인해, 부분 적재 뒤
      * 제약에 걸려 rollback되는 대신 아무것도 시작하지 않는다.
      */
     private void requireConsistentVectors(

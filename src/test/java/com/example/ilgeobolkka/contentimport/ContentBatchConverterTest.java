@@ -133,16 +133,22 @@ class ContentBatchConverterTest {
                         .count());
     }
 
+    /**
+     * 권수를 세지 않는 대신 도서가 하나도 없는 manifest는 거부한다. 도서별 페이지 수와 중복 bookId는
+     * 파싱 단계 계약이라 {@code AiRouteContentManifestTest}가 본다.
+     */
     @Test
-    void ai_route_v2_manifest의_페이지_수가_없거나_bookId가_중복이면_변환을_거부한다()
-            throws IOException {
-        Path noPages = createAiRouteManifest(0);
+    void ai_route_v2_manifest에_도서가_없으면_변환을_거부한다() throws IOException {
+        Path noBooks = createAiRouteManifestWithoutBooks();
         var pdfTool = new FakePdfTool();
         var converter =
                 new ContentBatchConverter(
-                        noPages, tempDirectory.resolve("output"), objectMapper, pdfTool);
+                        noBooks, tempDirectory.resolve("output"), objectMapper, pdfTool);
 
-        assertThrows(IllegalStateException.class, converter::convert);
+        IllegalStateException exception =
+                assertThrows(IllegalStateException.class, converter::convert);
+
+        assertTrue(exception.getMessage().contains("도서가 없습니다"));
         assertEquals(0, pdfTool.extractCount);
     }
 
@@ -274,14 +280,48 @@ class ContentBatchConverterTest {
     }
 
     private Path createAiRouteManifest() throws IOException {
-        return createAiRouteManifest(1);
-    }
-
-    private Path createAiRouteManifest(int totalPageCount) throws IOException {
         Path manifestPath = tempDirectory.resolve("ai-route-v2/manifest.json");
         Files.createDirectories(manifestPath.getParent().resolve("pdfs"));
         byte[] pdfContent = "fake-ai-pdf-001".getBytes();
         Files.write(manifestPath.getParent().resolve("pdfs/book-001.pdf"), pdfContent);
+        return writeAiRouteManifest(
+                manifestPath,
+                """
+                {
+                  "bookId": 1,
+                  "title": "도서 제목",
+                  "pdfPath": "pdfs/book-001.pdf",
+                  "pdfSha256": "%s",
+                  "totalPageCount": 1,
+                  "aiRouteCandidate": true,
+                  "aiExternalTransferAllowed": true,
+                  "pages": [{
+                    "pageNumber": 1,
+                    "chapter": "1장",
+                    "section": "1절",
+                    "primaryConcepts": ["핵심 개념"],
+                    "secondaryConcepts": [],
+                    "contentRole": "CORE",
+                    "aiRouteCandidatePage": true,
+                    "aiAnalysisText": "분석 텍스트",
+                    "aiAnalysisInputSha256": "%s",
+                    "aiPublicGuideTopic": "공개 주제",
+                    "estimatedReadingSeconds": 60,
+                    "prerequisitePageNumbers": [],
+                    "duplicateGroupKeys": []
+                  }]
+                }
+                """
+                        .formatted(ContentBatchConverter.sha256(pdfContent), "b".repeat(64)));
+    }
+
+    private Path createAiRouteManifestWithoutBooks() throws IOException {
+        Path manifestPath = tempDirectory.resolve("ai-route-v2/manifest.json");
+        Files.createDirectories(manifestPath.getParent());
+        return writeAiRouteManifest(manifestPath, "");
+    }
+
+    private Path writeAiRouteManifest(Path manifestPath, String books) throws IOException {
         Files.writeString(
                 manifestPath,
                 """
@@ -290,32 +330,10 @@ class ContentBatchConverterTest {
                   "dataPolicyVersion": "OPENAI_DEFAULT_RETENTION_V1",
                   "embeddingModel": "text-embedding-3-small",
                   "embeddingDimensions": 1536,
-                  "books": [{
-                    "bookId": 1,
-                    "title": "도서 제목",
-                    "pdfPath": "pdfs/book-001.pdf",
-                    "pdfSha256": "%s",
-                    "totalPageCount": %d,
-                    "aiRouteCandidate": true,
-                    "aiExternalTransferAllowed": true,
-                    "pages": [{
-                      "pageNumber": 1,
-                      "chapter": "1장",
-                      "section": "1절",
-                      "primaryConcepts": ["핵심 개념"],
-                      "secondaryConcepts": [],
-                      "contentRole": "CORE",
-                      "aiRouteCandidatePage": true,
-                      "aiAnalysisText": "분석 텍스트",
-                      "aiAnalysisInputSha256": "%s",
-                      "aiPublicGuideTopic": "공개 주제",
-                      "estimatedReadingSeconds": 60,
-                      "prerequisitePageNumbers": [],
-                      "duplicateGroupKeys": []
-                    }]
-                  }]
+                  "books": [%s]
                 }
-                """.formatted(ContentBatchConverter.sha256(pdfContent), totalPageCount, "b".repeat(64)));
+                """
+                        .formatted(books));
         return manifestPath;
     }
 
