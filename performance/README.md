@@ -44,6 +44,7 @@
 ./performance/scripts/run-k6.sh soak
 ./performance/scripts/run-k6.sh browser
 ./performance/scripts/run-k6.sh browser-cache
+./performance/scripts/run-k6.sh history-index
 ```
 
 Average·Peak은 공개 탐색 35%, 인증 조회 20%, 소장 콘텐츠 15%, 활성 대여 10%, 신규 대여 15%,
@@ -53,8 +54,9 @@ Average·Peak은 공개 탐색 35%, 인증 조회 20%, 소장 콘텐츠 15%, 활
 신규 대여는 VU별 시나리오 iteration을 사용해 80회마다 결정적으로 다른 신규 계정으로 순환한다.
 기준선 runner는 Smoke·Warm-up·정식 부하의 신규 계정 pool을 분리하며, 그 경계에서만 다시 로그인한다.
 로그인 준비 요청은 `setup=true` tag로 구분한다.
-Stress의 기본 신규 계정 pool은 유효 기준선과 같은 offset 65, VU stride 7, cycle 37이며,
-모든 부하 실행의 실제 pool 설정은 `metadata.json`의 `generator.newReaderPool`에 기록한다.
+Stress의 기본 신규 계정 pool은 유효 기준선과 같은 offset 65, VU stride 7, cycle 37이다. Spike는
+최대 VU와 9분 ramp를 수용하도록 offset 0, VU stride 20, cycle 16을 사용한다. 모든 부하 실행의 실제
+pool 설정은 `metadata.json`의 `generator.newReaderPool`에 기록한다.
 실행 중 pool을 소진하면 해당 iteration뿐 아니라 전체 k6 실행도 실패로 판정한다.
 
 2단계 Average·Peak 3회는 매회 데이터 복원, 새 애플리케이션, Smoke, 고정 Warm-up을 자동으로 적용한다.
@@ -94,6 +96,12 @@ run_contention_case session
 브라우저 cache 진단은 서로 독립된 새 context 3개에서 공개 목록과 보호 뷰어를 각각 cold→warm 순서로
 반복한다. 공개 정적 자산의 전송량·Cache-Control과 보호 콘텐츠의 `private, no-store`를 분리해
 `browser-cache.jsonl`에 저장한다.
+
+`history-index`는 `history-heavy` 데이터에서 서재와 원장 API를 각각 10 iteration/s로 분리 측정한다.
+인덱스 전후 비교는 같은 데이터에서 대상 인덱스의 visible 상태만 바꾸고, 매 실행 새 애플리케이션과 버리는
+Warm-up을 사용한다. 로그인 준비 요청은 endpoint 통계에서 제외하고 `history-library`, `history-ledger`
+measurement tag의 p50·p95·p99를 비교한다. 실행 전 `history-heavy`의 고정 행 수를 확인하고 실제 행 수를
+결과의 `dataset.json`과 `metadata.json`에 기록하며, 불일치하면 부하를 시작하지 않는다.
 
 `history-heavy`는 애플리케이션을 정지한 상태에서 고정 `mvp`를 복원한 뒤 독자마다 과거 대여 500건을
 추가한다. 생성 시간 10분·DB 2GiB 경계를 넘으면 실패하며, 진단 뒤에는 다시 `reset-mvp.sh`를 실행한다.

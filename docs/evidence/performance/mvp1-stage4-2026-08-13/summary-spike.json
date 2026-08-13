@@ -1,0 +1,46 @@
+{
+  "source": "var/performance/results/20260813T022438Z-stage4-final-spike-rerun",
+  "sourceSummarySha256": "f59f056ae37dec9ece28c165dc3098995e68ddb3094178f14170664ca7a63235",
+  "valid": true,
+  "exitCode": 0,
+  "startedUtc": "2026-08-13T02:24:38Z",
+  "finishedUtc": "2026-08-13T02:33:40Z",
+  "gitSha": "a027643e9702e342a4298979b8bf7c6afae96c05",
+  "dirty": true,
+  "jarSha256": "0ce68063a964db0b665c4686c7de533ed76337aed4728e0d2a5ba4d4d891d41e",
+  "newReaderPool": {
+    "offset": 0,
+    "vuStride": 20,
+    "cycles": 16
+  },
+  "metrics": {
+    "checksPassed": 73348,
+    "checksFailed": 0,
+    "httpRequests": 40231,
+    "httpRequestsPerSecond": 74.49964499536145,
+    "httpFailureRate": 0,
+    "droppedIterations": 0,
+    "p50Millis": 2.570541,
+    "p95Millis": 15.016749999999897,
+    "p99Millis": 99.92369569999995,
+    "maxMillis": 484.104709,
+    "publicP95Millis": 5.2855018,
+    "authenticatedReadP95Millis": 5.289025299999999,
+    "newRentalP95Millis": 13.204024349999997
+  },
+  "resources": {
+    "generatorCpuMaxPercent": 14.68,
+    "applicationCpuAveragePercent": 21.607583774250455,
+    "applicationCpuMaxPercent": 82.5,
+    "hikariPendingMax": 0,
+    "prometheusStatus": "ok"
+  },
+  "domainInvariantViolations": {
+    "balanceMismatch": 0,
+    "negativeBalance": 0,
+    "deductionWithoutRental": 0,
+    "duplicateOwnership": 0,
+    "activeRentalWithoutLibrary": 0,
+    "ownershipWithoutLibrary": 0
+  }
+}

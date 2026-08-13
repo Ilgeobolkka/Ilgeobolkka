@@ -1,6 +1,5 @@
 package com.example.ilgeobolkka.airoute.service.query;
 
-import com.example.ilgeobolkka.airoute.AiRouteAdditionalCostStatus;
 import com.example.ilgeobolkka.airoute.dto.AiRouteItemResponse;
 import com.example.ilgeobolkka.airoute.dto.FindAiRouteResponse;
 import com.example.ilgeobolkka.airoute.dto.FindAiRoutesResponse;
@@ -8,8 +7,7 @@ import com.example.ilgeobolkka.airoute.exception.AiRouteNotFoundException;
 import com.example.ilgeobolkka.airoute.repository.AiReadingRouteItemRepository;
 import com.example.ilgeobolkka.airoute.repository.AiReadingRouteRepository;
 import com.example.ilgeobolkka.airoute.repository.AiRouteSummaryProjection;
-import com.example.ilgeobolkka.ownership.service.OwnershipService;
-import com.example.ilgeobolkka.rental.service.RentalService;
+import com.example.ilgeobolkka.airoute.service.AiRouteAdditionalCostCalculator;
 import java.time.Clock;
 import java.time.Instant;
 import java.util.List;
@@ -39,8 +37,7 @@ public class AiRouteQueryService {
 
     private final AiReadingRouteRepository aiReadingRouteRepository;
     private final AiReadingRouteItemRepository aiReadingRouteItemRepository;
-    private final OwnershipService ownershipService;
-    private final RentalService rentalService;
+    private final AiRouteAdditionalCostCalculator additionalCostCalculator;
     private final Clock clock;
 
     @Transactional(propagation = Propagation.MANDATORY, readOnly = true)
@@ -78,6 +75,9 @@ public class AiRouteQueryService {
     /**
      * 항목을 저장 순서대로 읽고 추가 비용 상태만 지금 권한으로 다시 계산한다.
      *
+     * <p>판정은 {@link AiRouteAdditionalCostCalculator} 가 한다. 저장이 예산과 비교할 때 쓰는 규칙과 같은
+     * 규칙이어야 하고, 그 둘은 저장 요청 하나에서 잇달아 돈다.
+     *
      * <p>소장 여부는 도서 단위라 경로마다 한 번만 확인한다. 대여는 페이지 단위여서 항목마다 확인하므로 상세 한
      * 건에 항목 수만큼 대여 조회가 나간다. 깊이 상한 15는 소장 도서 경로에만 걸리고 잉크 예산 경로는 페이지 수
      * 상한이 없으므로, 실질 상한은 schema 가 정한 item 72개다. 후보 상한 30으로 좁혀 볼 수는 없는데 허용
@@ -88,7 +88,7 @@ public class AiRouteQueryService {
      * {@code service.query}가 서로를 임포트한다.
      */
     private List<AiRouteItemResponse> findItems(long readerId, AiRouteSummaryProjection route) {
-        boolean owned = ownershipService.isOwned(readerId, route.getBookId());
+        boolean owned = additionalCostCalculator.isOwned(readerId, route.getBookId());
         Instant now = clock.instant();
 
         return aiReadingRouteItemRepository.findItemsByRouteId(route.getRouteId()).stream()
@@ -99,18 +99,8 @@ public class AiRouteQueryService {
                                         item.getEstimatedReadingSeconds()),
                                 AiRouteItemGuideAssembler.guide(
                                         item.getRole(), item.getGuideTopic()),
-                                additionalCostStatus(readerId, item.getBookPageId(), owned, now)))
+                                additionalCostCalculator.status(
+                                        readerId, item.getBookPageId(), owned, now)))
                 .toList();
-    }
-
-    private AiRouteAdditionalCostStatus additionalCostStatus(
-            long readerId, long bookPageId, boolean owned, Instant now) {
-        if (owned) {
-            return AiRouteAdditionalCostStatus.OWNED;
-        }
-
-        return rentalService.findActiveRental(readerId, bookPageId, now).isPresent()
-                ? AiRouteAdditionalCostStatus.ACTIVE_RENTAL
-                : AiRouteAdditionalCostStatus.ONE_INK;
     }
 }
