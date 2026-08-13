@@ -1,10 +1,13 @@
 package com.example.ilgeobolkka.airoute.repository;
 
 import com.example.ilgeobolkka.airoute.entity.AiReadingRoute;
+import jakarta.persistence.LockModeType;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -74,4 +77,57 @@ public interface AiReadingRouteRepository extends JpaRepository<AiReadingRoute, 
     Optional<AiRouteSummaryProjection> findSummaryByReaderIdAndId(
             @Param("readerId") long readerId,
             @Param("routeId") long routeId);
+
+    /**
+     * 현재 경로 지정과 삭제가 대상 경로를 잠금 조회한다. 소유자 조건을 잠금 조회 자체에 두어 다른 독자의
+     * 경로와 없는 경로가 같은 빈 결과가 되게 한다. 상세 조회와 같은 이유다.
+     *
+     * <p>경로 행을 잠그는 것이 현재 경로 지정·삭제 사이의 직렬화 지점이다. 지정과 삭제가 모두 여기를 먼저
+     * 지나므로, 한쪽이 지우는 중인 경로를 다른 쪽이 현재 경로로 올리는 조합이 만들어지지 않는다.
+     *
+     * <p>저장은 이 조회에 닿지 않는다. 저장이 만드는 경로는 그 transaction 이 방금 insert 한 행이라 다른
+     * 요청이 잡고 있을 수 없다. 그래서 저장과 이 경로 사이에는 {@code ai_route_current} 말고 겹치는 잠금이
+     * 없고, 두 경로 모두 생성 행을 현재 경로보다 먼저 잠가 대기 고리가 생기지 않는다.
+     *
+     * <p>존재 확인 없이 잠그는 예외다. 지정과 삭제가 모두 {@code READ_COMMITTED} 로 열리고 이 격리 수준의
+     * InnoDB 는 없는 식별자를 잠금 조회해도 gap lock 을 남기지 않는다. 격리 수준을 올리면 없는 경로를 찍은
+     * 요청이 남긴 gap 과 저장의 insert 가 같은 자리에서 만나므로, 이 조회를 부르는 경로의 격리 수준을
+     * 바꾸는 후속 작업은 {@link AiRouteGenerationRepository#findOwnedNotExpiredForUpdate} 와 같은 근거를
+     * 다시 확인해야 한다.
+     */
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @Query(
+            """
+            SELECT route
+            FROM AiReadingRoute route
+            WHERE route.readerId = :readerId
+              AND route.id = :routeId
+            """)
+    Optional<AiReadingRoute> findOwnedByIdForUpdate(
+            @Param("readerId") long readerId,
+            @Param("routeId") long routeId);
+
+    /**
+     * 현재 경로를 삭제한 뒤 그 자리를 이을 경로를 정본이 정한 {@code createdAt DESC, id DESC} 순으로 읽는다.
+     * 호출자가 한 건만 요청하므로 결과는 비었거나 한 건이다.
+     *
+     * <p>목록 조회와 보조 정렬을 맞춘 이유는 같다. 저장이 한 transaction 에서 여러 경로를 만들 수 있어
+     * {@code createdAt} 이 같은 행이 실제로 생기고, 그때 어느 쪽이 후속 현재 경로인지가 정해져야 한다.
+     *
+     * <p>삭제한 경로를 조건에서 빼지 않는다. 호출자가 경로 행을 지우고 flush 한 뒤에 부르므로 이미 결과에
+     * 없다. 조건을 하나 더 두면 삭제가 실제로 반영됐는지와 무관하게 통과해, flush 를 빠뜨린 순간을 이
+     * 조회가 덮어 버린다.
+     */
+    @Query(
+            """
+            SELECT route.id
+            FROM AiReadingRoute route
+            WHERE route.readerId = :readerId
+              AND route.bookId = :bookId
+            ORDER BY route.createdAt DESC, route.id DESC
+            """)
+    List<Long> findRouteIdsByReaderIdAndBookId(
+            @Param("readerId") long readerId,
+            @Param("bookId") long bookId,
+            Pageable pageable);
 }
