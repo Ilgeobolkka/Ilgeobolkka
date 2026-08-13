@@ -139,6 +139,7 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
         jdbcTemplate.update("DELETE FROM reader WHERE id = ?", READER_ID);
         jdbcTemplate.update("UPDATE book SET ai_route_supported = FALSE WHERE id = ?", BOOK_ID);
         routeGateway.then(정상_응답(1, 2));
+        Map<String, Integer> persistenceCountsBefore = 평가용_Engine_영속화_행_수();
 
         AiRouteEngineResult result = engine.generate(
                 잉크_명령(2),
@@ -156,11 +157,7 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
                 () -> assertEquals("schema-v1", result.schemaVersion()),
                 () -> assertEquals(1, embeddingGateway.calls()),
                 () -> assertEquals(1, routeGateway.calls()),
-                () -> assertEquals(0, 개수("reader")),
-                () -> assertEquals(0, 개수("ink_account")),
-                () -> assertEquals(0, 개수("ai_route_generation")),
-                () -> assertEquals(0, 개수("ai_route_generation_item")),
-                () -> assertEquals(0, 개수("ai_route_daily_usage")));
+                () -> assertEquals(persistenceCountsBefore, 평가용_Engine_영속화_행_수()));
     }
 
     @Test
@@ -706,6 +703,15 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
 
     private int 개수(String table) {
         return jdbcTemplate.queryForObject("SELECT COUNT(*) FROM " + table, Integer.class);
+    }
+
+    private Map<String, Integer> 평가용_Engine_영속화_행_수() {
+        return Map.of(
+                "reader", 개수("reader"),
+                "inkAccount", 개수("ink_account"),
+                "generation", 개수("ai_route_generation"),
+                "generationItem", 개수("ai_route_generation_item"),
+                "dailyUsage", 개수("ai_route_daily_usage"));
     }
 
     private int 생성_수() {
