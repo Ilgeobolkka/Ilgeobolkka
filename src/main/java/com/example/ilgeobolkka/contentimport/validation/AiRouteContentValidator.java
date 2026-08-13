@@ -29,6 +29,8 @@ public final class AiRouteContentValidator {
     private static final int MIN_PAGES = 48;
     private static final int MAX_PAGES = 72;
     private static final int MIN_CHAPTERS = 6;
+    private static final int MAX_BOOK_TITLE_LENGTH = 255;
+    private static final int MAX_PUBLIC_GUIDE_TOPIC_LENGTH = 500;
     private static final String EXPECTED_EMBEDDING_MODEL = "text-embedding-3-small";
     private static final int EXPECTED_EMBEDDING_DIMENSIONS = 1536;
 
@@ -86,6 +88,10 @@ public final class AiRouteContentValidator {
         require(
                 book.title() != null && !book.title().isBlank(),
                 "book %d의 제목이 필요합니다.".formatted(bookId));
+        require(
+                characterCount(book.title()) <= MAX_BOOK_TITLE_LENGTH,
+                "book %d의 제목은 %d자 이하여야 합니다."
+                        .formatted(bookId, MAX_BOOK_TITLE_LENGTH));
 
         if (!book.aiRouteCandidate()) {
             require(
@@ -212,6 +218,10 @@ public final class AiRouteContentValidator {
         require(
                 page.aiPublicGuideTopic() != null && !page.aiPublicGuideTopic().isBlank(),
                 "book %d p%d의 공개 가이드 주제가 필요합니다.".formatted(bookId, pageNumber));
+        require(
+                characterCount(page.aiPublicGuideTopic()) <= MAX_PUBLIC_GUIDE_TOPIC_LENGTH,
+                "book %d p%d의 공개 가이드 주제는 %d자 이하여야 합니다."
+                        .formatted(bookId, pageNumber, MAX_PUBLIC_GUIDE_TOPIC_LENGTH));
         require(
                 page.estimatedReadingSeconds() > 0,
                 "book %d p%d의 예상 독서 시간은 양수여야 합니다.".formatted(bookId, pageNumber));
@@ -498,6 +508,10 @@ public final class AiRouteContentValidator {
         } catch (NoSuchAlgorithmException exception) {
             throw new IllegalStateException("SHA-256을 사용할 수 없습니다.", exception);
         }
+    }
+
+    private static int characterCount(String value) {
+        return value.codePointCount(0, value.length());
     }
 
     private static void require(boolean condition, String message) {

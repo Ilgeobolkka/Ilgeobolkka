@@ -264,6 +264,79 @@ class AiRouteContentValidatorTest {
     }
 
     @Test
+    void 도서_제목이_DB_VARCHAR_길이를_넘으면_실패한다() {
+        AiRouteContentManifest.Book candidate = candidateBook();
+        AiRouteContentManifest maxLengthTitle =
+                manifest(
+                        new AiRouteContentManifest.Book(
+                                BOOK_ID,
+                                "가".repeat(255),
+                                candidate.pdfPath(),
+                                candidate.pdfSha256(),
+                                candidate.totalPageCount(),
+                                true,
+                                true,
+                                candidate.pages()));
+        AiRouteContentManifest tooLongTitle =
+                manifest(
+                        new AiRouteContentManifest.Book(
+                                BOOK_ID,
+                                "가".repeat(256),
+                                candidate.pdfPath(),
+                                candidate.pdfSha256(),
+                                candidate.totalPageCount(),
+                                true,
+                                true,
+                                candidate.pages()));
+
+        assertEquals(
+                255,
+                validator.validate(maxLengthTitle, defaultEvaluation(), fixtureRoot, POLICY)
+                        .books()
+                        .getFirst()
+                        .title()
+                        .length());
+        assertTrue(
+                fail(tooLongTitle, emptyEvaluation()).getMessage().contains("255자 이하"));
+    }
+
+    @Test
+    void 공개_가이드_주제가_DB_VARCHAR_길이를_넘으면_실패한다() {
+        AiRouteContentManifest.Page page = candidateBook().pages().get(2);
+        AiRouteContentManifest maxLengthTopic =
+                manifestWithReplacedPage(
+                        3,
+                        storedValues(
+                                page,
+                                page.aiAnalysisText(),
+                                "가".repeat(500),
+                                page.estimatedReadingSeconds()));
+        AiRouteContentManifest tooLongTopic =
+                manifestWithReplacedPage(
+                        3,
+                        storedValues(
+                                page,
+                                page.aiAnalysisText(),
+                                "가".repeat(501),
+                                page.estimatedReadingSeconds()));
+
+        assertEquals(
+                500,
+                validator.validate(maxLengthTopic, defaultEvaluation(), fixtureRoot, POLICY)
+                        .books()
+                        .getFirst()
+                        .pages()
+                        .stream()
+                        .filter(candidatePage -> candidatePage.pageNumber() == 3)
+                        .findFirst()
+                        .orElseThrow()
+                        .publicGuideTopic()
+                        .length());
+        assertTrue(
+                fail(tooLongTopic, emptyEvaluation()).getMessage().contains("500자 이하"));
+    }
+
+    @Test
     void 페이지_수_장_수_분석해시_개념_계약_위반은_실패한다() {
         List<AiRouteContentManifest.Page> pages =
                 new ArrayList<>(candidateBook().pages().subList(0, 10));
