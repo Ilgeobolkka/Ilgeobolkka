@@ -41,7 +41,9 @@ public final class GenerationStartResult {
         /** 같은 key로 다른 입력이 들어왔다. {@code 409 AI_ROUTE_IDEMPOTENCY_KEY_REUSED}. */
         KEY_REUSED,
         /** 계정·UTC 날짜 생성 횟수를 다 썼다. {@code 429 AI_ROUTE_DAILY_LIMIT_EXCEEDED}. */
-        DAILY_LIMIT
+        DAILY_LIMIT,
+        /** 새 요청이 외부 호출을 시작하기 전에 전체 시간 제한을 넘었다. */
+        TIMEOUT
     }
 
     /** 방금 만든 {@code GENERATING} 행. 보관 만료는 완료 시점에 정해지므로 아직 없다. */
@@ -73,6 +75,10 @@ public final class GenerationStartResult {
         return new GenerationStartResult(Kind.DAILY_LIMIT, null, null, null);
     }
 
+    static GenerationStartResult timedOut() {
+        return new GenerationStartResult(Kind.TIMEOUT, null, null, null);
+    }
+
     public Kind kind() {
         return kind;
     }
@@ -82,7 +88,7 @@ public final class GenerationStartResult {
         return generationId;
     }
 
-    /** {@code KEY_REUSED}·{@code DAILY_LIMIT} 은 {@code null} 이다. */
+    /** {@code KEY_REUSED}·{@code DAILY_LIMIT}·{@code TIMEOUT} 은 {@code null} 이다. */
     public AiRouteGenerationStatus status() {
         return status;
     }

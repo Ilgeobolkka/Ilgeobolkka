@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.example.ilgeobolkka.airoute.AiRouteAdditionalCostStatus;
 import com.example.ilgeobolkka.airoute.AiRouteDepth;
 import com.example.ilgeobolkka.airoute.AiRouteGenerationCommand;
-import com.example.ilgeobolkka.airoute.exception.AiRouteDepthLimitExceededException;
 import com.example.ilgeobolkka.airoute.exception.InvalidAiRouteCandidateInputException;
 import com.example.ilgeobolkka.airoute.entity.AiRouteItemRelevance;
 import com.example.ilgeobolkka.airoute.entity.AiRouteItemRole;
@@ -180,7 +179,7 @@ class AiRouteAssemblerTest {
     }
 
     @Test
-    void 소장_후보의_선수_묶음이_깊이_상한보다_크면_현재_결과_계약으로_표현하지_않는다() {
+    void 소장_후보의_선수_묶음이_깊이_상한보다_크면_INSUFFICIENT_DEPTH를_반환한다() {
         ValidatedRouteProposal proposal = proposal(
                 List.of(
                         item(1, true),
@@ -191,16 +190,17 @@ class AiRouteAssemblerTest {
                         item(6, false)),
                 Map.of(6, Set.of(1, 2, 3, 4, 5)));
 
-        AiRouteDepthLimitExceededException exception = assertThrows(
-                AiRouteDepthLimitExceededException.class,
-                () -> assembler.assemble(
-                        proposal,
-                        ownedCommand(AiRouteDepth.QUICK),
-                        AiRouteEntitlementSnapshot.forOwned(),
-                        pages(6)));
+        AiRouteGenerationResult result = assembler.assemble(
+                proposal,
+                ownedCommand(AiRouteDepth.QUICK),
+                AiRouteEntitlementSnapshot.forOwned(),
+                pages(6));
 
-        assertEquals(
-                "소장 경로를 선택한 깊이 상한 안에서 완성할 수 없습니다.", exception.getMessage());
+        assertAll(
+                () -> assertEquals(Status.NO_ROUTE, result.status()),
+                () -> assertEquals(NoRouteReason.INSUFFICIENT_DEPTH, result.noRouteReason()),
+                () -> assertNull(result.minimumRequiredInk()),
+                () -> assertTrue(result.items().isEmpty()));
     }
 
     @Test
