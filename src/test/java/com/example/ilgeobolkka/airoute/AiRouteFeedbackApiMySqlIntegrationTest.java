@@ -18,12 +18,25 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.JdbcTemplate;
-import jakarta.persistence.EntityManager;
+
 import org.springframework.security.authentication.TestingAuthenticationToken;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.transaction.annotation.Transactional;
+import com.example.ilgeobolkka.airoute.facade.AiRouteFeedbackFacade;
+import com.example.ilgeobolkka.airoute.dto.AiRouteFeedbackRequest;
+import com.example.ilgeobolkka.airoute.entity.AiReadingRouteFeedback;
+import java.util.concurrent.*;
+import java.util.List;
+import java.util.ArrayList;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.time.Clock;
+import java.time.Instant;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Primary;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.junit.jupiter.api.AfterEach;
 
 @SpringBootTest(
         properties = {
@@ -35,7 +48,7 @@ import org.springframework.transaction.annotation.Transactional;
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
 @ContextConfiguration(initializers = DedicatedTestDatabaseInitializer.class)
-@Transactional
+@Import(AiRouteFeedbackApiMySqlIntegrationTest.MutableClockConfiguration.class)
 class AiRouteFeedbackApiMySqlIntegrationTest {
 
     private static final long READER_ID = 465_001L;
@@ -46,13 +59,16 @@ class AiRouteFeedbackApiMySqlIntegrationTest {
 
     private final MockMvc mockMvc;
     private final JdbcTemplate jdbcTemplate;
-    private final EntityManager entityManager;
+    private final AiRouteFeedbackFacade feedbackFacade;
+    private final Clock clock;
+    private static final Instant STARTED_AT = Instant.parse("2026-08-13T00:00:00.123456Z");
 
     @Autowired
-    AiRouteFeedbackApiMySqlIntegrationTest(MockMvc mockMvc, JdbcTemplate jdbcTemplate, EntityManager entityManager) {
+    AiRouteFeedbackApiMySqlIntegrationTest(MockMvc mockMvc, JdbcTemplate jdbcTemplate, AiRouteFeedbackFacade feedbackFacade, Clock clock) {
         this.mockMvc = mockMvc;
         this.jdbcTemplate = jdbcTemplate;
-        this.entityManager = entityManager;
+        this.feedbackFacade = feedbackFacade;
+        this.clock = clock;
     }
 
     @BeforeEach
@@ -61,6 +77,19 @@ class AiRouteFeedbackApiMySqlIntegrationTest {
         독자를_생성한다(OTHER_READER_ID);
         도서를_생성한다(BOOK_ID, "샘플 도서");
         페이지를_생성한다(PAGE_ID_BASE + 1, BOOK_ID, 1);
+        if (clock instanceof MutableClock mutableClock) {
+            mutableClock.set(STARTED_AT);
+        }
+    }
+
+    @AfterEach
+    void tearDown() {
+        jdbcTemplate.update("DELETE FROM ai_reading_route_item");
+        jdbcTemplate.update("DELETE FROM ai_route_current");
+        jdbcTemplate.update("DELETE FROM ai_reading_route");
+        jdbcTemplate.update("DELETE FROM book_page");
+        jdbcTemplate.update("DELETE FROM book");
+        jdbcTemplate.update("DELETE FROM reader");
     }
 
     @Test
@@ -77,13 +106,16 @@ class AiRouteFeedbackApiMySqlIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.routeId").value(routeId))
                 .andExpect(jsonPath("$.rating").value("HELPFUL"))
-                .andExpect(jsonPath("$.feedbackAt").exists());
+                .andExpect(jsonPath("$.feedbackAt").value("2026-08-13T00:00:00.123456Z"));
 
-        entityManager.flush();
-        entityManager.clear();
         Map<String, Object> stateAfterHelpful = jdbcTemplate.queryForMap(
-                "SELECT feedback FROM ai_reading_route WHERE id = ?", routeId);
+                "SELECT feedback, feedback_at FROM ai_reading_route WHERE id = ?", routeId);
         assertThat(stateAfterHelpful.get("feedback")).isEqualTo("HELPFUL");
+        assertThat(stateAfterHelpful.get("feedback_at").toString()).startsWith("2026-08-13T00:00:00");
+
+        if (clock instanceof MutableClock mutableClock) {
+            mutableClock.set(STARTED_AT.plusSeconds(60));
+        }
 
         // NEUTRAL 변경
         mockMvc.perform(put("/api/ai-routes/{routeId}/feedback", routeId)
@@ -93,13 +125,19 @@ class AiRouteFeedbackApiMySqlIntegrationTest {
                         .with(csrf()))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.routeId").value(routeId))
-                .andExpect(jsonPath("$.rating").value("NEUTRAL"));
+                .andExpect(jsonPath("$.rating").value("NEUTRAL"))
+                .andExpect(jsonPath("$.feedbackAt").value("2026-08-13T00:01:00.123456Z"));
 
-        entityManager.flush();
-        entityManager.clear();
+        
+        
         Map<String, Object> stateAfterNeutral = jdbcTemplate.queryForMap(
-                "SELECT feedback FROM ai_reading_route WHERE id = ?", routeId);
+                "SELECT feedback, feedback_at FROM ai_reading_route WHERE id = ?", routeId);
         assertThat(stateAfterNeutral.get("feedback")).isEqualTo("NEUTRAL");
+        assertThat(stateAfterNeutral.get("feedback_at").toString()).startsWith("2026-08-13T00:01:00");
+
+        if (clock instanceof MutableClock mutableClock) {
+            mutableClock.set(STARTED_AT.plusSeconds(120));
+        }
 
         // NOT_HELPFUL 변경
         mockMvc.perform(put("/api/ai-routes/{routeId}/feedback", routeId)
@@ -109,7 +147,13 @@ class AiRouteFeedbackApiMySqlIntegrationTest {
                         .with(csrf()))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.routeId").value(routeId))
-                .andExpect(jsonPath("$.rating").value("NOT_HELPFUL"));
+                .andExpect(jsonPath("$.rating").value("NOT_HELPFUL"))
+                .andExpect(jsonPath("$.feedbackAt").value("2026-08-13T00:02:00.123456Z"));
+
+        Map<String, Object> stateAfterNotHelpful = jdbcTemplate.queryForMap(
+                "SELECT feedback, feedback_at FROM ai_reading_route WHERE id = ?", routeId);
+        assertThat(stateAfterNotHelpful.get("feedback")).isEqualTo("NOT_HELPFUL");
+        assertThat(stateAfterNotHelpful.get("feedback_at").toString()).startsWith("2026-08-13T00:02:00");
     }
 
     @Test
@@ -155,6 +199,15 @@ class AiRouteFeedbackApiMySqlIntegrationTest {
                         .with(csrf()))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.code").value("INVALID_INPUT"));
+
+        // null rating 거부
+        mockMvc.perform(put("/api/ai-routes/{routeId}/feedback", routeId)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"rating\":null}")
+                        .with(authentication(인증된_독자(READER_ID)))
+                        .with(csrf()))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.code").value("INVALID_INPUT"));
     }
 
     @Test
@@ -175,6 +228,64 @@ class AiRouteFeedbackApiMySqlIntegrationTest {
                         .with(authentication(인증된_독자(READER_ID)))
                         .with(csrf()))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    void 서로_다른_경로를_동시에_피드백해도_안전하다() throws Exception {
+        long route1 = ROUTE_ID_BASE + 1;
+        long route2 = ROUTE_ID_BASE + 2;
+        완료한_경로를_생성한다(READER_ID, route1, "재무제표 읽기 1");
+        완료한_경로를_생성한다(READER_ID, route2, "재무제표 읽기 2");
+
+        AiRouteFeedbackRequest req1 = new AiRouteFeedbackRequest(AiReadingRouteFeedback.HELPFUL);
+        AiRouteFeedbackRequest req2 = new AiRouteFeedbackRequest(AiReadingRouteFeedback.NEUTRAL);
+
+        동시에_실행한다(
+                () -> feedbackFacade.changeFeedback(route1, READER_ID, req1),
+                () -> feedbackFacade.changeFeedback(route2, READER_ID, req2),
+                List.of());
+
+        Map<String, Object> state1 = jdbcTemplate.queryForMap(
+                "SELECT feedback FROM ai_reading_route WHERE id = ?", route1);
+        assertThat(state1.get("feedback")).isEqualTo("HELPFUL");
+
+        Map<String, Object> state2 = jdbcTemplate.queryForMap(
+                "SELECT feedback FROM ai_reading_route WHERE id = ?", route2);
+        assertThat(state2.get("feedback")).isEqualTo("NEUTRAL");
+    }
+
+    private void 동시에_실행한다(
+            Runnable 첫째, Runnable 둘째, List<Class<? extends RuntimeException>> 허용_예외)
+            throws Exception {
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        CountDownLatch 출발 = new CountDownLatch(1);
+        try {
+            List<Future<?>> futures = new ArrayList<>();
+            for (Runnable 작업 : List.of(첫째, 둘째)) {
+                futures.add(
+                        executor.submit(
+                                () -> {
+                                    출발.await();
+                                    try {
+                                        작업.run();
+                                    } catch (RuntimeException 예외) {
+                                        if (허용_예외.stream()
+                                                .noneMatch(허용 -> 허용.isInstance(예외))) {
+                                            throw 예외;
+                                        }
+                                    }
+                                    return null;
+                                }));
+            }
+            출발.countDown();
+            executor.shutdown();
+            assertTrue(executor.awaitTermination(30, TimeUnit.SECONDS), "동시 요청이 끝나지 않았다");
+            for (Future<?> future : futures) {
+                future.get();
+            }
+        } finally {
+            executor.shutdownNow();
+        }
     }
 
     @Test
@@ -213,8 +324,8 @@ class AiRouteFeedbackApiMySqlIntegrationTest {
                         .with(csrf()))
                 .andExpect(status().isOk());
 
-        entityManager.flush();
-        entityManager.clear();
+        
+        
         Map<String, Object> after = 상태_스냅샷(routeId);
         
         // feedback 과 feedbackAt 이 바뀌었으므로 이 항목을 제외하고 비교
@@ -305,5 +416,43 @@ class AiRouteFeedbackApiMySqlIntegrationTest {
 
     private TestingAuthenticationToken 인증된_독자(long readerId) {
         return new TestingAuthenticationToken(new AuthenticatedReader(readerId), null, "ROLE_USER");
+    }
+
+    @TestConfiguration
+    static class MutableClockConfiguration {
+
+        @Bean
+        @Primary
+        MutableClock mutableClock() {
+            return new MutableClock(STARTED_AT);
+        }
+    }
+
+    static class MutableClock extends Clock {
+
+        private volatile Instant instant;
+
+        MutableClock(Instant instant) {
+            this.instant = instant;
+        }
+
+        void set(Instant instant) {
+            this.instant = instant;
+        }
+
+        @Override
+        public Instant instant() {
+            return instant;
+        }
+
+        @Override
+        public java.time.ZoneId getZone() {
+            return java.time.ZoneOffset.UTC;
+        }
+
+        @Override
+        public Clock withZone(java.time.ZoneId zone) {
+            return Clock.fixed(instant, zone);
+        }
     }
 }
