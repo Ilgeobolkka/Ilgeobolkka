@@ -584,6 +584,163 @@
       ]
     },
     {
+      "caseId": "case-book-045",
+      "bookId": 45,
+      "purpose": "이 책을 소장하고 있는데, 시간이 없어 화폐가 무엇이고 신용창조가 어떻게 일어나는지 핵심만 빠르게 훑고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "화폐",
+        "신용창조"
+      ],
+      "helpfulConcepts": [
+        "통화량",
+        "예금",
+        "지급준비"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 19
+        },
+        {
+          "beforePageNumber": 19,
+          "afterPageNumber": 21
+        },
+        {
+          "beforePageNumber": 21,
+          "afterPageNumber": 22
+        }
+      ],
+      "irrelevantPageNumbers": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "duplicatePageGroups": [
+        [
+          5,
+          51
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        19,
+        21,
+        22
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        20,
+        23,
+        24
+      ]
+    },
+    {
+      "caseId": "case-book-046",
+      "bookId": 46,
+      "purpose": "이 책을 사지는 않았고, 세금이 어떤 구조로 걷히고 그 돈이 어떤 기준으로 나뉘는지 큰 틀만 보고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "세입",
+        "세출",
+        "예산제약",
+        "조세"
+      ],
+      "helpfulConcepts": [
+        "누진세",
+        "조세 귀착",
+        "기회비용"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 19
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 17
+        },
+        {
+          "beforePageNumber": 19,
+          "afterPageNumber": 20
+        },
+        {
+          "beforePageNumber": 19,
+          "afterPageNumber": 21
+        }
+      ],
+      "irrelevantPageNumbers": [
+        35,
+        36,
+        37,
+        45,
+        46
+      ],
+      "duplicatePageGroups": [
+        [
+          6,
+          49
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        5,
+        6,
+        10,
+        12,
+        17,
+        19,
+        20,
+        21
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        7,
+        11,
+        13,
+        15,
+        22,
+        23
+      ]
+    },
+    {
       "caseId": "case-book-047",
       "bookId": 47,
       "purpose": "작은 가게를 열려는데 물건값을 어떤 기준으로 정해야 할지 알고 싶다",
@@ -669,6 +826,284 @@
         26,
         38,
         41
+      ]
+    },
+    {
+      "caseId": "case-book-048",
+      "bookId": 48,
+      "purpose": "이 책을 소장하고 있는데, 공공재와 공유자원이 무엇이 어떻게 다른지 개념과 사례를 균형 있게 훑어보고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "배제성",
+        "경합성",
+        "공공재",
+        "공유자원"
+      ],
+      "helpfulConcepts": [
+        "무임승차",
+        "공유지의 비극",
+        "사유재"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 15
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 17
+        },
+        {
+          "beforePageNumber": 17,
+          "afterPageNumber": 19
+        },
+        {
+          "beforePageNumber": 15,
+          "afterPageNumber": 26
+        },
+        {
+          "beforePageNumber": 26,
+          "afterPageNumber": 28
+        }
+      ],
+      "irrelevantPageNumbers": [
+        31,
+        32,
+        33,
+        39,
+        40,
+        41
+      ],
+      "duplicatePageGroups": [
+        [
+          5,
+          51
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        6,
+        9,
+        10,
+        15,
+        17,
+        19,
+        26,
+        28
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        7,
+        11,
+        16,
+        18,
+        20,
+        27,
+        29
+      ]
+    },
+    {
+      "caseId": "case-book-049",
+      "bookId": 49,
+      "purpose": "이 책을 사지는 않았고 이미 열어 둔 페이지만으로, 한 해 생산을 세는 방식과 늘었다는 말의 뜻만 확인하고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 0,
+      "depth": null,
+      "activeRentalPageNumbers": [
+        2,
+        4,
+        9,
+        10,
+        11
+      ],
+      "requiredConcepts": [
+        "국내총생산",
+        "성장률"
+      ],
+      "helpfulConcepts": [
+        "최종 산출",
+        "실질 성장률",
+        "생산성"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 11
+        }
+      ],
+      "irrelevantPageNumbers": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "duplicatePageGroups": [],
+      "referencePageNumbers": [
+        2,
+        4,
+        9,
+        10,
+        11
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        6,
+        12,
+        19
+      ]
+    },
+    {
+      "caseId": "case-book-050",
+      "bookId": 50,
+      "purpose": "이 책을 소장하고 있는데, 함께 움직인다는 것과 원인이라는 것을 어떻게 구분하는지, 그리고 표본이 어떻게 치우치는지를 제대로 익히고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "상관",
+        "인과",
+        "교란변수",
+        "표본편향"
+      ],
+      "helpfulConcepts": [
+        "역인과",
+        "생존편향",
+        "비교집단"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 26
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 17
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 19
+        },
+        {
+          "beforePageNumber": 19,
+          "afterPageNumber": 20
+        },
+        {
+          "beforePageNumber": 19,
+          "afterPageNumber": 21
+        },
+        {
+          "beforePageNumber": 19,
+          "afterPageNumber": 23
+        },
+        {
+          "beforePageNumber": 19,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 21,
+          "afterPageNumber": 22
+        },
+        {
+          "beforePageNumber": 26,
+          "afterPageNumber": 28
+        },
+        {
+          "beforePageNumber": 28,
+          "afterPageNumber": 29
+        }
+      ],
+      "irrelevantPageNumbers": [
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "duplicatePageGroups": [],
+      "referencePageNumbers": [
+        2,
+        4,
+        6,
+        10,
+        12,
+        17,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        26,
+        28,
+        29
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        11,
+        13,
+        14,
+        15,
+        25,
+        27,
+        31
       ]
     },
     {
