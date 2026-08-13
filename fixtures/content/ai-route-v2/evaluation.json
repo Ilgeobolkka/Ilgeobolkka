@@ -2012,6 +2012,126 @@
       ]
     },
     {
+      "caseId": "case-book-070",
+      "bookId": 70,
+      "purpose": "이 책을 소장하고 있는데, 새 작업을 시작해 초안을 고르고 고쳐 나가는 절차 전체를 차근히 익히고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "초안",
+        "양 우선",
+        "선별",
+        "수정 우선순위",
+        "단일 변경"
+      ],
+      "helpfulConcepts": [
+        "시작의 저항",
+        "되돌리기",
+        "완료 판단",
+        "변형"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 3
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 13
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 17
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 28
+        },
+        {
+          "beforePageNumber": 28,
+          "afterPageNumber": 29
+        },
+        {
+          "beforePageNumber": 28,
+          "afterPageNumber": 30
+        },
+        {
+          "beforePageNumber": 30,
+          "afterPageNumber": 31
+        },
+        {
+          "beforePageNumber": 30,
+          "afterPageNumber": 32
+        },
+        {
+          "beforePageNumber": 32,
+          "afterPageNumber": 33
+        },
+        {
+          "beforePageNumber": 28,
+          "afterPageNumber": 34
+        }
+      ],
+      "irrelevantPageNumbers": [
+        22,
+        24,
+        25,
+        44,
+        45,
+        46,
+        47
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          50
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        3,
+        4,
+        5,
+        12,
+        13,
+        16,
+        17,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34
+      ],
+      "allowedAlternativePageNumbers": [
+        15,
+        18,
+        19,
+        35,
+        40,
+        41
+      ]
+    },
+    {
       "caseId": "case-book-071",
       "bookId": 71,
       "purpose": "사용자가 보낸 메시지가 어느 입구를 지나 결과로 돌아오는지, 여러 메시지가 겹칠 때도 서로 섞이지 않는 이유와 실행 공간을 교체해도 업무가 이어지는 원리를 함께 이해하고 싶다",
