@@ -4,6 +4,7 @@ import com.example.ilgeobolkka.airoute.exception.AiRouteContentChangedException;
 import com.example.ilgeobolkka.airoute.exception.AiRouteEntitlementChangedException;
 import com.example.ilgeobolkka.airoute.exception.AiRouteGenerationConsumedException;
 import com.example.ilgeobolkka.airoute.exception.AiRouteGenerationNotFoundException;
+import com.example.ilgeobolkka.airoute.exception.AiRouteNotCompletedException;
 import com.example.ilgeobolkka.airoute.exception.AiRouteNotFoundException;
 import com.example.ilgeobolkka.auth.exception.InvalidCredentialsException;
 import com.example.ilgeobolkka.book.exception.BookNotFoundException;
@@ -54,6 +55,13 @@ public class GlobalExceptionHandler {
     ResponseEntity<ApiErrorResponse> handleInvalidInput(Exception exception) {
         logFailure(ErrorCode.INVALID_INPUT, exception);
         return response(ErrorCode.INVALID_INPUT);
+    }
+
+    @ExceptionHandler(AiRouteNotCompletedException.class)
+    ResponseEntity<ApiErrorResponse> handleAiRouteNotCompleted(
+            AiRouteNotCompletedException exception) {
+        logFailure(ErrorCode.AI_ROUTE_NOT_COMPLETED, exception);
+        return response(ErrorCode.AI_ROUTE_NOT_COMPLETED);
     }
 
     @ExceptionHandler(PortOneWebhookVerificationException.class)

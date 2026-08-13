@@ -3614,9 +3614,7 @@
           "prerequisitePageNumbers": [
             18
           ],
-          "duplicateGroupKeys": [
-            "gains-need-exchange"
-          ]
+          "duplicateGroupKeys": []
         },
         {
           "pageNumber": 21,
@@ -4258,9 +4256,7 @@
             51,
             33
           ],
-          "duplicateGroupKeys": [
-            "gains-need-exchange"
-          ]
+          "duplicateGroupKeys": []
         }
       ]
     },
@@ -4305,9 +4301,7 @@
           "aiPublicGuideTopic": "거래가 성립하기까지 드는 숨은 수고",
           "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [],
-          "duplicateGroupKeys": [
-            "trust-is-hidden-cost"
-          ]
+          "duplicateGroupKeys": []
         },
         {
           "pageNumber": 3,
@@ -5167,9 +5161,7 @@
           "prerequisitePageNumbers": [
             6
           ],
-          "duplicateGroupKeys": [
-            "trust-is-hidden-cost"
-          ]
+          "duplicateGroupKeys": []
         },
         {
           "pageNumber": 47,
@@ -5629,9 +5621,7 @@
           "prerequisitePageNumbers": [
             17
           ],
-          "duplicateGroupKeys": [
-            "profit-not-cash"
-          ]
+          "duplicateGroupKeys": []
         },
         {
           "pageNumber": 20,
@@ -6278,9 +6268,7 @@
             49,
             19
           ],
-          "duplicateGroupKeys": [
-            "profit-not-cash"
-          ]
+          "duplicateGroupKeys": []
         },
         {
           "pageNumber": 52,
@@ -7369,9 +7357,7 @@
           "aiPublicGuideTopic": "가격이 물건의 고정된 성질이 아니라는 관점",
           "estimatedReadingSeconds": 125,
           "prerequisitePageNumbers": [],
-          "duplicateGroupKeys": [
-            "price-as-signal"
-          ]
+          "duplicateGroupKeys": []
         },
         {
           "pageNumber": 3,
@@ -7909,9 +7895,7 @@
           "prerequisitePageNumbers": [
             27
           ],
-          "duplicateGroupKeys": [
-            "excess-demand-mechanism"
-          ]
+          "duplicateGroupKeys": []
         },
         {
           "pageNumber": 29,
@@ -8242,9 +8226,7 @@
           "prerequisitePageNumbers": [
             28
           ],
-          "duplicateGroupKeys": [
-            "excess-demand-mechanism"
-          ]
+          "duplicateGroupKeys": []
         },
         {
           "pageNumber": 45,
@@ -8496,9 +8478,7 @@
             51,
             55
           ],
-          "duplicateGroupKeys": [
-            "price-as-signal"
-          ]
+          "duplicateGroupKeys": []
         },
         {
           "pageNumber": 57,
@@ -10102,9 +10082,7 @@
             10,
             7
           ],
-          "duplicateGroupKeys": [
-            "folding-limits"
-          ]
+          "duplicateGroupKeys": []
         },
         {
           "pageNumber": 17,
@@ -10925,9 +10903,7 @@
             16,
             12
           ],
-          "duplicateGroupKeys": [
-            "folding-limits"
-          ]
+          "duplicateGroupKeys": []
         },
         {
           "pageNumber": 52,
@@ -12682,9 +12658,7 @@
             15,
             12
           ],
-          "duplicateGroupKeys": [
-            "sound-overload"
-          ]
+          "duplicateGroupKeys": []
         },
         {
           "pageNumber": 17,
@@ -13034,9 +13008,7 @@
             30,
             6
           ],
-          "duplicateGroupKeys": [
-            "sound-overload"
-          ]
+          "duplicateGroupKeys": []
         },
         {
           "pageNumber": 32,
