@@ -83,12 +83,22 @@ public final class AiRouteContentValidator {
             AiRouteContentManifest.Book book, Path fixtureRoot) {
         long bookId = book.bookId();
         validatePdf(book, fixtureRoot);
+        require(
+                book.title() != null && !book.title().isBlank(),
+                "book %d의 제목이 필요합니다.".formatted(bookId));
 
         if (!book.aiRouteCandidate()) {
             require(
                     book.pages().isEmpty(),
                     "book %d는 AI 경로 후보가 아니므로 pages[]가 비어 있어야 합니다.".formatted(bookId));
-            return new ValidatedAiRouteContent.ValidatedBook(bookId, false, List.of(), List.of());
+            return new ValidatedAiRouteContent.ValidatedBook(
+                    bookId,
+                    book.title(),
+                    book.totalPageCount(),
+                    false,
+                    book.aiExternalTransferAllowed(),
+                    List.of(),
+                    List.of());
         }
 
         require(
@@ -148,7 +158,12 @@ public final class AiRouteContentValidator {
             AiRouteContentManifest.Page page = byNumber.get(pageNumber);
             validatedPages.add(
                     new ValidatedAiRouteContent.ValidatedPage(
-                            page.pageNumber(), page.aiRouteCandidatePage(), page.aiAnalysisText()));
+                            page.pageNumber(),
+                            page.aiRouteCandidatePage(),
+                            page.aiAnalysisText(),
+                            page.aiPublicGuideTopic(),
+                            page.estimatedReadingSeconds(),
+                            page.duplicateGroupKeys()));
         }
         List<ValidatedAiRouteContent.PrerequisiteEdge> edges = new ArrayList<>();
         for (Integer pageNumber : order) {
@@ -156,7 +171,14 @@ public final class AiRouteContentValidator {
                 edges.add(new ValidatedAiRouteContent.PrerequisiteEdge(before, pageNumber));
             }
         }
-        return new ValidatedAiRouteContent.ValidatedBook(bookId, true, validatedPages, edges);
+        return new ValidatedAiRouteContent.ValidatedBook(
+                bookId,
+                book.title(),
+                book.totalPageCount(),
+                true,
+                book.aiExternalTransferAllowed(),
+                validatedPages,
+                edges);
     }
 
     private void requireDuplicateGroupsHaveMultiplePages(
@@ -183,6 +205,19 @@ public final class AiRouteContentValidator {
         require(
                 !page.primaryConcepts().isEmpty(),
                 "book %d p%d primaryConcepts가 비어 있습니다.".formatted(bookId, pageNumber));
+        // 적재가 book_page에 그대로 저장하는 값이라 Embeddings 호출 전에 여기서 막는다.
+        require(
+                page.aiAnalysisText() != null && !page.aiAnalysisText().isBlank(),
+                "book %d p%d의 분석 텍스트가 필요합니다.".formatted(bookId, pageNumber));
+        require(
+                page.aiPublicGuideTopic() != null && !page.aiPublicGuideTopic().isBlank(),
+                "book %d p%d의 공개 가이드 주제가 필요합니다.".formatted(bookId, pageNumber));
+        require(
+                page.estimatedReadingSeconds() > 0,
+                "book %d p%d의 예상 독서 시간은 양수여야 합니다.".formatted(bookId, pageNumber));
+        require(
+                page.duplicateGroupKeys() != null,
+                "book %d p%d의 중복 그룹 목록이 필요합니다.".formatted(bookId, pageNumber));
         require(
                 page.aiRouteCandidatePage() || page.duplicateGroupKeys().isEmpty(),
                 "book %d p%d 후보가 아닌 페이지의 duplicateGroupKeys는 비어 있어야 합니다."

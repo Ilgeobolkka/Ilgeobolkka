@@ -1,25 +1,35 @@
 package com.example.ilgeobolkka.contentimport;
 
 import com.example.ilgeobolkka.book.entity.BookPageContentType;
+import com.example.ilgeobolkka.contentimport.manifest.AiRouteContentManifest;
 import com.example.ilgeobolkka.contentimport.manifest.ContentManifest;
 import com.example.ilgeobolkka.contentimport.manifest.ContentManifestParser;
 import com.example.ilgeobolkka.contentimport.manifest.InitialContentManifest;
 import com.example.ilgeobolkka.global.config.ContentStorageProperties;
 import java.io.File;
 import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
 import java.nio.file.AtomicMoveNotSupportedException;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.nio.file.StandardOpenOption;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.HexFormat;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.locks.ReentrantLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -29,10 +39,12 @@ import tools.jackson.databind.ObjectMapper;
 @Profile("content-import")
 class ContentBatchConverter {
 
-    // 초기 코퍼스(initial-v1) 전용 계약이다. 이후 버전은 이 제한을 풀지 않고 버전별 검증 경로를 추가한다.
-    private static final int BOOK_COUNT = 100;
-    private static final int PAGE_COUNT = 400;
+    // initial-v1에만 적용한다. ai-route-v2는 manifest의 도서·페이지 합계를 그대로 쓴다.
+    private static final int INITIAL_BOOK_COUNT = 100;
+    private static final int INITIAL_PAGE_COUNT = 400;
     private static final String POPPLER_VERSION = "26.05.0";
+    private static final ConcurrentMap<Path, ReentrantLock> LOCAL_PUBLICATION_LOCKS =
+            new ConcurrentHashMap<>();
 
     private final Path manifestPath;
     private final Path outputRoot;
@@ -46,11 +58,7 @@ class ContentBatchConverter {
             ContentStorageProperties storageProperties,
             ObjectMapper objectMapper,
             PdfTool pdfTool) {
-        this(
-                properties.manifest(),
-                storageProperties.root(),
-                objectMapper,
-                pdfTool);
+        this(properties.manifest(), storageProperties.root(), objectMapper, pdfTool);
     }
 
     ContentBatchConverter(
@@ -62,12 +70,28 @@ class ContentBatchConverter {
         this.pdfTool = pdfTool;
     }
 
+    /** 기존 initial-v1 단독 변환 API. 실제 적재 orchestration은 {@link #prepare()}를 사용한다. */
     ContentBatch convert() {
+        try (PreparedBatch prepared = prepare()) {
+            if (!(prepared.manifest() instanceof InitialContentManifest)) {
+                throw new IllegalStateException(
+                        "ai-route-v2는 검증·embedding을 연결한 content-import 서비스로 실행해야 합니다.");
+            }
+            prepared.publish();
+            return prepared.batch();
+        }
+    }
+
+    /** 모든 파일을 숨김 staging에 완성하지만 공개 경로로 이동하지는 않는다. */
+    PreparedBatch prepare() {
         byte[] manifestBytes = readBytes(manifestPath);
         String manifestSha256 = sha256(manifestBytes);
-        InitialContentManifest manifest = readManifest(manifestBytes);
-        validateManifest(manifest);
-        List<ResolvedBook> books = resolveAndVerifyBooks(manifest);
+        ContentManifest manifest = manifestParser.parseManifest(manifestBytes);
+        List<SourceBook> sourceBooks = sourceBooks(manifest);
+        if (manifest instanceof InitialContentManifest initialManifest) {
+            validateInitialManifest(initialManifest);
+        }
+        List<ResolvedBook> books = resolveAndVerifyBooks(sourceBooks);
 
         String pdftotextVersion = pdfTool.pdftotextVersion();
         String pdftoppmVersion = pdfTool.pdftoppmVersion();
@@ -82,16 +106,13 @@ class ContentBatchConverter {
         try {
             Files.createDirectories(stagingDirectory);
             List<ConvertedBook> convertedBooks =
-                    convertBooks(
-                            books,
-                            manifestSha256,
-                            stagingDirectory);
+                    convertBooks(books, manifestSha256, stagingDirectory);
             ContentBatch batch =
                     new ContentBatch(
                             manifest.contentVersion(),
                             manifestSha256,
                             List.copyOf(convertedBooks));
-            validateConvertedBatch(batch);
+            validateConvertedBatch(batch, sourceBooks, manifest instanceof InitialContentManifest);
             writeResultManifest(
                     stagingDirectory,
                     new ContentResultManifest(
@@ -101,58 +122,80 @@ class ContentBatchConverter {
                             pdftoppmVersion,
                             new ImageConversion("JPEG", 150, 85),
                             batch.books()));
-            publish(stagingDirectory, finalDirectory, batch);
-            return batch;
+            return new PreparedBatch(
+                    manifest,
+                    batch,
+                    pdftotextVersion,
+                    pdftoppmVersion,
+                    stagingDirectory,
+                    finalDirectory);
         } catch (IOException exception) {
+            deleteAfterFailure(stagingDirectory, exception);
             throw new IllegalStateException("콘텐츠 변환 산출물을 준비할 수 없습니다.", exception);
-        } finally {
-            deleteRecursively(stagingDirectory);
+        } catch (RuntimeException | Error exception) {
+            deleteAfterFailure(stagingDirectory, exception);
+            throw exception;
         }
     }
 
-    private InitialContentManifest readManifest(byte[] manifestBytes) {
-        ContentManifest manifest = manifestParser.parseManifest(manifestBytes);
+    private List<SourceBook> sourceBooks(ContentManifest manifest) {
         if (manifest instanceof InitialContentManifest initialManifest) {
-            return initialManifest;
+            return initialManifest.books().stream()
+                    .map(
+                            book ->
+                                    new SourceBook(
+                                            book.bookId(),
+                                            book.pdfPath(),
+                                            book.pdfSha256(),
+                                            book.totalPageCount()))
+                    .sorted(Comparator.comparingLong(SourceBook::bookId))
+                    .toList();
         }
-        throw new IllegalStateException(
-                "초기 코퍼스 이외 콘텐츠는 전체 사전 검증 연결 후 변환할 수 있습니다: "
-                        + manifest.contentVersion());
+        if (manifest instanceof AiRouteContentManifest aiManifest) {
+            return aiManifest.books().stream()
+                    .map(
+                            book ->
+                                    new SourceBook(
+                                            book.bookId(),
+                                            book.pdfPath(),
+                                            book.pdfSha256(),
+                                            book.totalPageCount()))
+                    .sorted(Comparator.comparingLong(SourceBook::bookId))
+                    .toList();
+        }
+        throw new IllegalStateException("지원하지 않는 콘텐츠 manifest 타입입니다.");
     }
 
-    private void validateManifest(InitialContentManifest manifest) {
-        if (manifest.books().size() != BOOK_COUNT) {
+    private void validateInitialManifest(InitialContentManifest manifest) {
+        if (manifest.books().size() != INITIAL_BOOK_COUNT) {
             throw new IllegalStateException("콘텐츠 manifest에는 정확히 100권이 있어야 합니다.");
         }
 
         int totalPageCount = 0;
         for (InitialContentManifest.Book book : manifest.books()) {
             if (book.bookId() < 1
-                    || book.bookId() > BOOK_COUNT
+                    || book.bookId() > INITIAL_BOOK_COUNT
                     || !expectedPdfPath(book.bookId()).equals(book.pdfPath())) {
                 throw new IllegalStateException("콘텐츠 manifest에 유효하지 않은 도서가 있습니다.");
             }
             totalPageCount += book.totalPageCount();
         }
-        if (totalPageCount != PAGE_COUNT) {
+        if (totalPageCount != INITIAL_PAGE_COUNT) {
             throw new IllegalStateException("콘텐츠 manifest의 전체 페이지 수는 400이어야 합니다.");
         }
     }
 
-    private List<ResolvedBook> resolveAndVerifyBooks(InitialContentManifest manifest) {
+    private List<ResolvedBook> resolveAndVerifyBooks(List<SourceBook> sourceBooks) {
         Path manifestDirectory = manifestPath.toAbsolutePath().normalize().getParent();
         if (manifestDirectory == null) {
             throw new IllegalStateException("콘텐츠 manifest 상위 디렉터리를 확인할 수 없습니다.");
         }
 
-        List<ResolvedBook> resolvedBooks = new ArrayList<>(BOOK_COUNT);
-        for (InitialContentManifest.Book book : manifest.books().stream()
-                .sorted(Comparator.comparingLong(InitialContentManifest.Book::bookId))
-                .toList()) {
+        List<ResolvedBook> resolvedBooks = new ArrayList<>(sourceBooks.size());
+        for (SourceBook book : sourceBooks) {
             Path pdfPath = manifestDirectory.resolve(book.pdfPath()).normalize();
             if (!pdfPath.startsWith(manifestDirectory) || !Files.isRegularFile(pdfPath)) {
-                throw new IllegalStateException(
-                        "콘텐츠 PDF 파일을 찾을 수 없습니다: " + book.pdfPath());
+                throw new IllegalStateException("콘텐츠 PDF 파일을 찾을 수 없습니다: " + book.pdfPath());
             }
             String actualSha256 = sha256(readBytes(pdfPath));
             if (!actualSha256.equals(book.pdfSha256())) {
@@ -165,13 +208,11 @@ class ContentBatchConverter {
     }
 
     private List<ConvertedBook> convertBooks(
-            List<ResolvedBook> books,
-            String manifestSha256,
-            Path stagingDirectory)
+            List<ResolvedBook> books, String manifestSha256, Path stagingDirectory)
             throws IOException {
-        List<ConvertedBook> convertedBooks = new ArrayList<>(BOOK_COUNT);
+        List<ConvertedBook> convertedBooks = new ArrayList<>(books.size());
         for (ResolvedBook resolvedBook : books) {
-            InitialContentManifest.Book book = resolvedBook.manifest();
+            SourceBook book = resolvedBook.source();
             Path bookStagingDirectory =
                     stagingDirectory.resolve("book-%03d".formatted(book.bookId()));
             Files.createDirectories(bookStagingDirectory);
@@ -193,8 +234,7 @@ class ContentBatchConverter {
 
                 String imageFileName = "page-%03d.jpg".formatted(pageNumber);
                 Path outputPrefix =
-                        bookStagingDirectory.resolve(
-                                "page-%03d".formatted(pageNumber));
+                        bookStagingDirectory.resolve("page-%03d".formatted(pageNumber));
                 pdfTool.renderJpeg(resolvedBook.pdfPath(), pageNumber, outputPrefix);
                 Path imageFile = bookStagingDirectory.resolve(imageFileName);
                 long imageBytes = Files.size(imageFile);
@@ -211,10 +251,7 @@ class ContentBatchConverter {
                                 pageNumber,
                                 BookPageContentType.IMAGE,
                                 null,
-                                logicalImagePath(
-                                        manifestSha256,
-                                        book.bookId(),
-                                        pageNumber),
+                                logicalImagePath(manifestSha256, book.bookId(), pageNumber),
                                 imageBytes));
             }
 
@@ -232,15 +269,28 @@ class ContentBatchConverter {
         return convertedBooks;
     }
 
-    private void validateConvertedBatch(ContentBatch batch) {
-        List<ConvertedPage> pages = batch.pages();
-        if (batch.books().size() != BOOK_COUNT || pages.size() != PAGE_COUNT) {
-            throw new IllegalStateException("변환 결과는 100권·400페이지여야 합니다.");
+    private void validateConvertedBatch(
+            ContentBatch batch, List<SourceBook> sourceBooks, boolean initialContent) {
+        Map<Long, Integer> expectedPageCounts = new HashMap<>();
+        int expectedTotalPageCount = 0;
+        for (SourceBook book : sourceBooks) {
+            expectedPageCounts.put(book.bookId(), book.totalPageCount());
+            expectedTotalPageCount += book.totalPageCount();
+        }
+        if (batch.books().size() != sourceBooks.size()
+                || batch.pages().size() != expectedTotalPageCount
+                || (initialContent
+                        && (batch.books().size() != INITIAL_BOOK_COUNT
+                                || batch.pages().size() != INITIAL_PAGE_COUNT))) {
+            throw new IllegalStateException("변환 결과의 도서·페이지 수가 manifest와 다릅니다.");
         }
 
         Set<PageKey> keys = new HashSet<>();
         for (ConvertedBook book : batch.books()) {
-            if (book.pages().size() != book.totalPageCount()) {
+            Integer expectedPageCount = expectedPageCounts.get(book.bookId());
+            if (expectedPageCount == null
+                    || expectedPageCount != book.totalPageCount()
+                    || book.pages().size() != book.totalPageCount()) {
                 throw new IllegalStateException("변환 페이지 수가 PDF 페이지 수와 다릅니다.");
             }
             for (int index = 0; index < book.pages().size(); index++) {
@@ -268,40 +318,43 @@ class ContentBatchConverter {
         }
     }
 
-    private void writeResultManifest(
-            Path stagingDirectory, ContentResultManifest resultManifest)
+    private void writeResultManifest(Path stagingDirectory, Object resultManifest)
             throws IOException {
         byte[] result =
-                objectMapper
-                        .writerWithDefaultPrettyPrinter()
-                        .writeValueAsBytes(resultManifest);
+                objectMapper.writerWithDefaultPrettyPrinter().writeValueAsBytes(resultManifest);
         Files.write(stagingDirectory.resolve("manifest.json"), result);
     }
 
-    private void publish(
-            Path stagingDirectory, Path finalDirectory, ContentBatch batch)
-            throws IOException {
+    private boolean publish(
+            Path stagingDirectory, Path finalDirectory, ContentBatch batch) throws IOException {
         if (Files.exists(finalDirectory)) {
             verifyExistingBatch(stagingDirectory, finalDirectory, batch);
-            return;
+            return false;
         }
         try {
             Files.move(stagingDirectory, finalDirectory, StandardCopyOption.ATOMIC_MOVE);
         } catch (AtomicMoveNotSupportedException exception) {
-            Files.move(stagingDirectory, finalDirectory);
+            try {
+                Files.move(stagingDirectory, finalDirectory);
+            } catch (FileAlreadyExistsException concurrentPublication) {
+                verifyExistingBatch(stagingDirectory, finalDirectory, batch);
+                return false;
+            }
+        } catch (FileAlreadyExistsException concurrentPublication) {
+            verifyExistingBatch(stagingDirectory, finalDirectory, batch);
+            return false;
         }
+        return true;
     }
 
     private void verifyExistingBatch(
-            Path stagingDirectory, Path finalDirectory, ContentBatch batch)
-            throws IOException {
+            Path stagingDirectory, Path finalDirectory, ContentBatch batch) throws IOException {
         Path expectedManifest = stagingDirectory.resolve("manifest.json");
         Path existingManifest = finalDirectory.resolve("manifest.json");
         if (!Files.isRegularFile(existingManifest)
                 || Files.mismatch(expectedManifest, existingManifest) != -1) {
             throw new IllegalStateException(
-                    "같은 manifest 배치 디렉터리에 다른 결과가 있습니다: "
-                            + finalDirectory);
+                    "같은 manifest 배치 디렉터리에 다른 결과가 있습니다: " + finalDirectory);
         }
 
         for (ConvertedPage page : batch.pages()) {
@@ -317,14 +370,12 @@ class ContentBatchConverter {
             if (!Files.isRegularFile(existingImage)
                     || Files.mismatch(expectedImage, existingImage) != -1) {
                 throw new IllegalStateException(
-                        "같은 manifest 배치 디렉터리에 다른 이미지가 있습니다: "
-                                + relativeImage);
+                        "같은 manifest 배치 디렉터리에 다른 이미지가 있습니다: " + relativeImage);
             }
         }
     }
 
-    private String logicalImagePath(
-            String manifestSha256, long bookId, int pageNumber) {
+    private String logicalImagePath(String manifestSha256, long bookId, int pageNumber) {
         return outputRoot
                 .resolve(manifestSha256)
                 .resolve("book-%03d".formatted(bookId))
@@ -351,8 +402,8 @@ class ContentBatchConverter {
 
     static String sha256(byte[] content) {
         try {
-            return HexFormat.of().formatHex(
-                    MessageDigest.getInstance("SHA-256").digest(content));
+            return HexFormat.of()
+                    .formatHex(MessageDigest.getInstance("SHA-256").digest(content));
         } catch (NoSuchAlgorithmException exception) {
             throw new IllegalStateException("SHA-256을 사용할 수 없습니다.", exception);
         }
@@ -363,6 +414,14 @@ class ContentBatchConverter {
             return Files.readAllBytes(path);
         } catch (IOException exception) {
             throw new IllegalStateException("파일을 읽을 수 없습니다: " + path, exception);
+        }
+    }
+
+    private void deleteAfterFailure(Path directory, Throwable original) {
+        try {
+            deleteRecursively(directory);
+        } catch (RuntimeException cleanupFailure) {
+            original.addSuppressed(cleanupFailure);
         }
     }
 
@@ -384,12 +443,188 @@ class ContentBatchConverter {
                             });
         } catch (IOException exception) {
             throw new IllegalStateException(
-                    "임시 변환 산출물을 확인할 수 없습니다: " + directory,
-                    exception);
+                    "임시 변환 산출물을 확인할 수 없습니다: " + directory, exception);
         }
     }
 
-    private record ResolvedBook(InitialContentManifest.Book manifest, Path pdfPath) {}
+    final class PreparedBatch implements AutoCloseable {
+
+        private final ContentManifest manifest;
+        private final ContentBatch batch;
+        private final String pdftotextVersion;
+        private final String pdftoppmVersion;
+        private final Path stagingDirectory;
+        private final Path finalDirectory;
+        private final Path publicationLockFile;
+        private boolean publishedByThisRun;
+        private boolean publishedOrReused;
+        private Thread publicationLockOwner;
+
+        private PreparedBatch(
+                ContentManifest manifest,
+                ContentBatch batch,
+                String pdftotextVersion,
+                String pdftoppmVersion,
+                Path stagingDirectory,
+                Path finalDirectory) {
+            this.manifest = manifest;
+            this.batch = batch;
+            this.pdftotextVersion = pdftotextVersion;
+            this.pdftoppmVersion = pdftoppmVersion;
+            this.stagingDirectory = stagingDirectory;
+            this.finalDirectory = finalDirectory;
+            this.publicationLockFile =
+                    finalDirectory.resolveSibling(
+                            "." + finalDirectory.getFileName() + ".lock");
+        }
+
+        ContentManifest manifest() {
+            return manifest;
+        }
+
+        ContentBatch batch() {
+            return batch;
+        }
+
+        void writeAiResultManifest(AiRouteContentImportCommand command) {
+            if (!(manifest instanceof AiRouteContentManifest aiManifest)
+                    || !batch.equals(command.batch())
+                    || publishedOrReused) {
+                throw new IllegalStateException("AI 결과 manifest를 기록할 수 없는 상태입니다.");
+            }
+            if (!aiManifest.dataPolicyVersion().equals(command.content().dataPolicyVersion())
+                    || !aiManifest.embeddingModel().equals(command.content().embeddingModel())
+                    || aiManifest.embeddingDimensions()
+                            != command.content().embeddingDimensions()) {
+                throw new AiRouteContentImportException(
+                        "AI manifest와 검증 결과의 정책·모델·차원이 다릅니다.");
+            }
+
+            List<AiRoutePageResult> aiPages = new ArrayList<>();
+            for (AiRouteContentManifest.Book book : aiManifest.books()) {
+                for (AiRouteContentManifest.Page page : book.pages()) {
+                    List<Double> vector =
+                            command.embedded().vectorOf(book.bookId(), page.pageNumber());
+                    String embeddingSha256 =
+                            vector == null ? null : sha256(objectMapper.writeValueAsBytes(vector));
+                    aiPages.add(
+                            new AiRoutePageResult(
+                                    book.bookId(),
+                                    page.pageNumber(),
+                                    page.aiRouteCandidatePage(),
+                                    page.aiAnalysisInputSha256(),
+                                    embeddingSha256));
+                }
+            }
+            try {
+                writeResultManifest(
+                        stagingDirectory,
+                        new AiRouteContentResultManifest(
+                                batch.contentVersion(),
+                                batch.manifestSha256(),
+                                pdftotextVersion,
+                                pdftoppmVersion,
+                                new ImageConversion("JPEG", 150, 85),
+                                command.content().dataPolicyVersion(),
+                                command.content().embeddingModel(),
+                                command.content().embeddingDimensions(),
+                                batch.books(),
+                                List.copyOf(aiPages)));
+            } catch (IOException exception) {
+                throw new IllegalStateException("AI 변환 결과 manifest를 기록할 수 없습니다.", exception);
+            }
+        }
+
+        void publish() {
+            withPublicationLock(this::publishWhileLocked);
+        }
+
+        void publishWhileLocked() {
+            requirePublicationLock();
+            if (publishedOrReused) {
+                return;
+            }
+            try {
+                publishedByThisRun =
+                        ContentBatchConverter.this.publish(
+                                stagingDirectory, finalDirectory, batch);
+                publishedOrReused = true;
+                if (!publishedByThisRun) {
+                    deleteRecursively(stagingDirectory);
+                }
+            } catch (IOException exception) {
+                throw new IllegalStateException("콘텐츠 변환 산출물을 공개할 수 없습니다.", exception);
+            }
+        }
+
+        void rollbackPublication() {
+            withPublicationLock(this::rollbackPublicationWhileLocked);
+        }
+
+        void rollbackPublicationWhileLocked() {
+            requirePublicationLock();
+            if (!publishedByThisRun) {
+                return;
+            }
+            deleteRecursively(finalDirectory);
+            publishedByThisRun = false;
+            publishedOrReused = false;
+        }
+
+        /** 같은 manifest의 게시·DB commit·보상 삭제를 JVM과 프로세스 사이에서 직렬화한다. */
+        void withPublicationLock(Runnable action) {
+            if (action == null) {
+                throw new IllegalArgumentException("콘텐츠 게시 잠금 안에서 실행할 작업이 필요합니다.");
+            }
+            if (publicationLockOwner == Thread.currentThread()) {
+                action.run();
+                return;
+            }
+
+            ReentrantLock localLock =
+                    LOCAL_PUBLICATION_LOCKS.computeIfAbsent(
+                            publicationLockFile, ignored -> new ReentrantLock());
+            localLock.lock();
+            try {
+                Files.createDirectories(publicationLockFile.getParent());
+                try (FileChannel channel =
+                                FileChannel.open(
+                                        publicationLockFile,
+                                        StandardOpenOption.CREATE,
+                                        StandardOpenOption.WRITE);
+                        FileLock ignored = channel.lock()) {
+                    publicationLockOwner = Thread.currentThread();
+                    try {
+                        action.run();
+                    } finally {
+                        publicationLockOwner = null;
+                    }
+                }
+            } catch (IOException exception) {
+                throw new IllegalStateException(
+                        "콘텐츠 게시 잠금을 획득할 수 없습니다: " + publicationLockFile,
+                        exception);
+            } finally {
+                localLock.unlock();
+            }
+        }
+
+        private void requirePublicationLock() {
+            if (publicationLockOwner != Thread.currentThread()) {
+                throw new IllegalStateException("콘텐츠 게시 잠금 안에서만 파일 상태를 바꿀 수 있습니다.");
+            }
+        }
+
+        @Override
+        public void close() {
+            deleteRecursively(stagingDirectory);
+        }
+    }
+
+    private record SourceBook(
+            long bookId, String pdfPath, String pdfSha256, int totalPageCount) {}
+
+    private record ResolvedBook(SourceBook source, Path pdfPath) {}
 
     private record PageKey(long bookId, int pageNumber) {}
 }
