@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.example.ilgeobolkka.airoute.AiRouteGenerationCommand;
+import com.example.ilgeobolkka.airoute.AiRouteDepth;
 import com.example.ilgeobolkka.airoute.entity.AiReadingRoute;
 import com.example.ilgeobolkka.airoute.entity.AiRouteGeneration;
 import com.example.ilgeobolkka.airoute.entity.AiRouteGenerationStatus;
@@ -236,6 +237,25 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
                 () -> assertEquals(BUDGET + 3, view.minimumRequiredInk()),
                 () -> assertNull(view.failureCode()),
                 () -> assertNull(view.savedRouteId()));
+    }
+
+    @Test
+    void 깊이가_부족하면_최소_잉크_없이_NO_ROUTE로_완료한다() {
+        UUID generationId = 생성을_시작한다(AiRouteGenerationCommand.forOwnedDepth(
+                BOOK_ID, CONTENT_VERSION, PURPOSE, AiRouteDepth.QUICK));
+        clock.set(COMPLETED_AT);
+
+        lifecycleService.completeWithoutRoute(
+                generationId, AiRouteNoRouteReason.INSUFFICIENT_DEPTH, null);
+
+        Map<String, Object> row = 생성을_조회한다(generationId);
+        AiRouteGenerationView view = 소유자로_조회한다(generationId).orElseThrow();
+        assertAll(
+                () -> assertEquals("NO_ROUTE", row.get("status")),
+                () -> assertEquals("INSUFFICIENT_DEPTH", row.get("no_route_reason")),
+                () -> assertNull(row.get("minimum_required_ink")),
+                () -> assertEquals(AiRouteNoRouteReason.INSUFFICIENT_DEPTH, view.noRouteReason()),
+                () -> assertNull(view.minimumRequiredInk()));
     }
 
     @Test
@@ -761,8 +781,11 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
     }
 
     private UUID 생성을_시작한다() {
+        return 생성을_시작한다(명령());
+    }
+
+    private UUID 생성을_시작한다(AiRouteGenerationCommand command) {
         UUID generationId = UUID.randomUUID();
-        AiRouteGenerationCommand command = 명령();
         transactionTemplate.executeWithoutResult(
                 status ->
                         generationRepository.save(

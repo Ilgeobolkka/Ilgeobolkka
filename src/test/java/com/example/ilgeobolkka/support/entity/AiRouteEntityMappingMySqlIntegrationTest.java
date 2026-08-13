@@ -302,7 +302,10 @@ class AiRouteEntityMappingMySqlIntegrationTest {
                                 이름을_조회한다(AiRouteGenerationStatus.values())),
                 () ->
                         assertEquals(
-                                List.of("NO_RELEVANT_PAGES", "INSUFFICIENT_BUDGET"),
+                                List.of(
+                                        "NO_RELEVANT_PAGES",
+                                        "INSUFFICIENT_BUDGET",
+                                        "INSUFFICIENT_DEPTH"),
                                 이름을_조회한다(AiRouteNoRouteReason.values())),
                 () ->
                         assertEquals(

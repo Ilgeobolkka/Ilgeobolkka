@@ -648,6 +648,8 @@ class AiRouteSchemaMigrationTest {
                 "INSUFFICIENT_BUDGET",
                 null,
                 4);
+        깊이_부족_생성을_생성한다(
+                식별자를_생성한다(51_107), 식별자를_생성한다(1_107));
         저장_상태_생성을_생성한다(
                 식별자를_생성한다(51_104),
                 식별자를_생성한다(1_104),
@@ -666,7 +668,35 @@ class AiRouteSchemaMigrationTest {
                 "CONSUMED",
                 null);
 
-        assertEquals(7, 행_수를_조회한다("ai_route_generation"));
+        assertEquals(8, 행_수를_조회한다("ai_route_generation"));
+    }
+
+    @Test
+    void V5는_기존_NO_ROUTE를_보존하고_소장_깊이_부족을_허용한다() {
+        Flyway v4Flyway = 새_Flyway를_생성한다(MigrationVersion.fromVersion("4"));
+
+        try {
+            v4Flyway.clean();
+            v4Flyway.migrate();
+            기본_독자_도서_페이지를_생성한다();
+            최종_생성을_생성한다(
+                    식별자를_생성한다(51_120),
+                    식별자를_생성한다(1_120),
+                    "NO_ROUTE",
+                    "NO_RELEVANT_PAGES",
+                    null,
+                    null);
+
+            새_Flyway를_생성한다(MigrationVersion.fromVersion("5")).migrate();
+            깊이_부족_생성을_생성한다(
+                    식별자를_생성한다(51_121), 식별자를_생성한다(1_121));
+
+            assertAll(
+                    () -> assertEquals(List.of("1", "2", "3", "4", "5"), 적용된_버전을_조회한다()),
+                    () -> assertEquals(2, 행_수를_조회한다("ai_route_generation")));
+        } finally {
+            최신_스키마로_복구한다();
+        }
     }
 
     @Test
@@ -718,6 +748,17 @@ class AiRouteSchemaMigrationTest {
                                                 식별자를_생성한다(1_113),
                                                 "FAILED",
                                                 null,
+                                                null,
+                                                null)),
+                () ->
+                        assertThrows(
+                                DataAccessException.class,
+                                () ->
+                                        최종_생성을_생성한다(
+                                                식별자를_생성한다(51_117),
+                                                식별자를_생성한다(1_117),
+                                                "NO_ROUTE",
+                                                "INSUFFICIENT_DEPTH",
                                                 null,
                                                 null)),
                 () ->
@@ -1213,6 +1254,26 @@ class AiRouteSchemaMigrationTest {
                 noRouteReason,
                 minimumRequiredInk,
                 failureCode);
+    }
+
+    private void 깊이_부족_생성을_생성한다(String generationId, String idempotencyKey) {
+        jdbcTemplate.update(
+                """
+                INSERT INTO ai_route_generation
+                    (generation_id, reader_id, book_id, content_version,
+                     idempotency_key, request_fingerprint, normalized_purpose,
+                     request_type, depth, status, no_route_reason,
+                     created_at, completed_at, expires_at)
+                VALUES (?, ?, ?, 'initial-v1', ?, ?, '테스트 목적',
+                        'OWNED_DEPTH', 'QUICK', 'NO_ROUTE', 'INSUFFICIENT_DEPTH',
+                        '2026-08-07 00:00:00.000000',
+                        '2026-08-07 00:00:01.000000', '2026-08-07 00:10:01.000000')
+                """,
+                generationId,
+                READER_ID,
+                BOOK_ID,
+                idempotencyKey,
+                "a".repeat(64));
     }
 
     private void 저장_상태_생성을_생성한다(

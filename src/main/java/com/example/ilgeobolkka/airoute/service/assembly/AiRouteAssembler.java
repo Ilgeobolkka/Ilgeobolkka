@@ -5,8 +5,8 @@ import com.example.ilgeobolkka.airoute.AiRouteDepth;
 import com.example.ilgeobolkka.airoute.AiRouteGenerationCommand;
 import com.example.ilgeobolkka.airoute.AiRouteRequestType;
 import com.example.ilgeobolkka.airoute.entity.AiRouteItemRelevance;
-import com.example.ilgeobolkka.airoute.exception.AiRouteDepthLimitExceededException;
 import com.example.ilgeobolkka.airoute.exception.InvalidAiRouteCandidateInputException;
+import com.example.ilgeobolkka.airoute.service.AiRouteAdditionalCostPolicy;
 import com.example.ilgeobolkka.airoute.service.assembly.AiRouteGenerationResult.Item;
 import com.example.ilgeobolkka.airoute.service.query.AiRouteItemGuideAssembler;
 import com.example.ilgeobolkka.airoute.service.validation.ValidatedRouteProposal;
@@ -112,7 +112,7 @@ public final class AiRouteAssembler {
 
         if (selectedPageNumbers.isEmpty()) {
             if (command.requestType() == AiRouteRequestType.OWNED_DEPTH) {
-                throw new AiRouteDepthLimitExceededException();
+                return AiRouteGenerationResult.insufficientDepth();
             }
 
             int minimumRequiredInk = requiredPageNumbersByCandidate.values().stream()
@@ -246,14 +246,14 @@ public final class AiRouteAssembler {
             List<Integer> pageNumbers,
             Map<Integer, AiRouteAssemblyPage> pagesByNumber,
             AiRouteEntitlementSnapshot entitlement) {
-        if (entitlement.owned()) {
-            return 0;
-        }
-        return (int) pageNumbers.stream()
-                .map(pagesByNumber::get)
-                .map(AiRouteAssemblyPage::pageId)
-                .filter(pageId -> !entitlement.activeRentalPageIds().contains(pageId))
-                .count();
+        return AiRouteAdditionalCostPolicy.additionalInk(
+                pageNumbers.stream()
+                        .map(pagesByNumber::get)
+                        .map(AiRouteAssemblyPage::pageId)
+                        .map(pageId -> AiRouteAdditionalCostPolicy.status(
+                                entitlement.owned(),
+                                entitlement.activeRentalPageIds().contains(pageId)))
+                        .toList());
     }
 
     private boolean fits(
@@ -285,12 +285,7 @@ public final class AiRouteAssembler {
 
     private AiRouteAdditionalCostStatus additionalCostStatus(
             long pageId, AiRouteEntitlementSnapshot entitlement) {
-        if (entitlement.owned()) {
-            return AiRouteAdditionalCostStatus.OWNED;
-        }
-        if (entitlement.activeRentalPageIds().contains(pageId)) {
-            return AiRouteAdditionalCostStatus.ACTIVE_RENTAL;
-        }
-        return AiRouteAdditionalCostStatus.ONE_INK;
+        return AiRouteAdditionalCostPolicy.status(
+                entitlement.owned(), entitlement.activeRentalPageIds().contains(pageId));
     }
 }

@@ -55,6 +55,11 @@ public record AiRouteGenerationResult(
                 minimumRequiredInk);
     }
 
+    public static AiRouteGenerationResult insufficientDepth() {
+        return new AiRouteGenerationResult(
+                Status.NO_ROUTE, List.of(), NoRouteReason.INSUFFICIENT_DEPTH, null);
+    }
+
     public enum Status {
         ROUTE,
         NO_ROUTE
@@ -63,7 +68,8 @@ public record AiRouteGenerationResult(
     /** G04 조립 단계 안에서만 사용하는 경로 없음 사유. 공개 API·DB 계약과 독립적이다. */
     public enum NoRouteReason {
         NO_RELEVANT_PAGES,
-        INSUFFICIENT_BUDGET
+        INSUFFICIENT_BUDGET,
+        INSUFFICIENT_DEPTH
     }
 
     /**
