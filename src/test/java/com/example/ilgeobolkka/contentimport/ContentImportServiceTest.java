@@ -2,12 +2,16 @@ package com.example.ilgeobolkka.contentimport;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.inOrder;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -34,9 +38,8 @@ class ContentImportServiceTest {
 
     @Test
     void ai_route_v2는_검증_embedding을_먼저_끝내고_적재한다() {
-        ContentBatch batch =
-                new ContentBatch("ai-route-v2", "a".repeat(64), java.util.List.of());
-        var prepared = org.mockito.Mockito.mock(AiRouteContentImporter.PreparedContent.class);
+        ContentBatch batch = new ContentBatch("ai-route-v2", "a".repeat(64), List.of());
+        var prepared = mock(AiRouteContentImporter.PreparedContent.class);
         when(converter.convert()).thenReturn(batch);
         when(aiRouteContentImporter.prepare()).thenReturn(prepared);
         var service = new ContentImportService(converter, pageWriter, aiRouteContentImporter);
@@ -45,7 +48,7 @@ class ContentImportServiceTest {
 
         // 본문 적재는 AI 적재와 한 트랜잭션에 묶여 importer 안에서 일어난다.
         verifyNoInteractions(pageWriter);
-        var inOrder = org.mockito.Mockito.inOrder(aiRouteContentImporter);
+        InOrder inOrder = inOrder(aiRouteContentImporter);
         inOrder.verify(aiRouteContentImporter).prepare();
         inOrder.verify(aiRouteContentImporter).write(batch, prepared);
     }

@@ -6,11 +6,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.example.ilgeobolkka.book.entity.BookPageContentType;
+import com.example.ilgeobolkka.contentimport.embedding.EmbeddedAiRouteContent;
 import com.example.ilgeobolkka.contentimport.validation.ValidatedAiRouteContent;
 import com.example.ilgeobolkka.infra.openai.OpenAiEmbeddingGateway;
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -40,6 +43,9 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 class AiRouteContentImporterMySqlIntegrationTest {
 
     private static final String VERSION = "ai-route-v2";
+    private static final String POLICY = "OPENAI_DEFAULT_RETENTION_V1";
+    private static final String MODEL = "text-embedding-3-small";
+    private static final int DIMENSIONS = 3;
     private static final long BOOK_ID = 63_000L;
 
     /**
@@ -107,7 +113,7 @@ class AiRouteContentImporterMySqlIntegrationTest {
 
     @Test
     void 본문과_AI_메타데이터를_한_트랜잭션으로_쓴다() {
-        importer.write(batch(2), prepared(2, 2));
+        importer.write(batch(2), prepared(2));
 
         assertAll(
                 () -> assertEquals(2, 페이지_수()),
@@ -133,7 +139,7 @@ class AiRouteContentImporterMySqlIntegrationTest {
     @Test
     void AI_적재가_실패하면_본문도_남지_않는다() {
         // 본문은 두 페이지인데 AI 메타데이터는 세 페이지를 가리켜 뒤쪽에서 실패한다.
-        assertThrows(RuntimeException.class, () -> importer.write(batch(2), prepared(2, 3)));
+        assertThrows(RuntimeException.class, () -> importer.write(batch(2), prepared(3)));
 
         assertAll(
                 () -> assertEquals(0, 페이지_수()),
@@ -193,42 +199,36 @@ class AiRouteContentImporterMySqlIntegrationTest {
                 List.of(new ConvertedBook(BOOK_ID, "b".repeat(64), pageCount, pages)));
     }
 
-    private AiRouteContentImporter.PreparedContent prepared(int vectorPages, int metadataPages) {
+    /** 페이지 1은 목차라 후보가 아니고 2번부터는 후보이며, 후보에는 모두 vector가 있다. */
+    private AiRouteContentImporter.PreparedContent prepared(int metadataPages) {
         List<ValidatedAiRouteContent.ValidatedPage> pages = new ArrayList<>();
+        Map<EmbeddedAiRouteContent.PageKey, List<Double>> vectors = new HashMap<>();
         for (int pageNumber = 1; pageNumber <= metadataPages; pageNumber++) {
+            boolean candidate = pageNumber > 1;
             pages.add(
                     new ValidatedAiRouteContent.ValidatedPage(
                             pageNumber,
-                            pageNumber > 1,
+                            candidate,
                             "p%d 분석".formatted(pageNumber),
                             "p%d 주제".formatted(pageNumber),
                             60,
                             List.of()));
+            if (candidate) {
+                vectors.put(
+                        new EmbeddedAiRouteContent.PageKey(BOOK_ID, pageNumber, VERSION),
+                        List.of(0.1, 0.2, 0.3));
+            }
         }
         ValidatedAiRouteContent validated =
                 new ValidatedAiRouteContent(
                         VERSION,
-                        "OPENAI_DEFAULT_RETENTION_V1",
-                        "text-embedding-3-small",
-                        3,
+                        POLICY,
+                        MODEL,
+                        DIMENSIONS,
                         List.of(
                                 new ValidatedAiRouteContent.ValidatedBook(
                                         BOOK_ID, true, pages, List.of())));
-        var vectors =
-                new java.util.HashMap<
-                        com.example.ilgeobolkka.contentimport.embedding.EmbeddedAiRouteContent
-                                .PageKey,
-                        List<Double>>();
-        for (int pageNumber = 2; pageNumber <= vectorPages + 1 && pageNumber <= metadataPages;
-                pageNumber++) {
-            vectors.put(
-                    new com.example.ilgeobolkka.contentimport.embedding.EmbeddedAiRouteContent
-                            .PageKey(BOOK_ID, pageNumber, VERSION),
-                    List.of(0.1, 0.2, 0.3));
-        }
         return new AiRouteContentImporter.PreparedContent(
-                validated,
-                new com.example.ilgeobolkka.contentimport.embedding.EmbeddedAiRouteContent(
-                        VERSION, "text-embedding-3-small", 3, vectors));
+                validated, new EmbeddedAiRouteContent(VERSION, MODEL, DIMENSIONS, vectors));
     }
 }

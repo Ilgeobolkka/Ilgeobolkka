@@ -29,7 +29,9 @@ import org.springframework.test.context.ContextConfiguration;
 @ContextConfiguration(initializers = DedicatedTestDatabaseInitializer.class)
 class AiRoutePageWriterMySqlIntegrationTest {
 
-    private static final long BOOK_ID = 11L;
+    // 시연 도서 ID(1~100)를 피한다. 테스트 DB는 클래스마다 새로 만들지 않고 하나를 공유하므로,
+    // 시드 도서를 지우면 뒤에 도는 테스트가 도서가 사라진 DB를 본다.
+    private static final long BOOK_ID = 11_000L;
     private static final int NEW_PAGE_COUNT = 5;
     private static final long OTHER_BOOK_ID = 11_001L;
 
