@@ -32,7 +32,13 @@ class ContentBatchConverter {
     // 초기 코퍼스(initial-v1) 전용 계약이다. 이후 버전은 이 제한을 풀지 않고 버전별 검증 경로를 추가한다.
     private static final int BOOK_COUNT = 100;
     private static final int PAGE_COUNT = 400;
-    private static final String POPPLER_VERSION = "26.05.0";
+    /**
+     * 산출물이 바이트 단위로 같음을 확인한 버전만 넣는다. 목록을 늘리려면 같은 표본을 다시 변환해
+     * 비교하고 근거를 남긴 뒤에 넣는다.
+     *
+     * <p>한 값으로 고정하지 않는 이유와 목록에 드는 조건은 ADR-0015에 있다.
+     */
+    private static final List<String> POPPLER_VERSIONS = List.of("26.05.0", "26.08.0");
 
     private final Path manifestPath;
     private final Path outputRoot;
@@ -335,12 +341,12 @@ class ContentBatchConverter {
     }
 
     private void validatePopplerVersion(String command, String actualVersion) {
-        if (!POPPLER_VERSION.equals(actualVersion)) {
+        if (!POPPLER_VERSIONS.contains(actualVersion)) {
             throw new IllegalStateException(
                     command
                             + " 버전은 "
-                            + POPPLER_VERSION
-                            + "이어야 합니다: "
+                            + String.join("·", POPPLER_VERSIONS)
+                            + " 중 하나여야 합니다: "
                             + actualVersion);
         }
     }

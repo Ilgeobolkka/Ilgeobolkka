@@ -164,7 +164,7 @@ class ContentBatchConverterTest {
     }
 
     @Test
-    void Poppler_버전이_26050이_아니면_변환을_거부한다() throws IOException {
+    void Poppler_버전이_허용_목록에_없으면_변환을_거부한다() throws IOException {
         Path manifestPath = createManifest();
         var pdfTool = new FakePdfTool();
         pdfTool.pdftotextVersion = "25.12.0";
@@ -177,6 +177,22 @@ class ContentBatchConverterTest {
 
         assertThrows(IllegalStateException.class, converter::convert);
         assertEquals(0, pdfTool.extractCount);
+    }
+
+    /** 로컬(Homebrew)과 CI(conda-forge)가 서로 다른 버전을 주므로 허용 목록의 어느 쪽이든 변환한다. */
+    @Test
+    void 허용_목록에_있는_다른_Poppler_버전으로도_변환한다() throws IOException {
+        Path manifestPath = createManifest();
+        var pdfTool = new FakePdfTool();
+        pdfTool.pdftotextVersion = "26.08.0";
+        pdfTool.pdftoppmVersion = "26.08.0";
+        var converter =
+                new ContentBatchConverter(
+                        manifestPath, tempDirectory.resolve("output"), objectMapper, pdfTool);
+
+        ContentBatch batch = converter.convert();
+
+        assertEquals(400, batch.pages().size());
     }
 
     private Path createManifest() throws IOException {
@@ -253,6 +269,7 @@ class ContentBatchConverterTest {
     private static class FakePdfTool implements PdfTool {
 
         private String pdftotextVersion = "26.05.0";
+        private String pdftoppmVersion = "26.05.0";
         private boolean hasUnexpectedPage;
         private int extractCount;
 
@@ -263,7 +280,7 @@ class ContentBatchConverterTest {
 
         @Override
         public String pdftoppmVersion() {
-            return "26.05.0";
+            return pdftoppmVersion;
         }
 
         @Override
