@@ -30,6 +30,7 @@
 
 - 입력: readerId, UUID idempotencyKey, G01 command, `Clock`
 - 산출물: `AiRouteRequestFingerprint`, `AiRouteGenerationStartService`, `GenerationStartResult`
+- 기존 키 선조회: 유효한 행이 있으면 상태 변경 없이 EXISTING_GENERATING, EXISTING_FINAL, KEY_REUSED 반환
 - start result: NEW, EXISTING_GENERATING, EXISTING_FINAL, KEY_REUSED, DAILY_LIMIT
 - G06/G07에 넘길 것: NEW generationId 또는 저장된 기존 상태·expiresAt
 
@@ -45,6 +46,8 @@
    계산하고 원문·JSON map 순서에 의존하지 않습니다.
 2. `(readerId,idempotencyKey)` 기존 행을 소유자 조건으로 잠금 조회하고 같은 fingerprint면 저장 상태를 반환합니다.
 3. 다른 fingerprint면 `AI_ROUTE_IDEMPOTENCY_KEY_REUSED` 결과이며 usage를 증가시키지 않습니다.
+   G07의 기존 키 선조회도 같은 판정을 사용하며, 행이 없거나 만료했으면 아무것도 바꾸지 않고 빈 결과를
+   반환합니다. 선조회 뒤 생긴 동시 요청은 실제 start의 두 번째 확인과 UK 경합 수렴이 처리합니다.
 4. 새 key만 UTC `LocalDate` usage 행을 원자적으로 조건 증가하고 10을 넘으면 generation을 만들지 않습니다.
 5. usage 증가와 `GENERATING` insert는 한 transaction이며 commit 뒤에만 G07이 외부 호출합니다.
 6. 동시 insert UK 경합은 500이 아니라 기존 행 재조회로 같은 결과에 수렴합니다.
@@ -54,6 +57,7 @@
 
 - 같은 key 같은 command의 순차·동시 요청이 generation 1행, usage 1회
 - 같은 key 다른 command가 KEY_REUSED, usage 추가 0
+- 기존 키 선조회가 같은 command·다른 command·없는 key·만료 key를 구분하고 상태와 usage를 바꾸지 않음
 - 다른 key 11개 동시 요청에서 10개 NEW·1개 DAILY_LIMIT
 - 성공 예정·실패 예정 구분 없이 시작 시점 계수, UTC 자정 전후 별도 usage
 - rollback 주입 시 generation·usage 둘 다 미반영

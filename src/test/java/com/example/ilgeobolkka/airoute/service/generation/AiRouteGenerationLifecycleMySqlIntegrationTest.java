@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.example.ilgeobolkka.airoute.AiRouteGenerationCommand;
+import com.example.ilgeobolkka.airoute.AiRouteDepth;
 import com.example.ilgeobolkka.airoute.entity.AiReadingRoute;
 import com.example.ilgeobolkka.airoute.entity.AiRouteGeneration;
 import com.example.ilgeobolkka.airoute.entity.AiRouteGenerationStatus;
@@ -239,6 +240,25 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
     }
 
     @Test
+    void 깊이가_부족하면_최소_잉크_없이_NO_ROUTE로_완료한다() {
+        UUID generationId = 생성을_시작한다(AiRouteGenerationCommand.forOwnedDepth(
+                BOOK_ID, CONTENT_VERSION, PURPOSE, AiRouteDepth.QUICK));
+        clock.set(COMPLETED_AT);
+
+        lifecycleService.completeWithoutRoute(
+                generationId, AiRouteNoRouteReason.INSUFFICIENT_DEPTH, null);
+
+        Map<String, Object> row = 생성을_조회한다(generationId);
+        AiRouteGenerationView view = 소유자로_조회한다(generationId).orElseThrow();
+        assertAll(
+                () -> assertEquals("NO_ROUTE", row.get("status")),
+                () -> assertEquals("INSUFFICIENT_DEPTH", row.get("no_route_reason")),
+                () -> assertNull(row.get("minimum_required_ink")),
+                () -> assertEquals(AiRouteNoRouteReason.INSUFFICIENT_DEPTH, view.noRouteReason()),
+                () -> assertNull(view.minimumRequiredInk()));
+    }
+
+    @Test
     void 실패하면_공개_코드와_함께_FAILED로_완료한다() {
         UUID generationId = 생성을_시작한다();
         clock.set(COMPLETED_AT);
@@ -253,6 +273,44 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
                                 AiRouteGenerationCleanupService.TIMEOUT_FAILURE_CODE,
                                 row.get("failure_code")),
                 () -> assertEquals("2026-08-06 00:15:05.123456", row.get("expires_at")));
+    }
+
+    @Test
+    void ROUTE_완료_transaction이_rollback되면_상태와_항목을_모두_복구한다() {
+        UUID generationId = 생성을_시작한다();
+        clock.set(COMPLETED_AT);
+
+        assertThrows(
+                IllegalStateException.class,
+                () -> transactionTemplate.executeWithoutResult(status -> {
+                    lifecycleService.completeWithRoute(generationId, 두_항목());
+                    throw new IllegalStateException("테스트용 rollback");
+                }));
+
+        assertAll(
+                () -> assertEquals("GENERATING", 생성을_조회한다(generationId).get("status")),
+                () -> assertEquals(0, 항목_수를_조회한다(generationId)));
+    }
+
+    @Test
+    void FAILED_완료_transaction이_rollback되면_GENERATING으로_복구한다() {
+        UUID generationId = 생성을_시작한다();
+        clock.set(COMPLETED_AT);
+
+        assertThrows(
+                IllegalStateException.class,
+                () -> transactionTemplate.executeWithoutResult(status -> {
+                    lifecycleService.fail(
+                            generationId, AiRouteGenerationCleanupService.TIMEOUT_FAILURE_CODE);
+                    throw new IllegalStateException("테스트용 rollback");
+                }));
+
+        Map<String, Object> row = 생성을_조회한다(generationId);
+        assertAll(
+                () -> assertEquals("GENERATING", row.get("status")),
+                () -> assertNull(row.get("failure_code")),
+                () -> assertNull(row.get("completed_at")),
+                () -> assertNull(row.get("expires_at")));
     }
 
     @Test
@@ -761,8 +819,11 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
     }
 
     private UUID 생성을_시작한다() {
+        return 생성을_시작한다(명령());
+    }
+
+    private UUID 생성을_시작한다(AiRouteGenerationCommand command) {
         UUID generationId = UUID.randomUUID();
-        AiRouteGenerationCommand command = 명령();
         transactionTemplate.executeWithoutResult(
                 status ->
                         generationRepository.save(

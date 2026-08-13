@@ -40,6 +40,27 @@ public class AiRouteGenerationStartService {
     private final Clock clock;
 
     /**
+     * 아직 유효한 같은 키가 있으면 현재 도서·권한을 다시 검증하기 전에 기존 판정을 반환한다.
+     *
+     * <p>멱등 재요청은 완료 뒤 콘텐츠 버전이나 권한이 바뀌어도 최초 상태·결과를 재생해야 한다. 기존 행이
+     * 없으면 아무것도 만들거나 계수하지 않고 빈 결과를 반환하며, 호출자는 현재 입력 snapshot을 준비한 뒤
+     * {@link #startBefore}를 호출한다. 그사이 동시 요청이 행을 만들 수 있으므로 {@code startBefore}도 기존
+     * 행을 다시 확인하는 최종 판정 책임을 그대로 가진다.
+     */
+    @Transactional(propagation = Propagation.NEVER)
+    public Optional<GenerationStartResult> findExisting(
+            long readerId, UUID idempotencyKey, AiRouteGenerationCommand command) {
+        if (idempotencyKey == null) {
+            throw new IllegalArgumentException("멱등 키는 필수입니다.");
+        }
+        String requestFingerprint = AiRouteRequestFingerprint.of(command);
+        return transactionTemplate.execute(
+                status -> findExistingForUpdate(readerId, idempotencyKey)
+                        .filter(this::isUsable)
+                        .map(generation -> resultOf(generation, requestFingerprint)));
+    }
+
+    /**
      * {@code Propagation.NEVER}는 호출자가 자기 transaction으로 감싸는 것을 막는다. 감싸면 아래
      * {@link TransactionTemplate}이 그 transaction에 합류해 commit이 이 메서드 반환 뒤로 밀리고, G07이
      * 아직 확정되지 않은 {@code NEW}로 외부 호출을 시작하게 된다. 계약을 주석이 아니라 예외로 지킨다.
@@ -49,6 +70,27 @@ public class AiRouteGenerationStartService {
     @Transactional(propagation = Propagation.NEVER)
     public GenerationStartResult start(
             long readerId, UUID idempotencyKey, AiRouteGenerationCommand command) {
+        return start(readerId, idempotencyKey, command, null);
+    }
+
+    /** 기존 멱등 결과는 기한 후에도 재생하고, 새 요청만 외부 호출 마감 시각 전에 시작한다. */
+    @Transactional(propagation = Propagation.NEVER)
+    public GenerationStartResult startBefore(
+            long readerId,
+            UUID idempotencyKey,
+            AiRouteGenerationCommand command,
+            Instant externalCallDeadline) {
+        if (externalCallDeadline == null) {
+            throw new IllegalArgumentException("외부 호출 마감 시각은 필수입니다.");
+        }
+        return start(readerId, idempotencyKey, command, externalCallDeadline);
+    }
+
+    private GenerationStartResult start(
+            long readerId,
+            UUID idempotencyKey,
+            AiRouteGenerationCommand command,
+            Instant externalCallDeadline) {
         if (idempotencyKey == null) {
             throw new IllegalArgumentException("멱등 키는 필수입니다.");
         }
@@ -56,7 +98,14 @@ public class AiRouteGenerationStartService {
 
         try {
             return transactionTemplate.execute(
-                    status -> startOnce(readerId, idempotencyKey, command, requestFingerprint));
+                    status -> startOnce(
+                            readerId,
+                            idempotencyKey,
+                            command,
+                            requestFingerprint,
+                            externalCallDeadline));
+        } catch (ExternalCallDeadlineExceededException exception) {
+            return GenerationStartResult.timedOut();
         } catch (DataIntegrityViolationException conflict) {
             return convergeOnExisting(readerId, idempotencyKey, requestFingerprint, conflict);
         }
@@ -96,7 +145,8 @@ public class AiRouteGenerationStartService {
             long readerId,
             UUID idempotencyKey,
             AiRouteGenerationCommand command,
-            String requestFingerprint) {
+            String requestFingerprint,
+            Instant externalCallDeadline) {
         Optional<AiRouteGeneration> existing = findExistingForUpdate(readerId, idempotencyKey);
         if (existing.isPresent()) {
             AiRouteGeneration generation = existing.get();
@@ -107,10 +157,13 @@ public class AiRouteGenerationStartService {
             discardExpired(generation);
         }
 
+        requireBeforeDeadline(externalCallDeadline);
         // 잠금 순서는 사용량 행 → 생성 행 insert 다. 같은 독자의 동시 요청은 대개 사용량 행 하나에
         // 줄을 서지만, UTC 자정을 사이에 둔 두 요청은 서로 다른 사용량 행을 잠그므로 줄이 서지 않는다.
         // 그렇게 겹친 insert는 unique key 경합이 되고, start()가 기존 행 재조회로 수렴시킨다.
         AiRouteDailyUsage usage = lockCurrentDailyUsage(readerId);
+        // 사용량 잠금을 기다리다 만료했으면 예외로 transaction 전체를 rollback한다.
+        requireBeforeDeadline(externalCallDeadline);
         if (usage.getGenerationCount() >= DAILY_GENERATION_LIMIT) {
             return existingOrDailyLimit(readerId, idempotencyKey, requestFingerprint);
         }
@@ -132,6 +185,12 @@ public class AiRouteGenerationStartService {
                         command,
                         startedAt));
         return GenerationStartResult.created(generationId);
+    }
+
+    private void requireBeforeDeadline(Instant externalCallDeadline) {
+        if (externalCallDeadline != null && !clock.instant().isBefore(externalCallDeadline)) {
+            throw new ExternalCallDeadlineExceededException();
+        }
     }
 
     /**
@@ -283,4 +342,6 @@ public class AiRouteGenerationStartService {
         return GenerationStartResult.existing(
                 generation.getGenerationId(), generation.getStatus(), generation.getExpiresAt());
     }
+
+    private static final class ExternalCallDeadlineExceededException extends RuntimeException {}
 }

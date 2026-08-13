@@ -33,11 +33,13 @@
 ## 입력과 산출물
 
 - 입력: readerId, idempotencyKey, G01 command
-- 산출물: `AiRouteGenerationFacade`, `AiRouteEntitlementSnapshotFactory`, `GenerationExecutionResult`
-- 공통 호출 순서: 사전 검증 → G05 start → F04 → G02
+- 산출물: `AiRouteGenerationFacade`, `AiRouteEntitlementSnapshotFactory`, `GenerationTimeBudget`,
+  `GenerationExecutionResult`
+- 호출 순서: G05 기존 키 선조회 → 기존 행이 없으면 사전 검증 → G05 start → F04 → G02
 - 후보 없음: G04의 `NO_RELEVANT_PAGES` → G06 complete
 - 후보 있음: F05 → G03 → G04 → G06 complete/fail
-- G08에 넘길 것: NEW/REPLAY/GENERATING/FINAL과 공개 실패 종류의 HTTP 독립 결과
+- G08에 넘길 것: NEW/REPLAY/GENERATING/FINAL, 시작 전 TIMEOUT과 공개 실패 종류의 HTTP 독립 결과
+- SCRUM-486·487 범위: `INSUFFICIENT_DEPTH` 정상 결과와 생성·현재 조회의 공통 추가 비용 판정 규칙
 
 ## 수정 허용 파일
 
@@ -47,33 +49,42 @@
 
 ## 구현 조건
 
-1. feature flag·도서 지원·권리·DB/environment policy profile을 G05와 외부 호출 전에 검사합니다.
+1. 기존 멱등 결과가 없는 새 요청은 feature flag·도서 지원·권리·DB/environment policy profile을 G05
+   start와 외부 호출 전에 검사합니다.
 2. 소장·활성 대여·잔액 snapshot은 서버 계산에만 쓰고 F04·F05 입력에 넣지 않습니다.
-3. G05가 NEW일 때만 외부 호출하며 같은 key의 기존 상태는 Gateway 0회로 반환합니다.
+3. 같은 key의 기존 상태는 현재 도서·권한을 다시 검증하기 전에 Gateway 0회로 반환합니다. 기존 행이 없으면
+   사전 검증 뒤 G05 start가 동시 요청을 다시 확인하며, NEW일 때만 외부 호출합니다.
 4. G05 transaction commit 뒤 F04·G02를 실행하고, G02 후보가 있을 때만 F05를 호출합니다.
    외부 호출 중 transaction active=false를 테스트합니다.
 5. G02 후보가 없으면 F05·G03을 호출하지 않고 G04의 `NO_RELEVANT_PAGES`를 G06으로 완료합니다.
-   G04의 `AiRouteDepthLimitExceededException`은 일반 장애와 구분해
-   [SCRUM-486](https://rkdworn-1784629548680.atlassian.net/browse/SCRUM-486)에서 확정할 정상 결과 계약으로
-   변환합니다.
+   소장 후보와 선수 폐쇄를 선택한 깊이 안에 담을 수 없으면 `INSUFFICIENT_DEPTH` 정상 `NO_ROUTE`로
+   완료하며 일반 장애나 공급자 실패로 분류하지 않습니다.
 6. F05 malformed output 또는 G03 semantic invalid output만 남은 전체 20초 안에서 즉시 한 번 재시도합니다.
    정규화 목적, 후보 값과 순서, 선수 graph snapshot, model과 candidate·prompt·schema version은 첫 호출과 같아야 하며
    새 Responses 요청에 `previous_response_id`나 최초 응답 원문을 넣지 않습니다.
 7. refusal, incomplete, HTTP·timeout·provider budget/temporary는 검증 재시도하지 않습니다.
-   20초 초과와 재시도 불가 실패, 두 번째 invalid output을 G06 FAILED 공개 code로 확정합니다.
+   G05 전에 전체 20초를 초과하면 생성 행과 일일 사용량 없이 TIMEOUT으로 거부합니다.
+   G05 이후의 20초 초과와 재시도 불가 실패, 두 번째 invalid output은 G06 FAILED 공개
+   code로 확정합니다.
 8. 외부 호출 후 contentVersion이 바뀌어도 임시 생성 snapshot은 유지하고 저장 단계가 다시 검증합니다.
 9. 생성 전후 InkAccount·Ledger·Rental·Ownership·ReadingSession·LibraryEntry가 바뀌지 않습니다.
+10. 생성 시점 snapshot과 현재 권한 조회의 `OWNED → ACTIVE_RENTAL → ONE_INK` 판정은 같은 순수 정책을
+    호출합니다. DB 조회 횟수 최적화는 이 작업에 포함하지 않습니다.
 
 ## 테스트
 
 - NEW 정상 ROUTE·`INSUFFICIENT_BUDGET`은 Responses 1회,
   `NO_RELEVANT_PAGES`와 기존 key replay는 Responses 0회
+- 완료 뒤 콘텐츠 버전이 바뀐 기존 key replay도 최초 상태·결과를 반환
+- QUICK에서 후보와 선수 폐쇄가 6페이지인 소장 요청은 `INSUFFICIENT_DEPTH` 정상 완료
 - 첫 malformed/semantic invalid→정상과 두 번 invalid에서 Responses 호출 수 2회,
   두 호출의 후보 순서·graph·model·candidate/prompt/schema version 동일성
 - refusal·incomplete·provider·budget·timeout은 Responses 호출 수 1회
+- 준비 중 20초 초과는 생성 행·일일 사용량·Gateway 호출 0회
 - 각 Gateway 호출 시 transaction inactive 확인과 complete/fail transaction rollback
 - 권리·프로필·미지원 도서의 Gateway 0회
 - 생성 전후 잉크·대여·세션·서재 row count·값 불변
+- 소장·활성 대여·미권한과 페이지 묶음 추가 잉크를 공통 순수 판정 규칙으로 회귀 검증
 - 명령: `./gradlew test --tests '*AiRouteGenerationFacadeMySqlIntegrationTest'`
 
 ## 제외 범위

@@ -21,8 +21,7 @@ import org.springframework.stereotype.Service;
  *
  * <p>이 계산은 아무것도 바꾸지 않는다. 대여를 새로 만들거나 잉크를 미리 잡아 두지 않는다.
  *
- * <p>생성 시점 권한 사본을 쓰는 G04 조립기와 공통 순수 판정 규칙을 추출하는 작업은 SCRUM-487에서
- * 추적한다.
+ * <p>DB에서 현재 권한을 읽는 책임만 맡고, 실제 우선순위는 {@link AiRouteAdditionalCostPolicy}와 공유한다.
  */
 @Service
 @RequiredArgsConstructor
@@ -38,13 +37,9 @@ public class AiRouteAdditionalCostCalculator {
 
     public AiRouteAdditionalCostStatus status(
             long readerId, long bookPageId, boolean owned, Instant now) {
-        if (owned) {
-            return AiRouteAdditionalCostStatus.OWNED;
-        }
-
-        return rentalService.findActiveRental(readerId, bookPageId, now).isPresent()
-                ? AiRouteAdditionalCostStatus.ACTIVE_RENTAL
-                : AiRouteAdditionalCostStatus.ONE_INK;
+        boolean activeRental = !owned
+                && rentalService.findActiveRental(readerId, bookPageId, now).isPresent();
+        return AiRouteAdditionalCostPolicy.status(owned, activeRental);
     }
 
     /**
@@ -59,11 +54,9 @@ public class AiRouteAdditionalCostCalculator {
             return 0;
         }
 
-        return (int)
+        return AiRouteAdditionalCostPolicy.additionalInk(
                 bookPageIds.stream()
-                        .filter(bookPageId ->
-                                status(readerId, bookPageId, false, now)
-                                        == AiRouteAdditionalCostStatus.ONE_INK)
-                        .count();
+                        .map(bookPageId -> status(readerId, bookPageId, false, now))
+                        .toList());
     }
 }
