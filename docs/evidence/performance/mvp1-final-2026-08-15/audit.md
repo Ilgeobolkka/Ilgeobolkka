@@ -4,12 +4,12 @@
 
 - Runbook 실행: **완료**
 - 5단계: **조건부 통과**
-- 정확성·품질 게이트: **조건부 통과** — 첫 Spike 기능 check 1건 실패의 원인 미확인을 잔여 위험으로 유지
+- 정확성·품질 게이트: **미달** — 첫 Spike 기능 check 1건 실패 원인을 확인하지 못함
 - 성능 목표: **기준선 충족으로 단순 구성 유지**
 - 감사 시각: 2026-08-13 19:10 KST
 - 감사 브랜치·HEAD: `codex/mvp1-performance-final-audit`,
   `c7e6ffbe114cd6058a4095f6ffae0504e809502e`
-- 비교 기준: 로컬 `develop`의 `b5b4c589b5bf2b4aac94adb480f7f68a0e1c3905`
+- 감사 당시 비교 기준: 로컬 `develop`의 `b5b4c589b5bf2b4aac94adb480f7f68a0e1c3905`
 - 범위: 로컬 Docker 코드 회귀 근거와 저장소 변경 감사. 운영 SLO·운영 최대 RPS·AWS 용량 근거가 아니다.
 
 6단계는 5단계의 원시 결과를 다시 생성하지 않고 보존된 evidence와 로컬 artifact를 감사했다. Average·Peak·
@@ -45,14 +45,14 @@ Stress·Spike·Soak·동시성·브라우저 부하는 재실행하지 않았다
 | 3 | 충족 | [2단계 자원 지표](../mvp1-baseline-2026-08-12/dashboard.md), [JFR·SQL 진단](../mvp1-baseline-2026-08-12/diagnostics.md), [최종 자원 지표](./dashboard.md)가 실행 시간대와 연결된다. 최종 측정에서는 새 포화가 없어 JFR·실행 계획을 추가하지 않은 이유를 기록했다. |
 | 4 | 충족 | 이력 성장 조회, 공개 자산 재전송, BCrypt CPU를 [2단계 결과](../mvp1-baseline-2026-08-12/result.md)와 진단에서 확인한 뒤 후보로 올렸다. |
 | 5 | 충족 | 채택한 V4 복합 인덱스 2개는 [3단계 동일 DB 재검증](../mvp1-stage3-2026-08-12/history-index-revalidation.md), [3단계 결과](../mvp1-stage3-2026-08-12/result.md), [스키마 회귀 테스트](../../../../src/test/java/com/example/ilgeobolkka/support/schema/HistoryLookupIndexMigrationTest.java)로 변경 전후를 확인했다. |
-| 6 | 조건부 충족 | 유효 부하와 동시성 4종 뒤 잔액·원장·대여·소장·마지막 위치·세션 불변식은 통과했다. 첫 Spike 기능 실패 원인 미확인을 위 잔여 위험으로 유지한다. |
-| 7 | 조건부 충족 | 깨끗한 환경의 Average·Peak 각 3회, Stress, Spike 실패·재실행, Soak 무효·재실행, 동시성·브라우저 결과가 [최종 요약](./summary.md)에 있다. 실패와 무효를 숨기지 않는 조건으로 충족한다. |
+| 6 | 미충족 | 유효 부하와 동시성 4종 뒤 SQL 불변식은 통과했지만, 첫 Spike의 `잉크 차감 일치` 기능 check 실패 원인을 확인하지 못해 전체 정확성을 확정할 수 없다. |
+| 7 | 충족 | 깨끗한 환경의 Average·Peak 각 3회, Stress, Spike 실패·재실행, Soak 무효·재실행, 동시성·브라우저 결과가 [최종 요약](./summary.md)에 있고 실패와 무효를 구분해 보존했다. |
 | 8 | 충족 | [5단계 결과](./result.md)에 `test --rerun-tasks` 813건과 통합 뒤 878건, `check`, `build`, 패키징 JAR smoke 통과를 구분해 기록했다. 6단계는 제품 코드와 Java 테스트를 바꾸지 않아 재실행하지 않았다. |
 | 9 | 충족 | [4단계 결과](../mvp1-stage4-2026-08-13/result.md)에 Caffeine·Redis cache·Spring Session Redis·다중 인스턴스·가상 스레드의 진입 조건 미충족과 Kafka 제외 이유를 기록했다. 새 dependency·container·config·ADR은 추가하지 않았다. |
 | 10 | 충족 | [최종 비교](./comparison.md)가 기준선, 변경별 효과, 최종 결과, 남은 공개 자산 병목, 200 flow/s 초과 미측정 용량 경계를 분리한다. |
 
-정확성·품질 게이트는 6번과 7번의 첫 Spike 잔여 위험 때문에 조건부 통과다. 이 조건을 숨긴 채 전체
-게이트를 무조건 통과로 승격하지 않는다.
+Runbook 절차와 필수 실행 횟수는 완료했지만 계획 완료 기준 6은 미충족이다. 따라서 5단계의 조건부 종료와
+별개로 최종 정확성·품질 게이트는 미달이며, 재실행 통과를 근거로 첫 실패를 지우지 않는다.
 
 ## 저장소 변경·민감정보 감사
 
@@ -93,7 +93,7 @@ Stress·Spike·Soak·동시성·브라우저 부하는 재실행하지 않았다
 - Average 중앙값: 실제 HTTP RPS 29.222004, p95 17.375ms, p99 85.170ms. 기준선 대비 p95 4.4%,
   p99 0.6% 개선이며 고정 arrival rate라 처리량 상한 개선 근거가 아니다.
 - Peak 중앙값: 실제 HTTP RPS 72.514469, p95 10.735ms, p99 81.960ms. 기준선 대비 p95 3.3%,
-  p99 7.5% 높지만 잠정 절대 게이트와 정확성 검증을 통과했다.
+  p99 7.5% 높지만 Peak 실행 자체의 절대 지연·기능 check는 통과했다.
 - Stress는 200 flow/s 계획 상한까지 오류·dropped·Hikari pending 없이 완료했지만 첫 포화 자원은
   확인하지 못했다. 다음 용량 경계는 특정 자원이 아니라 200 flow/s 초과 미측정 구간이다.
 - Redis·다중 인스턴스·Spring Session Redis·가상 스레드는 진입 근거가 없고 Kafka는 채택 게이트가 없어
@@ -103,7 +103,8 @@ Stress·Spike·Soak·동시성·브라우저 부하는 재실행하지 않았다
 
 성능 목표의 30% 지연 단축 또는 1.5배 지속 처리량 증가는 달성하지 못했다. 현재 절대 지연·오류·자원
 게이트를 만족하고 추가 상태 인프라의 진입 근거가 없으므로 Runbook의 대체 완료 판정인 **기준선 충족으로
-단순 구성 유지**로 닫는다.
+단순 구성 유지**로 닫는다. 이 구조 판정은 첫 Spike 원인 미확인에 따른 정확성·품질 게이트 미달과
+분리한다.
 
 ## 로컬 인계 상태
 
@@ -114,3 +115,13 @@ Stress·Spike·Soak·동시성·브라우저 부하는 재실행하지 않았다
 - 재개 시 [환경](./environment.md), [결과](./result.md), [요약](./summary.md),
   [artifact manifest](./artifact-manifest.md)를 먼저 읽고, 원시 경로의 크기·SHA-256을 대조한다.
 - volume·원시 artifact 삭제, commit, push, PR 수정, merge는 각각 별도 승인 전에는 실행하지 않는다.
+
+## 감사 후 PR 준비 검증
+
+- 최신 `origin/develop`의 `4a39c03e302eb1cfb6ebffa01f4727677cd96df5`를 일반 merge로 통합했고 충돌은
+  없었다.
+- Compose 기본·성능 설정 문법과 전체 테스트 929건 중 성공 928·skip 1·실패 0·오류 0, `check`, `build`,
+  `bootRun` 시작·종료를 확인했다. skip 1건은 `RUN_CONTENT_IMPORT_INTEGRATION=true`일 때만 실행하는 전체
+  콘텐츠 적재 테스트다.
+- 최신 develop 통합 검증에서는 성능 부하를 재실행하지 않았다. 성능 수치의 정본은 계속 측정 SHA
+  `f3a62809099ba660ce980b006d71c833bbd849fa`이고, 이번 검증은 코드 통합 안전성만 증명한다.

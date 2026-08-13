@@ -53,6 +53,9 @@
 4. G05 transaction commit 뒤 F04·G02를 실행하고, G02 후보가 있을 때만 F05를 호출합니다.
    외부 호출 중 transaction active=false를 테스트합니다.
 5. G02 후보가 없으면 F05·G03을 호출하지 않고 G04의 `NO_RELEVANT_PAGES`를 G06으로 완료합니다.
+   G04의 `AiRouteDepthLimitExceededException`은 일반 장애와 구분해
+   [SCRUM-486](https://rkdworn-1784629548680.atlassian.net/browse/SCRUM-486)에서 확정할 정상 결과 계약으로
+   변환합니다.
 6. F05 malformed output 또는 G03 semantic invalid output만 남은 전체 20초 안에서 즉시 한 번 재시도합니다.
    정규화 목적, 후보 값과 순서, 선수 graph snapshot, model과 candidate·prompt·schema version은 첫 호출과 같아야 하며
    새 Responses 요청에 `previous_response_id`나 최초 응답 원문을 넣지 않습니다.

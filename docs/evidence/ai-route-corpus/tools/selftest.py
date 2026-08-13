@@ -142,6 +142,17 @@ def chain_prerequisites(pages):
     return pages
 
 
+def add_duplicate_prerequisite_conflict(pages):
+    """직접 선수와 의존 페이지를 같은 중복 그룹에 넣어 실현 불가능한 폐쇄를 만든다."""
+    dependent = next(p for p in pages if p["prerequisitePageNumbers"])
+    prerequisite_number = dependent["prerequisitePageNumbers"][0]
+    prerequisite = next(p for p in pages if p["pageNumber"] == prerequisite_number)
+    group_key = "selftest-duplicate-prerequisite"
+    prerequisite["duplicateGroupKeys"].append(group_key)
+    dependent["duplicateGroupKeys"].append(group_key)
+    return pages
+
+
 def check_fragment(workdir):
     print("[validate_fragment.py]")
     base = load_fragment(SAMPLE_BOOK_ID)
@@ -295,6 +306,11 @@ def check_fragment(workdir):
     chain_prerequisites(broken["manifestBook"]["pages"])
     expect("선수를 한 줄로 길게 이으면 밀도 상한에 걸림", broken, workdir,
            should_pass=False, needle="선수 폐쇄")
+
+    broken = copy.deepcopy(base)
+    add_duplicate_prerequisite_conflict(broken["manifestBook"]["pages"])
+    expect("선수 폐쇄에 같은 중복 그룹 페이지가 둘이면 실패", broken, workdir,
+           should_pass=False, needle="중복 그룹 충돌 없음")
 
 
 def check_manifest(workdir):
@@ -484,6 +500,11 @@ def check_manifest(workdir):
     expect_manifest("선수를 한 줄로 길게 이으면 밀도 상한에 걸림", broken, evaluation, workdir,
                     should_pass=False, needle="선수 폐쇄")
 
+    broken = copy.deepcopy(manifest)
+    add_duplicate_prerequisite_conflict(candidate_book(broken)["pages"])
+    expect_manifest("선수 폐쇄에 같은 중복 그룹 페이지가 둘이면 실패", broken, evaluation, workdir,
+                    should_pass=False, needle="중복 그룹 충돌 없음")
+
 
 def check_merge(workdir):
     """병합이 실패했을 때 정본을 건드리지 않는지 본다.
@@ -558,6 +579,10 @@ def check_validate_book():
     broken = chain_prerequisites(copy.deepcopy(base_manifest))
     expect_book("선수를 한 줄로 길게 이으면 밀도 상한에 걸림", broken, base_manuscript,
                 should_pass=False, needle="선수 폐쇄")
+
+    broken = add_duplicate_prerequisite_conflict(copy.deepcopy(base_manifest))
+    expect_book("선수 폐쇄에 같은 중복 그룹 페이지가 둘이면 실패", broken, base_manuscript,
+                should_pass=False, needle="같은 중복 그룹 페이지")
 
 
 def main():
