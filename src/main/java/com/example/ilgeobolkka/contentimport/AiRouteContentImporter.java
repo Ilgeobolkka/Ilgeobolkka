@@ -92,8 +92,12 @@ class AiRouteContentImporter {
      * DB 는 그대로여도 외부 호출은 이미 나갔고, 남는 것은 원인을 말해 주지 않는 중복 키 오류다.
      *
      * <p>manifest 를 읽기 전에 본다. 이 importer 는 {@code ai-route-v2} 전용이라 버전을 파일에서
-     * 알아낼 필요가 없고, 가장 이른 곳에서 멈추는 편이 "외부 호출과 DB 변경 전에 거부한다"는 계약에
-     * 가깝다.
+     * 알아낼 필요가 없다.
+     *
+     * <p>막는 것은 Embeddings 호출과 DB 변경까지다. 이 시점에는 {@link ContentBatchConverter} 의
+     * PDF 변환이 이미 끝나 있다. 변환보다 먼저 거부하려면 서비스가 manifest 를 한 번 더 읽어 버전을
+     * 알아내야 하는데, 변환은 로컬 작업이고 산출물 경로가 manifest 해시로 정해져 다시 돌려도 같은
+     * 자리에 같은 바이트가 남으므로 그 비용을 지지 않는다.
      */
     private void requireNotImported() {
         String contentVersion = ContentManifest.AI_ROUTE_CONTENT_VERSION;

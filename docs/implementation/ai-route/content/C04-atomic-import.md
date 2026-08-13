@@ -22,9 +22,9 @@
 
 - 이 절은 착수 시점 기록입니다. **구현 조건 1~7을 구현했습니다.**
   [AiRouteContentWriter](../../../../src/main/java/com/example/ilgeobolkka/contentimport/AiRouteContentWriter.java)가
-  AI 메타데이터·선수 관계를 한 트랜잭션으로 반영하고,
-  [BookPage.updateStructuralPageMetadata](../../../../src/main/java/com/example/ilgeobolkka/book/entity/BookPage.java)가
-  목차처럼 후보가 아니면서 분석 메타데이터는 가지는 페이지를 표현합니다.
+  AI 메타데이터·선수 관계를 한 트랜잭션으로 반영합니다. 목차처럼 후보가 아니면서 분석 메타데이터는
+  가지는 페이지도 이 writer가 한 문장으로 씁니다 — 후보 여부와 임베딩 세 필드를 함께 갱신해야
+  `ck_book_page_candidate_metadata`에 걸리지 않기 때문입니다.
 - `ContentBatchConverter`는 콘텐츠 버전별로 manifest 계약을 분기하고 변환에 필요한 값만 뽑습니다.
   `ai-route-v2`는 권수를 세지 않아 확장 중의 부분 집합도 변환합니다. 정본 23권 716페이지를 실제
   Poppler로 변환하는 검사는 `RUN_CONTENT_IMPORT_INTEGRATION=true`에서 돕니다.
@@ -129,9 +129,12 @@ union all select '비후보인데 임베딩 존재', count(*) from book_page
 `initial-v1`과 소설 10권의 page id 최댓값이 적재 전 범위인 400 그대로이고, 대상이 아닌 77권의
 페이지 수는 초기 manifest와 한 권도 어긋나지 않았습니다.
 
-이미 적재된 DB에 같은 manifest를 다시 넣으면 `uk_ai_route_prerequisite_edge` 중복으로 실패합니다.
-재적재는 제외 범위이고 실패해도 DB는 변화 0건으로 남지만, 임베딩을 모두 호출한 뒤 DB 제약에서
-멈추므로 비용이 먼저 나갑니다.
+재적재는 제외 범위입니다. 이 실행에서 두 번째 시도가 임베딩을 모두 호출한 뒤에야
+`uk_ai_route_prerequisite_edge` 중복으로 멈추는 것을 확인해, 적재를 시작하기 전에
+`book.content_version`으로 판정해 거부하도록 고쳤습니다. 지금은 Embeddings 호출과 DB 변경 전에
+원인을 말해 주는 오류로 멈춥니다. 다만 PDF 변환은 그 앞 단계라 이미 끝난 뒤이며, 산출물 경로가
+manifest 해시로 정해져 같은 자리에 같은 바이트가 남습니다. 콘텐츠를 다시 넣는 재평가는 사용자
+기록이 없는 새 DB에서 최초 적재와 같은 순서로 돌립니다.
 
 ## 제외 범위
 
