@@ -41,6 +41,22 @@ public final class AiRouteContentValidator {
         this.graphValidator = graphValidator;
     }
 
+    /** manifest와 evaluation 사이의 정답 관계만 검증한다. PDF·Embedding 입력은 읽지 않는다. */
+    public static void validateEvaluation(
+            AiRouteContentManifest manifest, AiRouteEvaluationDataset evaluation) {
+        require(manifest != null, "AI 경로 manifest가 필요합니다.");
+        require(evaluation != null, "AI 경로 evaluation이 필요합니다.");
+        require(manifest.books() != null, "AI 경로 manifest의 books가 필요합니다.");
+        require(evaluation.cases() != null, "AI 경로 evaluation의 cases가 필요합니다.");
+
+        Map<Long, AiRouteContentManifest.Book> byBookId = new HashMap<>();
+        for (AiRouteContentManifest.Book book : manifest.books()) {
+            require(book != null, "AI 경로 manifest의 book이 필요합니다.");
+            byBookId.put(book.bookId(), book);
+        }
+        validateEvaluationCases(evaluation, byBookId);
+    }
+
     public ValidatedAiRouteContent validate(
             AiRouteContentManifest manifest,
             AiRouteEvaluationDataset evaluation,
@@ -67,12 +83,10 @@ public final class AiRouteContentValidator {
                                 manifest.embeddingDimensions(), EXPECTED_EMBEDDING_DIMENSIONS));
 
         List<ValidatedAiRouteContent.ValidatedBook> books = new ArrayList<>();
-        Map<Long, AiRouteContentManifest.Book> byBookId = new HashMap<>();
         for (AiRouteContentManifest.Book book : manifest.books()) {
-            byBookId.put(book.bookId(), book);
             books.add(validateBook(book, fixtureRoot));
         }
-        validateEvaluation(evaluation, byBookId);
+        validateEvaluation(manifest, evaluation);
 
         return new ValidatedAiRouteContent(
                 manifest.contentVersion(),
@@ -280,7 +294,7 @@ public final class AiRouteContentValidator {
                 "book %d p%d aiAnalysisInputSha256이 분석 텍스트와 다릅니다.".formatted(bookId, pageNumber));
     }
 
-    private void validateEvaluation(
+    private static void validateEvaluationCases(
             AiRouteEvaluationDataset evaluation, Map<Long, AiRouteContentManifest.Book> byBookId) {
         require(
                 evaluation.contentVersion() != null,
@@ -403,7 +417,7 @@ public final class AiRouteContentValidator {
                 "AI 경로 지원 도서의 평가 케이스가 없습니다: %s".formatted(missingBookIds));
     }
 
-    private void requireConceptsExist(
+    private static void requireConceptsExist(
             String caseId,
             String field,
             List<String> expected,
@@ -417,7 +431,7 @@ public final class AiRouteContentValidator {
         }
     }
 
-    private void requirePrerequisitesMatch(
+    private static void requirePrerequisitesMatch(
             String caseId,
             List<AiRouteEvaluationDataset.RequiredPrerequisite> requiredPrerequisites,
             Set<Integer> pageNumbers,
@@ -463,7 +477,7 @@ public final class AiRouteContentValidator {
                         + "누락=%s, 초과=%s".formatted(missing, unexpected));
     }
 
-    private void requireDuplicateGroupsMatch(
+    private static void requireDuplicateGroupsMatch(
             String caseId,
             List<List<Integer>> evaluationGroups,
             Map<String, Set<Integer>> pagesByDuplicateGroup,
@@ -510,7 +524,7 @@ public final class AiRouteContentValidator {
         }
     }
 
-    private void requirePagesExist(
+    private static void requirePagesExist(
             String caseId, String field, List<Integer> pages, Set<Integer> pageNumbers) {
         for (Integer pageNumber : pages) {
             require(
@@ -519,7 +533,7 @@ public final class AiRouteContentValidator {
         }
     }
 
-    private void requireNoNonCandidate(
+    private static void requireNoNonCandidate(
             String caseId, String field, List<Integer> pages, Set<Integer> nonCandidates) {
         for (Integer pageNumber : pages) {
             require(

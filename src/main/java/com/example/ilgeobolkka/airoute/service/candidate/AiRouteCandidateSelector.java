@@ -48,23 +48,26 @@ public final class AiRouteCandidateSelector {
         // 계산 전에 전수 확인한다. 중간에 실패하면 어떤 페이지까지 비교했는지가 결과에 남는다.
         requireComparablePages(bookId, contentVersion, purposeEmbedding, pages);
 
-        List<AiRouteCandidate> aboveThreshold = new ArrayList<>();
+        List<AiRouteCandidate> scoredCandidates = new ArrayList<>();
         for (AiRouteCandidatePage page : pages) {
             double similarity = purposeEmbedding.cosineSimilarityTo(page.embedding());
-            // 반올림하지 않은 값으로 비교한다. 정확히 MINIMUM_SIMILARITY 인 페이지는 포함한다.
-            if (similarity >= AiRouteCandidatePolicy.MINIMUM_SIMILARITY) {
-                aboveThreshold.add(AiRouteCandidate.from(page, similarity));
-            }
+            scoredCandidates.add(AiRouteCandidate.from(page, similarity));
         }
 
         // similarity 내림차순, 같을 때만 pageNumber 오름차순.
         Comparator<AiRouteCandidate> bySimilarity =
                 Comparator.comparingDouble(AiRouteCandidate::similarity);
-        aboveThreshold.sort(bySimilarity.reversed().thenComparingInt(AiRouteCandidate::pageNumber));
+        scoredCandidates.sort(
+                bySimilarity.reversed().thenComparingInt(AiRouteCandidate::pageNumber));
 
-        int size = Math.min(aboveThreshold.size(), AiRouteCandidatePolicy.MAXIMUM_CANDIDATES);
+        // 반올림하지 않은 값으로 비교한다. 정확히 MINIMUM_SIMILARITY 인 페이지는 포함한다.
+        List<AiRouteCandidate> aboveThreshold = scoredCandidates.stream()
+                .filter(candidate ->
+                        candidate.similarity() >= AiRouteCandidatePolicy.MINIMUM_SIMILARITY)
+                .limit(AiRouteCandidatePolicy.MAXIMUM_CANDIDATES)
+                .toList();
         return new AiRouteCandidateSelection(
-                AiRouteCandidatePolicy.VERSION, aboveThreshold.subList(0, size));
+                AiRouteCandidatePolicy.VERSION, aboveThreshold, scoredCandidates);
     }
 
     /**
