@@ -54,9 +54,7 @@
    다시 확인해 위반하면 후보 입력 예외로 중단합니다.
 5. 관련 후보가 없으면 NO_RELEVANT_PAGES/null, 비소장 관련 후보 묶음의 최소 비용이 선택 예산보다 크면
    minimumRequiredInk의 INSUFFICIENT_BUDGET을 반환합니다. 소장 후보 묶음을 깊이 상한 안에서 완성할 수
-   없는 경우는 현재 두 NO_ROUTE 계약으로 잘못 분류하지 않고 `AiRouteDepthLimitExceededException`으로
-   중단하며 [SCRUM-486](https://rkdworn-1784629548680.atlassian.net/browse/SCRUM-486)의 G07에
-   인계합니다.
+   없는 경우는 minimumRequiredInk가 없는 `INSUFFICIENT_DEPTH` 정상 NO_ROUTE를 반환합니다.
 6. guide는 publicGuideTopic과 server role 템플릿으로만 만들고 analysisText·모델 문구를 입력받지 않습니다.
 7. estimated minutes와 `ONE_INK|ACTIVE_RENTAL|OWNED`를 정본 계산으로 만들며 상태를 변경하지 않습니다.
 8. 예산·중복으로 모든 후보를 넣지 못하면 `HIGH`를 `MEDIUM`보다 먼저 선택합니다. 같은 relevance에서는
@@ -69,11 +67,11 @@
 
 - non-owned 0·5·10·15 예산, active rental 혼합과 잔액 상한
 - owned 세 depth와 관련 page 부족
-- owned 후보·선수 묶음이 depth 상한을 넘을 때 내부 예외
+- owned 후보·선수 묶음이 depth 상한을 넘을 때 `INSUFFICIENT_DEPTH` 정상 결과
 - 다단계 선수 비용 제외·의존 제거, duplicate group 중복 억제
 - 앞선 중복 형제와 뒤 선수 묶음의 경합, `HIGH`·`MEDIUM` 선택 우선순위와 최종 읽기 순서
 - C02와 정본 제작 검증기의 후보·전이적 선수 폐쇄 중복 그룹 충돌 거부
-- 두 NO_ROUTE와 minimumRequiredInk 경계
+- 세 NO_ROUTE와 minimumRequiredInk 경계
 - guide에 공개 topic·role만 있고 분석 text·결론·수치가 없는지 확인
 - 명령: `./gradlew test --tests '*AiRouteAssemblerTest' --tests '*AiRouteGuideFactoryTest'`
 
@@ -91,8 +89,6 @@
 
 ## 인계
 
-G07 담당자에게 `bookPageId` 기반 권한 snapshot과 결과 타입을 전달합니다. 소장 후보·선수 묶음이 depth
-상한을 넘는 전용 예외의 정상 결과 계약은
-[SCRUM-486](https://rkdworn-1784629548680.atlassian.net/browse/SCRUM-486)의 G07에서 결정합니다.
-S01 담당자에게 저장 시 재계산할 비용 입력과 생성 예산 필드를 전달하며, 공통 비용 상태 판정 추출은
-[SCRUM-487](https://rkdworn-1784629548680.atlassian.net/browse/SCRUM-487)에서 추적합니다.
+G07 담당자에게 `bookPageId` 기반 권한 snapshot과 `INSUFFICIENT_DEPTH`를 포함한 결과 타입을 전달합니다.
+S01 담당자에게 저장 시 재계산할 비용 입력과 생성 예산 필드를 전달하며, 생성 snapshot과 현재 조회는
+같은 `AiRouteAdditionalCostPolicy` 판정 규칙을 사용합니다.
