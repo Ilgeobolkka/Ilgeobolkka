@@ -764,6 +764,73 @@
       ]
     },
     {
+      "caseId": "case-book-028",
+      "bookId": 28,
+      "purpose": "이 책을 소장하고 있는데, 식물이 무언가를 내보내 이웃에게 닿는다는 이야기의 뼈대만 짧게 훑고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "움직이지 못함",
+        "느끼는 방식",
+        "신호 물질",
+        "공기 중 신호",
+        "받는 쪽"
+      ],
+      "helpfulConcepts": [
+        "안으로 번지는 신호",
+        "내보내는 조건",
+        "균근"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 18
+        },
+        {
+          "beforePageNumber": 18,
+          "afterPageNumber": 20
+        }
+      ],
+      "irrelevantPageNumbers": [
+        34,
+        35,
+        36,
+        38,
+        39
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          46
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        6,
+        18,
+        20
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        14,
+        22,
+        24,
+        26
+      ]
+    },
+    {
       "caseId": "case-book-034",
       "bookId": 34,
       "purpose": "옛 장부에 이름이 없는 사람들을 어떻게 헤아려야 하는지, 짧게 핵심만 짚고 싶다",

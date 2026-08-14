@@ -8760,6 +8760,1052 @@
       ]
     },
     {
+      "bookId": 28,
+      "title": "식물의 신호전달과 균근 네트워크",
+      "totalPageCount": 49,
+      "pdfPath": "pdfs/book-028.pdf",
+      "pdfSha256": "89beff0909624e77983b70fb4c9d0dcedc63f009c2e3930ccaa33d98235d04cd",
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 움직이지 못하는 것의 사정",
+          "section": "1.1 자리를 옮길 수 없다는 조건",
+          "primaryConcepts": [
+            "움직이지 못함"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이동 능력의 부재를 식물이 처한 근본 조건으로 세우는 도입 페이지다. 동물의 문제 해결 방식과 대비해 고착성이 요구하는 대안적 전략을 제시하고, 내부 반응·외부 방출·지하 연결이라는 세 축을 예고한다.",
+          "aiAnalysisInputSha256": "8a1e85172e58a3ee39d380d961822d70d25ee4e9d2b78c49ed7d4560598bd6fa",
+          "aiPublicGuideTopic": "한자리에 붙박여 사는 것이 만드는 문제",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "rooted-but-responsive"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 움직이지 못하는 것의 사정",
+          "section": "1.1 자리를 옮길 수 없다는 조건",
+          "primaryConcepts": [
+            "움직이지 못함"
+          ],
+          "secondaryConcepts": [
+            "느끼는 방식"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "고착성에 대응하는 식물의 특성으로 높은 재생 능력과 발생의 가소성을 제시하는 페이지다. 반응이 형태 변화로 나타난다는 점을 밝혀 이후 관찰 방법의 근거를 마련한다.",
+          "aiAnalysisInputSha256": "36b93be3f2dad3f20b6aec76c7571da3df93fd9e766aa05b6f7c539da1c5f448",
+          "aiPublicGuideTopic": "움직이지 못하는 대신 얻은 것들",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 움직이지 못하는 것의 사정",
+          "section": "1.2 무엇을 느끼는가",
+          "primaryConcepts": [
+            "느끼는 방식"
+          ],
+          "secondaryConcepts": [
+            "움직이지 못함"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "감각 수용의 분자적 기초와 전신 분포를 다루는 페이지다. 자극에 반응하는 물질의 상태 변화가 연쇄를 이뤄 생장 반응으로 이어지는 구조를 제시하고, 전용 감각 기관 없이 전신이 수용체 역할을 한다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "dcff6d3691380460a0d3c96804c2f4ddd8e8892558ba4aa463f77d2a8e6777d6",
+          "aiPublicGuideTopic": "감각 기관 없이 주변을 알아채는 방식",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 움직이지 못하는 것의 사정",
+          "section": "1.2 무엇을 느끼는가",
+          "primaryConcepts": [
+            "느끼는 방식"
+          ],
+          "secondaryConcepts": [
+            "신호 물질"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자극 수용 부위와 반응 발현 부위의 분리를 다루는 페이지다. 신호 전달 경로의 종류와 소요 시간의 편차를 제시하고, 이 시공간적 분리가 관찰 설계에 부과하는 제약을 밝힌다.",
+          "aiAnalysisInputSha256": "afeb4348531152c31df9d3a34aa1184ccf5f5cdf8d380f925ee3a14bd1a5ef80",
+          "aiPublicGuideTopic": "느끼는 것과 반응하는 것 사이의 거리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 움직이지 못하는 것의 사정",
+          "section": "1.3 신호라 부를 수 있으려면",
+          "primaryConcepts": [
+            "신호 물질"
+          ],
+          "secondaryConcepts": [
+            "느끼는 방식"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "화학 물질을 신호로 규정하기 위한 조건을 방출의 조건 의존성, 수용 기구의 존재, 반응의 발생 세 가지로 정리하는 페이지다. 각 조건이 빠질 때 성립하지 않는 이유를 밝히고 이후 오류 검토의 기준으로 삼는다.",
+          "aiAnalysisInputSha256": "0b222ee4ac6726ea3def9f2b94137c729d7d27c0c49c2c6dd73a6c5257d091cc",
+          "aiPublicGuideTopic": "그냥 새어 나온 것과 신호를 가르는 기준",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 움직이지 못하는 것의 사정",
+          "section": "1.3 신호라 부를 수 있으려면",
+          "primaryConcepts": [
+            "신호 물질"
+          ],
+          "secondaryConcepts": [
+            "느끼는 방식",
+            "움직이지 못함"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "신호 성립의 세 조건을 순차 구조로 제시하고 하나가 결여될 때 전체가 성립하지 않음을 상하 대비로 나타낸 도표다. 방출 사실만으로 신호로 규정할 수 없다는 판정 기준을 시각적으로 고정한다.",
+          "aiAnalysisInputSha256": "2f30ae0325c882fac35fd1347d3b34eb8b8fb63dfad632d32988991b363d36fd",
+          "aiPublicGuideTopic": "신호로 인정하는 데 필요한 세 조건을 나타낸 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 움직이지 못하는 것의 사정",
+          "section": "1.4 무엇을 자료로 삼는가",
+          "primaryConcepts": [
+            "자료의 성질"
+          ],
+          "secondaryConcepts": [
+            "신호 물질"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "식물 신호 연구의 자료원을 통제 실험, 준통제 환경, 자연 관찰로 나누고 각각의 강점과 한계를 정리하는 페이지다. 실험실 결과의 일반화 제약과 야외 관찰의 요인 분리 곤란을 제시하고 교차 확인이 결론 구성 방식임을 밝힌다.",
+          "aiAnalysisInputSha256": "132475fe654128325619bc2640d9ea44d37da7a0f0c993d49083a84e6abdd739",
+          "aiPublicGuideTopic": "이 분야가 손에 쥐고 있는 자료의 성질",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 움직이지 못하는 것의 사정",
+          "section": "1.4 무엇을 자료로 삼는가",
+          "primaryConcepts": [
+            "자료의 성질"
+          ],
+          "secondaryConcepts": [
+            "움직이지 못함"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "식물 반응의 느린 시간 규모가 야외 연구에 부과하는 제약을 다루는 페이지다. 관찰 기간 중 다른 요인이 함께 변한다는 문제, 목본 대상의 장기 소요, 초본 대체 모델의 일반화 한계를 차례로 제시한다.",
+          "aiAnalysisInputSha256": "8e66d94c83915596552f8d996adeaf377207b3d5cb1551a164f9890bb3d86690",
+          "aiPublicGuideTopic": "느린 대상을 다루는 데서 오는 어려움",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 스스로를 움직이는 신호",
+          "section": "2.1 빛이 오는 쪽으로",
+          "primaryConcepts": [
+            "빛을 향한 굽음"
+          ],
+          "secondaryConcepts": [
+            "느끼는 방식"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "굴광성의 기구를 다루는 페이지다. 굽음이 음영측 신장의 결과임을 밝히고, 생장 촉진 물질의 편재 이동과 정단부 차광 실험을 근거로 제시하며 수용 부위와 반응 부위의 분리를 확인한다.",
+          "aiAnalysisInputSha256": "2f711a841eb96a98a8f272b6b13eac3354a18599955256854f62e9d411e31840",
+          "aiPublicGuideTopic": "줄기가 밝은 쪽으로 굽는 방식",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 스스로를 움직이는 신호",
+          "section": "2.1 빛이 오는 쪽으로",
+          "primaryConcepts": [
+            "빛을 향한 굽음"
+          ],
+          "secondaryConcepts": [
+            "움직이지 못함"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "굴광성이 광량의 절대값이 아니라 좌우 차이에 반응한다는 점을 다루는 페이지다. 반응 파장의 선택성을 제시하고, 작용 스펙트럼과 흡수 특성의 비교가 수용 물질 동정의 단서가 된 과정을 밝힌다.",
+          "aiAnalysisInputSha256": "25bad2ea9e4d829ae0ff17f45e9fba25eac1d246f84f4697dacc4116716a799d",
+          "aiPublicGuideTopic": "빛의 세기가 아니라 방향을 읽는다는 점",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 스스로를 움직이는 신호",
+          "section": "2.2 위아래를 아는 방법",
+          "primaryConcepts": [
+            "위아래 감각"
+          ],
+          "secondaryConcepts": [
+            "빛을 향한 굽음"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "굴중성의 기구를 다루는 페이지다. 세포 내 고밀도 입자의 침강이 중력 방향 정보를 제공한다는 구조를 제시하고, 동일한 생장 조절 물질이 기관에 따라 상반된 효과를 낸다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "2b1c38a4815abad15d7fb2b8d03f71750113ceb4cf4265b3ec01904f890398a5",
+          "aiPublicGuideTopic": "빛이 없어도 방향을 아는 방식",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 스스로를 움직이는 신호",
+          "section": "2.2 위아래를 아는 방법",
+          "primaryConcepts": [
+            "위아래 감각"
+          ],
+          "secondaryConcepts": [
+            "빛을 향한 굽음",
+            "느끼는 방식"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 생장 조절 물질의 편재가 줄기와 뿌리에서 반대 방향의 굴곡을 낳는 구조를 상하 대비로 나타낸 도표다. 물질 분포를 동일하게 표시하고 세포 신장의 차이만 달리해 효과의 기관 의존성을 드러낸다.",
+          "aiAnalysisInputSha256": "c7c1aa707869b58045befd50331216749c5d220327a8ee6efe1d823702499cfd",
+          "aiPublicGuideTopic": "같은 물질이 줄기와 뿌리에서 반대로 작용하는 것을 나타낸 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 스스로를 움직이는 신호",
+          "section": "2.3 안에서 번지는 신호",
+          "primaryConcepts": [
+            "안으로 번지는 신호"
+          ],
+          "secondaryConcepts": [
+            "신호 물질"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "국소 손상 정보가 식물 전체로 전달되는 기구를 다루는 페이지다. 관다발을 통한 물질 이동과 세포 간 전기적 전파를 제시하고, 수신부의 선제적 방어 준비와 신호 강도에 따른 반응 정도의 대응을 밝힌다.",
+          "aiAnalysisInputSha256": "544e8554d3f4b3d502879e335855291800f5076d61cd6ff3caeaad234494eb93",
+          "aiPublicGuideTopic": "한 자리의 일이 몸 전체로 퍼지는 방식",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 스스로를 움직이는 신호",
+          "section": "2.3 안에서 번지는 신호",
+          "primaryConcepts": [
+            "안으로 번지는 신호"
+          ],
+          "secondaryConcepts": [
+            "움직이지 못함"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "전신 신호의 도달 범위가 관다발 연결 구조에 의존한다는 점을 다루는 페이지다. 물리적 거리와 반응 강도가 일치하지 않는 현상을 제시하고, 연결 구조를 모르면 반응이 불규칙해 보인다는 관찰상의 문제를 밝힌다.",
+          "aiAnalysisInputSha256": "a950081036765bb54aa6a8a199e35e94d20af52807d49bed3e2e52ddeea5a5a0",
+          "aiPublicGuideTopic": "번지는 범위가 정해지는 방식",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 스스로를 움직이는 신호",
+          "section": "2.4 자라는 속도를 조절하는 일",
+          "primaryConcepts": [
+            "성장 조절"
+          ],
+          "secondaryConcepts": [
+            "안으로 번지는 신호"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "생장 속도 조절이 복수 물질의 상대적 비율로 이뤄진다는 점을 다루는 페이지다. 단일 물질 농도만으로는 결과를 예측할 수 없다는 원칙을 제시하고, 근권의 수분 감지가 기공 반응으로 이어지는 경로를 사례로 든다.",
+          "aiAnalysisInputSha256": "34467f8bc178dd0d091dd4005e8d6b17327591b49a1d29f96f3c4b62b18732d5",
+          "aiPublicGuideTopic": "언제 자라고 언제 멈출지 정하는 방식",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "2장 스스로를 움직이는 신호",
+          "section": "2.4 자라는 속도를 조절하는 일",
+          "primaryConcepts": [
+            "성장 조절"
+          ],
+          "secondaryConcepts": [
+            "움직이지 못함"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "근접 이웃 감지의 기구를 다루는 페이지다. 엽록소 흡수에 따른 투과광의 파장 조성 변화를 지표로 이용한다는 점을 제시하고, 회피 반응의 형태 변화와 그에 수반되는 비용을 밝힌다.",
+          "aiAnalysisInputSha256": "038a37360d1d56cc7420eb4dadfbc02880fb106c5543414dbe3e053700f0c740",
+          "aiPublicGuideTopic": "이웃이 가깝다는 것을 아는 방법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 밖으로 내보내는 신호",
+          "section": "3.1 공기로 내보내는 것",
+          "primaryConcepts": [
+            "공기 중 신호"
+          ],
+          "secondaryConcepts": [
+            "신호 물질"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "잎에서 방출되는 휘발성 물질의 성질을 다루는 페이지다. 손상에 따른 방출 조성과 양의 변화를 신호 조건과 연결하고, 대기 확산에 의존하는 전달의 방향성 부재를 지하 경로와 대비해 제시한다.",
+          "aiAnalysisInputSha256": "5d2b11fe2108286a1efaaf5e0805f9305ea544c91cfb691c4f14095606a88849",
+          "aiPublicGuideTopic": "잎에서 나가는 휘발성 물질",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 밖으로 내보내는 신호",
+          "section": "3.1 공기로 내보내는 것",
+          "primaryConcepts": [
+            "공기 중 신호"
+          ],
+          "secondaryConcepts": [
+            "느끼는 방식"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "휘발성 신호가 단일 물질이 아니라 혼합 조성으로 기능한다는 점을 다루는 페이지다. 동일 물질의 의미가 공존 물질에 따라 달라진다는 점과 수신 반응이 조성에 의존한다는 사례를 제시해 조성 기록의 필요를 밝힌다.",
+          "aiAnalysisInputSha256": "7e0ce5cf388b387b788ea4aed9f47a01ed1abbcf6cff6c73a5f6db128f30ca3e",
+          "aiPublicGuideTopic": "내보내는 물질이 여럿이라는 점",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 밖으로 내보내는 신호",
+          "section": "3.2 누가 그것을 받는가",
+          "primaryConcepts": [
+            "받는 쪽"
+          ],
+          "secondaryConcepts": [
+            "공기 중 신호"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "휘발성 신호의 수신 대상을 동일 개체의 다른 부위, 인접 개체, 다른 분류군의 생물로 나누어 다루는 페이지다. 각 경로의 사례를 제시하고 수신자의 이익과 발신자의 의도가 별개 문제임을 예고한다.",
+          "aiAnalysisInputSha256": "ee0cc30423947755dc0518db667d63bc63e6b52f4ed89a0e25ca5877ef7a45e8",
+          "aiPublicGuideTopic": "내보낸 것이 닿는 세 종류의 상대",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 밖으로 내보내는 신호",
+          "section": "3.2 누가 그것을 받는가",
+          "primaryConcepts": [
+            "받는 쪽"
+          ],
+          "secondaryConcepts": [
+            "공기 중 신호",
+            "움직이지 못함"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "휘발성 신호가 복수의 수신자에게 무차별적으로 도달하는 구조를 세 방향의 동일한 화살표로 나타낸 도표다. 확산 방향이 기류에 의해 결정된다는 점을 함께 표시해 발신자의 통제 불가능성을 드러낸다.",
+          "aiAnalysisInputSha256": "20e323b042549544028c7e55efa9134f49301275645888dc306120b237b60462",
+          "aiPublicGuideTopic": "한 잎에서 나온 물질이 닿는 세 방향을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 밖으로 내보내는 신호",
+          "section": "3.3 언제 내보내는가",
+          "primaryConcepts": [
+            "내보내는 조건"
+          ],
+          "secondaryConcepts": [
+            "받는 쪽"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "휘발성 신호 방출의 조건 의존성을 다루는 페이지다. 손상 유형에 따른 방출 조성의 차이와 가해 생물 유래 물질의 인식을 제시하고, 신호가 손상 사실을 넘어 가해자 정보까지 전달한다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "0bf4b1b1388afd09ae35788b951803aa733759cb0f183a675e3d4bfadc062e22",
+          "aiPublicGuideTopic": "내보내는 일에도 비용이 든다는 점",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 밖으로 내보내는 신호",
+          "section": "3.3 언제 내보내는가",
+          "primaryConcepts": [
+            "내보내는 조건"
+          ],
+          "secondaryConcepts": [
+            "움직이지 못함"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "손상 이전 단계에서 일어나는 선제적 방출을 다루는 페이지다. 이웃의 신호를 수신한 개체가 자체 방출을 시작해 신호가 연쇄 전파되는 구조와 감쇠를 제시하고, 선제 대응의 비용과 조절 문제를 밝힌다.",
+          "aiAnalysisInputSha256": "270165be0441db1c4bb08a81c4fc1b57cc143778eca71555f52eab69a6c8f0a3",
+          "aiPublicGuideTopic": "미리 내보내는 경우",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "3장 밖으로 내보내는 신호",
+          "section": "3.4 뿌리에서도 내보낸다",
+          "primaryConcepts": [
+            "뿌리에서 나가는 것"
+          ],
+          "secondaryConcepts": [
+            "내보내는 조건"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "근권 분비물의 규모와 기능을 다루는 페이지다. 광합성 산물의 상당 비율이 분비된다는 사실과 토양 조건 변경 및 공생 상대 유인이라는 기능 가설을 제시하고, 확산 범위가 좁아 수신자가 한정된다는 특성을 밝힌다.",
+          "aiAnalysisInputSha256": "dc5b2c713b3eaf5cfe262f2ca2e17d1e723874de27ce67967723a6f7960113a5",
+          "aiPublicGuideTopic": "흙 속으로 내보내는 물질들",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "3장 밖으로 내보내는 신호",
+          "section": "3.4 뿌리에서도 내보낸다",
+          "primaryConcepts": [
+            "뿌리에서 나가는 것"
+          ],
+          "secondaryConcepts": [
+            "공기 중 신호"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "근권 분비물의 타감 작용을 다루는 페이지다. 신호와 저해 물질의 구분이 앞 장의 기준에 따라 갈린다는 점을 밝히고, 농도에 따라 회피 반응과 생장 저해가 나뉜다는 사례로 농도 기록의 필요를 제시한다.",
+          "aiAnalysisInputSha256": "422fbfb430f046f98b5eafb6636b9d352ea5992d722e3b7ec5ed3e571378c067",
+          "aiPublicGuideTopic": "이웃의 뿌리를 밀어내는 물질",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 뿌리에서 이어지는 것",
+          "section": "4.1 뿌리에 자리 잡는 균류",
+          "primaryConcepts": [
+            "균근"
+          ],
+          "secondaryConcepts": [
+            "뿌리에서 나가는 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "균근 공생의 구조를 다루는 페이지다. 균사의 물리적 특성이 양분 흡수 면적을 확장한다는 점과 무기 양분과 광합성 산물의 교환 관계를 제시하고, 교환 비율이 조건에 따라 변동한다는 점을 예고한다.",
+          "aiAnalysisInputSha256": "570d46efb492902332caf00fdd34c9bf13253f08ab8f85c2a61a59985e075452",
+          "aiPublicGuideTopic": "식물과 균류가 함께 사는 방식",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 뿌리에서 이어지는 것",
+          "section": "4.1 뿌리에 자리 잡는 균류",
+          "primaryConcepts": [
+            "균근"
+          ],
+          "secondaryConcepts": [
+            "신호 물질"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "균근 형성의 개시 과정을 다루는 페이지다. 근권 분비물에 의한 균류 활성화와 균류 유래 물질의 인식이라는 양방향 신호 교환을 제시하고, 숙주가 통로를 마련한다는 점에서 병원성 감염과 구분됨을 밝힌다.",
+          "aiAnalysisInputSha256": "406f6d75a8c4a13f673bf0b3e51df1ba67d511f0203b4899c2f6190248b4a571",
+          "aiPublicGuideTopic": "관계가 시작되기까지의 절차",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 뿌리에서 이어지는 것",
+          "section": "4.2 뿌리와 뿌리를 잇는다",
+          "primaryConcepts": [
+            "지하 연결"
+          ],
+          "secondaryConcepts": [
+            "균근"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "균사에 의한 개체 간 연결과 그 확인 방법을 다루는 페이지다. 표지 물질 추적으로 물질 이동을 검출한다는 실험 설계를 제시하고, 이동의 검출과 이동량 및 수혜 여부가 별개의 물음임을 밝힌다.",
+          "aiAnalysisInputSha256": "ebb81a4c9a15737a46ff8346ef24cb47c4602f2dd0343d19129f5bdedcf0e403",
+          "aiPublicGuideTopic": "한 균류가 여러 그루에 닿는 경우",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 뿌리에서 이어지는 것",
+          "section": "4.2 뿌리와 뿌리를 잇는다",
+          "primaryConcepts": [
+            "지하 연결"
+          ],
+          "secondaryConcepts": [
+            "균근",
+            "뿌리에서 나가는 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "균사망을 통한 개체 간 지하 연결 구조를 지상부와 대비해 나타낸 도표다. 물질 이동 경로에 물음표를 병기해 연결의 존재와 이동량·기능적 의미가 구분되는 문제임을 시각적으로 표시한다.",
+          "aiAnalysisInputSha256": "156634751ab31b0af59e8e168527a8c846fc148b28fe79b502fdb948391e96f4",
+          "aiPublicGuideTopic": "지하에서 여러 그루가 균류로 이어진 모습을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 뿌리에서 이어지는 것",
+          "section": "4.3 무엇이 오가는가",
+          "primaryConcepts": [
+            "오가는 것"
+          ],
+          "secondaryConcepts": [
+            "지하 연결"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "균사망을 통해 이동하는 물질을 수분·무기 양분, 탄소 화합물, 신호 물질로 나누어 다루는 페이지다. 이동 규모의 사례별 편차를 지적하고, 지하 경로가 연결된 상대에게만 도달한다는 점에서 대기 경로와 대비된다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "b3700174c5edd71a791e89972a7fd516f59d7957d8768675a381027d566b777e",
+          "aiPublicGuideTopic": "이 길로 실제로 건너가는 것들",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 뿌리에서 이어지는 것",
+          "section": "4.3 무엇이 오가는가",
+          "primaryConcepts": [
+            "오가는 것"
+          ],
+          "secondaryConcepts": [
+            "균근"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "균사망을 통한 물질 이동량 정량화의 어려움을 다루는 페이지다. 표지 희석과 균류의 중간 소비, 수용 개체의 자체 생산량 산정 곤란을 제시하고, 보고 값의 편차가 조건 차이에서 비롯됨을 밝힌다.",
+          "aiAnalysisInputSha256": "b76f6cb8a418964dc335a00cbce8d4a02464694087f2b0618960acaa445eb436",
+          "aiPublicGuideTopic": "오가는 양을 재는 일의 어려움",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "4장 뿌리에서 이어지는 것",
+          "section": "4.4 균류 쪽에서 보면",
+          "primaryConcepts": [
+            "균류의 몫"
+          ],
+          "secondaryConcepts": [
+            "오가는 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "균근 공생에서 균류를 독립적 행위자로 다루는 관점을 제시하는 페이지다. 균류의 탄소 의존성과 다중 숙주 연결의 이점을 밝히고, 식물 간 물질 이동을 균류의 이해관계로 설명하는 대안 해석을 함께 제시한다.",
+          "aiAnalysisInputSha256": "ac0e71a033427bdf587c2f8c1fa1fcfb3eb523c308f7b5a6ba7987aeb644dd99",
+          "aiPublicGuideTopic": "가운데 있는 쪽의 사정",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "4장 뿌리에서 이어지는 것",
+          "section": "4.4 균류 쪽에서 보면",
+          "primaryConcepts": [
+            "균류의 몫"
+          ],
+          "secondaryConcepts": [
+            "지하 연결"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "균근 관계에서 양측이 상대를 선별한다는 점을 다루는 페이지다. 제공량에 따른 자원 배분 조절 사례를 제시하고, 상호 선별이 일방적 착취를 억제하는 구조와 물질 이동의 대안 해석을 밝힌다.",
+          "aiAnalysisInputSha256": "99c958ffab64392d438cd8cda7a7f1e5441e6689de91b2a3e89520bd0da8113e",
+          "aiPublicGuideTopic": "여러 상대를 둔다는 것의 뜻",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 너울숲 조사소의 두 해",
+          "section": "5.1 두 해짜리 계획",
+          "primaryConcepts": [
+            "조사 설계"
+          ],
+          "secondaryConcepts": [
+            "자료의 성질"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다년 단위 야외 조사의 사전 설계를 다루는 페이지다. 연차 반복이 필요한 이유를 제시하고, 균사 연결의 유무를 처리 변수로 삼기 위한 차단막 설계와 투과 조건이 다른 두 종류를 병용하는 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "eadcfbceddb063ab3c966165cd11076c258d6259fee8dffb88ce3f0cdc95e3e7",
+          "aiPublicGuideTopic": "긴 시간을 두고 시작하기 전에 정하는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 너울숲 조사소의 두 해",
+          "section": "5.2 이어져 있는지 확인한다",
+          "primaryConcepts": [
+            "연결 확인"
+          ],
+          "secondaryConcepts": [
+            "조사 설계"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지하 연결의 검증 절차를 다루는 페이지다. 표지 물질 추적의 원리와 대체 경로의 가능성을 제시하고, 투과 조건이 다른 차단막을 조합해 경로를 특정하는 설계와 검증 선행의 필요를 밝힌다.",
+          "aiAnalysisInputSha256": "58fbfba48546e53d225920b95414b8edf6f63d5bd4063b9eedc39e482b9b4ea5",
+          "aiPublicGuideTopic": "지하 연결을 실제로 확인하는 절차",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 너울숲 조사소의 두 해",
+          "section": "5.2 이어져 있는지 확인한다",
+          "primaryConcepts": [
+            "연결 확인"
+          ],
+          "secondaryConcepts": [
+            "균근"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "차단막 설치가 유발하는 부수적 교란을 다루는 페이지다. 처리군과 대조군에 동일한 굴착 작업을 적용하고 막의 공극 크기만 달리하는 설계를 제시해 관심 변인을 분리하는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "7c1ff262f460307679c11e2533ebded61929537ccdc44dceef8c63be1ad8cbe3",
+          "aiPublicGuideTopic": "가림막이 만드는 다른 변화",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            35
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 너울숲 조사소의 두 해",
+          "section": "5.2 이어져 있는지 확인한다",
+          "primaryConcepts": [
+            "연결 확인"
+          ],
+          "secondaryConcepts": [
+            "지하 연결",
+            "조사 설계"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "균사 연결의 유무만을 변인으로 분리하는 실험 배치를 좌우로 대비한 도표다. 굴착 교란을 양쪽에 동일하게 표시하고 차단막의 공극 크기만 달리해, 관찰된 차이의 원인을 특정할 수 있는 설계 논리를 드러낸다.",
+          "aiAnalysisInputSha256": "6f2e961ae92374df00097ba262a6711d3f0cf9b38dc8f19d90148afe5946a0c5",
+          "aiPublicGuideTopic": "구멍 크기만 다른 두 가림막을 견주는 배치를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 너울숲 조사소의 두 해",
+          "section": "5.3 값이 갈리지 않을 때",
+          "primaryConcepts": [
+            "값의 해석"
+          ],
+          "secondaryConcepts": [
+            "연결 확인"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "차이가 검출되지 않은 결과의 해석을 다루는 페이지다. 효과의 부재와 검출력 부족을 구분해야 한다는 점을 제시하고, 검출 가능한 최소 효과 크기를 함께 기록해야 결과가 자료로서 기능한다는 원칙을 밝힌다.",
+          "aiAnalysisInputSha256": "d0f39c2e04227a4514585219ea7ed18d9fa697fd0bf388aa4adc893953d1069f",
+          "aiPublicGuideTopic": "차이가 나오지 않은 결과를 다루는 방법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            35
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "5장 너울숲 조사소의 두 해",
+          "section": "5.4 무엇을 남기는가",
+          "primaryConcepts": [
+            "기록 남기기"
+          ],
+          "secondaryConcepts": [
+            "조사 설계"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다년 조사 종료 후 자료와 맥락을 함께 보존하는 절차를 다루는 페이지다. 제외된 표본의 기록, 연차 간 상이한 결과의 병기, 다음 회차 개선 목록의 작성을 각각의 이유와 함께 제시한다.",
+          "aiAnalysisInputSha256": "e2ea60036819c1235cde0de0dc47fd5327c8b9d4d14f7f21b45907861b9f8428",
+          "aiPublicGuideTopic": "두 해가 끝난 뒤 남는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 잘못 읽기 쉬운 자리",
+          "section": "6.1 알린다는 말",
+          "primaryConcepts": [
+            "의도의 오해"
+          ],
+          "secondaryConcepts": [
+            "신호 물질",
+            "받는 쪽"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "휘발성 방출을 이타적 의도로 해석하는 오류를 다루는 페이지다. 확인된 사실의 범위를 방출과 수신 반응으로 한정하고, 자기 신호의 부수 효과라는 대안 설명과 발신자 이익 확인이라는 검증 요건을 제시한다.",
+          "aiAnalysisInputSha256": "ddfa0ac7512436e484484470f8bd6d3a2940f8483dc2242f9926b09e70962533",
+          "aiPublicGuideTopic": "내보내는 쪽의 뜻을 읽어 넣는 잘못",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 잘못 읽기 쉬운 자리",
+          "section": "6.1 알린다는 말",
+          "primaryConcepts": [
+            "의도의 오해"
+          ],
+          "secondaryConcepts": [
+            "움직이지 못함"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "의인화된 표현이 서술에 미치는 영향을 다루는 페이지다. 비유적 표현이 검증되지 않은 의도를 함축한다는 점과 인용 과정에서 단서가 소실되는 경로를 지적하고, 중립적 어휘 선택을 서술 원칙으로 제시한다.",
+          "aiAnalysisInputSha256": "1056530ab12dcbef3584e601150d477fc02dedc391e42369b6daf7a0b515a9e2",
+          "aiPublicGuideTopic": "사람의 말을 그대로 옮겨 쓰는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 잘못 읽기 쉬운 자리",
+          "section": "6.2 나눈다는 말",
+          "primaryConcepts": [
+            "나눔의 오해"
+          ],
+          "secondaryConcepts": [
+            "지하 연결",
+            "균류의 몫"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지하 물질 이동을 이타적 지원으로 해석하는 오류를 다루는 페이지다. 이동량과 수혜의 구분, 균류의 매개 가능성, 농도 구배에 의한 수동적 이동이라는 세 단계를 제시해 해석의 비약을 지적한다.",
+          "aiAnalysisInputSha256": "c6b9af7d3d26a1f4b0802dc3df926ff627dcb3b004c731e7370b3836252aec14",
+          "aiPublicGuideTopic": "지하 연결을 나눔으로 읽는 잘못",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 잘못 읽기 쉬운 자리",
+          "section": "6.2 나눈다는 말",
+          "primaryConcepts": [
+            "나눔의 오해"
+          ],
+          "secondaryConcepts": [
+            "오가는 것",
+            "균류의 몫"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "물질 이동 관찰에서 도출 가능한 진술과 추가 검증이 필요한 진술을 세 갈래로 분기시킨 도표다. 실선과 점선 테두리로 확실성 수준을 구분하고 각 미확인 진술에 필요한 근거를 병기한다.",
+          "aiAnalysisInputSha256": "7475df342461b39c7b31a92e792ca99920a6094d561e033b1924e9c44b1f4322",
+          "aiPublicGuideTopic": "같은 관찰에서 갈라지는 세 가지 읽기를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 잘못 읽기 쉬운 자리",
+          "section": "6.3 잴 수 없는 것",
+          "primaryConcepts": [
+            "측정의 한계"
+          ],
+          "secondaryConcepts": [
+            "자료의 성질",
+            "연결 확인"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "식물 신호 연구의 확인 불가능 영역을 연결망의 전수 파악, 자연 상태의 신호 빈도, 신호의 생존 기여도로 정리하는 페이지다. 세 항목이 관측 방법의 구조적 제약에서 온다는 점과 유용성과 필수성의 구분을 제시한다.",
+          "aiAnalysisInputSha256": "6299e08956a5b512774812865a5695428eaa92ec9e2c5a712fb771dfeed0474f",
+          "aiPublicGuideTopic": "이 책의 방법으로 확인할 수 없는 것들",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 잘못 읽기 쉬운 자리",
+          "section": "6.3 잴 수 없는 것",
+          "primaryConcepts": [
+            "측정의 한계"
+          ],
+          "secondaryConcepts": [
+            "의도의 오해"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미확인 영역을 명시하는 서술 관행의 이유를 다루는 페이지다. 대중적 관심이 큰 주제에서 인용을 거치며 단서가 소실되는 경로를 지적하고, 사전 구분이 사후 정정보다 비용이 낮다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "4db63edee1b201d3883703f906e18aaffa045851f155a95945a4680be33f274f",
+          "aiPublicGuideTopic": "모르는 자리를 적어 두는 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 결론: 자리를 옮기지 않고 응답한다",
+          "section": "7.1 자리를 옮기지 않고 응답한다",
+          "primaryConcepts": [
+            "움직이지 못함"
+          ],
+          "secondaryConcepts": [
+            "신호 물질",
+            "지하 연결"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도입에서 던진 고착성 물음을 책 전체의 결론으로 다시 기술하는 결론 페이지다. 생장 방향 조절, 전신 전파, 대기와 지하 두 경로의 방출을 이동 불가에 대한 대안으로 묶고, 두 경로의 도달 범위와 수신자 특정성의 차이를 대비해 정리한다.",
+          "aiAnalysisInputSha256": "cf3f2a36bcd0877fe3f227dac66aa05f409725a516b93b71fe0ef2387c3b647c",
+          "aiPublicGuideTopic": "책을 지나온 뒤 처음 물음으로 되돌아가는 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "rooted-but-responsive"
+          ]
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 결론: 자리를 옮기지 않고 응답한다",
+          "section": "7.1 자리를 옮기지 않고 응답한다",
+          "primaryConcepts": [
+            "종합"
+          ],
+          "secondaryConcepts": [
+            "느끼는 방식",
+            "나눔의 오해"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체에서 반복 사용된 네 가지 구분을 정리하는 페이지다. 수용부와 반응부, 방출과 신호, 대기 경로와 지하 경로, 관찰과 해석을 각각 대비 형태로 제시해 개별 내용을 재구성할 골격을 남긴다.",
+          "aiAnalysisInputSha256": "04d37841512b051b302e77b75853a55bddf9fa1914df685f71b08d8840cdee6c",
+          "aiPublicGuideTopic": "장마다 세운 구분을 한자리에 모으는 정리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 결론: 자리를 옮기지 않고 응답한다",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "측정의 한계"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "식물 신호 연구의 미해결 과제를 자연 규모에서의 발생 빈도, 발신자 이익의 확인, 균사망의 물질 배분 규칙으로 나누어 제시하는 페이지다. 세 항목이 관측 방법의 한계에서 비롯됨을 밝혀 답의 부재와 구분한다.",
+          "aiAnalysisInputSha256": "a805b92d104667e1ab6db03d8dcdfc302e1fbf3e4fcfca88525b27573905cce1",
+          "aiPublicGuideTopic": "다 읽은 뒤에도 열려 있는 물음들",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 결론: 자리를 옮기지 않고 응답한다",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "빛을 향한 굽음",
+            "조사 설계"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "독자가 직접 수행할 수 있는 굴광성 관찰과 그 설계 원칙을 제시하는 마무리 페이지다. 대조 개체를 함께 두는 이유를 밝히고, 관찰 범위와 진술 범위를 구분하는 태도를 책의 최종 메시지로 제시한다.",
+          "aiAnalysisInputSha256": "fe90dc24200619bc1fce3487538d81e7c31dadf4aca092d07b7932395926cb4c",
+          "aiPublicGuideTopic": "다음에 무엇을 직접 해 볼 수 있는지",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 34,
       "title": "장부로 읽는 사회사: 기록에서 구조로",
       "pdfPath": "pdfs/book-034.pdf",
