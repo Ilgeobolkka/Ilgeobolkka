@@ -300,6 +300,72 @@
       ]
     },
     {
+      "caseId": "case-book-023",
+      "bookId": 23,
+      "purpose": "이 책을 사지는 않았고, 죽은 것이 어떻게 다시 쓰이는 형태로 돌아가는지 그 큰 틀만 훑어보고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "미생물의 갈래",
+        "분해자",
+        "물질순환",
+        "질소순환"
+      ],
+      "helpfulConcepts": [
+        "보이지 않는 다수",
+        "탄소순환",
+        "먹이와 산물"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 18
+        },
+        {
+          "beforePageNumber": 18,
+          "afterPageNumber": 20
+        }
+      ],
+      "irrelevantPageNumbers": [
+        33,
+        34,
+        35,
+        36,
+        40
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          47
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        10,
+        18,
+        20
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        11,
+        19,
+        22,
+        23
+      ]
+    },
+    {
       "caseId": "case-book-026",
       "bookId": 26,
       "purpose": "이 책을 소장하고 있는데, 심해 생물이 어떤 반응으로 빛을 만들고 그 빛을 무엇에 쓰는지를 제대로 익히고 싶다",
