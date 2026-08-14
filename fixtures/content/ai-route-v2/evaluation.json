@@ -366,6 +366,94 @@
       ]
     },
     {
+      "caseId": "case-book-024",
+      "bookId": 24,
+      "purpose": "이 책을 소장하고 있는데, 먼저와 나중이 왜 어떤 경우에는 흔들리고 어떤 경우에는 흔들리지 않는지를 제대로 알고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "소식의 지연",
+        "빠르기의 차이",
+        "재는 방법",
+        "동시의 문제",
+        "순서의 뒤바뀜",
+        "흔들리지 않는 것"
+      ],
+      "helpfulConcepts": [
+        "과거를 본다",
+        "인과의 조건",
+        "거리와 시간"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 18
+        },
+        {
+          "beforePageNumber": 18,
+          "afterPageNumber": 21
+        },
+        {
+          "beforePageNumber": 21,
+          "afterPageNumber": 22
+        },
+        {
+          "beforePageNumber": 21,
+          "afterPageNumber": 23
+        },
+        {
+          "beforePageNumber": 23,
+          "afterPageNumber": 24
+        }
+      ],
+      "irrelevantPageNumbers": [
+        31,
+        32,
+        34,
+        35,
+        36
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          46
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        6,
+        16,
+        18,
+        21,
+        22,
+        23,
+        24
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        9,
+        10,
+        17,
+        25
+      ]
+    },
+    {
       "caseId": "case-book-026",
       "bookId": 26,
       "purpose": "이 책을 소장하고 있는데, 심해 생물이 어떤 반응으로 빛을 만들고 그 빛을 무엇에 쓰는지를 제대로 익히고 싶다",
