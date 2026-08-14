@@ -109,21 +109,14 @@ public class AiRouteGenerationApiFacade {
             String normalizedPurpose,
             AiRouteGenerationRequest request) {
         boolean same = existing.bookId() == bookId
-                && (existing.status() == AiRouteGenerationStatus.CONSUMED
-                        ? sameConsumedRequest(existing, normalizedPurpose, request)
-                        : switch (existing.requestType()) {
-                            case INK_BUDGET ->
-                                sameInkBudgetRequest(existing, normalizedPurpose, request);
-                            case OWNED_DEPTH ->
-                                sameOwnedDepthRequest(existing, normalizedPurpose, request);
-                        });
+                && sameRequestFingerprint(existing, normalizedPurpose, request);
         if (!same) {
             throw new AiRouteGenerationApiException(ErrorCode.AI_ROUTE_IDEMPOTENCY_KEY_REUSED);
         }
     }
 
-    /** 삭제된 저장 경로 대신 generation에 남은 지문으로 CONSUMED 요청의 동일성을 판정한다. */
-    private boolean sameConsumedRequest(
+    /** 상태가 바뀌며 canonical 입력이 지워져도 generation에 남은 지문으로 요청 동일성을 판정한다. */
+    private boolean sameRequestFingerprint(
             AiRouteGenerationRequestView existing,
             String normalizedPurpose,
             AiRouteGenerationRequest request) {
@@ -146,44 +139,6 @@ public class AiRouteGenerationApiFacade {
                 request.maxAdditionalInk(),
                 null,
                 defaultBudget));
-    }
-
-    private boolean sameInkBudgetRequest(
-            AiRouteGenerationRequestView existing,
-            String normalizedPurpose,
-            AiRouteGenerationRequest request) {
-        if (request.depth() != null) {
-            return false;
-        }
-        boolean defaultBudget = request.maxAdditionalInk() == null;
-        Integer budget = defaultBudget ? existing.maxAdditionalInk() : request.maxAdditionalInk();
-        String fingerprint = AiRouteRequestFingerprint.ofCanonicalRequest(
-                existing.bookId(),
-                existing.contentVersion(),
-                normalizedPurpose,
-                existing.requestType(),
-                budget,
-                null,
-                defaultBudget);
-        return existing.requestFingerprint().equals(fingerprint);
-    }
-
-    private boolean sameOwnedDepthRequest(
-            AiRouteGenerationRequestView existing,
-            String normalizedPurpose,
-            AiRouteGenerationRequest request) {
-        if (request.maxAdditionalInk() != null) {
-            return false;
-        }
-        String fingerprint = AiRouteRequestFingerprint.ofCanonicalRequest(
-                existing.bookId(),
-                existing.contentVersion(),
-                normalizedPurpose,
-                existing.requestType(),
-                null,
-                request.depth(),
-                false);
-        return existing.requestFingerprint().equals(fingerprint);
     }
 
     /** 소유자와 만료 조건을 한 조회에 적용하고 GET의 200·202 응답을 만든다. */

@@ -4,12 +4,9 @@ import com.example.ilgeobolkka.airoute.AiRouteGenerationCommand;
 import com.example.ilgeobolkka.airoute.entity.AiRouteDailyUsage;
 import com.example.ilgeobolkka.airoute.entity.AiRouteDailyUsageId;
 import com.example.ilgeobolkka.airoute.entity.AiRouteGeneration;
-import com.example.ilgeobolkka.airoute.entity.AiRouteGenerationStatus;
-import com.example.ilgeobolkka.airoute.entity.AiReadingRoute;
 import com.example.ilgeobolkka.airoute.repository.AiRouteDailyUsageRepository;
 import com.example.ilgeobolkka.airoute.repository.AiRouteGenerationItemRepository;
 import com.example.ilgeobolkka.airoute.repository.AiRouteGenerationRepository;
-import com.example.ilgeobolkka.airoute.repository.AiReadingRouteRepository;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -40,7 +37,6 @@ public class AiRouteGenerationStartService {
     private final AiRouteGenerationRepository generationRepository;
     private final AiRouteGenerationItemRepository generationItemRepository;
     private final AiRouteDailyUsageRepository dailyUsageRepository;
-    private final AiReadingRouteRepository readingRouteRepository;
     private final TransactionTemplate transactionTemplate;
     private final Clock clock;
 
@@ -88,31 +84,11 @@ public class AiRouteGenerationStartService {
     }
 
     private AiRouteGenerationRequestView requestViewOf(AiRouteGeneration generation) {
-        if (generation.getStatus() == AiRouteGenerationStatus.SAVED) {
-            AiReadingRoute route = readingRouteRepository
-                    .findById(generation.getSavedRouteId())
-                    .orElseThrow(() -> new IllegalStateException("저장 generation의 경로를 찾을 수 없습니다."));
-            return new AiRouteGenerationRequestView(
-                    generation.getGenerationId(),
-                    generation.getBookId(),
-                    generation.getContentVersion(),
-                    generation.getRequestFingerprint(),
-                    generation.getStatus(),
-                    route.getNormalizedPurpose(),
-                    route.getRequestType(),
-                    route.getMaxAdditionalInk(),
-                    route.getDepth());
-        }
         return new AiRouteGenerationRequestView(
                 generation.getGenerationId(),
                 generation.getBookId(),
                 generation.getContentVersion(),
-                generation.getRequestFingerprint(),
-                generation.getStatus(),
-                generation.getNormalizedPurpose(),
-                generation.getRequestType(),
-                generation.getMaxAdditionalInk(),
-                generation.getDepth());
+                generation.getRequestFingerprint());
     }
 
     /**
