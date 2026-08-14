@@ -1790,11 +1790,15 @@ async function verifyAiRouteGenerationPage() {
     fixtureContainer.append(fixture);
     const generationId = "11111111-1111-4111-8111-111111111111";
     const secondGenerationId = "22222222-2222-4222-8222-222222222222";
+    const successfulGenerationId = "55555555-5555-4555-8555-555555555555";
+    const nonCurrentGenerationId = "66666666-6666-4666-8666-666666666666";
     const generatedIds = [
         generationId,
         secondGenerationId,
         "33333333-3333-4333-8333-333333333333",
-        "44444444-4444-4444-8444-444444444444"
+        "44444444-4444-4444-8444-444444444444",
+        successfulGenerationId,
+        nonCurrentGenerationId
     ];
     const generationRequests = [];
     const saveRequests = [];
@@ -1878,6 +1882,18 @@ async function verifyAiRouteGenerationPage() {
                     items: []
                 };
             }
+            if (mode === "save-success") {
+                return {
+                    ...routeResponse,
+                    generationId: successfulGenerationId
+                };
+            }
+            if (mode === "save-not-current") {
+                return {
+                    ...routeResponse,
+                    generationId: nonCurrentGenerationId
+                };
+            }
             return {
                 ...routeResponse,
                 status: "GENERATING",
@@ -1896,6 +1912,34 @@ async function verifyAiRouteGenerationPage() {
                 "대여·소장 상태가 변경되었습니다.",
                 409,
                 "entitlement-changed");
+        }
+        if (url === `/api/ai-route-generations/${successfulGenerationId}/routes`) {
+            saveRequests.push({url, options});
+            return {
+                routeId: 71,
+                bookId: 17,
+                bookTitle: "검증 도서",
+                purpose: routeResponse.purpose,
+                current: true,
+                createdAt: "2026-08-14T12:01:00Z",
+                completedAt: null,
+                rating: null,
+                items: routeResponse.items
+            };
+        }
+        if (url === `/api/ai-route-generations/${nonCurrentGenerationId}/routes`) {
+            saveRequests.push({url, options});
+            return {
+                routeId: 72,
+                bookId: 17,
+                bookTitle: "검증 도서",
+                purpose: routeResponse.purpose,
+                current: false,
+                createdAt: "2026-08-14T12:02:00Z",
+                completedAt: null,
+                rating: null,
+                items: routeResponse.items
+            };
         }
         throw new Error(`예상하지 않은 AI 경로 API 요청: ${url}`);
     };
@@ -1918,7 +1962,34 @@ async function verifyAiRouteGenerationPage() {
         !fixture.querySelector("[data-ai-route-budget-all]").hidden,
         "보유 잉크 전부 선택은 항상 표시해야 합니다.");
 
+    assertThrows(
+        () => generationRequestOf({
+            purpose: "핵심 읽기",
+            owned: false,
+            inkBalance: 12,
+            budget: "",
+            depth: null
+        }),
+        "비소장 도서의 빈 예산을 0잉크로 바꾸지 말고 거부해야 합니다.");
+
     const purpose = fixture.querySelector("[data-ai-route-purpose]");
+    const canonicallyValidPurpose = "e\u0301".repeat(101);
+    purpose.value = canonicallyValidPurpose;
+    purpose.dispatchEvent(new Event("input"));
+    assert(
+        fixture.querySelector("[data-ai-route-purpose-count]").textContent === "101",
+        "독서 목적 글자 수는 서버와 같이 NFC 정규화한 뒤 세어야 합니다.");
+    const canonicallyValidRequest = generationRequestOf({
+        purpose: canonicallyValidPurpose,
+        owned: false,
+        inkBalance: 12,
+        budget: "10",
+        depth: null
+    });
+    assert(
+        canonicallyValidRequest.purpose === canonicallyValidPurpose,
+        "NFC 정규화 뒤 200자 이하인 원문은 서버 검증까지 전달해야 합니다.");
+
     purpose.value = routeResponse.purpose;
     purpose.dispatchEvent(new Event("input"));
     await page.startNewGeneration();
@@ -2025,6 +2096,30 @@ async function verifyAiRouteGenerationPage() {
             === "AI 경로 생성 서비스를 일시적으로 사용할 수 없습니다.",
         "503 오류의 서버 사용자 메시지를 그대로 표시해야 합니다.");
 
+    mode = "save-success";
+    await page.startNewGeneration();
+    fixture.querySelector("[data-ai-route-save]").click();
+    await waitFor(
+        () => fixture.querySelector("[data-ai-route-status]").textContent.includes("경로를 저장했습니다"),
+        "정상 저장 응답은 저장 완료로 안내해야 합니다.");
+    assert(saveRequests.length === 2, "저장 성공 요청도 generationId로 한 번 보내야 합니다.");
+    assert(
+        saveRequests[1].url === `/api/ai-route-generations/${successfulGenerationId}/routes`
+            && saveRequests[1].options.method === "POST"
+            && saveRequests[1].options.body === undefined,
+        "저장 성공 요청도 generationId만 경로에 넣고 바디 없이 POST해야 합니다.");
+    assert(
+        fixture.querySelector("[data-ai-route-save]").disabled,
+        "저장 성공 뒤 같은 preview를 다시 저장할 수 없어야 합니다.");
+
+    mode = "save-not-current";
+    await page.startNewGeneration();
+    fixture.querySelector("[data-ai-route-save]").click();
+    await waitFor(
+        () => fixture.querySelector("[data-ai-route-status]").textContent === "경로를 저장했습니다.",
+        "현재 경로가 아닌 멱등 저장 응답에 현재 경로 지정 완료를 잘못 안내하면 안 됩니다.");
+    assert(saveRequests.length === 3, "현재 경로가 아닌 저장 응답도 generationId로 한 번 요청해야 합니다.");
+
     const ownedRequest = generationRequestOf({
         purpose: "핵심 읽기",
         owned: true,
@@ -2073,6 +2168,28 @@ async function verifyAiRouteGenerationPage() {
         ownedRequests.length === 1 && ownedRequests[0] === "/api/books/17",
         "소장 도서는 잉크 잔액 API를 호출하면 안 됩니다.");
     ownedFixture.remove();
+
+    const invalidBookFixture = createAiRouteGenerationFixture();
+    invalidBookFixture.dataset.bookId = "0";
+    fixtureContainer.append(invalidBookFixture);
+    let invalidBookRequestCount = 0;
+    const invalidBookPage = createAiRouteGenerationPage(invalidBookFixture, {
+        request: async () => {
+            invalidBookRequestCount += 1;
+            throw new Error("잘못된 bookId로 API를 호출하면 안 됩니다.");
+        }
+    });
+    await invalidBookPage.start();
+    assert(invalidBookRequestCount === 0, "잘못된 bookId는 API 호출 전에 거부해야 합니다.");
+    assert(
+        document.querySelector("[data-common-error]").textContent
+            === "AI 경로 화면의 도서 식별자가 올바르지 않습니다.",
+        "잘못된 bookId 초기화 실패를 공통 오류 영역에 표시해야 합니다.");
+    assert(
+        invalidBookFixture.querySelector("[data-ai-route-status]").textContent
+            === "AI 경로 화면을 준비하지 못했습니다.",
+        "잘못된 bookId에서도 화면이 준비 중 상태로 남으면 안 됩니다.");
+    invalidBookFixture.remove();
 }
 
 function createAiRouteGenerationFixture() {

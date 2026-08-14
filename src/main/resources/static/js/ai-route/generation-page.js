@@ -3,6 +3,8 @@ import {requestJson} from "../common/request-json.js";
 
 const MAX_PURPOSE_CODE_POINTS = 200;
 const DEFAULT_POLL_DELAY_MS = 1000;
+const UNICODE_WHITE_SPACE_RUN = /\p{White_Space}+/gu;
+const EDGE_ASCII_SPACE = /^ | $/gu;
 const DEPTHS = new Set(["QUICK", "BALANCED", "DEEP"]);
 const GENERATION_STATUSES = new Set(["GENERATING", "ROUTE", "NO_ROUTE", "SAVED"]);
 const NO_ROUTE_REASONS = new Set([
@@ -51,10 +53,6 @@ export function createAiRouteGenerationPage(root, dependencies = {}) {
     let retryAction = null;
     let saving = false;
 
-    if (!Number.isInteger(bookId) || bookId <= 0) {
-        throw new Error("AI 경로 화면의 도서 식별자가 올바르지 않습니다.");
-    }
-
     elements.form.addEventListener("submit", (event) => {
         event.preventDefault();
         startNewGeneration();
@@ -83,6 +81,9 @@ export function createAiRouteGenerationPage(root, dependencies = {}) {
         elements.inputs.disabled = true;
 
         try {
+            if (!Number.isInteger(bookId) || bookId <= 0) {
+                throw new Error("AI 경로 화면의 도서 식별자가 올바르지 않습니다.");
+            }
             const response = await request(`/api/books/${encodeURIComponent(bookId)}`);
             validateBook(response, bookId);
             book = response;
@@ -244,7 +245,7 @@ export function createAiRouteGenerationPage(root, dependencies = {}) {
                 `/api/ai-route-generations/${encodeURIComponent(activeRun.generationId)}/routes`,
                 {method: "POST"});
             validateSavedRoute(response, bookId);
-            setStatus("경로를 저장했습니다. 이 도서의 현재 AI 독서 경로로 지정되었습니다.", "success", true);
+            setStatus("경로를 저장했습니다.", "success", true);
         } catch (error) {
             if (error?.code === "AI_ROUTE_ENTITLEMENT_CHANGED") {
                 invalidateEntitlementPreview();
@@ -348,15 +349,17 @@ export function createAiRouteGenerationPage(root, dependencies = {}) {
     }
 
     function updatePurposeCount() {
-        elements.purposeCount.textContent = String(codePointCount(elements.purpose.value));
+        elements.purposeCount.textContent = String(
+            codePointCount(normalizedPurposeForClientValidation(elements.purpose.value)));
     }
 
     return {start, startNewGeneration};
 }
 
 export function generationRequestOf({purpose, owned, inkBalance, budget, depth}) {
-    const purposeCount = codePointCount(purpose);
-    if (purpose.trim().length === 0) {
+    const normalizedPurpose = normalizedPurposeForClientValidation(purpose);
+    const purposeCount = codePointCount(normalizedPurpose);
+    if (normalizedPurpose.length === 0) {
         throw new Error("독서 목적을 입력해 주세요.");
     }
     if (purposeCount > MAX_PURPOSE_CODE_POINTS) {
@@ -370,7 +373,7 @@ export function generationRequestOf({purpose, owned, inkBalance, budget, depth})
         return {purpose, maxAdditionalInk: null, depth};
     }
 
-    const parsedBudget = Number(budget);
+    const parsedBudget = budget === "" ? Number.NaN : Number(budget);
     if (!Number.isInteger(parsedBudget)
             || parsedBudget < 0
             || !Number.isInteger(inkBalance)
@@ -418,6 +421,12 @@ export function generationDisplayOf(response, expectedBookId) {
 
 export function codePointCount(value) {
     return Array.from(value).length;
+}
+
+function normalizedPurposeForClientValidation(value) {
+    const composed = value.normalize("NFC");
+    const collapsed = composed.replace(UNICODE_WHITE_SPACE_RUN, " ");
+    return collapsed.replace(EDGE_ASCII_SPACE, "");
 }
 
 function itemDisplayOf(item) {

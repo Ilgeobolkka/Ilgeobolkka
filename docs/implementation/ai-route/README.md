@@ -114,7 +114,7 @@ S04·S05와 W02 사이에는 문서 계약뿐 아니라 컴파일 가능한 산�
 | `application*.yaml`, `.env.example`, OpenAI 조건부 설정·공통 HTTP Bean | F03 | F04·F05는 설정 필드를 추가하거나 별도 HTTP client를 생성하지 않고 F03 Bean을 주입받아 사용 |
 | `contentimport` | C01~C04 담당 A | 다른 담당자는 manifest 타입을 복제하지 않음 |
 | generation Facade | G07 | G08은 Facade 호출만 하고 orchestration 추가 금지 |
-| `ErrorCode`, `GlobalExceptionHandler`, `SecurityConfig` | G08 | 각 작업은 **자기가 실제로 반환하는 공개 오류 코드와 그 예외 매핑만** 추가하고, **이미 정의된 코드는 재사용하고 다시 추가하지 않습니다**(같은 코드를 여러 endpoint가 반환하면 먼저 진행하는 작업이 정의). 그 밖의 변경(다른 작업 코드·`SecurityConfig`·공통 구조)은 G08에 인계. 예: S01은 G08보다 앞 파동이므로 자기 endpoint의 `AI_ROUTE_ENTITLEMENT_CHANGED`·`AI_ROUTE_CONTENT_CHANGED`·`AI_ROUTE_GENERATION_CONSUMED`를 정의하고, 뒤따르는 G08은 그중 자기도 반환하는 코드를 재사용 |
+| `ErrorCode`, `GlobalExceptionHandler`, `SecurityConfig` | G08 | 각 작업은 **자기가 실제로 반환하는 공개 오류 코드와 그 예외 매핑만** 추가하고, **이미 정의된 코드는 재사용하고 다시 추가하지 않습니다**(같은 코드를 여러 endpoint가 반환하면 먼저 진행하는 작업이 정의). 그 밖의 변경(다른 작업 코드·`SecurityConfig`·공통 구조)은 G08에 인계. 단, W01은 2026-08-14 사용자 승인에 따라 `GET /books/{bookId}/ai-route`를 보호하는 matcher만 추가할 수 있습니다. 예: S01은 G08보다 앞 파동이므로 자기 endpoint의 `AI_ROUTE_ENTITLEMENT_CHANGED`·`AI_ROUTE_CONTENT_CHANGED`·`AI_ROUTE_GENERATION_CONSUMED`를 정의하고, 뒤따르는 G08은 그중 자기도 반환하는 코드를 재사용 |
 | 저장 경로 Controller | S01~S05의 문서별 별도 Controller | 공용 거대 Controller로 합치지 않음 |
 | 새 AI 화면 | W01·W02 각자 | W03은 새 화면 파일을 수정하지 않음 |
 | `book-detail.html`, `library.html` | W03 | 다른 웹 작업은 링크 자리만 계약으로 전달 |
