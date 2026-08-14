@@ -1223,6 +1223,1147 @@
       ]
     },
     {
+      "bookId": 21,
+      "title": "빛으로 읽는 우주: 분광과 거리 측정",
+      "pdfPath": "pdfs/book-021.pdf",
+      "pdfSha256": "3dbc4a772888bb6e3104034d953278aae05e809caf78849616b5e48ad2238f20",
+      "totalPageCount": 53,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 도착한 빛에 무엇이 실려 있는가",
+          "section": "1.1 우리가 가진 것은 빛뿐이다",
+          "primaryConcepts": [
+            "빛이라는 자료"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "천체 연구가 직접 접촉이나 표본 채취 없이 도달한 빛만을 자료로 삼는다는 조건을 도입 페이지에서 세운다. 관측 기술이 빛을 모으는 방향과 잘게 나누는 방향으로 나뉘며 이 책은 후자를 다룬다는 범위를 밝히고, 구성·운동·거리 세 결론이 모두 같은 빛에서 나온다는 전개를 예고한다.",
+          "aiAnalysisInputSha256": "03a9c87071fa90f584d6930d46ab70d770ad4c967a2e6cf18cb8bbae6b89e12e",
+          "aiPublicGuideTopic": "먼 곳을 조사하는 수단이 하나뿐이라는 조건",
+          "estimatedReadingSeconds": 95,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "light-carries-the-record"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 도착한 빛에 무엇이 실려 있는가",
+          "section": "1.1 우리가 가진 것은 빛뿐이다",
+          "primaryConcepts": [
+            "빛이라는 자료"
+          ],
+          "secondaryConcepts": [
+            "스펙트럼"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단일 광선에 밝기·색·분광 무늬·무늬의 이동이라는 여러 층의 정보가 중첩돼 있으며 층마다 도출되는 결론이 다르다는 점을 설명한다. 밝기만으로는 거리와 고유 밝기를 구별할 수 없다는 한계를 들고, 분해 정도가 얻는 정보를 결정한다는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "7d847104a1ca171b7292c59ef077b324fe02b431ad9f9151ac89adb45c8e11bf",
+          "aiPublicGuideTopic": "빛에 실린 정보가 여러 층으로 나뉜다는 점",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 도착한 빛에 무엇이 실려 있는가",
+          "section": "1.2 스펙트럼이라는 그림",
+          "primaryConcepts": [
+            "스펙트럼"
+          ],
+          "secondaryConcepts": [
+            "빛이라는 자료"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분광기가 빛을 파장 순으로 전개해 만드는 스펙트럼의 구조와 그것을 색이 아니라 파장–세기 그래프로 기록하는 이유를 설명한다. 연속 곡선의 봉우리 위치가 표면 온도와 대응한다는 점을 밝히고, 이 책의 주된 대상이 그 위에 겹친 미세한 선이라는 점을 예고한다.",
+          "aiAnalysisInputSha256": "3b6cfd95ff8ef3252f08fc068f54676e73dee75455cb8d9375621c6d9a405a07",
+          "aiPublicGuideTopic": "빛을 파장 순서로 펼쳐 놓은 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 도착한 빛에 무엇이 실려 있는가",
+          "section": "1.2 스펙트럼이라는 그림",
+          "primaryConcepts": [
+            "스펙트럼"
+          ],
+          "secondaryConcepts": [
+            "관측 조건"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분광 분해능과 도달 밝기가 상충한다는 점을 설명하고, 목적에 따라 필요한 분해능이 달라진다는 판단 기준을 제시한다. 분해능 결정이 노출 시간과 하룻밤 관측 대상 수까지 연쇄적으로 정한다는 관측 계획상의 의미를 다룬다.",
+          "aiAnalysisInputSha256": "eed11269756d1f9f226d898b5e97c80811c3162fc2f63401bf95c7c503928917",
+          "aiPublicGuideTopic": "얼마나 잘게 나눌 것인가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 도착한 빛에 무엇이 실려 있는가",
+          "section": "1.3 선이 생기는 까닭",
+          "primaryConcepts": [
+            "흡수선과 방출선"
+          ],
+          "secondaryConcepts": [
+            "스펙트럼"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연속 스펙트럼 위에 흡수선과 방출선이 나타나는 물리적 원인을 원자의 파장 선택적 흡수와 재방출로 설명한다. 두 형태가 동일한 원자 성질에서 비롯되며 기체가 배경광을 가리는지 스스로 발광하는지에 따라 갈린다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "c980e8c92c2b5f250c95afb83f54ee2b8d72a63198871e9ec7fd52e0c5fc4923",
+          "aiPublicGuideTopic": "매끄러운 띠에 홈과 봉우리가 나타나는 이유",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 도착한 빛에 무엇이 실려 있는가",
+          "section": "1.3 선이 생기는 까닭",
+          "primaryConcepts": [
+            "흡수선과 방출선"
+          ],
+          "secondaryConcepts": [
+            "원소 식별"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선의 파장 위치가 원소 고유의 값으로 고정된다는 성질과 실험실 기준표와의 대조로 성분을 판정하는 절차를 설명한다. 단일 선이 아니라 복수 선의 간격 배치로 확인해야 오판을 피할 수 있다는 점, 그리고 배치가 통째로 이동할 수 있다는 사실을 다음 장의 예고로 둔다.",
+          "aiAnalysisInputSha256": "26769068c790ca696ebe55912d7b9e0b49f58cc31890570659e0fba99f44faa4",
+          "aiPublicGuideTopic": "선의 자리가 원자마다 정해져 있다는 점",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 도착한 빛에 무엇이 실려 있는가",
+          "section": "1.4 스펙트럼 읽기",
+          "primaryConcepts": [
+            "원소 식별"
+          ],
+          "secondaryConcepts": [
+            "스펙트럼",
+            "흡수선과 방출선"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 연속 스펙트럼 위에 선이 없는 경우와 흡수선·방출선이 나타난 경우를 세 그래프로 비교한 도표다. 두 선 배치의 파장 위치가 같음을 세로 점선으로 연결해, 흡수와 방출이 같은 원자 성질의 두 형태임을 나타낸다.",
+          "aiAnalysisInputSha256": "fc64582629ce9c3602161473e1786136e312aa32f5a92be7b93bf1b8fdf1832f",
+          "aiPublicGuideTopic": "같은 언덕 위에 서로 다른 선 배치를 얹은 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 도착한 빛에 무엇이 실려 있는가",
+          "section": "1.4 스펙트럼 읽기",
+          "primaryConcepts": [
+            "원소 식별"
+          ],
+          "secondaryConcepts": [
+            "관측 조건"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "스펙트럼선에서 추출하는 값을 위치와 형태(깊이·폭)로 구분하고 각각이 성분 판정과 물리 상태 추정에 대응한다는 점을 설명한다. 깊이의 포화와 온도·압력에 따른 선폭 증가를 들어 형태 해석에 모형이 필요함을 밝히고, 위치 측정이 이 책의 중심임을 제시한다.",
+          "aiAnalysisInputSha256": "bac611d75b7a135624478ca41fb6e0a3af80e339dca937f4a96ed0d03329ce89",
+          "aiPublicGuideTopic": "선을 세는 일과 선을 재는 일",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "1장 도착한 빛에 무엇이 실려 있는가",
+          "section": "1.5 관측 조건",
+          "primaryConcepts": [
+            "관측 조건"
+          ],
+          "secondaryConcepts": [
+            "빛이라는 자료"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측된 빛이 대기와 광학계를 거치며 파장별로 다르게 감쇠·변형된다는 점을 설명한다. 지상 관측의 파장 범위 제한과 검출기의 파장별 응답 차이를 들고, 표준 대상과 배경을 함께 촬영해 장비·대기 기여를 분리하는 절차의 필요를 제시한다.",
+          "aiAnalysisInputSha256": "9c9538ddc48db853c927778fb7f86b292c145287950672aa0d5c93f3aa69841b",
+          "aiPublicGuideTopic": "빛이 망원경에 닿기까지 거치는 것들",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "1장 도착한 빛에 무엇이 실려 있는가",
+          "section": "1.5 관측 조건",
+          "primaryConcepts": [
+            "관측 조건"
+          ],
+          "secondaryConcepts": [
+            "스펙트럼"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 대상의 반복 관측에서도 대기와 장비 상태 때문에 기록이 달라진다는 점을 다룬다. 날짜·고도·노출·설정을 함께 기록해야 차이의 출처를 사후에 구분할 수 있다는 원칙과, 이 조건이 미세한 위치 측정 전반에 영향을 준다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "ac73b4bca663c49eacf8fcde0fe10d6a31337df35a68698c78b178b4be95e97c",
+          "aiPublicGuideTopic": "같은 대상을 다시 봐도 같게 나오지 않는 이유",
+          "estimatedReadingSeconds": 95,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 빛을 갈라 읽기",
+          "section": "2.1 무엇이 있는지 정하기",
+          "primaryConcepts": [
+            "성분 판정"
+          ],
+          "secondaryConcepts": [
+            "원소 식별",
+            "흡수선과 방출선"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 스펙트럼에서 성분을 확정하는 절차를 선 간격 무늬 대조 후 전체 이동량 측정이라는 순서로 제시한다. 단일 선 일치의 위험과 복수 선 동시 일치로 가르는 방법, 그리고 결과를 존재 여부가 아니라 관측된 선과 세기로 기록해야 검출 한계와 부재를 구분할 수 있다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "d15ab78117e16bf2d083d96524d72ecb2f509d590e262d893ed6b449a6188c2a",
+          "aiPublicGuideTopic": "선의 배치를 표와 맞추는 절차",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 빛을 갈라 읽기",
+          "section": "2.1 무엇이 있는지 정하기",
+          "primaryConcepts": [
+            "성분 판정"
+          ],
+          "secondaryConcepts": [
+            "관측 조건"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선이 검출되지 않은 경우를 부재로 단정하지 않고 검출 상한으로 기록하는 방법을 제시한다. 상한 설정의 기준인 잡음 수준을 신호 없는 구간의 변동에서 얻는 절차와, 선을 찾으려는 기대가 잡음을 선으로 오독하게 만든다는 위험을 다룬다.",
+          "aiAnalysisInputSha256": "f5a497865f4960885a65af03e1fabc6ba7a2d65e1aa4e4afa5202193f9bb6e8a",
+          "aiPublicGuideTopic": "보이지 않는 것을 다루는 방법",
+          "estimatedReadingSeconds": 95,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 빛을 갈라 읽기",
+          "section": "2.2 선의 세기",
+          "primaryConcepts": [
+            "선의 세기"
+          ],
+          "secondaryConcepts": [
+            "성분 판정",
+            "스펙트럼"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 파장 위치의 흡수선이 깊이와 폭에서 달라지는 세 경우를 비교한 도표다. 중심 위치를 세로 점선으로 연결해 성분 판정에 쓰이는 값과 양·물리 상태 추정에 쓰이는 값이 서로 다른 축임을 나타낸다.",
+          "aiAnalysisInputSha256": "bb600df216c680f30628a50663196c22abd3d87bef1aa6edb4eeb8e65b6b36f8",
+          "aiPublicGuideTopic": "같은 자리의 선이 깊이와 폭에서 달라지는 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 빛을 갈라 읽기",
+          "section": "2.2 선의 세기",
+          "primaryConcepts": [
+            "선의 세기"
+          ],
+          "secondaryConcepts": [
+            "원소 식별"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "흡수선의 깊이가 포화되어 양의 지표로 쓸 수 없게 되는 조건과 그 이후 선폭이 증가하는 현상을 설명한다. 깊이와 폭을 합친 등가폭이 포화 이후에도 단조 증가한다는 점, 그리고 양 추정에 온도·밀도 가정이 개입하므로 결과를 가정과 함께 기록해야 한다는 원칙을 제시한다.",
+          "aiAnalysisInputSha256": "26e30cdb6d40d529ec6de3cb0b244c3361c86260cb418c0d0918faa7dd1ade66",
+          "aiPublicGuideTopic": "얼마나 있는지를 선에서 읽는 일",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 빛을 갈라 읽기",
+          "section": "2.3 사이에 있는 것",
+          "primaryConcepts": [
+            "성간물질"
+          ],
+          "secondaryConcepts": [
+            "흡수선과 방출선",
+            "성분 판정"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "성간물질이 배경 별빛에 흡수선을 남긴다는 점과 그 선을 별 자체의 선과 구분하는 단서로 선폭과 이동량을 제시한다. 두 종류의 선이 각각 별의 상태와 광로의 사정을 알려 주므로 혼동하면 성분 판정이 오염된다는 결과를 설명한다.",
+          "aiAnalysisInputSha256": "73fbeeb64c647c4c5fd9a74f0d244b25e2a97e70cb3efb5c7413a1e04622c819",
+          "aiPublicGuideTopic": "별과 별 사이가 비어 있지 않다는 점",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "2장 빛을 갈라 읽기",
+          "section": "2.3 사이에 있는 것",
+          "primaryConcepts": [
+            "성간물질"
+          ],
+          "secondaryConcepts": [
+            "관측 조건"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "성간 먼지가 파장 선택적 산란으로 대상을 어둡고 붉게 만드는 현상과 그것이 밝기 기반 판단을 교란한다는 점을 다룬다. 선의 파장 위치는 먼지의 영향을 받지 않으므로 선에서 추정한 성질과 관측된 색의 차이로 먼지 기여를 분리할 수 있다는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "afb8b729e56c641bc6962ed2a90d48e6545e0be3413bf7204888eecfb01a378f",
+          "aiPublicGuideTopic": "먼지가 빛을 바꾸는 방식",
+          "estimatedReadingSeconds": 95,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "2장 빛을 갈라 읽기",
+          "section": "2.4 여럿이 겹칠 때",
+          "primaryConcepts": [
+            "겹친 스펙트럼"
+          ],
+          "secondaryConcepts": [
+            "성분 판정",
+            "선의 세기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단일 광원으로 보이는 대상이 실제로 복수일 때 스펙트럼에 두 계통의 선이 혼재한다는 점을 다룬다. 온도가 상충하는 선 조합이나 동일 선의 이중 출현이라는 판별 단서를 제시하고, 분리가 불가능할 때 혼재 사실을 그대로 기록하는 태도를 설명한다.",
+          "aiAnalysisInputSha256": "13ccd6826bfb903e39aebef16c2d2e222ea1a15d1bbc9e7be10a973b26d13298",
+          "aiPublicGuideTopic": "하나로 보이는 빛이 여럿에서 온 경우",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "2장 빛을 갈라 읽기",
+          "section": "2.4 여럿이 겹칠 때",
+          "primaryConcepts": [
+            "겹친 스펙트럼"
+          ],
+          "secondaryConcepts": [
+            "성간물질"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "혼재된 선을 출처별로 분리하는 실무 순서를 성간 기원의 세선 제거부터 시작하는 방식으로 제시한다. 잔여 모호성은 시차를 둔 재관측으로 선의 상대 이동을 보아 해결하며, 시간 비용 때문에 결론이 갈리는 대상에 한정한다는 판단을 다룬다.",
+          "aiAnalysisInputSha256": "47f099cb66b693b85521532f61126e4f3e2d57decc9d236e81ad885141a001bb",
+          "aiPublicGuideTopic": "무엇에서 온 선인지 가리는 순서",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 선이 움직일 때",
+          "section": "3.1 선이 밀린다",
+          "primaryConcepts": [
+            "도플러 이동"
+          ],
+          "secondaryConcepts": [
+            "원소 식별",
+            "스펙트럼"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 원소의 선 전체가 같은 비율로 이동하는 현상을 대상의 시선 방향 운동으로 해석하는 원리를 설명한다. 이동 방향과 속도의 대응, 시선 방향 성분만 측정된다는 한계, 그리고 거리와 무관하게 적용 가능하다는 장점을 제시한다.",
+          "aiAnalysisInputSha256": "870026544127bdb92c1d076556c3fee97cf77776b838b1b88580da4b76d9fd93",
+          "aiPublicGuideTopic": "같은 원소의 선이 제자리에 없는 경우",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 선이 움직일 때",
+          "section": "3.1 선이 밀린다",
+          "primaryConcepts": [
+            "도플러 이동"
+          ],
+          "secondaryConcepts": [
+            "성분 판정"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이동량 측정이 선의 원소 판정에 의존한다는 순서 관계와 오판정이 허위 속도를 만든다는 위험을 설명한다. 분광기 파장 눈금의 온도 표류를 기준 광원 촬영으로 감시하는 절차와, 관측 전후 비교로 불확실도를 산정하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "a92a8e78b70b0368f3a6c46ff9904d20cec3f524d7b74b4c127050921544be48",
+          "aiPublicGuideTopic": "밀린 양을 재기 전에 확인할 것",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 선이 움직일 때",
+          "section": "3.2 시선 방향의 속도",
+          "primaryConcepts": [
+            "시선속도"
+          ],
+          "secondaryConcepts": [
+            "도플러 이동"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도플러 이동에서 얻는 값이 시선 방향 성분에 한정된다는 점과 시선속도 0이 정지를 뜻하지 않는다는 오해를 다룬다. 그럼에도 다수의 질문에 충분히 답할 수 있다는 유용성과, 부호 규약과 기준계를 함께 기록해야 한다는 원칙을 제시한다.",
+          "aiAnalysisInputSha256": "42fc92ba2fd304630f20960cc63df56fd0b8788c685f21e1fc858d07c6ee5a2a",
+          "aiPublicGuideTopic": "밀린 양에서 나오는 값이 무엇인지",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 선이 움직일 때",
+          "section": "3.2 시선 방향의 속도",
+          "primaryConcepts": [
+            "시선속도"
+          ],
+          "secondaryConcepts": [
+            "도플러 이동",
+            "원소 식별"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 선 배치가 기준 위치와 좌우로 이동한 두 경우로 나타나는 것을 세 띠로 비교한 도표다. 선 간격을 일정하게 유지하고 전체 위치만 이동시켜, 간격이 원소 판정을 위치가 시선속도를 담당한다는 분업을 나타낸다.",
+          "aiAnalysisInputSha256": "80bc5e25212ba50f1d709d8bd58592276ad46fc78af97b77513481a88722ae95",
+          "aiPublicGuideTopic": "같은 선 배치가 세 경우에 다르게 놓인 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "3장 선이 움직일 때",
+          "section": "3.3 선이 넓어질 때",
+          "primaryConcepts": [
+            "선의 확장"
+          ],
+          "secondaryConcepts": [
+            "선의 세기",
+            "시선속도"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대상 내부의 속도 분포가 선을 좌우로 확장시키는 현상을 회전 사례로 설명한다. 온도와 압력 또한 선폭을 넓히므로 폭만으로 회전을 단정할 수 없다는 한계를 지적하고, 선의 형태와 복수 선의 비교로 지배적 원인을 좁히는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "1f887fa07ed6a6ea92b2e22c21e71ca4d73cda42d4bd1f32edc8f17209bba8ff",
+          "aiPublicGuideTopic": "여러 속도가 한 선에 겹치는 경우",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "3장 선이 움직일 때",
+          "section": "3.3 선이 넓어질 때",
+          "primaryConcepts": [
+            "선의 확장"
+          ],
+          "secondaryConcepts": [
+            "겹친 스펙트럼"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선폭 확장과 이중선을 구분하는 기준으로 골의 개수를 제시하고 속도 차가 작을 때 둘이 유사하게 보인다는 한계를 다룬다. 시차를 둔 재관측에서 골 간격의 변화 여부로 판별하는 방법과, 오판이 허위 동반 천체 보고나 실제 대상 누락으로 이어진다는 위험을 설명한다.",
+          "aiAnalysisInputSha256": "af268baf232e8ffdc45d07eead708b9adf6b585327b4a68ca1f974ddb4a96d8c",
+          "aiPublicGuideTopic": "넓어진 선과 두 벌의 선",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "3장 선이 움직일 때",
+          "section": "3.4 되풀이되는 이동",
+          "primaryConcepts": [
+            "주기적 이동"
+          ],
+          "secondaryConcepts": [
+            "시선속도",
+            "도플러 이동"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시선속도가 주기적으로 변동하는 관측 사실과 그로부터 주기와 진폭을 얻는다는 점을 다룬다. 운동의 역학적 설명은 이 책의 범위 밖임을 명시하고, 야간·기상 제약으로 관측 시각이 균등하게 분포하지 않는다는 실무적 어려움을 제시한다.",
+          "aiAnalysisInputSha256": "c4aacfeb641aff8b68465b03faa97862130ad2bfb52ecc68e1838013189599dd",
+          "aiPublicGuideTopic": "선이 앞뒤로 오갈 때 알 수 있는 것",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "3장 선이 움직일 때",
+          "section": "3.4 되풀이되는 이동",
+          "primaryConcepts": [
+            "주기적 이동"
+          ],
+          "secondaryConcepts": [
+            "관측 조건"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 시각의 편중이 허위 주기를 만든다는 문제와 시각 분포를 함께 공개해야 하는 이유를 설명한다. 경도가 다른 관측소의 자료를 합쳐 빈 구간을 메우는 방법과, 합치기 전에 공통 기준 광원으로 파장 눈금을 정합해야 한다는 절차를 제시한다.",
+          "aiAnalysisInputSha256": "1e4333340b8c7df9245e38151b83c8e49ce5d29ff857f7d6d9517b1e8fe4f8da",
+          "aiPublicGuideTopic": "고르지 않은 관측에서 주기를 찾는 일",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 얼마나 먼가",
+          "section": "4.1 자리가 옮겨 보이는 만큼",
+          "primaryConcepts": [
+            "시차"
+          ],
+          "secondaryConcepts": [
+            "빛이라는 자료"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시차의 원리를 일상적 관찰에서 시작해 지구 공전에 따른 관측 지점 이동으로 확장한다. 시차와 거리가 반비례한다는 관계와 가정을 거의 쓰지 않는 직접 측정이라는 장점, 그리고 각도가 매우 작아 적용 범위가 제한된다는 한계를 함께 제시한다.",
+          "aiAnalysisInputSha256": "dc7355a56875e3a5cc53c26a17dc8fea588cfb06f6ee6120d2bb3ab75fa0b1fe",
+          "aiPublicGuideTopic": "가까운 것이 더 크게 옮겨 보인다는 사실",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 얼마나 먼가",
+          "section": "4.1 자리가 옮겨 보이는 만큼",
+          "primaryConcepts": [
+            "시차"
+          ],
+          "secondaryConcepts": [
+            "관측 조건"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시차 측정이 미소각 계측이라 측정 오차가 신호와 맞먹는다는 조건을 설명한다. 다회 관측으로 무작위 오차를 상쇄하고 연주기 규칙성만 남기는 방법, 기준 배경별의 잔여 운동에서 오는 계통 오차, 그리고 측정자 간 편차를 사전 확인하는 절차를 다룬다.",
+          "aiAnalysisInputSha256": "859e0b230acaf13df75e9e087e1cc7329cf6ff20b263a10962d36fad62fca4d5",
+          "aiPublicGuideTopic": "아주 작은 각을 재는 일",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 얼마나 먼가",
+          "section": "4.2 두 눈 사이의 거리",
+          "primaryConcepts": [
+            "기선"
+          ],
+          "secondaryConcepts": [
+            "시차"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 거리의 대상을 서로 다른 길이의 기선에서 관측했을 때 만들어지는 시차각의 차이를 두 삼각형으로 비교한 도표다. 대상까지의 거리를 고정하고 기선 길이만 달리해, 측정 가능한 각의 크기가 기선에 의해 결정된다는 점을 나타낸다.",
+          "aiAnalysisInputSha256": "c24d486a6f5c951f202d6e38271c105a2500cd02806b8b2b446371529dcc5fa2",
+          "aiPublicGuideTopic": "같은 대상을 두 지점에서 보았을 때의 각을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 얼마나 먼가",
+          "section": "4.2 두 눈 사이의 거리",
+          "primaryConcepts": [
+            "기선"
+          ],
+          "secondaryConcepts": [
+            "시차",
+            "관측 조건"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시차각을 키우는 유일한 수단이 기선 확대이며 지구 공전 궤도가 지상 관측의 상한이라는 점을 설명한다. 기선 확대가 관측 간격을 늘려 대상 고유 운동과 시차가 섞인다는 문제와, 주기성과 누적성의 차이를 이용해 여러 해 관측으로 분리하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "89df692ec4d54835f28bb7e9101e4e56725fb676bb5cd9ddff796251b4d991e4",
+          "aiPublicGuideTopic": "재는 각을 키우는 방법",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "4장 얼마나 먼가",
+          "section": "4.3 밝기로 재는 거리",
+          "primaryConcepts": [
+            "광도와 거리"
+          ],
+          "secondaryConcepts": [
+            "시차",
+            "성분 판정"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "고유 광도를 안다면 겉보기 밝기에서 거리를 얻을 수 있다는 원리와 분광 판정이 고유 광도 추정의 근거가 된다는 연결을 설명한다. 종류 오판이 거리 전체를 틀리게 한다는 취약성과 성간 소광이 거리를 과대평가하게 만든다는 보정 필요를 함께 제시한다.",
+          "aiAnalysisInputSha256": "c7f5d65d3d0e675c5f5b3b421144bf48aad15bf3cad47a891953d3adf3e00816",
+          "aiPublicGuideTopic": "원래 밝기를 알면 거리를 알 수 있다는 점",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "4장 얼마나 먼가",
+          "section": "4.3 밝기로 재는 거리",
+          "primaryConcepts": [
+            "광도와 거리"
+          ],
+          "secondaryConcepts": [
+            "선의 세기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시차법과 광도법의 가정 개수 차이가 신뢰도 차이로 이어진다는 점을 다룬다. 두 값이 불일치할 때 가정이 적은 쪽을 기준으로 단계를 되짚는 절차와, 시차로 거리를 아는 표본이 광도법의 기준표를 만든다는 순환 구조를 제시한다.",
+          "aiAnalysisInputSha256": "3b117f52f68893555d700442d2026a696c704e0d2bdfe53315c19c20b04dd1f9",
+          "aiPublicGuideTopic": "가정이 늘어날수록 값이 흔들린다는 점",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "4장 얼마나 먼가",
+          "section": "4.4 이어 붙인 자",
+          "primaryConcepts": [
+            "측정의 연결"
+          ],
+          "secondaryConcepts": [
+            "광도와 거리",
+            "시차"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "거리 측정 기법들이 적용 범위별로 이어져 앞 단계가 뒤 단계의 기준을 제공하는 구조를 설명한다. 계통 오차가 상위 단계 전체에 동일 방향으로 전파되며 반복 측정으로 줄지 않는다는 위험과, 독립적인 방법의 중첩 확인으로 각 단계를 검증한다는 대응을 제시한다.",
+          "aiAnalysisInputSha256": "20cfb71a0645fd7affc94392143d4e00f5775382e579326f96d1a85f0048b732",
+          "aiPublicGuideTopic": "가까운 곳의 측정이 먼 곳의 기준이 되는 구조",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "4장 얼마나 먼가",
+          "section": "4.4 이어 붙인 자",
+          "primaryConcepts": [
+            "측정의 연결"
+          ],
+          "secondaryConcepts": [
+            "관측 조건"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "거리 값 보고에 측정 방법·기준표 판본·소광 보정량을 병기해야 재사용이 가능하다는 점을 설명한다. 오차를 통계적 변동과 가정 기여로 나누어 기록하면 추가 관측의 실익을 판단할 수 있다는 이유와, 기록 부재로 과거 자료가 폐기된 경험을 사례로 든다.",
+          "aiAnalysisInputSha256": "0ded47e3464bf3667ab5f57d8a43b0e97ce916186dcae2eca26814c6dcf8908b",
+          "aiPublicGuideTopic": "값을 적을 때 함께 적는 것",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 관측소의 하룻밤",
+          "section": "5.1 그날 밤의 목록",
+          "primaryConcepts": [
+            "관측 계획"
+          ],
+          "secondaryConcepts": [
+            "관측 조건",
+            "성분 판정"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 계획 수립에서 대상의 고도에 따라 순서를 정하고 목적별로 노출 시간을 배분하는 절차를 설명한다. 분해능 선택이 관측 가능 대상 수를 결정한다는 연쇄와, 기상·장비 문제에 대비해 우선순위를 사전에 정해 두는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "2020fe09fb815c5166b2949426bf909c07b913618c7237a2c42be62fe687f71a",
+          "aiPublicGuideTopic": "무엇을 어떤 순서로 볼지 정하는 일",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 관측소의 하룻밤",
+          "section": "5.1 그날 밤의 목록",
+          "primaryConcepts": [
+            "관측 계획"
+          ],
+          "secondaryConcepts": [
+            "기선"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다년간 반복되는 관측에서 설정 고정이 자료 연속성의 조건이라는 점을 다룬다. 장비 교체 시 구·신 설정을 병행 운용해 계통 차이를 측정해 두는 절차와, 그 기록이 없으면 과거 자료와의 접합이 불가능해진다는 결과를 사례로 제시한다.",
+          "aiAnalysisInputSha256": "1bb43bae68b323fb5bcb59884d6baae886e2ac8c28c84bba6e3aa0d78f8cef88",
+          "aiPublicGuideTopic": "여러 해에 걸친 관측을 계획에 넣는 일",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 관측소의 하룻밤",
+          "section": "5.2 눈금을 맞추는 일",
+          "primaryConcepts": [
+            "보정 절차"
+          ],
+          "secondaryConcepts": [
+            "관측 조건",
+            "스펙트럼"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "하룻밤 관측에서 확보하는 네 종류의 자료, 곧 검출기 잡음·균일 광원·파장 기준 광원·관측 대상을 나란히 보인 도표다. 앞의 세 자료가 대상 스펙트럼을 해석 가능한 형태로 만드는 전제임을 화살표와 결과 상자로 나타낸다.",
+          "aiAnalysisInputSha256": "d6db1d129630968e94a7e480fa8eb6361cdc9c6a918ec4b8be5e01eda53baf00",
+          "aiPublicGuideTopic": "하룻밤에 찍는 네 종류의 자료를 늘어놓은 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "5장 관측소의 하룻밤",
+          "section": "5.2 눈금을 맞추는 일",
+          "primaryConcepts": [
+            "보정 절차"
+          ],
+          "secondaryConcepts": [
+            "빛이라는 자료"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 자료에서 대상·장비·대기 기여를 분리하기 위해 잡음·균일광·파장 기준 자료를 함께 취득하는 절차를 설명한다. 온도 변화에 따른 표류 때문에 야간 중 반복 취득이 필요하며, 생략 시 사후 보정이 불가능해 자료 전체가 폐기된다는 결과를 제시한다.",
+          "aiAnalysisInputSha256": "c2c00b3ff80a28d455a081f0a07638212a1c8995269c3bf6fbeac183db8afa85",
+          "aiPublicGuideTopic": "대상을 찍기 전과 후에 하는 일",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "5장 관측소의 하룻밤",
+          "section": "5.3 값을 뽑아내기",
+          "primaryConcepts": [
+            "측정 절차"
+          ],
+          "secondaryConcepts": [
+            "도플러 이동",
+            "선의 세기"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "보정된 스펙트럼에서 연속 성분 결정·선 깊이 측정·선 중심 결정·속도 환산으로 이어지는 측정 순서를 제시한다. 연속 성분 설정이 결과를 좌우한다는 점, 선 형태를 이용해 잡음보다 세밀한 중심을 얻는 방법, 그리고 복수 선의 불일치를 평균이 아니라 원인 규명 대상으로 다루는 태도를 설명한다.",
+          "aiAnalysisInputSha256": "23bcb672cccc955b08cdcd4dbc17246fd5655762ddfdc7c9f44ad384c4c2da78",
+          "aiPublicGuideTopic": "스펙트럼에서 숫자를 얻는 순서",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "5장 관측소의 하룻밤",
+          "section": "5.3 값을 뽑아내기",
+          "primaryConcepts": [
+            "측정 절차"
+          ],
+          "secondaryConcepts": [
+            "측정의 연결"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 자료의 재측정을 통해 측정자 판단에서 오는 변동을 평가하는 절차를 다룬다. 동일인 반복이 기억에 의해 편향되므로 독립 측정이 필요하다는 점, 불일치 시 단계별 원인 규명을 수행한다는 방식, 그리고 비용 때문에 결론을 좌우하는 값에 한정 적용한다는 판단을 제시한다.",
+          "aiAnalysisInputSha256": "450a2e13c5353e231ba951bd368927d7d99ca9dd6c0dfb31d38e88bc96dc744a",
+          "aiPublicGuideTopic": "같은 자료를 다시 재는 일",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "5장 관측소의 하룻밤",
+          "section": "5.4 남기는 자료",
+          "primaryConcepts": [
+            "자료 보존"
+          ],
+          "secondaryConcepts": [
+            "측정의 연결",
+            "관측 계획"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "원본 자료와 처리 결과를 함께 보존해야 하는 이유를 보정 기법의 갱신 가능성에서 설명한다. 결과에 처리 절차를 병기해야 재현이 가능하다는 점과, 십 년 뒤 동일 결과 재현 가능성을 보존 기준으로 삼는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "54c7c5745e017cd110798b6af21e9c1bac92dcf72063af13735e71cf6e297a1c",
+          "aiPublicGuideTopic": "원본과 처리 결과를 함께 두는 일",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "5장 관측소의 하룻밤",
+          "section": "5.4 남기는 자료",
+          "primaryConcepts": [
+            "자료 보존"
+          ],
+          "secondaryConcepts": [
+            "보정 절차"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "품질이 낮은 관측 자료도 폐기하지 않는 이유를 사후에 알려진 사건의 유일한 동시기 기록이 될 수 있다는 가능성에서 설명한다. 사용 불가 표시와 함께 문제 유형을 코드로 기록해 두어야 재검토 비용이 들지 않는다는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "d9423ccbf934905672d9b6401cdc4228ae150d1d102311f0af384e94f2a54ee5",
+          "aiPublicGuideTopic": "쓸모없어 보이는 자료를 버리지 않는 일",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 빛이 오는 길에 생기는 일",
+          "section": "6.1 오는 길에 깎이는 빛",
+          "primaryConcepts": [
+            "빛의 감쇠"
+          ],
+          "secondaryConcepts": [
+            "성간물질",
+            "광도와 거리"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "빛의 감쇠를 기하학적 확산과 성간 소광 두 성분으로 구분하고 후자가 방향에 따라 달라진다는 점을 설명한다. 소광 추정 오차가 거리 계산을 계통적으로 왜곡한다는 결과와, 밝기만으로는 거리와 소광을 분리할 수 없어 분광으로 되돌아가야 한다는 한계를 제시한다.",
+          "aiAnalysisInputSha256": "506bcfbbb29252e6057b4d81b00cd7121ea1033b490053248277d967f10fe54b",
+          "aiPublicGuideTopic": "먼 곳일수록 더 많이 잃는다는 점",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 빛이 오는 길에 생기는 일",
+          "section": "6.1 오는 길에 깎이는 빛",
+          "primaryConcepts": [
+            "빛의 감쇠"
+          ],
+          "secondaryConcepts": [
+            "시선속도"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "성간 소광이 파장 의존적으로 연속 성분을 변형해 흡수선처럼 보이는 굴곡을 만든다는 문제를 다룬다. 선폭으로 구분하되 저분해능 자료에서는 구분이 불가능하므로 판단을 유예하고 고분해능 관측으로 확인해야 한다는 절차를 제시한다.",
+          "aiAnalysisInputSha256": "3f0533f9dca42b2d6a2446f5b22fd77e286e48892a7e6e95dd382893ea040aa3",
+          "aiPublicGuideTopic": "감쇠가 선을 흉내 내는 경우",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 빛이 오는 길에 생기는 일",
+          "section": "6.2 겹쳐 보이는 것",
+          "primaryConcepts": [
+            "겹침의 오인"
+          ],
+          "secondaryConcepts": [
+            "겹친 스펙트럼",
+            "빛의 감쇠"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 시선 방향에 서로 다른 거리의 두 대상이 놓였을 때 관측 기록에서는 단일 대상으로 남는 상황을 부채꼴 시야와 결과 이미지로 보인 도표다. 방향의 일치가 공간적 근접을 뜻하지 않는다는 점을 나타낸다.",
+          "aiAnalysisInputSha256": "6ffe0ae4e30cfddcf8c7fd2fe945df1fa4cf373a5b407f3e24d0f3472361a7de",
+          "aiPublicGuideTopic": "한 방향에 놓인 두 대상이 하나로 보이는 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "6장 빛이 오는 길에 생기는 일",
+          "section": "6.2 겹쳐 보이는 것",
+          "primaryConcepts": [
+            "겹침의 오인"
+          ],
+          "secondaryConcepts": [
+            "성분 판정"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시선 방향의 근접이 공간적 근접을 함의하지 않는다는 점과 그 혼동이 군집 판정을 오염시킨다는 문제를 다룬다. 거리와 시선속도를 함께 요구하는 판정 기준을 제시하고, 우연 일치의 가능성 때문에 소속 판정에 확률과 근거를 병기해야 한다는 원칙을 설명한다.",
+          "aiAnalysisInputSha256": "036811a87dfef26892d470cb29ce729c3153ee87b16c8e487bd8a780957caed6",
+          "aiPublicGuideTopic": "같은 방향에 있다는 것의 뜻",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "6장 빛이 오는 길에 생기는 일",
+          "section": "6.3 재지 못하는 것",
+          "primaryConcepts": [
+            "측정의 한계"
+          ],
+          "secondaryConcepts": [
+            "시선속도",
+            "시차"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시선속도와 시차 각각의 구조적 한계를 정리하고 관측 결과가 항상 부분적이라는 점을 강조한다. 미측정 성분을 다른 관측으로 보완하거나 명시적으로 미상으로 기록하는 두 방법을 제시하며, 사유를 적은 미상 기록이 후속 연구의 출발점이 된다는 이유를 설명한다.",
+          "aiAnalysisInputSha256": "56247a1f2cf2987954292b77e555165a2e90ceb2b93a2a51c58872f4cd576a6e",
+          "aiPublicGuideTopic": "이 방법들이 보지 못하는 성분",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "6장 빛이 오는 길에 생기는 일",
+          "section": "6.3 재지 못하는 것",
+          "primaryConcepts": [
+            "측정의 한계"
+          ],
+          "secondaryConcepts": [
+            "관측 조건"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장비 발전으로 해소되는 한계와 방법 자체에 내재해 해소되지 않는 한계를 구분해야 한다는 점을 다룬다. 시선 직각 성분처럼 원리상 측정 불가능한 항목은 다른 관측 방식으로만 보완되며, 이 구분이 관측 자원 배분의 기준이 된다는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "d8aac624ba5e4d3c2a573c2d5effe288cafcb164e8dc1fb53e1ff7d4b19a36e5",
+          "aiPublicGuideTopic": "장비가 좋아져도 남는 한계",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 결론: 빛은 오면서 기록한다",
+          "section": "7.1 빛은 오면서 기록한다",
+          "primaryConcepts": [
+            "빛이라는 자료"
+          ],
+          "secondaryConcepts": [
+            "성분 판정",
+            "시선속도"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "여섯 장의 논의를 도달한 빛이 유일한 자료라는 하나의 사실로 묶어 정리한다. 성분·운동·거리 세 결론이 동일한 빛의 서로 다른 분해에서 나온다는 점과, 빛에 실리지 않은 정보는 원리상 읽을 수 없으므로 미측정 항목의 기록이 필수라는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "bf52ca0e63b2c45ddee751d6252499c43c2b9e6fa77f6de27bccb8736fb4f625",
+          "aiPublicGuideTopic": "책 전체를 지나온 뒤 다시 보는 빛",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "light-carries-the-record"
+          ]
+        },
+        {
+          "pageNumber": 51,
+          "chapter": "7장 결론: 빛은 오면서 기록한다",
+          "section": "7.1 빛은 오면서 기록한다",
+          "primaryConcepts": [
+            "자료 보존"
+          ],
+          "secondaryConcepts": [
+            "보정 절차",
+            "측정의 연결"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 시점의 비가역성 때문에 기록이 자료의 구성 요소가 된다는 점을 설명한다. 원본·보정 자료·처리 절차 세 가지를 보존해야 재해석이 가능하다는 조건과, 값이 의존한 기준표를 명시해야 갱신 시 함께 수정될 수 있다는 이유를 제시한다.",
+          "aiAnalysisInputSha256": "eae0028e11005b759f186e577b8f84eab2814c173c0d9246971c58a5a01d2f1e",
+          "aiPublicGuideTopic": "다시 읽을 수 있게 남기는 일",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            50
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 52,
+          "chapter": "7장 결론: 빛은 오면서 기록한다",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "관측 점검"
+          ],
+          "secondaryConcepts": [
+            "관측 조건",
+            "측정의 한계"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "새 스펙트럼을 해석할 때 적용할 다섯 가지 점검 질문을 순서대로 제시한다. 잡음 수준 확인에서 시작해 선 간격 대조와 전체 이동량 측정으로 성분과 속도를 정하고, 성간 기원 선의 분리와 미답 항목 확인으로 마무리하는 절차를 정리한다.",
+          "aiAnalysisInputSha256": "3a049fc690fbbd5bc6618fda5f75e0e805ece9377705f20ad74abf647e0d732c",
+          "aiPublicGuideTopic": "새 대상을 만났을 때 차례로 던질 물음",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            50
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 53,
+          "chapter": "7장 결론: 빛은 오면서 기록한다",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "관측 점검"
+          ],
+          "secondaryConcepts": [
+            "시차",
+            "자료 보존"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도입부의 문제의식을 성분·운동·거리 세 측정의 실제 절차로 되짚으며 책을 닫는다. 세 값이 모두 미소량이라 정밀도 확보가 작업의 본질이라는 점과, 독립적 재측정으로 동일 값이 나오는지를 완료 판정 기준으로 삼는다는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "a97f18053fae320f37d7f9d4c3e65136b63c79987da52444cc3d515e0047d04a",
+          "aiPublicGuideTopic": "첫 장면으로 돌아가는 마무리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            52
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 22,
       "title": "파동의 기초: 흔들림에서 무늬까지",
       "pdfPath": "pdfs/book-022.pdf",
