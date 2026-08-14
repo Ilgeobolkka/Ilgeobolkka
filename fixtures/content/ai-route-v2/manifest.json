@@ -5481,7 +5481,7 @@
       "title": "구름의 형성과 강수의 물리",
       "totalPageCount": 50,
       "pdfPath": "pdfs/book-025.pdf",
-      "pdfSha256": "13ba17862c6dfb89c50f55f600870ed85def3afbc340b37f3ec25d5e4a82c9fa",
+      "pdfSha256": "21beb9947a280063b399601e3de9b60bf7e5320adca24b1912fe057358136e51",
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
       "pages": [
@@ -6279,7 +6279,7 @@
           "aiAnalysisText": "예측값과 관측값의 불일치를 진단하는 절차를 다루는 페이지다. 편차의 분포 형태로 계통 오차와 조건 의존 오차를 구분하고, 계산의 오류와 전제의 불성립을 갈라 보는 관점을 사례로 제시한다.",
           "aiAnalysisInputSha256": "03f3ab8475956355a894427d213e113aec73e105b068a90fc86403617b3db01c",
           "aiPublicGuideTopic": "계산한 값과 실제가 다를 때 무엇을 보는가",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 80,
           "prerequisitePageNumbers": [
             36
           ],
@@ -6300,7 +6300,7 @@
           "aiAnalysisText": "전제 위반을 확인한 뒤의 후속 처리를 다루는 페이지다. 조건별 자료 선별과 전제 수정 후 재계산이라는 두 접근을 제시하고, 잔여 편차를 제거하지 않고 명시하는 것이 후속 연구의 조건임을 밝힌다.",
           "aiAnalysisInputSha256": "9b49ccee6c408e37368b2a4ac51ced1d088f5a0db4a3a33a269224cb44daed3f",
           "aiPublicGuideTopic": "전제를 고친 뒤에 하는 일",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 80,
           "prerequisitePageNumbers": [
             38
           ],
