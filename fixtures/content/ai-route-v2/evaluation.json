@@ -908,6 +908,84 @@
       ]
     },
     {
+      "caseId": "case-book-030",
+      "bookId": 30,
+      "purpose": "이 책을 사지는 않았고, 달의 모양이 왜 달라지는지와 왜 한쪽만 보이는지 두 가지를 갈라서 이해하고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "같은 얼굴",
+        "보는 자리",
+        "빛과 그림자",
+        "위상의 원리",
+        "도는 주기",
+        "조석고정"
+      ],
+      "helpfulConcepts": [
+        "밝기의 성질",
+        "가림 현상",
+        "그림자 오해"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 15
+        },
+        {
+          "beforePageNumber": 15,
+          "afterPageNumber": 17
+        }
+      ],
+      "irrelevantPageNumbers": [
+        30,
+        31,
+        32,
+        33,
+        34
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          46
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        6,
+        8,
+        9,
+        15,
+        17
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        11,
+        13,
+        19,
+        21,
+        37
+      ]
+    },
+    {
       "caseId": "case-book-034",
       "bookId": 34,
       "purpose": "옛 장부에 이름이 없는 사람들을 어떻게 헤아려야 하는지, 짧게 핵심만 짚고 싶다",
