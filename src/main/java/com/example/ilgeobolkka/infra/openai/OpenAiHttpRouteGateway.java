@@ -53,6 +53,7 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
     private final JsonNode schema;
     private final String promptVersion;
     private final String schemaVersion;
+    private final RouteContract routeContract;
 
     public OpenAiHttpRouteGateway(
             @Qualifier("openAiRestClient") RestClient restClient,
@@ -67,6 +68,12 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
         schema = parseSchema(schemaBytes);
         promptVersion = resourceVersion("air-route-prompt-v1", promptBytes);
         schemaVersion = resourceVersion("air-route-schema-v1", schemaBytes);
+        routeContract = new RouteContract(MODEL, promptVersion, schemaVersion);
+    }
+
+    @Override
+    public RouteContract routeContract() {
+        return routeContract;
     }
 
     @Override
