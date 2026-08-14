@@ -17,7 +17,7 @@ import java.util.UUID;
  * transaction 에서 읽어 둘이 어긋나지 않게 한다.
  *
  * @param status 이 값에 따라 아래 세 묶음 중 하나만 채워진다
- * @param normalizedPurpose 저장으로 전환하면 지워지므로 {@code SAVED}·{@code CONSUMED} 는 {@code null}
+ * @param normalizedPurpose {@code SAVED}는 저장 경로에서 복원하며 {@code CONSUMED}만 {@code null}
  * @param noRouteReason {@code NO_ROUTE} 에서만 값이 있다
  * @param minimumRequiredInk {@code INSUFFICIENT_BUDGET} 에서만 값이 있다
  * @param failureCode {@code FAILED} 에서만 값이 있다

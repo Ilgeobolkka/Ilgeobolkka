@@ -204,6 +204,9 @@ public class AiRouteGenerationStartService {
         }
         usage.increment();
 
+        // 계수 날짜를 확정한 뒤에 읽는다. 그래서 DATE(created_at) >= usage_date 가 항상 성립하고
+        // 반대는 불가능하다. created_at 으로 일일 집계를 재구성하면 ai_route_daily_usage 보다 뒤로
+        // 밀릴 수는 있어도 앞당겨지지 않는다.
         Instant startedAt = clock.instant();
         UUID generationId = UUID.randomUUID();
         // flush를 미루면 insert가 commit 시점에 실행돼 제약 위반이 transaction 종료 예외로 뒤바뀐다.
