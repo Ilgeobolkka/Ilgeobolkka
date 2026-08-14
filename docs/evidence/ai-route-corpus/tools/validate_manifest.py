@@ -185,6 +185,29 @@ for c in evaluation["cases"]:
     chk(not (set(c["referencePageNumbers"]) & set(c["irrelevantPageNumbers"])), f"{c['caseId']}: 정답∩무관=∅")
     chk(not (set(c["allowedAlternativePageNumbers"]) & set(c["irrelevantPageNumbers"])),
         f"{c['caseId']}: 대체∩무관=∅")
+    # `primaryConcepts`는 그 페이지가 무엇에 관한 것인지다. 이 사례에 필요하거나 도움이 된다고
+    # 선언한 개념을 primary로 다는 페이지를 무관이라 적으면 정답표가 스스로와 어긋난다.
+    # secondary는 다른 것을 다루면서 스쳐 가는 자리이므로 여기서 막지 않는다.
+    wanted = set(c["requiredConcepts"]) | set(c["helpfulConcepts"])
+    irrelevant_about = sorted(
+        (p["pageNumber"], sorted(set(p["primaryConcepts"]) & wanted))
+        for p in candidate_pages
+        if p["pageNumber"] in set(c["irrelevantPageNumbers"]) and set(p["primaryConcepts"]) & wanted
+    )
+    chk(not irrelevant_about,
+        f"{c['caseId']}: 무관 페이지가 필수·도움 개념을 primary로 달지 않음"
+        + ("" if not irrelevant_about
+           else " — " + ", ".join(f"p{n} {cs}" for n, cs in irrelevant_about)))
+    # 정답·대체 페이지의 선수 폐쇄가 무관 페이지를 지나면, 그 자리를 고르려면 무관 페이지까지
+    # 함께 열어야 한다. 어느 배분으로도 고를 수 없는 죽은 값이 된다.
+    irrelevant_set = set(c["irrelevantPageNumbers"])
+    via_irrelevant = sorted(
+        n for n in c["referencePageNumbers"] + c["allowedAlternativePageNumbers"]
+        if prereq_closure([n], prereq) & irrelevant_set
+    )
+    chk(not via_irrelevant,
+        f"{c['caseId']}: 정답·대체 페이지가 무관 페이지를 선수로 거치지 않음"
+        + ("" if not via_irrelevant else f" — {via_irrelevant}"))
     # 정본은 비후보 페이지가 경로 비용·추천·채점 목록 어디에도 못 나오게 한다.
     chk(not (set(c["referencePageNumbers"]) & noncand), f"{c['caseId']}: 정답경로에 비후보 없음")
     chk(not (set(c["allowedAlternativePageNumbers"]) & noncand), f"{c['caseId']}: 대체 페이지에 비후보 없음")
@@ -258,6 +281,24 @@ for c in evaluation["cases"]:
             f"(정답 {len(c['referencePageNumbers'])}p + 선수 폐쇄 {extra}, 차감 {charged})")
     if c["owned"] is False and c["maxAdditionalInk"] == 0:
         chk(bool(c["activeRentalPageNumbers"]), f"{c['caseId']}: 예산0은 activeRentalPageNumbers 필요")
+
+    # 대체 페이지는 정답의 한 자리를 대신해 고르는 자리다. 그 페이지의 선수 폐쇄가 이 사례의 상한을
+    # 넘으면 어느 배분으로도 고를 수 없어 죽은 값이 된다. 정답 경로가 상한을 꽉 채운 사례에서
+    # 결론 장을 대체 페이지에 넣으면 어김없이 여기서 걸린다.
+    if c["owned"] is True:
+        cap = DEPTH_PAGE_LIMITS.get(c["depth"])
+    else:
+        cap = (c["maxAdditionalInk"] or 0) + len(set(c.get("activeRentalPageNumbers") or []))
+    if cap is not None:
+        unreachable = sorted(
+            (n, len(prereq_closure([n], prereq)))
+            for n in c["allowedAlternativePageNumbers"]
+            if len(prereq_closure([n], prereq)) > cap
+        )
+        chk(not unreachable,
+            f"{c['caseId']}: 대체 페이지의 선수 폐쇄가 상한 {cap}p 이하"
+            + ("" if not unreachable
+               else " — " + ", ".join(f"p{n} 폐쇄{size}p" for n, size in unreachable)))
 
 print("\n" + (f"실패 {len(fails)}건" if fails else "전체 통과"))
 for f in fails:

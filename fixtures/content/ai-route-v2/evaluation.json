@@ -1144,13 +1144,7 @@
         36,
         37,
         38,
-        39,
-        40,
-        41,
-        42,
-        43,
-        44,
-        45
+        39
       ],
       "duplicatePageGroups": [],
       "referencePageNumbers": [
@@ -1223,15 +1217,7 @@
           "afterPageNumber": 19
         }
       ],
-      "irrelevantPageNumbers": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        47,
-        48
-      ],
+      "irrelevantPageNumbers": [],
       "duplicatePageGroups": [],
       "referencePageNumbers": [
         2,
@@ -1478,8 +1464,10 @@
         35,
         36,
         37,
-        45,
-        46
+        38,
+        39,
+        40,
+        41
       ],
       "duplicatePageGroups": [
         [
@@ -1964,10 +1952,11 @@
         }
       ],
       "irrelevantPageNumbers": [
+        26,
+        28,
         29,
-        42,
-        45,
-        46
+        30,
+        31
       ],
       "duplicatePageGroups": [
         [
@@ -2472,7 +2461,7 @@
       ],
       "irrelevantPageNumbers": [
         37,
-        50
+        46
       ],
       "duplicatePageGroups": [
         [
@@ -2589,9 +2578,10 @@
         }
       ],
       "irrelevantPageNumbers": [
+        8,
         9,
-        13,
-        49
+        48,
+        53
       ],
       "duplicatePageGroups": [],
       "referencePageNumbers": [

@@ -505,6 +505,44 @@ def check_manifest(workdir):
     expect_manifest("선수 폐쇄에 같은 중복 그룹 페이지가 둘이면 실패", broken, evaluation, workdir,
                     should_pass=False, needle="중복 그룹 충돌 없음")
 
+    # 무관 페이지가 필수 개념을 primary로 달게 만든다. 정답 경로의 첫 페이지는 필수 개념을
+    # primary로 다니까, 그 페이지를 무관 목록에 넣는 대신 같은 개념을 다는 다른 페이지를 찾는다.
+    broken = copy.deepcopy(evaluation)
+    case = next(c for c in broken["cases"] if c["bookId"] == SAMPLE_BOOK_ID)
+    book = next(b for b in manifest["books"] if b["bookId"] == SAMPLE_BOOK_ID)
+    wanted = set(case["requiredConcepts"]) | set(case["helpfulConcepts"])
+    taken = set(case["referencePageNumbers"]) | set(case["allowedAlternativePageNumbers"])
+    about = next(p["pageNumber"] for p in book["pages"]
+                 if p["aiRouteCandidatePage"] and p["pageNumber"] not in taken
+                 and set(p["primaryConcepts"]) & wanted)
+    case["irrelevantPageNumbers"] = sorted(set(case["irrelevantPageNumbers"]) | {about})
+    expect_manifest("무관 페이지가 필수·도움 개념을 primary로 달면 실패", manifest, broken, workdir,
+                    should_pass=False, needle="primary로 달지 않음")
+
+    # 정답 경로의 한 페이지를 무관으로 적는 대신, 그 페이지의 선수를 무관으로 적는다.
+    broken = copy.deepcopy(evaluation)
+    case = next(c for c in broken["cases"] if c["bookId"] == SAMPLE_BOOK_ID)
+    book = next(b for b in manifest["books"] if b["bookId"] == SAMPLE_BOOK_ID)
+    prereq = {p["pageNumber"]: p["prerequisitePageNumbers"] for p in book["pages"]}
+    seed = next(n for n in case["referencePageNumbers"] if prereq.get(n))
+    case["referencePageNumbers"] = [n for n in case["referencePageNumbers"]
+                                    if n not in prereq[seed]]
+    case["irrelevantPageNumbers"] = sorted(set(case["irrelevantPageNumbers"]) | set(prereq[seed]))
+    expect_manifest("정답 페이지가 무관 페이지를 선수로 거치면 실패", manifest, broken, workdir,
+                    should_pass=False, needle="선수로 거치지 않음")
+
+    # 대체 페이지에 선수 폐쇄가 상한을 넘는 페이지를 넣는다. 마지막 페이지는 대개 책 전체를
+    # 선수로 두므로 어느 상한도 넘는다.
+    broken = copy.deepcopy(evaluation)
+    case = next(c for c in broken["cases"] if c["bookId"] == SAMPLE_BOOK_ID)
+    book = next(b for b in manifest["books"] if b["bookId"] == SAMPLE_BOOK_ID)
+    deepest = max((p["pageNumber"] for p in book["pages"] if p["aiRouteCandidatePage"]))
+    case["allowedAlternativePageNumbers"] = sorted(
+        set(case["allowedAlternativePageNumbers"]) | {deepest})
+    case["irrelevantPageNumbers"] = [n for n in case["irrelevantPageNumbers"] if n != deepest]
+    expect_manifest("대체 페이지의 선수 폐쇄가 상한을 넘으면 실패", manifest, broken, workdir,
+                    should_pass=False, needle="폐쇄가 상한")
+
 
 def check_merge(workdir):
     """병합이 실패했을 때 정본을 건드리지 않는지 본다.
