@@ -804,7 +804,7 @@
       "irrelevantPageNumbers": [
         34,
         35,
-        36,
+        37,
         38,
         39
       ],
@@ -824,10 +824,9 @@
       "allowedAlternativePageNumbers": [
         3,
         5,
+        7,
         14,
-        22,
-        24,
-        26
+        19
       ]
     },
     {
