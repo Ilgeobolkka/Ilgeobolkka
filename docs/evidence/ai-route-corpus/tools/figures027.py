@@ -195,14 +195,20 @@ def fig_orbit():
     b.append(f'<rect x="{tx - 8}" y="{ty}" width="16" height="{tower_h}" fill="#dfe4e6" stroke="{LINE}"/>')
     b.append(t(tx - 16, ty + 4, "탑", 15, MUTED, "600", anchor="end"))
 
-    # 지면에 닿는 세 경로. 끝점을 지면 원 위에 두어 실제로 닿게 그린다.
+    # 지면에 닿는 세 경로. 반지름을 orb에서 r까지 단조 감소시키며 각도를 벌려 그린다.
+    # 베지에로 그리면 끝점만 지면에 맞춰도 도중에 지면 안으로 파고들 수 있어, 중심까지의 거리를
+    # 직접 다뤄 언제나 r 이상이 되게 한다. f=0에서 반지름 변화가 0이라 탑에서 수평으로 나간다.
+    steps = 48
     for theta, label in [(0.40, "조금 세게"), (0.88, "더 세게"), (1.52, "훨씬 세게")]:
+        points = []
+        for step in range(steps + 1):
+            f = step / steps
+            rad = orb - (orb - r) * f ** 2
+            ang = theta * f
+            points.append(f"{cx + rad * math.sin(ang):.1f},{cy - rad * math.cos(ang):.1f}")
         ex = cx + r * math.sin(theta)
         ey = cy - r * math.cos(theta)
-        qx = cx + (ex - cx) * 0.72
-        qy = ty + (ey - ty) * 0.12
-        b.append(f'<path d="M{tx},{ty} Q{qx:.1f},{qy:.1f} {ex:.1f},{ey:.1f}" '
-                 f'fill="none" stroke="{FAR}" stroke-width="2"/>')
+        b.append(f'<polyline points="{" ".join(points)}" fill="none" stroke="{FAR}" stroke-width="2"/>')
         # 라벨은 주황 궤도 바깥에 두고 닿은 자리와 가는 점선으로 잇는다. 지면 위에 얹으면 읽히지 않는다.
         lx = cx + (orb + 18) * math.sin(theta)
         ly = cy - (orb + 18) * math.cos(theta)
@@ -215,9 +221,10 @@ def fig_orbit():
     b.append(t(cx, ty - 22, "충분히 세게", 16, MARK, "700"))
 
     # 궤도 위 한 점에서 중심을 향하는 화살표. 회색 경로가 없는 왼쪽에 둔다.
+    # 화살촉은 지면 바로 위에서 멈춘다. 반지름 r 안으로 들어가면 화살표가 지구를 뚫고 들어간다.
     a = math.radians(214)
     px, py = cx + orb * math.sin(a), cy - orb * math.cos(a)
-    b.append(arrow(px, py, cx + (orb - 72) * math.sin(a), cy - (orb - 72) * math.cos(a), width=3))
+    b.append(arrow(px, py, cx + (r + 10) * math.sin(a), cy - (r + 10) * math.cos(a), width=3))
     b.append(t(px - 12, py + 6, "이 순간에도 떨어지고 있다", 14, MARK, "700", anchor="end"))
 
     b.append(note_box(197, 986, 400, "닿지 않을 뿐 떨어지기는 마찬가지다", 16))
@@ -264,7 +271,8 @@ def fig_scale():
 
     # 오른쪽 — 저울과 공이 함께 내려가는 중
     rx = 544
-    b.append(t(rx, 300, "같은 세기로 당겨진다", 15, MARK, "700"))
+    # 저울과 공은 질량이 달라 당겨지는 세기도 다르다. 같은 것은 떨어지는 빠르기이므로 그렇게 적는다.
+    b.append(t(rx, 300, "같은 빠르기로 떨어진다", 15, MARK, "700"))
     b.append(f'<circle cx="{rx}" cy="350" r="26" fill="{BODY}"/>')
     b.append(spring(rx, 376, 460))
     b.append(f'<rect x="{rx - 84}" y="460" width="168" height="78" rx="10" fill="#eef2f4" '
@@ -295,7 +303,9 @@ def fig_float():
     b.append(f'<circle cx="{cx}" cy="{cy}" r="{orb}" fill="none" stroke="{FAR}" stroke-dasharray="7 8"/>')
 
     sy = cy - orb
-    b.append(t(cx, sy - 62, "셋 다 같은 세기로 당겨진다", 16, MARK, "700"))
+    # 정거장·사람·공은 질량이 크게 달라 당겨지는 세기도 다르다. 화살표 길이가 같은 것은
+    # 떨어지는 빠르기가 같다는 뜻이므로 그렇게 적는다.
+    b.append(t(cx, sy - 62, "셋 다 같은 빠르기로 떨어진다", 16, MARK, "700"))
     b.append(f'<rect x="{cx - 88}" y="{sy - 38}" width="176" height="76" rx="12" '
              f'fill="#fbfcfc" stroke="{BODY}" stroke-width="2"/>')
     b.append(t(cx - 98, sy + 4, "정거장", 15, INK, "600", anchor="end"))
@@ -320,7 +330,7 @@ def fig_float():
     b.append(t(bx + bw / 2, by + 246, "함께 떨어지고 있다", 18, "#51462c", "700"))
 
     b.append(note_box(197, 934, 400, "당김이 없으면 궤도도 없다"))
-    b.append(caption(W / 2, 1038, ["세 화살표의 길이가 같다는 것이 이 그림의 요점이다.",
+    b.append(caption(W / 2, 1038, ["세 화살표의 길이가 같다는 것이 이 그림의 요점이다. 셋이 얻는 속도의 변화가 같다.",
                                    "서로에 대해 움직이지 않으니 안에서는 떠 있는 것으로 보인다."]))
     return base("떠 있음은 없음이 아니다",
                 "같은 자리에서 두 가지로 읽히는 상황을 정리한 그림", "".join(b))

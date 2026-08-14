@@ -7615,7 +7615,7 @@
       "title": "중력과 운동의 법칙",
       "totalPageCount": 54,
       "pdfPath": "pdfs/book-027.pdf",
-      "pdfSha256": "102800fe3f12844a96e64cde1a69d689ed74fd0196dc31f33473bfee2c1c6e63",
+      "pdfSha256": "a9b32c8748f82dbd4438623a6470063084d237ac1dc220d51faa5fe24ecb9a2f",
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
       "pages": [
@@ -8306,7 +8306,7 @@
           "aiAnalysisText": "궤도상의 무중량 상태를 중력 부재가 아니라 동일한 자유낙하로 설명하는 페이지다. 해당 고도에서 중력이 여전히 크다는 점과 궤도 유지가 중력의 존재를 전제한다는 점을 밝히고, 저울 눈금이 영이 되는 이유를 수직항력의 부재로 정리한다.",
           "aiAnalysisInputSha256": "6b46eeee8b7f0b02c6e0a654297220bc6e321d7669eda0fdef157b7d5dbeccc3",
           "aiPublicGuideTopic": "도는 물체 안에서 물건이 뜨는 까닭",
-          "estimatedReadingSeconds": 80,
+          "estimatedReadingSeconds": 85,
           "prerequisitePageNumbers": [
             28
           ],
