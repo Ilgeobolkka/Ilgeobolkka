@@ -12,6 +12,7 @@ import com.example.ilgeobolkka.airoute.exception.AiRouteGenerationConsumedExcept
 import com.example.ilgeobolkka.airoute.exception.AiRouteGenerationNotFoundException;
 import com.example.ilgeobolkka.airoute.exception.InvalidAiRouteGenerationInputException;
 import com.example.ilgeobolkka.airoute.service.AiRoutePurposeNormalizer;
+import com.example.ilgeobolkka.airoute.service.generation.AiRouteGenerationFailureCode;
 import com.example.ilgeobolkka.airoute.service.generation.AiRouteGenerationItemView;
 import com.example.ilgeobolkka.airoute.service.generation.AiRouteGenerationLifecycleService;
 import com.example.ilgeobolkka.airoute.service.generation.AiRouteGenerationRequestView;
@@ -236,7 +237,7 @@ public class AiRouteGenerationApiFacade {
             }
         }
         if (result.failure() != null) {
-            throw new AiRouteGenerationApiException(ErrorCode.valueOf(result.failure().name()));
+            throw new AiRouteGenerationApiException(failureErrorCode(result.failure()));
         }
         return responseResultOf(
                 readerId,
@@ -248,7 +249,7 @@ public class AiRouteGenerationApiFacade {
             long readerId, AiRouteGenerationView generation, boolean created) {
         if (generation.status() == AiRouteGenerationStatus.FAILED) {
             throw new AiRouteGenerationApiException(
-                    ErrorCode.valueOf(generation.failureCode()));
+                    failureErrorCode(generation.failureCode()));
         }
         if (generation.status() == AiRouteGenerationStatus.CONSUMED) {
             throw new AiRouteGenerationConsumedException(generation.generationId());
@@ -262,6 +263,29 @@ public class AiRouteGenerationApiFacade {
                 response,
                 created,
                 generation.status() == AiRouteGenerationStatus.GENERATING);
+    }
+
+    /** 도메인 실패가 추가되면 누락된 API 매핑을 컴파일 단계에서 발견하도록 명시적으로 변환한다. */
+    static ErrorCode failureErrorCode(AiRouteGenerationFailureCode failureCode) {
+        return switch (failureCode) {
+            case AI_ROUTE_PROVIDER_BUDGET_UNAVAILABLE ->
+                ErrorCode.AI_ROUTE_PROVIDER_BUDGET_UNAVAILABLE;
+            case AI_ROUTE_PROVIDER_UNAVAILABLE -> ErrorCode.AI_ROUTE_PROVIDER_UNAVAILABLE;
+            case AI_ROUTE_INVALID_OUTPUT -> ErrorCode.AI_ROUTE_INVALID_OUTPUT;
+            case AI_ROUTE_GENERATION_TIMEOUT -> ErrorCode.AI_ROUTE_GENERATION_TIMEOUT;
+        };
+    }
+
+    /** DB에 알 수 없는 과거 실패 코드가 남아 있어도 Enum 변환 예외를 그대로 노출하지 않는다. */
+    static ErrorCode failureErrorCode(String failureCode) {
+        if (failureCode == null) {
+            return ErrorCode.INTERNAL_SERVER_ERROR;
+        }
+        try {
+            return failureErrorCode(AiRouteGenerationFailureCode.valueOf(failureCode));
+        } catch (IllegalArgumentException exception) {
+            return ErrorCode.INTERNAL_SERVER_ERROR;
+        }
     }
 
     private AiRouteGenerationResponse responseOf(

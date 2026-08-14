@@ -6,6 +6,7 @@ import com.example.ilgeobolkka.airoute.dto.AiRouteGenerationResponse;
 import com.example.ilgeobolkka.airoute.facade.AiRouteGenerationApiFacade;
 import com.example.ilgeobolkka.global.security.AuthenticatedReader;
 import jakarta.validation.Valid;
+import java.net.URI;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -37,7 +38,15 @@ public class AiRouteGenerationController {
         HttpStatus status = result.generating()
                 ? HttpStatus.ACCEPTED
                 : result.created() ? HttpStatus.CREATED : HttpStatus.OK;
+        if (status == HttpStatus.CREATED) {
+            return ResponseEntity.created(generationLocation(result.response().generationId()))
+                    .body(result.response());
+        }
         return ResponseEntity.status(status).body(result.response());
+    }
+
+    private static URI generationLocation(UUID generationId) {
+        return URI.create("/api/ai-route-generations/" + generationId);
     }
 
     @GetMapping("/api/ai-route-generations/{generationId}")

@@ -39,12 +39,14 @@ import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Primary;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.authentication.TestingAuthenticationToken;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
 /** SCRUM-470 생성·조회 HTTP 계약을 실제 MySQL과 Spring Security 경계에서 검증한다. */
 @SpringBootTest(
@@ -121,7 +123,7 @@ class AiRouteGenerationApiMySqlIntegrationTest {
                 }
                 """;
 
-        String generationId = mockMvc.perform(post("/api/books/{bookId}/ai-route-generations", BOOK_ID)
+        MvcResult created = mockMvc.perform(post("/api/books/{bookId}/ai-route-generations", BOOK_ID)
                         .header("Idempotency-Key", key)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(body)
@@ -147,10 +149,13 @@ class AiRouteGenerationApiMySqlIntegrationTest {
                 .andExpect(jsonPath("$.items[0].estimatedMinutes").value(2))
                 .andExpect(jsonPath("$.items[0].guide").value("핵심 흐름에 관한 핵심 개념을 다루는 페이지입니다."))
                 .andExpect(jsonPath("$.items[0].additionalCostStatus").value("ONE_INK"))
-                .andReturn()
-                .getResponse()
+                .andReturn();
+        String generationId = created.getResponse()
                 .getContentAsString()
                 .replaceFirst(".*\"generationId\":\"([^\"]+)\".*", "$1");
+        assertEquals(
+                "/api/ai-route-generations/" + generationId,
+                created.getResponse().getHeader(HttpHeaders.LOCATION));
 
         mockMvc.perform(post("/api/books/{bookId}/ai-route-generations", BOOK_ID)
                         .header("Idempotency-Key", key)
