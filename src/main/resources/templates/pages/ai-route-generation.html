@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/shell :: page(${pageTitle}, ~{::section})}">
+<body>
+<section data-ai-route-generation-root
+         th:attr="data-book-id=${bookId}"
+         aria-labelledby="ai-route-generation-title">
+    <div class="mb-4">
+        <p class="small text-primary fw-semibold mb-2">AI 독서 경로</p>
+        <h1 class="display-6 fw-semibold mb-2" id="ai-route-generation-title">
+            목적에 맞는 읽기 순서 만들기
+        </h1>
+        <p class="text-secondary mb-1" data-ai-route-book-title>
+            도서와 현재 읽기 권한을 확인하고 있습니다.
+        </p>
+        <p class="small text-secondary mb-0">
+            경로 생성과 저장만으로는 잉크를 사용하거나 페이지를 대여하지 않습니다.
+        </p>
+    </div>
+
+    <form class="bg-white border rounded-3 p-4 mb-4"
+          data-ai-route-form
+          novalidate>
+        <fieldset data-ai-route-inputs disabled>
+            <legend class="h4 mb-3">읽고 싶은 목적</legend>
+            <label class="form-label" for="ai-route-purpose">
+                이 책에서 무엇을 알고 싶나요?
+            </label>
+            <textarea class="form-control"
+                      id="ai-route-purpose"
+                      rows="4"
+                      aria-describedby="ai-route-purpose-help ai-route-purpose-count"
+                      data-ai-route-purpose></textarea>
+            <div class="d-flex flex-column flex-sm-row justify-content-between gap-1 mt-2">
+                <p class="form-text mb-0" id="ai-route-purpose-help">
+                    최대 200자이며 질문이나 명령이 아닌 독서 목적으로 처리됩니다.
+                </p>
+                <p class="form-text mb-0" id="ai-route-purpose-count" aria-live="polite">
+                    <span data-ai-route-purpose-count>0</span>/200자
+                </p>
+            </div>
+
+            <fieldset class="border rounded-3 p-3 mt-4"
+                      data-ai-route-budget-fields
+                      hidden>
+                <legend class="h5 float-none w-auto px-1 mb-2">추가 잉크 예산</legend>
+                <label class="form-label" for="ai-route-budget">
+                    새로 대여할 페이지에 사용할 최대 잉크
+                </label>
+                <input class="form-control"
+                       id="ai-route-budget"
+                       type="number"
+                       min="0"
+                       step="1"
+                       inputmode="numeric"
+                       data-ai-route-budget>
+                <p class="form-text" data-ai-route-balance></p>
+                <div class="d-flex flex-wrap gap-2" data-ai-route-budget-quick>
+                    <button class="btn btn-outline-primary"
+                            type="button"
+                            data-ai-route-budget-choice="5">5잉크</button>
+                    <button class="btn btn-outline-primary"
+                            type="button"
+                            data-ai-route-budget-choice="10">10잉크</button>
+                    <button class="btn btn-outline-primary"
+                            type="button"
+                            data-ai-route-budget-choice="15">15잉크</button>
+                    <button class="btn btn-outline-primary"
+                            type="button"
+                            data-ai-route-budget-all>보유 잉크 전부</button>
+                </div>
+            </fieldset>
+
+            <fieldset class="border rounded-3 p-3 mt-4"
+                      data-ai-route-depth-fields
+                      hidden>
+                <legend class="h5 float-none w-auto px-1 mb-2">경로 깊이</legend>
+                <div class="vstack gap-2">
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               id="ai-route-depth-quick"
+                               type="radio"
+                               name="ai-route-depth"
+                               value="QUICK"
+                               data-ai-route-depth>
+                        <label class="form-check-label" for="ai-route-depth-quick">
+                            빠른 · 최대 5페이지
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               id="ai-route-depth-balanced"
+                               type="radio"
+                               name="ai-route-depth"
+                               value="BALANCED"
+                               data-ai-route-depth
+                               checked>
+                        <label class="form-check-label" for="ai-route-depth-balanced">
+                            균형 · 최대 10페이지
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               id="ai-route-depth-deep"
+                               type="radio"
+                               name="ai-route-depth"
+                               value="DEEP"
+                               data-ai-route-depth>
+                        <label class="form-check-label" for="ai-route-depth-deep">
+                            깊이 · 최대 15페이지
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="d-flex flex-wrap gap-2 mt-4">
+                <button class="btn btn-primary" type="submit" data-ai-route-generate>
+                    새 경로 생성
+                </button>
+                <button class="btn btn-outline-primary"
+                        type="button"
+                        data-ai-route-retry
+                        hidden>
+                    같은 요청 다시 확인
+                </button>
+            </div>
+        </fieldset>
+    </form>
+
+    <p class="alert alert-info"
+       role="status"
+       aria-live="polite"
+       aria-atomic="true"
+       tabindex="-1"
+       data-ai-route-status>
+        AI 경로 화면을 준비하고 있습니다.
+    </p>
+
+    <section class="alert alert-secondary"
+             aria-labelledby="ai-route-no-route-title"
+             data-ai-route-no-route
+             hidden>
+        <h2 class="h5" id="ai-route-no-route-title">경로를 만들지 못했습니다</h2>
+        <p class="mb-0" data-ai-route-no-route-message></p>
+    </section>
+
+    <section class="bg-white border rounded-3 p-4"
+             aria-labelledby="ai-route-preview-title"
+             data-ai-route-preview
+             hidden>
+        <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
+            <div>
+                <h2 class="h3 mb-2" id="ai-route-preview-title">추천 읽기 경로</h2>
+                <p class="mb-1">
+                    독서 목적: <span data-ai-route-preview-purpose></span>
+                </p>
+                <p class="small text-secondary mb-0" data-ai-route-remaining></p>
+            </div>
+            <div class="flex-shrink-0">
+                <button class="btn btn-primary"
+                        type="button"
+                        data-ai-route-save>
+                    이 경로 저장
+                </button>
+            </div>
+        </div>
+
+        <ol class="list-unstyled vstack gap-3 mb-0" data-ai-route-items></ol>
+
+        <template data-ai-route-item-template>
+            <li class="border rounded-3 p-3" data-ai-route-item>
+                <div class="d-flex flex-column flex-sm-row justify-content-between gap-2 mb-2">
+                    <h3 class="h5 mb-0">
+                        <span data-ai-route-position></span>.
+                        <span data-ai-route-page></span>페이지
+                    </h3>
+                    <span class="badge text-bg-secondary align-self-start"
+                          data-ai-route-cost></span>
+                </div>
+                <p class="small text-secondary mb-2" data-ai-route-metadata></p>
+                <p class="mb-0" data-ai-route-guide></p>
+            </li>
+        </template>
+    </section>
+
+    <script type="module" th:src="@{/js/ai-route/generation.js}"></script>
+</section>
+</body>
+</html>

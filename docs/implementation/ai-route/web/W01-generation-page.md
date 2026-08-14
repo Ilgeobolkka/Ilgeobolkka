@@ -37,6 +37,10 @@
 ## 수정 허용 파일
 
 - 새 page Controller·template·AI generation JavaScript·필요 최소 CSS
+- `SecurityConfig`의 `GET /books/{bookId}/ai-route` 인증 matcher 추가만 허용
+  (2026-08-14 사용자 승인)
+- `.github/browser-smoke/browser-smoke.js`의 W01 생성 화면 DOM fixture 추가만 허용
+  (2026-08-14 사용자 승인)
 - 공통 shell·request-json은 호출만 하고 수정하지 않음
 - 새 `AiRouteGenerationPageTest`
 
