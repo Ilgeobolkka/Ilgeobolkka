@@ -9810,7 +9810,7 @@
       "title": "기후 데이터를 읽는 방법",
       "totalPageCount": 48,
       "pdfPath": "pdfs/book-029.pdf",
-      "pdfSha256": "918ef023fc46ca67944feff0e4ddedcdd142a76f7b0808cd56614de93d092062",
+      "pdfSha256": "b3c9173acb77d2698d15b85f0d6c6414d881a5f8bb85196226cdf05d5ecbf62d",
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
       "pages": [
@@ -10459,7 +10459,7 @@
           "aiAnalysisText": "결측 처리에서 보간과 제외라는 두 선택지의 상충을 다루는 페이지다. 각 방식의 이점과 위험을 대비하고, 두 결과의 병행 산출과 그 차이 자체를 결과로 보고하는 관행을 제시한다.",
           "aiAnalysisInputSha256": "5d0bf8ecc20f773b3ac093aac16294ca233b2a22689bfc710b2b76129e4510b2",
           "aiPublicGuideTopic": "채우지 않는 선택",
-          "estimatedReadingSeconds": 65,
+          "estimatedReadingSeconds": 80,
           "prerequisitePageNumbers": [
             30
           ],
