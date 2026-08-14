@@ -201,6 +201,25 @@ class AiRouteCandidateSelectorTest {
         assertTrue(candidates.isEmpty());
     }
 
+    @Test
+    void 평가를_위해_운영_임계값_미만을_포함한_전체_점수를_보존한다() {
+        AiRouteCandidateSelection selection = selector.select(
+                BOOK_ID,
+                CONTENT_VERSION,
+                embedding(1.0, 0.0),
+                List.of(
+                        page(1, embedding(3.0, 4.0)),
+                        page(2, embedding(7.0, 24.0))));
+
+        assertEquals(List.of(1), selection.candidates().stream()
+                .map(AiRouteCandidate::pageNumber)
+                .toList());
+        assertEquals(List.of(1, 2), selection.scoredCandidates().stream()
+                .map(AiRouteCandidate::pageNumber)
+                .toList());
+        assertEquals(0.28, selection.scoredCandidates().get(1).similarity());
+    }
+
     // --- 후보로 실려 나가는 값 ----------------------------------------------
 
     @Test

@@ -53,4 +53,5 @@ docs/evidence/ai-route-corpus/tools/pdfbuild*/
 
 ### Generated content ###
 /var/content/pages/
+/var/evaluation/
 /var/performance/
