@@ -3365,7 +3365,7 @@
       "title": "미생물 생태와 물질순환",
       "totalPageCount": 50,
       "pdfPath": "pdfs/book-023.pdf",
-      "pdfSha256": "7cf2efeecf07fdf24f46f66948d6a8f44dbadebc437b47c6023fca0ea62ef395",
+      "pdfSha256": "3e24db9e2c2177548d8ddeb6e63f7dedc51bd564def81abe923b49658c387b7d",
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
       "pages": [
@@ -4162,7 +4162,7 @@
           "aiAnalysisText": "토양 자료의 큰 공간 변이를 다루는 페이지다. 변이의 원인을 미세 환경의 이질성으로 설명하고, 산포를 제거 대상이 아니라 정보로 다루는 처리 방식과 계통 오차와의 구분 기준을 제시한다.",
           "aiAnalysisInputSha256": "399ca625d441174ede814c1a98bba9bd0b5e0df07ad39b56175951006d32c66d",
           "aiPublicGuideTopic": "흙에서 나온 값이 크게 흩어지는 까닭",
-          "estimatedReadingSeconds": 65,
+          "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             35
           ],
@@ -4204,7 +4204,7 @@
           "aiAnalysisText": "조사 종료 후 자료와 맥락을 함께 보존하는 절차를 다루는 페이지다. 기상 이력 기록의 필수성, 폐기 회차의 기록, 다음 회차 개선 목록의 작성을 각각의 이유와 함께 제시한다.",
           "aiAnalysisInputSha256": "b92074ccf029a03d58c58950d3f06f137951175ca1cbc1089942582d58f35533",
           "aiPublicGuideTopic": "계절이 끝난 뒤 남는 것",
-          "estimatedReadingSeconds": 65,
+          "estimatedReadingSeconds": 80,
           "prerequisitePageNumbers": [
             33
           ],
@@ -4378,7 +4378,7 @@
           "aiAnalysisText": "책 전체에서 반복 사용된 네 가지 구분을 정리하는 페이지다. 관측과 실재, 순환과 흐름, 조건과 결과, 존재와 활성을 각각 대비 형태로 제시해 개별 내용을 재구성할 골격을 남긴다.",
           "aiAnalysisInputSha256": "622433f12173a64c689c403919390c25bf33d248201af794f3e0aeed0a331722",
           "aiPublicGuideTopic": "장마다 세운 구분을 한자리에 모으는 정리",
-          "estimatedReadingSeconds": 65,
+          "estimatedReadingSeconds": 85,
           "prerequisitePageNumbers": [
             47
           ],
@@ -4399,7 +4399,7 @@
           "aiAnalysisText": "미생물 생태의 미해결 과제를 군집 구성과 기능의 대응, 교란 후 회복, 규모 확대 적용의 세 갈래로 제시하는 페이지다. 방법론적 한계에서 비롯된 물음임을 명시해 답의 부재와 구분한다.",
           "aiAnalysisInputSha256": "c9072ae13d8e4dcf3a94c094ff333937222c9550c03858aa3a908cd93b1daee3",
           "aiPublicGuideTopic": "다 읽은 뒤에도 열려 있는 물음들",
-          "estimatedReadingSeconds": 65,
+          "estimatedReadingSeconds": 80,
           "prerequisitePageNumbers": [
             47
           ],
@@ -4421,7 +4421,7 @@
           "aiAnalysisText": "독자가 직접 수행할 수 있는 확인 실험과 그 설계 원칙을 제시하는 마무리 페이지다. 대조 조건의 필요와 단일 변인 변경 원칙을 강조하고, 관찰 범위와 진술 범위를 구분하는 태도를 책의 최종 메시지로 제시한다.",
           "aiAnalysisInputSha256": "7b15147460d3896183c859836df744d04d6a41eea676fc2a9699e2d902bd6226",
           "aiPublicGuideTopic": "다음에 무엇을 직접 해 볼 수 있는지",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             49
           ],
@@ -4434,7 +4434,7 @@
       "title": "빛의 속도가 만드는 시간과 인과",
       "totalPageCount": 49,
       "pdfPath": "pdfs/book-024.pdf",
-      "pdfSha256": "f1bff0f9afe6cb29ff4a63c7995143fba57db02eb3e19d8f8cae81741112ca70",
+      "pdfSha256": "7d8f29e2e5e3f5d5c6d291ce07501f4f9335be8dae0face0df4a1c4073e4be65",
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
       "pages": [
@@ -5145,7 +5145,7 @@
           "aiAnalysisText": "반복 측정으로 산포를 파악하고 계통 오차를 거리 의존성 검사로 검출하는 절차를 다루는 페이지다. 산포와 치우침의 성격 차이를 구분하고, 조건을 바꿔 가며 측정하는 설계가 치우침 검출 수단임을 밝힌다.",
           "aiAnalysisInputSha256": "6d589e2c180a33e90cda1ccdbb6520596f7c36550142cb149308418b919b05d3",
           "aiPublicGuideTopic": "값이 나오기 시작한 뒤에 하는 일",
-          "estimatedReadingSeconds": 65,
+          "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             32
           ],
@@ -5187,7 +5187,7 @@
           "aiAnalysisText": "실습 종료 후 자료와 맥락을 함께 보존하는 절차를 다루는 페이지다. 장치 조정 시각의 기록, 폐기 회차의 기록, 다음 회차 개선 목록의 작성을 각각의 이유와 함께 제시한다.",
           "aiAnalysisInputSha256": "9f21f33615db58706797c855b91f93e5067730f261e5282e3f535d3ebdd75dfe",
           "aiPublicGuideTopic": "나흘이 끝난 뒤 남는 것",
-          "estimatedReadingSeconds": 65,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             30
           ],
@@ -5424,7 +5424,7 @@
           "aiAnalysisText": "책 전체에서 반복 사용된 네 가지 구분을 정리하는 페이지다. 발생과 인지, 도착 순서와 발생 순서, 측정값과 규약, 겉보기 운동과 신호 전달을 각각 대비 형태로 제시해 개별 내용을 재구성할 골격을 남긴다.",
           "aiAnalysisInputSha256": "e0144205108b35fe1bc6ebcddc866c95893cedf67f27b9873b548bbbf37c198d",
           "aiPublicGuideTopic": "장마다 세운 구분을 한자리에 모으는 정리",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 90,
           "prerequisitePageNumbers": [
             46
           ],
@@ -5446,7 +5446,7 @@
           "aiAnalysisText": "이 책이 다루지 않은 물음을 도구의 확장이 필요한 것, 다른 설명 층위에 속하는 것, 물음의 성격이 미정인 것으로 나누어 제시하는 페이지다. 세 물음의 종류가 서로 다르다는 점을 강조해 서술 범위를 닫는다.",
           "aiAnalysisInputSha256": "d7d69297641e381d0e920289da41506a119299afd444ab146fe01cee48937f7c",
           "aiPublicGuideTopic": "다 읽은 뒤에도 열려 있는 물음들",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 85,
           "prerequisitePageNumbers": [
             46
           ],
@@ -5468,7 +5468,7 @@
           "aiAnalysisText": "독자가 직접 수행할 수 있는 지연 측정 실험과 그 원리적 대응을 제시하는 마무리 페이지다. 반복 측정으로 산포를 확인하는 방법과 왕복 측정의 이점을 실물 사례로 연결하고, 발생 시각과 인지 시각을 구분하는 태도를 최종 메시지로 제시한다.",
           "aiAnalysisInputSha256": "57b008730f45b05b833c0f9a306cdd95d4a4d67d30078065e2bde86fbb9fc4b5",
           "aiPublicGuideTopic": "다음에 무엇을 직접 해 볼 수 있는지",
-          "estimatedReadingSeconds": 75,
+          "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             48
           ],
@@ -5481,7 +5481,7 @@
       "title": "구름의 형성과 강수의 물리",
       "totalPageCount": 50,
       "pdfPath": "pdfs/book-025.pdf",
-      "pdfSha256": "21beb9947a280063b399601e3de9b60bf7e5320adca24b1912fe057358136e51",
+      "pdfSha256": "5be2e7d42e52efd1c003ced7c8d9df981bf7a8f750e8c19badfc5790cbe94a32",
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
       "pages": [
@@ -6215,7 +6215,7 @@
           "aiAnalysisText": "계절 단위 기상 관측의 사전 설계를 다루는 페이지다. 관측 항목과 판정 기준의 사전 확정, 결측 상황에 대한 대비책 마련을 제시하고, 기회가 제한된 관측에서 사전 계획이 갖는 비중을 밝힌다.",
           "aiAnalysisInputSha256": "5c26ddd227572e539bbc420a3e63b646174ac3094afa126350447f510bcee31c",
           "aiPublicGuideTopic": "관측을 시작하기 전에 정해 두는 것",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [
             10
           ],
@@ -6321,7 +6321,7 @@
           "aiAnalysisText": "관측 종료 후 자료와 맥락을 함께 보존하는 절차를 다루는 페이지다. 정성적 하늘 상태 기록의 필요, 결측일의 기록, 다음 회차 개선 목록의 작성을 각각의 이유와 함께 제시한다.",
           "aiAnalysisInputSha256": "54bd4c38959a00bb948c2b06a34d6c9c01b0439102f2e92b467137386eee08eb",
           "aiPublicGuideTopic": "한 철이 끝난 뒤 남는 것",
-          "estimatedReadingSeconds": 65,
+          "estimatedReadingSeconds": 80,
           "prerequisitePageNumbers": [
             35
           ],
@@ -6494,7 +6494,7 @@
           "aiAnalysisText": "책 전체에서 반복 사용된 네 가지 구분을 정리하는 페이지다. 존재와 가시성, 수증기량과 포화량, 응결 조건과 강수 조건, 계산과 전제를 각각 대비 형태로 제시해 개별 내용을 재구성할 골격을 남긴다.",
           "aiAnalysisInputSha256": "ed41f654ffa99699c7273b98c1d92ec9e1c19c261fdd593e2c390dd8da046306",
           "aiPublicGuideTopic": "장마다 세운 구분을 한자리에 모으는 정리",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 90,
           "prerequisitePageNumbers": [
             47
           ],
@@ -6515,7 +6515,7 @@
           "aiAnalysisText": "구름 물리의 미해결 과제를 에어로졸 영향의 정량화, 국지 강수 예측, 빙정 핵생성의 조건으로 나누어 제시하는 페이지다. 세 항목이 답의 부재가 아니라 현재 방법의 분해능 한계에서 온다는 점을 밝힌다.",
           "aiAnalysisInputSha256": "41ba0343b99d5b30c7f416e027935e23175f11487186a04cf881496f3ba93ba3",
           "aiPublicGuideTopic": "다 읽은 뒤에도 열려 있는 물음들",
-          "estimatedReadingSeconds": 65,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             47
           ],
@@ -6537,7 +6537,7 @@
           "aiAnalysisText": "독자가 직접 수행할 수 있는 이슬점 측정과 구름 관찰 방법을 제시하는 마무리 페이지다. 조건을 달리한 비교 관찰의 설계를 함께 제안하고, 존재·변화·원인을 차례로 묻는 관찰 순서를 최종 메시지로 제시한다.",
           "aiAnalysisInputSha256": "8a7b80a33441fb42044b1874d5d5ca68dad86253e16420135cd74e547efbe380",
           "aiPublicGuideTopic": "다음에 무엇을 직접 해 볼 수 있는지",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [
             49
           ],
@@ -6550,7 +6550,7 @@
       "title": "생물발광의 화학과 생태",
       "totalPageCount": 50,
       "pdfPath": "pdfs/book-026.pdf",
-      "pdfSha256": "28604eeeedb71a287da25aaa2eebcb8a27331560b7656b162ab4abff216a8fbb",
+      "pdfSha256": "b3990a96c8b9cba06069efdd243a400e312a11ab9fb499fd1a31238ab98cd9d6",
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
       "pages": [
@@ -7282,7 +7282,7 @@
           "aiAnalysisText": "승선 조사 착수 전 관측 항목과 반복 횟수, 판정 기준, 대안을 미리 확정하는 절차를 다루는 페이지다. 기상과 장비 사정으로 계획이 축소될 수 있는 조건에서 우선순위를 사전에 정해 두는 이유를 제시한다.",
           "aiAnalysisInputSha256": "7086547749edceb8fd000cdc4e912535adb1b62f239d6df97fdd8e585507d7de",
           "aiPublicGuideTopic": "출항 전에 정해 두는 것들",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [
             10
           ],
@@ -7409,7 +7409,7 @@
           "aiAnalysisText": "항차 종료 후 자료와 맥락을 함께 보존하는 절차를 다루는 페이지다. 조건 기록과 실패 회차 기록의 필요를 각각의 이유와 함께 제시하고, 다음 조사를 위한 개선 목록이 실질적 산출물임을 밝힌다.",
           "aiAnalysisInputSha256": "76b2328a9a51e7c021487f63382f33f830a395f13cc4328af55c693b8b69632d",
           "aiPublicGuideTopic": "항차가 끝난 뒤 남는 것",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 80,
           "prerequisitePageNumbers": [
             35
           ],
@@ -7560,7 +7560,7 @@
           "aiAnalysisText": "책 전체에서 반복 사용된 네 가지 구분을 정리하는 페이지다. 반사와 발광, 기질과 촉매, 발광 형태와 기능, 관찰과 해석을 각각 대비 형태로 제시해 개별 내용을 재구성할 골격을 남긴다.",
           "aiAnalysisInputSha256": "ee145d23bed783df273c48e8257750a3ca54b4f84711ea63458b8ffb6681450c",
           "aiPublicGuideTopic": "장마다 세운 구분을 한자리에 모으는 정리",
-          "estimatedReadingSeconds": 80,
+          "estimatedReadingSeconds": 85,
           "prerequisitePageNumbers": [
             47
           ],
@@ -7581,7 +7581,7 @@
           "aiAnalysisText": "발광 연구의 미해결 과제를 기원, 비용과 이득, 생태계 규모의 영향 세 갈래로 제시하는 페이지다. 답이 없는 물음과 현재 자료로 답할 수 없는 물음을 구분하는 것이 서술의 목표였음을 밝힌다.",
           "aiAnalysisInputSha256": "eef62506ea401af704eec8878bbd8e4b502c26e60b58d8c830e85e0d3f7e70bf",
           "aiPublicGuideTopic": "다 읽은 뒤에도 열려 있는 물음들",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 85,
           "prerequisitePageNumbers": [
             47
           ],
@@ -7615,7 +7615,7 @@
       "title": "중력과 운동의 법칙",
       "totalPageCount": 54,
       "pdfPath": "pdfs/book-027.pdf",
-      "pdfSha256": "a9b32c8748f82dbd4438623a6470063084d237ac1dc220d51faa5fe24ecb9a2f",
+      "pdfSha256": "6ae1c0e5c9ea6b1f6063f2fb4d185e119253ae323ac04a1c56771e2ffde3e8a6",
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
       "pages": [
@@ -8709,7 +8709,7 @@
           "aiAnalysisText": "책 전체에서 반복 사용된 네 가지 구분을 정리하는 페이지다. 질량과 무게, 힘과 운동, 감각과 작용, 측정 대상과 측정 도구를 각각 대비 형태로 제시해 개별 내용을 재구성할 수 있는 골격을 남긴다.",
           "aiAnalysisInputSha256": "a5da4a851def88eae0a348f52dd2719283e2649f29d5ea9b4f118cd315bbdc52",
           "aiPublicGuideTopic": "장마다 세운 구분을 한자리에 모으는 정리",
-          "estimatedReadingSeconds": 85,
+          "estimatedReadingSeconds": 100,
           "prerequisitePageNumbers": [
             51
           ],
@@ -8751,7 +8751,7 @@
           "aiAnalysisText": "책의 내용을 확인할 수 있는 간단한 실험과 그 절차를 제시하는 마무리 페이지다. 장치보다 설계 원칙이 결과의 질을 좌우한다는 점을 강조하고, 물음 설정에서 확인까지의 순서를 책 전체의 진행과 겹쳐 놓는다.",
           "aiAnalysisInputSha256": "e917d0b09a1cf1135c5d01c422062def3fd19a94834569dcad27c5af99474830",
           "aiPublicGuideTopic": "다음에 무엇을 직접 해 볼 수 있는지",
-          "estimatedReadingSeconds": 80,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             53
           ],
@@ -8764,7 +8764,7 @@
       "title": "식물의 신호전달과 균근 네트워크",
       "totalPageCount": 49,
       "pdfPath": "pdfs/book-028.pdf",
-      "pdfSha256": "11f0791382e71e454d4eaadb665040a216e329dbc672acb7d542e2ae22512f48",
+      "pdfSha256": "db32af843f2c4de4b6b49d8e3f8572b620bd5d5836cecb998f00c1a4e3b9ef30",
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
       "pages": [
@@ -9580,7 +9580,7 @@
           "aiAnalysisText": "다년 조사 종료 후 자료와 맥락을 함께 보존하는 절차를 다루는 페이지다. 제외된 표본의 기록, 연차 간 상이한 결과의 병기, 다음 회차 개선 목록의 작성을 각각의 이유와 함께 제시한다.",
           "aiAnalysisInputSha256": "e2ea60036819c1235cde0de0dc47fd5327c8b9d4d14f7f21b45907861b9f8428",
           "aiPublicGuideTopic": "두 해가 끝난 뒤 남는 것",
-          "estimatedReadingSeconds": 75,
+          "estimatedReadingSeconds": 90,
           "prerequisitePageNumbers": [
             34
           ],
@@ -9754,7 +9754,7 @@
           "aiAnalysisText": "책 전체에서 반복 사용된 네 가지 구분을 정리하는 페이지다. 수용부와 반응부, 방출과 신호, 대기 경로와 지하 경로, 관찰과 해석을 각각 대비 형태로 제시해 개별 내용을 재구성할 골격을 남긴다.",
           "aiAnalysisInputSha256": "04d37841512b051b302e77b75853a55bddf9fa1914df685f71b08d8840cdee6c",
           "aiPublicGuideTopic": "장마다 세운 구분을 한자리에 모으는 정리",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 100,
           "prerequisitePageNumbers": [
             46
           ],
@@ -9775,7 +9775,7 @@
           "aiAnalysisText": "식물 신호 연구의 미해결 과제를 자연 규모에서의 발생 빈도, 발신자 이익의 확인, 균사망의 물질 배분 규칙으로 나누어 제시하는 페이지다. 세 항목이 관측 방법의 한계에서 비롯됨을 밝혀 답의 부재와 구분한다.",
           "aiAnalysisInputSha256": "a805b92d104667e1ab6db03d8dcdfc302e1fbf3e4fcfca88525b27573905cce1",
           "aiPublicGuideTopic": "다 읽은 뒤에도 열려 있는 물음들",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 85,
           "prerequisitePageNumbers": [
             46
           ],
@@ -9797,7 +9797,7 @@
           "aiAnalysisText": "독자가 직접 수행할 수 있는 굴광성 관찰과 그 설계 원칙을 제시하는 마무리 페이지다. 대조 개체를 함께 두는 이유를 밝히고, 관찰 범위와 진술 범위를 구분하는 태도를 책의 최종 메시지로 제시한다.",
           "aiAnalysisInputSha256": "fe90dc24200619bc1fce3487538d81e7c31dadf4aca092d07b7932395926cb4c",
           "aiPublicGuideTopic": "다음에 무엇을 직접 해 볼 수 있는지",
-          "estimatedReadingSeconds": 65,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             48
           ],
@@ -9810,7 +9810,7 @@
       "title": "기후 데이터를 읽는 방법",
       "totalPageCount": 48,
       "pdfPath": "pdfs/book-029.pdf",
-      "pdfSha256": "b3c9173acb77d2698d15b85f0d6c6414d881a5f8bb85196226cdf05d5ecbf62d",
+      "pdfSha256": "4ae9ad6c2a376b939e017b26664d068c57eaa09d9fb85a7ead573a436a4a3ea8",
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
       "pages": [
@@ -10780,7 +10780,7 @@
           "aiAnalysisText": "책 전체에서 반복 사용된 네 가지 구분을 정리하는 페이지다. 값과 기준, 변동과 경향, 날씨와 기후, 실측과 가공을 각각 대비 형태로 제시해 개별 내용을 재구성할 골격을 남긴다.",
           "aiAnalysisInputSha256": "abf2302ba048472a128ef06a803f5f55e912abc0149a82f713caa0e0ed40c44e",
           "aiPublicGuideTopic": "장마다 세운 구분을 한자리에 모으는 정리",
-          "estimatedReadingSeconds": 75,
+          "estimatedReadingSeconds": 95,
           "prerequisitePageNumbers": [
             45
           ],
@@ -10801,7 +10801,7 @@
           "aiAnalysisText": "기후 자료 분석의 미해결 과제를 과거 자료의 불확실성, 강수 경향 판정의 어려움, 보정 방법 선택 기준의 부재로 나누어 제시하는 페이지다. 세 항목이 자료 축적만으로 해소되지 않는다는 점을 밝힌다.",
           "aiAnalysisInputSha256": "66ac720c5cda72572f953de348686a99cc659934bca534d9b3673e0cad0c69c6",
           "aiPublicGuideTopic": "다 읽은 뒤에도 열려 있는 물음들",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 90,
           "prerequisitePageNumbers": [
             45
           ],
@@ -10823,7 +10823,7 @@
           "aiAnalysisText": "독자가 공개 자료로 수행할 수 있는 확인 절차와 그 대응 내용을 제시하는 마무리 페이지다. 평활 길이와 기준 기간을 바꿔 결과를 비교하는 방법을 안내하고, 비교 기준·처리 방식·자료 출처를 차례로 확인하는 순서를 최종 메시지로 제시한다.",
           "aiAnalysisInputSha256": "8af06f360e54e7a5695d493a937f5ca87562195176a197e3bc98624ca3551ac8",
           "aiPublicGuideTopic": "다음에 무엇을 직접 해 볼 수 있는지",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             47
           ],
@@ -10836,7 +10836,7 @@
       "title": "달의 위상과 조석고정",
       "totalPageCount": 49,
       "pdfPath": "pdfs/book-030.pdf",
-      "pdfSha256": "bef02dfb8f569e268dcb39400ad2dec024388642ed9826a8cbe014599feb5ab4",
+      "pdfSha256": "da2d299599b3a33fb34d6dece4181595ae8e347c46637b2860f0d0ec11708d7a",
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
       "pages": [
@@ -11827,7 +11827,7 @@
           "aiAnalysisText": "책 전체에서 반복 사용된 네 가지 구분을 정리하는 페이지다. 조명면과 가시면, 위상과 식, 자전과 주기 일치, 현재 상태와 항구적 성질을 각각 대비 형태로 제시해 개별 내용을 재구성할 골격을 남긴다.",
           "aiAnalysisInputSha256": "dff8e141bc61303c111e3d670f27b0fb7b0c8ac6a06e378547a2828cab4d054c",
           "aiPublicGuideTopic": "장마다 세운 구분을 한자리에 모으는 정리",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 85,
           "prerequisitePageNumbers": [
             46
           ],
@@ -11848,7 +11848,7 @@
           "aiAnalysisText": "달 연구의 미해결 과제를 형성 과정, 앞뒷면의 비대칭, 궤도 후퇴 속도의 과거 값으로 나누어 제시하는 페이지다. 세 항목이 지상 관측만으로 접근 불가능하다는 점을 밝혀 서술 범위를 닫는다.",
           "aiAnalysisInputSha256": "f1e8861197e62bbde9fb605860f4836cc7f8d3de5856e1e712cab4a8bf9a3552",
           "aiPublicGuideTopic": "다 읽은 뒤에도 열려 있는 물음들",
-          "estimatedReadingSeconds": 65,
+          "estimatedReadingSeconds": 90,
           "prerequisitePageNumbers": [
             46
           ],
@@ -11870,7 +11870,7 @@
           "aiAnalysisText": "독자가 육안으로 수행할 수 있는 관측 항목과 대응하는 본문 내용을 연결하는 마무리 페이지다. 월 단위 형태 기록, 조명 방향과 출몰 시각의 연동 확인, 위상별 밝기 비교를 제시하고 확인 습관을 최종 메시지로 남긴다.",
           "aiAnalysisInputSha256": "910e2ea1a66eabdb980adf314ac195be0f65bfb5859e776008899b4a1d7f6c9b",
           "aiPublicGuideTopic": "다음에 무엇을 직접 해 볼 수 있는지",
-          "estimatedReadingSeconds": 65,
+          "estimatedReadingSeconds": 80,
           "prerequisitePageNumbers": [
             48
           ],
