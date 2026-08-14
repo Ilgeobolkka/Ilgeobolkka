@@ -845,12 +845,9 @@ def main():
                          first["5.4 무엇을 남기는가"],
                          first["6.2 비가 온다는 말"],
                          first["6.2 비가 온다는 말"] + 1})
-    alternatives = [first["1.1 공기 속에 물이 있다"] + 1,
-                    first["1.2 담을 수 있는 양은 정해져 있다"] + 1,
-                    first["1.4 붙잡을 자리가 있어야 한다"] + 1,
-                    first["2.1 올라가면 식는다"] + 1,
-                    first["2.3 구름의 바닥과 꼭대기"],
-                    first["2.4 구름이 사라질 때"]]
+    # 예산이 0인 사례라 대체 페이지가 성립하지 않는다. 활성 대여가 곧 정답 경로이고 새로 열 수 있는
+    # 페이지가 하나도 없으므로, 무엇을 적어 넣어도 어느 배분으로도 고를 수 없는 죽은 값이 된다.
+    alternatives = []
 
     manuscript = {"bookId": BOOK_ID, "title": TITLE, "pages": manuscript_pages}
     (REPO / f"docs/evidence/ai-route-corpus/book-{BOOK_ID:03d}-manuscript.json").write_text(

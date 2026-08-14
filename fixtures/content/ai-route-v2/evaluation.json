@@ -362,7 +362,7 @@
         11,
         19,
         22,
-        23
+        24
       ]
     },
     {
@@ -517,14 +517,7 @@
         8,
         12
       ],
-      "allowedAlternativePageNumbers": [
-        3,
-        5,
-        9,
-        13,
-        16,
-        18
-      ]
+      "allowedAlternativePageNumbers": []
     },
     {
       "caseId": "case-book-026",
@@ -953,11 +946,9 @@
         }
       ],
       "irrelevantPageNumbers": [
-        30,
-        31,
         32,
-        33,
-        34
+        35,
+        36
       ],
       "duplicatePageGroups": [
         [
