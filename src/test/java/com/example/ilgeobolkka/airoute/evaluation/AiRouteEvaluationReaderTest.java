@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import tools.jackson.databind.ObjectMapper;
 
 class AiRouteEvaluationReaderTest {
@@ -92,6 +94,27 @@ class AiRouteEvaluationReaderTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("필수 평가 시나리오가 누락")
                 .hasMessageContaining("OWNED_DEEP");
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {5, 10, 15})
+    void 예산_5_10_15_시나리오에_활성_대여가_있으면_거부한다(int budget) throws Exception {
+        AiRouteEvaluationProperties properties =
+                write(withActiveRentals(Scenario.of(budget), List.of(1)));
+
+        assertThatThrownBy(() -> reader(properties).read())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("예산 %d 시나리오는 activeRentalPageNumbers가 비어 있어야".formatted(budget));
+    }
+
+    @Test
+    void 예산_0_시나리오에_활성_대여가_없으면_거부한다() throws Exception {
+        AiRouteEvaluationProperties properties =
+                write(withActiveRentals(Scenario.BUDGET_0, List.of()));
+
+        assertThatThrownBy(() -> reader(properties).read())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("예산 0 시나리오는 activeRentalPageNumbers가 필요");
     }
 
     @Test
@@ -272,6 +295,33 @@ class AiRouteEvaluationReaderTest {
                 List.of());
     }
 
+    private Fixture withActiveRentals(Scenario target, List<Integer> activeRentalPageNumbers) {
+        Fixture base = fixture(7, scenarios(7));
+        List<AiRouteEvaluationDataset.EvaluationCase> cases =
+                new ArrayList<>(base.evaluation().cases());
+        AiRouteEvaluationDataset.EvaluationCase source = cases.get(target.ordinal());
+        cases.set(
+                target.ordinal(),
+                new AiRouteEvaluationDataset.EvaluationCase(
+                        source.caseId(),
+                        source.bookId(),
+                        source.purpose(),
+                        source.owned(),
+                        source.maxAdditionalInk(),
+                        source.depth(),
+                        activeRentalPageNumbers,
+                        source.requiredConcepts(),
+                        source.helpfulConcepts(),
+                        source.requiredPrerequisites(),
+                        source.irrelevantPageNumbers(),
+                        source.duplicatePageGroups(),
+                        source.referencePageNumbers(),
+                        source.allowedAlternativePageNumbers()));
+        return new Fixture(
+                base.manifest(),
+                new AiRouteEvaluationDataset(base.evaluation().contentVersion(), cases));
+    }
+
     private AiRouteEvaluationDataset.EvaluationCase copy(
             AiRouteEvaluationDataset.EvaluationCase source, long bookId, String caseId) {
         return new AiRouteEvaluationDataset.EvaluationCase(
@@ -315,6 +365,10 @@ class AiRouteEvaluationReaderTest {
         private final boolean owned;
         private final Integer budget;
         private final AiRouteEvaluationDataset.Depth depth;
+
+        static Scenario of(int budget) {
+            return valueOf("BUDGET_" + budget);
+        }
 
         Scenario(boolean owned, Integer budget, AiRouteEvaluationDataset.Depth depth) {
             this.owned = owned;

@@ -103,6 +103,7 @@ class AiRouteEvaluationReader {
                                 "평가 bookId가 중복됩니다: " + evaluationCase.bookId());
                     }
                     scenarios.add(Scenario.of(evaluationCase));
+                    requireActiveRentalScenario(evaluationCase);
                     return split(evaluationCase, book);
                 })
                 .sorted((left, right) -> Long.compare(left.input().bookId(), right.input().bookId()))
@@ -119,6 +120,29 @@ class AiRouteEvaluationReader {
             throw new IllegalArgumentException("필수 평가 시나리오가 누락됐습니다: " + missing);
         }
         return cases;
+    }
+
+    /** 예산 0만 활성 대여를 입력하고 나머지 비소장 시나리오는 활성 대여가 없어야 한다. */
+    private void requireActiveRentalScenario(
+            AiRouteEvaluationDataset.EvaluationCase evaluationCase) {
+        if (evaluationCase.owned()) {
+            return;
+        }
+        boolean hasActiveRentals = !evaluationCase.activeRentalPageNumbers().isEmpty();
+        if (evaluationCase.maxAdditionalInk() == 0) {
+            if (!hasActiveRentals) {
+                throw new IllegalArgumentException(
+                        "%s 예산 0 시나리오는 activeRentalPageNumbers가 필요합니다."
+                                .formatted(evaluationCase.caseId()));
+            }
+            return;
+        }
+        if (hasActiveRentals) {
+            throw new IllegalArgumentException(
+                    "%s 예산 %d 시나리오는 activeRentalPageNumbers가 비어 있어야 합니다."
+                            .formatted(
+                                    evaluationCase.caseId(), evaluationCase.maxAdditionalInk()));
+        }
     }
 
     private AiRouteEvaluationPlan.Case split(
