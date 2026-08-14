@@ -546,6 +546,50 @@ def check_merge(workdir):
            + (result.stdout or result.stderr))
 
 
+def check_merge_replace(workdir):
+    """이미 병합된 도서를 --replace로 갈아끼울 수 있는지 본다.
+
+    도서를 고쳐 다시 넣는 개정 작업이 밟는 경로다. --replace 없이는 막히고, 붙이면 권수가
+    늘지 않은 채 조각 쪽 내용이 정본을 대신해야 한다.
+    """
+    root = Path(workdir) / "merge-replace"
+    fixture, fragments = root / "fixture", root / "_fragments"
+    fragments.mkdir(parents=True)
+    fixture.mkdir(parents=True)
+    (fixture / "pdfs").symlink_to(FIXTURE / "pdfs")
+
+    manifest, evaluation = load_manifest(), load_evaluation()
+    book_count = len(manifest["books"])
+    target = manifest["books"][-1]
+    case = copy.deepcopy(next(c for c in evaluation["cases"] if c["bookId"] == target["bookId"]))
+    case["purpose"] = case["purpose"] + " (교체본)"
+    for path, data in ((fixture / "manifest.json", manifest),
+                       (fixture / "evaluation.json", evaluation)):
+        path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (fragments / f"book-{target['bookId']:03d}.json").write_text(
+        json.dumps({"manifestBook": copy.deepcopy(target), "evaluationCase": case},
+                   ensure_ascii=False),
+        encoding="utf-8")
+
+    env = dict(os.environ, CORPUS_FIXTURE=str(fixture), CORPUS_FRAGMENTS=str(fragments))
+    plain = subprocess.run([sys.executable, str(TOOLS / "merge_fragments.py")],
+                           capture_output=True, text=True, cwd=workdir, env=env)
+    report("--replace 없이 이미 있는 bookId를 넣으면 막는다", plain.returncode != 0,
+           f"종료코드 {plain.returncode}\n" + (plain.stdout or plain.stderr))
+
+    replaced = subprocess.run([sys.executable, str(TOOLS / "merge_fragments.py"), "--replace"],
+                              capture_output=True, text=True, cwd=workdir, env=env)
+    after_manifest = json.loads((fixture / "manifest.json").read_text("utf-8"))
+    after_evaluation = json.loads((fixture / "evaluation.json").read_text("utf-8"))
+    same_count = len(after_manifest["books"]) == book_count
+    swapped = [c for c in after_evaluation["cases"] if c["bookId"] == target["bookId"]]
+    ok = (replaced.returncode == 0 and same_count
+          and len(swapped) == 1 and swapped[0]["purpose"].endswith("(교체본)"))
+    report("--replace를 붙이면 권수가 늘지 않고 조각 쪽 내용이 남는다", ok,
+           f"종료코드 {replaced.returncode} · {len(after_manifest['books'])}권(원래 {book_count}) · "
+           f"같은 bookId {len(swapped)}건\n" + (replaced.stdout or replaced.stderr))
+
+
 def check_validate_book():
     print("\n[corpus_lib.validate_book()]")
     book = next(b for b in load_manifest()["books"] if b["bookId"] == SAMPLE_BOOK_ID)
@@ -590,6 +634,7 @@ def main():
         check_fragment(workdir)
         check_manifest(workdir)
         check_merge(workdir)
+        check_merge_replace(workdir)
     check_validate_book()
 
     print("\n" + (f"실패 {len(failures)}건" if failures else "전체 통과"))

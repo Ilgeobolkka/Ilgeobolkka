@@ -152,9 +152,12 @@ def fig_baseline():
     tx, ty = W / 2, 300
     b.append(f'<circle cx="{tx}" cy="{ty}" r="8" fill="{INK}"/>')
     b.append(t(tx, ty - 20, "대상", 15, MUTED))
+    # 두 기선은 반드시 같은 높이에 둔다. 높이를 달리하면 대상까지의 거리가 서로 달라져,
+    # 기선 길이만으로 각이 갈린다는 이 그림의 주장이 그림 안에서 무너진다.
     # 두 각의 호를 같은 반지름으로 그리면 겹쳐 하나로 보인다. 반지름을 벌려 각각 읽히게 한다.
-    setups = [(560, 70, "짧은 기선", "작은 각", 52), (700, 210, "긴 기선", "큰 각", 96)]
-    for by, half, blabel, alabel, r in setups:
+    by = 700
+    setups = [(70, "짧은 기선", "작은 각", 52, -18), (210, "긴 기선", "큰 각", 96, 30)]
+    for half, blabel, alabel, r, loff in setups:
         b.append(f'<line x1="{tx - half}" y1="{by}" x2="{tx + half}" y2="{by}" stroke="{INK}" stroke-width="2.6"/>')
         for s in (-1, 1):
             b.append(f'<circle cx="{tx + s * half}" cy="{by}" r="5" fill="{INK}"/>')
@@ -163,7 +166,7 @@ def fig_baseline():
         b.append(f'<path d="M{tx - r * math.cos(ang):.1f},{ty + r * math.sin(ang):.1f} '
                  f'A{r},{r} 0 0,0 {tx + r * math.cos(ang):.1f},{ty + r * math.sin(ang):.1f}" '
                  f'fill="none" stroke="{MARK}" stroke-width="2.2"/>')
-        b.append(t(tx, by + 30, blabel, 16, INK, "600"))
+        b.append(t(tx, by + loff, blabel, 16, INK, "600"))
         b.append(t(tx + r * math.cos(ang) + 12, ty + r * math.sin(ang) + 6, alabel, 14, MARK, "700", anchor="start"))
     b.append(t(W / 2, 236, "대상까지의 거리는 두 경우가 같다", 15, MUTED))
     b.append(note_box(147, 780, 500, "같은 거리라도 기선이 정한다"))

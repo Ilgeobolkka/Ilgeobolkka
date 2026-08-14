@@ -1226,7 +1226,7 @@
       "bookId": 21,
       "title": "빛으로 읽는 우주: 분광과 거리 측정",
       "pdfPath": "pdfs/book-021.pdf",
-      "pdfSha256": "3dbc4a772888bb6e3104034d953278aae05e809caf78849616b5e48ad2238f20",
+      "pdfSha256": "86b1ba43d47e4ca400a0dc8ffdf7afc040678a5814f1b26c0c4ceeb05c1cc627",
       "totalPageCount": 53,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -1430,7 +1430,7 @@
           "aiAnalysisText": "관측된 빛이 대기와 광학계를 거치며 파장별로 다르게 감쇠·변형된다는 점을 설명한다. 지상 관측의 파장 범위 제한과 검출기의 파장별 응답 차이를 들고, 표준 대상과 배경을 함께 촬영해 장비·대기 기여를 분리하는 절차의 필요를 제시한다.",
           "aiAnalysisInputSha256": "9c9538ddc48db853c927778fb7f86b292c145287950672aa0d5c93f3aa69841b",
           "aiPublicGuideTopic": "빛이 망원경에 닿기까지 거치는 것들",
-          "estimatedReadingSeconds": 90,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             2
           ],
@@ -1451,7 +1451,7 @@
           "aiAnalysisText": "동일 대상의 반복 관측에서도 대기와 장비 상태 때문에 기록이 달라진다는 점을 다룬다. 날짜·고도·노출·설정을 함께 기록해야 차이의 출처를 사후에 구분할 수 있다는 원칙과, 이 조건이 미세한 위치 측정 전반에 영향을 준다는 점을 제시한다.",
           "aiAnalysisInputSha256": "ac73b4bca663c49eacf8fcde0fe10d6a31337df35a68698c78b178b4be95e97c",
           "aiPublicGuideTopic": "같은 대상을 다시 봐도 같게 나오지 않는 이유",
-          "estimatedReadingSeconds": 95,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             10
           ],
@@ -1494,7 +1494,7 @@
           "aiAnalysisText": "선이 검출되지 않은 경우를 부재로 단정하지 않고 검출 상한으로 기록하는 방법을 제시한다. 상한 설정의 기준인 잡음 수준을 신호 없는 구간의 변동에서 얻는 절차와, 선을 찾으려는 기대가 잡음을 선으로 오독하게 만든다는 위험을 다룬다.",
           "aiAnalysisInputSha256": "f5a497865f4960885a65af03e1fabc6ba7a2d65e1aa4e4afa5202193f9bb6e8a",
           "aiPublicGuideTopic": "보이지 않는 것을 다루는 방법",
-          "estimatedReadingSeconds": 95,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             12
           ],
@@ -1537,7 +1537,7 @@
           "aiAnalysisText": "흡수선의 깊이가 포화되어 양의 지표로 쓸 수 없게 되는 조건과 그 이후 선폭이 증가하는 현상을 설명한다. 깊이와 폭을 합친 등가폭이 포화 이후에도 단조 증가한다는 점, 그리고 양 추정에 온도·밀도 가정이 개입하므로 결과를 가정과 함께 기록해야 한다는 원칙을 제시한다.",
           "aiAnalysisInputSha256": "26e30cdb6d40d529ec6de3cb0b244c3361c86260cb418c0d0918faa7dd1ade66",
           "aiPublicGuideTopic": "얼마나 있는지를 선에서 읽는 일",
-          "estimatedReadingSeconds": 90,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             14
           ],
@@ -1580,7 +1580,7 @@
           "aiAnalysisText": "성간 먼지가 파장 선택적 산란으로 대상을 어둡고 붉게 만드는 현상과 그것이 밝기 기반 판단을 교란한다는 점을 다룬다. 선의 파장 위치는 먼지의 영향을 받지 않으므로 선에서 추정한 성질과 관측된 색의 차이로 먼지 기여를 분리할 수 있다는 방법을 제시한다.",
           "aiAnalysisInputSha256": "afb8b729e56c641bc6962ed2a90d48e6545e0be3413bf7204888eecfb01a378f",
           "aiPublicGuideTopic": "먼지가 빛을 바꾸는 방식",
-          "estimatedReadingSeconds": 95,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             16
           ],
@@ -1623,7 +1623,7 @@
           "aiAnalysisText": "혼재된 선을 출처별로 분리하는 실무 순서를 성간 기원의 세선 제거부터 시작하는 방식으로 제시한다. 잔여 모호성은 시차를 둔 재관측으로 선의 상대 이동을 보아 해결하며, 시간 비용 때문에 결론이 갈리는 대상에 한정한다는 판단을 다룬다.",
           "aiAnalysisInputSha256": "47f099cb66b693b85521532f61126e4f3e2d57decc9d236e81ad885141a001bb",
           "aiPublicGuideTopic": "무엇에서 온 선인지 가리는 순서",
-          "estimatedReadingSeconds": 90,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             18
           ],
@@ -1645,7 +1645,7 @@
           "aiAnalysisText": "동일 원소의 선 전체가 같은 비율로 이동하는 현상을 대상의 시선 방향 운동으로 해석하는 원리를 설명한다. 이동 방향과 속도의 대응, 시선 방향 성분만 측정된다는 한계, 그리고 거리와 무관하게 적용 가능하다는 장점을 제시한다.",
           "aiAnalysisInputSha256": "870026544127bdb92c1d076556c3fee97cf77776b838b1b88580da4b76d9fd93",
           "aiPublicGuideTopic": "같은 원소의 선이 제자리에 없는 경우",
-          "estimatedReadingSeconds": 90,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             12
           ],
@@ -1666,7 +1666,7 @@
           "aiAnalysisText": "이동량 측정이 선의 원소 판정에 의존한다는 순서 관계와 오판정이 허위 속도를 만든다는 위험을 설명한다. 분광기 파장 눈금의 온도 표류를 기준 광원 촬영으로 감시하는 절차와, 관측 전후 비교로 불확실도를 산정하는 방법을 제시한다.",
           "aiAnalysisInputSha256": "a92a8e78b70b0368f3a6c46ff9904d20cec3f524d7b74b4c127050921544be48",
           "aiPublicGuideTopic": "밀린 양을 재기 전에 확인할 것",
-          "estimatedReadingSeconds": 85,
+          "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             20
           ],
@@ -1687,7 +1687,7 @@
           "aiAnalysisText": "도플러 이동에서 얻는 값이 시선 방향 성분에 한정된다는 점과 시선속도 0이 정지를 뜻하지 않는다는 오해를 다룬다. 그럼에도 다수의 질문에 충분히 답할 수 있다는 유용성과, 부호 규약과 기준계를 함께 기록해야 한다는 원칙을 제시한다.",
           "aiAnalysisInputSha256": "42fc92ba2fd304630f20960cc63df56fd0b8788c685f21e1fc858d07c6ee5a2a",
           "aiPublicGuideTopic": "밀린 양에서 나오는 값이 무엇인지",
-          "estimatedReadingSeconds": 85,
+          "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             20
           ],
@@ -1731,7 +1731,7 @@
           "aiAnalysisText": "대상 내부의 속도 분포가 선을 좌우로 확장시키는 현상을 회전 사례로 설명한다. 온도와 압력 또한 선폭을 넓히므로 폭만으로 회전을 단정할 수 없다는 한계를 지적하고, 선의 형태와 복수 선의 비교로 지배적 원인을 좁히는 방법을 제시한다.",
           "aiAnalysisInputSha256": "1f887fa07ed6a6ea92b2e22c21e71ca4d73cda42d4bd1f32edc8f17209bba8ff",
           "aiPublicGuideTopic": "여러 속도가 한 선에 겹치는 경우",
-          "estimatedReadingSeconds": 90,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             22
           ],
@@ -1752,7 +1752,7 @@
           "aiAnalysisText": "선폭 확장과 이중선을 구분하는 기준으로 골의 개수를 제시하고 속도 차가 작을 때 둘이 유사하게 보인다는 한계를 다룬다. 시차를 둔 재관측에서 골 간격의 변화 여부로 판별하는 방법과, 오판이 허위 동반 천체 보고나 실제 대상 누락으로 이어진다는 위험을 설명한다.",
           "aiAnalysisInputSha256": "af268baf232e8ffdc45d07eead708b9adf6b585327b4a68ca1f974ddb4a96d8c",
           "aiPublicGuideTopic": "넓어진 선과 두 벌의 선",
-          "estimatedReadingSeconds": 90,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             24
           ],
@@ -1774,7 +1774,7 @@
           "aiAnalysisText": "시선속도가 주기적으로 변동하는 관측 사실과 그로부터 주기와 진폭을 얻는다는 점을 다룬다. 운동의 역학적 설명은 이 책의 범위 밖임을 명시하고, 야간·기상 제약으로 관측 시각이 균등하게 분포하지 않는다는 실무적 어려움을 제시한다.",
           "aiAnalysisInputSha256": "c4aacfeb641aff8b68465b03faa97862130ad2bfb52ecc68e1838013189599dd",
           "aiPublicGuideTopic": "선이 앞뒤로 오갈 때 알 수 있는 것",
-          "estimatedReadingSeconds": 90,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             22
           ],
@@ -1795,7 +1795,7 @@
           "aiAnalysisText": "관측 시각의 편중이 허위 주기를 만든다는 문제와 시각 분포를 함께 공개해야 하는 이유를 설명한다. 경도가 다른 관측소의 자료를 합쳐 빈 구간을 메우는 방법과, 합치기 전에 공통 기준 광원으로 파장 눈금을 정합해야 한다는 절차를 제시한다.",
           "aiAnalysisInputSha256": "1e4333340b8c7df9245e38151b83c8e49ce5d29ff857f7d6d9517b1e8fe4f8da",
           "aiPublicGuideTopic": "고르지 않은 관측에서 주기를 찾는 일",
-          "estimatedReadingSeconds": 85,
+          "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             26
           ],
@@ -1837,7 +1837,7 @@
           "aiAnalysisText": "시차 측정이 미소각 계측이라 측정 오차가 신호와 맞먹는다는 조건을 설명한다. 다회 관측으로 무작위 오차를 상쇄하고 연주기 규칙성만 남기는 방법, 기준 배경별의 잔여 운동에서 오는 계통 오차, 그리고 측정자 간 편차를 사전 확인하는 절차를 다룬다.",
           "aiAnalysisInputSha256": "859e0b230acaf13df75e9e087e1cc7329cf6ff20b263a10962d36fad62fca4d5",
           "aiPublicGuideTopic": "아주 작은 각을 재는 일",
-          "estimatedReadingSeconds": 85,
+          "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             28
           ],
@@ -1880,7 +1880,7 @@
           "aiAnalysisText": "시차각을 키우는 유일한 수단이 기선 확대이며 지구 공전 궤도가 지상 관측의 상한이라는 점을 설명한다. 기선 확대가 관측 간격을 늘려 대상 고유 운동과 시차가 섞인다는 문제와, 주기성과 누적성의 차이를 이용해 여러 해 관측으로 분리하는 방법을 제시한다.",
           "aiAnalysisInputSha256": "89df692ec4d54835f28bb7e9101e4e56725fb676bb5cd9ddff796251b4d991e4",
           "aiPublicGuideTopic": "재는 각을 키우는 방법",
-          "estimatedReadingSeconds": 90,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             30
           ],
@@ -1923,7 +1923,7 @@
           "aiAnalysisText": "시차법과 광도법의 가정 개수 차이가 신뢰도 차이로 이어진다는 점을 다룬다. 두 값이 불일치할 때 가정이 적은 쪽을 기준으로 단계를 되짚는 절차와, 시차로 거리를 아는 표본이 광도법의 기준표를 만든다는 순환 구조를 제시한다.",
           "aiAnalysisInputSha256": "3b117f52f68893555d700442d2026a696c704e0d2bdfe53315c19c20b04dd1f9",
           "aiPublicGuideTopic": "가정이 늘어날수록 값이 흔들린다는 점",
-          "estimatedReadingSeconds": 80,
+          "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [
             32
           ],
@@ -1945,7 +1945,7 @@
           "aiAnalysisText": "거리 측정 기법들이 적용 범위별로 이어져 앞 단계가 뒤 단계의 기준을 제공하는 구조를 설명한다. 계통 오차가 상위 단계 전체에 동일 방향으로 전파되며 반복 측정으로 줄지 않는다는 위험과, 독립적인 방법의 중첩 확인으로 각 단계를 검증한다는 대응을 제시한다.",
           "aiAnalysisInputSha256": "20cfb71a0645fd7affc94392143d4e00f5775382e579326f96d1a85f0048b732",
           "aiPublicGuideTopic": "가까운 곳의 측정이 먼 곳의 기준이 되는 구조",
-          "estimatedReadingSeconds": 90,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             28
           ],
@@ -1966,7 +1966,7 @@
           "aiAnalysisText": "거리 값 보고에 측정 방법·기준표 판본·소광 보정량을 병기해야 재사용이 가능하다는 점을 설명한다. 오차를 통계적 변동과 가정 기여로 나누어 기록하면 추가 관측의 실익을 판단할 수 있다는 이유와, 기록 부재로 과거 자료가 폐기된 경험을 사례로 든다.",
           "aiAnalysisInputSha256": "0ded47e3464bf3667ab5f57d8a43b0e97ce916186dcae2eca26814c6dcf8908b",
           "aiPublicGuideTopic": "값을 적을 때 함께 적는 것",
-          "estimatedReadingSeconds": 90,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             34
           ],
@@ -1988,7 +1988,7 @@
           "aiAnalysisText": "관측 계획 수립에서 대상의 고도에 따라 순서를 정하고 목적별로 노출 시간을 배분하는 절차를 설명한다. 분해능 선택이 관측 가능 대상 수를 결정한다는 연쇄와, 기상·장비 문제에 대비해 우선순위를 사전에 정해 두는 실무를 제시한다.",
           "aiAnalysisInputSha256": "2020fe09fb815c5166b2949426bf909c07b913618c7237a2c42be62fe687f71a",
           "aiPublicGuideTopic": "무엇을 어떤 순서로 볼지 정하는 일",
-          "estimatedReadingSeconds": 90,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             10
           ],
@@ -2009,7 +2009,7 @@
           "aiAnalysisText": "다년간 반복되는 관측에서 설정 고정이 자료 연속성의 조건이라는 점을 다룬다. 장비 교체 시 구·신 설정을 병행 운용해 계통 차이를 측정해 두는 절차와, 그 기록이 없으면 과거 자료와의 접합이 불가능해진다는 결과를 사례로 제시한다.",
           "aiAnalysisInputSha256": "1bb43bae68b323fb5bcb59884d6baae886e2ac8c28c84bba6e3aa0d78f8cef88",
           "aiPublicGuideTopic": "여러 해에 걸친 관측을 계획에 넣는 일",
-          "estimatedReadingSeconds": 90,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             36
           ],
@@ -2028,8 +2028,8 @@
           ],
           "contentRole": "EXAMPLE",
           "aiRouteCandidatePage": true,
-          "aiAnalysisText": "하룻밤 관측에서 확보하는 네 종류의 자료, 곧 검출기 잡음·균일 광원·파장 기준 광원·관측 대상을 나란히 보인 도표다. 앞의 세 자료가 대상 스펙트럼을 해석 가능한 형태로 만드는 전제임을 화살표와 결과 상자로 나타낸다.",
-          "aiAnalysisInputSha256": "d6db1d129630968e94a7e480fa8eb6361cdc9c6a918ec4b8be5e01eda53baf00",
+          "aiAnalysisText": "하룻밤 관측에서 확보하는 네 종류의 자료, 곧 검출기 잡음·균일 광원·파장 기준 광원·관측 대상을 나란히 보인 도표다. 앞의 세 자료가 대상 스펙트럼을 해석 가능한 형태로 만드는 전제임을 세로 화살표와 아래 문구로 나타낸다.",
+          "aiAnalysisInputSha256": "6779b19d2a8ce87494204a9f1d71b836fbd737c9718a031b9fc6563ceedbdb76",
           "aiPublicGuideTopic": "하룻밤에 찍는 네 종류의 자료를 늘어놓은 그림",
           "estimatedReadingSeconds": 45,
           "prerequisitePageNumbers": [
@@ -2052,7 +2052,7 @@
           "aiAnalysisText": "관측 자료에서 대상·장비·대기 기여를 분리하기 위해 잡음·균일광·파장 기준 자료를 함께 취득하는 절차를 설명한다. 온도 변화에 따른 표류 때문에 야간 중 반복 취득이 필요하며, 생략 시 사후 보정이 불가능해 자료 전체가 폐기된다는 결과를 제시한다.",
           "aiAnalysisInputSha256": "c2c00b3ff80a28d455a081f0a07638212a1c8995269c3bf6fbeac183db8afa85",
           "aiPublicGuideTopic": "대상을 찍기 전과 후에 하는 일",
-          "estimatedReadingSeconds": 90,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             38
           ],
@@ -2095,7 +2095,7 @@
           "aiAnalysisText": "동일 자료의 재측정을 통해 측정자 판단에서 오는 변동을 평가하는 절차를 다룬다. 동일인 반복이 기억에 의해 편향되므로 독립 측정이 필요하다는 점, 불일치 시 단계별 원인 규명을 수행한다는 방식, 그리고 비용 때문에 결론을 좌우하는 값에 한정 적용한다는 판단을 제시한다.",
           "aiAnalysisInputSha256": "450a2e13c5353e231ba951bd368927d7d99ca9dd6c0dfb31d38e88bc96dc744a",
           "aiPublicGuideTopic": "같은 자료를 다시 재는 일",
-          "estimatedReadingSeconds": 80,
+          "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [
             40
           ],
@@ -2117,7 +2117,7 @@
           "aiAnalysisText": "원본 자료와 처리 결과를 함께 보존해야 하는 이유를 보정 기법의 갱신 가능성에서 설명한다. 결과에 처리 절차를 병기해야 재현이 가능하다는 점과, 십 년 뒤 동일 결과 재현 가능성을 보존 기준으로 삼는 실무를 제시한다.",
           "aiAnalysisInputSha256": "54c7c5745e017cd110798b6af21e9c1bac92dcf72063af13735e71cf6e297a1c",
           "aiPublicGuideTopic": "원본과 처리 결과를 함께 두는 일",
-          "estimatedReadingSeconds": 85,
+          "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             10
           ],
@@ -2138,7 +2138,7 @@
           "aiAnalysisText": "품질이 낮은 관측 자료도 폐기하지 않는 이유를 사후에 알려진 사건의 유일한 동시기 기록이 될 수 있다는 가능성에서 설명한다. 사용 불가 표시와 함께 문제 유형을 코드로 기록해 두어야 재검토 비용이 들지 않는다는 실무를 제시한다.",
           "aiAnalysisInputSha256": "d9423ccbf934905672d9b6401cdc4228ae150d1d102311f0af384e94f2a54ee5",
           "aiPublicGuideTopic": "쓸모없어 보이는 자료를 버리지 않는 일",
-          "estimatedReadingSeconds": 85,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             42
           ],
@@ -2160,7 +2160,7 @@
           "aiAnalysisText": "빛의 감쇠를 기하학적 확산과 성간 소광 두 성분으로 구분하고 후자가 방향에 따라 달라진다는 점을 설명한다. 소광 추정 오차가 거리 계산을 계통적으로 왜곡한다는 결과와, 밝기만으로는 거리와 소광을 분리할 수 없어 분광으로 되돌아가야 한다는 한계를 제시한다.",
           "aiAnalysisInputSha256": "506bcfbbb29252e6057b4d81b00cd7121ea1033b490053248277d967f10fe54b",
           "aiPublicGuideTopic": "먼 곳일수록 더 많이 잃는다는 점",
-          "estimatedReadingSeconds": 90,
+          "estimatedReadingSeconds": 80,
           "prerequisitePageNumbers": [
             16
           ],
@@ -2174,14 +2174,14 @@
             "빛의 감쇠"
           ],
           "secondaryConcepts": [
-            "시선속도"
+            "흡수선과 방출선"
           ],
           "contentRole": "COUNTERPOINT",
           "aiRouteCandidatePage": true,
           "aiAnalysisText": "성간 소광이 파장 의존적으로 연속 성분을 변형해 흡수선처럼 보이는 굴곡을 만든다는 문제를 다룬다. 선폭으로 구분하되 저분해능 자료에서는 구분이 불가능하므로 판단을 유예하고 고분해능 관측으로 확인해야 한다는 절차를 제시한다.",
           "aiAnalysisInputSha256": "3f0533f9dca42b2d6a2446f5b22fd77e286e48892a7e6e95dd382893ea040aa3",
           "aiPublicGuideTopic": "감쇠가 선을 흉내 내는 경우",
-          "estimatedReadingSeconds": 80,
+          "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [
             44
           ],
@@ -2217,14 +2217,14 @@
             "겹침의 오인"
           ],
           "secondaryConcepts": [
-            "성분 판정"
+            "시선속도"
           ],
           "contentRole": "COUNTERPOINT",
           "aiRouteCandidatePage": true,
           "aiAnalysisText": "시선 방향의 근접이 공간적 근접을 함의하지 않는다는 점과 그 혼동이 군집 판정을 오염시킨다는 문제를 다룬다. 거리와 시선속도를 함께 요구하는 판정 기준을 제시하고, 우연 일치의 가능성 때문에 소속 판정에 확률과 근거를 병기해야 한다는 원칙을 설명한다.",
           "aiAnalysisInputSha256": "036811a87dfef26892d470cb29ce729c3153ee87b16c8e487bd8a780957caed6",
           "aiPublicGuideTopic": "같은 방향에 있다는 것의 뜻",
-          "estimatedReadingSeconds": 90,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             46
           ],
@@ -2267,7 +2267,7 @@
           "aiAnalysisText": "장비 발전으로 해소되는 한계와 방법 자체에 내재해 해소되지 않는 한계를 구분해야 한다는 점을 다룬다. 시선 직각 성분처럼 원리상 측정 불가능한 항목은 다른 관측 방식으로만 보완되며, 이 구분이 관측 자원 배분의 기준이 된다는 실무를 제시한다.",
           "aiAnalysisInputSha256": "d8aac624ba5e4d3c2a573c2d5effe288cafcb164e8dc1fb53e1ff7d4b19a36e5",
           "aiPublicGuideTopic": "장비가 좋아져도 남는 한계",
-          "estimatedReadingSeconds": 80,
+          "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             48
           ],
@@ -2311,7 +2311,7 @@
           "aiAnalysisText": "관측 시점의 비가역성 때문에 기록이 자료의 구성 요소가 된다는 점을 설명한다. 원본·보정 자료·처리 절차 세 가지를 보존해야 재해석이 가능하다는 조건과, 값이 의존한 기준표를 명시해야 갱신 시 함께 수정될 수 있다는 이유를 제시한다.",
           "aiAnalysisInputSha256": "eae0028e11005b759f186e577b8f84eab2814c173c0d9246971c58a5a01d2f1e",
           "aiPublicGuideTopic": "다시 읽을 수 있게 남기는 일",
-          "estimatedReadingSeconds": 90,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             50
           ],
@@ -2333,7 +2333,7 @@
           "aiAnalysisText": "새 스펙트럼을 해석할 때 적용할 다섯 가지 점검 질문을 순서대로 제시한다. 잡음 수준 확인에서 시작해 선 간격 대조와 전체 이동량 측정으로 성분과 속도를 정하고, 성간 기원 선의 분리와 미답 항목 확인으로 마무리하는 절차를 정리한다.",
           "aiAnalysisInputSha256": "3a049fc690fbbd5bc6618fda5f75e0e805ece9377705f20ad74abf647e0d732c",
           "aiPublicGuideTopic": "새 대상을 만났을 때 차례로 던질 물음",
-          "estimatedReadingSeconds": 75,
+          "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [
             50
           ],

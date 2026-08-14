@@ -8,6 +8,10 @@
     python3 merge_fragments.py                 # 조각 전부 병합
     python3 merge_fragments.py 61 71           # 지정한 bookId만 병합
     python3 merge_fragments.py --dry-run       # 무엇이 병합될지만 확인
+    python3 merge_fragments.py --replace 21    # 이미 병합된 도서를 조각으로 갈아끼운다
+
+기본은 이미 있는 bookId를 거부한다. 처음 넣을 때 실수로 덮어쓰는 일을 막기 위해서다. 완성한 도서를
+고쳐 다시 넣을 때만 `--replace`를 붙여 기존 항목을 지우고 새 조각을 넣는다.
 
 병합 결과는 임시 디렉터리에서 먼저 `validate_manifest.py`로 검증하고, 통과한 경우에만 정본에 쓴다.
 정본에 먼저 쓰고 검증하면 실패했을 때 반쯤 병합된 파일이 남는다.
@@ -79,8 +83,10 @@ def validate_each(picked):
 
 
 def main():
-    args = [a for a in sys.argv[1:] if a != "--dry-run"]
+    flags = {"--dry-run", "--replace"}
+    args = [a for a in sys.argv[1:] if a not in flags]
     dry_run = "--dry-run" in sys.argv[1:]
+    replace = "--replace" in sys.argv[1:]
     try:
         book_ids = {int(a) for a in args}
     except ValueError:
@@ -92,16 +98,18 @@ def main():
     manifest = load_json(MANIFEST)
     evaluation = load_json(EVALUATION)
 
-    # 정본과 조각 사이, 그리고 조각끼리의 중복을 병합 전에 모두 막는다
+    # 정본과 조각 사이, 그리고 조각끼리의 중복을 병합 전에 모두 막는다.
+    # --replace일 때만 정본 쪽 중복을 오류가 아니라 교체 대상으로 본다. 조각끼리의 중복은
+    # 어느 쪽이 최신인지 알 수 없으므로 --replace여도 그대로 막는다.
     existing_books = {b["bookId"] for b in manifest["books"]}
     existing_cases = {c["caseId"] for c in evaluation["cases"]}
     seen_books, seen_cases = set(), set()
     for path, frag in picked:
         bid = frag["manifestBook"]["bookId"]
         cid = frag["evaluationCase"]["caseId"]
-        if bid in existing_books:
+        if bid in existing_books and not replace:
             die(f"{path.name}: bookId {bid}가 이미 manifest에 있다")
-        if cid in existing_cases:
+        if cid in existing_cases and not replace:
             die(f"{path.name}: caseId {cid}가 이미 evaluation에 있다")
         if bid in seen_books:
             die(f"{path.name}: bookId {bid}가 조각끼리 중복")
@@ -116,6 +124,11 @@ def main():
     if dry_run:
         print("\n--dry-run: 파일을 바꾸지 않고 끝낸다")
         return
+
+    if replace:
+        manifest["books"] = [b for b in manifest["books"] if b["bookId"] not in seen_books]
+        evaluation["cases"] = [c for c in evaluation["cases"] if c["caseId"] not in seen_cases]
+        print(f"[교체] 기존 항목 제거 — bookId {sorted(seen_books)}")
 
     for _, frag in picked:
         manifest["books"].append(frag["manifestBook"])
