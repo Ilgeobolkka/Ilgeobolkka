@@ -4434,7 +4434,7 @@
       "title": "빛의 속도가 만드는 시간과 인과",
       "totalPageCount": 49,
       "pdfPath": "pdfs/book-024.pdf",
-      "pdfSha256": "aad204c834416e095be6edba38b84fa342518b23e8a03e2d63ba814cfd7ea752",
+      "pdfSha256": "f1bff0f9afe6cb29ff4a63c7995143fba57db02eb3e19d8f8cae81741112ca70",
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
       "pages": [
@@ -4933,7 +4933,7 @@
           "aiAnalysisText": "전달 속도 상한이 인과 순서의 정합성을 보장한다는 논증을 다루는 페이지다. 상한을 넘는 전달을 가정할 때 발생하는 순서 역전과 자기모순 상황을 제시하고, 속도 제한이 인과 구조의 조건임을 밝힌다.",
           "aiAnalysisInputSha256": "164772b1491784fd82b3de9c126cc648b9173d4d2d7719283c86d263b4dca7e1",
           "aiPublicGuideTopic": "왜 이 조건이 지켜져야 하는가",
-          "estimatedReadingSeconds": 65,
+          "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             23
           ],
