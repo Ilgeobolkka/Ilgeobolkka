@@ -679,17 +679,24 @@ class AiRouteCurrentDeleteMySqlIntegrationTest {
                             1,
                             AiRouteItemRelevance.HIGH,
                             false,
-                            AiRouteItemRole.CORE));
+                            AiRouteItemRole.CORE,
+                            AiRouteAdditionalCostStatus.ONE_INK));
         }
         return List.of(
                 new AiRouteResultItem(
-                        FIRST_PAGE_ID, 1, AiRouteItemRelevance.HIGH, false, AiRouteItemRole.CORE),
+                        FIRST_PAGE_ID,
+                        1,
+                        AiRouteItemRelevance.HIGH,
+                        false,
+                        AiRouteItemRole.CORE,
+                        AiRouteAdditionalCostStatus.ONE_INK),
                 new AiRouteResultItem(
                         SECOND_PAGE_ID,
                         2,
                         AiRouteItemRelevance.MEDIUM,
                         true,
-                        AiRouteItemRole.PREREQUISITE));
+                        AiRouteItemRole.PREREQUISITE,
+                        AiRouteAdditionalCostStatus.ONE_INK));
     }
 
     /** 세 경로의 저장 시각을 같게 만들어 보조 정렬만으로 후속 경로가 정해지게 한다. */

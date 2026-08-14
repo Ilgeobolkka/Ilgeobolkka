@@ -217,6 +217,7 @@ class AiRouteSchemaMigrationTest {
                         "ai_route_generation_item.relevance|varchar(20)|NO|ascii_bin|-",
                         "ai_route_generation_item.prerequisite|tinyint(1)|NO|-|-",
                         "ai_route_generation_item.role|varchar(20)|NO|ascii_bin|-",
+                        "ai_route_generation_item.additional_cost_status|varchar(20)|NO|ascii_bin|-",
                         "ai_route_prerequisite.id|bigint|NO|-|auto_increment",
                         "ai_route_prerequisite.book_id|bigint|NO|-|-",
                         "ai_route_prerequisite.prerequisite_page_number|int|NO|-|-",
@@ -374,6 +375,7 @@ class AiRouteSchemaMigrationTest {
                         "ai_route_generation.ck_ai_route_generation_request_type",
                         "ai_route_generation.ck_ai_route_generation_saved_shape",
                         "ai_route_generation.ck_ai_route_generation_status",
+                        "ai_route_generation_item.ck_ai_route_generation_item_additional_cost_status",
                         "ai_route_generation_item.ck_ai_route_generation_item_position_positive",
                         "ai_route_generation_item.ck_ai_route_generation_item_prerequisite_boolean",
                         "ai_route_generation_item.ck_ai_route_generation_item_relevance",
@@ -694,6 +696,76 @@ class AiRouteSchemaMigrationTest {
             assertAll(
                     () -> assertEquals(List.of("1", "2", "3", "4", "5"), 적용된_버전을_조회한다()),
                     () -> assertEquals(2, 행_수를_조회한다("ai_route_generation")));
+        } finally {
+            최신_스키마로_복구한다();
+        }
+    }
+
+    @Test
+    void V6는_기존_생성_항목의_비용_상태를_backfill하고_허용값을_제한한다() {
+        Flyway v5Flyway = 새_Flyway를_생성한다(MigrationVersion.fromVersion("5"));
+
+        try {
+            v5Flyway.clean();
+            v5Flyway.migrate();
+            기본_독자_도서_페이지를_생성한다();
+            최종_생성을_생성한다(
+                    GENERATION_ID,
+                    식별자를_생성한다(1_130),
+                    "ROUTE",
+                    null,
+                    null,
+                    null);
+            jdbcTemplate.update(
+                    """
+                    INSERT INTO page_rental
+                        (reader_id, book_page_id, rented_at, expires_at)
+                    VALUES (?, ?, '2026-08-06 23:59:00.000000',
+                            '2026-09-05 23:59:00.000000')
+                    """,
+                    READER_ID,
+                    FIRST_PAGE_ID);
+            jdbcTemplate.update(
+                    """
+                    INSERT INTO ai_route_generation_item
+                        (id, generation_id, book_id, book_page_id, position,
+                         relevance, prerequisite, role)
+                    VALUES
+                        (54130, ?, ?, ?, 1, 'HIGH', FALSE, 'CORE'),
+                        (54131, ?, ?, ?, 2, 'MEDIUM', FALSE, 'EXAMPLE')
+                    """,
+                    GENERATION_ID,
+                    BOOK_ID,
+                    FIRST_PAGE_ID,
+                    GENERATION_ID,
+                    BOOK_ID,
+                    SECOND_PAGE_ID);
+
+            새_Flyway를_생성한다(MigrationVersion.fromVersion("6")).migrate();
+
+            assertAll(
+                    () ->
+                            assertEquals(
+                                    List.of("ACTIVE_RENTAL", "ONE_INK"),
+                                    jdbcTemplate.queryForList(
+                                            """
+                                            SELECT additional_cost_status
+                                            FROM ai_route_generation_item
+                                            WHERE generation_id = ?
+                                            ORDER BY position
+                                            """,
+                                            String.class,
+                                            GENERATION_ID)),
+                    () ->
+                            assertThrows(
+                                    DataAccessException.class,
+                                    () ->
+                                            jdbcTemplate.update(
+                                                    """
+                                                    UPDATE ai_route_generation_item
+                                                    SET additional_cost_status = 'UNKNOWN'
+                                                    WHERE id = 54130
+                                                    """)));
         } finally {
             최신_스키마로_복구한다();
         }
@@ -1303,8 +1375,8 @@ class AiRouteSchemaMigrationTest {
                 """
                 INSERT INTO ai_route_generation_item
                     (id, generation_id, book_id, book_page_id, position,
-                     relevance, prerequisite, role)
-                VALUES (?, ?, ?, ?, ?, 'HIGH', FALSE, 'CORE')
+                     relevance, prerequisite, role, additional_cost_status)
+                VALUES (?, ?, ?, ?, ?, 'HIGH', FALSE, 'CORE', 'ONE_INK')
                 """,
                 itemId,
                 generationId,

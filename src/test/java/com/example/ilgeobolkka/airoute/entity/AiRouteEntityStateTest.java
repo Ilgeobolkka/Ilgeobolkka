@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.example.ilgeobolkka.airoute.AiRouteGenerationCommand;
+import com.example.ilgeobolkka.airoute.AiRouteAdditionalCostStatus;
 import java.time.Instant;
 import java.util.UUID;
 import org.junit.jupiter.api.Test;
@@ -93,7 +94,8 @@ class AiRouteEntityStateTest {
                                                 0,
                                                 AiRouteItemRelevance.HIGH,
                                                 false,
-                                                AiRouteItemRole.CORE)),
+                                                AiRouteItemRole.CORE,
+                                                AiRouteAdditionalCostStatus.ONE_INK)),
                 () ->
                         assertThrows(
                                 IllegalArgumentException.class,
@@ -106,6 +108,22 @@ class AiRouteEntityStateTest {
                                                 AiRouteItemRelevance.HIGH,
                                                 false,
                                                 AiRouteItemRole.CORE)));
+    }
+
+    @Test
+    void 생성_경로_항목의_추가_비용_상태는_필수이다() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () ->
+                        AiRouteGenerationItem.create(
+                                GENERATION_ID,
+                                BOOK_ID,
+                                BOOK_PAGE_ID,
+                                1,
+                                AiRouteItemRelevance.HIGH,
+                                false,
+                                AiRouteItemRole.CORE,
+                                null));
     }
 
     @Test

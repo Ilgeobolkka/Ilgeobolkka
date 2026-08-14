@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.example.ilgeobolkka.airoute.AiRouteDepth;
+import com.example.ilgeobolkka.airoute.AiRouteAdditionalCostStatus;
 import com.example.ilgeobolkka.airoute.AiRouteGenerationCommand;
 import com.example.ilgeobolkka.airoute.AiRouteRequestType;
 import com.example.ilgeobolkka.airoute.entity.AiReadingRoute;
@@ -377,7 +378,8 @@ class AiRouteEntityMappingMySqlIntegrationTest {
                                 1,
                                 AiRouteItemRelevance.HIGH,
                                 false,
-                                AiRouteItemRole.CORE));
+                                AiRouteItemRole.CORE,
+                                AiRouteAdditionalCostStatus.ONE_INK));
         AiReadingRoute readingRoute =
                 AiReadingRoute.createWithInkBudget(
                         GENERATION_ID,
@@ -460,6 +462,9 @@ class AiRouteEntityMappingMySqlIntegrationTest {
                 () -> assertEquals(AiRouteGenerationStatus.SAVED, loadedGeneration.getStatus()),
                 () -> assertEquals(readingRoute.getId(), loadedGeneration.getSavedRouteId()),
                 () -> assertEquals(FIRST_PAGE_ID, loadedGenerationItem.getBookPage().getId()),
+                () -> assertEquals(
+                        AiRouteAdditionalCostStatus.ONE_INK,
+                        loadedGenerationItem.getAdditionalCostStatus()),
                 () -> assertEquals(READER_ID, loadedReadingRoute.getReader().getId()),
                 () -> assertEquals(FIRST_PAGE_ID, loadedReadingRouteItem.getBookPage().getId()),
                 () -> assertEquals(OPENED_AT, loadedReadingRouteItem.getOpenedAt()),

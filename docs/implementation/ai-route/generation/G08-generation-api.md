@@ -20,10 +20,9 @@
 - 필수 시나리오: [T-AIR-001·007~010·013~016·018·020](../../../test-strategy.md#5-필수-시나리오)
   (020은 저장 거부 뒤 `GET /api/ai-route-generations/{generationId}` 재조회가 생성 시점
   `additionalCostStatus` 스냅샷을 그대로 반환하고 재계산하지 않는 부분만 담당합니다)
-- 이 스냅샷의 실현 방식은 이 작업이 정합니다. 현재 ERD의 `ai_route_generation_item`에는 비용 상태 컬럼이
-  없고 `page_rental`이 `rented_at`·`expires_at`로 과거 기간을 보존하므로 이력 기반 재구성이 가능하며,
-  그 경우 기준 시각(예: `ai_route_generation.completed_at`)을 명시합니다. 저장 방식을 택하면 F01
-  migration 변경이 필요하므로 그 전에 별도 승인을 받습니다.
+- 이 스냅샷은 [ADR 0016](../../../adr/domain/0016-store-generation-item-cost-status.md)에 따라 조립기가
+  계산한 값을 `ai_route_generation_item.additional_cost_status`에 저장합니다. 업무 시각 기반 권한
+  이력은 동시 transaction의 커밋 순서를 복원할 수 없으므로 재구성에 사용하지 않습니다.
 
 ## 현재 구현 기준선
 
@@ -39,15 +38,18 @@
 
 - endpoint: `POST /api/books/{bookId}/ai-route-generations`
 - endpoint: `GET /api/ai-route-generations/{generationId}`
-- 산출물: `AiRouteGenerationController`, request/response/item DTO, API exception mapping
+- 산출물: `AiRouteGenerationController`, `AiRouteGenerationApiFacade`, request/response/item DTO,
+  API exception mapping
 - W01에 넘길 것: 상태별 JSON 필드·HTTP status·Retry-After가 고정된 계약 테스트
 
 ## 수정 허용 파일
 
-- 새 generation Controller·API DTO·API exception
+- 새 generation Controller·API Facade·API DTO·API exception
 - 기존 `ErrorCode`, `GlobalExceptionHandler`, `SecurityConfig`의 AI generation 관련 최소 변경.
   앞 파동 작업이 이미 정의한 코드(예: S01의 `AI_ROUTE_GENERATION_CONSUMED`)는 재사용하고 다시 추가하지
   않습니다([공유 파일 소유권](../README.md#공유-파일-소유권))
+- 기존 G05~G07 정책을 바꾸지 않는 범위의 generation request/view 조회 보강과 기본 예산 멱등 지문 구분
+- 생성 조립 결과의 비용 상태를 임시 항목까지 전달하는 최소 보강과 V6 migration
 - 새 `AiRouteGenerationApiMySqlIntegrationTest`, 조건부 경로 테스트
 
 ## 구현 조건
@@ -65,6 +67,8 @@
 
 - POST/GET 정상 ROUTE·NO_ROUTE·GENERATING·SAVED JSON 전체 필드
 - 201/200/202, malformed key/input 400, unsupported 422, key reused 409, owner/expiry 404, limit 429, 503들
+- 명시 예산과 `null` 기본 예산의 멱등 충돌, 잔액 변경 뒤 같은 `null` 기본 예산 재생
+- 늦게 커밋된 과거 시각 권한 이력에도 생성 시점 비용 상태 유지, ROUTE 항목 수와 무관한 조회 수
 - 다른 독자 generation의 동일 404 body와 Gateway/DB 변경 없음
 - 비활성 context에서 두 route 404·기존 `/api/books` 정상
 - CSRF 적용과 익명 401, 응답·로그의 provider 원문 비노출
@@ -74,7 +78,7 @@
 
 - generation 저장 endpoint와 저장 경로 API
 - HTML·polling JavaScript
-- Facade 내부 정책·Repository 직접 접근
+- 기존 `AiRouteGenerationFacade` 내부 생성 정책 변경·API Facade의 Repository 직접 접근
 
 ## 완료 조건
 

@@ -59,6 +59,7 @@ ADR을 모두 남기고, 현행 정본과 저장소의 참조는 새 ADR을 가�
 | --- | --- | --- |
 | [0003](./domain/0003-define-core-domain-erd.md) | 핵심 권한·결제 관계형 데이터 모델 | 승인됨 |
 | [0010](./domain/0010-model-page-rentals-with-ink-ledger.md) | 기간 대여와 잉크 원장 | 승인됨 |
+| [0016](./domain/0016-store-generation-item-cost-status.md) | 생성 항목의 추가 비용 상태 저장 | 승인됨 |
 
 ### 콘텐츠
 

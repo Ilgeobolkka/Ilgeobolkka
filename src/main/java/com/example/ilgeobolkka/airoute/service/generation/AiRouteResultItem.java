@@ -1,5 +1,6 @@
 package com.example.ilgeobolkka.airoute.service.generation;
 
+import com.example.ilgeobolkka.airoute.AiRouteAdditionalCostStatus;
 import com.example.ilgeobolkka.airoute.entity.AiRouteItemRelevance;
 import com.example.ilgeobolkka.airoute.entity.AiRouteItemRole;
 
@@ -14,10 +15,12 @@ import com.example.ilgeobolkka.airoute.entity.AiRouteItemRole;
  * @param relevance 목적과의 관련도
  * @param prerequisite 선수 페이지로 끌려 들어온 항목인지
  * @param role 경로 안에서의 역할
+ * @param additionalCostStatus 생성 권한 사본으로 계산한 추가 비용 상태
  */
 public record AiRouteResultItem(
         long bookPageId,
         int position,
         AiRouteItemRelevance relevance,
         boolean prerequisite,
-        AiRouteItemRole role) {}
+        AiRouteItemRole role,
+        AiRouteAdditionalCostStatus additionalCostStatus) {}
