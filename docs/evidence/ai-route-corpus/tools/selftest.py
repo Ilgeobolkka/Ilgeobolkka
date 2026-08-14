@@ -505,6 +505,44 @@ def check_manifest(workdir):
     expect_manifest("선수 폐쇄에 같은 중복 그룹 페이지가 둘이면 실패", broken, evaluation, workdir,
                     should_pass=False, needle="중복 그룹 충돌 없음")
 
+    # 무관 페이지가 필수 개념을 primary로 달게 만든다. 정답 경로의 첫 페이지는 필수 개념을
+    # primary로 다니까, 그 페이지를 무관 목록에 넣는 대신 같은 개념을 다는 다른 페이지를 찾는다.
+    broken = copy.deepcopy(evaluation)
+    case = next(c for c in broken["cases"] if c["bookId"] == SAMPLE_BOOK_ID)
+    book = next(b for b in manifest["books"] if b["bookId"] == SAMPLE_BOOK_ID)
+    wanted = set(case["requiredConcepts"]) | set(case["helpfulConcepts"])
+    taken = set(case["referencePageNumbers"]) | set(case["allowedAlternativePageNumbers"])
+    about = next(p["pageNumber"] for p in book["pages"]
+                 if p["aiRouteCandidatePage"] and p["pageNumber"] not in taken
+                 and set(p["primaryConcepts"]) & wanted)
+    case["irrelevantPageNumbers"] = sorted(set(case["irrelevantPageNumbers"]) | {about})
+    expect_manifest("무관 페이지가 필수·도움 개념을 primary로 달면 실패", manifest, broken, workdir,
+                    should_pass=False, needle="primary로 달지 않음")
+
+    # 정답 경로의 한 페이지를 무관으로 적는 대신, 그 페이지의 선수를 무관으로 적는다.
+    broken = copy.deepcopy(evaluation)
+    case = next(c for c in broken["cases"] if c["bookId"] == SAMPLE_BOOK_ID)
+    book = next(b for b in manifest["books"] if b["bookId"] == SAMPLE_BOOK_ID)
+    prereq = {p["pageNumber"]: p["prerequisitePageNumbers"] for p in book["pages"]}
+    seed = next(n for n in case["referencePageNumbers"] if prereq.get(n))
+    case["referencePageNumbers"] = [n for n in case["referencePageNumbers"]
+                                    if n not in prereq[seed]]
+    case["irrelevantPageNumbers"] = sorted(set(case["irrelevantPageNumbers"]) | set(prereq[seed]))
+    expect_manifest("정답 페이지가 무관 페이지를 선수로 거치면 실패", manifest, broken, workdir,
+                    should_pass=False, needle="선수로 거치지 않음")
+
+    # 대체 페이지에 선수 폐쇄가 상한을 넘는 페이지를 넣는다. 마지막 페이지는 대개 책 전체를
+    # 선수로 두므로 어느 상한도 넘는다.
+    broken = copy.deepcopy(evaluation)
+    case = next(c for c in broken["cases"] if c["bookId"] == SAMPLE_BOOK_ID)
+    book = next(b for b in manifest["books"] if b["bookId"] == SAMPLE_BOOK_ID)
+    deepest = max((p["pageNumber"] for p in book["pages"] if p["aiRouteCandidatePage"]))
+    case["allowedAlternativePageNumbers"] = sorted(
+        set(case["allowedAlternativePageNumbers"]) | {deepest})
+    case["irrelevantPageNumbers"] = [n for n in case["irrelevantPageNumbers"] if n != deepest]
+    expect_manifest("대체 페이지의 선수 폐쇄가 상한을 넘으면 실패", manifest, broken, workdir,
+                    should_pass=False, needle="폐쇄가 상한")
+
 
 def check_merge(workdir):
     """병합이 실패했을 때 정본을 건드리지 않는지 본다.
@@ -544,6 +582,50 @@ def check_merge(workdir):
     report("병합이 실패하면 정본과 조각을 그대로 둔다", ok,
            f"종료코드 {result.returncode} · 정본 무변경 {unchanged} · 조각 보존 {fragment_kept}\n"
            + (result.stdout or result.stderr))
+
+
+def check_merge_replace(workdir):
+    """이미 병합된 도서를 --replace로 갈아끼울 수 있는지 본다.
+
+    도서를 고쳐 다시 넣는 개정 작업이 밟는 경로다. --replace 없이는 막히고, 붙이면 권수가
+    늘지 않은 채 조각 쪽 내용이 정본을 대신해야 한다.
+    """
+    root = Path(workdir) / "merge-replace"
+    fixture, fragments = root / "fixture", root / "_fragments"
+    fragments.mkdir(parents=True)
+    fixture.mkdir(parents=True)
+    (fixture / "pdfs").symlink_to(FIXTURE / "pdfs")
+
+    manifest, evaluation = load_manifest(), load_evaluation()
+    book_count = len(manifest["books"])
+    target = manifest["books"][-1]
+    case = copy.deepcopy(next(c for c in evaluation["cases"] if c["bookId"] == target["bookId"]))
+    case["purpose"] = case["purpose"] + " (교체본)"
+    for path, data in ((fixture / "manifest.json", manifest),
+                       (fixture / "evaluation.json", evaluation)):
+        path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (fragments / f"book-{target['bookId']:03d}.json").write_text(
+        json.dumps({"manifestBook": copy.deepcopy(target), "evaluationCase": case},
+                   ensure_ascii=False),
+        encoding="utf-8")
+
+    env = dict(os.environ, CORPUS_FIXTURE=str(fixture), CORPUS_FRAGMENTS=str(fragments))
+    plain = subprocess.run([sys.executable, str(TOOLS / "merge_fragments.py")],
+                           capture_output=True, text=True, cwd=workdir, env=env)
+    report("--replace 없이 이미 있는 bookId를 넣으면 막는다", plain.returncode != 0,
+           f"종료코드 {plain.returncode}\n" + (plain.stdout or plain.stderr))
+
+    replaced = subprocess.run([sys.executable, str(TOOLS / "merge_fragments.py"), "--replace"],
+                              capture_output=True, text=True, cwd=workdir, env=env)
+    after_manifest = json.loads((fixture / "manifest.json").read_text("utf-8"))
+    after_evaluation = json.loads((fixture / "evaluation.json").read_text("utf-8"))
+    same_count = len(after_manifest["books"]) == book_count
+    swapped = [c for c in after_evaluation["cases"] if c["bookId"] == target["bookId"]]
+    ok = (replaced.returncode == 0 and same_count
+          and len(swapped) == 1 and swapped[0]["purpose"].endswith("(교체본)"))
+    report("--replace를 붙이면 권수가 늘지 않고 조각 쪽 내용이 남는다", ok,
+           f"종료코드 {replaced.returncode} · {len(after_manifest['books'])}권(원래 {book_count}) · "
+           f"같은 bookId {len(swapped)}건\n" + (replaced.stdout or replaced.stderr))
 
 
 def check_validate_book():
@@ -590,6 +672,7 @@ def main():
         check_fragment(workdir)
         check_manifest(workdir)
         check_merge(workdir)
+        check_merge_replace(workdir)
     check_validate_book()
 
     print("\n" + (f"실패 {len(failures)}건" if failures else "전체 통과"))

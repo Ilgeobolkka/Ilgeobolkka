@@ -119,6 +119,100 @@
       "allowedAlternativePageNumbers": []
     },
     {
+      "caseId": "case-book-021",
+      "bookId": 21,
+      "purpose": "이 책을 사지는 않았고, 별빛에서 성분과 움직이는 속도를 어떻게 알아내는지 큰 틀만 보고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "스펙트럼",
+        "흡수선과 방출선",
+        "성분 판정",
+        "도플러 이동",
+        "시선속도"
+      ],
+      "helpfulConcepts": [
+        "빛이라는 자료",
+        "원소 식별",
+        "선의 세기",
+        "관측 조건"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 13
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 20
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 21
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 22
+        },
+        {
+          "beforePageNumber": 22,
+          "afterPageNumber": 23
+        }
+      ],
+      "irrelevantPageNumbers": [
+        30,
+        34,
+        37,
+        41,
+        42,
+        43
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          50
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        6,
+        7,
+        12,
+        13,
+        20,
+        21,
+        22,
+        23
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        9,
+        15,
+        17,
+        25
+      ]
+    },
+    {
       "caseId": "case-book-022",
       "bookId": 22,
       "purpose": "물결이 서로 만나면 잔잔한 줄과 크게 이는 줄이 번갈아 생기는데, 그 까닭을 흔들림에서부터 차근차근 이해하고 싶다",
@@ -203,6 +297,681 @@
         27,
         29,
         33
+      ]
+    },
+    {
+      "caseId": "case-book-023",
+      "bookId": 23,
+      "purpose": "이 책을 사지는 않았고, 죽은 것이 어떻게 다시 쓰이는 형태로 돌아가는지 그 큰 틀만 훑어보고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "미생물의 갈래",
+        "분해자",
+        "물질순환",
+        "질소순환"
+      ],
+      "helpfulConcepts": [
+        "보이지 않는 다수",
+        "탄소순환",
+        "먹이와 산물"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 18
+        },
+        {
+          "beforePageNumber": 18,
+          "afterPageNumber": 20
+        }
+      ],
+      "irrelevantPageNumbers": [
+        33,
+        34,
+        35,
+        36,
+        40
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          47
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        10,
+        18,
+        20
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        11,
+        19,
+        22,
+        24
+      ]
+    },
+    {
+      "caseId": "case-book-024",
+      "bookId": 24,
+      "purpose": "이 책을 소장하고 있는데, 먼저와 나중이 왜 어떤 경우에는 흔들리고 어떤 경우에는 흔들리지 않는지를 제대로 알고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "소식의 지연",
+        "빠르기의 차이",
+        "재는 방법",
+        "동시의 문제",
+        "순서의 뒤바뀜",
+        "흔들리지 않는 것"
+      ],
+      "helpfulConcepts": [
+        "과거를 본다",
+        "인과의 조건",
+        "거리와 시간"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 18
+        },
+        {
+          "beforePageNumber": 18,
+          "afterPageNumber": 21
+        },
+        {
+          "beforePageNumber": 21,
+          "afterPageNumber": 22
+        },
+        {
+          "beforePageNumber": 21,
+          "afterPageNumber": 23
+        },
+        {
+          "beforePageNumber": 23,
+          "afterPageNumber": 24
+        }
+      ],
+      "irrelevantPageNumbers": [
+        32,
+        34,
+        35,
+        36,
+        37
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          46
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        6,
+        16,
+        18,
+        21,
+        22,
+        23,
+        24
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        9,
+        10,
+        17,
+        25
+      ]
+    },
+    {
+      "caseId": "case-book-025",
+      "bookId": 25,
+      "purpose": "이 책을 사지는 않았고 이미 열어 둔 페이지만으로, 맑던 하늘에 구름이 생기는 조건이 무엇인지 정리해 두고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 0,
+      "depth": null,
+      "activeRentalPageNumbers": [
+        2,
+        4,
+        6,
+        8,
+        12
+      ],
+      "requiredConcepts": [
+        "공기 속의 물",
+        "담을 수 있는 양",
+        "이슬점",
+        "붙잡을 자리",
+        "상승과 냉각"
+      ],
+      "helpfulConcepts": [
+        "구름의 높이",
+        "사라지는 구름",
+        "떨어지는 조건"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 12
+        }
+      ],
+      "irrelevantPageNumbers": [
+        26,
+        33,
+        40,
+        43,
+        44
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          47
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        6,
+        8,
+        12
+      ],
+      "allowedAlternativePageNumbers": []
+    },
+    {
+      "caseId": "case-book-026",
+      "bookId": 26,
+      "purpose": "이 책을 소장하고 있는데, 심해 생물이 어떤 반응으로 빛을 만들고 그 빛을 무엇에 쓰는지를 제대로 익히고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "스스로 내는 빛",
+        "발광 물질과 효소",
+        "빛의 색",
+        "반대조명",
+        "짝 찾기"
+      ],
+      "helpfulConcepts": [
+        "어두운 세계",
+        "반응 조건",
+        "방어와 유인",
+        "쓰임의 다양성"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 11
+        },
+        {
+          "beforePageNumber": 11,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 11,
+          "afterPageNumber": 13
+        },
+        {
+          "beforePageNumber": 11,
+          "afterPageNumber": 15
+        },
+        {
+          "beforePageNumber": 11,
+          "afterPageNumber": 17
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 19
+        },
+        {
+          "beforePageNumber": 19,
+          "afterPageNumber": 20
+        },
+        {
+          "beforePageNumber": 19,
+          "afterPageNumber": 21
+        },
+        {
+          "beforePageNumber": 19,
+          "afterPageNumber": 23
+        },
+        {
+          "beforePageNumber": 23,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 21,
+          "afterPageNumber": 25
+        },
+        {
+          "beforePageNumber": 25,
+          "afterPageNumber": 26
+        }
+      ],
+      "irrelevantPageNumbers": [
+        35,
+        36,
+        37,
+        38,
+        41
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          47
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        5,
+        11,
+        12,
+        13,
+        15,
+        17,
+        19,
+        20,
+        21,
+        23,
+        24,
+        25,
+        26
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        6,
+        10,
+        14,
+        18,
+        28
+      ]
+    },
+    {
+      "caseId": "case-book-027",
+      "bookId": 27,
+      "purpose": "이 책을 사지는 않았고, 우주정거장 안에서 사람이 왜 떠 있는지 그 까닭만 제대로 알고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 15,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "질량과 무게",
+        "만유인력",
+        "자유낙하",
+        "궤도운동",
+        "미소중력"
+      ],
+      "helpfulConcepts": [
+        "떨어짐이라는 사실",
+        "힘의 상호성",
+        "던진 물체의 경로",
+        "궤도의 높이"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 11
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 20
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 21
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 22
+        },
+        {
+          "beforePageNumber": 22,
+          "afterPageNumber": 23
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 25
+        },
+        {
+          "beforePageNumber": 25,
+          "afterPageNumber": 27
+        },
+        {
+          "beforePageNumber": 27,
+          "afterPageNumber": 28
+        },
+        {
+          "beforePageNumber": 28,
+          "afterPageNumber": 29
+        },
+        {
+          "beforePageNumber": 28,
+          "afterPageNumber": 30
+        },
+        {
+          "beforePageNumber": 28,
+          "afterPageNumber": 33
+        },
+        {
+          "beforePageNumber": 33,
+          "afterPageNumber": 34
+        }
+      ],
+      "irrelevantPageNumbers": [
+        37,
+        38,
+        42,
+        43,
+        44
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          51
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        6,
+        11,
+        20,
+        21,
+        22,
+        23,
+        25,
+        27,
+        28,
+        29,
+        30,
+        33,
+        34
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        7,
+        12,
+        26,
+        31,
+        35
+      ]
+    },
+    {
+      "caseId": "case-book-028",
+      "bookId": 28,
+      "purpose": "이 책을 소장하고 있는데, 식물이 무언가를 내보내 이웃에게 닿는다는 이야기의 뼈대만 짧게 훑고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "움직이지 못함",
+        "느끼는 방식",
+        "신호 물질",
+        "공기 중 신호",
+        "받는 쪽"
+      ],
+      "helpfulConcepts": [
+        "안으로 번지는 신호",
+        "내보내는 조건",
+        "균근"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 18
+        },
+        {
+          "beforePageNumber": 18,
+          "afterPageNumber": 20
+        }
+      ],
+      "irrelevantPageNumbers": [
+        34,
+        35,
+        37,
+        38,
+        39
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          46
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        6,
+        18,
+        20
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        7,
+        14,
+        19
+      ]
+    },
+    {
+      "caseId": "case-book-029",
+      "bookId": 29,
+      "purpose": "이 책을 소장하고 있는데, 오르내리는 값에서 방향을 읽어 내는 방법과 그 방법이 감추는 것을 제대로 익히고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "값 하나의 한계",
+        "평균의 성질",
+        "흔들림과 흐름",
+        "이동평균",
+        "평활의 대가",
+        "방향의 판정"
+      ],
+      "helpfulConcepts": [
+        "기준 기간",
+        "날씨와 기후",
+        "두 시점의 오해"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 15
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 16
+        }
+      ],
+      "irrelevantPageNumbers": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          45
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        10,
+        12,
+        14,
+        15,
+        16
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        6,
+        18,
+        38
+      ]
+    },
+    {
+      "caseId": "case-book-030",
+      "bookId": 30,
+      "purpose": "이 책을 사지는 않았고, 달의 모양이 왜 달라지는지와 왜 한쪽만 보이는지 두 가지를 갈라서 이해하고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "같은 얼굴",
+        "보는 자리",
+        "빛과 그림자",
+        "위상의 원리",
+        "도는 주기",
+        "조석고정"
+      ],
+      "helpfulConcepts": [
+        "밝기의 성질",
+        "가림 현상",
+        "그림자 오해"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 15
+        },
+        {
+          "beforePageNumber": 15,
+          "afterPageNumber": 17
+        }
+      ],
+      "irrelevantPageNumbers": [
+        32,
+        35,
+        36
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          46
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        6,
+        8,
+        9,
+        15,
+        17
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        11,
+        13,
+        19,
+        21,
+        37
       ]
     },
     {
@@ -333,8 +1102,8 @@
         3,
         5,
         11,
-        19,
-        21
+        15,
+        18
       ]
     },
     {
@@ -375,13 +1144,7 @@
         36,
         37,
         38,
-        39,
-        40,
-        41,
-        42,
-        43,
-        44,
-        45
+        39
       ],
       "duplicatePageGroups": [],
       "referencePageNumbers": [
@@ -392,9 +1155,9 @@
       ],
       "allowedAlternativePageNumbers": [
         10,
+        11,
         18,
-        27,
-        30
+        19
       ]
     },
     {
@@ -454,15 +1217,7 @@
           "afterPageNumber": 19
         }
       ],
-      "irrelevantPageNumbers": [
-        42,
-        43,
-        44,
-        45,
-        46,
-        47,
-        48
-      ],
+      "irrelevantPageNumbers": [],
       "duplicatePageGroups": [],
       "referencePageNumbers": [
         2,
@@ -483,7 +1238,7 @@
         15,
         18,
         20,
-        24
+        21
       ]
     },
     {
@@ -645,7 +1400,7 @@
         5,
         20,
         23,
-        24
+        26
       ]
     },
     {
@@ -709,8 +1464,10 @@
         35,
         36,
         37,
-        45,
-        46
+        38,
+        39,
+        40,
+        41
       ],
       "duplicatePageGroups": [
         [
@@ -821,11 +1578,11 @@
         25
       ],
       "allowedAlternativePageNumbers": [
+        7,
+        10,
         12,
-        20,
-        26,
-        38,
-        41
+        18,
+        20
       ]
     },
     {
@@ -1195,10 +1952,11 @@
         }
       ],
       "irrelevantPageNumbers": [
+        26,
+        28,
         29,
-        42,
-        45,
-        46
+        30,
+        31
       ],
       "duplicatePageGroups": [
         [
@@ -1220,9 +1978,9 @@
         18
       ],
       "allowedAlternativePageNumbers": [
-        19,
-        24,
-        25
+        21,
+        23,
+        24
       ]
     },
     {
@@ -1529,8 +2287,8 @@
       ],
       "allowedAlternativePageNumbers": [
         19,
-        36,
-        55
+        28,
+        36
       ]
     },
     {
@@ -1703,7 +2461,7 @@
       ],
       "irrelevantPageNumbers": [
         37,
-        50
+        46
       ],
       "duplicatePageGroups": [
         [
@@ -1730,8 +2488,8 @@
       "allowedAlternativePageNumbers": [
         4,
         27,
-        30,
-        53
+        29,
+        30
       ]
     },
     {
@@ -1820,9 +2578,10 @@
         }
       ],
       "irrelevantPageNumbers": [
+        8,
         9,
-        13,
-        49
+        48,
+        53
       ],
       "duplicatePageGroups": [],
       "referencePageNumbers": [
@@ -1845,12 +2604,12 @@
         7,
         14,
         19,
+        20,
         22,
         27,
         36,
         43,
-        44,
-        54
+        44
       ]
     },
     {

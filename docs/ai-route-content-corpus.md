@@ -147,6 +147,18 @@ manifest는 AI 경로 지원 후보를 정의할 뿐 `ai_route_supported=true`�
 `referencePageNumbers[]`와 `allowedAlternativePageNumbers[]`는 각각 `irrelevantPageNumbers[]`와 겹칠 수
 없습니다.
 
+무관 페이지는 세 조건을 지킵니다. 첫째, `requiredConcepts[]`나 `helpfulConcepts[]`에 있는 개념을
+`primaryConcepts[]`로 달지 않습니다. `primaryConcepts[]`는 그 페이지가 무엇에 관한 것인지이므로, 이 사례에
+필요하거나 도움이 된다고 선언한 개념을 다루는 페이지를 무관이라 적으면 정답표가 스스로와 어긋납니다.
+`secondaryConcepts[]`는 다른 것을 다루면서 스쳐 가는 자리이므로 제한하지 않습니다. 둘째, 정답 페이지와
+대체 페이지의 선수 폐쇄가 무관 페이지를 지나지 않습니다. 지나면 그 자리를 고르려면 무관 페이지까지 함께
+열어야 해서 어느 배분으로도 고를 수 없습니다. 셋째, 한 절을 무관과 무관 아님으로 가르지 않습니다.
+
+`allowedAlternativePageNumbers[]`의 각 페이지는 선수 폐쇄가 그 사례의 상한(소장은 깊이별 페이지 상한,
+비소장은 `maxAdditionalInk`에 활성 대여 수를 더한 값) 이하여야 합니다. 대체 페이지는 정답의 한 자리를
+대신해 고르는 자리이므로, 폐쇄가 상한을 넘으면 어느 배분으로도 고를 수 없는 죽은 값이 됩니다. 결론 장의
+페이지는 책 전체를 선수로 두는 경우가 많아 대체 페이지로 쓸 수 없습니다.
+
 `referencePageNumbers`는 필수 개념을 덮는 페이지와 그 전이적 선수 페이지를 모두 담은 **선수 폐쇄**로
 적습니다. 경로 생성 정책이 최종 경로에 선수 페이지를 모두 포함하도록 요구하므로, 고른 페이지만 적으면
 실현할 수 없는 정답이 됩니다. 따라서 비소장 사례는 `referencePageNumbers` 중 활성 대여가 아닌 페이지
