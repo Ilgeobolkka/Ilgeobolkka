@@ -5,8 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.mockingDetails;
 import static org.mockito.Mockito.reset;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.authentication;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
@@ -18,6 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.example.ilgeobolkka.airoute.facade.AiRouteContentFacade;
+import com.example.ilgeobolkka.airoute.repository.AiReadingRouteRepository;
 import com.example.ilgeobolkka.book.entity.BookPage;
 import com.example.ilgeobolkka.global.security.AuthenticatedReader;
 import com.example.ilgeobolkka.reading.dto.PageContent;
@@ -31,7 +34,6 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -40,6 +42,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -116,6 +119,9 @@ class AiRoutePageContentApiMySqlIntegrationTest {
     @MockitoSpyBean
     private PageContentService pageContentService;
 
+    @MockitoSpyBean
+    private AiReadingRouteRepository aiReadingRouteRepository;
+
     @Autowired
     AiRoutePageContentApiMySqlIntegrationTest(
             MockMvc mockMvc,
@@ -144,7 +150,7 @@ class AiRoutePageContentApiMySqlIntegrationTest {
 
     @AfterEach
     void tearDown() {
-        reset(pageContentService);
+        reset(pageContentService, aiReadingRouteRepository);
         테스트_데이터를_정리한다();
     }
 
@@ -257,15 +263,21 @@ class AiRoutePageContentApiMySqlIntegrationTest {
     }
 
     /**
-     * 비포함 페이지를 다른 경로가 실제로 가진 페이지로 고른다. {@code IMAGE_ROUTE_ID}에 페이지 1은
-     * 없지만 같은 도서·같은 현재 세션 위치라 세션·권한 검증은 모두 통과한다. 항목 조회에서 경로 소속
-     * 조건이 빠지면 404가 아니라 200과 {@code FIRST_CONTENT}가 나온다.
+     * 두 404의 근거를 각각 하나로 좁힌다. 다른 독자도 같은 도서 1페이지를 직접 열어 유효한 세션과 대여를
+     * 갖게 하므로, 세션·권한 검증은 통과하고 경로 조회의 소유자 조건만 거부 근거로 남는다. 세션 없이
+     * 요청하면 소유자 조건이 빠져도 세션 조회가 같은 404를 내 회귀가 가려진다.
+     *
+     * <p>비포함 페이지는 다른 경로가 실제로 가진 페이지로 고른다. {@code IMAGE_ROUTE_ID}에 페이지 1은
+     * 없지만 같은 도서·같은 현재 세션 위치라 세션·권한 검증은 모두 통과한다. 소유자 조건이 빠지면 앞
+     * 요청이, 경로 소속 조건이 빠지면 뒤 요청이 404가 아니라 200과 {@code FIRST_CONTENT}를 내고 진행까지
+     * 남긴다.
      */
     @Test
     void T_AIR_016_다른_독자와_경로에_없는_페이지는_같은_404다() throws Exception {
+        UUID otherViewerSessionId = 새_세션을_연다(OTHER_READER_ID, 1);
         UUID viewerSessionId = 새_세션을_연다(READER_ID, 1);
 
-        경로_콘텐츠를_요청한다(OTHER_READER_ID, ROUTE_ID, 1, viewerSessionId)
+        경로_콘텐츠를_요청한다(OTHER_READER_ID, ROUTE_ID, 1, otherViewerSessionId)
                 .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.code").value("RESOURCE_NOT_FOUND"));
         경로_콘텐츠를_요청한다(READER_ID, IMAGE_ROUTE_ID, 1, viewerSessionId)
@@ -360,17 +372,65 @@ class AiRoutePageContentApiMySqlIntegrationTest {
                 () -> assertEquals(before, 독자_상태()));
     }
 
+    /**
+     * 두 요청의 시각을 갈라 놓아야 항목 잠금이 사라진 것이 값으로 드러난다. 같은 시각을 쓰면 두 요청이
+     * 모두 기록해도 결과가 같아 직렬화 제거를 식별하지 못한다.
+     *
+     * <p>첫 요청을 콘텐츠 읽기에서 붙잡아 아직 {@code openedAt}을 쓰지 않은 상태로 두고, 시계를 옮긴 뒤
+     * 두 번째 요청을 경로 잠금까지 보낸다. 잠금이 있으면 두 번째는 첫 요청이 커밋한 뒤에야 항목을 읽어
+     * {@code STARTED_AT}을 그대로 두고, 잠금이 없으면 비어 있는 항목을 먼저 읽어 두었다가 옮긴 시각으로
+     * 덮어쓴다. 그래서 두 번째 요청은 첫 요청이 끝난 뒤에 풀어 준다.
+     */
     @Test
     void 같은_항목의_동시_요청도_최초_openedAt을_한_번만_기록한다() throws Exception {
         UUID viewerSessionId = 새_세션을_연다(READER_ID, 1);
+        CountDownLatch firstContentRead = new CountDownLatch(1);
+        CountDownLatch allowFirstContent = new CountDownLatch(1);
+        CountDownLatch allowSecondContent = new CountDownLatch(1);
+        AtomicInteger contentReads = new AtomicInteger();
+        doAnswer(invocation -> {
+                    if (contentReads.incrementAndGet() == 1) {
+                        firstContentRead.countDown();
+                        assertTrue(
+                                allowFirstContent.await(10, TimeUnit.SECONDS),
+                                "첫 콘텐츠 제공 대기가 끝나지 않았다");
+                    } else {
+                        assertTrue(
+                                allowSecondContent.await(10, TimeUnit.SECONDS),
+                                "두 번째 콘텐츠 제공 대기가 끝나지 않았다");
+                    }
+                    return invocation.callRealMethod();
+                })
+                .when(pageContentService)
+                .read(any(BookPage.class));
 
-        동시에_실행한다(
-                () -> contentFacade.provideContent(READER_ID, ROUTE_ID, 1, viewerSessionId),
-                () -> contentFacade.provideContent(READER_ID, ROUTE_ID, 1, viewerSessionId));
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        try {
+            Future<PageContent> first = executor.submit(
+                    () -> contentFacade.provideContent(READER_ID, ROUTE_ID, 1, viewerSessionId));
+            assertTrue(firstContentRead.await(10, TimeUnit.SECONDS), "첫 콘텐츠 읽기가 시작되지 않았다");
 
-        assertAll(
-                () -> assertEquals(UTC_DATETIME.format(STARTED_AT), 항목_열람_시각(ROUTE_ID, 1)),
-                () -> assertNull(경로_완료_시각(ROUTE_ID)));
+            clock.set(STARTED_AT.plusSeconds(60));
+            Future<PageContent> second = executor.submit(
+                    () -> contentFacade.provideContent(READER_ID, ROUTE_ID, 1, viewerSessionId));
+            두_요청이_경로_잠금에_들어올_때까지_기다린다();
+
+            allowFirstContent.countDown();
+            assertThat(first.get(30, TimeUnit.SECONDS).body())
+                    .containsExactly(FIRST_CONTENT.getBytes(StandardCharsets.UTF_8));
+            allowSecondContent.countDown();
+            assertThat(second.get(30, TimeUnit.SECONDS).body())
+                    .containsExactly(FIRST_CONTENT.getBytes(StandardCharsets.UTF_8));
+
+            assertAll(
+                    () -> assertEquals(1, 열린_항목_수(ROUTE_ID)),
+                    () -> assertEquals(UTC_DATETIME.format(STARTED_AT), 항목_열람_시각(ROUTE_ID, 1)),
+                    () -> assertNull(경로_완료_시각(ROUTE_ID)));
+        } finally {
+            allowFirstContent.countDown();
+            allowSecondContent.countDown();
+            executor.shutdownNow();
+        }
     }
 
     @Test
@@ -405,6 +465,7 @@ class AiRoutePageContentApiMySqlIntegrationTest {
             ReaderState before = 독자_상태();
             Future<PageContent> second = executor.submit(
                     () -> contentFacade.provideContent(READER_ID, ROUTE_ID, 2, viewerSessionId));
+            두_요청이_경로_잠금에_들어올_때까지_기다린다();
 
             allowFirstContent.countDown();
             assertThat(first.get(30, TimeUnit.SECONDS).body())
@@ -480,27 +541,31 @@ class AiRoutePageContentApiMySqlIntegrationTest {
                         .header("X-Viewer-Session-Id", viewerSessionId));
     }
 
-    private void 동시에_실행한다(Runnable first, Runnable second) throws Exception {
-        ExecutorService executor = Executors.newFixedThreadPool(2);
-        CountDownLatch start = new CountDownLatch(1);
-        try {
-            List<Future<?>> futures = new ArrayList<>();
-            for (Runnable task : List.of(first, second)) {
-                futures.add(executor.submit(() -> {
-                    start.await();
-                    task.run();
-                    return null;
-                }));
+    /**
+     * 두 요청이 모두 경로 잠금 조회에 들어올 때까지 기다린다. 두 번째 요청이 잠금 지점에 닿기 전에 첫
+     * 요청을 풀면 두 요청이 순차로 끝나, 직렬화가 사라져도 겹침이 만들어지지 않아 테스트가 통과한다.
+     *
+     * <p>spy 를 스텁하지 않고 기록만 읽는다. Mockito 는 호출을 실제 실행 전에 기록하므로 두 번째 호출이
+     * 보이면 그 요청은 잠금 조회에 들어갔고, 직렬화가 살아 있으면 그 자리에서 첫 요청을 기다린다.
+     * 스텁으로 가로채는 방법은 쓸 수 없다. repository 질의는 추상 메서드라
+     * {@code invocation.callRealMethod()} 가 실패하고, {@code MockitoSpyBean} 은 원본 bean 을
+     * {@code spiedInstance} 로 남기지 않아 직접 위임할 대상도 없다.
+     */
+    private void 두_요청이_경로_잠금에_들어올_때까지_기다린다() throws InterruptedException {
+        for (int attempt = 0; attempt < 200; attempt++) {
+            if (경로_잠금_조회_수() >= 2) {
+                return;
             }
-            start.countDown();
-            executor.shutdown();
-            assertTrue(executor.awaitTermination(30, TimeUnit.SECONDS), "동시 요청이 끝나지 않았다");
-            for (Future<?> future : futures) {
-                future.get();
-            }
-        } finally {
-            executor.shutdownNow();
+            Thread.sleep(50);
         }
+        fail("두 번째 요청이 경로 잠금까지 오지 않았다");
+    }
+
+    private long 경로_잠금_조회_수() {
+        return mockingDetails(aiReadingRouteRepository).getInvocations().stream()
+                .filter(invocation ->
+                        invocation.getMethod().getName().equals("findOwnedByIdForUpdate"))
+                .count();
     }
 
     private void 독자를_생성한다(long readerId) {
