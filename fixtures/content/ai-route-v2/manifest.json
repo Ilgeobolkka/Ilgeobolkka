@@ -9806,6 +9806,1032 @@
       ]
     },
     {
+      "bookId": 29,
+      "title": "기후 데이터를 읽는 방법",
+      "totalPageCount": 48,
+      "pdfPath": "pdfs/book-029.pdf",
+      "pdfSha256": "918ef023fc46ca67944feff0e4ddedcdd142a76f7b0808cd56614de93d092062",
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 값 하나로는 아무것도 말하지 못한다",
+          "section": "1.1 값 하나가 알려 주는 것",
+          "primaryConcepts": [
+            "값 하나의 한계"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단일 관측값이 해석의 근거가 되지 못한다는 조건을 세우는 도입 페이지다. 비교 기준의 설정이 값에 의미를 부여한다는 원리를 제시하고, 기준 선택·변동과 추세의 분리·자료 생성 맥락이라는 세 축을 예고한다.",
+          "aiAnalysisInputSha256": "068cd3a190a1262289c4976ea34bd1fc149295e93bf6e18b4ba64aaad8bb80f0",
+          "aiPublicGuideTopic": "낱개의 수치로 시작해서는 아무 말도 할 수 없다는 조건",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "one-number-says-nothing"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 값 하나로는 아무것도 말하지 못한다",
+          "section": "1.1 값 하나가 알려 주는 것",
+          "primaryConcepts": [
+            "값 하나의 한계"
+          ],
+          "secondaryConcepts": [
+            "평균의 성질"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측값의 집합이 갖는 의미가 표본의 구성 방식에 의존한다는 점을 다루는 페이지다. 시간 축 표본과 공간 축 표본의 차이를 제시하고, 수치만 남고 취득 맥락이 소실될 때 생기는 문제와 메타정보 병기의 필요를 밝힌다.",
+          "aiAnalysisInputSha256": "2cc530c245d8e045ff0b1fc3189736183bd777be705dae579a61807898861975",
+          "aiPublicGuideTopic": "값 여럿을 모아도 곧바로 뜻이 생기지는 않는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 값 하나로는 아무것도 말하지 못한다",
+          "section": "1.2 평균이라는 값의 성질",
+          "primaryConcepts": [
+            "평균의 성질"
+          ],
+          "secondaryConcepts": [
+            "값 하나의 한계"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "평균 계산에서 소실되는 정보를 산포와 분포의 비대칭으로 정리하는 페이지다. 동일한 평균을 갖는 서로 다른 분포의 존재와 극단값의 영향을 제시하고, 산포 병기가 대표성 판단의 조건임을 밝힌다.",
+          "aiAnalysisInputSha256": "798f1c36a581c1d38d0205b3e45d0bec0cf496f9ca5c8df73d91782e84ec6d24",
+          "aiPublicGuideTopic": "여럿을 하나로 줄일 때 무엇이 사라지는가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 값 하나로는 아무것도 말하지 못한다",
+          "section": "1.2 평균이라는 값의 성질",
+          "primaryConcepts": [
+            "평균의 성질"
+          ],
+          "secondaryConcepts": [
+            "기준 기간"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "평균의 집계 단위와 산출 방식에 따라 값이 달라진다는 점을 다루는 페이지다. 일평균 산출 방식의 역사적 변화가 장기 계열의 불연속을 만든다는 문제를 제시하고, 균질화 논의를 예고한다.",
+          "aiAnalysisInputSha256": "339a7a379544ee872beb2f5feff20a2d0858b8dfb2b070d9b4a08870feb968e9",
+          "aiPublicGuideTopic": "무엇의 평균인지가 결과를 바꾼다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 값 하나로는 아무것도 말하지 못한다",
+          "section": "1.3 무엇에 견줄 것인가",
+          "primaryConcepts": [
+            "기준 기간"
+          ],
+          "secondaryConcepts": [
+            "평균의 성질"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기준 기간 설정이 편차 계산 결과를 좌우한다는 점을 다루는 페이지다. 표준 기간 길이가 관행적 절충임을 밝히고, 기준 구간의 선택에 따라 동일 자료에서 상이한 인상이 도출된다는 점과 기준 명시의 필요를 제시한다.",
+          "aiAnalysisInputSha256": "5e34e6892f3bb68c99d1e0be40e8b8e971d141f3925a4bdf1411a0a900f83a2c",
+          "aiPublicGuideTopic": "기준을 정하는 일이 결과를 정한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 값 하나로는 아무것도 말하지 못한다",
+          "section": "1.3 무엇에 견줄 것인가",
+          "primaryConcepts": [
+            "기준 기간"
+          ],
+          "secondaryConcepts": [
+            "평균의 성질",
+            "값 하나의 한계"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 관측 계열을 서로 다른 기준 기간으로 환산했을 때 나타나는 편차 그래프의 차이를 상하로 대비한 도표다. 원자료와 두 결과를 함께 배치해 기준 선택이 시각적 인상을 좌우한다는 점을 드러낸다.",
+          "aiAnalysisInputSha256": "dbdc0a8aa15e1daa85ca2815079d0d1f9fe7edec58c699110cb90f3a6a1def02",
+          "aiPublicGuideTopic": "같은 자료를 서로 다른 기준으로 읽은 결과를 나란히 놓은 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 값 하나로는 아무것도 말하지 못한다",
+          "section": "1.4 무엇을 자료로 삼는가",
+          "primaryConcepts": [
+            "자료의 출처"
+          ],
+          "secondaryConcepts": [
+            "기준 기간"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기후 자료원을 지상 관측, 원격 관측, 대리 지표로 나누고 각각의 공간 분포·기간·정밀도 특성을 정리하는 페이지다. 서술 범위를 지상 관측 중심으로 한정하는 이유를 함께 밝힌다.",
+          "aiAnalysisInputSha256": "7b89deedc881de365fa71b461d359738cc13dfc7ec0bd20c7cfd8f6316acb511",
+          "aiPublicGuideTopic": "이 책이 다루는 자료의 종류",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 값 하나로는 아무것도 말하지 못한다",
+          "section": "1.4 무엇을 자료로 삼는가",
+          "primaryConcepts": [
+            "자료의 출처"
+          ],
+          "secondaryConcepts": [
+            "값 하나의 한계"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이질적 자료원을 하나의 계열로 접합할 때 생기는 문제를 다루는 페이지다. 접합부의 값 도약과 그 원인을 제시하고, 중복 관측 기간의 확보가 접합의 근거가 된다는 점과 병행 운영 관례를 밝힌다.",
+          "aiAnalysisInputSha256": "a8bcbce54a5873c09410ef8058b7e136274565d9e6becab94de5032118ebc1d7",
+          "aiPublicGuideTopic": "세 자료를 함께 쓸 때 생기는 문제",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 흔들림과 흐름을 가르는 일",
+          "section": "2.1 오르내림 속의 방향",
+          "primaryConcepts": [
+            "흔들림과 흐름"
+          ],
+          "secondaryConcepts": [
+            "평균의 성질"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단기 변동이 장기 경향보다 큰 자료에서 방향을 판정하는 문제를 다루는 페이지다. 두 시점 비교로는 경향을 말할 수 없다는 점을 제시하고, 필요한 관측 기간이 변동 폭에 의존한다는 관계를 밝힌다.",
+          "aiAnalysisInputSha256": "da86696e40b7b047962e34af4da3b737ffc4b885da85ebfaaf3cf65f7ffd6649",
+          "aiPublicGuideTopic": "값들이 오르내리는 가운데 방향을 찾는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 흔들림과 흐름을 가르는 일",
+          "section": "2.1 오르내림 속의 방향",
+          "primaryConcepts": [
+            "흔들림과 흐름"
+          ],
+          "secondaryConcepts": [
+            "값 하나의 한계"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "변동 자체가 분석 대상이 된다는 점을 다루는 페이지다. 변동 폭의 시간적 변화와 겉보기 주기성을 각각 물음으로 제시하고, 경향만 추출할 때 소실되는 정보가 있음을 밝힌다.",
+          "aiAnalysisInputSha256": "6ce2659b83947c4e907c9bd43c8e18cbdef152aed5a071498be7f97b3b02c3a7",
+          "aiPublicGuideTopic": "오르내림 자체도 자료라는 점",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 흔들림과 흐름을 가르는 일",
+          "section": "2.2 이동평균이라는 도구",
+          "primaryConcepts": [
+            "이동평균"
+          ],
+          "secondaryConcepts": [
+            "흔들림과 흐름"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이동평균의 원리와 창 길이 선택 문제를 다루는 페이지다. 평활이 단기 변동을 억제하는 구조를 제시하고, 창 길이에 따라 결과의 인상이 달라지므로 반드시 명시해야 한다는 원칙을 밝힌다.",
+          "aiAnalysisInputSha256": "c5767cc64ec7b73c8012f269e2ea479d86692802628288381f201e3418094afd",
+          "aiPublicGuideTopic": "오르내림을 눌러 방향을 보이게 만드는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 흔들림과 흐름을 가르는 일",
+          "section": "2.2 이동평균이라는 도구",
+          "primaryConcepts": [
+            "이동평균"
+          ],
+          "secondaryConcepts": [
+            "흔들림과 흐름",
+            "평균의 성질"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 계열에 서로 다른 창 길이의 이동평균을 적용한 결과를 겹쳐 나타낸 도표다. 평활 정도의 차이와 계열 양 끝에서 값이 산출되지 않는 특성을 함께 표시해 도구의 선택과 한계를 드러낸다.",
+          "aiAnalysisInputSha256": "7853c9c30844fea2856c4cd3ed0174f0dc119aca24cc18bc16b0e9bf3e150457",
+          "aiPublicGuideTopic": "같은 자료를 서로 다른 길이로 눌러 본 결과를 겹쳐 놓은 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 흔들림과 흐름을 가르는 일",
+          "section": "2.3 눌린 자료를 읽을 때 조심할 것",
+          "primaryConcepts": [
+            "평활의 대가"
+          ],
+          "secondaryConcepts": [
+            "이동평균"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이동평균 적용 후 나타나는 해석상의 위험을 계열 양 끝의 불안정성, 급격한 변화의 분산, 인위적 주기성의 출현으로 정리하는 페이지다. 각 현상이 평활 연산의 구조에서 비롯됨을 밝힌다.",
+          "aiAnalysisInputSha256": "65ada83eb799b9d193c85167c7dd0e0ede483b277204eb13ce69e9c598940c4e",
+          "aiPublicGuideTopic": "부드러워진 곡선이 감추는 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 흔들림과 흐름을 가르는 일",
+          "section": "2.3 눌린 자료를 읽을 때 조심할 것",
+          "primaryConcepts": [
+            "평활의 대가"
+          ],
+          "secondaryConcepts": [
+            "값 하나의 한계"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "평활 결과를 원계열과 함께 제시해야 한다는 원칙을 다루는 페이지다. 병행 표시가 변동 폭 대비 경향의 뚜렷함과 계열 양 끝의 산출 불가 구간을 드러낸다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "6d6b26e4028d4bbd06ebac631d8fa145e5edab292dc06157df9e338bdf2b523e",
+          "aiPublicGuideTopic": "눌린 곡선과 원래 값을 함께 보는 습관",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 흔들림과 흐름을 가르는 일",
+          "section": "2.4 방향이 있다고 말하려면",
+          "primaryConcepts": [
+            "방향의 판정"
+          ],
+          "secondaryConcepts": [
+            "평활의 대가"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "추세 판정에 기울기와 그 불확실성을 함께 제시해야 한다는 원칙을 다루는 페이지다. 무작위 변동에서도 겉보기 경향이 발생한다는 점을 지적하고, 변동 폭을 기준으로 우연 발생 가능성을 평가하는 구조를 밝힌다.",
+          "aiAnalysisInputSha256": "6bfe37dd292b0815c35e6af1ab47a165005ebd28bec56de5ea6e9bf50dbe927a",
+          "aiPublicGuideTopic": "눈으로 본 방향과 잴 수 있는 방향",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "2장 흔들림과 흐름을 가르는 일",
+          "section": "2.4 방향이 있다고 말하려면",
+          "primaryConcepts": [
+            "방향의 판정"
+          ],
+          "secondaryConcepts": [
+            "이동평균"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 자료에서 산출 기간에 따라 추세 기울기가 달라지는 구조를 다루는 페이지다. 기간 길이와 추정 불확실성의 관계를 제시하고, 기울기 비교 시 기간을 일치시켜야 한다는 요건을 밝힌다.",
+          "aiAnalysisInputSha256": "1f47468a8d585f2c1fd881d412f7f5664c1d855f9e399bb1835b3009e86c9d4f",
+          "aiPublicGuideTopic": "같은 자료에서 여러 기울기가 나오는 이유",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 날씨와 기후를 가르는 기준",
+          "section": "3.1 날씨와 기후는 다른 말이다",
+          "primaryConcepts": [
+            "날씨와 기후"
+          ],
+          "secondaryConcepts": [
+            "흔들림과 흐름"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "날씨와 기후의 개념적 차이를 개별 상태와 상태들의 분포로 규정하는 페이지다. 두 진술이 서로 다른 규모의 자료로 검증된다는 점을 제시하고, 동일한 자료원에서 비롯되기 때문에 혼동이 발생한다는 구조를 밝힌다.",
+          "aiAnalysisInputSha256": "dd83e75d1bef81ab3de2477d307e24b6ffb47a9982b0cab0a8a182b240f3e837",
+          "aiPublicGuideTopic": "두 말이 가리키는 대상의 차이",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 날씨와 기후를 가르는 기준",
+          "section": "3.1 날씨와 기후는 다른 말이다",
+          "primaryConcepts": [
+            "날씨와 기후"
+          ],
+          "secondaryConcepts": [
+            "평균의 성질"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "날씨 진술과 기후 진술이 서로를 반증하지 못한다는 점을 다루는 페이지다. 두 진술의 규모 차이를 근거로 제시하고, 분포 이동 후에도 극단 반대편 값이 존속한다는 점을 함께 밝힌다.",
+          "aiAnalysisInputSha256": "950d6ed842e725f68e1dd7e52068e31d80fc1cfddba315c6da227facb751f827",
+          "aiPublicGuideTopic": "하나로 다른 하나를 반박할 수 없다는 점",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 날씨와 기후를 가르는 기준",
+          "section": "3.2 분포가 옮겨 간다는 말",
+          "primaryConcepts": [
+            "분포의 이동"
+          ],
+          "secondaryConcepts": [
+            "날씨와 기후"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기후 변화를 분포의 이동으로 기술하는 관점을 다루는 페이지다. 평균의 소폭 이동이 극단값 빈도에 비선형적 변화를 일으키는 구조를 제시하고, 평균 중심 서술과 체감의 괴리를 설명한다.",
+          "aiAnalysisInputSha256": "c6cda4a790261d7c73fc3443e2cd20b5b309ddd277ba230f6a6f05daa8bd32ce",
+          "aiPublicGuideTopic": "기후가 달라진다는 것이 무엇을 뜻하는가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 날씨와 기후를 가르는 기준",
+          "section": "3.2 분포가 옮겨 간다는 말",
+          "primaryConcepts": [
+            "분포의 이동"
+          ],
+          "secondaryConcepts": [
+            "날씨와 기후",
+            "평균의 성질"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분포의 평행 이동이 극단 구간의 빈도에 미치는 영향을 두 곡선의 꼬리 면적 비교로 나타낸 도표다. 중심 이동량과 꼬리 면적 변화의 규모 차이를 같은 화면에서 대비한다.",
+          "aiAnalysisInputSha256": "343a2a02aead20f4552155f9fce801b7551196f0e73a408c95db4731acc57c7f",
+          "aiPublicGuideTopic": "분포가 조금 옮겨 갈 때 끝자락에서 생기는 변화를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 날씨와 기후를 가르는 기준",
+          "section": "3.3 몇 해로는 알 수 없다",
+          "primaryConcepts": [
+            "필요한 기간"
+          ],
+          "secondaryConcepts": [
+            "분포의 이동",
+            "방향의 판정"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기후 진술에 필요한 관측 기간이 변수의 변동성에 따라 다르다는 점을 다루는 페이지다. 기온과 강수의 차이를 예로 들고, 동일 보고서 내에서 항목별 확실성 표현이 달라지는 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "73e4b576c5ba02ca3db538ebaf470b94374be7334fa400be868f1e126c94acaa",
+          "aiPublicGuideTopic": "기후에 대해 말하려면 얼마나 오래 봐야 하는가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 날씨와 기후를 가르는 기준",
+          "section": "3.3 몇 해로는 알 수 없다",
+          "primaryConcepts": [
+            "필요한 기간"
+          ],
+          "secondaryConcepts": [
+            "이동평균"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "짧은 관측 기간으로 가능한 진술과 불가능한 진술을 구분하는 페이지다. 기간 내 기술 통계는 성립하지만 기준 대비 평가와 외삽은 성립하지 않는다는 점을 밝히고, 진술 범위 한정의 성격을 제시한다.",
+          "aiAnalysisInputSha256": "be543726f98a228e10d44481b74114d7725f4865cfb5dcc14fa4ca92a0ff0dc8",
+          "aiPublicGuideTopic": "짧은 자료로도 말할 수 있는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 자료가 만들어진 사정",
+          "section": "4.1 지점은 고르게 놓여 있지 않다",
+          "primaryConcepts": [
+            "지점의 배치"
+          ],
+          "secondaryConcepts": [
+            "자료의 출처"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측망의 공간적 불균등이 전역 평균 산출에 미치는 영향을 다루는 페이지다. 면적 가중의 필요와 그 과정에 개입하는 선택을 제시하고, 기관별 산출값 차이의 원인을 밝힌다.",
+          "aiAnalysisInputSha256": "6d770890403af36b0ba77a07c14099c5253604c3efcbac6f5a437387026a645f",
+          "aiPublicGuideTopic": "관측 지점이 어디에 있는가가 자료를 정한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 자료가 만들어진 사정",
+          "section": "4.1 지점은 고르게 놓여 있지 않다",
+          "primaryConcepts": [
+            "지점의 배치"
+          ],
+          "secondaryConcepts": [
+            "평균의 성질"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 지점 수의 시간적 변화가 평균값의 성질에 미치는 영향을 다루는 페이지다. 표본 수에 따른 안정성 차이와 특정 시점의 급격한 증감이 만드는 도약을 제시하고, 지점 수 병기 관례를 밝힌다.",
+          "aiAnalysisInputSha256": "430f36695e43e39ee175111d93846d3e29129aeb7ebf4741702dee0acf00b9a5",
+          "aiPublicGuideTopic": "지점 수가 시간에 따라 달라진다는 점",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 자료가 만들어진 사정",
+          "section": "4.2 지점 둘레가 달라진다",
+          "primaryConcepts": [
+            "둘레의 변화"
+          ],
+          "secondaryConcepts": [
+            "지점의 배치"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 지점 주변 환경 변화가 계열에 유입되는 문제를 다루는 페이지다. 도시화 효과의 국지성을 지적하고, 인접 지점 비교를 통한 검출과 보정 절차, 원자료 보존과 변경 이력 기록의 원칙을 제시한다.",
+          "aiAnalysisInputSha256": "b01444ee1a8fffdd86f246b389481bde821025d7afd01aaa311278064f1f4ba5",
+          "aiPublicGuideTopic": "같은 자리인데 값이 달라지는 경우",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 자료가 만들어진 사정",
+          "section": "4.2 지점 둘레가 달라진다",
+          "primaryConcepts": [
+            "둘레의 변화"
+          ],
+          "secondaryConcepts": [
+            "평균의 성질"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 환경 변화가 양방향으로 작용한다는 점을 다루는 페이지다. 승온 요인 외에 냉각 요인의 사례를 제시하고, 보정 방향을 사전에 가정하지 않고 인접 비교로 판정해야 하는 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "82ed2511119a29c4efe0d1d5f6e05323e1569e736de047f7825f7a30321fb65e",
+          "aiPublicGuideTopic": "둘레의 변화가 늘 위로만 가지는 않는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 자료가 만들어진 사정",
+          "section": "4.3 재는 방법이 바뀐다",
+          "primaryConcepts": [
+            "방법의 변화"
+          ],
+          "secondaryConcepts": [
+            "둘레의 변화",
+            "평균의 성질"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 방법 변경이 계열에 만드는 불연속을 다루는 페이지다. 장비 교체와 관측 시각 변경, 집계 방식 변화를 원인으로 제시하고, 인접 지점 비교와 관측 이력 기록을 이용한 균질화 절차의 필요를 밝힌다.",
+          "aiAnalysisInputSha256": "0844810f73ac66cbf30805457240795b597fec89226a9ac676cb858578ba3610",
+          "aiPublicGuideTopic": "장비와 절차가 바뀌면 생기는 어긋남",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 자료가 만들어진 사정",
+          "section": "4.3 재는 방법이 바뀐다",
+          "primaryConcepts": [
+            "방법의 변화"
+          ],
+          "secondaryConcepts": [
+            "지점의 배치",
+            "둘레의 변화"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "두 인접 계열의 차분을 이용해 불연속 시점을 검출하는 절차를 상하 두 그래프로 나타낸 도표다. 원계열에서는 식별하기 어려운 단차가 차분 계열에서 드러나는 구조와 원인 확인 경로를 함께 표시한다.",
+          "aiAnalysisInputSha256": "b984e41d341e5055366f0b1e6f143a02c1034c45590886639feb1ce7068ea87f",
+          "aiPublicGuideTopic": "두 지점의 차이를 보고 어긋난 자리를 찾는 방법을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 자료가 만들어진 사정",
+          "section": "4.4 빈자리를 채우는 일",
+          "primaryConcepts": [
+            "빈자리 채우기"
+          ],
+          "secondaryConcepts": [
+            "지점의 배치"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결측값 보간의 절차와 위험을 다루는 페이지다. 인접 지점 기반 보간의 방식을 제시하고, 보간값과 실측값이 구분되지 않을 때 생기는 문제 및 관측 밀도가 낮은 지역에서 결과 편차가 커지는 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "493b72eea693770a9cb30249a6b5f8d7c2869efc3f1b7321cedb705bc4111202",
+          "aiPublicGuideTopic": "값이 없는 자리를 다루는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 자료가 만들어진 사정",
+          "section": "4.4 빈자리를 채우는 일",
+          "primaryConcepts": [
+            "빈자리 채우기"
+          ],
+          "secondaryConcepts": [
+            "방법의 변화"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결측 처리에서 보간과 제외라는 두 선택지의 상충을 다루는 페이지다. 각 방식의 이점과 위험을 대비하고, 두 결과의 병행 산출과 그 차이 자체를 결과로 보고하는 관행을 제시한다.",
+          "aiAnalysisInputSha256": "5d0bf8ecc20f773b3ac093aac16294ca233b2a22689bfc710b2b76129e4510b2",
+          "aiPublicGuideTopic": "채우지 않는 선택",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 돌미르 자료실의 한 해",
+          "section": "5.1 한 해짜리 정리 계획",
+          "primaryConcepts": [
+            "정리 계획"
+          ],
+          "secondaryConcepts": [
+            "자료의 출처"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기후 자료 정리 작업의 사전 설계를 다루는 페이지다. 산출 항목과 기준 기간, 평활 창 길이를 사전에 확정하는 이유를 제시하고, 극단값 지표를 포함하는 근거를 앞 장의 분포 논의와 연결한다.",
+          "aiAnalysisInputSha256": "81b33f2090ecc94c287ea28e884e59b1b40d43ced3b797a411d6b044f57c4449",
+          "aiPublicGuideTopic": "자료를 정리하기 전에 정해 두는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 돌미르 자료실의 한 해",
+          "section": "5.2 지점을 고른다",
+          "primaryConcepts": [
+            "지점 선별"
+          ],
+          "secondaryConcepts": [
+            "정리 계획"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 지점 선별 기준의 설정과 그 부작용을 다루는 페이지다. 기간과 결측률 기준을 사전에 정하는 절차를 제시하고, 선별이 공간적 편중을 낳을 수 있으므로 제외 목록을 공개해야 한다는 원칙을 밝힌다.",
+          "aiAnalysisInputSha256": "4b496b90bef2aad3074661becf8ac85285fec6c2d473629f70333edf253bbab4",
+          "aiPublicGuideTopic": "어느 지점의 자료를 쓸지 정하는 절차",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 돌미르 자료실의 한 해",
+          "section": "5.3 튄 자리를 다룬다",
+          "primaryConcepts": [
+            "값의 처리"
+          ],
+          "secondaryConcepts": [
+            "지점 선별"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "불연속이 검출된 계열의 처리 절차를 다루는 페이지다. 원인이 확인된 경우의 보정과 미확인 경우의 비보정 원칙을 구분하고, 해당 계열의 포함 여부에 따른 결과 병기를 대안으로 제시한다.",
+          "aiAnalysisInputSha256": "cf4864a476f03df7ce0ee30bee8d8c47c7aa0b7154b5e7a50de1b8762da94862",
+          "aiPublicGuideTopic": "어긋난 값을 만났을 때의 절차",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            33
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 돌미르 자료실의 한 해",
+          "section": "5.3 튄 자리를 다룬다",
+          "primaryConcepts": [
+            "값의 처리"
+          ],
+          "secondaryConcepts": [
+            "빈자리 채우기"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "처리 방식에 따라 결과가 달라질 때의 보고 원칙을 다루는 페이지다. 방향이 일치하는 경우와 갈리는 경우를 구분해 각각의 서술 방식을 제시하고, 보고 규칙을 사전에 확정하는 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "e4789370196b67be1d0238eca5acd86b73a7cabacfab26b856e2477c62569ab0",
+          "aiPublicGuideTopic": "두 결과가 갈릴 때 무엇을 적는가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 돌미르 자료실의 한 해",
+          "section": "5.4 무엇을 함께 내는가",
+          "primaryConcepts": [
+            "함께 내는 것"
+          ],
+          "secondaryConcepts": [
+            "정리 계획"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자료 공개 시 병행 제공해야 하는 항목을 원자료, 보정 이력, 처리 선택, 제외 목록으로 정리하는 페이지다. 각 항목이 재현과 재해석의 조건임을 밝히고 결과만 공개할 때의 한계를 지적한다.",
+          "aiAnalysisInputSha256": "06841b891c9b047bfe14ee5af7147f77108e2b42cad5e5a906ae71406d7212b1",
+          "aiPublicGuideTopic": "정리한 결과와 함께 공개하는 것들",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 돌미르 자료실의 한 해",
+          "section": "5.4 무엇을 함께 내는가",
+          "primaryConcepts": [
+            "함께 내는 것"
+          ],
+          "secondaryConcepts": [
+            "이동평균",
+            "지점 선별"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공개 그림과 함께 제공해야 하는 부속 자료를 네 항목으로 나열한 도표다. 결과물과 부속 자료의 관계를 상하 구조로 배치해 재현 가능성이 부속 자료에 의존한다는 점을 드러낸다.",
+          "aiAnalysisInputSha256": "c48f7a817c8c6f8c95767a37cdba96e2cc31fb4b0af4ce6809f2d256098d9fce",
+          "aiPublicGuideTopic": "정리 결과와 함께 내는 것들을 한자리에 늘어놓은 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "6장 잘못 읽기 쉬운 자리",
+          "section": "6.1 두 해를 견주는 일",
+          "primaryConcepts": [
+            "두 시점의 오해"
+          ],
+          "secondaryConcepts": [
+            "흔들림과 흐름"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "두 시점 비교로 추세를 주장하는 오류를 다루는 페이지다. 단기 변동이 장기 경향을 초과할 수 있다는 점에서 구간 선택의 자의성이 결론을 좌우함을 지적하고, 기간 설정 근거의 명시를 요건으로 제시한다.",
+          "aiAnalysisInputSha256": "e8002d0e6f1a961b0bfc8effe352f6459adc3f2353748f2a20ee00e11f3efd97",
+          "aiPublicGuideTopic": "고른 두 해로 방향을 말하는 잘못",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 잘못 읽기 쉬운 자리",
+          "section": "6.1 두 해를 견주는 일",
+          "primaryConcepts": [
+            "두 시점의 오해"
+          ],
+          "secondaryConcepts": [
+            "방향의 판정"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기간 선택의 자의성을 억제하는 방법을 다루는 페이지다. 표준 기간의 사전 고정과 모든 부분 구간의 기울기를 전수 제시하는 방식을 제시하고, 후자가 예외 구간을 함께 드러낸다는 이점을 밝힌다.",
+          "aiAnalysisInputSha256": "39f10d850c7dce686b08a098412002e0866529eb87619f9414ba16b94dcf6dce",
+          "aiPublicGuideTopic": "기간을 고르는 자유를 줄이는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 잘못 읽기 쉬운 자리",
+          "section": "6.2 한 지점으로 전체를 말하는 일",
+          "primaryConcepts": [
+            "한 지점의 오해"
+          ],
+          "secondaryConcepts": [
+            "지점의 배치"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "국지 관측값을 광역 진술로 일반화하는 오류를 다루는 페이지다. 평균의 상승이 전 지점의 상승을 의미하지 않는다는 점을 밝히고, 진술의 공간 범위가 명시되어야 검증 가능해진다는 원칙을 제시한다.",
+          "aiAnalysisInputSha256": "c26f4e5229ada769ecbe58f68a3bb30667cc0e3d179c462daebe1eb3a837207d",
+          "aiPublicGuideTopic": "국지적인 값을 넓은 이야기로 옮기는 잘못",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 잘못 읽기 쉬운 자리",
+          "section": "6.2 한 지점으로 전체를 말하는 일",
+          "primaryConcepts": [
+            "한 지점의 오해"
+          ],
+          "secondaryConcepts": [
+            "두 시점의 오해",
+            "방향의 판정"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 계열에서 구간 선택에 따라 상반된 경향이 도출되는 과정을 원계열과 두 확대 구간으로 나타낸 도표다. 선택의 자의성이 결론을 결정한다는 점을 시각적으로 드러내고 기간 설정 근거의 필요를 제시한다.",
+          "aiAnalysisInputSha256": "62b2d9b23401e6c98e0ff3ad664b727902254812964d7e872ac73bb9c45c557e",
+          "aiPublicGuideTopic": "같은 자료에서 서로 반대되는 두 문장이 만들어지는 과정을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 잘못 읽기 쉬운 자리",
+          "section": "6.3 고쳤다는 말",
+          "primaryConcepts": [
+            "보정의 오해"
+          ],
+          "secondaryConcepts": [
+            "방법의 변화",
+            "함께 내는 것"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자료 보정에 대한 상반된 두 가지 오해를 다루는 페이지다. 무보정이 중립적 선택이 아니라는 점과 보정 절차에 판단이 개입한다는 점을 함께 제시하고, 원자료·보정값·이력의 병행 공개를 해법으로 밝힌다.",
+          "aiAnalysisInputSha256": "da65b250e3a82b70f78078e260adbb22960cba84701f88736c33519fbdf004c7",
+          "aiPublicGuideTopic": "자료를 고친다는 일을 읽는 두 가지 잘못",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 잘못 읽기 쉬운 자리",
+          "section": "6.4 잴 수 없는 것",
+          "primaryConcepts": [
+            "측정의 한계"
+          ],
+          "secondaryConcepts": [
+            "빈자리 채우기",
+            "필요한 기간"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기후 자료 분석의 한계를 관측 공백 구간의 불확실성, 개별 사건의 원인 규명 불가, 자료 외삽과 예측의 구분으로 정리하는 페이지다. 세 항목이 모두 자료의 성질에서 비롯된 구조적 제약임을 밝힌다.",
+          "aiAnalysisInputSha256": "b852bc4d8711539b502bca0f1c65bf6500de8f20bfe9b76536f50fd7f99b6340",
+          "aiPublicGuideTopic": "이 책의 방법으로 확인할 수 없는 것들",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 잘못 읽기 쉬운 자리",
+          "section": "6.4 잴 수 없는 것",
+          "primaryConcepts": [
+            "측정의 한계"
+          ],
+          "secondaryConcepts": [
+            "보정의 오해"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "불확실성 표기가 결론의 신뢰도를 낮추지 않는다는 점을 다루는 페이지다. 범위가 명시된 진술의 검증 가능성과 폭의 크기 자체가 자료 상태에 대한 정보라는 점을 제시한다.",
+          "aiAnalysisInputSha256": "5116867b213387f074e7f2b5e1873358beeb79e417669ee734b36f98a14dd3a1",
+          "aiPublicGuideTopic": "폭을 적는 일이 결론을 약하게 만들지 않는다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "7장 결론: 자료는 만들어진 것이다",
+          "section": "7.1 자료는 만들어진 것이다",
+          "primaryConcepts": [
+            "값 하나의 한계"
+          ],
+          "secondaryConcepts": [
+            "기준 기간",
+            "방법의 변화"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도입에서 제시한 단일 값의 무력함을 책 전체의 결론으로 다시 기술하는 결론 페이지다. 기준 기간, 평활 길이, 관측망 배치, 방법 변경, 결측 처리라는 가공 요소를 열거하고, 자료가 구성물이라는 사실이 신뢰성의 문제가 아니라 기록 요건의 문제임을 밝힌다.",
+          "aiAnalysisInputSha256": "2c52708d9c9bd2c9aed0856fec7a76dea07e72465046665c66668d3bad3f0b6d",
+          "aiPublicGuideTopic": "책을 지나온 뒤 처음 물음으로 되돌아가는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "one-number-says-nothing"
+          ]
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 결론: 자료는 만들어진 것이다",
+          "section": "7.1 자료는 만들어진 것이다",
+          "primaryConcepts": [
+            "종합"
+          ],
+          "secondaryConcepts": [
+            "이동평균",
+            "날씨와 기후"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체에서 반복 사용된 네 가지 구분을 정리하는 페이지다. 값과 기준, 변동과 경향, 날씨와 기후, 실측과 가공을 각각 대비 형태로 제시해 개별 내용을 재구성할 골격을 남긴다.",
+          "aiAnalysisInputSha256": "abf2302ba048472a128ef06a803f5f55e912abc0149a82f713caa0e0ed40c44e",
+          "aiPublicGuideTopic": "장마다 세운 구분을 한자리에 모으는 정리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 결론: 자료는 만들어진 것이다",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "측정의 한계"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기후 자료 분석의 미해결 과제를 과거 자료의 불확실성, 강수 경향 판정의 어려움, 보정 방법 선택 기준의 부재로 나누어 제시하는 페이지다. 세 항목이 자료 축적만으로 해소되지 않는다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "66ac720c5cda72572f953de348686a99cc659934bca534d9b3673e0cad0c69c6",
+          "aiPublicGuideTopic": "다 읽은 뒤에도 열려 있는 물음들",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 결론: 자료는 만들어진 것이다",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "정리 계획",
+            "함께 내는 것"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "독자가 공개 자료로 수행할 수 있는 확인 절차와 그 대응 내용을 제시하는 마무리 페이지다. 평활 길이와 기준 기간을 바꿔 결과를 비교하는 방법을 안내하고, 비교 기준·처리 방식·자료 출처를 차례로 확인하는 순서를 최종 메시지로 제시한다.",
+          "aiAnalysisInputSha256": "8af06f360e54e7a5695d493a937f5ca87562195176a197e3bc98624ca3551ac8",
+          "aiPublicGuideTopic": "다음에 무엇을 직접 해 볼 수 있는지",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            47
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 34,
       "title": "장부로 읽는 사회사: 기록에서 구조로",
       "pdfPath": "pdfs/book-034.pdf",

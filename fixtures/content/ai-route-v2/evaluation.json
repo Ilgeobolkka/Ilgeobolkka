@@ -831,6 +831,83 @@
       ]
     },
     {
+      "caseId": "case-book-029",
+      "bookId": 29,
+      "purpose": "이 책을 소장하고 있는데, 오르내리는 값에서 방향을 읽어 내는 방법과 그 방법이 감추는 것을 제대로 익히고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "값 하나의 한계",
+        "평균의 성질",
+        "흔들림과 흐름",
+        "이동평균",
+        "평활의 대가",
+        "방향의 판정"
+      ],
+      "helpfulConcepts": [
+        "기준 기간",
+        "날씨와 기후",
+        "두 시점의 오해"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 15
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 16
+        }
+      ],
+      "irrelevantPageNumbers": [
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          45
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        10,
+        12,
+        14,
+        15,
+        16
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        6,
+        18,
+        38
+      ]
+    },
+    {
       "caseId": "case-book-034",
       "bookId": 34,
       "purpose": "옛 장부에 이름이 없는 사람들을 어떻게 헤아려야 하는지, 짧게 핵심만 짚고 싶다",
