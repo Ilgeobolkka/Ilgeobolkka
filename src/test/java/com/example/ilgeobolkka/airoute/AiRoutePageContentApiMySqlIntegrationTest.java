@@ -256,6 +256,11 @@ class AiRoutePageContentApiMySqlIntegrationTest {
                 () -> assertEquals(before, 독자_상태()));
     }
 
+    /**
+     * 비포함 페이지를 다른 경로가 실제로 가진 페이지로 고른다. {@code IMAGE_ROUTE_ID}에 페이지 1은
+     * 없지만 같은 도서·같은 현재 세션 위치라 세션·권한 검증은 모두 통과한다. 항목 조회에서 경로 소속
+     * 조건이 빠지면 404가 아니라 200과 {@code FIRST_CONTENT}가 나온다.
+     */
     @Test
     void T_AIR_016_다른_독자와_경로에_없는_페이지는_같은_404다() throws Exception {
         UUID viewerSessionId = 새_세션을_연다(READER_ID, 1);
@@ -263,13 +268,15 @@ class AiRoutePageContentApiMySqlIntegrationTest {
         경로_콘텐츠를_요청한다(OTHER_READER_ID, ROUTE_ID, 1, viewerSessionId)
                 .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.code").value("RESOURCE_NOT_FOUND"));
-        경로_콘텐츠를_요청한다(READER_ID, ROUTE_ID, 99, viewerSessionId)
+        경로_콘텐츠를_요청한다(READER_ID, IMAGE_ROUTE_ID, 1, viewerSessionId)
                 .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.code").value("RESOURCE_NOT_FOUND"));
 
         assertAll(
                 () -> assertNull(항목_열람_시각(ROUTE_ID, 1)),
-                () -> assertNull(경로_완료_시각(ROUTE_ID)));
+                () -> assertNull(경로_완료_시각(ROUTE_ID)),
+                () -> assertEquals(0, 열린_항목_수(IMAGE_ROUTE_ID)),
+                () -> assertNull(경로_완료_시각(IMAGE_ROUTE_ID)));
     }
 
     @Test
@@ -390,6 +397,10 @@ class AiRoutePageContentApiMySqlIntegrationTest {
                     () -> contentFacade.provideContent(READER_ID, ROUTE_ID, 1, viewerSessionId));
             assertTrue(firstContentRead.await(10, TimeUnit.SECONDS), "첫 콘텐츠 읽기가 시작되지 않았다");
 
+            // 첫 요청은 이미 STARTED_AT을 읽어 두었다. 여기서 시계를 옮겨야 completedAt이 마지막 항목을
+            // 연 뒤 요청의 시각인지, 먼저 시작한 요청의 시각인지가 값으로 갈린다.
+            Instant lastOpenedAt = STARTED_AT.plusSeconds(30);
+            clock.set(lastOpenedAt);
             readingFacade.movePage(READER_ID, viewerSessionId, 2);
             ReaderState before = 독자_상태();
             Future<PageContent> second = executor.submit(
@@ -403,8 +414,11 @@ class AiRoutePageContentApiMySqlIntegrationTest {
 
             assertAll(
                     () -> assertEquals(2, 열린_항목_수(ROUTE_ID)),
+                    () -> assertEquals(UTC_DATETIME.format(STARTED_AT), 항목_열람_시각(ROUTE_ID, 1)),
                     () -> assertEquals(
-                            UTC_DATETIME.format(STARTED_AT), 경로_완료_시각(ROUTE_ID)),
+                            UTC_DATETIME.format(lastOpenedAt), 항목_열람_시각(ROUTE_ID, 2)),
+                    () -> assertEquals(
+                            UTC_DATETIME.format(lastOpenedAt), 경로_완료_시각(ROUTE_ID)),
                     () -> assertEquals(before, 독자_상태()));
         } finally {
             allowFirstContent.countDown();
