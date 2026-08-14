@@ -236,9 +236,16 @@ def fig_tilt():
         b.append(t(196, cy + 20, "지구가 도는 평면", 12, FAR, "600", anchor="start"))
         b.append(f'<circle cx="{ex}" cy="{cy}" r="24" fill="{EARTH}"/>')
         b.append(t(ex, cy + 48, "지구", 12, MUTED))
-        for sx in (-1, 1):
-            b.append(f'<circle cx="{ex + sx * nx:.0f}" cy="{cy}" r="5" fill="{RED}"/>')
-        b.append(t(ex + nx, cy + 24, "만나는 자리", 11, RED, "700"))
+        # 만나는 자리는 아래 칸에만 표시한다. 위 칸에도 그리면 만나는 자리가 그림자 축 위에 놓여,
+        # 보름마다 가림이 일어난다는 뜻이 되어 이 그림의 제목과 정면으로 어긋난다.
+        if my == 0.0:
+            for sx in (-1, 1):
+                b.append(f'<circle cx="{ex + sx * nx:.0f}" cy="{cy}" r="5" fill="{RED}"/>')
+            b.append(t(ex + nx, cy + 24, "만나는 자리", 11, RED, "700"))
+        else:
+            b.append(f'<line x1="{mx:.0f}" y1="{cy}" x2="{mx:.0f}" y2="{cy + my:.0f}" '
+                     f'stroke="{RED}" stroke-width="1.6" stroke-dasharray="4 4"/>')
+            b.append(t(mx + 10, cy + my / 2 + 4, "평면에서 벗어난 높이", 11, RED, "700", anchor="start"))
         b.append(moon(mx, cy + my, 18))
         b.append(t(mx, cy + my - 40, label, 13, INK, "700"))
 
@@ -267,9 +274,11 @@ def fig_month():
         else:
             f = i / 15 if i <= 15 else (30 - i) / 15
             b.append(phase_disc(cx, cy, 24, max(0.0, min(1.0, f)), waxing=i <= 15))
-    for i, lab in [(8, "흐림"), (17, "비"), (25, "새벽")]:
+    # 빈칸 여섯 개의 까닭을 모두 적는다. 셋만 적어 두면 「그 아래에 까닭을 적었다」가 그림과 어긋난다.
+    # 이어진 빈칸은 가운데에 한 번만 적어 이름표가 서로 붙지 않게 한다.
+    for i, lab, dx in [(9, "흐림 사흘", 0), (17, "비", 0), (25, "새벽 이틀", gap / 2)]:
         r_, c = divmod(i, 6)
-        b.append(t(x0 + c * gap, y0 + r_ * gap + 42, lab, 11, FAR))
+        b.append(t(x0 + c * gap + dx, y0 + r_ * gap + 42, lab, 11, FAR))
 
     bx = x0 + 6 * gap - 12
     b.append(f'<rect x="{bx}" y="{y0 - 30}" width="88" height="{4 * gap + 60}" rx="10" '
@@ -280,7 +289,7 @@ def fig_month():
 
     b.append(caption(W / 2, y0 + 5 * gap + 4,
                      ["빗금 친 자리는 관측하지 못한 날이고 그 아래에 까닭을 적었다.",
-                      "빈칸이 새벽에 몰렸다 — 다음 달에는 그 며칠을 나눠 맡는다"]))
+                      "빈칸은 하루씩 흩어지지 않고 몰려서 생긴다 — 흐린 사흘과 새벽 이틀이 그렇다"]))
 
     b.append(note_box(197, y0 + 5 * gap + 74, 400, "빈칸도 자료다", 16))
     return base("한 달을 늘어놓으면",
