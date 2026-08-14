@@ -108,7 +108,7 @@ def fig_edge_cut():
         b.append(frame(x, y, w, h))
         b.append(t(x + w / 2, y + h + 34, label, 15, INK, "600"))
     b.append(t(W / 2, 292, "가운데 원은 세 화면이 같은 주인공이다", 15, MUTED))
-    b.append(note_box(147, 600, 500, "절반이 가장 나쁘다"))
+    b.append(note_box(147, 600, 500, "방해 요소는 절반이 가장 나쁘다"))
     b.append(caption(W / 2, 722, [
         "절반만 걸린 것은 눈이 완성하려 들어 주인공에게서 시선을 빼앗는다.",
         "완전히 빼거나 완전히 넣는 두 선택지 가운데 하나를 고른다.",

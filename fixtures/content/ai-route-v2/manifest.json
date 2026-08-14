@@ -15453,7 +15453,7 @@
       "bookId": 62,
       "title": "무대조명 설계의 기초",
       "pdfPath": "pdfs/book-062.pdf",
-      "pdfSha256": "e7a61bc80062ab874a0820a79b448ec7afdcd417be6625977a6488f048167c71",
+      "pdfSha256": "4cbe6c8f050cedf97442b59f1d82361348814eaf2e2a1ae30cf2ea2d75e19cc2",
       "totalPageCount": 53,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -16472,10 +16472,10 @@
           ],
           "contentRole": "COUNTERPOINT",
           "aiRouteCandidatePage": true,
-          "aiAnalysisText": "반복 관람으로 설계자의 시각이 순응해 관객의 첫인상과 어긋나는 문제를 다룬다. 리허설이 길어질수록 무대가 어두워지는 경향을 지적하고 밝은 공간을 거쳐 재확인하거나 초견자의 판단을 빌리는 절차적 대응을 제시하며, 관객의 순응 때문에 밝기가 선행 장면들의 누적으로 결정된다는 점을 밝힌다.",
-          "aiAnalysisInputSha256": "43b90f3798eeb4cc8057d75d47fad2f4a59160d6b978f0326a454065e5a7655f",
+          "aiAnalysisText": "관객의 눈이 공연 진행 중에 계속 순응해 같은 조도라도 앞 장면에 따라 다르게 지각된다는 점을 다룬다. 막 단위로 값을 배분해야 하는 이유와, 장면을 끊어 보지 않고 이어서 확인해야 앞의 어둠을 낭비한 자리가 드러난다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "bce7a33ceb9e4c32d3f94f124c93d38e01b890feefe01dab2b6762473f2ef964",
           "aiPublicGuideTopic": "설계자의 눈이 관객의 눈과 달라지는 문제",
-          "estimatedReadingSeconds": 90,
+          "estimatedReadingSeconds": 80,
           "prerequisitePageNumbers": [
             20
           ],
@@ -16562,7 +16562,7 @@
           "aiAnalysisText": "새로운 장면을 설계할 때 순서대로 적용할 다섯 가지 점검 질문을 제시한다. 필수 가시 요소와 배제 요소로 대비 범위를 정하고 얼굴 가독성으로 방향을 좁히며 선행 장면과의 연결로 전환 방식을, 반복 여부로 값의 고정 정도를 정하는 순서를 정리한다.",
           "aiAnalysisInputSha256": "91f804fd494ab0a5cb566cb167ab07672af62a69faeaf077eccd0eb18a666840",
           "aiPublicGuideTopic": "새 장면을 만났을 때 차례로 던질 물음",
-          "estimatedReadingSeconds": 85,
+          "estimatedReadingSeconds": 90,
           "prerequisitePageNumbers": [
             50
           ],
@@ -16584,7 +16584,7 @@
           "aiAnalysisText": "도입부의 첫 장면을 네 변수로 되짚어 해석하며 책 전체를 닫는다. 각 값이 조금만 달랐을 때 관객이 보게 될 것이 달라진다는 대비를 통해 변수 간 결합을 재확인하고, 설계의 검증이 무대가 아니라 객석의 여러 위치에서 이뤄진다는 기준으로 마무리한다.",
           "aiAnalysisInputSha256": "0f6425082ec5659eecddbafbe191ce4a0cdbc7735fa44ce73d8df4787d6eff8b",
           "aiPublicGuideTopic": "첫 장면으로 돌아가는 마무리",
-          "estimatedReadingSeconds": 95,
+          "estimatedReadingSeconds": 100,
           "prerequisitePageNumbers": [
             52
           ],
@@ -16596,7 +16596,7 @@
       "bookId": 63,
       "title": "음악의 쉼과 프레이징",
       "pdfPath": "pdfs/book-063.pdf",
-      "pdfSha256": "ba2f7473520e2b4ca72f4a4284a94db423ebb9a1464a29d91728f5dbcff97a0d",
+      "pdfSha256": "3a7e924710d02d5f2aee1e993d647f3740cc0129f2daaca3744dfc28ffc4a2f1",
       "totalPageCount": 51,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -16844,7 +16844,7 @@
           "aiAnalysisText": "호흡 제약이 없는 악기에서도 악구 경계를 설정해야 하는 이유를 청자의 호흡 동조에서 찾는다. 선율이 출발음으로 회귀하거나 화성이 안정되는 지점이 숨의 자리가 된다는 기준과, 악보를 노래로 불러 경계를 찾는 실천적 방법을 제시한다.",
           "aiAnalysisInputSha256": "5a7030fefedbc7e918c9a4b3f11858aadea47d9510bf27317a9b97c6691d5a84",
           "aiPublicGuideTopic": "노래하듯 연주할 때 숨을 쉬는 지점",
-          "estimatedReadingSeconds": 85,
+          "estimatedReadingSeconds": 95,
           "prerequisitePageNumbers": [
             8
           ],
@@ -17528,10 +17528,10 @@
           ],
           "contentRole": "COUNTERPOINT",
           "aiRouteCandidatePage": true,
-          "aiAnalysisText": "잔향이 긴 공간에서 짧은 쉼이 여운에 묻히고 긴 쉼은 여운이 시간을 채워 준다는 비대칭을 설명한다. 짧은 쉼은 늘리고 긴 쉼은 줄이는 방향의 조정과, 무대 위에서는 잔향을 적게 듣기 때문에 객석의 판단을 빌려야 한다는 점을 다룬다.",
-          "aiAnalysisInputSha256": "9daa8892f423ca7fb2d515980805d013d81000fbe45605ed7d1f6b5d9f6a222c",
+          "aiAnalysisText": "잔향이 긴 공간에서 짧은 쉼은 통째로 묻히고 긴 쉼은 앞부분만 채워진다는 비대칭을 설명한다. 짧은 쉼만 늘리고 긴 쉼은 그대로 두는 조정과, 무대 위에서는 잔향을 적게 듣기 때문에 객석의 판단을 빌려야 한다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "dbcfd374238e75b024e6ab20e3e771857d005fa46a5b64da5e3144508926ae3a",
           "aiPublicGuideTopic": "연습실에서 맞춘 쉼이 공연장에서 어긋나는 이유",
-          "estimatedReadingSeconds": 80,
+          "estimatedReadingSeconds": 85,
           "prerequisitePageNumbers": [
             2
           ],
@@ -19003,7 +19003,7 @@
       "bookId": 65,
       "title": "색채 지각과 배색의 원리",
       "pdfPath": "pdfs/book-065.pdf",
-      "pdfSha256": "9bcff8360e292eb4bf0ff073df752748276285b15e77115be826d6305fe522e1",
+      "pdfSha256": "1250189cc3ef42686d331ddc21ac3348ba34ca1879f33ccbd159a2519b520ccf",
       "totalPageCount": 55,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -19205,8 +19205,8 @@
           ],
           "contentRole": "PREREQUISITE",
           "aiRouteCandidatePage": true,
-          "aiAnalysisText": "배색을 색 선택이 아니라 각 색의 역할과 비율을 정하는 일로 규정한다. 넓게 까는 색·받치는 색·소량만 쓰는 색으로 나누어 구조를 만드는 방법과, 색 수가 늘면 관계의 조합이 급증해 문제 추적이 어려워진다는 이유로 적은 색을 권한다.",
-          "aiAnalysisInputSha256": "36092c2dcc20d1dd66e779515f4d544391bd0dd845df9e7357c155fe83dfe6d8",
+          "aiAnalysisText": "배색을 개별 색의 선택이 아니라 색들 사이의 관계 설정으로 규정한다. 무엇을 먼저 보게 할지를 문장으로 정해야 살릴 색과 물러날 색이 갈린다는 순서를 제시하고, 색이 하나 늘 때 증가하는 것이 관계의 수라는 점에서 소수의 색을 권한다.",
+          "aiAnalysisInputSha256": "a5eb75c42c98d2156a8b7e0b07afc8252264c2a23285bed4d61eba71c22383c4",
           "aiPublicGuideTopic": "여러 색을 함께 쓰기로 정하는 일",
           "estimatedReadingSeconds": 90,
           "prerequisitePageNumbers": [
@@ -19226,8 +19226,8 @@
           ],
           "contentRole": "PREREQUISITE",
           "aiRouteCandidatePage": true,
-          "aiAnalysisText": "배색 수정 시 색 교체 이전에 비율·밝기·선명도 순으로 조정하는 절차를 제시한다. 유사한 면적으로 맞선 두 색이 주종 관계를 잃어 불안정해진다는 문제를 예로 들고, 되돌리기 쉬운 조정부터 시도해야 앞선 결정을 재검토하지 않아도 된다는 근거를 밝힌다.",
-          "aiAnalysisInputSha256": "35d26a9cf557c66c623c722ab96c71692cedb8d47119f470700b094c2b3b6463",
+          "aiAnalysisText": "배색 수정 시 색 교체에 앞서 이웃·밝기·선명도 순으로 조정하는 절차를 제시한다. 문제의 원인이 해당 색이 아니라 인접 관계에 있는 경우가 많다는 점을 첫 절의 상대성 원리와 연결해 이 순서의 근거로 삼는다.",
+          "aiAnalysisInputSha256": "16d431eec284f3c304b58f338229e36e7e77b7de0b8fbd03d530a2d5418facc9",
           "aiPublicGuideTopic": "배색을 고칠 때 무엇부터 손대는가",
           "estimatedReadingSeconds": 80,
           "prerequisitePageNumbers": [
@@ -19509,7 +19509,7 @@
           "aiAnalysisText": "따뜻한 계열과 차가운 계열의 면적 비율이 배색의 긴장과 주목점을 결정한다는 점을 다룬다. 소수 계열이 시선을 받고 다수 계열이 분위기를 맡는 역할 분담을 설명하며, 주목 대상을 먼저 정한 뒤 비율을 배정하는 순서를 제시한다.",
           "aiAnalysisInputSha256": "f60b43809818b628a625c70108e70063aa1202f0c0a0da329024d5dc81556596",
           "aiPublicGuideTopic": "두 계열을 얼마씩 쓸 것인가",
-          "estimatedReadingSeconds": 80,
+          "estimatedReadingSeconds": 85,
           "prerequisitePageNumbers": [
             20
           ],
@@ -19766,7 +19766,7 @@
           "aiAnalysisText": "실제 재료와 면적 비율로 견본을 제작하는 절차를 다룬다. 조명 조건이 다른 두 장소에서 함께 확인해야 한다는 점과, 날짜와 색의 세 성질을 병기해야 이후 재현이 가능하다는 기록 원칙을 제시한다.",
           "aiAnalysisInputSha256": "53e45fbab457ee669f4d83249d47a4976fb3ee6d7bb27683ae7e93a3797376bb",
           "aiPublicGuideTopic": "색을 종이 위에서 확인하는 절차",
-          "estimatedReadingSeconds": 75,
+          "estimatedReadingSeconds": 80,
           "prerequisitePageNumbers": [
             4
           ],
@@ -19806,9 +19806,9 @@
           ],
           "contentRole": "EXAMPLE",
           "aiRouteCandidatePage": true,
-          "aiAnalysisText": "동일한 세 색을 균등 분할한 배치와 넓게 까는 색·받치는 색·소량만 쓰는 색으로 역할을 나눈 배치로 비교한 도표다. 면적 배분이 구조와 주목점을 만든다는 점을 지시선과 함께 나타낸다.",
-          "aiAnalysisInputSha256": "90f48a0e9fdb714b3b5491ca826075b898533c4e89b5e219e7166067eafb3f2e",
-          "aiPublicGuideTopic": "세 색의 넓이를 다르게 배분한 그림",
+          "aiAnalysisText": "동일한 세 색을 같은 넓이로 두고 배열 순서만 바꾼 두 경우를 비교한 도표다. 밝은 색과 어두운 색이 직접 맞닿는 배치와 중간 색이 사이에 놓인 배치를 대비해, 면적이 아니라 이웃 관계가 결과를 바꾼다는 점을 나타낸다.",
+          "aiAnalysisInputSha256": "e46fe3e199f60b3e8ede3e2ffe2265026329ede6c9046f4e1547ab5e3307498f",
+          "aiPublicGuideTopic": "세 색의 이웃 순서를 바꾼 그림",
           "estimatedReadingSeconds": 45,
           "prerequisitePageNumbers": [
             10
@@ -19827,10 +19827,10 @@
           ],
           "contentRole": "EXAMPLE",
           "aiRouteCandidatePage": true,
-          "aiAnalysisText": "세 색 배색에서 균등 면적 배분이 실패하는 이유와 역할 분담 방식을 다룬다. 넓은 면은 흐린 색, 좁은 면은 선명한 색이 맡는 면적별 보정 원칙과, 중간 역할의 색을 마지막에 정하는 순서를 제시한다.",
-          "aiAnalysisInputSha256": "80f8d0b2628be1d0efe85bb59ed939a9b3805c5e02b0b3c0a31cff1f6b89dcce",
-          "aiPublicGuideTopic": "세 색에 역할을 나누어 주는 방법",
-          "estimatedReadingSeconds": 80,
+          "aiAnalysisText": "세 색 배색을 면적 역할이 아니라 선택 순서로 다룬다. 서로 가장 크게 밀어낼 두 색을 먼저 정해 폭을 확정하고 세 번째 색을 그 사이에서 고르는 절차, 그리고 두 색을 맞닿게 둘지 사이에 끼울지가 경계의 세기를 정한다는 점을 설명한다.",
+          "aiAnalysisInputSha256": "d2ec3ae86c0f2f7ee5eb3c077f731a71817bb8963753ca873ee449a4493411c7",
+          "aiPublicGuideTopic": "세 색을 고르는 순서",
+          "estimatedReadingSeconds": 85,
           "prerequisitePageNumbers": [
             38
           ],
@@ -22763,7 +22763,7 @@
       "bookId": 68,
       "title": "움직이는 조형: 균형과 자연 동력",
       "pdfPath": "pdfs/book-068.pdf",
-      "pdfSha256": "8ce58b88a5e1938dbe7756860f5a17dd00d4b9879de479677d52603c41b39637",
+      "pdfSha256": "28945b932ec067fab3bbd96de1ae16b969c2332bdcbef00e5f1c0068c5509e50",
       "totalPageCount": 53,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -22837,10 +22837,10 @@
           ],
           "contentRole": "PREREQUISITE",
           "aiRouteCandidatePage": true,
-          "aiAnalysisText": "무게중심을 하중을 대표하는 한 점으로 정의하고 두 번 매달아 교점을 찾는 실물 측정법을 제시한다. 지지점과 무게중심의 상대 높이에 따라 안정·불안정·중립 상태가 갈린다는 점을 설명하고, 중립 상태가 지속적 회전을 만들어 움직이는 조형에서 유용하다는 결론을 낸다.",
-          "aiAnalysisInputSha256": "25c5bf51eafd7282fd85a9bcfb93f80a12313789fd3d627decbdf635d51167ef",
+          "aiAnalysisText": "무게중심을 하중을 대표하는 한 점으로 정의하고, 매달린 조형에서는 실제로 걸어 정착 자세를 보는 것이 가장 빠른 확인법임을 제시한다. 지지점과 무게중심의 상대 높이에 따라 안정·불안정·중립 상태가 갈린다는 점을 설명하고, 중립 상태가 지속적 회전을 만들어 움직이는 조형에서 유용하다는 결론을 낸다.",
+          "aiAnalysisInputSha256": "8155b6448f78d60199026c282f9c231a712166580b199120dc37d0501475e5df",
           "aiPublicGuideTopic": "무게가 모여 있다고 볼 수 있는 한 점",
-          "estimatedReadingSeconds": 85,
+          "estimatedReadingSeconds": 100,
           "prerequisitePageNumbers": [
             2
           ],
@@ -22946,7 +22946,7 @@
           "aiAnalysisText": "단일 실 지지가 허용하는 회전·진동·복합 운동을 구분하고 각각을 지배하는 변수를 설명한다. 무게의 분산 정도가 회전의 속도와 지속을, 실 길이가 진동 주기를 정한다는 관계를 제시하며, 두 운동이 서로 간섭하므로 보여 줄 움직임을 먼저 정해야 한다는 설계 순서를 다룬다.",
           "aiAnalysisInputSha256": "ad3e40bf4ff99f3f6a8b49b9e08d0e67a805592cdcf674a7ca824fa00e25eae2",
           "aiPublicGuideTopic": "실 하나가 허용하는 움직임의 종류",
-          "estimatedReadingSeconds": 95,
+          "estimatedReadingSeconds": 85,
           "prerequisitePageNumbers": [
             8
           ],
@@ -23028,10 +23028,10 @@
           ],
           "contentRole": "CORE",
           "aiRouteCandidatePage": true,
-          "aiAnalysisText": "균형이 맞은 단위도 지지실을 축으로 자유롭게 회전한다는 점과 그 회전이 관람 각도를 계속 바꾼다는 효과를 다룬다. 두 조각의 높이를 달리해 겹침을 줄이는 기법과, 그 조정이 무게중심을 낮춰 회전을 둔하게 만든다는 상충을 함께 제시한다.",
-          "aiAnalysisInputSha256": "3b2d5cd16720c2aa24cdd386398dd77f17d09dc3f53d9024f0df07d054b0ef25",
+          "aiAnalysisText": "균형이 맞은 단위도 지지실을 축으로 자유롭게 회전한다는 점과 그 회전이 관람 각도를 계속 바꾼다는 효과를 다룬다. 두 조각의 높이를 달리해 겹침을 줄이는 기법과, 그 조정이 무게중심을 낮춰 흔들림을 줄이는 대신 이웃과의 간격을 좁힌다는 상충을 함께 제시한다.",
+          "aiAnalysisInputSha256": "7891ebafda5b885b3ec2e6bda20eb324ce582ea6406877b60614b3511a449ca2",
           "aiPublicGuideTopic": "균형이 맞은 단위가 어떻게 도는가",
-          "estimatedReadingSeconds": 85,
+          "estimatedReadingSeconds": 90,
           "prerequisitePageNumbers": [
             12
           ],
@@ -23114,10 +23114,10 @@
           ],
           "contentRole": "CORE",
           "aiRouteCandidatePage": true,
-          "aiAnalysisText": "지지점과 무게중심의 거리가 안정성과 회전성을 반대 방향으로 움직인다는 상충을 다룬다. 손으로 돌려 회전 수를 세는 실무적 판정 기준을 제시하고, 적정 범위가 설치 장소의 공기 조건에 따라 달라지므로 설치 전 현장 확인이 필요하다는 점을 설명한다.",
-          "aiAnalysisInputSha256": "7c33a7f4631b4ac9c347a82fd7447ef426f151c8eb73bbdc4cc4721afea910ca",
+          "aiAnalysisText": "지지점과 무게중심의 거리가 기울어짐의 복원력만 정하고 연직축 회전은 관성·마찰·실의 비틀림이 정한다는 구분을 다룬다. 손으로 돌려 회전 수를 세는 실무적 판정 기준을 제시하고, 적정 범위가 설치 장소의 공기 조건에 따라 달라지므로 설치 전 현장 확인이 필요하다는 점을 설명한다.",
+          "aiAnalysisInputSha256": "c5bdd3aa491be6f866589745b7eff4e5271d0626fda84e74a794805cb9e2d808",
           "aiPublicGuideTopic": "균형을 맞추면서 회전을 지키는 일",
-          "estimatedReadingSeconds": 90,
+          "estimatedReadingSeconds": 115,
           "prerequisitePageNumbers": [
             16
           ],
@@ -23221,10 +23221,10 @@
           ],
           "contentRole": "CORE",
           "aiRouteCandidatePage": true,
-          "aiAnalysisText": "공기의 힘이 회전으로 전환되려면 작용점이 회전축에서 벗어나야 한다는 원리를 설명한다. 수풍면의 거리와 기울기가 회전력의 크기를 정하고, 회전 중 각도 변화로 힘을 받지 못하는 구간이 생기므로 여러 면을 서로 다른 각도로 배치해 연속성을 얻는 방법을 제시한다.",
-          "aiAnalysisInputSha256": "07241a9e26116440b4dfa7d7ac364fbfde4db3821dd8efea7886e6e1fe348ad5",
+          "aiAnalysisText": "공기의 힘이 회전으로 전환되려면 작용점이 회전축에서 벗어나야 한다는 원리를 설명한다. 수풍면의 거리와 기울기가 회전력의 크기를 정하고, 회전 중 각도 변화로 힘을 받지 못하는 구간이 생기므로 여러 면의 기울기를 같은 방향으로 맞춰 힘을 합치는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "6c3740c0a836774ea038fe19093319c92d1e34f8a9ef487d04507ed2217816ac",
           "aiPublicGuideTopic": "공기의 힘을 회전으로 바꾸는 자리",
-          "estimatedReadingSeconds": 85,
+          "estimatedReadingSeconds": 100,
           "prerequisitePageNumbers": [
             10
           ],
@@ -23418,7 +23418,7 @@
           "aiAnalysisText": "매끄러운 면의 정반사가 특정 방향에서만 관측되며 회전에 따라 간헐적으로 나타난다는 원리를 설명한다. 반짝임이 시선을 끄는 강한 사건이므로 매끄러운 면의 수를 제한한다는 기준과, 광원과 관람 위치에 맞춰 면 각도를 조정하는 절차를 다룬다.",
           "aiAnalysisInputSha256": "8c8fc5392e10a91e72f36c4f80948462d028fcb4d7f1e1c747c7179bc916d1aa",
           "aiPublicGuideTopic": "반짝임을 언제 보이게 할 것인가",
-          "estimatedReadingSeconds": 80,
+          "estimatedReadingSeconds": 85,
           "prerequisitePageNumbers": [
             30
           ],
@@ -23458,10 +23458,10 @@
           ],
           "contentRole": "CORE",
           "aiRouteCandidatePage": true,
-          "aiAnalysisText": "광원과 벽 사이의 거리 때문에 미세한 회전이 그림자에서 크게 증폭된다는 기하학적 관계를 설명한다. 약한 공기 흐름 환경에서 그림자를 주된 표현으로 삼는 활용과, 광원 소멸 시 표현이 사라진다는 한계, 벽면 상태가 그림자 가독성을 좌우한다는 조건을 다룬다.",
-          "aiAnalysisInputSha256": "d73ed0644b5cc0cad4a47a721b92906388d13e84303a3e9b8c6ecac452ac606f",
+          "aiAnalysisText": "광원에서 조형까지의 거리보다 벽까지의 거리가 훨씬 길기 때문에 미세한 회전이 그림자에서 크게 증폭된다는 기하학적 관계를 설명한다. 약한 공기 흐름 환경에서 그림자를 주된 표현으로 삼는 활용과, 광원 소멸 시 표현이 사라진다는 한계, 벽면 상태가 그림자 가독성을 좌우한다는 조건을 다룬다.",
+          "aiAnalysisInputSha256": "2387d5d74b50a0cdbe41f11980ac9a2ac4abb5dffe1d4935a7fbaababac1672b",
           "aiPublicGuideTopic": "그림자가 실물보다 크게 움직이는 이유",
-          "estimatedReadingSeconds": 80,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             32
           ],
@@ -23827,7 +23827,7 @@
           "aiAnalysisText": "여섯 장의 논의를 매달린 구조가 정지하지 않는다는 하나의 성질로 묶어 정리한다. 균형을 정지가 아니라 이탈 후 복귀가 가능한 상태로 재정의하고, 형태·설치·유지가 하나의 작업으로 이어진다는 점과 고정된 수치표가 성립하지 않는 이유를 설명한다.",
           "aiAnalysisInputSha256": "c3d3efc4f7eab6c149b31e1ed816573235281d0dac871985358ddd2b8cc7a692",
           "aiPublicGuideTopic": "책 전체를 지나온 뒤 다시 보는 균형",
-          "estimatedReadingSeconds": 90,
+          "estimatedReadingSeconds": 95,
           "prerequisitePageNumbers": [],
           "duplicateGroupKeys": [
             "balance-keeps-moving"
@@ -23871,7 +23871,7 @@
           "aiAnalysisText": "새 조형 설계 시 적용할 다섯 가지 점검 질문을 순서대로 제시한다. 공기 흐름과 동선으로 무게·크기 상한을 정하고, 표현 대상으로 재료와 면 각도를, 접촉 여부와 설치 기간으로 강도와 관리 계획을 정하는 절차를 정리하며 조건 우선 순서의 이유를 밝힌다.",
           "aiAnalysisInputSha256": "cda08bcce422e4f83267dc2f098ea77557c4cf2772810fb27b57ed367e0f46e7",
           "aiPublicGuideTopic": "새 조형을 만들 때 차례로 던질 물음",
-          "estimatedReadingSeconds": 90,
+          "estimatedReadingSeconds": 85,
           "prerequisitePageNumbers": [
             50
           ],
@@ -23905,7 +23905,7 @@
       "bookId": 69,
       "title": "사진의 프레이밍과 시선",
       "pdfPath": "pdfs/book-069.pdf",
-      "pdfSha256": "396683bff5a2effd8bccb73214ecd20a9a9cd15cbb0349f2e3cc4773a8652640",
+      "pdfSha256": "957442ea282cc93327175c9f649522728b8f4c8d2460d1e053bf5af7e501c4d9",
       "totalPageCount": 55,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -24024,7 +24024,7 @@
           "aiAnalysisText": "화면 가장자리가 미세한 이동에 민감하게 반응하고 절단된 요소가 시선을 끌어당긴다는 점을 설명한다. 촬영 전 네 변을 훑는 점검 습관과, 절반만 걸린 상태를 피해 완전히 배제하거나 포함하는 세 가지 정리 방법을 제시한다.",
           "aiAnalysisInputSha256": "a7de5a7925c7837a1474b61abbd5afac37a9e52261e68eab37f1ad48b71f791f",
           "aiPublicGuideTopic": "네 변 가까이에서 일어나는 일",
-          "estimatedReadingSeconds": 80,
+          "estimatedReadingSeconds": 85,
           "prerequisitePageNumbers": [
             4
           ],
@@ -24385,10 +24385,10 @@
           ],
           "contentRole": "CORE",
           "aiRouteCandidatePage": true,
-          "aiAnalysisText": "화면 내 선형 요소가 시선을 유도한다는 원리와 주제를 향하지 않는 강한 선이 방해가 된다는 점을 설명한다. 촬영 위치와 각도로 선의 방향을 조정하는 방법, 그리고 명암과 색의 변화가 가시적 선을 대체할 수 있다는 확장을 제시한다.",
-          "aiAnalysisInputSha256": "349e8451369fc987ccf1aa4a25f60ffe900f5b2800b67e1008c2cfda91b349b5",
-          "aiPublicGuideTopic": "선을 써서 시선을 이끄는 방법",
-          "estimatedReadingSeconds": 90,
+          "aiAnalysisText": "사진에서는 선을 그릴 수 없고 관찰 위치로만 그 각도를 바꿀 수 있다는 제약을 이 절의 출발점으로 삼는다. 같은 대상이 정면과 사면에서 가로선과 사선으로 갈린다는 점, 선의 끝이 주제에 닿는 자리를 찾는 기준, 명암 변화가 가시적 선을 대체할 수 있다는 확장을 제시한다.",
+          "aiAnalysisInputSha256": "66c92a2e0d437fdda4968debfac7a1ffc7eab299d7dd0cee262dbe360e24cfd1",
+          "aiPublicGuideTopic": "이미 있는 선의 각도를 고르는 일",
+          "estimatedReadingSeconds": 95,
           "prerequisitePageNumbers": [
             22
           ],
@@ -25034,7 +25034,7 @@
           "aiAnalysisText": "선택의 결과만 남고 근거는 소실된다는 문제에서 단계별 기록의 필요를 정리한다. 촬영·크롭·편집 각 단계에서 남길 항목과 분량 제한을 제시하고, 기록이 인수인계뿐 아니라 제작자 자신의 반복 개선을 위한 것임을 밝힌다.",
           "aiAnalysisInputSha256": "75c7a163f6b63b0ef162566463d3447bf5c86e65c7b3fe55e4cd72f61ff85d01",
           "aiPublicGuideTopic": "고른 이유를 남기는 일",
-          "estimatedReadingSeconds": 85,
+          "estimatedReadingSeconds": 90,
           "prerequisitePageNumbers": [
             52
           ],
@@ -25090,7 +25090,7 @@
       "bookId": 70,
       "title": "창작의 시작: 초안과 제약",
       "pdfPath": "pdfs/book-070.pdf",
-      "pdfSha256": "91373a58b588beea8134ba6b4b79ee4ae7d6e4a56f3e1693cef9bb632fefce1b",
+      "pdfSha256": "d0f3a7e7e8d31b9beffab6fdffd4c167a1a57e706c2da88d4fbfa9c1dde9579f",
       "totalPageCount": 51,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -26177,7 +26177,7 @@
           "aiAnalysisText": "작업 종료 시의 기록이 다음 착수 비용을 줄인다는 점을 책 전체의 권고로 정리한다. 기록 항목과 분량 제한을 재확인하고, 축적된 기록이 일반적 방법론이 아니라 개인의 작업 방식을 드러내는 자료가 된다는 관점을 제시한다.",
           "aiAnalysisInputSha256": "4fbd1eecc7663e83e6cffac9a4704a3c7922f6de74f73632b7f4600b680e29a1",
           "aiPublicGuideTopic": "다음 작업으로 넘어가며",
-          "estimatedReadingSeconds": 85,
+          "estimatedReadingSeconds": 80,
           "prerequisitePageNumbers": [
             50
           ],

@@ -155,31 +155,31 @@ def fig_association():
     return base("같은 색, 다른 이웃", "같은 붉은색을 세 가지 이웃과 함께 놓은 그림", "".join(b))
 
 
-# ── p38 넓게, 받치고, 한 번만 ─────────────────────────────────────────
+# ── p38 같은 세 색, 다른 이웃 ─────────────────────────────────────────
 def fig_three_colors():
     b = []
     w, h, y = 240, 220, 300
-    a, c1, c2 = "#cfd6d2", "#4f6f66", "#c2643c"
-    x = 148
-    for i, part in enumerate((a, c1, c2)):
-        b.append(f'<rect x="{x + i * (w / 3)}" y="{y}" width="{w / 3}" height="{h}" fill="{part}"/>')
-    b.append(t(x + w / 2, y + h + 34, "같은 넓이", 17, INK, "600"))
-
-    x2 = 406
-    b.append(f'<rect x="{x2}" y="{y}" width="{w}" height="{h}" fill="{a}"/>')
-    b.append(f'<rect x="{x2}" y="{y + h - 52}" width="{w}" height="52" fill="{c1}"/>')
-    b.append(f'<rect x="{x2 + w - 58}" y="{y + 24}" width="30" height="30" fill="{c2}"/>')
-    b.append(f'<line x1="{x2 + w - 28}" y1="{y + 39}" x2="{x2 + w + 34}" y2="{y + 39}" stroke="{LINE}"/>')
-    b.append(t(x2 + w + 40, y + 44, "한 번만 쓰는 색", 14, MUTED, anchor="start"))
-    b.append(t(x2 + w / 2, y + h + 34, "넓게 · 받치고 · 한 번만", 17, INK, "600"))
-
-    b.append(t(W / 2, 262, "두 그림은 완전히 같은 세 색만 쓴다", 15, MUTED))
-    b.append(note_box(147, 640, 500, "같은 세 색, 다른 구조"))
+    light, mid, dark = "#e2e7e4", "#7f9a90", "#2f4740"
+    orders = [((light, mid, dark), "중간 색이 사이에 있다", False),
+              ((light, dark, mid), "밝은 색과 어두운 색이 맞닿는다", True)]
+    lefts = [148, 406]
+    for x, (cols, label, touching) in zip(lefts, orders):
+        for i, c in enumerate(cols):
+            b.append(f'<rect x="{x + i * (w / 3)}" y="{y}" width="{w / 3}" height="{h}" fill="{c}"/>')
+        b.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="none" stroke="{SOFT}"/>')
+        if touching:
+            bx = x + w / 3
+            b.append(f'<line x1="{bx}" y1="{y}" x2="{bx}" y2="{y + h}" stroke="{WARM}" stroke-width="2.4"/>')
+            b.append(f'<line x1="{bx}" y1="{y + h + 6}" x2="{bx}" y2="{y + h + 26}" stroke="{WARM}" stroke-width="1.6"/>')
+            b.append(t(bx, y + h + 44, "여기서 두 색이 서로를 밀어낸다", 13, WARM, "700"))
+        b.append(t(x + w / 2, y + h + (74 if touching else 34), label, 16, INK, "600"))
+    b.append(t(W / 2, 262, "두 그림은 같은 세 색을 같은 넓이로 쓴다 — 순서만 다르다", 15, MUTED))
+    b.append(note_box(147, 640, 500, "같은 세 색, 다른 이웃"))
     b.append(caption(W / 2, 762, [
-        "셋을 비슷한 넓이로 쓰면 어느 색도 주인이 되지 못한다.",
-        "역할을 나누면 넓은 색이 분위기를, 좁은 색이 시선을 맡는다.",
+        "밝은 색과 어두운 색이 직접 맞닿으면 그 경계가 배색에서 가장 센 자리가 된다.",
+        "사이에 중간 색을 끼우면 두 색이 서로를 밀어내는 힘이 약해진다.",
     ], 16))
-    return base("넓게, 받치고, 한 번만", "같은 세 색을 균등하게 쓴 배치와 역할을 나눈 배치",
+    return base("같은 세 색, 다른 이웃", "같은 세 색을 같은 넓이로 두고 순서만 바꾼 그림",
                 "".join(b))
 
 
