@@ -232,9 +232,10 @@ def fig_darkroom():
     b.append(t(rx + 16, ry + 32, "암실", 16, "#c3ced3", "700", anchor="start"))
 
     bench_y = 556
-    # 붉은 등은 작업대 쪽만 비춘다. 방 전체를 밝히면 이 그림의 뜻이 사라진다.
-    lx, ly = rx + rw - 96, ry + 66
-    b.append(f'<path d="M{lx},{ly} L{lx - 96},{bench_y} L{lx + 74},{bench_y} Z" '
+    # 붉은 등은 작업대 쪽만 비춘다. 방 전체를 밝히면 이 그림의 뜻이 사라진다. 반대로 빈 바닥만
+    # 비추면 「작업대 쪽만 비춘다」는 설명이 그림과 어긋나므로, 빛무리가 통과 두 장치에 닿게 기울인다.
+    lx, ly = rx + rw - 156, ry + 66
+    b.append(f'<path d="M{lx},{ly} L{lx - 220},{bench_y} L{lx + 40},{bench_y} Z" '
              f'fill="#b4442f" opacity="0.17"/>')
     b.append(f'<circle cx="{lx}" cy="{ly}" r="12" fill="#b4442f"/>')
     b.append(t(lx + 20, ly + 5, "붉은 등", 13, "#e0b4a8", "600", anchor="start"))

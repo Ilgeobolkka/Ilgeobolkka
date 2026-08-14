@@ -6550,7 +6550,7 @@
       "title": "생물발광의 화학과 생태",
       "totalPageCount": 50,
       "pdfPath": "pdfs/book-026.pdf",
-      "pdfSha256": "a598d15635256c7c6bcebffcf25c9ade6a2e1608a7328ca57692461078686460",
+      "pdfSha256": "28604eeeedb71a287da25aaa2eebcb8a27331560b7656b162ab4abff216a8fbb",
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
       "pages": [
@@ -6964,7 +6964,7 @@
           "aiAnalysisText": "반대조명이 밝기뿐 아니라 파장 일치까지 요구한다는 점을 다루는 페이지다. 색 변환 단백질의 기능적 용도를 이 맥락에서 제시하고, 상방 광량 감지 기관의 존재를 근거로 발광이 조절되는 반응임을 밝힌다.",
           "aiAnalysisInputSha256": "f5e74a20578286138c086bf3e1476c4c848e61ec27d8a687c8a5faddae5a0347",
           "aiPublicGuideTopic": "밝기뿐 아니라 색까지 맞춰야 한다는 점",
-          "estimatedReadingSeconds": 65,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             19
           ],
