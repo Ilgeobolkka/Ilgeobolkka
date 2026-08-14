@@ -454,6 +454,79 @@
       ]
     },
     {
+      "caseId": "case-book-025",
+      "bookId": 25,
+      "purpose": "이 책을 사지는 않았고 이미 열어 둔 페이지만으로, 맑던 하늘에 구름이 생기는 조건이 무엇인지 정리해 두고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 0,
+      "depth": null,
+      "activeRentalPageNumbers": [
+        2,
+        4,
+        6,
+        8,
+        12
+      ],
+      "requiredConcepts": [
+        "공기 속의 물",
+        "담을 수 있는 양",
+        "이슬점",
+        "붙잡을 자리",
+        "상승과 냉각"
+      ],
+      "helpfulConcepts": [
+        "구름의 높이",
+        "사라지는 구름",
+        "떨어지는 조건"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 12
+        }
+      ],
+      "irrelevantPageNumbers": [
+        35,
+        36,
+        38,
+        39,
+        40
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          47
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        6,
+        8,
+        12
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        9,
+        13,
+        16,
+        18
+      ]
+    },
+    {
       "caseId": "case-book-026",
       "bookId": 26,
       "purpose": "이 책을 소장하고 있는데, 심해 생물이 어떤 반응으로 빛을 만들고 그 빛을 무엇에 쓰는지를 제대로 익히고 싶다",

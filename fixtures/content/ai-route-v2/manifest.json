@@ -5477,6 +5477,1075 @@
       ]
     },
     {
+      "bookId": 25,
+      "title": "구름의 형성과 강수의 물리",
+      "totalPageCount": 50,
+      "pdfPath": "pdfs/book-025.pdf",
+      "pdfSha256": "13ba17862c6dfb89c50f55f600870ed85def3afbc340b37f3ec25d5e4a82c9fa",
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 보이지 않는 물",
+          "section": "1.1 공기 속에 물이 있다",
+          "primaryConcepts": [
+            "공기 속의 물"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대기 중 수증기의 존재를 도입 조건으로 세우는 페이지다. 구름 생성을 물의 발생이 아니라 상태 변화로 규정하고, 상태가 바뀌는 조건과 강수로 이어지는 성장 과정이라는 두 축을 예고한다.",
+          "aiAnalysisInputSha256": "3d6060385c344b8d034ec818a313d3c2d5084c7a17e7c0818b3115990ec3c4a2",
+          "aiPublicGuideTopic": "눈에 보이지 않는 물에서 이야기를 시작하는 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "invisible-water-first"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 보이지 않는 물",
+          "section": "1.1 공기 속에 물이 있다",
+          "primaryConcepts": [
+            "공기 속의 물"
+          ],
+          "secondaryConcepts": [
+            "보는 도구"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대기 중 수증기의 존재를 일상 현상으로 논증하는 페이지다. 응결과 증발을 같은 과정의 두 방향으로 제시하고, 건조 속도의 변동이 공기의 수용 능력 차이에서 온다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "01e5c795f65562904569db61bf38a97579100240ee9fe91ab57a67e139cc4d04",
+          "aiPublicGuideTopic": "보이지 않는 물이 있다는 것을 어떻게 아는가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 보이지 않는 물",
+          "section": "1.2 담을 수 있는 양은 정해져 있다",
+          "primaryConcepts": [
+            "담을 수 있는 양"
+          ],
+          "secondaryConcepts": [
+            "공기 속의 물"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공기의 수증기 수용 한계와 그 온도 의존성을 다루는 페이지다. 한계가 온도에 따라 크게 변한다는 점을 제시하고, 응결이 주로 수증기 증가가 아니라 수용 능력 감소에서 일어난다는 원칙을 세운다.",
+          "aiAnalysisInputSha256": "2e2427ae8c3385fd07709883eb3289c381387b17c84f3c0a233a2b826bef53f1",
+          "aiPublicGuideTopic": "공기가 물을 받아들이는 데 한계가 있다는 성질",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 보이지 않는 물",
+          "section": "1.2 담을 수 있는 양은 정해져 있다",
+          "primaryConcepts": [
+            "담을 수 있는 양"
+          ],
+          "secondaryConcepts": [
+            "이슬점"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수증기량의 절대 표현과 상대 표현을 구분하는 페이지다. 상대 표현이 온도 변화만으로도 달라진다는 성질을 제시하고, 두 값을 병기해야 변화의 원인을 판별할 수 있다는 실무 원칙을 밝힌다.",
+          "aiAnalysisInputSha256": "366f3508585cc510636d9556552d582dd340a40990c20c1fa206dc2be1d93eef",
+          "aiPublicGuideTopic": "얼마나 차 있는지를 말하는 두 가지 방식",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 보이지 않는 물",
+          "section": "1.3 넘치기 시작하는 온도",
+          "primaryConcepts": [
+            "이슬점"
+          ],
+          "secondaryConcepts": [
+            "담을 수 있는 양"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이슬점의 정의와 그 성질을 다루는 페이지다. 이슬점이 수증기량에만 의존한다는 점, 기온과 이슬점의 차이가 포화까지의 여유를 나타낸다는 점을 제시하고, 구름 생성 조건을 이 지표로 환원한다.",
+          "aiAnalysisInputSha256": "f982a0f4a6088457aa76cd1f0e54f1e3170099826ee0ccc89472eccee5fda7f8",
+          "aiPublicGuideTopic": "지금 들어 있는 양이 한계에 닿는 온도",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 보이지 않는 물",
+          "section": "1.3 넘치기 시작하는 온도",
+          "primaryConcepts": [
+            "이슬점"
+          ],
+          "secondaryConcepts": [
+            "담을 수 있는 양",
+            "공기 속의 물"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "온도 하강에 따라 포화 수증기량이 감소하는 구조를 그릇 크기의 변화로 나타낸 도표다. 수증기량이 일정함을 가로 점선으로 고정해 응결의 원인이 수용 능력 감소임을 시각적으로 드러낸다.",
+          "aiAnalysisInputSha256": "ff7fa52c679af9cb96ca0a6938020a3d66c5dcb2bea2a025166d805a45d13234",
+          "aiPublicGuideTopic": "온도가 내려갈 때 여유가 줄어드는 모습을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 보이지 않는 물",
+          "section": "1.4 붙잡을 자리가 있어야 한다",
+          "primaryConcepts": [
+            "붙잡을 자리"
+          ],
+          "secondaryConcepts": [
+            "이슬점"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "응결핵의 역할을 다루는 페이지다. 균질 핵생성의 어려움을 표면 곡률로 설명하고, 대기 중 미세 입자가 초기 성장의 출발점을 제공한다는 점을 제시해 구름 형성의 세 조건을 정리한다.",
+          "aiAnalysisInputSha256": "7469f3b0cd0893daadee79fbe62bd10ad3393340f6eb06bf89911eeb9c30ef96",
+          "aiPublicGuideTopic": "한계에 닿아도 곧바로 맺히지는 않는다는 점",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 보이지 않는 물",
+          "section": "1.4 붙잡을 자리가 있어야 한다",
+          "primaryConcepts": [
+            "붙잡을 자리"
+          ],
+          "secondaryConcepts": [
+            "공기 속의 물"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "응결핵의 종류와 개수가 구름 물방울의 크기 분포를 좌우한다는 점을 다루는 페이지다. 흡습성 입자의 조기 응결, 핵 개수와 물방울 크기의 반비례 관계를 제시하고 강수 조건과의 연결을 예고한다.",
+          "aiAnalysisInputSha256": "ee44f4bda5aa2405e1fec46ecffda9a012a9dee048f5dd0dd47ebe2ea94bb323",
+          "aiPublicGuideTopic": "알갱이가 어떤 것이냐에 따라 달라지는 것들",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "1장 보이지 않는 물",
+          "section": "1.5 무엇으로 보는가",
+          "primaryConcepts": [
+            "보는 도구"
+          ],
+          "secondaryConcepts": [
+            "이슬점",
+            "붙잡을 자리"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기상 관측 도구를 지상 관측, 고층 관측, 위성 관측, 원격 탐지로 나누고 각각의 관측 대상과 한계를 정리하는 페이지다. 단일 도구로는 구름의 상태를 기술할 수 없어 교차 활용이 필요하다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "5b83795b547af0d2bcb34cc528270c63532bad93282ae26ea204a94b55aad437",
+          "aiPublicGuideTopic": "관측소가 쓰는 도구와 각각이 보는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "1장 보이지 않는 물",
+          "section": "1.5 무엇으로 보는가",
+          "primaryConcepts": [
+            "보는 도구"
+          ],
+          "secondaryConcepts": [
+            "담을 수 있는 양"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측값의 신뢰 순위를 직접 측정과 간접 추정의 구분으로 정하는 페이지다. 추정값이 전제에 의존한다는 점과 값만으로는 전제 위반을 식별할 수 없다는 한계를 제시하고, 획득 방식을 기록에 병기하는 관행을 밝힌다.",
+          "aiAnalysisInputSha256": "3b54045c7071a266d382f6df34cd81ec99c9b721fb0300a19b1eb6b0b74690c7",
+          "aiPublicGuideTopic": "도구마다 값이 어긋날 때 무엇을 믿는가",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 구름이 생기는 방식",
+          "section": "2.1 올라가면 식는다",
+          "primaryConcepts": [
+            "상승과 냉각"
+          ],
+          "secondaryConcepts": [
+            "담을 수 있는 양"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단열 냉각의 원리와 응결 고도의 결정을 다루는 페이지다. 상승에 따른 압력 감소와 팽창 냉각을 제시하고, 지상의 기온과 이슬점으로 구름 바닥 높이를 산출할 수 있다는 점과 그 관측적 근거를 밝힌다.",
+          "aiAnalysisInputSha256": "55ed34c93a5c3a72bdff301aaab4906114b660d0cbdfa39037a7f3dc5741ae6f",
+          "aiPublicGuideTopic": "공기 덩이가 위로 갈 때 온도가 내려가는 까닭",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 구름이 생기는 방식",
+          "section": "2.1 올라가면 식는다",
+          "primaryConcepts": [
+            "상승과 냉각"
+          ],
+          "secondaryConcepts": [
+            "이슬점"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "응결 잠열 방출이 상승 기류에 미치는 영향을 다루는 페이지다. 포화 전후의 냉각률 차이를 제시하고, 잠열이 부력을 유지시켜 대류를 강화하는 되먹임 구조를 설명한다.",
+          "aiAnalysisInputSha256": "dd6c149d909d6ca1f890ea52a67e01926eabd2424ace4c152df888d00632b57d",
+          "aiPublicGuideTopic": "구름이 생긴 뒤에는 식는 속도가 달라진다",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 구름이 생기는 방식",
+          "section": "2.2 무엇이 공기를 올려 보내는가",
+          "primaryConcepts": [
+            "올려 보내는 힘"
+          ],
+          "secondaryConcepts": [
+            "상승과 냉각"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대기 상승 운동의 네 가지 기구를 지표 가열, 지형 강제, 전선 활승, 수렴으로 나누어 제시하는 페이지다. 각 기구가 나타나는 전형적 상황을 함께 밝혀 구름 분포의 지역적 차이를 설명한다.",
+          "aiAnalysisInputSha256": "eed7d36839480e36963da5ea6f5748bbc7049b1fa763a2883dd635022a26b6d3",
+          "aiPublicGuideTopic": "공기가 위로 가게 되는 네 가지 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 구름이 생기는 방식",
+          "section": "2.2 무엇이 공기를 올려 보내는가",
+          "primaryConcepts": [
+            "올려 보내는 힘"
+          ],
+          "secondaryConcepts": [
+            "상승과 냉각",
+            "구름의 높이"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "상승 운동을 일으키는 네 가지 기구를 동일한 형식의 네 칸에 배치한 도표다. 구름 밑면 높이를 네 칸에서 일치시켜 상승 원인과 무관하게 응결 조건이 같음을 시각적으로 드러낸다.",
+          "aiAnalysisInputSha256": "ccf66c0469d97a78bb0f8e658f6286c41d399e4642372abb025f82d408242716",
+          "aiPublicGuideTopic": "공기를 올려 보내는 네 가지 자리를 나란히 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 구름이 생기는 방식",
+          "section": "2.3 구름의 바닥과 꼭대기",
+          "primaryConcepts": [
+            "구름의 높이"
+          ],
+          "secondaryConcepts": [
+            "상승과 냉각"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구름의 상단 고도가 주변 대기의 온도 구조에 의해 결정된다는 점을 다루는 페이지다. 부력이 소멸하는 고도의 개념을 제시하고, 안정층의 존재가 구름 형태를 평평하게 만드는 기구를 설명한다.",
+          "aiAnalysisInputSha256": "393ba7c13a4db5d27c8590b5a0d45dfc5bd22745fa2c2bb3905dcddf361b9d5a",
+          "aiPublicGuideTopic": "구름의 위아래가 어디서 정해지는가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "2장 구름이 생기는 방식",
+          "section": "2.3 구름의 바닥과 꼭대기",
+          "primaryConcepts": [
+            "구름의 높이"
+          ],
+          "secondaryConcepts": [
+            "올려 보내는 힘"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구름 밑면 고도의 공간적 불균일을 다루는 페이지다. 기단의 수증기량 차이와 지형에 의한 선행 냉각이 응결 고도를 바꾸는 사례를 제시하고, 고도 차이 자체가 기단 성질의 지표가 됨을 밝힌다.",
+          "aiAnalysisInputSha256": "847093d564bb12483478ee22fe104846c8ce1ed72401585380094820e2a53676",
+          "aiPublicGuideTopic": "바닥이 가지런하지 않은 경우",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "2장 구름이 생기는 방식",
+          "section": "2.4 구름이 사라질 때",
+          "primaryConcepts": [
+            "사라지는 구름"
+          ],
+          "secondaryConcepts": [
+            "구름의 높이",
+            "담을 수 있는 양"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구름의 소산 과정을 다루는 페이지다. 승온에 의한 포화도 감소와 주변 건조 공기의 혼입이라는 두 기구를 제시하고, 구름이 생성과 소산이 동시에 진행되는 동적 상태임을 밝힌다.",
+          "aiAnalysisInputSha256": "3da7ca9f9a764ee291737019ab8211c4dccc89474170ae774a924e4ea4a2b637",
+          "aiPublicGuideTopic": "생긴 구름이 도로 없어지는 과정",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "2장 구름이 생기는 방식",
+          "section": "2.4 구름이 사라질 때",
+          "primaryConcepts": [
+            "사라지는 구름"
+          ],
+          "secondaryConcepts": [
+            "상승과 냉각"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구름이 형성되지 않는 조건을 다루는 페이지다. 안정층에 의한 상승 억제와 낮은 이슬점에 따른 응결 고도 상승을 각각 제시하고, 동일한 맑은 하늘이 서로 다른 원인에서 비롯될 수 있음을 밝힌다.",
+          "aiAnalysisInputSha256": "bbd2281a2b04898004e083a756c54e1ea6763443489354677dfd9464bab5101e",
+          "aiPublicGuideTopic": "구름이 만들어지지 않는 날",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 구름을 갈라 부르는 법",
+          "section": "3.1 높이로 나눈다",
+          "primaryConcepts": [
+            "높이에 따른 갈래"
+          ],
+          "secondaryConcepts": [
+            "구름의 높이"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구름의 고도별 분류 체계를 다루는 페이지다. 분류 기준 고도가 위도에 따라 달라진다는 점을 밝히고, 고도가 구름 내부의 상 구성을 결정하므로 분류가 외형이 아니라 내부 상태의 구분임을 제시한다.",
+          "aiAnalysisInputSha256": "8515d5fa5365ffdbc7e046e091ab9caaafd536767fce0845452b514477ed7e75",
+          "aiPublicGuideTopic": "구름을 세 층으로 나누는 관례",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 구름을 갈라 부르는 법",
+          "section": "3.1 높이로 나눈다",
+          "primaryConcepts": [
+            "높이에 따른 갈래"
+          ],
+          "secondaryConcepts": [
+            "담을 수 있는 양"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "고층운의 광학적 특성을 다루는 페이지다. 저온에 따른 포화 수증기량 감소가 입자 수 밀도를 낮춘다는 관계를 제시하고, 빙정의 형태적 특징이 구름 윤곽에 나타나는 이유를 함께 밝힌다.",
+          "aiAnalysisInputSha256": "848cb6c10762d2e10d22ee40fa011d9da199095dc2114e0c296db27c85d29106",
+          "aiPublicGuideTopic": "높은 구름이 성기게 보이는 까닭",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 구름을 갈라 부르는 법",
+          "section": "3.2 모양으로 나눈다",
+          "primaryConcepts": [
+            "모양에 따른 갈래"
+          ],
+          "secondaryConcepts": [
+            "높이에 따른 갈래"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구름의 형태 분류를 층운형과 적운형으로 나누어 다루는 페이지다. 각 형태가 상승 운동의 규모와 속도에 대응한다는 관계를 제시하고, 외형 관찰이 대기 상태 추정의 근거가 되는 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "064a02ba00b25a903d2fafcd0998198299e7c40d5b077bfb9c9fcd620fe0b065",
+          "aiPublicGuideTopic": "층으로 퍼지는 구름과 덩이로 솟는 구름",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 구름을 갈라 부르는 법",
+          "section": "3.2 모양으로 나눈다",
+          "primaryConcepts": [
+            "모양에 따른 갈래"
+          ],
+          "secondaryConcepts": [
+            "높이에 따른 갈래",
+            "구름의 높이"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구름 분류를 고도와 형태의 두 축으로 배치한 도표다. 고도별 내부 상 구성을 오른쪽 띠에 병기하고, 연직으로 발달한 구름이 단일 층에 속하지 않는다는 예외를 함께 표시한다.",
+          "aiAnalysisInputSha256": "ed4a8f93217157c7317ba166c992b90bbb3b849c1ff3ec2e83a623430d52279c",
+          "aiPublicGuideTopic": "높이와 모양 두 축으로 구름을 늘어놓은 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "3장 구름을 갈라 부르는 법",
+          "section": "3.3 이름이 알려 주는 것",
+          "primaryConcepts": [
+            "이름 읽기"
+          ],
+          "secondaryConcepts": [
+            "모양에 따른 갈래"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구름 명명 체계의 구성 원리를 다루는 페이지다. 고도 접두, 형태 어간, 강수 표시라는 세 요소의 조합 규칙을 제시하고, 명칭이 고도·생성 기구·강수 여부를 함께 전달한다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "a29c6c9578a9aa6a0fd0d7bcbc18850fa7d952ae526040ee805562aa2613b888",
+          "aiPublicGuideTopic": "구름 이름을 뜯어 읽는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "3장 구름을 갈라 부르는 법",
+          "section": "3.3 이름이 알려 주는 것",
+          "primaryConcepts": [
+            "이름 읽기"
+          ],
+          "secondaryConcepts": [
+            "구름의 높이"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구름 유형에서 강수 양상을 추정하는 관행을 다루는 페이지다. 형태별 상승 규모와 강수 지속·강도의 대응을 제시하고, 이 추정이 확정적 예측이 아니라는 한계를 함께 밝힌다.",
+          "aiAnalysisInputSha256": "f124a7e86f66105345d9026e7017e80c71072c9914ec55d1f360ee0aa7a1dbb4",
+          "aiPublicGuideTopic": "이름을 읽고 무엇을 짐작할 수 있는가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "3장 구름을 갈라 부르는 법",
+          "section": "3.4 갈래에 잘 안 맞는 것들",
+          "primaryConcepts": [
+            "갈래의 한계"
+          ],
+          "secondaryConcepts": [
+            "이름 읽기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구름 분류 체계의 적용 한계를 다루는 페이지다. 연직 발달형과 형태 전이 중인 사례를 제시하고, 분류가 관찰 대상의 자연적 경계가 아니라 서술 편의를 위한 구획임을 밝힌다.",
+          "aiAnalysisInputSha256": "221e76b1c0ea2e6caf6c097f94adb760d77489f516e68114c0257ba49975ab6d",
+          "aiPublicGuideTopic": "분류가 흔들리는 자리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 떨어질 만큼 커지기",
+          "section": "4.1 작은 것은 떨어지지 않는다",
+          "primaryConcepts": [
+            "떨어지는 조건"
+          ],
+          "secondaryConcepts": [
+            "붙잡을 자리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구름 물방울이 낙하하지 않는 이유를 종단속도로 설명하는 페이지다. 크기에 따른 항력 상대 비중의 차이를 제시하고, 강수 발생에 요구되는 성장 규모를 지름과 부피 배수로 구체화한다.",
+          "aiAnalysisInputSha256": "40425a31279135adac45673104e55abbfb74839acde09390449acfb4241a048b",
+          "aiPublicGuideTopic": "구름 방울이 하늘에 떠 있는 까닭",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 떨어질 만큼 커지기",
+          "section": "4.1 작은 것은 떨어지지 않는다",
+          "primaryConcepts": [
+            "떨어지는 조건"
+          ],
+          "secondaryConcepts": [
+            "구름의 높이"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구름 유지에 상승 기류가 필요하다는 점을 다루는 페이지다. 종단속도만으로는 부유가 설명되지 않는다는 점을 지적하고, 상승 소멸 시 구름이 소산하는 과정과 구름의 존재가 진행 중인 상승의 지표임을 밝힌다.",
+          "aiAnalysisInputSha256": "549b246bd797e86ea383a982891b32403fd577f2d5da6b80da0595f7ff948cd7",
+          "aiPublicGuideTopic": "떠 있는 데 보태는 또 하나의 힘",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            27
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 떨어질 만큼 커지기",
+          "section": "4.2 부딪혀 합쳐지기",
+          "primaryConcepts": [
+            "합쳐지는 성장"
+          ],
+          "secondaryConcepts": [
+            "떨어지는 조건"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "충돌 병합에 의한 물방울 성장을 다루는 페이지다. 크기 차이에 따른 낙하 속도 차이가 병합의 조건임을 밝히고, 충돌이 항상 병합으로 이어지지 않는다는 점과 분열에 의한 상한을 함께 제시한다.",
+          "aiAnalysisInputSha256": "b873fcbeedaaef843eb1baaa24613ef0bcb1060a45b19e9bb43927f9ad5372e3",
+          "aiPublicGuideTopic": "방울끼리 만나 커지는 방식",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            27
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 떨어질 만큼 커지기",
+          "section": "4.2 부딪혀 합쳐지기",
+          "primaryConcepts": [
+            "합쳐지는 성장"
+          ],
+          "secondaryConcepts": [
+            "떨어지는 조건",
+            "붙잡을 자리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "충돌 병합 성장의 단계별 진행을 세 장면으로 나타낸 도표다. 낙하 속도 증가를 화살표 길이로 표현하고, 초기 크기 분포의 불균일이 전제 조건이라는 점과 분열에 의한 상한을 함께 표시한다.",
+          "aiAnalysisInputSha256": "d1777598dacb1433b40f8e91676db2129c3a122b03a6bc2045c2d45ce6f2eed0",
+          "aiPublicGuideTopic": "작은 방울이 큰 방울로 자라는 과정을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            29
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 떨어질 만큼 커지기",
+          "section": "4.3 얼음이 끼어들 때",
+          "primaryConcepts": [
+            "얼음의 성장"
+          ],
+          "secondaryConcepts": [
+            "높이에 따른 갈래"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "혼합상 구름에서의 얼음 성장 과정을 다루는 페이지다. 얼음과 물의 수증기압 차이에 따른 물질 이동을 제시하고, 이 경로가 병합보다 빠른 이유와 과냉각 물방울의 존재가 전제된다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "a0e9e5920bbdf2df6aab283bed03fa87bde7e269bf04058929974d2ac77ef340",
+          "aiPublicGuideTopic": "물과 얼음이 함께 있을 때 일어나는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "4장 떨어질 만큼 커지기",
+          "section": "4.3 얼음이 끼어들 때",
+          "primaryConcepts": [
+            "얼음의 성장"
+          ],
+          "secondaryConcepts": [
+            "떨어지는 조건"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "빙정의 성장 경로를 응착과 착빙으로 나누어 다루는 페이지다. 각 경로가 만드는 입자의 밀도와 형태 차이를 제시하고, 강한 상승류에서 반복 성장이 일어나는 조건을 밝힌다.",
+          "aiAnalysisInputSha256": "fe2989fb1226f0acd7e43bbbe3607ddd4c65d26505c09b2e30ca2b51cab53a75",
+          "aiPublicGuideTopic": "얼음 알갱이가 자라는 여러 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "4장 떨어질 만큼 커지기",
+          "section": "4.4 무엇이 되어 닿는가",
+          "primaryConcepts": [
+            "떨어지는 형태"
+          ],
+          "secondaryConcepts": [
+            "얼음의 성장",
+            "합쳐지는 성장"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "강수 입자가 낙하 경로의 온도 구조에 따라 서로 다른 형태로 지면에 도달한다는 점을 다루는 페이지다. 융해와 재동결의 조합으로 비·눈·언 알갱이가 갈리는 구조를 제시하고 착빙성 강수의 구분 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "c4550cad5e96c8db488624a2805e867f45039714bbb7d18b68793ff7a4b6e86d",
+          "aiPublicGuideTopic": "같은 구름에서 나온 것이 다른 모습으로 닿는 까닭",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "4장 떨어질 만큼 커지기",
+          "section": "4.4 무엇이 되어 닿는가",
+          "primaryConcepts": [
+            "떨어지는 형태"
+          ],
+          "secondaryConcepts": [
+            "상승과 냉각"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "강수 입자가 낙하 중 증발하는 과정과 그 결과를 다루는 페이지다. 건조층 통과에 따른 미도달 강수를 제시하고, 증발 냉각이 하강 기류를 유발하는 기구를 밝힌다.",
+          "aiAnalysisInputSha256": "383b5d9010a270dd1ffc4b602faea7c9fb3f46bede0d49f5168f88c695569406",
+          "aiPublicGuideTopic": "떨어지는 동안에도 계속 달라진다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            33
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 비늘재 관측소의 한 철",
+          "section": "5.1 한 철 동안 무엇을 볼지 정한다",
+          "primaryConcepts": [
+            "관측 계획"
+          ],
+          "secondaryConcepts": [
+            "보는 도구"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계절 단위 기상 관측의 사전 설계를 다루는 페이지다. 관측 항목과 판정 기준의 사전 확정, 결측 상황에 대한 대비책 마련을 제시하고, 기회가 제한된 관측에서 사전 계획이 갖는 비중을 밝힌다.",
+          "aiAnalysisInputSha256": "5c26ddd227572e539bbc420a3e63b646174ac3094afa126350447f510bcee31c",
+          "aiPublicGuideTopic": "관측을 시작하기 전에 정해 두는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 비늘재 관측소의 한 철",
+          "section": "5.2 위에서 보고 안에서 본다",
+          "primaryConcepts": [
+            "관측 절차"
+          ],
+          "secondaryConcepts": [
+            "관측 계획"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "네 가지 관측 수단의 실제 운용 순서를 다루는 페이지다. 광역 탐색에서 국지 관측으로 좁혀 가는 절차를 제시하고, 고층 관측 자료가 나머지 관측의 해석 기준이 된다는 의존 관계를 밝힌다.",
+          "aiAnalysisInputSha256": "1cb1f9b3887d696d0b293b91da8a738995bb1fef456d0aad7ffd099ae31160b0",
+          "aiPublicGuideTopic": "네 도구를 실제로 어떻게 쓰는가",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            35
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 비늘재 관측소의 한 철",
+          "section": "5.2 위에서 보고 안에서 본다",
+          "primaryConcepts": [
+            "관측 절차"
+          ],
+          "secondaryConcepts": [
+            "보는 도구",
+            "구름의 높이"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "위성·원격 탐지·지상 관측·고층 관측이 각각 포착하는 영역을 하나의 대기 단면에 배치한 도표다. 관측 대상이 서로 겹치지 않는다는 점을 시야 범위와 경로로 구분해 나타낸다.",
+          "aiAnalysisInputSha256": "69c735c13e6609d090210c66fa88dbceb06812e08a0110bfbddf7976c641c5fb",
+          "aiPublicGuideTopic": "네 도구가 각각 어디를 보는지 나타낸 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 비늘재 관측소의 한 철",
+          "section": "5.3 값이 어긋날 때",
+          "primaryConcepts": [
+            "값의 해석"
+          ],
+          "secondaryConcepts": [
+            "관측 절차"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "예측값과 관측값의 불일치를 진단하는 절차를 다루는 페이지다. 편차의 분포 형태로 계통 오차와 조건 의존 오차를 구분하고, 계산의 오류와 전제의 불성립을 갈라 보는 관점을 사례로 제시한다.",
+          "aiAnalysisInputSha256": "03f3ab8475956355a894427d213e113aec73e105b068a90fc86403617b3db01c",
+          "aiPublicGuideTopic": "계산한 값과 실제가 다를 때 무엇을 보는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "5장 비늘재 관측소의 한 철",
+          "section": "5.3 값이 어긋날 때",
+          "primaryConcepts": [
+            "값의 해석"
+          ],
+          "secondaryConcepts": [
+            "보는 도구"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "전제 위반을 확인한 뒤의 후속 처리를 다루는 페이지다. 조건별 자료 선별과 전제 수정 후 재계산이라는 두 접근을 제시하고, 잔여 편차를 제거하지 않고 명시하는 것이 후속 연구의 조건임을 밝힌다.",
+          "aiAnalysisInputSha256": "9b49ccee6c408e37368b2a4ac51ced1d088f5a0db4a3a33a269224cb44daed3f",
+          "aiPublicGuideTopic": "전제를 고친 뒤에 하는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "5장 비늘재 관측소의 한 철",
+          "section": "5.4 무엇을 남기는가",
+          "primaryConcepts": [
+            "기록 남기기"
+          ],
+          "secondaryConcepts": [
+            "관측 계획"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 종료 후 자료와 맥락을 함께 보존하는 절차를 다루는 페이지다. 정성적 하늘 상태 기록의 필요, 결측일의 기록, 다음 회차 개선 목록의 작성을 각각의 이유와 함께 제시한다.",
+          "aiAnalysisInputSha256": "54bd4c38959a00bb948c2b06a34d6c9c01b0439102f2e92b467137386eee08eb",
+          "aiPublicGuideTopic": "한 철이 끝난 뒤 남는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            35
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 잘못 읽기 쉬운 자리",
+          "section": "6.1 구름이 물덩이라는 오해",
+          "primaryConcepts": [
+            "구름의 오해"
+          ],
+          "secondaryConcepts": [
+            "떨어지는 조건",
+            "사라지는 구름"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구름을 고정된 물체로 간주하는 인식을 교정하는 페이지다. 구성 물질의 지속적 교체, 총 수분량의 크기, 경계의 비고정성이라는 세 측면을 제시하고 각각을 앞 장의 기구와 연결한다.",
+          "aiAnalysisInputSha256": "9369dded24d336172c7554c47e951afb68e9879af90f493180679ed0206e431c",
+          "aiPublicGuideTopic": "구름을 하나의 물체로 보는 습관",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            27
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 잘못 읽기 쉬운 자리",
+          "section": "6.1 구름이 물덩이라는 오해",
+          "primaryConcepts": [
+            "구름의 오해"
+          ],
+          "secondaryConcepts": [
+            "공기 속의 물"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구름이 수분을 운반한다는 인식을 교정하는 페이지다. 이동하는 주체가 구름이 아니라 대기임을 밝히고, 정체성 지형운의 사례로 구름의 겉보기 이동과 실제 공기 흐름을 분리해 제시한다.",
+          "aiAnalysisInputSha256": "70312303a947f1654ce7e0342081c451b5c7feaf7e217b91c42d04b4ff0f33de",
+          "aiPublicGuideTopic": "구름이 물을 나른다는 그림",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 잘못 읽기 쉬운 자리",
+          "section": "6.2 비가 온다는 말",
+          "primaryConcepts": [
+            "예보 읽기"
+          ],
+          "secondaryConcepts": [
+            "떨어지는 형태"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "강수 예보 표현의 의미를 다루는 페이지다. 확률의 정의, 강수량과 강도의 구분을 제시하고, 세 값을 혼동할 경우 예보의 적중 여부조차 판정할 수 없다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "7649c0560324ffaeddbac8960445e91a823889eff12e0481adddc170ba7a0016",
+          "aiPublicGuideTopic": "예보의 표현을 정확히 읽는 법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            33
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 잘못 읽기 쉬운 자리",
+          "section": "6.2 비가 온다는 말",
+          "primaryConcepts": [
+            "예보 읽기"
+          ],
+          "secondaryConcepts": [
+            "모양에 따른 갈래",
+            "떨어지는 형태"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 총강수량이 시간 분포에 따라 전혀 다른 결과를 낳는다는 점을 두 그래프로 대비한 도표다. 각 분포에 대응하는 구름 형태를 함께 배치해 강수 양상과 구름 유형의 연결을 드러낸다.",
+          "aiAnalysisInputSha256": "2303243d682a4ea102cb5ae1a2bf8423d9910face4d5baff5d309e42307b3cac",
+          "aiPublicGuideTopic": "같은 강수량이 전혀 다른 모습이 되는 것을 나타낸 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 잘못 읽기 쉬운 자리",
+          "section": "6.3 잴 수 없는 것",
+          "primaryConcepts": [
+            "측정의 한계"
+          ],
+          "secondaryConcepts": [
+            "보는 도구",
+            "값의 해석"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구름 물리 관측에서 확인 불가능한 항목을 입자 크기 분포의 비유일성, 응결핵 조성의 미지, 강수량 예측의 불확실성으로 정리하는 페이지다. 세 항목이 모두 관측 수단의 원리적 한계에서 온다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "8102ffe93893766277f4914e65fc3454b283c6159930b51cfe76e849935a6d5c",
+          "aiPublicGuideTopic": "이 책의 방법으로 확인할 수 없는 것들",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 잘못 읽기 쉬운 자리",
+          "section": "6.3 잴 수 없는 것",
+          "primaryConcepts": [
+            "측정의 한계"
+          ],
+          "secondaryConcepts": [
+            "관측 계획"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "불확실성이 큰 조건에서의 예보 방식을 다루는 페이지다. 앙상블 접근과 확률 표현이 산포를 전달하는 수단임을 밝히고, 개별 사례의 결과로 예보 성능을 판정할 수 없다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "204c0994a79fc71bda29ec68db2937991cd84eb7b5e04f7a153f69708cf06e40",
+          "aiPublicGuideTopic": "모르는 채로 예보해야 하는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 결론: 보이는 것은 이미 변한 것이다",
+          "section": "7.1 보이는 것은 이미 변한 것이다",
+          "primaryConcepts": [
+            "공기 속의 물"
+          ],
+          "secondaryConcepts": [
+            "이슬점",
+            "떨어지는 조건"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도입에서 던진 맑은 하늘의 물음을 책 전체의 결론으로 다시 기술하는 결론 페이지다. 구름의 생성과 소산이 수증기의 유입이 아니라 포화 조건의 변화임을 재확인하고, 강수 역시 수분 부족이 아니라 성장 조건의 문제임을 밝혀 가시성과 존재를 구분한다.",
+          "aiAnalysisInputSha256": "d19d3a3c59fd679fd1ec45a2457e4fec10f358509f6ec78162386ae356caaedd",
+          "aiPublicGuideTopic": "책을 지나온 뒤 처음 물음으로 되돌아가는 자리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "invisible-water-first"
+          ]
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 결론: 보이는 것은 이미 변한 것이다",
+          "section": "7.1 보이는 것은 이미 변한 것이다",
+          "primaryConcepts": [
+            "종합"
+          ],
+          "secondaryConcepts": [
+            "담을 수 있는 양",
+            "합쳐지는 성장"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체에서 반복 사용된 네 가지 구분을 정리하는 페이지다. 존재와 가시성, 수증기량과 포화량, 응결 조건과 강수 조건, 계산과 전제를 각각 대비 형태로 제시해 개별 내용을 재구성할 골격을 남긴다.",
+          "aiAnalysisInputSha256": "ed41f654ffa99699c7273b98c1d92ec9e1c19c261fdd593e2c390dd8da046306",
+          "aiPublicGuideTopic": "장마다 세운 구분을 한자리에 모으는 정리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            47
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 결론: 보이는 것은 이미 변한 것이다",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "측정의 한계"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구름 물리의 미해결 과제를 에어로졸 영향의 정량화, 국지 강수 예측, 빙정 핵생성의 조건으로 나누어 제시하는 페이지다. 세 항목이 답의 부재가 아니라 현재 방법의 분해능 한계에서 온다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "41ba0343b99d5b30c7f416e027935e23175f11487186a04cf881496f3ba93ba3",
+          "aiPublicGuideTopic": "다 읽은 뒤에도 열려 있는 물음들",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            47
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 결론: 보이는 것은 이미 변한 것이다",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "관측 계획",
+            "이슬점"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "독자가 직접 수행할 수 있는 이슬점 측정과 구름 관찰 방법을 제시하는 마무리 페이지다. 조건을 달리한 비교 관찰의 설계를 함께 제안하고, 존재·변화·원인을 차례로 묻는 관찰 순서를 최종 메시지로 제시한다.",
+          "aiAnalysisInputSha256": "8a7b80a33441fb42044b1874d5d5ca68dad86253e16420135cd74e547efbe380",
+          "aiPublicGuideTopic": "다음에 무엇을 직접 해 볼 수 있는지",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            49
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 26,
       "title": "생물발광의 화학과 생태",
       "totalPageCount": 50,
