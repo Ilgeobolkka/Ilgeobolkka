@@ -208,6 +208,21 @@ for c in evaluation["cases"]:
     chk(not via_irrelevant,
         f"{c['caseId']}: 정답·대체 페이지가 무관 페이지를 선수로 거치지 않음"
         + ("" if not via_irrelevant else f" — {via_irrelevant}"))
+    # 절을 무관과 무관 아님으로 가르면, 무관이 아닌 페이지가 무관 페이지를 선수로 밟아야만
+    # 닿는 자리가 생긴다. 절의 primary 개념은 하나이므로 같은 개념이 절 안에서 목적에 맞기도 하고
+    # 아니기도 할 수는 없다. 어느 쪽으로 온전하게 만들지는 문단 주제를 읽어 사람이 정한다.
+    sections = {}
+    for p in candidate_pages:
+        sections.setdefault(p["section"], []).append(p["pageNumber"])
+    split_sections = sorted(
+        (s, sorted(set(ns) & irrelevant_set))
+        for s, ns in sections.items()
+        if 0 < len(set(ns) & irrelevant_set) < len(ns)
+    )
+    chk(not split_sections,
+        f"{c['caseId']}: 절이 무관과 무관 아님으로 갈리지 않음"
+        + ("" if not split_sections
+           else " — " + ", ".join(f"{s} 무관 {ns}" for s, ns in split_sections)))
     # 정본은 비후보 페이지가 경로 비용·추천·채점 목록 어디에도 못 나오게 한다.
     chk(not (set(c["referencePageNumbers"]) & noncand), f"{c['caseId']}: 정답경로에 비후보 없음")
     chk(not (set(c["allowedAlternativePageNumbers"]) & noncand), f"{c['caseId']}: 대체 페이지에 비후보 없음")
