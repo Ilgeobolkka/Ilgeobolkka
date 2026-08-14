@@ -43,13 +43,15 @@ public record AiRouteGenerationView(
     }
 
     static AiRouteGenerationView from(
-            AiRouteGeneration generation, List<AiRouteGenerationItem> items) {
+            AiRouteGeneration generation,
+            String normalizedPurpose,
+            List<AiRouteGenerationItem> items) {
         return new AiRouteGenerationView(
                 generation.getGenerationId(),
                 generation.getBookId(),
                 generation.getContentVersion(),
                 generation.getStatus(),
-                generation.getNormalizedPurpose(),
+                normalizedPurpose,
                 generation.getNoRouteReason(),
                 generation.getMinimumRequiredInk(),
                 generation.getFailureCode(),

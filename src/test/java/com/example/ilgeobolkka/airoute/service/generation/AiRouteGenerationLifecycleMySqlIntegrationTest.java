@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.example.ilgeobolkka.airoute.AiRouteGenerationCommand;
 import com.example.ilgeobolkka.airoute.AiRouteDepth;
+import com.example.ilgeobolkka.airoute.AiRouteAdditionalCostStatus;
 import com.example.ilgeobolkka.airoute.entity.AiReadingRoute;
 import com.example.ilgeobolkka.airoute.entity.AiRouteGeneration;
 import com.example.ilgeobolkka.airoute.entity.AiRouteGenerationStatus;
@@ -403,6 +404,9 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
                 () -> assertEquals(AiRouteItemRelevance.HIGH, items.get(0).relevance()),
                 () -> assertEquals(false, items.get(0).prerequisite()),
                 () -> assertEquals(AiRouteItemRole.CORE, items.get(0).role()),
+                () -> assertEquals(
+                        AiRouteAdditionalCostStatus.ONE_INK,
+                        items.get(0).additionalCostStatus()),
                 () -> assertEquals(2, items.get(1).position()),
                 () -> assertEquals(2, items.get(1).pageNumber()),
                 () -> assertEquals(AiRouteItemRole.PREREQUISITE, items.get(1).role()));
@@ -809,13 +813,19 @@ class AiRouteGenerationLifecycleMySqlIntegrationTest {
     private static List<AiRouteResultItem> 두_항목() {
         return List.of(
                 new AiRouteResultItem(
-                        FIRST_PAGE_ID, 1, AiRouteItemRelevance.HIGH, false, AiRouteItemRole.CORE),
+                        FIRST_PAGE_ID,
+                        1,
+                        AiRouteItemRelevance.HIGH,
+                        false,
+                        AiRouteItemRole.CORE,
+                        AiRouteAdditionalCostStatus.ONE_INK),
                 new AiRouteResultItem(
                         SECOND_PAGE_ID,
                         2,
                         AiRouteItemRelevance.MEDIUM,
                         true,
-                        AiRouteItemRole.PREREQUISITE));
+                        AiRouteItemRole.PREREQUISITE,
+                        AiRouteAdditionalCostStatus.ACTIVE_RENTAL));
     }
 
     private UUID 생성을_시작한다() {

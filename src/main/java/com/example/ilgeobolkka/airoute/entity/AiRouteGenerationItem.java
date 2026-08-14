@@ -1,5 +1,6 @@
 package com.example.ilgeobolkka.airoute.entity;
 
+import com.example.ilgeobolkka.airoute.AiRouteAdditionalCostStatus;
 import com.example.ilgeobolkka.book.entity.BookPage;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -106,6 +107,11 @@ public class AiRouteGenerationItem {
     @Column(name = "role", nullable = false, length = 20)
     private AiRouteItemRole role;
 
+    @Enumerated(EnumType.STRING)
+    @JdbcTypeCode(SqlTypes.VARCHAR)
+    @Column(name = "additional_cost_status", nullable = false, length = 20)
+    private AiRouteAdditionalCostStatus additionalCostStatus;
+
     public static AiRouteGenerationItem create(
             UUID generationId,
             long bookId,
@@ -113,9 +119,13 @@ public class AiRouteGenerationItem {
             int position,
             AiRouteItemRelevance relevance,
             boolean prerequisite,
-            AiRouteItemRole role) {
+            AiRouteItemRole role,
+            AiRouteAdditionalCostStatus additionalCostStatus) {
         if (position <= 0) {
             throw new IllegalArgumentException("생성 경로 순서는 양수여야 합니다.");
+        }
+        if (additionalCostStatus == null) {
+            throw new IllegalArgumentException("생성 시점 추가 비용 상태는 필수입니다.");
         }
 
         AiRouteGenerationItem item = new AiRouteGenerationItem();
@@ -126,6 +136,7 @@ public class AiRouteGenerationItem {
         item.relevance = relevance;
         item.prerequisite = prerequisite;
         item.role = role;
+        item.additionalCostStatus = additionalCostStatus;
         return item;
     }
 }

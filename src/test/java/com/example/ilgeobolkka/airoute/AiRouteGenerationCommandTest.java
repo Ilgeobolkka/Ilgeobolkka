@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.example.ilgeobolkka.airoute.exception.InvalidAiRouteGenerationInputException;
 import com.example.ilgeobolkka.airoute.exception.InvalidAiRoutePurposeException;
@@ -142,6 +143,19 @@ class AiRouteGenerationCommandTest {
         assertEquals(10, AiRouteGenerationCommand.defaultInkBudget(10));
         assertEquals(3, AiRouteGenerationCommand.defaultInkBudget(3));
         assertEquals(0, AiRouteGenerationCommand.defaultInkBudget(0));
+    }
+
+    @Test
+    void 기본_예산_command는_계산값이_같은_명시_예산과_출처를_구분한다() {
+        AiRouteGenerationCommand defaultBudget = AiRouteGenerationCommand.forDefaultInkBudget(
+                BOOK_ID, CONTENT_VERSION, PURPOSE, 10);
+        AiRouteGenerationCommand explicitBudget =
+                AiRouteGenerationCommand.forInkBudget(BOOK_ID, CONTENT_VERSION, PURPOSE, 10, 10);
+
+        assertEquals(10, defaultBudget.maxAdditionalInk());
+        assertTrue(defaultBudget.defaultInkBudget());
+        assertFalse(explicitBudget.defaultInkBudget());
+        assertNotEquals(explicitBudget, defaultBudget);
     }
 
     @Test

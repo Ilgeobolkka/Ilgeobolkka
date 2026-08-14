@@ -67,6 +67,23 @@ class AiRouteRequestFingerprintTest {
     }
 
     @Test
+    void 계산된_예산이_같아도_기본_예산과_명시_예산의_지문은_다르다() {
+        assertNotEquals(
+                AiRouteRequestFingerprint.of(inkBudget(PURPOSE, 10)),
+                AiRouteRequestFingerprint.of(AiRouteGenerationCommand.forDefaultInkBudget(
+                        BOOK_ID, CONTENT_VERSION, PURPOSE, 10)));
+    }
+
+    @Test
+    void 기본_예산은_계산할_때의_잔액이_달라도_같은_지문이다() {
+        assertEquals(
+                AiRouteRequestFingerprint.of(AiRouteGenerationCommand.forDefaultInkBudget(
+                        BOOK_ID, CONTENT_VERSION, PURPOSE, 10)),
+                AiRouteRequestFingerprint.of(AiRouteGenerationCommand.forDefaultInkBudget(
+                        BOOK_ID, CONTENT_VERSION, PURPOSE, 3)));
+    }
+
+    @Test
     void 깊이가_다르면_지문이_다르다() {
         assertNotEquals(
                 AiRouteRequestFingerprint.of(ownedDepth(AiRouteDepth.QUICK)),

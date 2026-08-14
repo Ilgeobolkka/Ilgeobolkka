@@ -2,10 +2,14 @@ package com.example.ilgeobolkka.airoute.service.generation;
 
 import com.example.ilgeobolkka.airoute.AiRouteGenerationCommand;
 import com.example.ilgeobolkka.airoute.entity.AiRouteDailyUsage;
+import com.example.ilgeobolkka.airoute.entity.AiRouteDailyUsageId;
 import com.example.ilgeobolkka.airoute.entity.AiRouteGeneration;
+import com.example.ilgeobolkka.airoute.entity.AiRouteGenerationStatus;
+import com.example.ilgeobolkka.airoute.entity.AiReadingRoute;
 import com.example.ilgeobolkka.airoute.repository.AiRouteDailyUsageRepository;
 import com.example.ilgeobolkka.airoute.repository.AiRouteGenerationItemRepository;
 import com.example.ilgeobolkka.airoute.repository.AiRouteGenerationRepository;
+import com.example.ilgeobolkka.airoute.repository.AiReadingRouteRepository;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -36,8 +40,19 @@ public class AiRouteGenerationStartService {
     private final AiRouteGenerationRepository generationRepository;
     private final AiRouteGenerationItemRepository generationItemRepository;
     private final AiRouteDailyUsageRepository dailyUsageRepository;
+    private final AiReadingRouteRepository readingRouteRepository;
     private final TransactionTemplate transactionTemplate;
     private final Clock clock;
+
+    /** 현재 UTC 날짜의 남은 생성 횟수. 조회만 하며 없는 사용량 행을 만들지 않는다. */
+    @Transactional(propagation = Propagation.MANDATORY, readOnly = true)
+    public int remainingDailyGenerations(long readerId) {
+        int used = dailyUsageRepository
+                .findById(new AiRouteDailyUsageId(readerId, currentUsageDate()))
+                .map(AiRouteDailyUsage::getGenerationCount)
+                .orElse(0);
+        return Math.max(0, DAILY_GENERATION_LIMIT - used);
+    }
 
     /**
      * 아직 유효한 같은 키가 있으면 현재 도서·권한을 다시 검증하기 전에 기존 판정을 반환한다.
@@ -58,6 +73,46 @@ public class AiRouteGenerationStartService {
                 status -> findExistingForUpdate(readerId, idempotencyKey)
                         .filter(this::isUsable)
                         .map(generation -> resultOf(generation, requestFingerprint)));
+    }
+
+    /** HTTP 입력에는 콘텐츠 버전이 없으므로 저장된 canonical 요청을 먼저 비교할 수 있게 제공한다. */
+    @Transactional(propagation = Propagation.NEVER)
+    public Optional<AiRouteGenerationRequestView> findExistingRequest(
+            long readerId, UUID idempotencyKey) {
+        if (idempotencyKey == null) {
+            throw new IllegalArgumentException("멱등 키는 필수입니다.");
+        }
+        return transactionTemplate.execute(status -> findExistingForUpdate(readerId, idempotencyKey)
+                .filter(this::isUsable)
+                .map(this::requestViewOf));
+    }
+
+    private AiRouteGenerationRequestView requestViewOf(AiRouteGeneration generation) {
+        if (generation.getStatus() == AiRouteGenerationStatus.SAVED) {
+            AiReadingRoute route = readingRouteRepository
+                    .findById(generation.getSavedRouteId())
+                    .orElseThrow(() -> new IllegalStateException("저장 generation의 경로를 찾을 수 없습니다."));
+            return new AiRouteGenerationRequestView(
+                    generation.getGenerationId(),
+                    generation.getBookId(),
+                    generation.getContentVersion(),
+                    generation.getRequestFingerprint(),
+                    generation.getStatus(),
+                    route.getNormalizedPurpose(),
+                    route.getRequestType(),
+                    route.getMaxAdditionalInk(),
+                    route.getDepth());
+        }
+        return new AiRouteGenerationRequestView(
+                generation.getGenerationId(),
+                generation.getBookId(),
+                generation.getContentVersion(),
+                generation.getRequestFingerprint(),
+                generation.getStatus(),
+                generation.getNormalizedPurpose(),
+                generation.getRequestType(),
+                generation.getMaxAdditionalInk(),
+                generation.getDepth());
     }
 
     /**
@@ -165,13 +220,14 @@ public class AiRouteGenerationStartService {
         // 사용량 잠금을 기다리다 만료했으면 예외로 transaction 전체를 rollback한다.
         requireBeforeDeadline(externalCallDeadline);
         if (usage.getGenerationCount() >= DAILY_GENERATION_LIMIT) {
-            return existingOrDailyLimit(readerId, idempotencyKey, requestFingerprint);
+            return existingOrDailyLimit(
+                    readerId,
+                    idempotencyKey,
+                    requestFingerprint,
+                    usage.getUsageDate());
         }
         usage.increment();
 
-        // 계수 날짜를 확정한 뒤에 읽는다. 그래서 DATE(created_at) >= usage_date 가 항상 성립하고
-        // 반대는 불가능하다. created_at 으로 일일 집계를 재구성하면 ai_route_daily_usage 보다 뒤로
-        // 밀릴 수는 있어도 앞당겨지지 않는다.
         Instant startedAt = clock.instant();
         UUID generationId = UUID.randomUUID();
         // flush를 미루면 insert가 commit 시점에 실행돼 제약 위반이 transaction 종료 예외로 뒤바뀐다.
@@ -224,12 +280,16 @@ public class AiRouteGenerationStartService {
      * 지나가는 길이라 빈도도 낮다.
      */
     private GenerationStartResult existingOrDailyLimit(
-            long readerId, UUID idempotencyKey, String requestFingerprint) {
+            long readerId,
+            UUID idempotencyKey,
+            String requestFingerprint,
+            LocalDate usageDate) {
         return generationRepository
                 .findByReaderIdAndIdempotencyKeyForUpdate(readerId, idempotencyKey)
                 .filter(this::isUsable)
                 .map(generation -> resultOf(generation, requestFingerprint))
-                .orElseGet(GenerationStartResult::dailyLimitExceeded);
+                .orElseGet(() -> GenerationStartResult.dailyLimitExceeded(
+                        usageDate.plusDays(1).atStartOfDay(ZoneOffset.UTC).toInstant()));
     }
 
     /**

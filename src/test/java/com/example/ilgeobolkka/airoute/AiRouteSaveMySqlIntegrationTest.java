@@ -660,13 +660,19 @@ class AiRouteSaveMySqlIntegrationTest {
     private static List<AiRouteResultItem> 두_항목() {
         return List.of(
                 new AiRouteResultItem(
-                        FIRST_PAGE_ID, 1, AiRouteItemRelevance.HIGH, false, AiRouteItemRole.CORE),
+                        FIRST_PAGE_ID,
+                        1,
+                        AiRouteItemRelevance.HIGH,
+                        false,
+                        AiRouteItemRole.CORE,
+                        AiRouteAdditionalCostStatus.ONE_INK),
                 new AiRouteResultItem(
                         SECOND_PAGE_ID,
                         2,
                         AiRouteItemRelevance.MEDIUM,
                         true,
-                        AiRouteItemRole.PREREQUISITE));
+                        AiRouteItemRole.PREREQUISITE,
+                        AiRouteAdditionalCostStatus.ONE_INK));
     }
 
     private void 독자를_생성한다(long readerId) {
