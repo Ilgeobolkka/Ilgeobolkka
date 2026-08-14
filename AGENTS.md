@@ -75,7 +75,7 @@ AI 코딩 에이전트(Claude Code, Codex, Antigravity 등)가 이 프로젝트�
 - Ruby 정규식의 `#{...}`는 문자열 보간으로 해석된다 → Markdown 제목 수량자는 `^#+`를 사용한다.
 - 제한 환경의 `gh auth status` 실패는 키체인 차단일 수 있다 → 로그인 안내 전에 승인 경계에서 진단 스크립트를 재실행한다.
 - `fixtures/` 등 리소스만 고치면 Gradle이 최신으로 보고 테스트를 건너뛴다 → `./gradlew check --rerun-tasks`로 확인한다.
-- `build/`에 macOS 중복 사본(`V1__… 2.sql`)이 생기면 Flyway가 같은 버전을 둘로 읽어 컨텍스트가 깨진다 → `./gradlew clean` 후 다시 빌드한다.
+- `build/`에 macOS 중복 사본(`… 2.sql`, `… 2.class`)이 생기면 Flyway 중복 버전·테스트 클래스명 오류가 난다 → `./gradlew clean` 후 다시 빌드한다.
 
 ## 프로젝트 정보
 
