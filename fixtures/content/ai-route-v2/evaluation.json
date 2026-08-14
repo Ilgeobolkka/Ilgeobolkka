@@ -300,6 +300,124 @@
       ]
     },
     {
+      "caseId": "case-book-026",
+      "bookId": 26,
+      "purpose": "이 책을 소장하고 있는데, 심해 생물이 어떤 반응으로 빛을 만들고 그 빛을 무엇에 쓰는지를 제대로 익히고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "스스로 내는 빛",
+        "발광 물질과 효소",
+        "빛의 색",
+        "반대조명",
+        "짝 찾기"
+      ],
+      "helpfulConcepts": [
+        "어두운 세계",
+        "반응 조건",
+        "방어와 유인",
+        "쓰임의 다양성"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 11
+        },
+        {
+          "beforePageNumber": 11,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 11,
+          "afterPageNumber": 13
+        },
+        {
+          "beforePageNumber": 11,
+          "afterPageNumber": 15
+        },
+        {
+          "beforePageNumber": 11,
+          "afterPageNumber": 17
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 19
+        },
+        {
+          "beforePageNumber": 19,
+          "afterPageNumber": 20
+        },
+        {
+          "beforePageNumber": 19,
+          "afterPageNumber": 21
+        },
+        {
+          "beforePageNumber": 19,
+          "afterPageNumber": 23
+        },
+        {
+          "beforePageNumber": 23,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 21,
+          "afterPageNumber": 25
+        },
+        {
+          "beforePageNumber": 25,
+          "afterPageNumber": 26
+        }
+      ],
+      "irrelevantPageNumbers": [
+        35,
+        36,
+        37,
+        38,
+        42
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          47
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        5,
+        11,
+        12,
+        13,
+        15,
+        17,
+        19,
+        20,
+        21,
+        23,
+        24,
+        25,
+        26
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        6,
+        10,
+        14,
+        18,
+        28
+      ]
+    },
+    {
       "caseId": "case-book-027",
       "bookId": 27,
       "purpose": "이 책을 사지는 않았고, 우주정거장 안에서 사람이 왜 떠 있는지 그 까닭만 제대로 알고 싶다",
