@@ -52,7 +52,9 @@
 5. route 이전·다음은 추천 position, 원본 page 이동은 기존 viewer로 분리하고 비용을 사전 표시합니다.
 6. 선수 page 건너뛰기는 안내 후 사용자가 계속할 수 있고 강제 순서 차단하지 않습니다.
 7. current 지정·삭제는 S03, 완료 뒤 세 rating은 S05만 호출합니다.
-8. 모든 문자열은 textContent/escaped output, 모든 변경 fetch는 공통 CSRF helper를 사용합니다.
+8. 모든 문자열은 textContent/escaped output, 모든 JSON 변경 fetch는 공통 CSRF helper를 사용합니다.
+9. 기존 공통 파일은 수정하지 않고 W02 전용 JavaScript 안에 같은 출처·CSRF·viewer session을 검증하는
+   바이너리 content POST helper를 둘 수 있습니다.
 
 ## 테스트
 
@@ -63,6 +65,7 @@
 - 목적·guide XSS와 CSRF 누락 실패 표시
 - 수동 브라우저: 저장 route→1잉크 open→active rental 재열람→전체 완료→feedback
 - 명령: `./gradlew test --tests '*AiRouteDetailPageTest'`
+- 실제 ES Module·DOM 상태 전이: 패키징 뒤 `.github/scripts/boot-smoke.sh`의 경로 상세 fixture
 
 ## 제외 범위
 

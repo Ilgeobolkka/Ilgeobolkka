@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.example.ilgeobolkka.airoute.controller.AiRouteCurrentController;
 import com.example.ilgeobolkka.airoute.controller.AiRouteDeleteController;
+import com.example.ilgeobolkka.airoute.controller.AiRouteDetailPageController;
 import com.example.ilgeobolkka.airoute.controller.AiRouteQueryController;
 import com.example.ilgeobolkka.airoute.controller.AiRouteSaveController;
 import com.example.ilgeobolkka.airoute.facade.AiRouteCurrentFacade;
@@ -130,6 +131,9 @@ class IlgeobolkkaApplicationTests {
                         .isEmpty()),
                 () -> assertTrue(applicationContext
                         .getBeansOfType(AiRouteDeleteFacade.class)
+                        .isEmpty()),
+                () -> assertTrue(applicationContext
+                        .getBeansOfType(AiRouteDetailPageController.class)
                         .isEmpty()));
     }
 }

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/shell :: page(${pageTitle}, ~{::section})}">
+<body>
+<section class="viewer-shell"
+         th:attr="data-route-id=${route.routeId},
+                  data-book-id=${route.bookId},
+                  data-route-current=${route.current},
+                  data-route-completed=${route.completedAt != null},
+                  data-route-completed-at=${route.completedAt},
+                  data-route-rating=${route.rating != null ? route.rating.name() : ''}"
+         data-ai-route-detail-root
+         aria-labelledby="ai-route-title">
+    <header class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-4">
+        <div>
+            <p class="small text-secondary mb-1" th:text="${route.bookTitle}">도서명</p>
+            <h1 class="h2 mb-2" id="ai-route-title">AI 독서 경로</h1>
+            <p class="mb-2" th:text="${route.purpose}">독서 목적</p>
+            <div class="d-flex flex-wrap gap-2">
+                <span class="badge text-bg-primary" data-current-badge th:hidden="${!route.current}">
+                    현재 경로
+                </span>
+                <span class="badge text-bg-success"
+                      data-completed-badge
+                      th:hidden="${route.completedAt == null}">
+                    경로 열람 완료
+                </span>
+                <time class="small text-secondary"
+                      data-completed-time
+                      th:datetime="${route.completedAt}"
+                      th:hidden="${route.completedAt == null}"
+                      th:text="${route.completedAt != null ? '완료 ' + route.completedAt : ''}">
+                </time>
+            </div>
+        </div>
+
+        <div class="d-flex flex-wrap align-items-start gap-2">
+            <button class="btn btn-outline-primary"
+                    type="button"
+                    data-make-current
+                    th:disabled="${route.current}">
+                현재 경로로 지정
+            </button>
+            <button class="btn btn-outline-danger" type="button" data-delete-route>
+                경로 삭제
+            </button>
+            <a class="btn btn-outline-secondary" th:href="@{/library}">내 서재로</a>
+        </div>
+    </header>
+
+    <div class="row g-4">
+        <aside class="col-12 col-lg-4" aria-labelledby="route-items-title">
+            <div class="bg-white border rounded-3 p-3">
+                <div class="d-flex justify-content-between align-items-center gap-2 mb-3">
+                    <h2 class="h5 mb-0" id="route-items-title">추천 경로</h2>
+                    <span class="small text-secondary" data-route-progress aria-live="polite"></span>
+                </div>
+
+                <ol class="list-group list-group-numbered" data-route-items>
+                    <li class="list-group-item d-flex align-items-start gap-2"
+                        th:each="item : ${route.items}"
+                        th:attr="data-route-position=${item.position},
+                                 data-page-number=${item.pageNumber},
+                                 data-cost-status=${item.additionalCostStatus},
+                                 data-opened=${item.openedAt != null},
+                                 data-opened-at=${item.openedAt},
+                                 data-prerequisite=${item.prerequisite}">
+                        <div class="ms-2 flex-grow-1">
+                            <div class="d-flex justify-content-between gap-2">
+                                <strong>
+                                    원본 <span th:text="${item.pageNumber}">1</span>페이지
+                                </strong>
+                                <span class="badge text-bg-success"
+                                      data-item-opened-badge
+                                      th:hidden="${item.openedAt == null}">
+                                    열람 완료
+                                </span>
+                            </div>
+
+                            <p class="small text-secondary mb-1">
+                                <span th:switch="${item.relevance.name()}">
+                                    <span th:case="'HIGH'">관련도 높음</span>
+                                    <span th:case="'MEDIUM'">관련도 보통</span>
+                                </span>
+                                <span aria-hidden="true">·</span>
+                                약 <span th:text="${item.estimatedMinutes}">1</span>분
+                                <span aria-hidden="true">·</span>
+                                <span th:switch="${item.role.name()}">
+                                    <span th:case="'PREREQUISITE'">선수 개념</span>
+                                    <span th:case="'CORE'">핵심</span>
+                                    <span th:case="'EXAMPLE'">사례</span>
+                                    <span th:case="'COUNTERPOINT'">반대 관점</span>
+                                    <span th:case="'CONCLUSION'">결론</span>
+                                </span>
+                                <span th:if="${item.prerequisite}"> · 선수 개념</span>
+                            </p>
+                            <time class="d-block small text-secondary mb-1"
+                                  data-item-opened-time
+                                  th:datetime="${item.openedAt}"
+                                  th:hidden="${item.openedAt == null}"
+                                  th:text="${item.openedAt != null ? '열람 ' + item.openedAt : ''}">
+                            </time>
+                            <p class="small mb-2" th:text="${item.guide}">읽기 안내</p>
+
+                            <button class="btn btn-sm btn-primary"
+                                    type="button"
+                                    data-open-route-item>
+                                <span th:switch="${item.additionalCostStatus.name()}">
+                                    <span th:case="'ONE_INK'">1잉크로 열기</span>
+                                    <span th:case="'ACTIVE_RENTAL'">대여 중 · 열기</span>
+                                    <span th:case="'OWNED'">소장 도서 · 열기</span>
+                                </span>
+                            </button>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </aside>
+
+        <div class="col-12 col-lg-8">
+            <section class="viewer-toolbar bg-white border rounded-3 p-3 mb-3 shadow-sm"
+                     aria-labelledby="route-reader-title">
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+                    <div>
+                        <h2 class="h5 mb-1" id="route-reader-title">경로 읽기</h2>
+                        <p class="small text-secondary mb-0" data-reader-status aria-live="polite">
+                            추천 경로에서 읽을 페이지를 선택해 주세요.
+                        </p>
+                    </div>
+                    <nav class="d-flex flex-wrap gap-2" aria-label="추천 경로 이동">
+                        <button class="btn btn-outline-primary"
+                                type="button"
+                                data-route-previous
+                                disabled>
+                            이전 경로 페이지
+                        </button>
+                        <button class="btn btn-outline-primary"
+                                type="button"
+                                data-route-next
+                                disabled>
+                            다음 경로 페이지
+                        </button>
+                        <a class="btn btn-outline-secondary"
+                           data-original-viewer-link
+                           hidden>
+                            원본 순서로 읽기
+                        </a>
+                    </nav>
+                </div>
+            </section>
+
+            <div class="alert alert-warning"
+                 role="alert"
+                 tabindex="-1"
+                 data-route-ink-notice
+                 hidden>
+                <span data-route-ink-notice-message></span>
+                <a class="alert-link ms-2"
+                   th:href="@{/ink}"
+                   data-route-ink-link
+                   hidden>
+                    잉크 충전하기
+                </a>
+            </div>
+
+            <div class="viewer-page border rounded-3 mb-4"
+                 role="region"
+                 aria-label="경로 페이지 콘텐츠"
+                 aria-live="polite"
+                 aria-busy="false"
+                 tabindex="-1"
+                 data-route-content>
+                <p class="text-secondary text-center p-5" data-route-placeholder>
+                    경로 페이지를 열면 콘텐츠가 여기에 표시됩니다.
+                </p>
+            </div>
+
+            <section class="bg-white border rounded-3 p-4" aria-labelledby="route-feedback-title">
+                <h2 class="h5" id="route-feedback-title">이 경로가 도움이 되었나요?</h2>
+                <p class="small text-secondary" data-feedback-guide>
+                    모든 경로 페이지를 연 뒤 선택적으로 평가할 수 있습니다.
+                </p>
+                <div class="d-flex flex-wrap gap-2" role="group" aria-label="경로 평가">
+                    <button class="btn btn-outline-success"
+                            type="button"
+                            data-feedback-rating="HELPFUL"
+                            th:disabled="${route.completedAt == null}"
+                            th:attr="aria-pressed=${route.rating != null && route.rating.name() == 'HELPFUL'}">
+                        도움이 됐어요
+                    </button>
+                    <button class="btn btn-outline-secondary"
+                            type="button"
+                            data-feedback-rating="NEUTRAL"
+                            th:disabled="${route.completedAt == null}"
+                            th:attr="aria-pressed=${route.rating != null && route.rating.name() == 'NEUTRAL'}">
+                        보통이에요
+                    </button>
+                    <button class="btn btn-outline-danger"
+                            type="button"
+                            data-feedback-rating="NOT_HELPFUL"
+                            th:disabled="${route.completedAt == null}"
+                            th:attr="aria-pressed=${route.rating != null && route.rating.name() == 'NOT_HELPFUL'}">
+                        도움이 안 됐어요
+                    </button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script type="module" th:src="@{/js/ai-route/route-detail-page.js}"></script>
+</section>
+</body>
+</html>
