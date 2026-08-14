@@ -24,6 +24,7 @@ public final class AiRouteGenerationCommand {
     private final AiRouteRequestType requestType;
     private final Integer maxAdditionalInk;
     private final AiRouteDepth depth;
+    private final boolean defaultInkBudget;
 
     /**
      * 예산·깊이 배타 규칙은 팩토리가 어느 쪽에 null 을 넣을지 정해 구조로 보장하므로 여기서 다시
@@ -35,7 +36,8 @@ public final class AiRouteGenerationCommand {
             String rawPurpose,
             AiRouteRequestType requestType,
             Integer maxAdditionalInk,
-            AiRouteDepth depth) {
+            AiRouteDepth depth,
+            boolean defaultInkBudget) {
         String normalized = AiRoutePurposeNormalizer.normalize(rawPurpose);
         // contentVersion 도 지문 입력이지만 정규화하지 않는다. 요청 바디가 아니라 서버가 도서에서 읽어
         // 오는 값이라 변형이 들어올 경로가 없고, 여기서 다듬으면 도서가 가진 값과 달라져 비교가 어긋난다.
@@ -49,6 +51,7 @@ public final class AiRouteGenerationCommand {
         this.requestType = requestType;
         this.maxAdditionalInk = maxAdditionalInk;
         this.depth = depth;
+        this.defaultInkBudget = defaultInkBudget;
     }
 
     /**
@@ -71,7 +74,30 @@ public final class AiRouteGenerationCommand {
                     "예산은 현재 잉크 잔액 이하여야 합니다. 잔액 " + inkBalance + ", 입력 " + maxAdditionalInk);
         }
         return new AiRouteGenerationCommand(
-                bookId, contentVersion, rawPurpose, AiRouteRequestType.INK_BUDGET, maxAdditionalInk, null);
+                bookId,
+                contentVersion,
+                rawPurpose,
+                AiRouteRequestType.INK_BUDGET,
+                maxAdditionalInk,
+                null,
+                false);
+    }
+
+    /**
+     * 비소장 도서에서 사용자가 예산을 생략한 입력. 계산된 값은 명시 예산과 같을 수 있지만 멱등 요청의
+     * 의미는 다르므로 그 출처를 함께 보존한다.
+     */
+    public static AiRouteGenerationCommand forDefaultInkBudget(
+            long bookId, String contentVersion, String rawPurpose, int inkBalance) {
+        int budget = defaultInkBudget(inkBalance);
+        return new AiRouteGenerationCommand(
+                bookId,
+                contentVersion,
+                rawPurpose,
+                AiRouteRequestType.INK_BUDGET,
+                budget,
+                null,
+                true);
     }
 
     /**
@@ -87,7 +113,13 @@ public final class AiRouteGenerationCommand {
             throw new InvalidAiRouteGenerationInputException("소장 도서는 깊이가 필요합니다.");
         }
         return new AiRouteGenerationCommand(
-                bookId, contentVersion, rawPurpose, AiRouteRequestType.OWNED_DEPTH, null, depth);
+                bookId,
+                contentVersion,
+                rawPurpose,
+                AiRouteRequestType.OWNED_DEPTH,
+                null,
+                depth,
+                false);
     }
 
     /**
@@ -139,6 +171,10 @@ public final class AiRouteGenerationCommand {
         return depth;
     }
 
+    public boolean defaultInkBudget() {
+        return defaultInkBudget;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (this == other) {
@@ -152,26 +188,34 @@ public final class AiRouteGenerationCommand {
                 && normalizedPurpose.equals(that.normalizedPurpose)
                 && requestType == that.requestType
                 && Objects.equals(maxAdditionalInk, that.maxAdditionalInk)
-                && depth == that.depth;
+                && depth == that.depth
+                && defaultInkBudget == that.defaultInkBudget;
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
-                bookId, contentVersion, normalizedPurpose, requestType, maxAdditionalInk, depth);
+                bookId,
+                contentVersion,
+                normalizedPurpose,
+                requestType,
+                maxAdditionalInk,
+                depth,
+                defaultInkBudget);
     }
 
     /** 목적은 로그에 남기지 않으므로 길이만 드러낸다. */
     @Override
     public String toString() {
         return ("AiRouteGenerationCommand[bookId=%d, contentVersion=%s, purposeCodePoints=%d, "
-                        + "requestType=%s, maxAdditionalInk=%s, depth=%s]")
+                        + "requestType=%s, maxAdditionalInk=%s, depth=%s, defaultInkBudget=%s]")
                 .formatted(
                         bookId,
                         contentVersion,
                         normalizedPurpose.codePointCount(0, normalizedPurpose.length()),
                         requestType,
                         maxAdditionalInk,
-                        depth);
+                        depth,
+                        defaultInkBudget);
     }
 }

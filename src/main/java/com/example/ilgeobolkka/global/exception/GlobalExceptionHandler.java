@@ -3,7 +3,11 @@ package com.example.ilgeobolkka.global.exception;
 import com.example.ilgeobolkka.airoute.exception.AiRouteContentChangedException;
 import com.example.ilgeobolkka.airoute.exception.AiRouteEntitlementChangedException;
 import com.example.ilgeobolkka.airoute.exception.AiRouteGenerationConsumedException;
+import com.example.ilgeobolkka.airoute.exception.AiRouteGenerationApiException;
 import com.example.ilgeobolkka.airoute.exception.AiRouteGenerationNotFoundException;
+import com.example.ilgeobolkka.airoute.exception.AiRouteNotSupportedException;
+import com.example.ilgeobolkka.airoute.exception.InvalidAiRouteGenerationInputException;
+import com.example.ilgeobolkka.airoute.exception.InvalidAiRoutePurposeException;
 import com.example.ilgeobolkka.airoute.exception.AiRouteNotCompletedException;
 import com.example.ilgeobolkka.airoute.exception.AiRouteNotFoundException;
 import com.example.ilgeobolkka.auth.exception.InvalidCredentialsException;
@@ -23,6 +27,7 @@ import com.example.ilgeobolkka.reading.exception.ReadingSessionNotFoundException
 import com.example.ilgeobolkka.reading.exception.ViewerSessionReplacedException;
 import com.example.ilgeobolkka.webhook.exception.UnknownPaymentException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,6 +60,33 @@ public class GlobalExceptionHandler {
     ResponseEntity<ApiErrorResponse> handleInvalidInput(Exception exception) {
         logFailure(ErrorCode.INVALID_INPUT, exception);
         return response(ErrorCode.INVALID_INPUT);
+    }
+
+    @ExceptionHandler({
+        InvalidAiRouteGenerationInputException.class,
+        InvalidAiRoutePurposeException.class
+    })
+    ResponseEntity<ApiErrorResponse> handleInvalidAiRouteInput(Exception exception) {
+        logFailure(ErrorCode.INVALID_INPUT, exception);
+        return response(ErrorCode.INVALID_INPUT);
+    }
+
+    @ExceptionHandler(AiRouteNotSupportedException.class)
+    ResponseEntity<ApiErrorResponse> handleAiRouteNotSupported(
+            AiRouteNotSupportedException exception) {
+        logFailure(ErrorCode.AI_ROUTE_NOT_SUPPORTED, exception);
+        return response(ErrorCode.AI_ROUTE_NOT_SUPPORTED);
+    }
+
+    @ExceptionHandler(AiRouteGenerationApiException.class)
+    ResponseEntity<ApiErrorResponse> handleAiRouteGenerationApi(
+            AiRouteGenerationApiException exception) {
+        logFailure(exception.errorCode(), exception);
+        ResponseEntity.BodyBuilder response = ResponseEntity.status(exception.errorCode().status());
+        if (exception.retryAfterSeconds() != null) {
+            response.header(HttpHeaders.RETRY_AFTER, Long.toString(exception.retryAfterSeconds()));
+        }
+        return response.body(ApiErrorResponse.from(exception.errorCode()));
     }
 
     @ExceptionHandler(AiRouteNotCompletedException.class)

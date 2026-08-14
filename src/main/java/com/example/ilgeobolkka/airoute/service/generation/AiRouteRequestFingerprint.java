@@ -2,6 +2,7 @@ package com.example.ilgeobolkka.airoute.service.generation;
 
 import com.example.ilgeobolkka.airoute.AiRouteDepth;
 import com.example.ilgeobolkka.airoute.AiRouteGenerationCommand;
+import com.example.ilgeobolkka.airoute.AiRouteRequestType;
 import java.io.ByteArrayOutputStream;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
@@ -23,12 +24,14 @@ public final class AiRouteRequestFingerprint {
 
     private static final byte ABSENT = 0;
     private static final byte PRESENT = 1;
+    private static final byte DEFAULT_INK_BUDGET = 2;
 
     private AiRouteRequestFingerprint() {}
 
     /**
-     * {@code bookId · contentVersion · normalizedPurpose · requestType · maxAdditionalInk · depth} 고정
-     * 순서의 SHA-256.
+     * {@code bookId · contentVersion · normalizedPurpose · requestType · depth}와 명시 예산 또는 기본 예산
+     * 표식을 고정 순서로 넣은 SHA-256. 기본 예산의 계산값은 현재 잔액이지 HTTP 입력이
+     * 아니므로 지문에 넣지 않는다.
      *
      * @return 소문자 hex 64자. {@code ai_route_generation.request_fingerprint CHAR(64)}에 그대로 들어간다.
      */
@@ -37,13 +40,42 @@ public final class AiRouteRequestFingerprint {
             throw new IllegalArgumentException("생성 명령은 필수입니다.");
         }
 
+        return ofCanonicalRequest(
+                command.bookId(),
+                command.contentVersion(),
+                command.normalizedPurpose(),
+                command.requestType(),
+                command.maxAdditionalInk(),
+                command.depth(),
+                command.defaultInkBudget());
+    }
+
+    /** 저장된 canonical 값과 새 HTTP 입력의 예산 출처로 기존 지문을 재구성한다. */
+    public static String ofCanonicalRequest(
+            long bookId,
+            String contentVersion,
+            String normalizedPurpose,
+            AiRouteRequestType requestType,
+            Integer maxAdditionalInk,
+            AiRouteDepth depth,
+            boolean defaultInkBudget) {
+        if (contentVersion == null
+                || normalizedPurpose == null
+                || requestType == null) {
+            throw new IllegalArgumentException("canonical 생성 입력은 필수입니다.");
+        }
+
         ByteArrayOutputStream input = new ByteArrayOutputStream();
-        writeLong(input, command.bookId());
-        writeString(input, command.contentVersion());
-        writeString(input, command.normalizedPurpose());
-        writeString(input, command.requestType().name());
-        writeNullableInt(input, command.maxAdditionalInk());
-        writeNullableDepth(input, command.depth());
+        writeLong(input, bookId);
+        writeString(input, contentVersion);
+        writeString(input, normalizedPurpose);
+        writeString(input, requestType.name());
+        writeNullableInt(input, defaultInkBudget ? null : maxAdditionalInk);
+        writeNullableDepth(input, depth);
+        // 기존 명시 예산 지문은 바꾸지 않는다. 기본 예산은 현재 잔액 대신 표식으로 구분한다.
+        if (defaultInkBudget) {
+            input.write(DEFAULT_INK_BUDGET);
+        }
 
         return HexFormat.of().formatHex(sha256(input.toByteArray()));
     }

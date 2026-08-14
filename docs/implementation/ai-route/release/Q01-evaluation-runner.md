@@ -32,7 +32,8 @@ Responses, 서버 검증·경로 조립 코드로 실행하고 원시 판정 입
 - 입력: `fixtures/content/ai-route-v2/evaluation.json`, 같은 manifest·DB contentVersion
 - 입력: case의 owned·budget/depth·activeRentalPageNumbers snapshot
 - 산출물: `AiRouteEvaluationRunner`, `AiRouteEvaluationService`, evaluation 전용 reader
-- 산출물: caseId별 route 결과·처리 시간·정답 비교용 page/concept 자료; provider 원문 제외
+- 산출물: caseId별 route 결과·준비 구간을 포함한 처리 시간·정답 비교용 page/concept 자료와 같은 실행에서
+  계산한 후보 임계값 검토 결과; provider 원문 제외
 
 ## 수정 허용 파일
 
@@ -77,6 +78,9 @@ Responses, 서버 검증·경로 조립 코드로 실행하고 원시 판정 입
 - 후보 정책 승격 평가의 `0.35`·`0.40`·`0.45` 고정, 문자열 완전 일치와 불일치 입력 실패, 선수 폐쇄 전
   필수 개념 재현율 95% 경계와 가장 높은 통과값 선택·전체 미달 시 `0.30` 유지
 - 명령: `./gradlew test --tests '*AiRouteEvaluationRunnerTest'`
+- 실제 공급자 평가는 `SPRING_PROFILES_ACTIVE=evaluation ./gradlew bootRun`으로 opt-in 실행하며,
+  `OPENAI_PROJECT_ID`, `OPENAI_API_KEY`, `OPENAI_DATA_POLICY_VERSION`, manifest·evaluation Git revision과
+  기존 파일이 아닌 결과 output 경로를 환경 변수로 제공합니다.
 
 ## 제외 범위
 

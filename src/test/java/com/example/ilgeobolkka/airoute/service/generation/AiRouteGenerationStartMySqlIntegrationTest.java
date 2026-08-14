@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.example.ilgeobolkka.airoute.AiRouteGenerationCommand;
+import com.example.ilgeobolkka.airoute.AiRouteAdditionalCostStatus;
 import com.example.ilgeobolkka.airoute.entity.AiRouteGeneration;
 import com.example.ilgeobolkka.airoute.entity.AiRouteGenerationStatus;
 import com.example.ilgeobolkka.airoute.entity.AiRouteItemRelevance;
@@ -138,6 +139,25 @@ class AiRouteGenerationStartMySqlIntegrationTest {
                 () -> assertEquals(first.generationId(), second.generationId()),
                 () -> assertEquals(AiRouteGenerationStatus.GENERATING, second.status()),
                 () -> assertNull(second.expiresAt()),
+                () -> assertEquals(1, 생성_수를_조회한다(READER_ID)),
+                () -> assertEquals(1, 사용량을_조회한다(READER_ID, USAGE_DATE)));
+    }
+
+    @Test
+    void 같은_키의_기본_예산은_계산_잔액이_달라도_기존_생성으로_수렴한다() {
+        UUID key = UUID.randomUUID();
+        AiRouteGenerationCommand firstCommand = AiRouteGenerationCommand.forDefaultInkBudget(
+                BOOK_ID, CONTENT_VERSION, PURPOSE, 10);
+        AiRouteGenerationCommand retriedCommand = AiRouteGenerationCommand.forDefaultInkBudget(
+                BOOK_ID, CONTENT_VERSION, PURPOSE, 3);
+
+        GenerationStartResult first = startService.start(READER_ID, key, firstCommand);
+        GenerationStartResult retried = startService.start(READER_ID, key, retriedCommand);
+
+        assertAll(
+                () -> assertEquals(Kind.NEW, first.kind()),
+                () -> assertEquals(Kind.EXISTING_GENERATING, retried.kind()),
+                () -> assertEquals(first.generationId(), retried.generationId()),
                 () -> assertEquals(1, 생성_수를_조회한다(READER_ID)),
                 () -> assertEquals(1, 사용량을_조회한다(READER_ID, USAGE_DATE)));
     }
@@ -468,6 +488,9 @@ class AiRouteGenerationStartMySqlIntegrationTest {
                 () -> assertEquals(Kind.NEW, last.kind()),
                 () -> assertEquals(Kind.DAILY_LIMIT, overLimit.kind()),
                 () -> assertNull(overLimit.generationId()),
+                () -> assertEquals(
+                        Instant.parse("2026-08-07T00:00:00Z"),
+                        overLimit.retryAfterAt()),
                 () -> assertEquals(1, 생성_수를_조회한다(READER_ID)),
                 () -> assertEquals(LIMIT, 사용량을_조회한다(READER_ID, USAGE_DATE)));
     }
@@ -697,13 +720,19 @@ class AiRouteGenerationStartMySqlIntegrationTest {
     private static List<AiRouteResultItem> 두_항목() {
         return List.of(
                 new AiRouteResultItem(
-                        FIRST_PAGE_ID, 1, AiRouteItemRelevance.HIGH, false, AiRouteItemRole.CORE),
+                        FIRST_PAGE_ID,
+                        1,
+                        AiRouteItemRelevance.HIGH,
+                        false,
+                        AiRouteItemRole.CORE,
+                        AiRouteAdditionalCostStatus.ONE_INK),
                 new AiRouteResultItem(
                         SECOND_PAGE_ID,
                         2,
                         AiRouteItemRelevance.MEDIUM,
                         true,
-                        AiRouteItemRole.PREREQUISITE));
+                        AiRouteItemRole.PREREQUISITE,
+                        AiRouteAdditionalCostStatus.ONE_INK));
     }
 
     private int 항목_수를_조회한다(UUID generationId) {

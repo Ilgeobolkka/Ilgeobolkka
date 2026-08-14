@@ -44,6 +44,16 @@ class GenerationExecutionResultTest {
                 result.failure());
     }
 
+    @Test
+    void 일일_한도는_판정한_날짜의_초기화_시각을_넘긴다() {
+        Instant retryAfterAt = Instant.parse("2026-08-14T00:00:00Z");
+
+        GenerationExecutionResult result = GenerationExecutionResult.dailyLimit(retryAfterAt);
+
+        assertEquals(GenerationExecutionResult.State.DAILY_LIMIT, result.state());
+        assertEquals(retryAfterAt, result.retryAfterAt());
+    }
+
     private AiRouteGenerationView view(AiRouteGenerationStatus status, String failureCode) {
         return new AiRouteGenerationView(
                 UUID.randomUUID(),

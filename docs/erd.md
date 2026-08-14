@@ -442,10 +442,12 @@ generation·저장 route 항목이 페이지의 도서를 복합 FK로 확인할
 | `relevance` | `VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | - | `HIGH` 또는 `MEDIUM` |
 | `prerequisite` | `BOOLEAN` | 아니오 | - | 선수 개념 페이지 여부 |
 | `role` | `VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | - | API 계약의 경로 역할 |
+| `additional_cost_status` | `VARCHAR(20) CHARACTER SET ascii COLLATE ascii_bin` | 아니오 | - | 생성 권한 사본으로 계산한 `ONE_INK`, `ACTIVE_RENTAL`, `OWNED` 중 하나 |
 
 같은 생성 결과에서 `position`과 `book_page_id`는 각각 고유합니다. 페이지의 도서 일치는 복합 FK로
 강제하고, `book_page`에 콘텐츠 버전 컬럼이 없으므로 생성 행과의 콘텐츠 버전 일치는 애플리케이션 계층에서
-검증합니다.
+검증합니다. 추가 비용 상태는 [ADR 0016](./adr/domain/0016-store-generation-item-cost-status.md)에 따라
+생성 때 저장하며 소장·대여 이력으로 다시 계산하지 않습니다.
 
 #### `ai_reading_route`
 

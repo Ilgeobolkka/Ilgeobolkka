@@ -152,7 +152,8 @@ public class AiRouteGenerationFacade {
                                     item.position(),
                                     item.relevance(),
                                     item.prerequisite(),
-                                    item.role()))
+                                    item.role(),
+                                    item.additionalCostStatus()))
                             .toList());
             return;
         }
@@ -168,7 +169,7 @@ public class AiRouteGenerationFacade {
             case EXISTING_GENERATING, EXISTING_FINAL -> GenerationExecutionResult.replayed(
                     findGeneration(readerId, start.generationId()));
             case KEY_REUSED -> GenerationExecutionResult.keyReused();
-            case DAILY_LIMIT -> GenerationExecutionResult.dailyLimit();
+            case DAILY_LIMIT -> GenerationExecutionResult.dailyLimit(start.retryAfterAt());
             case TIMEOUT -> GenerationExecutionResult.timedOutBeforeStart();
             case NEW -> throw new IllegalStateException("새 생성은 기존 결과로 변환할 수 없습니다.");
         };

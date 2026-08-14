@@ -8,6 +8,7 @@ import com.example.ilgeobolkka.airoute.entity.AiRouteNoRouteReason;
 import com.example.ilgeobolkka.airoute.exception.AiRouteGenerationNotFoundException;
 import com.example.ilgeobolkka.airoute.repository.AiRouteGenerationItemRepository;
 import com.example.ilgeobolkka.airoute.repository.AiRouteGenerationRepository;
+import com.example.ilgeobolkka.airoute.repository.AiReadingRouteRepository;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
@@ -37,6 +38,7 @@ public class AiRouteGenerationLifecycleService {
 
     private final AiRouteGenerationRepository generationRepository;
     private final AiRouteGenerationItemRepository generationItemRepository;
+    private final AiReadingRouteRepository readingRouteRepository;
     private final Clock clock;
 
     /**
@@ -135,7 +137,22 @@ public class AiRouteGenerationLifecycleService {
     public Optional<AiRouteGenerationView> findOwnedResult(UUID generationId, long readerId) {
         return generationRepository
                 .findOwnedNotExpired(generationId, readerId, clock.instant())
-                .map(generation -> AiRouteGenerationView.from(generation, itemsOf(generation)));
+                .map(generation -> AiRouteGenerationView.from(
+                        generation, purposeOf(generation), itemsOf(generation)));
+    }
+
+    private String purposeOf(AiRouteGeneration generation) {
+        if (generation.getNormalizedPurpose() != null) {
+            return generation.getNormalizedPurpose();
+        }
+        if (generation.getStatus() == AiRouteGenerationStatus.SAVED
+                && generation.getSavedRouteId() != null) {
+            return readingRouteRepository
+                    .findById(generation.getSavedRouteId())
+                    .map(AiReadingRoute::getNormalizedPurpose)
+                    .orElseThrow(() -> new IllegalStateException("저장 generation의 경로를 찾을 수 없습니다."));
+        }
+        return null;
     }
 
     /** 항목은 {@code ROUTE} 에서만 남는다. 다른 상태에 조회를 날려도 늘 비어 있으므로 아예 묻지 않는다. */
@@ -154,7 +171,8 @@ public class AiRouteGenerationLifecycleService {
                 item.position(),
                 item.relevance(),
                 item.prerequisite(),
-                item.role());
+                item.role(),
+                item.additionalCostStatus());
     }
 
     private AiRouteGeneration lockForTransition(UUID generationId) {

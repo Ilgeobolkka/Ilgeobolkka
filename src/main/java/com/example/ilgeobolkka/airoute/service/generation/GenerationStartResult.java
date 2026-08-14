@@ -22,13 +22,19 @@ public final class GenerationStartResult {
     private final UUID generationId;
     private final AiRouteGenerationStatus status;
     private final Instant expiresAt;
+    private final Instant retryAfterAt;
 
     private GenerationStartResult(
-            Kind kind, UUID generationId, AiRouteGenerationStatus status, Instant expiresAt) {
+            Kind kind,
+            UUID generationId,
+            AiRouteGenerationStatus status,
+            Instant expiresAt,
+            Instant retryAfterAt) {
         this.kind = kind;
         this.generationId = generationId;
         this.status = status;
         this.expiresAt = expiresAt;
+        this.retryAfterAt = retryAfterAt;
     }
 
     public enum Kind {
@@ -49,7 +55,7 @@ public final class GenerationStartResult {
     /** 방금 만든 {@code GENERATING} 행. 보관 만료는 완료 시점에 정해지므로 아직 없다. */
     static GenerationStartResult created(UUID generationId) {
         return new GenerationStartResult(
-                Kind.NEW, generationId, AiRouteGenerationStatus.GENERATING, null);
+                Kind.NEW, generationId, AiRouteGenerationStatus.GENERATING, null, null);
     }
 
     /**
@@ -63,20 +69,23 @@ public final class GenerationStartResult {
                 status == AiRouteGenerationStatus.GENERATING
                         ? Kind.EXISTING_GENERATING
                         : Kind.EXISTING_FINAL;
-        return new GenerationStartResult(kind, generationId, status, expiresAt);
+        return new GenerationStartResult(kind, generationId, status, expiresAt, null);
     }
 
     /** 같은 key 다른 입력. 기존 생성의 식별자는 이 요청의 것이 아니므로 넘기지 않는다. */
     static GenerationStartResult keyReused() {
-        return new GenerationStartResult(Kind.KEY_REUSED, null, null, null);
+        return new GenerationStartResult(Kind.KEY_REUSED, null, null, null, null);
     }
 
-    static GenerationStartResult dailyLimitExceeded() {
-        return new GenerationStartResult(Kind.DAILY_LIMIT, null, null, null);
+    static GenerationStartResult dailyLimitExceeded(Instant retryAfterAt) {
+        if (retryAfterAt == null) {
+            throw new IllegalArgumentException("일일 생성 횟수 초기화 시각은 필수입니다.");
+        }
+        return new GenerationStartResult(Kind.DAILY_LIMIT, null, null, null, retryAfterAt);
     }
 
     static GenerationStartResult timedOut() {
-        return new GenerationStartResult(Kind.TIMEOUT, null, null, null);
+        return new GenerationStartResult(Kind.TIMEOUT, null, null, null, null);
     }
 
     public Kind kind() {
@@ -96,5 +105,10 @@ public final class GenerationStartResult {
     /** 보관 만료 시각. 완료 상태에서만 값이 있고 {@code GENERATING} 은 아직 {@code null} 이다. */
     public Instant expiresAt() {
         return expiresAt;
+    }
+
+    /** 일일 한도 초과에서만 값이 있다. 한도를 판정한 UTC 날짜의 다음 자정이다. */
+    public Instant retryAfterAt() {
+        return retryAfterAt;
     }
 }

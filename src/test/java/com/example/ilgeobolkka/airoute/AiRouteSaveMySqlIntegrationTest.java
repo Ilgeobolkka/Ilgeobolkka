@@ -16,12 +16,18 @@ import com.example.ilgeobolkka.airoute.entity.AiRouteItemRelevance;
 import com.example.ilgeobolkka.airoute.entity.AiRouteItemRole;
 import com.example.ilgeobolkka.airoute.entity.AiRouteNoRouteReason;
 import com.example.ilgeobolkka.airoute.facade.AiRouteSaveFacade;
+import com.example.ilgeobolkka.airoute.repository.AiRouteDailyUsageRepository;
+import com.example.ilgeobolkka.airoute.repository.AiRouteGenerationItemRepository;
 import com.example.ilgeobolkka.airoute.repository.AiRouteGenerationRepository;
 import com.example.ilgeobolkka.airoute.service.generation.AiRouteGenerationLifecycleService;
+import com.example.ilgeobolkka.airoute.service.generation.AiRouteGenerationRequestView;
+import com.example.ilgeobolkka.airoute.service.generation.AiRouteGenerationStartService;
 import com.example.ilgeobolkka.airoute.service.generation.AiRouteRequestFingerprint;
 import com.example.ilgeobolkka.airoute.service.generation.AiRouteResultItem;
 import com.example.ilgeobolkka.global.security.AuthenticatedReader;
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Proxy;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
@@ -125,6 +131,8 @@ class AiRouteSaveMySqlIntegrationTest {
     private final ObjectMapper objectMapper;
     private final AiRouteSaveFacade saveFacade;
     private final AiRouteGenerationRepository generationRepository;
+    private final AiRouteGenerationItemRepository generationItemRepository;
+    private final AiRouteDailyUsageRepository dailyUsageRepository;
     private final AiRouteGenerationLifecycleService lifecycleService;
     private final TransactionTemplate transactionTemplate;
     private final MutableClock clock;
@@ -136,6 +144,8 @@ class AiRouteSaveMySqlIntegrationTest {
             ObjectMapper objectMapper,
             AiRouteSaveFacade saveFacade,
             AiRouteGenerationRepository generationRepository,
+            AiRouteGenerationItemRepository generationItemRepository,
+            AiRouteDailyUsageRepository dailyUsageRepository,
             AiRouteGenerationLifecycleService lifecycleService,
             PlatformTransactionManager transactionManager,
             MutableClock clock) {
@@ -144,6 +154,8 @@ class AiRouteSaveMySqlIntegrationTest {
         this.objectMapper = objectMapper;
         this.saveFacade = saveFacade;
         this.generationRepository = generationRepository;
+        this.generationItemRepository = generationItemRepository;
+        this.dailyUsageRepository = dailyUsageRepository;
         this.lifecycleService = lifecycleService;
         this.transactionTemplate = new TransactionTemplate(transactionManager);
         this.clock = clock;
@@ -533,6 +545,48 @@ class AiRouteSaveMySqlIntegrationTest {
                 () -> assertEquals(1, 현재_경로_수(READER_ID, BOOK_ID)));
     }
 
+    /**
+     * 일반 존재 조회가 {@code REPEATABLE READ}의 read view를 만든 직후 저장을 커밋한다. 뒤따르는 잠금 조회는
+     * 최신 {@code SAVED}를 보지만, 다시 일반 조회를 내면 앞선 read view라 새 경로를 볼 수 없는 순서다.
+     */
+    @Test
+    void 멱등_선조회_뒤에_저장이_커밋돼도_저장_경로를_같은_스냅샷에서_다시_읽지_않는다()
+            throws Exception {
+        페이지를_대여한다(READER_ID, FIRST_RENTAL_ID, FIRST_PAGE_ID, STARTED_AT);
+        UUID idempotencyKey = UUID.randomUUID();
+        UUID generationId = 완료된_생성을_만든다(idempotencyKey);
+        CountDownLatch 선조회_완료 = new CountDownLatch(1);
+        CountDownLatch 저장_완료 = new CountDownLatch(1);
+        AiRouteGenerationRepository 순서를_고정한_저장소 =
+                선조회_뒤에_기다리는_저장소(선조회_완료, 저장_완료);
+        AiRouteGenerationStartService 순서를_고정한_시작_서비스 =
+                new AiRouteGenerationStartService(
+                        순서를_고정한_저장소,
+                        generationItemRepository,
+                        dailyUsageRepository,
+                        transactionTemplate,
+                        clock);
+
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        try {
+            Future<AiRouteGenerationRequestView> 재요청 = executor.submit(() ->
+                    순서를_고정한_시작_서비스
+                            .findExistingRequest(READER_ID, idempotencyKey)
+                            .orElseThrow());
+
+            assertTrue(선조회_완료.await(10, TimeUnit.SECONDS));
+            saveFacade.saveRoute(READER_ID, generationId);
+            저장_완료.countDown();
+
+            AiRouteGenerationRequestView existing = 재요청.get(30, TimeUnit.SECONDS);
+            assertEquals(generationId, existing.generationId());
+        } finally {
+            저장_완료.countDown();
+            executor.shutdownNow();
+            assertTrue(executor.awaitTermination(5, TimeUnit.SECONDS));
+        }
+    }
+
     @Test
     void 두_생성을_동시에_저장하면_경로는_둘이고_현재_경로는_하나다() throws Exception {
         페이지를_대여한다(READER_ID, FIRST_RENTAL_ID, FIRST_PAGE_ID, STARTED_AT);
@@ -607,9 +661,35 @@ class AiRouteSaveMySqlIntegrationTest {
         }
     }
 
+    /** 실제 Repository 호출은 그대로 위임하고 존재 조회 직후에만 래치로 transaction을 멈춘다. */
+    private AiRouteGenerationRepository 선조회_뒤에_기다리는_저장소(
+            CountDownLatch 선조회_완료, CountDownLatch 저장_완료) {
+        return (AiRouteGenerationRepository) Proxy.newProxyInstance(
+                AiRouteGenerationRepository.class.getClassLoader(),
+                new Class<?>[] {AiRouteGenerationRepository.class},
+                (proxy, method, arguments) -> {
+                    try {
+                        Object result = method.invoke(generationRepository, arguments);
+                        if (method.getName().equals("existsByReaderIdAndIdempotencyKey")) {
+                            선조회_완료.countDown();
+                            if (!저장_완료.await(10, TimeUnit.SECONDS)) {
+                                throw new IllegalStateException("저장 완료 신호를 기다리다 시간이 지났습니다.");
+                            }
+                        }
+                        return result;
+                    } catch (InvocationTargetException exception) {
+                        throw exception.getCause();
+                    }
+                });
+    }
+
     // --- 픽스처 ------------------------------------------------------------
 
     private UUID 생성을_시작한다(long readerId) {
+        return 생성을_시작한다(readerId, UUID.randomUUID());
+    }
+
+    private UUID 생성을_시작한다(long readerId, UUID idempotencyKey) {
         UUID generationId = UUID.randomUUID();
         AiRouteGenerationCommand command =
                 AiRouteGenerationCommand.forInkBudget(
@@ -621,7 +701,7 @@ class AiRouteSaveMySqlIntegrationTest {
                                 AiRouteGeneration.start(
                                         generationId,
                                         readerId,
-                                        UUID.randomUUID(),
+                                        idempotencyKey,
                                         AiRouteRequestFingerprint.of(command),
                                         command,
                                         createdAt)));
@@ -630,8 +710,12 @@ class AiRouteSaveMySqlIntegrationTest {
 
     /** 두 페이지를 담은 {@code ROUTE} 생성. 완료 시각은 {@link #COMPLETED_AT} 이다. */
     private UUID 완료된_생성을_만든다() {
+        return 완료된_생성을_만든다(UUID.randomUUID());
+    }
+
+    private UUID 완료된_생성을_만든다(UUID idempotencyKey) {
         clock.set(STARTED_AT);
-        UUID generationId = 생성을_시작한다(READER_ID);
+        UUID generationId = 생성을_시작한다(READER_ID, idempotencyKey);
         clock.set(COMPLETED_AT);
         transactionTemplate.executeWithoutResult(
                 status -> lifecycleService.completeWithRoute(generationId, 두_항목()));
@@ -660,13 +744,19 @@ class AiRouteSaveMySqlIntegrationTest {
     private static List<AiRouteResultItem> 두_항목() {
         return List.of(
                 new AiRouteResultItem(
-                        FIRST_PAGE_ID, 1, AiRouteItemRelevance.HIGH, false, AiRouteItemRole.CORE),
+                        FIRST_PAGE_ID,
+                        1,
+                        AiRouteItemRelevance.HIGH,
+                        false,
+                        AiRouteItemRole.CORE,
+                        AiRouteAdditionalCostStatus.ONE_INK),
                 new AiRouteResultItem(
                         SECOND_PAGE_ID,
                         2,
                         AiRouteItemRelevance.MEDIUM,
                         true,
-                        AiRouteItemRole.PREREQUISITE));
+                        AiRouteItemRole.PREREQUISITE,
+                        AiRouteAdditionalCostStatus.ONE_INK));
     }
 
     private void 독자를_생성한다(long readerId) {

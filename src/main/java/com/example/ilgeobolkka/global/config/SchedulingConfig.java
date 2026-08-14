@@ -13,5 +13,5 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  */
 @Configuration(proxyBeanMethods = false)
 @EnableScheduling
-@Profile("!performance-seed & !content-import")
+@Profile("!performance-seed & !content-import & !evaluation")
 public class SchedulingConfig {}

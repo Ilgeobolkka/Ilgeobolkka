@@ -139,7 +139,8 @@ public class AiRouteGenerationEngine {
                     assembler.noRelevantPages(),
                     snapshot.embeddingModel(),
                     selection.candidatePolicyVersion(),
-                    routeContract);
+                    routeContract,
+                    selection.scoredCandidates());
         }
 
         RouteInput routeInput = routeInput(snapshot, selection.candidates());
@@ -152,7 +153,8 @@ public class AiRouteGenerationEngine {
                 generation,
                 snapshot.embeddingModel(),
                 selection.candidatePolicyVersion(),
-                routeContract);
+                routeContract,
+                selection.scoredCandidates());
     }
 
     public GenerationTimeBudget startTimeBudget() {
@@ -381,14 +383,19 @@ public class AiRouteGenerationEngine {
             AiRouteGenerationResult generation,
             String embeddingModel,
             String candidatePolicyVersion,
-            RouteContract routeContract) {
+            RouteContract routeContract,
+            List<AiRouteCandidate> scoredCandidates) {
         return new AiRouteEngineResult(
                 generation,
                 embeddingModel,
                 routeContract.model(),
                 candidatePolicyVersion,
                 routeContract.promptVersion(),
-                routeContract.schemaVersion());
+                routeContract.schemaVersion(),
+                scoredCandidates.stream()
+                        .map(candidate -> new AiRouteEngineResult.CandidateScore(
+                                candidate.pageNumber(), candidate.similarity()))
+                        .toList());
     }
 
     private void requireNoTransaction() {

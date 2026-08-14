@@ -1,13 +1,41 @@
 package com.example.ilgeobolkka.airoute.repository;
 
 import com.example.ilgeobolkka.airoute.entity.AiReadingRouteItem;
+import jakarta.persistence.LockModeType;
 import java.util.List;
+import java.util.Optional;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface AiReadingRouteItemRepository extends JpaRepository<AiReadingRouteItem, Long> {
+
+    /**
+     * 소유자의 저장 경로에 포함된 원본 페이지 항목을 잠근다. 다른 독자의 경로와 경로에 없는 페이지는
+     * 모두 빈 결과가 되어 같은 404로 변환된다.
+     *
+     * <p>호출자는 경로 행을 먼저 잠근다. 경로 → 항목 순서를 유지해야 삭제와 콘텐츠 제공끼리 잠금 순서가
+     * 뒤집히지 않고, 서로 다른 마지막 항목의 동시 제공도 경로 단위로 직렬화된다.
+     */
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @Query(
+            """
+            SELECT item
+            FROM AiReadingRouteItem item
+            JOIN item.route route
+            JOIN item.bookPage page
+            WHERE route.readerId = :readerId
+              AND route.id = :routeId
+              AND page.pageNumber = :pageNumber
+            """)
+    Optional<AiReadingRouteItem> findOwnedItemForUpdate(
+            @Param("readerId") long readerId,
+            @Param("routeId") long routeId,
+            @Param("pageNumber") int pageNumber);
+
+    long countByRouteIdAndOpenedAtIsNull(long routeId);
 
     /**
      * 경로 항목을 저장한 {@code position} 오름차순으로 조회한다.
