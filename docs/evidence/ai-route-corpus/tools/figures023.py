@@ -215,7 +215,7 @@ def fig_input():
     b.append(f'<rect x="286" y="272" width="222" height="60" rx="12" fill="#efe6d8" stroke="{SOIL}" stroke-width="2"/>')
     b.append(t(397, 309, "흙에 넣은 양", 17, INK, "700"))
 
-    targets = [(168, "식물이 받아들인 몫", LIVE, "mark"), (330, "흙에 남아 다음에 쓰이는 몫", SOIL, "gray"),
+    targets = [(168, "식물이 받아들인 몫", LIVE, "mark"), (330, "흙에 남아 다음에 쓰이는 몫", SOIL, "soil"),
                (500, "물로 씻겨 나간 몫", LOSS, "loss"), (652, "공기로 빠져나간 몫", LOSS, "loss")]
     for tx, label, color, marker in targets:
         b.append(arrow(397, 340, tx, 430, color=color, width=3, marker=marker))
@@ -279,12 +279,15 @@ def fig_sampling():
                 out.append(f'<circle cx="{gx:.0f}" cy="{gy:.0f}" r="{max(4, rr - 8)}" fill="#4b4238"/>')
         return "".join(out)
 
+    # 위 두 칸은 뜨기 전의 같은 흙이므로 반드시 똑같이 그린다. 오른쪽 칸을 미리 섞인 모습으로
+    # 그리면 「같은 흙을 두 가지 방식으로」라는 이 그림의 전제가 그림 안에서 무너진다.
+    # 방식에 따라 갈리는 결과는 아래 결과 칸에서만 보인다.
     b.append(section(126, 296, 240, 250, False))
     b.append(t(246, 260, "관을 박아 뽑는다", 17, INK, "700"))
     b.append(f'<rect x="196" y="288" width="66" height="270" fill="none" stroke="{AIR}" '
              f'stroke-width="3"/>')
 
-    b.append(section(428, 296, 240, 250, True))
+    b.append(section(428, 296, 240, 250, False))
     b.append(t(548, 260, "삽으로 퍼서 섞는다", 17, INK, "700"))
     b.append(f'<path d="M528,318 L568,318 L568,402 L548,424 L528,402 Z" fill="none" '
              f'stroke="{AIR}" stroke-width="3"/>')
@@ -293,13 +296,21 @@ def fig_sampling():
     b.append(arrow(246, 566, 246, 616, color=LINE, width=2, marker="gray"))
     b.append(arrow(548, 566, 548, 616, color=LINE, width=2, marker="gray"))
 
-    b.append(f'<rect x="126" y="624" width="240" height="92" rx="12" fill="#fbfcfc" stroke="{LINE}" stroke-width="2"/>')
-    b.append(t(246, 660, "밝은 자리와 어두운", 15, INK, "600"))
-    b.append(t(246, 686, "자리가 그대로 있다", 15, INK, "600"))
+    def result(x0, mixed, label, color):
+        out = [f'<rect x="{x0}" y="624" width="240" height="116" rx="12" fill="#fbfcfc" '
+               f'stroke="{LINE}" stroke-width="2"/>']
+        for k in range(3):
+            gx = x0 + 76 + k * 44
+            if mixed:
+                out.append(f'<circle cx="{gx}" cy="660" r="16" fill="#c9bda6" stroke="{SOIL}" stroke-width="1.5"/>')
+            else:
+                out.append(f'<circle cx="{gx}" cy="660" r="16" fill="#f3efe4" stroke="{SOIL}" stroke-width="1.5"/>')
+                out.append(f'<circle cx="{gx}" cy="660" r="8" fill="#4b4238"/>')
+        out.append(t(x0 + 120, 712, label, 15, color, "600"))
+        return "".join(out)
 
-    b.append(f'<rect x="428" y="624" width="240" height="92" rx="12" fill="#fbfcfc" stroke="{LINE}" stroke-width="2"/>')
-    b.append(t(548, 660, "어두운 자리가", 15, LOSS, "600"))
-    b.append(t(548, 686, "사라졌다", 15, LOSS, "600"))
+    b.append(result(126, False, "어두운 자리가 그대로 있다", INK))
+    b.append(result(428, True, "어두운 자리가 사라졌다", LOSS))
 
     b.append(note_box(197, 776, 400, "섞는 순간 그 시료는 다른 자리의 시료가 된다", 15))
     b.append(caption(W / 2, 880, ["알갱이 안쪽의 어두운 색이 산소가 닿지 않던 자리다."]))
