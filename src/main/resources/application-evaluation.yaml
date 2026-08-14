@@ -1,0 +1,10 @@
+spring:
+  main:
+    web-application-type: none
+
+ai-route-evaluation:
+  manifest: ${AI_ROUTE_EVALUATION_MANIFEST:fixtures/content/ai-route-v2/manifest.json}
+  evaluation: ${AI_ROUTE_EVALUATION_DATASET:fixtures/content/ai-route-v2/evaluation.json}
+  output: ${AI_ROUTE_EVALUATION_OUTPUT:var/evaluation/ai-route-evaluation.json}
+  manifest-git-revision: ${AI_ROUTE_MANIFEST_GIT_REVISION:}
+  evaluation-git-revision: ${AI_ROUTE_EVALUATION_GIT_REVISION:}

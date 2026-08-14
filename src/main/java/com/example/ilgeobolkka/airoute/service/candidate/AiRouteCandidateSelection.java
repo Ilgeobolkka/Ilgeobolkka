@@ -10,11 +10,16 @@ import java.util.List;
  * 적용됐는지는 selector만 알고 있으므로 selector가 함께 돌려준다.
  *
  * @param candidatePolicyVersion 이 후보를 뽑은 정책 버전
- * @param candidates similarity 내림차순·pageNumber 오름차순으로 확정된 후보. 없으면 빈 목록이다.
+ * @param candidates 운영 임계값·상한을 적용해 확정한 후보. 없으면 빈 목록이다.
+ * @param scoredCandidates 임계값·상한을 적용하기 전 전체 페이지 점수. 평가 외에는 사용하지 않는다.
  */
-public record AiRouteCandidateSelection(String candidatePolicyVersion, List<AiRouteCandidate> candidates) {
+public record AiRouteCandidateSelection(
+        String candidatePolicyVersion,
+        List<AiRouteCandidate> candidates,
+        List<AiRouteCandidate> scoredCandidates) {
 
     public AiRouteCandidateSelection {
         candidates = List.copyOf(candidates);
+        scoredCandidates = List.copyOf(scoredCandidates);
     }
 }
