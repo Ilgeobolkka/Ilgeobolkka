@@ -2277,6 +2277,1059 @@
       ]
     },
     {
+      "bookId": 13,
+      "title": "낯선 골목과 친해지는 시간",
+      "totalPageCount": 50,
+      "pdfPath": "pdfs/book-013.pdf",
+      "pdfSha256": "e89c761e48f0aa78c427d5470b032b38f5d7f373c4634536ed06b33048e61f5d",
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 낯선 것 앞에서",
+          "section": "1.1 낯섦이라는 상태",
+          "primaryConcepts": [
+            "낯섦"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "낯섦을 정서적 반응이 아니라 정보 부재 상태로 정의하는 페이지다. 경로 정보가 없을 때 주의가 분산되고 이동 속도가 떨어지는 현상을 제시하고, 이후 다룰 탐색의 출발 조건으로 삼는다.",
+          "aiAnalysisInputSha256": "b34c9fa4922ea4e068804dec555e63b9efc006595daafa9d4b60766744ec7792",
+          "aiPublicGuideTopic": "처음 보는 길 앞에서 생기는 일",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "strange-until-walked"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 낯선 것 앞에서",
+          "section": "1.1 낯섦이라는 상태",
+          "primaryConcepts": [
+            "낯섦"
+          ],
+          "secondaryConcepts": [
+            "익숙해짐"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "낯섦이 반복 노출로 빠르게 소실된다는 점을 다루는 페이지다. 초기 관측에서만 포착 가능한 특징이 있다는 점을 제시하고, 관측 시점을 미룰 수 없는 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "692f720b8d3a25ba3a0f00eb5d5b7743eed3865d970f59cf9655eec73e56bfbe",
+          "aiPublicGuideTopic": "낯섦이 사라지는 데 걸리는 시간",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 낯선 것 앞에서",
+          "section": "1.1 낯섦이라는 상태",
+          "primaryConcepts": [
+            "낯섦"
+          ],
+          "secondaryConcepts": [
+            "길을 고르는 규칙"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "탐색 대상 선택에 관측자의 선호가 개입하는 문제를 다루는 페이지다. 접근이 쉬운 대상부터 소진되는 편향을 제시하고, 선택을 규칙에 위임하는 방향을 예고한다.",
+          "aiAnalysisInputSha256": "c7e1fbe84cd7d65200caebb08fea847af0b86d0e6cee8373b6747fea2900ad93",
+          "aiPublicGuideTopic": "낯섦을 줄이지 않으면서 다루는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            3
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 낯선 것 앞에서",
+          "section": "1.2 지도가 알려 주지 않는 것",
+          "primaryConcepts": [
+            "지도의 한계"
+          ],
+          "secondaryConcepts": [
+            "낯섦"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지도 정보와 도보 경험이 담는 정보의 차이를 다루는 페이지다. 경사, 폭, 통행 가능 여부가 도면에 표현되지 않는다는 점을 제시하고, 보행 관측이 채우는 영역을 규정한다.",
+          "aiAnalysisInputSha256": "008ef97311029201435ec76c2f04a8d62be740b7e59a6490bf67f2ed4ecf5b7e",
+          "aiPublicGuideTopic": "화면에 나오지 않는 것들",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 낯선 것 앞에서",
+          "section": "1.2 지도가 알려 주지 않는 것",
+          "primaryConcepts": [
+            "지도의 한계"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사전 정보 취득 여부가 보행 중 주의 배분을 바꾼다는 점을 다루는 페이지다. 예측 확인형 이동과 탐색형 이동의 차이를 제시하고, 정보 취득 시점을 사후로 옮긴 선택을 기술한다.",
+          "aiAnalysisInputSha256": "43f4458bab3d6273640d8ca2905c109c75cb43fe075c93eec40dbb57c6c48123",
+          "aiPublicGuideTopic": "먼저 보고 가면 달라지는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 낯선 것 앞에서",
+          "section": "1.3 걸음으로 정한 규칙",
+          "primaryConcepts": [
+            "길을 고르는 규칙"
+          ],
+          "secondaryConcepts": [
+            "낯섦"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "탐색 규칙의 구성 요소를 다루는 페이지다. 분기 선택 기준, 소요 시간 상한, 종료 조건의 세 규칙을 제시하고, 종료 조건이 결과적으로 구역의 구조를 드러내는 지표가 됨을 밝힌다.",
+          "aiAnalysisInputSha256": "8b686fef8ae7740f9041fd506cfc484d13c10644be695f65d5990d54b95f8b43",
+          "aiPublicGuideTopic": "무엇을 정해 두고 걷는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 낯선 것 앞에서",
+          "section": "1.3 걸음으로 정한 규칙",
+          "primaryConcepts": [
+            "길을 고르는 규칙"
+          ],
+          "secondaryConcepts": [
+            "우연한 경로",
+            "지도의 한계"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분기 선택 규칙이 생성하는 경로를 도면으로 표현한 도표다. 선택되지 않은 분기와 선택된 경로를 함께 표시하고, 동일 구역의 지도 표현을 병치해 폭과 통행 정보의 누락을 대비한다.",
+          "aiAnalysisInputSha256": "cbdaa7b74b1c50fcfdb8362fcbba8b03b0c61a35e3aeb1aaa02f67125a93f6c6",
+          "aiPublicGuideTopic": "갈림길마다 좁은 쪽을 고르는 규칙이 만든 경로를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 걸어서 아는 것",
+          "section": "2.1 발이 재는 거리",
+          "primaryConcepts": [
+            "걸어서 아는 것"
+          ],
+          "secondaryConcepts": [
+            "길을 고르는 규칙"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "보행 기반 계측의 성질을 다루는 페이지다. 걸음 수가 절대 거리로서는 부정확하지만 신체 감각과 결합된 값이라는 점, 그리고 지형 요소가 값에 함께 반영된다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "567d2a2889d3e15bb01454295cb2a39df3b6bc8b45a4bf83560ba8c1b7bf2507",
+          "aiPublicGuideTopic": "걸음이 만드는 다른 종류의 값",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 걸어서 아는 것",
+          "section": "2.1 발이 재는 거리",
+          "primaryConcepts": [
+            "걸어서 아는 것"
+          ],
+          "secondaryConcepts": [
+            "지도의 한계"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "보행 중 비시각적 정보의 취득을 다루는 페이지다. 노면, 폭, 일조가 청각과 체감으로 먼저 지각되는 사례를 제시하고, 감각 자체가 아니라 발생 위치를 기록하는 방식을 밝힌다.",
+          "aiAnalysisInputSha256": "deee7ee5336dae898ac1887dc1407a6f167bf3f27b7b9fad4a9b95c5f578908e",
+          "aiPublicGuideTopic": "몸이 먼저 알아차리는 것들",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 걸어서 아는 것",
+          "section": "2.1 발이 재는 거리",
+          "primaryConcepts": [
+            "걸어서 아는 것"
+          ],
+          "secondaryConcepts": [
+            "골목의 표시",
+            "낯섦"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 도면상 길이를 갖는 두 경로의 보행 계측값 차이를 표현한 도표다. 종단면과 노면 조건을 함께 배치해 걸음 수에 지형 요소가 반영되는 구조를 드러낸다.",
+          "aiAnalysisInputSha256": "bd7e030256b70521ef243e85baa75b3196e63a8de3b2251845ebcc1c26c3b0e9",
+          "aiPublicGuideTopic": "같은 두 골목을 지도와 걸음으로 각각 재어 견준 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 걸어서 아는 것",
+          "section": "2.2 골목을 알아보는 표시",
+          "primaryConcepts": [
+            "골목의 표시"
+          ],
+          "secondaryConcepts": [
+            "걸어서 아는 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "유사한 경로를 식별하기 위한 표지 선정을 다루는 페이지다. 고유성과 지속성을 선정 기준으로 제시하고, 좌표 기록 대신 시각 표지를 쓰는 선택의 근거를 밝힌다.",
+          "aiAnalysisInputSha256": "0a8bc89fd2c42307946386482536cf69e7abb6de3a6d4709c8d5e87088d2378b",
+          "aiPublicGuideTopic": "다시 왔을 때 알아보게 해 주는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 걸어서 아는 것",
+          "section": "2.2 골목을 알아보는 표시",
+          "primaryConcepts": [
+            "골목의 표시"
+          ],
+          "secondaryConcepts": [
+            "익숙해짐"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선정한 표지가 소실되는 경우와 그 대응을 다루는 페이지다. 표지의 이중화를 제시하고, 표지 변경 이력이 지역의 변화 빈도를 보여 주는 별도 자료가 되었다는 점을 기술한다.",
+          "aiAnalysisInputSha256": "838177c7a47242f778a38eb9154839942e80bf9922fc3c2852801e29d03bd97f",
+          "aiPublicGuideTopic": "표시가 사라졌을 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 걸어서 아는 것",
+          "section": "2.3 막다른 길에서 되돌아 나오기",
+          "primaryConcepts": [
+            "되돌아 나오기"
+          ],
+          "secondaryConcepts": [
+            "길을 고르는 규칙"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "막다른 경로의 정보 가치를 다루는 페이지다. 차단 지점의 분포가 구역의 경계를 드러낸다는 점과, 통행이 적은 공간에 과거의 흔적이 남는 경향을 제시한다.",
+          "aiAnalysisInputSha256": "2d0773f4dd2f6bffac9110fd75addb973cc388ba91c0518e85dda26054b2b08e",
+          "aiPublicGuideTopic": "끝이 막힌 길이 알려 주는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 걸어서 아는 것",
+          "section": "2.3 막다른 길에서 되돌아 나오기",
+          "primaryConcepts": [
+            "되돌아 나오기"
+          ],
+          "secondaryConcepts": [
+            "낯섦"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 경로의 역방향 보행이 다른 관측을 산출한다는 점을 다루는 페이지다. 시야각과 경사 지각의 차이, 목적지 인지에 따른 주의 여유를 원인으로 제시한다.",
+          "aiAnalysisInputSha256": "2b9d0700c10e14412ac438fe0690138faa41066049b4017e49b68ccc368045f0",
+          "aiPublicGuideTopic": "돌아 나오는 길이 다른 길인 까닭",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 우연을 규칙으로 만들기",
+          "section": "3.1 우연한 경로",
+          "primaryConcepts": [
+            "우연한 경로"
+          ],
+          "secondaryConcepts": [
+            "길을 고르는 규칙"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선택 규칙에 의해 생성되는 경로의 성질을 다루는 페이지다. 통행량이 적은 구역일수록 개별 차이가 크다는 관측을 제시하고, 선택 주체를 규칙에 위임했을 때의 부수적 효과를 기술한다.",
+          "aiAnalysisInputSha256": "9326c23348d6db9dcaf9110c6df4ab9efd0e1ce582498b60ccc917dbc462cabe",
+          "aiPublicGuideTopic": "고르지 않은 길이 데려가는 곳",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 우연을 규칙으로 만들기",
+          "section": "3.1 우연한 경로",
+          "primaryConcepts": [
+            "우연한 경로"
+          ],
+          "secondaryConcepts": [
+            "되돌아 나오기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "규칙 위반 사례의 기록을 다루는 페이지다. 위반 시 선택된 경로에서 기록량이 급감한 사실을 제시하고, 위반 기록이 규칙의 기능을 드러내는 대조군이 된다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "0b4f44afa8090de6ae6f3bd3b769071635f47fe99d57a3ec9d430eb65ebbd630",
+          "aiPublicGuideTopic": "규칙을 어긴 날",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 우연을 규칙으로 만들기",
+          "section": "3.1 우연한 경로",
+          "primaryConcepts": [
+            "우연한 경로"
+          ],
+          "secondaryConcepts": [
+            "겹치는 길",
+            "길을 고르는 규칙"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일정 기간의 보행 경로를 단일 도면에 중첩해 표현한 도표다. 경로 밀도의 공간적 편중과 미방문 구역의 분포를 함께 표시해 선택 규칙이 만든 결과를 드러낸다.",
+          "aiAnalysisInputSha256": "fff512c719108e15aaee4eb511f599ef039a956b5d589627e9936bdd999a5dd1",
+          "aiPublicGuideTopic": "한 달치 경로를 한 장에 겹쳐 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 우연을 규칙으로 만들기",
+          "section": "3.2 같은 골목을 두 번 만나는 날",
+          "primaryConcepts": [
+            "겹치는 길"
+          ],
+          "secondaryConcepts": [
+            "우연한 경로"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "개별 경로가 상호 연결되어 있음을 발견하는 과정을 다루는 페이지다. 이미 식별한 표지에 다른 방향에서 도달하는 경험을 제시하고, 공간 표상이 방사형에서 망형으로 바뀌는 변화를 기술한다.",
+          "aiAnalysisInputSha256": "fd8bb8ae5ed00b437419dd0a11c7f344c28225d70fbeea9416743564c193bb98",
+          "aiPublicGuideTopic": "다른 쪽에서 들어와 아는 곳에 닿을 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 우연을 규칙으로 만들기",
+          "section": "3.2 같은 골목을 두 번 만나는 날",
+          "primaryConcepts": [
+            "겹치는 길"
+          ],
+          "secondaryConcepts": [
+            "골목의 표시"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "경로 간 연결 관계의 기록 방식을 다루는 페이지다. 양방향 상호 참조 기입을 제시하고, 연결 수의 분포가 통행량 및 막다른 구조와 대응한다는 결과를 기술한다.",
+          "aiAnalysisInputSha256": "a20b6b1392dc2cf2fe3e56aa0e3c18dfca3433cadf98106f0f20494d774ab678",
+          "aiPublicGuideTopic": "이어지는 자리를 어떻게 적는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            19
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 우연을 규칙으로 만들기",
+          "section": "3.2 같은 골목을 두 번 만나는 날",
+          "primaryConcepts": [
+            "겹치는 길"
+          ],
+          "secondaryConcepts": [
+            "익숙해짐"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "탐색 대상의 소진 과정을 다루는 페이지다. 연결 발견의 증가가 미탐색 구역의 감소와 동시에 진행된다는 점을 제시하고, 규칙이 정한 범위가 관측 종료 시점을 규정한다는 구조를 밝힌다.",
+          "aiAnalysisInputSha256": "2ad01f5e39f9e4bebb750f1cbb7f76ac8f51f65481b5e633e335292649da27e7",
+          "aiPublicGuideTopic": "그물이 촘촘해지면 생기는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 우연을 규칙으로 만들기",
+          "section": "3.3 잃어버려도 되는 조건",
+          "primaryConcepts": [
+            "잃어버림"
+          ],
+          "secondaryConcepts": [
+            "우연한 경로"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "의도적 길 잃기의 전제 조건을 다루는 페이지다. 시간 여유, 기준 방향의 확보, 심리적 여유의 세 조건을 제시하고, 조건 미충족 시 관측 내용이 방향 확인에 한정된다는 점을 기술한다.",
+          "aiAnalysisInputSha256": "0a01b2dc31e0ab9c999c8bc35885d3019c79bb0e965ecb87d6f3c24df6610253",
+          "aiPublicGuideTopic": "길을 잃는 일을 계획에 넣기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 우연을 규칙으로 만들기",
+          "section": "3.3 잃어버려도 되는 조건",
+          "primaryConcepts": [
+            "잃어버림"
+          ],
+          "secondaryConcepts": [
+            "되돌아 나오기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "표지 식별이 조명 조건에 의존하는 문제를 다루는 페이지다. 색 기반 표지가 야간에 기능하지 않는 사례를 제시하고, 형태와 지형 기반 표지로 기준을 보완한 과정을 기술한다.",
+          "aiAnalysisInputSha256": "d25618bebb4911a61d7f4cf2ab9cb90f7def5329d22e2bf8cacd48e7fcfcabc8",
+          "aiPublicGuideTopic": "정말로 못 찾게 됐을 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 익숙해지는 동안",
+          "section": "4.1 낯섦이 줄어드는 방식",
+          "primaryConcepts": [
+            "익숙해짐"
+          ],
+          "secondaryConcepts": [
+            "걸어서 아는 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "친숙화가 단계적으로 진행된다는 점을 다루는 페이지다. 방향, 형태, 소요 시간, 거주자 순으로 인지 대상이 확장되는 순서를 제시하고, 경로 부담의 감소가 관측 범위를 넓힌다는 구조를 밝힌다.",
+          "aiAnalysisInputSha256": "a903947525a4f28e19e7bacae1f9d2521b40239dc52e5ddc617f57f4271e7bee",
+          "aiPublicGuideTopic": "익숙해지는 일이 한 번에 오지 않는다는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 익숙해지는 동안",
+          "section": "4.1 낯섦이 줄어드는 방식",
+          "primaryConcepts": [
+            "익숙해짐"
+          ],
+          "secondaryConcepts": [
+            "낯섦"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "친숙화 소요 횟수의 편차를 다루는 페이지다. 경로의 형태적 복잡성과 반복 방문 횟수의 대응을 제시하고, 방문 횟수를 복잡성의 상대 지표로 사용하는 방법을 기술한다.",
+          "aiAnalysisInputSha256": "16d8a67926eab6d84660f49ef4111caf7c96dcad79d45b5ff16c9fd69b16d916",
+          "aiPublicGuideTopic": "몇 번이면 익숙해지는가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 익숙해지는 동안",
+          "section": "4.1 낯섦이 줄어드는 방식",
+          "primaryConcepts": [
+            "익숙해짐"
+          ],
+          "secondaryConcepts": [
+            "겹치는 길"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "개별 경로 지식이 통합된 공간 표상으로 전환되는 경험을 다루는 페이지다. 전환이 의도적으로 유도되지 않았다는 점을 명시하고, 설명하지 못한 현상으로 기록에 남긴다.",
+          "aiAnalysisInputSha256": "67866417f0142e1b639586012797b8efeedf2a5e017c850dc675754405bbf2ff",
+          "aiPublicGuideTopic": "머릿속에서 골목들이 붙는 순간",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            25
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 익숙해지는 동안",
+          "section": "4.2 익숙해지면 안 보이는 것",
+          "primaryConcepts": [
+            "익숙함의 대가"
+          ],
+          "secondaryConcepts": [
+            "익숙해짐"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복 방문에 따른 관측량 감소를 다루는 페이지다. 기록량의 급감이 대상의 변화가 아니라 주의의 감소에서 비롯된다는 점을 제시하고, 초기 기록의 보존이 그 손실을 드러낸다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "465a001fa37d073cbb5f2f3ff6ac1dbc04355171915ef21b3a85ee659edaf3a0",
+          "aiPublicGuideTopic": "편해진 만큼 사라지는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 익숙해지는 동안",
+          "section": "4.2 익숙해지면 안 보이는 것",
+          "primaryConcepts": [
+            "익숙함의 대가"
+          ],
+          "secondaryConcepts": [
+            "낯섦"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "친숙화 이후 초기 관측 조건을 재현하려는 시도와 그 한계를 다루는 페이지다. 관측 조건 변경이 별개의 새로움을 만들 뿐 원래의 낯섦을 복원하지 못한다는 결과를 기술한다.",
+          "aiAnalysisInputSha256": "2a39de48998c7a4ac8db04a70b09bfba04ce36c8d3d7b596f9e1f8e0ad340888",
+          "aiPublicGuideTopic": "낯섦을 억지로 만들려던 시도",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            27
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 익숙해지는 동안",
+          "section": "4.3 사람이 사는 자리",
+          "primaryConcepts": [
+            "사람이 사는 자리"
+          ],
+          "secondaryConcepts": [
+            "익숙해짐"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "보행 공간이 거주 공간과 중첩된다는 인식을 다루는 페이지다. 통로와 사적 영역의 이중성을 제시하고, 그 인식이 관측 행동과 기록 범위의 제한으로 이어진 과정을 기술한다.",
+          "aiAnalysisInputSha256": "2561feabc52a4617a6a30a84406f5ed444e04dd368a546a0e81168d0e298311f",
+          "aiPublicGuideTopic": "골목이 누군가의 앞마당이라는 사실",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 익숙해지는 동안",
+          "section": "4.3 사람이 사는 자리",
+          "primaryConcepts": [
+            "사람이 사는 자리"
+          ],
+          "secondaryConcepts": [
+            "골목의 표시"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "표지의 성격이 거주 흔적과 상관된다는 점을 다루는 페이지다. 인공 표지의 밀도와 거주 지속성의 대응을 제시하고, 식별 도구가 다른 관측 결과를 산출한 사례로 기술한다.",
+          "aiAnalysisInputSha256": "70baadaedb061b084248aa83c9dd69637d617dd9f7138d24b846ad53a20a3faf",
+          "aiPublicGuideTopic": "사람이 만든 표시",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            29
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "5장 골목을 적는 법",
+          "section": "5.1 걸으면서 적을 수 있는 것",
+          "primaryConcepts": [
+            "기록의 규칙"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이동 중 기록의 제약과 대응을 다루는 페이지다. 현장에서는 단어 단위로 기록하고 사후에 문장화하는 절차를 제시하며, 두 시점의 기록을 표기로 구분하는 방법을 기술한다.",
+          "aiAnalysisInputSha256": "e07f769b665cd2d76c4cac8a3b8137a3ff3301915407e4e648d5f8822be0756c",
+          "aiPublicGuideTopic": "손이 자유롭지 않은 자리에서 적기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 골목을 적는 법",
+          "section": "5.1 걸으면서 적을 수 있는 것",
+          "primaryConcepts": [
+            "기록의 규칙"
+          ],
+          "secondaryConcepts": [
+            "이름 붙이기"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사진 기록을 배제한 이유를 다루는 페이지다. 촬영이 현장 관측을 대체해 버리는 문제와, 주거 공간이 피사체에 포함되는 문제를 제시하고 문자 기록으로 한정한 선택을 기술한다.",
+          "aiAnalysisInputSha256": "04a11da164443bf0bafcc1f2e8804737fc69c07dba4069af86ee1e8a1ea6554a",
+          "aiPublicGuideTopic": "사진을 쓰지 않기로 한 까닭",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 골목을 적는 법",
+          "section": "5.2 이름 없는 골목에 이름 붙이기",
+          "primaryConcepts": [
+            "이름 붙이기"
+          ],
+          "secondaryConcepts": [
+            "기록의 규칙"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "고유 명칭이 없는 대상의 명명 절차를 다루는 페이지다. 표지를 명칭으로 전용하는 방법을 제시하고, 표지 변경 후에도 명칭을 유지해 기존 기록과의 대응을 보존한 선택을 기술한다.",
+          "aiAnalysisInputSha256": "e5ca2fdcde3c6fe0f0b4122ee1981d6b4cf6d42b0ab9e38599350cb6c1a62884",
+          "aiPublicGuideTopic": "부를 이름이 없을 때 생기는 문제",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 골목을 적는 법",
+          "section": "5.2 이름 없는 골목에 이름 붙이기",
+          "primaryConcepts": [
+            "이름 붙이기"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사적 명명 체계의 전달 불가능성을 다루는 페이지다. 개인 표지에 기반한 명칭이 타인과 공유되지 않는다는 한계를 제시하고, 기록의 이전 가능성이 명명 방식에 종속된다는 점을 기술한다.",
+          "aiAnalysisInputSha256": "22237725e52ca1675193a7d8a0b13b7b244d84dba5a520ea9f8985e2b31aea75",
+          "aiPublicGuideTopic": "혼자 쓰는 이름의 한계",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            33
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 골목을 적는 법",
+          "section": "5.3 걸은 길을 이어 붙이면",
+          "primaryConcepts": [
+            "길을 이어 붙이기"
+          ],
+          "secondaryConcepts": [
+            "겹치는 길"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "개별 기록을 연결 관계에 따라 재배열하는 과정을 다루는 페이지다. 시간 순 배열과 공간 인접 배열의 차이를 제시하고, 재배열 결과로 드러난 구역 분할을 기술한다.",
+          "aiAnalysisInputSha256": "a42a2c65c383462f5eed69234b36fd2222d14d149c4aadc62c68d62562c2f803",
+          "aiPublicGuideTopic": "따로 적은 것들을 한자리에 놓기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 골목을 적는 법",
+          "section": "5.3 걸은 길을 이어 붙이면",
+          "primaryConcepts": [
+            "길을 이어 붙이기"
+          ],
+          "secondaryConcepts": [
+            "잃어버림"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재배열된 기록의 계수 결과를 다루는 페이지다. 막다른 경로, 재방문, 비연결 경로의 수를 제시하고, 비연결 경로의 공간적 집중이 특정 구역의 구조적 차이를 드러낸다는 점을 기술한다.",
+          "aiAnalysisInputSha256": "3443c4e6915033424fc1a2778bebc5c3f69f1d6b1c97b0adfccc0789d6dfe79e",
+          "aiPublicGuideTopic": "이어 붙이고 나서 센 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            35
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 골목을 적는 법",
+          "section": "5.3 걸은 길을 이어 붙이면",
+          "primaryConcepts": [
+            "길을 이어 붙이기"
+          ],
+          "secondaryConcepts": [
+            "겹치는 길",
+            "되돌아 나오기"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "개별 경로 기록을 연결 관계에 따라 배치한 결과를 그래프 형태로 표현한 도표다. 군집 분할, 막다른 경로의 주변부 집중, 비연결 경로의 국소적 밀집을 한 화면에서 대조할 수 있게 배치했다.",
+          "aiAnalysisInputSha256": "ddfa5780c6ba69f10537a3937f06d97ed8acaee5de1f9bcff91c23a3c86fd690",
+          "aiPublicGuideTopic": "골목 종이를 이어 붙여 만든 그물을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "6장 낯섦을 다룰 때 조심할 것",
+          "section": "6.1 남의 생활을 구경거리로 삼는 일",
+          "primaryConcepts": [
+            "구경거리가 되는 삶"
+          ],
+          "secondaryConcepts": [
+            "사람이 사는 자리"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측자와 거주자의 위치 차이를 다루는 페이지다. 동일 대상이 관찰 대상과 생활 조건으로 각각 다르게 경험된다는 점을 제시하고, 그 비대칭을 해소 불가능한 조건으로 명시한다.",
+          "aiAnalysisInputSha256": "ff962ef18fbff416412a8aa6a7e8b9803ae8eb61f5dea7161290ba7067f4381a",
+          "aiPublicGuideTopic": "걷는 사람과 사는 사람의 자리가 다르다는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            29
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 낯섦을 다룰 때 조심할 것",
+          "section": "6.1 남의 생활을 구경거리로 삼는 일",
+          "primaryConcepts": [
+            "구경거리가 되는 삶"
+          ],
+          "secondaryConcepts": [
+            "기록의 규칙"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 대상에서 제외한 항목과 그 결과를 다루는 페이지다. 사적 영역의 정보를 배제하는 세 기준을 제시하고, 기록량 감소를 보완하지 않고 유지한 선택의 근거를 기술한다.",
+          "aiAnalysisInputSha256": "12816c8f506a4b0773654b1aa62a480c1bfdd7458bf0be192cf7903d88fb5c06",
+          "aiPublicGuideTopic": "기록에서 뺀 것들",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 낯섦을 다룰 때 조심할 것",
+          "section": "6.1 남의 생활을 구경거리로 삼는 일",
+          "primaryConcepts": [
+            "구경거리가 되는 삶"
+          ],
+          "secondaryConcepts": [
+            "잃어버림"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "거주자와의 접촉을 배제한 선택과 그 대가를 다루는 페이지다. 관측자와 거주자 사이의 비대칭을 이유로 제시하고, 그 결정이 기록의 범위를 축소했다는 점을 함께 명시한다.",
+          "aiAnalysisInputSha256": "cc13b340d4948ca8f63ffc25bb8d79c9846805aeaaf817db7d01da05e8d57bf3",
+          "aiPublicGuideTopic": "말을 걸지 않기로 한 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 낯섦을 다룰 때 조심할 것",
+          "section": "6.2 걷지 못하는 자리",
+          "primaryConcepts": [
+            "걷지 못하는 자리"
+          ],
+          "secondaryConcepts": [
+            "길을 고르는 규칙"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 방법이 전제하는 신체적·시간적 조건을 다루는 페이지다. 보행 난이도와 접근성의 제약을 제시하고, 결론의 적용 범위가 관측자 조건에 한정된다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "cde177a096ce7420fd5eb217324eed2669ac5e6c2a941f21b8b7b2dd2e262e65",
+          "aiPublicGuideTopic": "이 방법을 아무나 쓸 수 없다는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 낯섦을 다룰 때 조심할 것",
+          "section": "6.2 걷지 못하는 자리",
+          "primaryConcepts": [
+            "걷지 못하는 자리"
+          ],
+          "secondaryConcepts": [
+            "잃어버림"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선택되었으나 실제로 탐색하지 않은 경로의 처리를 다루는 페이지다. 미탐색 사유를 유형별로 제시하고, 해당 구간을 공백으로 유지해 규칙과 실행의 차이를 드러낸 방식을 기술한다.",
+          "aiAnalysisInputSha256": "1a6e593b141637efca71939175c3c59c712c3ccdba8169b08d2d6d3903aab50f",
+          "aiPublicGuideTopic": "들어가지 않은 골목들",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 낯섦을 다룰 때 조심할 것",
+          "section": "6.3 골목이 사라질 때",
+          "primaryConcepts": [
+            "사라지는 골목"
+          ],
+          "secondaryConcepts": [
+            "골목의 표시"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 대상의 소멸이 기록의 성격을 바꾸는 상황을 다루는 페이지다. 대상 소멸 후에도 기록을 보존하고 소멸 시점을 병기한 처리를 제시하며, 현재 기술에서 과거 기술로의 전환을 기술한다.",
+          "aiAnalysisInputSha256": "bee57bd3d3d2084eadd90d53a2aded7247e2680a66b89ebf080b5056c4765b8c",
+          "aiPublicGuideTopic": "적어 둔 자리가 없어지는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 낯섦을 다룰 때 조심할 것",
+          "section": "6.3 골목이 사라질 때",
+          "primaryConcepts": [
+            "사라지는 골목"
+          ],
+          "secondaryConcepts": [
+            "익숙함의 대가"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대상 소멸 가능성이 관측 행동에 미치는 영향을 다루는 페이지다. 수집 압박이 기록의 질을 떨어뜨린 경험을 제시하고, 원래의 관측 규칙으로 복귀한 판단을 기술한다.",
+          "aiAnalysisInputSha256": "41cdae9a4fe4976edd1f83bbb249bea15b3072b1a66561cb6841482f63b2c002",
+          "aiPublicGuideTopic": "다 사라지기 전에 걷는 일에 대하여",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "7장 낯선 골목과 친해지는 시간",
+          "section": "7.1 친해진다는 말",
+          "primaryConcepts": [
+            "친해진다는 것"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 종료 시점에서 친숙화의 결과를 정리하는 페이지다. 획득한 것이 상호 관계가 아니라 정보라는 구분을 제시하고, 의도하지 않은 결과로서의 이동 편의를 기술한다.",
+          "aiAnalysisInputSha256": "23e5bbc788a2b2963d20600736527f500066b78e1a59455110004bdd91469b0b",
+          "aiPublicGuideTopic": "낯섦이 사라진 자리에 남은 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "strange-until-walked"
+          ]
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 낯선 골목과 친해지는 시간",
+          "section": "7.1 친해진다는 말",
+          "primaryConcepts": [
+            "친해진다는 것"
+          ],
+          "secondaryConcepts": [
+            "익숙해짐",
+            "익숙함의 대가"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "친숙화의 이득과 손실을 대비해 정리하는 페이지다. 두 결과가 동일 과정의 양면이어서 선택 대상이 아니라는 점을 제시하고, 우열 판정을 유보한다.",
+          "aiAnalysisInputSha256": "71d6b0dba9854fb6c2d0c29d02aaaac50c5122ae3ce801b4f09cfd96b1b62882",
+          "aiPublicGuideTopic": "얻은 것과 잃은 것을 나란히 놓으면",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 낯선 골목과 친해지는 시간",
+          "section": "7.1 친해진다는 말",
+          "primaryConcepts": [
+            "친해진다는 것"
+          ],
+          "secondaryConcepts": [
+            "구경거리가 되는 삶"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 결과의 적용 범위를 한정하는 페이지다. 경로에 관한 지식과 지역에 관한 지식을 구분하고, 거주자 관련 정보를 의도적으로 배제한 결과 진술 범위가 제한된다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "a37324d2029cdb401d4229f30f6ddd67d4397d45644d204aeb2254754cf677d1",
+          "aiPublicGuideTopic": "이 동네에 대해 말할 수 있는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 낯선 골목과 친해지는 시간",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "겹치는 길"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 범위의 제약으로 남은 미해결 문제를 정리하는 페이지다. 규칙 변경에 따른 결과 차이, 다른 지역으로의 일반화, 친숙화 이후의 관측이라는 세 항목을 구분해 제시한다.",
+          "aiAnalysisInputSha256": "e6e13c98bf1a48c9e696395f98ec750e54b95a200ef3ce9ca1cbdbe01e2e579d",
+          "aiPublicGuideTopic": "한 해로 답하지 못한 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 낯선 골목과 친해지는 시간",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "사라지는 골목"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록의 유효 기간을 검토하는 페이지다. 대상의 변화 속도를 근거로 안내 자료로서의 수명을 추정하고, 시점 정보의 기록이 장기적으로 유효한 값이 된다는 점을 기술한다.",
+          "aiAnalysisInputSha256": "d52b7e3f0f3d60f666485d9fa4d05eab221034dfefe64caf9fd5bc7693048b5b",
+          "aiPublicGuideTopic": "이 기록이 남을 수 있는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 낯선 골목과 친해지는 시간",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "낯섦",
+            "걷지 못하는 자리"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "차기 관측 계획을 정리하는 페이지다. 절차적 방법과 지역 고유 명칭을 구분해 이전 대상을 정하고, 복수 지역의 비교가 지역 고유성 판정의 조건임을 밝힌다.",
+          "aiAnalysisInputSha256": "f93b573c4c479783265d41c6ecb5edf96a2ca5b7218c0038b4e6e024e6cd3654",
+          "aiPublicGuideTopic": "다음에 걸을 곳",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            49
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 21,
       "title": "빛으로 읽는 우주: 분광과 거리 측정",
       "pdfPath": "pdfs/book-021.pdf",
