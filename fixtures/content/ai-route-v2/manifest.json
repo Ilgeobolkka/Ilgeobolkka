@@ -31267,6 +31267,1054 @@
       ]
     },
     {
+      "bookId": 58,
+      "title": "규칙과 예외: 약속을 지키는 이유",
+      "pdfPath": "pdfs/book-058.pdf",
+      "pdfSha256": "e423e187582ce848e16e9eff899d5e2f581abdc4a8946357338248ea08432d99",
+      "totalPageCount": 49,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 규칙이 하는 일",
+          "section": "1.1 규칙은 무엇을 대신하는가",
+          "primaryConcepts": [
+            "규칙"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "규칙의 기능을 개별 판단과 집단 합의의 대체로 규정하고 그 대체가 상황 특수성과 현재 구성원의 의사를 반영하지 못한다는 비용을 수반한다는 점을 밝힌다. 이 비용에도 규칙을 사용하는 이유와 비용이 과도해지는 지점을 책의 과제로 놓는다.",
+          "aiAnalysisInputSha256": "551b1d39ccd06eae523f15cf4c1b1bfbb814771469876abc027a032da8a32039",
+          "aiPublicGuideTopic": "매번 따지지 않기 위해 두는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "rules-and-exceptions"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 규칙이 하는 일",
+          "section": "1.1 규칙은 무엇을 대신하는가",
+          "primaryConcepts": [
+            "규칙"
+          ],
+          "secondaryConcepts": [
+            "준수의 이유"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "규칙의 조정 기능이 내용의 타당성과 독립적으로 가치를 갖는다는 점을 제시한다. 예측 가능성이 협력의 조건이라는 근거를 들고, 이 성질이 규칙 개정에 전환 비용을 발생시킨다는 함의를 뒤 장으로 연결한다.",
+          "aiAnalysisInputSha256": "d4e50ee32cff682c956f9a7a43683537625b4365bcaca67da187c7d5fb3db11e",
+          "aiPublicGuideTopic": "규칙이 있어야 할 수 있는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 규칙이 하는 일",
+          "section": "1.2 일반성이라는 성질",
+          "primaryConcepts": [
+            "일반성"
+          ],
+          "secondaryConcepts": [
+            "규칙"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "규칙의 일반성이 사례를 묶는 데서 오며 그 결과 부적합 사례가 필연적으로 발생한다는 점을 제시한다. 세분화가 적합도를 높이는 대신 인지 가능성과 조정 기능을 떨어뜨린다는 상충을 밝히고, 상황에 따른 기울기 선택을 제안한다.",
+          "aiAnalysisInputSha256": "d67689ba616b4520d5705534d41ba8bbcb1c8452b84f58a652bf880cd3a08e20",
+          "aiPublicGuideTopic": "규칙이 낱낱을 보지 않는 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 규칙이 하는 일",
+          "section": "1.2 일반성이라는 성질",
+          "primaryConcepts": [
+            "일반성"
+          ],
+          "secondaryConcepts": [
+            "예외"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "부적합 사례에 대한 세 가지 처리 방식과 각각의 비용을 비교한다. 선택 기준을 사례의 발생 빈도로 제시하고, 개별 사안을 앞에 두고 판단할 때 예외 쪽으로 편향된다는 문제와 빈도 판단의 한계를 지적한다.",
+          "aiAnalysisInputSha256": "abfb3cc8cc0f5a83f2fa56a2ed2f8ecb9616f7c96cfe863eb8ddc1d2258af01b",
+          "aiPublicGuideTopic": "억지로 맞는 경우를 다루는 법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 규칙이 하는 일",
+          "section": "1.3 규칙이 없을 때와 있을 때",
+          "primaryConcepts": [
+            "규칙의 효과"
+          ],
+          "secondaryConcepts": [
+            "규칙",
+            "일반성"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "개별 판단을 반복하는 경우와 사전 규칙을 적용하는 경우를 시간축 위에서 대비한 도표다. 전자의 결과 편차와 후자의 균일성을 표시하고, 균일성의 대가로 개별 사정이 반영되지 않는다는 점을 두 줄 사이에 명시한다.",
+          "aiAnalysisInputSha256": "3cfdaac7f4031d46643e011c7d7db003144caf00041b858e0a7fcf89756f2477",
+          "aiPublicGuideTopic": "규칙이 있고 없을 때 판단이 놓이는 자리를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 규칙이 하는 일",
+          "section": "1.4 규칙을 지키는 세 가지 이유",
+          "primaryConcepts": [
+            "준수의 이유"
+          ],
+          "secondaryConcepts": [
+            "규칙"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "규칙 준수의 동기를 제재 회피·협력 유지·내용 승인 셋으로 나누고 각각이 약화되는 조건을 제시한다. 세 동기가 분리되는 상황에서 준수 여부가 승인 수준을 드러낸다는 점과, 동기 유형이 규범의 취약 지점을 예측하게 한다는 관점을 다룬다.",
+          "aiAnalysisInputSha256": "8893b21e70d29646c8322f0f3b9db3fe84dbc8a631071055cf31188898e646f2",
+          "aiPublicGuideTopic": "왜 지키는지가 갈리는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 규칙이 하는 일",
+          "section": "1.4 규칙을 지키는 세 가지 이유",
+          "primaryConcepts": [
+            "준수의 이유"
+          ],
+          "secondaryConcepts": [
+            "원칙 기준"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "준수 동기별로 규범의 안정성과 유지 비용이 달라진다는 점을 정리한다. 제재 기반은 감시 비용을, 협력 기반은 임계점 붕괴를 수반하며 승인 기반은 근거 설명을 요구한다는 관계를 제시하고 규칙 제정 시 근거 병기를 제안한다.",
+          "aiAnalysisInputSha256": "83c77dcc23e22a3519ce4d4ce2ad3a4039b2b18c2209ff187d6c5121823f573e",
+          "aiPublicGuideTopic": "이유가 다르면 달라지는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 예외",
+          "section": "2.1 예외란 무엇인가",
+          "primaryConcepts": [
+            "예외"
+          ],
+          "secondaryConcepts": [
+            "일반성"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "예외와 위반을 규칙의 적용 여부에 대한 판단이 개입하는지로 구분한다. 예외의 성립 조건으로 일반화 가능한 근거를 제시하고, 개별 사안에만 적용되는 근거는 예외가 아니라 자의적 면제라는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "64dd482742566b20b5c76b22ce7acab703a20b172718698dd0946920b3119c2f",
+          "aiPublicGuideTopic": "예외와 위반의 차이",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 예외",
+          "section": "2.1 예외란 무엇인가",
+          "primaryConcepts": [
+            "예외"
+          ],
+          "secondaryConcepts": [
+            "예외의 상례화"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "예외를 규칙의 약화 요인이 아니라 구성 요소로 규정한다. 예외 없는 규칙이 우회와 사문화를 유발한다는 점을 지적하고, 사전에 명시된 예외와 현장에서 생성된 예외의 차이를 근거 잔존 여부로 구분한다.",
+          "aiAnalysisInputSha256": "9dee67b598bfba2fddff09d9e1233b25e033cf659826d316cbb708210db033b3",
+          "aiPublicGuideTopic": "예외가 규칙의 일부인 이유",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 예외",
+          "section": "2.2 예외를 정당화하는 조건",
+          "primaryConcepts": [
+            "예외의 조건"
+          ],
+          "secondaryConcepts": [
+            "예외"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "예외 정당화의 세 조건을 규칙 목적과의 불일치·근거의 일반화 가능성·조정 기능의 유지로 제시한다. 앞의 두 조건은 개별 사안 검토로 확인되지만 세 번째는 누적 효과를 요구해 현장 판단에서 누락되기 쉽다는 점을 지적한다.",
+          "aiAnalysisInputSha256": "69ac1fb2892a7a8b0a72638633de00754e8d349a31eff4d8bdd55593653cf016",
+          "aiPublicGuideTopic": "무엇이 갖춰져야 예외인가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 예외",
+          "section": "2.2 예외를 정당화하는 조건",
+          "primaryConcepts": [
+            "예외의 조건"
+          ],
+          "secondaryConcepts": [
+            "결과 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동정 유발 사안에서 정당화 조건 없이 예외가 생성되는 경향과 그 결과 가시성에 따라 면제가 배분된다는 문제를 다룬다. 부당한 손해가 개별적이지 않다면 예외가 아니라 규칙 개정의 대상이라는 판단 기준을 제시한다.",
+          "aiAnalysisInputSha256": "03ebf7a6f40ff2a07866048acf57a3f363068f5f2ad5af2eec12b60acb9a057a",
+          "aiPublicGuideTopic": "딱한 경우와 예외인 경우",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 예외",
+          "section": "2.3 예외가 규칙을 무너뜨리는 자리",
+          "primaryConcepts": [
+            "예외의 한계"
+          ],
+          "secondaryConcepts": [
+            "예외의 조건",
+            "예외의 상례화"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "예외 처리 비율과 규범 기대 수준의 관계를 곡선으로 그린 도표다. 임계 구간 이전에는 예외가 규범의 준수 가능성을 높이고 이후에는 기대가 예외 쪽으로 이전된다는 점을 표시하고, 예외를 전혀 두지 않는 경우의 우회도 함께 나타낸다.",
+          "aiAnalysisInputSha256": "2d94a393ea68d6d3a1812423e6a9d1d98348a7b9d803e80cd429deeee99ebd28",
+          "aiPublicGuideTopic": "예외가 늘어나면서 규칙이 힘을 잃는 과정을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 예외",
+          "section": "2.4 예외를 미리 적어 두기",
+          "primaryConcepts": [
+            "사전 예외"
+          ],
+          "secondaryConcepts": [
+            "예외의 조건"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "현장 예외 생성의 세 가지 문제를 시간 부족·근거 소실·일관성 결여로 정리하고 사전 명시를 대안으로 제시한다. 예측 불가 사례에 대해서는 사후 기록을 요구하며, 결론이 아니라 근거를 기록해야 후속 적용이 가능하다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "39d667113f47a68b24a49a12d4121a0b891e66fa3b0095d19a569402b534620a",
+          "aiPublicGuideTopic": "그 자리에서 만들지 않는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 예외",
+          "section": "2.4 예외를 미리 적어 두기",
+          "primaryConcepts": [
+            "사전 예외"
+          ],
+          "secondaryConcepts": [
+            "규칙의 개정"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "예외 기록의 축적이 규칙의 결함 지점과 사례 빈도를 드러낸다는 점을 제시한다. 동종 예외의 반복을 규칙 개정 신호로 읽고, 빈도와 처리 비용을 기준으로 개정 여부를 정하며 판단 시점을 정기화하는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "6b81bb2be54ed3d7df1cec3c121b29e790f0b39c12a7efa12c8d61c21da89754",
+          "aiPublicGuideTopic": "적어 둔 예외가 쌓이면",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 약속",
+          "section": "3.1 약속이 만드는 것",
+          "primaryConcepts": [
+            "약속"
+          ],
+          "secondaryConcepts": [
+            "규칙"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "약속이 기존 규범의 적용이 아니라 새로운 의무의 창출이라는 점에서 규칙과 구별된다는 것을 밝힌다. 의무의 자기 생성이라는 성질이 책임 귀속의 여지를 없앤다는 점과, 그로 인해 약속의 남발을 경계하는 태도를 제시한다.",
+          "aiAnalysisInputSha256": "dd102cbc33a26fe97343ca398a0b9dff32dbf3a9a9005205d5b12be3f92451b9",
+          "aiPublicGuideTopic": "말 한마디가 만드는 매임",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 약속",
+          "section": "3.1 약속이 만드는 것",
+          "primaryConcepts": [
+            "약속"
+          ],
+          "secondaryConcepts": [
+            "약속의 구속력"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "약속의 성립 요건을 수신자의 의존·내용의 상호 이해·이행 가능성의 근거 셋으로 제시한다. 세 번째 요건의 결여가 상대의 후속 계획까지 무산시킨다는 점을 지적하고, 불확실한 경우 이행 대신 통지를 약속하는 대안을 다룬다.",
+          "aiAnalysisInputSha256": "8d8f031a8d7ec1427151f77765e38cabcf1d59d1530019da5177c8fef995ade3",
+          "aiPublicGuideTopic": "약속이 성립하는 조건",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 약속",
+          "section": "3.2 지키는 이유",
+          "primaryConcepts": [
+            "약속의 구속력"
+          ],
+          "secondaryConcepts": [
+            "약속"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "약속 준수의 근거를 상대의 신뢰 손실·제도적 신뢰 유지·자기 언명의 귀속 셋으로 제시하고 1장의 준수 동기와 대응시킨다. 외적 근거가 모두 소멸하는 조건에서 내적 근거만 남는다는 점을 준수 태도의 판별 지점으로 다룬다.",
+          "aiAnalysisInputSha256": "50b0e4889b30933c01d46e037194e7fc383c37391ef7ceae57a3ef3eafc2280a",
+          "aiPublicGuideTopic": "왜 지켜야 하는가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 약속",
+          "section": "3.2 지키는 이유",
+          "primaryConcepts": [
+            "약속의 구속력"
+          ],
+          "secondaryConcepts": [
+            "원칙 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "약속 이행이 나쁜 결과를 낳는 경우의 두 극단적 답과 각각의 문제를 제시한다. 실제 처리가 통지·설명·손해 보전이라는 비용을 수반한 해제라는 점을 밝히고, 비용의 존재가 약속 제도를 유지한다는 논지를 4장으로 연결한다.",
+          "aiAnalysisInputSha256": "07240ba51330d77e7499cac38d7317f8835fe1e83aeef48a43e0d73a3701383b",
+          "aiPublicGuideTopic": "지키는 것이 손해일 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 약속",
+          "section": "3.3 어길 수 있는 자리",
+          "primaryConcepts": [
+            "약속의 해제"
+          ],
+          "secondaryConcepts": [
+            "약속의 구속력"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "약속 해제의 조건을 상대의 면제·이행 불능·중대한 해악 회피 셋으로 정리한다. 세 번째 조건에서 해악의 크기 비교가 아니라 귀속 주체를 확인해야 한다는 기준을 제시하고, 자기 손실을 근거로 한 해제를 구분한다.",
+          "aiAnalysisInputSha256": "9db3d5fc3e5aa26a758cfb3d14d6c80b62747538856013b9d22114cb3ab5cf71",
+          "aiPublicGuideTopic": "어겨도 되는 조건",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 약속",
+          "section": "3.3 어길 수 있는 자리",
+          "primaryConcepts": [
+            "약속의 해제"
+          ],
+          "secondaryConcepts": [
+            "약속 위반의 처리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "약속 해제 시의 후속 절차를 조기 통지·근거 설명·손해 보전 셋으로 제시한다. 통지 지연이 위반 자체보다 큰 손실을 낳는다는 점과, 근거 미설명이 후속 신뢰에 미치는 영향을 지적하며 비용 대비 누락 빈도를 밝힌다.",
+          "aiAnalysisInputSha256": "527e81faf2a518c4cebdefab054d8ef2290f6ebfe2c0d91fc6176e1fa7b32fa3",
+          "aiPublicGuideTopic": "어길 때 하는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 약속",
+          "section": "3.4 약속과 규칙의 차이",
+          "primaryConcepts": [
+            "약속과 규칙"
+          ],
+          "secondaryConcepts": [
+            "약속",
+            "규칙"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "약속과 규칙을 적용 범위·생성 방식·집행 주체·수정 절차 넷으로 대비한다. 약속의 수정 용이성이 조기 재협상을 요구한다는 점과, 두 범주를 혼동할 때 자의적 면제나 협상 부재가 발생한다는 문제를 제시한다.",
+          "aiAnalysisInputSha256": "e7ed203f3e55ef49b126f36334b265c58c72538e3a33b1f59ba507d998091931",
+          "aiPublicGuideTopic": "두 매임이 다른 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "4장 결과와 원칙",
+          "section": "4.1 결과로 정하기",
+          "primaryConcepts": [
+            "결과 기준"
+          ],
+          "secondaryConcepts": [
+            "준수의 이유"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결과 기준의 이점을 설명 가능성과 상황 적응성에서 찾고, 예측의 불확실성과 자기 편향이라는 약점을 지적한다. 예상 결과를 사전에 기록해 사후 대조하는 방법으로 편향의 방향을 확인하는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "a7f234cae3a093c73f708ca30bffbd78773483f77021314e421423e0bb19ca6f",
+          "aiPublicGuideTopic": "무엇이 더 나은 결과를 내는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 결과와 원칙",
+          "section": "4.1 결과로 정하기",
+          "primaryConcepts": [
+            "결과 기준"
+          ],
+          "secondaryConcepts": [
+            "기준의 충돌"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결과 기준의 적용에 수혜 범위와 시간 지평의 설정이 선행해야 한다는 점을 지적한다. 이 설정이 결과 계산으로 도출되지 않는다는 점에서 기준의 순환적 공백을 밝히고, 결과 기준 간 대립이 대개 범위 차이에서 온다는 진단을 제시한다.",
+          "aiAnalysisInputSha256": "01609cc1f0e24380be385f7496f03edbdaad808bb7a2705e22ad34185dd3de17",
+          "aiPublicGuideTopic": "누구의 결과를 세는가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 결과와 원칙",
+          "section": "4.2 원칙으로 정하기",
+          "primaryConcepts": [
+            "원칙 기준"
+          ],
+          "secondaryConcepts": [
+            "준수의 이유"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "원칙 기준의 이점을 예측 불필요성과 타인의 예상 가능성에서 찾고 부적합 사례에서의 경직성을 약점으로 든다. 원칙의 목적을 함께 보유하면 예외 판단이 가능해진다는 점에서 2장의 논의와 연결한다.",
+          "aiAnalysisInputSha256": "783cb3ef7bf1d7b34665351958c362e0ff22489adfd570a42aa97e56694bd226",
+          "aiPublicGuideTopic": "결과와 상관없이 정하는 방식",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 결과와 원칙",
+          "section": "4.2 원칙으로 정하기",
+          "primaryConcepts": [
+            "원칙 기준"
+          ],
+          "secondaryConcepts": [
+            "형식주의"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "원칙이 설명을 종결시키는 기능을 통해 회피의 근거로 전용될 수 있다는 문제를 다룬다. 자기에게 불리한 경우의 적용 여부를 판별 기준으로 제시하고, 원칙의 사전 기록이 사후 생성 여부를 확인하게 한다는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "38c7cdf4e29ccf3323e23979e725703ee550df7413e5194356c851b978ed19c1",
+          "aiPublicGuideTopic": "원칙이 방패가 될 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            25
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 결과와 원칙",
+          "section": "4.3 두 기준이 갈리는 자리",
+          "primaryConcepts": [
+            "기준의 충돌"
+          ],
+          "secondaryConcepts": [
+            "결과 기준",
+            "원칙 기준"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결과 기준과 원칙 기준의 적용 결과를 두 원으로 나타내고 대부분의 사안에서 일치한다는 점을 넓은 교집합으로 표시한 도표다. 불일치 영역을 각각 좁게 그려 선택이 요구되는 범위가 제한적임을 나타낸다.",
+          "aiAnalysisInputSha256": "c0624e2c51d69a5e6da57be67d4996ce3efcff523a8c13a5ad1ef973a0de3d45",
+          "aiPublicGuideTopic": "결과와 원칙이 다른 답을 내는 자리를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 결과와 원칙",
+          "section": "4.4 섞어 쓰는 방식",
+          "primaryConcepts": [
+            "기준의 배합"
+          ],
+          "secondaryConcepts": [
+            "원칙 기준",
+            "결과 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "두 기준의 실제 배합 방식을 평시 원칙·중대 사안 결과로 정리하고 각 극단의 비용을 근거로 제시한다. 중대성 판정을 현장에서 하면 결과 기준으로 수렴한다는 문제를 지적하고 사전에 적용 경계를 설정하는 방법을 제안한다.",
+          "aiAnalysisInputSha256": "900c65a9bcfb9d7a5b646492bbcd0d8363a2c19af955b1e2b70a2546f22af6c3",
+          "aiPublicGuideTopic": "실제로 쓰이는 배합",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            25
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 결과와 원칙",
+          "section": "4.4 섞어 쓰는 방식",
+          "primaryConcepts": [
+            "기준의 배합"
+          ],
+          "secondaryConcepts": [
+            "사전 예외"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "원칙 적용을 접는 경계를 사전에 기술하는 방법을 2장의 사전 예외와 같은 구조로 제시한다. 크기를 수치가 아니라 유형으로 기술해야 경계 다툼을 줄인다는 점과, 목록이 길어지면 원칙 기준이 형해화된다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "4cd24f6c2c78a2b3f3275b1873b1335611abbff9916e97a53a8d5cb8340c41d9",
+          "aiPublicGuideTopic": "미리 긋는 선의 모양",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "5장 규칙이 실패하는 방식",
+          "section": "5.1 규칙을 위한 규칙",
+          "primaryConcepts": [
+            "형식주의"
+          ],
+          "secondaryConcepts": [
+            "일반성"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "규칙의 목적이 소실되면 예외 판단의 근거가 사라져 형식적 적용만 남는다는 구조를 설명한다. 융통성 부재를 개인 성향이 아니라 제도적 조건의 결과로 진단하고 개선 대상을 규칙의 기술 방식으로 지정한다.",
+          "aiAnalysisInputSha256": "a7123eca1d32be2d9da865b09d78056ad45e547e60507f9d2e4f5d7882161158",
+          "aiPublicGuideTopic": "왜 있는지 잊은 규칙",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "5장 규칙이 실패하는 방식",
+          "section": "5.1 규칙을 위한 규칙",
+          "primaryConcepts": [
+            "형식주의"
+          ],
+          "secondaryConcepts": [
+            "준수의 이유"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "절차 준수가 목적 달성을 대체하는 전도 현상을 측정 용이성으로 설명한다. 전원이 절차를 준수한 상태에서 책임 귀속이 불가능해진다는 귀결을 지적하고, 절차 폐지가 아니라 목적의 병기와 별도 점검을 대안으로 제시한다.",
+          "aiAnalysisInputSha256": "d5b4e97679976f2c666c38a833e7bbbfabb5cc853251545f7ab65b4ade8be081",
+          "aiPublicGuideTopic": "형식이 목적을 대신할 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 규칙이 실패하는 방식",
+          "section": "5.2 예외가 규칙이 될 때",
+          "primaryConcepts": [
+            "예외의 상례화"
+          ],
+          "secondaryConcepts": [
+            "예외"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "예외의 누적이 규범 기대를 전환시키는 과정과 개별 판단 시점에서 누적이 인지되지 않는다는 문제를 다룬다. 준수자만 불이익을 받는 상태를 지적하고, 예외 계수와 임계 초과 시 규칙 개정이라는 대응을 제시한다.",
+          "aiAnalysisInputSha256": "72a82bb55b0c080a6623a2d4ffedd2d3cdd58d125456ab4d6a573e233fef0ad1",
+          "aiPublicGuideTopic": "예외가 기대가 되는 과정",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 규칙이 실패하는 방식",
+          "section": "5.2 예외가 규칙이 될 때",
+          "primaryConcepts": [
+            "예외의 상례화"
+          ],
+          "secondaryConcepts": [
+            "규칙의 개정"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "예외 유지가 개인 수준에서 합리적 선택이 되는 구조를 개정 비용과 그 부담의 집중으로 설명한다. 개별 합리성의 누적이 규범 전체를 약화시킨다는 점을 지적하고, 정기 검토 자리를 통해 개정 비용을 분산하는 방법을 제안한다.",
+          "aiAnalysisInputSha256": "715a854aee2dc9d473f51da7a018081c9fa4c7ad01a0675a39f32ef88d7e948c",
+          "aiPublicGuideTopic": "고치지 않고 예외로 버티는 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 규칙이 실패하는 방식",
+          "section": "5.3 아무도 지키지 않는 규칙",
+          "primaryConcepts": [
+            "사문화"
+          ],
+          "secondaryConcepts": [
+            "준수의 이유"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사문화된 규범이 존재할 때 준수 여부의 판단 부담이 추가된다는 점과 선택적 원용의 도구가 된다는 문제를 다룬다. 방치에 비용이 들지 않아 유지되는 구조를 지적하고 집행 또는 폐지라는 이분 대응을 제시한다.",
+          "aiAnalysisInputSha256": "45e68d016c0cfd1864d4ad2fa3779768e5c70d1aa3488362d22372ff1e2d8e3f",
+          "aiPublicGuideTopic": "남아 있지만 작동하지 않는 규칙",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 규칙이 실패하는 방식",
+          "section": "5.3 아무도 지키지 않는 규칙",
+          "primaryConcepts": [
+            "사문화"
+          ],
+          "secondaryConcepts": [
+            "규칙의 효과"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "규범 폐지가 제정보다 어려운 비대칭을 지적하고 규칙의 누적이 신규 구성원의 판단을 마비시킨다는 문제를 제시한다. 유효 기한 설정으로 재승인 절차를 강제하는 방법과 그 적용 범위의 한정을 다룬다.",
+          "aiAnalysisInputSha256": "5ea0e8860169a71cab36565fa8ba1e45a90068918a9cacbb38271a62bc3fdb05",
+          "aiPublicGuideTopic": "규칙을 없애는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 규칙이 실패하는 방식",
+          "section": "5.4 규칙이 무너지는 두 방향",
+          "primaryConcepts": [
+            "규칙의 붕괴"
+          ],
+          "secondaryConcepts": [
+            "형식주의",
+            "예외의 상례화"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "예외 허용 정도를 축으로 두고 양극단에서 규범이 기능을 잃는 두 경로를 그린 도표다. 경직화와 이완이 서로 반대 방향임에도 규범 부재라는 동일한 결과로 수렴한다는 점을 하단에서 합류시켜 나타낸다.",
+          "aiAnalysisInputSha256": "e26573b6ea2306d82e318bd8120d40829e8f92755f8245676202b420b9fd1ae2",
+          "aiPublicGuideTopic": "규칙이 양쪽 방향으로 무너지는 모습을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "6장 세 자리의 판단",
+          "section": "6.1 늦게 온 사람",
+          "primaryConcepts": [
+            "규칙의 적용"
+          ],
+          "secondaryConcepts": [
+            "예외의 조건",
+            "일반성"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기한 규칙 적용을 둘러싼 대립에서 규칙의 목적 확인이 판단을 전환시킨 과정을 사례로 보인다. 목적을 알기 전에는 사정 대 원칙의 대립으로만 보이던 문제가 목적 대비 해당 여부의 판단으로 바뀐다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "b5593b237d7673e58d6d72095cd5eb7f6bf0e3b97519a06069a9476d0e4022a3",
+          "aiPublicGuideTopic": "규칙대로 하면 딱한 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "6장 세 자리의 판단",
+          "section": "6.1 늦게 온 사람",
+          "primaryConcepts": [
+            "규칙의 적용"
+          ],
+          "secondaryConcepts": [
+            "사전 예외"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "예외 판단의 근거를 일반화 가능한 문장으로 기록해 후속 사안의 판단 비용을 줄인 과정을 보인다. 기록된 근거가 사실상 규칙의 보완으로 기능한다는 점을 2장의 논의와 연결한다.",
+          "aiAnalysisInputSha256": "b921cf69afe3acfaa1c4fb0c10704f7a036571cdb3e63725451dd9d383ce8cbe",
+          "aiPublicGuideTopic": "그다음에 한 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            37
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 세 자리의 판단",
+          "section": "6.1 늦게 온 사람",
+          "primaryConcepts": [
+            "규칙의 적용"
+          ],
+          "secondaryConcepts": [
+            "예외의 상례화"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정당한 예외라도 빈발하면 규범 기대가 이전된다는 점을 사례로 확인하고, 예외 확대나 방치가 아니라 규칙 자체를 목적에 맞게 재설정한 대응을 제시한다. 재설정이 두 문제를 동시에 해소한다는 결과를 밝힌다.",
+          "aiAnalysisInputSha256": "c80bb3aa8844eb404eb975422cb3ffc6d0176c51d6a54a0aae3ff7d7de7263a9",
+          "aiPublicGuideTopic": "선을 넘은 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 세 자리의 판단",
+          "section": "6.2 못 지키게 된 약속",
+          "primaryConcepts": [
+            "약속 위반의 처리"
+          ],
+          "secondaryConcepts": [
+            "약속의 해제",
+            "약속의 구속력"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이행 불능에 따른 약속 해제 사례에서 통지·설명·보전이라는 세 절차가 실제로 수행된 과정을 보인다. 죄책감이 통지 지연으로 이어질 때 상대의 손해가 확대된다는 점을 지적하고 감정과 절차의 분리를 제시한다.",
+          "aiAnalysisInputSha256": "84605e3b54d5a3af53a321fd81de4b56303c0183e5d91312e3d62a026b25ae5d",
+          "aiPublicGuideTopic": "지킬 수 없게 된 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 세 자리의 판단",
+          "section": "6.2 못 지키게 된 약속",
+          "primaryConcepts": [
+            "약속 위반의 처리"
+          ],
+          "secondaryConcepts": [
+            "약속과 규칙"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이행 불능 가능성을 사전에 공유하는 약속 방식을 제시하고 그것이 상대의 대비 가능성을 높인다는 점을 밝힌다. 약속의 양자성이 개별 조건 부가를 허용한다는 점에서 규칙의 사전 예외와 기능적으로 대응한다는 관계를 다룬다.",
+          "aiAnalysisInputSha256": "c24f65766c3c7596a90ac44fe05a6f1b2431e21ab10f1fa5fcb183c44b801fc2",
+          "aiPublicGuideTopic": "다음 약속을 다르게 하기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 세 자리의 판단",
+          "section": "6.3 규칙을 고치는 자리",
+          "primaryConcepts": [
+            "규칙의 개정"
+          ],
+          "secondaryConcepts": [
+            "사전 예외",
+            "사문화"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "규범 개정 제안의 부담이 제안자에게 집중되는 구조를 지적하고, 개인의 발의 대신 정기 검토 자리를 설치한 대응을 사례로 보인다. 제도화가 발의를 개인의 주장에서 절차상의 과업으로 전환한다는 효과를 제시한다.",
+          "aiAnalysisInputSha256": "7244cb898bc00f8c82712d7f32d37abc8e8ae33a86847f507e2697f658d7dac9",
+          "aiPublicGuideTopic": "고치자는 말을 꺼내는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 세 자리의 판단",
+          "section": "6.3 규칙을 고치는 자리",
+          "primaryConcepts": [
+            "규칙의 개정"
+          ],
+          "secondaryConcepts": [
+            "규칙의 효과"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "규칙 제정 시 목적과 재검토 시점을 함께 기록하기로 한 결정을 사례로 보인다. 목적 기록이 준수 동기와 예외 판단 양쪽의 조건이라는 점을 앞 장들과 연결하고, 기한 명시가 폐지의 비대칭을 완화한다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "1c152b2585e5ff36f25288032fc82e1ece4d80e3e33120a5ea898efba5a8180b",
+          "aiPublicGuideTopic": "고칠 때 함께 정한 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "7장 규칙 아래에서",
+          "section": "7.1 무엇을 물었나",
+          "primaryConcepts": [
+            "규칙"
+          ],
+          "secondaryConcepts": [
+            "예외",
+            "약속"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "규칙의 기능과 비용, 예외의 세 조건, 약속의 성격과 준수 근거, 결과·원칙 두 기준의 관계라는 네 축으로 책 전체를 요약한다. 각 축에서 도출한 판단 기준을 연결해 결론부의 뼈대로 제시한다.",
+          "aiAnalysisInputSha256": "f32011c34091dcfcffdb040f81e4564603da04c5403787cd9a6b61168118116c",
+          "aiPublicGuideTopic": "이 책이 지나온 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "rules-and-exceptions"
+          ]
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "7장 규칙 아래에서",
+          "section": "7.1 무엇을 물었나",
+          "primaryConcepts": [
+            "규칙"
+          ],
+          "secondaryConcepts": [
+            "형식주의",
+            "예외의 상례화"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "규범 실패의 두 방향이 동일한 결과로 수렴한다는 점을 정리하고 목적 기록이 두 방향을 함께 억제하는 조건임을 제시한다. 목적 부재 시 예외 판단이 상황 의존적으로 이루어지고 누적된다는 인과를 밝힌다.",
+          "aiAnalysisInputSha256": "4407dbd920493de347c60cbc75652343a79a45ecafc8e6e59c2db2ce65a347bf",
+          "aiPublicGuideTopic": "규칙이 무너지는 두 방향",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 규칙 아래에서",
+          "section": "7.1 무엇을 물었나",
+          "primaryConcepts": [
+            "규칙"
+          ],
+          "secondaryConcepts": [
+            "기준의 배합",
+            "약속의 해제"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "예외·원칙 해제 범위·약속 조건을 사전에 확정하는 공통 방법을 정리하고 그 근거를 현장 판단의 편향에서 찾는다. 사전 확정이 판단을 제거하지 않고 범위를 축소해 안정성을 확보한다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "24f66698810129fceab64ad4c7dac899b03d4cd6dcc501b83c0f71a8703b29ae",
+          "aiPublicGuideTopic": "미리 정해 두는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 규칙 아래에서",
+          "section": "7.2 규칙을 다루는 일",
+          "primaryConcepts": [
+            "규칙의 실천"
+          ],
+          "secondaryConcepts": [
+            "준수의 이유"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "규칙 제정 시 목적·적용 제외 사유·재검토 시점 세 항목을 병기하는 방법을 첫 실천으로 제시한다. 각 항목이 앞 장의 어떤 문제를 예방하는지를 연결하고 기록 비용과 미기록 비용의 비대칭을 밝힌다.",
+          "aiAnalysisInputSha256": "745f90329a1c2c588566ec686f12917e67f1cb82bbad105b312ad3cacaa8478d",
+          "aiPublicGuideTopic": "규칙을 만들 때 함께 적는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 규칙 아래에서",
+          "section": "7.2 규칙을 다루는 일",
+          "primaryConcepts": [
+            "규칙의 실천"
+          ],
+          "secondaryConcepts": [
+            "예외의 조건",
+            "사전 예외"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "예외 처리 절차를 목적 대비 판정·근거의 일반화 확인·근거 기록·누적 검토 순으로 정리한다. 마지막 단계의 누락이 개정 시점 판단을 불가능하게 한다는 점을 지적하고 정기 검토의 필요를 밝힌다.",
+          "aiAnalysisInputSha256": "4bbeebb7e2ba1c12f036ef2eb2c2e5747835c6fa299eb9b772e57e6bfb22acd0",
+          "aiPublicGuideTopic": "예외를 다루는 순서",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            47
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 규칙 아래에서",
+          "section": "7.2 규칙을 다루는 일",
+          "primaryConcepts": [
+            "규칙의 실천"
+          ],
+          "secondaryConcepts": [
+            "약속",
+            "약속의 해제"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "약속의 생애 주기를 이행 가능성 확인·해제 조건의 사전 공유·해제 시 세 절차로 정리한다. 통지의 낮은 비용과 높은 누락 빈도를 지적하고, 위반에 비용이 따르는 것이 규범과 예상을 가르는 조건이라는 결론으로 맺는다.",
+          "aiAnalysisInputSha256": "f99980b9fda19a79bb7bc424d384747b96d97e86f9c7c768a81dc06a936df6bd",
+          "aiPublicGuideTopic": "약속을 다루는 순서",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 61,
       "title": "형태와 구도: 화면을 구성하는 원리",
       "pdfPath": "pdfs/book-061.pdf",
