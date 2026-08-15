@@ -41413,6 +41413,1122 @@
           "duplicateGroupKeys": []
         }
       ]
+    },
+    {
+      "bookId": 85,
+      "title": "바람이 강한 해안도로",
+      "pdfPath": "pdfs/book-085.pdf",
+      "pdfSha256": "ce08aa753ec822d1c649af48851f9b1f38ee0acefe4eb1c0539e52e2fd9d4546",
+      "totalPageCount": 51,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 시각표가 없는 이동",
+          "section": "1.1 스스로 달리는 길",
+          "primaryConcepts": [
+            "자기 운전"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정기 교통편 대신 자력 이동을 선택했을 때 결정 항목이 늘어난다는 점을 밝히는 도입 페이지다. 시각표가 없는 자유가 해안의 바람 조건에 의해 실질적으로 제약된다는 관찰을 제시하고, 바람을 기준으로 일정을 구성한다는 책 전체의 방향을 밝힌다.",
+          "aiAnalysisInputSha256": "3994bfdf996620dd696715b887e5a0430efff3f10eb693add7273b34badf2e6e",
+          "aiPublicGuideTopic": "떠나는 시각을 스스로 정한다는 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "wind-is-the-timetable"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 시각표가 없는 이동",
+          "section": "1.1 스스로 달리는 길",
+          "primaryConcepts": [
+            "자기 운전"
+          ],
+          "secondaryConcepts": [
+            "하루 거리"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이동 수단 선택의 기준을 속도가 아니라 관찰 조건으로 설정한다. 도보의 구간 간격 문제, 차량의 감각 차단과 정차 부담, 자전거의 중간적 특성을 각각 비교하고 바람의 영향을 가장 크게 받는다는 단점도 함께 제시한다.",
+          "aiAnalysisInputSha256": "68fecbe9a1659f03333353487f6f9177e72440055226410a6343322c9f3dce57",
+          "aiPublicGuideTopic": "무엇을 타고 갈지 정하는 기준",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 시각표가 없는 이동",
+          "section": "1.2 해풍",
+          "primaryConcepts": [
+            "해풍"
+          ],
+          "secondaryConcepts": [
+            "자기 운전"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "해안의 일주기 바람 변화를 설명한다. 육지와 바다의 비열 차이로 오전과 오후에 풍향이 반전되고 정오 무렵 잠시 잦아든다는 구조, 오후에 풍속이 최대가 된다는 시간대별 세기 변화를 제시하며 같은 구간의 소요 시간이 두 배까지 갈린다는 결과를 밝힌다.",
+          "aiAnalysisInputSha256": "7045c0bd8ac32b83b67be63f628b3e04ae36523b85871230cc8ec0aae2c30afd",
+          "aiPublicGuideTopic": "바닷가의 바람이 하루 동안 도는 방식",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 시각표가 없는 이동",
+          "section": "1.2 해풍",
+          "primaryConcepts": [
+            "해풍"
+          ],
+          "secondaryConcepts": [
+            "바람 지형"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "당일의 풍향과 풍속을 현지에서 판단하는 세 가지 방법을 제시한다. 파도의 방향과 형태, 해안 수목의 편향된 수형, 마을 사람들의 일상 행동을 각각 지표로 삼고, 짧은 시간에 확인 가능한 순서로 정리한다.",
+          "aiAnalysisInputSha256": "29e95e87c1248dc578533c9abab622b677f3fb078f73467df5a354f15e81eeda",
+          "aiPublicGuideTopic": "그날의 바람을 미리 아는 법",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 시각표가 없는 이동",
+          "section": "1.3 굽이",
+          "primaryConcepts": [
+            "굽이"
+          ],
+          "secondaryConcepts": [
+            "자기 운전"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "해안 지형이 만드는 도로의 굴곡이 이동 거리, 풍향 체감, 전방 시야에 미치는 영향을 정리한다. 직선거리와 실제 거리의 차이를 제시하고, 계획의 단위를 거리가 아닌 굴곡 지점의 수로 삼는 방법을 설명한다.",
+          "aiAnalysisInputSha256": "d5bc044231beeb3addf656615ee16cfa126fc7f2871c00556ab6cba586ee99c4",
+          "aiPublicGuideTopic": "해안도로가 굽어 있는 까닭",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 시각표가 없는 이동",
+          "section": "1.3 굽이",
+          "primaryConcepts": [
+            "굽이"
+          ],
+          "secondaryConcepts": [
+            "노면 상태",
+            "전망대"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "곶을 도는 굴곡과 만을 도는 굴곡의 특성 차이를 정리한다. 전자는 강풍과 개방된 시야, 상승 구배를 동반하고 후자는 약풍과 취락, 정박 여건을 동반한다는 대응을 제시하며, 지형 유형으로 후속 구간을 예측하는 방법을 설명한다.",
+          "aiAnalysisInputSha256": "dd15653e60ee8102ad4494699ea42e2c758cd0d79236acffec5b587541c949d6",
+          "aiPublicGuideTopic": "굽이마다 다른 성격",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 시각표가 없는 이동",
+          "section": "1.4 노면 상태",
+          "primaryConcepts": [
+            "노면 상태"
+          ],
+          "secondaryConcepts": [
+            "굽이"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "해안 도로의 노면이 모래, 해수, 염해로 인해 내륙과 다른 상태가 된다는 점을 설명한다. 굴곡 안쪽의 모래 퇴적, 젖은 노면의 마찰 저하, 갓길 쪽 포장 손상이라는 세 가지 위험과 각각의 주행 대응을 제시한다.",
+          "aiAnalysisInputSha256": "2e1da0317b1a9fcf645bfc47b62609a0d08656ef64db72e940461d360264407d",
+          "aiPublicGuideTopic": "바닷가 도로의 바닥이 다른 이유",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 시각표가 없는 이동",
+          "section": "1.4 노면 상태",
+          "primaryConcepts": [
+            "노면 상태"
+          ],
+          "secondaryConcepts": [
+            "굽이",
+            "차와 자전거"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "굴곡부 노면의 위험 요소를 위치별로 표시한 도표다. 안쪽 갓길의 모래 퇴적과 바깥쪽 갓길의 포장 손상 사이에 주행 가능 폭을 진하게 나타내고, 안쪽으로 붙는 경로에 표식을 얹어 피해야 할 주행선을 보인다.",
+          "aiAnalysisInputSha256": "8acbff7a18e4da8bdcfd38558fb4d47d3db2f3d8f3e62b7578cc43fe0f0ed1ec",
+          "aiPublicGuideTopic": "굽이에서 모래가 쌓이는 자리와 달리는 자리를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "1장 시각표가 없는 이동",
+          "section": "1.5 하루 거리",
+          "primaryConcepts": [
+            "하루 거리"
+          ],
+          "secondaryConcepts": [
+            "자기 운전",
+            "해풍"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자력 이동의 일일 거리 산정에서 감속 요인을 체계적으로 차감하는 방법을 제시한다. 풍향, 지형, 정차 시간의 세 요인을 들고 정차가 차지하는 비중이 크다는 점을 지적하며, 이동 시간과 실주행 시간을 구분해 계획하는 방식을 설명한다.",
+          "aiAnalysisInputSha256": "877fab73fe2bce904c991e149bcda3ef62534fe6352c153b10c60876101f380b",
+          "aiPublicGuideTopic": "하루에 갈 수 있는 거리를 정하는 법",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "1장 시각표가 없는 이동",
+          "section": "1.5 하루 거리",
+          "primaryConcepts": [
+            "하루 거리"
+          ],
+          "secondaryConcepts": [
+            "잘 곳",
+            "해안 마을"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "숙박 가능 지점이 이산적으로 분포할 때 일정의 선택지가 제한된다는 점을 다룬다. 마을 간 간격이 반일 거리로 균등해 구간 단위 계획이 단순해진다는 이점과, 구간 중간에 대피처가 없어 기상 악화 시 선택지가 사라진다는 위험을 함께 제시한다.",
+          "aiAnalysisInputSha256": "54c6165e90e616686c6a928a1f9963598aa30f669f1edb3987500613675522b7",
+          "aiPublicGuideTopic": "어디서 끊을지 정하는 기준",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 바람을 다루기",
+          "section": "2.1 맞바람",
+          "primaryConcepts": [
+            "맞바람"
+          ],
+          "secondaryConcepts": [
+            "해풍",
+            "자기 운전"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "역풍 구간의 대응을 자세, 속도, 시간대 조정의 세 단계로 제시한다. 전면 투영 면적 감소와 속도 저하가 소요 힘에 미치는 영향을 설명하고, 근본적인 해법은 해당 구간의 통과 시각을 옮기는 것이라고 정리한다.",
+          "aiAnalysisInputSha256": "8fdf1bf8ded420405e919e915aeb9ad07768cc3c3a8518760b17e9586c647a10",
+          "aiPublicGuideTopic": "앞에서 오는 바람을 상대하는 법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 바람을 다루기",
+          "section": "2.1 맞바람",
+          "primaryConcepts": [
+            "맞바람"
+          ],
+          "secondaryConcepts": [
+            "하루 거리",
+            "멈춤 판단"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "순풍이 초래하는 위험을 다룬다. 가속으로 인한 굴곡부 제동 실패와 복귀 시 소요 시간 증가라는 두 문제를 제시하고, 굴곡 전 감속과 왕복 여지가 필요한 날의 방향 선택이라는 두 가지 규칙으로 대응한다.",
+          "aiAnalysisInputSha256": "217d0f4ed0587aecdea244ffa51633543ac5638f86eb122b0302320e43165556",
+          "aiPublicGuideTopic": "뒷바람이 오히려 위험한 이유",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 바람을 다루기",
+          "section": "2.2 옆바람",
+          "primaryConcepts": [
+            "옆바람"
+          ],
+          "secondaryConcepts": [
+            "맞바람",
+            "굽이"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 풍향에서도 도로의 굴곡을 따라 체감 풍향이 역풍, 측풍, 순풍으로 전환되는 과정을 세 지점의 주행 기호로 나타낸 도표다. 측풍 구간에서 주행선이 밀리는 경로를 점선으로 표시해 가장 위험한 지점을 드러낸다.",
+          "aiAnalysisInputSha256": "eaa252e37dd4f44c15997788f2defab18822cb33b0ac22d67880f59aebb46894",
+          "aiPublicGuideTopic": "굽이를 돌 때 바람의 방향이 바뀌는 것을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 바람을 다루기",
+          "section": "2.2 옆바람",
+          "primaryConcepts": [
+            "옆바람"
+          ],
+          "secondaryConcepts": [
+            "노면 상태",
+            "멈춤 판단"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "측풍 주행의 위험과 대응을 다룬다. 감속, 차체를 풍상 방향으로 기울이는 자세, 주행선을 안쪽으로 잡아 여유 폭을 확보하는 방법을 제시하고, 차폐물 전후에서 바람이 끊겼다 되살아나는 구간이 가장 위험하다고 지적한다.",
+          "aiAnalysisInputSha256": "c30669c9b55d084349cecb76bdb91ae706cae79a5415cc08a166963e0ac4249a",
+          "aiPublicGuideTopic": "옆에서 밀 때 무엇을 하는가",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 바람을 다루기",
+          "section": "2.3 바람 지형",
+          "primaryConcepts": [
+            "바람 지형"
+          ],
+          "secondaryConcepts": [
+            "해풍",
+            "굽이"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지형에 따라 국지 풍속이 증가하는 세 가지 위치를 제시한다. 돌출된 곶, 지형이 좁아지는 안부, 차폐물이 끝나는 지점이며 각각의 발생 원리를 설명하고 사전에 표시해 체력 배분에 활용하는 방법을 덧붙인다.",
+          "aiAnalysisInputSha256": "883b70a7597305242ba64179a0b52e59fac9164f3bd6985540f445e7ac359011",
+          "aiPublicGuideTopic": "바람이 세지는 자리는 정해져 있다",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "2장 바람을 다루기",
+          "section": "2.3 바람 지형",
+          "primaryConcepts": [
+            "바람 지형"
+          ],
+          "secondaryConcepts": [
+            "멈춤 판단",
+            "전망대"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "강풍 구간의 통과 절차를 진입 전 준비, 무정지 통과, 통과 후 회복의 세 단계로 제시한다. 강풍 속에서는 장비 정비가 불가능하다는 점과 중간 정지 후 재출발의 어려움을 근거로 들고, 통과 직후의 경직 상태가 다음 구간의 위험이 된다고 지적한다.",
+          "aiAnalysisInputSha256": "d71560700ce80bce167fd092ad813d8a974121fd3e55ac6530c5118233795db9",
+          "aiPublicGuideTopic": "센 구간을 지나는 순서",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "2장 바람을 다루기",
+          "section": "2.4 멈춤 판단",
+          "primaryConcepts": [
+            "멈춤 판단"
+          ],
+          "secondaryConcepts": [
+            "바람 지형"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "주행 중단을 결정하는 기준을 세 가지로 정해 둔 사례를 제시한다. 체감 풍압, 도로 월파, 현지인의 대여 판단이며 마지막 기준이 가장 신뢰할 만하다는 이유를 밝히고, 중단한 날의 체류가 별도의 관찰 기회가 되었다는 점을 덧붙인다.",
+          "aiAnalysisInputSha256": "09cd66b0e20396ced5f57c16c15f890c05428e60f1665ca6fff506aa07438462",
+          "aiPublicGuideTopic": "오늘은 가지 않기로 정하는 기준",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "2장 바람을 다루기",
+          "section": "2.4 멈춤 판단",
+          "primaryConcepts": [
+            "멈춤 판단"
+          ],
+          "secondaryConcepts": [
+            "잘 곳",
+            "하루 거리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "출발 이후의 중단 판단이 어려운 이유와 사전 회귀 지점 설정이라는 대응을 제시한다. 순풍으로 진행한 거리는 역풍으로 복귀해야 하므로 왕복 비용이 비대칭이라는 점을 근거로 삼고, 실제로 회귀를 실행해 전체 일정을 지킨 사례를 기록한다.",
+          "aiAnalysisInputSha256": "a497fb54898957e0dc500047048409711fceb93c9dfd2e080bf69865aabb9f38",
+          "aiPublicGuideTopic": "가다가 돌아서기로 하는 자리",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 길이 만드는 조건",
+          "section": "3.1 굽이 읽기",
+          "primaryConcepts": [
+            "굽이 읽기"
+          ],
+          "secondaryConcepts": [
+            "굽이",
+            "바람 지형"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "해안선의 돌출부와 만입부가 번갈아 나타나는 구조를 위에서 본 형태로 그리고, 각 유형에 동반되는 구배와 풍속과 시설을 함께 표시한 도표다. 진행 방향에서 굴곡이 휘는 방향만으로 후속 구간을 예측할 수 있다는 점을 보인다.",
+          "aiAnalysisInputSha256": "662b30ddeb1bf1cfc9b00589c7fe90e66aa6694711634a173d6434b98b1127f2",
+          "aiPublicGuideTopic": "굽이의 모양만 보고 다음에 무엇이 오는지 아는 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 길이 만드는 조건",
+          "section": "3.1 굽이 읽기",
+          "primaryConcepts": [
+            "굽이 읽기"
+          ],
+          "secondaryConcepts": [
+            "노면 상태",
+            "전망대"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "굴곡부 진입 전에 수행하는 세 가지 조치를 제시한다. 사전 감속, 주행선 확보, 통과 후 풍향 예측이며 각각을 굴곡 내부가 아니라 진입 전에 끝내야 하는 이유를 설명한다.",
+          "aiAnalysisInputSha256": "1b0620df91532076a7a62e683e866a7c32f85c90e3e3ce176d78d5821994ae97",
+          "aiPublicGuideTopic": "굽이 앞에서 하는 세 가지",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 길이 만드는 조건",
+          "section": "3.2 오르내림",
+          "primaryConcepts": [
+            "오르내림"
+          ],
+          "secondaryConcepts": [
+            "굽이 읽기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "해안도로의 잦은 고도 변화가 체력에 미치는 영향을 다룬다. 짧은 구배가 반복되면 리듬이 끊겨 피로가 커진다는 점, 하강 구간이 순풍과 겹쳐 굴곡부 직전에서 위험해진다는 점을 제시하고 속도를 억제하는 판단을 설명한다.",
+          "aiAnalysisInputSha256": "1d867e6e0f1775df94f7c52ed44ec5acb27fb21b865d77045b7aefb8fb3e1244",
+          "aiPublicGuideTopic": "해안도로의 높낮이",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 길이 만드는 조건",
+          "section": "3.2 오르내림",
+          "primaryConcepts": [
+            "오르내림"
+          ],
+          "secondaryConcepts": [
+            "하루 거리",
+            "해안 마을"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "고도 변화를 시간 단위로 환산해 일정에 반영하는 방법을 제시한다. 준비와 회복을 포함한 곶 통과 소요를 산정하고, 풍속이 약한 시간대에 고지 구간을 배치하는 순서 조정이 하루의 부담을 크게 바꾼다는 점을 설명한다.",
+          "aiAnalysisInputSha256": "99770608b23ed81b47f375e5bdf51a30e66f04b28f9875ffbb2d8c4d9ee27c91",
+          "aiPublicGuideTopic": "높낮이를 하루 계획에 넣는 법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "3장 길이 만드는 조건",
+          "section": "3.3 전망대",
+          "primaryConcepts": [
+            "전망대"
+          ],
+          "secondaryConcepts": [
+            "굽이 읽기",
+            "바람 지형"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "전망 지점의 이용에 드는 시간과 선택 기준을 다룬다. 정차와 재출발에 소요되는 고정 시간이 누적된다는 계산을 제시하고, 풍속이 낮은 시간대와 전방 조망이 가능한 위치를 기준으로 방문지를 선별한 판단을 설명한다.",
+          "aiAnalysisInputSha256": "8e379c5bc42ef710e26a0398a16d30caa6c05f8b5de3370bb83008a12e0d3bce",
+          "aiPublicGuideTopic": "서는 자리가 정해져 있다는 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "3장 길이 만드는 조건",
+          "section": "3.3 전망대",
+          "primaryConcepts": [
+            "전망대"
+          ],
+          "secondaryConcepts": [
+            "해풍",
+            "이틀 정리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "전망 지점을 경관 감상이 아니라 다음 구간의 정보 수집 지점으로 활용하는 방법을 제시한다. 해안선의 굴곡과 취락 위치, 해면 상태를 통한 풍속 판단을 각각 설명하고 관찰을 촬영보다 앞에 두는 순서를 권한다.",
+          "aiAnalysisInputSha256": "4f397c44449395653227db65ece2cf05eb7b761c5e83d25781f6ce4e0ace3e48",
+          "aiPublicGuideTopic": "전망대에서 무엇을 보는가",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "3장 길이 만드는 조건",
+          "section": "3.4 해안 마을",
+          "primaryConcepts": [
+            "해안 마을"
+          ],
+          "secondaryConcepts": [
+            "하루 거리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "해안 취락이 만입부에 집중되는 이유를 풍속과 정박 조건으로 설명한다. 취락의 분포로 지형과 풍속을 역추정할 수 있다는 관계를 제시하고, 마을 간 거리를 구간 난이도의 지표로 사용하는 실무를 밝힌다.",
+          "aiAnalysisInputSha256": "5b52859dd8d6e10aa17a5f19d1353552f8208bde3190a8bd744b85871a1c85bb",
+          "aiPublicGuideTopic": "마을이 만에만 있는 이유",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "3장 길이 만드는 조건",
+          "section": "3.4 해안 마을",
+          "primaryConcepts": [
+            "해안 마을"
+          ],
+          "secondaryConcepts": [
+            "보급",
+            "잘 곳"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "경유 취락에서 처리할 항목의 순서를 급수, 숙박 결정, 정보 수집, 식사로 제시한다. 다음 보급 지점까지의 간격을 이유로 급수를 최우선에 두고, 현지 정보가 앞선 결정을 바꿀 수 있으므로 식사를 마지막에 두는 근거를 설명한다.",
+          "aiAnalysisInputSha256": "24ce2dc635da8d6e7ea45fd87ac93063e862a580237e9858a49d7da8b3cf2fba",
+          "aiPublicGuideTopic": "마을에서 하는 일의 순서",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 하루를 짜기",
+          "section": "4.1 출발 시각",
+          "primaryConcepts": [
+            "출발 시각"
+          ],
+          "secondaryConcepts": [
+            "하루 거리",
+            "해풍"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "출발 시각이 일일 난이도를 좌우한다는 점을 해풍의 시간 구조로 설명한다. 조기 출발로 저풍속 시간대를 확보하는 이득을 시간 단위로 제시하고, 이른 도착이 현지 정보 수집 시간으로 이어진다는 부수 효과를 덧붙인다.",
+          "aiAnalysisInputSha256": "5d7a1113d746ab15732589f62cf6bdd599f9b54431a25da45503bd452c4ef818",
+          "aiPublicGuideTopic": "몇 시에 떠날지가 그날을 정한다",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 하루를 짜기",
+          "section": "4.1 출발 시각",
+          "primaryConcepts": [
+            "출발 시각"
+          ],
+          "secondaryConcepts": [
+            "잘 곳",
+            "멈춤 판단"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조기 출발을 실행하기 위한 준비의 시간 배분을 다룬다. 전날 저녁에 처리할 세 항목과 당일 아침의 세 항목을 구분하고, 염분 노출로 제동 성능이 저하될 수 있어 출발 전 점검이 필요하다는 이유를 제시한다.",
+          "aiAnalysisInputSha256": "ad9f0df05540f137fd4829bcb9013187161d0dc56d7f727383bee9584e531838",
+          "aiPublicGuideTopic": "떠나기 전 십 분에 하는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 하루를 짜기",
+          "section": "4.2 거리 배분",
+          "primaryConcepts": [
+            "거리 배분"
+          ],
+          "secondaryConcepts": [
+            "하루 거리",
+            "오르내림"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이틀 일정의 구간 분할 기준을 지형 난이도에 두는 방식을 제시한다. 체력이 있는 첫날에 고지 구간을 집중 배치하고 거리 비중을 불균등하게 나누는 근거를 설명하며, 마지막 날의 여유가 기상 변화에 대한 완충이 된다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "fe6e78708ae4206b65114c99e70626948054608df43458207e5269d0e89001cd",
+          "aiPublicGuideTopic": "이틀에 나누는 방법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 하루를 짜기",
+          "section": "4.2 거리 배분",
+          "primaryConcepts": [
+            "거리 배분"
+          ],
+          "secondaryConcepts": [
+            "오르내림",
+            "해풍"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이틀간의 지형 통과 순서와 시간대별 풍속 곡선을 같은 축에 겹쳐 배치한 도표다. 고지 구간이 모두 저풍속 시간대에 놓이도록 조정한 결과를 보여, 지형과 기상 조건을 맞추는 계획 방식을 드러낸다.",
+          "aiAnalysisInputSha256": "30657345b7ef2adab8189357b77bb2983b1d350192d1c89da12b104ba394e512",
+          "aiPublicGuideTopic": "이틀 동안 언제 어느 구간을 달렸는지 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "4장 하루를 짜기",
+          "section": "4.3 보급",
+          "primaryConcepts": [
+            "보급"
+          ],
+          "secondaryConcepts": [
+            "해안 마을"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "보급 지점이 취락에 한정된 조건에서의 물자 관리를 다룬다. 잔량과 무관한 정기 급수, 두 끼 분량의 상시 휴대, 강풍일의 소비 증가를 각각 근거와 함께 제시한다.",
+          "aiAnalysisInputSha256": "78ad3610a58b6976c28b6ffb0c1365dcdc2d61758415098a30b6250b6739c245",
+          "aiPublicGuideTopic": "물과 먹을 것을 어디서 채우는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "4장 하루를 짜기",
+          "section": "4.3 보급",
+          "primaryConcepts": [
+            "보급"
+          ],
+          "secondaryConcepts": [
+            "멈춤 판단",
+            "차와 자전거"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자력 이동에서 기계 고장이 곧 이동 불능으로 이어진다는 점을 다룬다. 해안 환경 특유의 펑크 요인과 염분에 의한 제동 성능 저하를 제시하고, 수리 불가 시 이용할 수 있는 대체 교통편의 운행 시각을 사전에 확보해 두는 대비를 설명한다.",
+          "aiAnalysisInputSha256": "3b426a7e3b73b6cd15a49ba8949d44d2c5fd582937847d3459cc365a23e6fc6c",
+          "aiPublicGuideTopic": "고장과 준비물",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "4장 하루를 짜기",
+          "section": "4.4 잘 곳",
+          "primaryConcepts": [
+            "잘 곳"
+          ],
+          "secondaryConcepts": [
+            "출발 시각",
+            "해안 마을"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "숙박지가 희소하고 대체 선택지가 없는 조건에서의 확보 방법을 다룬다. 이전 취락에서 사전 확인하는 절차, 방이 없을 때의 두 가지 선택과 그 비교를 제시하고, 사전 예약이 무리한 주행을 유발하므로 권하지 않는다는 판단을 밝힌다.",
+          "aiAnalysisInputSha256": "d530cb17b18caa948a98ce3f82f693b1fa1c1b877a630cf29878d97877d126e9",
+          "aiPublicGuideTopic": "마을에서 자리를 구하는 법",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "4장 하루를 짜기",
+          "section": "4.4 잘 곳",
+          "primaryConcepts": [
+            "잘 곳"
+          ],
+          "secondaryConcepts": [
+            "보급",
+            "이틀 정리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도착 후 저녁에 수행하는 세 가지 정리를 제시한다. 염분 제거와 보관, 익일 구간의 요약 기록, 당일 관찰의 기록이며 각각이 다음 날 또는 다음 방문에 쓰이는 이유를 설명한다.",
+          "aiAnalysisInputSha256": "660a6b2e34538bceaf5fabfa1168a6a6f02e960fb6d53670d0d3f76aaac67b0d",
+          "aiPublicGuideTopic": "저녁에 해 두는 정리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 긴모래해안의 이틀",
+          "section": "5.1 첫날 구간",
+          "primaryConcepts": [
+            "첫날 구간"
+          ],
+          "secondaryConcepts": [
+            "맞바람",
+            "거리 배분"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "첫날 오전 구간의 실제 경과를 시간순으로 기록한다. 저풍속 시간대에 두 곶을 통과한 진행, 취락에서의 정보 확인, 안부에서의 강풍으로 하차 통과한 판단과 통과 후 회복에 배정한 시간을 각각 제시한다.",
+          "aiAnalysisInputSha256": "d4e8363c9bb9914a826b6ea8383083cfa1848ded51b9a84cfbb5ee74380a40f5",
+          "aiPublicGuideTopic": "첫굽이에서 바람언덕까지",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 긴모래해안의 이틀",
+          "section": "5.1 첫날 구간",
+          "primaryConcepts": [
+            "첫날 구간"
+          ],
+          "secondaryConcepts": [
+            "멈춤 판단",
+            "잘 곳"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사전에 정한 중단 기준이 실제로 작동한 사례를 기록한다. 오후 강풍 시간대에 추가 구간을 시도했다가 체감 풍압을 기준으로 회귀한 판단과, 그 결정이 다음 날 출발 시각을 지키는 결과로 이어졌다는 사후 계산을 제시한다.",
+          "aiAnalysisInputSha256": "48ce7ff90f9ad8182aec80965a1e27c531605d7abb13ac099cc9391f4b1ce977",
+          "aiPublicGuideTopic": "오후에 돌아선 자리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 긴모래해안의 이틀",
+          "section": "5.2 바람언덕",
+          "primaryConcepts": [
+            "바람언덕"
+          ],
+          "secondaryConcepts": [
+            "바람 지형",
+            "첫날 구간"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지형이 좁아지는 안부에서 풍속이 증가하는 현상을 화살표 밀도로 나타낸 도표다. 통과 전후에 배치한 휴식 지점과 하차 통과 지점을 함께 표시해, 강풍 구간을 다루는 절차를 한 장에 담았다.",
+          "aiAnalysisInputSha256": "838face6991f5cf472fd6a0904b61a774cd491b8b5ba82df3bb8ca664cbccc37",
+          "aiPublicGuideTopic": "이백 걸음의 잘록한 자리에서 바람이 빨라지는 것을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "5장 긴모래해안의 이틀",
+          "section": "5.2 바람언덕",
+          "primaryConcepts": [
+            "바람언덕"
+          ],
+          "secondaryConcepts": [
+            "옆바람",
+            "노면 상태"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "강풍 구간 통과에서 얻은 세 가지 관찰을 정리한다. 하차 통과의 유효성, 측풍이 역풍보다 위험하다는 점, 강풍 지점에 모래 퇴적이 동반된다는 상관을 각각 제시하고 앞 장의 원칙이 현장에서 확인된 사례로 삼는다.",
+          "aiAnalysisInputSha256": "a117e54a6e98408692f818f51a1026435efb3fd69db05caa2da62ceab1f140bf",
+          "aiPublicGuideTopic": "그 이백 걸음에서 배운 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "5장 긴모래해안의 이틀",
+          "section": "5.3 등대곶",
+          "primaryConcepts": [
+            "등대곶"
+          ],
+          "secondaryConcepts": [
+            "굽이 읽기",
+            "전망대"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "여정의 종점인 곶에서의 관찰을 기록한다. 최대 돌출부라는 지형 조건이 최대 풍속과 최대 시야를 동시에 만든다는 점, 통과 당시와 원거리에서 본 지형의 인상이 다르다는 대비를 제시한다.",
+          "aiAnalysisInputSha256": "e2aa8c66d1018e259720364a5193a5091fd1f323bf5c0dfe7db127beb253b308",
+          "aiPublicGuideTopic": "둘째 날에 닿은 마지막 곶",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "5장 긴모래해안의 이틀",
+          "section": "5.3 등대곶",
+          "primaryConcepts": [
+            "등대곶"
+          ],
+          "secondaryConcepts": [
+            "해풍",
+            "멈춤 판단"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "왕복 구조의 경로에서 복귀 시 풍향이 반전되어 소요 시간이 크게 줄어든 결과를 기록한다. 그 이점이 복귀 시각에 의존한다는 조건을 지적하고, 왕복 구간에서 관찰 활동의 밀도가 달라진다는 점을 덧붙인다.",
+          "aiAnalysisInputSha256": "879b8023933580a871fe7ba85180ac6f6eae9a1426a91296582d0c00864359be",
+          "aiPublicGuideTopic": "돌아 나오는 길",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "5장 긴모래해안의 이틀",
+          "section": "5.4 이틀 정리",
+          "primaryConcepts": [
+            "이틀 정리"
+          ],
+          "secondaryConcepts": [
+            "거리 배분",
+            "첫날 구간"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이틀간의 지형과 바람 조건을 한 장으로 압축한 결과를 제시한다. 난이도의 대부분이 소수의 고지 구간에서 발생한다는 분석과 그에 따른 재계획 방향을 밝히고, 이전 가능한 것은 지형을 구분하는 관점이라는 한계를 정리한다.",
+          "aiAnalysisInputSha256": "ffc13398355a12c531c368f0b6bbd0b1061d977726d76f7d3814c1db08b9c83f",
+          "aiPublicGuideTopic": "이틀을 한 장으로 줄이기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "5장 긴모래해안의 이틀",
+          "section": "5.4 이틀 정리",
+          "primaryConcepts": [
+            "이틀 정리"
+          ],
+          "secondaryConcepts": [
+            "멈춤 판단",
+            "출발 시각"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계획과 실제의 차이를 정리하고 유지된 것이 세 가지 규칙이었다는 점을 밝힌다. 특히 중단 기준이 위험을 차단한 경로를 설명하고, 자력 이동의 계획을 목표 거리 설정이 아니라 중단 조건 설정으로 재정의한다.",
+          "aiAnalysisInputSha256": "6428645e44e843532071efa023d6e582ce29850c97962224b505a3e0fa664007",
+          "aiPublicGuideTopic": "어긋난 것과 지킨 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 이 방법이 통하지 않을 때",
+          "section": "6.1 바람이 막는 날",
+          "primaryConcepts": [
+            "바람이 막는 날"
+          ],
+          "secondaryConcepts": [
+            "바람 지형",
+            "멈춤 판단"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "풍속을 하나의 축으로 두고 이동 수단과 구간 유형별로 가능한 범위가 달라진다는 것을 단계선으로 나타낸 도표다. 최상단에 이동을 중단하는 구간을 두어 중단도 선택지의 하나임을 보인다.",
+          "aiAnalysisInputSha256": "9d920d701c5cfcfdf11262c33a683b8472893ccdf6a18c1a97187b3d8f799caa",
+          "aiPublicGuideTopic": "바람의 세기에 따라 할 수 있는 것이 달라지는 것을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 이 방법이 통하지 않을 때",
+          "section": "6.1 바람이 막는 날",
+          "primaryConcepts": [
+            "바람이 막는 날"
+          ],
+          "secondaryConcepts": [
+            "멈춤 판단",
+            "해안 마을"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기상으로 이동이 불가능한 날의 활용을 다룬다. 당일 재시도 가능성 판단, 체류지에서의 관찰, 잔여 일정의 재구성 순서를 제시하고, 축소 대상이 필수 구간이 아니라 선택적 정차 지점이라는 기준을 밝힌다.",
+          "aiAnalysisInputSha256": "b96029a278ea2719aeb2e4f36d996ae76319d9fa73688cc1c02c0b43aee03d50",
+          "aiPublicGuideTopic": "가지 못한 날에 하는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 이 방법이 통하지 않을 때",
+          "section": "6.2 차와 자전거",
+          "primaryConcepts": [
+            "차와 자전거"
+          ],
+          "secondaryConcepts": [
+            "자기 운전",
+            "노면 상태"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "차량 이용 시 이 책의 내용 가운데 적용되는 부분과 그렇지 않은 부분을 구분한다. 풍압 대응은 불필요해지는 반면 굴곡부 시야와 노면 위험은 오히려 커진다는 점을 지적하고, 소요 시간의 차이가 일정 설계 전반을 무효화한다고 밝힌다.",
+          "aiAnalysisInputSha256": "637c099e2dc8c070e4022f20fcf7961d8892c77d6c46a987101d96879a669b0e",
+          "aiPublicGuideTopic": "이 책의 방법이 차에는 맞지 않는 부분",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "6장 이 방법이 통하지 않을 때",
+          "section": "6.2 차와 자전거",
+          "primaryConcepts": [
+            "차와 자전거"
+          ],
+          "secondaryConcepts": [
+            "전망대",
+            "보급"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이동 수단과 무관하게 유효한 내용을 정리한다. 곶과 만의 교대 구조, 시간대별 풍속 변화가 관찰 조건을 결정한다는 점을 들고, 책의 각 장이 어느 조건에서 유효한지를 구분해 제시한다.",
+          "aiAnalysisInputSha256": "e6a0c9fadb37e1b35a11cfc8c0797f040ffd2bd7692ae1e71eb4b5f3f39085b6",
+          "aiPublicGuideTopic": "무엇을 타든 남는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "6장 이 방법이 통하지 않을 때",
+          "section": "6.3 이 길이 아닌 길",
+          "primaryConcepts": [
+            "다른 해안"
+          ],
+          "secondaryConcepts": [
+            "오르내림",
+            "해풍"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "해안의 지형과 취락 분포가 다를 때 이 책의 계획법이 적용되지 않는 조건을 제시한다. 취락 간격에 따라 일정 단위가 무너지는 경우와 직선 해안에서 지속적 역풍이 발생하는 경우를 들고, 새로운 해안에서 먼저 확인할 두 가지 지표를 정리한다.",
+          "aiAnalysisInputSha256": "dae3a96dec34177fa658cc83fc6d1b5355562b4c37cac55ae2d32107024c82fa",
+          "aiPublicGuideTopic": "다른 해안에서 달라지는 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "6장 이 방법이 통하지 않을 때",
+          "section": "6.3 이 길이 아닌 길",
+          "primaryConcepts": [
+            "다른 해안"
+          ],
+          "secondaryConcepts": [
+            "하루 거리",
+            "잘 곳"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일정 유연성이 없는 경우, 다인 주행의 경우, 초행자의 경우에 이 방법이 적용되기 어렵다는 점을 제시한다. 각 상황에 대한 대안으로 구간별 수단 혼용과 일정 연장을 들고, 저자 스스로의 재계획 방향을 밝힌다.",
+          "aiAnalysisInputSha256": "736001c2720e2d5d6dd3758c4a90a1f207fb240209ca1d34c778b3987a51d404",
+          "aiPublicGuideTopic": "이 방법을 쓸 수 없는 사람",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 결론: 바람에 맞추는 길",
+          "section": "7.1 바람에 맞추는 길",
+          "primaryConcepts": [
+            "바람에 맞추기"
+          ],
+          "secondaryConcepts": [
+            "자기 운전",
+            "해풍"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체의 전제를 뒤집는 결론 도입 페이지다. 자력 이동에도 자연 조건이 만드는 일정 구조가 존재하며, 차이는 그 구조가 문서화되어 있지 않아 스스로 판독해야 한다는 점에 있다고 정리한다.",
+          "aiAnalysisInputSha256": "5386bf41e7332151ef78b53e7405f0282b618b942ea1b2917bc912ec8af907c2",
+          "aiPublicGuideTopic": "시각표가 없는 대신 생긴 시각표",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "wind-is-the-timetable"
+          ]
+        },
+        {
+          "pageNumber": 51,
+          "chapter": "7장 결론: 바람에 맞추는 길",
+          "section": "7.1 바람에 맞추는 길",
+          "primaryConcepts": [
+            "바람에 맞추기"
+          ],
+          "secondaryConcepts": [
+            "출발 시각",
+            "멈춤 판단"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다른 지역에 적용할 수 있도록 준비 항목을 세 가지로 압축해 제시한다. 일주기 풍향 확인, 지형과 시간대의 정합, 판단이 필요 없는 단일 중단 기준이며, 마지막 항목이 실제로 위험을 차단했다는 결과를 근거로 든다.",
+          "aiAnalysisInputSha256": "16ca4e41dbad06f62b1d50aefd0036f140d877c5c691e98f1222b46bbaa9ef68",
+          "aiPublicGuideTopic": "다른 해안을 달리기 전에",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            50
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
     }
   ]
 }
