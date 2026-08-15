@@ -30216,6 +30216,1057 @@
       ]
     },
     {
+      "bookId": 57,
+      "title": "시간과 존재: 지속과 변화",
+      "pdfPath": "pdfs/book-057.pdf",
+      "pdfSha256": "49c69d03fcfacd9df5883320f92b3405613de87c0d3c78da0bd8d91cdd285880",
+      "totalPageCount": 49,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 시간을 겪는다는 것",
+          "section": "1.1 지금이라는 자리",
+          "primaryConcepts": [
+            "현재"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "현재가 행위 가능성이라는 점에서 특권적 지위를 갖는다는 관찰에서 출발한다. 현재를 폭 없는 경계로 규정할 때와 경험 가능한 구간으로 규정할 때가 충돌한다는 점을 제시하고 이 긴장을 책 전체의 출발점으로 놓는다.",
+          "aiAnalysisInputSha256": "97b0ee0bfde87bfd0ede1fa56cc29d7448da117bc70de501ccd7f2cbdf413c46",
+          "aiPublicGuideTopic": "지금이 다른 때와 다른 점",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "now-and-what-lasts"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 시간을 겪는다는 것",
+          "section": "1.1 지금이라는 자리",
+          "primaryConcepts": [
+            "현재"
+          ],
+          "secondaryConcepts": [
+            "순간의 폭"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "현재의 특권성에 대한 두 입장을 제시하고 경험 수준에서 구별되지 않는다는 점을 지적한다. 형이상학적 판정을 유보하고 현재가 가능하게 하는 것으로 물음을 전환하는 이 책의 접근을 밝힌다.",
+          "aiAnalysisInputSha256": "3084b6bd1e5977112228200a581d1dff6d1328699d6673556da28edd93c17e51",
+          "aiPublicGuideTopic": "지금이 지금인 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 시간을 겪는다는 것",
+          "section": "1.2 흐른다는 느낌",
+          "primaryConcepts": [
+            "흐름의 경험"
+          ],
+          "secondaryConcepts": [
+            "현재"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시간의 흐름 개념을 사건 계열의 순서와 현재 지점의 이동으로 분해한다. 순서만으로는 운동이 성립하지 않는다는 점을 지적하고 경험되는 이동이 시간의 속성인지 경험 주체의 속성인지를 다음 논의의 과제로 제시한다.",
+          "aiAnalysisInputSha256": "7077d10052522af2cbccd35f7ba1f90ada30b9fad8b17712e44e1fbefb5ada42",
+          "aiPublicGuideTopic": "시간이 흐른다는 말의 뜻",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 시간을 겪는다는 것",
+          "section": "1.2 흐른다는 느낌",
+          "primaryConcepts": [
+            "흐름의 경험"
+          ],
+          "secondaryConcepts": [
+            "시간 측정"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "체감 시간과 물리적 시간의 괴리를 다루고 경험 중과 회고 시의 길이 판단이 서로 반대 방향으로 작동한다는 규칙성을 제시한다. 두 값이 각각 다른 정보를 담는다는 점에서 병행 사용을 제안한다.",
+          "aiAnalysisInputSha256": "41815f7501652a25dfbc4b00193211b3bd2daea69eb5798d82f8a0127f071310",
+          "aiPublicGuideTopic": "빠르게도 느리게도 가는 이유",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 시간을 겪는다는 것",
+          "section": "1.3 세 시제가 놓인 자리",
+          "primaryConcepts": [
+            "시제의 배치"
+          ],
+          "secondaryConcepts": [
+            "현재",
+            "흐름의 경험"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시간의 두 이해 방식을 동일한 계열 위에 표현한 도표다. 모든 시점이 동등하게 실재하는 그림과 현재만 실재하는 그림을 위아래로 대비하고, 두 그림이 경험 수준에서 구별되지 않는다는 점을 사이의 화살표로 표시한다.",
+          "aiAnalysisInputSha256": "f69450e300f7f9d984b5b36ef61cce5796f5f3a67607652281d1e89413309e0f",
+          "aiPublicGuideTopic": "과거·현재·미래가 놓이는 두 가지 그림을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 시간을 겪는다는 것",
+          "section": "1.4 시간을 재는 일",
+          "primaryConcepts": [
+            "시간 측정"
+          ],
+          "secondaryConcepts": [
+            "흐름의 경험"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시간 측정이 주기적 변화와의 대조로 이루어진다는 점에서 시간 자체의 직접 측정이 아니라는 것을 밝힌다. 변화가 없는 조건에서 측정이 불가능하다는 귀결과, 측정 불가와 부재를 구분해야 한다는 문제를 뒤 장으로 연결한다.",
+          "aiAnalysisInputSha256": "f145563f641dbc5fa46605ac0e8d3023a63efbdab123310e5444f2b40c301d79",
+          "aiPublicGuideTopic": "시간을 재려면 필요한 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 시간을 겪는다는 것",
+          "section": "1.4 시간을 재는 일",
+          "primaryConcepts": [
+            "시간 측정"
+          ],
+          "secondaryConcepts": [
+            "잔여 시간"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시간 단위가 계획과 협업의 조건이 된다는 점과 동시에 실질적 변화가 없는 지점에 경계를 만든다는 점을 다룬다. 인위적 마디의 효용을 인정하면서 그것이 시간 자체의 구조가 아니라는 구분을 유지할 것을 제안한다.",
+          "aiAnalysisInputSha256": "9f4b752c6b7ab4211d6d7cd37ea350f8eb18d3c77c92c490f6efc5b07446e833",
+          "aiPublicGuideTopic": "재는 단위가 삶에 하는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 지나간 것과 올 것",
+          "section": "2.1 과거는 어디에 있는가",
+          "primaryConcepts": [
+            "과거"
+          ],
+          "secondaryConcepts": [
+            "현재"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "과거의 존재론적 지위를 직접 접근 불가와 흔적을 통한 간접 접근으로 정리한다. 접근의 어려움과 별개로 과거 사실이 변경 불가능하게 확정되어 있다는 점을 과거의 특성으로 제시하고 미래와의 대비를 예고한다.",
+          "aiAnalysisInputSha256": "492815fcd64aca91cddc9a8e351611e1b7b7741afea1615e5dcd8757234a6ef8",
+          "aiPublicGuideTopic": "지나간 것의 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 지나간 것과 올 것",
+          "section": "2.1 과거는 어디에 있는가",
+          "primaryConcepts": [
+            "과거"
+          ],
+          "secondaryConcepts": [
+            "서사적 묶음"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "과거 사실의 불변성과 그 의미의 가변성을 구분한다. 후속 사건이 선행 사건의 위치를 재규정한다는 구조를 설명하고, 이것이 사실의 변화가 아니라 맥락의 확장이라는 점을 밝히되 경험상 구별되지 않는다는 점도 인정한다.",
+          "aiAnalysisInputSha256": "c22218a62743c421b07812add8a3ddc741450fe1a87ef2af4237d820fd5c98bd",
+          "aiPublicGuideTopic": "지나간 것이 달라지는 방식",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 지나간 것과 올 것",
+          "section": "2.2 미래는 어떻게 다른가",
+          "primaryConcepts": [
+            "미래"
+          ],
+          "secondaryConcepts": [
+            "현재"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미래의 미확정성을 인식적 무지와 존재론적 개방성으로 구분하고 두 해석의 함의 차이를 제시한다. 어느 해석에서도 실제 행위 양상은 동일하다는 점을 들어 판정 유보 아래 실천을 다루는 태도를 유지한다.",
+          "aiAnalysisInputSha256": "aae619fee75a8d5e0dcf18f53ba9e8d735cf40562b47b0c679b41d92e4b9739a",
+          "aiPublicGuideTopic": "아직 오지 않은 것의 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 지나간 것과 올 것",
+          "section": "2.2 미래는 어떻게 다른가",
+          "primaryConcepts": [
+            "미래"
+          ],
+          "secondaryConcepts": [
+            "기다림"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미래에 대한 대응을 예상·대비·대기 셋으로 정리하고 단일 시나리오 예측의 문제를 지적한다. 대비가 불확실성이 클수록 유효하다는 점과, 대기가 별도의 어려움을 갖는다는 점을 사례 장으로 연결한다.",
+          "aiAnalysisInputSha256": "aeb6f3fd70a699aeff3e42736a7ce039392e0e3ac3018d1c59e1d6d5cfc0f1ff",
+          "aiPublicGuideTopic": "미래를 향해 하는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 지나간 것과 올 것",
+          "section": "2.3 비대칭",
+          "primaryConcepts": [
+            "시간의 비대칭"
+          ],
+          "secondaryConcepts": [
+            "과거",
+            "미래"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "과거와 미래의 차이를 인식 방식·개입 가능성·정서적 반응 셋으로 정리한다. 흔적의 방향성은 세계 쪽 사실로, 예상 고통의 과대 평가는 주체 쪽 사실로 귀속하며 두 층이 혼재한다는 점을 지적한다.",
+          "aiAnalysisInputSha256": "b07f1b665dbe55f43720a1f2cc72e3b71cdce51bc70603727dd089fa856876df",
+          "aiPublicGuideTopic": "앞뒤가 같지 않은 자리들",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 지나간 것과 올 것",
+          "section": "2.3 비대칭",
+          "primaryConcepts": [
+            "시간의 비대칭"
+          ],
+          "secondaryConcepts": [
+            "열림과 닫힘"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시간의 비대칭이 과거 무용론과 미래 무제약론으로 과장되는 두 양상을 다룬다. 변경 불가능성과 처리 가능성의 구분, 개방성과 무제약성의 구분을 제시하고 두 과장이 현재의 연결성을 지운다는 공통점을 밝힌다.",
+          "aiAnalysisInputSha256": "e8fb3ce8fe35e9a6764501b6ef77657779211701b2706a92028b08931c61e094",
+          "aiPublicGuideTopic": "비대칭을 잘못 쓰는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            13
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 지나간 것과 올 것",
+          "section": "2.4 열린 쪽과 닫힌 쪽",
+          "primaryConcepts": [
+            "열림과 닫힘"
+          ],
+          "secondaryConcepts": [
+            "시간의 비대칭",
+            "미래"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "현재를 기준으로 과거의 단일 경로와 미래의 복수 경로를 좌우로 대비한 도표다. 미래 갈래의 시작점에 폭을 제한하는 부챗살을 겹쳐 그려, 개방성이 무제약성과 다르다는 점을 시각적으로 나타낸다.",
+          "aiAnalysisInputSha256": "fe51f5cf055cc813f0c1a9582c0955d293c2c457affef7008893464dd2c4ddbb",
+          "aiPublicGuideTopic": "지나간 쪽과 올 쪽의 모양이 다른 것을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            13
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 무엇이 지속하는가",
+          "section": "3.1 같은 것으로 남는다는 말",
+          "primaryConcepts": [
+            "지속"
+          ],
+          "secondaryConcepts": [
+            "현재"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "통시적 동일성을 유사성이 아니라 단일한 연속으로 규정하고 두 개념을 구분한다. 동형의 별개 대상과 시간을 가로지른 동일 대상의 차이를 제시하며 연속의 조건을 이 장의 과제로 놓는다.",
+          "aiAnalysisInputSha256": "20e2170b2426dab63661d408c2e48be8208d1d95adf1c0de2447f855d1357c26",
+          "aiPublicGuideTopic": "시간을 건너 같다고 하는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 무엇이 지속하는가",
+          "section": "3.1 같은 것으로 남는다는 말",
+          "primaryConcepts": [
+            "지속"
+          ],
+          "secondaryConcepts": [
+            "부분 교체"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연속성 확인이 지속적 관찰이 아니라 추정에 의존한다는 점을 밝히고 그 추정의 근거가 약함에도 유지되는 이유를 반례의 희소성에서 찾는다. 추정이 무너지는 경계 사례에서 지속의 조건이 드러난다는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "a6e84409d3283e23fbb17b26fc30f3135326e64f6cd2fd60dd53ae5573f14172",
+          "aiPublicGuideTopic": "이어짐을 확인하는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 무엇이 지속하는가",
+          "section": "3.2 부분이 바뀌어도",
+          "primaryConcepts": [
+            "부분 교체"
+          ],
+          "secondaryConcepts": [
+            "지속"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "부분 교체 후에도 동일성이 유지되는 근거를 단계적 연속에서 찾고, 교체된 부분을 재조립한 경우 판정이 갈린다는 점을 제시한다. 연속 기준과 재료 기준 중 어느 쪽을 적용하는지가 대상의 성격에 따라 달라진다는 관찰을 다룬다.",
+          "aiAnalysisInputSha256": "77cb4f443b22937b5670f04a3652be96b08aab25d9cc74fc492019657a68bf73",
+          "aiPublicGuideTopic": "조각을 갈아 끼운 뒤에도 같은가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 무엇이 지속하는가",
+          "section": "3.2 부분이 바뀌어도",
+          "primaryConcepts": [
+            "부분 교체"
+          ],
+          "secondaryConcepts": [
+            "연속의 조건"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "부분의 교체 가능성이 대상의 기능적 규정에 따라 달라진다는 점을 제시한다. 지속의 조건이 대상 자체가 아니라 대상을 다루는 방식에 상대적이라는 관점을 밝히고 사물뿐 아니라 조직과 활동에도 적용된다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "61754cfdc3746635746850fd5818ab4ada0c6c37160af8d5eaed663d3b982170",
+          "aiPublicGuideTopic": "무엇이 바뀌면 다른 것이 되는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 무엇이 지속하는가",
+          "section": "3.3 이어짐의 조건",
+          "primaryConcepts": [
+            "연속의 조건"
+          ],
+          "secondaryConcepts": [
+            "지속"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연속성의 조건을 무중단·단일성·점진성 셋으로 정리한다. 특히 동일한 총 변화량이라도 분할 진행 여부에 따라 지속과 교체로 다르게 판정된다는 점을 지적하고 변화 속도 논의로 연결한다.",
+          "aiAnalysisInputSha256": "308bb7104efc64df9d77765f28526ba28302c0e12b626dea6c1a38ce67172700",
+          "aiPublicGuideTopic": "이어졌다고 하려면 필요한 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 무엇이 지속하는가",
+          "section": "3.3 이어짐의 조건",
+          "primaryConcepts": [
+            "연속의 조건"
+          ],
+          "secondaryConcepts": [
+            "일회적인 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연속성의 세 조건이 이분법이 아니라 정도로 성립한다는 점과 그 귀결로 경계 사례에서 판정이 분기한다는 점을 다룬다. 확정적 판정이 요구되는 실무 상황에서는 사실 판정이 아니라 처리 방식의 결정이 필요하다는 구분을 제시한다.",
+          "aiAnalysisInputSha256": "26ad2c3efa61e936e2e3fa0b1144d3529a215d82e21743d900fba49cd33ab8d3",
+          "aiPublicGuideTopic": "이어짐이 정도의 문제일 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 무엇이 지속하는가",
+          "section": "3.4 지속하지 않는 것들",
+          "primaryConcepts": [
+            "일회적인 것"
+          ],
+          "secondaryConcepts": [
+            "지속",
+            "연속의 조건"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지속 개념이 적용되지 않는 일회적 사건의 범주를 제시하고 그에 대해서는 종료 이후의 귀결이 문제가 된다는 점을 밝힌다. 일회적 사건이 자체로 지속하지 않고 그것이 야기한 변화를 통해 이어진다는 구조를 다룬다.",
+          "aiAnalysisInputSha256": "535390645c8f44f27fa418afa01dace86f37372af90d26b0bab5abcb3924a2cb",
+          "aiPublicGuideTopic": "한 번뿐인 것들의 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "4장 변화",
+          "section": "4.1 무엇이 달라졌는가",
+          "primaryConcepts": [
+            "변화"
+          ],
+          "secondaryConcepts": [
+            "지속"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "변화 개념이 불변 요소를 전제한다는 점에서 지속과 상보 관계에 있다는 것을 논증한다. 변화 진술이 불변 항목과 변동 항목의 동시 지정을 요구한다는 점을 제시하고 전자의 불일치가 논쟁의 원인이 된다는 것을 지적한다.",
+          "aiAnalysisInputSha256": "027b3783c44fc2a4ca7ae4a472df30a5219bd12f1ce501e04d01b846d8b03735",
+          "aiPublicGuideTopic": "변화를 말하려면 필요한 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 변화",
+          "section": "4.1 무엇이 달라졌는가",
+          "primaryConcepts": [
+            "변화"
+          ],
+          "secondaryConcepts": [
+            "변화와 지속"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "변화의 크기 판정이 측정 대상의 선택에 의존한다는 점을 외형과 기능의 불일치 사례로 제시한다. 불변 항목·변동 면·측정 척도 셋을 함께 명시하는 절차가 논쟁을 줄인다는 실무를 다룬다.",
+          "aiAnalysisInputSha256": "9887cd68f3f2e943d9900554539d3d53bb893aa4f809624d3a066e6cf8f7bbce",
+          "aiPublicGuideTopic": "변화를 세는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 변화",
+          "section": "4.2 변화와 지속은 함께 있다",
+          "primaryConcepts": [
+            "변화와 지속"
+          ],
+          "secondaryConcepts": [
+            "변화",
+            "부분 교체"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 대상이 단계적으로 변형되는 계열을 그려 불변 요소와 변동 요소를 같은 그림에 표시한 도표다. 가로선으로 지속을, 상단 막대로 단계별 변화를 나타내고 양 끝단 비교가 연속을 은폐한다는 점을 곡선 화살표로 표시한다.",
+          "aiAnalysisInputSha256": "5abeaf8ef738d0bfe4844c5f4b7a59cd55059f50e4836ec18985a96f2e0c17ca",
+          "aiPublicGuideTopic": "같은 것이 이어지면서 달라지는 모습을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 변화",
+          "section": "4.3 빠른 변화와 느린 변화",
+          "primaryConcepts": [
+            "변화의 속도"
+          ],
+          "secondaryConcepts": [
+            "변화"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 변화량이 속도에 따라 사건과 배경으로 다르게 지각된다는 점을 제시한다. 완만한 변화의 지연 발견과 그로 인한 복원 비용 증가를 지적하고, 과거 기준점의 보존이 지각의 한계를 보완한다는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "a31be8f4b6beeb4a15d6d5188e8de15337b29125ff048207e791965e2c563c62",
+          "aiPublicGuideTopic": "속도가 판정을 바꾸는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 변화",
+          "section": "4.3 빠른 변화와 느린 변화",
+          "primaryConcepts": [
+            "변화의 속도"
+          ],
+          "secondaryConcepts": [
+            "반복의 시간"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "급격한 변화가 주의를 독점해 선행하는 완만한 추세를 은폐한다는 문제를 다룬다. 현저성이 인과의 근거로 대체되는 오류를 지적하고, 발단 시점을 묻는 질문이 단일 사건 설명을 해체한다는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "8a7b3efdb5956bb3630e93edef0beddac8171031bbc1c6ed31446413d6e9b6c5",
+          "aiPublicGuideTopic": "빠른 변화가 가리는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 변화",
+          "section": "4.4 변화 없이 지나가는 시간",
+          "primaryConcepts": [
+            "정체"
+          ],
+          "secondaryConcepts": [
+            "흐름의 경험",
+            "시간 측정"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "변화 부재 상태에서 시간 측정이 불가능하다는 점과 경험적으로는 오히려 길게 지각된다는 대비를 제시한다. 정체가 외부 관점과 내부 관점에서 다르게 나타난다는 점을 밝히고, 대부분의 정체 구간에 완만한 변화가 진행 중이라는 관점을 다룬다.",
+          "aiAnalysisInputSha256": "de4de5a206e5fee79021087786ccb7f3cd7062795b391afb32f5a8cf79b5d142",
+          "aiPublicGuideTopic": "아무것도 달라지지 않는 동안",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 변화",
+          "section": "4.4 변화 없이 지나가는 시간",
+          "primaryConcepts": [
+            "정체"
+          ],
+          "secondaryConcepts": [
+            "잔여 시간"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정체 인식 시의 두 대응으로 급격한 전환과 관찰 단위의 변경을 제시한다. 전자가 축적 중인 완만한 변화를 단절시킬 위험을 지적하고, 장기 기록과의 대조로 변화 유무를 먼저 확인하는 순서를 제안한다.",
+          "aiAnalysisInputSha256": "1f69f41b5301d401afbb0e6c377af9452df64671f2af15e44ae361230d3b7545",
+          "aiPublicGuideTopic": "멈춘 것처럼 느껴지는 시기를 지나는 법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "5장 순간과 전체",
+          "section": "5.1 순간은 얼마나 긴가",
+          "primaryConcepts": [
+            "순간의 폭"
+          ],
+          "secondaryConcepts": [
+            "현재",
+            "흐름의 경험"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "경험되는 현재가 유한한 폭을 갖는다는 점을 청각 사례로 제시하고 그 폭 안에 직전과 직후가 포함된다는 구조를 설명한다. 현재와 과거의 경계가 불연속적이지 않다는 귀결과, 지속·변화 논의가 최소 단위에서도 재현된다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "d7165ec1afbdb1464c64fa613107bdb6341c5ae90c40c9a36fd0b82a55526f29",
+          "aiPublicGuideTopic": "겪는 지금의 폭",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "5장 순간과 전체",
+          "section": "5.1 순간은 얼마나 긴가",
+          "primaryConcepts": [
+            "순간의 폭"
+          ],
+          "secondaryConcepts": [
+            "전체의 자리"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "경험 현재의 폭이 대상의 단위 설정에 따라 가변적이라는 점을 제시한다. 폭의 확장이 지각 수준에서 취급 단위 수준으로 연속적으로 이어진다는 점을 밝히고 전체의 존재 시점 문제로 연결한다.",
+          "aiAnalysisInputSha256": "e1c83df319b8ac9d57e4e1315324dd7b8ac93942801b59652965998ae760fa98",
+          "aiPublicGuideTopic": "폭을 넓혀 보면",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 순간과 전체",
+          "section": "5.2 전체는 언제 있는가",
+          "primaryConcepts": [
+            "전체의 자리"
+          ],
+          "secondaryConcepts": [
+            "순간의 폭"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시간적으로 전개되는 대상의 전체가 어느 시점에도 완전히 현존하지 않는다는 문제를 제기한다. 전체에 대한 진술이 가능하다는 점과의 긴장을 지적하고, 전체가 회고적 묶음에서 성립하며 그 판정이 지속적으로 개방된다는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "d70d5c56a66fcc7bc42fe45f26f99576db36b57216bfbc1ffc9f4792ac780357",
+          "aiPublicGuideTopic": "부분만 있는 것의 전체",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 순간과 전체",
+          "section": "5.2 전체는 언제 있는가",
+          "primaryConcepts": [
+            "전체의 자리"
+          ],
+          "secondaryConcepts": [
+            "과거"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미완결 대상의 전체 평가가 잠정적일 수밖에 없다는 점을 후속 사건의 의미 재규정 효과로 설명한다. 잠정성이 평가의 결함이 아니라 정확한 기술이라는 점과, 그 여지가 남은 시간에 비례한다는 관계를 제시한다.",
+          "aiAnalysisInputSha256": "01c47f2b4bfa40b72a8430669f3e2d9378ce4aac4e7ca47841f0eebb37a37e5e",
+          "aiPublicGuideTopic": "아직 끝나지 않은 것의 전체",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 순간과 전체",
+          "section": "5.3 순간을 이어 붙이면",
+          "primaryConcepts": [
+            "순간의 합"
+          ],
+          "secondaryConcepts": [
+            "순간의 폭",
+            "전체의 자리"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 순간 계열을 단순 나열한 경우와 하나의 곡선으로 묶은 경우를 상하로 대비한 도표다. 묶음을 나타내는 곡선이 개별 요소 어디에도 없다는 점과 후속 요소가 추가되면 곡선이 재구성된다는 점을 표시한다.",
+          "aiAnalysisInputSha256": "c44a664eb2d4c1dee72a865de7f03e89e4858f4b27fb7240680aa330ee7bf1ff",
+          "aiPublicGuideTopic": "순간을 모아도 전체가 되지 않는 것을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 순간과 전체",
+          "section": "5.4 이야기로 묶는 일",
+          "primaryConcepts": [
+            "서사적 묶음"
+          ],
+          "secondaryConcepts": [
+            "전체의 자리"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "서사가 계열을 인과로 전환하고 복수의 가능한 구성 중 하나를 선택한다는 두 작용을 제시한다. 이 작용이 학습을 가능하게 하는 동시에 구성된 요소가 사실로 기억되는 위험을 낳는다는 점을 지적하고 미선택 구성의 병기를 제안한다.",
+          "aiAnalysisInputSha256": "eee569078bcc73cc83af0e7de002a924453c0498a619392324a323fe111edea9",
+          "aiPublicGuideTopic": "차례를 이야기로 만드는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 순간과 전체",
+          "section": "5.4 이야기로 묶는 일",
+          "primaryConcepts": [
+            "서사적 묶음"
+          ],
+          "secondaryConcepts": [
+            "변화의 속도"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "서사 형식이 사건은 포착하고 완만한 추세는 누락한다는 편향을 지적한다. 회고가 사건 중심으로 왜곡되는 결과를 제시하고, 사건 기록과 정기적 상태 기록을 병행해 두 층위를 모두 보존하는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "f9c374a9185c385e83ae7a1cf275917311177ec63e306e4c945bcd8663e62e53",
+          "aiPublicGuideTopic": "이야기가 놓치는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            35
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "6장 세 가지 시간",
+          "section": "6.1 기다리는 시간",
+          "primaryConcepts": [
+            "기다림"
+          ],
+          "secondaryConcepts": [
+            "미래",
+            "흐름의 경험"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대기 기간의 체감 길이가 늘어나는 기제를 입력 감소와 주의 집중으로 설명한다. 그 기간의 다른 활동이 기억에 남지 않아 회고 시에는 공백으로 남는다는 비대칭을 사례로 보인다.",
+          "aiAnalysisInputSha256": "328fa0f9240ea5c55e8802aba355f1746185cf05e3e0f71d2ef6bd239099a8be",
+          "aiPublicGuideTopic": "아무것도 할 수 없이 지나가는 시간",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "6장 세 가지 시간",
+          "section": "6.1 기다리는 시간",
+          "primaryConcepts": [
+            "기다림"
+          ],
+          "secondaryConcepts": [
+            "시간의 비대칭"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대기 시간의 관리 방법으로 확인 시점의 사전 지정과 기간 중 과업의 배정을 제시한다. 두 방법이 체감 길이를 줄이지는 않지만 회고 시의 공백을 방지한다는 점에서 손실의 이중화를 막는다는 효과를 밝힌다.",
+          "aiAnalysisInputSha256": "32c43e043eeb856eff624293bb6b058488c9e869b1b11fc5cfaabb34806db14c",
+          "aiPublicGuideTopic": "기다림을 줄이는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            37
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 세 가지 시간",
+          "section": "6.1 기다리는 시간",
+          "primaryConcepts": [
+            "기다림"
+          ],
+          "secondaryConcepts": [
+            "전체의 자리"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 대기 기간이 결과에 따라 다르게 평가되는 현상을 사례로 보이고 그 원인을 후속 사건의 의미 규정 효과로 설명한다. 판정 유예의 근거를 제시하되 사후 가치가 자동으로 보장되지 않는다는 단서를 함께 밝힌다.",
+          "aiAnalysisInputSha256": "5c0efb420c96246be25a70f5669fe3a948b0405c839e5213d4dd6a40a34ffd41",
+          "aiPublicGuideTopic": "기다린 시간이 나중에 무엇이 되는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 세 가지 시간",
+          "section": "6.2 되풀이되는 시간",
+          "primaryConcepts": [
+            "반복의 시간"
+          ],
+          "secondaryConcepts": [
+            "정체",
+            "변화의 속도"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복적 일과가 체감상 개별 일자를 길게, 전체 기간을 짧게 만든다는 대비를 사례로 보인다. 표면적 반복 아래 완만한 변화가 진행된다는 점과 그것이 과거 기록과의 대조로만 확인된다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "89b4a74582bef172553d96500a3ac4c1da4c86e74c1ac296d9dda1885cdf9d47",
+          "aiPublicGuideTopic": "같은 하루가 이어질 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 세 가지 시간",
+          "section": "6.2 되풀이되는 시간",
+          "primaryConcepts": [
+            "반복의 시간"
+          ],
+          "secondaryConcepts": [
+            "연속의 조건"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복이 대상에 대한 분해능을 높이고 연속성의 무중단 조건을 충족시킨다는 두 기능을 제시한다. 반복 기간을 인내가 아니라 활용의 대상으로 다루는 관점과, 내적 변화의 기록을 통해 회고 시 공백을 막는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "088a89a0c454d8a7d1548ed8ac8b5daaed70de0b6a4c13f2acb0fec3133fce6a",
+          "aiPublicGuideTopic": "되풀이가 만드는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 세 가지 시간",
+          "section": "6.3 남는 시간",
+          "primaryConcepts": [
+            "잔여 시간"
+          ],
+          "secondaryConcepts": [
+            "시간 측정",
+            "미래"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "종료 시점이 확정되면 잔여 횟수가 계수되면서 동일한 활동의 의미가 달라진다는 현상을 사례로 보인다. 무한 지속 가정과 잔여 계수의 효과를 대비하고, 상시 계수가 현재 몰입을 방해한다는 점에서 주기적 적용을 제안한다.",
+          "aiAnalysisInputSha256": "6358d37b1b4ddd70861c009de8468c3c007407ae163729c5912a0d1f750d4c46",
+          "aiPublicGuideTopic": "얼마 남았는지를 세는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 세 가지 시간",
+          "section": "6.3 남는 시간",
+          "primaryConcepts": [
+            "잔여 시간"
+          ],
+          "secondaryConcepts": [
+            "전체의 자리"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "잔여 시간의 인식이 착수와 마무리의 비중을 바꾼다는 점과 실제 잔여보다 인식된 잔여가 결정을 좌우한다는 점을 다룬다. 잔여를 짧게 설정할 때 착수 억제로 여지가 자기 축소된다는 문제를 지적하고 계수와 계획의 분리를 제안한다.",
+          "aiAnalysisInputSha256": "c8e3e9755499a4649f6cb40a411f45d37c8c467b4a1d1fa821fa1175281a79d7",
+          "aiPublicGuideTopic": "남은 시간이 앞을 정하는 방식",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "7장 시간 안에서",
+          "section": "7.1 무엇을 물었나",
+          "primaryConcepts": [
+            "현재"
+          ],
+          "secondaryConcepts": [
+            "과거",
+            "미래"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "현재의 이중적 규정, 과거·미래의 비대칭과 그 과장, 연속성의 세 조건과 정도성, 변화와 지속의 상보 관계라는 네 축으로 책 전체를 요약한다. 각 축에서 도출한 구분을 연결해 결론부의 뼈대로 제시한다.",
+          "aiAnalysisInputSha256": "70677adc3739699b866a5911383cacf63b515be3a9c0969cf4e0c3f4493fab0f",
+          "aiPublicGuideTopic": "이 책이 지나온 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "now-and-what-lasts"
+          ]
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "7장 시간 안에서",
+          "section": "7.1 무엇을 물었나",
+          "primaryConcepts": [
+            "현재"
+          ],
+          "secondaryConcepts": [
+            "순간의 폭",
+            "전체의 자리"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "경험 현재의 가변적 폭, 전체의 회고적 성립, 미완결 대상 평가의 잠정성, 서사적 구성의 작용과 위험을 정리한다. 5장의 논의를 결론 수준에서 재구성해 제시한다.",
+          "aiAnalysisInputSha256": "668c8d15d262aed548e917e0172604385c8350559bf01938acc931a7f3be9238",
+          "aiPublicGuideTopic": "순간과 전체에 대해 남은 말",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 시간 안에서",
+          "section": "7.1 무엇을 물었나",
+          "primaryConcepts": [
+            "현재"
+          ],
+          "secondaryConcepts": [
+            "변화의 속도",
+            "정체"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시간에 대한 두 극단적 태도를 항구성 부정과 지속 가능한 것만의 계상으로 정리하고 각각의 손실을 지적한다. 두 실패를 억제하는 조건으로 불변 항목과 관찰 면의 사전 지정을 제시한다.",
+          "aiAnalysisInputSha256": "d17ba2115cf1ce8940c6208cda4a233c9d689aa56f82fda8773950f9188b1361",
+          "aiPublicGuideTopic": "이 관점이 어긋나는 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 시간 안에서",
+          "section": "7.2 시간을 다루는 일",
+          "primaryConcepts": [
+            "시간의 실천"
+          ],
+          "secondaryConcepts": [
+            "시간 측정",
+            "변화의 속도"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관찰 단위를 복수로 두어 완만한 변화를 포착하는 방법을 첫 실천으로 제시한다. 단위 변경이 과거 기준점을 요구한다는 조건과, 사건 기록과 정기적 상태 기록을 병행해야 서사의 누락을 보완한다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "5813d45ae5b3520c457f26b9710bbfbbd8070a886592363d4ebc3019e21e5f52",
+          "aiPublicGuideTopic": "눈금을 여럿 두기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 시간 안에서",
+          "section": "7.2 시간을 다루는 일",
+          "primaryConcepts": [
+            "시간의 실천"
+          ],
+          "secondaryConcepts": [
+            "기다림",
+            "잔여 시간"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "체감 시간과 회고 시간을 각각 기록해 병치하는 방법을 두 번째 실천으로 제시한다. 두 값의 반대 방향 작동을 근거로 병행 기록의 필요를 밝히고, 격차 자체가 해당 시기의 성격을 알려 준다는 활용을 다룬다.",
+          "aiAnalysisInputSha256": "c8744a0d363319faa38420d951820bb17225c75ed1f28fac0084d25e2af3dac5",
+          "aiPublicGuideTopic": "겪는 시간과 돌아보는 시간을 함께 두기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            47
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 시간 안에서",
+          "section": "7.2 시간을 다루는 일",
+          "primaryConcepts": [
+            "시간의 실천"
+          ],
+          "secondaryConcepts": [
+            "지속",
+            "서사적 묶음"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지속의 조건이 대상 규정에 상대적이라는 점을 근거로 핵심 요소의 사전 확정을 세 번째 실천으로 제시한다. 점진적 변경이 연속으로 판정된다는 3장의 조건을 적용하고, 시간 자체가 아니라 이어 갈 대상의 선택이 가능 영역이라는 결론으로 맺는다.",
+          "aiAnalysisInputSha256": "24ddac53f413834b887c40e64ea4b08f582e1ff37e897c75880bc87404e65b93",
+          "aiPublicGuideTopic": "무엇을 이어 갈지 정하는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 61,
       "title": "형태와 구도: 화면을 구성하는 원리",
       "pdfPath": "pdfs/book-061.pdf",
