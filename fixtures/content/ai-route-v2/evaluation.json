@@ -1614,6 +1614,72 @@
       ]
     },
     {
+      "caseId": "case-book-039",
+      "bookId": 39,
+      "purpose": "이 책을 소장하고 있는데, 인쇄 기술이 무엇을 바꿨는지 핵심만 짧게 짚고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "필사의 값",
+        "활자의 원리",
+        "동일 복본",
+        "복본과 통제"
+      ],
+      "helpfulConcepts": [
+        "읽는 사람의 수",
+        "필사의 어긋남",
+        "조판",
+        "기술의 이동"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 24
+        }
+      ],
+      "irrelevantPageNumbers": [
+        14,
+        15,
+        37,
+        41,
+        42,
+        43,
+        44
+      ],
+      "duplicatePageGroups": [
+        [
+          13,
+          47
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        8,
+        12,
+        24
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        6,
+        9,
+        10,
+        13,
+        16,
+        25
+      ]
+    },
+    {
       "caseId": "case-book-041",
       "bookId": 41,
       "purpose": "이 책을 소장하고 있는데, 작은 가게를 열기 전에 여러 메뉴를 한 사람이 다 만드는 게 나을지 한 가지에 집중하는 게 나을지 핵심만 빠르게 확인하고 싶다",

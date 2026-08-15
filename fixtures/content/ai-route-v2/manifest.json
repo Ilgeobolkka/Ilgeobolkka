@@ -20048,6 +20048,1030 @@
       ]
     },
     {
+      "bookId": 39,
+      "title": "한밤의 인쇄소 혁명",
+      "pdfPath": "pdfs/book-039.pdf",
+      "pdfSha256": "a5463af5a9c81addf3a8fdc3b9369af9c1dd3978805e81abb36abcd851261dd7",
+      "totalPageCount": 49,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 베껴 쓰던 시절",
+          "section": "1.1 한 권을 만드는 데 드는 것",
+          "primaryConcepts": [
+            "필사의 값"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "필사 비용의 구성 요소를 시간·물자·노동으로 분해하고 그것이 발행 부수와 독자 규모를 제약함을 제시한다. 비용-부수-독자의 연쇄를 이 책의 서술 축으로 세운다.",
+          "aiAnalysisInputSha256": "287d06da7825b4493a441f1c7328442485d7fb16e509c4f8f9bb6ce71dc6edee",
+          "aiPublicGuideTopic": "책 한 권을 손으로 옮겨 쓰는 데 무엇이 들었는지 밝힌다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 베껴 쓰던 시절",
+          "section": "1.1 한 권을 만드는 데 드는 것",
+          "primaryConcepts": [
+            "필사의 값"
+          ],
+          "secondaryConcepts": [
+            "읽는 사람의 수"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "필사 가격의 변동 요인을 서체와 삽화로 특정하고 인쇄와의 가격 구조 차이를 예고한다. 가격 결정 요인의 교체를 기술 전환의 핵심으로 제시한다.",
+          "aiAnalysisInputSha256": "4c6bc9073f18238578f72018df7f5b32e0b6a131ba09eb272e2a7e1523d93c84",
+          "aiPublicGuideTopic": "베끼는 값이 무엇에 따라 오르내렸는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 베껴 쓰던 시절",
+          "section": "1.2 누가 읽었는가",
+          "primaryConcepts": [
+            "읽는 사람의 수"
+          ],
+          "secondaryConcepts": [
+            "필사의 값"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "문해 인구의 직접 측정 불가와 두 가지 간접 지표의 한계를 제시한다. 절대 수치 대신 추세를 지표로 삼는다는 서술 규약을 세운다.",
+          "aiAnalysisInputSha256": "e73744b8efe9c29231836e9a807b2a7f2cb6ee7a44c297f6a91b5f617a0af526",
+          "aiPublicGuideTopic": "책을 읽을 수 있던 사람들의 범위를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 베껴 쓰던 시절",
+          "section": "1.2 누가 읽었는가",
+          "primaryConcepts": [
+            "읽는 사람의 수"
+          ],
+          "secondaryConcepts": [
+            "필사의 어긋남"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "음독 관행으로 인해 발행 부수와 도달 인구가 분리됨을 제시한다. 측정 가능한 지표만 수치로 기술하는 원칙을 밝힌다.",
+          "aiAnalysisInputSha256": "241edcc37763111518d1ee960d23f6c0885b34b3455f0e2c2dea38624bd2c1fe",
+          "aiPublicGuideTopic": "읽는 일이 혼자 하는 일이 아니었음을 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 베껴 쓰던 시절",
+          "section": "1.3 베끼면 달라진다",
+          "primaryConcepts": [
+            "필사의 어긋남"
+          ],
+          "secondaryConcepts": [
+            "필사의 값"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "필사 오류의 규칙성과 계보 추적 가능성을 제시하고 인쇄가 오류를 제거가 아닌 일괄화로 바꾼다는 대비를 세운다.",
+          "aiAnalysisInputSha256": "3a58c94b1980331b9e7eef17a68cd765dab95f9dee7b3f0f68eed5cf1760c482",
+          "aiPublicGuideTopic": "손으로 옮기는 동안 글이 달라지는 방식을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 베껴 쓰던 시절",
+          "section": "1.3 베끼면 달라진다",
+          "primaryConcepts": [
+            "필사의 어긋남"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사본 간 결락 위치의 공유 여부로 계보를 판별하는 원리를 시각화한다. 공유 결락과 단독 결락을 구분해 표시한다.",
+          "aiAnalysisInputSha256": "353a46639e57ebefd67c968ab446bcc4560635a19852c09f709bb21d72ed587c",
+          "aiPublicGuideTopic": "같은 책을 베낀 세 벌이 어디서 갈라지는지 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "2장 활자가 하는 일",
+          "section": "2.1 낱자를 다시 쓴다",
+          "primaryConcepts": [
+            "활자의 원리"
+          ],
+          "secondaryConcepts": [
+            "필사의 값"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "활자 조판과 정판(整版)의 원리적 차이를 재사용 여부로 정리하고 우열이 아닌 적합성 문제로 규정한다. 특정 기술의 확산을 인쇄물 성격으로 설명한다.",
+          "aiAnalysisInputSha256": "c4b7671a4dbdf6f16d0e71df67e5898cd93507623354e369c55e39c4c28ae5a8",
+          "aiPublicGuideTopic": "낱자를 떼어 두었다 다시 쓰는 방식이 무엇을 푸는지 밝힌다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 활자가 하는 일",
+          "section": "2.1 낱자를 다시 쓴다",
+          "primaryConcepts": [
+            "활자의 원리"
+          ],
+          "secondaryConcepts": [
+            "조판"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "활자 확보의 초기 고정비 구조와 부수 증가에 따른 단가 하락을 제시한다. 필사의 선형 비용과 대비되는 비용 곡선을 밝힌다.",
+          "aiAnalysisInputSha256": "0d633a6a6e86b5ddf708ad8e2c673e08be14f5286e2f0d96f57d13664430ee0b",
+          "aiPublicGuideTopic": "낱자를 갖추는 데 무엇이 드는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 활자가 하는 일",
+          "section": "2.2 판을 짜고 푸는 일",
+          "primaryConcepts": [
+            "조판"
+          ],
+          "secondaryConcepts": [
+            "활자의 원리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조판 공정의 구성 요소와 해판까지 포함한 작업 주기를 제시한다. 조판 시간이 텍스트 형식에 따라 달라짐을 밝힌다.",
+          "aiAnalysisInputSha256": "81643d8336a6274a687401073ab0dcd3c5481fb792e23c8cc515e098a8c23994",
+          "aiPublicGuideTopic": "낱자를 늘어놓아 판을 만드는 절차를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 활자가 하는 일",
+          "section": "2.2 판을 짜고 푸는 일",
+          "primaryConcepts": [
+            "조판"
+          ],
+          "secondaryConcepts": [
+            "동일 복본"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발행 부수 결정이 수요 예측 행위임을 제시하고 주문 생산에서 예측 생산으로의 전환을 밝힌다. 인쇄소의 상업적 성격이 여기서 비롯됨을 설명한다.",
+          "aiAnalysisInputSha256": "7d3411390a6e250efadc18f935273711e3b0f6d41f5431c742337a27035f1db8",
+          "aiPublicGuideTopic": "판이 걸려 있는 동안 무엇이 정해지는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 활자가 하는 일",
+          "section": "2.3 같은 것을 여럿",
+          "primaryConcepts": [
+            "동일 복본"
+          ],
+          "secondaryConcepts": [
+            "조판"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 복본의 성립이 텍스트 이본 대조 문제를 소거하고 위치 지시 체계를 유효하게 만듦을 제시한다. 인쇄의 고유한 효과를 부수가 아닌 동일성에서 찾는다.",
+          "aiAnalysisInputSha256": "c1ec21fe933c419edc39350cf436a00ed5fdbfbf4f2cfa10fce01b6005aa3a7b",
+          "aiPublicGuideTopic": "한 판에서 나온 여러 장이 서로 같다는 사실이 무엇을 바꾸는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 활자가 하는 일",
+          "section": "2.3 같은 것을 여럿",
+          "primaryConcepts": [
+            "동일 복본"
+          ],
+          "secondaryConcepts": [
+            "복본과 통제"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인쇄 복본 내부의 변이 요인과 그 판별 용이성을 제시한다. 동일성의 실질이 절대적 일치가 아니라 차이의 계수 가능성임을 밝힌다.",
+          "aiAnalysisInputSha256": "df9fd0b6d38e40e23cfc65715dd13e17e8e18b303bc1109b596059f936fb397c",
+          "aiPublicGuideTopic": "같음이 어디까지 같은지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": [
+            "copies-outrun-the-hand"
+          ]
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 활자가 하는 일",
+          "section": "2.4 쇠와 나무",
+          "primaryConcepts": [
+            "활자의 재료"
+          ],
+          "secondaryConcepts": [
+            "활자의 원리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "활자 재료별 내구성과 비용의 차이 및 혼용 사례를 제시한다. 이 절이 확산·통제 계열과 직접 연결되지 않음을 명시한다.",
+          "aiAnalysisInputSha256": "165eb2b62d1034f1e12bfa986a8cf2a84cdf197e0e4c06b01e7c6c24f6423e20",
+          "aiPublicGuideTopic": "활자를 무엇으로 만들었는지와 그 차이를 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 활자가 하는 일",
+          "section": "2.4 쇠와 나무",
+          "primaryConcepts": [
+            "활자의 재료"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재료별 내구 구간을 길이가 다른 선으로 시각화하고 공용 구간과 단독 구간을 구분한다. 내구성이 용도 배분을 결정하는 구조를 보인다.",
+          "aiAnalysisInputSha256": "2919e02487b5bc974b5489c13c3f6e99aaab38de401a8c4761fb0c44ac6d2c0b",
+          "aiPublicGuideTopic": "두 재료가 견디는 만큼이 어떻게 다른지 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 기술은 어떻게 번졌나",
+          "section": "3.1 사람이 옮긴다",
+          "primaryConcepts": [
+            "기술의 이동"
+          ],
+          "secondaryConcepts": [
+            "활자의 원리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인쇄 기술의 전파가 인력 이동을 매개로 이루어짐을 제시한다. 인력 도착과 첫 산출 사이의 시차가 초기 설비 조달 기간을 반영함을 밝힌다.",
+          "aiAnalysisInputSha256": "4523e5b82090141ab36f1b0f12ab898e1953f4f1adba24e75e05ad159d85c6c9",
+          "aiPublicGuideTopic": "기술이 도시에서 도시로 옮겨 간 방식을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 기술은 어떻게 번졌나",
+          "section": "3.1 사람이 옮긴다",
+          "primaryConcepts": [
+            "기술의 이동"
+          ],
+          "secondaryConcepts": [
+            "숙련"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기술 전파의 부분성을 공정별 숙련의 분화로 설명한다. 초기 산출물의 결함이 어느 공정이 미전수되었는지를 지시함을 제시한다.",
+          "aiAnalysisInputSha256": "f79e66ac6a12c41df184c2ade7c9fd7a0187928d3d654ce425a9ae10530aa1b0",
+          "aiPublicGuideTopic": "옮겨 간 기술이 그대로 옮겨지지는 않는다는 점을 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 기술은 어떻게 번졌나",
+          "section": "3.2 익히는 데 드는 시간",
+          "primaryConcepts": [
+            "숙련"
+          ],
+          "secondaryConcepts": [
+            "조판"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "숙련 형성 기간이 기술 확산 속도의 상한을 규정함을 제시한다. 인쇄소 수의 계단식 증가를 견습 주기로 설명한다.",
+          "aiAnalysisInputSha256": "625f129391702718dcbe498a1a32fa1ee151378707f37c5abbdb935f8113e1e7",
+          "aiPublicGuideTopic": "손에 익히는 데 걸리는 시간이 확산을 어떻게 늦추는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 기술은 어떻게 번졌나",
+          "section": "3.2 익히는 데 드는 시간",
+          "primaryConcepts": [
+            "숙련"
+          ],
+          "secondaryConcepts": [
+            "기술의 이동"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "숙련공의 이동 방향이 제지 산지 분포와 일치함을 제시한다. 기술 확산 경로를 원료 입지와 구분해 읽어야 함을 밝힌다.",
+          "aiAnalysisInputSha256": "60e55d1dc77e169d5136d49c0e95a4ea7309be15f49a6b456abc0b629d90f287",
+          "aiPublicGuideTopic": "익힌 사람이 어디로 갔는지 따라간다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 기술은 어떻게 번졌나",
+          "section": "3.3 어디에 자리 잡았나",
+          "primaryConcepts": [
+            "입지"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인쇄소 입지가 원료 반입 경로와 수요처라는 두 요인으로 분화됨을 시각화한다. 집적 위치와 예외 위치를 구분해 표시한다.",
+          "aiAnalysisInputSha256": "da9c580032bc9bfd8db197ef53c251f76002dbb66e74131f06cb19ca21f6f9bb",
+          "aiPublicGuideTopic": "인쇄소가 어떤 자리에 섰는지 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 기술은 어떻게 번졌나",
+          "section": "3.3 어디에 자리 잡았나",
+          "primaryConcepts": [
+            "입지"
+          ],
+          "secondaryConcepts": [
+            "인쇄물의 값"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "입지에 따른 인쇄물 종류의 분화를 제시한다. 인쇄업을 단일 범주로 다룰 때 소실되는 구분을 밝힌다.",
+          "aiAnalysisInputSha256": "834eb738dd2d7dc3b58ac1ebd52fae41286cb2c1d5b5ae2706d383d871f5f3d8",
+          "aiPublicGuideTopic": "자리가 무엇을 찍을지까지 정한다는 점을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 기술은 어떻게 번졌나",
+          "section": "3.4 값이 내려간 뒤",
+          "primaryConcepts": [
+            "인쇄물의 값"
+          ],
+          "secondaryConcepts": [
+            "동일 복본"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인쇄에 따른 가격 하락이 예상 수요에 비례해 차등적으로 나타남을 제시한다. 필사와 인쇄의 장기 병존을 비용 구조로 설명한다.",
+          "aiAnalysisInputSha256": "4d7300cffc6dfbf2b9738b3cecc51f235214a69e07736f3b40344a8a34f7e2b3",
+          "aiPublicGuideTopic": "인쇄물의 값이 얼마나 어떻게 내려갔는지 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 기술은 어떻게 번졌나",
+          "section": "3.4 값이 내려간 뒤",
+          "primaryConcepts": [
+            "인쇄물의 값"
+          ],
+          "secondaryConcepts": [
+            "읽는 사람의 수"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "가격 하락의 주된 효과가 서적이 아닌 낱장 인쇄물의 등장임을 제시한다. 낮은 잔존율로 인해 그 규모가 과소평가됨을 밝힌다.",
+          "aiAnalysisInputSha256": "5ef1ae64d5a3c86e0c44602f838207958b6832742f765adb5e9a2689680997cd",
+          "aiPublicGuideTopic": "값이 내려간 뒤 무엇이 늘었는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 찍힌 것을 누가 막는가",
+          "section": "4.1 같은 글이 여럿이면",
+          "primaryConcepts": [
+            "복본과 통제"
+          ],
+          "secondaryConcepts": [
+            "동일 복본"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복본의 동시 다발적 확산이 사후 회수를 무력화하고 통제 시점을 사전으로 이동시킴을 제시한다. 제도 변화를 기술적 조건의 귀결로 설명한다.",
+          "aiAnalysisInputSha256": "d922780e85847c51874ded0682b2cce99763217e054eabeb184aba9d81eeb9e1",
+          "aiPublicGuideTopic": "같은 글이 여럿이 되면 막는 일이 어떻게 달라지는지 밝힌다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 찍힌 것을 누가 막는가",
+          "section": "4.1 같은 글이 여럿이면",
+          "primaryConcepts": [
+            "복본과 통제"
+          ],
+          "secondaryConcepts": [
+            "사전 검열"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "통제 대상이 텍스트에서 생산 설비와 인력으로 이동함을 제시한다. 발행처 표기 의무가 내용 심사 없이도 작동하는 통제 장치임을 밝힌다.",
+          "aiAnalysisInputSha256": "2af0cf00f9808625eff74960c710ac92084f1d2a101d21c6b467ff61c9ab0b3f",
+          "aiPublicGuideTopic": "막으려는 쪽이 무엇을 붙들 수 있었는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 찍힌 것을 누가 막는가",
+          "section": "4.2 미리 보는 일",
+          "primaryConcepts": [
+            "사전 검열"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인쇄 공정 흐름 위에 사전 허가 지점을 표시하고 사후 회수 경로의 무력함을 대비한다. 통제 지점이 공정 초입에 한정되는 구조를 시각화한다.",
+          "aiAnalysisInputSha256": "f2d8e517997f80b5bff542241e66fc63d40f886608a8261f827734588d2a7bb8",
+          "aiPublicGuideTopic": "찍히기 전에 글이 거쳐야 했던 자리를 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 찍힌 것을 누가 막는가",
+          "section": "4.2 미리 보는 일",
+          "primaryConcepts": [
+            "사전 검열"
+          ],
+          "secondaryConcepts": [
+            "복본과 통제"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사전 허가제의 실질적 효과가 반려 건수가 아닌 자기 검열에 있음을 제시한다. 그 효과가 기록으로 남지 않아 측정 불가함을 밝힌다.",
+          "aiAnalysisInputSha256": "7e35a39794fcfdb7fd5a51db1b7b9e7044b3cde9fba68e499162d12521b6a914",
+          "aiPublicGuideTopic": "미리 보는 제도가 실제로 어떻게 돌아갔는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 찍힌 것을 누가 막는가",
+          "section": "4.3 찍고 나서 거두는 일",
+          "primaryConcepts": [
+            "사후 회수"
+          ],
+          "secondaryConcepts": [
+            "사전 검열"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사후 회수의 세 방식과 그 실효성 차이를 제시한다. 반복된 회수 명령이 회수 실패를 지시하는 증거임을 밝힌다.",
+          "aiAnalysisInputSha256": "6e1df39ab8c997b57aba3c296e5642c3c9fb53794a507410ef58647ac9a88e50",
+          "aiPublicGuideTopic": "이미 나온 인쇄물을 거두려는 시도를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 찍힌 것을 누가 막는가",
+          "section": "4.3 찍고 나서 거두는 일",
+          "primaryConcepts": [
+            "사후 회수"
+          ],
+          "secondaryConcepts": [
+            "인쇄물의 잔존"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "금지 조치가 오히려 잔존율을 높이는 역설을 제시한다. 잔존 인쇄물 구성의 편향을 보정해야 함을 밝힌다.",
+          "aiAnalysisInputSha256": "c4021502b74ae682abbf76f21c52f45127d5e5bfcae5729d917c9d416566e3c8",
+          "aiPublicGuideTopic": "거두려던 글이 오히려 남는 자리를 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 찍힌 것을 누가 막는가",
+          "section": "4.4 읽는 사람이 늘면",
+          "primaryConcepts": [
+            "여론의 형성"
+          ],
+          "secondaryConcepts": [
+            "복본과 통제"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동시적 다수 독서가 상호 참조하는 텍스트 생산의 전제임을 제시한다. 관측 가능한 사실과 그것의 명명을 구분한다.",
+          "aiAnalysisInputSha256": "1e23ab6d404210978ee871058c49c0b5795b077a98662e9e7973cb178253a5c8",
+          "aiPublicGuideTopic": "같은 글을 여럿이 읽는 일이 무엇을 만드는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 찍힌 것을 누가 막는가",
+          "section": "4.4 읽는 사람이 늘면",
+          "primaryConcepts": [
+            "여론의 형성"
+          ],
+          "secondaryConcepts": [
+            "사후 회수"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "낱장 유통이 운송비 제약으로 도시 규모에 한정됨을 제시한다. 현상의 공간적 범위를 명시해 후대 상황의 소급 적용을 차단한다.",
+          "aiAnalysisInputSha256": "60c2017ad6b78366305197ff517aee0458e7da6c993ccafe5784b8430213a651",
+          "aiPublicGuideTopic": "오간 글이 어디까지 퍼졌는지 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 다인성의 한 인쇄소",
+          "section": "5.1 은자 인쇄소의 하루",
+          "primaryConcepts": [
+            "작업 순서"
+          ],
+          "secondaryConcepts": [
+            "조판"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인쇄소의 일과를 건조·조판·인쇄의 병렬 공정으로 재구성한다. 조판 상태로 대기하는 판의 수가 일일 생산량을 규정함을 제시한다.",
+          "aiAnalysisInputSha256": "c9612891563f667059545d94d78209559d4d6eba722a821bcc833c103994a437",
+          "aiPublicGuideTopic": "한 인쇄소에서 하루가 어떻게 흘렀는지 따라간다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 다인성의 한 인쇄소",
+          "section": "5.1 은자 인쇄소의 하루",
+          "primaryConcepts": [
+            "작업 순서"
+          ],
+          "secondaryConcepts": [
+            "숙련"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인쇄소 인력 구성에서 조판공만이 장기 숙련을 요구함을 제시한다. 단일 공정이 전체 확산 속도를 제약하는 구조를 밝힌다.",
+          "aiAnalysisInputSha256": "235cccc367252a4bc1b80a5abc6d4931c82fb9d04f167251c620c586d2313430",
+          "aiPublicGuideTopic": "인쇄소 안에서 손이 어떻게 나뉘었는지 본다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 다인성의 한 인쇄소",
+          "section": "5.2 한 판이 남긴 것",
+          "primaryConcepts": [
+            "판의 흔적"
+          ],
+          "secondaryConcepts": [
+            "동일 복본"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 판본 내 활자 마모 방향을 이용해 인쇄 순서를 판별하는 절차를 제시한다. 날짜 정보 없이 상대 연대를 세우는 방법을 실연한다.",
+          "aiAnalysisInputSha256": "340c1c674a8baf5f4cefb6c1743f129260fec91a9fa74cdbef0ccfc0a4bb5646",
+          "aiPublicGuideTopic": "한 판에서 나온 장들을 맞대어 무엇을 읽는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 다인성의 한 인쇄소",
+          "section": "5.2 한 판이 남긴 것",
+          "primaryConcepts": [
+            "판의 흔적"
+          ],
+          "secondaryConcepts": [
+            "작업 순서"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인쇄 순서와 출토 위치의 대응을 검토하고 표본 부족으로 판별이 유보됨을 밝힌다. 추가로 필요한 자료의 종류를 특정한다.",
+          "aiAnalysisInputSha256": "064943bca86b8e75eb4b757f805d98d646a6b8d31e19fa397ce3e273d726b5f5",
+          "aiPublicGuideTopic": "순서를 알아낸 뒤 무엇을 더 물을 수 있는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 다인성의 한 인쇄소",
+          "section": "5.3 팔린 곳을 따라",
+          "primaryConcepts": [
+            "유통 경로"
+          ],
+          "secondaryConcepts": [
+            "인쇄물의 값"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인쇄물 유통 경로 추적의 세 가지 단서와 각각의 한계를 제시한다. 단서의 중첩 여부로 추정 강도를 차등화하는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "80363eaeee120c113f4a510e4d9a2335190f2ed0c8f11f5d968645956f502659",
+          "aiPublicGuideTopic": "찍힌 것이 어디로 갔는지 따라가는 방법을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 다인성의 한 인쇄소",
+          "section": "5.4 셈을 남기는 방법",
+          "primaryConcepts": [
+            "작업 기록"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "작업 기록의 항목별 충실도 차이가 답할 수 있는 질문의 범위를 결정함을 시각화한다. 기재율이 낮은 항목과 대응 질문을 옅게 표시한다.",
+          "aiAnalysisInputSha256": "d0641b4b5d80246e071df137194e56b6107b63c27f3fa9fea1119cea216509dc",
+          "aiPublicGuideTopic": "인쇄소가 남긴 셈 문서의 짜임을 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 다인성의 한 인쇄소",
+          "section": "5.5 인쇄소를 나오며",
+          "primaryConcepts": [
+            "작업 순서"
+          ],
+          "secondaryConcepts": [
+            "판의 흔적"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단일 사례 분석의 결과와 그 적용 범위를 한정한다. 개별 사례가 후속 비교의 질문 목록을 산출하는 역할을 밝힌다.",
+          "aiAnalysisInputSha256": "be25893a490da50ea0dd73301560083efe072b3442543efb704a3981ad1493a8",
+          "aiPublicGuideTopic": "한 인쇄소에서 무엇까지 얻었는지 정리한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 기술이 겪은 것",
+          "section": "6.1 베끼던 사람들",
+          "primaryConcepts": [
+            "필사 노동의 저항"
+          ],
+          "secondaryConcepts": [
+            "필사의 값"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "필사 노동자의 제도적 대응 사례를 제시하고 표본 수의 한계로 일반화가 불가함을 밝힌다. 기술 도입기의 수동적 수용이라는 통념을 자료로 검토한다.",
+          "aiAnalysisInputSha256": "1e16840527d990e478334b9b887800ea5101c4613de9e1eb389a38bf44343afa",
+          "aiPublicGuideTopic": "베끼는 일로 살던 사람들이 무엇을 했는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 기술이 겪은 것",
+          "section": "6.1 베끼던 사람들",
+          "primaryConcepts": [
+            "필사 노동의 저항"
+          ],
+          "secondaryConcepts": [
+            "인쇄물의 값"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "직종 소멸과 인접 직무 이동의 공존을 사례로 제시한다. 이동에 성공한 집단과 기록에서 사라진 집단을 구분해 기술한다.",
+          "aiAnalysisInputSha256": "176da410e888b9a8eeafff656b54b7323d0505f5ff72e42b8e6301af73d7ae4f",
+          "aiPublicGuideTopic": "밀려난 사람들이 어디로 갔는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 기술이 겪은 것",
+          "section": "6.2 남은 인쇄물만 보았다",
+          "primaryConcepts": [
+            "인쇄물의 잔존"
+          ],
+          "secondaryConcepts": [
+            "필사의 어긋남"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인쇄물 잔존이 보존 가치에 따라 선별됨을 제시한다. 잔존 구성과 소비 구성의 괴리가 낱장 과소평가를 낳음을 밝힌다.",
+          "aiAnalysisInputSha256": "903c62c83b422f04f48006d25879607ca2eecb969d94935beede0d4de8b010f5",
+          "aiPublicGuideTopic": "지금 남은 인쇄물이 그때 찍힌 것과 얼마나 다른지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 기술이 겪은 것",
+          "section": "6.2 남은 인쇄물만 보았다",
+          "primaryConcepts": [
+            "인쇄물의 잔존"
+          ],
+          "secondaryConcepts": [
+            "사후 회수"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "잔존 편향이 보존 선호와 금지 조치라는 두 요인의 중첩임을 제시한다. 정량 보정이 불가한 편향의 방향을 기술로 남기는 대응을 밝힌다.",
+          "aiAnalysisInputSha256": "9b4dc14ca8a32bb2b82ba12828ce62c32e99b33ce421ec9809da70b2043d8cb7",
+          "aiPublicGuideTopic": "잔존이 한 번 더 걸러진 자리를 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 기술이 겪은 것",
+          "section": "6.3 찍혔다고 읽힌 것은 아니다",
+          "primaryConcepts": [
+            "발행과 독서"
+          ],
+          "secondaryConcepts": [
+            "인쇄물의 값"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발행 부수와 독서 규모 사이의 매개 단계를 열거하고 반품 기록으로 그 간극을 예시한다. 발행량을 수용량으로 환산하는 서술의 오류를 지적한다.",
+          "aiAnalysisInputSha256": "980800639fa5c307db61b55a58b639c112736a353d9e028558b0133fa69dc5c8",
+          "aiPublicGuideTopic": "찍힌 수와 읽힌 수가 다르다는 점을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 기술이 겪은 것",
+          "section": "6.3 찍혔다고 읽힌 것은 아니다",
+          "primaryConcepts": [
+            "발행과 독서"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발행에서 독서까지의 단계적 감소와 각 단계의 이탈 경로를 시각화한다. 문서로 확인 가능한 구간과 추정 구간을 실선과 점선으로 구분한다.",
+          "aiAnalysisInputSha256": "487f376066ca9630bb44e76deb5b70fe9dafaed5eb1807536a49bc504d023ca8",
+          "aiPublicGuideTopic": "찍힌 수에서 읽힌 수까지 무엇이 빠지는지 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 기술이 겪은 것",
+          "section": "6.4 기술사를 읽는 자리",
+          "primaryConcepts": [
+            "기술사의 쓸모"
+          ],
+          "secondaryConcepts": [
+            "필사의 값"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기술사 서술의 선형적 대체 도식을 비판하고 병존과 신규 영역 창출을 제시한다. 속도가 아닌 구성 변화를 묻는 질문 형태를 제안한다.",
+          "aiAnalysisInputSha256": "2ce9fd48302f7fdddb31dfabac7b06ed2fa93ad447c6d04d6fe94ca715350521",
+          "aiPublicGuideTopic": "기술의 역사를 읽을 때 무엇을 조심할지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 기술이 겪은 것",
+          "section": "6.4 기술사를 읽는 자리",
+          "primaryConcepts": [
+            "기술사의 쓸모"
+          ],
+          "secondaryConcepts": [
+            "숙련"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기술 확산의 설명 요인을 원료·인력·수요의 동시 충족으로 제시한다. 기술 내재적 설명이 미확산 사례를 다루지 못함을 밝힌다.",
+          "aiAnalysisInputSha256": "24ff6ffb7d7afa969d17c2dd0418e82e55dd393f9c1667cf9890e716a9fcb8ff",
+          "aiPublicGuideTopic": "기술이 왜 그때 그곳에서 퍼졌는지 묻는 방법을 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 잉크가 마른 뒤",
+          "section": "7.1 무엇이 바뀌었나",
+          "primaryConcepts": [
+            "여론의 형성"
+          ],
+          "secondaryConcepts": [
+            "복본과 통제"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인쇄의 효과를 동일성·가격 분화·통제 시점 이동으로 정리하고 동일성을 선행 조건으로 둔다. 현상의 공간적 규모를 결론에 병기한다.",
+          "aiAnalysisInputSha256": "5ca70aa4475e5a7902dffebe9a39b3615ca204ba5b1a38754901287cac61ca47",
+          "aiPublicGuideTopic": "이 책이 인쇄에서 얻은 것을 한자리에 모은다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": [
+            "copies-outrun-the-hand"
+          ]
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 잉크가 마른 뒤",
+          "section": "7.2 무엇이 그대로였나",
+          "primaryConcepts": [
+            "인쇄물의 잔존"
+          ],
+          "secondaryConcepts": [
+            "필사의 값"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "문해 인구와 잔존 구조가 인쇄 도입으로 변하지 않았음을 제시한다. 단일 기술로 과잉 설명하는 서술을 경계한다.",
+          "aiAnalysisInputSha256": "9cbf4a9c485e55a6e3abb1bdec15de93c54d243a7a8b4e4d0faee99b71a0574d",
+          "aiPublicGuideTopic": "인쇄가 들어온 뒤에도 그대로였던 것을 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 잉크가 마른 뒤",
+          "section": "7.3 다음 기술을 볼 때",
+          "primaryConcepts": [
+            "기술사의 쓸모"
+          ],
+          "secondaryConcepts": [
+            "여론의 형성"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인쇄 사례에서 도출한 네 가지 질문을 기술사 분석의 일반 절차로 제시한다. 기술 속성이 아닌 배치 조건을 묻는 것이 방법의 핵심임을 밝힌다.",
+          "aiAnalysisInputSha256": "65e8c4d5ff55c5f81566645c640e4005e6356fa6638b9c81780b0f67465afc8c",
+          "aiPublicGuideTopic": "이 책의 방법을 다른 기술에 어떻게 쓸지 정리한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 41,
       "title": "분업과 비교우위: 교환은 왜 이익인가",
       "pdfPath": "pdfs/book-041.pdf",
