@@ -313,6 +313,31 @@ def check_fragment(workdir):
            should_pass=False, needle="중복 그룹 충돌 없음")
 
 
+def split_candidate(manifest, evaluation):
+    """절을 무관과 무관 아님으로 가를 수 있는 (사례, 페이지)를 찾는다.
+
+    고르는 페이지는 그 절의 첫 후보 페이지이고, 절의 어느 페이지도 정답·대체·무관·대여에
+    쓰이지 않아야 하며, 다른 검사에 먼저 걸리지 않도록 필수·도움 개념을 primary로 달지
+    않아야 한다.
+    """
+    for case in evaluation["cases"]:
+        book = next(b for b in manifest["books"] if b["bookId"] == case["bookId"])
+        taken = (set(case["referencePageNumbers"]) | set(case["allowedAlternativePageNumbers"])
+                 | set(case["irrelevantPageNumbers"])
+                 | set(case.get("activeRentalPageNumbers") or []))
+        wanted = set(case["requiredConcepts"]) | set(case["helpfulConcepts"])
+        sections = {}
+        for page in book["pages"]:
+            if page["aiRouteCandidatePage"]:
+                sections.setdefault(page["section"], []).append(page)
+        for pages in sections.values():
+            if (len(pages) > 1
+                    and not any(x["pageNumber"] in taken for x in pages)
+                    and not set(pages[0]["primaryConcepts"]) & wanted):
+                return case, pages[0]["pageNumber"]
+    raise AssertionError("절을 가를 수 있는 사례가 없다")
+
+
 def check_manifest(workdir):
     print("\n[validate_manifest.py]")
     manifest, evaluation = load_manifest(), load_evaluation()
@@ -542,6 +567,15 @@ def check_manifest(workdir):
     case["irrelevantPageNumbers"] = [n for n in case["irrelevantPageNumbers"] if n != deepest]
     expect_manifest("대체 페이지의 선수 폐쇄가 상한을 넘으면 실패", manifest, broken, workdir,
                     should_pass=False, needle="폐쇄가 상한")
+
+    # 한 절에서 첫 페이지만 무관으로 적는다. 둘째 페이지는 그 무관 페이지를 선수로 밟아야만
+    # 닿는 자리가 된다. 표본 도서는 절이 전부 한 페이지라 이 검사를 깨뜨릴 수 없으므로,
+    # 여러 페이지로 이루어진 절을 가진 사례를 찾아 쓴다.
+    broken = copy.deepcopy(evaluation)
+    case, head = split_candidate(manifest, broken)
+    case["irrelevantPageNumbers"] = sorted(set(case["irrelevantPageNumbers"]) | {head})
+    expect_manifest("절의 첫 페이지만 무관으로 적으면 실패", manifest, broken, workdir,
+                    should_pass=False, needle="갈리지 않음")
 
 
 def check_merge(workdir):
