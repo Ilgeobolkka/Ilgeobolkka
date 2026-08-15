@@ -370,6 +370,11 @@ class CommonPageControllerTest {
         assertTrue(html.contains("data-library-card-template"));
         assertTrue(html.contains("data-library-resume"));
         assertFalse(html.contains("data-library-ai-routes"));
+        assertTrue(html.contains(
+                "대여하거나 온라인 소장한 도서를 마지막으로 읽은 페이지부터 이어보세요."));
+        assertTrue(html.contains(
+                "도서의 한 페이지를 읽거나 온라인 소장하면 여기에 추가됩니다."));
+        assertFalse(html.contains("AI 독서 경로를 저장"));
         assertTrue(html.contains("aria-live=\"polite\""));
         assertTrue(html.contains("/js/library/library.js"));
         assertFalse(html.contains("내 서재 화면을 준비하고 있습니다."));

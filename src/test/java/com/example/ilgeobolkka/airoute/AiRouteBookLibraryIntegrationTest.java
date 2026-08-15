@@ -188,7 +188,11 @@ class AiRouteBookLibraryIntegrationTest {
         mockMvc.perform(get("/library").with(authentication(인증된_독자(READER_ID))))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("data-library-ai-routes")))
-                .andExpect(content().string(containsString("data-library-resume")));
+                .andExpect(content().string(containsString("data-library-resume")))
+                .andExpect(content().string(containsString(
+                        "대여하거나 온라인 소장했거나 AI 독서 경로를 저장한 도서를 이어보세요.")))
+                .andExpect(content().string(containsString(
+                        "도서의 한 페이지를 읽거나 온라인 소장하거나 AI 독서 경로를 저장하면 여기에 추가됩니다.")));
 
         MvcResult libraryScript = mockMvc.perform(get("/js/library/library-page.js"))
                 .andExpect(status().isOk())
