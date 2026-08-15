@@ -3129,6 +3129,73 @@
         3,
         11
       ]
+    },
+    {
+      "caseId": "case-book-092",
+      "bookId": 92,
+      "purpose": "해야 할 일을 자꾸 미루는데 왜 그런지 모르겠다. 잘 해내고 싶은 마음 때문에 시작을 못 하는 것 같은데, 잉크를 조금만 써서 미루는 원인을 가려내는 방법까지만 알고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "미루기",
+        "회피 동기",
+        "원인 분류",
+        "완벽주의"
+      ],
+      "helpfulConcepts": [
+        "단기 보상",
+        "불확실성 회피",
+        "자기 협상",
+        "기준 낮추기"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 17
+        }
+      ],
+      "irrelevantPageNumbers": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          49
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        12,
+        16,
+        17
+      ],
+      "allowedAlternativePageNumbers": [
+        5,
+        15,
+        19
+      ]
     }
   ]
 }
