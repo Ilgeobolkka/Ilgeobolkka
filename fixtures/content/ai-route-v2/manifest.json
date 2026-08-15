@@ -27073,6 +27073,1053 @@
       ]
     },
     {
+      "bookId": 54,
+      "title": "말할 수 있는 것과 말할 수 없는 것",
+      "pdfPath": "pdfs/book-054.pdf",
+      "pdfSha256": "8cd0d59339da9b27a8afea8adc5339d031a232ae1d00f991d88d0d3568a07421",
+      "totalPageCount": 49,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 말이 닿는 자리",
+          "section": "1.1 말은 무엇을 하는가",
+          "primaryConcepts": [
+            "말의 기능"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "언어를 사고의 용기로 보는 통념을 검토하고 지시·분절·행위 유발이라는 세 기능을 제시한다. 각 기능이 서로 다른 조건에서 실패한다는 점에서 표현 불가라는 말이 단일한 사태를 가리키지 않는다는 문제를 책 전체의 출발점으로 놓는다.",
+          "aiAnalysisInputSha256": "3c7719258e84760194b019e38fbd2c4d0383d31cdc1434e1ea562673aff95ca5",
+          "aiPublicGuideTopic": "말이 실제로 해내는 일들",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "what-language-reaches"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 말이 닿는 자리",
+          "section": "1.1 말은 무엇을 하는가",
+          "primaryConcepts": [
+            "말의 기능"
+          ],
+          "secondaryConcepts": [
+            "침묵의 구분"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "언어 외 전달 수단의 존재를 근거로 표현 불가와 전달 불가를 구분한다. 비언어적 전달이 실제로 기능한 사례를 들면서도 해석의 다의성 때문에 오해가 발생하기 쉽다는 점을 지적하고, 두 수단이 대체 관계가 아니라 보완 관계임을 제시한다.",
+          "aiAnalysisInputSha256": "f1c1fcc3ec91f70b1db58a649efef7d43f5d9d6dd794e102a4d3311fba298517",
+          "aiPublicGuideTopic": "말하지 않아도 전해지는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 말이 닿는 자리",
+          "section": "1.2 가리키기와 나누기",
+          "primaryConcepts": [
+            "지시와 분절"
+          ],
+          "secondaryConcepts": [
+            "말의 기능"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "어휘가 대상을 명명할 뿐 아니라 그 경계를 설정한다는 점을 다룬다. 분절 체계의 차이가 지각의 세분화 정도를 바꾼다는 관찰을 제시하고, 분절이 대상 파악을 가능하게 하면서 동시에 제약한다는 양면성을 표현 불가의 한 원천으로 놓는다.",
+          "aiAnalysisInputSha256": "4a8eb00bf33f3549a896da8467b6617cc2cd1c4f254dbd78c4752819908e45d6",
+          "aiPublicGuideTopic": "낱말이 세상을 자르는 방식",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 말이 닿는 자리",
+          "section": "1.2 가리키기와 나누기",
+          "primaryConcepts": [
+            "지시와 분절"
+          ],
+          "secondaryConcepts": [
+            "미명명"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기존 어휘로 분절되지 않는 경험을 다루는 두 방식으로 인접 어휘 차용과 복수 표현의 교차를 제시한다. 차용된 이름이 대상 이해를 그 이름 쪽으로 끌어당기는 효과를 지적하고, 명명을 지연하며 여러 표현을 겹쳐 보는 방법을 제안한다.",
+          "aiAnalysisInputSha256": "f31f29d7c7691808d468b1649e8ab179b8d0a74ce4f15fd0fc75fa4d4a29be6b",
+          "aiPublicGuideTopic": "선이 그어지지 않은 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 말이 닿는 자리",
+          "section": "1.3 말과 겪음",
+          "primaryConcepts": [
+            "경험과 언어"
+          ],
+          "secondaryConcepts": [
+            "말의 기능"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "언어화가 필연적으로 축약을 수반한다는 점을 그 기능적 조건으로 설명하고, 어휘 밀도가 영역마다 다르다는 점에서 축약의 정도가 불균등하다는 문제를 제시한다. 표현의 실패를 개인 역량이 아니라 공용 어휘의 성김으로 진단하는 관점을 제안한다.",
+          "aiAnalysisInputSha256": "7a83a597275770cca2a6a1fd02217c4969031ee627c8c5cd84fe2991e1e7c856",
+          "aiPublicGuideTopic": "겪은 것과 그것을 옮긴 것 사이",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 말이 닿는 자리",
+          "section": "1.3 말과 겪음",
+          "primaryConcepts": [
+            "경험과 언어"
+          ],
+          "secondaryConcepts": [
+            "말하기의 변형"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "언어화가 경험을 서사적 정합성 쪽으로 재편한다는 점과 그 결과 원래 경험과의 거리가 생긴다는 문제를 다룬다. 정리가 경험을 다루기 위한 조건이라는 점을 인정하면서, 미정리 조각을 별도로 보존해 단일 판본화를 막는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "26eb4edf203c827dda0af315a0880c8b314e8661efabe9a6455438661bcbe8e3",
+          "aiPublicGuideTopic": "말이 겪음을 바꾸는 방향",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 말이 닿는 자리",
+          "section": "1.4 말이 덮는 자리와 덮지 못하는 자리",
+          "primaryConcepts": [
+            "언어의 범위"
+          ],
+          "secondaryConcepts": [
+            "지시와 분절",
+            "경험과 언어"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "경험 전체를 하나의 영역으로 두고 어휘가 덮는 부분을 서로 떨어진 얼룩으로 그린 도표다. 명명된 영역과 명명되지 않은 빈자리를 대비하고 어휘 밀도의 편차를 세로 축으로 표시해, 표현 불가가 대상의 부재가 아니라 분절의 부재임을 나타낸다.",
+          "aiAnalysisInputSha256": "04fdc2bb132394e0ff594ca2574a233ad4c1e4127f9c0959cc062e634946ffb0",
+          "aiPublicGuideTopic": "낱말이 덮는 영역과 그 사이의 빈틈을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 말할 수 없는 것들",
+          "section": "2.1 아직 이름이 없는 것",
+          "primaryConcepts": [
+            "미명명"
+          ],
+          "secondaryConcepts": [
+            "지시와 분절"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "표현 불가의 첫 유형을 어휘 부재로 규정하고 원리적으로 해소 가능하다는 점을 제시한다. 명명이 인지 가능성을 높인다는 관찰과, 명명이 개인 행위가 아니라 공동 채택을 요구한다는 조건을 다루며 미명명 상태의 사회적 의미를 밝힌다.",
+          "aiAnalysisInputSha256": "e394a3736acdf842493095afc544d2cf52f9bee4092bb04c5e6f24625db77853",
+          "aiPublicGuideTopic": "이름이 없어서 말할 수 없는 경우",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 말할 수 없는 것들",
+          "section": "2.1 아직 이름이 없는 것",
+          "primaryConcepts": [
+            "미명명"
+          ],
+          "secondaryConcepts": [
+            "조어"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "명명 이전 단계에서 사용 가능한 세 가지 우회 전략을 유사·부정·조건 제시로 정리하고 각각의 장단점을 비교한다. 조건 제시가 청자의 경험 내 대응 자리를 찾게 한다는 점에서 효과적이며, 공유 경험이 없을 때 실패한다는 한계를 밝힌다.",
+          "aiAnalysisInputSha256": "b2d312328e5c72e30bea646a75962175022552a0438e0122ad819e1f65f48b93",
+          "aiPublicGuideTopic": "이름이 생기기 전에 하는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 말할 수 없는 것들",
+          "section": "2.2 겪어야 아는 것",
+          "primaryConcepts": [
+            "체험적 앎"
+          ],
+          "secondaryConcepts": [
+            "경험과 언어"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "표현 불가의 두 번째 유형을 정보 전달로 해소되지 않는 체험적 앎으로 규정한다. 설명의 충분성과 무관하게 잔여가 남는다는 점에서 결여의 성격이 정보가 아님을 밝히고, 언어의 역할을 전달에서 유도와 인접 경험 환기로 전환한다.",
+          "aiAnalysisInputSha256": "3d93cac6107e1c95375c6d46937815933990c1dca3d264aef42f1de18d04c0e9",
+          "aiPublicGuideTopic": "설명으로 옮겨지지 않는 앎",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 말할 수 없는 것들",
+          "section": "2.2 겪어야 아는 것",
+          "primaryConcepts": [
+            "체험적 앎"
+          ],
+          "secondaryConcepts": [
+            "공유 경험"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공유 경험이 클수록 언어의 부담이 줄어 표현이 짧아진다는 관계를 제시한다. 그 짧음이 외부에서 내용 없음으로 오인되어 경험 장벽을 강화한다는 점과, 비공유자에게 전달할 때 내부 축약어를 재확장해야 한다는 실무를 다룬다.",
+          "aiAnalysisInputSha256": "8238803c7f30f496e7a38c7222c598e73ecaa1b3216e6b27e8ad06adac7d3a24",
+          "aiPublicGuideTopic": "겪은 사람끼리만 통하는 말",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 말할 수 없는 것들",
+          "section": "2.3 말할 수 없음의 네 종류",
+          "primaryConcepts": [
+            "표현 불가의 종류"
+          ],
+          "secondaryConcepts": [
+            "미명명",
+            "체험적 앎"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "표현 불가의 네 유형을 사분면으로 배치하고 각각을 도형 표시로 구분한 도표다. 하단 축에 해소 가능성의 정도를 두어 유형별로 다른 위치에 놓음으로써, 대응 방법이 유형 판별에서 갈린다는 점을 나타낸다.",
+          "aiAnalysisInputSha256": "5b72e6d798e31f4131fa9ec0183d4467de5a41230bd547335d3da7c1617ea4b0",
+          "aiPublicGuideTopic": "말할 수 없다는 말이 가리키는 네 가지 사태를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 말할 수 없는 것들",
+          "section": "2.4 말하면 달라지는 것",
+          "primaryConcepts": [
+            "말하기의 변형"
+          ],
+          "secondaryConcepts": [
+            "경험과 언어"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발화가 대상을 변형시키는 유형을 다루고 고백·미결 사안·최초 서술을 예로 든다. 언어화에 따른 고착이 조작 가능성을 제공한다는 이점과, 발화 시점 선택에 따라 얻는 것과 잃는 것이 달라진다는 점을 두 태도로 대비한다.",
+          "aiAnalysisInputSha256": "69340ec602b6ee6cdc6d21996f969549098540a6a589765989de683857b23b8a",
+          "aiPublicGuideTopic": "옮기는 동안 바뀌는 것들",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 말할 수 없는 것들",
+          "section": "2.4 말하면 달라지는 것",
+          "primaryConcepts": [
+            "말하기의 변형"
+          ],
+          "secondaryConcepts": [
+            "말의 절제"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "네 번째 유형을 능력이 아닌 선택에 의한 비발화로 규정하고 외부에서 다른 유형과 구별되지 않는다는 점을 지적한다. 이 구별 불가가 오해와 전용의 여지를 만든다는 문제를 제기하고, 자기 침묵의 유형을 스스로 기록해 두는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "d993d6ebcc8aa4216671dbbec8401ac1524eb69564401ff6227afe665e0d4b57",
+          "aiPublicGuideTopic": "네 번째 종류: 말하지 않기로 한 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 경계를 그리는 방법",
+          "section": "3.1 에둘러 가리키기",
+          "primaryConcepts": [
+            "우회 지시"
+          ],
+          "secondaryConcepts": [
+            "미명명"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "직접 지시가 불가능할 때의 우회 전략으로 위치 기술·기능 기술·배제법 셋을 제시한다. 각 방법이 청자에게 요구하는 작업의 차이를 설명하고, 배제법이 느리지만 왜곡이 적어 중요한 전달에 적합하다는 판단을 다룬다.",
+          "aiAnalysisInputSha256": "9ee83a7c694fe1e0ce679411d86007e5c78a53b3dc47cd1cf4c307d3a3aafc6f",
+          "aiPublicGuideTopic": "곧장 말할 수 없을 때 쓰는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 경계를 그리는 방법",
+          "section": "3.1 에둘러 가리키기",
+          "primaryConcepts": [
+            "우회 지시"
+          ],
+          "secondaryConcepts": [
+            "비유"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "우회 표현이 관용화되어 새 어휘로 정착하는 과정과 그 과정에서 지시 범위가 변형된다는 문제를 다룬다. 관용 표현을 원래 기술로 풀어 대조하는 방법을 제시하고, 표현의 고착이 해당 영역에 대한 이해의 정체를 나타낸다는 관점을 밝힌다.",
+          "aiAnalysisInputSha256": "2269d3beaf4cbaa076e6d4d71f493969b816de3697ad1fee7304b3084571ac54",
+          "aiPublicGuideTopic": "에두른 말이 굳어질 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 경계를 그리는 방법",
+          "section": "3.2 비유의 힘과 값",
+          "primaryConcepts": [
+            "비유"
+          ],
+          "secondaryConcepts": [
+            "우회 지시"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비유가 내용이 아니라 관계 구조를 전이한다는 점에서 작동 원리를 설명한다. 원천 영역의 부수 함의가 함께 전이되는 부작용을 지적하고, 비유의 적용 한계를 명시적으로 덧붙이는 실무와 그 부재가 낳는 후속 분쟁을 다룬다.",
+          "aiAnalysisInputSha256": "15433c33e31af7c5dbc3459edcb28e6208ffc6eba5bb04a40c4f40046f9337c3",
+          "aiPublicGuideTopic": "다른 것에 빗대어 말하기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 경계를 그리는 방법",
+          "section": "3.2 비유의 힘과 값",
+          "primaryConcepts": [
+            "비유"
+          ],
+          "secondaryConcepts": [
+            "언어 과신"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비유가 이해와 이해감을 함께 산출하며 후자가 전자 없이 발생할 수 있다는 점을 다룬다. 비유 밖 질문으로 실제 이해를 점검하는 방법과, 설명의 도입부와 종결부 중 어디에 배치하느냐에 따라 탐구가 열리거나 닫힌다는 차이를 제시한다.",
+          "aiAnalysisInputSha256": "ef8272cda17fcdf5274f5731d4725e11da3b04dd63841aac1734b275cdfdf72b",
+          "aiPublicGuideTopic": "비유가 설명을 대신할 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 경계를 그리는 방법",
+          "section": "3.3 함께 겪은 것에 기대기",
+          "primaryConcepts": [
+            "공유 경험"
+          ],
+          "secondaryConcepts": [
+            "체험적 앎"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "체험적 앎의 전달 방법을 청자의 유사 경험을 매개로 한 접근으로 한정하고, 그 방법이 청자 정보에 의존한다는 점을 설명한다. 부분적 중첩에서 시작해 차이를 소거해 가는 절차와, 그 작업이 일방적 설명이 아니라 대화를 요구한다는 조건을 제시한다.",
+          "aiAnalysisInputSha256": "ecb0d1f7a8efa4a0859b43b845cd2855aa0e2760bd486b3a546051ddbdf379d7",
+          "aiPublicGuideTopic": "겪음의 벽을 넘는 유일한 길",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 경계를 그리는 방법",
+          "section": "3.3 함께 겪은 것에 기대기",
+          "primaryConcepts": [
+            "공유 경험"
+          ],
+          "secondaryConcepts": [
+            "곁의 언어"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공유 경험이 전무한 경우 설명의 지속이 형식적 이해로 귀결된다는 문제를 지적한다. 전달 시도를 중단하고 전달 불가 사실을 공동 확인하는 대안을 제시하며, 그 확인이 청자의 발화 태도를 바꾼다는 점에서 언어의 마지막 기능으로 규정한다.",
+          "aiAnalysisInputSha256": "16339934cf5ebfd9acc2417faf9f8261dd0ef51d358276e2c43ae4362817643e",
+          "aiPublicGuideTopic": "겹치는 자리가 없을 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 경계를 그리는 방법",
+          "section": "3.4 새 말을 만들기",
+          "primaryConcepts": [
+            "조어"
+          ],
+          "secondaryConcepts": [
+            "미명명",
+            "우회 지시"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "신조어의 성립 조건을 반복된 지시 필요와 공동 인지에서 찾고, 명명이 자리 형성에 선행하면 실패한다는 순서 문제를 다룬다. 지시 대상이 없는 용어의 식별 방법과, 성공한 명명이 인접 어휘를 유도한다는 효과를 제시한다.",
+          "aiAnalysisInputSha256": "1f0e27ce79befa943b7f4852f2166119292cfcd45f1a594a93bc983c48c3de41",
+          "aiPublicGuideTopic": "이름을 새로 세우는 조건",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "4장 침묵",
+          "section": "4.1 말하지 않기와 말하지 못하기",
+          "primaryConcepts": [
+            "침묵의 구분"
+          ],
+          "secondaryConcepts": [
+            "말의 기능"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "침묵을 무발화·표현 실패·의도적 비발화·발화 봉쇄 네 사태로 구분하고 외형상 구별되지 않는다는 점을 지적한다. 침묵이 의미를 갖기 위한 조건으로 문맥과 공유된 기대를 제시하고, 침묵을 통한 전달의 검증 불가능성을 다룬다.",
+          "aiAnalysisInputSha256": "4396903039d9dad179757321f1c71b876c1c4697f66899e900e8c6ff057f753f",
+          "aiPublicGuideTopic": "조용함이 가리키는 여러 사태",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 침묵",
+          "section": "4.1 말하지 않기와 말하지 못하기",
+          "primaryConcepts": [
+            "침묵의 구분"
+          ],
+          "secondaryConcepts": [
+            "강요된 침묵"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "침묵의 분포를 개인 선택이 아니라 발언 기회 배분의 결과로 읽는 관점을 제시한다. 반복된 배제가 자발적 선택으로 내면화된다는 점을 지적하고, 침묵 해석 시 개인이 아니라 자리의 구조를 함께 검토해야 한다는 절차를 다룬다.",
+          "aiAnalysisInputSha256": "ebe749f8e341b03ef8082d5d2f21dd4dff2d4cfdd7ed23c98ab7bd28c817753a",
+          "aiPublicGuideTopic": "누가 조용한지를 함께 보기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 침묵",
+          "section": "4.2 침묵이 뜻을 갖는 조건",
+          "primaryConcepts": [
+            "침묵의 의미"
+          ],
+          "secondaryConcepts": [
+            "침묵의 구분",
+            "말의 절제"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 비발화가 문맥의 유무에 따라 의미를 갖거나 갖지 못하는 상황을 두 줄로 대비한 도표다. 주변 발화가 있는 경우와 전부 비어 있는 경우를 나란히 두어, 침묵의 의미가 대조 배경에 의존한다는 점을 나타낸다.",
+          "aiAnalysisInputSha256": "8d364eb9a774a71bc92c1ad191ea51158c600910868dfcc678707fa16ba63f20",
+          "aiPublicGuideTopic": "같은 조용함이 다르게 읽히는 조건을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 침묵",
+          "section": "4.3 말을 아끼는 자리",
+          "primaryConcepts": [
+            "말의 절제"
+          ],
+          "secondaryConcepts": [
+            "침묵의 구분"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "의도적 절제가 필요한 상황으로 미확정 사안의 고착 방지와 타인의 발화 공간 보존을 제시한다. 대리 발화가 상대의 언어 형성을 중단시킨다는 점을 지적하고, 절제와 회피를 구분하는 기준으로 말해야 할 내용의 존재 여부를 든다.",
+          "aiAnalysisInputSha256": "42b2908f607eda2080d2955863fc26567b1f018a55404c03ec29de56a231aaf8",
+          "aiPublicGuideTopic": "말하지 않는 편이 나은 경우",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 침묵",
+          "section": "4.3 말을 아끼는 자리",
+          "primaryConcepts": [
+            "말의 절제"
+          ],
+          "secondaryConcepts": [
+            "표현 불가 주장"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "절제와 회피의 판별 기준으로 침묵의 수혜자를 제시하고 그 판단이 자기 편향에 취약하다는 점을 지적한다. 발화 시 곤란해지는 주체를 묻는 점검 질문과, 양쪽 모두 해당할 때 기한을 설정해 회피로 굳는 것을 막는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "7d43ba082b287e6ae8442c018df79bcc39c84803ca3f77d2ac588296facba24b",
+          "aiPublicGuideTopic": "아끼는 것과 피하는 것의 경계",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 침묵",
+          "section": "4.4 침묵이 억압일 때",
+          "primaryConcepts": [
+            "강요된 침묵"
+          ],
+          "secondaryConcepts": [
+            "침묵의 구분"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발화 억제가 명시적 금지보다 발언 기회의 미배정 형태로 이루어진다는 점을 다룬다. 중단·화제 전환·부적절 선언이라는 세 수법을 제시하고, 그 결과가 자발적 침묵으로 보이는 문제와 침묵 분포를 집계해 구조를 드러내는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "64afe983530e95ee184e21b16743e3fa1946d7a7c478d655079787ebba8d0b53",
+          "aiPublicGuideTopic": "말할 자리가 주어지지 않는 경우",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 침묵",
+          "section": "4.4 침묵이 억압일 때",
+          "primaryConcepts": [
+            "강요된 침묵"
+          ],
+          "secondaryConcepts": [
+            "곁의 언어"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발언 기회를 실제로 제공하는 방법으로 침묵 시간의 감내, 허용 범위의 사전 고지, 발언의 재진술 셋을 제시한다. 지명이 오히려 억제로 작용한다는 점과, 정제된 발언만 수용하는 규범이 참여자를 선별한다는 문제를 다룬다.",
+          "aiAnalysisInputSha256": "f6a65d9a5c1e49edef05795bbeacb0cc76418b9886e97795966b0a7868a3de54",
+          "aiPublicGuideTopic": "말할 자리를 만드는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "5장 한계를 잘못 쓰는 방식",
+          "section": "5.1 말할 수 없다는 말",
+          "primaryConcepts": [
+            "표현 불가 주장"
+          ],
+          "secondaryConcepts": [
+            "체험적 앎"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "표현 불가 주장이 참인 경우가 많다는 사실이 그 주장을 검증 회피에 사용할 여지를 만든다는 점을 다룬다. 유형 질문을 통해 실질을 확인하는 방법을 제시하고, 유형 특정에 실패하는 되풀이를 논의 종결의 신호로 규정한다.",
+          "aiAnalysisInputSha256": "635d44025eaa5181ea43017e75fb3daa08700bce8c0213cfca91f551ada2ba54",
+          "aiPublicGuideTopic": "한계를 방패로 쓰는 방식",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "5장 한계를 잘못 쓰는 방식",
+          "section": "5.1 말할 수 없다는 말",
+          "primaryConcepts": [
+            "표현 불가 주장"
+          ],
+          "secondaryConcepts": [
+            "공유 경험"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "체험 우선 주장이 인식적 한계 표시와 발언권 제한이라는 두 기능으로 갈린다는 점을 다룬다. 화자가 자기 앎의 한계를 함께 인정하는지 여부를 판별 기준으로 제시하고, 동일한 문장이 반대 방향으로 작동할 수 있음을 밝힌다.",
+          "aiAnalysisInputSha256": "cec3dd3745c9953ff12e593f68ea23dd9919e15f7f99358b04327813eef7573b",
+          "aiPublicGuideTopic": "겪어 봐야 안다는 말의 두 얼굴",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 한계를 잘못 쓰는 방식",
+          "section": "5.2 흐린 말의 편리함",
+          "primaryConcepts": [
+            "모호함의 이용"
+          ],
+          "secondaryConcepts": [
+            "비유"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "모호성이 반박 가능성을 낮춘다는 성질과 그것이 전략적으로 활용되는 상황을 다룬다. 미확정 사안의 정직한 표현과 회피적 모호함을 구분하고, 참·거짓 조건을 구성해 보는 방법으로 주장 여부를 판별하는 절차를 제시한다.",
+          "aiAnalysisInputSha256": "4f57e1d70a5166f0b78572cb276195284f96303f57129bab3619b9c1f61887b1",
+          "aiPublicGuideTopic": "일부러 흐리게 말하는 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 한계를 잘못 쓰는 방식",
+          "section": "5.2 흐린 말의 편리함",
+          "primaryConcepts": [
+            "모호함의 이용"
+          ],
+          "secondaryConcepts": [
+            "조어"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "신조어가 지시 대상의 존재를 가정하게 만들어 설명 종결의 인상을 준다는 문제를 다룬다. 순환적으로만 정의되는 용어의 특징과, 해당 용어 없이 재서술하는 시험으로 축약어·신영역 개방·공허를 구분하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "672235bd969a7da866386914f37cb1bb7321ab88985d3f1ad781f84c9e3292d1",
+          "aiPublicGuideTopic": "새 말이 흐림을 감출 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 한계를 잘못 쓰는 방식",
+          "section": "5.3 말로 다 됐다는 착각",
+          "primaryConcepts": [
+            "언어 과신"
+          ],
+          "secondaryConcepts": [
+            "말의 기능"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "언어의 실행력을 과대평가해 발화를 문제 해결과 동일시하는 실패를 다룬다. 발화가 실제로 산출하는 효과가 존재하기에 이 착각이 발생한다는 점을 지적하고, 발화 이후 변화를 확인해 실효를 점검하는 습관을 제시한다.",
+          "aiAnalysisInputSha256": "3ea60255584730ab4b904fb85284e6c8dacf2c049ba7e263d7d87af5b95a9a75",
+          "aiPublicGuideTopic": "말한 것과 이루어진 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 한계를 잘못 쓰는 방식",
+          "section": "5.3 말로 다 됐다는 착각",
+          "primaryConcepts": [
+            "언어 과신"
+          ],
+          "secondaryConcepts": [
+            "사과의 말"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정밀한 언어가 상대의 자기 이해를 조기 확정시키는 부작용을 다룬다. 의도적 여지 남김을 회피적 모호성과 구분하고, 청자가 그 여백을 채울 수 있는 형태인지 여부를 판별 기준으로 제시한다.",
+          "aiAnalysisInputSha256": "4dba3be3ade7e1d259fff0c23e858d2e11f9a5b27f459894e4d1f832a812db25",
+          "aiPublicGuideTopic": "정확한 말이 늘 나은 것은 아닐 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 한계를 잘못 쓰는 방식",
+          "section": "5.4 두 가지 실패",
+          "primaryConcepts": [
+            "말하기의 실패"
+          ],
+          "secondaryConcepts": [
+            "표현 불가 주장",
+            "언어 과신"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "언어의 역량에 대한 과소평가와 과대평가를 하나의 축 양 끝에 배치한 도표다. 두 극단이 모두 사후 확인을 생략한다는 점에서 같은 귀결로 수렴하는 구조를 화살표로 나타내고, 중간 구간의 대응을 별도로 표시한다.",
+          "aiAnalysisInputSha256": "3ad01667d8115734ee1e319d4ef01b4c725b4241564f716b440a1e4c96431ba9",
+          "aiPublicGuideTopic": "말을 너무 믿는 실패와 너무 믿지 않는 실패를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "6장 세 자리의 말",
+          "section": "6.1 아픈 사람 곁에서",
+          "primaryConcepts": [
+            "곁의 언어"
+          ],
+          "secondaryConcepts": [
+            "체험적 앎",
+            "공유 경험"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "체험 장벽 앞에서 발화 목적을 위로·이해 표명·동행 표명으로 구분하고 목적과 형식의 불일치가 전달을 막는 과정을 사례로 보인다. 이해 불가의 선언이 후속 발화의 신뢰 조건이 된다는 점을 3장의 논의와 연결해 제시한다.",
+          "aiAnalysisInputSha256": "684562e27a6adc706eb35806033ced0982002f4c64a55af3cdfb81c18cb02d95",
+          "aiPublicGuideTopic": "겪지 않은 사람이 할 수 있는 말",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "6장 세 자리의 말",
+          "section": "6.1 아픈 사람 곁에서",
+          "primaryConcepts": [
+            "곁의 언어"
+          ],
+          "secondaryConcepts": [
+            "말의 절제"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "질문이 응답자에게 부과하는 작업량을 기준으로 발화 형식을 선택하는 방법을 사례로 보인다. 질문 대신 응답을 요구하지 않는 전달로 전환하는 방식과, 그것이 앞 장의 발화 공간 보존과 같은 구조라는 점을 제시한다.",
+          "aiAnalysisInputSha256": "7050a980fc5d3041ae720c7277d39685336036d03f557e328127c902afc271b7",
+          "aiPublicGuideTopic": "물어야 할 것과 묻지 말아야 할 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            37
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 세 자리의 말",
+          "section": "6.1 아픈 사람 곁에서",
+          "primaryConcepts": [
+            "곁의 언어"
+          ],
+          "secondaryConcepts": [
+            "침묵의 의미"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "체험 전달이 불가능한 상황에서 발화가 동석을 가능하게 하는 기능을 수행한다는 점을 사례로 보인다. 내용 전달이 아닌 관계 유지의 역할을 1장의 세 기능 중 행위 유발과 연결하고, 그것이 해당 상황에서 언어의 최대 기여임을 제시한다.",
+          "aiAnalysisInputSha256": "44994804c39c4ee7ed8e152e9e6979b065719e3212b43bbe889100fbc8a61ede",
+          "aiPublicGuideTopic": "함께 있는 시간이 하는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 세 자리의 말",
+          "section": "6.2 가르치는 자리",
+          "primaryConcepts": [
+            "설명의 전달"
+          ],
+          "secondaryConcepts": [
+            "비유",
+            "언어 과신"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "설명의 전달 여부를 질문 유무로 판단할 수 없다는 점을 사례로 보인다. 질문 부재가 이해가 아니라 문제 인식 부재에서 올 수 있다는 점을 침묵 논의와 연결하고, 재설명 요구를 통한 확인 방법과 그 비용을 다룬다.",
+          "aiAnalysisInputSha256": "6f2d35d4fdef34b785c67667b174a1dbb7724b4ba107375c59c3c9ca8c45f45d",
+          "aiPublicGuideTopic": "설명이 통했는지 확인하는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 세 자리의 말",
+          "section": "6.2 가르치는 자리",
+          "primaryConcepts": [
+            "설명의 전달"
+          ],
+          "secondaryConcepts": [
+            "공유 경험"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "설명의 출발점을 청자의 현재 실행에 맞추면 전달량이 줄어든다는 점을 사례로 보인다. 사전 조사라는 선행 작업의 필요와 비용 대비 효과를 제시하고, 사전 질문이 청자의 참여도에도 영향을 준다는 부수 효과를 다룬다.",
+          "aiAnalysisInputSha256": "b0aa6664191e55b3c7a5856e961ce8beab91b21f16e8de9f2be5f485e8a0241d",
+          "aiPublicGuideTopic": "듣는 사람의 자리에서 시작하기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 세 자리의 말",
+          "section": "6.3 사과하는 자리",
+          "primaryConcepts": [
+            "사과의 말"
+          ],
+          "secondaryConcepts": [
+            "언어 과신",
+            "말하기의 변형"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사과 발화의 목적을 응답 요구와 인식 표명으로 구분하고 그 선택이 상대에게 부과하는 작업을 바꾼다는 점을 사례로 보인다. 발화가 피해를 소거하지 못한다는 한계를 인정하면서 그 한계의 인식 자체가 전달된다는 결과를 다룬다.",
+          "aiAnalysisInputSha256": "63bfdf00928329b291ff0b1a4012c629d9ece4d2bd65eaff3bb417fecde7c544",
+          "aiPublicGuideTopic": "말로 무엇이 되고 무엇이 안 되는가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 세 자리의 말",
+          "section": "6.3 사과하는 자리",
+          "primaryConcepts": [
+            "사과의 말"
+          ],
+          "secondaryConcepts": [
+            "말의 절제"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사과의 비발화 선택을 다루고 그 판단이 상대 보호인지 자기 회피인지 가리는 기준을 앞 장의 질문으로 적용한다. 비발화 결정을 기록하고 재검토 조건을 남기는 절차와, 그 결정이 상대에게 전달되지 않는다는 비대칭을 제시한다.",
+          "aiAnalysisInputSha256": "e2c23c58eaa1c75272458ce5d9343eb484a29c043b7636d706be147136a197a4",
+          "aiPublicGuideTopic": "말하지 않기로 한 사과",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "7장 말과 침묵을 함께 쓰기",
+          "section": "7.1 경계에서 하는 일",
+          "primaryConcepts": [
+            "말의 기능"
+          ],
+          "secondaryConcepts": [
+            "표현 불가의 종류",
+            "우회 지시"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "언어의 세 기능과 표현 불가의 네 유형, 유형별 대응 방법을 하나로 묶어 책 전체를 요약한다. 네 대응이 모두 언어의 포기가 아니라 기능의 재배치라는 점을 밝히고, 경계에서의 과제를 자기 행위의 파악으로 규정한다.",
+          "aiAnalysisInputSha256": "d9c25b7dd1fad1e65dbc39d2c2dcc0f9d0127d9a00ad8c91274ac95585a5fcb6",
+          "aiPublicGuideTopic": "이 책이 지나온 자리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "what-language-reaches"
+          ]
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "7장 말과 침묵을 함께 쓰기",
+          "section": "7.1 경계에서 하는 일",
+          "primaryConcepts": [
+            "말의 기능"
+          ],
+          "secondaryConcepts": [
+            "침묵의 의미",
+            "강요된 침묵"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "침묵의 네 유형이 외형상 구분되지 않아 오해와 전용을 낳는다는 점을 정리한다. 해석 시 문맥과 발언 기회 분포를 함께 보는 절차를 제시하고, 자기 침묵의 유형을 기록해 자기 이해의 오류를 줄이는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "7366325e8cd60e27084e7218c85bc6979472ab714c6255a9514250b583e3e238",
+          "aiPublicGuideTopic": "침묵을 다루는 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 말과 침묵을 함께 쓰기",
+          "section": "7.1 경계에서 하는 일",
+          "primaryConcepts": [
+            "말의 기능"
+          ],
+          "secondaryConcepts": [
+            "말하기의 실패",
+            "모호함의 이용"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "언어의 한계 인식이 봉쇄와 망각 두 방향으로 왜곡되는 양상을 정리하고 두 실패가 사후 확인의 부재라는 공통점을 갖는다는 점을 제시한다. 확인을 실질적 습관으로 두는 것이 언어의 기능을 정확히 파악하게 한다는 결론을 밝힌다.",
+          "aiAnalysisInputSha256": "d57129adb88fb69e6213ae24860bd423faaf0af00800a11b8e6cbdf04b1fe161",
+          "aiPublicGuideTopic": "이 태도가 어긋나는 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 말과 침묵을 함께 쓰기",
+          "section": "7.2 말을 늘리는 일",
+          "primaryConcepts": [
+            "언어의 확장"
+          ],
+          "secondaryConcepts": [
+            "조어",
+            "미명명"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "언어의 경계가 가변적이며 명명과 관용화로 확장된다는 점을 다룬다. 확장이 공동의 반복 지시를 요구해 개인 기여가 제한적이라는 점을 인정하면서, 미표현 항목을 기록해 두는 개인 실천이 후속 확장의 출발점이 된다는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "93a9dd687aeeeb87ea8003fbc522a20b9dbb5b2b5fe64e85a7269ba3017afa83",
+          "aiPublicGuideTopic": "말할 수 있는 자리를 넓히기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 말과 침묵을 함께 쓰기",
+          "section": "7.2 말을 늘리는 일",
+          "primaryConcepts": [
+            "언어의 확장"
+          ],
+          "secondaryConcepts": [
+            "공유 경험"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "체험 기반 표현 불가의 경계가 어휘가 아니라 경험 공유의 확대로 이동한다는 점을 제시한다. 내부 축약어의 외부 번역이 필요하다는 점과 그 작업의 부담 배분을 다루며, 비경험자가 질문을 통해 옮기는 방식의 이점을 밝힌다.",
+          "aiAnalysisInputSha256": "cc653f6e48e190923cd037d7fea5c5cc542daa7b1630d281a58a5719ac1ede79",
+          "aiPublicGuideTopic": "겪음을 나누는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            47
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 말과 침묵을 함께 쓰기",
+          "section": "7.2 말을 늘리는 일",
+          "primaryConcepts": [
+            "언어의 확장"
+          ],
+          "secondaryConcepts": [
+            "말의 절제",
+            "곁의 언어"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "언어 확장과 의도적 절제라는 두 결론이 대립하지 않고 자기 행위의 파악이라는 공통 조건 위에 선다는 점을 제시한다. 발화와 침묵의 우열을 정하지 않고 현재 사용 중인 방식을 인지하는 것을 실천적 결론으로 삼아 책을 맺는다.",
+          "aiAnalysisInputSha256": "fbcf4a76574d148379cb182dcfbad143d632b9ebe507afd75462b80291d1ecf5",
+          "aiPublicGuideTopic": "말하지 않는 자리를 남겨 두기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 61,
       "title": "형태와 구도: 화면을 구성하는 원리",
       "pdfPath": "pdfs/book-061.pdf",
