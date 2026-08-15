@@ -119,6 +119,79 @@
       "allowedAlternativePageNumbers": []
     },
     {
+      "caseId": "case-book-012",
+      "bookId": 12,
+      "purpose": "이 책을 사지는 않았고, 집에서 늘 보던 창밖이 계절에 따라 달라지는 것을 무엇을 보고 알아차릴 수 있는지 알고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "창이라는 자리",
+        "되풀이해 보기",
+        "작은 어긋남",
+        "계절의 겹침",
+        "기다림"
+      ],
+      "helpfulConcepts": [
+        "창틀의 테두리",
+        "견주기",
+        "빛의 속임",
+        "어긋나는 차례"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 24
+        }
+      ],
+      "irrelevantPageNumbers": [
+        31,
+        32,
+        33,
+        34
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          45
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        7,
+        9,
+        16,
+        24
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        4,
+        5,
+        8,
+        10,
+        12,
+        14,
+        17,
+        19,
+        22,
+        38,
+        43
+      ]
+    },
+    {
       "caseId": "case-book-021",
       "bookId": 21,
       "purpose": "이 책을 사지는 않았고, 별빛에서 성분과 움직이는 속도를 어떻게 알아내는지 큰 틀만 보고 싶다",
