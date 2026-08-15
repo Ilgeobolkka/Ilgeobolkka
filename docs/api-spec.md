@@ -522,6 +522,8 @@ HTML·JSON 경로를 등록하지 않으며 기존 도서·뷰어·결제 기능
 - `bookId`, `category`, `coverImagePath`, `title`, `author`, `description`
 - `totalPageCount`, `bookPrice`
 - 로그인하지 않은 경우 `owned`는 `null`, 로그인한 경우 소장 여부는 `true` 또는 `false`
+- AI 경로 feature가 활성화되면 지원 여부 `aiRouteSupported`는 `true` 또는 `false`,
+  비활성화되면 응답에서 생략
 
 `bookPrice`는 원화 단위의 0보다 큰 정수입니다. `coverImagePath`의 문자열 값은 공개 표지 자산의
 same-origin 경로이며 원본 PDF 경로나 비공개 페이지 이미지 저장소 주소가 아닙니다. 상세 조회 시 인증된
