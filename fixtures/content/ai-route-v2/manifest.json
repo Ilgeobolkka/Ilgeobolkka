@@ -26028,6 +26028,1051 @@
       ]
     },
     {
+      "bookId": 53,
+      "title": "기억과 인격 동일성",
+      "pdfPath": "pdfs/book-053.pdf",
+      "pdfSha256": "af6b806cf27ec667670bc425f10a80f0d1b3b68094aff69119fca86c89c0f18d",
+      "totalPageCount": 49,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 나는 어제의 나인가",
+          "section": "1.1 같은 사람이라는 말",
+          "primaryConcepts": [
+            "인격 동일성"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인격의 시간적 동일성 물음을 도입하고 사물의 동일성과 달리 약속·부채·과오의 귀속이 이 판정에 걸려 있다는 점을 제시한다. 물음이 실천적 함의를 갖는 이유를 밝히고 기억을 기준으로 삼을 수 있는지를 책 전체의 과제로 놓는다.",
+          "aiAnalysisInputSha256": "14d03cc9dd378fe33f18ef305853cd91411869aca59de1bab89327990f09aa21",
+          "aiPublicGuideTopic": "같다는 말이 사람에게 쓰일 때",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "same-person-question"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 나는 어제의 나인가",
+          "section": "1.1 같은 사람이라는 말",
+          "primaryConcepts": [
+            "인격 동일성"
+          ],
+          "secondaryConcepts": [
+            "동일성의 기준"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일성 판정이 요구되는 맥락을 식별·귀속·성향 평가 셋으로 나누고 각각 다른 기준을 사용한다는 점을 다룬다. 성향 변화와 귀속 판정을 구분하지 않으면 변화 사실만으로 책임이 소멸한다는 문제를 지적하며 이 책의 대상을 귀속으로 한정한다.",
+          "aiAnalysisInputSha256": "17eddfbb86f65c771e9ad5bb0d14b52766afda83181d931fda41dc15185651bd",
+          "aiPublicGuideTopic": "묻는 사람에 따라 답이 달라지는 물음",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 나는 어제의 나인가",
+          "section": "1.2 무엇이 이어지는가",
+          "primaryConcepts": [
+            "연속성"
+          ],
+          "secondaryConcepts": [
+            "인격 동일성"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연속성을 불변 실체의 지속과 인접 단계 간 중첩의 연쇄로 구분하고, 후자가 인격에 적합한 모형이라는 점을 제시한다. 연쇄 모형에서 양 끝단의 유사성이 요구되지 않는다는 이점과, 단절과 분기라는 두 취약점을 뒤 장으로 연결한다.",
+          "aiAnalysisInputSha256": "5fe75b10c337ae919be530398c052b387fbdbe66c218257094dad4446673359f",
+          "aiPublicGuideTopic": "이어짐이라는 말의 두 가지 모양",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 나는 어제의 나인가",
+          "section": "1.2 무엇이 이어지는가",
+          "primaryConcepts": [
+            "연속성"
+          ],
+          "secondaryConcepts": [
+            "점진적 변화"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "중첩의 정도에 명확한 경계가 없다는 점을 인정하고, 경계의 불명확성이 구분의 부재를 함의하지 않는다는 논지를 유비로 제시한다. 판정을 이분법이 아니라 정도의 문제로 다루겠다는 이 책의 접근을 밝힌다.",
+          "aiAnalysisInputSha256": "00eeaf2acaca9bc433c639a104fcaadcade0ba3250cbce91d5bed3654d6ab4ef",
+          "aiPublicGuideTopic": "얼마나 겹쳐야 이어진 것인가",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 나는 어제의 나인가",
+          "section": "1.3 몸과 기억",
+          "primaryConcepts": [
+            "동일성의 기준"
+          ],
+          "secondaryConcepts": [
+            "연속성"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일성 판정의 척도로 신체·기억·성향 셋을 제시하고 평소에는 일치하지만 특정 상황에서 갈린다는 점을 다룬다. 척도 선택이 무의식적으로 이루어진다는 점을 지적하고, 우열 판정 대신 각 척도의 적용 범위를 검토하는 방식을 택한다.",
+          "aiAnalysisInputSha256": "42e00dec4f4c2dd70f4bbc6b768c1f7dda22f2969153092f1681c8c008270028",
+          "aiPublicGuideTopic": "무엇을 자로 삼을 것인가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 나는 어제의 나인가",
+          "section": "1.3 몸과 기억",
+          "primaryConcepts": [
+            "동일성의 기준"
+          ],
+          "secondaryConcepts": [
+            "기억의 기능"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "신체 기준의 실용적 이점과 설명력의 한계를 대비한다. 신체 연속성이 규범적 귀속을 정당화하지 못하는 반면 기억은 연속성을 당사자의 것으로 만든다는 차이를 제시하고, 기억 기준을 채택하되 그 취약성을 뒤 장에서 다룬다고 예고한다.",
+          "aiAnalysisInputSha256": "c5c13102277baf74620d0cdec0b4a6b66c07839c1ba6490b58492c8117c610bc",
+          "aiPublicGuideTopic": "몸이 자가 될 때와 되지 못할 때",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 나는 어제의 나인가",
+          "section": "1.4 같음을 재는 세 자",
+          "primaryConcepts": [
+            "동일성의 척도"
+          ],
+          "secondaryConcepts": [
+            "동일성의 기준",
+            "연속성"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "신체·기억·성향 세 척도를 평행한 띠로 그려 일치 구간과 분기 구간을 대비한 도표다. 분기 구간에서 각 척도가 서로 다른 판정을 내는 모습을 끊김과 색의 옅어짐으로 나타내, 척도 선택이 곧 판정이라는 점을 보인다.",
+          "aiAnalysisInputSha256": "868020c83fe478f71fb2baef72fc042f2b0aac20a342bb52df88218198acecbe",
+          "aiPublicGuideTopic": "몸·기억·성향 세 자가 갈리는 자리를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 기억이라는 증거",
+          "section": "2.1 기억은 무엇을 하는가",
+          "primaryConcepts": [
+            "기억의 기능"
+          ],
+          "secondaryConcepts": [
+            "인격 동일성"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기억을 저장이 아니라 인출 시점의 재구성으로 규정하고, 잔존 조각과 현재의 해석이 결합한다는 구조를 설명한다. 사실 정보와 자기 귀속 표시라는 두 기능을 구분하고 후자가 동일성 판정에서 갖는 역할을 제시한다.",
+          "aiAnalysisInputSha256": "4a5b69cd65848cf217b060362f5cda7f0f0b2a9072341598e0f24328db98479f",
+          "aiPublicGuideTopic": "지난 일을 붙들어 두는 일의 구조",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 기억이라는 증거",
+          "section": "2.1 기억은 무엇을 하는가",
+          "primaryConcepts": [
+            "기억의 기능"
+          ],
+          "secondaryConcepts": [
+            "기록과 기억"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록과 기억의 차이를 보존 시점과 재구성 여부에서 설명하고, 기록이 더 정확할 수 있음에도 동일성 척도가 되지 못하는 이유를 자기 귀속 표시의 부재에서 찾는다. 자기 기록을 기억하지 못하는 사례로 둘의 분리를 보인다.",
+          "aiAnalysisInputSha256": "585ffdaf0f1ec92160300641ed6600cb95d836d120bc20885e5a82df96bd9193",
+          "aiPublicGuideTopic": "기억과 기록의 차이",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 기억이라는 증거",
+          "section": "2.2 기억은 다시 쓰인다",
+          "primaryConcepts": [
+            "재구성"
+          ],
+          "secondaryConcepts": [
+            "기억의 기능"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인출 반복이 기억을 정합적으로 다듬는다는 점과 그 수정이 표시 없이 이루어져 확신만 커진다는 문제를 다룬다. 구술이 재구성을 촉진한다는 점과, 즉시 기록해 두어 변화 방향을 확인하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "38d9d9d38eb96d8f535429004afe95cc38e21f4e546a89611acca3ebf492876b",
+          "aiPublicGuideTopic": "꺼낼 때마다 조금씩 달라지는 이유",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 기억이라는 증거",
+          "section": "2.2 기억은 다시 쓰인다",
+          "primaryConcepts": [
+            "재구성"
+          ],
+          "secondaryConcepts": [
+            "오기억"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기억 수정이 현재의 자기 이해 방향으로 일어난다는 점과 그로 인해 척도가 대상에 의해 변형되는 순환을 지적한다. 사건 조각과 해석 층을 구분해 전자의 상대적 안정성을 근거로 기억의 제한적 사용을 정당화한다.",
+          "aiAnalysisInputSha256": "9d28e4b3853e3d13027c7fac4f3f4ab8ab31a774ef4d2bb85499223d556d0ffa",
+          "aiPublicGuideTopic": "지금이 그때를 고치는 방식",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 기억이라는 증거",
+          "section": "2.3 기억이 바뀌는 자리",
+          "primaryConcepts": [
+            "기억의 변형"
+          ],
+          "secondaryConcepts": [
+            "재구성",
+            "오기억"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 사건 조각이 인출 시점마다 다르게 결합되는 과정을 세 단계로 나란히 그린 도표다. 회차가 늘수록 보충된 조각이 추가되고 결합 형태가 달라지는 모습으로, 변형이 조각이 아니라 결합 방식에서 일어난다는 점을 나타낸다.",
+          "aiAnalysisInputSha256": "79f57773d78d20cbcc328e79b7ae257153e0b853a03af4625f2a6905ef8bf9c4",
+          "aiPublicGuideTopic": "기억이 꺼내질 때마다 다시 쓰이는 과정을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 기억이라는 증거",
+          "section": "2.4 틀린 기억과 거짓말",
+          "primaryConcepts": [
+            "오기억"
+          ],
+          "secondaryConcepts": [
+            "재구성"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "허위 기억이 외부 이야기나 이미지에서 유래해 자기 경험으로 편입되는 과정을 다루고, 거짓말과 달리 당사자에게 구분되지 않는다는 점을 지적한다. 선명도가 진위의 근거가 되지 못한다는 결론과 외부 자료 대조라는 대응을 제시한다.",
+          "aiAnalysisInputSha256": "e4e72ee4ddf78483c5ae639c3bcd77ecd2436550066aa63b67f0a0b8f395e120",
+          "aiPublicGuideTopic": "없던 일을 기억하는 경우",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 기억이라는 증거",
+          "section": "2.4 틀린 기억과 거짓말",
+          "primaryConcepts": [
+            "오기억"
+          ],
+          "secondaryConcepts": [
+            "망각과 귀속"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "허위 기억이 매개한 연속성의 지위를 두 입장으로 나누어 검토한다. 사실 조건을 요구하는 입장과 자기 귀속만으로 충분하다는 입장의 각 난점을 제시하고, 자기 이해와 책임 귀속이라는 맥락에 따라 다른 기준을 적용하는 절충을 다룬다.",
+          "aiAnalysisInputSha256": "1006fc7f115b6f22a0bc04bb3867db92dbe4eea0a9c44f3c8ecdfd7818e7d878",
+          "aiPublicGuideTopic": "틀린 기억으로 이어진 사람",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 이어짐과 끊김",
+          "section": "3.1 사슬로 이어진 나",
+          "primaryConcepts": [
+            "기억의 사슬"
+          ],
+          "secondaryConcepts": [
+            "기억의 기능",
+            "연속성"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기억의 연쇄가 직접 기억의 부재를 보완해 원거리 시점 간 동일성을 확보하는 방식을 설명한다. 망각이 즉시 동일성 상실로 이어지지 않는다는 이점과, 연쇄 자체를 사후 검증할 수 없다는 한계를 함께 제시한다.",
+          "aiAnalysisInputSha256": "250e9397ec0af37b7ca9a653ceb20ff80c92adf05c7a870e0c948cb3c7ea00ba",
+          "aiPublicGuideTopic": "직접 기억하지 않아도 이어지는 방식",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 이어짐과 끊김",
+          "section": "3.1 사슬로 이어진 나",
+          "primaryConcepts": [
+            "기억의 사슬"
+          ],
+          "secondaryConcepts": [
+            "기준의 순환"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연쇄의 단위 설정이 임의적이며 그 선택이 판정 결과를 좌우한다는 점을 지적한다. 연쇄 모형이 판정을 산출하는 장치가 아니라 판정이 요구되는 지점을 지시하는 도구라는 관점을 제시하고 단절 문제로 연결한다.",
+          "aiAnalysisInputSha256": "960536fbd333bf8a515d08f7ce7a3a51d7c6f1526b018b166e02c62eddad85bb",
+          "aiPublicGuideTopic": "사슬의 고리를 세는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 이어짐과 끊김",
+          "section": "3.2 끊긴 자리",
+          "primaryConcepts": [
+            "단절"
+          ],
+          "secondaryConcepts": [
+            "기억의 사슬"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연속성 단절의 세 유형을 기억 상실·귀속 표시 결여·점진적 이질화로 구분하고 각각의 구조를 설명한다. 첫 유형에서 비기억적 경로가 연결을 보완한다는 점과, 세 번째 유형에서 동일성 인정과 이질감이 병존하는 현상을 다룬다.",
+          "aiAnalysisInputSha256": "2911cd1336732e64442bd53176e759b08881be4449be9c4f7c74d3c30b7b3af1",
+          "aiPublicGuideTopic": "이어짐이 끊어지는 여러 모양",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 이어짐과 끊김",
+          "section": "3.2 끊긴 자리",
+          "primaryConcepts": [
+            "단절"
+          ],
+          "secondaryConcepts": [
+            "책임의 이어짐"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단절 이후에도 존속하는 규범적 결속을 기억 외부의 근거에서 설명한다. 당사자 관점과 외부 관점의 판정이 상충할 때 사회가 신체·신원 기준을 유지하면서 정상 참작으로 조정한다는 실제 처리 방식을 제시한다.",
+          "aiAnalysisInputSha256": "b1f36f62bf9a848060938b8b02629b7a9c53c67d4ce5cb8caee19dbb7592b3d3",
+          "aiPublicGuideTopic": "끊긴 자리에서 무엇이 남는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 이어짐과 끊김",
+          "section": "3.3 겹쳐지지 않는 두 시점",
+          "primaryConcepts": [
+            "시점의 차이"
+          ],
+          "secondaryConcepts": [
+            "연속성"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "과거 자아에 대한 이해 불가 감각을 기억의 결손이 아니라 정보 시점의 차이로 설명한다. 사후 정보로 과거 선택을 평가할 때 생기는 왜곡과, 당시 기록만으로 재구성해 이해를 회복하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "9871caf031714fb4c46392db90269c8679bd27c3505b4be812b1d96e37a63b73",
+          "aiPublicGuideTopic": "그때의 나와 지금의 내가 다른 것을 원할 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 이어짐과 끊김",
+          "section": "3.3 겹쳐지지 않는 두 시점",
+          "primaryConcepts": [
+            "시점의 차이"
+          ],
+          "secondaryConcepts": [
+            "점진적 변화"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미래 자아를 위한 결정에서 현재 선호와 장래 선호의 불일치를 다룬다. 가역성과 장래 의사 표명 가능성에 따라 현재 의사의 구속력이 달라진다는 기준을 제시하고, 동일성 물음의 실천적 무게가 과거가 아니라 미래에 걸린다는 관점을 밝힌다.",
+          "aiAnalysisInputSha256": "ee1d9b2f62b03d29ebccad2d3577ee86919887332d0112e641705b060df64f3e",
+          "aiPublicGuideTopic": "미래의 나를 대신 정해 주는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 이어짐과 끊김",
+          "section": "3.4 조금씩 바뀌는 것",
+          "primaryConcepts": [
+            "점진적 변화"
+          ],
+          "secondaryConcepts": [
+            "연속성",
+            "단절"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "점진적 변화가 명확한 경계 없이 전체적 차이를 만드는 구조를 고전적 유비로 제시한다. 경계 설정 시도의 실패 원인을 인접 단계의 유사성에서 찾고, 목적에 따라 다른 답을 사용하는 것이 모순이 아니라는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "c4e9800b05c020f3439a8476fac0fc5a2fb074741a64875522a9a0821359d641",
+          "aiPublicGuideTopic": "매일 조금씩 달라져 다른 것이 되는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "4장 네 가지 사고 실험",
+          "section": "4.1 기억을 옮긴다면",
+          "primaryConcepts": [
+            "기억 이전"
+          ],
+          "secondaryConcepts": [
+            "기억의 사슬"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기억 이전 사고 실험을 통해 신체 기준과 기억 기준이 서로 다른 판정을 내는 상황을 구성한다. 다수의 직관이 기억 쪽을 따르는 근거를 규범적 결속의 인수에서 찾고, 그 직관이 기억의 정확성을 암묵적으로 전제한다는 점을 지적한다.",
+          "aiAnalysisInputSha256": "167313a6fd8f4e5751dae7b04814cdf83d28da429a4b474b4daa29f6fad8410e",
+          "aiPublicGuideTopic": "기억이 다른 곳으로 간다고 상상해 보기",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 네 가지 사고 실험",
+          "section": "4.1 기억을 옮긴다면",
+          "primaryConcepts": [
+            "기억 이전"
+          ],
+          "secondaryConcepts": [
+            "동일성의 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기억 이전 시 규범적 귀속이 함께 이동해야 한다는 함의와 그것이 신체에 결부된 실행 조건과 충돌한다는 점을 다룬다. 이 충돌을 내적 판정과 외적 판정의 이원성을 드러내는 결과로 해석하고 단일 기준화를 시도하지 않는 태도를 제시한다.",
+          "aiAnalysisInputSha256": "cf694ddb16ccc9be6bbfd3e3780dbaaa97395df03f64506e7faae7b8f06fd1f1",
+          "aiPublicGuideTopic": "옮겨진 쪽에게 무엇이 따라가는가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 네 가지 사고 실험",
+          "section": "4.2 둘로 갈라진다면",
+          "primaryConcepts": [
+            "분기"
+          ],
+          "secondaryConcepts": [
+            "기억 이전",
+            "복수 후보"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 기억을 가진 두 후보가 발생한 분기 구조를 그린 도표다. 두 후보의 기억 표시를 동일하게 그리되 서로 동일하지 않다는 관계를 표시해, 기억 기준이 단일 계승자를 지목하지 못하는 상황을 나타낸다.",
+          "aiAnalysisInputSha256": "387818f8d6caf075998d5d8fbcfbd7327ee26ff4ff866f85317b36945ce62642",
+          "aiPublicGuideTopic": "하나의 기억이 둘로 갈라졌을 때의 판정을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 네 가지 사고 실험",
+          "section": "4.3 같은 기억을 가진 둘",
+          "primaryConcepts": [
+            "복수 후보"
+          ],
+          "secondaryConcepts": [
+            "분기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기억 분기 시 복수의 계승자가 발생하는 상황을 구성해 기억 기준의 유일성 확보 실패를 보인다. 두 후보가 구별되지 않는다는 점과, 외부 사건의 발생 여부가 판정을 바꾼다는 점에서 동일성이 내재적으로만 결정되지 않는다는 함의를 제시한다.",
+          "aiAnalysisInputSha256": "7d01b1cdf584ab3bb840edfd774015398729a24c5c51542ed8db2acf35f510e7",
+          "aiPublicGuideTopic": "기억이 둘로 갈렸을 때 생기는 문제",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 네 가지 사고 실험",
+          "section": "4.3 같은 기억을 가진 둘",
+          "primaryConcepts": [
+            "복수 후보"
+          ],
+          "secondaryConcepts": [
+            "기준의 순환"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "판정 불가 사례에서 물음의 유형을 동일성 확정에서 귀속 배분으로 전환하는 접근을 제시한다. 전환이 대부분의 실천적 문제를 해결한다는 점과, 분할 불가능한 대상이 걸린 경우에는 전환이 불가능해 다른 척도가 요구된다는 한계를 다룬다.",
+          "aiAnalysisInputSha256": "ca09e5c267835e57f5b69919c0872adc16e1975529bc8b21b6a034369150e6af",
+          "aiPublicGuideTopic": "판정을 포기하고 남는 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 네 가지 사고 실험",
+          "section": "4.4 기억이 모두 지워진다면",
+          "primaryConcepts": [
+            "기억 상실"
+          ],
+          "secondaryConcepts": [
+            "기억의 기능"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "전면적 기억 상실 사례에서 기억 기준의 판정과 실제 사회적 처리가 어긋난다는 점을 다룬다. 내적 단절과 외적 연속의 병존을 확인하고, 기억의 기능을 동일성 구성이 아니라 자기 귀속 감각의 형성으로 한정하는 결론을 제시한다.",
+          "aiAnalysisInputSha256": "8ad8e7a506fd5a0043404076bb52e80bebd6063976f309c9b881cd839a0fd453",
+          "aiPublicGuideTopic": "기억이 사라진 사람은 누구인가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 네 가지 사고 실험",
+          "section": "4.4 기억이 모두 지워진다면",
+          "primaryConcepts": [
+            "기억 상실"
+          ],
+          "secondaryConcepts": [
+            "망각과 귀속"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "부분적 기억 상실에서 판정이 정도 문제로 전환되고 관계망이 실질적 기준으로 작동한다는 점을 다룬다. 동일성 유지가 공동의 실천이라는 관점을 제시하면서, 외부 대우가 판정을 구성한다는 견해의 한계도 함께 지적한다.",
+          "aiAnalysisInputSha256": "8b5bfe646dbc75d5bb613f223cfd9081db93ca134b63fbc65aa1dd2ed0d95015",
+          "aiPublicGuideTopic": "일부만 지워진 경우",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "5장 기억만으로는 부족하다",
+          "section": "5.1 순환하는 기준",
+          "primaryConcepts": [
+            "기준의 순환"
+          ],
+          "secondaryConcepts": [
+            "기억의 사슬"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기억 기준이 진정성 요건을 통해 동일성을 전제한다는 순환 문제를 제시한다. 개별 기억의 소유권을 사전에 확정하지 않고 상호 정합적인 기억 집합 자체를 연속성으로 보는 대안과, 그 대안이 분기 사례에서 여전히 실패한다는 한계를 다룬다.",
+          "aiAnalysisInputSha256": "3b01f965d9dd616bf19fcf1a8b0f617ba72258e998deebb2d9029b5f0a047a26",
+          "aiPublicGuideTopic": "기억이 기준이 되려면 이미 필요한 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "5장 기억만으로는 부족하다",
+          "section": "5.1 순환하는 기준",
+          "primaryConcepts": [
+            "기준의 순환"
+          ],
+          "secondaryConcepts": [
+            "오기억"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "순환적 정당화가 규모와 외부 접점에 따라 평가가 달라진다는 점을 다룬다. 상호 지지 집합이 작고 외부와 단절될 때 임의성이 허용된다는 문제를 지적하고, 외부 접점 수를 세어 신뢰도를 조정하는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "2ac4342b2e4e9e2ea5741b765cdba58914ec3de762c9df92b1b97c5648ac2305",
+          "aiPublicGuideTopic": "돌아오는 기준을 다루는 방법",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 기억만으로는 부족하다",
+          "section": "5.2 잊은 일도 내 일인가",
+          "primaryConcepts": [
+            "망각과 귀속"
+          ],
+          "secondaryConcepts": [
+            "단절"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "망각한 행위에 대한 귀속 문제에서 기억 기준의 결론이 실제로 채택되지 않는 이유를 유인 구조에서 설명한다. 신체·신원·결과 존속이라는 거친 기준의 역할과, 의무 확정과 수용 태도를 각각 다른 기준이 담당한다는 구분을 제시한다.",
+          "aiAnalysisInputSha256": "91dc50c9b252006c439adf0a83635ea6659d1b7aa83c86eb33b96e8d5ff4602c",
+          "aiPublicGuideTopic": "기억나지 않는 일에 대한 몫",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 기억만으로는 부족하다",
+          "section": "5.2 잊은 일도 내 일인가",
+          "primaryConcepts": [
+            "망각과 귀속"
+          ],
+          "secondaryConcepts": [
+            "시점의 차이"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기억 없는 과거 행위를 자기 것으로 수용하는 방법으로 잔존 결과의 확인을 제시한다. 이 방법이 기억을 대체하지 않고 공백을 매개한다는 점, 기억은 있으나 귀속 감각이 없는 반대 사례에도 동일하게 적용된다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "60fee9f73bc025f59e56b96ea8c606897ddebd6c63d6a6552fdc4a59ba0b184d",
+          "aiPublicGuideTopic": "잊은 채로 이어 가는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 기억만으로는 부족하다",
+          "section": "5.3 남이 대신 기억할 때",
+          "primaryConcepts": [
+            "외부 기억"
+          ],
+          "secondaryConcepts": [
+            "기억의 기능"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기억의 상당 부분이 관계망에 분산 보관된다는 점과 타인의 전언이 자기 기억으로 편입되는 과정을 다룬다. 반복된 공동 회상이 기억을 정확하게가 아니라 균질하게 만든다는 점에서 증언의 검증력 한계를 지적한다.",
+          "aiAnalysisInputSha256": "e556fd5adfa7703d765bedd19a821dd8145afc5cac2c134f7ca8749c641f183b",
+          "aiPublicGuideTopic": "내 기억을 남이 들고 있는 경우",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 기억만으로는 부족하다",
+          "section": "5.3 남이 대신 기억할 때",
+          "primaryConcepts": [
+            "외부 기억"
+          ],
+          "secondaryConcepts": [
+            "기록과 기억"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "외부 기억 보유자의 상실이 특정 시기의 검증 가능성을 제거한다는 점과 그것이 연속성 판정에 미치는 영향을 다룬다. 복수의 증언 갈래를 확보하는 대응과, 그 과정에서 서술이 단일화되어 개별 기억을 덮는 부작용을 함께 제시한다.",
+          "aiAnalysisInputSha256": "ab7b0f3399f325b109a613db94a0b69adce6e28f163f83acb0a35653e08d725e",
+          "aiPublicGuideTopic": "맡겨 둔 기억이 사라질 때",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 기억만으로는 부족하다",
+          "section": "5.4 기억 밖의 이어짐",
+          "primaryConcepts": [
+            "비기억적 연속"
+          ],
+          "secondaryConcepts": [
+            "외부 기억",
+            "망각과 귀속"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기억·신체·기록·관계 네 연속선을 평행하게 그려 기억만 단절된 구간을 표시한 도표다. 단절 구간에서 나머지 세 줄이 유지되는 모습으로, 단일 척도 사용이 이 구간에서 성급한 판정을 낳는다는 점을 나타낸다.",
+          "aiAnalysisInputSha256": "bdd4d4e8572e97dbe94de43683558d4849f80bb26a5049fc5c6e376fab0beec5",
+          "aiPublicGuideTopic": "기억이 끊긴 자리를 다른 줄이 잇는 모습을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "6장 세 사람의 사정",
+          "section": "6.1 오래된 편지",
+          "primaryConcepts": [
+            "기록과 기억"
+          ],
+          "secondaryConcepts": [
+            "재구성",
+            "오기억"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동시대 기록과 현재 기억이 어긋난 사례를 통해 재구성의 방향성이 자기 이해에 유리한 쪽으로 작동함을 보인다. 기록에 따라 기억을 수정하되 이전 서술이 소거되지 않고 병존하며, 그 불일치 자체가 정보가 된다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "fca95f777248975038d3c037e245a1d541374e4c2ea50adf8f88d510cdb2936c",
+          "aiPublicGuideTopic": "적어 둔 것과 기억이 어긋난 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "6장 세 사람의 사정",
+          "section": "6.1 오래된 편지",
+          "primaryConcepts": [
+            "기록과 기억"
+          ],
+          "secondaryConcepts": [
+            "시점의 차이"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "과거 자아에 대한 이질감을 정보 차이에서 오는 부분과 성향 변화에서 오는 부분으로 분리한다. 당시 정보만으로 재구성하면 전자가 해소된다는 점을 사례로 보이고, 남은 이질감을 변화로 인정하는 태도를 제시한다.",
+          "aiAnalysisInputSha256": "c11ad995f640fde7176386724da6a1511901a79c060d0dd6a7d0d829d79d2b1a",
+          "aiPublicGuideTopic": "편지를 쓴 사람과 읽는 사람",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            37
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 세 사람의 사정",
+          "section": "6.1 오래된 편지",
+          "primaryConcepts": [
+            "기록과 기억"
+          ],
+          "secondaryConcepts": [
+            "기억의 사슬"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록이 동일성 척도를 대체할 수 있는지 검토하고 자기 귀속 표시의 부재를 근거로 부정한다. 다만 기록이 기억의 교정과 회상의 단서로 기능한다는 점을 사례로 확인하고, 척도와 교정 도구의 역할 구분으로 정리한다.",
+          "aiAnalysisInputSha256": "74e9bd5c569ae0e31e1d3891489fabdb0f20ac39f161ea89c3f7ec86adb35f66",
+          "aiPublicGuideTopic": "기록이 사슬을 대신할 수 있는가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 세 사람의 사정",
+          "section": "6.2 되찾은 이름",
+          "primaryConcepts": [
+            "관계의 지속"
+          ],
+          "secondaryConcepts": [
+            "기억 상실",
+            "단절"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기억 손상 사례에서 확인 중심의 접근이 관계를 위축시키는 과정과 현재 활동 공유로 전환한 결과를 보인다. 새로운 짧은 연쇄의 형성과, 동일성 유지가 검증이 아니라 관계적 실천으로 이루어진다는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "e3e97cddfbeca77ebcc2d8ad145b44f3bbf976bd43d82e67ef38256c231eef0f",
+          "aiPublicGuideTopic": "기억이 흐려진 사람을 대하는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 세 사람의 사정",
+          "section": "6.2 되찾은 이름",
+          "primaryConcepts": [
+            "관계의 지속"
+          ],
+          "secondaryConcepts": [
+            "비기억적 연속"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관계적 대우가 동일성을 구성한다는 견해의 한계를 검토한다. 집단의 인정만으로 인격이 교체된다는 귀결이 실제 판정과 어긋난다는 점을 근거로 구성적 역할을 부정하고, 대신 연속성이 지속될 조건을 제공한다는 위치로 정리한다.",
+          "aiAnalysisInputSha256": "85229547c7d77a4ec61ac7aad85aa629bc0fa3340c7547c1c4c6fbb94815aaee",
+          "aiPublicGuideTopic": "대함이 판정을 만들 때의 조건",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 세 사람의 사정",
+          "section": "6.3 오래전의 일",
+          "primaryConcepts": [
+            "책임의 이어짐"
+          ],
+          "secondaryConcepts": [
+            "망각과 귀속"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기억하지 못하는 과거 행위에 대한 책임 상황에서 기억 상태의 진술과 귀속 인정이 혼동되는 문제를 보인다. 두 진술을 분리해 함께 제시하는 대응과, 기억 회복 없이도 귀속 인정이 성립한다는 점을 사례로 다룬다.",
+          "aiAnalysisInputSha256": "0168a57ccbbb41c552bea30ddd092bff123ceb4ebb46eeb4b4e8391b900f96d1",
+          "aiPublicGuideTopic": "기억하지 못하는 잘못을 마주한 사람",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 세 사람의 사정",
+          "section": "6.3 오래전의 일",
+          "primaryConcepts": [
+            "책임의 이어짐"
+          ],
+          "secondaryConcepts": [
+            "점진적 변화"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "성향 변화 주장이 귀속 인정을 대체할 때 면책 논리로 기능한다는 점을 다룬다. 변화 진술이 장래 기대에 관한 정보이지 과거 귀속에 관한 반박이 아니라는 구분을 1장의 세 맥락과 연결해 제시한다.",
+          "aiAnalysisInputSha256": "08ae897f89d4de1beb40439639303e8b19db7312c007ba540852344dffac9ecf",
+          "aiPublicGuideTopic": "그때와 다른 사람이 되었다는 말",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "7장 같은 사람이라는 말",
+          "section": "7.1 무엇을 묻고 있었나",
+          "primaryConcepts": [
+            "인격 동일성"
+          ],
+          "secondaryConcepts": [
+            "동일성의 기준",
+            "연속성"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일성 물음의 세 맥락 구분, 중첩 연쇄로서의 연속성, 기억 기준의 강점과 취약점, 복수 척도의 병용이라는 네 축으로 책 전체를 요약한다. 단일 기준 선택 대신 맥락별 척도 배분을 결론으로 제시한다.",
+          "aiAnalysisInputSha256": "0d6387871c6eed4edd028a70ce139468ed8a6c260795129d9f8f20c969635905",
+          "aiPublicGuideTopic": "이 책이 지나온 자리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "same-person-question"
+          ]
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "7장 같은 사람이라는 말",
+          "section": "7.1 무엇을 묻고 있었나",
+          "primaryConcepts": [
+            "인격 동일성"
+          ],
+          "secondaryConcepts": [
+            "복수 후보",
+            "기준의 순환"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "판정 불가 사례의 존재를 인정하는 것이 물음의 포기가 아니라 잘못된 확정 위에 후속 판단을 쌓는 일을 막는다는 점을 다룬다. 귀속 배분으로의 물음 전환과 그 전환이 불가능한 경우에 다른 척도를 명시적으로 사용하는 태도를 제시한다.",
+          "aiAnalysisInputSha256": "41ec717ffa71e5cd20f8dcfc50b8d50d7263e4203130955cedd5103069c1c7e5",
+          "aiPublicGuideTopic": "답이 없는 자리를 인정하기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 같은 사람이라는 말",
+          "section": "7.1 무엇을 묻고 있었나",
+          "primaryConcepts": [
+            "인격 동일성"
+          ],
+          "secondaryConcepts": [
+            "오기억",
+            "재구성"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기억의 불안정성이 폐기 근거가 되지 않는다는 점을 통로의 유일성에서 논증하고, 선명도 불신·즉시 기록·외부 대조라는 태도를 제시한다. 사건 층과 해석 층을 나누어 믿는 방식이 기억 불일치에 대한 해석을 바꾼다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "b8d1eabf7bfa78dcf56db74de8f03f46bd223130af765ace5012cb92be6b7262",
+          "aiPublicGuideTopic": "기억을 대하는 태도",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 같은 사람이라는 말",
+          "section": "7.2 이어 가는 일",
+          "primaryConcepts": [
+            "동일성의 실천"
+          ],
+          "secondaryConcepts": [
+            "기억의 사슬"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연속성이 유지에 노력을 요구한다는 점을 외부 접점의 감소에서 설명한다. 기록·보존·공동 회상을 연쇄 유지 활동으로 규정하고, 사건 자체보다 당시의 중요도를 남기는 기록이 과거 자아와의 연결에 기여한다는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "44273735a8398fdaec6e9f1c5f44bb794e813500f60f56bd35bb10ca40f48c84",
+          "aiPublicGuideTopic": "이어짐은 저절로 유지되지 않는다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 같은 사람이라는 말",
+          "section": "7.2 이어 가는 일",
+          "primaryConcepts": [
+            "동일성의 실천"
+          ],
+          "secondaryConcepts": [
+            "시점의 차이"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "과거 자아에 대한 자책과 절연이 모두 연속성을 약화한다는 점을 지적하고, 당시 정보로 재구성해 이해 가능 부분과 변화 부분을 나누는 대안을 제시한다. 이 방식이 과오를 미화하지 않으면서 귀속을 유지한다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "047b6f1f7b011f7f023fdb8e0d7c59d9f246b91c13e24cf013d90fa1e2323833",
+          "aiPublicGuideTopic": "지난 나와 화해하는 방식",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            47
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 같은 사람이라는 말",
+          "section": "7.2 이어 가는 일",
+          "primaryConcepts": [
+            "동일성의 실천"
+          ],
+          "secondaryConcepts": [
+            "관계의 지속"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일성 유지가 상호적 실천이라는 점을 제시하고, 기억 손상 상황에서 확인보다 현재 활동 공유가 효과적이라는 대응을 다룬다. 연속성이 과거 방향뿐 아니라 미래 방향으로도 형성된다는 관점으로 책을 맺는다.",
+          "aiAnalysisInputSha256": "f235396fd90ad79be0851a27bb73f598ab1e4d6cfeef8f9ce8637b67657929e6",
+          "aiPublicGuideTopic": "남의 이어짐을 돕는 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 61,
       "title": "형태와 구도: 화면을 구성하는 원리",
       "pdfPath": "pdfs/book-061.pdf",
