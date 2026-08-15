@@ -12902,6 +12902,1031 @@
       ]
     },
     {
+      "bookId": 32,
+      "title": "지도에서 사라진 항구들",
+      "pdfPath": "pdfs/book-032.pdf",
+      "pdfSha256": "f25a7177587d139d29a33d1fa07c452ebbd582985a93e78360ea7688fb5cf6a5",
+      "totalPageCount": 49,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 셋을 나란히 놓기",
+          "section": "1.1 견주려면 같은 것을 재야 한다",
+          "primaryConcepts": [
+            "비교의 기준"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비교 대상 사이의 결과 차이를 문제로 제시하고 비교 항목 선정이 선행 과제임을 밝힌다. 자료량의 차이가 실체의 차이로 오독되는 경로를 경고한다.",
+          "aiAnalysisInputSha256": "55c5a5d55fb21e45206056f29990f492f3b01cc8a6a39b34aaae74f8ca793f15",
+          "aiPublicGuideTopic": "여럿을 나란히 놓기 전에 무엇을 같은 자로 잴지 정하는 일을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 셋을 나란히 놓기",
+          "section": "1.1 견주려면 같은 것을 재야 한다",
+          "primaryConcepts": [
+            "비교의 기준"
+          ],
+          "secondaryConcepts": [
+            "시간 맞추기"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 대상에 대해 비교 항목에 따라 순위가 뒤바뀌는 사례를 제시한다. 기준 선택의 편향을 명시해 결론의 조건성을 드러내는 절차를 요구한다.",
+          "aiAnalysisInputSha256": "c9024d2b0cb6db0d9237d26a125cb7d84b15fb99404858c2c4f2f7c56586b3f1",
+          "aiPublicGuideTopic": "고른 기준이 어느 쪽에 유리한지를 함께 따지는 일을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 셋을 나란히 놓기",
+          "section": "1.2 세 항구가 놓인 자리",
+          "primaryConcepts": [
+            "비교 단위"
+          ],
+          "secondaryConcepts": [
+            "비교의 기준"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비교 단위의 설정 방식에 따라 드러나는 원인이 달라지는 구조를 지리적 배치로 설명한다. 복수의 묶음을 병렬 유지해 질문별로 선택하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "ac62cb03dd884c4390c14dc1a4d418a511af7d27b75d400760b6ba2be07231f9",
+          "aiPublicGuideTopic": "무엇을 하나의 견줌 단위로 삼을지 정하는 문제를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 셋을 나란히 놓기",
+          "section": "1.2 세 항구가 놓인 자리",
+          "primaryConcepts": [
+            "비교 단위"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "세 비교 대상의 공간 배치와 두 가지 집계 단위를 한 화면에 병렬로 제시한다. 묶음 방식이 분석 결과에 앞서 개입한다는 점을 시각화한다.",
+          "aiAnalysisInputSha256": "949ef36ead008583bfc7e54d17b156150db826ffa94be9c785975b60b5ac90e0",
+          "aiPublicGuideTopic": "세 항구가 만 안에 놓인 자리와 두 가지 묶음을 함께 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 셋을 나란히 놓기",
+          "section": "1.3 같은 때의 자료를 모으는 일",
+          "primaryConcepts": [
+            "시간 맞추기"
+          ],
+          "secondaryConcepts": [
+            "비교 단위"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자료 생산 시기의 불균형이 비교 대상을 시기 비교로 변질시키는 문제를 제시한다. 공통 관측 시점을 추출하고 나머지를 미비교로 남기는 절차를 세운다.",
+          "aiAnalysisInputSha256": "f72dc6ba6d2767c95e6d907b26f72b9c4b0e6458fa00c84ab8206166bc389e40",
+          "aiPublicGuideTopic": "서로 다른 때에 만들어진 자료를 나란히 놓을 때의 문제를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 셋을 나란히 놓기",
+          "section": "1.3 같은 때의 자료를 모으는 일",
+          "primaryConcepts": [
+            "시간 맞추기"
+          ],
+          "secondaryConcepts": [
+            "지도의 시점"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시점 확정이 불가능한 자료를 구간으로 처리하는 방법을 제시한다. 정밀도 저하를 감수하는 편이 오류보다 낫다는 판단 기준을 밝힌다.",
+          "aiAnalysisInputSha256": "16adc7fbca1157972d50fa5e9ff1e8fd3cf8984aa2e36a6a73f449c6736d1c66",
+          "aiPublicGuideTopic": "때를 맞추기 어려운 자료를 어떻게 다룰지 정한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "2장 지도라는 사료",
+          "section": "2.1 지도는 언제의 그림인가",
+          "primaryConcepts": [
+            "지도의 시점"
+          ],
+          "secondaryConcepts": [
+            "시간 맞추기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지도 한 장에 복수의 시점이 혼재하는 구조를 제작 관행으로 설명한다. 부분별 시점 분해를 지도 독해의 첫 단계로 제시한다.",
+          "aiAnalysisInputSha256": "a1e84107c109ab4db26f26c6d351252a7dc9bf8c8be05e60380c9ae2ea95d4ae",
+          "aiPublicGuideTopic": "한 장의 지도가 담고 있는 시점을 어떻게 읽을지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 지도라는 사료",
+          "section": "2.1 지도는 언제의 그림인가",
+          "primaryConcepts": [
+            "지도의 시점"
+          ],
+          "secondaryConcepts": [
+            "비교의 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지도 내부 요소를 시점 확정의 단서로 활용하는 방법을 제시한다. 단서 간 모순을 시점 혼재의 증거로 재해석하는 관점을 밝힌다.",
+          "aiAnalysisInputSha256": "9484dda0bf802b5c3ff2eddf8cfe489684243ab251b882a0df107d6bca71ff6d",
+          "aiPublicGuideTopic": "지도의 시점을 좁혀 주는 단서를 찾는 방법을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 지도라는 사료",
+          "section": "2.2 베껴 그린 지도",
+          "primaryConcepts": [
+            "사본과 원본"
+          ],
+          "secondaryConcepts": [
+            "지도의 시점"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사본 관계를 식별해 독립 관측 수를 재산정하는 절차를 제시한다. 자료 수와 증거력의 차이를 오류 전파의 관점에서 설명한다.",
+          "aiAnalysisInputSha256": "bff0dc24f38ef90e40ea33cb662df4dfd7a4c68521500fcf83e6f913b5deba1d",
+          "aiPublicGuideTopic": "앞선 지도를 옮겨 그린 자료를 어떻게 셀지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 지도라는 사료",
+          "section": "2.2 베껴 그린 지도",
+          "primaryConcepts": [
+            "사본과 원본"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사본 군집화를 통해 자료 수와 독립 관측 수의 격차를 시각화한다. 오류가 복제를 통해 증폭되는 구조를 함께 제시한다.",
+          "aiAnalysisInputSha256": "c59ecaab1cdd949c87daff29657376deb9b009ab0e5cdbdd870281c436e7f39a",
+          "aiPublicGuideTopic": "남은 지도를 닮은 것끼리 묶어 독립된 관찰이 몇인지 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 지도라는 사료",
+          "section": "2.3 그리지 않은 것",
+          "primaryConcepts": [
+            "지도의 생략"
+          ],
+          "secondaryConcepts": [
+            "사본과 원본"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지도의 결락이 부재와 비기재 두 원인에서 비롯됨을 밝히고 용도가 기재 범위를 정함을 설명한다. 용도가 같은 자료끼리 비교하는 통제 방법을 제시한다.",
+          "aiAnalysisInputSha256": "62ecb9d07a9d0d5355800a6a7154269f02b84e907fa6c34f649eb396384346e9",
+          "aiPublicGuideTopic": "지도에 없는 것을 어떻게 읽을지 정한다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 지도라는 사료",
+          "section": "2.3 그리지 않은 것",
+          "primaryConcepts": [
+            "지도의 생략"
+          ],
+          "secondaryConcepts": [
+            "비교 단위"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결락 패턴에서 자료의 제작 목적과 물리적 조건을 역추론하는 방법을 제시한다. 단일 원인 귀속의 위험을 지적하고 복수 가설 병기를 요구한다.",
+          "aiAnalysisInputSha256": "ef8dea2baf31fda629bec2abc58bcd1d486fccf0a0998edb88675b49bd32efad",
+          "aiPublicGuideTopic": "빠짐의 자리가 오히려 알려 주는 것을 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 지도라는 사료",
+          "section": "2.4 두 지도를 겹쳐 보기",
+          "primaryConcepts": [
+            "시간차 대조"
+          ],
+          "secondaryConcepts": [
+            "지도의 시점"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시점이 다른 지도의 중첩 비교 절차를 기준점 정합 단계로 제시한다. 표현 차이와 실제 변화를 분리하기 위한 불변 지형지물 활용법을 밝힌다.",
+          "aiAnalysisInputSha256": "f0c222bb8f1da75de38f5bd9967bd9f4e89c32ffb3243f681a4e42ecfe8ee7f0",
+          "aiPublicGuideTopic": "시점이 다른 두 지도를 맞대어 변화를 읽는 방법을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 지도라는 사료",
+          "section": "2.4 두 지도를 겹쳐 보기",
+          "primaryConcepts": [
+            "시간차 대조"
+          ],
+          "secondaryConcepts": [
+            "지도의 생략"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지도 중첩에서 관찰되는 차이의 신뢰 범위를 제작 정밀도 한계로 설정한다. 복수 자료에서 반복되는 방향성만 변화로 인정하는 판정 규칙을 제시한다.",
+          "aiAnalysisInputSha256": "98c3b44b11812cba110ed2300d75e5234423518912592ae049df03e9c2866110",
+          "aiPublicGuideTopic": "겹쳐 본 결과를 어디까지 믿을지 선을 긋는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 물길이 바꾼 것",
+          "section": "3.1 강이 실어 온 모래",
+          "primaryConcepts": [
+            "퇴적"
+          ],
+          "secondaryConcepts": [
+            "비교의 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "퇴적을 장기 저속 변화로 규정하고 사건 기록에 직접 남지 않는 이유를 제시한다. 항행 관련 기록의 빈도 변화를 간접 지표로 삼는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "cae6b2a1c5b55af4fd15437623217812616aa076acdf33ac9171b4e18761181f",
+          "aiPublicGuideTopic": "강이 나르는 모래가 만 안쪽을 메워 가는 과정을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 물길이 바꾼 것",
+          "section": "3.1 강이 실어 온 모래",
+          "primaryConcepts": [
+            "퇴적"
+          ],
+          "secondaryConcepts": [
+            "시간차 대조"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "퇴적량의 공간적 차이를 조류와 거리로 설명하고 세 대상의 조건 차이를 특정한다. 단일 변수 차이가 비교 설계에 유리하다는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "655a11eb0ea2dccfa451c89b97e1a8d24f53fcece02b933a3b5b4fd3bcd47c85",
+          "aiPublicGuideTopic": "쌓이는 자리가 항구마다 다른 까닭을 짚는다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 물길이 바꾼 것",
+          "section": "3.2 깊이가 정하는 배",
+          "primaryConcepts": [
+            "수심과 선박"
+          ],
+          "secondaryConcepts": [
+            "퇴적"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수심과 선박 규모의 관계를 설명하고 항구 쇠퇴가 선박 크기별로 단계화됨을 밝힌다. 취급 화물 목록의 변화를 수심 변화의 대리 지표로 제시한다.",
+          "aiAnalysisInputSha256": "58cca9b94a32031acdea52125c1dd67b991632f20b91f40ff1713229a33d01dc",
+          "aiPublicGuideTopic": "물의 깊이가 드나들 수 있는 배를 정하는 관계를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 물길이 바꾼 것",
+          "section": "3.2 깊이가 정하는 배",
+          "primaryConcepts": [
+            "수심과 선박"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수심 변화의 지표가 됨을 함께 제시한다.",
+          "aiAnalysisInputSha256": "00657e5222f82d7d3d69b02ee68b6565193f363d8d1cae104a37520f3869c0f1",
+          "aiPublicGuideTopic": "물이 얕아짐에 따라 어떤 배부터 못 들어오는지 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 물길이 바꾼 것",
+          "section": "3.3 항구가 옮겨 간다",
+          "primaryConcepts": [
+            "항구 이동"
+          ],
+          "secondaryConcepts": [
+            "수심과 선박"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "항구 이설이 동일 지명 아래 은폐되는 구조를 제시한다. 지도상 위치 변화를 통해 이설을 식별하는 방법과 연속성 오독의 위험을 밝힌다.",
+          "aiAnalysisInputSha256": "15aeddc71d06d660da078fbd82b8e69bb4c3ba199859f4e66b506150ab44b630",
+          "aiPublicGuideTopic": "물이 얕아진 항구가 자리를 옮기는 과정을 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16,
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 물길이 바꾼 것",
+          "section": "3.3 항구가 옮겨 간다",
+          "primaryConcepts": [
+            "항구 이동"
+          ],
+          "secondaryConcepts": [
+            "항구 간 경쟁"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 원인이 지형 조건에 따라 다른 결과로 이어지는 사례를 제시한다. 비교 연구가 원인과 조건을 분리해 낸다는 방법론적 함의를 밝힌다.",
+          "aiAnalysisInputSha256": "ab2fa293c9830cf99285eb6377a53611c07f806430a033f67154c99bf9de7a76",
+          "aiPublicGuideTopic": "옮길 수 있는 항구와 없는 항구를 가르는 조건을 짚는다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 물길이 바꾼 것",
+          "section": "3.4 파낼 수 있었을까",
+          "primaryConcepts": [
+            "준설의 한계"
+          ],
+          "secondaryConcepts": [
+            "퇴적"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "준설의 반복 비용 구조를 설명하고 기술이 아닌 재정 문제로 재규정한다. 통항 감소와 준설 중단이 서로를 강화하는 순환을 제시한다.",
+          "aiAnalysisInputSha256": "17393946b464555863df3ca3d9cc732cc0013da1235520d1aa8b952505e20956",
+          "aiPublicGuideTopic": "쌓인 모래를 파내어 항구를 지키려던 시도를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 물길이 바꾼 것",
+          "section": "3.4 파낼 수 있었을까",
+          "primaryConcepts": [
+            "준설의 한계"
+          ],
+          "secondaryConcepts": [
+            "만안동맹"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공동 준설의 비용과 편익이 대상별로 어긋나는 구조를 제시한다. 협력 실패 시점과 특정 항구의 쇠퇴 시기가 겹침을 기록 빈도로 확인한다.",
+          "aiAnalysisInputSha256": "6a71191c25471b048a3e397f8651ed34955f0ccdeea0fcffba1918f50288a5af",
+          "aiPublicGuideTopic": "파내는 일을 함께 하려던 시도가 어긋난 자리를 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 셋의 엇갈림",
+          "section": "4.1 같은 만, 다른 운명",
+          "primaryConcepts": [
+            "항구 간 경쟁"
+          ],
+          "secondaryConcepts": [
+            "항구 이동"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인접 항구 간 대체 관계를 제시하고 한쪽의 성장이 다른 쪽의 손실에서 비롯될 수 있음을 밝힌다. 동시 비교가 개별 분석으로는 안 보이는 연동을 드러냄을 보인다.",
+          "aiAnalysisInputSha256": "898d3d1ca7d7c7d64ee43a59753953302e8114ab17411363692b0dc8566feffd",
+          "aiPublicGuideTopic": "세 항구가 서로에게 어떤 자리였는지를 정리한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 셋의 엇갈림",
+          "section": "4.1 같은 만, 다른 운명",
+          "primaryConcepts": [
+            "항구 간 경쟁"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "세 대상의 통항 추세를 한 화면에 겹쳐 대체 관계의 시점 일치를 시각화한다. 결과 차이의 원인을 조건 차이로 귀속하는 해석을 함께 제시한다.",
+          "aiAnalysisInputSha256": "29dec2739cb295110b855752227f67f6c46ec699303f60a26120cf42aa1efc85",
+          "aiPublicGuideTopic": "세 항구의 드나든 배가 백 년 동안 어떻게 엇갈렸는지 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": [
+            "same-bay-different-conditions"
+          ]
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 셋의 엇갈림",
+          "section": "4.2 새 뱃길이 열리면",
+          "primaryConcepts": [
+            "신항로"
+          ],
+          "secondaryConcepts": [
+            "항구 간 경쟁"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "외부 항로 변화가 비교 대상 전체에 동시 영향을 주는 구조를 제시한다. 관찰 구간 선택이 원인 귀속을 좌우한다는 문제를 밝힌다.",
+          "aiAnalysisInputSha256": "ce7b1da6a2737d0198f7cf104f0f8f3904a07c605aaf523bbf08a92a0d15aabd",
+          "aiPublicGuideTopic": "만 바깥에 새 뱃길이 생겼을 때 일어난 일을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 셋의 엇갈림",
+          "section": "4.2 새 뱃길이 열리면",
+          "primaryConcepts": [
+            "신항로"
+          ],
+          "secondaryConcepts": [
+            "단계적 쇠퇴"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공통 요인과 개별 요인을 대상 간 차이로 분리하는 방법을 제시한다. 비교 설계가 원인 크기의 상대 판단을 가능하게 함을 밝힌다.",
+          "aiAnalysisInputSha256": "6d6d153af949f9292a3fd355e4bf7c2adf6852098a3b9490cb05a55d96a4b6ca",
+          "aiPublicGuideTopic": "바깥의 변화와 안의 변화를 어떻게 갈라 볼지 정한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 셋의 엇갈림",
+          "section": "4.3 동맹이 하는 일",
+          "primaryConcepts": [
+            "만안동맹"
+          ],
+          "secondaryConcepts": [
+            "항구 간 경쟁"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동맹 기록의 형식적 균질성이 비교에 유리한 조건임을 밝힌다. 균질성과 포괄성이 다르다는 점과 자료 출처를 결론마다 표시하는 절차를 제시한다.",
+          "aiAnalysisInputSha256": "dc00d950fc40cbda6ae8dc3c60aec1033d128f1af302ec4fbc1d5a438b4a240c",
+          "aiPublicGuideTopic": "세 항구를 묶었던 동맹이 무엇을 했고 무엇을 못 했는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 셋의 엇갈림",
+          "section": "4.3 동맹이 하는 일",
+          "primaryConcepts": [
+            "만안동맹"
+          ],
+          "secondaryConcepts": [
+            "준설의 한계"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동맹 내 의사결정이 통행세 규모에 따라 편향되는 구조를 제시한다. 편향의 시계열 추적을 통해 세력 이동 시점을 읽는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "b072018ad256cf7f23735fab9202b622339f5020b4da67932bddcece7ceb81a9",
+          "aiPublicGuideTopic": "동맹 안에서 세 항구의 발언권이 달랐던 자리를 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 셋의 엇갈림",
+          "section": "4.4 쇠퇴는 한 번에 오지 않는다",
+          "primaryConcepts": [
+            "단계적 쇠퇴"
+          ],
+          "secondaryConcepts": [
+            "수심과 선박"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "쇠퇴를 단계별 과정으로 분해하고 사건화가 원인 탐색을 왜곡하는 경로를 제시한다. 시점이 아닌 구간으로 기술하는 표기 방식을 제안한다.",
+          "aiAnalysisInputSha256": "5c2b645aa4532b20d094507f037ae379896042395dd7e18b13e750b51181454b",
+          "aiPublicGuideTopic": "항구가 잦아드는 일이 여러 단계로 나뉘어 일어남을 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 셋의 엇갈림",
+          "section": "4.4 쇠퇴는 한 번에 오지 않는다",
+          "primaryConcepts": [
+            "단계적 쇠퇴"
+          ],
+          "secondaryConcepts": [
+            "신항로"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 단계를 거치는 속도 차이를 조건 충족 수와 대응시켜 정리한다. 소표본에서 상관 관찰의 한계를 명시하며 주장의 범위를 제한한다.",
+          "aiAnalysisInputSha256": "1b1970d83fda7863fbcc9c14cfcb9b715d871022c192e33d7a162944df1f63a1",
+          "aiPublicGuideTopic": "세 항구의 단계가 서로 다르게 겹친 자리를 짚는다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 세 항구를 실제로 견주기",
+          "section": "5.1 표를 만들기 전에",
+          "primaryConcepts": [
+            "견줌의 절차"
+          ],
+          "secondaryConcepts": [
+            "비교 단위"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비교표 작성에 앞서 항목·시점·결측 표기를 확정하는 절차를 제시한다. 결측 유형을 둘로 구분해 후속 자료 탐색 대상을 명확히 하는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "eadbd85981891c03646dad1d669cf33dfb08049b29c0972eb6c29e8e67520656",
+          "aiPublicGuideTopic": "실제로 견주기에 앞서 밟아야 할 순서를 정리한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 세 항구를 실제로 견주기",
+          "section": "5.1 표를 만들기 전에",
+          "primaryConcepts": [
+            "견줌의 절차"
+          ],
+          "secondaryConcepts": [
+            "시간 맞추기"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공통 관측 시점의 희소성과 시기 편중을 확인하고 비교 가능 대상 수에 따라 표를 계층화한다. 계층 구분이 결론의 근거 강도를 보존하는 장치임을 밝힌다.",
+          "aiAnalysisInputSha256": "f7d1810785942a54417dfae1711b94048c21c99381de7db2727333da30d5f349",
+          "aiPublicGuideTopic": "자료가 고르지 않은 세 대상을 실제로 한 표에 올린다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 세 항구를 실제로 견주기",
+          "section": "5.2 무엇을 같은 칸에 넣을까",
+          "primaryConcepts": [
+            "항목 맞추기"
+          ],
+          "secondaryConcepts": [
+            "비교의 기준"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 대상에 대한 상이한 집계 정의를 조정하는 두 가지 방법을 제시한다. 변환한 값에 표시를 남기는 절차와 그 필요성을 밝힌다.",
+          "aiAnalysisInputSha256": "28b16c5b69de3104e8078750e561ac4f4b31ff2b473261dfefc31ddb99dc6c1e",
+          "aiPublicGuideTopic": "이름이 다른 항목을 같은 칸에 넣을지 정하는 문제를 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 세 항구를 실제로 견주기",
+          "section": "5.2 무엇을 같은 칸에 넣을까",
+          "primaryConcepts": [
+            "항목 맞추기"
+          ],
+          "secondaryConcepts": [
+            "만안동맹"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정의가 불일치하는 항목을 수준 비교 대신 방향 비교로 전환하는 방법을 제시한다. 포기한 정보를 명시해 후속 연구의 기대를 조정하는 절차를 밝힌다.",
+          "aiAnalysisInputSha256": "69cc717a6b0b8cd17979e14966b3709d2947397239d47105b0b172d29f6f46a6",
+          "aiPublicGuideTopic": "맞출 수 없는 항목을 어떻게 다룰지 정한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 세 항구를 실제로 견주기",
+          "section": "5.3 어긋나는 자료",
+          "primaryConcepts": [
+            "불일치 처리"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 항목의 자료 간 불일치를 표 위에서 특정하고 세 가지 처리 선택지를 제시한다. 병기를 기본 처리로 두는 이유를 불일치의 정보성으로 설명한다.",
+          "aiAnalysisInputSha256": "c46508816deff76c138e5322af433f53b9ec081691fc9ac1d4cfb1e42c2fcd4e",
+          "aiPublicGuideTopic": "같은 해 같은 항목에서 자료가 서로 어긋난 자리를 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 세 항구를 실제로 견주기",
+          "section": "5.4 견줌을 적어 두는 법",
+          "primaryConcepts": [
+            "견줌 기록"
+          ],
+          "secondaryConcepts": [
+            "항목 맞추기"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비교표 작성 과정의 판단을 별도 기록으로 남기는 절차를 제시한다. 변경된 판단이 결과의 취약 지점을 표시한다는 관점을 밝힌다.",
+          "aiAnalysisInputSha256": "199cd70fb63371789cd92cb72ebb4c9202db2facb9799a33e159e440d39e6832",
+          "aiPublicGuideTopic": "견주며 내린 판단을 어떤 형태로 남길지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 세 항구를 실제로 견주기",
+          "section": "5.5 세 항구를 덮으며",
+          "primaryConcepts": [
+            "견줌의 절차"
+          ],
+          "secondaryConcepts": [
+            "단계적 쇠퇴"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비교 결과를 확인 가능한 명제와 확인 불가능한 항목으로 구분해 정리한다. 비교 방법이 차이의 유무에 강하고 크기 추정에 약하다는 특성을 밝힌다.",
+          "aiAnalysisInputSha256": "6253e08e9a84b01cc5b43cd227dd14dc38781abc22043ffce42c3a107bfd9846",
+          "aiPublicGuideTopic": "한 차례 견줌을 마치며 무엇이 남았는지 셈한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 견줌이 속이는 자리",
+          "section": "6.1 셋만 보았다",
+          "primaryConcepts": [
+            "표본의 한계"
+          ],
+          "secondaryConcepts": [
+            "비교 단위"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "소표본 비교의 사례 수 선택 논리와 그 한계를 제시한다. 공통 환경이 일반화를 막는 구조를 밝히고 결론에 범위 단서를 부착하는 원칙을 세운다.",
+          "aiAnalysisInputSha256": "6f8b73096f16d1bd6511aa0094c759f6c41971515391be19388ead5ff7722cc4",
+          "aiPublicGuideTopic": "세 사례로 얻은 결론이 어디까지 가는지 선을 긋는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 견줌이 속이는 자리",
+          "section": "6.1 셋만 보았다",
+          "primaryConcepts": [
+            "표본의 한계"
+          ],
+          "secondaryConcepts": [
+            "항구 간 경쟁"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "표본이 잔존 자료에 의해 선택되었음을 밝히고 비교 대상의 대표성 문제를 제기한다. 누락 사례의 성격으로 결론의 편향 방향을 추정하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "5fd63caaf96f05a629e3e7a43c73950033bfb3589efa65433dfe07d229f0c816",
+          "aiPublicGuideTopic": "고른 셋이 애초에 남은 셋이라는 문제를 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 견줌이 속이는 자리",
+          "section": "6.2 남은 지도가 말하는 쪽",
+          "primaryConcepts": [
+            "지도의 잔존"
+          ],
+          "secondaryConcepts": [
+            "지도의 시점"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지도의 잔존이 사용 기간에 좌우되어 특정 영역의 자료가 체계적으로 소실되는 구조를 제시한다. 자료의 흐릿함을 대상의 속성으로 오독하지 않도록 경고한다.",
+          "aiAnalysisInputSha256": "4fc1ab8bc640a10e1ddf389e20f46b9806a5beb7c61d984c4034ed9c224b711f",
+          "aiPublicGuideTopic": "어떤 지도가 남았는지가 그림을 정하는 자리를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 견줌이 속이는 자리",
+          "section": "6.2 남은 지도가 말하는 쪽",
+          "primaryConcepts": [
+            "지도의 잔존"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지도 생산 분포와 잔존 분포의 차이를 두 장의 대비로 시각화한다. 사용 종료가 자료 소실로 이어지는 경로를 화살표로 제시한다.",
+          "aiAnalysisInputSha256": "5dda876b975f8e431d9c89fc13be013d7dbb1219160ffa50101e0e822c348a27",
+          "aiPublicGuideTopic": "만들어진 지도와 남은 지도의 치우침을 견주어 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 견줌이 속이는 자리",
+          "section": "6.3 원인을 하나로 몰 때",
+          "primaryConcepts": [
+            "단일 원인"
+          ],
+          "secondaryConcepts": [
+            "신항로"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단일 원인 서사의 흡인력과 그로 인한 요인 소실을 지적한다. 반례 사례를 결론에 병기해 후속 검토 지점을 남기는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "409557c5a2bb074f1f078b9729244883a14c693cbbea86bde3ef7a60c6caa95c",
+          "aiPublicGuideTopic": "여러 원인을 하나로 줄이려는 힘을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 견줌이 속이는 자리",
+          "section": "6.3 원인을 하나로 몰 때",
+          "primaryConcepts": [
+            "단일 원인"
+          ],
+          "secondaryConcepts": [
+            "표본의 한계"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "설명 요인 수가 사례 수에 근접할 때 설명력이 형식화되는 문제를 제시한다. 요인 수 제한의 근거를 검증 가능성에서 도출한다.",
+          "aiAnalysisInputSha256": "e42f99b31c3740d89c5d8c851cd3a949a4d196d65c32e785168030d77e485b54",
+          "aiPublicGuideTopic": "원인의 수를 늘리는 일에도 대가가 있음을 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 견줌이 속이는 자리",
+          "section": "6.4 그래도 견주는 까닭",
+          "primaryConcepts": [
+            "비교의 쓸모"
+          ],
+          "secondaryConcepts": [
+            "항구 이동"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비교의 여러 한계를 인정한 뒤 원인과 조건을 분리하는 고유 기능을 제시한다. 비교가 답보다 질문의 재설정에 기여한다는 관점을 밝힌다.",
+          "aiAnalysisInputSha256": "6afd902be097aad11fc8319368c442ddf01b30f90b979876f1d115d98f7e71e3",
+          "aiPublicGuideTopic": "한계를 다 인정하고도 견줌이 남기는 값어치를 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 견줌이 속이는 자리",
+          "section": "6.4 그래도 견주는 까닭",
+          "primaryConcepts": [
+            "비교의 쓸모"
+          ],
+          "secondaryConcepts": [
+            "지도의 잔존"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비교가 자료의 결손을 상대적으로 가시화하는 기능을 제시한다. 결손 목록을 후속 조사 과제로 전환하는 활용법을 밝힌다.",
+          "aiAnalysisInputSha256": "272723a530402bdd98aae4ae694ba8032029a969ab971c21c0ec28ef28491070",
+          "aiPublicGuideTopic": "견줌이 자료의 빈자리를 드러내는 자리를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 만 하나를 덮으며",
+          "section": "7.1 셋에서 얻은 것과 얻지 못한 것",
+          "primaryConcepts": [
+            "비교의 기준"
+          ],
+          "secondaryConcepts": [
+            "단계적 쇠퇴"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비교 결과를 조건 차이라는 단일 명제로 압축하고 확인된 세 조건을 정리한다. 요인 크기 추정에 필요한 것이 자료가 아니라 사례 수임을 밝힌다.",
+          "aiAnalysisInputSha256": "9ff50964ff95f44caa4ce10a262b6cc55191985b1bdb8565424c8fb19d47705e",
+          "aiPublicGuideTopic": "이 책이 세 항구에서 얻어 낸 것을 한자리에 모은다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": [
+            "same-bay-different-conditions"
+          ]
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 만 하나를 덮으며",
+          "section": "7.2 이 만 밖에서는",
+          "primaryConcepts": [
+            "표본의 한계"
+          ],
+          "secondaryConcepts": [
+            "비교의 쓸모"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연구 결과의 적용 범위를 환경 조건의 유사성으로 한정하는 기준을 제시한다. 타 사례 적용 시 유사성 명시를 선행 조건으로 요구한다.",
+          "aiAnalysisInputSha256": "41697cafb7110c23434f4569179d7ddc94e5356d58ec75fb99a473045c3d825b",
+          "aiPublicGuideTopic": "이 만에서 얻은 것이 다른 만으로 갈 수 있는지 묻는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 만 하나를 덮으며",
+          "section": "7.3 다음에 견줄 사람에게",
+          "primaryConcepts": [
+            "비교의 쓸모"
+          ],
+          "secondaryConcepts": [
+            "견줌 기록"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비교 절차를 대상과 무관한 일반 방법으로 제시하고 자료량 오독을 대표 오류로 지목한다. 표 작성 이전 단계에서만 예방 가능하다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "f7e92568ec5e09f5dafe2305c2e7c7b86b048ff275a975b4f51ad1689388b38c",
+          "aiPublicGuideTopic": "다음 견줌을 준비하는 쪽에게 이 작업이 무엇을 남기는지 적는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 34,
       "title": "장부로 읽는 사회사: 기록에서 구조로",
       "pdfPath": "pdfs/book-034.pdf",

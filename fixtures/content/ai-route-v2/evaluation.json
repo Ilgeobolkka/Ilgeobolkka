@@ -1047,6 +1047,79 @@
       "allowedAlternativePageNumbers": []
     },
     {
+      "caseId": "case-book-032",
+      "bookId": 32,
+      "purpose": "이 책을 사지는 않았고, 같은 만에 있던 세 항구가 왜 서로 다른 길을 갔는지 큰 틀만 보고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "비교의 기준",
+        "퇴적",
+        "수심과 선박",
+        "항구 이동",
+        "항구 간 경쟁"
+      ],
+      "helpfulConcepts": [
+        "지도의 시점",
+        "시간차 대조",
+        "신항로",
+        "단계적 쇠퇴"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 18
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 20
+        },
+        {
+          "beforePageNumber": 18,
+          "afterPageNumber": 20
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 24
+        }
+      ],
+      "irrelevantPageNumbers": [
+        10,
+        11,
+        12,
+        13,
+        37,
+        41,
+        42
+      ],
+      "duplicatePageGroups": [
+        [
+          25,
+          47
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        16,
+        18,
+        20,
+        24
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        17,
+        19,
+        21,
+        26
+      ]
+    },
+    {
       "caseId": "case-book-034",
       "bookId": 34,
       "purpose": "옛 장부에 이름이 없는 사람들을 어떻게 헤아려야 하는지, 짧게 핵심만 짚고 싶다",
