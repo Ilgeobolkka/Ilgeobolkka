@@ -89,8 +89,14 @@ BALANCED·DEEP이 각 2건, 예산 10과 QUICK이 각 1건입니다.
 
 ## 재현 조건
 
-`python3 tools/build048.py`로 원고와 조각을, `python3 tools/figures048.py`로 도표 SVG를 다시 만들 수
-있습니다. PDF는 Chrome Headless 렌더링이라 다시 만들면 SHA-256이 바뀌므로 `manifest.json`의
+이 권에는 빌드 스크립트가 없습니다. 원고 `book-048-manuscript.json`과 정본
+`manifest.json`·`evaluation.json`이 원본이고, 고칠 때는 이 파일들을 직접 고칩니다.
+
+조판은 `python3 tools/build_pdf_generic.py 48 8,14,23,30,38,46 pdfbuild048`로 원고에서 다시 할 수
+있습니다. 다만 그 디렉터리에 도표 PNG(`fig-08.png` 등)가 있어야 합니다. 도표 생성 스크립트가
+없고 `pdfbuild048/`는 `.gitignore`로 제외돼 있어, 저장소만으로는 도표를 다시 만들 수 없습니다.
+
+PDF는 Chrome Headless 렌더링이라 다시 만들면 SHA-256이 바뀌므로 `manifest.json`의
 `pdfSha256`을 함께 갱신해야 합니다.
 
 ## 검수
