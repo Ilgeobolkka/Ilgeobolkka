@@ -714,6 +714,115 @@
       ]
     },
     {
+      "caseId": "case-book-018",
+      "bookId": 18,
+      "purpose": "이 책을 사지는 않았고, 해 보고 싶은 것이 있는데 잘 못할 것 같아 매번 시작하지 못하는 버릇을 어떻게 다뤄야 할지 알고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "작은 실패",
+        "실패의 크기",
+        "해 보기",
+        "한 번에 잘하려는 마음",
+        "작게 하기",
+        "기다리는 시간",
+        "되지 않는 것",
+        "실패를 허용하기"
+      ],
+      "helpfulConcepts": [
+        "정원이라는 비유",
+        "솎아 내기",
+        "아픈 것",
+        "되풀이되는 실패",
+        "값이 큰 실패"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 19
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 22
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 19,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 29
+        }
+      ],
+      "irrelevantPageNumbers": [
+        31,
+        32,
+        33,
+        34
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          45
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        7,
+        9,
+        12,
+        14,
+        16,
+        19,
+        22,
+        24,
+        29
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        4,
+        5,
+        8,
+        10,
+        13,
+        15,
+        17,
+        20,
+        23,
+        25,
+        27,
+        30,
+        38,
+        43
+      ]
+    },
+    {
       "caseId": "case-book-021",
       "bookId": 21,
       "purpose": "이 책을 사지는 않았고, 별빛에서 성분과 움직이는 속도를 어떻게 알아내는지 큰 틀만 보고 싶다",

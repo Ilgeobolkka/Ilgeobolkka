@@ -7557,6 +7557,1064 @@
       ]
     },
     {
+      "bookId": 18,
+      "title": "작은 실패를 기르는 정원",
+      "totalPageCount": 50,
+      "pdfPath": "pdfs/book-018.pdf",
+      "pdfSha256": "2c0cc2c4fd449431ccddc803859b4c45e2ce76ff577876888474cdea6faca2b1",
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 실패라는 말",
+          "section": "1.1 작은 실패를 세기 시작한 날",
+          "primaryConcepts": [
+            "작은 실패"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "작은 실패를 계수 단위로 삼게 된 경위를 다루는 페이지다. 실패 예상이 착수를 막는 순환을 제시하고, 계수 행위가 착수를 유도하는 구조로 설계되었음을 밝힌다.",
+          "aiAnalysisInputSha256": "7722537c69b58ae6066ef71ee0247bcf70b219f7c6c71ab4a4a30ba8f84dbf56",
+          "aiPublicGuideTopic": "실패를 세어 보기로 한 사정",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "small-failures-are-a-unit"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 실패라는 말",
+          "section": "1.1 작은 실패를 세기 시작한 날",
+          "primaryConcepts": [
+            "작은 실패"
+          ],
+          "secondaryConcepts": [
+            "실패의 크기"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실패의 조작적 정의를 다루는 페이지다. 결과 기준이 사례 수를 극도로 줄인다는 문제를 제시하고, 의도와 결과의 불일치로 기준을 완화한 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "4a9bfc95d5e16f5ed5fe6f586b02da83a772da4b0892e7257db9e1f273c9f489",
+          "aiPublicGuideTopic": "무엇을 실패로 세는가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 실패라는 말",
+          "section": "1.1 작은 실패를 세기 시작한 날",
+          "primaryConcepts": [
+            "작은 실패"
+          ],
+          "secondaryConcepts": [
+            "해 보기"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계수 행위가 실패에 대한 반응을 바꾸는 과정을 다루는 페이지다. 사건이 목록 항목으로 전환될 때 평가가 달라진다는 관측을 제시하고, 그 기제를 미화하지 않고 기술한다.",
+          "aiAnalysisInputSha256": "a1b5a1a315b46a1dbd967a31716d2477286b1b9172c304ea86983dcaa7f3ba1d",
+          "aiPublicGuideTopic": "세는 일이 하는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            3
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 실패라는 말",
+          "section": "1.2 정원이라고 부른 이유",
+          "primaryConcepts": [
+            "정원이라는 비유"
+          ],
+          "secondaryConcepts": [
+            "작은 실패"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "핵심 은유의 선택 근거를 다루는 페이지다. 목록이라는 어휘가 축소를 함의한다는 문제를 제시하고, 식재·성장·솎아내기라는 정원의 성질이 이 작업에 대응한다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "c25acf06a0872671d6fc261b2976d7a4a5102c766158821b1e5a1913f85f5baa",
+          "aiPublicGuideTopic": "왜 하필 정원인가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 실패라는 말",
+          "section": "1.2 정원이라고 부른 이유",
+          "primaryConcepts": [
+            "정원이라는 비유"
+          ],
+          "secondaryConcepts": [
+            "기다리는 시간"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기른다는 표현의 범위를 한정하는 페이지다. 의도적 실패와의 차이를 제시하고, 후속 결과로 이어진 사례의 비율과 사전 식별이 불가능하다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "fa6cad0577f468b7d5acfa4319c1e04b5ff6961bdc67bfa39dc0b77eafab0afb",
+          "aiPublicGuideTopic": "기른다는 말이 뜻하는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 실패라는 말",
+          "section": "1.3 실패의 크기를 재기",
+          "primaryConcepts": [
+            "실패의 크기"
+          ],
+          "secondaryConcepts": [
+            "작은 실패"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실패의 규모를 판정하는 기준을 다루는 페이지다. 가역성, 타인 비용, 재시도 가능성의 세 조건을 제시하고, 조건을 충족하지 않는 사례를 대상에서 제외한 처리를 밝힌다.",
+          "aiAnalysisInputSha256": "3412ae675ef424f1e73e2b5b3ceb36d5e17ee773f89900ed2ae8cc0b490d968c",
+          "aiPublicGuideTopic": "작다는 것이 무슨 뜻인가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 실패라는 말",
+          "section": "1.3 실패의 크기를 재기",
+          "primaryConcepts": [
+            "실패의 크기"
+          ],
+          "secondaryConcepts": [
+            "작은 실패",
+            "정원이라는 비유"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실패 규모의 판정 절차를 순서도로 표현한 도표다. 세 조건을 통과한 경우와 그렇지 않은 경우의 귀결을 각각 별도 상자로 표시하고, 대상 여부를 사례 그림으로 예시한다.",
+          "aiAnalysisInputSha256": "1f38a2504c1ad83d5a963b67929f5c8b22b76775208d9013aba8980a9b473020",
+          "aiPublicGuideTopic": "실패의 크기를 세 물음으로 가르는 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 심는 일",
+          "section": "2.1 해 보기로 정하는 일",
+          "primaryConcepts": [
+            "해 보기"
+          ],
+          "secondaryConcepts": [
+            "실패의 크기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "착수 결정의 규칙을 다루는 페이지다. 즉시 착수 가능성, 준비물 제한, 규모 조건의 세 항목을 제시하고, 준비 비용이 클수록 결과를 실패로 인정하기 어려워진다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "ed48193dcb66658667dbaf53f4c5e9f15767fb462d1d9beae9ced3b3f9b33cc9",
+          "aiPublicGuideTopic": "심는다는 것이 실제로 하는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 심는 일",
+          "section": "2.1 해 보기로 정하는 일",
+          "primaryConcepts": [
+            "해 보기"
+          ],
+          "secondaryConcepts": [
+            "한 번에 잘하려는 마음"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "착수 대상의 선정 방식을 다루는 페이지다. 사전 목록의 유지와 순서 미지정을 제시하고, 강제 순서가 회피를 유발한 경험 및 미착수 항목의 처리 유보를 기술한다.",
+          "aiAnalysisInputSha256": "2df45c8f19761742899c4ab6f2eefedcbe10c0e2fd0536ae347942c3019b0001",
+          "aiPublicGuideTopic": "심을 것을 고르는 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 심는 일",
+          "section": "2.1 해 보기로 정하는 일",
+          "primaryConcepts": [
+            "해 보기"
+          ],
+          "secondaryConcepts": [
+            "작게 하기",
+            "되지 않는 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연간 착수 건수와 결과 분화를 개체 단위로 표현한 도표다. 성과로 이어진 사례와 그렇지 않은 사례의 규모 차이를 시각적으로 대비하고, 두 집합 사이의 선후 관계를 화살표로 표시한다.",
+          "aiAnalysisInputSha256": "bca74a5a5143e655d9c50bef8a120e9a90163620fa71ad4d2e502984dd2f4caf",
+          "aiPublicGuideTopic": "한 해 동안 심은 것과 그 결과를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 심는 일",
+          "section": "2.2 한 번에 잘하려는 마음",
+          "primaryConcepts": [
+            "한 번에 잘하려는 마음"
+          ],
+          "secondaryConcepts": [
+            "해 보기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "착수를 저해하는 인지를 다루는 페이지다. 능력 부족이 아니라 초기 완성도에 대한 기대가 원인이라는 점을 제시하고, 판단 순서를 바꾸어 대응한 방법을 기술한다.",
+          "aiAnalysisInputSha256": "c744ddd6c6cb771b9480d827dc17f238b2dc66dfa0cf97a18cccf5d73526e72f",
+          "aiPublicGuideTopic": "시작을 막는 것의 정체",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 심는 일",
+          "section": "2.2 한 번에 잘하려는 마음",
+          "primaryConcepts": [
+            "한 번에 잘하려는 마음"
+          ],
+          "secondaryConcepts": [
+            "실패를 허용하기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "유사한 두 동기를 구분하는 페이지다. 착수 빈도에 미치는 방향이 상반된다는 기준을 제시하고, 특정 용어가 두 동기를 병합해 버린다는 이유로 사용하지 않기로 한 판단을 기술한다.",
+          "aiAnalysisInputSha256": "92c09751553e2ff4eb9aabca5482c10ef0f5ff667983070c34ab8a14b3aa2fff",
+          "aiPublicGuideTopic": "잘하고 싶은 마음과 다른 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 심는 일",
+          "section": "2.3 작게 시작하기",
+          "primaryConcepts": [
+            "작게 하기"
+          ],
+          "secondaryConcepts": [
+            "한 번에 잘하려는 마음"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "착수 규모를 축소하는 방법을 다루는 페이지다. 시간 기준보다 범위 기준의 축소가 효과적이라는 관측을 제시하고, 규모 축소가 실패의 계수 가능성과 연결된다는 구조를 밝힌다.",
+          "aiAnalysisInputSha256": "0b8063c4f1fafb86f1b669d608be162acadd3634494555d5f86c02da894fe2e6",
+          "aiPublicGuideTopic": "크기를 줄이면 달라지는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 심는 일",
+          "section": "2.3 작게 시작하기",
+          "primaryConcepts": [
+            "작게 하기"
+          ],
+          "secondaryConcepts": [
+            "작은 실패"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "축소의 하한을 다루는 페이지다. 과도한 축소가 실패 가능성을 제거해 계수 대상이 사라진다는 문제를 제시하고, 불확실성이 남는 규모를 탐색하는 조정 절차를 기술한다.",
+          "aiAnalysisInputSha256": "4b92c03e6062530668f9f379327fc9c9e995c52fa6ad5198554840930d63d42b",
+          "aiPublicGuideTopic": "너무 작으면 안 되는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 자라지 않는 동안",
+          "section": "3.1 기다리는 시간",
+          "primaryConcepts": [
+            "기다리는 시간"
+          ],
+          "secondaryConcepts": [
+            "해 보기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "착수와 성과 사이의 시간차를 다루는 페이지다. 실패는 즉시 발생하나 그 효과는 지연된다는 구조를 제시하고, 대기 중 병렬 착수가 유일한 대응이라는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "af565aef031a77e1d0da7a8219ef1fd12440381741662be7146ed24275a5da7e",
+          "aiPublicGuideTopic": "심고 나서 아무 일도 없는 동안",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 자라지 않는 동안",
+          "section": "3.1 기다리는 시간",
+          "primaryConcepts": [
+            "기다리는 시간"
+          ],
+          "secondaryConcepts": [
+            "되지 않는 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "성과 발생까지의 소요 기간 분포를 다루는 페이지다. 편차가 커 평균이 무의미하다는 점과, 장기 사례가 중단 후 재접촉에서 나왔다는 공통점을 제시한다.",
+          "aiAnalysisInputSha256": "fc221ea9d776312c1d56011c13f935f88e562c10306243028918b421e9e4d757",
+          "aiPublicGuideTopic": "얼마나 기다리는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 자라지 않는 동안",
+          "section": "3.1 기다리는 시간",
+          "primaryConcepts": [
+            "기다리는 시간"
+          ],
+          "secondaryConcepts": [
+            "실패를 허용하기",
+            "해 보기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "착수 사례별 실패 시점과 성과 시점을 시간축 위에 나란히 표현한 도표다. 실패 시점의 집중과 성과 시점의 분산을 대비하고, 장기 사례의 중단 구간을 점선으로 구분한다.",
+          "aiAnalysisInputSha256": "7b912951316ea48736f7ddc02d7924290da21364f4ca2bf44ef9b5434d6f4e56",
+          "aiPublicGuideTopic": "실패와 그 뒤 사이의 시간차를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 자라지 않는 동안",
+          "section": "3.2 되지 않는 것",
+          "primaryConcepts": [
+            "되지 않는 것"
+          ],
+          "secondaryConcepts": [
+            "기다리는 시간"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "성과로 이어지지 않은 다수 사례의 위치를 다루는 페이지다. 이를 재료로 규정하는 서술을 거부하고, 개별 결과의 부재와 누적 효과를 함께 인정하는 기술을 채택한다.",
+          "aiAnalysisInputSha256": "b594a6cabef07509e92da8678244e2ef80830a37101e3bd860f16df12a5cc99d",
+          "aiPublicGuideTopic": "아무것도 되지 않는 대부분",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 자라지 않는 동안",
+          "section": "3.2 되지 않는 것",
+          "primaryConcepts": [
+            "되지 않는 것"
+          ],
+          "secondaryConcepts": [
+            "아픈 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미성과 사례의 정기 재검토를 다루는 페이지다. 재시도 건수와 그중 성공 사례의 비율을 제시하고, 검토 시간의 상한과 미선택 달의 사유를 기술한다.",
+          "aiAnalysisInputSha256": "b50f0a2d0ea124673212dc9e7ea5f61b2d6795ddcb642036cca3f589b457a616",
+          "aiPublicGuideTopic": "안 된 것을 다시 보는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            19
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 자라지 않는 동안",
+          "section": "3.2 되지 않는 것",
+          "primaryConcepts": [
+            "되지 않는 것"
+          ],
+          "secondaryConcepts": [
+            "솎아 내기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복 시도의 상한을 다루는 페이지다. 회차별 성공 건수를 제시하고, 상한 설정에 근거가 없음을 인정하면서도 자원 배분을 위해 필요하다는 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "3a055127a18a56e8dfe9eb38d943b52fe4260b8eae13ca8a6a54b37f7dec3c64",
+          "aiPublicGuideTopic": "다시 해도 안 되는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 자라지 않는 동안",
+          "section": "3.3 솎아 내기",
+          "primaryConcepts": [
+            "솎아 내기"
+          ],
+          "secondaryConcepts": [
+            "되지 않는 것"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미성과 항목의 제거 절차를 다루는 페이지다. 제거가 신규 착수의 여지를 만든다는 관측을 제시하고, 제거 시 날짜와 사유를 병기한 기록 방식을 기술한다.",
+          "aiAnalysisInputSha256": "140d6e86d1a7436ee0aad6427a704bd1f0912773c8ec425debe6d9ff593029ad",
+          "aiPublicGuideTopic": "뽑아 내는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 자라지 않는 동안",
+          "section": "3.3 솎아 내기",
+          "primaryConcepts": [
+            "솎아 내기"
+          ],
+          "secondaryConcepts": [
+            "기다리는 시간"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "제거한 항목의 재발생을 다루는 페이지다. 제거가 영구적 폐기가 아니라는 점을 제시하고, 별도 목록을 유지해 보존한 처리를 기술한다.",
+          "aiAnalysisInputSha256": "06de8b90039c23649fbfae0f861199502877a6ef2fc9a5c57ed2319268c5c165",
+          "aiPublicGuideTopic": "솎아 낸 것이 다시 오는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 실패를 허용한다는 것",
+          "section": "4.1 허용한다는 말",
+          "primaryConcepts": [
+            "실패를 허용하기"
+          ],
+          "secondaryConcepts": [
+            "작게 하기",
+            "되지 않는 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "핵심 개념의 범위를 한정하는 페이지다. 수용이 긍정적 평가가 아니라 사후 은폐를 하지 않는 것임을 제시하고, 은폐의 세 가지 형태를 열거한다.",
+          "aiAnalysisInputSha256": "530a00713161ee12d1a29da660424bc08acc923dc9b3717975677ee0a053b62d",
+          "aiPublicGuideTopic": "허용이 무엇을 하는가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            14,
+            19
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 실패를 허용한다는 것",
+          "section": "4.1 허용한다는 말",
+          "primaryConcepts": [
+            "실패를 허용하기"
+          ],
+          "secondaryConcepts": [
+            "한 번에 잘하려는 마음"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수용 정도의 시간적 변화를 다루는 페이지다. 초기 기록 누락률과 후기 기록률을 대비하고, 변화의 원인을 태도가 아니라 누적 건수에서 찾는 해석을 제시한다.",
+          "aiAnalysisInputSha256": "9f1c503914609b8b8bf0a326ea122c172bf863679832fd228d69d3439ad07ea3",
+          "aiPublicGuideTopic": "허용이 늘어나는 방식",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 실패를 허용한다는 것",
+          "section": "4.1 허용한다는 말",
+          "primaryConcepts": [
+            "실패를 허용하기"
+          ],
+          "secondaryConcepts": [
+            "정원이라는 비유"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록과 공개의 차이를 다루는 페이지다. 기록 건수 대비 타인에게 공유한 건수를 제시하고, 비공개가 일부 사례의 진전을 지연시켰을 가능성과 이 책의 범위 한계를 밝힌다.",
+          "aiAnalysisInputSha256": "0a5c6de9e6cc51fd4c3e1d712d3253216d0ded38d5bcdf96def946e22eeadf66",
+          "aiPublicGuideTopic": "남에게 말하는 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            25
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 실패를 허용한다는 것",
+          "section": "4.2 허용해도 아픈 것",
+          "primaryConcepts": [
+            "아픈 것"
+          ],
+          "secondaryConcepts": [
+            "실패를 허용하기"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복이 정서적 부담을 감소시키지 않는다는 점을 다루는 페이지다. 부담이 큰 조건 세 가지를 제시하고, 익숙해지는 대상이 계수 행위에 한정된다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "faac3858e75569a13b397172eb1c9a08075b88d310bdb1adee2ebcef557afd55",
+          "aiPublicGuideTopic": "세어도 줄지 않는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 실패를 허용한다는 것",
+          "section": "4.2 허용해도 아픈 것",
+          "primaryConcepts": [
+            "아픈 것"
+          ],
+          "secondaryConcepts": [
+            "되지 않는 것"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정서적 부담이 큰 사례의 기록 시점을 다루는 페이지다. 당일 기록이 부정적 강화로 작용한다는 문제를 제시하고, 제목만 선기록하고 익일에 완성하는 절차를 기술한다.",
+          "aiAnalysisInputSha256": "c150e809aced9f9a9d05edbc49893cd78e996fb7814c2dfb82ea1bc928be9bfc",
+          "aiPublicGuideTopic": "아픈 날에 하는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            27
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 실패를 허용한다는 것",
+          "section": "4.3 되풀이되는 실패",
+          "primaryConcepts": [
+            "되풀이되는 실패"
+          ],
+          "secondaryConcepts": [
+            "실패를 허용하기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일해 보이는 실패의 반복을 다루는 페이지다. 결과가 같아도 원인이 다르다는 관측을 제시하고, 차이를 병기해 개별 항목으로 구분한 처리를 기술한다.",
+          "aiAnalysisInputSha256": "3c6246db3a7efa01c93c7842d9c2b432888709481a55a773dff99d07c9dc04e0",
+          "aiPublicGuideTopic": "같은 실패를 또 하는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 실패를 허용한다는 것",
+          "section": "4.3 되풀이되는 실패",
+          "primaryConcepts": [
+            "되풀이되는 실패"
+          ],
+          "secondaryConcepts": [
+            "솎아 내기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "원인까지 동일한 반복 사례를 다루는 페이지다. 방법 부적합과 수행자 요인을 구분하고, 후자에 대해 제거 절차를 적용하지 않은 이유와 처리 유보를 기술한다.",
+          "aiAnalysisInputSha256": "10c3f0c27b823866901b4ea1a4a149b4808fc64d2a7c9d475dd0e8c1d958b145",
+          "aiPublicGuideTopic": "정말로 같은 되풀이",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            29
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "5장 한 해의 정원",
+          "section": "5.1 무엇을 적었는가",
+          "primaryConcepts": [
+            "기록의 규칙"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 서식을 다루는 페이지다. 한 줄 단위 기입 항목을 제시하고, 교훈 항목을 사전에 기입하지 않고 사후 발생 시에만 추가하는 규칙과 그 결과를 기술한다.",
+          "aiAnalysisInputSha256": "5ff6b5707e37057753a675d9c1037679bb3d1692bab7c04db6870d6df737d0d1",
+          "aiPublicGuideTopic": "한 줄에 들어가는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 한 해의 정원",
+          "section": "5.1 무엇을 적었는가",
+          "primaryConcepts": [
+            "기록의 규칙"
+          ],
+          "secondaryConcepts": [
+            "못 적은 실패"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 시점의 유연성과 주기적 대조 절차를 다루는 페이지다. 착수 목록과 실패 기록을 주 단위로 대조하는 방법을 제시하고, 불일치의 발생 빈도를 기술한다.",
+          "aiAnalysisInputSha256": "90de9c200d22cd121a279f2e2fc9d46e582c6fda5a1f2d0ec7f0557df2c88fb4",
+          "aiPublicGuideTopic": "적는 시각",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 한 해의 정원",
+          "section": "5.2 못 적은 실패",
+          "primaryConcepts": [
+            "못 적은 실패"
+          ],
+          "secondaryConcepts": [
+            "기록의 규칙"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 누락의 규모와 사유를 다루는 페이지다. 미기록 건수와 사후 보완 비율을 제시하고, 정서적 부담이 큰 사례가 체계적으로 누락된다는 관측을 기술한다.",
+          "aiAnalysisInputSha256": "c86461e8a75acc9e5d58ccb8ea03b35991591cd089e92c0238104599f7bd32f9",
+          "aiPublicGuideTopic": "안 적은 것을 세기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 한 해의 정원",
+          "section": "5.2 못 적은 실패",
+          "primaryConcepts": [
+            "못 적은 실패"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미기록 사례의 사후 보완을 배제한 판단을 다루는 페이지다. 소급 기술이 실제 사례와 다른 형태를 갖는다는 관측을 제시하고, 총계의 부정확성을 함께 명시한다.",
+          "aiAnalysisInputSha256": "ab419931e7da7aa6477997625e578595604748637c92169b49a1f9af3c602556",
+          "aiPublicGuideTopic": "빠진 것을 채우지 않기로 한 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            33
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 한 해의 정원",
+          "section": "5.3 한 해를 늘어놓으면",
+          "primaryConcepts": [
+            "한 해를 늘어놓기"
+          ],
+          "secondaryConcepts": [
+            "해 보기"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연간 기록의 월별 분포를 다루는 페이지다. 실패 건수의 변동이 착수 건수에 종속된다는 관측을 제시하고, 관찰 지표를 실패 수에서 착수 수로 바꾼 판단을 기술한다.",
+          "aiAnalysisInputSha256": "ce4637a5eabde185568b90f5906227a1e4bf8f7bfe104db67c2a086519c34ef3",
+          "aiPublicGuideTopic": "백열두 줄을 펴 보기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 한 해의 정원",
+          "section": "5.3 한 해를 늘어놓으면",
+          "primaryConcepts": [
+            "한 해를 늘어놓기"
+          ],
+          "secondaryConcepts": [
+            "되풀이되는 실패"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연간 계수 결과를 다루는 페이지다. 주요 항목별 건수를 제시하고, 비율과 절대수 가운데 어느 쪽으로 읽느냐가 이후 행동에 영향을 준다는 관측을 기술한다.",
+          "aiAnalysisInputSha256": "12b32d7fc19018d2d2d1819940d8fbdc84f51fac85a12b10cf7bdb35a272435c",
+          "aiPublicGuideTopic": "늘어놓고 세어 본 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            35
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 한 해의 정원",
+          "section": "5.3 한 해를 늘어놓으면",
+          "primaryConcepts": [
+            "한 해를 늘어놓기"
+          ],
+          "secondaryConcepts": [
+            "못 적은 실패",
+            "솎아 내기"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "월별 착수 건수와 미성과 건수를 쌍 막대로 표현한 도표다. 두 값이 함께 변동한다는 점과 성과 발생의 산발성을 표시하고, 기록에서 누락된 사례가 도표에 포함되지 않음을 명시한다.",
+          "aiAnalysisInputSha256": "2114313956800467e7e34e770811d7a9f11aea2ca77cba73e9936d2e189360f0",
+          "aiPublicGuideTopic": "한 해 치 실패를 달별로 늘어놓은 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "6장 기를 수 없는 실패",
+          "section": "6.1 값이 큰 실패",
+          "primaryConcepts": [
+            "값이 큰 실패"
+          ],
+          "secondaryConcepts": [
+            "실패의 크기"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "적용 대상 밖의 실패를 다루는 페이지다. 규모 조건을 충족하지 않는 사례에 절차를 적용했을 때 부적절한 정서적 완화가 발생했다는 관측을 제시하고, 사전 판정의 필요를 밝힌다.",
+          "aiAnalysisInputSha256": "09959573ec67a3c41a8e313b56802e1878e3026213c09636642dc2c999501031",
+          "aiPublicGuideTopic": "이 정원에 들어오지 않는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 기를 수 없는 실패",
+          "section": "6.1 값이 큰 실패",
+          "primaryConcepts": [
+            "값이 큰 실패"
+          ],
+          "secondaryConcepts": [
+            "아픈 것"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "타인에게 비용이 전가되는 실패를 다루는 페이지다. 해당 유형이 가장 빈번하다는 점을 제시하고, 이 방법이 대응책을 제공하지 못한다는 사실을 그대로 남긴다.",
+          "aiAnalysisInputSha256": "284751b0a647d007257835943b193cdd5cf9f82a37e6cc71b2a6780b382c1df7",
+          "aiPublicGuideTopic": "남에게 값이 가는 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 기를 수 없는 실패",
+          "section": "6.1 값이 큰 실패",
+          "primaryConcepts": [
+            "값이 큰 실패"
+          ],
+          "secondaryConcepts": [
+            "작은 실패"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "규모 축소가 불가능한 결정을 다루는 페이지다. 시험적 시도가 성립하지 않는 사례를 열거하고, 해당 사안을 기록 대상에서 제외한 것이 방법의 경계를 유지한 조치임을 밝힌다.",
+          "aiAnalysisInputSha256": "607fe0a173e2d18307abcf373f208622434dfa987392e5f3070ff36d5043dad3",
+          "aiPublicGuideTopic": "작게 만들 수 없는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 기를 수 없는 실패",
+          "section": "6.2 실패를 권하지 않기",
+          "primaryConcepts": [
+            "권하지 않기"
+          ],
+          "secondaryConcepts": [
+            "값이 큰 실패"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "방법의 전제 조건을 다루는 페이지다. 재시도 여력의 유무에 따라 동일한 권유가 다르게 작용한다는 점을 제시하고, 서술의 적용 범위를 관측자의 조건으로 한정한다.",
+          "aiAnalysisInputSha256": "467bd8c45a0a863bb6404cb63ccdb54c41d6026fea02faa977fbf78b8db13ee1",
+          "aiPublicGuideTopic": "이 방법을 남에게 말할 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            27
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 기를 수 없는 실패",
+          "section": "6.2 실패를 권하지 않기",
+          "primaryConcepts": [
+            "권하지 않기"
+          ],
+          "secondaryConcepts": [
+            "실패를 허용하기"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실패의 교훈적 가치에 대한 통념을 검토하는 페이지다. 성과 전환 비율을 근거로 제시하고, 무조건적 서술이 미성과 사례를 이중으로 평가절하한다는 이유로 표현을 조정한 경위를 밝힌다.",
+          "aiAnalysisInputSha256": "0b0e546e819c3d9abe108ff2c1880c458cfb5393142c039cbf009e95288a5c7e",
+          "aiPublicGuideTopic": "실패에서 배운다는 말",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 기를 수 없는 실패",
+          "section": "6.3 정원이라는 비유의 한계",
+          "primaryConcepts": [
+            "비유의 한계"
+          ],
+          "secondaryConcepts": [
+            "정원이라는 비유"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "핵심 은유가 대상과 어긋나는 지점을 열거하는 페이지다. 성장의 방향, 관리의 효과, 계절성의 세 항목을 제시하고 은유가 유효한 범위를 한정한다.",
+          "aiAnalysisInputSha256": "2be870c460bf630ff95e49ccfe9a1ec2bfe8ebd73d0a5c68900a3bd0acf02272",
+          "aiPublicGuideTopic": "정원과 다른 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 기를 수 없는 실패",
+          "section": "6.3 정원이라는 비유의 한계",
+          "primaryConcepts": [
+            "비유의 한계"
+          ],
+          "secondaryConcepts": [
+            "기다리는 시간"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대체 은유의 검토와 배제를 다루는 페이지다. 각 후보가 대상의 성질과 어긋나는 지점을 제시하고, 단일 은유를 유지하며 한계를 명시하는 편을 택한 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "0c5a66f202f925e5adddf5fa90de28b2bb29b9922175ff638b7dce1d9f2a80a8",
+          "aiPublicGuideTopic": "비유를 바꿔 보려던 시도",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "7장 작은 실패를 기르는 정원",
+          "section": "7.1 기른다는 말",
+          "primaryConcepts": [
+            "남은 것"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 종료 시점에서 결과를 정리하는 페이지다. 정서적 부담은 변하지 않았으나 착수 빈도가 크게 증가했다는 결과를 제시하고, 핵심 용어의 의미 변화를 기술한다.",
+          "aiAnalysisInputSha256": "5817e16b75e148b427dc627e0bb79389628eff060b0e40b89a590eabe1336956",
+          "aiPublicGuideTopic": "한 해 뒤에 이 말이 뜻하는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "small-failures-are-a-unit"
+          ]
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 작은 실패를 기르는 정원",
+          "section": "7.1 기른다는 말",
+          "primaryConcepts": [
+            "남은 것"
+          ],
+          "secondaryConcepts": [
+            "되지 않는 것",
+            "실패를 허용하기"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "성과로 이어지지 않은 다수 사례에 대한 서술 방침을 정리하는 페이지다. 사후 정당화 문장을 반복 삭제한 경위를 밝히고, 무의미한 사례의 존재를 그대로 남기는 결론을 제시한다.",
+          "aiAnalysisInputSha256": "81f02ac2c1a3854194aa1ea7a84608bb56f75db22032fd6279da61f1361dc6d7",
+          "aiPublicGuideTopic": "아흔넷에 대하여",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 작은 실패를 기르는 정원",
+          "section": "7.1 기른다는 말",
+          "primaryConcepts": [
+            "남은 것"
+          ],
+          "secondaryConcepts": [
+            "권하지 않기",
+            "비유의 한계"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "방법의 적용 범위와 규모를 종합하는 페이지다. 처리 가능한 대상과 제공하지 못하는 것을 각각 명시하고, 성과 예측이 불가능하다는 점을 지속의 근거로 제시한다.",
+          "aiAnalysisInputSha256": "66ea578f36d7c80a1e686736b0f7545d9c7ebb4993c260ffe9c59be85b3fd64c",
+          "aiPublicGuideTopic": "이 방법의 크기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 작은 실패를 기르는 정원",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "되풀이되는 실패"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 범위의 제약으로 남은 미해결 문제를 정리하는 페이지다. 반복 사례의 처리, 중단 기준의 타당성, 인과 방향이라는 세 항목을 구분하고 각각의 확인 가능성을 다르게 평가한다.",
+          "aiAnalysisInputSha256": "583e82ef0df40dd1af56687263c7607e7164b1aa763e4713cb8e490f07e303fa",
+          "aiPublicGuideTopic": "한 해로 답하지 못한 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 작은 실패를 기르는 정원",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "못 적은 실패"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "방법의 이전 가능성을 검토하는 페이지다. 이전 가능한 절차 세 가지를 제시하고, 적용에 필요한 여건이 전제된다는 점을 재차 명시한다.",
+          "aiAnalysisInputSha256": "ffec619c75dcea26df205e50cfddaa5e1d9d6729c4d62dcc5638384ade7cb920",
+          "aiPublicGuideTopic": "이 기록을 다른 사람이 쓸 수 있는가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 작은 실패를 기르는 정원",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "한 해를 늘어놓기",
+            "남은 것"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "차기 관측의 변경 항목을 정리하는 페이지다. 착수 건수의 직접 기록과 중단 기준의 실험적 변경을 제시하고, 유지할 규칙과 누락 사례의 계수 방침을 밝힌다.",
+          "aiAnalysisInputSha256": "f8891d26bd3a70e5349a6fd53c50a18399f600e3367ce06b3bdfa0da43fb9097",
+          "aiPublicGuideTopic": "다음 해에 바꿀 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            49
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 21,
       "title": "빛으로 읽는 우주: 분광과 거리 측정",
       "pdfPath": "pdfs/book-021.pdf",
