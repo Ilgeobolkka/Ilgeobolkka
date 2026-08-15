@@ -58,13 +58,14 @@ export function createRouteDetailPage(root, dependencies = {}) {
 
         const item = items[index];
         const pageNumber = page(item);
-        setBusy(true);
-        clearCommonError();
-        clearInkNotice();
-        elements.status.textContent = `원본 ${pageNumber}페이지를 여는 중입니다.`;
-        elements.content.setAttribute("aria-busy", "true");
 
         try {
+            setBusy(true);
+            clearCommonError();
+            clearInkNotice();
+            elements.status.textContent = `원본 ${pageNumber}페이지를 여는 중입니다.`;
+            elements.content.setAttribute("aria-busy", "true");
+
             const metadata = state.viewerSessionId
                 ? await request("/api/reading-sessions/current/page", {
                     method: "PATCH",
@@ -100,9 +101,11 @@ export function createRouteDetailPage(root, dependencies = {}) {
             elements.content.focus();
             await refreshRouteSnapshotAfterContentSuccess(index, pageNumber);
         } catch (error) {
-            if (error?.code === "VIEWER_SESSION_REPLACED") {
+            if (error instanceof ApiRequestError
+                    && error.code === "VIEWER_SESSION_REPLACED") {
                 handleViewerSessionReplaced();
-            } else if (error?.code === "INSUFFICIENT_INK") {
+            } else if (error instanceof ApiRequestError
+                    && error.code === "INSUFFICIENT_INK") {
                 elements.status.textContent = "잉크가 부족하여 페이지를 열지 못했습니다.";
                 showInkNotice();
             } else {
