@@ -13927,6 +13927,1031 @@
       ]
     },
     {
+      "bookId": 33,
+      "title": "청동 종이 울리던 시대",
+      "pdfPath": "pdfs/book-033.pdf",
+      "pdfSha256": "4fcc97416ad8d23853e2b6ec9dd3d6da179df2b0e149fbec910a20362f015519",
+      "totalPageCount": 49,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 종은 무엇을 위해 걸렸나",
+          "section": "1.1 소리를 내는 물건이 아니다",
+          "primaryConcepts": [
+            "의례 기물"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "의례 기물을 악기가 아닌 가시성의 장치로 규정하고 형태 선택의 근거를 재해석한다. 물질 사료를 기능이 아니라 배치로 읽는 이 책의 전제를 세운다.",
+          "aiAnalysisInputSha256": "e0e8aded34a3c38fb1f7096725977e20533234e9c472a07e0f67b4865325e255",
+          "aiPublicGuideTopic": "종이 악기가 아니라 의례의 도구로 만들어졌음을 밝힌다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 종은 무엇을 위해 걸렸나",
+          "section": "1.1 소리를 내는 물건이 아니다",
+          "primaryConcepts": [
+            "의례 기물"
+          ],
+          "secondaryConcepts": [
+            "제작 주체"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "물질 사료가 제작 과정의 자원 투입을 비의도적으로 보존한다는 특성을 제시한다. 해석에 비교 대상이 반드시 필요하다는 조건을 밝힌다.",
+          "aiAnalysisInputSha256": "904cef7a0ebf185ba25d41db82cc6e24245562c04a97dade7e4730e1bbf0f27f",
+          "aiPublicGuideTopic": "물건 자체가 기록이 되는 방식을 정리한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 종은 무엇을 위해 걸렸나",
+          "section": "1.2 종에 새긴 글",
+          "primaryConcepts": [
+            "명문"
+          ],
+          "secondaryConcepts": [
+            "의례 기물"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "명문의 물리적 제약이 서술 길이와 선택을 규정함을 밝힌다. 수정 불가능성 때문에 선언과 후속 사실의 불일치가 보존된다는 특성을 제시한다.",
+          "aiAnalysisInputSha256": "d66408398ed4395e9742fde3002673b0a6049fe1c5eb2293a6f159bb18b2f214",
+          "aiPublicGuideTopic": "종에 새겨진 글이 어떤 종류의 문서인지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 종은 무엇을 위해 걸렸나",
+          "section": "1.2 종에 새긴 글",
+          "primaryConcepts": [
+            "명문"
+          ],
+          "secondaryConcepts": [
+            "명문의 구성"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "명문 공간의 물리적 제약이 서술 항목 간 경쟁을 만든다는 점을 제시한다. 항목별 분량 변화를 시기별 강조점의 지표로 삼는 독법을 밝힌다.",
+          "aiAnalysisInputSha256": "40785f718489866bcf7980cce17d48e876178f36dc79f2870417c61f7ceaab84",
+          "aiPublicGuideTopic": "새길 자리가 정해져 있다는 사실이 글을 바꾸는 자리를 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 종은 무엇을 위해 걸렸나",
+          "section": "1.3 만든 사람과 시킨 사람",
+          "primaryConcepts": [
+            "제작 주체"
+          ],
+          "secondaryConcepts": [
+            "명문"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발주자와 제작자를 구분하고 후자의 흔적이 문자가 아닌 물리적 특징에 남음을 제시한다. 두 계열의 분류가 어긋나는 지점의 정보 가치를 밝힌다.",
+          "aiAnalysisInputSha256": "6f4d3ed5a6b97f6f72a8a79a4a49becb8174290c55601e3ec45c7d22b0d02864",
+          "aiPublicGuideTopic": "종을 만든 손과 만들라고 한 자리를 갈라 본다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 종은 무엇을 위해 걸렸나",
+          "section": "1.3 만든 사람과 시킨 사람",
+          "primaryConcepts": [
+            "제작 주체"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "명문 기준 분류와 제작 흔적 기준 분류를 병렬 제시해 경계 불일치를 시각화한다. 불일치 지점을 해석의 출발점으로 지목한다.",
+          "aiAnalysisInputSha256": "0661772405500e37b4bbe711e5c6ba8fa7ec5ccdcbc05ff29e5d93682add587d",
+          "aiPublicGuideTopic": "명문이 앞세운 사람과 물건에 남은 손자국이 어긋나는 자리를 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "2장 새긴 글을 읽는 법",
+          "section": "2.1 무엇이 적혀 있는가",
+          "primaryConcepts": [
+            "명문의 구성"
+          ],
+          "secondaryConcepts": [
+            "명문"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "명문의 정형화된 항목 구성과 순서를 제시하고 형식 고정이 비교를 가능하게 함을 밝힌다. 항목별 종단 비교를 명문 독해의 기본 절차로 세운다.",
+          "aiAnalysisInputSha256": "f433fcff21596ba7dc79c4f7541eb7a35768693c4a3837b331f96f622121fa81",
+          "aiPublicGuideTopic": "명문에 되풀이되는 항목과 그 순서를 정리한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 새긴 글을 읽는 법",
+          "section": "2.1 무엇이 적혀 있는가",
+          "primaryConcepts": [
+            "명문의 구성"
+          ],
+          "secondaryConcepts": [
+            "참여 계층"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정형 서식에서 항목 결락이 식별 가능해지는 구조를 제시한다. 결락의 시기적 집중을 정치적 사정의 지표로 읽는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "89f6ac6e0a116d1f1febcb418770774f9fb4b6045793e33f8949b82efe819ab2",
+          "aiPublicGuideTopic": "빠진 항목이 알려 주는 것을 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 새긴 글을 읽는 법",
+          "section": "2.2 누구의 말인가",
+          "primaryConcepts": [
+            "명문의 화자"
+          ],
+          "secondaryConcepts": [
+            "명문의 구성"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "명문의 서술 주체를 실제 작성자가 아닌 선택된 형식으로 규정한다. 화자 전환 시점을 추가 자료 탐색의 표지로 삼는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "aaf9be0dcd6d0210e267fa37fb0693442b2648797aa07a2a3452819c9e1ec200",
+          "aiPublicGuideTopic": "명문의 문장이 누구의 목소리로 쓰였는지 가른다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 새긴 글을 읽는 법",
+          "section": "2.2 누구의 말인가",
+          "primaryConcepts": [
+            "명문의 화자"
+          ],
+          "secondaryConcepts": [
+            "정당성"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "명문의 기원 문구를 성취가 아닌 의도로 규정하고 결핍의 지표로 재해석한다. 마지막 항목만 추출한 종단 정리를 통해 시기별 불안 요소를 읽는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "cc67b4b45002a84b0d8d5f339695e5731b106c5d4797c348abf5cb948ddaa274",
+          "aiPublicGuideTopic": "새긴 말과 그 뒤에 일어난 일이 어긋나는 자리를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": [
+            "carved-is-intent-not-fact"
+          ]
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 새긴 글을 읽는 법",
+          "section": "2.3 닳고 깨진 자리",
+          "primaryConcepts": [
+            "결손 판독"
+          ],
+          "secondaryConcepts": [
+            "명문"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "명문 마모의 물리적 원인과 판독 가능 비율을 제시한다. 추정 복원과 실판독을 표기상 분리하는 절차와 그 세대 간 필요성을 밝힌다.",
+          "aiAnalysisInputSha256": "0d7fdda01996b4ac3de061c88ef9018792babe0375ed012ea400a595d759586e",
+          "aiPublicGuideTopic": "글자가 지워진 자리를 어떻게 다룰지 정한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 새긴 글을 읽는 법",
+          "section": "2.3 닳고 깨진 자리",
+          "primaryConcepts": [
+            "결손 판독"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "판독 상태를 세 등급으로 구분해 명문 위에 직접 표시하는 방식을 시각화한다. 결손의 물리적 분포와 마모 원인의 대응을 함께 제시한다.",
+          "aiAnalysisInputSha256": "7f2d99279d83414d0a61fde6965fabad78c4a15e0fcb16405cbd7a33eabaefcd",
+          "aiPublicGuideTopic": "판독한 글자와 짐작한 글자를 표시로 갈라 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 새긴 글을 읽는 법",
+          "section": "2.4 다시 새긴 자국",
+          "primaryConcepts": [
+            "개주"
+          ],
+          "secondaryConcepts": [
+            "제작 주체"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재주조와 덧새김을 구분하고 각각의 물리적 흔적을 제시한다. 기물 연대와 명문 연대의 분리 기록이 필요한 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "5326c11e5f802ef8314173a6c8d89af702185cbb90bff4d99534b4ec49d2941e",
+          "aiPublicGuideTopic": "녹여 다시 부은 종과 덧새긴 글을 가려내는 일을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 새긴 글을 읽는 법",
+          "section": "2.4 다시 새긴 자국",
+          "primaryConcepts": [
+            "개주"
+          ],
+          "secondaryConcepts": [
+            "명문의 화자"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "덧새김의 범위에서 수정 의도를 추론하는 방법을 제시한다. 물질에 남은 개입 흔적이 문헌 기록보다 직접적인 증거가 되는 사례를 밝힌다.",
+          "aiAnalysisInputSha256": "e12b827946d9e59b2d78cc2f0fde05fb7fa2d0425175f6a4e33acb3ee7820edf",
+          "aiPublicGuideTopic": "덧새김이 그 자체로 사료가 되는 자리를 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 절기가 정하는 날",
+          "section": "3.1 언제 울렸는가",
+          "primaryConcepts": [
+            "의례의 절기"
+          ],
+          "secondaryConcepts": [
+            "의례 기물"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "의례 시점이 절기로 지정된 구조와 농업·조세 주기와의 정렬을 제시한다. 시점 표기 방식의 변화와 연기 기록의 증가를 연결해 읽는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "36643b17b35b4a140af4a09198485829b8b9ccf546758651bff7db0464de9705",
+          "aiPublicGuideTopic": "종을 울리는 날이 어떻게 정해졌는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 절기가 정하는 날",
+          "section": "3.1 언제 울렸는가",
+          "primaryConcepts": [
+            "의례의 절기"
+          ],
+          "secondaryConcepts": [
+            "정당성"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "의례의 정기적 수행이 자원 동원 능력의 지표가 됨을 제시한다. 내용 분석이 아닌 수행 여부의 시계열을 읽는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "a8811551b20f3c441bd66d513b7d8d6c7b8ec3fc30fec5b7e58b0fd653c3ec77",
+          "aiPublicGuideTopic": "정해진 날에 울린다는 사실 자체가 하는 일을 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 절기가 정하는 날",
+          "section": "3.2 울리지 않은 해",
+          "primaryConcepts": [
+            "의례 중단"
+          ],
+          "secondaryConcepts": [
+            "의례의 절기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "의례 미수행과 기록 부재를 구분하고 후속 연도의 서술을 판별 실마리로 제시한다. 확인 가능한 중단과 미상을 분리해 집계하는 절차를 밝힌다.",
+          "aiAnalysisInputSha256": "f624ff73e608c5700ce69f18c11fd713210bbc9db5d322dd6401d7c873c29a68",
+          "aiPublicGuideTopic": "의례가 열리지 않은 해를 어떻게 읽을지 정한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 절기가 정하는 날",
+          "section": "3.2 울리지 않은 해",
+          "primaryConcepts": [
+            "의례 중단"
+          ],
+          "secondaryConcepts": [
+            "배제"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "의례 중단의 원인을 여력과 정당성 두 계열로 구분한다. 재개 시 참여 주체의 동일성을 판별 기준으로 삼는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "e5a737d1a9acafe97b2b4b10da3304ff9b69b1616d56b8bf8d946d57357750ef",
+          "aiPublicGuideTopic": "중단이 무엇을 뜻하는지 여러 갈래로 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 절기가 정하는 날",
+          "section": "3.3 날을 옮긴 해",
+          "primaryConcepts": [
+            "의례 변경"
+          ],
+          "secondaryConcepts": [
+            "의례의 절기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "의례 일정 변경이 명시적 결정을 전제한다는 점에서 중단과 다름을 제시한다. 변경 사유의 기재 여부를 해석의 실마리로 삼는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "edd70acc6b347461e3a216abc3e2fd150d79bb83c4d02b2e982ea5faf453c0f3",
+          "aiPublicGuideTopic": "정해진 날을 옮긴 기록이 무엇을 뜻하는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 절기가 정하는 날",
+          "section": "3.3 날을 옮긴 해",
+          "primaryConcepts": [
+            "의례 변경"
+          ],
+          "secondaryConcepts": [
+            "명문의 화자"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "변경의 일회성과 지속성을 구분하고 표기 방식 변화와의 동시성을 지적한다. 사례 수 부족을 이유로 결론을 유보하는 판단을 밝힌다.",
+          "aiAnalysisInputSha256": "c0eb9f6f8709cd2cd9d0b29037d03f0c9a352af057df07680d9c24aeb83b45bb",
+          "aiPublicGuideTopic": "옮긴 뒤에 돌아왔는지가 알려 주는 것을 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 절기가 정하는 날",
+          "section": "3.4 소리가 닿는 거리",
+          "primaryConcepts": [
+            "의례의 범위"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "의례의 청각적 도달 범위와 취락 분포를 중첩해 참여 가능 범위를 시각화한다. 전령을 통한 확장 경로를 함께 제시해 도달과 참여의 불일치를 보인다.",
+          "aiAnalysisInputSha256": "c93e142a207c0d05cc27027ca0919bc5b97c3bfbe0b9d1b21794cb89ebf8fa31",
+          "aiPublicGuideTopic": "종소리가 닿는 범위와 성 안 마을의 자리를 겹쳐 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 절기가 정하는 날",
+          "section": "3.4 소리가 닿는 거리",
+          "primaryConcepts": [
+            "의례의 범위"
+          ],
+          "secondaryConcepts": [
+            "참여 계층"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "물리적 도달 범위와 제도적 포섭 범위를 구분하고 양자의 불일치를 제시한다. 거리 요인으로 참여 문제를 환원하지 않도록 경계한다.",
+          "aiAnalysisInputSha256": "dbd7e0aa36346eb7d25311eeb860265848dbcafb3ae4f3088ec4aa01c38cf6aa",
+          "aiPublicGuideTopic": "소리가 닿는 범위와 의례가 미치는 범위를 갈라 본다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 누가 그 자리에 섰나",
+          "section": "4.1 서는 자리가 정해져 있다",
+          "primaryConcepts": [
+            "참여 계층"
+          ],
+          "secondaryConcepts": [
+            "의례 기물"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "의례 공간의 위계적 배치를 물질 흔적과 문헌 조각의 결합으로 복원하는 방법을 제시한다. 반복 수행이 질서를 체화시키는 기능을 밝힌다.",
+          "aiAnalysisInputSha256": "b5cca821982cc90d0c749b67f57adbe7fd0bcdcef1ea08666a8ae117a68cce69",
+          "aiPublicGuideTopic": "의례에서 누가 어디에 서는지가 정해져 있었음을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 누가 그 자리에 섰나",
+          "section": "4.1 서는 자리가 정해져 있다",
+          "primaryConcepts": [
+            "참여 계층"
+          ],
+          "secondaryConcepts": [
+            "명문의 구성"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "명문의 기재 순서와 의례 공간의 배치 순서를 대조해 불일치를 식별한다. 복수 자료 대조가 단일 자료 해석의 오류를 드러내는 사례를 제시한다.",
+          "aiAnalysisInputSha256": "b6651094dd564d57ea481e8525057dfef4f30f1e55985653d3e3f181c3f532ae",
+          "aiPublicGuideTopic": "자리의 순서와 명문의 이름 순서를 맞대어 본다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 누가 그 자리에 섰나",
+          "section": "4.2 자리는 바뀐다",
+          "primaryConcepts": [
+            "자리의 이동"
+          ],
+          "secondaryConcepts": [
+            "참여 계층"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "의례 위계의 점진적 변동 양상을 제시하고 단기 관찰로는 포착되지 않음을 밝힌다. 시기별 배치도의 병렬 비교를 관찰 방법으로 제시한다.",
+          "aiAnalysisInputSha256": "a5b931fa9735f8cd75a636b89ac24f7a0a51aa1b75e9d50ab91490c7117d184d",
+          "aiPublicGuideTopic": "정해진 자리가 시기에 따라 옮겨 간 흔적을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 누가 그 자리에 섰나",
+          "section": "4.2 자리는 바뀐다",
+          "primaryConcepts": [
+            "자리의 이동"
+          ],
+          "secondaryConcepts": [
+            "개주"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "위계 변동과 명문 수정의 시기적 중첩을 제시하고 인과 판정이 불가능한 이유를 밝힌다. 중첩 사실만 기록하고 해석을 유보하는 처리를 제안한다.",
+          "aiAnalysisInputSha256": "9ebb8976f80cb6f0a51d2ab486c49f219e6adf3967315a2e34d995fbd279f0a0",
+          "aiPublicGuideTopic": "자리가 바뀐 무렵에 종에도 일어난 일을 겹쳐 본다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 누가 그 자리에 섰나",
+          "section": "4.3 부르지 않은 사람들",
+          "primaryConcepts": [
+            "배제"
+          ],
+          "secondaryConcepts": [
+            "참여 계층"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "참여자 명단만 남는 자료 구조에서 배제 집단을 추정하는 방법을 제시한다. 이질적 자료 대조의 한계를 이유로 정량 판단을 유보한다.",
+          "aiAnalysisInputSha256": "85e459db7ed0286f934c8f8ee85c0142ba086179eba7a1bf30c007a90fe2b649",
+          "aiPublicGuideTopic": "의례에 부르지 않은 사람들이 누구였는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 누가 그 자리에 섰나",
+          "section": "4.3 부르지 않은 사람들",
+          "primaryConcepts": [
+            "배제"
+          ],
+          "secondaryConcepts": [
+            "의례의 범위"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "참여 경계가 지리적 기준이 아님을 확인하고 대안 기준 후보를 제시한다. 자료로 배제 가능한 가설을 제거하는 것 자체의 가치를 밝힌다.",
+          "aiAnalysisInputSha256": "b6b6e73d7987eaed30a117bc82d925658c792dda9a65400784a63cf8bbceebc2",
+          "aiPublicGuideTopic": "부름의 경계가 무엇을 기준으로 그어졌는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 누가 그 자리에 섰나",
+          "section": "4.4 의례가 하는 일",
+          "primaryConcepts": [
+            "정당성"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "위계 배치의 시기별 변화를 네 장면으로 병렬 제시해 점진적 이동을 시각화한다. 반복 수행이 결과를 자연화하는 기제를 함께 보인다.",
+          "aiAnalysisInputSha256": "1279585d6f27438e34ee26540d92ea9a63c9360ab8710778cbd222e4083bbcf8",
+          "aiPublicGuideTopic": "종울림제가 되풀이되며 무엇을 만들어 냈는지 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            24,
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 누가 그 자리에 섰나",
+          "section": "4.4 의례가 하는 일",
+          "primaryConcepts": [
+            "정당성"
+          ],
+          "secondaryConcepts": [
+            "자리의 이동"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "의례의 반복이 기존 질서의 표시와 새 질서의 형성을 동시에 수행함을 제시한다. 정당성을 주장이 아니라 문제 제기가 사라진 상태로 규정한다.",
+          "aiAnalysisInputSha256": "4b91806be4cba19aa48cb05e08c040792650ae6124b724795c42c08919b6a66c",
+          "aiPublicGuideTopic": "의례가 통치의 정당성과 이어지는 자리를 정리한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 종루성의 한 해를 따라",
+          "section": "5.1 종을 실제로 재기",
+          "primaryConcepts": [
+            "기물 조사"
+          ],
+          "secondaryConcepts": [
+            "의례 기물"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기물 조사에서 계측을 판독보다 앞세우는 절차와 그 이유를 제시한다. 문자 정보가 물질 관찰을 선점하는 편향을 방지하는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "dbbe8f1db2f22e02eed205ff10293d2c1aa85cc5a40568bf76ac92cf96a6626c",
+          "aiPublicGuideTopic": "종 하나를 실제로 조사하는 순서를 따라간다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 종루성의 한 해를 따라",
+          "section": "5.1 종을 실제로 재기",
+          "primaryConcepts": [
+            "기물 조사"
+          ],
+          "secondaryConcepts": [
+            "제작 주체"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "물질 사료의 계측값이 보존 상태에 좌우됨을 제시하고 항목별 활용 가능성을 구분한다. 측정 조건과 신뢰도를 값과 함께 기록하는 절차를 밝힌다.",
+          "aiAnalysisInputSha256": "5b304c71bace3de0eb1c33456d8a560f12bbb366230152e986c7e7f9c068cf11",
+          "aiPublicGuideTopic": "재어서 얻은 값을 어디까지 쓸 수 있는지 가른다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 종루성의 한 해를 따라",
+          "section": "5.2 명문과 다른 기록을 맞대기",
+          "primaryConcepts": [
+            "교차 대조"
+          ],
+          "secondaryConcepts": [
+            "명문의 구성"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "성격이 다른 두 자료의 교차 대조 원리를 제시하고 비의도적 기록의 검증 가치를 밝힌다. 서술과 자원 투입의 불일치를 탐지 대상으로 삼는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "eeb534739950ef36b46fe8ea0c9f5868b1e8df2475c8d9beb5a993e4296b0aec",
+          "aiPublicGuideTopic": "명문과 다른 종류의 기록을 견주는 방법을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 종루성의 한 해를 따라",
+          "section": "5.2 명문과 다른 기록을 맞대기",
+          "primaryConcepts": [
+            "교차 대조"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "명문의 서술 규모와 실제 자원 투입을 쌍대 막대로 병렬 제시한다. 불일치 사례를 강조 표시해 대조의 산출물이 무엇인지 명확히 한다.",
+          "aiAnalysisInputSha256": "5f81ed15f8f2fae9d05c9b2aff7fc77fd81135827dd3a23874a0924621768e8a",
+          "aiPublicGuideTopic": "명문이 말한 크기와 실제로 든 물자를 나란히 놓아 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 종루성의 한 해를 따라",
+          "section": "5.3 한 해의 의례를 표로",
+          "primaryConcepts": [
+            "의례 표"
+          ],
+          "secondaryConcepts": [
+            "참여 계층"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이종 자료를 한 표에 통합할 때 출처 표시가 필요한 이유를 제시한다. 추정값을 표 외부로 분리하는 원칙을 밝힌다.",
+          "aiAnalysisInputSha256": "be0f899eabe6ec88e14ffc05679c5c2f878402bf4b283999582dc4741cedba3a",
+          "aiPublicGuideTopic": "한 해의 의례를 한 장으로 옮길 때 무엇을 담을지 정한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 종루성의 한 해를 따라",
+          "section": "5.4 손에 남은 것을 적어 두는 법",
+          "primaryConcepts": [
+            "읽기 기록"
+          ],
+          "secondaryConcepts": [
+            "결손 판독"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "물질 조사에서 판단 근거가 기록되지 않고 소실되는 문제를 제시한다. 변경된 판단의 보존이 애매 지점을 표시하는 기능을 밝힌다.",
+          "aiAnalysisInputSha256": "4d4c6f707a35d8346b966159485102c4b84056ac508156a3b91a5a86c2f3b361",
+          "aiPublicGuideTopic": "조사하며 내린 판단을 어떤 형태로 남길지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 종루성의 한 해를 따라",
+          "section": "5.5 종루성을 덮으며",
+          "primaryConcepts": [
+            "기물 조사"
+          ],
+          "secondaryConcepts": [
+            "의례 중단"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조사 결과를 자료 간 일치·불일치로 분류하고 불일치의 정보 가치를 강조한다. 정합적 서사 구성이 아니라 불일치 식별을 조사 목표로 규정한다.",
+          "aiAnalysisInputSha256": "340e410e6701f2d9121e1e5cd81c1daf2b8cdcb4f5b18febcf96d4a5f2a7ffcf",
+          "aiPublicGuideTopic": "한 차례 조사를 마치며 무엇이 남았는지 셈한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 종이 말하지 않는 것",
+          "section": "6.1 남은 종만 말한다",
+          "primaryConcepts": [
+            "기물의 잔존"
+          ],
+          "secondaryConcepts": [
+            "의례 기물"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재사용 가치가 높은 물질에서 잔존 표본이 특수한 사례로 편향됨을 제시한다. 잔존 표본의 평균을 모집단 값으로 사용하지 않는 원칙을 밝힌다.",
+          "aiAnalysisInputSha256": "cb78083e61d54af995a9261c77fc22706eae27ff3952a829545faa257fe2ce98",
+          "aiPublicGuideTopic": "오늘 남은 종이 그때 있던 종의 전부가 아님을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 종이 말하지 않는 것",
+          "section": "6.1 남은 종만 말한다",
+          "primaryConcepts": [
+            "기물의 잔존"
+          ],
+          "secondaryConcepts": [
+            "교차 대조"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "소실된 기물의 규모와 성격을 다른 자료로 추정하는 방법을 제시한다. 잔존 편향의 방향을 특정해 결론 보정에 활용하는 절차를 밝힌다.",
+          "aiAnalysisInputSha256": "70cf4926a84c5c5a4b0089f08be7256ce9d1c02ec5af79ba6fa3369afba18f14",
+          "aiPublicGuideTopic": "없는 종의 자리를 다른 자료로 더듬는 방법을 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 종이 말하지 않는 것",
+          "section": "6.2 새긴 대로 되었을까",
+          "primaryConcepts": [
+            "선언과 실행"
+          ],
+          "secondaryConcepts": [
+            "정당성"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선언과 실행의 대조 가능 범위를 명시하고 결과를 세 유형으로 분류한다. 과장뿐 아니라 과소 서술도 발생함을 사례로 제시한다.",
+          "aiAnalysisInputSha256": "07f876b9d9ff4488d93d0757b7c8ee004ee72c37dd12aa43d3484451d309134c",
+          "aiPublicGuideTopic": "명문의 말과 실제로 일어난 일을 가르는 문제를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 종이 말하지 않는 것",
+          "section": "6.2 새긴 대로 되었을까",
+          "primaryConcepts": [
+            "선언과 실행"
+          ],
+          "secondaryConcepts": [
+            "명문의 화자"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자료 간 불일치를 진위 판정이 아닌 상태 기술로 처리하는 원칙을 제시한다. 명문 독해 규칙이 대조 해석에도 동일하게 적용됨을 밝힌다.",
+          "aiAnalysisInputSha256": "caa54efb2129a5fce0fd7b6227f5f93f934d7eb76f4d191036626d3c9c3576ec",
+          "aiPublicGuideTopic": "말과 일의 어긋남을 어떻게 적을지 정한다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": [
+            "carved-is-intent-not-fact"
+          ]
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 종이 말하지 않는 것",
+          "section": "6.3 소리는 남지 않는다",
+          "primaryConcepts": [
+            "소리의 부재"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "잔존 자료와 소실된 경험 영역을 좌우로 대비해 물질 사료의 범위 한계를 시각화한다. 잔존 항목으로 소실 항목을 추론하는 관계를 함께 제시한다.",
+          "aiAnalysisInputSha256": "5f35f5f2fa12405e55a1b7226f8a84da894f53e815b41b4c0f1c178493a25f50",
+          "aiPublicGuideTopic": "물건과 글은 남고 그날의 소리와 몸짓은 남지 않음을 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 종이 말하지 않는 것",
+          "section": "6.3 소리는 남지 않는다",
+          "primaryConcepts": [
+            "소리의 부재"
+          ],
+          "secondaryConcepts": [
+            "의례의 범위"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "소실 영역을 상상으로 보완할 때 발생하는 문제를 지적하고 잔존 자료의 범위를 명시한다. 자료 부재와 현상 부재를 혼동하지 않는 원칙을 밝힌다.",
+          "aiAnalysisInputSha256": "e06b327eb6dae39a13df30d12d875e86d99da1f500be9678259c1dce04e10c69",
+          "aiPublicGuideTopic": "남지 않은 것을 어떻게 다룰지 정한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 종이 말하지 않는 것",
+          "section": "6.4 그래도 종을 읽는 까닭",
+          "primaryConcepts": [
+            "물질 사료의 쓸모"
+          ],
+          "secondaryConcepts": [
+            "기물의 잔존"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "물질 사료의 비의도적 정보가 문헌 검증 기준이 되는 구조를 제시한다. 단독 해석보다 교차 검증에서 가치가 발생한다는 관점을 밝힌다.",
+          "aiAnalysisInputSha256": "58f86cd2924491a188a1b9a1d4ec11841233053b3a79434a54db9a83877881a8",
+          "aiPublicGuideTopic": "한계를 다 인정하고도 물건이 남기는 값어치를 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 종이 말하지 않는 것",
+          "section": "6.4 그래도 종을 읽는 까닭",
+          "primaryConcepts": [
+            "물질 사료의 쓸모"
+          ],
+          "secondaryConcepts": [
+            "자리의 이동"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "물질 사료가 인지되지 않은 점진적 변화를 보존하는 특성을 제시한다. 당대 관찰자와 후대 연구자의 관점 차이가 만드는 가능성을 밝힌다.",
+          "aiAnalysisInputSha256": "f3f91a2399f1aca550183e75bdefb5c8b17cb7d5439d7d42e81a16e8668d9ac9",
+          "aiPublicGuideTopic": "물건이 오래 걸린 변화를 담는 자리를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 소리가 그친 뒤에",
+          "section": "7.1 열두 종이 말한 것",
+          "primaryConcepts": [
+            "정당성"
+          ],
+          "secondaryConcepts": [
+            "참여 계층"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연구 결과를 의례의 이중 기능이라는 명제로 압축하고 확인 범위를 정리한다. 수용자 인식이라는 미해결 질문을 별도 자료가 필요한 영역으로 구분한다.",
+          "aiAnalysisInputSha256": "58e49a2a6d44539d19d4ffc008eb22f2e73b42a3a03cde7368e894e5c5a1446a",
+          "aiPublicGuideTopic": "이 책이 열두 종에서 얻어 낸 것을 한자리에 모은다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 소리가 그친 뒤에",
+          "section": "7.2 종 밖에서 물어야 할 것",
+          "primaryConcepts": [
+            "기물의 잔존"
+          ],
+          "secondaryConcepts": [
+            "소리의 부재"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미해결 질문을 자료 종류의 한계에서 비롯된 것으로 규정한다. 각 질문에 필요한 자료 유형을 특정해 후속 연구 조건을 제시한다.",
+          "aiAnalysisInputSha256": "03734205874af79c79dffab872ffb608e146e71357d704ab11175483fd70fa98",
+          "aiPublicGuideTopic": "이 자료로 답할 수 없는 물음을 목록으로 남긴다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 소리가 그친 뒤에",
+          "section": "7.3 다음에 물건을 읽을 사람에게",
+          "primaryConcepts": [
+            "물질 사료의 쓸모"
+          ],
+          "secondaryConcepts": [
+            "기물 조사"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "물질 사료 독해의 절차를 일반화하고 두 가지 대표 오류를 지목한다. 오류를 피했을 때 물질 사료가 수행하는 고유 기능을 정리한다.",
+          "aiAnalysisInputSha256": "8a0ddc568b757454ea5a972646874003b05a277a38a04bd2e40e6aa7721772a4",
+          "aiPublicGuideTopic": "물건을 사료로 다루려는 쪽에게 이 작업이 무엇을 남기는지 적는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 34,
       "title": "장부로 읽는 사회사: 기록에서 구조로",
       "pdfPath": "pdfs/book-034.pdf",

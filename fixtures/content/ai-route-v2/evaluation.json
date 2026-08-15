@@ -1120,6 +1120,81 @@
       ]
     },
     {
+      "caseId": "case-book-033",
+      "bookId": 33,
+      "purpose": "이 책을 사지는 않았고, 남은 종과 거기 새긴 글로 그 시대의 통치가 어떻게 당연해졌는지를 읽어 보고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "의례 기물",
+        "명문",
+        "명문의 구성",
+        "참여 계층",
+        "정당성"
+      ],
+      "helpfulConcepts": [
+        "제작 주체",
+        "의례의 절기",
+        "배제",
+        "물질 사료의 쓸모"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 30
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 30
+        }
+      ],
+      "irrelevantPageNumbers": [
+        12,
+        13,
+        14,
+        15,
+        37,
+        43,
+        44
+      ],
+      "duplicatePageGroups": [
+        [
+          11,
+          42
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        8,
+        24,
+        30
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        9,
+        17,
+        25,
+        29,
+        31
+      ]
+    },
+    {
       "caseId": "case-book-034",
       "bookId": 34,
       "purpose": "옛 장부에 이름이 없는 사람들을 어떻게 헤아려야 하는지, 짧게 핵심만 짚고 싶다",
