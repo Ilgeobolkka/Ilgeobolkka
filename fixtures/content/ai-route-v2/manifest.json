@@ -16972,6 +16972,1031 @@
       ]
     },
     {
+      "bookId": 36,
+      "title": "편지로 복원한 어느 봄",
+      "pdfPath": "pdfs/book-036.pdf",
+      "pdfSha256": "3b1415d2b6b2f4ff9b88d4fa7b8c9a50125ae093b032d87dc85a9b71123938c1",
+      "totalPageCount": 49,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 편지는 누구에게 쓰는가",
+          "section": "1.1 받는 사람이 정해져 있다",
+          "primaryConcepts": [
+            "수신자"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "서신이 특정 수신자를 전제로 작성된다는 특성과 그로 인한 서술 방식의 차이를 제시한다. 제삼자 독해가 구조적으로 불완전하다는 전제를 세운다.",
+          "aiAnalysisInputSha256": "51b79ca4c9a10295abe5a9eab074156ff7b8a60f97b7399d99d899e07012609e",
+          "aiPublicGuideTopic": "편지가 한 사람을 향해 쓰인 글이라는 사실이 무엇을 바꾸는지 밝힌다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 편지는 누구에게 쓰는가",
+          "section": "1.1 받는 사람이 정해져 있다",
+          "primaryConcepts": [
+            "수신자"
+          ],
+          "secondaryConcepts": [
+            "공유된 배경"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 발신자의 서술 방식이 수신자에 따라 달라지는 양상을 제시한다. 서신에서 도출한 인물상이 관계 특수적임을 밝히고 표기 원칙을 세운다.",
+          "aiAnalysisInputSha256": "6d5dbeff85e5d14db613e94a497891f78fc3158f6699e579c7402d43362b7587",
+          "aiPublicGuideTopic": "받는 사람이 누구냐에 따라 같은 사람이 다르게 쓴다는 점을 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 편지는 누구에게 쓰는가",
+          "section": "1.2 쓴 날과 닿은 날",
+          "primaryConcepts": [
+            "서신의 시차"
+          ],
+          "secondaryConcepts": [
+            "수신자"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "서신 전달 지연이 대화의 논리적 연결을 끊는 구조를 제시한다. 작성 시점과 수신 시점을 함께 표시해 각자의 인지 상태를 복원하는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "347a04bfcc087ec56778d52ea073de20f83e61194c44367e71333738b9aa9c67",
+          "aiPublicGuideTopic": "편지가 쓰인 때와 읽힌 때가 벌어지는 문제를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 편지는 누구에게 쓰는가",
+          "section": "1.2 쓴 날과 닿은 날",
+          "primaryConcepts": [
+            "서신의 시차"
+          ],
+          "secondaryConcepts": [
+            "왕복 순서"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "서신 간 인지 격차를 정보 확산 시점의 증거로 활용하는 방법을 제시한다. 공적 기록이 담지 않는 전파 과정을 서신이 보완함을 밝힌다.",
+          "aiAnalysisInputSha256": "57fd12b4eedd3ac441274776d020751f394c7345897e0d87d783ef8c316f80a0",
+          "aiPublicGuideTopic": "시차가 크게 벌어진 자리에서 무엇을 얻을 수 있는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 편지는 누구에게 쓰는가",
+          "section": "1.3 남은 편지와 사라진 편지",
+          "primaryConcepts": [
+            "서신의 잔존"
+          ],
+          "secondaryConcepts": [
+            "서신의 시차"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "서신 잔존이 보관 주체의 위치에 따라 발신·수신 방향으로 편향됨을 제시한다. 잔존 수량을 소통 빈도로 오독하는 위험을 지적한다.",
+          "aiAnalysisInputSha256": "1be1de8d302705fd4d79a797998f3881bf07c92e2b7eb51ee9ccd2053a7bb11e",
+          "aiPublicGuideTopic": "오늘 남은 편지가 오간 편지의 일부라는 점을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 편지는 누구에게 쓰는가",
+          "section": "1.3 남은 편지와 사라진 편지",
+          "primaryConcepts": [
+            "서신의 잔존"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "보관처 기준의 잔존 편향을 발신·수신 방향의 비대칭으로 시각화한다. 묶음의 구성이 소통 빈도가 아니라 보관 위치에서 비롯됨을 보인다.",
+          "aiAnalysisInputSha256": "18b35d180e2723318751dd38a39aa3bdc4b1b3bf944089ce8cb15aded0aeb9b1",
+          "aiPublicGuideTopic": "오간 편지 가운데 오늘 남은 몫이 어느 쪽으로 치우쳤는지 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "2장 한 통을 읽는 법",
+          "section": "2.1 무엇을 적고 무엇을 안 적는가",
+          "primaryConcepts": [
+            "생략과 전제"
+          ],
+          "secondaryConcepts": [
+            "수신자"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "서신의 생략이 공유 지식의 존재를 가리키는 지표임을 제시한다. 생략의 형태를 유형화해 전제 목록을 구성하는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "db673a833e5b08b16d6078c9a0bead4cf2d28a23c6db7702d8b0e6a10127baed",
+          "aiPublicGuideTopic": "편지가 무엇을 생략하는지가 무엇을 말해 주는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 한 통을 읽는 법",
+          "section": "2.1 무엇을 적고 무엇을 안 적는가",
+          "primaryConcepts": [
+            "생략과 전제"
+          ],
+          "secondaryConcepts": [
+            "주관성"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "의도적 회피와 자연스러운 생략을 서술 형태의 변화로 구분하는 방법을 제시한다. 회피 시점의 특정이 후속 자료 탐색의 단서가 됨을 밝힌다.",
+          "aiAnalysisInputSha256": "02ef4ecd6302e8589bdc1469ea52beab68024d6ee04a95eb565be155e8f0ab01",
+          "aiPublicGuideTopic": "일부러 적지 않은 것과 적을 필요가 없던 것을 가른다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 한 통을 읽는 법",
+          "section": "2.2 말하지 않아도 아는 것",
+          "primaryConcepts": [
+            "공유된 배경"
+          ],
+          "secondaryConcepts": [
+            "생략과 전제"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분산된 서술 조각을 모아 공유 배경을 복원하는 절차를 제시한다. 복원 실패 항목을 공백으로 유지하는 원칙과 그 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "2674324f976565663eab9552ddc973a4984f9a53c176f7fa71715f8c5cf4fd12",
+          "aiPublicGuideTopic": "두 사람이 함께 딛고 있던 바탕을 어떻게 복원하는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 한 통을 읽는 법",
+          "section": "2.2 말하지 않아도 아는 것",
+          "primaryConcepts": [
+            "공유된 배경"
+          ],
+          "secondaryConcepts": [
+            "제삼자 서신"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공유 배경의 축적이 서술량 감소로 나타나는 구조를 제시한다. 분량 변화를 관계 변화로 오독하지 않도록 설명 항목 수를 병행 측정하는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "c8e27d0b4c7796f6d975c364738609f2826454a691a94370fe3151ae3bb78135",
+          "aiPublicGuideTopic": "바탕이 시간에 따라 바뀌는 자리를 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 한 통을 읽는 법",
+          "section": "2.3 감정이 실린 자리",
+          "primaryConcepts": [
+            "주관성"
+          ],
+          "secondaryConcepts": [
+            "공유된 배경"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "서신의 주관성을 제거 대상이 아닌 정보로 규정한다. 사건의 사실 관계와 당사자에게의 의미를 구분하고 후자를 서신의 고유 영역으로 제시한다.",
+          "aiAnalysisInputSha256": "95311b70de926d8e5f4a47245bc2977a6985d2ae33e5528c458fa0f27613c321",
+          "aiPublicGuideTopic": "편지의 주관성을 흠이 아니라 자료로 다루는 법을 밝힌다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": [
+            "letter-carries-its-standpoint"
+          ]
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 한 통을 읽는 법",
+          "section": "2.3 감정이 실린 자리",
+          "primaryConcepts": [
+            "주관성"
+          ],
+          "secondaryConcepts": [
+            "엇갈린 서술"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "감정 개입이 수량과 순서 서술을 왜곡하는 양상을 어휘와 대조로 판별한다. 해당 문장을 사건 재구성이 아닌 경험 서술로 분류하는 처리를 제시한다.",
+          "aiAnalysisInputSha256": "75fb0701d90078feb095a77727d3825d63e5fbd4bea3c9293c8b5330bbfeb41f",
+          "aiPublicGuideTopic": "감정이 사실을 밀어내는 자리를 가려내는 방법을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 한 통을 읽는 법",
+          "section": "2.4 되풀이해 묻는 것",
+          "primaryConcepts": [
+            "반복 질문"
+          ],
+          "secondaryConcepts": [
+            "서신의 시차"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복 질문의 원인을 지연과 회피로 구분하고 답신 양상으로 판별한다. 회피 사례와 서술 중단 시점의 일치를 후속 검증 대상으로 남긴다.",
+          "aiAnalysisInputSha256": "de5240373527cf4c06b0cedc5e44d705049ad81e13ce36e6af6d0d4ba682c70d",
+          "aiPublicGuideTopic": "같은 물음이 여러 통에 되풀이되는 자리를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 한 통을 읽는 법",
+          "section": "2.4 되풀이해 묻는 것",
+          "primaryConcepts": [
+            "반복 질문"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복 질문과 응답의 시점 관계를 네 사례로 병렬 제시한다. 응답이 끝내 없는 사례를 시각적으로 구별해 회피 가능성을 드러낸다.",
+          "aiAnalysisInputSha256": "c8b8f50045ac087ed348cf0d65dc1c07484da706dce5dc977132083e19465fe5",
+          "aiPublicGuideTopic": "되풀이된 물음과 답이 오간 자리를 시간 순으로 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 두 사람의 편지를 맞대기",
+          "section": "3.1 오간 순서를 세운다",
+          "primaryConcepts": [
+            "왕복 순서"
+          ],
+          "secondaryConcepts": [
+            "서신의 시차"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일자 미상 서신을 내용 연쇄로 배열하는 절차와 그 한계를 제시한다. 배열이 확정된 부분과 유동적인 부분을 분리해 기술하는 원칙을 세운다.",
+          "aiAnalysisInputSha256": "e9e70d5466d187d08e525e3e1133ba2c659da93fc9c4966897b301f717eefa48",
+          "aiPublicGuideTopic": "흩어진 편지를 오간 차례대로 세우는 일을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 두 사람의 편지를 맞대기",
+          "section": "3.1 오간 순서를 세운다",
+          "primaryConcepts": [
+            "왕복 순서"
+          ],
+          "secondaryConcepts": [
+            "수신자"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "왕복 구조에서 응답 표지를 활용해 서신 쌍을 확정하는 방법을 제시한다. 짝을 찾지 못한 서신의 처리를 후속 절로 연결한다.",
+          "aiAnalysisInputSha256": "8b2b06fc6dc4afd1503a53d3f1da043a39779e3c8b5281680cbc1e5ecb8cce2a",
+          "aiPublicGuideTopic": "왕복이라는 형식이 순서 세우기를 도와주는 자리를 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 두 사람의 편지를 맞대기",
+          "section": "3.2 답이 없는 편지",
+          "primaryConcepts": [
+            "결락된 왕복"
+          ],
+          "secondaryConcepts": [
+            "왕복 순서"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미대응 서신의 원인을 후속 서신의 반응으로 판별하는 방법을 제시한다. 결락 규모를 추정해 자료의 밀도를 명시하는 절차를 밝힌다.",
+          "aiAnalysisInputSha256": "e8cca4e7054a7d70e3a394951cec6ab884f642404b7f662de5d0d0cb38dfa0dc",
+          "aiPublicGuideTopic": "짝을 찾지 못한 편지를 어떻게 다룰지 정한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 두 사람의 편지를 맞대기",
+          "section": "3.2 답이 없는 편지",
+          "primaryConcepts": [
+            "결락된 왕복"
+          ],
+          "secondaryConcepts": [
+            "서신의 잔존"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "소실 서신의 내용 추정 범위를 후속 언급으로 한정하는 원칙을 제시한다. 결락 위치의 편중 자체를 기록 대상으로 삼는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "f38de1c40a661489aa42442874cc7beb89e243bac70d2947428e6a9233e00030",
+          "aiPublicGuideTopic": "사라진 편지의 내용을 어디까지 짐작할 수 있는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 두 사람의 편지를 맞대기",
+          "section": "3.3 같은 일을 다르게 적을 때",
+          "primaryConcepts": [
+            "엇갈린 서술"
+          ],
+          "secondaryConcepts": [
+            "주관성"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 사건에 대한 서술 차이를 관점 차이로 해석하고 진위 판정을 유보한다. 병렬 기록이 화자의 위치 차이를 측정하는 수단이 됨을 제시한다.",
+          "aiAnalysisInputSha256": "26101ddece98fcb56879f434989b20459feeb9c8178e2e25ae33318716e7363c",
+          "aiPublicGuideTopic": "두 사람이 같은 일을 다르게 적은 자리를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 두 사람의 편지를 맞대기",
+          "section": "3.3 같은 일을 다르게 적을 때",
+          "primaryConcepts": [
+            "엇갈린 서술"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 사건에 대한 두 화자의 서술 초점 차이를 사건별로 대조 제시한다. 통합이 아닌 병기를 처리 방식으로 시각화한다.",
+          "aiAnalysisInputSha256": "17e317c7786f9d8aef12a3f49e16c33149638c8b6b96780e0472b3c720f9a3e6",
+          "aiPublicGuideTopic": "같은 일을 두 사람이 어떻게 다르게 적었는지 견주어 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 두 사람의 편지를 맞대기",
+          "section": "3.4 셋째 사람의 편지",
+          "primaryConcepts": [
+            "제삼자 서신"
+          ],
+          "secondaryConcepts": [
+            "엇갈린 서술"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "제삼자 서신이 친밀 관계에서 생략된 배경을 명시적으로 서술하는 특성을 제시한다. 관계 거리에 따른 정보 성격의 차이를 활용하는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "74099caf2aed147218f4ccafa53a690d653a6479e3f3a1c4f5c63d32b02eef85",
+          "aiPublicGuideTopic": "두 사람 밖에서 온 편지가 하는 일을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 두 사람의 편지를 맞대기",
+          "section": "3.4 셋째 사람의 편지",
+          "primaryConcepts": [
+            "제삼자 서신"
+          ],
+          "secondaryConcepts": [
+            "공유된 배경"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "제삼자 서신 내부의 위치 차이가 서술 범위를 결정함을 제시한다. 화자의 소속에 따라 분류해 정보의 전파 범위까지 읽는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "6af583ca2fe5f464bf85f29d5e3d0fe47a64cbc2c7352ab4640aca5d2e592006",
+          "aiPublicGuideTopic": "셋째 사람의 자리가 그 편지를 어떻게 기울이는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 봄에 무슨 일이 있었나",
+          "section": "4.1 편지에 비친 사건",
+          "primaryConcepts": [
+            "사건의 그림자"
+          ],
+          "secondaryConcepts": [
+            "생략과 전제"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "직접 서술되지 않은 사건을 서술 방식의 변화로 탐지하는 방법을 제시한다. 시계열 배열이 선행되어야 관측 가능함을 밝힌다.",
+          "aiAnalysisInputSha256": "7274a152003eb8e1934e69cba4507140593d934089bb5af09ff799b7d7d76c6a",
+          "aiPublicGuideTopic": "편지에 직접 적히지 않은 사건을 어떻게 잡아내는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8,
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 봄에 무슨 일이 있었나",
+          "section": "4.1 편지에 비친 사건",
+          "primaryConcepts": [
+            "사건의 그림자"
+          ],
+          "secondaryConcepts": [
+            "결락된 왕복"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "간접 탐지된 사건에 대해 확정 가능한 속성과 불가능한 속성을 구분한다. 공적 기록과의 결합을 전제로 한 부분적 결과물임을 명시한다.",
+          "aiAnalysisInputSha256": "1f48695ef91f9b0d6364fde25c2a89a2873e6bc0d5c077440ed984acd250f1a5",
+          "aiPublicGuideTopic": "그림자로만 잡은 사건을 어디까지 말할 수 있는지 가른다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 봄에 무슨 일이 있었나",
+          "section": "4.2 개인의 일과 마을의 일",
+          "primaryConcepts": [
+            "미시와 거시"
+          ],
+          "secondaryConcepts": [
+            "사건의 그림자"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "개인적 사정과 공동체 사건을 복수 화자의 서술 동조로 구분하는 방법을 제시한다. 판정에 필요한 최소 사례 수를 명시하고 기준 이하를 개인 영역으로 처리한다.",
+          "aiAnalysisInputSha256": "69eb3ff8f25bc78ae852c876f02a4e28f43a40a69c67e4cb72ef82539f0130d7",
+          "aiPublicGuideTopic": "한 사람의 사정과 마을 전체의 일을 가르는 문제를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 봄에 무슨 일이 있었나",
+          "section": "4.2 개인의 일과 마을의 일",
+          "primaryConcepts": [
+            "미시와 거시"
+          ],
+          "secondaryConcepts": [
+            "제삼자 서신"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "국지적 자료로 광역 사건을 재구성할 때 발생하는 범위 축소와 강도 과장을 제시한다. 편향의 방향을 기록해 자료화하는 접근을 밝힌다.",
+          "aiAnalysisInputSha256": "ce72a428d82d83dfbac6f3c867d9db7859878ce9e487b3dfe2c1c81a599e926e",
+          "aiPublicGuideTopic": "작은 창으로 큰 일을 볼 때 생기는 왜곡을 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 봄에 무슨 일이 있었나",
+          "section": "4.3 큰 사건을 작은 창으로",
+          "primaryConcepts": [
+            "미시사적 시점"
+          ],
+          "secondaryConcepts": [
+            "미시와 거시"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미시적 자료와 광역 기록이 담는 층위의 차이를 제시한다. 미시사가 확보하는 세 가지 정보를 특정해 보완적 관계를 밝힌다.",
+          "aiAnalysisInputSha256": "dfc5cfe476b79dcd9a3630d129fc5f9fc7bedafd2fc533e234c722fe4321bcae",
+          "aiPublicGuideTopic": "작은 창으로 보는 방법이 무엇을 얻는지 정리한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 봄에 무슨 일이 있었나",
+          "section": "4.3 큰 사건을 작은 창으로",
+          "primaryConcepts": [
+            "미시사적 시점"
+          ],
+          "secondaryConcepts": [
+            "주관성"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "국지 사례에서 일반화로 이행하는 조건을 유사성 명시로 규정한다. 단일 사례 연구가 일반화를 유보해야 하는 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "3f0ef8c8889d3d1ff95e8882b7b3493a17d976c7ef1c84210c589204056a225c",
+          "aiPublicGuideTopic": "작은 창이 큰 이야기로 넘어갈 때 지켜야 할 선을 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 봄에 무슨 일이 있었나",
+          "section": "4.4 한 마을에서 본 것",
+          "primaryConcepts": [
+            "사례의 범위"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공적 기록과 서신이 같은 사건에서 포착하는 정보 밀도와 종류의 차이를 병렬 시각화한다. 두 자료의 시점 대응을 표시해 보완 관계를 보인다.",
+          "aiAnalysisInputSha256": "8f4f12c03e594cbc8920eb2615ace44600cd7133938719bcb56c93c762f6f018",
+          "aiPublicGuideTopic": "큰 기록과 편지가 같은 일에서 담는 층이 다름을 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 봄에 무슨 일이 있었나",
+          "section": "4.4 한 마을에서 본 것",
+          "primaryConcepts": [
+            "사례의 범위"
+          ],
+          "secondaryConcepts": [
+            "미시사적 시점"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자료의 삼중 한정이 만드는 밀도와 범위의 교환 관계를 제시한다. 결론의 적용 범위를 자료 범위와 일치시키는 원칙을 세운다.",
+          "aiAnalysisInputSha256": "36da75989a3db29f111c663f789a01f96ebcff9f4c6134eb71d6605cd74ae8e6",
+          "aiPublicGuideTopic": "한 마을 한 묶음으로 세운 결과의 범위를 정한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 물빛마을의 그 봄을 따라",
+          "section": "5.1 편지를 늘어놓기",
+          "primaryConcepts": [
+            "정렬"
+          ],
+          "secondaryConcepts": [
+            "왕복 순서"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "서신 배열을 확실성 단계별 삼단 절차로 수행하는 방법을 제시한다. 위치 미확정 자료를 구간으로 표기해 후속 논증의 취약점을 드러낸다.",
+          "aiAnalysisInputSha256": "b299afed44a0ccca450b67c4286f268e94a6149f4a7c652292fc2954c32ba41c",
+          "aiPublicGuideTopic": "실제로 마흔여덟 통을 늘어놓는 순서를 따라간다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 물빛마을의 그 봄을 따라",
+          "section": "5.1 편지를 늘어놓기",
+          "primaryConcepts": [
+            "정렬"
+          ],
+          "secondaryConcepts": [
+            "서신의 시차"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "서신 목록의 필수 기재 항목과 추정값 표시 원칙을 제시한다. 시점 분포의 소밀이 결락 구간과 일치함을 확인한다.",
+          "aiAnalysisInputSha256": "0b46b77d3d2d2e2b80411bfb81f2ec4947688452daf9d2bd4baf5b764d170eb2",
+          "aiPublicGuideTopic": "늘어놓은 표에 무엇을 함께 적는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 물빛마을의 그 봄을 따라",
+          "section": "5.2 날짜가 없는 편지",
+          "primaryConcepts": [
+            "연대 추정"
+          ],
+          "secondaryConcepts": [
+            "정렬"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일자 미상 서신의 연대 추정 실마리를 내용과 물성 양쪽에서 제시한다. 추정 정밀도를 구분해 표기하는 절차와 그 효용을 밝힌다.",
+          "aiAnalysisInputSha256": "325decaedc1be4e08f8d18416e6caf05191a5afed864d12541a35534638bfff5",
+          "aiPublicGuideTopic": "날짜 없는 편지의 때를 좁히는 실마리를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 물빛마을의 그 봄을 따라",
+          "section": "5.2 날짜가 없는 편지",
+          "primaryConcepts": [
+            "연대 추정"
+          ],
+          "secondaryConcepts": [
+            "결락된 왕복"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복수 연대 실마리가 충돌할 때 우선순위를 사전에 고정하는 절차를 제시한다. 판단 기준의 일관성이 재현 가능성의 조건임을 밝힌다.",
+          "aiAnalysisInputSha256": "941653b641fb18e309c6ca60bb600d471d16bb013cf3f3be2f1df29876ac31a6",
+          "aiPublicGuideTopic": "좁힌 날짜가 서로 어긋나는 자리를 어떻게 다룰지 정한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 물빛마을의 그 봄을 따라",
+          "section": "5.3 사건을 세워 보기",
+          "primaryConcepts": [
+            "사건 재구성"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "서술 특성 네 항목의 동시 변화 구간을 사건 발생 시점으로 제시한다. 사건 자체를 공백으로 두고 주변 정보만 확정하는 재구성 방식을 시각화한다.",
+          "aiAnalysisInputSha256": "ab6d67dd2920d50cf1275647a31e886b6cd5aa822532702bbb8f5f9daca23dd7",
+          "aiPublicGuideTopic": "편지의 결이 바뀐 자리를 늘어놓아 사건의 윤곽을 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 물빛마을의 그 봄을 따라",
+          "section": "5.4 세운 것을 되짚을 수 있게",
+          "primaryConcepts": [
+            "복원 기록"
+          ],
+          "secondaryConcepts": [
+            "사건 재구성"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복원 과정의 판단 이력을 결과와 함께 보존하는 절차를 제시한다. 변경 이력이 취약 지점을 표시해 후속 작업의 착수점이 됨을 밝힌다.",
+          "aiAnalysisInputSha256": "660ba0aef2e84398849bfd3905fcbeaae8b7f8746c98ed2aa907a8552006371f",
+          "aiPublicGuideTopic": "복원 과정을 다음 사람이 되짚을 수 있게 남기는 방법을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 물빛마을의 그 봄을 따라",
+          "section": "5.5 봄이 끝난 자리",
+          "primaryConcepts": [
+            "정렬"
+          ],
+          "secondaryConcepts": [
+            "연대 추정"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복원 결과를 확정·구간·결락 세 범주의 규모로 정리한다. 결락의 위치 편중을 한계로 명시하고 후속 자료의 배치 기준을 제시한다.",
+          "aiAnalysisInputSha256": "c23aef69c6109aaa04cb48ce1547d8c4b6b8afc09e85783241a5d7047f8d677f",
+          "aiPublicGuideTopic": "한 차례 복원을 마치며 무엇이 남았는지 셈한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 편지가 속이는 자리",
+          "section": "6.1 쓴 사람이 둘뿐이다",
+          "primaryConcepts": [
+            "화자의 한계"
+          ],
+          "secondaryConcepts": [
+            "서신의 잔존"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "화자 구성의 편중이 사건 경험의 특정 계층에 한정됨을 제시한다. 문해 여부에 따른 자료 접근성 차이를 구조적 한계로 밝힌다.",
+          "aiAnalysisInputSha256": "da3c6e1562f61f37259327e5565d6ad0c9e031736ec8195d81037962ccbd07b2",
+          "aiPublicGuideTopic": "이 봄을 두 사람의 눈으로만 보았다는 점을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": [
+            "letter-carries-its-standpoint"
+          ]
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 편지가 속이는 자리",
+          "section": "6.1 쓴 사람이 둘뿐이다",
+          "primaryConcepts": [
+            "화자의 한계"
+          ],
+          "secondaryConcepts": [
+            "제삼자 서신"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비기록 집단이 서신에서 객체로만 등장하는 구조를 제시한다. 등장 빈도의 변화를 유일하게 활용 가능한 지표로 특정한다.",
+          "aiAnalysisInputSha256": "7112a12844a58cf31f5c260af73b0485233eaec942a1420662872556cb7237e5",
+          "aiPublicGuideTopic": "빠진 목소리를 어디까지 더듬을 수 있는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 편지가 속이는 자리",
+          "section": "6.2 남기려고 쓴 편지",
+          "primaryConcepts": [
+            "의도된 서신"
+          ],
+          "secondaryConcepts": [
+            "주관성"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공개 또는 보존을 전제한 서신의 서술 특성을 식별 기준으로 제시한다. 자료 성격에 따라 용도를 분리해 사용하는 처리를 밝힌다.",
+          "aiAnalysisInputSha256": "d95e06f3f205ab1ed9364e0b9c9732284c0e2b6c630e2fba161f3e32733927cb",
+          "aiPublicGuideTopic": "읽힐 것을 알고 쓴 편지가 섞여 있을 가능성을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 편지가 속이는 자리",
+          "section": "6.2 남기려고 쓴 편지",
+          "primaryConcepts": [
+            "의도된 서신"
+          ],
+          "secondaryConcepts": [
+            "사건 재구성"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "보존 의도 서신이 사후 기억 형성 과정을 담는 자료로 전환됨을 제시한다. 경험 시점과 회고 시점의 층위 분리를 방법으로 밝힌다.",
+          "aiAnalysisInputSha256": "31b85599179f8408e2e58b28c8937dc17c79c6ef70bd37eb905d84c3e8ec9361",
+          "aiPublicGuideTopic": "의도가 실린 편지가 오히려 알려 주는 것을 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 편지가 속이는 자리",
+          "section": "6.3 태우지 않은 것만 남았다",
+          "primaryConcepts": [
+            "선별된 잔존"
+          ],
+          "secondaryConcepts": [
+            "서신의 잔존"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "잔존 서신이 보관자의 선택을 거친 표본임을 제시한다. 선별 기준의 방향을 추정해 결론 보정에 활용하는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "f6f80b0aeb0b724731a588a770a263f602ed7dff14c9d17ca90f9bfb59cbb140",
+          "aiPublicGuideTopic": "남은 편지가 남기기로 선택된 것이라는 점을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 편지가 속이는 자리",
+          "section": "6.3 태우지 않은 것만 남았다",
+          "primaryConcepts": [
+            "선별된 잔존"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "서신 잔존의 단계별 선별 과정과 각 단계의 기준을 제시한다. 최종 표본과 원 모집단의 규모 차이를 시각화해 편향 방향을 드러낸다.",
+          "aiAnalysisInputSha256": "63b0b27ebf8c95ad6a02892142bcb4cb3a7939ed6004681f4a35c7723c81d1b7",
+          "aiPublicGuideTopic": "오간 편지에서 오늘 남은 편지까지 걸러진 단계를 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 편지가 속이는 자리",
+          "section": "6.4 작은 창의 몫",
+          "primaryConcepts": [
+            "서신 사료의 쓸모"
+          ],
+          "secondaryConcepts": [
+            "미시사적 시점"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "서신 사료의 고유 가치를 시간 해상도에서 찾고 공적 기록과 대비한다. 범위의 협소함과 밀도의 교환 관계를 정리한다.",
+          "aiAnalysisInputSha256": "b05ff1b9561ff8a13f83841eb802b56ff14a64bcec4033e88d3a6d96b68fc4db",
+          "aiPublicGuideTopic": "한계를 다 인정하고도 편지가 남기는 값어치를 정리한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 편지가 속이는 자리",
+          "section": "6.4 작은 창의 몫",
+          "primaryConcepts": [
+            "서신 사료의 쓸모"
+          ],
+          "secondaryConcepts": [
+            "화자의 한계"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "서신과 공적 기록의 결합에서 발생하는 상승 효과를 제시한다. 현 작업을 후속 결합을 위한 준비로 위치시키는 관점을 밝힌다.",
+          "aiAnalysisInputSha256": "03c9ffc703c85b4a9ef3c856d940cfac57ceb6d9dee71afc02fec3092228efdc",
+          "aiPublicGuideTopic": "편지가 다른 자료와 함께 놓일 때 커지는 자리를 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 편지를 접으며",
+          "section": "7.1 그 봄에 대해 말할 수 있는 것",
+          "primaryConcepts": [
+            "미시사적 시점"
+          ],
+          "secondaryConcepts": [
+            "사건의 그림자"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연구 결과를 서술 방식 변화의 탐지라는 명제로 압축하고 확보한 값 세 가지를 정리한다. 사건 명명에 필요한 자료 종류를 특정해 미해결 영역을 구분한다.",
+          "aiAnalysisInputSha256": "ea3129b03d0b88e014ff9edf648f58ac679d43265a448590b91baf4a56cb6ddf",
+          "aiPublicGuideTopic": "이 책이 마흔여덟 통에서 얻어 낸 것을 한자리에 모은다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 편지를 접으며",
+          "section": "7.2 물빛마을 밖의 봄",
+          "primaryConcepts": [
+            "사례의 범위"
+          ],
+          "secondaryConcepts": [
+            "미시와 거시"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "국지 사례의 일반화 가능성을 지역 조건의 유사성으로 한정한다. 다지역 비교를 후속 과제로 두고 현 작업을 그 한 축으로 위치시킨다.",
+          "aiAnalysisInputSha256": "9492b6c547e349089cd6ba6a6a099802c5f9c2b9d463935696f732ad0e6c013d",
+          "aiPublicGuideTopic": "한 마을에서 얻은 것이 다른 마을로 갈 수 있는지 묻는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 편지를 접으며",
+          "section": "7.3 접힌 자리에 남는 것",
+          "primaryConcepts": [
+            "서신 사료의 쓸모"
+          ],
+          "secondaryConcepts": [
+            "복원 기록"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "서신 독해 절차를 일반 방법으로 정리하고 두 가지 대표 오류를 지목한다. 오류 회피 시 서신이 확보하는 시간 해상도를 고유 기능으로 제시한다.",
+          "aiAnalysisInputSha256": "5ee8c0fa4d0e2ee0162b8e3666f3ecd148b5471b48c339471f004a96e5a1cf97",
+          "aiPublicGuideTopic": "편지를 사료로 삼으려는 쪽에게 이 작업이 무엇을 남기는지 적는다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 41,
       "title": "분업과 비교우위: 교환은 왜 이익인가",
       "pdfPath": "pdfs/book-041.pdf",

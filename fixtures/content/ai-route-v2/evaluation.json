@@ -1339,6 +1339,91 @@
       ]
     },
     {
+      "caseId": "case-book-036",
+      "bookId": 36,
+      "purpose": "이 책을 소장하고 있는데, 개인이 주고받은 편지만으로 그해 봄에 무슨 일이 있었는지를 어떻게 세우는지 제대로 알고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "수신자",
+        "생략과 전제",
+        "왕복 순서",
+        "사건의 그림자",
+        "미시사적 시점"
+      ],
+      "helpfulConcepts": [
+        "서신의 시차",
+        "주관성",
+        "엇갈린 서술",
+        "미시와 거시"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 26
+        },
+        {
+          "beforePageNumber": 26,
+          "afterPageNumber": 28
+        }
+      ],
+      "irrelevantPageNumbers": [
+        14,
+        15,
+        37,
+        41,
+        42,
+        43,
+        44
+      ],
+      "duplicatePageGroups": [
+        [
+          12,
+          39
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        8,
+        16,
+        24,
+        26,
+        28
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        9,
+        17,
+        25,
+        27,
+        29
+      ]
+    },
+    {
       "caseId": "case-book-041",
       "bookId": 41,
       "purpose": "이 책을 소장하고 있는데, 작은 가게를 열기 전에 여러 메뉴를 한 사람이 다 만드는 게 나을지 한 가지에 집중하는 게 나을지 핵심만 빠르게 확인하고 싶다",
