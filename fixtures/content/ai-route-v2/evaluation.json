@@ -179,9 +179,9 @@
       ],
       "irrelevantPageNumbers": [
         30,
+        31,
         34,
-        37,
-        41,
+        35,
         42,
         43
       ],
@@ -252,6 +252,10 @@
         },
         {
           "beforePageNumber": 8,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 8,
           "afterPageNumber": 24
         },
         {
@@ -259,17 +263,17 @@
           "afterPageNumber": 26
         },
         {
+          "beforePageNumber": 16,
+          "afterPageNumber": 28
+        },
+        {
           "beforePageNumber": 26,
           "afterPageNumber": 28
         }
       ],
       "irrelevantPageNumbers": [
-        16,
-        17,
         20,
         21,
-        22,
-        23,
         41,
         42
       ],
@@ -284,6 +288,7 @@
         4,
         8,
         12,
+        16,
         24,
         26,
         28
@@ -293,6 +298,7 @@
         5,
         9,
         13,
+        17,
         25,
         27,
         29,
@@ -341,6 +347,7 @@
         34,
         35,
         36,
+        37,
         40
       ],
       "duplicatePageGroups": [
@@ -421,7 +428,6 @@
         }
       ],
       "irrelevantPageNumbers": [
-        32,
         34,
         35,
         36,
@@ -499,7 +505,6 @@
       ],
       "irrelevantPageNumbers": [
         26,
-        33,
         40,
         43,
         44
@@ -796,8 +801,6 @@
       ],
       "irrelevantPageNumbers": [
         34,
-        35,
-        37,
         38,
         39
       ],
@@ -1019,7 +1022,9 @@
         20,
         21,
         24,
+        25,
         26,
+        27,
         30,
         31
       ],
@@ -2133,7 +2138,6 @@
         }
       ],
       "irrelevantPageNumbers": [
-        28,
         30,
         31,
         34,
@@ -2334,6 +2338,7 @@
         32,
         33,
         40,
+        41,
         44,
         45
       ],
