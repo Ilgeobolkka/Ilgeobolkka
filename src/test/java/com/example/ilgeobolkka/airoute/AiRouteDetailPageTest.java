@@ -78,6 +78,7 @@ class AiRouteDetailPageTest {
         assertTrue(html.contains("data-route-position=\"1\" data-page-number=\"42\""));
         assertTrue(html.contains("data-route-position=\"2\" data-page-number=\"3\""));
         assertTrue(html.contains("data-item-opened-time"));
+        assertFalse(html.contains("<time class=\"d-block small text-secondary mb-1\""));
         assertTrue(html.contains("data-route-ink-notice"));
         assertTrue(html.contains("data-route-ink-link"));
         assertTrue(html.contains("href=\"/ink\""));
