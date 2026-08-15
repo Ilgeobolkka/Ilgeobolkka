@@ -3401,6 +3401,73 @@
         17,
         25
       ]
+    },
+    {
+      "caseId": "case-book-095",
+      "bookId": 95,
+      "purpose": "이 책을 소장하고 있는데, 몇 달째 준비만 하고 손대지 못한 일이 있다. 오늘 낮은 완성도로라도 일단 만들어 내는 방법만 빠르게 보고 싶다. 남에게 보여 주고 의견을 받는 단계까지는 아직 필요 없다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "완성 기준의 함정",
+        "완벽주의 함정",
+        "완성도 기준",
+        "최소기능 버전"
+      ],
+      "helpfulConcepts": [
+        "초안주의",
+        "의도적 생략",
+        "반복 주기",
+        "수정 초점"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 15
+        }
+      ],
+      "irrelevantPageNumbers": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          49
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        12,
+        14,
+        15
+      ],
+      "allowedAlternativePageNumbers": [
+        7,
+        13,
+        17
+      ]
     }
   ]
 }

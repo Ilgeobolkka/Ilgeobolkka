@@ -41312,6 +41312,1088 @@
           "duplicateGroupKeys": []
         }
       ]
+    },
+    {
+      "bookId": 95,
+      "title": "완벽하지 않은 시작의 힘",
+      "pdfPath": "pdfs/book-095.pdf",
+      "pdfSha256": "4d0f8bcf040ae9d324495d84ea278eb17ffb1f576ae89d6dc91b1ff7206cb6c4",
+      "totalPageCount": 50,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 완성해야 시작할 수 있다는 생각",
+          "section": "1.1 시작을 막는 기준",
+          "primaryConcepts": [
+            "완성 기준의 함정"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "착수 실패의 원인을 명시되지 않은 완성 기준에서 찾는 도입 페이지다. 준비가 진행될수록 기준이 함께 상승해 도달점이 계속 이동한다는 구조를 설명하고, 기준을 외부화해 사전에 낮추는 접근을 책 전체의 방향으로 제시한다.",
+          "aiAnalysisInputSha256": "eb7e121e5550d377d5aac3419305d1f851a1a7e67d0ef15000c82adf8e0ab11d",
+          "aiPublicGuideTopic": "머릿속에 있는 기준이 착수를 막는 방식",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "fixable-before-good"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 완성해야 시작할 수 있다는 생각",
+          "section": "1.1 시작을 막는 기준",
+          "primaryConcepts": [
+            "완성 기준의 함정"
+          ],
+          "secondaryConcepts": [
+            "완벽주의 함정"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "준비 단계가 활동으로 채워져 있어 지연으로 인식되지 않는다는 점을 다룬다. 준비에는 종료 신호가 없고 평가 위험도 없어 길어진다는 구조를 설명하며, 실행을 통해서만 부족한 부분이 드러난다는 대비를 제시한다.",
+          "aiAnalysisInputSha256": "f951c97f7ef8d23793d28d45615d282fbada891fb45404ea59cf58dd4abf139b",
+          "aiPublicGuideTopic": "준비가 일처럼 느껴지는 이유",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 완성해야 시작할 수 있다는 생각",
+          "section": "1.2 완벽주의가 하는 일",
+          "primaryConcepts": [
+            "완벽주의 함정"
+          ],
+          "secondaryConcepts": [
+            "완성 기준의 함정"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "높은 품질 기준이 작동하는 시점에 따라 효과가 달라진다는 점을 설명한다. 착수 시점의 기준은 지연을, 수정 시점의 기준은 품질 향상을 낳는다는 대비를 제시하고, 기준의 제거가 아니라 적용 시점의 이동을 해법으로 밝힌다.",
+          "aiAnalysisInputSha256": "f8299399d521022a581ff0d1d368d4f8b21ea4114cbd17acc8e23fa0a6289348",
+          "aiPublicGuideTopic": "잘하려는 마음이 만드는 두 가지 결과",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 완성해야 시작할 수 있다는 생각",
+          "section": "1.2 완벽주의가 하는 일",
+          "primaryConcepts": [
+            "완벽주의 함정"
+          ],
+          "secondaryConcepts": [
+            "초안주의"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "완벽주의가 착수 실패와 종료 실패라는 두 형태로 나타난다는 점을 구분하고 각각의 대응을 제시한다. 이 책이 착수 쪽에 무게를 두는 이유와, 동기의 원인 규명은 다루지 않고 산출 형식만 조정한다는 범위를 밝힌다.",
+          "aiAnalysisInputSha256": "c88b1e971c572df421f801c45d73860aab06a237711d735363ab0548982ccd05",
+          "aiPublicGuideTopic": "미루는 것과 다듬는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 완성해야 시작할 수 있다는 생각",
+          "section": "1.3 초안이라는 상태",
+          "primaryConcepts": [
+            "초안주의"
+          ],
+          "secondaryConcepts": [
+            "완벽주의 함정"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "초안을 완성작의 축소판이 아니라 판단을 위한 별개 산출물로 규정한다. 내면에 머무는 계획은 결손 지점을 드러내지 못한다는 점과, 초안의 가치를 완성도가 아니라 획득한 정보량으로 평가하는 기준을 제시한다.",
+          "aiAnalysisInputSha256": "fdbfc0ee5605f283c7655e61f4a8f7f2b251292d0696e9c3cc4cc1eccebf7f3b",
+          "aiPublicGuideTopic": "머릿속에 있는 것과 밖에 나온 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 완성해야 시작할 수 있다는 생각",
+          "section": "1.3 초안이라는 상태",
+          "primaryConcepts": [
+            "초안주의"
+          ],
+          "secondaryConcepts": [
+            "수정 가능성",
+            "완성 기준의 함정"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "내면에 머무는 구상과 외부로 산출된 초안을 좌우로 대비한 도표다. 왼쪽은 경계가 불분명한 덩어리로, 오른쪽은 결손과 수정 지점이 표시된 요소로 그려 초안이 만들어 내는 것이 완성도가 아니라 판단 가능성임을 보인다.",
+          "aiAnalysisInputSha256": "da806164d386c5211577453e6a057c880528fbe26639b43b59d1e56bd5cf3c34",
+          "aiPublicGuideTopic": "머릿속의 계획과 밖으로 꺼낸 초안을 견준 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 완성해야 시작할 수 있다는 생각",
+          "section": "1.4 무엇이 완성인가",
+          "primaryConcepts": [
+            "완성의 정의"
+          ],
+          "secondaryConcepts": [
+            "초안주의"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "완성을 내재적 품질 상태가 아니라 외부와의 약속으로 정의한다. 기한이 정해지면 완성도의 목표가 그에 맞춰 결정된다는 점과, 기한 부재가 무기한 준비의 실질적 원인이라는 진단을 제시한다.",
+          "aiAnalysisInputSha256": "e74e5c877f1e7968a184ced1af53a606d9285b7cfd11be75183f83e5b119e591",
+          "aiPublicGuideTopic": "완성을 상태가 아니라 약속으로 보기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 완성해야 시작할 수 있다는 생각",
+          "section": "1.4 무엇이 완성인가",
+          "primaryConcepts": [
+            "완성의 정의"
+          ],
+          "secondaryConcepts": [
+            "완성도 기준"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단일 완성 시점이 부담을 집중시킨다는 점을 지적하고 완성을 복수의 단계로 나누는 방법을 제시한다. 단계마다 다른 기준을 두는 방식과, 후속 단계의 일정이 확정되어야 초기 단계의 과부하가 방지된다는 조건을 다룬다.",
+          "aiAnalysisInputSha256": "605d53adeec842484e37a04351ae7660ef8c96a5479aa7bff631d20c3c93712f",
+          "aiPublicGuideTopic": "여러 개의 완성을 두기",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "1장 완성해야 시작할 수 있다는 생각",
+          "section": "1.5 고칠 수 있는 형태",
+          "primaryConcepts": [
+            "수정 가능성"
+          ],
+          "secondaryConcepts": [
+            "초안주의"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "초안 설계의 기준을 완성도가 아니라 수정 용이성으로 제시한다. 부분 분리 가능성과 의존 관계의 가시성을 조건으로 들고, 초안에 투입한 노력이 폐기 저항을 만들어 수정을 막는다는 역설을 다룬다.",
+          "aiAnalysisInputSha256": "d324e987bfd7feea53a6e4908deb0fc5c2d9f415cb94c630be1a88ca8e89a775",
+          "aiPublicGuideTopic": "나중에 고치기 쉬운 상태로 만들기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "1장 완성해야 시작할 수 있다는 생각",
+          "section": "1.5 고칠 수 있는 형태",
+          "primaryConcepts": [
+            "수정 가능성"
+          ],
+          "secondaryConcepts": [
+            "완성의 정의"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수정 비용이 시간에 따라 증가한다는 점과 결정의 파급 범위에 따라 확정 시점을 달리하는 기준을 제시한다. 초안의 기능 가운데 하나가 파급이 큰 결정을 조기에 검증하는 것이라는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "d68f90b948175dd8f36aa3e9a65cbe81f7d7e4b789752a87f5fa6a0a301029b5",
+          "aiPublicGuideTopic": "고치는 비용이 자라는 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 낮은 완성도로 시작하기",
+          "section": "2.1 오늘의 완성도를 정하기",
+          "primaryConcepts": [
+            "완성도 기준"
+          ],
+          "secondaryConcepts": [
+            "완벽주의 함정",
+            "완성 기준의 함정"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "당일 산출물의 완성도를 사전에 문서화하는 방법을 제시한다. 모호한 하향 조정으로는 원래 기준이 복귀한다는 점, 제외 항목을 명시하는 형식, 그리고 제작 중 판단 횟수가 줄어 속도가 오른다는 효과를 다룬다.",
+          "aiAnalysisInputSha256": "55a7056c50092e9f53806a5f164720d09d953c26141bd986125081d6ca63426d",
+          "aiPublicGuideTopic": "만들기 전에 어디까지 만들지 적는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 낮은 완성도로 시작하기",
+          "section": "2.1 오늘의 완성도를 정하기",
+          "primaryConcepts": [
+            "완성도 기준"
+          ],
+          "secondaryConcepts": [
+            "완성의 정의"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "완성도를 항목이 아니라 소요 시간으로 규정하는 방법을 제시한다. 제외 항목을 판단하기 어려운 초기 작업에 적합하다는 점, 정한 시간에 종료해야 방법이 성립한다는 조건, 그리고 결손 분포가 우선순위 정보를 준다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "dadecb88791f2d4efb7543a4450e7289d5a6b87c939d068f21e4d2528c180ce1",
+          "aiPublicGuideTopic": "완성도를 시간으로 정하는 방법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 낮은 완성도로 시작하기",
+          "section": "2.2 가장 작은 쓸 만한 것",
+          "primaryConcepts": [
+            "최소기능 버전"
+          ],
+          "secondaryConcepts": [
+            "완성도 기준",
+            "초안주의"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "완성도 축소의 두 방향을 부분 심화와 전체 박화로 구분하고 후자를 권한다. 전체가 동작해야 실사용이 가능하고 결손 정보가 드러난다는 근거를 제시하며, 최소 버전에 사용 가능성이라는 조건이 붙는 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "a68a12c8d68dcb1fcae7b6ae107bea3bd74c5080817908578aba8a83257e0055",
+          "aiPublicGuideTopic": "쓸 수 있는 상태를 유지하며 작게 만들기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 낮은 완성도로 시작하기",
+          "section": "2.2 가장 작은 쓸 만한 것",
+          "primaryConcepts": [
+            "최소기능 버전"
+          ],
+          "secondaryConcepts": [
+            "의도적 생략",
+            "완성도 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 제작량을 부분 심화와 전체 박화로 배분한 두 경우를 격자로 비교한 도표다. 채운 칸 수를 비슷하게 유지하면서 배치만 달리해, 투입량이 같아도 사용 가능 여부가 갈린다는 점을 보인다.",
+          "aiAnalysisInputSha256": "ccaa4eca4b99ab12080bf8f1e26842bd5416201ddda706be5342c248da89f361",
+          "aiPublicGuideTopic": "부분만 완성한 경우와 전체를 얇게 만든 경우를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 낮은 완성도로 시작하기",
+          "section": "2.3 빠뜨릴 것을 정하기",
+          "primaryConcepts": [
+            "의도적 생략"
+          ],
+          "secondaryConcepts": [
+            "완성도 기준",
+            "최소기능 버전"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "생략을 의도적 결정과 우발적 누락으로 구분한다. 의도적 생략은 목록으로 남아 다음 단계의 작업 항목과 대외 설명 근거가 되는 반면, 우발적 누락은 실행 중 문제로 드러난다는 차이를 제시한다.",
+          "aiAnalysisInputSha256": "d9cebd8a5aa679c3df0d0760c6e939666435fb528582cfa4051d69c54ec37ae1",
+          "aiPublicGuideTopic": "빼기로 정한 것과 잊어버린 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "2장 낮은 완성도로 시작하기",
+          "section": "2.3 빠뜨릴 것을 정하기",
+          "primaryConcepts": [
+            "의도적 생략"
+          ],
+          "secondaryConcepts": [
+            "수정 가능성"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "생략 대상 선정 기준을 전체 동작 가능성으로 제시한다. 표층 요소는 후행 추가가 가능하고 구조 요소는 초안의 정보 가치를 결정한다는 구분을 들고, 앞 장의 파급 범위 기준과 동일한 판단임을 밝힌다.",
+          "aiAnalysisInputSha256": "a2127dfb6c4c15f2125c5b7da84b4d4e6b624862565d3db798be0befe29546b4",
+          "aiPublicGuideTopic": "무엇을 뺄지 고르는 기준",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "2장 낮은 완성도로 시작하기",
+          "section": "2.4 초안임을 알리기",
+          "primaryConcepts": [
+            "상태 표시"
+          ],
+          "secondaryConcepts": [
+            "의도적 생략",
+            "완성의 정의"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "초안 공유 시 상태를 명시해야 하는 이유를 다룬다. 상태 미고지 시 평가 기준이 어긋나 피드백이 표층 지적으로 치우친다는 점을 지적하고, 초안 여부·생략 항목·검토 요청 범위를 함께 전달하는 절차를 제시한다.",
+          "aiAnalysisInputSha256": "8eb62e9a15aa29a18f34c5d2cdef719b6a7f0e8191a9e2bbebb809124c9fbb52",
+          "aiPublicGuideTopic": "이것이 초안이라고 말해 두는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "2장 낮은 완성도로 시작하기",
+          "section": "2.4 초안임을 알리기",
+          "primaryConcepts": [
+            "상태 표시"
+          ],
+          "secondaryConcepts": [
+            "최소기능 버전"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "초안 상태를 문서에 명시하는 방법과 그 필요성을 다룬다. 표시가 없으면 초안이 후속 작업의 기준으로 굳는다는 위험, 표시 위치가 가시적이어야 한다는 조건, 그리고 완성 시 표시를 제거해야 신뢰가 유지된다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "9a7319ea2777746f9978c4967394d720086e16742d0bc9fb1cdc5cf517299b32",
+          "aiPublicGuideTopic": "표시를 남겨 두는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 반복해서 고치기",
+          "section": "3.1 한 바퀴의 크기",
+          "primaryConcepts": [
+            "반복 주기"
+          ],
+          "secondaryConcepts": [
+            "수정 가능성",
+            "초안주의"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복 개선의 한 주기를 제작·사용·수정의 묶음으로 정의한다. 주기가 지나치게 짧으면 검증 대상이 확보되지 않는다는 점을 지적하고, 주기 크기를 시간이 아니라 사용 가능한 최소 단위로 정하는 기준을 제시한다.",
+          "aiAnalysisInputSha256": "005c821f2c82812f6ebfc3ee6f6436d6aae54d4a623fc9e7684557a0451c8b51",
+          "aiPublicGuideTopic": "만들고 확인하고 고치는 한 묶음",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 반복해서 고치기",
+          "section": "3.1 한 바퀴의 크기",
+          "primaryConcepts": [
+            "반복 주기"
+          ],
+          "secondaryConcepts": [
+            "최소기능 버전",
+            "수정 초점"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복 개선의 세 주기를 계단 형태로 나타낸 도표다. 주기마다 투입 시간과 산출물 크기, 남은 결손 수를 함께 표시하고 주기 사이에 사용 단계를 배치해, 수정의 근거가 실사용에서 나온다는 구조를 보인다.",
+          "aiAnalysisInputSha256": "66b5fe802ec8a01254b205d30c918014b852de196b5abc668e01c8a92f99e110",
+          "aiPublicGuideTopic": "세 바퀴를 돌며 산출물이 자라는 모양을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 반복해서 고치기",
+          "section": "3.2 무엇을 고칠지 고르기",
+          "primaryConcepts": [
+            "수정 초점"
+          ],
+          "secondaryConcepts": [
+            "반복 주기",
+            "완벽주의 함정"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "한 주기에서 수정 항목을 소수로 제한하는 이유와 선정 기준을 제시한다. 사용 직후 즉시 기록해 정확도를 확보하는 방법과, 보류 결정도 목록에 남겨 반복 판단을 막는 실무를 다룬다.",
+          "aiAnalysisInputSha256": "82bc8ddaccf0b435d7e98511b7f995c3096a96942cc1a2ff60bf3462b80b2338",
+          "aiPublicGuideTopic": "한 바퀴에 하나씩 고치기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 반복해서 고치기",
+          "section": "3.2 무엇을 고칠지 고르기",
+          "primaryConcepts": [
+            "수정 초점"
+          ],
+          "secondaryConcepts": [
+            "의도적 생략"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수정 대상을 생략분 보충과 오류 정정으로 나누고 우선순위를 제시한다. 오류가 사용마다 방해로 작용한다는 근거, 반복적으로 걸리는 생략분은 오류와 동급으로 다룬다는 예외, 그리고 한 주기에 두 종류를 섞지 않는 원칙을 다룬다.",
+          "aiAnalysisInputSha256": "6c521c03f031dee3fd79c299f7d61aabb17630d78bc1fa546cb7dd517992430b",
+          "aiPublicGuideTopic": "빠뜨린 것과 잘못된 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "3장 반복해서 고치기",
+          "section": "3.3 언제 멈출 것인가",
+          "primaryConcepts": [
+            "종료 기준"
+          ],
+          "secondaryConcepts": [
+            "반복 주기",
+            "완성의 정의"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복 개선의 종료 기준 세 가지를 제시하고 개선 폭이 투입 대비 낮아지는 시점이 실질적 기준이라는 점을 밝힌다. 종료가 영구적 완결이 아니라 현재 목적 충족을 뜻한다는 구분도 함께 다룬다.",
+          "aiAnalysisInputSha256": "0f82a58c8aee298ebb70f292661c3b490aa61227582a67e6165ed3c81d732902",
+          "aiPublicGuideTopic": "반복을 끝내는 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "3장 반복해서 고치기",
+          "section": "3.3 언제 멈출 것인가",
+          "primaryConcepts": [
+            "종료 기준"
+          ],
+          "secondaryConcepts": [
+            "완성도 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "종료 판단을 어렵게 하는 요인을 평가에 대한 불안으로 설명한다. 후속 개선 기회를 미리 확보해 종료의 최종성을 낮추는 방법과, 종료 조건을 제작 착수 전에 문서화해 진행 중 판단의 편향을 피하는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "fc53cbeabd93d4f3bb34b8e284650be991c72d938ccc6598776185e34fa3efed",
+          "aiPublicGuideTopic": "멈추지 못하는 경우",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "3장 반복해서 고치기",
+          "section": "3.4 되돌릴 수 있게",
+          "primaryConcepts": [
+            "가역성"
+          ],
+          "secondaryConcepts": [
+            "수정 가능성",
+            "반복 주기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수정 시도의 폭이 복원 가능성에 좌우된다는 점을 설명한다. 사본 생성과 변경 의도 기록이라는 최소 절차를 제시하고, 되돌린 시도도 실패 정보로 남겨 재시도를 방지하는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "399288f7cfd4cced283574de58e3b67d4c50d6393f88f3ed9558b2cd8e3597aa",
+          "aiPublicGuideTopic": "고치기 전의 상태를 남기는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "3장 반복해서 고치기",
+          "section": "3.4 되돌릴 수 있게",
+          "primaryConcepts": [
+            "가역성"
+          ],
+          "secondaryConcepts": [
+            "종료 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복원이 불가능한 지점을 사전에 식별해 두는 방법을 제시한다. 해당 경계 이전에는 자유롭게 수정하고 경계를 넘을 때만 확인 절차를 두는 운용과, 비가역 지점이 많은 작업은 접근 자체를 재검토해야 한다는 예고를 다룬다.",
+          "aiAnalysisInputSha256": "7e88ee28032b0c3c5a911dd0bf2e67ec5947601f96f5bb6df7b653ed384c720d",
+          "aiPublicGuideTopic": "되돌릴 수 없는 부분을 알아 두기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 남에게 보이기",
+          "section": "4.1 언제 보일 것인가",
+          "primaryConcepts": [
+            "조기 공유"
+          ],
+          "secondaryConcepts": [
+            "초안주의",
+            "상태 표시"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "초안 공유 시점이 늦어지는 경향과 그 결과를 다룬다. 공유 시점에 따라 받을 수 있는 피드백의 층위가 달라진다는 점을 지적하고, 공유 일자를 사전에 고정해 준비 완료를 기다리지 않는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "2297473f55e726b0c1d2d61a7596b6a4d93b8d9322977132e235db8c50751278",
+          "aiPublicGuideTopic": "덜 만든 것을 일찍 보이는 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 남에게 보이기",
+          "section": "4.1 언제 보일 것인가",
+          "primaryConcepts": [
+            "조기 공유"
+          ],
+          "secondaryConcepts": [
+            "완성의 정의"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "초안 공유 대상을 선정하는 기준을 제시한다. 제작 과정을 이해하는 상대와 결과만 평가하는 상대를 구분해 공유 단계를 분리하는 방법, 그리고 공유 대상이 없을 때 시간 간격을 두고 자가 검토하는 대안을 다룬다.",
+          "aiAnalysisInputSha256": "763e18bb2d9b0119edf14720904697a20220544409f216f9330b95f909f28ba8",
+          "aiPublicGuideTopic": "누구에게 보일 것인가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 남에게 보이기",
+          "section": "4.2 무엇을 물을 것인가",
+          "primaryConcepts": [
+            "피드백 요청"
+          ],
+          "secondaryConcepts": [
+            "조기 공유",
+            "상태 표시"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "피드백 요청 시 검토 범위를 지정해야 하는 이유를 다룬다. 범위가 없으면 표층 의견으로 치우친다는 점, 미결 항목을 물어야 방어적 대화를 피할 수 있다는 점, 그리고 질문 수를 제한해 응답의 밀도를 확보하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "d604d873d2d36dfcad28a18cf1c89d7593beff8cf7ffe5260c55af046f8053b5",
+          "aiPublicGuideTopic": "봐 달라고 말할 때 함께 정해 주는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 남에게 보이기",
+          "section": "4.2 무엇을 물을 것인가",
+          "primaryConcepts": [
+            "피드백 요청"
+          ],
+          "secondaryConcepts": [
+            "수정 초점"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "피드백 요청 전에 확정 사항과 미결 사항을 구분하는 준비 절차를 제시한다. 미결이 과다하면 자체 반복을 한 차례 더 수행하고, 미결이 없으면 요청 자체가 확인 욕구에 그친다는 판단 기준을 다룬다.",
+          "aiAnalysisInputSha256": "ac6b2474ebd7d26b0dfa3b542b5291c79774562b2161fff2cf703bd23e013f9f",
+          "aiPublicGuideTopic": "묻기 전에 정해 둘 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "4장 남에게 보이기",
+          "section": "4.3 받은 말을 다루기",
+          "primaryConcepts": [
+            "피드백 선별"
+          ],
+          "secondaryConcepts": [
+            "피드백 요청",
+            "수정 초점"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "피드백을 정보로 수용하되 수정 결정은 제작자가 유지한다는 원칙을 제시한다. 문제 지적과 해결 제안을 분리해 다루는 방법과, 복수 지적과 단일 지적의 신뢰도 차이를 판단 기준으로 다룬다.",
+          "aiAnalysisInputSha256": "358ffb71a6b63f51183130a1c99a0b73687aba867e214c1be770ebb3800718eb",
+          "aiPublicGuideTopic": "모든 의견을 반영하지 않기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "4장 남에게 보이기",
+          "section": "4.3 받은 말을 다루기",
+          "primaryConcepts": [
+            "피드백 선별"
+          ],
+          "secondaryConcepts": [
+            "종료 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "피드백 처리 결과를 반영·이월·보류로 나누어 기록하는 방법을 제시한다. 이월과 보류 사유를 남겨 반복 검토를 막는 실무, 그리고 처리 결과를 제공자에게 회신해 후속 협조를 유지하는 절차를 다룬다.",
+          "aiAnalysisInputSha256": "562294e04378a5b133032f219d2c6499e364b1f2e39b08be90e441c0413495e0",
+          "aiPublicGuideTopic": "지금 반영할 것과 다음으로 넘길 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "4장 남에게 보이기",
+          "section": "4.4 보이지 않아도 되는 것",
+          "primaryConcepts": [
+            "비공개 초안"
+          ],
+          "secondaryConcepts": [
+            "조기 공유",
+            "가역성"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "초기 단계에서 공유를 유보해야 하는 이유를 자기 판단 형성 이전의 외부 방향 유입으로 설명한다. 첫 주기는 단독으로 수행하고 방향이 정리된 뒤 공유하는 순서와, 단독 주기가 과도하게 반복되면 회피 신호로 본다는 기준을 제시한다.",
+          "aiAnalysisInputSha256": "022ad646cda1e7f65850949c9e00b61f5db6d992ebb7ce154f7487ab265d2228",
+          "aiPublicGuideTopic": "혼자 두어야 하는 단계",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "4장 남에게 보이기",
+          "section": "4.4 보이지 않아도 되는 것",
+          "primaryConcepts": [
+            "비공개 초안"
+          ],
+          "secondaryConcepts": [
+            "상태 표시"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "폐기 대상 초안의 관리를 다룬다. 다수의 판본이 남으면 최신본 식별이 어려워지고 공유 공간에서는 잘못된 기준이 사용될 수 있다는 위험을 지적하고, 재열람 가능성을 기준으로 보존 대상을 한정하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "a0106281903b9b76ae8b1668e62b9dfdd0a8d3f6196002d14a576500e3b437c3",
+          "aiPublicGuideTopic": "남기지 않는 초안",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 어떤 강좌",
+          "section": "5.1 세 달을 준비한 강좌",
+          "primaryConcepts": [
+            "과잉 준비 사례"
+          ],
+          "secondaryConcepts": [
+            "완성 기준의 함정",
+            "완벽주의 함정"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "준비 단계가 장기화된 사례를 월 단위로 기록한다. 지식은 축적되지만 산출물은 감소하는 상태와 그 원인인 반복적 구조 변경을 보이고, 기한이 설정된 적이 없다는 사실을 문제의 핵심으로 드러낸다.",
+          "aiAnalysisInputSha256": "25c950fa3c8ed71ba214b8514b91d1eb51fcc18ad811fabba200ad89d9a3da43",
+          "aiPublicGuideTopic": "넉 달 동안 준비만 한 기록",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 어떤 강좌",
+          "section": "5.1 세 달을 준비한 강좌",
+          "primaryConcepts": [
+            "과잉 준비 사례"
+          ],
+          "secondaryConcepts": [
+            "완성의 정의",
+            "수정 가능성"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기한 설정이 산출물 규모를 결정하는 과정을 사례로 보인다. 구조 변경을 실행 이후로 유예하는 판단과, 후속 회차 일정을 함께 정해 첫 회차의 범위를 축소할 수 있게 한 조치를 제시한다.",
+          "aiAnalysisInputSha256": "b2ec9f12a285746f7779c8d8e87bdb65f65e8e92f1e9fa69e565f2a31906bb4b",
+          "aiPublicGuideTopic": "날짜를 먼저 정하다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 어떤 강좌",
+          "section": "5.2 초안으로 연 강좌",
+          "primaryConcepts": [
+            "초안 적용"
+          ],
+          "secondaryConcepts": [
+            "최소기능 버전",
+            "의도적 생략"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "축소된 초안 상태로 첫 회차를 실행한 사례를 보인다. 상태 고지와 검토 요청을 사전에 전달한 절차, 예정 분량 미달이라는 결과가 질문 시간으로 전환된 경과, 그리고 실행 직후 기록한 세 가지 관찰을 제시한다.",
+          "aiAnalysisInputSha256": "02afedfb66e86e9008cb6221e0b57282462d784a44e950ea0dfbce387a25b785",
+          "aiPublicGuideTopic": "첫 강의에 없었던 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "5장 어떤 강좌",
+          "section": "5.2 초안으로 연 강좌",
+          "primaryConcepts": [
+            "초안 적용"
+          ],
+          "secondaryConcepts": [
+            "반복 주기",
+            "과잉 준비 사례"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 기간을 준비에만 사용한 경우와 네 차례 실행에 사용한 경우를 두 개의 시간선으로 비교한 도표다. 실행 시점과 수정 구간을 표시하고 산출물 크기를 점증하게 그려, 같은 기간 안의 검증 횟수 차이를 보인다.",
+          "aiAnalysisInputSha256": "3a732e06fdb807e30ee5d2d43603e363444ae98426a0aa171d3969cae4a7625e",
+          "aiPublicGuideTopic": "준비만 한 넉 달과 네 번 연 넉 달을 견준 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "5장 어떤 강좌",
+          "section": "5.3 세 번의 수정",
+          "primaryConcepts": [
+            "반복 관찰"
+          ],
+          "secondaryConcepts": [
+            "수정 초점",
+            "반복 주기"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회차마다 단일 수정 항목을 적용한 경과를 보인다. 각 수정의 근거가 직전 실행에서 관찰된 문제라는 점, 수정이 다음 회차에서 새 문제를 드러내는 연쇄, 그리고 실행 기반 수정이 전면 개편으로 번지지 않는다는 대비를 제시한다.",
+          "aiAnalysisInputSha256": "5a1882bcec975029673db0548bb3fb729c02954a0244660a633f6c9c10804d56",
+          "aiPublicGuideTopic": "회차마다 하나씩 고친 기록",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "5장 어떤 강좌",
+          "section": "5.3 세 번의 수정",
+          "primaryConcepts": [
+            "반복 관찰"
+          ],
+          "secondaryConcepts": [
+            "피드백 선별",
+            "종료 기준"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복수 회차에서 수집한 피드백의 선별 과정을 보인다. 반복 지적 여부를 채택 기준으로 삼고 단일 지적은 이월하는 처리, 미채택 사유를 기록하는 실무, 그리고 초기 산출물의 완성도에 대한 사후 평가 변화를 제시한다.",
+          "aiAnalysisInputSha256": "587fc2395580774863faeaffedde1cc9ba7707694a283d5cc704e8249313dda9",
+          "aiPublicGuideTopic": "받은 말 가운데 고른 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "5장 어떤 강좌",
+          "section": "5.4 여섯 달 뒤",
+          "primaryConcepts": [
+            "정착"
+          ],
+          "secondaryConcepts": [
+            "종료 기준",
+            "완성의 정의"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복 개선이 종료되는 시점과 이후 운영을 사례로 보인다. 수정 항목 감소를 종료 신호로 삼은 판단, 주기 단위를 회차에서 기수로 확대한 조정, 그리고 조건 변화 시 주기를 다시 좁힌다는 전제를 제시한다.",
+          "aiAnalysisInputSha256": "0f07362fbb37f22cb26d1508ce0dba9a3703193d2d2fda2c6439df1e32afa17e",
+          "aiPublicGuideTopic": "반복을 멈춘 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 초안으로 시작하면 안 될 때",
+          "section": "6.1 되돌릴 수 없는 일",
+          "primaryConcepts": [
+            "비가역 작업"
+          ],
+          "secondaryConcepts": [
+            "가역성",
+            "초안주의"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "초안 접근이 성립하려면 수정 가능성이 전제되어야 한다는 점을 밝힌다. 비가역 산출물의 예를 들고, 반복 주기를 외부 공개 이전 단계로 이동시키는 방식으로 대응한다는 원칙을 제시한다.",
+          "aiAnalysisInputSha256": "b3b230b8f4a1fa69d71c627acbea129409a760f0079dca45996391e20fb15deb",
+          "aiPublicGuideTopic": "초안으로 시작하면 안 되는 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 초안으로 시작하면 안 될 때",
+          "section": "6.1 되돌릴 수 없는 일",
+          "primaryConcepts": [
+            "비가역 작업"
+          ],
+          "secondaryConcepts": [
+            "종료 기준"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실패 시 인적·물적 손실이 발생하는 작업에는 저완성도 착수를 적용하지 않는다는 경계를 명시한다. 절차 준수가 개인 판단에 우선한다는 점과, 손실의 귀속 대상으로 적용 여부를 판별하는 기준을 제시한다.",
+          "aiAnalysisInputSha256": "3c9b139ae9b6f66b6ce485c0d2dc6739abcebb98304fcff9ac612624005d0a6e",
+          "aiPublicGuideTopic": "안전이 걸린 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 초안으로 시작하면 안 될 때",
+          "section": "6.2 초안이 오래 남을 때",
+          "primaryConcepts": [
+            "초안 고착"
+          ],
+          "secondaryConcepts": [
+            "상태 표시",
+            "반복 주기"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "초안이 임시성을 잃고 정식 기준으로 고착되는 현상을 다룬다. 타인의 참조가 시작되면 수정 비용이 급증한다는 점, 후속 주기 일정을 명시해 고착을 방지하는 방법, 그리고 고착 발견 시 상태를 재표시하는 대응을 제시한다.",
+          "aiAnalysisInputSha256": "63130f0d67c9d379d7294c3bc9b0d9460607629c9a4e319ec4df95af993d7852",
+          "aiPublicGuideTopic": "임시로 만든 것이 그대로 쓰이는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 초안으로 시작하면 안 될 때",
+          "section": "6.2 초안이 오래 남을 때",
+          "primaryConcepts": [
+            "초안 고착"
+          ],
+          "secondaryConcepts": [
+            "비공개 초안"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "고착된 초안을 수정 대상에서 제외하는 결정을 다룬다. 상태 표시를 정식으로 전환해 미결 부담을 없애는 방법과, 실사용 기간의 문제 발생 여부를 근거로 삼아야 결정이 유지된다는 조건을 제시한다.",
+          "aiAnalysisInputSha256": "5f5fc85b3891c9e5446eb12caa848d28216919e6a04505bda5913b615c6e6d63",
+          "aiPublicGuideTopic": "고치지 않기로 정하는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "6장 초안으로 시작하면 안 될 때",
+          "section": "6.3 신뢰가 걸린 자리",
+          "primaryConcepts": [
+            "신뢰 비용"
+          ],
+          "secondaryConcepts": [
+            "조기 공유",
+            "상태 표시"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "초안 공개가 역량 평가로 이어지는 상황을 다룬다. 상대와의 협업 이력이 초안 해석의 근거가 된다는 점, 이력이 없는 관계에서는 공개 전에 내부 반복을 충분히 수행해야 한다는 대응을 제시한다.",
+          "aiAnalysisInputSha256": "9be523cae3c98e034fc825b35352b02df85c198d5a76f518eff92eb6825860f9",
+          "aiPublicGuideTopic": "덜 만든 것을 보이는 값",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "6장 초안으로 시작하면 안 될 때",
+          "section": "6.3 신뢰가 걸린 자리",
+          "primaryConcepts": [
+            "신뢰 비용"
+          ],
+          "secondaryConcepts": [
+            "피드백 요청"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "초안 공유 시 상태 설명으로 평가 위험을 낮추는 방법을 제시한다. 판본 번호·후속 계획·검토 요청이라는 세 요소가 과정 관리의 근거로 읽힌다는 점과, 그럼에도 통하지 않는 자리에서는 방식을 고집하지 않는다는 판단을 다룬다.",
+          "aiAnalysisInputSha256": "7c7a09fe3c7a829a3bcc8fc803304f5766ae58d2d59df3ffee1812e9027acc45",
+          "aiPublicGuideTopic": "말로 값을 줄이는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            47
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 결론: 고칠 수 있는 것을 먼저 만든다",
+          "section": "7.1 고칠 수 있는 것을 먼저 만든다",
+          "primaryConcepts": [
+            "종합"
+          ],
+          "secondaryConcepts": [
+            "완성 기준의 함정",
+            "초안주의"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체를 완성 기준의 시점 이동이라는 관점으로 정리하는 결론 페이지다. 저완성도 착수와 반복 개선의 절차를 요약하고, 수정 가능성이라는 전제가 성립하지 않는 세 경우를 함께 짚는다.",
+          "aiAnalysisInputSha256": "8ff25933d84f2b56474c0c292f1a214618373617be84ab9afcc2044d17955589",
+          "aiPublicGuideTopic": "완성도를 뒤로 미룬 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "fixable-before-good"
+          ]
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 결론: 고칠 수 있는 것을 먼저 만든다",
+          "section": "7.1 고칠 수 있는 것을 먼저 만든다",
+          "primaryConcepts": [
+            "종합"
+          ],
+          "secondaryConcepts": [
+            "완성도 기준",
+            "반복 주기"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실행을 위한 최소 절차로 기한·제외 항목·종료 조건 세 줄을 제시한다. 각 항목이 없을 때 발생하는 실패 형태를 대응시키고, 현재 산출물의 유무를 확인하는 점검 질문을 마지막에 남긴다.",
+          "aiAnalysisInputSha256": "e9573a82801213812b01bf6fcd7dba895ca622b2358ec9ab8a05c366133300d1",
+          "aiPublicGuideTopic": "오늘 적을 세 줄",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            49
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
     }
   ]
 }
