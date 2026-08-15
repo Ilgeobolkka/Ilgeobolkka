@@ -669,7 +669,9 @@ CASE_HELPFUL_CONCEPTS = ["지불용의의 분포", "잉여의 넓이 해석", "�
 # 값을 내렸을 때 사는 쪽 몫을 재는 목적과 무관한 페이지. 파는 쪽 세부와 보유효과다.
 CASE_IRRELEVANT_PAGES = [17, 18, 19, 20, 21, 22, 43, 44]
 # 정답 대신 골라도 목적을 채우는 페이지. 같은 절의 이어지는 설명과 다른 측정 방법이다.
-CASE_ALTERNATIVE_PAGES = [3, 9, 11, 13, 32, 33, 36, 37]
+# 7은 1.3의 짝이다. 정답 아홉 자리 중 여기만 짝이 빠져 있었다. 도움 개념인 `지불용의의 분포`가
+# primary라 6의 자리를 그대로 대신하고, 선수 폐쇄가 3페이지라 BALANCED 상한 안에서 고를 수 있다.
+CASE_ALTERNATIVE_PAGES = [3, 7, 9, 11, 13, 32, 33, 36, 37]
 
 
 def build_case(manifest_pages, prereq):
