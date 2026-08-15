@@ -19023,6 +19023,1031 @@
       ]
     },
     {
+      "bookId": 38,
+      "title": "벽화 속 사람들의 식탁",
+      "pdfPath": "pdfs/book-038.pdf",
+      "pdfSha256": "48b7392b607877150ffa68c93237389abe5b7fae137ae5247f4167a6ab1b0492",
+      "totalPageCount": 49,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 그림은 무엇을 적는가",
+          "section": "1.1 글자 없이 남은 기록",
+          "primaryConcepts": [
+            "시각 사료"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시각 사료가 동시성으로 인해 선택 개입이 적은 대신 의미를 전달하지 않는다는 특성을 제시한다. 형태의 계수를 해석에 앞세우는 이 책의 방법을 세운다.",
+          "aiAnalysisInputSha256": "f46e36abb21b4ef0b18a58e25b0fff8453a5e96c3fad431c4cfc47ab8444fb29",
+          "aiPublicGuideTopic": "그림이 글과 다른 방식으로 무엇을 담는지 밝힌다",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 그림은 무엇을 적는가",
+          "section": "1.1 글자 없이 남은 기록",
+          "primaryConcepts": [
+            "시각 사료"
+          ],
+          "secondaryConcepts": [
+            "반복 모티프"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지각적 현저성이 해석을 선점하는 문제를 제시하고 전수 계수의 필요성을 밝힌다. 빈도 확인이 특이성 판단의 전제임을 사례로 보인다.",
+          "aiAnalysisInputSha256": "092e7dae9c7dfc8b724c367a44c41f67548ec9e00be7072cc2fbc4d580b65943",
+          "aiPublicGuideTopic": "그림을 세는 일이 왜 먼저인지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 그림은 무엇을 적는가",
+          "section": "1.2 누가 그렸는가",
+          "primaryConcepts": [
+            "화가의 자리"
+          ],
+          "secondaryConcepts": [
+            "시각 사료"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "제작 주체를 발주자와 화공으로 나누고 각각이 남기는 층위를 구분한다. 반복 여부를 두 층위의 판별 실마리로 제시한다.",
+          "aiAnalysisInputSha256": "984141a1097e171cdda69a17e11cd80f645281af0f4fda5b1d82f5fbcc371a95",
+          "aiPublicGuideTopic": "벽을 그린 사람들이 어떤 자리에 있었는지 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 그림은 무엇을 적는가",
+          "section": "1.2 누가 그렸는가",
+          "primaryConcepts": [
+            "화가의 자리"
+          ],
+          "secondaryConcepts": [
+            "도상의 선택"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "묘사 대상이 실재가 아닌 선택의 결과임을 제시하고 그 선택 자체의 사료 가치를 밝힌다. 책 전체에서 반복될 핵심 명제를 도입한다.",
+          "aiAnalysisInputSha256": "19392a8fc3f17687ab48c36767f18c5c41d3e6a542c82ac8dd3793cc34490e23",
+          "aiPublicGuideTopic": "그리기로 한 것과 있었던 것이 다르다는 점을 세운다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": [
+            "painted-is-chosen"
+          ]
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 그림은 무엇을 적는가",
+          "section": "1.3 벽은 어디에 있었나",
+          "primaryConcepts": [
+            "벽화의 자리"
+          ],
+          "secondaryConcepts": [
+            "화가의 자리"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "벽화의 공간적 위치가 관람자 집단과 표현 방식을 규정함을 제시한다. 위치별 구분이 모티프 비교의 선결 조건임을 밝힌다.",
+          "aiAnalysisInputSha256": "7bf9e78e41b1b53705bc73d63d92296ceb7638ed84d3a7cc5ef4ab00738e7b23",
+          "aiPublicGuideTopic": "벽이 놓인 자리가 그림의 성격을 정한다는 점을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 그림은 무엇을 적는가",
+          "section": "1.3 벽은 어디에 있었나",
+          "primaryConcepts": [
+            "벽화의 자리"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "벽화 위치별 관람자와 표현 특성의 차이를 항목별 농도로 시각화한다. 동일 건물 내 자료의 이질성을 구분해 다뤄야 함을 보인다.",
+          "aiAnalysisInputSha256": "47f1a87bff8283803b6aa66bc6f2c53050a4c8885c2581d9930fe4e9f9d9a861",
+          "aiPublicGuideTopic": "세 자리의 벽이 서로 어떻게 다른지 나란히 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "2장 되풀이되는 것을 센다",
+          "section": "2.1 같은 모양이 여러 번",
+          "primaryConcepts": [
+            "반복 모티프"
+          ],
+          "secondaryConcepts": [
+            "시각 사료"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복 출현을 우연과 구별해 모티프로 규정하고 그 목록화를 선행 절차로 제시한다. 정형화된 표현이 당대 관습의 반영임을 밝힌다.",
+          "aiAnalysisInputSha256": "18d9b2285332e3aa557627a76989fd75fc6d771fb5d7c676c59e1e02256cc35e",
+          "aiPublicGuideTopic": "되풀이되는 모양을 세는 일이 이 방법의 바탕임을 밝힌다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 되풀이되는 것을 센다",
+          "section": "2.1 같은 모양이 여러 번",
+          "primaryConcepts": [
+            "반복 모티프"
+          ],
+          "secondaryConcepts": [
+            "배치"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "모티프 동일성 판정 기준의 자의성과 사전 고정의 필요성을 제시한다. 기준에 따라 목록 규모가 달라지므로 기준 병기를 요구한다.",
+          "aiAnalysisInputSha256": "7a6a23c61d892a845c8a09d96e742b84013f4103fe39541191b3fa6e8eb12609",
+          "aiPublicGuideTopic": "무엇을 하나의 모티프로 볼지 정하는 문제를 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 되풀이되는 것을 센다",
+          "section": "2.2 어디에 놓였는가",
+          "primaryConcepts": [
+            "배치"
+          ],
+          "secondaryConcepts": [
+            "반복 모티프"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "모티프의 의미가 배치 관계에 따라 달라짐을 제시한다. 좌표가 아닌 관계 기술로 위치를 기록하는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "9a56fdd8e81b13341fe2f6ff0423250a0e55da77c6a06acbb3a36bd16799456d",
+          "aiPublicGuideTopic": "모티프가 놓인 자리가 뜻을 바꾸는 방식을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 되풀이되는 것을 센다",
+          "section": "2.2 어디에 놓였는가",
+          "primaryConcepts": [
+            "배치"
+          ],
+          "secondaryConcepts": [
+            "크기의 위계"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배치 규칙의 일반성을 복수 벽면 대조로 검증하는 절차를 제시한다. 검증되지 않은 관찰을 규칙으로 기술하지 않는 원칙을 세운다.",
+          "aiAnalysisInputSha256": "e6164df3a91f5033599d398139e7c6233bc9a5f649343de4b36a1d593d1b5fc0",
+          "aiPublicGuideTopic": "자리의 규칙이 벽마다 되풀이되는지 확인한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 되풀이되는 것을 센다",
+          "section": "2.3 색이 갈리는 자리",
+          "primaryConcepts": [
+            "색의 구분"
+          ],
+          "secondaryConcepts": [
+            "배치"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "색채 사용의 대상별 분리 규칙과 예외의 의미를 제시한다. 색채가 보존 상태에 가장 취약한 요소임을 경고한다.",
+          "aiAnalysisInputSha256": "7a73dcfab9544c4070f07686c7556ae094ccc954b6bc9238846151f437bee367",
+          "aiPublicGuideTopic": "색이 무엇을 나누는 데 쓰였는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 되풀이되는 것을 센다",
+          "section": "2.3 색이 갈리는 자리",
+          "primaryConcepts": [
+            "색의 구분"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "색채와 묘사 대상의 대응 관계를 격자로 제시하고 예외 칸을 표시한다. 규칙의 존재가 예외 식별의 전제임을 시각화한다.",
+          "aiAnalysisInputSha256": "84ac1f9988854e33b33de6ab3306ae5a2838b20fed04b429bc4021e28f29def3",
+          "aiPublicGuideTopic": "다섯 색이 어느 대상에 쓰였는지 갈라 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 되풀이되는 것을 센다",
+          "section": "2.4 크기가 다른 까닭",
+          "primaryConcepts": [
+            "크기의 위계"
+          ],
+          "secondaryConcepts": [
+            "배치"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "크기 차이가 신체가 아닌 위계를 표현하는 관습임을 제시한다. 이 절이 다른 장과 직접 연결되지 않음을 밝혀 구성상 위치를 명시한다.",
+          "aiAnalysisInputSha256": "e1949b4d22a0461a4b3b03220289571a7b688725d258d3c5f1f5a67ef3d98e19",
+          "aiPublicGuideTopic": "사람과 물건의 크기가 다르게 그려진 까닭을 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 되풀이되는 것을 센다",
+          "section": "2.4 크기가 다른 까닭",
+          "primaryConcepts": [
+            "크기의 위계"
+          ],
+          "secondaryConcepts": [
+            "화가의 자리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "위계 규칙의 예외 사례와 두 가지 설명 가능성을 제시한다. 판별 자료 부재를 명시하고 후속 비교의 관찰 대상을 특정한다.",
+          "aiAnalysisInputSha256": "b944cf93167adb2d218f02504407239a1db95570803d46d2883948e68ef941e9",
+          "aiPublicGuideTopic": "크기 규칙이 지켜지지 않은 자리를 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 상 위에 놓인 것",
+          "section": "3.1 무엇이 그려졌나",
+          "primaryConcepts": [
+            "식품 도상"
+          ],
+          "secondaryConcepts": [
+            "반복 모티프"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "식품 도상의 목록과 동정 불확실 항목의 분리 처리를 제시한다. 확정된 부분집합만으로 수행 가능한 분석의 범위를 밝힌다.",
+          "aiAnalysisInputSha256": "8f7480b8ebba42e03545ab5503e9f003fc8d9ddc0ebb7d492b184322f1d22556",
+          "aiPublicGuideTopic": "상 위에 그려진 먹을거리의 종류를 정리한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 상 위에 놓인 것",
+          "section": "3.1 무엇이 그려졌나",
+          "primaryConcepts": [
+            "식품 도상"
+          ],
+          "secondaryConcepts": [
+            "색의 구분"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도상의 정형화 여부를 출현 범위로 판정하고 미정형 항목의 별도 표기를 제시한다. 비교 자료 부재로 판별이 유보되는 지점을 명시한다.",
+          "aiAnalysisInputSha256": "6d29b8317727852da2e1072f0f3db2430ac5dd452171d9fa542a8e48137c8680",
+          "aiPublicGuideTopic": "같은 먹을거리가 벽마다 다르게 그려지는지 살핀다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 상 위에 놓인 것",
+          "section": "3.2 무엇이 빠졌나",
+          "primaryConcepts": [
+            "도상의 결락"
+          ],
+          "secondaryConcepts": [
+            "식품 도상"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도상의 부재를 자료로 다루는 방법과 그 해석의 한계를 제시한다. 포함 항목과의 대조로 선택 기준을 역추적하는 절차를 밝힌다.",
+          "aiAnalysisInputSha256": "6af327c149c4a11a6cbb6aeef3f6409db3d515c2bd0b05b50758a19228266b04",
+          "aiPublicGuideTopic": "그려지지 않은 것이 무엇을 말하는지 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 상 위에 놓인 것",
+          "section": "3.2 무엇이 빠졌나",
+          "primaryConcepts": [
+            "도상의 결락"
+          ],
+          "secondaryConcepts": [
+            "벽화의 자리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "부재의 일반성 검증 절차를 제시하고 미제작과 미보존의 구별 불가 문제를 밝힌다. 판별 불가 사례의 명시적 기록을 요구한다.",
+          "aiAnalysisInputSha256": "6978b4a4372cd883685601daca9c28d2b06c73b2e4b245f5846b4f9ab5f47477",
+          "aiPublicGuideTopic": "빠짐이 벽마다 다른지 확인한다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 상 위에 놓인 것",
+          "section": "3.3 그릇이 말하는 것",
+          "primaryConcepts": [
+            "기물 도상"
+          ],
+          "secondaryConcepts": [
+            "식품 도상"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기물 도상의 상세도가 높은 이유와 그릇 형태-좌석 위계의 대응을 제시한다. 복수 벽면에서 검증된 결론임을 밝힌다.",
+          "aiAnalysisInputSha256": "b72e6bcccc5e7f96f34c3ba38c8f48373a20868fb0233dd54e839c84852aba3d",
+          "aiPublicGuideTopic": "그릇의 모양과 수가 무엇을 알려 주는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 상 위에 놓인 것",
+          "section": "3.3 그릇이 말하는 것",
+          "primaryConcepts": [
+            "기물 도상"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "그릇 형태와 좌석 위계의 대응 관계를 수렴하는 선으로 시각화한다. 규칙적 대응과 비규칙적 분산을 대비해 보인다.",
+          "aiAnalysisInputSha256": "c772febe30325c7875ec7ef6eb6553c4fcac8c66cb8c4e6044b2a489efa0cb2a",
+          "aiPublicGuideTopic": "그릇의 모양이 앉은 자리와 어떻게 짝지어지는지 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 상 위에 놓인 것",
+          "section": "3.4 함께 앉은 사람들",
+          "primaryConcepts": [
+            "식사 장면"
+          ],
+          "secondaryConcepts": [
+            "배치"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동석 인원과 자세 규칙에서 좌석 위계를 도출한다. 표본 부족으로 판정 불가한 항목과 규칙이 뚜렷한 항목을 구별한다.",
+          "aiAnalysisInputSha256": "efbacf2d23590fa3fba007d389efbca73a718b347dca0e5b11eebde3e69f77cd",
+          "aiPublicGuideTopic": "누가 함께 그려졌는지가 무엇을 말하는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 상 위에 놓인 것",
+          "section": "3.4 함께 앉은 사람들",
+          "primaryConcepts": [
+            "식사 장면"
+          ],
+          "secondaryConcepts": [
+            "크기의 위계"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조리 장면의 전면적 부재를 확인하고 그것이 자료 범위를 한정함을 제시한다. 도출 가능한 결론의 대상 집단을 명시한다.",
+          "aiAnalysisInputSha256": "ef2759d47f0e0fcb7b523f18a7a8a98ea20ec6e00ab343521bf68c7817968ca2",
+          "aiPublicGuideTopic": "그려지지 않은 사람들을 어떻게 다룰지 짚는다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 그림과 글을 맞대기",
+          "section": "4.1 글에 있고 그림에 없는 것",
+          "primaryConcepts": [
+            "교차 대조"
+          ],
+          "secondaryConcepts": [
+            "식품 도상"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "문헌과 도상의 교차 대조를 네 칸 분할로 형식화하고 실제 관측 가능한 세 칸을 밝힌다. 문헌 단독 항목의 다수성이 선택 기준을 드러냄을 제시한다.",
+          "aiAnalysisInputSha256": "84475e15889bf4f647245c29864f24dca4bed8ea244de823786a42e4efaa9353",
+          "aiPublicGuideTopic": "그림과 글을 맞대는 절차를 세운다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 그림과 글을 맞대기",
+          "section": "4.1 글에 있고 그림에 없는 것",
+          "primaryConcepts": [
+            "교차 대조"
+          ],
+          "secondaryConcepts": [
+            "도상의 결락"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "교차 대조 시 자료 간 시공간 범위 불일치를 명시하고 결론 범위를 그에 맞춰 한정한다. 제거 불가한 오차의 기록 방식을 제시한다.",
+          "aiAnalysisInputSha256": "84e14a47bb73cf42a0eecc01b492781afe16a03705e40b52738fb9082502c4dd",
+          "aiPublicGuideTopic": "맞댈 때 조심해야 할 것을 짚는다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 그림과 글을 맞대기",
+          "section": "4.2 그림에 있고 글에 없는 것",
+          "primaryConcepts": [
+            "도상의 단독 증언"
+          ],
+          "secondaryConcepts": [
+            "교차 대조"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도상 단독 증언의 가치를 밝히고 문헌 부재의 복수 해석 가능성을 정리한다. 기물과 식품이 서로 다른 설명을 요구함을 제시한다.",
+          "aiAnalysisInputSha256": "e75ec1b913c2a73ab3c6d06cd16923e3a090c2d7ac1b32b3e19b5d497d694849",
+          "aiPublicGuideTopic": "그림만 남긴 증언을 어떻게 다룰지 밝힌다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 그림과 글을 맞대기",
+          "section": "4.2 그림에 있고 글에 없는 것",
+          "primaryConcepts": [
+            "도상의 단독 증언"
+          ],
+          "secondaryConcepts": [
+            "도상의 선택"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "허구 묘사 가능성을 상세도를 지표로 차등 평가하는 방법을 제시한다. 증명이 아닌 확률적 판단임을 명시하고 후속 검증의 우선순위를 정한다.",
+          "aiAnalysisInputSha256": "78a4f32965949be73c31ae176764718130f5e924ff850de34b137f2eb26727b5",
+          "aiPublicGuideTopic": "지어낸 것일 가능성을 어떻게 다룰지 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 그림과 글을 맞대기",
+          "section": "4.3 둘이 어긋날 때",
+          "primaryConcepts": [
+            "불일치 해석"
+          ],
+          "secondaryConcepts": [
+            "도상의 단독 증언"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "불일치를 오류 판정 전에 자료의 기록 목적 차이로 검토하는 절차를 제시한다. 어긋남 자체가 자료 성격을 드러내는 정보임을 밝힌다.",
+          "aiAnalysisInputSha256": "faf35ea10ff088a93138640304a210c8606b0a45b9f1f712cbefff31c2737403",
+          "aiPublicGuideTopic": "글과 그림이 서로 다를 때 무엇을 먼저 볼지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 그림과 글을 맞대기",
+          "section": "4.3 둘이 어긋날 때",
+          "primaryConcepts": [
+            "불일치 해석"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "문헌-도상 교차 대조의 2×2 분할과 관측 불가 칸을 시각화한다. 부재의 부재를 셀 수 없다는 방법적 제약을 보인다.",
+          "aiAnalysisInputSha256": "9ac092bfc5e4fce17ed046ce2fc96b235fba81bef1e6139362bd8f7297cdbd99",
+          "aiPublicGuideTopic": "글과 그림의 있고 없음이 어떻게 갈리는지 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 그림과 글을 맞대기",
+          "section": "4.4 그림으로 식생활을 말하려면",
+          "primaryConcepts": [
+            "식생활 추론"
+          ],
+          "secondaryConcepts": [
+            "교차 대조"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도상에서 식생활 추론으로 이행하는 3단계 절차를 정식화한다. 결론 범위 축소와 견고성의 교환 관계를 제시한다.",
+          "aiAnalysisInputSha256": "c903d2900bae669c8a7c447b218cc293600b5fdc569bc85e0be6e22bc652d46a",
+          "aiPublicGuideTopic": "벽화에서 식생활로 넘어가는 걸음을 정리한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24,
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 그림과 글을 맞대기",
+          "section": "4.4 그림으로 식생활을 말하려면",
+          "primaryConcepts": [
+            "식생활 추론"
+          ],
+          "secondaryConcepts": [
+            "식사 장면"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "3단계 절차 적용 후 잔존하는 결론 4개를 열거하고 그 종합 명제를 제시한다. 검증 근거의 층위를 결론별로 밝힌다.",
+          "aiAnalysisInputSha256": "30002290fb5c23ee38290ae0a014c2b6838b0d20db0f8151e8f2ef8c1e8c5859",
+          "aiPublicGuideTopic": "세 걸음을 밟으면 무엇이 남는지 보인다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 채원궁의 한 벽 앞에서",
+          "section": "5.1 벽 하나를 나누어 본다",
+          "primaryConcepts": [
+            "구획 관찰"
+          ],
+          "secondaryConcepts": [
+            "배치"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "격자 분할을 통한 체계적 관찰 절차를 실연한다. 분할선을 화면 구성과 무관하게 긋는 이유와 1단계에서 의미 기술을 배제하는 원칙을 밝힌다.",
+          "aiAnalysisInputSha256": "c517cf1f1f46ff8fff3808b51ab2ff6568a6c223776c604b6229c13964936774",
+          "aiPublicGuideTopic": "벽 하나를 실제로 나누어 보는 절차를 밟는다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 채원궁의 한 벽 앞에서",
+          "section": "5.1 벽 하나를 나누어 본다",
+          "primaryConcepts": [
+            "구획 관찰"
+          ],
+          "secondaryConcepts": [
+            "반복 모티프"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계수 결과가 지각적 인상과 상반되는 사례를 제시한다. 격자 관찰이 현저성 편향을 교정하는 구체적 효과를 보인다.",
+          "aiAnalysisInputSha256": "936c9c9471fe7be10f18af7ea0b735906b0c1cb684d239d3f44e782ff46dfe39",
+          "aiPublicGuideTopic": "칸마다 적은 수를 모아 무엇이 보이는지 살핀다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 채원궁의 한 벽 앞에서",
+          "section": "5.2 모티프를 세어 적는다",
+          "primaryConcepts": [
+            "모티프 집계"
+          ],
+          "secondaryConcepts": [
+            "반복 모티프"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기존 모티프 목록을 개별 벽면에 적용하는 절차와 신규 항목 발견 시 소급 재검토의 필요성을 제시한다. 목록이 반복적으로 갱신되는 작업 구조를 밝힌다.",
+          "aiAnalysisInputSha256": "4e16eb31e7800a6ec2c30570eecc3bc6ee74ae5df1b0a687a529a55c2f7d7933",
+          "aiPublicGuideTopic": "이 벽에 나오는 모티프를 하나씩 세어 적는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 채원궁의 한 벽 앞에서",
+          "section": "5.2 모티프를 세어 적는다",
+          "primaryConcepts": [
+            "모티프 집계"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "격자별 인물 밀도와 지각적 주목 지점의 불일치를 시각화한다. 계수 기반 관찰이 인상을 교정하는 구조를 보인다.",
+          "aiAnalysisInputSha256": "5d797ac9c20fb79e2938e7ae09cf28830b80f0258415b6e87945523cdb0ca1c0",
+          "aiPublicGuideTopic": "한 벽을 격자로 나누어 센 결과를 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 채원궁의 한 벽 앞에서",
+          "section": "5.3 덧칠과 고쳐 그린 자리",
+          "primaryConcepts": [
+            "개작 흔적"
+          ],
+          "secondaryConcepts": [
+            "화가의 자리"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "개작 흔적의 식별과 그것이 자료의 단일 시점 가정을 무너뜨림을 제시한다. 수정 대상이 옷에 한정된 사실을 색채 규칙과 연결한다.",
+          "aiAnalysisInputSha256": "a0312aaf6fb9364f8c65092edc35cf45213c63827229179d126cc66ad34c47a0",
+          "aiPublicGuideTopic": "벽이 나중에 고쳐진 흔적을 어떻게 읽는지 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 채원궁의 한 벽 앞에서",
+          "section": "5.4 본 것을 도면으로 옮기려면",
+          "primaryConcepts": [
+            "관찰 도면"
+          ],
+          "secondaryConcepts": [
+            "구획 관찰"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관찰 결과의 도면화 원칙과 병기 항목을 제시한다. 이 절이 해석 계열이 아닌 기록 절차임을 명시한다.",
+          "aiAnalysisInputSha256": "95116247ca5f0b722719ae1591c5bc621ed7519af4efa3f63fe74a33fadd1529",
+          "aiPublicGuideTopic": "관찰한 것을 다른 사람이 쓸 수 있게 적는 방법을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 채원궁의 한 벽 앞에서",
+          "section": "5.5 벽을 떠나며",
+          "primaryConcepts": [
+            "구획 관찰"
+          ],
+          "secondaryConcepts": [
+            "개작 흔적"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단일 벽면 분석의 결과와 그 적용 범위를 한정한다. 개별 사례가 후속 비교의 질문 목록을 산출하는 역할을 밝힌다.",
+          "aiAnalysisInputSha256": "ef533643647dc7938756451a123978bb95ef6f2698db2fd8154c7e391b265eaa",
+          "aiPublicGuideTopic": "벽 하나에서 무엇까지 얻었는지 정리한다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 그림이 속이는 자리",
+          "section": "6.1 남은 벽만 보았다",
+          "primaryConcepts": [
+            "벽화의 잔존"
+          ],
+          "secondaryConcepts": [
+            "벽화의 자리"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "잔존 벽면의 비대표성을 건축적 요인으로 설명한다. 표본 편향이 책 전체 결론에 걸리는 조건임을 명시한다.",
+          "aiAnalysisInputSha256": "9dcc8a5141de823e6fcf422ae968f710d15a30b632de53a0ae583ed6636b184c",
+          "aiPublicGuideTopic": "지금 남은 벽이 처음의 벽과 얼마나 다른지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 그림이 속이는 자리",
+          "section": "6.1 남은 벽만 보았다",
+          "primaryConcepts": [
+            "벽화의 잔존"
+          ],
+          "secondaryConcepts": [
+            "색의 구분"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "벽면 내 손상 분포가 높이에 따라 편중됨을 제시한다. 하단 묘사 대상의 선택적 소실이 관측 결과를 왜곡하는 방향을 밝힌다.",
+          "aiAnalysisInputSha256": "7b41e1a7753c27877dab1d5c47fdfacf0fc69df72c987dfdb2864caf07c64239",
+          "aiPublicGuideTopic": "남은 벽 안에서도 무엇이 사라졌는지 짚는다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 그림이 속이는 자리",
+          "section": "6.2 그리기로 한 것만 있다",
+          "primaryConcepts": [
+            "도상의 선택"
+          ],
+          "secondaryConcepts": [
+            "화가의 자리"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "묘사 대상 선정이 가치 판단과 제작 역량의 이중 필터를 거침을 제시한다. 후자의 제약이 통상 간과됨을 밝힌다.",
+          "aiAnalysisInputSha256": "f9dce3c2f2bd886bf686c49ea2df30d2841a4188210ec3d951a5870c6b10b3d7",
+          "aiPublicGuideTopic": "그리기로 정한 목록 자체가 무엇을 걸렀는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": [
+            "painted-is-chosen"
+          ]
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 그림이 속이는 자리",
+          "section": "6.2 그리기로 한 것만 있다",
+          "primaryConcepts": [
+            "도상의 선택"
+          ],
+          "secondaryConcepts": [
+            "도상의 결락"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "필터링된 자료의 실제 지시 대상을 재규정하고 명명의 정확성을 요구한다. 이 절이 해석 계열이 아닌 자료 성격 검토임을 밝힌다.",
+          "aiAnalysisInputSha256": "c9d82074e34d2ef7415c54629707d5ac3df540cdca52c79b40653198cd8c2f19",
+          "aiPublicGuideTopic": "거름을 지나온 자료로 무엇을 말할 수 있는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 그림이 속이는 자리",
+          "section": "6.3 그린 대로 먹었을까",
+          "primaryConcepts": [
+            "재현과 실제"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실제에서 잔존 도상까지의 삼중 축소 과정을 깔때기로 시각화한다. 역방향 복원이 불가능함을 점선으로 표시한다.",
+          "aiAnalysisInputSha256": "d8693d0226b37e1cbcd18fd1cd9643219b851292a53fb2d1b9f8caeb3cbf5109",
+          "aiPublicGuideTopic": "그림과 실제 사이에 무엇이 끼어 있는지 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 그림이 속이는 자리",
+          "section": "6.3 그린 대로 먹었을까",
+          "primaryConcepts": [
+            "재현과 실제"
+          ],
+          "secondaryConcepts": [
+            "불일치 해석"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복원 불가능성을 인정한 뒤 필터 자체를 분석 대상으로 전환한다. 질문의 형태를 바꾸는 것이 자료 한계에 대한 대응임을 제시한다.",
+          "aiAnalysisInputSha256": "4d12cdaebe9c8fea98ca33c5ac3cde16eee940614da2a08180f1c1ece61f5d9e",
+          "aiPublicGuideTopic": "그림과 실제 사이의 거리를 어떻게 다룰지 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 그림이 속이는 자리",
+          "section": "6.4 눈으로 닿는 자리",
+          "primaryConcepts": [
+            "시각 사료의 쓸모"
+          ],
+          "secondaryConcepts": [
+            "시각 사료"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시각 사료의 고유한 기여를 자명한 관습의 무의도적 기록에서 찾는다. 문헌과 도상의 역할 분담을 기록 동기의 차이로 설명한다.",
+          "aiAnalysisInputSha256": "6670f62a9fef802c583312353d116382182adc454c633dc0f74f9b44ec60928c",
+          "aiPublicGuideTopic": "그래도 시각 자료가 무엇을 대신할 수 없는지 밝힌다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 그림이 속이는 자리",
+          "section": "6.4 눈으로 닿는 자리",
+          "primaryConcepts": [
+            "시각 사료의 쓸모"
+          ],
+          "secondaryConcepts": [
+            "교차 대조"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도상 선행 원칙과 그 근거로서 확증 편향 회피를 제시한다. 자료 검토 순서를 방법의 구성 요소로 기록할 것을 요구한다.",
+          "aiAnalysisInputSha256": "f495a30d61df1fbf70e6f2f1a0c52f5527bef169fd377ef7b85f124ae1884c3e",
+          "aiPublicGuideTopic": "글과 그림을 함께 쓸 때의 순서를 정리한다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 벽에서 물러서서",
+          "section": "7.1 한 벽이 말한 것",
+          "primaryConcepts": [
+            "식생활 추론"
+          ],
+          "secondaryConcepts": [
+            "도상의 선택"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도출된 결론이 식품이 아닌 좌석 질서에 집중됨을 확인한다. 자료가 답할 수 있는 형태로 질문을 재구성하는 것이 방법의 핵심임을 밝힌다.",
+          "aiAnalysisInputSha256": "98ccaae2797b8e6f085667ed71b8e4f344ced0f617d8866c5c806afb1803aca5",
+          "aiPublicGuideTopic": "이 책이 벽에서 얻은 것을 한자리에 모은다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 벽에서 물러서서",
+          "section": "7.2 이 궁 밖의 상",
+          "primaryConcepts": [
+            "벽화의 잔존"
+          ],
+          "secondaryConcepts": [
+            "식사 장면"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도상 사료 자체가 상층 편중적으로 생산됨을 제시한다. 자료량 증가로 해소되지 않는 구조적 편향의 기록 필요성을 밝힌다.",
+          "aiAnalysisInputSha256": "665afd1f4cbc9217be3dfc3adffc569bd7bf10d6919dd8752705c94a7ef40ef1",
+          "aiPublicGuideTopic": "궁 밖에 대해 이 벽이 말하지 못하는 것을 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 벽에서 물러서서",
+          "section": "7.3 다시 볼 사람을 위해",
+          "primaryConcepts": [
+            "시각 사료의 쓸모"
+          ],
+          "secondaryConcepts": [
+            "모티프 집계"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결론이 아닌 관찰 기록과 기준의 보존이 후속 연구의 조건임을 제시한다. 재검토 가능성을 남기는 것을 저술의 목표로 정리한다.",
+          "aiAnalysisInputSha256": "f64a4d8250aa2be7bc5dde9b07f7a8bf44e80b347eb52110fba82056cd7d25fc",
+          "aiPublicGuideTopic": "이 벽을 다시 볼 사람에게 무엇을 남길지 정리한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 41,
       "title": "분업과 비교우위: 교환은 왜 이익인가",
       "pdfPath": "pdfs/book-041.pdf",

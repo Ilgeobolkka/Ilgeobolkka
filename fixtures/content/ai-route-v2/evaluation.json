@@ -1543,6 +1543,77 @@
       ]
     },
     {
+      "caseId": "case-book-038",
+      "bookId": 38,
+      "purpose": "이 책은 아직 소장하지 않았고 잉크도 다섯만 쓸 수 있는데, 벽에 그려진 그림만으로 그 시대의 식탁을 어디까지 말할 수 있는지 알고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "시각 사료",
+        "반복 모티프",
+        "식품 도상",
+        "교차 대조",
+        "도상의 단독 증언"
+      ],
+      "helpfulConcepts": [
+        "배치",
+        "색의 구분",
+        "도상의 결락",
+        "불일치 해석"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 26
+        }
+      ],
+      "irrelevantPageNumbers": [
+        14,
+        15,
+        37,
+        41,
+        42,
+        43,
+        44
+      ],
+      "duplicatePageGroups": [
+        [
+          5,
+          41
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        8,
+        16,
+        24,
+        26
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        9,
+        10,
+        12,
+        17,
+        18,
+        25
+      ]
+    },
+    {
       "caseId": "case-book-041",
       "bookId": 41,
       "purpose": "이 책을 소장하고 있는데, 작은 가게를 열기 전에 여러 메뉴를 한 사람이 다 만드는 게 나을지 한 가지에 집중하는 게 나을지 핵심만 빠르게 확인하고 싶다",
