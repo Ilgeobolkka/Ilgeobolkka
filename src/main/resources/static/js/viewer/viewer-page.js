@@ -3,8 +3,6 @@ import {requestPageContent} from "../common/request-page-content.js";
 import {ApiRequestError, requestJson} from "../common/request-json.js";
 import {VIEWER_SESSION_STORAGE_KEY} from "../common/viewer-session.js";
 
-export {requestPageContent, VIEWER_SESSION_STORAGE_KEY};
-
 const DEFAULT_ERROR_MESSAGE = "요청을 처리하지 못했습니다. 잠시 후 다시 시도해 주세요.";
 const TEXT_SIZES = ["small", "medium", "large", "x-large"];
 const IMAGE_ZOOMS = [75, 100, 125, 150, 200];
