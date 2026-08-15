@@ -43477,6 +43477,1089 @@
           "duplicateGroupKeys": []
         }
       ]
+    },
+    {
+      "bookId": 97,
+      "title": "일주일을 돌아보는 열 문장",
+      "pdfPath": "pdfs/book-097.pdf",
+      "pdfSha256": "e087623981d38127a3fb0770e40cabccd9c487dde6e2fff6bb26dda95d4b8777",
+      "totalPageCount": 50,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 돌아보지 않는 한 주",
+          "section": "1.1 지나가 버리는 일주일",
+          "primaryConcepts": [
+            "회고의 부재"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "한 주의 활동 기록은 남지만 그 주에 대한 이해는 남지 않는 상태를 도입 페이지에서 제시한다. 사실 확인과 해석의 차이를 구분하고, 정해진 질문에 답하는 짧은 반복과 그 누적 효과를 책의 범위로 밝힌다.",
+          "aiAnalysisInputSha256": "687289c63ee425e7b71d832aa14d19e4a945e944925205ec7e9a719a97207dd8",
+          "aiPublicGuideTopic": "한 주가 남는 것 없이 지나가는 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "same-questions-many-weeks"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 돌아보지 않는 한 주",
+          "section": "1.1 지나가 버리는 일주일",
+          "primaryConcepts": [
+            "회고의 부재"
+          ],
+          "secondaryConcepts": [
+            "회고의 마찰"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회고 부재가 동일 문제의 반복으로 이어지는 구조를 사례로 보인다. 현장에서 인식한 개선점이 다음 기회까지 유지되지 않는다는 점, 기록과 재열람이 그 전달 경로라는 점, 그리고 회고의 목적을 평가가 아니라 이월로 규정한다.",
+          "aiAnalysisInputSha256": "80e696a47f86e42b926d6e363dc3f50a468e39c37c3b86b43c08f46eda62984c",
+          "aiPublicGuideTopic": "돌아보지 않으면 반복되는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 돌아보지 않는 한 주",
+          "section": "1.2 회고가 어려운 이유",
+          "primaryConcepts": [
+            "회고의 마찰"
+          ],
+          "secondaryConcepts": [
+            "회고의 부재"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "주간 회고가 지속되지 않는 원인을 형식 부재와 분량 부담에서 찾는다. 매 회차 작성 대상을 결정하는 비용이 작성 자체보다 크다는 점과, 고정된 질문 세트가 그 비용을 제거한다는 해법을 제시한다.",
+          "aiAnalysisInputSha256": "cf0c142802afd975bd06914819ed025550ba8c14de291d60e1d4086dcfd2d082",
+          "aiPublicGuideTopic": "돌아보기로 해 놓고 하지 않는 자리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 돌아보지 않는 한 주",
+          "section": "1.2 회고가 어려운 이유",
+          "primaryConcepts": [
+            "회고의 마찰"
+          ],
+          "secondaryConcepts": [
+            "회고의 최소 형식"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회고의 질보다 지속을 우선하는 이유를 다룬다. 복수 주차를 나란히 두어야 반복 요소가 드러난다는 점, 심층 회고가 조기 중단으로 이어져 누적 자체를 막는다는 문제를 들어 책의 장 순서를 설명한다.",
+          "aiAnalysisInputSha256": "e18b2d3b44ecd87d5aec7b209d2e9da9ad2a9363eb536ee369e92427dde77328",
+          "aiPublicGuideTopic": "짧게 만드는 것이 먼저인 이유",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 돌아보지 않는 한 주",
+          "section": "1.3 무엇을 돌아보는가",
+          "primaryConcepts": [
+            "회고 대상"
+          ],
+          "secondaryConcepts": [
+            "회고의 부재"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회고 범위를 사전에 한정하는 방법과 그 기준을 제시한다. 통제 가능성을 기준으로 대상을 고르면 다음 주 행동으로 연결되고, 범위 축소가 응답의 구체성을 높인다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "74cb22d1429a3036a8669ce12a0b973ba027e6b596f7167e73223306b6a98677",
+          "aiPublicGuideTopic": "한 주에서 무엇을 꺼낼 것인가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 돌아보지 않는 한 주",
+          "section": "1.3 무엇을 돌아보는가",
+          "primaryConcepts": [
+            "회고 대상"
+          ],
+          "secondaryConcepts": [
+            "평가와 관찰"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회고 영역을 업무 외로 확장하는 판단을 다룬다. 초기에는 단일 영역으로 시작해 누적 결과에서 영향이 큰 영역을 식별한 뒤 하나씩 추가한다는 절차와, 동시 확장이 분량 증가로 이어진다는 주의를 제시한다.",
+          "aiAnalysisInputSha256": "e2e4627236a05ad74cc3cecf63e3ac04e8404a6abd73b12252b314da424e9c54",
+          "aiPublicGuideTopic": "일과 일이 아닌 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 돌아보지 않는 한 주",
+          "section": "1.4 기억은 무엇을 남기는가",
+          "primaryConcepts": [
+            "기억의 편향"
+          ],
+          "secondaryConcepts": [
+            "회고 대상"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회상 시점의 편향을 최근성과 강도라는 두 축으로 설명한다. 평범한 구간이 회상에서 누락되어 한 주의 상이 왜곡된다는 문제를 지적하고, 기록 열람과 사실 질문 선행이라는 두 가지 보정 방법을 제시한다.",
+          "aiAnalysisInputSha256": "0f47c273678684dd4ad2ec7e7505d106113328d7c5a0ce7198799cb066e44dd8",
+          "aiPublicGuideTopic": "한 주를 떠올릴 때 먼저 오는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 돌아보지 않는 한 주",
+          "section": "1.4 기억은 무엇을 남기는가",
+          "primaryConcepts": [
+            "기억의 편향"
+          ],
+          "secondaryConcepts": [
+            "사실 질문",
+            "회고의 부재"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "한 주 동안 발생한 일과 주말 시점에 회상된 일을 요일축 위의 점으로 대비한 도표다. 최근 요일과 강도가 큰 사건에 회상이 몰리는 분포를 명도로 구분해, 회상만으로 구성한 한 주의 상이 실제와 어긋난다는 점을 보인다.",
+          "aiAnalysisInputSha256": "a507aaf7c8ebddcc72a6a5e11264c6f953a90760d71c746c191dc6373e065915",
+          "aiPublicGuideTopic": "한 주의 일과 기억에 남은 일을 함께 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "1장 돌아보지 않는 한 주",
+          "section": "1.5 회고와 반성",
+          "primaryConcepts": [
+            "평가와 관찰"
+          ],
+          "secondaryConcepts": [
+            "회고 대상",
+            "기억의 편향"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회고와 반성을 관찰과 평가로 구분하고 후자가 지속을 어렵게 한다는 점을 설명한다. 평가형 회고가 원인을 개인 특성으로 귀결시켜 다음 행동을 만들지 못한다는 문제를 지적하고, 사실을 묻는 질문 형식을 대안으로 제시한다.",
+          "aiAnalysisInputSha256": "e8429f9d06cba0f08472597a67379ff71866eab4c655e7488e755199ae697b89",
+          "aiPublicGuideTopic": "잘잘못을 가리지 않는 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "1장 돌아보지 않는 한 주",
+          "section": "1.5 회고와 반성",
+          "primaryConcepts": [
+            "평가와 관찰"
+          ],
+          "secondaryConcepts": [
+            "회고의 마찰"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회고 항목에 성공 요소를 포함해야 하는 이유를 재현 가능성에서 찾는다. 문제 중심 목록이 지속을 저해한다는 점, 억지 기입이 형식화를 부른다는 주의, 그리고 성공 항목도 평가가 아니라 사실 형태로 묻는다는 원칙을 제시한다.",
+          "aiAnalysisInputSha256": "3136513141a3a7b096febfb8e16a13420b02dc5b6e1fbb16cf3878f5e3b650f8",
+          "aiPublicGuideTopic": "잘된 것도 함께 보기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 열 문장",
+          "section": "2.1 질문 세트라는 형식",
+          "primaryConcepts": [
+            "회고 질문 세트"
+          ],
+          "secondaryConcepts": [
+            "회고의 마찰",
+            "회고 대상"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "고정된 질문 세트를 회고의 기본 형식으로 제시한다. 적정 문항 수의 범위, 사실·판단·이월이라는 배치 순서, 그리고 사실 기입이 선행되면 후속 판단이 회상 편향의 영향을 덜 받는다는 근거를 다룬다.",
+          "aiAnalysisInputSha256": "92da4b814240e9fd918011a9bb78af52dc0c56b3a12f51c09f31de5624a222bb",
+          "aiPublicGuideTopic": "정해진 질문에 답하기만 하는 형식",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 열 문장",
+          "section": "2.1 질문 세트라는 형식",
+          "primaryConcepts": [
+            "회고 질문 세트"
+          ],
+          "secondaryConcepts": [
+            "사실 질문",
+            "이월 질문"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "주간 회고 질문 열 개를 사실·판단·이월 세 묶음으로 나눈 질문지를 재현한 도표다. 각 묶음의 문항을 실제 문장으로 제시하고 묶음 사이의 진행 방향을 표시해, 배치 순서가 형식의 일부임을 보인다.",
+          "aiAnalysisInputSha256": "36b1d030a2e242bcfcad92fe1e2cbb1246f16b634c3beaff05f7ab1f6e6551a2",
+          "aiPublicGuideTopic": "열 문장을 세 묶음으로 나눈 질문지를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 열 문장",
+          "section": "2.2 사실을 묻는 질문",
+          "primaryConcepts": [
+            "사실 질문"
+          ],
+          "secondaryConcepts": [
+            "회고 질문 세트",
+            "기억의 편향"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사실 질문의 정의와 기능을 제시한다. 응답 부담이 낮아 착수를 돕고 후속 판단의 근거가 된다는 두 가지 값, 기록을 참조해 답해야 편향이 줄어든다는 조건, 그리고 소요 시간의 상한을 다룬다.",
+          "aiAnalysisInputSha256": "4402cb9f5f92c1e07d88c4a49c9b44dd0b05fa1f1ad90b83beab1b632231cbd3",
+          "aiPublicGuideTopic": "판단이 들어가지 않는 물음",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 열 문장",
+          "section": "2.2 사실을 묻는 질문",
+          "primaryConcepts": [
+            "사실 질문"
+          ],
+          "secondaryConcepts": [
+            "회고 대상"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사실 질문에 계량 항목을 하나 포함하는 이유를 주차 간 비교 가능성에서 찾는다. 서술형 답변은 표현 차이로 비교가 어렵다는 점과, 계량 항목이 늘면 회고가 집계 활동으로 변한다는 한계를 함께 제시한다.",
+          "aiAnalysisInputSha256": "ff7131ac4c89af7739d847edeb6dfb40081f4219cd6789f571f1189962ccdc9b",
+          "aiPublicGuideTopic": "세는 질문 하나를 넣기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 열 문장",
+          "section": "2.3 판단을 묻는 질문",
+          "primaryConcepts": [
+            "판단 질문"
+          ],
+          "secondaryConcepts": [
+            "회고 질문 세트",
+            "평가와 관찰"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "판단 질문의 형식과 배치를 다룬다. 좋고 나쁨이 아니라 진행 상태를 묻는 표현이 응답 부담을 낮춘다는 점, 답변 길이를 제한해 원인 분석을 이후 단계로 미루는 이유, 그리고 성공 항목을 앞에 두는 순서를 제시한다.",
+          "aiAnalysisInputSha256": "5a858b02c2c605bb3e663831876e84d1d8e07e28acb009fb4d83f6d7a1f76a2a",
+          "aiPublicGuideTopic": "잘 굴러간 자리와 막힌 자리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "2장 열 문장",
+          "section": "2.3 판단을 묻는 질문",
+          "primaryConcepts": [
+            "판단 질문"
+          ],
+          "secondaryConcepts": [
+            "패턴 인식"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이전 주와 비교하는 질문이 회고 간 연결을 만든다는 점을 설명한다. 응답을 위해 직전 회고를 열람하게 되어 이월 항목이 함께 확인된다는 효과, 그리고 변화 없음이 반복되는 것도 신호로 읽는다는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "8005ac71f9a7b7ed7aa9e9ae1a2a8a826a36b406a87e05fe631c7dcb084c27b8",
+          "aiPublicGuideTopic": "지난주와 견주는 질문",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "2장 열 문장",
+          "section": "2.4 다음을 묻는 질문",
+          "primaryConcepts": [
+            "이월 질문"
+          ],
+          "secondaryConcepts": [
+            "회고 질문 세트",
+            "회고의 부재"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이월 질문 세 개의 구성과 역할을 제시한다. 변경 항목을 하나로 제한해 실행 가능성을 확보하는 이유와, 다음 주 시작 시점에 재열람하지 않으면 회고가 행동으로 이어지지 않는다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "65390c71ea19f35ecbf1c355922668879f10d6d4e33d1c569cfa9788f673cebe",
+          "aiPublicGuideTopic": "다음 주로 넘기는 항목",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "2장 열 문장",
+          "section": "2.4 다음을 묻는 질문",
+          "primaryConcepts": [
+            "이월 질문"
+          ],
+          "secondaryConcepts": [
+            "행동 전환"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이월 항목이 반복될 때의 처리 절차를 제시한다. 크기 문제·선행 대기·수행 의사 부재라는 세 원인과 각각의 대응, 삭제도 결정으로 다루는 관점, 그리고 이월 항목을 별도 위치에 기록해 반복을 식별하는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "b9c678759a153b8136d02a16fbbbcff09aa0779e16d0553a4f3627d611151ba8",
+          "aiPublicGuideTopic": "넘긴 것이 쌓일 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 짧게 반복하기",
+          "section": "3.1 언제 얼마나",
+          "primaryConcepts": [
+            "회고의 최소 형식"
+          ],
+          "secondaryConcepts": [
+            "회고의 마찰",
+            "회고 질문 세트"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회고의 소요 시간과 시점, 장소를 정하는 기준을 제시한다. 주 종료 직후와 주 시작 시점 각각의 장단점을 비교하고, 작성과 재열람을 나누는 운용, 그리고 작업 공간과 분리된 자리를 쓰는 이유를 다룬다.",
+          "aiAnalysisInputSha256": "c127ef623d735d6ba47188b8f0cc42f88047ca342f3f40412c0de27683f60160",
+          "aiPublicGuideTopic": "회고에 쓰는 시간과 자리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 짧게 반복하기",
+          "section": "3.1 언제 얼마나",
+          "primaryConcepts": [
+            "회고의 최소 형식"
+          ],
+          "secondaryConcepts": [
+            "구술 회고"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회고 기록을 한 면 분량으로 제한하는 이유를 재열람 가능성에서 찾는다. 분량이 늘면 다시 읽지 않게 되어 누적 효과가 사라진다는 점, 문항당 한 줄로 답하는 형식, 그리고 반복에 따라 소요가 줄어든다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "e712e559534357979b178e6bbd432dff310f69ce61032f6e5769673cad4b196b",
+          "aiPublicGuideTopic": "형식을 한 장에 담기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 짧게 반복하기",
+          "section": "3.2 같은 질문을 되풀이하기",
+          "primaryConcepts": [
+            "질문의 고정"
+          ],
+          "secondaryConcepts": [
+            "회고 질문 세트",
+            "회고의 최소 형식"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "질문 고정의 필요성을 주차 간 비교 가능성에서 설명한다. 반복에서 오는 지루함이 방법의 조건이라는 관점과, 변경이 필요할 때 주기를 길게 두고 일부만 교체해 연속성을 유지하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "8d18e1e06949d5bbd31921d9fee27f089a5ae972e06249bceb5e68966a951034",
+          "aiPublicGuideTopic": "질문을 바꾸지 않는 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 짧게 반복하기",
+          "section": "3.2 같은 질문을 되풀이하기",
+          "primaryConcepts": [
+            "질문의 고정"
+          ],
+          "secondaryConcepts": [
+            "질문 갱신"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "질문 교체가 필요한 세 가지 신호를 제시한다. 동일 응답 반복과 무응답은 해당 영역의 안정을, 응답이 행동으로 이어지지 않는 경우는 질문 설계 오류를 뜻한다는 구분, 그리고 변경 시점을 기록해 비교 시 혼동을 막는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "82a26de7051af954f02d7c2100471963c20a3343ddcc66b834bebd78d952873b",
+          "aiPublicGuideTopic": "질문이 낡았다는 신호",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "3장 짧게 반복하기",
+          "section": "3.3 쓰지 않고 말하기",
+          "primaryConcepts": [
+            "구술 회고"
+          ],
+          "secondaryConcepts": [
+            "회고의 최소 형식",
+            "회고의 마찰"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "서면 작성이 부담인 경우의 대안으로 구술 회고를 제시한다. 녹음과 상호 질문이라는 두 형태, 상호 질문에서 청자가 판단하지 않는다는 규칙, 그리고 구술 시 기록 참조가 줄어드는 문제와 그 보완을 다룬다.",
+          "aiAnalysisInputSha256": "4540875335b3cd5b18cf7020ac1e9d76437737dbe24be225f240c72d657714ab",
+          "aiPublicGuideTopic": "적기 어려운 사람의 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "3장 짧게 반복하기",
+          "section": "3.3 쓰지 않고 말하기",
+          "primaryConcepts": [
+            "구술 회고"
+          ],
+          "secondaryConcepts": [
+            "평가와 관찰"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "상호 구술 회고에서 조언이 개입할 때의 문제를 다룬다. 응답이 선별되어 회고가 상담으로 변한다는 점, 질문과 확인만 허용하는 규칙, 그리고 조언은 회고 종료 후로 분리하는 절차를 제시한다.",
+          "aiAnalysisInputSha256": "80b6d71353f0ca19e21b9f02c7466e7e3024e590bead86465bbf3ade10aa3033",
+          "aiPublicGuideTopic": "둘이 할 때 지킬 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "3장 짧게 반복하기",
+          "section": "3.4 빠뜨린 주",
+          "primaryConcepts": [
+            "결손 처리"
+          ],
+          "secondaryConcepts": [
+            "회고의 최소 형식",
+            "질문의 고정"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회고 누락 시 소급 작성을 배제하고 당주분부터 재개하는 규칙을 제시한다. 결손 자체가 이후 분석에서 정보로 쓰인다는 점과, 연속 누락 시 문항 수를 줄여 지속을 우선한다는 판단을 다룬다.",
+          "aiAnalysisInputSha256": "e9141b3f2e7378fcf1eb1692f2ebba8856d25d20cb3ea467db665dab7e5ebffb",
+          "aiPublicGuideTopic": "한 주를 건너뛰었을 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "3장 짧게 반복하기",
+          "section": "3.4 빠뜨린 주",
+          "primaryConcepts": [
+            "결손 처리"
+          ],
+          "secondaryConcepts": [
+            "형식화"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장기 중단 이후 재개 방법을 다룬다. 기존 질문지를 그대로 사용해 준비 부담을 없애는 것, 공백 기간을 소급 작성하지 않고 한 줄로 요약하는 처리, 그리고 재개 첫 주의 이월 항목을 최소로 두는 원칙을 제시한다.",
+          "aiAnalysisInputSha256": "01558b4f5176db3272aaf54f3e70269329ff30da70a5017ac59cc4a8e5375a4d",
+          "aiPublicGuideTopic": "그만두었다가 다시 시작할 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 쌓인 것에서 보기",
+          "section": "4.1 한 주가 아니라 여러 주",
+          "primaryConcepts": [
+            "패턴 인식"
+          ],
+          "secondaryConcepts": [
+            "기억의 편향",
+            "질문의 고정"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복수 주차를 병렬로 검토해야 반복 요인이 드러난다는 점을 설명한다. 개별 회고에서는 매번 다른 국소적 원인이 제시된다는 문제와, 동일 문항의 답변을 세로로 읽는 검토 방법을 제시한다.",
+          "aiAnalysisInputSha256": "d7b60d1571396a0b75982b275089235ceed5d6e45128d17bd238947cf10bf767",
+          "aiPublicGuideTopic": "나란히 놓아야 보이는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 쌓인 것에서 보기",
+          "section": "4.1 한 주가 아니라 여러 주",
+          "primaryConcepts": [
+            "패턴 인식"
+          ],
+          "secondaryConcepts": [
+            "반복 신호",
+            "사실 질문"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "여덟 주치 회고 항목의 출현 여부를 격자로 나타낸 도표다. 항목별 행과 주별 열로 배치하고 함께 나타나는 두 행을 묶어 표시해, 개별 주차에서는 보이지 않던 동시 발생 관계를 드러낸다.",
+          "aiAnalysisInputSha256": "35ef173d73168f04866a03f5ccba1e54d991ca5e0589e5e504a9f9ca88c18112",
+          "aiPublicGuideTopic": "여덟 주의 답을 격자에 늘어놓은 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 쌓인 것에서 보기",
+          "section": "4.2 되풀이되는 항목",
+          "primaryConcepts": [
+            "반복 신호"
+          ],
+          "secondaryConcepts": [
+            "패턴 인식",
+            "이월 질문"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복 출현 항목을 구조적 요인으로 판정하는 기준을 제시한다. 자기 유래 요인과 외부 요인의 구분과 각각의 대응, 그리고 반복 횟수 기준을 실용적 판단선으로 설명한다.",
+          "aiAnalysisInputSha256": "345a9d36f26445727b5354b2b96e29c6c92f7a87fa6083fef3cc00606a6610e2",
+          "aiPublicGuideTopic": "같은 말이 세 번 나오면",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 쌓인 것에서 보기",
+          "section": "4.2 되풀이되는 항목",
+          "primaryConcepts": [
+            "반복 신호"
+          ],
+          "secondaryConcepts": [
+            "회고 대상"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동시 출현 항목을 찾는 방법과 해석의 한계를 다룬다. 공동 출현이 인과를 뜻하지 않으며 제3의 요인이 있을 수 있다는 점, 그리고 한 항목을 변경해 다음 주에 확인하는 절차를 제시한다.",
+          "aiAnalysisInputSha256": "c6242e2b3eda7f8bca0e4c063031bab67bed97310388d038c0247d2eb2b28f10",
+          "aiPublicGuideTopic": "함께 나타나는 것 찾기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "4장 쌓인 것에서 보기",
+          "section": "4.3 달라진 것 찾기",
+          "primaryConcepts": [
+            "변화 감지"
+          ],
+          "secondaryConcepts": [
+            "패턴 인식",
+            "판단 질문"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "성공 주차의 공통 요인을 찾는 방법을 다룬다. 통제 불가능해 보이는 요인에도 조정 가능한 부분이 있다는 사례, 그리고 성공 상황은 기록이 부실해 사실 질문이 필요하다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "b0e7e8f81d6e14269497873a9104898f701ee02e337b9871220f756638e63737",
+          "aiPublicGuideTopic": "잘 굴러간 주의 공통점",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "4장 쌓인 것에서 보기",
+          "section": "4.3 달라진 것 찾기",
+          "primaryConcepts": [
+            "변화 감지"
+          ],
+          "secondaryConcepts": [
+            "질문 갱신"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장기간에 걸친 완만한 변화를 감지하는 방법을 다룬다. 계량 항목이 점진적 추세를 드러낸다는 점, 구간을 나눠 평균을 비교하는 방식, 그리고 감지 이후의 대응이 이월 항목 한 줄로 충분할 수 있다는 사례를 제시한다.",
+          "aiAnalysisInputSha256": "fe46933734cbd2e1e53710e4af462c45e76bd49283e3440203547525627bf1fb",
+          "aiPublicGuideTopic": "천천히 달라지는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "4장 쌓인 것에서 보기",
+          "section": "4.4 회고에서 나온 결정",
+          "primaryConcepts": [
+            "행동 전환"
+          ],
+          "secondaryConcepts": [
+            "이월 질문",
+            "반복 신호"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "누적 회고에서 도출되는 결정이 주 단위 실행 항목과 다른 층위라는 점을 설명한다. 복수 주차 근거가 있어야 작업 방식 변경이 정당화된다는 점과, 변경 시점을 기록해 이후 효과를 확인하는 절차를 제시한다.",
+          "aiAnalysisInputSha256": "dd73f84d43643617a1ad2646e2faed52f1ec4c3fcc87c13f946f9365e40fdcee",
+          "aiPublicGuideTopic": "여러 주를 본 뒤에 정하는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "4장 쌓인 것에서 보기",
+          "section": "4.4 회고에서 나온 결정",
+          "primaryConcepts": [
+            "행동 전환"
+          ],
+          "secondaryConcepts": [
+            "변화 감지"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "변경 조치의 효과를 사후 검증하는 절차를 제시한다. 변경 전후 동일 기간을 비교하는 방법, 효과가 없을 때 되돌리고 기록하는 처리, 그리고 동시 변경을 피해야 효과를 귀속할 수 있다는 조건을 다룬다.",
+          "aiAnalysisInputSha256": "1a0e3072133f69fccf4ebe2eb08765a0f4a4814ab813847e271ad930d735c770",
+          "aiPublicGuideTopic": "바꾼 것이 통했는지 보기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 어떤 열 문장",
+          "section": "5.1 처음 만든 스무 문장",
+          "primaryConcepts": [
+            "과잉 형식"
+          ],
+          "secondaryConcepts": [
+            "회고 질문 세트",
+            "회고의 마찰"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "과다한 문항으로 시작한 첫 시도가 중단되는 경과를 주차별로 보인다. 소요 시간 누적과 결손 소급 부담이 재중단을 부른 과정, 그리고 종료를 명시적으로 기록해 이후 재개의 자료로 삼은 처리를 제시한다.",
+          "aiAnalysisInputSha256": "58e36453101573735617d13ed81948029119f3a4f87d0eeee4a2c32b3aaee6f2",
+          "aiPublicGuideTopic": "잘 만들려다 무거워진 첫 질문지",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 어떤 열 문장",
+          "section": "5.1 처음 만든 스무 문장",
+          "primaryConcepts": [
+            "과잉 형식"
+          ],
+          "secondaryConcepts": [
+            "회고 대상",
+            "평가와 관찰"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실패한 질문지의 원인을 문항 수, 영역 과다, 질문 형태 세 가지로 분석한다. 판단을 먼저 요구하는 문항이 소요를 늘리고 응답을 평가어로 수렴시킨다는 점, 그리고 실제 활용된 답변 수로 유효성을 점검하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "8fa570363d9a061683d5e49ddc054af43fded3abbc9321e04c3f6def409a2838",
+          "aiPublicGuideTopic": "무엇이 문제였는지 짚어 보기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 어떤 열 문장",
+          "section": "5.2 열 문장으로 줄이다",
+          "primaryConcepts": [
+            "형식 축소"
+          ],
+          "secondaryConcepts": [
+            "회고의 최소 형식",
+            "사실 질문"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "축소한 질문지의 구성과 취사 근거를 보인다. 활용 이력이 없는 문항을 제외하고 계량 항목을 하나 포함한 결정, 그리고 종이 양식을 미리 준비해 접근 마찰을 줄인 실무를 제시한다.",
+          "aiAnalysisInputSha256": "79330f46a5c8328f97dcea9b1bf08ba5fb1669760ad8c35b045ec8226cf57c94",
+          "aiPublicGuideTopic": "무엇을 빼고 무엇을 남겼는가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "5장 어떤 열 문장",
+          "section": "5.2 열 문장으로 줄이다",
+          "primaryConcepts": [
+            "형식 축소"
+          ],
+          "secondaryConcepts": [
+            "과잉 형식",
+            "회고 질문 세트"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "초기 질문지에서 문항을 절반으로 줄이는 과정을 좌우 목록으로 나타낸 도표다. 삭제 항목에 취소선을 표시하고 영역별 분포를 함께 보여, 어떤 묶음이 통째로 빠졌는지와 소요 시간의 변화를 드러낸다.",
+          "aiAnalysisInputSha256": "6e11a411f053789a16ebe9416ca2313312d62b112810456fc8b980c7dbcae3fb",
+          "aiPublicGuideTopic": "스무 문장에서 열 문장으로 줄인 과정을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "5장 어떤 열 문장",
+          "section": "5.3 여덟 주 뒤",
+          "primaryConcepts": [
+            "누적 관찰"
+          ],
+          "secondaryConcepts": [
+            "패턴 인식",
+            "반복 신호"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "여덟 주치 기록을 병렬 검토한 첫 결과를 보인다. 반복 출현 항목의 발견, 동일 주차의 다른 답변에서 공동 출현 요인을 찾는 과정, 그리고 결론을 유보하고 한 항목만 변경해 확인하기로 한 판단을 제시한다.",
+          "aiAnalysisInputSha256": "b0d0e0a445e7d34420cfad29d7e8fb0b5fd546fde6bb285439ec9cc691109980",
+          "aiPublicGuideTopic": "나란히 놓고 본 첫 번째 결과",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "5장 어떤 열 문장",
+          "section": "5.3 여덟 주 뒤",
+          "primaryConcepts": [
+            "누적 관찰"
+          ],
+          "secondaryConcepts": [
+            "변화 감지",
+            "행동 전환"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "변경 조치 이후 기간을 이전과 비교해 원인을 재판정하는 과정을 보인다. 예외 주차의 조건을 대조해 초기 가설을 수정하는 절차와, 사후 확인 기간이 있어야 인과 판단이 가능하다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "369cf21fd5c06db8e40438ae5bbf75c38995ba4824075989194903d98acf9d82",
+          "aiPublicGuideTopic": "넉 주 뒤에 확인한 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "5장 어떤 열 문장",
+          "section": "5.4 질문을 바꾸다",
+          "primaryConcepts": [
+            "질문 갱신"
+          ],
+          "secondaryConcepts": [
+            "질문의 고정",
+            "누적 관찰"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "질문 갱신의 실제 사례를 보인다. 응답이 고정되었거나 부재한 문항을 교체 대상으로 삼은 판단, 새 문항의 선정 근거, 그리고 나머지 문항을 유지해 비교 가능성을 보존하고 변경 시점을 기록한 처리를 제시한다.",
+          "aiAnalysisInputSha256": "7c4cfa768e2f4b1968cd1383bce91bb083be7a00f54eb0907ebc5b1d5ed01edb",
+          "aiPublicGuideTopic": "석 달 뒤에 고친 두 줄",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 회고가 해롭게 될 때",
+          "section": "6.1 자책으로 흐를 때",
+          "primaryConcepts": [
+            "자기 비난 회고"
+          ],
+          "secondaryConcepts": [
+            "평가와 관찰",
+            "판단 질문"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "부정적 사건이 있었던 주에 회고가 자기 평가로 수렴하는 현상을 다룬다. 모든 문항의 답이 단일 사건으로 쏠린다는 점, 회고를 짧게 연기하는 대응, 그리고 사실 문항만 기입하고 나머지를 비워 두는 축약 운용을 제시한다.",
+          "aiAnalysisInputSha256": "a22b7b2dfa7d029bc5e00666cea77dbcd9301a8028b15088d48eb9ae1f75c430",
+          "aiPublicGuideTopic": "회고가 자기 평가가 되는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 회고가 해롭게 될 때",
+          "section": "6.1 자책으로 흐를 때",
+          "primaryConcepts": [
+            "자기 비난 회고"
+          ],
+          "secondaryConcepts": [
+            "회고의 마찰"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회고 자체가 지속적으로 고통을 유발할 때 중단을 권한다. 명시적 종료 기록의 필요성, 원인을 형식에서 찾지 않는다는 판단, 그리고 지속적인 심리적 부담은 이 책의 범위 밖이며 전문적 도움이 필요하다는 경계를 밝힌다.",
+          "aiAnalysisInputSha256": "36d92a14a1efad39a936b595226749ec9514788d619804f4698b39afddd2163b",
+          "aiPublicGuideTopic": "회고를 그만두어야 할 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 회고가 해롭게 될 때",
+          "section": "6.2 형식만 남을 때",
+          "primaryConcepts": [
+            "형식화"
+          ],
+          "secondaryConcepts": [
+            "질문의 고정",
+            "회고의 최소 형식"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회고가 절차만 유지되고 행동 변화로 이어지지 않는 상태를 다룬다. 결손이 없어 문제로 인식되지 않는다는 점, 이월 항목의 실행률로 판정하는 방법, 그리고 문항 변경이 아니라 이월 항목 축소로 대응한다는 처방을 제시한다.",
+          "aiAnalysisInputSha256": "e0a853f75babf973ca5747f2fd30a138651f54f8e0f88c3804029360501c188e",
+          "aiPublicGuideTopic": "채우기는 하는데 읽지 않는 회고",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 회고가 해롭게 될 때",
+          "section": "6.2 형식만 남을 때",
+          "primaryConcepts": [
+            "형식화"
+          ],
+          "secondaryConcepts": [
+            "행동 전환"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "형식화 상태에서 일정 기간 중단하는 대안을 제시한다. 재개 일자를 함께 정해 중단과 종료를 구분하는 방법, 중단 전후 비교로 회고 없이도 유지되는 영역을 식별하는 절차, 그리고 그 영역을 문항에서 제외하는 갱신을 다룬다.",
+          "aiAnalysisInputSha256": "f6fd5c0ee6700b23d412cc318c0129beb06daed299fb00430cd33b45ce758395",
+          "aiPublicGuideTopic": "회고를 쉬는 기간",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "6장 회고가 해롭게 될 때",
+          "section": "6.3 돌아볼 것이 없을 때",
+          "primaryConcepts": [
+            "무변화 구간"
+          ],
+          "secondaryConcepts": [
+            "변화 감지",
+            "질문 갱신"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "변화가 적은 기간의 회고 운용을 다룬다. 무변화 구간의 기록이 이후 비교의 기준선이 된다는 점, 해당 기간에는 문항을 축소하는 방법, 그리고 조건이 바뀌는 시점에 원래 형식으로 복귀하는 운용을 제시한다.",
+          "aiAnalysisInputSha256": "e26c6c593799e898c67131ef3f9c7e3caeba3daff826a9bdd51f4dc6dd359d13",
+          "aiPublicGuideTopic": "같은 답이 이어지는 몇 주",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "6장 회고가 해롭게 될 때",
+          "section": "6.3 돌아볼 것이 없을 때",
+          "primaryConcepts": [
+            "무변화 구간"
+          ],
+          "secondaryConcepts": [
+            "누적 관찰"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "주간 회고가 유효하지 않은 조건을 밝힌다. 업무 변동성과 자기 결정 범위가 작은 경우를 적용 대상에서 제외하고, 넉 주 시험 후 패턴 유무로 지속 여부를 판정하는 방법, 그리고 중단이 실패가 아니라는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "0cf169648b43c12af568cde48ba025e02c105ae17b564a646495ea97f0c4865e",
+          "aiPublicGuideTopic": "회고가 필요 없는 사람",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            47
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 결론: 같은 질문을 여러 번 던진다",
+          "section": "7.1 같은 질문을 여러 번 던진다",
+          "primaryConcepts": [
+            "종합"
+          ],
+          "secondaryConcepts": [
+            "회고의 부재",
+            "회고 질문 세트"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체를 짧은 반복과 누적 검토라는 두 축으로 정리하는 결론 페이지다. 질문 세트와 배치 순서, 시간 제한, 결손 처리를 요약하고 축약의 목적이 누적에 있음을 밝히며 방법이 해로워지는 세 경우를 함께 짚는다.",
+          "aiAnalysisInputSha256": "38816ff45c5d9c27b0c277f8772156dd057fadb1b524b99279ced35163a6b636",
+          "aiPublicGuideTopic": "주간 회고를 짧게 만든 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "same-questions-many-weeks"
+          ]
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 결론: 같은 질문을 여러 번 던진다",
+          "section": "7.1 같은 질문을 여러 번 던진다",
+          "primaryConcepts": [
+            "종합"
+          ],
+          "secondaryConcepts": [
+            "패턴 인식",
+            "이월 질문"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실행을 위한 최소 절차로 다섯 문항 시작, 넉 주 후 병렬 검토, 반복 항목 확인을 제시한다. 문항 수를 낮춰 시작하는 이유와, 이월 항목의 재열람 여부를 확인하는 점검 질문을 마지막에 남긴다.",
+          "aiAnalysisInputSha256": "f8b13ee558c11a9b59449ad3db74620c495f0a59d43d8249e2253c3a98f273c7",
+          "aiPublicGuideTopic": "이번 주말에 해 볼 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            49
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
     }
   ]
 }

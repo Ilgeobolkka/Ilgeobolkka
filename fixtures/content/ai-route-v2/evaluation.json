@@ -3561,6 +3561,124 @@
         23,
         31
       ]
+    },
+    {
+      "caseId": "case-book-097",
+      "bookId": 97,
+      "purpose": "이 책을 소장하고 있다. 한 주가 그냥 지나가 버려서 주말마다 짧게 돌아보려고 하는데, 어떤 질문을 어떤 순서로 두고 몇 주쯤 쌓아야 무언가 보이는지 처음부터 끝까지 익히고 싶다. 회고가 해롭게 되는 경우까지는 지금 필요 없다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "회고의 부재",
+        "회고 질문 세트",
+        "사실 질문",
+        "판단 질문",
+        "이월 질문",
+        "회고의 최소 형식",
+        "패턴 인식"
+      ],
+      "helpfulConcepts": [
+        "회고의 마찰",
+        "회고 대상",
+        "기억의 편향",
+        "질문의 고정"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 15
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 17
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 18
+        },
+        {
+          "beforePageNumber": 18,
+          "afterPageNumber": 19
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 20
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 21
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 28
+        },
+        {
+          "beforePageNumber": 28,
+          "afterPageNumber": 29
+        }
+      ],
+      "irrelevantPageNumbers": [
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          49
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        6,
+        8,
+        12,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        28,
+        29
+      ],
+      "allowedAlternativePageNumbers": [
+        23,
+        31,
+        33
+      ]
     }
   ]
 }
