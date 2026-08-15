@@ -45164,6 +45164,1110 @@
           "duplicateGroupKeys": []
         }
       ]
+    },
+    {
+      "bookId": 74,
+      "title": "함수와 모듈: 인터페이스 설계",
+      "pdfPath": "pdfs/book-074.pdf",
+      "pdfSha256": "a49435557e407d1ae379a5d41d83020364a092982b4e27c5edc58ad9d22c3458",
+      "totalPageCount": 50,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "함수와 모듈 구조를 다루는 장과 절의 구성",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 함수와 책임",
+          "section": "1.1 함수의 정의와 경계",
+          "primaryConcepts": [
+            "함수"
+          ],
+          "secondaryConcepts": [
+            "호출부",
+            "반환값"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "함수를 이름·입력·결과로 이루어진 최소 경계 단위로 정의하고 호출부가 내부 절차에 의존하지 않는다는 원칙을 세운다. 이후 모듈 논의에서 반복할 경계 개념의 출발점을 마련한다.",
+          "aiAnalysisInputSha256": "a301936219978f4c09b3539687c09e6bdc1e26f4dfe2e783fee172640f9c2c1d",
+          "aiPublicGuideTopic": "이름 붙은 처리 단위로서의 함수와 그 경계",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 함수와 책임",
+          "section": "1.2 하나의 책임과 함수 크기",
+          "primaryConcepts": [
+            "함수의 책임"
+          ],
+          "secondaryConcepts": [
+            "함수"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "함수의 책임을 변경 사유의 단일성으로 정의하고 길이 기준의 분해 규칙이 부적절함을 논증한다. 책임 혼재가 만드는 읽기·수정·재사용 비용을 각각 구분한다.",
+          "aiAnalysisInputSha256": "68ff3f25d5bfd4a7963fdbcab910630c836dc22113e845a551f8a97476d2cff3",
+          "aiPublicGuideTopic": "함수가 맡는 책임의 수와 길이의 관계",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 함수와 책임",
+          "section": "1.3 이름이 드러내는 처리 내용",
+          "primaryConcepts": [
+            "함수 이름"
+          ],
+          "secondaryConcepts": [
+            "함수의 책임"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "함수 이름을 호출부가 참조하는 유일한 외부 설명으로 규정하고 이름과 실제 동작의 불일치가 만드는 오해를 조회 함수의 상태 변경 사례로 제시한다.",
+          "aiAnalysisInputSha256": "da698a8be242601ba63680a808033d2b37528ce56cd4bfce676c0511783ef9b9",
+          "aiPublicGuideTopic": "이름과 실제 처리 내용이 어긋날 때 생기는 문제",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            3
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 함수와 책임",
+          "section": "1.4 함수 분해의 기준",
+          "primaryConcepts": [
+            "함수 분해"
+          ],
+          "secondaryConcepts": [
+            "함수의 책임",
+            "함수 이름"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "함수 분해 지점을 단계 경계로 정의하고 명명 가능성과 인계 값의 수를 판별 기준으로 제시한다. 기계적 길이 분할과 구분되는 절차적 근거를 제공한다.",
+          "aiAnalysisInputSha256": "2b4d8485b044ec56a1222c57e3053fa849216cf84f5d2efbe26fe77b60953071",
+          "aiPublicGuideTopic": "긴 처리를 나눌 자리를 고르는 기준",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            3
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 함수와 책임",
+          "section": "1.5 입력과 출력의 명시",
+          "primaryConcepts": [
+            "입력과 출력"
+          ],
+          "secondaryConcepts": [
+            "함수",
+            "호출부"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "명시적 인자와 암묵적 외부 참조를 구분하고 입력 명시가 결과의 예측 가능성과 재사용성을 결정함을 설명한다. 반환과 직접 기록의 차이를 호출부 통제권 관점에서 대비한다.",
+          "aiAnalysisInputSha256": "01795e956724c15b54ab2254dcb064358069ea8e6742f64025e286b3cdf6ed4b",
+          "aiPublicGuideTopic": "함수가 필요로 하는 값을 드러내는 방식",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 함수와 책임",
+          "section": "1.6 함수 분해 전후 구조",
+          "primaryConcepts": [
+            "함수 분해"
+          ],
+          "secondaryConcepts": [
+            "입력과 출력"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 처리를 단일 블록과 단계별 함수로 표현한 두 구조를 대비한다. 색으로 표시한 관심사가 분해 전에는 흩어져 있고 분해 후에는 각 단위에 모이며 인계 값이 가시화됨을 보인다.",
+          "aiAnalysisInputSha256": "89e54cd02a461b6e841c1fb103a6cf8f87c0e254d3b1dacf648ca57ce2c1077d",
+          "aiPublicGuideTopic": "한 덩어리 처리와 단계별로 나뉜 처리의 구조 비교",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 함수와 책임",
+          "section": "1.7 부수 효과와 예측 가능성",
+          "primaryConcepts": [
+            "부수 효과"
+          ],
+          "secondaryConcepts": [
+            "입력과 출력",
+            "함수 이름"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "부수 효과를 반환값 외의 외부 상태 변경으로 정의하고 제거가 아닌 국소화를 처방으로 제시한다. 은닉된 효과가 호출 순서 의존과 단위 확인 곤란을 유발함을 설명한다.",
+          "aiAnalysisInputSha256": "097b48208b6d400be444bf75c3cc2928a7aa021733cc73efff5ae194deab39c9",
+          "aiPublicGuideTopic": "결과 밖에서 일어나는 변화가 남기는 문제",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 인터페이스와 계약",
+          "section": "2.1 인터페이스의 정의",
+          "primaryConcepts": [
+            "인터페이스"
+          ],
+          "secondaryConcepts": [
+            "함수",
+            "모듈"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인터페이스를 사용 측이 알아야 할 정보의 집합으로 정의하고 구현과의 분리를 명시한다. 함수 단위와 모듈 단위에서 같은 개념이 규모만 달리해 적용됨을 밝힌다.",
+          "aiAnalysisInputSha256": "e165dfb29f0ef47db258d6cbaa8209f75b5b031f66c07d8b744aa2b04053634c",
+          "aiPublicGuideTopic": "사용하는 쪽이 알아야 할 것만 모은 면",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 인터페이스와 계약",
+          "section": "2.2 계약으로서의 인터페이스",
+          "primaryConcepts": [
+            "계약"
+          ],
+          "secondaryConcepts": [
+            "인터페이스",
+            "호출부"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인터페이스를 양방향 의무로 재해석하고 형태 외에 범위·공백·반복 호출·실패 응답을 계약 항목으로 포함시킨다. 계약 명세가 결함 책임 구간을 분리하는 근거임을 제시한다.",
+          "aiAnalysisInputSha256": "fb6c9b3aa03b229deba71690770d719ffcfeeb88a807fe30c76239b2e781a8ff",
+          "aiPublicGuideTopic": "양쪽이 서로에게 지기로 한 의무의 목록",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 인터페이스와 계약",
+          "section": "2.3 사전 조건과 사후 조건",
+          "primaryConcepts": [
+            "사전 조건"
+          ],
+          "secondaryConcepts": [
+            "사후 조건",
+            "계약"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "호출 전후에 성립해야 하는 상태를 사전·사후 조건으로 구분하고 검증 책임의 귀속을 정한다. 조건 범위 설정이 사용 측과 제공 측 복잡도 사이의 교환 관계임을 설명한다.",
+          "aiAnalysisInputSha256": "fafec079e7d10e1c9b959dadda6192da57ab9144516c41227dffbe201d25282c",
+          "aiPublicGuideTopic": "호출 전에 성립해야 할 것과 호출 뒤에 보장되는 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 인터페이스와 계약",
+          "section": "2.4 실패를 표현하는 방법",
+          "primaryConcepts": [
+            "실패 표현"
+          ],
+          "secondaryConcepts": [
+            "계약",
+            "반환값"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "부재·조건 위반·내부 실패를 성격이 다른 세 종류로 분류하고 각각에 맞는 전달 방식을 제시한다. 실패 명세가 계약에서 빠지면 사용 측이 성공 경로만 구현하게 됨을 지적한다.",
+          "aiAnalysisInputSha256": "118b13298af780d06a89267d23df282e0818ffa45648f315dadcc8ff10e96ea9",
+          "aiPublicGuideTopic": "정상으로 끝나지 않은 호출을 알리는 방식",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 인터페이스와 계약",
+          "section": "2.5 계약을 적어 두는 범위",
+          "primaryConcepts": [
+            "계약 기술"
+          ],
+          "secondaryConcepts": [
+            "사전 조건",
+            "인터페이스"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계약 명세의 포함 기준을 사용 측 행동 변화 여부로 정하고 과소 기술과 과다 기술의 폐해를 대비한다. 명세 범위가 향후 변경 가능 영역을 결정함을 밝힌다.",
+          "aiAnalysisInputSha256": "3757467ae43863bd221f617e671385f150eba55c714873b44900e11f600f649c",
+          "aiPublicGuideTopic": "약속 가운데 무엇을 밖에 적고 무엇을 안에 둘지",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 인터페이스와 계약",
+          "section": "2.6 구현 교체와 계약 유지",
+          "primaryConcepts": [
+            "구현 교체"
+          ],
+          "secondaryConcepts": [
+            "계약",
+            "인터페이스"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 계약에 대한 복수 구현의 대체 가능성을 정의하고 명세되지 않은 성질에 대한 의존이 교체를 막는 원인임을 설명한다. 대체 가능성이 유지 비용을 전제로 성립함을 밝힌다.",
+          "aiAnalysisInputSha256": "206866d886c66a7e4af0e64fd1ef4c1d76df5cc84c2ee4b0d4238d396d61e214",
+          "aiPublicGuideTopic": "안쪽을 바꾸면서 바깥을 그대로 두는 조건",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": [
+            "contract-outlives-implementation"
+          ]
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 인터페이스와 계약",
+          "section": "2.7 계약이 깨지는 방식",
+          "primaryConcepts": [
+            "계약 위반"
+          ],
+          "secondaryConcepts": [
+            "사전 조건",
+            "실패 표현"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계약 이탈이 임시 예외 허용의 누적으로 서서히 진행되며 사용 패턴 변화 시점에 표면화됨을 설명한다. 조건 위반을 즉시 노출시키는 자동 확인 지점의 필요를 제시한다.",
+          "aiAnalysisInputSha256": "785c1c09cf515763d115ac334ed0c839984442c6d68084974b38b318ac0eb0c1",
+          "aiPublicGuideTopic": "약속이 조용히 무너지는 경로",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 결합도와 의존 방향",
+          "section": "3.1 결합도의 정의",
+          "primaryConcepts": [
+            "결합도"
+          ],
+          "secondaryConcepts": [
+            "모듈",
+            "인터페이스"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결합도를 변경 전파 범위로 측정되는 상호 의존 강도로 정의하고 제거가 아닌 위치·종류의 문제로 재설정한다. 낮은 결합의 목적을 변경 영향 범위의 예측 가능성에 둔다.",
+          "aiAnalysisInputSha256": "351e253cc011a2caa70c15876e97345315ece67b490efb57ee4858c9774de82a",
+          "aiPublicGuideTopic": "두 구성 요소가 서로에게 매여 있는 정도",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 결합도와 의존 방향",
+          "section": "3.2 의존 방향과 변경 전파",
+          "primaryConcepts": [
+            "의존 방향"
+          ],
+          "secondaryConcepts": [
+            "결합도",
+            "호출부"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "의존의 방향성과 변경 영향의 역방향 전파를 설명하고 안정성 순서에 따른 방향 배치 원칙을 제시한다. 공통 인터페이스 도입을 통한 방향 전환 수단을 밝힌다.",
+          "aiAnalysisInputSha256": "f9b7b02a086f0eb1e582884807d4d4e2d505cc94caad051dc7fcccbe379350d9",
+          "aiPublicGuideTopic": "누가 누구를 아는지가 정하는 변경의 흐름",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 결합도와 의존 방향",
+          "section": "3.3 결합의 종류",
+          "primaryConcepts": [
+            "결합의 종류"
+          ],
+          "secondaryConcepts": [
+            "결합도",
+            "경계 데이터"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결합을 값 기반·내부 표현 기반·순서 기반으로 분류하고 각각의 변경 취약성 차이를 설명한다. 분류의 목적을 값 기반 결합으로의 전환 가능성 판단에 둔다.",
+          "aiAnalysisInputSha256": "9dba404d45ecb27ffd840881c1bc45d250f4bfefb80e104ca812eb60dba429d8",
+          "aiPublicGuideTopic": "무엇을 통해 매여 있는지에 따른 구분",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 결합도와 의존 방향",
+          "section": "3.4 공유 상태가 만드는 숨은 결합",
+          "primaryConcepts": [
+            "숨은 결합"
+          ],
+          "secondaryConcepts": [
+            "부수 효과",
+            "결합의 종류"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공유 상태에 대한 동시 접근이 호출 그래프에 나타나지 않는 의존을 만든다는 점을 지적한다. 인자 전달 또는 접근 지점 집약을 통해 암묵적 결합을 명시적 인터페이스로 승격시키는 방법을 든다.",
+          "aiAnalysisInputSha256": "4b2fd900f74452c2a6a371c3f14f444d7d15c5e03ed4233e1f5039942033d148",
+          "aiPublicGuideTopic": "호출 관계 없이 생기는 의존",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 결합도와 의존 방향",
+          "section": "3.5 의존 방향과 순환",
+          "primaryConcepts": [
+            "의존 방향"
+          ],
+          "secondaryConcepts": [
+            "순환 의존"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단방향 계층 의존과 순환 의존을 나란히 배치해 변경 시 확인 범위의 차이를 시각화한다. 순환에 포함된 구성 요소들이 사실상 하나의 단위로 묶이는 결과를 표시한다.",
+          "aiAnalysisInputSha256": "fa698d76ee463925333a32ad29548f5335330779815d5452c9bb278d52168b7c",
+          "aiPublicGuideTopic": "화살표로 나타낸 모듈 사이의 의존 관계",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 결합도와 의존 방향",
+          "section": "3.6 순환 의존을 끊는 방법",
+          "primaryConcepts": [
+            "순환 의존"
+          ],
+          "secondaryConcepts": [
+            "의존 방향",
+            "인터페이스"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "순환 의존이 구성 요소를 단일 변경 단위로 묶어 버리는 문제를 설명하고 호출 제거·인터페이스 도입·공통 부분 분리라는 세 가지 해소 절차를 제시한다.",
+          "aiAnalysisInputSha256": "cc27a5c2f9db2d8ce5002f993054751785ee22759f0d46ff0b6a2e71a3a2dc1f",
+          "aiPublicGuideTopic": "돌아오는 화살표를 없애는 절차",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 결합도와 의존 방향",
+          "section": "3.7 결합을 줄이는 방법",
+          "primaryConcepts": [
+            "결합 완화"
+          ],
+          "secondaryConcepts": [
+            "인터페이스",
+            "결합의 종류"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인계 값 축소·추상 대상으로의 의존 전환·순서 의존의 데이터 의존화라는 세 가지 결합 완화 수단을 제시한다. 세 수단이 결합을 제거가 아닌 가시화와 종류 전환으로 다룸을 밝힌다.",
+          "aiAnalysisInputSha256": "5c527a882e46b28d931bf3318ced522996a2f61b7a3918c4baefa6a72526aeec",
+          "aiPublicGuideTopic": "매듭을 옮기거나 얇게 만드는 수단",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "4장 응집도와 모듈 구성",
+          "section": "4.1 응집도의 정의",
+          "primaryConcepts": [
+            "응집도"
+          ],
+          "secondaryConcepts": [
+            "모듈",
+            "결합도"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "응집도를 모듈 내부 구성 요소 간의 관련성으로 정의하고 명명 가능성을 실용적 판별 수단으로 제시한다. 낮은 응집이 탐색 비용과 불필요한 동반 의존을 유발함을 설명한다.",
+          "aiAnalysisInputSha256": "84d2816e480678893a577cb02048cbd8bb206d56914bc4ce30c01c58923d160c",
+          "aiPublicGuideTopic": "한 모듈 안에 모인 것들이 서로 붙어 있는 정도",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 응집도와 모듈 구성",
+          "section": "4.2 변경 이유로 묶기",
+          "primaryConcepts": [
+            "변경 이유"
+          ],
+          "secondaryConcepts": [
+            "응집도",
+            "함수의 책임"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "모듈 구성 기준을 공통 변경 사유로 제시하고 형태 유사성 기준과 대비한다. 수정 이력의 동시 변경 패턴을 경계 판단의 관찰 자료로 활용하는 방법을 든다.",
+          "aiAnalysisInputSha256": "5cc1ec3ff7114430dbe78de077847d47e2210ea6b9163731fd5c47ce41e49a12",
+          "aiPublicGuideTopic": "함께 고쳐지는 것을 한자리에 두는 기준",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 응집도와 모듈 구성",
+          "section": "4.3 같은 이름과 같은 쓰임의 구분",
+          "primaryConcepts": [
+            "묶는 기준"
+          ],
+          "secondaryConcepts": [
+            "변경 이유",
+            "응집도"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "명칭 일치와 변경 동기 일치를 구분하고 우연한 동형 자료의 통합이 만드는 조건 누적을 지적한다. 동일 대상의 분산 보관에서 발생하는 갱신 누락도 반대 오류로 제시한다.",
+          "aiAnalysisInputSha256": "380e3f575990131d39ad766621391a6045fa405d6ce1f7efe34b9bd04edee42c",
+          "aiPublicGuideTopic": "이름이 겹친다는 이유로 합치면 생기는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 응집도와 모듈 구성",
+          "section": "4.4 낮은 응집이 만드는 비용",
+          "primaryConcepts": [
+            "낮은 응집"
+          ],
+          "secondaryConcepts": [
+            "응집도",
+            "결합도"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "광범위한 명칭을 가진 저응집 모듈의 무제한 확장 경향과 그로 인한 영향 범위 불확정·과다 의존·단위 확인 무력화를 열거한다. 명명 기반 재분류를 해소 절차로 제시한다.",
+          "aiAnalysisInputSha256": "18802aed6f19d6460a96a13478ae6416562dfc93d1ca6779da82d62e608f02ab",
+          "aiPublicGuideTopic": "관련 없는 것이 한자리에 모였을 때 드러나는 문제",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 응집도와 모듈 구성",
+          "section": "4.5 응집도와 결합도의 관계",
+          "primaryConcepts": [
+            "응집도와 결합도"
+          ],
+          "secondaryConcepts": [
+            "응집도",
+            "결합도"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "응집 향상이 모듈 간 상호작용을 내부화해 결합을 낮춘다는 상관을 설명하고 무분별한 분할이 두 지표를 동시에 악화시킴을 지적한다. 단일 요구 변경 시 개방 모듈 수를 통합 판단 기준으로 삼는다.",
+          "aiAnalysisInputSha256": "fec950263fb7ef506dde07e10d100dce3672202a854b452bb89e03849fa052d2",
+          "aiPublicGuideTopic": "두 지표가 함께 움직이는 방식",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 응집도와 모듈 구성",
+          "section": "4.6 변경 이유로 묶은 모듈",
+          "primaryConcepts": [
+            "변경 이유"
+          ],
+          "secondaryConcepts": [
+            "묶는 기준",
+            "응집도"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 구성 요소를 형태 기준과 변경 사유 기준으로 각각 배치한 결과를 색 표시로 대비한다. 단일 요구 변경 시 개방해야 하는 모듈 수의 차이를 두 배치에서 직접 비교한다.",
+          "aiAnalysisInputSha256": "532e834f617c71af8614351982df3c851de46da1ee052b0dbb0a93ea98674dfd",
+          "aiPublicGuideTopic": "같은 요구에 함께 바뀌는 코드의 배치 비교",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 응집도와 모듈 구성",
+          "section": "4.7 모듈 크기를 판단하는 기준",
+          "primaryConcepts": [
+            "모듈 크기"
+          ],
+          "secondaryConcepts": [
+            "변경 이유",
+            "모듈 경계"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "모듈 크기를 기준이 아닌 결과로 규정하고 분할 시점을 알리는 관찰 가능한 신호를 열거한다. 분할 타당성의 사후 판정 기준으로 분할면을 넘나드는 상호작용량을 제시한다.",
+          "aiAnalysisInputSha256": "79b6660c2dc338156fff35d6d961989034c2c4d99d5fec3951bea663aca4265b",
+          "aiPublicGuideTopic": "나눌 때와 그대로 둘 때를 가르는 지점",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "5장 모듈 경계와 공개 범위",
+          "section": "5.1 모듈 경계의 정의",
+          "primaryConcepts": [
+            "모듈 경계"
+          ],
+          "secondaryConcepts": [
+            "응집도",
+            "인터페이스"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "모듈 경계를 책임 범위와 접근 제한 약속으로 정의하고 물리적 파일 배치와 구분한다. 경계 설정이 변경 자유 영역·의존 허용 범위·책임 귀속을 동시에 결정함을 밝힌다.",
+          "aiAnalysisInputSha256": "6b126afddf34385e37032e6a71c4f229b6445e4a66f1d2a585b67c852e0caee5",
+          "aiPublicGuideTopic": "모듈 안과 밖을 가르는 선의 뜻",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "5장 모듈 경계와 공개 범위",
+          "section": "5.2 공개 범위와 내부 표현",
+          "primaryConcepts": [
+            "공개 범위"
+          ],
+          "secondaryConcepts": [
+            "모듈 경계",
+            "인터페이스"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공개 범위 설정의 비대칭성을 지적하고 내부 자료 구조의 노출이 암묵적 계약을 형성하는 과정을 설명한다. 필요성 기준의 공개 판단과 대행 함수 제공을 대안으로 제시한다.",
+          "aiAnalysisInputSha256": "f19e1004df2fb3967ecf0e98f09919e07fb5b127836813fea685a83cf50636ea",
+          "aiPublicGuideTopic": "밖으로 내보일 것과 안에 둘 것의 선택",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 모듈 경계와 공개 범위",
+          "section": "5.3 경계를 넘는 데이터의 형태",
+          "primaryConcepts": [
+            "경계 데이터"
+          ],
+          "secondaryConcepts": [
+            "공개 범위",
+            "결합의 종류"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "경계 전달 자료를 양측 내부 구조와 독립된 형태로 정의할 근거를 제시하고 항목 최소화 원칙을 설명한다. 전달된 값의 변경 허용 여부를 계약 항목으로 명시할 필요를 지적한다.",
+          "aiAnalysisInputSha256": "7a78d1e881f84cfb24683c6193c30adf7425b976226ada47edffaf1716f4a18f",
+          "aiPublicGuideTopic": "모듈 사이에 오가는 값을 정하는 방식",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 모듈 경계와 공개 범위",
+          "section": "5.4 경계의 안정성과 변경 빈도",
+          "primaryConcepts": [
+            "경계 안정성"
+          ],
+          "secondaryConcepts": [
+            "구현 교체",
+            "공개 범위"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "경계 위치 선정 기준으로 개념의 변경 빈도를 제시하고 불안정한 경계가 분할 이득을 상쇄함을 설명한다. 인터페이스 변경 횟수를 경계 적절성의 사후 지표로 사용하는 방법을 든다.",
+          "aiAnalysisInputSha256": "3286607747d380a7f3ae608a15eea9190125cde06e2a6e41ef5e8aed42d2128c",
+          "aiPublicGuideTopic": "잘 바뀌지 않는 자리에 선을 두는 이유",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": [
+            "contract-outlives-implementation"
+          ]
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 모듈 경계와 공개 범위",
+          "section": "5.5 경계와 작업 분담",
+          "primaryConcepts": [
+            "경계와 분담"
+          ],
+          "secondaryConcepts": [
+            "모듈 경계",
+            "계약"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "모듈 경계가 동시 작업의 충돌 지점과 대기 관계를 결정함을 설명한다. 인터페이스 선행 합의가 미완성 상대 구현과 무관하게 병행 진행을 가능하게 하는 이유를 제시한다.",
+          "aiAnalysisInputSha256": "67a6de82dabdb27315cc9f8864c8e7567a5e2c845cfa9a056e26e797f02c720c",
+          "aiPublicGuideTopic": "여러 사람이 함께 고칠 때 경계가 하는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 모듈 경계와 공개 범위",
+          "section": "5.6 경계를 잘못 그은 자리",
+          "primaryConcepts": [
+            "잘못 그은 경계"
+          ],
+          "secondaryConcepts": [
+            "경계 데이터",
+            "결합도"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분할 후에도 개선이 없는 세 가지 전형을 동반 변경·과다 노출 인터페이스·과다 인계 값으로 제시한다. 각 증상이 경계 근거 자체의 재검토를 요구함을 밝힌다.",
+          "aiAnalysisInputSha256": "403c796f23d206b648eee2b314b42742ef932e29e20506d13771191ccb65df23",
+          "aiPublicGuideTopic": "선을 그었는데 나아지지 않는 경우",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 모듈 경계와 공개 범위",
+          "section": "5.7 경계를 정하는 순서",
+          "primaryConcepts": [
+            "경계 결정 순서"
+          ],
+          "secondaryConcepts": [
+            "모듈 경계",
+            "변경 이유"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "경계 설정 절차를 변경 사유 열거·구성 요소 귀속·인터페이스 초안 작성의 세 단계로 정형화한다. 각 단계의 실패 조건과 되돌아갈 지점을 함께 지정한다.",
+          "aiAnalysisInputSha256": "cb05f27f4b679b881c4f5ff522c1282704f8d7a8e0ef76d8817143deb7ca6e18",
+          "aiPublicGuideTopic": "선을 긋기 전에 확인하는 항목의 차례",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "6장 경계를 다시 그린 사례",
+          "section": "6.1 사례의 배경과 증상",
+          "primaryConcepts": [
+            "사례 배경"
+          ],
+          "secondaryConcepts": [
+            "낮은 응집",
+            "모듈 경계"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "누적 확장으로 저응집 상태가 된 모듈의 관찰된 증상을 동반 확인·동시 수정 충돌·확인 준비 부담으로 정리한다. 이후 절에서 다룰 재설계 과정의 출발 상태를 기술한다.",
+          "aiAnalysisInputSha256": "09d1c46b85061b43bcc587eb66974098b292af066d6e74aa610374a615f52dae",
+          "aiPublicGuideTopic": "한 모듈이 커지면서 드러난 문제",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "6장 경계를 다시 그린 사례",
+          "section": "6.2 현재 의존 관계 파악",
+          "primaryConcepts": [
+            "의존 관계 파악"
+          ],
+          "secondaryConcepts": [
+            "의존 방향",
+            "숨은 결합"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재설계 착수 전 호출 관계와 암묵적 의존을 목록화한 과정을 기술한다. 상태 기록과 수정을 분리해 이후 변경의 원인 판별 기준을 확보한 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "f3c40a6290fcdb54cd4cf66a036be2b0e386c2f9e6cd13d143bb042c8b8b771a",
+          "aiPublicGuideTopic": "손대기 전에 지금 상태를 적는 작업",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            37
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 경계를 다시 그린 사례",
+          "section": "6.3 나눌 자리를 정하는 과정",
+          "primaryConcepts": [
+            "분리 지점 선정"
+          ],
+          "secondaryConcepts": [
+            "변경 이유",
+            "묶는 기준"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복수 분리 후보를 변경 빈도와 인계 값 규모라는 두 축으로 비교한 판단 과정을 기술한다. 고빈도·저인계 후보를 우선 분리하는 순서 선택의 근거를 제시한다.",
+          "aiAnalysisInputSha256": "07f3f24285ff299bb27f70b477b4a069f5de824df5b9cf4b06702e2953656765",
+          "aiPublicGuideTopic": "여러 후보 가운데 하나를 고른 근거",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 경계를 다시 그린 사례",
+          "section": "6.4 인터페이스를 먼저 정한 이유",
+          "primaryConcepts": [
+            "선행 인터페이스 정의"
+          ],
+          "secondaryConcepts": [
+            "계약",
+            "사전 조건"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이전 코드 이동에 앞서 새 모듈의 함수 목록과 조건을 명세한 절차를 기술한다. 명세 선행이 이전 범위를 결정하고 구현 형태가 계약으로 굳는 것을 방지함을 설명한다.",
+          "aiAnalysisInputSha256": "34f1c06bd4bb8bf8effcd3b91fe20b32de290f43468360cced89224df2c10b99",
+          "aiPublicGuideTopic": "코드를 옮기기 전에 약속부터 적은 순서",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 경계를 다시 그린 사례",
+          "section": "6.5 분리 절차와 확인 지점",
+          "primaryConcepts": [
+            "분리 절차"
+          ],
+          "secondaryConcepts": [
+            "분리 지점 선정",
+            "계약"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "모듈 분리를 다섯 단계의 순차 절차로 표현하고 단계별 통과 조건을 병기한다. 인터페이스 정의 단계로 되돌아가는 경로를 표시해 절차가 일방향이 아님을 나타낸다.",
+          "aiAnalysisInputSha256": "0a06160588c0cd5d08ebf39287652dd30eaeb26f08df76718b0a47fab9e843dd",
+          "aiPublicGuideTopic": "모듈을 떼어 내는 단계와 각 단계의 확인 항목",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 경계를 다시 그린 사례",
+          "section": "6.6 옮긴 뒤 확인한 것",
+          "primaryConcepts": [
+            "분리 후 확인"
+          ],
+          "secondaryConcepts": [
+            "계약 위반",
+            "부수 효과"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분리 완료 판정을 호출 지점 전환·암묵 의존 해소·잔여 코드 제거의 세 항목으로 확인한 과정을 기술한다. 미제거 사본이 이후 단독 수정으로 불일치를 만드는 위험을 지적한다.",
+          "aiAnalysisInputSha256": "6e3a931c850a89ed5404ad3213f79c037ae54aa33f70c982b7f786d42f44f39c",
+          "aiPublicGuideTopic": "분리가 실제로 끝났는지 판단한 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 경계를 다시 그린 사례",
+          "section": "6.7 남은 결합과 다음 단계",
+          "primaryConcepts": [
+            "남은 결합"
+          ],
+          "secondaryConcepts": [
+            "결합 완화",
+            "모듈 크기"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분리 후 잔존한 값 기반 결합을 식별하고 변경 빈도를 근거로 해소를 유예한 판단을 기술한다. 다음 분리 대상 선정을 직전 분리의 효과 측정 이후로 미룬 절차적 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "06cb890406f25c547c02604f93107d07225b8a9245d0eb5c08ee5736b2711578",
+          "aiPublicGuideTopic": "한 번의 분리로 끝나지 않은 부분",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "7장 설계 판단 기준",
+          "section": "7.1 과도한 분해의 비용",
+          "primaryConcepts": [
+            "과도한 분해"
+          ],
+          "secondaryConcepts": [
+            "함수 분해",
+            "결합도"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "과다 분해가 추적 비용과 명칭 부담을 늘리고 모듈 수준에서는 인터페이스 고착 비용을 유발함을 설명한다. 분해의 성과를 독립적으로 다룰 수 있는 단위 수로 측정할 것을 제안한다.",
+          "aiAnalysisInputSha256": "378c4269d5290769f58aded3f85d7fb08f7cc93dc9228a358dc02e3b60a21ab1",
+          "aiPublicGuideTopic": "너무 잘게 나눈 구조에서 늘어나는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "7장 설계 판단 기준",
+          "section": "7.2 분해를 멈추는 기준",
+          "primaryConcepts": [
+            "분해 중단 기준"
+          ],
+          "secondaryConcepts": [
+            "과도한 분해",
+            "함수 분해"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분해 종료 조건을 명명 가능성·단일 변경 사유·독립 확인 가능성으로 정식화하고 과잉 신호를 열거한다. 사전 분할보다 변경 관찰에 따른 점진적 분할이 유리한 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "bc6d12931b6dee2cc4c1465ba2d2ed1638480e221c4fcdc4de4c306e58d76c8e",
+          "aiPublicGuideTopic": "더 나누지 않아도 되는 지점의 판단",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 설계 판단 기준",
+          "section": "7.3 인터페이스를 넓힐 때와 좁힐 때",
+          "primaryConcepts": [
+            "인터페이스 범위 조정"
+          ],
+          "secondaryConcepts": [
+            "구현 교체",
+            "공개 범위"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인터페이스 확장과 축소의 비대칭적 위험을 비교하고 다중 사용처 필요성을 확장 기준으로 제시한다. 구현 사정에서 파생된 항목을 계약에서 배제할 근거를 설명한다.",
+          "aiAnalysisInputSha256": "c7c873131dbc6e252787c51cd75c699963219c5b307f957fb96d96c2cc9462ff",
+          "aiPublicGuideTopic": "약속의 범위를 바꾸는 두 방향의 판단",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 설계 판단 기준",
+          "section": "7.4 결합과 응집 점검 항목",
+          "primaryConcepts": [
+            "구조 점검 항목"
+          ],
+          "secondaryConcepts": [
+            "응집도와 결합도",
+            "의존 방향"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구조 점검을 다섯 개의 정적 확인 항목으로 정식화하고 각 항목의 판정 임계를 함께 제시한다. 위반 항목과 앞 장의 대응 수단을 연결하는 사용 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "4ee958d9b2bf5fd84d239169dd74a630e2251c1ceac374df6815e94c441142b1",
+          "aiPublicGuideTopic": "구조를 살펴볼 때 차례로 확인할 목록",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            27
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 설계 판단 기준",
+          "section": "7.5 경계를 바꾸는 순서",
+          "primaryConcepts": [
+            "경계 변경 순서"
+          ],
+          "secondaryConcepts": [
+            "모듈 경계",
+            "경계 결정 순서"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기존 구조 변경을 소폭 반복 절차로 진행하는 근거와 분리 순서 우선순위를 제시한다. 단계마다 잔존 결합과 유예 사유를 기록해 판단 반복을 방지하는 방법을 설명한다.",
+          "aiAnalysisInputSha256": "85435c600a00849cb3b4af7fbd465ca4165b3dd9c00b365be2bb6b906e9c0a17",
+          "aiPublicGuideTopic": "이미 있는 구조를 고칠 때의 진행 방식",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 설계 판단 기준",
+          "section": "7.6 설계 결정을 남기는 방법",
+          "primaryConcepts": [
+            "설계 기록"
+          ],
+          "secondaryConcepts": [
+            "계약 기술",
+            "변경 이유"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구조 결정의 근거가 산출물에 드러나지 않는다는 점을 지적하고 기록 항목을 분할 기준·기각 대안·잔존 결합으로 한정한다. 계약 근처 배치가 기록의 갱신 누락을 줄이는 이유를 설명한다.",
+          "aiAnalysisInputSha256": "56c39fa7720864f567bd3da4c9c9791dd5e1b32c259e951f2815cc9304a104b9",
+          "aiPublicGuideTopic": "왜 그렇게 나누었는지를 남기는 자리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            47
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 설계 판단 기준",
+          "section": "7.7 핵심 원칙 정리",
+          "primaryConcepts": [
+            "설계 원칙 요약"
+          ],
+          "secondaryConcepts": [
+            "모듈 경계",
+            "함수의 책임"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "함수와 모듈에서 반복된 경계 판단의 동일성을 확인하고 공통 변경 사유·인계 최소화를 단일 기준으로 통합한다. 구조의 적정성을 고정된 배치가 아닌 재조정 가능성으로 규정한다.",
+          "aiAnalysisInputSha256": "1d7cf3e56736f838d6e0e45d4759f71455131cdacd493e928eae2e40aff1b8e1",
+          "aiPublicGuideTopic": "이 책이 다룬 판단 기준의 요약",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
     }
   ]
 }

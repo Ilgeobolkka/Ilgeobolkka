@@ -3623,6 +3623,129 @@
         30,
         49
       ]
+    },
+    {
+      "caseId": "case-book-074",
+      "bookId": 74,
+      "purpose": "코드를 함수와 모듈로 어떻게 나누고 그 사이의 약속을 어떻게 정할지, 구조를 판단하는 기준을 넓게 정리하고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 15,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "함수 분해",
+        "인터페이스",
+        "계약",
+        "결합도",
+        "응집도",
+        "모듈 경계"
+      ],
+      "helpfulConcepts": [
+        "함수의 책임",
+        "사전 조건",
+        "의존 방향",
+        "결합 완화",
+        "공개 범위"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 3
+        },
+        {
+          "beforePageNumber": 3,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 11
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 17
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 18
+        },
+        {
+          "beforePageNumber": 18,
+          "afterPageNumber": 22
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 23
+        },
+        {
+          "beforePageNumber": 23,
+          "afterPageNumber": 27
+        },
+        {
+          "beforePageNumber": 23,
+          "afterPageNumber": 30
+        },
+        {
+          "beforePageNumber": 30,
+          "afterPageNumber": 31
+        },
+        {
+          "beforePageNumber": 27,
+          "afterPageNumber": 47
+        }
+      ],
+      "irrelevantPageNumbers": [
+        37,
+        38,
+        39,
+        42,
+        43
+      ],
+      "duplicatePageGroups": [
+        [
+          14,
+          33
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        3,
+        5,
+        9,
+        10,
+        11,
+        16,
+        17,
+        18,
+        22,
+        23,
+        27,
+        30,
+        31,
+        47
+      ],
+      "allowedAlternativePageNumbers": [
+        4,
+        6,
+        12,
+        14,
+        21,
+        24,
+        29,
+        32,
+        36
+      ]
     }
   ]
 }
