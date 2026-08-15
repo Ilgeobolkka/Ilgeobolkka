@@ -584,6 +584,136 @@
       ]
     },
     {
+      "caseId": "case-book-017",
+      "bookId": 17,
+      "purpose": "이 책을 소장하고 있고, 밤마다 그날 있었던 일이 정리되지 않은 채 쌓이는 것 같아서 처음부터 끝까지 차근히 따라가며 방법을 익히고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "밤이라는 시각",
+        "서랍이라는 비유",
+        "하루치 분량",
+        "꺼내 놓기",
+        "이름 붙이기",
+        "이름 없는 것",
+        "분류해 보기",
+        "섞여 있는 것",
+        "안 들어가는 것"
+      ],
+      "helpfulConcepts": [
+        "서랍의 개수",
+        "열어 둔 서랍",
+        "다시 열림",
+        "정리가 나쁜 밤",
+        "혼자 할 수 없는 것"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 19
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 22
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 19,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 27
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 29
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 38
+        },
+        {
+          "beforePageNumber": 27,
+          "afterPageNumber": 43
+        }
+      ],
+      "irrelevantPageNumbers": [
+        31,
+        32,
+        33,
+        34
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          45
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        5,
+        7,
+        9,
+        12,
+        14,
+        16,
+        19,
+        22,
+        24,
+        27,
+        29,
+        38,
+        43
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        4,
+        6,
+        8,
+        10,
+        13,
+        15,
+        17,
+        20,
+        23,
+        25,
+        28,
+        30,
+        41,
+        44
+      ]
+    },
+    {
       "caseId": "case-book-021",
       "bookId": 21,
       "purpose": "이 책을 사지는 않았고, 별빛에서 성분과 움직이는 속도를 어떻게 알아내는지 큰 틀만 보고 싶다",

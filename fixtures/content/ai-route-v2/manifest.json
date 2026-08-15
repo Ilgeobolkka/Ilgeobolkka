@@ -6499,6 +6499,1064 @@
       ]
     },
     {
+      "bookId": 17,
+      "title": "마음의 서랍을 정리하는 밤",
+      "totalPageCount": 50,
+      "pdfPath": "pdfs/book-017.pdf",
+      "pdfSha256": "3053aaaf8584d1f190bafcada8b9c19a919278257033874f92e14b913b40aaac",
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 밤에 앉는 자리",
+          "section": "1.1 왜 밤인가",
+          "primaryConcepts": [
+            "밤이라는 시각"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회고 시각을 야간으로 정한 이유를 다루는 페이지다. 주간에는 새 자극이 계속 유입되어 관찰이 성립하지 않는다는 점과, 과도하게 늦은 시각에는 판단이 편향된다는 관측을 제시한다.",
+          "aiAnalysisInputSha256": "9ccbeeb969b6d103f75f075d6cc5d2823a2050559e542483896bd40ba0e0bb93",
+          "aiPublicGuideTopic": "하루가 끝난 뒤에만 할 수 있는 일",
+          "estimatedReadingSeconds": 95,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "sorting-is-not-solving"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 밤에 앉는 자리",
+          "section": "1.1 왜 밤인가",
+          "primaryConcepts": [
+            "밤이라는 시각"
+          ],
+          "secondaryConcepts": [
+            "하루치 분량"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "야간과 주간의 판단 차이를 다루는 페이지다. 양쪽 모두 방향이 다른 편향을 갖는다는 점을 제시하고, 소급 수정 대신 두 시점의 기록을 병기하는 절차를 기술한다.",
+          "aiAnalysisInputSha256": "59d77af2dd28701800fbc5d09cf6e1b4ecfde60f8ced892634de04df263edb72",
+          "aiPublicGuideTopic": "밤의 판단이 낮과 다른 자리",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 밤에 앉는 자리",
+          "section": "1.1 왜 밤인가",
+          "primaryConcepts": [
+            "밤이라는 시각"
+          ],
+          "secondaryConcepts": [
+            "서랍이라는 비유"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회고를 수행하는 장소와 시간의 규칙을 다루는 페이지다. 작업 자세가 결론 압박을 유발한다는 점과 시간 상한이 반복을 막는다는 점을 제시하고, 미완 항목을 이월하는 절차를 기술한다.",
+          "aiAnalysisInputSha256": "6fd4159bb34ce702e776cabbcae3bd5fc9377b4e9ced879d91f65f4aba13e7dc",
+          "aiPublicGuideTopic": "앉는 자리와 앉는 시간",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            3
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 밤에 앉는 자리",
+          "section": "1.2 서랍이라는 말",
+          "primaryConcepts": [
+            "서랍이라는 비유"
+          ],
+          "secondaryConcepts": [
+            "밤이라는 시각"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "핵심 은유의 선택 근거를 다루는 페이지다. 정리·해결이라는 어휘가 제거의 함의를 갖는다는 점을 제시하고, 보관과 재접근이라는 서랍의 성질이 이 작업에 대응한다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "972555c30cbaf4cee30774799e1dd5252d331cbfcf33ce2e4c3780b685d174ab",
+          "aiPublicGuideTopic": "왜 서랍에 빗대었는가",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 밤에 앉는 자리",
+          "section": "1.2 서랍이라는 말",
+          "primaryConcepts": [
+            "서랍이라는 비유"
+          ],
+          "secondaryConcepts": [
+            "분류해 보기"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분류 범주의 개수를 결정한 경위를 다루는 페이지다. 범주 증가가 분류 자체를 지연시킨다는 문제를 제시하고, 미결 범주를 명시적으로 두는 것이 오분류를 막는다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "fa50b3662a5555c925412af48b48d33849cb1e5112359c56b016c66f1523c1cb",
+          "aiPublicGuideTopic": "서랍이 몇 개인가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 밤에 앉는 자리",
+          "section": "1.3 하루치만",
+          "primaryConcepts": [
+            "하루치 분량"
+          ],
+          "secondaryConcepts": [
+            "밤이라는 시각"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회고 대상을 당일로 한정한 이유를 다루는 페이지다. 범위 제한이 없을 때 과거 사안이 유입되어 당일 처리가 불가능해진다는 문제를 제시하고, 분량의 일정성이 지속 조건임을 밝힌다.",
+          "aiAnalysisInputSha256": "f262bdc82deebcd7ea05ac097602440957ca44afeaa8352b8ded96dd5ac3be6d",
+          "aiPublicGuideTopic": "그날 것만 다루기로 한 이유",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 밤에 앉는 자리",
+          "section": "1.3 하루치만",
+          "primaryConcepts": [
+            "하루치 분량"
+          ],
+          "secondaryConcepts": [
+            "서랍이라는 비유",
+            "밤이라는 시각"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분류 범주 다섯 개와 당일 처리 대상의 관계를 표현한 도표다. 미결 범주를 점선으로 구분하고, 범위 밖 대상으로 향하는 경로가 없음을 화살표의 부재로 나타낸다.",
+          "aiAnalysisInputSha256": "41200354963024a4d238aaeaf73028053d485d0767ea7562969707929ef4af3c",
+          "aiPublicGuideTopic": "다섯 서랍과 하루치 분량을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 꺼내 놓기",
+          "section": "2.1 오늘 있었던 것을 꺼낸다",
+          "primaryConcepts": [
+            "꺼내 놓기"
+          ],
+          "secondaryConcepts": [
+            "하루치 분량"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분류에 앞서 전체 목록을 작성하는 절차를 다루는 페이지다. 즉시 분류가 특정 항목에 시간을 집중시킨다는 문제를 제시하고, 판단 없는 나열이 항목 간 상대적 크기를 조정한다는 관측을 기술한다.",
+          "aiAnalysisInputSha256": "1d616b6a70e57bf42955d494b9ecec0ab8471064d7bd442a2a7a9d136c531551",
+          "aiPublicGuideTopic": "먼저 밖에 내놓는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 꺼내 놓기",
+          "section": "2.1 오늘 있었던 것을 꺼낸다",
+          "primaryConcepts": [
+            "꺼내 놓기"
+          ],
+          "secondaryConcepts": [
+            "이름 붙이기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사건과 정서를 분리해 기록하는 절차를 다루는 페이지다. 병합 기술 시 사건 정보가 소실된다는 문제를 제시하고, 기입 순서와 칸 분리로 대응한 방법 및 기록 길이의 차이를 기술한다.",
+          "aiAnalysisInputSha256": "9bcf48f2d5003be6481ba6871a18b024105edb520576f62fe2d014fe6d1043b1",
+          "aiPublicGuideTopic": "있었던 일과 느낀 것을 갈라 적기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 꺼내 놓기",
+          "section": "2.1 오늘 있었던 것을 꺼낸다",
+          "primaryConcepts": [
+            "꺼내 놓기"
+          ],
+          "secondaryConcepts": [
+            "분류해 보기",
+            "이름 붙이기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사건 기록과 정서 기록을 두 열로 분리한 서식을 표현한 도표다. 열별 기술 분량의 차이와 기입 순서를 함께 표시해 절차의 근거를 드러낸다.",
+          "aiAnalysisInputSha256": "7979ab9d8de59e3373b928cdacc431b73a89681d5c02c3fb5670132f63719c01",
+          "aiPublicGuideTopic": "한 밤의 두 칸 기록을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 꺼내 놓기",
+          "section": "2.2 이름을 붙여 보기",
+          "primaryConcepts": [
+            "이름 붙이기"
+          ],
+          "secondaryConcepts": [
+            "꺼내 놓기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정서에 단일 어휘를 부여하는 절차를 다루는 페이지다. 서술형 기록이 재경험으로 이어진다는 문제를 제시하고, 사용 어휘의 빈도 분포와 명명 정확도에 대한 방침을 기술한다.",
+          "aiAnalysisInputSha256": "a31e050ec0786eb67daaf8043ca69cd12cb874c1a8593ab4135dbae33a6cb4c5",
+          "aiPublicGuideTopic": "느낀 것에 말을 붙이는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 꺼내 놓기",
+          "section": "2.2 이름을 붙여 보기",
+          "primaryConcepts": [
+            "이름 붙이기"
+          ],
+          "secondaryConcepts": [
+            "섞여 있는 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복수의 정서가 동시에 인지되는 경우를 다루는 페이지다. 단일 선택의 어려움을 제시하고, 발생 순서를 포함해 병기하는 방식이 층위 구분에 기여한다는 점을 기술한다.",
+          "aiAnalysisInputSha256": "dccf6a5891e6db1e9c4a760b1513bbe9c9fe6334ad0c3e9d83f93d1ad487cc93",
+          "aiPublicGuideTopic": "하나가 아닐 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 꺼내 놓기",
+          "section": "2.3 이름이 안 붙는 것",
+          "primaryConcepts": [
+            "이름 없는 것"
+          ],
+          "secondaryConcepts": [
+            "이름 붙이기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "명명이 실패하는 사례의 처리를 다루는 페이지다. 근사 어휘를 강제할 때 정보가 더 손실된다는 관측을 제시하고, 신체 감각 기술로 대체 기록한 방법을 기술한다.",
+          "aiAnalysisInputSha256": "63710e202841dffb90dffae7e9d965e16182f13c7f3dcc4e72e8c5b34e96db24",
+          "aiPublicGuideTopic": "아무 단어도 맞지 않을 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 꺼내 놓기",
+          "section": "2.3 이름이 안 붙는 것",
+          "primaryConcepts": [
+            "이름 없는 것"
+          ],
+          "secondaryConcepts": [
+            "안 들어가는 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "명명이 지연되어 성립한 사례를 다루는 페이지다. 후속 유사 경험이 어휘를 제공한다는 관측과 그 소요 기간을 제시하고, 미명명 항목의 잔존 비율을 기술한다.",
+          "aiAnalysisInputSha256": "385769087f714c239aaf9004b193cdcb70a2cbca19d7d488e9fe599da74820c5",
+          "aiPublicGuideTopic": "나중에 이름이 붙는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 나누어 넣기",
+          "section": "3.1 어디에 넣을지 정하기",
+          "primaryConcepts": [
+            "분류해 보기"
+          ],
+          "secondaryConcepts": [
+            "이름 붙이기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분류 절차의 판단 순서를 다루는 페이지다. 종결 여부, 통제 가능성, 결정 주체를 차례로 묻는 구조를 제시하고, 소요 시간과 분류 정확도가 비례하지 않는다는 관측을 기술한다.",
+          "aiAnalysisInputSha256": "52894909d0364b6c8fbd02a26038005097db3acc0286a9268d7b2565f9fd1f80",
+          "aiPublicGuideTopic": "다섯 칸 가운데 하나를 고르는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 나누어 넣기",
+          "section": "3.1 어디에 넣을지 정하기",
+          "primaryConcepts": [
+            "분류해 보기"
+          ],
+          "secondaryConcepts": [
+            "서랍의 개수"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "범주별 누적 빈도를 다루는 페이지다. 통제 불가 범주의 비중이 가장 크다는 결과를 제시하고, 해당 분류가 야간의 추가 처리를 종료시키는 기능을 갖는다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "790c177b441019d1cb9f45c18ade029a8a0f4f3d49e51ec80ce3483b914819e0",
+          "aiPublicGuideTopic": "넷째 서랍이 가장 많이 찬 이유",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 나누어 넣기",
+          "section": "3.1 어디에 넣을지 정하기",
+          "primaryConcepts": [
+            "분류해 보기"
+          ],
+          "secondaryConcepts": [
+            "서랍의 개수",
+            "섞여 있는 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분류 판단의 분기 구조를 순서도로 표현하고 범주별 누적량을 막대로 병기한 도표다. 미결 범주로 가는 경로가 모든 분기에서 존재한다는 점을 별도 선으로 나타낸다.",
+          "aiAnalysisInputSha256": "41b58c73306093dfee023e3fbda085888bef761c1bed6565a2e6f12d82062fdd",
+          "aiPublicGuideTopic": "다섯 서랍으로 가는 물음의 순서를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 나누어 넣기",
+          "section": "3.2 두 곳에 걸치는 것",
+          "primaryConcepts": [
+            "섞여 있는 것"
+          ],
+          "secondaryConcepts": [
+            "분류해 보기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복수 범주에 걸치는 항목의 처리를 다루는 페이지다. 단일 범주 강제 시 잔여 부분이 반복 출현한다는 문제를 제시하고, 항목을 분할해 각각 배치하는 방법을 기술한다.",
+          "aiAnalysisInputSha256": "eb89a4c6fcaa5442ab2ab292933da8553e79674ac242ceea1eb99ad511e3166b",
+          "aiPublicGuideTopic": "한 서랍에 안 들어가는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 나누어 넣기",
+          "section": "3.2 두 곳에 걸치는 것",
+          "primaryConcepts": [
+            "섞여 있는 것"
+          ],
+          "secondaryConcepts": [
+            "이름 없는 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분할이 성립하지 않는 항목을 다루는 페이지다. 동일 원인에서 나온 상반된 정서의 사례를 제시하고, 미결 범주가 실제로는 두 종류를 포함한다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "29299385bb332e1e89a8c8ba179a376afbd75b0f24dda2272c529acec3992b2f",
+          "aiPublicGuideTopic": "갈라 적기가 안 되는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            19
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 나누어 넣기",
+          "section": "3.2 두 곳에 걸치는 것",
+          "primaryConcepts": [
+            "섞여 있는 것"
+          ],
+          "secondaryConcepts": [
+            "다시 열림"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분할 곤란 항목의 발생 조건을 다루는 페이지다. 대인 접촉량과의 상관을 제시하고, 처리량을 줄여 대응한 절차와 이월 항목의 누적 추적 방식을 기술한다.",
+          "aiAnalysisInputSha256": "c9ccf6ee7528b600233519752fa01fea6548102d30979022593627497ac1e9ba",
+          "aiPublicGuideTopic": "걸치는 것이 많은 날",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 나누어 넣기",
+          "section": "3.3 서랍을 늘리지 않기",
+          "primaryConcepts": [
+            "서랍의 개수"
+          ],
+          "secondaryConcepts": [
+            "분류해 보기"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "범주 확장 시도와 그 결과를 다루는 페이지다. 신설 범주의 사용 빈도가 낮았다는 관측을 제시하고, 범주 수의 기준이 대상의 다양성이 아니라 처리 용량이라는 결론을 기술한다.",
+          "aiAnalysisInputSha256": "dd3da828eb7da1858903220e6623d4d18776fd9c04bcbfbec8ce098ed6f2e844",
+          "aiPublicGuideTopic": "다섯을 지키기 어려운 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 나누어 넣기",
+          "section": "3.3 서랍을 늘리지 않기",
+          "primaryConcepts": [
+            "서랍의 개수"
+          ],
+          "secondaryConcepts": [
+            "안 들어가는 것"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "채택한 분류 기준이 배제하는 정보를 다루는 페이지다. 통제 가능성 기준이 정서의 정서가를 반영하지 않는다는 점을 제시하고, 정서가 기준을 채택하지 않은 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "80293c041631f80eb69b9611e1d2699c2a277200b85be65d565c39cdf3e94fb2",
+          "aiPublicGuideTopic": "다섯이 놓치는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 안 들어가는 것들",
+          "section": "4.1 어느 서랍에도 안 맞는 것",
+          "primaryConcepts": [
+            "안 들어가는 것"
+          ],
+          "secondaryConcepts": [
+            "이름 없는 것",
+            "섞여 있는 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장기 이월 항목의 성격을 다루는 페이지다. 기존 범주 사이에 위치해 분류되지 않는 사례의 공통 속성을 제시하고, 일 단위 절차가 장기 사안을 담지 못한다는 구조적 한계를 밝힌다.",
+          "aiAnalysisInputSha256": "be671ad9dc0ceb2bfe736f3b117d06cf6b8d35cda40fbc7d485c09d5ac90b370",
+          "aiPublicGuideTopic": "사흘 넘게 남는 것들",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            14,
+            19
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 안 들어가는 것들",
+          "section": "4.1 어느 서랍에도 안 맞는 것",
+          "primaryConcepts": [
+            "안 들어가는 것"
+          ],
+          "secondaryConcepts": [
+            "열어 둔 서랍"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장기 이월 항목의 별도 관리 방식을 다루는 페이지다. 미결 범주에 병합할 때의 문제를 제시하고, 목록화와 월 단위 검토라는 대안 및 항목 소거의 실제 사유를 기술한다.",
+          "aiAnalysisInputSha256": "56feff39332a8aac55a2cfd3caa1061d9448f23580c83db8f45e60f304f32a23",
+          "aiPublicGuideTopic": "구멍을 메우지 않기로 한 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 안 들어가는 것들",
+          "section": "4.1 어느 서랍에도 안 맞는 것",
+          "primaryConcepts": [
+            "안 들어가는 것"
+          ],
+          "secondaryConcepts": [
+            "밤이라는 시각"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "방법의 한계를 수정 대상이 아니라 대상의 성질로 재규정한 경위를 다루는 페이지다. 여러 차례의 절차 수정이 효과가 없었다는 경과를 제시하고, 한계를 인지한 상태의 운용 방식을 기술한다.",
+          "aiAnalysisInputSha256": "c2596be4ddd9f32d38d71fa7bd3a2e24f2d5989de658cc2c8c773b1f744b433d",
+          "aiPublicGuideTopic": "구멍이 있다는 것을 적어 두기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            25
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 안 들어가는 것들",
+          "section": "4.2 열어 둔 채로 두기",
+          "primaryConcepts": [
+            "열어 둔 서랍"
+          ],
+          "secondaryConcepts": [
+            "안 들어가는 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미종결 항목을 열린 상태로 유지하는 절차를 다루는 페이지다. 조기 종결이 다음 회차의 반복 작업을 유발한다는 문제를 제시하고, 열린 항목 수의 상한을 둔 규칙을 기술한다.",
+          "aiAnalysisInputSha256": "ad144318b15e6ec09eb17fded7483192a395d366cedc222a15dcaa2a19cde616",
+          "aiPublicGuideTopic": "닫지 않아도 되는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 안 들어가는 것들",
+          "section": "4.2 열어 둔 채로 두기",
+          "primaryConcepts": [
+            "열어 둔 서랍"
+          ],
+          "secondaryConcepts": [
+            "하루치 분량"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "열린 항목의 유지 기간 상한을 다루는 페이지다. 장기 유지 시 검토가 반추로 전환된다는 문제를 제시하고, 검토 주기를 낮추는 이월 규칙과 그 기준의 임의성을 함께 밝힌다.",
+          "aiAnalysisInputSha256": "65ee1ad0206ff1911d7d441e6fce52fe50f28bf1ead041b5febb3784514c9a08",
+          "aiPublicGuideTopic": "열어 둔 것이 오래갈 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            27
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 안 들어가는 것들",
+          "section": "4.3 다시 열리는 서랍",
+          "primaryConcepts": [
+            "다시 열림"
+          ],
+          "secondaryConcepts": [
+            "열어 둔 서랍"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "종결 처리한 항목의 재발생을 다루는 페이지다. 재발이 분류 오류가 아니라 판정의 시점 의존성에서 비롯된다는 해석을 제시하고, 이력을 누적 기록한 방식과 그 효용을 기술한다.",
+          "aiAnalysisInputSha256": "09dc3d3459cf084a989d57ceefd88d3794ec9b2ac27e44a4cfac0c874e4d60e4",
+          "aiPublicGuideTopic": "닫은 것이 다시 열리는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 안 들어가는 것들",
+          "section": "4.3 다시 열리는 서랍",
+          "primaryConcepts": [
+            "다시 열림"
+          ],
+          "secondaryConcepts": [
+            "안 들어가는 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재발 항목의 반복 횟수와 유형을 다루는 페이지다. 대인 관련 항목에 재발이 집중된다는 관측을 제시하고, 이월 판단의 일부가 규칙화되지 않았음을 명시한다.",
+          "aiAnalysisInputSha256": "f3ec17026deb4fa7b2bf7a41c1518ce0885abc527852beb4699531fdce9958f5",
+          "aiPublicGuideTopic": "몇 번이나 다시 열리는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            29
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "5장 한 해의 밤들",
+          "section": "5.1 무엇을 적는가",
+          "primaryConcepts": [
+            "기록의 규칙"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 서식의 구성을 다루는 페이지다. 면 단위 분량 제한과 항목 배치를 제시하고, 줄글 형식이 서사화와 결론 압박을 유발한다는 이유로 표 형식을 채택한 경위를 기술한다.",
+          "aiAnalysisInputSha256": "e6c436fbf8ef280ddecd932fe61268aed1ad59b08a5ad9e51d708c197604a44a",
+          "aiPublicGuideTopic": "공책의 한 면이 어떻게 생겼는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 한 해의 밤들",
+          "section": "5.1 무엇을 적는가",
+          "primaryConcepts": [
+            "기록의 규칙"
+          ],
+          "secondaryConcepts": [
+            "못 적은 밤"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록의 사후 수정 금지와 추가 기입 절차를 다루는 페이지다. 추가 기입의 빈도와 시기별 분포를 제시하고, 미기입이 두 가지 상태를 구분하지 못한다는 한계를 밝힌다.",
+          "aiAnalysisInputSha256": "81e1e64d1795d9e23c917aaedca8d4247dab629376c97c3bde9162163ddcf5f3",
+          "aiPublicGuideTopic": "고쳐 쓰지 않기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 한 해의 밤들",
+          "section": "5.2 못 적은 밤",
+          "primaryConcepts": [
+            "못 적은 밤"
+          ],
+          "secondaryConcepts": [
+            "기록의 규칙"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회고를 수행하지 못한 날의 기록을 다루는 페이지다. 미수행 사유를 세 유형으로 분류해 빈도를 제시하고, 회피 상황에서 절차의 일부만 수행하도록 조정한 대응을 기술한다.",
+          "aiAnalysisInputSha256": "89ccdd7c8518d983460185cda30e2dba3f616beb202d16bd747538b6f55079c7",
+          "aiPublicGuideTopic": "앉지 못한 밤을 세기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 한 해의 밤들",
+          "section": "5.2 못 적은 밤",
+          "primaryConcepts": [
+            "못 적은 밤"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미수행 일자의 사후 보완을 배제한 판단을 다루는 페이지다. 소급 처리 시 관측의 질이 저하된다는 관측을 제시하고, 중요 항목은 재발한다는 전제와 그 검증 불가능성을 함께 밝힌다.",
+          "aiAnalysisInputSha256": "7ed8f2c728f16606ac5f21c7503e07324897573dcd9eca7feeed787d9cfbe67a",
+          "aiPublicGuideTopic": "빠진 밤을 나중에 채우지 않기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            33
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 한 해의 밤들",
+          "section": "5.3 한 해를 늘어놓으면",
+          "primaryConcepts": [
+            "밤을 늘어놓기"
+          ],
+          "secondaryConcepts": [
+            "분류해 보기"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연간 기록의 계수 결과를 다루는 페이지다. 총 항목 수와 범주별 분포를 제시하고, 월별 분해를 통해 특정 기간의 편차를 확인한 절차를 기술한다.",
+          "aiAnalysisInputSha256": "96af4be9eaf7ddfc8ab9953554877b0925aac9bdd3b1fe816434a2d17f3a75d2",
+          "aiPublicGuideTopic": "이백일흔다섯 면을 펴 보기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 한 해의 밤들",
+          "section": "5.3 한 해를 늘어놓으면",
+          "primaryConcepts": [
+            "밤을 늘어놓기"
+          ],
+          "secondaryConcepts": [
+            "다시 열림"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "범주 분포의 변동 원인을 다루는 페이지다. 특정 기간의 편차가 생활 사건에서 비롯되었음을 확인하고, 분포를 개인 성향의 지표로 해석하지 않기로 한 판단을 기술한다.",
+          "aiAnalysisInputSha256": "8ee897f04742fa71e840efa1caf1971a1877b70efa3fbb0e2285511826eff83a",
+          "aiPublicGuideTopic": "셋째 서랍이 많던 두 달",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            35
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 한 해의 밤들",
+          "section": "5.3 한 해를 늘어놓으면",
+          "primaryConcepts": [
+            "밤을 늘어놓기"
+          ],
+          "secondaryConcepts": [
+            "서랍의 개수",
+            "못 적은 밤"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연간 수행 일자와 범주별 누적량을 함께 표현한 도표다. 미수행일의 분포와 범주 순위를 병치하고, 특정 기간에 한정된 편차를 별도 표시로 나타낸다.",
+          "aiAnalysisInputSha256": "9c2bd3859a1caa4c7a0aa98950cef0d6db3aa3b141d4c5f7d33c03fba169088a",
+          "aiPublicGuideTopic": "한 해 치 밤을 달별로 늘어놓은 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "6장 정리되지 않는 것",
+          "section": "6.1 정리가 오히려 나쁜 밤",
+          "primaryConcepts": [
+            "정리가 나쁜 밤"
+          ],
+          "secondaryConcepts": [
+            "밤이라는 시각"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "방법이 역효과를 내는 상황을 다루는 페이지다. 강한 정서적 동요 상태에서 회고가 재경험으로 전환된다는 관측을 제시하고, 사전 식별이 어려워 중단 기준을 두는 방식으로 대응한 경위를 기술한다.",
+          "aiAnalysisInputSha256": "d81f87fb88263cf34d6fc8e35c539607beecb343aaa2cc6d84fc98798de69a0b",
+          "aiPublicGuideTopic": "앉으면 안 되는 밤",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 정리되지 않는 것",
+          "section": "6.1 정리가 오히려 나쁜 밤",
+          "primaryConcepts": [
+            "정리가 나쁜 밤"
+          ],
+          "secondaryConcepts": [
+            "열어 둔 서랍"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "중단 시의 후속 행동을 다루는 페이지다. 장소 이탈을 규칙으로 둔 이유와, 중단 사례가 익일에는 정상 수행으로 이어졌다는 결과를 기술한다.",
+          "aiAnalysisInputSha256": "b52e3377f7e63d67bea3d7e7f1de9dce7a40b1642ca356cb1fa64dd34d9aef65",
+          "aiPublicGuideTopic": "그만두고 하는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 정리되지 않는 것",
+          "section": "6.1 정리가 오히려 나쁜 밤",
+          "primaryConcepts": [
+            "정리가 나쁜 밤"
+          ],
+          "secondaryConcepts": [
+            "안 들어가는 것"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "긍정적 정서에 대해 방법이 갖는 부작용을 다루는 페이지다. 대상화가 거리 두기를 만든다는 점을 제시하고, 해당 상황에서 절차의 일부만 수행하도록 조정한 방식을 기술한다.",
+          "aiAnalysisInputSha256": "2eb6014a57e24b9f8d44f8c7eb9ab826cbd322672bcd05d19926d5cd76775f19",
+          "aiPublicGuideTopic": "좋은 밤에도 안 하는 편이 나은 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 정리되지 않는 것",
+          "section": "6.2 서랍이라는 비유의 한계",
+          "primaryConcepts": [
+            "비유의 한계"
+          ],
+          "secondaryConcepts": [
+            "서랍이라는 비유"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "핵심 은유가 대상과 어긋나는 지점을 열거하는 페이지다. 내용의 변화, 경계의 투과, 자발적 재개방, 제거 불가라는 네 항목을 제시하고 은유가 유효한 범위를 한정한다.",
+          "aiAnalysisInputSha256": "f250d10fe24112e3dcb50d17e2ea541e6c1355aecbe034c7abb905aa7af38ab9",
+          "aiPublicGuideTopic": "서랍과 다른 자리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 정리되지 않는 것",
+          "section": "6.2 서랍이라는 비유의 한계",
+          "primaryConcepts": [
+            "비유의 한계"
+          ],
+          "secondaryConcepts": [
+            "이름 붙이기"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대체 은유의 검토와 배제를 다루는 페이지다. 각 후보가 대상의 성질과 어긋나는 지점을 제시하고, 단일 은유를 유지하며 한계를 명시하는 편을 택한 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "0c5a66f202f925e5adddf5fa90de28b2bb29b9922175ff638b7dce1d9f2a80a8",
+          "aiPublicGuideTopic": "다른 비유를 찾아본 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 정리되지 않는 것",
+          "section": "6.3 혼자 할 수 없는 것",
+          "primaryConcepts": [
+            "혼자 할 수 없는 것"
+          ],
+          "secondaryConcepts": [
+            "정리가 나쁜 밤"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "방법의 적용 범위 밖에 있는 상황을 다루는 페이지다. 지속적 악화, 미결 항목의 누적, 판단의 고착이라는 세 신호를 제시하고, 이 절차가 전문적 도움을 대체하지 않음을 명시한다.",
+          "aiAnalysisInputSha256": "f2ef41a5a306b54a50d2f39e672cacbaca9f0813e74eb3c4cf492eab6c50c8d7",
+          "aiPublicGuideTopic": "이 방법이 대신할 수 없는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            27
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 정리되지 않는 것",
+          "section": "6.3 혼자 할 수 없는 것",
+          "primaryConcepts": [
+            "혼자 할 수 없는 것"
+          ],
+          "secondaryConcepts": [
+            "하루치 분량"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록과 대화의 기능 차이를 다루는 페이지다. 응답의 유무가 두 방식을 가른다는 점을 제시하고, 장기 미결 항목이 기록만으로는 변화하지 않았다는 관측을 기술한다.",
+          "aiAnalysisInputSha256": "9b0ada7490a19718a402bf5d5ac490fff47968a1741793085f126884a814bdec",
+          "aiPublicGuideTopic": "말하는 것과 적는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "7장 마음의 서랍을 정리하는 밤",
+          "section": "7.1 정리한다는 말",
+          "primaryConcepts": [
+            "남은 것"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "핵심 용어의 재정의와 그 효과를 정리하는 페이지다. 제거에서 위치 파악으로 목표가 바뀌었다는 점과, 실제로 감소한 것이 반복 재경험의 횟수였다는 결과를 밝힌다.",
+          "aiAnalysisInputSha256": "72143243cf1ff70c5eb33162d69d988c81d24cc915237e4f1baa7c50d299ca82",
+          "aiPublicGuideTopic": "한 해 뒤에 이 말이 뜻하는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "sorting-is-not-solving"
+          ]
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 마음의 서랍을 정리하는 밤",
+          "section": "7.1 정리한다는 말",
+          "primaryConcepts": [
+            "남은 것"
+          ],
+          "secondaryConcepts": [
+            "열어 둔 서랍",
+            "안 들어가는 것"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미해결 항목에 대한 태도의 변화를 정리하는 페이지다. 항목 수의 감소를 목표에서 제외한 이유를 제시하고, 수용이 아니라 계수라는 표현이 실제에 부합한다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "2f70af361fdc984f5057973bb9639f5bc8748322c595b047cf111d92ee82526a",
+          "aiPublicGuideTopic": "닫지 못한 것에 대하여",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 마음의 서랍을 정리하는 밤",
+          "section": "7.1 정리한다는 말",
+          "primaryConcepts": [
+            "남은 것"
+          ],
+          "secondaryConcepts": [
+            "비유의 한계",
+            "혼자 할 수 없는 것"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "방법의 규모와 적용 한계를 종합하는 페이지다. 처리 가능한 대상과 시간을 명시하고, 규모의 작음이 지속을 가능하게 했다는 해석을 기술한다.",
+          "aiAnalysisInputSha256": "0efe481374ed9f6b02f7b6be7f67fcd4b47de6aeead69d2b9a000ec1452e4a63",
+          "aiPublicGuideTopic": "이 방법의 크기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 마음의 서랍을 정리하는 밤",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "서랍의 개수"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 범위의 제약으로 남은 미해결 문제를 정리하는 페이지다. 범주 수의 적정성, 규칙화되지 않은 판단, 인과 방향이라는 세 항목을 구분하고 각각의 확인 가능성을 다르게 평가한다.",
+          "aiAnalysisInputSha256": "a2aa9179457f4095f4276dc8639e03f48e202f820f46202c7445312dcc82adf2",
+          "aiPublicGuideTopic": "한 해로 답하지 못한 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 마음의 서랍을 정리하는 밤",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "못 적은 밤"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "방법의 이전 가능성을 검토하는 페이지다. 범주 구성이 개인의 생활 조건에 종속된다는 점을 제시하고, 절차만 이전 가능하다는 결론과 범주 설계 과정의 필요성을 밝힌다.",
+          "aiAnalysisInputSha256": "40cbbec47f96410d0952f0a0c3da2e2b2120dff3822a7e621c53173ee5062212",
+          "aiPublicGuideTopic": "이 기록을 다른 사람이 쓸 수 있는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 마음의 서랍을 정리하는 밤",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "다시 열림",
+            "남은 것"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "차기 관측의 변경 항목을 정리하는 페이지다. 범주 축소 실험과 기록 표기의 보완을 제시하고, 유지할 규칙과 미결 목록의 이월 방침을 밝힌다.",
+          "aiAnalysisInputSha256": "d165864ee492917e7553050185d2dda960942c290a2d706d0ef6ddef17d626eb",
+          "aiPublicGuideTopic": "다음 해에 바꿀 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            49
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 21,
       "title": "빛으로 읽는 우주: 분광과 거리 측정",
       "pdfPath": "pdfs/book-021.pdf",
