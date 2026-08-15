@@ -3019,6 +3019,118 @@
         30,
         49
       ]
+    },
+    {
+      "caseId": "case-book-081",
+      "bookId": 81,
+      "purpose": "군도를 배로만 건널 계획인데, 배 시각이 날마다 달라지는 까닭과 한 배가 여러 섬을 도는 순서를 알고 싶고, 갈아탈 때 시간을 얼마나 남겨야 놓치지 않는지를 이미 빌려 둔 앞부분 안에서 익히고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 0,
+      "depth": null,
+      "activeRentalPageNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "requiredConcepts": [
+        "물때",
+        "배편 시간표",
+        "항로",
+        "기항 순서",
+        "환승 여유",
+        "환승 실패"
+      ],
+      "helpfulConcepts": [
+        "여객선",
+        "대기 시간",
+        "결항 기준",
+        "선착장"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 3
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 13
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 15
+        }
+      ],
+      "irrelevantPageNumbers": [
+        28,
+        29,
+        32,
+        33,
+        34,
+        35
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          50
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        12,
+        13,
+        14,
+        15
+      ],
+      "allowedAlternativePageNumbers": [
+        8,
+        16,
+        17,
+        18
+      ]
     }
   ]
 }

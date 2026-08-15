@@ -36968,6 +36968,1120 @@
           "duplicateGroupKeys": []
         }
       ]
+    },
+    {
+      "bookId": 81,
+      "title": "비행기 없이 건넌 일곱 섬",
+      "pdfPath": "pdfs/book-081.pdf",
+      "pdfSha256": "4d2d7ca063c74a2adf71f89067222fb5bfac353114ac622e5e1579d915473776",
+      "totalPageCount": 51,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 바다가 정하는 시각",
+          "section": "1.1 물때",
+          "primaryConcepts": [
+            "물때"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "섬 항로의 운항 시각이 날마다 이동하는 원인을 조석 현상으로 설명하는 도입 페이지다. 수심이 얕은 선착장은 물이 찬 동안에만 접안할 수 있다는 제약을 근거로 들고, 하루 두 번의 주기와 오십 분가량의 지연이 이 책이 다루는 모든 시간표의 토대라는 점을 제시한다.",
+          "aiAnalysisInputSha256": "7d12af9d97a8a8b759164179053cc51b7fc07e8435128af361283c02001dbd95",
+          "aiPublicGuideTopic": "배 시각이 날마다 조금씩 밀리는 까닭",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "sea-decides-the-schedule"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 바다가 정하는 시각",
+          "section": "1.1 물때",
+          "primaryConcepts": [
+            "물때"
+          ],
+          "secondaryConcepts": [
+            "배편 시간표"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조석의 진폭이 보름 주기로 변한다는 사실과 그 변화가 접안 가능 시간에 미치는 영향을 다룬다. 진폭이 큰 시기에는 저조 시간이 길어 오히려 운항 기회가 줄고 진폭이 작은 시기에는 반대라는 대비를 통해, 출발 날짜 선택이 하루 배편 수를 바꾼다는 점을 설명한다.",
+          "aiAnalysisInputSha256": "c31c149e0c9eb2c91f788275d87789d18de6c0c1f98dad99d0e55c83755773b0",
+          "aiPublicGuideTopic": "물이 드나드는 폭이 크고 작은 날",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 바다가 정하는 시각",
+          "section": "1.2 시간표",
+          "primaryConcepts": [
+            "배편 시간표"
+          ],
+          "secondaryConcepts": [
+            "물때"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "게시된 운항표가 담지 못하는 세 가지 정보를 정리한다. 갱신 시점이 표시되지 않아 현장 확인이 더 정확하다는 점, 경유 여부에 따라 소요 시간이 크게 갈린다는 점, 실제 운항 여부는 당일에야 확정된다는 점을 들어 게시물을 예정으로만 취급해야 하는 이유를 설명한다.",
+          "aiAnalysisInputSha256": "8d1b363d8372d8a45e56eb45a9d41cebf2dcbd21af122847f22a28c0b05bdb75",
+          "aiPublicGuideTopic": "종이 시간표에 적히지 않는 것",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 바다가 정하는 시각",
+          "section": "1.2 시간표",
+          "primaryConcepts": [
+            "배편 시간표"
+          ],
+          "secondaryConcepts": [
+            "여객선"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "게시된 편수와 실제로 사용 가능한 편수가 다르다는 점을 사례로 보인다. 조석 조건 때문에 결항이 잦은 편과 다음 연결편이 없는 늦은 편을 제외하면 남는 편이 크게 줄어든다는 계산을 제시하고, 연결 가능 여부를 기준으로 운항편을 선별해 일정을 세워야 한다고 설명한다.",
+          "aiAnalysisInputSha256": "e170e05d1e48a37161bcec347c72359e273bc6de201f0310cbe6afca1edf7591",
+          "aiPublicGuideTopic": "하루 몇 편이 실제로 쓸 수 있는 편인가",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 바다가 정하는 시각",
+          "section": "1.3 항로",
+          "primaryConcepts": [
+            "항로",
+            "기항 순서"
+          ],
+          "secondaryConcepts": [
+            "배편 시간표"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다도해 항로가 왕복이 아니라 순회 형태로 짜인다는 점과 기항 차례가 지리적 거리보다 조석 조건에 좌우된다는 점을 설명한다. 동일한 목적지라도 항로상의 위치에 따라 도착 시각이 크게 달라지므로, 승선 전에 기항 차례를 확인하면 도착 시각을 예측할 수 있다는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "6740f67ed0f4f01a2ca3b6caf987a8624fdc78c42ebbecdb26c6d462a1e916ce",
+          "aiPublicGuideTopic": "한 배가 여러 섬을 도는 순서",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 바다가 정하는 시각",
+          "section": "1.3 항로",
+          "primaryConcepts": [
+            "기항 순서"
+          ],
+          "secondaryConcepts": [
+            "항로",
+            "물때"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 섬이라도 순회 항로에서 차지하는 순번에 따라 도착 시각이 오후와 저녁으로 갈리는 것을 두 개의 하루 띠로 대비한 도표다. 두 배열이 같은 시간 축 위에 있음을 위아래 배치로 명시해, 목적지 이름만으로는 도착 시각을 알 수 없다는 점을 나타낸다.",
+          "aiAnalysisInputSha256": "a19b060774f015bff6ae2e9647fac7dc048b8d22b710901f46c4ad760b12a794",
+          "aiPublicGuideTopic": "같은 섬이 항로의 앞과 뒤에 놓일 때 도착 시각이 갈리는 것을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 바다가 정하는 시각",
+          "section": "1.4 배의 종류",
+          "primaryConcepts": [
+            "여객선",
+            "짐배"
+          ],
+          "secondaryConcepts": [
+            "항로"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정기 여객선과 비정기 화물선의 운항 방식 차이를 정리한다. 여객선은 시각표와 승선권 체계를 갖추지만 기상 기준이 엄격하고, 화물선은 예정이 없는 대신 물자 사정에 따라 더 거친 날에도 운항한다는 점을 대비해 결항 시 남는 선택지를 설명한다.",
+          "aiAnalysisInputSha256": "50f5f2a8ceacfafd8963880957c0e0fa488d38fe9044a3efb74a3de719f177dc",
+          "aiPublicGuideTopic": "사람을 태우는 배와 짐을 싣는 배",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 바다가 정하는 시각",
+          "section": "1.4 배의 종류",
+          "primaryConcepts": [
+            "짐배"
+          ],
+          "secondaryConcepts": [
+            "선착장"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "화물선 편승이 성립하는 조건과 그 한계를 다룬다. 적재 여유가 승선 가능 여부를 결정한다는 점, 운항 정보를 화물 취급 쪽에서 얻어야 한다는 점을 실무로 제시하고, 승선 기록과 보호 장치가 없다는 위험을 함께 밝힌다.",
+          "aiAnalysisInputSha256": "aedc73b9d2fabca4053588fa5f7d793df96ce35c30c380642b480e873270368e",
+          "aiPublicGuideTopic": "짐배를 얻어 탈 수 있는 경우와 없는 경우",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "1장 바다가 정하는 시각",
+          "section": "1.5 선착장",
+          "primaryConcepts": [
+            "선착장"
+          ],
+          "secondaryConcepts": [
+            "물때"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "섬마다 접안 시설의 형태가 달라 운항 조건이 갈린다는 점을 설명한다. 상시 접안이 가능한 부두, 조석에 따라 접안 시간이 제한되는 얕은 부두, 소형선으로 옮겨 타야 하는 섬을 구분하고 시설 형태가 일정의 안정성을 좌우한다는 기준을 제시한다.",
+          "aiAnalysisInputSha256": "d212d6662f815c240414bccff6f1f89274704979ea63fc66d6df95cfb9080d5b",
+          "aiPublicGuideTopic": "섬마다 다른 배 대는 자리",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "1장 바다가 정하는 시각",
+          "section": "1.5 선착장",
+          "primaryConcepts": [
+            "선착장"
+          ],
+          "secondaryConcepts": [
+            "대기 시간"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "승선권 판매 시각이 출항 직전에 열린다는 관행과 정원이 화물 사정에 따라 줄어들 수 있다는 점을 다룬다. 대기 공간이 기상에 노출되어 있다는 현장 조건을 함께 들어, 도착 시각을 앞당기는 것만으로는 부족하고 대기 자체에 대한 준비가 필요하다는 결론을 제시한다.",
+          "aiAnalysisInputSha256": "736fce0188e45822fa16e4cb5c835b340d7098b3a2aa7ea1e3cf7d0f4ef6f1d7",
+          "aiPublicGuideTopic": "표를 사는 자리와 기다리는 자리",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 배를 갈아타기",
+          "section": "2.1 환승 여유",
+          "primaryConcepts": [
+            "환승 여유"
+          ],
+          "secondaryConcepts": [
+            "배편 시간표",
+            "항로"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "환승 대기 시간을 이동에 필요한 물리적 시간이 아니라 지연 흡수를 위한 완충으로 정의한다. 완충이 부족하면 연결 실패가, 과도하면 일정 지연이 발생한다는 상충 관계를 제시하고, 후속 운항편의 존재 여부에 따라 구간별로 다르게 배분하는 방법을 설명한다.",
+          "aiAnalysisInputSha256": "f3422001e9beacd2c759e08f6f9329d7cb699c5c511fc8b8137561124e808a79",
+          "aiPublicGuideTopic": "두 배 사이에 남겨 두어야 하는 시간",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 배를 갈아타기",
+          "section": "2.1 환승 여유",
+          "primaryConcepts": [
+            "환승 여유"
+          ],
+          "secondaryConcepts": [
+            "물때",
+            "결항 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "완충 시간 산정의 세 가지 변수를 제시한다. 선행 구간의 소요 시간에 비례해 지연 폭이 커진다는 경험칙, 해상 상태에 따른 감속, 후속편까지의 간격이 실패 비용을 결정한다는 점을 각각 설명하고 구간별 배분의 근거로 삼는다.",
+          "aiAnalysisInputSha256": "30f8d1d8811c754f234887f017960927672062520563894e52ab8b35ee24bbfc",
+          "aiPublicGuideTopic": "여유를 얼마나 잡을지 정하는 기준",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 배를 갈아타기",
+          "section": "2.2 환승이 어긋날 때",
+          "primaryConcepts": [
+            "환승 실패"
+          ],
+          "secondaryConcepts": [
+            "환승 여유",
+            "배편 시간표"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선행 운항편의 도착 지연 분포와 후속편 출항 시각을 같은 시간 축에 놓아 연결 실패가 발생하는 구간을 나타낸 도표다. 완충 구간을 늘렸을 때 실패 영역이 사라지는 비교 그림을 아래에 배치해, 완충 크기와 실패 가능성의 관계를 한눈에 보이게 구성했다.",
+          "aiAnalysisInputSha256": "0b25b2e7f76ee1a645fad54c5027ed41c1c8ef92c89c958ed660d4b6234a25a7",
+          "aiPublicGuideTopic": "앞 배가 늦어질 때 뒤 배와의 연결이 끊기는 자리를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 배를 갈아타기",
+          "section": "2.2 환승이 어긋날 때",
+          "primaryConcepts": [
+            "환승 실패"
+          ],
+          "secondaryConcepts": [
+            "대기 시간",
+            "고립 대응"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연결 실패의 손실이 시간에 그치지 않고 후속 구간과 숙소 예약까지 연쇄적으로 무너뜨린다는 점을 다룬다. 실패를 인지한 직후의 우선순위를 다음 운항편 탐색이 아니라 당일 숙박 확보로 두어야 하는 이유를 설명하고, 소규모 섬의 숙소 여유가 제한적이라는 조건을 근거로 제시한다.",
+          "aiAnalysisInputSha256": "4f3c6ba9246666f2edfedd94dbef5a5401166a8399e560592f279093f36dbb8e",
+          "aiPublicGuideTopic": "연결이 끊어지면 생기는 일",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 배를 갈아타기",
+          "section": "2.3 기다리는 시간",
+          "primaryConcepts": [
+            "대기 시간"
+          ],
+          "secondaryConcepts": [
+            "선착장"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "해상 이동에서 대기 시간이 실제 승선 시간을 초과한다는 관찰을 제시하고 대기를 길이에 따라 두 종류로 구분한다. 짧은 대기는 조기 입항 가능성 때문에 자리를 뜰 수 없어 활용도가 낮고 긴 대기는 이동이 가능하다는 차이를 근거로, 대기를 분산하지 않고 모으는 일정 설계를 권한다.",
+          "aiAnalysisInputSha256": "befc7caf6fc768a5c8baf4c6a06c82f4f6fde8ea7418093324f5f580fe03a487",
+          "aiPublicGuideTopic": "섬에서 배를 기다리는 동안",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "2장 배를 갈아타기",
+          "section": "2.3 기다리는 시간",
+          "primaryConcepts": [
+            "대기 시간"
+          ],
+          "secondaryConcepts": [
+            "섬의 보급",
+            "뱃멀미"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대기의 부담이 지루함이 아니라 체력 소모에서 온다는 관점을 제시한다. 휴대용 깔개, 대기 시간에 맞춘 식수와 음식, 바람 방향을 고려한 자리 선택이라는 세 가지 대비책을 들고 각각이 이후 구간의 회복력에 미치는 영향을 설명한다.",
+          "aiAnalysisInputSha256": "0b5f91dc7f8b748f96a667418ef1a8bc1c41097ee7222ec7a7e41734b1e40276",
+          "aiPublicGuideTopic": "기다림을 견디게 하는 준비",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "2장 배를 갈아타기",
+          "section": "2.4 돌아오는 배",
+          "primaryConcepts": [
+            "왕복 배편"
+          ],
+          "secondaryConcepts": [
+            "기항 순서",
+            "항로"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "순회 항로에서는 입도 편과 출도 편의 시각 구조가 대칭이 아니라는 점을 사례로 설명한다. 출도 편의 빈도가 체류 기간을 결정하므로 방문 여부를 정하기 전에 나오는 편을 먼저 확인해야 한다는 순서를 제시하고, 지리적 거리와 실제 접근성이 일치하지 않는다는 결론을 덧붙인다.",
+          "aiAnalysisInputSha256": "ed75c5ab1085c2b2c3ca84212fb6f9cb614092f7b215955082e4b8c3ed49e7e3",
+          "aiPublicGuideTopic": "들어간 길로 나오지 못하는 섬",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "2장 배를 갈아타기",
+          "section": "2.4 돌아오는 배",
+          "primaryConcepts": [
+            "왕복 배편"
+          ],
+          "secondaryConcepts": [
+            "예비일",
+            "일정 축소"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "귀환 편을 기준으로 일정을 역방향으로 구성하는 방법을 제시한다. 순방향 설계는 잔여 시간을 모르는 채 방문지를 늘리게 된다는 문제를 지적하고, 운항편이 여럿인 섬에서 하루를 비워 두는 배치가 마지막 구간의 실패 비용을 낮추는 완충으로 작동한다고 설명한다.",
+          "aiAnalysisInputSha256": "352ed91f9ebb2de4bd2317c026b88249d0dd837f61e9527797b6a9a83a6ac5ef",
+          "aiPublicGuideTopic": "나오는 배를 먼저 정해 두는 이유",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 배가 뜨지 않는 날",
+          "section": "3.1 결항",
+          "primaryConcepts": [
+            "결항 기준"
+          ],
+          "secondaryConcepts": [
+            "물때",
+            "여객선"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "운항 중단이 현장 판단이 아니라 사전에 정해진 수치 기준의 적용이라는 점을 설명한다. 파고와 풍속이라는 지속형 기준과 시정이라는 단기 변동 기준을 구분하고, 어떤 기준에 해당하는 중단인지 알면 재개 시점을 예측할 수 있다는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "e0ed5f9fe6ce4494d3f7c64ab1ec0fe99681578a3752296d99db084371b4312d",
+          "aiPublicGuideTopic": "배가 뜨지 않기로 정해지는 조건",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 배가 뜨지 않는 날",
+          "section": "3.1 결항",
+          "primaryConcepts": [
+            "결항 기준"
+          ],
+          "secondaryConcepts": [
+            "여객선",
+            "짐배"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "해상 상태를 하나의 축으로 놓고 접안 방식과 선박 종류별로 운항 한계가 서로 다른 높이에 있음을 나타낸 도표다. 한계선 사이의 구간마다 어떤 배는 다니고 어떤 배는 멈추는지를 표시해, 중단이 전면적이지 않고 단계적으로 일어난다는 점을 보인다.",
+          "aiAnalysisInputSha256": "2b1c88a490fe13447e3f8fa6a4fe183e08fd006123686c192b6b67e621b08453",
+          "aiPublicGuideTopic": "같은 바다에서 배의 종류마다 멈추는 지점이 다른 것을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 배가 뜨지 않는 날",
+          "section": "3.2 미리 아는 법",
+          "primaryConcepts": [
+            "결항 예보"
+          ],
+          "secondaryConcepts": [
+            "결항 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "운항 중단 예측 가능성을 사전 확인이 가능한 경우와 당일에야 확정되는 경우로 나눈다. 광역 기상은 전조가 길어 전날 판단이 가능하고 시정 저하나 국지 바람은 당일 확인만 가능하다는 차이를 설명하며, 두 가지 계획을 미리 준비하는 대응을 제시한다.",
+          "aiAnalysisInputSha256": "289e8960ac1ae2fe783929432db0f58a488869d3b0dbc0d975b425bb6c9dab81",
+          "aiPublicGuideTopic": "전날 저녁에 알 수 있는 것과 아침에야 알 수 있는 것",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 배가 뜨지 않는 날",
+          "section": "3.2 미리 아는 법",
+          "primaryConcepts": [
+            "결항 예보"
+          ],
+          "secondaryConcepts": [
+            "선착장",
+            "현금과 통신"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "운항 중단 정보가 전달되는 경로를 빠른 순서로 정리한다. 현장 종사자, 매표 창구, 온라인 안내 순으로 시차가 있으며 소규모 항로일수록 온라인 정보가 지연된다는 점을 지적하고, 도착 즉시 매표소 연락처를 확보해 두는 준비를 권한다.",
+          "aiAnalysisInputSha256": "0ab3568771cf4e921d86881459512d4372e14c9cd22b7013e7352af3b49edde3",
+          "aiPublicGuideTopic": "결항 소식을 가장 먼저 듣는 곳",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "3장 배가 뜨지 않는 날",
+          "section": "3.3 발이 묶인 날",
+          "primaryConcepts": [
+            "고립 대응"
+          ],
+          "secondaryConcepts": [
+            "결항 예보",
+            "체류 시간"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "운항 중단으로 체류가 연장된 첫날의 처리 순서를 세 단계로 제시한다. 숙소 연장, 재개 시점과 재개편의 기항 범위 확인, 후속 일정 통보 순으로 처리해야 하는 이유를 설명하고 오전 중 완료가 남은 시간의 활용을 좌우한다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "325a4f14040dd71a143696d27bac53cdb22e8c3fa88c5c6c7ec760a9b7305207",
+          "aiPublicGuideTopic": "묶인 첫날에 해야 할 일",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "3장 배가 뜨지 않는 날",
+          "section": "3.3 발이 묶인 날",
+          "primaryConcepts": [
+            "고립 대응"
+          ],
+          "secondaryConcepts": [
+            "섬의 보급",
+            "현금과 통신"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "체류가 이틀 이상 연장될 때 점검해야 할 자원을 순서대로 다룬다. 현금 잔액과 숙박·식비의 관계, 섬 내에서 조달 불가능한 물품, 귀환 편까지 남은 여유일을 각각 기준으로 삼고 여유가 임계 아래로 떨어지면 잔여 방문지를 포기하는 판단을 제시한다.",
+          "aiAnalysisInputSha256": "63a12023c8e208e4a52b559b38baa1d0c445c9a9308db97f5a2cf6b02092a6f9",
+          "aiPublicGuideTopic": "묶인 날이 길어질 때의 셈",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "3장 배가 뜨지 않는 날",
+          "section": "3.4 예비일",
+          "primaryConcepts": [
+            "예비일"
+          ],
+          "secondaryConcepts": [
+            "환승 실패",
+            "결항 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일정 내 완충일의 정의와 배치 원칙을 다룬다. 후미에 몰아 둔 완충은 이미 발생한 지연을 회수하지 못한다는 점을 지적하고, 중단 위험이 높은 구간 직후에 분산 배치하는 방법과 완충일에 계획을 적지 않아야 하는 이유를 설명한다.",
+          "aiAnalysisInputSha256": "cdf0aa0d38de81c4f744f80596c0946fd5336c3a2dcfca350a4d2345db78e2fd",
+          "aiPublicGuideTopic": "일정에 빈 하루를 넣는 자리",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            20,
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "3장 배가 뜨지 않는 날",
+          "section": "3.4 예비일",
+          "primaryConcepts": [
+            "예비일"
+          ],
+          "secondaryConcepts": [
+            "왕복 배편",
+            "일정 회복"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "완충일이 소진되지 않았을 때의 활용 판단을 다룬다. 방문지를 추가하면 새로운 출도 편 의존이 생겨 잔여 완충이 사라진다는 위험을 지적하고, 운항편이 많은 기존 방문지에서 체류를 연장하는 선택이 귀환 실패 확률을 높이지 않는다는 근거를 제시한다.",
+          "aiAnalysisInputSha256": "7fc01bff82ac20ce496f76ac9d481e46603d24741c65584612eebfcfe37b1561",
+          "aiPublicGuideTopic": "예비일을 다 쓰지 않았을 때",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 짐과 몸",
+          "section": "4.1 배에서 견디는 몸",
+          "primaryConcepts": [
+            "뱃멀미"
+          ],
+          "secondaryConcepts": [
+            "여객선",
+            "항로"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선내 위치에 따라 동요의 크기가 달라진다는 점과 좌석 선택 기준을 설명한다. 종동요의 중심에 가까운 중앙부와 하층이 유리하다는 점, 시각 정보와 체감 운동의 불일치가 멀미를 악화시킨다는 점, 자세 안정성을 유지하는 착석 방식을 각각 제시한다.",
+          "aiAnalysisInputSha256": "106353b8e5f42dd9e448cc223be42ee596ac302fde0afa98cf09bb619cbe5c66",
+          "aiPublicGuideTopic": "흔들리는 배 안에서 자리를 고르는 법",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 짐과 몸",
+          "section": "4.1 배에서 견디는 몸",
+          "primaryConcepts": [
+            "뱃멀미"
+          ],
+          "secondaryConcepts": [
+            "대기 시간",
+            "체류 시간"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "멀미의 영향이 하선 이후에도 지속되어 판단력과 활동량을 제한한다는 점을 다룬다. 긴 구간 직후 환승을 배치하지 않는 설계, 도착 당일 활동 범위를 줄이는 조정, 연속 승선 일수를 제한하는 배분을 회복을 일정에 포함시키는 방법으로 제시한다.",
+          "aiAnalysisInputSha256": "f428dee392fe165fe64655034880f053f59b7f9c2561d6a6c9cbdbe349b7fd53",
+          "aiPublicGuideTopic": "멀미를 겪은 뒤의 하루",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 짐과 몸",
+          "section": "4.2 짐",
+          "primaryConcepts": [
+            "짐 꾸리기"
+          ],
+          "secondaryConcepts": [
+            "선착장",
+            "짐배"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "휴대 수하물의 적정 규모를 무게가 아니라 이동 중 확보되는 여유 손의 수로 판단하는 기준을 세 가지 사례로 보인 도표다. 좁은 사다리 승하선이라는 공통 상황을 배경으로 두어, 난간 파지 가능 여부가 안전과 직결된다는 점을 나타낸다.",
+          "aiAnalysisInputSha256": "5fee85826ff1e5f86abeef744d44daacd396f033b1f7962986e3b585aae5fbf5",
+          "aiPublicGuideTopic": "혼자 들고 오르내릴 수 있는 짐의 크기를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 짐과 몸",
+          "section": "4.2 짐",
+          "primaryConcepts": [
+            "짐 꾸리기"
+          ],
+          "secondaryConcepts": [
+            "환승 여유",
+            "선착장"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다회 환승 여정에서 수하물의 제약이 중량이 아니라 형태와 운반 방식에 있다는 점을 설명한다. 바퀴형 가방이 좁은 승하선 동선에서 소요 시간을 늘린다는 문제, 일회 운반 가능성이 필수 조건이라는 점을 들어 등에 지는 형태를 기준으로 제시한다.",
+          "aiAnalysisInputSha256": "c73fb0c416cb3ffe91522576e2d1519ae886a3f36047d6c5b61c8fde8a06eb7d",
+          "aiPublicGuideTopic": "환승을 견디는 짐의 조건",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "4장 짐과 몸",
+          "section": "4.3 섬에서 구할 수 있는 것",
+          "primaryConcepts": [
+            "섬의 보급"
+          ],
+          "secondaryConcepts": [
+            "짐배"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "섬 내 물자 조달 가능성이 인구 규모가 아니라 화물선 입항 주기에 좌우된다는 점을 설명한다. 입항 직후와 직전의 재고 차이, 품목별 조달 가능 범위의 차이를 제시하고 큰 섬에서 보급한 뒤 작은 섬으로 이동하는 순서를 권한다.",
+          "aiAnalysisInputSha256": "3e6d2284015f8c9ab40ea2dc011d0756ed8486c3ed9ec9b44eccfe1bc0e3f4ed",
+          "aiPublicGuideTopic": "가게가 있는 섬과 없는 섬",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "4장 짐과 몸",
+          "section": "4.3 섬에서 구할 수 있는 것",
+          "primaryConcepts": [
+            "섬의 보급"
+          ],
+          "secondaryConcepts": [
+            "고립 대응",
+            "현금과 통신"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "운항 중단이 지속될 때 섬 내 재고가 소진되는 과정을 사례로 보인다. 중단 소식이 알려진 직후 수요가 몰린다는 점을 근거로 필수 품목만 조기에 확보하는 대응을 제시하고, 과다 구매가 이동 부담과 지역 재고에 미치는 영향을 함께 지적한다.",
+          "aiAnalysisInputSha256": "4e28514fa6c89798ee706088c1fbadf372507a85ba7199fcedc568a35c64a440",
+          "aiPublicGuideTopic": "배가 끊긴 섬의 가게",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "4장 짐과 몸",
+          "section": "4.4 현금과 연락",
+          "primaryConcepts": [
+            "현금과 통신"
+          ],
+          "secondaryConcepts": [
+            "섬의 보급"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "섬 지역의 결제 수단이 현금에 집중되어 있고 인출 지점이 극히 제한적이라는 조건을 다룬다. 숙박비와 식비, 승선료, 완충일 수를 근거로 필요한 현금액을 산정하는 방법과 소액권을 함께 준비해야 하는 이유를 제시한다.",
+          "aiAnalysisInputSha256": "7b09152b94a6aa7068a70d1a0bcd864c6324e0b51da64ed50bdc74eecd353ad8",
+          "aiPublicGuideTopic": "카드가 되지 않는 자리",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "4장 짐과 몸",
+          "section": "4.4 현금과 연락",
+          "primaryConcepts": [
+            "현금과 통신"
+          ],
+          "secondaryConcepts": [
+            "결항 예보",
+            "고립 대응"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "해상 구간과 소규모 섬에서 통신이 단절된다는 조건 아래 연락 방식을 정리한다. 신호가 확보되는 지점에서 일정 정보를 선제적으로 전달하는 방법, 도착 통보 시각에 여유를 두는 이유, 미귀환 시 연락 체계를 사전에 정해 두는 준비를 제시한다.",
+          "aiAnalysisInputSha256": "6dbf795da8dca82dad3a9c7199ff05238d7778ac85b10fd56e77386d1552ba32",
+          "aiPublicGuideTopic": "연락이 닿지 않는 구간을 견디는 방법",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 일곱 섬을 건넌 열흘",
+          "section": "5.1 열흘의 구간",
+          "primaryConcepts": [
+            "구간 나누기"
+          ],
+          "secondaryConcepts": [
+            "환승 여유",
+            "항로"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "열흘 일정을 날짜가 아니라 승선 구간 단위로 분할한 실제 사례를 소개한다. 하루 환승 횟수의 상한을 두 번으로 정한 기준과 그 결정이 방문 가능한 섬의 수를 줄이는 대신 실패 시 회복 가능성을 남긴다는 관계를 설명한다.",
+          "aiAnalysisInputSha256": "a4aa292cba0d2e03439eedec886d58740720973771a06019697b14c9a5314226",
+          "aiPublicGuideTopic": "열흘을 몇 구간으로 끊었는가",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 일곱 섬을 건넌 열흘",
+          "section": "5.1 열흘의 구간",
+          "primaryConcepts": [
+            "구간 나누기"
+          ],
+          "secondaryConcepts": [
+            "기항 순서",
+            "예비일"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실제 여정의 방문 순서와 숙박 위치, 완충일 배치를 하나의 시간 축 위에 표시한 도표다. 운항 중단으로 체류가 길어진 섬을 크게 표시하고 계획 단계에서 비워 둔 날을 테두리로 구분해, 계획과 실제가 어긋난 자리를 함께 보이게 구성했다.",
+          "aiAnalysisInputSha256": "c34658c4c6050bab3594c523e8a3b51255d0bbd1ce662484c85cc7d295ca7510",
+          "aiPublicGuideTopic": "일곱 섬을 지나온 순서와 묵은 밤을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 일곱 섬을 건넌 열흘",
+          "section": "5.2 머무는 시간",
+          "primaryConcepts": [
+            "체류 시간"
+          ],
+          "secondaryConcepts": [
+            "배편 시간표",
+            "왕복 배편"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "체류 기간이 여행자의 선호가 아니라 출도 편의 빈도에 의해 이산적으로 결정된다는 점을 사례로 보인다. 운항 빈도가 높은 섬과 낮은 섬에서 선택 가능한 체류 길이의 차이를 제시하고, 가능한 값을 먼저 확인한 뒤 고르는 순서를 설명한다.",
+          "aiAnalysisInputSha256": "dff0f23819751e33f923e397f4d1d18c5bf3a7c7919c316806005787f8314f5b",
+          "aiPublicGuideTopic": "한 섬에 얼마나 머물지 정한 방법",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "5장 일곱 섬을 건넌 열흘",
+          "section": "5.2 머무는 시간",
+          "primaryConcepts": [
+            "체류 시간"
+          ],
+          "secondaryConcepts": [
+            "대기 시간"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반일 체류의 실제 활동 범위와 그 한계를 사례로 다룬다. 귀항편 시각에서 여유를 빼고 회항 지점을 정한 판단을 제시하고, 대상을 하나로 좁히면 인상이 선명해지는 반면 사소한 지연에도 계획 전체가 무너진다는 취약성을 함께 지적한다.",
+          "aiAnalysisInputSha256": "3681859ba86b0e94e7550bd2d51900bb882d3cd62510887ee44844d96773ceb0",
+          "aiPublicGuideTopic": "반나절만 머문 섬에서 남은 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "5장 일곱 섬을 건넌 열흘",
+          "section": "5.3 먹물섬의 이틀",
+          "primaryConcepts": [
+            "결항 사례"
+          ],
+          "secondaryConcepts": [
+            "고립 대응",
+            "결항 예보"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "운항 중단으로 이틀간 체류가 연장된 사례를 시간 순서로 기록한다. 숙소 연장과 연락, 물자 확보를 첫날 오전에 처리한 과정과 통신 조건의 제약을 함께 제시하고, 재개된 운항편이 기항지를 축소해 후속 경로까지 바뀐 결과를 설명한다.",
+          "aiAnalysisInputSha256": "424745b606a5ecbb182186fa362f1f8f39734c01fcfcae9d8ec083e6a5c20b33",
+          "aiPublicGuideTopic": "묶인 이틀 동안 한 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "5장 일곱 섬을 건넌 열흘",
+          "section": "5.3 먹물섬의 이틀",
+          "primaryConcepts": [
+            "결항 사례"
+          ],
+          "secondaryConcepts": [
+            "예비일",
+            "일정 축소"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "운항 중단으로 잃은 시간이 후속 일정에서 추가 손실을 만든다는 점을 사례로 보인다. 완충일이 부족할 때 방문지를 포기하는 기준으로 선호가 아니라 출도 편 빈도를 사용한 판단과, 재개 시점이 확정된 뒤에야 재계획이 가능하다는 조건을 함께 제시한다.",
+          "aiAnalysisInputSha256": "794ffc928d5a2545884e319a250d1e8621f6ef1bb20cfbeccea1e5551a9688b0",
+          "aiPublicGuideTopic": "묶인 이틀이 일정에서 지운 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "5장 일곱 섬을 건넌 열흘",
+          "section": "5.4 남은 섬",
+          "primaryConcepts": [
+            "일정 회복"
+          ],
+          "secondaryConcepts": [
+            "왕복 배편",
+            "구간 나누기"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "잔여 일정을 재구성한 과정을 다룬다. 같은 항로상에 있는 두 섬을 하나의 승선 구간으로 묶어 환승 횟수 상한을 지킨 방법과 귀환 편 출발지에서 마지막 이틀을 보낸 배치를 제시하고, 방문지 수보다 사전에 정한 규칙을 우선한 판단을 설명한다.",
+          "aiAnalysisInputSha256": "42e538713e697c329e29f84bef3c02fdf72134f9972cd699967c3c21964d0b9e",
+          "aiPublicGuideTopic": "남은 세 섬을 다시 짜 넣은 방법",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "5장 일곱 섬을 건넌 열흘",
+          "section": "5.4 남은 섬",
+          "primaryConcepts": [
+            "일정 회복"
+          ],
+          "secondaryConcepts": [
+            "체류 시간",
+            "예비일"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "귀환 지점으로 운항 빈도가 높은 섬을 선택한 이유와 마지막 구간의 처리 과정을 기록한다. 승선권 사전 구매의 이점, 실제 사용하지 않은 짐의 비율, 정시 운항 비율이라는 사후 지표를 제시해 다음 여정의 기준으로 삼을 수 있게 한다.",
+          "aiAnalysisInputSha256": "468217e9b60443d19f79eb560c273068d1f54e23c6cee941fa4582f5f5feeabe",
+          "aiPublicGuideTopic": "끝물섬에서 돌아 나오는 배",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 계획이 통하지 않을 때",
+          "section": "6.1 계절",
+          "primaryConcepts": [
+            "계절 운항"
+          ],
+          "secondaryConcepts": [
+            "배편 시간표"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "운항 계획이 계절 단위로 재편성된다는 점을 들어 앞 장의 사례를 그대로 적용할 수 없다는 한계를 밝힌다. 일조 시간 감소로 인한 막차 시각 단축과 겨울철 결항 빈도 증가를 근거로 제시하고, 이전할 수 있는 것은 구체적 시각이 아니라 확인 절차라는 결론을 제시한다.",
+          "aiAnalysisInputSha256": "49ea21f941d1599654cd5c9f46ef29fc318c026a3a81a427678d80e1390c8280",
+          "aiPublicGuideTopic": "여름 시간표와 겨울 시간표가 다른 이유",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 계획이 통하지 않을 때",
+          "section": "6.1 계절",
+          "primaryConcepts": [
+            "계절 운항"
+          ],
+          "secondaryConcepts": [
+            "결항 기준",
+            "예비일"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 항로의 두 계절을 나란히 놓고 하루 운항 편수와 월간 결항 일수를 대비한 도표다. 운항 시간대의 단축과 중단일의 연속 발생을 각각 배 모양의 수와 격자의 채움으로 나타내, 계절에 따라 필요한 완충일이 달라진다는 점을 보인다.",
+          "aiAnalysisInputSha256": "5157dca8690d334bd6fcfb39bda8d75d7ec21ee5c2f9e587272521a0288ec9f6",
+          "aiPublicGuideTopic": "계절에 따라 하루 배편과 결항 일수가 달라지는 것을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 계획이 통하지 않을 때",
+          "section": "6.2 정기선이 없는 섬",
+          "primaryConcepts": [
+            "비정기 편승"
+          ],
+          "secondaryConcepts": [
+            "짐배",
+            "항로"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정기 운항편이 없는 섬에는 앞선 방법이 적용되지 않는다는 한계를 다룬다. 비정기 편승은 출발 시점이 확정되지 않고 취소가 잦아 계획 수립이 불가능하다는 점, 귀로 확보가 더 어렵다는 점을 들어 제한된 기간의 여정에서는 제외하는 판단을 제시한다.",
+          "aiAnalysisInputSha256": "20d344b2263a0853c5fccfb66ccee1a76af5c75b1c71096aef89d86242604b64",
+          "aiPublicGuideTopic": "시간표에 이름이 없는 섬으로 가는 방법",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "6장 계획이 통하지 않을 때",
+          "section": "6.2 정기선이 없는 섬",
+          "primaryConcepts": [
+            "비정기 편승"
+          ],
+          "secondaryConcepts": [
+            "고립 대응",
+            "현금과 통신"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비정기 편승에서 승선 기록이 남지 않는다는 점이 사고 시 수색을 어렵게 만든다는 위험을 다룬다. 선박명과 목적지, 예상 도착 시각을 제삼자에게 남기는 최소한의 조치와 운임을 사전에 합의하는 실무를 대응책으로 제시한다.",
+          "aiAnalysisInputSha256": "1ce5ae0c04b7d18235d8283013a642d3277b7f3128a619c325748e01e055bab3",
+          "aiPublicGuideTopic": "얻어 탄 배가 만드는 위험",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "6장 계획이 통하지 않을 때",
+          "section": "6.3 줄여야 할 때",
+          "primaryConcepts": [
+            "일정 축소"
+          ],
+          "secondaryConcepts": [
+            "예비일",
+            "결항 사례"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일정 축소 결정을 지연하면 선택지가 줄어든다는 점을 지적하고 사전에 기준과 순서를 정해 두는 방법을 제시한다. 완충일 소진 시점을 판단 시점으로 삼고 출도 편 빈도와 대체 가능성으로 포기 순서를 매겨 두면 피로한 상태에서의 판단 오류를 줄일 수 있다고 설명한다.",
+          "aiAnalysisInputSha256": "9c4ee4831bf8f864f96873709c35d98881a4a772256f71a7d78e23c3348a3b6e",
+          "aiPublicGuideTopic": "섬 하나를 빼기로 정하는 순간",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "6장 계획이 통하지 않을 때",
+          "section": "6.3 줄여야 할 때",
+          "primaryConcepts": [
+            "일정 축소"
+          ],
+          "secondaryConcepts": [
+            "구간 나누기",
+            "체류 시간"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "축소 이후 생긴 여유를 다시 채우려는 경향이 판단을 무효화한다는 점을 다룬다. 방문지 교체와 체류 연장의 차이를 구분해 후자가 완충으로 남는다는 점을 설명하고, 결정의 내용보다 시점이 결과를 좌우한다는 결론을 제시한다.",
+          "aiAnalysisInputSha256": "56c4763cdf038864eaffc641aa40e055eae98113479a589263ed67f620ce44b9",
+          "aiPublicGuideTopic": "줄인 일정이 남긴 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 결론: 바다에 맞추는 일정",
+          "section": "7.1 바다에 맞추는 일정",
+          "primaryConcepts": [
+            "바다의 일정"
+          ],
+          "secondaryConcepts": [
+            "물때",
+            "배편 시간표"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체를 관통하는 명제를 다시 진술하는 결론 도입 페이지다. 여행자의 계획이 조석과 운항 조건에 종속된다는 순서를 정리하고, 계획이 활동 목록이 아니라 무엇에 맞출지를 정하는 일이라는 관점으로 앞 장들의 절차를 하나로 묶는다.",
+          "aiAnalysisInputSha256": "04c91a5d5b487ee4c2dc9b4daa0fefbeb1b06cde1157cf17b456664c0a564dda",
+          "aiPublicGuideTopic": "정해 두는 대신 맞춰 가는 여행",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "sea-decides-the-schedule"
+          ]
+        },
+        {
+          "pageNumber": 51,
+          "chapter": "7장 결론: 바다에 맞추는 일정",
+          "section": "7.1 바다에 맞추는 일정",
+          "primaryConcepts": [
+            "바다의 일정"
+          ],
+          "secondaryConcepts": [
+            "예비일",
+            "환승 여유"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다른 지역에 적용할 수 있도록 절차를 네 단계로 압축해 제시한다. 조석과 계절 운항 확인, 출도 편 우선 확인, 구간별 완충과 환승 횟수 상한 설정, 완충일의 중앙 배치를 순서로 정리하고 방문 가능한 지점 수가 줄어드는 결과를 수용해야 한다는 점을 덧붙인다.",
+          "aiAnalysisInputSha256": "2c8f10268c28aa8beea8c7bc8a042fb3952900962b4dad4cf91e2400743d075a",
+          "aiPublicGuideTopic": "다음 군도로 떠나기 전에 확인할 것",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            50
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
     }
   ]
 }
