@@ -757,7 +757,9 @@ CASE_HELPFUL_CONCEPTS = ["과거를 본다", "인과의 조건", "거리와 시�
 # 것, 곧 `재는 방법` 자체를 주제로 삼는다. 첫 페이지만 무관으로 두면 절이 갈린다.
 CASE_IRRELEVANT_PAGES = [34, 35, 36, 37]
 # 정답 대신 골라도 목적을 채우는 페이지. 같은 절의 이어지는 설명과 이웃한 처리다.
-CASE_ALTERNATIVE_PAGES = [3, 5, 9, 10, 17, 25]
+# 정답 페이지의 같은 절 짝을 채운다. primary가 필수·도움 개념을 덮어 정답의 한 자리를
+# 그대로 대신할 수 있고, 선수 폐쇄가 이 사례의 상한 안에 든다.
+CASE_ALTERNATIVE_PAGES = [3, 5, 7, 9, 10, 17, 19, 20, 25]
 
 
 def build_case(manifest_pages, prereq):
