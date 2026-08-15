@@ -5443,6 +5443,1062 @@
       ]
     },
     {
+      "bookId": 16,
+      "title": "우산 아래 나눈 짧은 문장",
+      "totalPageCount": 50,
+      "pdfPath": "pdfs/book-016.pdf",
+      "pdfSha256": "b5bfee6446709863a5b3e45673bc97ba36616e427fccca5735e337120bdb2a9f",
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 비가 만드는 자리",
+          "section": "1.1 우산 아래에서",
+          "primaryConcepts": [
+            "비가 만드는 자리"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "강우가 낯선 사람들을 좁은 공간에 병립시키는 조건을 다루는 페이지다. 기상 조건이 공간의 밀도를 바꾼다는 점을 제시하고, 기록 대상이 그 공간에서 발생한 발화임을 밝힌다.",
+          "aiAnalysisInputSha256": "52a69164454f17ae676c0cb109ac0aa06645f858ab1a5d07a6ae75863d1936e7",
+          "aiPublicGuideTopic": "비가 사람을 한자리에 세우는 방식",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "rain-makes-a-place"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 비가 만드는 자리",
+          "section": "1.1 우산 아래에서",
+          "primaryConcepts": [
+            "비가 만드는 자리"
+          ],
+          "secondaryConcepts": [
+            "우연한 만남"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "임시로 형성된 공간의 세 조건을 정리하는 페이지다. 시선 방향의 일치, 종료 시점의 불확정성, 관계의 부재를 제시하고 이 조건들이 발화의 성격을 규정한다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "ea232719df855f1dd1b00223ab9496f06a77bdc039301ab9473c39d51b686fd8",
+          "aiPublicGuideTopic": "이런 자리의 특징",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 비가 만드는 자리",
+          "section": "1.1 우산 아래에서",
+          "primaryConcepts": [
+            "비가 만드는 자리"
+          ],
+          "secondaryConcepts": [
+            "비 오는 날의 속도"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관찰의 착수 계기를 다루는 페이지다. 내용이 거의 없는 짧은 발화가 기억에 남은 경험을 제시하고, 전체 체류 횟수 대비 발화 발생 빈도를 밝힌다.",
+          "aiAnalysisInputSha256": "f0abf993ab7f8c4487ae4cc2cd8d890bb3bdd972fb64220e15a975660b4b1bb9",
+          "aiPublicGuideTopic": "이 관찰을 시작한 날",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            3
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 비가 만드는 자리",
+          "section": "1.2 비 오는 날의 사람들",
+          "primaryConcepts": [
+            "비 오는 날의 속도"
+          ],
+          "secondaryConcepts": [
+            "비가 만드는 자리"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "강우가 보행 속도에 미치는 영향을 유형별로 다루는 페이지다. 우산 소지 여부와 대응 방식에 따른 분화를 제시하고, 발화가 급하지 않은 사람들 사이에서 발생한다는 관측을 밝힌다.",
+          "aiAnalysisInputSha256": "0922dca594bdfe820c62f9ca77711860e78e750e300e7dd0c4dafaa3879de20b",
+          "aiPublicGuideTopic": "비가 사람들의 속도를 바꾸는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 비가 만드는 자리",
+          "section": "1.2 비 오는 날의 사람들",
+          "primaryConcepts": [
+            "비 오는 날의 속도"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "강우 강도와 임시 공간 형성의 관계를 다루는 페이지다. 약한 비와 강한 비 모두에서 체류가 발생하지 않는다는 점을 제시하고, 발화 사례가 중간 강도에 집중된 분포를 밝힌다.",
+          "aiAnalysisInputSha256": "2e8169cf054f47dcdd6728195f296757f119c9bb5cd3bd7c323d2d332c55cfd9",
+          "aiPublicGuideTopic": "비의 세기가 정하는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 비가 만드는 자리",
+          "section": "1.3 마주치는 일과 만나는 일",
+          "primaryConcepts": [
+            "우연한 만남"
+          ],
+          "secondaryConcepts": [
+            "비가 만드는 자리"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "스침과 병립을 구분하는 페이지다. 체류 시간의 차이가 상대를 개별 인물로 인지하게 만든다는 점을 제시하고, 이 책에서 만남이 지칭하는 범위를 한정한다.",
+          "aiAnalysisInputSha256": "08c39886da656200db74672148ba5d1726faed4870ba41c45f944d9758e59cde",
+          "aiPublicGuideTopic": "스쳐 지나가는 것과 같은 자리에 서는 것",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 비가 만드는 자리",
+          "section": "1.3 마주치는 일과 만나는 일",
+          "primaryConcepts": [
+            "우연한 만남"
+          ],
+          "secondaryConcepts": [
+            "짧은 대화",
+            "비 오는 날의 속도"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "체류 횟수 대비 발화 발생 횟수를 개체 단위로 표현하고, 발화 사례를 강우 강도별로 재분류한 도표다. 중간 강도 구간에 사례가 집중된 분포를 두 표현으로 나란히 드러낸다.",
+          "aiAnalysisInputSha256": "d760f7731149a262300b7980c86824a8907417abcd41ce7516734c6e2f46f342",
+          "aiPublicGuideTopic": "한 해 동안 선 자리와 말이 오간 횟수를 갈라 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 짧은 대화",
+          "section": "2.1 몇 마디로 끝나는 말",
+          "primaryConcepts": [
+            "짧은 대화"
+          ],
+          "secondaryConcepts": [
+            "우연한 만남"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "임시 공간에서 발생한 발화의 길이 분포를 다루는 페이지다. 교환 횟수의 최댓값과 평균을 제시하고, 짧은 길이가 결핍이 아니라 공간의 조건에 대응한 형식임을 밝힌다.",
+          "aiAnalysisInputSha256": "b2e13faeec9be312d572f22e68a56415d4689ba2bdd28a3dda19a931e7a5e5f9",
+          "aiPublicGuideTopic": "이 자리에서 오가는 말의 길이",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 짧은 대화",
+          "section": "2.1 몇 마디로 끝나는 말",
+          "primaryConcepts": [
+            "짧은 대화"
+          ],
+          "secondaryConcepts": [
+            "끝나는 방식"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발화 내용의 분류를 다루는 페이지다. 기상, 장소, 기타의 세 범주와 각 빈도를 제시하고, 공유 정보가 현재의 상황뿐이라는 조건에서 내용이 결정된다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "a0cf884ffcff7edef5adf8aa1bc5aee0e1fdbfdd7356f0f1dcbe67911a8fe09c",
+          "aiPublicGuideTopic": "무엇에 대해 말하는가",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 짧은 대화",
+          "section": "2.1 몇 마디로 끝나는 말",
+          "primaryConcepts": [
+            "짧은 대화"
+          ],
+          "secondaryConcepts": [
+            "말의 밀도",
+            "먼저 말 걸기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발화 사례를 교환 길이와 내용 범주의 두 기준으로 각각 집계한 도표다. 길이 분포의 최빈값과 내용 범주의 편중을 한 화면에 병치해 두 축이 같은 조건에서 나온다는 점을 드러낸다.",
+          "aiAnalysisInputSha256": "762e13212cb76ed9bfd96a930417243666f2a6356b1792075515f8a265b82f6b",
+          "aiPublicGuideTopic": "서른두 번의 대화를 길이와 내용으로 갈라 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 짧은 대화",
+          "section": "2.2 먼저 말을 거는 일",
+          "primaryConcepts": [
+            "먼저 말 걸기"
+          ],
+          "secondaryConcepts": [
+            "짧은 대화"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발화 개시자의 분포와 개시 조건을 다루는 페이지다. 개시 빈도가 관찰 기간 중반부터 증가한 경과와, 발화가 이어질 가능성이 높은 세 가지 사전 신호를 제시한다.",
+          "aiAnalysisInputSha256": "aff10aa4dbe5cd8d1ab3bcc531828a88c6922ee645002a98ad0f4b3cacfe12c8",
+          "aiPublicGuideTopic": "누가 먼저 말하는가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 짧은 대화",
+          "section": "2.2 먼저 말을 거는 일",
+          "primaryConcepts": [
+            "먼저 말 걸기"
+          ],
+          "secondaryConcepts": [
+            "비 오는 날의 속도"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발화를 개시하지 않기로 판단한 조건을 다루는 페이지다. 상대의 상태에 따른 배제 기준을 열거하고, 일부 판단에 대해서는 확신이 없다는 점을 명시한다.",
+          "aiAnalysisInputSha256": "d7957bf360ac2913b08eddc86a78e9671a737f4e43613645baf1467a5e0bf99d",
+          "aiPublicGuideTopic": "말을 걸지 않기로 한 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 짧은 대화",
+          "section": "2.3 대화가 끝나는 방식",
+          "primaryConcepts": [
+            "끝나는 방식"
+          ],
+          "secondaryConcepts": [
+            "짧은 대화"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발화 종료의 유형을 다루는 페이지다. 종료 사유 세 가지와 그 빈도를 제시하고, 관계의 부재가 종료 이후의 병립을 부담 없게 만든다는 관측을 기술한다.",
+          "aiAnalysisInputSha256": "95b8d79e25994e1c5fb0b552aed50245671300d91428d88bf29ac3b2274bab30",
+          "aiPublicGuideTopic": "누가 어떻게 끝내는가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 짧은 대화",
+          "section": "2.3 대화가 끝나는 방식",
+          "primaryConcepts": [
+            "끝나는 방식"
+          ],
+          "secondaryConcepts": [
+            "다시 없음"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발화 종료 이후의 관찰 행동을 다루는 페이지다. 상대의 이탈 경로를 확인하는 행위가 기억 유지와 상관된다는 관측을 제시하고, 의도 여부를 구분해 기록하지 않은 한계를 밝힌다.",
+          "aiAnalysisInputSha256": "2c3296b9c7c3f2926a2f8acbf5c551910cc7b692fb4872c8a24863a9b89eafc2",
+          "aiPublicGuideTopic": "끝나고 나서 하는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 말의 밀도",
+          "section": "3.1 짧을수록 진해지는 것",
+          "primaryConcepts": [
+            "말의 밀도"
+          ],
+          "secondaryConcepts": [
+            "짧은 대화"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "짧은 발화가 장기 기억에 남는 이유를 다루는 페이지다. 맥락 의존도가 낮아 개별 발화가 독립적으로 보존된다는 구조를 제시하고, 밀도라는 용어의 정의를 밝힌다.",
+          "aiAnalysisInputSha256": "2928f0d7de803a042b53fbcdc7466711b5f18eddc63a0da52c936dfb38b66aaf",
+          "aiPublicGuideTopic": "세 마디가 오래 남는 까닭",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 말의 밀도",
+          "section": "3.1 짧을수록 진해지는 것",
+          "primaryConcepts": [
+            "말의 밀도"
+          ],
+          "secondaryConcepts": [
+            "비가 만드는 자리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "맥락이 없는 발화가 남기는 불확정성을 다루는 페이지다. 의미를 확정할 수 없는 사례의 비율을 제시하고, 해석을 병기하지 않고 공백을 유지한 기록 방침을 밝힌다.",
+          "aiAnalysisInputSha256": "53c0d8ab9a34b82227ec9a1fbe34fbfcef9e1f9972957cb557ce3462155c9ce2",
+          "aiPublicGuideTopic": "설명이 없어서 생기는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 말의 밀도",
+          "section": "3.1 짧을수록 진해지는 것",
+          "primaryConcepts": [
+            "말의 밀도"
+          ],
+          "secondaryConcepts": [
+            "기억나는 문장",
+            "짧은 대화"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발화의 맥락 의존도가 기억 보존에 미치는 영향을 시간 경과 전후로 대비한 도표다. 독립적 단위와 연결된 단위가 각각 어떻게 남는지를 네모와 연결선의 유무로 표현한다.",
+          "aiAnalysisInputSha256": "60ef301131b50ae3c0b8c348bad0d635469a99487d10c1ddfb59ea8dea05cd72",
+          "aiPublicGuideTopic": "짧은 대화와 긴 대화가 기억에 남는 방식을 견준 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 말의 밀도",
+          "section": "3.2 남는 문장과 사라지는 문장",
+          "primaryConcepts": [
+            "기억나는 문장"
+          ],
+          "secondaryConcepts": [
+            "말의 밀도"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장기 기억에 남은 발화의 공통 속성을 다루는 페이지다. 길이와 내용이 아니라 예상과의 불일치가 보존을 결정한다는 관측을 제시한다.",
+          "aiAnalysisInputSha256": "f30823db148bd8bde126d975502f903e91483ce6149f8a34f7dc013329c57da7",
+          "aiPublicGuideTopic": "무엇이 남고 무엇이 사라지는가",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 말의 밀도",
+          "section": "3.2 남는 문장과 사라지는 문장",
+          "primaryConcepts": [
+            "기억나는 문장"
+          ],
+          "secondaryConcepts": [
+            "끝나는 방식"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록이 존재하나 회상되지 않는 사례를 다루는 페이지다. 발화는 보존되지만 상황 맥락은 보존되지 않는다는 한계를 제시하고, 해당 기록을 삭제하지 않은 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "d31980e90d2795e65787ab42b04ba00b1364149c4fd33a708d6e1df657ebafb0",
+          "aiPublicGuideTopic": "기록이 있어도 안 떠오르는 것들",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            19
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 말의 밀도",
+          "section": "3.2 남는 문장과 사라지는 문장",
+          "primaryConcepts": [
+            "기억나는 문장"
+          ],
+          "secondaryConcepts": [
+            "남에 대한 궁금함"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기억에 남은 사례에서 화자 자신의 발화가 갖는 비중을 다루는 페이지다. 응답이 짧고 정형적이었다는 관측을 제시하고, 수신자 위치가 기록을 가능하게 했다는 해석을 기술한다.",
+          "aiAnalysisInputSha256": "c3452d0e544641d5f3ec67d12c8cc7bb1bf61c006e4ef92af85525d2b1d6043a",
+          "aiPublicGuideTopic": "열한 개를 다시 읽으면",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 말의 밀도",
+          "section": "3.3 말이 아닌 것들",
+          "primaryConcepts": [
+            "말 밖의 것"
+          ],
+          "secondaryConcepts": [
+            "말의 밀도"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발화를 수반하지 않는 상호작용의 빈도를 다루는 페이지다. 비언어적 배려 행위가 발화보다 빈번하다는 계수 결과를 제시하고, 해당 주제를 이 기록의 범위에서 제외한 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "a87b0441849c0f2914c6a76f15d0818507797e910fdd19c0443870c254bd4185",
+          "aiPublicGuideTopic": "말 없이 오가는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 말의 밀도",
+          "section": "3.3 말이 아닌 것들",
+          "primaryConcepts": [
+            "말 밖의 것"
+          ],
+          "secondaryConcepts": [
+            "기억나는 문장"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발화의 음성적 특징이 기록되지 않는 문제를 다루는 페이지다. 문자 기록의 표현 한계와 흉내 표기의 부분적 효과를 제시하고, 녹음이 선택지가 아닌 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "dd47f39aaf293f6a01f1796b87b30036869f507b7548fdd982277d7845f3115b",
+          "aiPublicGuideTopic": "목소리와 말투가 남는 자리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 남이 궁금해지는 일",
+          "section": "4.1 궁금함의 방향",
+          "primaryConcepts": [
+            "남에 대한 궁금함"
+          ],
+          "secondaryConcepts": [
+            "먼저 말 걸기",
+            "말의 밀도"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "짧은 발화 이후 발생하는 관심을 다루는 페이지다. 발화 전후로 상대에 대한 인지가 달라진다는 점을 제시하고, 관심이 충족되지 않는 상태가 이 공간의 기본 조건임을 밝힌다.",
+          "aiAnalysisInputSha256": "b026c0b6c0b46a8327fee1fa0bc395e5dc78a4dbfdefc52d70a8851d06d16179",
+          "aiPublicGuideTopic": "몇 마디 뒤에 생기는 궁금함",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            12,
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 남이 궁금해지는 일",
+          "section": "4.1 궁금함의 방향",
+          "primaryConcepts": [
+            "남에 대한 궁금함"
+          ],
+          "secondaryConcepts": [
+            "다시 없음"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "충족되지 않은 관심의 지속 기간과 그 작용을 다루는 페이지다. 시간 경과에 따라 추측이 서사화되는 경향을 제시하고, 관측과 추측을 표기로 분리한 절차를 기술한다.",
+          "aiAnalysisInputSha256": "1542d2fac1787d63d4287169edb5a671145530d9580f7078325c345955f88aad",
+          "aiPublicGuideTopic": "궁금함이 어디로 가는가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 남이 궁금해지는 일",
+          "section": "4.1 궁금함의 방향",
+          "primaryConcepts": [
+            "남에 대한 궁금함"
+          ],
+          "secondaryConcepts": [
+            "상대의 자리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관심의 상호성이 확인되지 않는다는 점을 다루는 페이지다. 관측자와 상대 사이의 비대칭을 제시하고, 서술을 일방의 기록으로 한정한 판단을 밝힌다.",
+          "aiAnalysisInputSha256": "ca212011a7d297c1959e4485c30482dbb49b4c026511c7ef9b43f3335abb9b86",
+          "aiPublicGuideTopic": "상대도 궁금해했을까",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            25
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 남이 궁금해지는 일",
+          "section": "4.2 묻지 않은 것들",
+          "primaryConcepts": [
+            "묻지 않기"
+          ],
+          "secondaryConcepts": [
+            "남에 대한 궁금함"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "질문하지 않은 항목의 기록을 다루는 페이지다. 미질문 사유를 세 유형으로 분류하고, 해당 목록이 관측자의 관심 구조를 드러낸다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "fa71a0ebd49a58d4162aeedca35a4e8fc515461016ceab362bf06120504dd8d9",
+          "aiPublicGuideTopic": "물을 수 있었는데 묻지 않은 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 남이 궁금해지는 일",
+          "section": "4.2 묻지 않은 것들",
+          "primaryConcepts": [
+            "묻지 않기"
+          ],
+          "secondaryConcepts": [
+            "끝나는 방식"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실제 질문 사례의 결과를 다루는 페이지다. 응답 유형의 분화를 제시하고, 결과를 성패로 이분하지 않은 이유와 이후 행동의 변화를 기술한다.",
+          "aiAnalysisInputSha256": "bd7771a0fbd62b27f07580abfd0eec5688d735b620991cece0f1a5b793608afd",
+          "aiPublicGuideTopic": "물어본 몇 번",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            27
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 남이 궁금해지는 일",
+          "section": "4.3 다시 만나지 않는다는 것",
+          "primaryConcepts": [
+            "다시 없음"
+          ],
+          "secondaryConcepts": [
+            "남에 대한 궁금함"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재회하지 않는다는 조건이 발화에 미치는 영향을 다루는 페이지다. 관계 유지 부담의 부재가 발화 내용의 범위를 바꾼다는 관측을 제시하고, 경량성과 밀도의 공존을 미해결로 남긴다.",
+          "aiAnalysisInputSha256": "f4a5da6c8d8a9868f964efb19fb890280d6f799993d2d10e796b5148d244fca5",
+          "aiPublicGuideTopic": "한 번뿐이라는 조건",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 남이 궁금해지는 일",
+          "section": "4.3 다시 만나지 않는다는 것",
+          "primaryConcepts": [
+            "다시 없음"
+          ],
+          "secondaryConcepts": [
+            "말 밖의 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재회 가능성을 가정했을 때의 조건을 다루는 페이지다. 발화는 기억되나 외모는 기억되지 않는 비대칭을 제시하고, 해당 관계를 지칭할 어휘가 없다는 점을 기술한다.",
+          "aiAnalysisInputSha256": "b3019b883e623c12cb08c17622c069261368c544d0c8979c413117b2028601fa",
+          "aiPublicGuideTopic": "다시 만난다면 어떻게 될까",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            29
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "5장 한 해의 문장들",
+          "section": "5.1 무엇을 적었는가",
+          "primaryConcepts": [
+            "기록의 규칙"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발화 기록의 시점과 항목을 다루는 페이지다. 현장 기록을 배제한 이유와 이단계 기록 절차를 제시하고, 개인 식별 정보를 항목에서 제외한 판단을 기술한다.",
+          "aiAnalysisInputSha256": "30c135eb4ef908376bb24ee26c5ba2299912b3288c3e7338ad853866aee5ac9b",
+          "aiPublicGuideTopic": "그 자리에서 적지 않기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 한 해의 문장들",
+          "section": "5.1 무엇을 적었는가",
+          "primaryConcepts": [
+            "기록의 규칙"
+          ],
+          "secondaryConcepts": [
+            "옮겨 적기"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 대상에서 제외한 발화의 범위를 다루는 페이지다. 수신자가 자신이 아닌 발화를 배제하는 기준을 제시하고, 그 기준이 기록량을 크게 줄였다는 결과를 밝힌다.",
+          "aiAnalysisInputSha256": "94cf66cf61e965dfcb06c2d52659819d41eb6d0e1cc1c156c38ce2ec8d97fe9f",
+          "aiPublicGuideTopic": "적지 않기로 한 것들",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 한 해의 문장들",
+          "section": "5.2 옮겨 적기의 문제",
+          "primaryConcepts": [
+            "옮겨 적기"
+          ],
+          "secondaryConcepts": [
+            "기록의 규칙"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발화 전사 과정에서 발생하는 변형을 다루는 페이지다. 종결어미, 어순, 간투사에서 나타난 차이를 제시하고, 정리하지 않고 원형을 유지하기로 한 방침을 밝힌다.",
+          "aiAnalysisInputSha256": "2cba8f5c495a1ca3d7e539325b85c3c9133ccbde6efcc34d801e40f3ed933fb5",
+          "aiPublicGuideTopic": "남의 말을 그대로 적을 수 있는가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 한 해의 문장들",
+          "section": "5.2 옮겨 적기의 문제",
+          "primaryConcepts": [
+            "옮겨 적기"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기억 기반 기록의 부정확성을 다루는 페이지다. 최초 기록 시점에서 이미 변형이 발생한다는 점을 제시하고, 인용의 성격을 기록 앞부분에 명시한 절차를 기술한다.",
+          "aiAnalysisInputSha256": "2632d66f61a9f124c583b4cfb1c6fa64edba9021b603c331475969559330c117",
+          "aiPublicGuideTopic": "정확할 수 없다는 것을 적어 두기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            33
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 한 해의 문장들",
+          "section": "5.3 문장들을 늘어놓으면",
+          "primaryConcepts": [
+            "문장을 늘어놓기"
+          ],
+          "secondaryConcepts": [
+            "짧은 대화"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연간 수집한 발화를 한자리에 배열한 결과를 다루는 페이지다. 전체 분량과 낭독 시간을 제시하고, 동일하거나 유사한 표현의 반복이 관용적 기능을 수행한다는 해석을 기술한다.",
+          "aiAnalysisInputSha256": "6876de38e8f259b617aba9b675956e92b617da0318bd80edcd4ab86aca4db438",
+          "aiPublicGuideTopic": "서른두 개를 한자리에 놓기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 한 해의 문장들",
+          "section": "5.3 문장들을 늘어놓으면",
+          "primaryConcepts": [
+            "문장을 늘어놓기"
+          ],
+          "secondaryConcepts": [
+            "기억나는 문장"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수집 사례의 계수 결과를 다루는 페이지다. 개시자, 종료 방식, 회상 여부의 분포를 제시하고, 사례 수가 적어 비율의 안정성을 보장할 수 없다는 점을 함께 밝힌다.",
+          "aiAnalysisInputSha256": "e84a56aa44ef76c2270d2f9812aaf58c7721be5ff284857f43e4dc1a3d90f2ee",
+          "aiPublicGuideTopic": "늘어놓고 세어 본 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            35
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 한 해의 문장들",
+          "section": "5.3 문장들을 늘어놓으면",
+          "primaryConcepts": [
+            "문장을 늘어놓기"
+          ],
+          "secondaryConcepts": [
+            "먼저 말 걸기",
+            "끝나는 방식"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 사례 집합을 세 기준으로 각각 이분해 표현한 도표다. 각 기준의 분할 지점이 중앙선과 어긋나 있음을 세로 점선과 대비해 드러낸다.",
+          "aiAnalysisInputSha256": "83bf8e8a06799d4f3b18b35ce3621da352fca08353f7bae00efc11360f2018bc",
+          "aiPublicGuideTopic": "서른두 번의 대화를 세 가지 기준으로 갈라 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "6장 말을 걸면 안 되는 자리",
+          "section": "6.1 상대에게는 무엇인가",
+          "primaryConcepts": [
+            "상대의 자리"
+          ],
+          "secondaryConcepts": [
+            "남에 대한 궁금함"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일방적 기록이 갖는 문제를 다루는 페이지다. 식별 정보 배제 조치를 제시하면서도 비대칭 자체는 남는다는 점을 인정하고, 기록 범위를 반복적으로 축소한 경과를 기술한다.",
+          "aiAnalysisInputSha256": "0565c2bc8be38f2c9665970c12315169aa4d80bb3eb974bb0819fd30f1314026",
+          "aiPublicGuideTopic": "한쪽만 기록하는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 말을 걸면 안 되는 자리",
+          "section": "6.1 상대에게는 무엇인가",
+          "primaryConcepts": [
+            "상대의 자리"
+          ],
+          "secondaryConcepts": [
+            "옮겨 적기"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "타인의 발화를 관찰 자료로 사용하는 문제를 다루는 페이지다. 발화의 원래 맥락과 분석적 위치가 다르다는 점을 제시하고, 두 층위를 구분해 서술하려 한 시도를 기술한다.",
+          "aiAnalysisInputSha256": "b1b4579fc13e9873d3cc865cf77d97d1cb9ff7600205dfcd712c61817b6c6062",
+          "aiPublicGuideTopic": "그 사람의 말을 내 이야기로 쓰는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 말을 걸면 안 되는 자리",
+          "section": "6.1 상대에게는 무엇인가",
+          "primaryConcepts": [
+            "상대의 자리"
+          ],
+          "secondaryConcepts": [
+            "다시 없음"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재회가 없는 조건이 기록자에게 제약의 부재를 만든다는 점을 다루는 페이지다. 자기 규율 외에 통제 수단이 없다는 구조를 제시하고, 규칙 위반과 사후 삭제 사실을 밝힌다.",
+          "aiAnalysisInputSha256": "5492e9faf5c60c716449b0423be3a70d768e7441f39752ee09f7a20bc10ff62d",
+          "aiPublicGuideTopic": "다시 만나지 않는다는 것의 다른 면",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 말을 걸면 안 되는 자리",
+          "section": "6.2 말 걸기가 안전하지 않은 사람",
+          "primaryConcepts": [
+            "안전하지 않은 말 걸기"
+          ],
+          "secondaryConcepts": [
+            "먼저 말 걸기"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "낯선 이의 말 걸기가 갖는 위험의 비대칭을 다루는 페이지다. 시간·공간 조건에 따라 동일한 행위가 다르게 받아들여진다는 점을 제시하고, 회피 판단의 검증 불가능성을 밝힌다.",
+          "aiAnalysisInputSha256": "ab95e2f398b20cafb02a2d93ef0ebf0d7ab2a5eb83f923943d3fb0f6891bd47f",
+          "aiPublicGuideTopic": "누구에게나 같은 자리가 아니라는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 말을 걸면 안 되는 자리",
+          "section": "6.2 말 걸기가 안전하지 않은 사람",
+          "primaryConcepts": [
+            "안전하지 않은 말 걸기"
+          ],
+          "secondaryConcepts": [
+            "비가 만드는 자리"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "임시 공간에 대한 접근성이 균등하지 않다는 점을 다루는 페이지다. 물리적·사회적 진입 장벽을 제시하고, 수집된 표본이 사전에 선별되어 있다는 한계를 밝힌다.",
+          "aiAnalysisInputSha256": "f89254732b15fffa7bc6e63e4f9495e1b8fc4ca63a4a841d0a020450b8d5ae1d",
+          "aiPublicGuideTopic": "이 자리가 모두에게 열려 있지 않다는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 말을 걸면 안 되는 자리",
+          "section": "6.3 기억이 고쳐 쓰는 말",
+          "primaryConcepts": [
+            "기억이 고친 말"
+          ],
+          "secondaryConcepts": [
+            "기억나는 문장"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회상된 발화와 최초 기록의 차이를 다루는 페이지다. 변형된 사례의 수와 회상 빈도의 상관을 제시하고, 기록이 없을 경우 변형이 검출되지 않는다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "be73f9b82f3d45ca4abade312b1dbbc7b942e60a1733c656243ffa5912aef6eb",
+          "aiPublicGuideTopic": "외우고 있는 열한 개도 달라졌을까",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            19
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 말을 걸면 안 되는 자리",
+          "section": "6.3 기억이 고쳐 쓰는 말",
+          "primaryConcepts": [
+            "기억이 고친 말"
+          ],
+          "secondaryConcepts": [
+            "말의 밀도"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기억이 변형한 발화의 처리 방식을 다루는 페이지다. 기록에 의한 교정이 회상을 되돌리지 못한다는 점을 제시하고, 두 판본을 병기해 변형 방향 자체를 자료로 삼은 절차를 기술한다.",
+          "aiAnalysisInputSha256": "292570ff35e3d41dd09b6fad48fa6e710149f656b20a7bff3726fd2de675e1be",
+          "aiPublicGuideTopic": "고쳐 쓴 쪽을 지우지 않기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "7장 우산 아래 나눈 짧은 문장",
+          "section": "7.1 남은 문장들",
+          "primaryConcepts": [
+            "남은 것"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 종료 시점에서 결과를 정리하는 페이지다. 최초의 물음이 이후 수집을 가능하게 했다는 점과, 남은 것 가운데 기록으로 제시할 수 없는 항목이 있다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "9bcfaaa29f65063a391244786312f232368ff7b5dbfd49dd72e26518ebe7a957",
+          "aiPublicGuideTopic": "비가 만든 자리에서 얻은 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "rain-makes-a-place"
+          ]
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 우산 아래 나눈 짧은 문장",
+          "section": "7.1 남은 문장들",
+          "primaryConcepts": [
+            "남은 것"
+          ],
+          "secondaryConcepts": [
+            "말의 밀도",
+            "다시 없음"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "짧음에 대한 서술을 세 차례 수정한 경과를 정리하는 페이지다. 결핍·대체·형식이라는 세 관점의 차이를 제시하고, 마지막 관점을 채택한 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "bd1828cb69c571591410ce61183ee4b79596854628f3ccc2dcf5ba58eb478bea",
+          "aiPublicGuideTopic": "짧은 것이 부족하지 않다는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 우산 아래 나눈 짧은 문장",
+          "section": "7.1 남은 문장들",
+          "primaryConcepts": [
+            "남은 것"
+          ],
+          "secondaryConcepts": [
+            "상대의 자리",
+            "묻지 않기"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미질문 항목이 갖는 의미를 정리하는 페이지다. 답을 얻지 못한 관심 자체를 결과로 규정하고, 관찰의 목적이 정보 획득이 아니었다는 결론을 밝힌다.",
+          "aiAnalysisInputSha256": "6ef7986a3a6707bd827290e7d1c9282eb0d28c78b8f9750221315cd2a34e8d22",
+          "aiPublicGuideTopic": "묻지 않은 마흔 개에 대하여",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 우산 아래 나눈 짧은 문장",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "기억나는 문장"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 범위의 제약으로 남은 미해결 문제를 정리하는 페이지다. 상호성의 확인, 표본 규모, 지역 일반화의 세 항목을 구분하고 각각의 해소 가능성을 다르게 평가한다.",
+          "aiAnalysisInputSha256": "bdcc8107a1eaaef1347d391d0a004f1219eeaea21d4f795ea2a2ee4b37686d9e",
+          "aiPublicGuideTopic": "한 해로 답하지 못한 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 우산 아래 나눈 짧은 문장",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "안전하지 않은 말 걸기"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "방법의 이전 가능성을 검토하는 페이지다. 절차의 단순성과 함께 화자의 위치가 결과에 개입한다는 점을 제시하고, 발화가 없던 사례를 기록에서 제외한 선택이 결과를 규정했음을 밝힌다.",
+          "aiAnalysisInputSha256": "c3d1413023dfa2bc8939f2744dc314b41884b77922245c4e31f8e205e8283040",
+          "aiPublicGuideTopic": "이 기록을 다른 사람이 쓸 수 있는가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 우산 아래 나눈 짧은 문장",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "옮겨 적기",
+            "남은 것"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "차기 관측의 변경 항목을 정리하는 페이지다. 발화 없는 사례의 기록과 기상 조건 병기를 제시하고, 유지할 규칙과 수집량이 외부 조건에 의존한다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "2bd3ddb547ac9c28addf4e36fea27aee95039c973fff695548747d2c41bcd217",
+          "aiPublicGuideTopic": "다음 해에 바꿀 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            49
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 21,
       "title": "빛으로 읽는 우주: 분광과 거리 측정",
       "pdfPath": "pdfs/book-021.pdf",
