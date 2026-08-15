@@ -15,6 +15,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HexFormat;
 import java.util.List;
+import org.assertj.core.api.InstanceOfAssertFactories;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.springframework.boot.DefaultApplicationArguments;
@@ -245,15 +246,17 @@ class AiRouteEvaluationMetricsTest {
                 AiRouteEvaluationReport.create(
                         original, judgments(original, 4), DATA_POLICY_VERSION);
 
-        assertThat(report.reusableFor(result(
+        assertThat(report.reuseRejection(result(
                         MANIFEST_SHA, "다른-manifest-git", "evaluation-git", VERSIONS)))
-                .isTrue();
-        assertThat(report.reusableFor(result(
+                .isEmpty();
+        assertThat(report.reuseRejection(result(
                         "b".repeat(64), "manifest-git", "evaluation-git", VERSIONS)))
-                .isFalse();
-        assertThat(report.reusableFor(result(
+                .get(InstanceOfAssertFactories.STRING)
+                .contains("manifest SHA-256");
+        assertThat(report.reuseRejection(result(
                         MANIFEST_SHA, "manifest-git", "evaluation-git-v2", VERSIONS)))
-                .isFalse();
+                .get(InstanceOfAssertFactories.STRING)
+                .contains("평가 데이터 Git revision");
 
         List<AiRouteEvaluationResult.Versions> changedVersions = List.of(
                 new AiRouteEvaluationResult.Versions(
@@ -267,12 +270,13 @@ class AiRouteEvaluationMetricsTest {
                 new AiRouteEvaluationResult.Versions(
                         "embedding-v1", "route-v1", "candidate-v1", "prompt-v1", "schema-v2"));
         assertThat(changedVersions)
-                .allSatisfy(versions -> assertThat(report.reusableFor(result(
+                .allSatisfy(versions -> assertThat(report.reuseRejection(result(
                                         MANIFEST_SHA,
                                         "manifest-git",
                                         "evaluation-git",
                                         versions)))
-                                .isFalse());
+                                .get(InstanceOfAssertFactories.STRING)
+                                .contains("모델·정책 버전"));
     }
 
     @Test
@@ -359,7 +363,8 @@ class AiRouteEvaluationMetricsTest {
 
         assertThatThrownBy(() -> runner.run(new DefaultApplicationArguments()))
                 .isInstanceOf(IllegalStateException.class)
-                .hasMessageContaining("통과하지 못했습니다");
+                .hasMessageContaining("통과하지 못했습니다")
+                .hasMessageContaining("옮기거나 지우세요");
         assertThat(reader.readReport(properties.reportOutput()).metrics().passed()).isFalse();
     }
 
@@ -370,6 +375,7 @@ class AiRouteEvaluationMetricsTest {
         AiRouteEvaluationReport report = AiRouteEvaluationReport.create(
                 result, judgments(result, 4), DATA_POLICY_VERSION);
         AiRouteEvaluationProperties properties = finalizationProperties();
+        Files.write(properties.output(), objectMapper.writeValueAsBytes(result));
         Files.write(properties.reportOutput(), objectMapper.writeValueAsBytes(report));
         AiRouteSupportActivationService activationService =
                 mock(AiRouteSupportActivationService.class);

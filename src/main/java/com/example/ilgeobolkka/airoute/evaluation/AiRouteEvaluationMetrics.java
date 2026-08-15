@@ -63,12 +63,17 @@ public record AiRouteEvaluationMetrics(
                 || Double.compare(usefulRouteRate, ratio(usefulRoutes, totalCases)) != 0) {
             throw new IllegalArgumentException("평가 지표의 비율이 분자·분모와 다릅니다.");
         }
-        boolean expectedPass = atLeastPercent(coveredRequiredConcepts, totalRequiredConcepts, 80)
-                && atMostPercent(irrelevantOrDuplicatePages, totalRecommendedPages, 20)
-                && atMostPercent(prerequisiteViolations, totalPrerequisites, 5)
-                && atLeastPercent(usefulRoutes, totalCases, 80)
-                && p95DurationNanos <= TEN_SECONDS_NANOS
-                && overTwentySecondsCases == 0;
+        boolean expectedPass = evaluatePass(
+                coveredRequiredConcepts,
+                totalRequiredConcepts,
+                irrelevantOrDuplicatePages,
+                totalRecommendedPages,
+                prerequisiteViolations,
+                totalPrerequisites,
+                usefulRoutes,
+                totalCases,
+                p95DurationNanos,
+                overTwentySecondsCases);
         if (passed != expectedPass) {
             throw new IllegalArgumentException("평가 지표의 통과 여부가 정본 임계값과 다릅니다.");
         }
@@ -115,12 +120,17 @@ public record AiRouteEvaluationMetrics(
         int p95Index = Math.toIntExact((95L * durations.size() + 99L) / 100L) - 1;
         long p95DurationNanos = durations.get(p95Index);
         int totalCases = result.completedCases().size();
-        boolean passed = atLeastPercent(coveredRequiredConcepts, totalRequiredConcepts, 80)
-                && atMostPercent(irrelevantOrDuplicatePages, totalRecommendedPages, 20)
-                && atMostPercent(prerequisiteViolations, totalPrerequisites, 5)
-                && atLeastPercent(usefulRoutes, totalCases, 80)
-                && p95DurationNanos <= TEN_SECONDS_NANOS
-                && overTwentySecondsCases == 0;
+        boolean passed = evaluatePass(
+                coveredRequiredConcepts,
+                totalRequiredConcepts,
+                irrelevantOrDuplicatePages,
+                totalRecommendedPages,
+                prerequisiteViolations,
+                totalPrerequisites,
+                usefulRoutes,
+                totalCases,
+                p95DurationNanos,
+                overTwentySecondsCases);
 
         return new AiRouteEvaluationMetrics(
                 totalCases,
@@ -264,6 +274,26 @@ public record AiRouteEvaluationMetrics(
                 completed.routePages().size(),
                 prerequisiteViolations,
                 comparison.requiredPrerequisites().size());
+    }
+
+    /** 출시 정본의 임계값이다. 이 수식은 여기 한 곳에만 둔다. */
+    private static boolean evaluatePass(
+            int coveredRequiredConcepts,
+            int totalRequiredConcepts,
+            int irrelevantOrDuplicatePages,
+            int totalRecommendedPages,
+            int prerequisiteViolations,
+            int totalPrerequisites,
+            int usefulRoutes,
+            int totalCases,
+            long p95DurationNanos,
+            int overTwentySecondsCases) {
+        return atLeastPercent(coveredRequiredConcepts, totalRequiredConcepts, 80)
+                && atMostPercent(irrelevantOrDuplicatePages, totalRecommendedPages, 20)
+                && atMostPercent(prerequisiteViolations, totalPrerequisites, 5)
+                && atLeastPercent(usefulRoutes, totalCases, 80)
+                && p95DurationNanos <= TEN_SECONDS_NANOS
+                && overTwentySecondsCases == 0;
     }
 
     private static void requirePositiveDenominator(int denominator, String name) {

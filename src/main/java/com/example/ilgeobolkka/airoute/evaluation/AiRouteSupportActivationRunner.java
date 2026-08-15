@@ -35,7 +35,12 @@ final class AiRouteSupportActivationRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
+        AiRouteEvaluationResult result = reader.readResult(properties.output());
         AiRouteEvaluationReport report = reader.readReport(properties.reportOutput());
+        report.reuseRejection(result).ifPresent(reason -> {
+            throw new IllegalStateException(
+                    "Q02 평가 report를 현재 Q01 평가 결과에 재사용할 수 없습니다: " + reason);
+        });
         AiRouteSupportActivationService.Activation activation =
                 activationService.activate(report);
         log.info(

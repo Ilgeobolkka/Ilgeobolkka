@@ -56,7 +56,9 @@ final class AiRouteEvaluationFinalizationRunner implements ApplicationRunner {
                 artifact.sha256());
         if (!report.metrics().passed()) {
             throw new IllegalStateException(
-                    "AI 경로 평가가 전체 품질 기준을 통과하지 못했습니다: " + artifact.path());
+                    ("AI 경로 평가가 전체 품질 기준을 통과하지 못했습니다: %s. 미통과 report도 기록으로 남기므로"
+                                    + " finalize를 다시 실행하려면 이 파일을 먼저 옮기거나 지우세요.")
+                            .formatted(artifact.path()));
         }
     }
 }

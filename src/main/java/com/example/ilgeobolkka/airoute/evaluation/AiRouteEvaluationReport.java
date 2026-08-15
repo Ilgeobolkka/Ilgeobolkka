@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 /** Q01 원시 결과에서 비공개 입력을 제외하고 출시 판정과 재현 정보만 남긴 report다. */
@@ -83,18 +84,39 @@ public record AiRouteEvaluationReport(
                 caseJudgments);
     }
 
-    public boolean reusableFor(AiRouteEvaluationResult candidate) {
+    /** 재사용할 수 없으면 어떤 재현 정보가 달라졌는지 담은 사유를, 재사용할 수 있으면 빈 값을 준다. */
+    public Optional<String> reuseRejection(AiRouteEvaluationResult candidate) {
         if (candidate == null || !candidate.successful()) {
-            return false;
+            return Optional.of("현재 Q01 평가 결과가 모든 case를 ROUTE로 끝내지 못했습니다.");
         }
+        AiRouteEvaluationResult.Versions candidateVersions;
         try {
-            return contentVersion.equals(candidate.contentVersion())
-                    && manifestSha256.equals(candidate.manifestSha256())
-                    && evaluationGitRevision.equals(candidate.evaluationGitRevision())
-                    && versions.equals(AiRouteEvaluationMetrics.consistentVersions(candidate));
+            candidateVersions = AiRouteEvaluationMetrics.consistentVersions(candidate);
         } catch (IllegalArgumentException exception) {
-            return false;
+            return Optional.of(exception.getMessage());
         }
+        if (!contentVersion.equals(candidate.contentVersion())) {
+            return Optional.of(mismatch(
+                    "contentVersion", contentVersion, candidate.contentVersion()));
+        }
+        if (!manifestSha256.equals(candidate.manifestSha256())) {
+            return Optional.of(mismatch(
+                    "manifest SHA-256", manifestSha256, candidate.manifestSha256()));
+        }
+        if (!evaluationGitRevision.equals(candidate.evaluationGitRevision())) {
+            return Optional.of(mismatch(
+                    "평가 데이터 Git revision",
+                    evaluationGitRevision,
+                    candidate.evaluationGitRevision()));
+        }
+        if (!versions.equals(candidateVersions)) {
+            return Optional.of(mismatch("모델·정책 버전", versions, candidateVersions));
+        }
+        return Optional.empty();
+    }
+
+    private static String mismatch(String name, Object reportValue, Object candidateValue) {
+        return "%s이 다릅니다: report=%s, 현재=%s".formatted(name, reportValue, candidateValue);
     }
 
     List<Long> targetBookIds() {

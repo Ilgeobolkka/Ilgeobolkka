@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.example.testfixture.database.DedicatedTestDatabaseInitializer;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -15,11 +17,14 @@ import java.util.concurrent.Future;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+import org.springframework.boot.DefaultApplicationArguments;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
+import tools.jackson.databind.ObjectMapper;
 
 @SpringBootTest(properties = "openai.data-policy-version=policy-v1")
 @ActiveProfiles("test")
@@ -37,12 +42,19 @@ class AiRouteSupportActivationMySqlIntegrationTest {
 
     private final AiRouteSupportActivationService service;
     private final JdbcTemplate jdbcTemplate;
+    private final ObjectMapper objectMapper;
+
+    @TempDir
+    Path tempDirectory;
 
     @Autowired
     AiRouteSupportActivationMySqlIntegrationTest(
-            AiRouteSupportActivationService service, JdbcTemplate jdbcTemplate) {
+            AiRouteSupportActivationService service,
+            JdbcTemplate jdbcTemplate,
+            ObjectMapper objectMapper) {
         this.service = service;
         this.jdbcTemplate = jdbcTemplate;
+        this.objectMapper = objectMapper;
     }
 
     @BeforeEach
@@ -212,6 +224,78 @@ class AiRouteSupportActivationMySqlIntegrationTest {
         assertThat(supported(FIRST_BOOK_ID)).isFalse();
     }
 
+    @Test
+    void 현재_Q01_결과가_실패하거나_재현_정보가_바뀌면_DB_변경_0건으로_실패한다() throws Exception {
+        AiRouteEvaluationResult passingResult = result(
+                CONTENT_VERSION, "a".repeat(64), "evaluation-git", VERSIONS);
+        AiRouteEvaluationReport report = AiRouteEvaluationReport.create(
+                passingResult,
+                List.of(new AiRouteHumanJudgment("case-1", true)),
+                DATA_POLICY_VERSION);
+        List<ActivationScenario> scenarios = List.of(
+                new ActivationScenario("실패 결과", failedResult()),
+                new ActivationScenario(
+                        "manifest SHA",
+                        result(CONTENT_VERSION, "b".repeat(64), "evaluation-git", VERSIONS)),
+                new ActivationScenario(
+                        "evaluation revision",
+                        result(CONTENT_VERSION, "a".repeat(64), "evaluation-git-v2", VERSIONS)),
+                new ActivationScenario(
+                        "embedding model",
+                        result(
+                                CONTENT_VERSION,
+                                "a".repeat(64),
+                                "evaluation-git",
+                                versions("embedding-v2", "route-v1", "candidate-v1", "prompt-v1", "schema-v1"))),
+                new ActivationScenario(
+                        "route model",
+                        result(
+                                CONTENT_VERSION,
+                                "a".repeat(64),
+                                "evaluation-git",
+                                versions("embedding-v1", "route-v2", "candidate-v1", "prompt-v1", "schema-v1"))),
+                new ActivationScenario(
+                        "candidate policy",
+                        result(
+                                CONTENT_VERSION,
+                                "a".repeat(64),
+                                "evaluation-git",
+                                versions("embedding-v1", "route-v1", "candidate-v2", "prompt-v1", "schema-v1"))),
+                new ActivationScenario(
+                        "prompt version",
+                        result(
+                                CONTENT_VERSION,
+                                "a".repeat(64),
+                                "evaluation-git",
+                                versions("embedding-v1", "route-v1", "candidate-v1", "prompt-v2", "schema-v1"))),
+                new ActivationScenario(
+                        "schema version",
+                        result(
+                                CONTENT_VERSION,
+                                "a".repeat(64),
+                                "evaluation-git",
+                                versions("embedding-v1", "route-v1", "candidate-v1", "prompt-v1", "schema-v2"))));
+
+        AiRouteEvaluationProperties properties = new AiRouteEvaluationProperties();
+        properties.setOutput(tempDirectory.resolve("result.json"));
+        properties.setReportOutput(tempDirectory.resolve("report.json"));
+        Files.write(properties.reportOutput(), objectMapper.writeValueAsBytes(report));
+        AiRouteSupportActivationRunner runner = new AiRouteSupportActivationRunner(
+                properties, new AiRouteEvaluationArtifactReader(objectMapper), service);
+
+        for (ActivationScenario scenario : scenarios) {
+            cleanup();
+            insertBook(FIRST_BOOK_ID, CONTENT_VERSION, DATA_POLICY_VERSION, true, false, "인문");
+            Files.write(properties.output(), objectMapper.writeValueAsBytes(scenario.result()));
+
+            assertThatThrownBy(() -> runner.run(new DefaultApplicationArguments()))
+                    .as(scenario.name())
+                    .isInstanceOf(IllegalStateException.class)
+                    .hasMessageContaining("재사용");
+            assertThat(supported(FIRST_BOOK_ID)).as(scenario.name()).isFalse();
+        }
+    }
+
     private boolean activateAfter(CountDownLatch start, AiRouteEvaluationReport report)
             throws InterruptedException {
         start.await();
@@ -265,6 +349,70 @@ class AiRouteSupportActivationMySqlIntegrationTest {
         return AiRouteEvaluationReport.create(result, judgments, dataPolicyVersion);
     }
 
+    private AiRouteEvaluationResult result(
+            String contentVersion,
+            String manifestSha256,
+            String evaluationGitRevision,
+            AiRouteEvaluationResult.Versions versions) {
+        return new AiRouteEvaluationResult(
+                AiRouteEvaluationResult.Status.SUCCESS,
+                contentVersion,
+                manifestSha256,
+                "manifest-git",
+                evaluationGitRevision,
+                Instant.parse("2026-08-15T00:00:00Z"),
+                List.of(new AiRouteEvaluationResult.CompletedCase(
+                        "case-1",
+                        FIRST_BOOK_ID,
+                        Duration.ofSeconds(1).toNanos(),
+                        List.of(new AiRouteEvaluationResult.RoutePage(1, List.of("개념-1"))),
+                        new AiRouteEvaluationResult.Comparison(
+                                List.of("개념-1"),
+                                List.of(),
+                                List.of(new AiRouteEvaluationResult.Prerequisite(1, 2)),
+                                List.of(),
+                                List.of(),
+                                List.of(),
+                                List.of()),
+                        versions)),
+                new AiRouteCandidateThresholdEvaluator.Result(
+                        0.40,
+                        List.of(new AiRouteCandidateThresholdEvaluator.ThresholdResult(
+                                0.40, 1, 1, 1.0))),
+                null);
+    }
+
+    private AiRouteEvaluationResult failedResult() {
+        return new AiRouteEvaluationResult(
+                AiRouteEvaluationResult.Status.FAILED,
+                CONTENT_VERSION,
+                "a".repeat(64),
+                "manifest-git",
+                "evaluation-git",
+                Instant.parse("2026-08-15T00:00:00Z"),
+                List.of(),
+                null,
+                new AiRouteEvaluationResult.Failure(
+                        "case-1",
+                        AiRouteEvaluationResult.FailureReason.EXECUTION,
+                        null,
+                        Duration.ofSeconds(1).toNanos()));
+    }
+
+    private AiRouteEvaluationResult.Versions versions(
+            String embeddingModel,
+            String routeModel,
+            String candidatePolicyVersion,
+            String promptVersion,
+            String schemaVersion) {
+        return new AiRouteEvaluationResult.Versions(
+                embeddingModel,
+                routeModel,
+                candidatePolicyVersion,
+                promptVersion,
+                schemaVersion);
+    }
+
     private void insertBook(
             long bookId,
             String contentVersion,
@@ -315,4 +463,6 @@ class AiRouteSupportActivationMySqlIntegrationTest {
             jdbcTemplate.execute("ALTER TABLE book DROP CHECK " + FAILURE_CHECK);
         }
     }
+
+    private record ActivationScenario(String name, AiRouteEvaluationResult result) {}
 }
