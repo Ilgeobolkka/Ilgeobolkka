@@ -42394,6 +42394,1089 @@
           "duplicateGroupKeys": []
         }
       ]
+    },
+    {
+      "bookId": 96,
+      "title": "질문으로 여는 회의",
+      "pdfPath": "pdfs/book-096.pdf",
+      "pdfSha256": "2cdf0eafb58baa331306890c5f25553fa1ba5c54e350833fbc16abe91e5a19cd",
+      "totalPageCount": 50,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 회의가 닫히는 자리",
+          "section": "1.1 말이 줄어드는 회의",
+          "primaryConcepts": [
+            "닫힌 회의"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발언이 소수에게 집중되는 회의의 전형을 관찰로 제시하는 도입 페이지다. 진행상 문제가 드러나지 않아 인식되지 않는다는 점, 회의 밖에서 뒤늦게 의견이 나온다는 징후를 들고, 원인을 참여자의 성향이 아니라 질문 형식에서 찾는다는 관점을 밝힌다.",
+          "aiAnalysisInputSha256": "0dc9dd94adfd2d120869a2cef07aa7c363e88e2d6eac48e459d740e3c5beb279",
+          "aiPublicGuideTopic": "같은 사람만 말하게 되는 회의의 모양",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "questions-shape-the-room"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 회의가 닫히는 자리",
+          "section": "1.1 말이 줄어드는 회의",
+          "primaryConcepts": [
+            "닫힌 회의"
+          ],
+          "secondaryConcepts": [
+            "개방형 질문"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회의 중 침묵의 원인을 네 가지로 정리하고 그 가운데 진행 방식으로 개선 가능한 범위를 구분한다. 질문의 명확성과 발언 순서는 즉시 조정 가능한 반면 반영 경험과 결정 구조는 회의 밖의 문제라는 점을 들어 이 책의 범위를 한정한다.",
+          "aiAnalysisInputSha256": "3cf217394f03eeb1d8d2dde966f3a2afe17c3650c3e65558ad4657913c442a32",
+          "aiPublicGuideTopic": "회의에서 말하지 않는 이유",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 회의가 닫히는 자리",
+          "section": "1.2 질문의 두 종류",
+          "primaryConcepts": [
+            "개방형 질문"
+          ],
+          "secondaryConcepts": [
+            "닫힌 회의"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "질문 형식을 폐쇄형과 개방형으로 구분하고 각각이 유도하는 응답 양상을 설명한다. 폐쇄형에서 반대 표명에 이유 제시 부담이 따른다는 점과 침묵이 동의로 처리되는 문제를 지적하며, 개방형이 태도가 아니라 형식의 문제임을 밝힌다.",
+          "aiAnalysisInputSha256": "c78cc7c743f1813339c9f39a5f7719e2a97cd29ec283843305363bc1dca9db5b",
+          "aiPublicGuideTopic": "답의 폭을 정하는 것은 물음이다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 회의가 닫히는 자리",
+          "section": "1.2 질문의 두 종류",
+          "primaryConcepts": [
+            "개방형 질문"
+          ],
+          "secondaryConcepts": [
+            "질문 설계",
+            "닫힌 회의"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "폐쇄형 질문과 개방형 질문에서 파생되는 응답의 갈래 수를 부챗살로 비교한 도표다. 폐쇄형에서 부정 응답 경로만 가늘게 그려 표명 부담의 비대칭을 나타내고, 개방형에서는 갈래를 균등하게 그려 응답 부담이 고르다는 점을 보인다.",
+          "aiAnalysisInputSha256": "9972c3e114d0f1a066c9a7b3f3968d748d43f950571c4c77c4f681b87b69fa6b",
+          "aiPublicGuideTopic": "닫힌 질문과 열린 질문에서 갈라지는 답을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 회의가 닫히는 자리",
+          "section": "1.3 회의의 목적",
+          "primaryConcepts": [
+            "회의 목적 명시"
+          ],
+          "secondaryConcepts": [
+            "닫힌 회의"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회의 목적을 공지·의견 수렴·의사 결정으로 구분하고 각각에 맞는 진행 방식이 다르다는 점을 설명한다. 복수 목적이 혼재할 때 참여자가 발언 기준을 알 수 없다는 문제와, 진행자가 목적을 선언해 해소하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "2717e46bcfa42efb5e5a7adbd3fc78cdafee796db465b937e4a0eb2a1d5dc492",
+          "aiPublicGuideTopic": "이 회의가 무엇을 하러 모였는가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 회의가 닫히는 자리",
+          "section": "1.3 회의의 목적",
+          "primaryConcepts": [
+            "회의 목적 명시"
+          ],
+          "secondaryConcepts": [
+            "회의의 대체"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회의 목적을 문서로 사전 공유하는 방법과 그 효과를 다룬다. 안건 명칭이 아니라 결정하려는 내용을 기술해야 참여자가 사전 준비를 할 수 있다는 점, 그리고 도입부의 확인 시간이 줄어든다는 결과를 제시한다.",
+          "aiAnalysisInputSha256": "00b9c852db73bbe5059494541bec2a5f85e957f2740733009d529fad50df1ee7",
+          "aiPublicGuideTopic": "목적을 적어서 나눠 두기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 회의가 닫히는 자리",
+          "section": "1.4 누가 말하는가",
+          "primaryConcepts": [
+            "발언 분포"
+          ],
+          "secondaryConcepts": [
+            "닫힌 회의"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발언 분포를 실측해야 하는 이유를 주관적 인식의 한계로 설명한다. 이름별 발언 횟수를 표시하는 간단한 측정 방법과, 측정 결과가 없으면 원인 진단이 참여자 성향으로 귀결된다는 문제를 제시한다.",
+          "aiAnalysisInputSha256": "66f0bd199e08de1524c3d5b3f6df215fdc44343031cbc96445aad845055a3f40",
+          "aiPublicGuideTopic": "발언이 몰리는 것을 세어 보기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 회의가 닫히는 자리",
+          "section": "1.4 누가 말하는가",
+          "primaryConcepts": [
+            "발언 분포"
+          ],
+          "secondaryConcepts": [
+            "발언 기회 배분"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발언 분포가 고정되는 순환 구조를 설명한다. 비발언자에게 질문이 향하지 않아 기회가 줄고, 다발언자는 침묵을 메우려 해 틈이 사라진다는 양방향 기제를 제시하며 이후 장의 대응을 예고한다.",
+          "aiAnalysisInputSha256": "fd3bcf57d19098a51356bcc0cd412b83887eef442831000dfa99d9ac7a4aa446",
+          "aiPublicGuideTopic": "말하지 않는 자리가 굳는 방식",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "1장 회의가 닫히는 자리",
+          "section": "1.5 회의 아닌 것",
+          "primaryConcepts": [
+            "회의의 대체"
+          ],
+          "secondaryConcepts": [
+            "회의 목적 명시"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회의 개최 필요성 자체를 선행 판단으로 다룬다. 일방적 정보 전달은 문서로 대체 가능하다는 기준과, 상호작용이 필요한 사안만 회의로 남길 때 남은 회의의 밀도가 높아진다는 결과를 제시한다.",
+          "aiAnalysisInputSha256": "a8ba688e7965d592e3b05d67b32bc888d9c4c65f8f35139a36a2fc3dcffb4b67",
+          "aiPublicGuideTopic": "모이지 않아도 되는 자리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "1장 회의가 닫히는 자리",
+          "section": "1.5 회의 아닌 것",
+          "primaryConcepts": [
+            "회의의 대체"
+          ],
+          "secondaryConcepts": [
+            "발언 분포"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "참석 인원과 개인별 발언 가능 시간의 관계를 계산으로 보이고 인원 축소를 대안으로 제시한다. 제외 사유를 사전에 공유해야 한다는 조건과, 의견 제공자와 결정 영향권을 구분해 후자는 제외하지 않는다는 기준을 다룬다.",
+          "aiAnalysisInputSha256": "d83e531b291fd9bd5056b1b425176390a44058335811d216eda8d7f03eba495a",
+          "aiPublicGuideTopic": "참석자를 줄이는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 여는 질문 만들기",
+          "section": "2.1 무엇을 물을 것인가",
+          "primaryConcepts": [
+            "질문 설계"
+          ],
+          "secondaryConcepts": [
+            "개방형 질문",
+            "회의 목적 명시"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회의 질문을 사전에 작성하는 이유를 즉석 질문이 폐쇄형으로 기울기 쉽다는 점에서 찾는다. 준비할 질문의 적정 수와, 개방에서 수렴으로 향하는 배치 순서를 제시하며 이후 절의 구성을 예고한다.",
+          "aiAnalysisInputSha256": "0571b426eaa1628c0700f120fe03d970c2e7b51d89c58c031e43234982df3fa7",
+          "aiPublicGuideTopic": "회의 전에 질문을 미리 적어 두기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 여는 질문 만들기",
+          "section": "2.1 무엇을 물을 것인가",
+          "primaryConcepts": [
+            "질문 설계"
+          ],
+          "secondaryConcepts": [
+            "도입 질문"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "질문 소재를 미결 사항과 참여자의 경험에서 찾는 방법을 제시한다. 이미 결정된 사안을 묻는 질문이 형식적 응답을 유발한다는 점, 경험을 묻는 질문이 응답 부담이 낮고 판단 재료를 산출한다는 점, 두 요소를 결합하는 방식을 다룬다.",
+          "aiAnalysisInputSha256": "3e2fad1c4e1a719e690419e4c6bb4dcf2632002eee70472e21b48a6047a395c6",
+          "aiPublicGuideTopic": "질문을 만드는 두 가지 재료",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 여는 질문 만들기",
+          "section": "2.2 첫 질문",
+          "primaryConcepts": [
+            "도입 질문"
+          ],
+          "secondaryConcepts": [
+            "질문 설계",
+            "발언 분포"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도입 질문의 목적을 응답자 수 확보에 두고 요건을 제시한다. 사실 경험을 묻는 낮은 부담의 질문이 적합하고 입장 표명을 요구하는 질문은 뒤로 미룬다는 원칙, 그리고 순차 응답으로 전원의 첫 발언을 만드는 방법을 예고한다.",
+          "aiAnalysisInputSha256": "4d1bd9b481151ed1e658b58096739b074f4562011dc0af719ca897c8e8594fcf",
+          "aiPublicGuideTopic": "회의를 여는 첫 물음",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 여는 질문 만들기",
+          "section": "2.2 첫 질문",
+          "primaryConcepts": [
+            "도입 질문"
+          ],
+          "secondaryConcepts": [
+            "개방형 질문",
+            "질문 설계"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회의 질문을 개방·확산·수렴 세 단계로 배치한 구조를 깔때기로 나타낸 도표다. 각 단계의 예시 질문과 기대 효과를 나란히 적고, 결정 단계를 옅게 표시해 의견 수렴 회의와 의사 결정 회의를 구분한다.",
+          "aiAnalysisInputSha256": "ac31080eb532c712566e7e218cc3c763c4b178becf9f4611c1c6399e6c30b22e",
+          "aiPublicGuideTopic": "회의의 세 자리에 놓이는 질문을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 여는 질문 만들기",
+          "section": "2.3 좁히는 질문",
+          "primaryConcepts": [
+            "수렴 질문"
+          ],
+          "secondaryConcepts": [
+            "질문 설계",
+            "도입 질문"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확산 단계만 지속될 때 회의 결과가 남지 않는다는 문제를 지적하고 수렴 질문의 역할을 제시한다. 선택지를 좁히되 개방형 형식을 유지하는 표현과, 수렴 전에 논의 내용을 요약해 선택 대상을 공유하는 절차를 다룬다.",
+          "aiAnalysisInputSha256": "071ce110bb785d7ad471f1326542bb9ecb3ba64c944cf417d80af68c951c1615",
+          "aiPublicGuideTopic": "여러 갈래를 고를 수 있게 만들기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "2장 여는 질문 만들기",
+          "section": "2.3 좁히는 질문",
+          "primaryConcepts": [
+            "수렴 질문"
+          ],
+          "secondaryConcepts": [
+            "합의 확인"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수렴 과정에서 선택지를 과도하게 제한할 때 발생하는 폐쇄를 다룬다. 추가 대안을 요청하는 문구로 개방 상태를 유지하는 방법과, 실제 추가 제안이 드물어도 사후 불만이 감소한다는 효과를 제시한다.",
+          "aiAnalysisInputSha256": "a678b5d5664c3bcd0f660bba25ab21860f0bb7ac042d79c6e65bc299157b1b97",
+          "aiPublicGuideTopic": "좁히다가 닫아 버리는 자리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "2장 여는 질문 만들기",
+          "section": "2.4 물으면 안 되는 질문",
+          "primaryConcepts": [
+            "유도 질문"
+          ],
+          "secondaryConcepts": [
+            "개방형 질문",
+            "질문 설계"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "형식은 개방형이나 특정 답을 기대하는 유도 질문의 문제를 다룬다. 반복될 경우 참여자가 정답 탐색 태도를 학습한다는 점을 지적하고, 진행자의 의견은 질문으로 위장하지 않고 명시한 뒤 반론을 요청하는 방식을 제시한다.",
+          "aiAnalysisInputSha256": "6480d02b285c8fec126f8db6afaeacf9edab44c4c6854904bb284356a2ce0114",
+          "aiPublicGuideTopic": "답이 정해진 물음",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "2장 여는 질문 만들기",
+          "section": "2.4 물으면 안 되는 질문",
+          "primaryConcepts": [
+            "유도 질문"
+          ],
+          "secondaryConcepts": [
+            "권력 차이"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이유를 묻는 질문이 상황에 따라 추궁으로 작동해 정보 축소를 유발한다는 점을 다룬다. 동일한 정보를 얻기 위해 상황과 장애 요인을 묻는 형태로 전환하는 방법과, 질문 의도를 스스로 점검하는 절차를 제시한다.",
+          "aiAnalysisInputSha256": "5b289f2f719b0f2f494215c7a4ec6fd6b8b38322508cb7047abec8a741180201",
+          "aiPublicGuideTopic": "왜라고 묻는 자리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 기다리기",
+          "section": "3.1 침묵의 길이",
+          "primaryConcepts": [
+            "의도적 침묵"
+          ],
+          "secondaryConcepts": [
+            "개방형 질문",
+            "닫힌 회의"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "질문 이후의 침묵을 사고 시간으로 규정하고 진행자가 이를 견디지 못해 개입하는 문제를 다룬다. 응답 형성에 필요한 시간의 대략적 길이를 제시하고, 개입 대신 대기하는 것이 핵심 실천이라는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "b54266b493772b04dfd5f6e334a98c0fdbc93ddf3c424be0b9575a527584bb8e",
+          "aiPublicGuideTopic": "질문을 던진 뒤에 기다리는 시간",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 기다리기",
+          "section": "3.1 침묵의 길이",
+          "primaryConcepts": [
+            "의도적 침묵"
+          ],
+          "secondaryConcepts": [
+            "진행자의 절제"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "침묵을 명시적 절차로 선언해 어색함을 없애는 방법을 제시한다. 대기 시간을 공지하면 진행자와 참여자 모두의 부담이 줄어든다는 점, 기록 활동을 병행하면 침묵이 자연스러워진다는 보완, 그리고 시간 길이를 점진적으로 늘리는 운용을 다룬다.",
+          "aiAnalysisInputSha256": "9b0b8aec8f57993c7c34f38e62a0a4768384469dea582134afb7097b42dc4357",
+          "aiPublicGuideTopic": "기다리는 것을 알리는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 기다리기",
+          "section": "3.2 먼저 말하지 않기",
+          "primaryConcepts": [
+            "진행자의 절제"
+          ],
+          "secondaryConcepts": [
+            "의도적 침묵",
+            "발언 분포"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "진행자의 선발언이 논의 방향을 편향시킨다는 점을 지적하고 의견 표명 시점을 마지막으로 옮기는 방법을 제시한다. 침묵과 유예를 구분해 반드시 표명한다는 원칙과, 사전에 기록해 두는 보조 방법을 다룬다.",
+          "aiAnalysisInputSha256": "4207c96fc2e69ea768fd1a61278a79e1a4668fa7d4787748223148ef152100be",
+          "aiPublicGuideTopic": "진행자가 자기 의견을 뒤로 미루는 이유",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 기다리기",
+          "section": "3.2 먼저 말하지 않기",
+          "primaryConcepts": [
+            "진행자의 절제"
+          ],
+          "secondaryConcepts": [
+            "유도 질문"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "진행자의 비언어적 반응과 기록 행위가 평가 신호로 작동한다는 점을 다룬다. 반응과 기록을 발언자에 따라 다르게 하지 않는 원칙, 그리고 무의식적으로 발생하므로 사후 점검으로 교정한다는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "1e44ab0cb9705d782fc4535396b9f6c9fecd3ca5b6088c36c1126673a14aff78",
+          "aiPublicGuideTopic": "고개를 끄덕이는 것도 말이다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "3장 기다리기",
+          "section": "3.3 받아 적기",
+          "primaryConcepts": [
+            "발언 기록"
+          ],
+          "secondaryConcepts": [
+            "의도적 침묵",
+            "진행자의 절제"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발언을 공개된 자리에 기록할 때 생기는 효과를 다룬다. 중복 발언 감소와 논의 대상이 발언자에서 내용으로 분리되는 효과를 들고, 진행자의 요약이 아니라 발언자의 표현대로 기록해야 한다는 조건을 제시한다.",
+          "aiAnalysisInputSha256": "01c8f199452480e819cb6ab2359e5655e82895b67e798cada275e76f71458e5b",
+          "aiPublicGuideTopic": "나온 말을 보이게 적는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "3장 기다리기",
+          "section": "3.3 받아 적기",
+          "primaryConcepts": [
+            "발언 기록"
+          ],
+          "secondaryConcepts": [
+            "합의 확인"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록물을 회의 중에 활용하는 방법을 제시한다. 중간 요약이 늦은 참여자의 합류와 논점 복귀를 돕는다는 점, 적정 빈도, 그리고 종료 후 별도 정리 없이 원문 그대로 공유하는 방식을 다룬다.",
+          "aiAnalysisInputSha256": "e36a8063992cd0e4b81796928223eb140b7a23958472c3530fc23b506e6e5100",
+          "aiPublicGuideTopic": "적은 것을 회의 중에 쓰는 법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "3장 기다리기",
+          "section": "3.4 되묻기",
+          "primaryConcepts": [
+            "명료화"
+          ],
+          "secondaryConcepts": [
+            "발언 기록",
+            "개방형 질문"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "짧은 발언의 다의성이 실행 단계의 불일치로 이어진다는 문제를 다룬다. 확인 질문과 재진술로 의미를 고정하는 방법, 그 과정이 기록 문안을 만든다는 부수 효과, 그리고 소극적 발언자에게서 추가 발화를 이끌어 내는 효과를 제시한다.",
+          "aiAnalysisInputSha256": "2d68fad179a178667f57bce9b5fc02e7069cee6b33063c50739f6769a396c4e7",
+          "aiPublicGuideTopic": "무슨 뜻인지 확인하는 물음",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "3장 기다리기",
+          "section": "3.4 되묻기",
+          "primaryConcepts": [
+            "명료화"
+          ],
+          "secondaryConcepts": [
+            "수렴 질문"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인 질문의 과용이 발언 집중과 반박 위장이라는 두 문제를 낳는다는 점을 다룬다. 한 발언자에 대한 확인 횟수를 제한하는 기준과, 이견은 질문 형식으로 감싸지 않고 직접 표명하는 편이 낫다는 원칙을 제시한다.",
+          "aiAnalysisInputSha256": "db4eb29b3757c324e010dc22c0a27700e65722a98c255241583ed33d1e9b9d4e",
+          "aiPublicGuideTopic": "되묻지 말아야 할 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 말할 자리 만들기",
+          "section": "4.1 순서를 정하기",
+          "primaryConcepts": [
+            "발언 기회 배분"
+          ],
+          "secondaryConcepts": [
+            "발언 분포",
+            "닫힌 회의"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "순차 발언 방식의 목적을 발언량 균등화가 아니라 최초 발언 기회 제공에 둔다. 인당 시간 제한과 짧은 발언 허용, 그리고 패스 후 재차 질문하는 운용을 함께 제시한다.",
+          "aiAnalysisInputSha256": "53ba179d06380d905e629aa157aa4ac97851fe022bb883207d20e3fecb97b9c6",
+          "aiPublicGuideTopic": "한 바퀴 도는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 말할 자리 만들기",
+          "section": "4.1 순서를 정하기",
+          "primaryConcepts": [
+            "발언 기회 배분"
+          ],
+          "secondaryConcepts": [
+            "발언 분포",
+            "사전 작성"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 회의를 순차 발언 도입 전후로 비교해 좌석 배치도 위에 발언 횟수를 표시한 도표다. 총 발언량은 비슷하게 유지하면서 발언자 수와 분포가 달라지는 것을 점의 배치로 보인다.",
+          "aiAnalysisInputSha256": "39c4a70860a43a6a89885cd5c7b1045af3f887be3ff3104bef5c4b4197872521",
+          "aiPublicGuideTopic": "한 회의의 발언 분포를 자리 배치 위에 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 말할 자리 만들기",
+          "section": "4.2 적어서 말하기",
+          "primaryConcepts": [
+            "사전 작성"
+          ],
+          "secondaryConcepts": [
+            "발언 기회 배분",
+            "의도적 침묵"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "즉시 응답 방식이 선행 발언의 영향을 받는다는 문제를 지적하고 개별 서면 작성 시간을 두는 방법을 제시한다. 발언의 간결성과 부담 감소라는 효과, 특히 소극적 발언자에게 효과가 크다는 점, 그리고 작성물을 수거하지 않는 이유를 다룬다.",
+          "aiAnalysisInputSha256": "de3143fcb820b4288bf95ebbdb4d56d10d861dd58ecdebd857bf77a69d96bec4",
+          "aiPublicGuideTopic": "말하기 전에 각자 적는 시간",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 말할 자리 만들기",
+          "section": "4.2 적어서 말하기",
+          "primaryConcepts": [
+            "사전 작성"
+          ],
+          "secondaryConcepts": [
+            "발언 기록"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "서면 응답을 게시 방식으로 수집하는 대안을 제시한다. 순차 발언 대비 시간 절감과 익명성 확보라는 이점, 그리고 게시물만으로는 의미가 불충분하므로 분류와 짧은 설명 단계를 덧붙인다는 절차를 다룬다.",
+          "aiAnalysisInputSha256": "690bf3b79cd6520f1be20f928a69d3ac21002ef80f1a11bdd6c682798d640cc2",
+          "aiPublicGuideTopic": "적은 것을 모으는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "4장 말할 자리 만들기",
+          "section": "4.3 소수 의견",
+          "primaryConcepts": [
+            "반대 의견 보호"
+          ],
+          "secondaryConcepts": [
+            "발언 기회 배분",
+            "합의 확인"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다수 의견 형성 국면에서 이견 표명의 어려움을 다룬다. 진행자가 별도로 이견을 요청해 흐름을 거스르는 부담을 없애는 방법, 이견에 필요한 추가 대기 시간, 그리고 미채택 의견도 기록해야 후속 발언이 유지된다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "70741fcbad2391310c9ec39ecf70b9de27b9a12e6e99d72167e7bbfd8ac6c4f8",
+          "aiPublicGuideTopic": "다른 말이 나올 자리를 남기기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "4장 말할 자리 만들기",
+          "section": "4.3 소수 의견",
+          "primaryConcepts": [
+            "반대 의견 보호"
+          ],
+          "secondaryConcepts": [
+            "명료화"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이견 표명 이후의 진행 방식을 다룬다. 즉각적 설득이 방어와 대립을 유발한다는 점, 이해와 기록을 우선하고 판단을 참여자 전체로 넘기는 방법, 그리고 미채택 시 사유를 기록에 남기는 절차를 제시한다.",
+          "aiAnalysisInputSha256": "7e85246cbe76945be92490dc2e30ee234cdce133ecb9419a807732af4cf8e2f2",
+          "aiPublicGuideTopic": "반대가 나왔을 때 하는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "4장 말할 자리 만들기",
+          "section": "4.4 결론을 짓는 자리",
+          "primaryConcepts": [
+            "합의 확인"
+          ],
+          "secondaryConcepts": [
+            "수렴 질문",
+            "발언 기록"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회의 종료 시 결정 사항을 구술 확인하는 절차를 제시한다. 실행 항목·담당·기한이라는 세 요소와, 이 자리에서만 폐쇄형 질문이 적합하다는 점, 그리고 미결 사항과 재논의 시점을 함께 공지하는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "f4d8fb5c34bbe6ab9c7261101ad95b2ac90e8c2f08c62df5a51d3915539fb589",
+          "aiPublicGuideTopic": "무엇이 정해졌는지 소리 내어 확인하기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "4장 말할 자리 만들기",
+          "section": "4.4 결론을 짓는 자리",
+          "primaryConcepts": [
+            "합의 확인"
+          ],
+          "secondaryConcepts": [
+            "반대 의견 보호"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "종료 확인 시 침묵을 동의로 간주하지 않는 방법을 제시한다. 전원 순차 확인으로 각자의 상태를 표명하게 하는 절차, 미해결 우려는 기록과 일정으로 처리하는 방식, 그리고 회의 후 비공식 이견이 줄어드는 효과를 다룬다.",
+          "aiAnalysisInputSha256": "e086ae79bcfd8b994650aa2143abe51cce57091977f6571194bdb898b331d74d",
+          "aiPublicGuideTopic": "동의와 침묵을 구분하기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 어떤 회의",
+          "section": "5.1 늘 같은 사람만 말하던 회의",
+          "primaryConcepts": [
+            "사례 관찰"
+          ],
+          "secondaryConcepts": [
+            "발언 분포",
+            "닫힌 회의"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발언 분포 실측을 시작한 계기와 세 회차의 집계 결과를 보인다. 발언이 소수에게 집중되고 신규 구성원이 전혀 발언하지 않았다는 분포, 그리고 진행자 자신의 발언량이 예상과 달랐다는 발견을 제시한다.",
+          "aiAnalysisInputSha256": "eb9a0a70d445f9b991285858b4508dd84c096fd66d5059fab760831a8aacab56",
+          "aiPublicGuideTopic": "세 번의 회의를 세어 본 기록",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 어떤 회의",
+          "section": "5.1 늘 같은 사람만 말하던 회의",
+          "primaryConcepts": [
+            "사례 관찰"
+          ],
+          "secondaryConcepts": [
+            "발언 기회 배분",
+            "의도적 침묵"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "세 차례 회의의 참석자별 발언 횟수를 가로 막대로 나타낸 도표다. 회차별 구간을 색으로 구분하고 진행자 위치와 무발언자를 표시해, 집계 이전의 인상과 실제 분포의 차이를 보인다.",
+          "aiAnalysisInputSha256": "d6f0cbbb9a9cfb0235009c7047cab8bc89da1bdcf2fba0b91a5051c4884ba0e0",
+          "aiPublicGuideTopic": "세 번의 회의에서 사람별 발언 횟수를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 어떤 회의",
+          "section": "5.2 질문을 바꾸다",
+          "primaryConcepts": [
+            "질문 적용"
+          ],
+          "secondaryConcepts": [
+            "질문 설계",
+            "도입 질문"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "개선 조치 세 가지를 적용한 회차의 경과를 보인다. 사전 목적 공유, 경험 기반 도입 질문, 순차 발언이라는 조치의 구체적 내용과, 기존 무발언자 가운데 일부가 발언한 결과를 제시한다.",
+          "aiAnalysisInputSha256": "a68e54a5a52ff9eb45f7a27ed7b27711c33fa6c183071c1e96156d88122822dc",
+          "aiPublicGuideTopic": "네 번째 회의에서 바꾼 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "5장 어떤 회의",
+          "section": "5.2 질문을 바꾸다",
+          "primaryConcepts": [
+            "질문 적용"
+          ],
+          "secondaryConcepts": [
+            "의도적 침묵",
+            "진행자의 절제"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "진행 방식 변경에서 가장 부담이 큰 두 항목을 보인다. 침묵 대기를 위해 사용한 계수 방법과 실제 응답까지 걸린 시간, 그리고 진행자 의견을 마지막으로 미룬 결과 이견이 나온 사례를 제시한다.",
+          "aiAnalysisInputSha256": "7619d9d83502b35bf8702f8b399be4ed5170fb4e85806d5c274b7499663cf0b7",
+          "aiPublicGuideTopic": "가장 어려웠던 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "5장 어떤 회의",
+          "section": "5.3 세 번째 회의",
+          "primaryConcepts": [
+            "변화 관찰"
+          ],
+          "secondaryConcepts": [
+            "사례 관찰",
+            "발언 기회 배분"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "개선 조치 적용 이후 석 달 시점의 재측정 결과를 보인다. 총 발언량은 유사하나 발언자 수와 편차가 개선되었다는 점, 회의 시간이 단축되었다는 부수 결과, 그리고 회의 외 발언이 감소했으나 소멸하지는 않았다는 관찰을 제시한다.",
+          "aiAnalysisInputSha256": "c4d86a5c4699a21c5e27bb816e6ca98d1a68339a78c5d58d61bf7a8557d2d68b",
+          "aiPublicGuideTopic": "석 달 뒤의 분포",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "5장 어떤 회의",
+          "section": "5.3 세 번째 회의",
+          "primaryConcepts": [
+            "변화 관찰"
+          ],
+          "secondaryConcepts": [
+            "사전 작성",
+            "합의 확인"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "추가로 도입한 두 방법의 효과를 보인다. 서면 작성이 신규 구성원의 발언 부담을 낮췄다는 반응, 종료 순차 확인이 잠재 이견을 표면화해 결정이 지연된 사례, 그리고 그 지연을 사후 비용과 비교해 평가하는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "f194349f75b54cd1051726ff8bbf236cb8b82fe9719d3ef3bab5d607d93ceae9",
+          "aiPublicGuideTopic": "따로 도움이 된 두 가지",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "5장 어떤 회의",
+          "section": "5.4 남은 문제",
+          "primaryConcepts": [
+            "잔여 과제"
+          ],
+          "secondaryConcepts": [
+            "변화 관찰",
+            "권력 차이"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "진행 방식 개선으로 해소되지 않은 문제를 보인다. 조직 내 지위 차이가 이견 표명을 억제하는 현상, 발언 순서 조정의 부분적 효과, 그리고 원인이 회의 밖에 있어 완전 해소가 어렵다는 판단과 현재의 완화 조치를 제시한다.",
+          "aiAnalysisInputSha256": "a7ecd93a370c3f23b2f2a5c735be55bb4a7378d8a4125008eac13d3c2b4ce775",
+          "aiPublicGuideTopic": "방식으로 풀리지 않은 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 질문이 통하지 않을 때",
+          "section": "6.1 결정만 하면 되는 회의",
+          "primaryConcepts": [
+            "결정 회의"
+          ],
+          "secondaryConcepts": [
+            "회의 목적 명시",
+            "수렴 질문"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "의사 결정 목적의 회의에서 개방형 질문이 논의를 되돌린다는 문제를 다룬다. 선택과 일정에 초점을 둔 좁은 질문이 적합하다는 점, 이견 확인 절차는 유지한다는 예외, 그리고 목적이 다른 회의를 분리해야 하는 이유를 제시한다.",
+          "aiAnalysisInputSha256": "940111ad5ab851eef6057662af27de98b597f67c9bad6b410cd8ce49a558ced1",
+          "aiPublicGuideTopic": "열린 질문이 방해가 되는 자리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 질문이 통하지 않을 때",
+          "section": "6.1 결정만 하면 되는 회의",
+          "primaryConcepts": [
+            "결정 회의"
+          ],
+          "secondaryConcepts": [
+            "합의 확인"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시간 제약이 큰 회의에서 방법 적용의 한계를 다룬다. 절차 가운데 하나만 선택적으로 적용하는 대안, 의견 수렴을 회의 밖 서면으로 이전하는 방법, 그리고 시간 부족을 이유로 한 관행 유지가 선택임을 인식해야 한다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "77fda7f42dbed321225115f99a7b364330e80fb0c9a11e7c06b1dde4dc3aab2e",
+          "aiPublicGuideTopic": "시간이 없을 때",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 질문이 통하지 않을 때",
+          "section": "6.2 이미 정해진 회의",
+          "primaryConcepts": [
+            "형식적 회의"
+          ],
+          "secondaryConcepts": [
+            "회의의 대체",
+            "유도 질문"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결론이 확정된 사안에 대해 형식적으로 의견을 수렴하는 회의의 해악을 다룬다. 반영되지 않는 참여 경험이 이후 회의 전반의 참여를 저해한다는 점, 확정 사실을 명시하는 대응, 그리고 열려 있는 범위만 한정해 묻는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "15c054c5e91187e2082ad8ff6c649cab3635d283dcdfb6453de9beb883b5df2f",
+          "aiPublicGuideTopic": "묻지 않는 편이 나은 자리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 질문이 통하지 않을 때",
+          "section": "6.2 이미 정해진 회의",
+          "primaryConcepts": [
+            "형식적 회의"
+          ],
+          "secondaryConcepts": [
+            "회의 목적 명시"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수렴한 의견을 반영하지 못한 경우의 처리를 다룬다. 미반영 사유를 공지하지 않으면 형식적 회의와 동일한 효과가 발생한다는 점, 설명 여부가 이후 참여도를 결정한다는 점, 그리고 상세 설명이 어려운 경우의 최소 대응을 제시한다.",
+          "aiAnalysisInputSha256": "d2338af0173ac08a2316d19d47393f61f9bfff3feba4ea33362a7d5d7cab9236",
+          "aiPublicGuideTopic": "묻고 나서 반영하지 못할 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "6장 질문이 통하지 않을 때",
+          "section": "6.3 힘의 차이가 클 때",
+          "primaryConcepts": [
+            "권력 차이"
+          ],
+          "secondaryConcepts": [
+            "반대 의견 보호",
+            "발언 분포"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "참여자 간 권력 격차가 있을 때 질문 형식만으로 발언이 열리지 않는다는 한계를 다룬다. 발언의 평가 반영 우려가 응답을 제한한다는 구조, 익명 서면 수집과 자리 분리라는 두 가지 대응을 제시한다.",
+          "aiAnalysisInputSha256": "7a5ce4987d29431fe87ec28c2e6f5969e8037d4b56c1e40ed1b6015bc12bb706",
+          "aiPublicGuideTopic": "질문으로 메울 수 없는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "6장 질문이 통하지 않을 때",
+          "section": "6.3 힘의 차이가 클 때",
+          "primaryConcepts": [
+            "권력 차이"
+          ],
+          "secondaryConcepts": [
+            "진행자의 절제",
+            "잔여 과제"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "진행자가 결정 권한을 겸할 때 질문이 신호로 해석된다는 문제를 다룬다. 진행과 결정의 분리, 분리가 불가능할 때 발언 순서로 완화하는 방법, 그리고 이 방법들이 격차를 제거하지 못한다는 한계를 명시한다.",
+          "aiAnalysisInputSha256": "9b8d937cd01be13e857411e3353b01e034926731f8abb823ca695318138a1f9f",
+          "aiPublicGuideTopic": "진행자가 결정권을 함께 가질 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            47
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 결론: 회의는 질문의 모양을 따라간다",
+          "section": "7.1 회의는 질문의 모양을 따라간다",
+          "primaryConcepts": [
+            "종합"
+          ],
+          "secondaryConcepts": [
+            "닫힌 회의",
+            "개방형 질문"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체를 질문 형식과 응답 양상의 관계로 정리하는 결론 페이지다. 목적 명시·질문 배치·대기·발언 순서라는 네 조치를 요약하고, 가장 실행이 어려운 항목을 짚으며 방법이 적용되지 않는 세 경우를 함께 밝힌다.",
+          "aiAnalysisInputSha256": "a71fca562ab9af1608a37f262074e4038b01023c4686ae2d06077da6ede4ff0f",
+          "aiPublicGuideTopic": "질문 형식을 바꾼 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "questions-shape-the-room"
+          ]
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 결론: 회의는 질문의 모양을 따라간다",
+          "section": "7.1 회의는 질문의 모양을 따라간다",
+          "primaryConcepts": [
+            "종합"
+          ],
+          "secondaryConcepts": [
+            "의도적 침묵",
+            "합의 확인"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실행을 위한 최소 절차로 발언 횟수 측정, 결과에 따른 단일 조치 선택, 재측정을 제시한다. 조치별 적용 기준을 예시로 들고, 무발언자 유무를 확인하는 점검 질문을 마지막에 남긴다.",
+          "aiAnalysisInputSha256": "762440902aa402a4b28870cc5c31ea7f1dacc05241ddd16c7cab85233009682e",
+          "aiPublicGuideTopic": "다음 회의에서 해 볼 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            49
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
     }
   ]
 }

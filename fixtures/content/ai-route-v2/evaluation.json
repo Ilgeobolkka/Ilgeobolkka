@@ -3468,6 +3468,99 @@
         13,
         17
       ]
+    },
+    {
+      "caseId": "case-book-096",
+      "bookId": 96,
+      "purpose": "이 책을 소장하고 있는데, 우리 회의에서는 늘 같은 두세 사람만 말한다. 질문을 어떻게 던지고 얼마나 기다려야 다른 사람도 말하게 되는지 다음 회의에서 바로 해 볼 수 있을 만큼 익히고 싶다. 회의가 형식뿐인 경우까지는 지금 필요 없다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "닫힌 회의",
+        "개방형 질문",
+        "발언 분포",
+        "질문 설계",
+        "도입 질문",
+        "의도적 침묵",
+        "발언 기회 배분"
+      ],
+      "helpfulConcepts": [
+        "회의 목적 명시",
+        "수렴 질문",
+        "진행자의 절제",
+        "합의 확인"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 15
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 20
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 21
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 28
+        },
+        {
+          "beforePageNumber": 28,
+          "afterPageNumber": 29
+        }
+      ],
+      "irrelevantPageNumbers": [
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          49
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        8,
+        12,
+        14,
+        15,
+        20,
+        21,
+        28,
+        29
+      ],
+      "allowedAlternativePageNumbers": [
+        17,
+        23,
+        31
+      ]
     }
   ]
 }
