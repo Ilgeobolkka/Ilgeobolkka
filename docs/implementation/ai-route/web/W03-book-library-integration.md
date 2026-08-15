@@ -50,6 +50,7 @@
 3. 비로그인은 기능 설명은 볼 수 있지만 생성 link는 login return flow로 연결하고 API를 호출하지 않습니다.
 4. 로그인+지원 도서는 W01 route를, 미지원은 생성 control 없이 기존 상세를 유지합니다.
 5. library는 기존 책 entry를 중복 만들지 않고 같은 book 안에 저장 route·current 표시를 추가합니다.
+   대여·소장 없이 route만 저장한 책도 서재 위치를 생성하지 않고 한 항목으로 투영합니다.
 6. route 목적은 textContent/escaped output으로 표시하고 HTML attribute에 전문을 넣지 않습니다.
 7. 기존 소장 결제·library 마지막 page·viewer 링크 동작을 변경하지 않습니다.
 
@@ -57,6 +58,7 @@
 
 - feature on/off × 익명/로그인 × 지원/미지원 book의 링크·설명 matrix
 - library의 route 0·1·여러 개, current 있음/없음과 W02 URL
+- 대여·소장·서재 위치 없이 route만 저장한 책의 서재 진입과 1페이지 첫 진입
 - 다른 독자의 route가 book/library DTO에 없는지 확인
 - 기존 소장 결제 button·last page·viewer link 회귀
 - HTML 모양 purpose의 escaped 표시

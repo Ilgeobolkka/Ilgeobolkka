@@ -73,6 +73,11 @@ class LibraryApiMySqlIntegrationTest {
                 "2026-07-31 11:00:00.000000", "2026-08-30 11:00:00.000000");
         대여를_생성한다(418_303L, READER_ID, RENTED_BOOK_ID, 12,
                 "2026-07-27 10:00:00.123456", "2026-08-26 10:00:00.123456");
+        경로를_생성한다(418_501L, READER_ID, RENTED_BOOK_ID, "첫 번째 경로");
+        경로를_생성한다(418_502L, READER_ID, RENTED_BOOK_ID, "현재 경로");
+        경로를_생성한다(418_503L, READER_ID, SECOND_BOOK_ID, "경로만 저장한 책");
+        현재_경로로_지정한다(READER_ID, RENTED_BOOK_ID, 418_502L);
+        현재_경로로_지정한다(READER_ID, SECOND_BOOK_ID, 418_503L);
 
         mockMvc.perform(get("/api/library").with(authentication(인증된_독자(READER_ID))))
                 .andExpect(status().isOk())
@@ -89,6 +94,8 @@ class LibraryApiMySqlIntegrationTest {
                         .value("2026-08-26T10:00:00.123456Z"))
                 .andExpect(jsonPath("$.entries[0].activeRental").value(true))
                 .andExpect(jsonPath("$.entries[0].owned").value(false))
+                .andExpect(jsonPath("$.entries[0].routes").doesNotExist())
+                .andExpect(jsonPath("$.entries[0].currentRouteId").doesNotExist())
                 .andExpect(jsonPath("$.entries[0].rentals").doesNotExist());
     }
 
@@ -253,6 +260,34 @@ class LibraryApiMySqlIntegrationTest {
                 readerId,
                 bookId,
                 paymentId);
+    }
+
+    private void 경로를_생성한다(long routeId, long readerId, long bookId, String purpose) {
+        jdbcTemplate.update(
+                """
+                INSERT INTO ai_reading_route
+                    (id, generation_id, reader_id, book_id, content_version, normalized_purpose,
+                     request_type, max_additional_ink, depth, completed_at, feedback, feedback_at,
+                     created_at)
+                VALUES (?, ?, ?, ?, 'initial-v1', ?, 'INK_BUDGET', 3,
+                        NULL, NULL, NULL, NULL, '2026-08-01 00:00:00.000000')
+                """,
+                routeId,
+                new UUID(0L, routeId).toString(),
+                readerId,
+                bookId,
+                purpose);
+    }
+
+    private void 현재_경로로_지정한다(long readerId, long bookId, long routeId) {
+        jdbcTemplate.update(
+                """
+                INSERT INTO ai_route_current (reader_id, book_id, route_id, updated_at)
+                VALUES (?, ?, ?, '2026-08-01 00:00:00.000000')
+                """,
+                readerId,
+                bookId,
+                routeId);
     }
 
     private long 페이지_ID(long bookId, int pageNumber) {

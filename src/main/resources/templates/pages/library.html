@@ -53,6 +53,15 @@
                        hidden>
                         기간 제한이나 잉크 차감 없이 읽을 수 있습니다.
                     </p>
+                    <section class="border-top pt-3 mb-3"
+                             th:if="${aiRouteEnabled}"
+                             data-library-ai-routes
+                             hidden
+                             aria-label="저장한 AI 독서 경로">
+                        <h3 class="h6 mb-2">AI 독서 경로</h3>
+                        <ul class="list-unstyled d-grid gap-2 mb-0"
+                            data-library-route-list></ul>
+                    </section>
                     <a class="btn btn-primary mt-auto"
                        data-library-resume>
                         이어서 읽기
