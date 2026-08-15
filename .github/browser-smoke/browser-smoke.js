@@ -1496,9 +1496,70 @@ async function verifyLibraryPage() {
 
     clearCommonError();
     root.remove();
+
+    const aiRoot = createLibraryFixture({aiRouteEnabled: true});
+    fixtureContainer.append(aiRoot);
+    const htmlPurpose = "<img src=x onerror=alert('library')>";
+    await createLibraryPage(aiRoot, {
+        request: async () => ({
+            entries: [
+                {
+                    bookId: 21,
+                    coverImagePath: null,
+                    title: "경로만 저장한 도서",
+                    category: "인문",
+                    lastPageNumber: 1,
+                    rentedAt: null,
+                    expiresAt: null,
+                    activeRental: null,
+                    owned: false,
+                    routes: [{routeId: 31, purpose: htmlPurpose}],
+                    currentRouteId: 31
+                },
+                {
+                    ...libraryEntry(22, "여러 경로 도서", 4, false, true),
+                    routes: [
+                        {routeId: 42, purpose: "현재 경로"},
+                        {routeId: 41, purpose: "이전 경로"}
+                    ],
+                    currentRouteId: 42
+                }
+            ]
+        })
+    }).start();
+
+    const aiCards = aiRoot.querySelectorAll("[data-library-card]");
+    const routeOnlyCard = aiCards[0];
+    const routeOnlyLink = routeOnlyCard.querySelector("[data-library-route-list] a");
+    assert(aiCards.length === 2, "AI 경로가 있는 책도 책당 카드 하나로 렌더링해야 합니다.");
+    assert(
+        routeOnlyCard.querySelector("[data-library-access]").textContent === "AI 경로 저장",
+        "대여·소장 없이 경로만 저장한 책을 구분해야 합니다.");
+    assert(
+        routeOnlyCard.querySelector("[data-library-last-page]").textContent
+            === "아직 읽은 페이지가 없습니다.",
+        "경로만 저장한 책을 1페이지를 읽은 것처럼 표시하면 안 됩니다.");
+    assert(
+        routeOnlyCard.querySelector("[data-library-resume]").textContent === "첫 페이지 읽기"
+            && routeOnlyCard.querySelector("[data-library-resume]").getAttribute("href")
+                === "/books/21/viewer?page=1",
+        "경로만 저장한 책은 1페이지 첫 진입을 제공해야 합니다.");
+    assert(
+        routeOnlyLink.getAttribute("href") === "/ai-routes/31",
+        "저장 경로는 W02 상세 화면으로 연결해야 합니다.");
+    assert(
+        routeOnlyLink.textContent === htmlPurpose && routeOnlyLink.querySelector("img") === null,
+        "HTML 모양의 목적을 텍스트로만 표시해야 합니다.");
+    assert(
+        routeOnlyCard.querySelector("[data-library-route-list] .badge").textContent === "현재 경로",
+        "현재 경로를 배지로 표시해야 합니다.");
+    assert(
+        aiCards[1].querySelectorAll("[data-library-route-list] a").length === 2,
+        "한 책의 저장 경로 여러 개를 같은 카드에 표시해야 합니다.");
+    aiRoot.remove();
 }
 
-function createLibraryFixture() {
+function createLibraryFixture({aiRouteEnabled = false} = {}) {
     const root = document.createElement("section");
     root.innerHTML = `
         <p data-library-status></p>
@@ -1517,6 +1578,11 @@ function createLibraryFixture() {
                     <p data-library-expires-at></p>
                 </div>
                 <p data-library-owned hidden>소장 안내</p>
+                ${aiRouteEnabled ? `
+                    <section data-library-ai-routes hidden>
+                        <ul data-library-route-list></ul>
+                    </section>
+                ` : ""}
                 <a data-library-resume>이어서 읽기</a>
             </article>
         </template>
@@ -1991,9 +2057,63 @@ async function verifyBookDetailPage() {
         disabledRoot.querySelector("[data-ownership-summary]").textContent.includes("사용할 수 없습니다"),
         "결제 비활성 환경 안내를 표시해야 합니다.");
     disabledRoot.remove();
+
+    const supportedRoot = createBookDetailFixture({aiRouteEnabled: true});
+    fixtureContainer.append(supportedRoot);
+    const supportedRequests = [];
+    await initializeBookDetailPage(supportedRoot, {
+        request: async (url) => {
+            supportedRequests.push(url);
+            return bookDetailResponse(false, true);
+        },
+        loadPortOne
+    }).ready;
+    assert(
+        supportedRoot.querySelector("[data-ai-route-link]").getAttribute("href")
+            === "/books/17/ai-route",
+        "로그인한 사용자의 지원 도서는 W01 생성 화면으로 연결해야 합니다.");
+    assert(!supportedRoot.querySelector("[data-ai-route-entry]").hidden, "지원 도서의 AI 진입점을 표시해야 합니다.");
+    assert(!supportedRoot.querySelector("[data-ownership-purchase]").hidden, "AI 진입점이 기존 소장 결제 버튼을 숨기면 안 됩니다.");
+    assert(
+        supportedRequests.length === 1 && supportedRequests[0] === "/api/books/17",
+        "도서 상세 진입점은 AI 생성 API를 호출하면 안 됩니다.");
+    supportedRoot.remove();
+
+    const anonymousAiRoot = createBookDetailFixture({
+        authenticated: false,
+        aiRouteEnabled: true
+    });
+    fixtureContainer.append(anonymousAiRoot);
+    await initializeBookDetailPage(anonymousAiRoot, {
+        request: async () => bookDetailResponse(null, true),
+        loadPortOne
+    }).ready;
+    assert(
+        anonymousAiRoot.querySelector("[data-ai-route-link]").getAttribute("href")
+            === "/login?returnTo=%2Fbooks%2F17%2Fai-route",
+        "비로그인 지원 도서는 로그인 후 W01로 복귀해야 합니다.");
+    assert(
+        anonymousAiRoot.querySelector("[data-ai-route-description]").textContent.includes("로그인하면"),
+        "비로그인 사용자에게 AI 경로 기능을 설명해야 합니다.");
+    anonymousAiRoot.remove();
+
+    const unsupportedRoot = createBookDetailFixture({aiRouteEnabled: true});
+    fixtureContainer.append(unsupportedRoot);
+    await initializeBookDetailPage(unsupportedRoot, {
+        request: async () => bookDetailResponse(false, false),
+        loadPortOne
+    }).ready;
+    assert(
+        unsupportedRoot.querySelector("[data-ai-route-entry]") === null,
+        "미지원 도서에는 AI 생성 control을 남기면 안 됩니다.");
+    unsupportedRoot.remove();
 }
 
-function createBookDetailFixture({authenticated = true, paymentEnabled = true} = {}) {
+function createBookDetailFixture({
+    authenticated = true,
+    paymentEnabled = true,
+    aiRouteEnabled = false
+} = {}) {
     const root = document.createElement("section");
     root.dataset.bookId = "17";
     root.dataset.authenticated = String(authenticated);
@@ -2010,6 +2130,12 @@ function createBookDetailFixture({authenticated = true, paymentEnabled = true} =
             <span data-book-page-count></span>
             <span data-book-price></span>
             <a data-book-viewer-link>첫 페이지 읽기</a>
+            ${aiRouteEnabled ? `
+                <section data-ai-route-entry hidden>
+                    <p data-ai-route-description></p>
+                    <a data-ai-route-link></a>
+                </section>
+            ` : ""}
             <p data-ownership-summary></p>
             <button type="button" data-ownership-purchase disabled>소장 결제</button>
             <a href="/login" data-ownership-login hidden>로그인</a>
@@ -2020,8 +2146,8 @@ function createBookDetailFixture({authenticated = true, paymentEnabled = true} =
     return root;
 }
 
-function bookDetailResponse(owned) {
-    return {
+function bookDetailResponse(owned, aiRouteSupported) {
+    const response = {
         bookId: 17,
         category: "소설",
         coverImagePath: null,
@@ -2032,6 +2158,10 @@ function bookDetailResponse(owned) {
         bookPrice: 12000,
         owned
     };
+    if (aiRouteSupported !== undefined) {
+        response.aiRouteSupported = aiRouteSupported;
+    }
+    return response;
 }
 
 async function verifyOwnershipHistoryPage() {

@@ -33,6 +33,7 @@ public class CommonPageController {
         model.addAttribute("bookId", bookId);
         model.addAttribute("pageTitle", "도서 상세");
         model.addAttribute("ownershipPaymentEnabled", paymentEnabled());
+        model.addAttribute("aiRouteEnabled", aiRouteEnabled());
         return "pages/book-detail";
     }
 
@@ -43,8 +44,11 @@ public class CommonPageController {
     }
 
     @GetMapping("/login")
-    String login(Model model) {
+    String login(
+            @RequestParam(required = false) String returnTo,
+            Model model) {
         model.addAttribute("pageTitle", "로그인");
+        model.addAttribute("loginSuccessPath", loginSuccessPath(returnTo));
         return "pages/login";
     }
 
@@ -75,7 +79,19 @@ public class CommonPageController {
     @GetMapping("/library")
     String library(Model model) {
         model.addAttribute("pageTitle", "내 서재");
+        model.addAttribute("aiRouteEnabled", aiRouteEnabled());
         return "pages/library";
+    }
+
+    private String loginSuccessPath(String returnTo) {
+        if (returnTo != null && returnTo.matches("/books/[1-9][0-9]*/ai-route")) {
+            return returnTo;
+        }
+        return "/books";
+    }
+
+    private boolean aiRouteEnabled() {
+        return environment.getProperty("ai-route.enabled", Boolean.class, false);
     }
 
     private boolean paymentEnabled() {

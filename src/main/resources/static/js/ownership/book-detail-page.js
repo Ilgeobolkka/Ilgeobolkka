@@ -38,7 +38,7 @@ export function initializeBookDetailPage(root, dependencies = {}) {
         clearCommonError();
         try {
             const response = await request(`/api/books/${encodeURIComponent(bookId)}`);
-            validateBook(response, bookId);
+            validateBook(response, bookId, elements.aiRouteEntry !== null);
             book = response;
             renderBook();
             elements.loading.hidden = true;
@@ -72,6 +72,31 @@ export function initializeBookDetailPage(root, dependencies = {}) {
         }
 
         renderOwnershipState();
+        renderAiRouteState();
+    }
+
+    function renderAiRouteState() {
+        if (!elements.aiRouteEntry) {
+            return;
+        }
+        if (!book.aiRouteSupported) {
+            elements.aiRouteEntry.remove();
+            return;
+        }
+
+        const generationPath = `/books/${book.bookId}/ai-route`;
+        if (authenticated) {
+            elements.aiRouteDescription.textContent =
+                "읽고 싶은 목적에 맞춰 이 책의 추천 페이지 경로를 만들 수 있습니다.";
+            elements.aiRouteLink.href = generationPath;
+            elements.aiRouteLink.textContent = "AI 독서 경로 만들기";
+        } else {
+            elements.aiRouteDescription.textContent =
+                "로그인하면 읽고 싶은 목적에 맞춘 추천 페이지 경로를 만들 수 있습니다.";
+            elements.aiRouteLink.href = `/login?returnTo=${encodeURIComponent(generationPath)}`;
+            elements.aiRouteLink.textContent = "로그인 후 경로 만들기";
+        }
+        elements.aiRouteEntry.hidden = false;
     }
 
     function renderOwnershipState() {
@@ -300,8 +325,16 @@ function findElements(root) {
         purchase: requiredElement(root, "[data-ownership-purchase]"),
         login: requiredElement(root, "[data-ownership-login]"),
         paymentStatus: requiredElement(root, "[data-ownership-payment-status]"),
-        retry: requiredElement(root, "[data-ownership-payment-retry]")
+        retry: requiredElement(root, "[data-ownership-payment-retry]"),
+        aiRouteEntry: root.querySelector("[data-ai-route-entry]"),
+        aiRouteDescription: optionalChild(root, "[data-ai-route-entry]", "[data-ai-route-description]"),
+        aiRouteLink: optionalChild(root, "[data-ai-route-entry]", "[data-ai-route-link]")
     };
+}
+
+function optionalChild(root, parentSelector, childSelector) {
+    const parent = root.querySelector(parentSelector);
+    return parent ? requiredElement(parent, childSelector) : null;
 }
 
 function requiredElement(root, selector) {
@@ -312,7 +345,7 @@ function requiredElement(root, selector) {
     return element;
 }
 
-function validateBook(book, expectedBookId) {
+function validateBook(book, expectedBookId, aiRouteEnabled) {
     const validIdentity = Number.isInteger(book?.bookId) && book.bookId === expectedBookId;
     const validBookText = typeof book?.category === "string"
         && typeof book.title === "string"
@@ -322,8 +355,12 @@ function validateBook(book, expectedBookId) {
         && Number.isInteger(book.bookPrice) && book.bookPrice > 0;
     const validCover = book?.coverImagePath === null || typeof book.coverImagePath === "string";
     const validOwnership = book?.owned === null || typeof book.owned === "boolean";
+    const validAiRouteSupport = aiRouteEnabled
+        ? typeof book?.aiRouteSupported === "boolean"
+        : book?.aiRouteSupported === undefined;
 
-    if (!validIdentity || !validBookText || !validBookNumbers || !validCover || !validOwnership) {
+    if (!validIdentity || !validBookText || !validBookNumbers || !validCover
+            || !validOwnership || !validAiRouteSupport) {
         throw new Error("도서 상세 API 응답 형식이 올바르지 않습니다.");
     }
 }

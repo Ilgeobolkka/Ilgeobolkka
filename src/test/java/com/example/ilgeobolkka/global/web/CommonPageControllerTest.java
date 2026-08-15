@@ -140,6 +140,38 @@ class CommonPageControllerTest {
     }
 
     @Test
+    void 로그인은_AI_경로_복귀만_허용하고_그_밖의_복귀값은_도서_목록으로_제한한다()
+            throws Exception {
+        String aiRouteLoginHtml = mockMvc.perform(
+                        get("/login").param("returnTo", "/books/17/ai-route"))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+
+        assertTrue(aiRouteLoginHtml.contains(
+                "data-success-path=\"/books/17/ai-route\""));
+
+        for (String rejectedReturnTo : new String[] {
+            "https://example.com/steal",
+            "//example.com/steal",
+            "/ink",
+            "/books/0/ai-route",
+            "/books/17/ai-route/extra"
+        }) {
+            String loginHtml = mockMvc.perform(
+                            get("/login").param("returnTo", rejectedReturnTo))
+                    .andExpect(status().isOk())
+                    .andReturn()
+                    .getResponse()
+                    .getContentAsString();
+
+            assertTrue(loginHtml.contains("data-success-path=\"/books\""));
+            assertFalse(loginHtml.contains("data-success-path=\"" + rejectedReturnTo + "\""));
+        }
+    }
+
+    @Test
     void 도서_목록은_검색과_빈_결과와_페이지_이동_영역을_렌더링한다() throws Exception {
         MvcResult result = mockMvc.perform(get("/books"))
                 .andExpect(status().isOk())
@@ -287,6 +319,7 @@ class CommonPageControllerTest {
         assertTrue(html.contains("대여에 사용한 잉크는 도서 원가에서 공제되지 않으며"));
         assertTrue(html.contains("소장 결제는 잉크 잔액과 잉크 내역을 변경하지 않습니다."));
         assertTrue(html.contains("/js/ownership/book-detail.js"));
+        assertFalse(html.contains("data-ai-route-entry"));
         assertFalse(html.contains("도서 상세 화면을 준비하고 있습니다."));
         assertFalse(html.contains("browser-sdk.esm.js"));
     }
@@ -336,6 +369,12 @@ class CommonPageControllerTest {
         assertTrue(html.contains("data-library-empty"));
         assertTrue(html.contains("data-library-card-template"));
         assertTrue(html.contains("data-library-resume"));
+        assertFalse(html.contains("data-library-ai-routes"));
+        assertTrue(html.contains(
+                "대여하거나 온라인 소장한 도서를 마지막으로 읽은 페이지부터 이어보세요."));
+        assertTrue(html.contains(
+                "도서의 한 페이지를 읽거나 온라인 소장하면 여기에 추가됩니다."));
+        assertFalse(html.contains("AI 독서 경로를 저장"));
         assertTrue(html.contains("aria-live=\"polite\""));
         assertTrue(html.contains("/js/library/library.js"));
         assertFalse(html.contains("내 서재 화면을 준비하고 있습니다."));

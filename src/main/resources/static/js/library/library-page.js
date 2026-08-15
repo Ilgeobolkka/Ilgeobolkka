@@ -12,7 +12,7 @@ export function createLibraryPage(root, dependencies = {}) {
 
         try {
             const response = await request("/api/library");
-            validateResponse(response);
+            validateResponse(response, elements.aiRouteEnabled);
             renderEntries(response.entries);
             return response;
         } catch (error) {
@@ -53,12 +53,21 @@ function createCard(entry, template) {
     const expiresAt = card.querySelector("[data-library-expires-at]");
     const owned = card.querySelector("[data-library-owned]");
     const resume = card.querySelector("[data-library-resume]");
+    const aiRoutes = card.querySelector("[data-library-ai-routes]");
+    const routeOnly = isRouteOnlyEntry(entry);
 
     title.textContent = entry.title;
     category.textContent = entry.category;
-    lastPage.textContent = `마지막으로 읽은 페이지: ${entry.lastPageNumber}쪽`;
+    lastPage.textContent = routeOnly
+        ? "아직 읽은 페이지가 없습니다."
+        : `마지막으로 읽은 페이지: ${entry.lastPageNumber}쪽`;
     resume.href = `/books/${entry.bookId}/viewer?page=${entry.lastPageNumber}`;
-    resume.setAttribute("aria-label", `${entry.title} ${entry.lastPageNumber}페이지부터 이어서 읽기`);
+    resume.textContent = routeOnly ? "첫 페이지 읽기" : "이어서 읽기";
+    resume.setAttribute(
+        "aria-label",
+        routeOnly
+            ? `${entry.title} 첫 페이지 읽기`
+            : `${entry.title} ${entry.lastPageNumber}페이지부터 이어서 읽기`);
 
     if (entry.coverImagePath) {
         cover.src = entry.coverImagePath;
@@ -73,6 +82,10 @@ function createCard(entry, template) {
         access.classList.add("text-bg-primary");
         rental.hidden = true;
         owned.hidden = false;
+    } else if (routeOnly) {
+        access.textContent = "AI 경로 저장";
+        access.classList.add("text-bg-info");
+        rental.hidden = true;
     } else {
         access.textContent = entry.activeRental ? "대여 중" : "대여 만료";
         access.classList.add(entry.activeRental ? "text-bg-success" : "text-bg-secondary");
@@ -80,15 +93,43 @@ function createCard(entry, template) {
         expiresAt.textContent = `대여 만료: ${formatInstant(entry.expiresAt)}`;
     }
 
+    renderAiRoutes(entry, aiRoutes);
+
     return card;
 }
 
+function renderAiRoutes(entry, section) {
+    if (!section || entry.routes.length === 0) {
+        return;
+    }
+
+    const list = requiredElement(section, "[data-library-route-list]");
+    for (const route of entry.routes) {
+        const item = document.createElement("li");
+        const link = document.createElement("a");
+        link.href = `/ai-routes/${route.routeId}`;
+        link.textContent = route.purpose;
+        item.append(link);
+
+        if (route.routeId === entry.currentRouteId) {
+            const badge = document.createElement("span");
+            badge.className = "badge text-bg-primary ms-2";
+            badge.textContent = "현재 경로";
+            item.append(badge);
+        }
+        list.append(item);
+    }
+    section.hidden = false;
+}
+
 function findElements(root) {
+    const template = requiredElement(root, "[data-library-card-template]");
     return {
         status: requiredElement(root, "[data-library-status]"),
         list: requiredElement(root, "[data-library-list]"),
         empty: requiredElement(root, "[data-library-empty]"),
-        template: requiredElement(root, "[data-library-card-template]")
+        template,
+        aiRouteEnabled: template.content.querySelector("[data-library-ai-routes]") !== null
     };
 }
 
@@ -100,26 +141,52 @@ function requiredElement(root, selector) {
     return element;
 }
 
-function validateResponse(response) {
+function validateResponse(response, aiRouteEnabled) {
     if (!response || !Array.isArray(response.entries)) {
         throw new Error("서재 API 응답 형식이 올바르지 않습니다.");
     }
-    response.entries.forEach(validateEntry);
+    response.entries.forEach((entry) => validateEntry(entry, aiRouteEnabled));
 }
 
-function validateEntry(entry) {
+function validateEntry(entry, aiRouteEnabled) {
     const hasIdentity = Number.isInteger(entry?.bookId) && entry.bookId > 0
         && Number.isInteger(entry.lastPageNumber) && entry.lastPageNumber > 0;
     const hasBookText = typeof entry?.title === "string"
         && typeof entry.category === "string";
-    const hasAccess = typeof entry?.owned === "boolean"
-        && (entry.activeRental === null || typeof entry.activeRental === "boolean");
-    const hasRental = entry.owned
+    const hasAiRoutes = aiRouteEnabled
+        ? validAiRoutes(entry)
+        : entry.routes === undefined && entry.currentRouteId === undefined;
+    const routeOnly = aiRouteEnabled && isRouteOnlyEntry(entry);
+    const hasAccess = typeof entry?.owned === "boolean" && (entry.owned
         ? entry.rentedAt === null && entry.expiresAt === null && entry.activeRental === null
-        : isInstant(entry.rentedAt) && isInstant(entry.expiresAt);
-    if (!hasIdentity || !hasBookText || !hasAccess || !hasRental) {
+        : routeOnly || (isInstant(entry.rentedAt)
+            && isInstant(entry.expiresAt)
+            && typeof entry.activeRental === "boolean"));
+    if (!hasIdentity || !hasBookText || !hasAccess || !hasAiRoutes) {
         throw new Error("서재 API 응답 형식이 올바르지 않습니다.");
     }
+}
+
+function isRouteOnlyEntry(entry) {
+    return entry?.owned === false
+        && entry.rentedAt === null
+        && entry.expiresAt === null
+        && entry.activeRental === null
+        && Array.isArray(entry.routes)
+        && entry.routes.length > 0;
+}
+
+function validAiRoutes(entry) {
+    if (!Array.isArray(entry.routes)) {
+        return false;
+    }
+    const validRoutes = entry.routes.every((route) =>
+        Number.isInteger(route?.routeId) && route.routeId > 0
+        && typeof route.purpose === "string");
+    const validCurrentRoute = entry.currentRouteId === undefined
+        || (Number.isInteger(entry.currentRouteId)
+            && entry.routes.some((route) => route.routeId === entry.currentRouteId));
+    return validRoutes && validCurrentRoute;
 }
 
 function isInstant(value) {
