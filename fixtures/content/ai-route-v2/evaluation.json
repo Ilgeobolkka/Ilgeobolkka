@@ -4349,6 +4349,128 @@
         24,
         30
       ]
+    },
+    {
+      "caseId": "case-book-080",
+      "bookId": 80,
+      "purpose": "이 책을 소장하고 있는데, 올리기 전 점검부터 나눠 여는 방법과 올린 뒤 관찰까지 배포 절차 전체를 깊이 정리하고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "배포",
+        "되돌리기",
+        "배포 전 점검",
+        "단계적 배포",
+        "배포 상태 확인",
+        "배포 후 관찰"
+      ],
+      "helpfulConcepts": [
+        "변경 범위",
+        "점검표 구성",
+        "부분 공개",
+        "병행 운영",
+        "관찰 기간"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 3
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 11
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 17
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 18
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 23
+        },
+        {
+          "beforePageNumber": 23,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 23,
+          "afterPageNumber": 30
+        },
+        {
+          "beforePageNumber": 30,
+          "afterPageNumber": 31
+        },
+        {
+          "beforePageNumber": 30,
+          "afterPageNumber": 32
+        }
+      ],
+      "irrelevantPageNumbers": [
+        38,
+        39,
+        40,
+        42,
+        43
+      ],
+      "duplicatePageGroups": [
+        [
+          21,
+          45
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        16,
+        17,
+        18,
+        23,
+        24,
+        30,
+        31,
+        32
+      ],
+      "allowedAlternativePageNumbers": [
+        5,
+        6,
+        13,
+        14,
+        19,
+        25,
+        27,
+        33
+      ]
     }
   ]
 }

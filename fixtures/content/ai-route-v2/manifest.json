@@ -53955,6 +53955,1103 @@
           "duplicateGroupKeys": []
         }
       ]
+    },
+    {
+      "bookId": 80,
+      "title": "배포 절차와 단계적 릴리스",
+      "pdfPath": "pdfs/book-080.pdf",
+      "pdfSha256": "230840ac91880453038b001ad7456b4156567118ce639767936c557c0ee461dc",
+      "totalPageCount": 50,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "배포 절차와 단계적 공개를 다루는 장과 절의 구성",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 배포라는 일",
+          "section": "1.1 배포의 정의",
+          "primaryConcepts": [
+            "배포"
+          ],
+          "secondaryConcepts": [
+            "변경"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배포를 산출물이 실사용 환경에 도달하는 시점으로 정의하고 개발 중 변경과의 위험 성격 차이를 제시한다. 이 책의 목표를 무결점이 아닌 조기 감지와 복구 가능성으로 규정한다.",
+          "aiAnalysisInputSha256": "5de23831a1a3bda01ff5699a9a34a9bf5c6b4f2b617b1e06c52a57fc68eb15da",
+          "aiPublicGuideTopic": "만든 것을 실제로 쓰이게 하는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 배포라는 일",
+          "section": "1.2 무엇이 달라지는가",
+          "primaryConcepts": [
+            "변경 범위"
+          ],
+          "secondaryConcepts": [
+            "배포"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배포 변경 대상을 코드·설정·저장 구조·외부 약속으로 분류하고 각 항목의 복구 난이도 차이를 제시한다. 변경 유형 식별이 절차 선택의 선행 조건임을 밝힌다.",
+          "aiAnalysisInputSha256": "6f8a8aa8b47bdc24883336bba229ed06c99e03bdfd782cb322a3e0d14637c11c",
+          "aiPublicGuideTopic": "한 번의 배포가 바꾸는 것들",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 배포라는 일",
+          "section": "1.3 되돌릴 수 있는가",
+          "primaryConcepts": [
+            "되돌리기"
+          ],
+          "secondaryConcepts": [
+            "배포",
+            "변경 범위"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복구 가능성을 배포 절차 강도의 결정 요인으로 규정하고 비가역 요소를 자료 변형·외부 발신·삭제로 특정한다. 비가역 부분의 분리와 후순위 배치를 기본 전략으로 제시한다.",
+          "aiAnalysisInputSha256": "59be565f98ccdbae86d92637b0758683a8ea02d3845cf99eac4c5e3ecb95ffc2",
+          "aiPublicGuideTopic": "복구 가능성이 절차를 정한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 배포라는 일",
+          "section": "1.4 배포의 단위",
+          "primaryConcepts": [
+            "배포 단위"
+          ],
+          "secondaryConcepts": [
+            "변경 범위"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배포 단위 결정을 준비 비용과 원인 추적·복구 범위의 교환으로 제시하고 복구 단위를 묶음 기준으로 제안한다. 무관한 변경의 동시 배포가 이득이 없음을 결론으로 밝힌다.",
+          "aiAnalysisInputSha256": "b745c3f11a1fec6eba0ab5822a13c4eb4a611d610ea1e7e8c9ab6a3eed563057",
+          "aiPublicGuideTopic": "한 번에 올리는 묶음의 크기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            3
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 배포라는 일",
+          "section": "1.5 자주 배포하기",
+          "primaryConcepts": [
+            "배포 빈도"
+          ],
+          "secondaryConcepts": [
+            "배포 단위"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배포 빈도 증가가 변경 크기 축소를 통해 위험을 낮추는 구조를 설명하고 절차 경량화와의 상호 의존을 제시한다. 확인 생략이 아닌 확인 가속이 전제임을 밝힌다.",
+          "aiAnalysisInputSha256": "6f32746553ebdfec8cc46b2e1497a270b99464ff60b1a51dc5188b13c0f90ae3",
+          "aiPublicGuideTopic": "작게 자주 올릴 때 달라지는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 배포라는 일",
+          "section": "1.6 한 번의 배포가 지나는 단계",
+          "primaryConcepts": [
+            "변경 범위"
+          ],
+          "secondaryConcepts": [
+            "배포 단위",
+            "되돌리기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배포 흐름을 점검·게시·부분 공개·전체 공개·관찰의 다섯 단계로 배열하고 복구 가능 구간을 띠로 표시한다. 각 단계의 관찰 대상과 중단 빈도가 높은 지점을 함께 나타낸다.",
+          "aiAnalysisInputSha256": "a8de59600e7006e46cafba9d8a28f8cc1bf0176d98f3426cdd5a3971e6272eb6",
+          "aiPublicGuideTopic": "준비에서 관찰까지의 흐름",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            3
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 배포라는 일",
+          "section": "1.7 큰 배포의 위험",
+          "primaryConcepts": [
+            "대형 배포"
+          ],
+          "secondaryConcepts": [
+            "배포 빈도",
+            "배포 단위"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대형 배포의 위험을 확인 부담·원인 후보 증가·복구 불가 요소 혼입으로 정리한다. 발생 원인을 배포 절차의 무게에서 찾고 경량화를 근본 대응으로 제시한다.",
+          "aiAnalysisInputSha256": "be04d4c3c66f220e7c8e2941244c1bc4aebb24464d13592e70cf45ddd2b70f85",
+          "aiPublicGuideTopic": "오래 모았다가 한 번에 올릴 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 배포 전 점검",
+          "section": "2.1 점검 항목의 뜻",
+          "primaryConcepts": [
+            "배포 전 점검"
+          ],
+          "secondaryConcepts": [
+            "되돌리기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배포 전 점검을 반복 확인 항목의 명시적 목록으로 정의하고 긴급 상황의 기억 의존을 대체하는 역할을 밝힌다. 항목의 출처를 실제 경험한 결함으로 한정하는 기준을 제시한다.",
+          "aiAnalysisInputSha256": "dfd8ad3d849041d419fa5ef254972b49244e3c509004289ad273e1c880aa830e",
+          "aiPublicGuideTopic": "올리기 전에 확인하는 목록",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 배포 전 점검",
+          "section": "2.2 무엇을 점검표에 넣을까",
+          "primaryConcepts": [
+            "점검표 구성"
+          ],
+          "secondaryConcepts": [
+            "배포 전 점검",
+            "변경 범위"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "점검 항목 선정 기준을 누락 시 손해와 누락 가능성으로 정하고 대표 항목 네 가지를 제시한다. 자동 확인과 중복되는 항목의 제외를 통해 목록의 실효성을 유지하는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "e7f78c7616ad0663e6dc610e6971db94b046d6d50f5e8b28ffe3ba257d0ad463",
+          "aiPublicGuideTopic": "목록에 담을 항목을 고르는 기준",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 배포 전 점검",
+          "section": "2.3 사람이 하는 확인과 기계가 하는 확인",
+          "primaryConcepts": [
+            "확인 주체"
+          ],
+          "secondaryConcepts": [
+            "점검표 구성"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인 주체 분담 기준을 판단 필요성 유무로 정하고 반복 조건 검사의 자동화 이전을 권고한다. 점검표 내 주체 표기가 자동화 후보를 드러내는 장치임을 제시한다.",
+          "aiAnalysisInputSha256": "ee454a67b401b5a65269ed33b99d1c4fea227821274b9579f3a07c14ed155f85",
+          "aiPublicGuideTopic": "둘이 맡을 자리를 나누기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 배포 전 점검",
+          "section": "2.4 되돌릴 계획",
+          "primaryConcepts": [
+            "복구 계획"
+          ],
+          "secondaryConcepts": [
+            "되돌리기",
+            "배포 전 점검"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복구 계획의 구성 요소를 판단 기준·수행 방법·복구 후 상태로 정식화하고 마지막 항목의 누락 위험을 지적한다. 계획 수립 과정에서 비가역 배포가 드러날 때의 분할 대응을 제시한다.",
+          "aiAnalysisInputSha256": "3839dd00e38eda80bee15399a470030dd3ca2ef4c947ebcc01af524480c50829",
+          "aiPublicGuideTopic": "잘못되었을 때의 절차를 미리 적기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 배포 전 점검",
+          "section": "2.5 배포 전 점검표",
+          "primaryConcepts": [
+            "점검표 구성"
+          ],
+          "secondaryConcepts": [
+            "확인 주체",
+            "복구 계획"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "점검 항목과 확인 주체를 대응시킨 표로 자동·수동 확인의 분담을 시각화한다. 자동 확인 항목의 중복 검토 배제와 목록 길이 제한을 함께 표시한다.",
+          "aiAnalysisInputSha256": "1ccb699153fa5c45979f5e8f2393b05651b81166b9625ff491ae414cc7fad380",
+          "aiPublicGuideTopic": "점검 항목과 확인 주체를 나란히 적은 표",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 배포 전 점검",
+          "section": "2.6 자료 구조 변경이 걸릴 때",
+          "primaryConcepts": [
+            "저장 구조 변경"
+          ],
+          "secondaryConcepts": [
+            "배포 전 점검",
+            "되돌리기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "저장 구조 변경의 비가역성을 지적하고 하위 호환 추가·코드 배포·구항목 제거의 단계 분리를 제시한다. 단계별 복구 가능성 확보가 위험 감소의 핵심임을 밝힌다.",
+          "aiAnalysisInputSha256": "93814f6e3ec623eb3daab994ac86103e39971c80e44aa63cba82a25aabb0d238",
+          "aiPublicGuideTopic": "저장된 자료의 모양이 바뀌는 배포",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 배포 전 점검",
+          "section": "2.7 점검표가 형식이 될 때",
+          "primaryConcepts": [
+            "형식화"
+          ],
+          "secondaryConcepts": [
+            "확인 주체",
+            "점검표 구성"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "점검표의 형식화 과정을 항목 증가와 무결 통과 경험의 누적으로 설명한다. 실제 적발 이력 기반의 항목 정리와 자동화 이전을 유지 방법으로 제시한다.",
+          "aiAnalysisInputSha256": "aad6da70d21f9cdfbd82a4cbfbd1b6755105d2c90d472c19e17807838bcc15dc",
+          "aiPublicGuideTopic": "확인하지 않고 표시만 하게 될 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 단계적 배포",
+          "section": "3.1 한꺼번에 바꾸지 않기",
+          "primaryConcepts": [
+            "단계적 배포"
+          ],
+          "secondaryConcepts": [
+            "배포 전 점검",
+            "되돌리기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단계적 배포를 노출 범위의 점진적 확대로 정의하고 실제 환경 고유 결함의 조기 검출을 이득으로 제시한다. 분할 방식의 종류와 공통 요건인 영향 범위 제한·중단 용이성을 밝힌다.",
+          "aiAnalysisInputSha256": "4032a140f968b0a9fb2bb8a78c36dfa975498ded1e8925b85978a050d981d9b7",
+          "aiPublicGuideTopic": "모든 사용자에게 동시에 열지 않는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 단계적 배포",
+          "section": "3.2 일부에게 먼저",
+          "primaryConcepts": [
+            "부분 공개"
+          ],
+          "secondaryConcepts": [
+            "단계적 배포"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "부분 공개 대상 선정에서 표본 편향과 검출력의 균형을 지적하고 내부 사용자 선행·무작위 표본 확대의 이단계 방식을 제시한다. 확대 속도의 사전 결정과 각 단계의 중단 가능성 유지를 요구한다.",
+          "aiAnalysisInputSha256": "94d4c05144540b9fe9ee1148af4f3408f519f4fea083ebf872ae38b3a185a9bf",
+          "aiPublicGuideTopic": "먼저 열 대상을 고르는 기준",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 단계적 배포",
+          "section": "3.3 새 것과 옛 것을 함께",
+          "primaryConcepts": [
+            "병행 운영"
+          ],
+          "secondaryConcepts": [
+            "단계적 배포",
+            "저장 구조 변경"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "병행 운영 기간의 존재를 전제로 자료와 계약의 양방향 호환 요건을 제시한다. 항목 추가·개명·삭제의 각 단계에서 지켜야 할 규칙을 구체화한다.",
+          "aiAnalysisInputSha256": "a2433717ef9c1e03ca6b1388fa0a3f48f182d335cbe6ff092bd2fc17dff51afd",
+          "aiPublicGuideTopic": "두 벌이 동시에 도는 기간",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 단계적 배포",
+          "section": "3.4 기능을 켜고 끄기",
+          "primaryConcepts": [
+            "기능 전환"
+          ],
+          "secondaryConcepts": [
+            "부분 공개",
+            "단계적 배포"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배포와 공개의 분리를 기능 전환 값으로 구현하는 방식과 세 가지 이득을 제시한다. 전환 값 누적의 조합 폭증과 사장 코드 문제를 지적하고 제거 시점의 사전 결정을 요구한다.",
+          "aiAnalysisInputSha256": "6d6fcf79699cca628c4a68623bf4651ae159ea4cbbd2f2d9b61934b5588a3cc9",
+          "aiPublicGuideTopic": "코드를 올리고 기능은 나중에 여는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 단계적 배포",
+          "section": "3.5 단계적 배포의 진행",
+          "primaryConcepts": [
+            "부분 공개"
+          ],
+          "secondaryConcepts": [
+            "단계적 배포",
+            "롤백 수행"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공개 범위 확대를 단계별 막대 크기로 표현하고 각 단계의 관찰 대상을 병기한다. 확대 경로와 중단 후 복귀 경로를 서로 다른 색으로 함께 표시한다.",
+          "aiAnalysisInputSha256": "1e1f6873b45f88a934c24fcb0ea7a92ee97103245d9a95d1a24e218681e4542a",
+          "aiPublicGuideTopic": "공개 범위가 넓어지는 과정과 멈추는 자리",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 단계적 배포",
+          "section": "3.6 되돌리는 방법",
+          "primaryConcepts": [
+            "롤백 수행"
+          ],
+          "secondaryConcepts": [
+            "병행 운영",
+            "복구 계획"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복구 수행 방식을 배포 방식별로 구분하고 공통 확인 항목을 자료 호환·누적 자료 처리·통보로 제시한다. 복구를 정상 절차의 일부로 규정해 지연 결정을 방지할 것을 강조한다.",
+          "aiAnalysisInputSha256": "473176553ecf9927fffdc9df918b3251de0c4278ae2a156f172d4ce1ea911cbf",
+          "aiPublicGuideTopic": "멈추고 이전 상태로 가는 절차",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": [
+            "rollback-is-the-plan"
+          ]
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 단계적 배포",
+          "section": "3.7 단계가 늘어날 때의 비용",
+          "primaryConcepts": [
+            "단계 비용"
+          ],
+          "secondaryConcepts": [
+            "기능 전환",
+            "부분 공개"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단계 분할의 비용을 소요 시간 증가와 병행 코드 유지로 제시하고 변경 성질에 따른 차등 적용을 권고한다. 일률적 중절차 적용이 대형 배포를 유발하는 되먹임을 지적한다.",
+          "aiAnalysisInputSha256": "9e23ef43270ce078e9dffe8325eb7b50722c673554a4d19f818ff0471f35eabf",
+          "aiPublicGuideTopic": "나누는 일에도 드는 대가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            19
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "4장 상태 확인",
+          "section": "4.1 잘 올라갔는지 보기",
+          "primaryConcepts": [
+            "배포 상태 확인"
+          ],
+          "secondaryConcepts": [
+            "단계적 배포",
+            "배포"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배포 완료와 정상 동작의 구분을 전제로 판 확인·수신 준비·대표 흐름 검증의 세 항목을 제시한다. 수동 확인의 재현성 한계를 지적하고 자동 실행을 권고한다.",
+          "aiAnalysisInputSha256": "f95d4c8b6a2525eb64c517b4e231f664b0ee1668593f07a7fae19b515745491f",
+          "aiPublicGuideTopic": "배포 직후에 확인하는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 상태 확인",
+          "section": "4.2 살아 있는지 묻는 방법",
+          "primaryConcepts": [
+            "상태 점검"
+          ],
+          "secondaryConcepts": [
+            "배포 상태 확인"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "상태 조회 지점의 설계 원칙을 응답 경량화와 자체 판단 범위 한정으로 제시한다. 외부 의존 상태 포함이 오탐을 유발하는 구조를 설명하고 두 종류의 분리를 예고한다.",
+          "aiAnalysisInputSha256": "7307a4102d02657d9749e31d93e88b4b8f59ff9859e56169653710ccf7b43e46",
+          "aiPublicGuideTopic": "프로그램에 상태를 묻는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 상태 확인",
+          "section": "4.3 준비되었는지와 살아 있는지",
+          "primaryConcepts": [
+            "준비와 생존"
+          ],
+          "secondaryConcepts": [
+            "상태 점검"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "생존 확인과 준비 확인의 의미 차이와 통합 시 발생하는 재시작 반복 문제를 설명한다. 무중단 교체에서 준비 확인이 트래픽 전환 시점을 결정하는 역할을 밝힌다.",
+          "aiAnalysisInputSha256": "6c085bad4aa6d8036930f56a6d5b5c05f95481368c81795d2afb7cfa4529ec75",
+          "aiPublicGuideTopic": "두 물음을 나누는 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 상태 확인",
+          "section": "4.4 배포 직후에 보는 것들",
+          "primaryConcepts": [
+            "배포 상태 확인"
+          ],
+          "secondaryConcepts": [
+            "상태 점검",
+            "성공 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배포 직후 확인 항목을 판 반영·수신 준비·대표 흐름·지표의 순서로 배열하고 각 항목의 소요 시간을 병기한다. 생략 빈발 항목과 지연 발현 구간을 별도 표시로 구분한다.",
+          "aiAnalysisInputSha256": "a2d003121507990bced5b5d20e374665e3ea859d1f6a220b02c660a09b80f4ba",
+          "aiPublicGuideTopic": "올린 직후에 확인하는 항목과 순서",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 상태 확인",
+          "section": "4.5 무엇을 보고 성공이라 할까",
+          "primaryConcepts": [
+            "성공 기준"
+          ],
+          "secondaryConcepts": [
+            "배포 상태 확인",
+            "단계적 배포"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배포 성공 판정 기준을 오류율·응답 시간·목표 지표의 세 항목과 관찰 기간으로 정식화한다. 기준 부재가 무변화의 성공 오판과 종료 시점 불명을 초래함을 지적한다.",
+          "aiAnalysisInputSha256": "6a7c4d12cda3a08ca84e35312e133381674b125865dac993fd4223947406d9c6",
+          "aiPublicGuideTopic": "배포가 잘되었다고 판정하는 기준",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 상태 확인",
+          "section": "4.6 배포와 무관한 변화",
+          "primaryConcepts": [
+            "잡음 구분"
+          ],
+          "secondaryConcepts": [
+            "성공 기준"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배포 후 지표 변화의 귀인 문제를 지적하고 시계열 비교와 미적용 집단 비교를 판별 수단으로 제시한다. 복구 실행을 통한 인과 확인이 가능하려면 복구 용이성이 전제됨을 밝힌다.",
+          "aiAnalysisInputSha256": "f5934279d5a0190b23ac87897db429e27957cfab9b4d5cd4cf9073bd4d67c545",
+          "aiPublicGuideTopic": "때마침 일어난 다른 일과 섞일 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            27
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 상태 확인",
+          "section": "4.7 실패를 판정하는 기준",
+          "primaryConcepts": [
+            "실패 판정"
+          ],
+          "secondaryConcepts": [
+            "성공 기준",
+            "복구 계획"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실패 판정 기준의 사전 설정과 성공 기준 대비 보수적 임계 설정을 제시한다. 결정 권한의 사전 지정이 긴급 상황의 판단 지연을 방지함을 밝힌다.",
+          "aiAnalysisInputSha256": "c7974c22d8c557c7bc96019f29074fd3186cb14c1466a98605baf4e1c7f0cd57",
+          "aiPublicGuideTopic": "언제 멈추기로 정해 둘 것인가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            27
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "5장 배포 뒤 관찰",
+          "section": "5.1 관찰 준비",
+          "primaryConcepts": [
+            "배포 후 관찰"
+          ],
+          "secondaryConcepts": [
+            "배포 상태 확인",
+            "성공 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관찰 지표와 기준선의 사전 확보를 요구하고 사후 계측 시작의 비교 불가 문제를 지적한다. 신규 기능의 사용량 계측을 배포 성공 판정의 구성 요소로 포함한다.",
+          "aiAnalysisInputSha256": "3f0ebf34fe7bc8892a57e29e706d068eccd6da3707c1d2f78297ad025b7e6042",
+          "aiPublicGuideTopic": "올리기 전에 갖춰 두는 볼 거리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "5장 배포 뒤 관찰",
+          "section": "5.2 언제까지 볼 것인가",
+          "primaryConcepts": [
+            "관찰 기간"
+          ],
+          "secondaryConcepts": [
+            "배포 후 관찰"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관찰 종료 시점을 변경의 주기 특성에 따라 설정하는 기준을 제시한다. 종료 기록이 후속 배포 개시와 원인 범위 축소의 전제임을 밝힌다.",
+          "aiAnalysisInputSha256": "c4aab91ed275dd35ba6d051bc226f4132163fcd8d9f8af808adc3cbce6d7ae78",
+          "aiPublicGuideTopic": "관찰을 끝내는 시점 정하기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 배포 뒤 관찰",
+          "section": "5.3 지표와 배포를 잇기",
+          "primaryConcepts": [
+            "배포 표시"
+          ],
+          "secondaryConcepts": [
+            "배포 후 관찰",
+            "잡음 구분"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지표 시계열에 배포 시점을 병기하는 관행의 효용을 원인 후보 축소로 설명한다. 표시 항목에 판 식별자와 변경 요약을 포함하고 절차 내 자동 기록을 요구한다.",
+          "aiAnalysisInputSha256": "774c040eba1ab7da6d63a23779da9c489b48da3a8ea455e7896820a5ff22b13e",
+          "aiPublicGuideTopic": "언제 무엇이 올라갔는지 표시하기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 배포 뒤 관찰",
+          "section": "5.4 천천히 드러나는 문제",
+          "primaryConcepts": [
+            "지연 발현"
+          ],
+          "secondaryConcepts": [
+            "관찰 기간",
+            "배포 후 관찰"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지연 발현 결함의 유형을 자료 누적·주기 처리·자원 누수로 분류하고 시간 격차로 인한 연결 곤란을 지적한다. 배포 표시와 주기 정합적 관찰 기간을 대응으로 제시한다.",
+          "aiAnalysisInputSha256": "2b088de052f99b625c879e557c2f26de407f76fa7dc6eddad2b47bda151ce3fb",
+          "aiPublicGuideTopic": "며칠 뒤에야 보이는 종류",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 배포 뒤 관찰",
+          "section": "5.5 사용자가 먼저 알릴 때",
+          "primaryConcepts": [
+            "사용자 신고"
+          ],
+          "secondaryConcepts": [
+            "관찰 기간",
+            "성공 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지표로 포착되지 않는 결함 유형을 열거하고 사용자 신고를 관찰 채널로 편입할 것을 제안한다. 신고 내용의 지표화를 통해 검출 경로를 보강하는 순환을 제시한다.",
+          "aiAnalysisInputSha256": "db1194ecdc8b723d76a6eceaf01a1742d955158dee5dac68da40c056757c53e1",
+          "aiPublicGuideTopic": "지표보다 사람이 먼저 아는 경우",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 배포 뒤 관찰",
+          "section": "5.6 되돌린 뒤에 할 일",
+          "primaryConcepts": [
+            "복구 후 처리"
+          ],
+          "secondaryConcepts": [
+            "배포 후 관찰",
+            "롤백 수행"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복구 후 처리를 누적 자료 정리·원인 규명·재배포 계획의 세 항목으로 정리한다. 복구의 효용을 결함 제거가 아닌 시간 압박 해소로 규정한다.",
+          "aiAnalysisInputSha256": "8a74d254994af51b5fed9fff9b55796f76e75fd9c96df9b52a6a7c9cf1eb9155",
+          "aiPublicGuideTopic": "멈춘 뒤에 이어지는 절차",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 배포 뒤 관찰",
+          "section": "5.7 배포 기록 남기기",
+          "primaryConcepts": [
+            "배포 기록"
+          ],
+          "secondaryConcepts": [
+            "배포 표시",
+            "관찰 기간"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배포 기록의 구성 항목과 두 가지 용도인 원인 범위 축소·절차 개선 근거를 제시한다. 자동 기록과 수기 기록의 분담이 기록 지속성을 좌우함을 밝힌다.",
+          "aiAnalysisInputSha256": "112ddee40e09d2273889bb71429da1ee10a34b3c065e2a53d695aaa84475d0b3",
+          "aiPublicGuideTopic": "무엇을 언제 올렸는지 남기는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "6장 한 배포를 나눠 진행한 기록",
+          "section": "6.1 나눠 진행한 배포",
+          "primaryConcepts": [
+            "사례 배포"
+          ],
+          "secondaryConcepts": [
+            "단계적 배포",
+            "변경 범위"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사례 배포의 변경 구성과 비가역 요소 식별 과정을 기술한다. 복구 가능성 유지를 위한 삼단계 분할 결정과 단계별 진행 기준 설정을 밝힌다.",
+          "aiAnalysisInputSha256": "d137983e1ecec1a412ffc224198cadcd99e5faf8aeb66664bd5205dd5c597e8d",
+          "aiPublicGuideTopic": "이번에 올린 변경과 그 성질",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "6장 한 배포를 나눠 진행한 기록",
+          "section": "6.2 첫 단계와 점검",
+          "primaryConcepts": [
+            "첫 단계"
+          ],
+          "secondaryConcepts": [
+            "저장 구조 변경",
+            "배포 전 점검"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "저장 구조 선행 배포의 하위 호환 설계와 해당 단계의 점검 항목을 기술한다. 복구 방법의 안전성 근거와 관찰 항목·기간을 함께 제시한다.",
+          "aiAnalysisInputSha256": "69ed66f6064711543a1345f55b0b8a74b5b375a2939ea9ef25c95987b30c48f3",
+          "aiPublicGuideTopic": "저장 구조부터 올린 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            37
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 한 배포를 나눠 진행한 기록",
+          "section": "6.3 새 코드를 꺼진 채로",
+          "primaryConcepts": [
+            "기능 전환 적용"
+          ],
+          "secondaryConcepts": [
+            "기능 전환",
+            "부분 공개"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기능 전환 값을 이용한 비활성 배포 단계와 그 단계에서 검출된 무관 변경을 기술한다. 단계 분리가 원인 혼재를 방지한 사례로 제시한다.",
+          "aiAnalysisInputSha256": "f9b47f713fcd5830dd1898530168212dc88218087c6675dcfba4bfaaca1c15aa",
+          "aiPublicGuideTopic": "코드를 올리고 기능은 닫아 둔 단계",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 한 배포를 나눠 진행한 기록",
+          "section": "6.4 일부에게 먼저 켠 결과",
+          "primaryConcepts": [
+            "부분 공개 결과"
+          ],
+          "secondaryConcepts": [
+            "부분 공개",
+            "성공 기준"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "부분 공개의 확대 순서와 사전 정의한 성공 기준 세 항목의 적용 결과를 기술한다. 기존 자료 미충족으로 인한 오류 증가를 발견해 중단·복구·선행 작업으로 전환한 판단을 제시한다.",
+          "aiAnalysisInputSha256": "b1e551277705760d081f4e7c607db39c69bc821ba1c565b62d7f476ac105af86",
+          "aiPublicGuideTopic": "범위를 넓혀 간 과정",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 한 배포를 나눠 진행한 기록",
+          "section": "6.5 멈추고 되돌린 자리",
+          "primaryConcepts": [
+            "중단 판단"
+          ],
+          "secondaryConcepts": [
+            "롤백 수행",
+            "실패 판정"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사전 기준과 결정권 지정이 중단 판단을 신속하게 만든 과정을 기술한다. 전환 값 기반 복구의 소요 시간과 선행 자료 보정 후 재공개의 결과를 제시한다.",
+          "aiAnalysisInputSha256": "762f8a6dff1a9fb3ca03225f4af14163f4c495e23fc072789b674771e136fb09",
+          "aiPublicGuideTopic": "정해 둔 기준에 걸려 멈춘 과정",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 한 배포를 나눠 진행한 기록",
+          "section": "6.6 관찰에서 본 것",
+          "primaryConcepts": [
+            "관찰 결과"
+          ],
+          "secondaryConcepts": [
+            "배포 후 관찰",
+            "지연 발현"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "주기 처리 특성을 반영한 관찰 기간 설정과 지연 발현 문제의 검출 과정을 기술한다. 영향 범위를 근거로 전체 복구 대신 부분 수정을 선택한 판단과 관찰 종료 기록을 제시한다.",
+          "aiAnalysisInputSha256": "b2a4302d20b4265016172d412432ece8d93ae825bdfea3ac7143a1802f7b14c7",
+          "aiPublicGuideTopic": "켠 뒤에 며칠 동안 확인한 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 한 배포를 나눠 진행한 기록",
+          "section": "6.7 절차에 더한 것",
+          "primaryConcepts": [
+            "절차 개선"
+          ],
+          "secondaryConcepts": [
+            "점검표 구성",
+            "배포 기록"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사례에서 도출한 점검 항목 두 가지와 조건부 적용 결정을 기술한다. 배포 기록의 축적이 절차 개선의 근거가 되는 경로를 결론으로 제시한다.",
+          "aiAnalysisInputSha256": "e84c0e8d6ff08734da78c1ae533f9e2094380dd630c9febdfc605b76131ff65a",
+          "aiPublicGuideTopic": "이 배포가 남긴 점검 항목",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "7장 배포 판단",
+          "section": "7.1 얼마나 나눌 것인가",
+          "primaryConcepts": [
+            "분할 정도"
+          ],
+          "secondaryConcepts": [
+            "단계적 배포",
+            "단계 비용"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배포 분할 정도의 결정 기준을 복구 가능성과 영향 범위의 조합으로 정식화한다. 각 단계의 독립적 복구 가능성이 분할의 실효 조건임을 사례와 함께 제시한다.",
+          "aiAnalysisInputSha256": "d9bb529b4ada2378972d55f5639ea0ce420db0355661ada07e7a35144c457d37",
+          "aiPublicGuideTopic": "배포를 나누는 정도를 정하는 판단",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "7장 배포 판단",
+          "section": "7.2 되돌릴 수 있게 두기",
+          "primaryConcepts": [
+            "복구 가능성"
+          ],
+          "secondaryConcepts": [
+            "분할 정도",
+            "되돌리기"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체의 절차를 복구 가능성 유지라는 단일 원칙으로 통합하고 각 장치의 역할을 그 아래 배치한다. 비가역 배포의 명시적 인지와 별도 준비를 요구한다.",
+          "aiAnalysisInputSha256": "45992a0f0e5788a43ac3a6be37bc8f78c89668fe1fa59246a4c3986bbed75abc",
+          "aiPublicGuideTopic": "복구 가능성을 유지하는 원칙",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": [
+            "rollback-is-the-plan"
+          ]
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 배포 판단",
+          "section": "7.3 점검표를 손볼 때",
+          "primaryConcepts": [
+            "점검표 개선"
+          ],
+          "secondaryConcepts": [
+            "형식화",
+            "절차 개선"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "점검표 갱신의 두 시점과 항목 추가·제거의 판단 기준을 제시한다. 사전 인지 가능성 없는 항목의 추가 배제와 조건부 항목 분리로 목록 길이를 관리하는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "a48e722072b283736c5393cddbbd3a081dbaf18063c4c17ecffe46e49c308043",
+          "aiPublicGuideTopic": "목록을 살아 있게 유지하는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            15
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 배포 판단",
+          "section": "7.4 배포 점검 항목",
+          "primaryConcepts": [
+            "배포 점검 항목"
+          ],
+          "secondaryConcepts": [
+            "성공 기준",
+            "복구 계획"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배포 준비 점검을 변경 범위·복구 가능성·성공과 중단 기준·지표 준비·관찰 종료의 다섯 물음으로 정식화한다. 미답 항목을 해당 배포의 위험 지점으로 해석하는 사용법을 제시한다.",
+          "aiAnalysisInputSha256": "cff5607472be39dffe56c40c40fa25ad686c43f6757137920bb36b4589498cc1",
+          "aiPublicGuideTopic": "배포를 준비할 때 차례로 물을 목록",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            27
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 배포 판단",
+          "section": "7.5 관찰을 남기는 순서",
+          "primaryConcepts": [
+            "관찰 정착"
+          ],
+          "secondaryConcepts": [
+            "배포 기록",
+            "배포 표시"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관찰 체계 구축 순서를 배포 표시·공통 지표·변경별 지표·기록으로 제시하고 각 단계의 선행 관계를 설명한다. 기록이 관찰 결과를 후속 배포로 이어 주는 매개임을 밝힌다.",
+          "aiAnalysisInputSha256": "0359ab43cf60aaaeeb2409a9af4bb5e2e75678c0f179d7b368dce4c34b558eda",
+          "aiPublicGuideTopic": "관찰 장치를 갖추는 차례",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 배포 판단",
+          "section": "7.6 사람과 절차",
+          "primaryConcepts": [
+            "절차와 사람"
+          ],
+          "secondaryConcepts": [
+            "확인 주체",
+            "실패 판정"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배포 절차의 목적을 긴급 상황의 판단 부하 경감으로 규정하고 사전 결정 가능 항목을 기준·순서·결정권으로 특정한다. 상황 의존적 판단을 절차 밖 영역으로 남기는 구분을 제시한다.",
+          "aiAnalysisInputSha256": "c57834843dcb90e28361334e7a79b9521c973d955c458beeaceef77e52c4f719",
+          "aiPublicGuideTopic": "절차가 사람을 대신하는 자리와 아닌 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 배포 판단",
+          "section": "7.7 핵심 원칙 정리",
+          "primaryConcepts": [
+            "배포 원칙 요약"
+          ],
+          "secondaryConcepts": [
+            "배포",
+            "배포 후 관찰"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체의 판단을 변경 범위 식별과 복구 경로 확보라는 두 물음으로 압축하고 각 장치를 그 수단으로 정리한다. 배포를 기술 실행이자 사전 결정의 축적으로 규정한다.",
+          "aiAnalysisInputSha256": "fad55b12fc0928f1d32624768f2c042cd82f827259ca60904b7f25005a738370",
+          "aiPublicGuideTopic": "이 책이 다룬 판단 기준의 요약",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
     }
   ]
 }
