@@ -38082,6 +38082,1111 @@
           "duplicateGroupKeys": []
         }
       ]
+    },
+    {
+      "bookId": 82,
+      "title": "북쪽 기차의 창가 노트",
+      "pdfPath": "pdfs/book-082.pdf",
+      "pdfSha256": "2f8d09f79165aa3e4390578ec90e66843050e502b79e45f9328388feddc695d2",
+      "totalPageCount": 51,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 느린 기차를 고르는 일",
+          "section": "1.1 완행열차",
+          "primaryConcepts": [
+            "완행열차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "완행 운행의 소요 시간 차이가 주행 속도가 아니라 정차 횟수에서 나온다는 구조를 설명하는 도입 페이지다. 정차 시간의 누적이 급행과의 격차를 만든다는 계산을 제시하고, 느린 편성을 선택하는 일이 관찰 시간을 얻는 교환이라는 관점으로 책 전체의 구성을 밝힌다.",
+          "aiAnalysisInputSha256": "61f5397f3016448c7efa8356337220c529bf2059078eec5d1621ea7f8a2a7872",
+          "aiPublicGuideTopic": "빠른 기차를 두고 느린 기차를 고르는 까닭",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "slow-is-a-choice"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 느린 기차를 고르는 일",
+          "section": "1.1 완행열차",
+          "primaryConcepts": [
+            "완행열차"
+          ],
+          "secondaryConcepts": [
+            "정차역"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "완행 이용이 하루 일정 전체를 이동에 배정하게 만든다는 점을 다룬다. 이동일과 체류일을 분리하는 계획 방식과 그에 따라 짐을 푸는 횟수가 줄어든다는 실무를 제시하고, 단거리 이용자와 장거리 이용자로 승객이 갈린다는 관찰을 덧붙인다.",
+          "aiAnalysisInputSha256": "0b85e4f2b3e007d3cd38b629bca6cf9c9bd79f70b0f90cc884cdde8882cbc13f",
+          "aiPublicGuideTopic": "완행에만 있는 하루의 모양",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 느린 기차를 고르는 일",
+          "section": "1.2 정차역",
+          "primaryConcepts": [
+            "정차역"
+          ],
+          "secondaryConcepts": [
+            "완행열차"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정차 시간이 역마다 다른 원인을 화물 취급과 교행 대기로 구분해 설명한다. 운행 시각표의 도착·출발 표기 방식으로 장시간 정차역을 사전에 식별하는 방법을 제시하고, 정차 시간을 활용할 때 승무원에게 확인해야 하는 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "3d11c346217ae6b63d70dcdef4a8e8812085bb109af0be4118329f2b0da2b84e",
+          "aiPublicGuideTopic": "역마다 서는 시간이 다른 이유",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 느린 기차를 고르는 일",
+          "section": "1.2 정차역",
+          "primaryConcepts": [
+            "정차역"
+          ],
+          "secondaryConcepts": [
+            "창가 자리"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정차역의 승강장 구성이 지역의 산업과 생활을 드러낸다는 관찰 방법을 다룬다. 화물의 종류, 접근 수단, 승객 구성, 역사의 규모를 각각 단서로 제시하고, 역을 먼저 읽은 뒤 차창 풍경을 보는 순서가 관찰의 밀도를 높인다고 설명한다.",
+          "aiAnalysisInputSha256": "1a7dfea60f79b3ee50dc1f012fb2ffe709ef6e4a07f7f63f915641a383ced17a",
+          "aiPublicGuideTopic": "역이 그 지역을 먼저 말해 주는 것",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 느린 기차를 고르는 일",
+          "section": "1.3 시각표",
+          "primaryConcepts": [
+            "열차 시각표"
+          ],
+          "secondaryConcepts": [
+            "정차역"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "역과 편성을 행렬로 배치한 시각표의 구조와 읽는 순서를 설명한다. 열을 편성으로, 행을 역으로 읽는 방법과 빈칸의 의미를 제시하고, 순환 노선에서 두 방향의 표를 함께 확인하지 않으면 우회 경로를 택하게 된다는 점을 지적한다.",
+          "aiAnalysisInputSha256": "953894785855d40bf925bbe14d3be591de7851abc02263fe010aeb893bb78f6b",
+          "aiPublicGuideTopic": "한 장에 적힌 하루 전체를 읽는 법",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 느린 기차를 고르는 일",
+          "section": "1.3 시각표",
+          "primaryConcepts": [
+            "열차 시각표"
+          ],
+          "secondaryConcepts": [
+            "완행열차",
+            "정차역"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 구간에서 급행과 완행의 정차 지점을 같은 축 위에 나란히 배치해 소요 시간 차이의 원인을 나타낸 도표다. 정차 표시의 개수와 총 소요 시간을 함께 보여, 속도 차이가 아니라 정차 횟수가 격차를 만든다는 점을 드러낸다.",
+          "aiAnalysisInputSha256": "6349d7b00efcb5c4a88273ad05c1d3d7ba549e676217a17fa43c051c53799c46",
+          "aiPublicGuideTopic": "같은 구간을 급행과 완행이 어떻게 다르게 지나는지 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 느린 기차를 고르는 일",
+          "section": "1.4 창가 자리",
+          "primaryConcepts": [
+            "창가 자리"
+          ],
+          "secondaryConcepts": [
+            "완행열차"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자유석 열차에서 좌석 선택 기준을 채광 방향과 경관의 위치로 나누어 제시한다. 순환 노선에서는 진행 방향이 바뀌어 유불리가 반전된다는 점을 지적하고, 두 기준이 충돌할 때 시인성을 우선하고 시간대에 따라 자리를 옮기는 대응을 설명한다.",
+          "aiAnalysisInputSha256": "629466546926aef8f784b62a489ec9c454f490b6106e89ce8446fe5a4be91293",
+          "aiPublicGuideTopic": "어느 쪽 창에 앉을지 정하는 기준",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 느린 기차를 고르는 일",
+          "section": "1.4 창가 자리",
+          "primaryConcepts": [
+            "창가 자리"
+          ],
+          "secondaryConcepts": [
+            "선로 사정"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "좌석의 방향과 위치가 관찰과 기록의 조건을 결정한다는 점을 다룬다. 진행 방향을 향한 좌석과 등진 좌석의 용도 차이, 창과 좌석의 정렬 문제, 객차 위치에 따른 진동 차이를 각각 제시하고 기록 작업에 적합한 자리의 조건을 정리한다.",
+          "aiAnalysisInputSha256": "b414346103b3fcfdc1ebba3b572cfeac7db6e368b016edcfe134511e87faf528",
+          "aiPublicGuideTopic": "자리에서 정해지는 관찰의 조건",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "1장 느린 기차를 고르는 일",
+          "section": "1.5 선로 사정",
+          "primaryConcepts": [
+            "선로 사정"
+          ],
+          "secondaryConcepts": [
+            "정차역"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단선 구간에서 발생하는 교행 대기의 구조를 설명한다. 대피 가능한 역에서만 교행이 이루어지고 우등 열차가 우선한다는 규칙, 그 대기가 시각표에 미리 반영되어 있다는 점을 제시하며 복선 구간과의 소요 시간 차이를 근거로 든다.",
+          "aiAnalysisInputSha256": "128619bca332353ee5da994c440361977112f87a12662ca6df3224517c97a974",
+          "aiPublicGuideTopic": "선로가 하나뿐인 구간에서 생기는 일",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "1장 느린 기차를 고르는 일",
+          "section": "1.5 선로 사정",
+          "primaryConcepts": [
+            "선로 사정"
+          ],
+          "secondaryConcepts": [
+            "풍경 전환"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선로의 부설 조건이 차창 경관을 결정한다는 관계를 다룬다. 하천을 따라가는 우회 노선, 구배 구간에서의 감속, 터널 구간의 시야 차단을 각각 제시하고, 이 구간들을 시각표에 표시해 관찰과 정리 시간을 배분하는 방법을 설명한다.",
+          "aiAnalysisInputSha256": "3124273e69b1994c8a6e8402dfc2b875c905f731d9b125759cb4bf46107832fc",
+          "aiPublicGuideTopic": "선로의 생김새가 창밖을 정한다",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 창밖을 읽기",
+          "section": "2.1 풍경이 바뀌는 자리",
+          "primaryConcepts": [
+            "풍경 전환"
+          ],
+          "secondaryConcepts": [
+            "정차역",
+            "선로 사정"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "차창 경관이 연속적이 아니라 특정 지점에서 불연속적으로 바뀐다는 관찰을 제시한다. 하천과 능선이 주된 전환 지점이라는 근거를 실제 기록 횟수로 들고, 전환점을 파악하면 이후 경관을 예측할 수 있어 관찰이 해석으로 바뀐다고 설명한다.",
+          "aiAnalysisInputSha256": "a28646bbb0b8d5679cde0a3641fa34fbf303991ea8b13daa3838716ffc28ab18",
+          "aiPublicGuideTopic": "창밖이 달라지는 지점을 알아보는 법",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 창밖을 읽기",
+          "section": "2.1 풍경이 바뀌는 자리",
+          "primaryConcepts": [
+            "풍경 전환"
+          ],
+          "secondaryConcepts": [
+            "열차 시각표"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장거리 운행 한 편의 차창 경관을 시간 축 위에 네 구간으로 구분해 표시한 도표다. 구간 경계에 하천과 고개 기호를 얹고 터널 구간을 별도 층에 표시해, 관찰이 가능한 시간과 불가능한 시간이 미리 정해져 있음을 보인다.",
+          "aiAnalysisInputSha256": "feb948f0636e0eb80e56efb8c5caa7dc27c9871ff99b1fdaa125596d38b3af79",
+          "aiPublicGuideTopic": "아홉 시간 동안 창밖이 몇 번 바뀌었는지 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 창밖을 읽기",
+          "section": "2.2 창가 노트",
+          "primaryConcepts": [
+            "창가 노트"
+          ],
+          "secondaryConcepts": [
+            "풍경 전환"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이동 중 기록의 물리적 제약과 그에 맞춘 기록 형식을 제시한다. 시각, 관찰 대상, 직전과의 차이라는 세 줄 구조를 세우고 평가어 대신 관찰 가능한 속성만 적어야 회상이 가능하다는 기준을 설명하며, 정차 시간이 기록에 유리한 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "35157555c4efccd55524e517a1d510288a0d941196230d178de3d7e6de1de6c7",
+          "aiPublicGuideTopic": "달리는 기차에서 무엇을 적을 것인가",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 창밖을 읽기",
+          "section": "2.2 창가 노트",
+          "primaryConcepts": [
+            "창가 노트"
+          ],
+          "secondaryConcepts": [
+            "창가 자리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장시간 이동에서 기록이 중단되는 지점과 그 회복 방법을 다룬다. 관찰 대상을 차창에서 승강장으로 전환하는 방법과 정해진 간격으로 강제 기록하는 규칙을 제시하고, 기록이 빠진 구간은 사후에 복원되지 않는다는 점을 근거로 든다.",
+          "aiAnalysisInputSha256": "e9c933a008c2c43a22501a8f4b9f5296fb4884f1759ed8d45d8107d0a9cf3f6d",
+          "aiPublicGuideTopic": "노트가 무너지는 자리와 다시 세우는 법",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 창밖을 읽기",
+          "section": "2.3 빛의 방향",
+          "primaryConcepts": [
+            "빛의 방향"
+          ],
+          "secondaryConcepts": [
+            "창가 자리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "채광 조건이 동일한 경관의 인상을 바꾼다는 점을 다룬다. 순광과 역광에서 각각 색과 형태가 남는다는 차이를 관찰 목표의 선택으로 전환하고, 순환 노선에서 진행 방향과 시간대의 조합이 경험을 가른다는 결과를 제시한다.",
+          "aiAnalysisInputSha256": "e173fa8924c93843ba66e19642abd05a26c01d5f4d0bc4fea0215545133d8d12",
+          "aiPublicGuideTopic": "같은 창이 시간대마다 달라지는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "2장 창밖을 읽기",
+          "section": "2.3 빛의 방향",
+          "primaryConcepts": [
+            "빛의 방향"
+          ],
+          "secondaryConcepts": [
+            "풍경 전환"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일몰 이후 차창이 관찰 수단으로 기능하지 않게 되는 조건과 그때의 대안을 제시한다. 실내 조명을 차단해 외부를 보는 방법의 한계를 지적하고, 승객의 승하차 양상을 지역 생활 시간대의 단서로 삼는 관찰 전환과 야간 이동 배분의 원칙을 설명한다.",
+          "aiAnalysisInputSha256": "0dff628c01a1e6762c797cba32694e247bf7d5c7bb19da1e4f3195ef83203e48",
+          "aiPublicGuideTopic": "하루의 끝에서 창이 거울이 될 때",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "2장 창밖을 읽기",
+          "section": "2.4 관찰 기록",
+          "primaryConcepts": [
+            "관찰 기록"
+          ],
+          "secondaryConcepts": [
+            "창가 노트"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록의 사후 정리 절차를 세 단계로 제시한다. 구간 표시, 전환점의 시간순 정렬, 다음 구간의 확인 항목 기록으로 구성되며, 확인 항목이 관찰의 연속성을 만든다는 점과 정리 시점을 하차 직후로 두어야 하는 이유를 설명한다.",
+          "aiAnalysisInputSha256": "9d76d2bfa056c1ffab62355ad14ef87831ced97c18ce11d553ea6032bbf00902",
+          "aiPublicGuideTopic": "적은 것을 나중에 쓸 수 있게 만드는 정리",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "2장 창밖을 읽기",
+          "section": "2.4 관찰 기록",
+          "primaryConcepts": [
+            "관찰 기록"
+          ],
+          "secondaryConcepts": [
+            "빛의 방향",
+            "정차역"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 구간을 서로 다른 시간대에 반복 통과해 기록을 겹쳐 쌓는 방법을 다룬다. 순환 노선의 구조가 이 반복을 가능하게 한다는 점과, 새로운 구간을 추가하는 것보다 반복이 관찰의 깊이를 높인다는 판단, 반복 대상을 첫 통과에서 정해야 하는 이유를 제시한다.",
+          "aiAnalysisInputSha256": "79710b46edba4bc662792fa21fc914157414afc74dbbb2439a87407de4ebc6ba",
+          "aiPublicGuideTopic": "여러 날의 기록이 하나로 이어질 때",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 늦는 기차",
+          "section": "3.1 지연",
+          "primaryConcepts": [
+            "지연"
+          ],
+          "secondaryConcepts": [
+            "선로 사정"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "완행 운행에서 지연이 발생하는 지점을 단선 교행과 화물 취급으로 구분해 설명한다. 소규모 지연이 후속 역으로 전파되며 누적된다는 구조를 제시하고, 출발 시점의 지연이 종착까지 확대되는 경향을 근거로 사전 조정의 필요를 밝힌다.",
+          "aiAnalysisInputSha256": "0cbe09a1d9eb920796722ae977a447a79663a07c60436609e86c08bf34eb06cc",
+          "aiPublicGuideTopic": "기차가 늦어지는 자리는 정해져 있다",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 늦는 기차",
+          "section": "3.1 지연",
+          "primaryConcepts": [
+            "지연"
+          ],
+          "secondaryConcepts": [
+            "정차역",
+            "연결 열차"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지연 시간이 정차역을 거치며 단계적으로 증가하는 과정을 꺾은선으로 나타낸 도표다. 증가 폭이 큰 지점에 교행 대기와 화물 취급이라는 원인을 표시해, 누적의 원인이 특정 유형의 정차에 있음을 보인다.",
+          "aiAnalysisInputSha256": "5e46b4baadc6c859b8c8711e196af41114768760f4ca8723d6fa90167dd7a292",
+          "aiPublicGuideTopic": "작은 지연이 역을 지나며 쌓이는 것을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 늦는 기차",
+          "section": "3.2 지연 안내",
+          "primaryConcepts": [
+            "지연 안내"
+          ],
+          "secondaryConcepts": [
+            "지연"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지연 규모를 확인하는 경로를 신뢰도 순으로 정리한다. 승무원에게 현재 지연과 회복 가능 구간을 함께 확인하는 방법, 안내판의 갱신 지연 문제, 상시 이용객의 행동을 간접 지표로 읽는 방법을 각각 제시한다.",
+          "aiAnalysisInputSha256": "5b3eaeb48426431c83e9f36e3a342c0beafc23dbd4d80875cba8b74c24d7a8e2",
+          "aiPublicGuideTopic": "얼마나 늦는지 알아내는 순서",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 늦는 기차",
+          "section": "3.2 지연 안내",
+          "primaryConcepts": [
+            "지연 안내"
+          ],
+          "secondaryConcepts": [
+            "열차 시각표",
+            "환승 간격"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지연 정보를 받은 뒤의 재계산 순서를 환승편, 숙박, 익일 첫 편의 순으로 제시한다. 후속편 간격이 지연의 실제 비용을 결정한다는 점, 남은 구간의 선로 조건이 회복 가능성을 좌우한다는 점을 근거로 들고 재계산 빈도를 제한하는 이유를 설명한다.",
+          "aiAnalysisInputSha256": "ed041bd92cb658ddd909013ddc5b69b8dbcc1a31b9042ce0e077855843a1201e",
+          "aiPublicGuideTopic": "늦는다는 소식을 받은 뒤에 하는 계산",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "3장 늦는 기차",
+          "section": "3.3 연결 열차",
+          "primaryConcepts": [
+            "연결 열차"
+          ],
+          "secondaryConcepts": [
+            "지연",
+            "환승 간격"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "환승 성립 여부가 운행 주체와 이용 수요에 따라 갈린다는 점을 다룬다. 동일 노선 내 연결과 타 노선 연결의 대기 관행 차이를 제시하고, 시각표만으로는 확인할 수 없는 이 정보를 매표 단계에서 확인해야 하는 이유를 설명한다.",
+          "aiAnalysisInputSha256": "4858c5a01de8e93164fd4f7fa60fd40bc8adf18d63886fd71d000f3302c027b1",
+          "aiPublicGuideTopic": "다음 기차와 이어지는지 확인하는 자리",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "3장 늦는 기차",
+          "section": "3.3 연결 열차",
+          "primaryConcepts": [
+            "연결 열차"
+          ],
+          "secondaryConcepts": [
+            "지연 안내",
+            "중간 하차"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "환승 실패 시의 선택지를 대기, 역방향 우회, 당일 체류 종료의 셋으로 정리한다. 대기 시간의 임계값을 기준으로 판단하는 방법과 순환 노선에서만 가능한 역방향 이동의 이점을 제시하고, 야간 강행 이동이 다음 날의 손실로 이어진다는 점을 지적한다.",
+          "aiAnalysisInputSha256": "91296ad64f0e9bad327a1e8edf4e40bd3c0dbdcb40deb229323b878a541bcc58",
+          "aiPublicGuideTopic": "연결이 끊긴 자리에서 고르는 세 가지",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "3장 늦는 기차",
+          "section": "3.4 지연 회복",
+          "primaryConcepts": [
+            "지연 회복"
+          ],
+          "secondaryConcepts": [
+            "연결 열차",
+            "선로 사정"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지연이 감소하는 조건을 복선 구간과 저정차 구간으로 제시한다. 시각표에 내재된 여유 시간을 거리 대비 소요 시간으로 식별하는 방법을 설명하고, 회복 가능성의 유무가 대기와 대안 선택을 가르는 기준이 된다고 정리한다.",
+          "aiAnalysisInputSha256": "37fc28b56df37af111186e33230faee4cb001f6dd56a8e4cb0b0e23d4cf96f54",
+          "aiPublicGuideTopic": "늦은 시간이 줄어드는 구간",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "3장 늦는 기차",
+          "section": "3.4 지연 회복",
+          "primaryConcepts": [
+            "지연 회복"
+          ],
+          "secondaryConcepts": [
+            "관찰 기록"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지연이 계획에 없던 시간대의 관찰 기회를 만든다는 관찰을 사례로 제시한다. 지연 대응 계산을 짧게 끝내고 남은 시간을 기록에 쓰는 태도를 설명하되, 그 전환이 성립하려면 후속 일정에 여유가 있어야 한다는 조건을 함께 밝힌다.",
+          "aiAnalysisInputSha256": "73e21dffc32faff7f08da8d599dd95522779a3311a43a230002f79e533266582",
+          "aiPublicGuideTopic": "늦은 시간이 만든 다른 기록",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 갈아타기와 내리기",
+          "section": "4.1 환승역",
+          "primaryConcepts": [
+            "환승역"
+          ],
+          "secondaryConcepts": [
+            "열차 시각표",
+            "정차역"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "환승역의 구조가 이동 시간을 소모한다는 점과 하차 직후의 처리 순서를 다룬다. 승강장 번호 확인을 최우선으로 두는 이유, 구내 이동에 실제로 걸리는 시간이 표시된 환승 여유를 잠식한다는 계산을 제시한다.",
+          "aiAnalysisInputSha256": "f2b76fd715f9be1d590b985e8a929988058af0b53777987c46da302bb96bcbff",
+          "aiPublicGuideTopic": "갈아타는 역에서 먼저 확인하는 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 갈아타기와 내리기",
+          "section": "4.1 환승역",
+          "primaryConcepts": [
+            "환승역"
+          ],
+          "secondaryConcepts": [
+            "대기 시간"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "환승 대기 시간이 이동 반경을 제약한다는 점과 그 시간의 사용 계획을 제시한다. 구내에서 처리할 세 가지 작업, 역 외부로 나갈 때의 복귀 시각 기준, 매점 이용 시점의 우선순위를 각각 실무로 설명한다.",
+          "aiAnalysisInputSha256": "0ce83eb0989dbca8301e243d46d4c1c6f39dbd259a1bed29559bfebdcbe8c309",
+          "aiPublicGuideTopic": "환승역에서 기다리는 시간의 성격",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 갈아타기와 내리기",
+          "section": "4.2 환승 간격",
+          "primaryConcepts": [
+            "환승 간격"
+          ],
+          "secondaryConcepts": [
+            "환승역",
+            "지연"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "표시된 환승 시간이 하차, 구내 이동, 확인 작업으로 소모되어 실제 여유가 크게 줄어드는 구조를 두 개의 막대로 대비한 도표다. 선행 열차의 지연이 잠식하는 지점을 화살표로 표시해 여유가 사라지는 순서를 함께 보인다.",
+          "aiAnalysisInputSha256": "5bf6d0ba3698cdb6450a43bcdcf661f4f9b115df3f2e43b1a60a8d66b6292ea7",
+          "aiPublicGuideTopic": "표에 적힌 환승 시간과 실제로 남는 시간이 다른 것을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 갈아타기와 내리기",
+          "section": "4.2 환승 간격",
+          "primaryConcepts": [
+            "환승 간격"
+          ],
+          "secondaryConcepts": [
+            "연결 열차",
+            "지연"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "환승 여유 시간을 역의 규모와 후속편 간격이라는 두 변수로 산정하는 방법을 제시한다. 구내 이동 거리에서 오는 고정 소요와 실패 시 손실 크기를 각각 근거로 들고, 규칙을 세우고도 예외를 두면 실패가 그 자리에서 발생한다는 점을 사례로 든다.",
+          "aiAnalysisInputSha256": "810d1f23c2cc67cf55e360fa5e65a2d4aa51c1e8444035605a0a56533eb48e9b",
+          "aiPublicGuideTopic": "갈아탈 시간을 얼마나 잡을 것인가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "4장 갈아타기와 내리기",
+          "section": "4.3 중간 하차",
+          "primaryConcepts": [
+            "중간 하차"
+          ],
+          "secondaryConcepts": [
+            "정차역",
+            "풍경 전환"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구간권을 이용한 중도 하차의 판단 기준을 다룬다. 후속편까지의 공백 시간과 도보 도달 가능성을 두 조건으로 제시하고, 승강장에서 취락의 유무를 육안으로 확인하는 방법과 하차하지 않는 판단도 일정 유지의 일부라는 점을 설명한다.",
+          "aiAnalysisInputSha256": "bf162a9f4ded0f7c52c2fbfba63ed89553613af32bdf1acc4a726402845f7b0f",
+          "aiPublicGuideTopic": "지나가려던 역에서 내리기로 하는 순간",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "4장 갈아타기와 내리기",
+          "section": "4.3 중간 하차",
+          "primaryConcepts": [
+            "중간 하차"
+          ],
+          "secondaryConcepts": [
+            "체류 판단"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "중도 하차 후 확보되는 시간의 사용 방식을 다룬다. 복귀 시각에서 역산해 왕복 지점을 정하는 방법, 수하물 보관 가능 여부에 따른 이동 거리 조정, 하차 관찰과 차창 관찰을 대조해 기록하는 마무리 절차를 제시한다.",
+          "aiAnalysisInputSha256": "773c778c0e81e4cedab29760771e1c107e91b5b1e2128d17bf91b93c8b47f8f4",
+          "aiPublicGuideTopic": "내린 역에서 시간을 쓰는 방법",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "4장 갈아타기와 내리기",
+          "section": "4.4 야간 운행",
+          "primaryConcepts": [
+            "야간 운행"
+          ],
+          "secondaryConcepts": [
+            "창가 자리",
+            "빛의 방향"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "야간 운행편의 이점과 손실을 대비해 채택 여부의 판단 기준을 제시한다. 주간 활동 시간 확보와 숙박비 절감이라는 이점, 차창 관찰 불가와 수면의 질 저하라는 손실을 각각 들고, 목적에 따라 야간 이동을 배제한 실제 선택을 설명한다.",
+          "aiAnalysisInputSha256": "0ea854e1826b676728f1cfa46cf154471eb5caf0623ca02ea075142760b24a2e",
+          "aiPublicGuideTopic": "밤 기차를 넣을지 정하는 기준",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "4장 갈아타기와 내리기",
+          "section": "4.4 야간 운행",
+          "primaryConcepts": [
+            "야간 운행"
+          ],
+          "secondaryConcepts": [
+            "환승 간격",
+            "지연"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "야간 이동에서 추가로 발생하는 위험과 대비를 다룬다. 회복 여지가 없고 후속편 간격이 크다는 점을 근거로 야간 구간의 환승을 배제하는 원칙, 도착지의 연계 교통 첫차를 사전에 확인해야 하는 이유, 야간 이동의 효용을 익일 가용 시간으로 계산하는 기준을 제시한다.",
+          "aiAnalysisInputSha256": "8311bb9da18802bee58937a027b9b0665728ba12cbb54f469be07d03886c167e",
+          "aiPublicGuideTopic": "밤에 움직일 때만 생기는 문제",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 북부 순환선의 나흘",
+          "section": "5.1 나흘의 구성",
+          "primaryConcepts": [
+            "여정 구성"
+          ],
+          "secondaryConcepts": [
+            "열차 시각표",
+            "환승 간격"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "순환 노선 일주를 나흘로 분할한 기준을 숙박 가능 역의 분포로 설명한다. 오전에 이동을 끝내고 오후를 도보 확인에 배정하는 구조와 하루 환승 횟수를 제한한 규칙을 제시하며, 관찰과 확인이 순환하도록 일정을 짠 의도를 밝힌다.",
+          "aiAnalysisInputSha256": "42f10978afbafe8149f7bb888b9f2e2176fd37580e09fc656a02f2f105452018",
+          "aiPublicGuideTopic": "한 바퀴를 나흘로 나눈 방법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 북부 순환선의 나흘",
+          "section": "5.1 나흘의 구성",
+          "primaryConcepts": [
+            "여정 구성"
+          ],
+          "secondaryConcepts": [
+            "정차역",
+            "중간 하차"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "순환 노선의 일주 경로를 원으로 나타내고 하루 단위 구간을 호의 굵기로 구분한 도표다. 각 구간의 소요 시간과 도보 확인을 한 역을 함께 표시해, 이동과 체류가 하루 안에서 어떻게 배분되었는지 보인다.",
+          "aiAnalysisInputSha256": "ce4f22449fae4dce0d690e3292de2f4359a6d9dbf38f53300fa6b1ee6168b031",
+          "aiPublicGuideTopic": "순환선 한 바퀴를 나흘로 끊은 자리를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 북부 순환선의 나흘",
+          "section": "5.2 안개고개역의 반나절",
+          "primaryConcepts": [
+            "체류 판단"
+          ],
+          "secondaryConcepts": [
+            "중간 하차",
+            "정차역"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "예정에 없던 중도 하차와 그 시간의 사용을 사례로 기록한다. 고저차를 고려한 왕복 시간 배분, 수하물 위탁, 도보 관찰에서 얻은 취락 배치의 이유를 제시하고, 그 발견이 이후 차창 관찰의 해석 틀로 작동했다는 결과를 설명한다.",
+          "aiAnalysisInputSha256": "476332a0e5ae851aa06d8fd295d56ef0eb3c56085e90943f6a3d94ac845f03ab",
+          "aiPublicGuideTopic": "예정에 없이 내린 역에서 보낸 시간",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "5장 북부 순환선의 나흘",
+          "section": "5.2 안개고개역의 반나절",
+          "primaryConcepts": [
+            "체류 판단"
+          ],
+          "secondaryConcepts": [
+            "창가 노트"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계획 외 체류가 후속 일정에 미친 영향을 구체적으로 계산해 제시한다. 이동 시간 증가와 여유 감소라는 비용, 관찰 밀도 향상이라는 이득을 대비하고, 이런 교환의 횟수를 사전에 제한해 두어야 일정이 유지된다는 기준을 밝힌다.",
+          "aiAnalysisInputSha256": "6bb25f785e5c9f3bdec819cb168c93add6e5af6ed0f12e22c0fe5cf23e642124",
+          "aiPublicGuideTopic": "반나절이 일정에서 가져간 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "5장 북부 순환선의 나흘",
+          "section": "5.3 경계역에서",
+          "primaryConcepts": [
+            "회차"
+          ],
+          "secondaryConcepts": [
+            "여정 구성",
+            "연결 열차"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "노선 종단역에서 연장 이동을 검토하고 포기한 판단을 기록한다. 대기하지 않는 연결편이라는 조건이 실패 시 잔여 일정 전체를 무너뜨린다는 계산을 근거로 들고, 대신 종단역 고유의 시설과 풍경을 관찰 대상으로 삼은 대안을 제시한다.",
+          "aiAnalysisInputSha256": "02b386aa9bd461e3c56ef8cc6d7750700da6f79373482a605f93669587dc7a1b",
+          "aiPublicGuideTopic": "노선이 끝나는 자리에서 돌아서기",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "5장 북부 순환선의 나흘",
+          "section": "5.3 경계역에서",
+          "primaryConcepts": [
+            "회차"
+          ],
+          "secondaryConcepts": [
+            "빛의 방향",
+            "관찰 기록"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 구간의 역방향 통과에서 좌석 위치와 시간대가 함께 바뀌어 다른 관찰이 이루어진다는 점을 다룬다. 두 기록을 대조하면 지역의 고정된 성질과 당일 조건을 분리할 수 있다는 방법론적 이점을 제시한다.",
+          "aiAnalysisInputSha256": "e339411b11fc45c48592100358687a53497da3656ac9187a173e513d49ba0b6a",
+          "aiPublicGuideTopic": "같은 구간을 반대로 지나며 본 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "5장 북부 순환선의 나흘",
+          "section": "5.4 구간 정리",
+          "primaryConcepts": [
+            "구간 정리"
+          ],
+          "secondaryConcepts": [
+            "관찰 기록",
+            "여정 구성"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다일간 기록을 한 장으로 압축하는 마무리 절차를 다룬다. 선별 기준과 폐기의 정당성, 압축 과정에서 전환점의 지리적 편중이 드러난 사례를 제시하고, 정리 결과가 다음 여정의 계획 자료로 전환된다는 점을 설명한다.",
+          "aiAnalysisInputSha256": "91abed70570bfe5b0310521e2018e0855af2c1814e29007f8b57f8b2e3cb3ad2",
+          "aiPublicGuideTopic": "나흘의 기록을 한 장으로 줄이기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "5장 북부 순환선의 나흘",
+          "section": "5.4 구간 정리",
+          "primaryConcepts": [
+            "구간 정리"
+          ],
+          "secondaryConcepts": [
+            "체류 판단",
+            "지연"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실제 운행 결과와 계획의 어긋남을 수치로 제시하고, 유지된 것이 일정이 아니라 사전에 정한 규칙이었다는 점을 밝힌다. 규칙의 존재가 계획 붕괴 후 재구성을 빠르게 한다는 점을 사례로 들어 계획의 우선순위를 정리한다.",
+          "aiAnalysisInputSha256": "038df8fe7f2683bc85f6fde165148215c427c2635d56a3cb0bf9abf3238e6974",
+          "aiPublicGuideTopic": "나흘 동안 어긋난 것과 지킨 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 이 방법이 통하지 않을 때",
+          "section": "6.1 감편 운행",
+          "primaryConcepts": [
+            "감편 운행"
+          ],
+          "secondaryConcepts": [
+            "열차 시각표",
+            "완행열차"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계절에 따른 감편이 앞 장의 방법을 그대로 적용할 수 없게 만든다는 한계를 밝힌다. 운행 편수 감소가 운행 간격을 배로 늘려 중도 하차의 여건을 바꾼다는 점을 근거로 들고, 이전 가능한 것은 구체적 시각이 아니라 확인 절차라는 결론을 제시한다.",
+          "aiAnalysisInputSha256": "f69fac584fc9adb793d5d9d2d9b06615076092a11c5e47389f5ca2b960d0bc91",
+          "aiPublicGuideTopic": "겨울에는 이 노선이 다른 노선이 된다",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 이 방법이 통하지 않을 때",
+          "section": "6.1 감편 운행",
+          "primaryConcepts": [
+            "감편 운행"
+          ],
+          "secondaryConcepts": [
+            "중간 하차",
+            "정차역"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 노선의 두 계절을 나란히 놓고 하루 운행 편수와 운행 간격을 대비한 도표다. 중도 하차자의 대기 시간 변화를 함께 표시해, 감편이 이동 자체보다 도중 체류의 자유를 먼저 줄인다는 점을 보인다.",
+          "aiAnalysisInputSha256": "53efd0ee0ac7ddff31f3a6505a3d923916c9e531a73ffb39e69e52398180ae33",
+          "aiPublicGuideTopic": "계절에 따라 편수와 간격이 달라지는 것을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 이 방법이 통하지 않을 때",
+          "section": "6.2 터널 구간",
+          "primaryConcepts": [
+            "터널 구간"
+          ],
+          "secondaryConcepts": [
+            "빛의 방향",
+            "선로 사정"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "차창 관찰이 불가능한 구간의 존재가 완행 선택의 근거를 무력화한다는 한계를 다룬다. 해당 구간을 기록 정리와 계획 검토에 배정하는 대응, 관찰이 불가능한 구간을 야간에 배치하는 편성 전략을 제시하고 앞 장 원칙의 예외를 인정한다.",
+          "aiAnalysisInputSha256": "d56e0e461c5c25197cc4699b0233c9b3483333e818a21e4763b559c867bceafa",
+          "aiPublicGuideTopic": "창을 보아도 아무것도 없는 구간",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "6장 이 방법이 통하지 않을 때",
+          "section": "6.2 터널 구간",
+          "primaryConcepts": [
+            "터널 구간"
+          ],
+          "secondaryConcepts": [
+            "관찰 기록",
+            "풍경 전환"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관찰이 불가능한 구간이 기록의 연속성을 끊는다는 문제를 다룬다. 구간 진입 직전과 통과 직후의 경관을 대조 기록하는 방법을 제시하고, 그 대조가 지형에 의한 급격한 변화를 드러내므로 공백 구간도 기록 대상이 된다고 설명한다.",
+          "aiAnalysisInputSha256": "d65dfa1fb93a052ee8694c516932384e163beca89a87c09213142644c04e69f5",
+          "aiPublicGuideTopic": "보이지 않는 구간이 기록에 남기는 자국",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "6장 이 방법이 통하지 않을 때",
+          "section": "6.3 급행 선택",
+          "primaryConcepts": [
+            "급행 선택"
+          ],
+          "secondaryConcepts": [
+            "지연 회복",
+            "완행열차"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "완행 이용을 중단하는 편이 합리적인 세 가지 조건을 제시한다. 회복 불가능한 대규모 지연, 관찰 조건이 나쁜 반복 통과, 누적 피로로 기록이 불가능한 상태를 각각 들고, 판단 기준을 이동 시간이 아니라 관찰 가능성에 두어야 한다고 설명한다.",
+          "aiAnalysisInputSha256": "73062cf2a4ed9c6903d02406bca4db060ab017e20827f2cab9dd9d16a169d6c5",
+          "aiPublicGuideTopic": "완행을 포기하는 편이 나은 날",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "6장 이 방법이 통하지 않을 때",
+          "section": "6.3 급행 선택",
+          "primaryConcepts": [
+            "급행 선택"
+          ],
+          "secondaryConcepts": [
+            "여정 구성",
+            "환승 간격"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "완행과 급행을 구간별로 병용하는 방법과 그 전제 조건을 다룬다. 구간별 관찰 가치에 따른 배분이 사전 지식을 요구한다는 점, 두 편성 간 환승이 정차역 수에 의해 제약된다는 점을 제시하고 초행에는 적용하기 어렵다는 한계를 밝힌다.",
+          "aiAnalysisInputSha256": "1e898ef15a1af2c790503a70c633837e773e5fc666ce0a8819b7cc3f60bb5456",
+          "aiPublicGuideTopic": "두 기차를 섞어 쓰는 방법",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 결론: 느리게 가기로 정하는 일",
+          "section": "7.1 느리게 가기로 정하는 일",
+          "primaryConcepts": [
+            "느린 이동"
+          ],
+          "secondaryConcepts": [
+            "완행열차",
+            "창가 노트"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체의 명제를 다시 진술하는 결론 도입 페이지다. 정차의 반복이 관찰 기회로 전환되려면 사전 준비가 필요하다는 점을 정리하고, 좌석·기록·정리에 관한 앞 장들의 절차를 하나의 태도로 묶는다.",
+          "aiAnalysisInputSha256": "24befbff1c69e13d63518103459b7050bf2a19b954fb6fb384680abe637d9b57",
+          "aiPublicGuideTopic": "느림을 견디는 대신 쓰기로 하는 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "slow-is-a-choice"
+          ]
+        },
+        {
+          "pageNumber": 51,
+          "chapter": "7장 결론: 느리게 가기로 정하는 일",
+          "section": "7.1 느리게 가기로 정하는 일",
+          "primaryConcepts": [
+            "느린 이동"
+          ],
+          "secondaryConcepts": [
+            "열차 시각표",
+            "지연"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다른 노선에 적용할 수 있도록 사전 결정 사항을 세 가지로 압축해 제시한다. 하루 환승 횟수, 이동 시간대의 배치, 기록 형식이 시각표 확인보다 먼저 정해질 수 있다는 점을 설명하고, 실제 지연 발생에도 기록이 유지된 근거로 삼는다.",
+          "aiAnalysisInputSha256": "ccb1c0adbc09708257bff0d8bd4747678a0adf21917a40ab9b19bb503bcc15d6",
+          "aiPublicGuideTopic": "다음 노선을 타기 전에 정해 둘 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            50
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
     }
   ]
 }

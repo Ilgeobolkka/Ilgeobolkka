@@ -3131,6 +3131,91 @@
         17,
         18
       ]
+    },
+    {
+      "caseId": "case-book-082",
+      "bookId": 82,
+      "purpose": "완행열차로 북부를 도는 계획인데, 급행을 두고 완행을 고르는 것이 무엇을 얻는 선택인지와 창밖이 바뀌는 자리를 알아보고 달리는 기차에서 무엇을 적을지 정하는 법을 빌려 둔 앞부분에 조금만 더해 익히고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "requiredConcepts": [
+        "완행열차",
+        "정차역",
+        "풍경 전환",
+        "창가 노트",
+        "관찰 기록"
+      ],
+      "helpfulConcepts": [
+        "열차 시각표",
+        "창가 자리",
+        "선로 사정",
+        "지연"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 13
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 15
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 18
+        }
+      ],
+      "irrelevantPageNumbers": [
+        26,
+        27,
+        34,
+        35,
+        46,
+        47
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          50
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        12,
+        13,
+        14,
+        15,
+        18
+      ],
+      "allowedAlternativePageNumbers": [
+        5,
+        16,
+        17
+      ]
     }
   ]
 }
