@@ -395,7 +395,8 @@ export function createRouteDetailPage(root, dependencies = {}) {
 
     function updateControls() {
         updateNavigationButton(elements.previous, "이전", items[state.activeIndex - 1]);
-        updateNavigationButton(elements.next, "다음", items[state.activeIndex + 1]);
+        const nextItem = state.activeIndex < 0 ? null : items[state.activeIndex + 1];
+        updateNavigationButton(elements.next, "다음", nextItem);
         elements.previous.disabled = state.busy || state.replaced || state.activeIndex <= 0;
         elements.next.disabled = state.busy
             || state.replaced
@@ -495,8 +496,12 @@ function formatDateTime(value) {
         throw invalidResponseError();
     }
     return new Intl.DateTimeFormat("ko-KR", {
-        dateStyle: "medium",
-        timeStyle: "short"
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        hourCycle: "h23"
     }).format(date);
 }
 

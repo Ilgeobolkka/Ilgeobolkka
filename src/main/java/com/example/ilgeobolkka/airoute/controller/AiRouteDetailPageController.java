@@ -30,7 +30,7 @@ public class AiRouteDetailPageController {
         try {
             route = aiRouteQueryFacade.findRoute(authenticatedReader.readerId(), routeId);
         } catch (AiRouteNotFoundException exception) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, null, exception);
         }
 
         model.addAttribute("pageTitle", "AI 독서 경로");

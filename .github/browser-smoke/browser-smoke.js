@@ -1008,6 +1008,8 @@ async function verifyRouteDetailFlow() {
     });
 
     page.start();
+    assert(root.querySelector("[data-route-next]").textContent === "다음 경로 페이지",
+        "경로를 열기 전에는 비활성 다음 버튼에 첫 페이지 비용을 표시하면 안 됩니다.");
     await page.openItem(0);
 
     const items = root.querySelectorAll("[data-route-position]");
@@ -1044,6 +1046,8 @@ async function verifyRouteDetailFlow() {
         "모든 콘텐츠 성공 뒤 전체 진행을 완료로 표시해야 합니다.");
     assert(root.querySelector("[data-completed-badge]").hidden === false,
         "서버가 완료한 경로의 완료 배지를 표시해야 합니다.");
+    assert(!root.querySelector("[data-completed-time]").textContent.includes("T"),
+        "동적으로 갱신한 완료 시각도 ISO 원문이 아닌 읽기 쉬운 형식이어야 합니다.");
     assert([...root.querySelectorAll("[data-feedback-rating]")]
         .every(button => button.disabled === false),
         "경로 완료 뒤 세 피드백 버튼을 활성화해야 합니다.");
@@ -1345,7 +1349,7 @@ function createRouteDetailFixture() {
             <a href="/ink" data-route-ink-link hidden>잉크 충전하기</a>
         </div>
         <div tabindex="-1" aria-busy="false" data-route-content>
-            <p data-route-placeholder>경로 페이지를 열면 콘텐츠가 여기에 표시됩니다.</p>
+            <p>경로 페이지를 열면 콘텐츠가 여기에 표시됩니다.</p>
         </div>
         <p data-feedback-guide></p>
         <button type="button" data-feedback-rating="HELPFUL" disabled>도움</button>

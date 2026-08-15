@@ -30,7 +30,9 @@
                       data-completed-time
                       th:datetime="${route.completedAt}"
                       th:hidden="${route.completedAt == null}"
-                      th:text="${route.completedAt != null ? '완료 ' + route.completedAt : ''}">
+                      th:text="${route.completedAt != null
+                          ? '완료 ' + #temporals.format(route.completedAt, 'yyyy. M. d. HH:mm')
+                          : ''}">
                 </time>
             </div>
         </div>
@@ -57,7 +59,7 @@
                     <span class="small text-secondary" data-route-progress aria-live="polite"></span>
                 </div>
 
-                <ol class="list-group list-group-numbered" data-route-items>
+                <ol class="list-group list-group-numbered">
                     <li class="list-group-item d-flex align-items-start gap-2"
                         th:each="item : ${route.items}"
                         th:attr="data-route-position=${item.position},
@@ -99,7 +101,9 @@
                                   data-item-opened-time
                                   th:datetime="${item.openedAt}"
                                   th:hidden="${item.openedAt == null}"
-                                  th:text="${item.openedAt != null ? '열람 ' + item.openedAt : ''}">
+                                  th:text="${item.openedAt != null
+                                      ? '열람 ' + #temporals.format(item.openedAt, 'yyyy. M. d. HH:mm')
+                                      : ''}">
                             </time>
                             <p class="small mb-2" th:text="${item.guide}">읽기 안내</p>
 
@@ -171,7 +175,7 @@
                  aria-busy="false"
                  tabindex="-1"
                  data-route-content>
-                <p class="text-secondary text-center p-5" data-route-placeholder>
+                <p class="text-secondary text-center p-5">
                     경로 페이지를 열면 콘텐츠가 여기에 표시됩니다.
                 </p>
             </div>

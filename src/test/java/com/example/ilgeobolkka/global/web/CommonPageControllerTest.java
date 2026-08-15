@@ -423,6 +423,12 @@ class CommonPageControllerTest {
         mockMvc.perform(get("/js/common/error-display.js"))
                 .andExpect(status().isOk());
 
+        mockMvc.perform(get("/js/common/request-page-content.js"))
+                .andExpect(status().isOk());
+
+        mockMvc.perform(get("/js/common/viewer-session.js"))
+                .andExpect(status().isOk());
+
         mockMvc.perform(get("/js/common/shell.js"))
                 .andExpect(status().isOk());
 
@@ -450,6 +456,12 @@ class CommonPageControllerTest {
                 .andExpect(status().isOk());
 
         mockMvc.perform(get("/js/viewer/viewer.js"))
+                .andExpect(status().isOk());
+
+        mockMvc.perform(get("/js/ai-route/route-detail-page.js"))
+                .andExpect(status().isOk());
+
+        mockMvc.perform(get("/js/ai-route/route-detail.js"))
                 .andExpect(status().isOk());
 
         mockMvc.perform(get("/js/library/library-page.js"))

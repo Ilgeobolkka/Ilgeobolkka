@@ -1,6 +1,8 @@
 package com.example.ilgeobolkka.airoute;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.authentication;
@@ -32,6 +34,7 @@ import org.springframework.security.authentication.TestingAuthenticationToken;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.web.server.ResponseStatusException;
 
 @WebMvcTest(
         controllers = AiRouteDetailPageController.class,
@@ -107,13 +110,17 @@ class AiRouteDetailPageTest {
         assertTrue(html.contains("data-opened=\"true\""));
         assertTrue(html.contains("data-prerequisite=\"true\""));
         assertTrue(html.contains("data-prerequisite=\"false\""));
+        assertFalse(html.contains("data-route-items"));
+        assertFalse(html.contains("data-route-placeholder"));
 
         int openedTimeHookIndex = html.indexOf("data-item-opened-time");
         String unreadOpenedTimeTag = html.substring(
                 html.lastIndexOf("<time", openedTimeHookIndex),
                 html.indexOf(">", openedTimeHookIndex) + 1);
         assertTrue(unreadOpenedTimeTag.contains("hidden"));
+        // Bootstrap의 d-block은 hidden보다 우선하므로 미열람 시각이 노출되지 않게 막는다.
         assertFalse(unreadOpenedTimeTag.contains("d-block"));
+        assertTrue(html.contains("열람 2026. 8. 14. 10:05"));
 
         assertTrue(html.contains("href=\"/ink\""));
         assertTrue(html.matches("(?s).*data-feedback-rating=\"HELPFUL\"[^>]*disabled.*"));
@@ -138,7 +145,7 @@ class AiRouteDetailPageTest {
         assertTrue(html.contains("data-route-completed=\"true\""));
         assertTrue(html.contains("data-route-rating=\"NEUTRAL\""));
         assertTrue(html.contains("data-completed-time"));
-        assertTrue(html.contains("완료 2026-08-14T01:10:00Z"));
+        assertTrue(html.contains("완료 2026. 8. 14. 10:10"));
         assertTrue(html.matches(
                 "(?s).*data-feedback-rating=\"NEUTRAL\"[^>]*aria-pressed=\"true\".*"));
         assertFalse(html.matches(
@@ -155,12 +162,19 @@ class AiRouteDetailPageTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/login"));
 
+        AiRouteNotFoundException notFoundException = new AiRouteNotFoundException(ROUTE_ID);
         when(aiRouteQueryFacade.findRoute(OTHER_READER_ID, ROUTE_ID))
-                .thenThrow(new AiRouteNotFoundException(ROUTE_ID));
+                .thenThrow(notFoundException);
 
-        mockMvc.perform(get("/ai-routes/{routeId}", ROUTE_ID)
+        MvcResult result = mockMvc.perform(get("/ai-routes/{routeId}", ROUTE_ID)
                         .with(authentication(인증된_독자(OTHER_READER_ID))))
-                .andExpect(status().isNotFound());
+                .andExpect(status().isNotFound())
+                .andReturn();
+
+        ResponseStatusException responseStatusException = assertInstanceOf(
+                ResponseStatusException.class,
+                result.getResolvedException());
+        assertSame(notFoundException, responseStatusException.getCause());
     }
 
     @Test
