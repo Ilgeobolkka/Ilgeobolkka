@@ -15948,6 +15948,1030 @@
       ]
     },
     {
+      "bookId": 35,
+      "title": "다섯 다리를 건넌 제국",
+      "pdfPath": "pdfs/book-035.pdf",
+      "pdfSha256": "39a868f7fd77c5f687abba3e293aa54feb1a085957e77707415f0f8952e300dd",
+      "totalPageCount": 49,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 다리는 무엇을 잇는가",
+          "section": "1.1 건너는 일과 다스리는 일",
+          "primaryConcepts": [
+            "구조물의 기능"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "교통 수요가 아닌 건설 주체의 의도에서 구조물의 기능을 도출하는 관점을 세운다. 자리·규모·시기가 의도의 기록이 된다는 이 책의 전제를 제시한다.",
+          "aiAnalysisInputSha256": "e7e05e759d734a193fc3861c5154cdd68994021f59adf5612d578cf680a80a9c",
+          "aiPublicGuideTopic": "다리가 건너기 위한 것이면서 동시에 다스리기 위한 것임을 밝힌다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 다리는 무엇을 잇는가",
+          "section": "1.1 건너는 일과 다스리는 일",
+          "primaryConcepts": [
+            "구조물의 기능"
+          ],
+          "secondaryConcepts": [
+            "교통망"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연결과 통제가 동일 구조물의 두 기능임을 제시하고 둘의 비중이 개별 구조물마다 다름을 밝힌다. 형태 차이를 기능 의도의 지표로 삼는 독법을 도입한다.",
+          "aiAnalysisInputSha256": "2e426382ae1abea595146a3c9c04447d4149bfbc1d87f1468d91a246eb8e6967",
+          "aiPublicGuideTopic": "다리 하나가 두 가지 일을 동시에 한다는 점을 정리한다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 다리는 무엇을 잇는가",
+          "section": "1.2 다리가 놓이면 달라지는 것",
+          "primaryConcepts": [
+            "교통망"
+          ],
+          "secondaryConcepts": [
+            "구조물의 기능"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "교량 건설이 주변 도로망과 취락 배치를 재편하는 과정을 제시한다. 구조물 소멸 후에도 남는 공간 배치를 역추적 단서로 활용하는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "4ba6cfa74d94b0a365392f43b5ac1f5a12db98ccfc638a17155dd1e4511d309d",
+          "aiPublicGuideTopic": "다리 하나가 주변의 길과 마을을 어떻게 바꾸는지 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 다리는 무엇을 잇는가",
+          "section": "1.2 다리가 놓이면 달라지는 것",
+          "primaryConcepts": [
+            "교통망"
+          ],
+          "secondaryConcepts": [
+            "입지"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "교통 배치의 관성이 구조물의 존속 기간을 넘어선다는 점을 제시한다. 도로 수렴 지점을 소실 구조물 탐색의 단서로 삼는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "e12897a0b69d4e5fc2d796c7d10d665f1ae55878001a1d40dfb7487b3e5332d8",
+          "aiPublicGuideTopic": "다리가 바꾼 배치가 다리보다 오래 남는다는 점을 짚는다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 다리는 무엇을 잇는가",
+          "section": "1.3 돌에 남는 것과 남지 않는 것",
+          "primaryConcepts": [
+            "구조물 사료"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구조물에서 직접 관측 가능한 속성과 불가능한 속성을 좌우로 구분해 제시한다. 관측 가능 범위가 연구 질문의 범위를 규정한다는 관계를 시각화한다.",
+          "aiAnalysisInputSha256": "f9e3bef9c5c6584733c5bca5b8be97379d675ad96529736667b21634b19be967",
+          "aiPublicGuideTopic": "다리에서 읽어 낼 수 있는 것과 읽어 낼 수 없는 것을 갈라 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 다리는 무엇을 잇는가",
+          "section": "1.3 돌에 남는 것과 남지 않는 것",
+          "primaryConcepts": [
+            "구조물 사료"
+          ],
+          "secondaryConcepts": [
+            "구조물의 기능"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구조물의 비의도적 정보 보존과 문헌의 의도적 서술을 대비한다. 두 자료가 상호 보완적으로 작동하는 구조를 제시한다.",
+          "aiAnalysisInputSha256": "57c0672df6123ddee3205d4c403311002fc95119b86512307cf36d3c97956e78",
+          "aiPublicGuideTopic": "구조물이 담는 정보의 성격을 글로 된 기록과 견준다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "2장 다섯 다리를 읽는 법",
+          "section": "2.1 언제 놓였는가",
+          "primaryConcepts": [
+            "건설 시점"
+          ],
+          "secondaryConcepts": [
+            "구조물 사료"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "문헌 기록이 없는 구조물의 연대 추정 실마리를 세 가지로 제시한다. 구간 추정을 유지해야 후속 논의가 붕괴하지 않는다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "0736383932c4b34975ba3a4d8e63702354a9315aaa06d2457a70c1803480d21f",
+          "aiPublicGuideTopic": "다리가 놓인 때를 어떻게 정하는지 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 다섯 다리를 읽는 법",
+          "section": "2.1 언제 놓였는가",
+          "primaryConcepts": [
+            "건설 시점"
+          ],
+          "secondaryConcepts": [
+            "규모"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구조물의 부위별 시기 차이를 층위로 설명하고 단일 연대 부여의 문제를 지적한다. 최초 건설 시점과 현존 형태의 시점을 구분하는 원칙을 세운다.",
+          "aiAnalysisInputSha256": "52b11ab3dd4ff62b996e50f4f5c44f1032bed49c0f9cd0994d6f2aebb7f5c0ca",
+          "aiPublicGuideTopic": "놓인 때와 고친 때를 가르는 문제를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 다섯 다리를 읽는 법",
+          "section": "2.2 어디에 놓였는가",
+          "primaryConcepts": [
+            "입지"
+          ],
+          "secondaryConcepts": [
+            "건설 시점"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "교량 입지가 지형 조건과 건설 의도의 경합으로 결정됨을 제시한다. 불리한 입지 선택을 의도 추론의 강한 단서로 삼는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "791e5351328dd581f1a42e45d0dd32fa2ef0e87def8ac63648202f9173b29a38",
+          "aiPublicGuideTopic": "다리가 놓인 자리가 무엇으로 정해졌는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 다섯 다리를 읽는 법",
+          "section": "2.2 어디에 놓였는가",
+          "primaryConcepts": [
+            "입지"
+          ],
+          "secondaryConcepts": [
+            "교통망"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "교량과 도로망의 선후 관계로 건설 성격을 구분하는 방법을 제시한다. 흐름 창출형과 흐름 고착형의 구분을 이후 논의의 기준으로 세운다.",
+          "aiAnalysisInputSha256": "1692aacbcdc12d1f940b83de962c2a47ae1585fc77ee6403793227e035c4e315",
+          "aiPublicGuideTopic": "자리가 정해진 뒤에 둘레가 어떻게 따라왔는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 다섯 다리를 읽는 법",
+          "section": "2.3 얼마나 크게 놓였는가",
+          "primaryConcepts": [
+            "규모"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다섯 구조물의 규모와 투입 자원, 통행량을 병렬 배치해 상호 불일치를 시각화한다. 규모가 수요가 아닌 동원 능력의 지표임을 제시한다.",
+          "aiAnalysisInputSha256": "36a91581fe4509f5dbf81762f8baf4bd7515e34ef97f2b725927e0915e537469",
+          "aiPublicGuideTopic": "다섯 다리의 크기와 든 힘을 나란히 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 다섯 다리를 읽는 법",
+          "section": "2.3 얼마나 크게 놓였는가",
+          "primaryConcepts": [
+            "규모"
+          ],
+          "secondaryConcepts": [
+            "입지"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구조물 규모를 수요가 아닌 자원 동원 역량으로 해석하고 시기별 국가 역량 추정에 활용한다. 입지와 재료 조건의 통제 없이 규모를 지표로 쓰는 위험을 지적한다.",
+          "aiAnalysisInputSha256": "8163b0943af198154f391a4c590b53679614de7123fa261183c62bc8acbd4985",
+          "aiPublicGuideTopic": "크기가 무엇을 말해 주는지 가려 읽는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 다섯 다리를 읽는 법",
+          "section": "2.4 누구의 몫으로 놓였는가",
+          "primaryConcepts": [
+            "부담 배분"
+          ],
+          "secondaryConcepts": [
+            "규모"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "건설 노동력의 동원 범위를 국가 역량의 지표로 제시하고 해석의 양면성을 지적한다. 이 책이 다루지 않는 영역을 명시해 범위를 한정한다.",
+          "aiAnalysisInputSha256": "52448493de1c4949cf94744e9f432dc3d09f2bb5a9579e65f1a9f1c6196fc361",
+          "aiPublicGuideTopic": "다리를 놓는 데 든 사람과 물자를 누가 냈는지 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 다섯 다리를 읽는 법",
+          "section": "2.4 누구의 몫으로 놓였는가",
+          "primaryConcepts": [
+            "부담 배분"
+          ],
+          "secondaryConcepts": [
+            "건설 시점"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "건설 부담과 유지 부담의 주체가 달라지는 구조를 제시한다. 규모가 클수록 지역 부담이 누적되는 관계를 이후 논의로 연결한다.",
+          "aiAnalysisInputSha256": "e3a0743de407182bae02470bd5fbcadf5272faf9ddbc7b3cb555adb98851b7a3",
+          "aiPublicGuideTopic": "다리를 고치는 데 드는 몫이 다르다는 점을 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 순서가 그리는 지도",
+          "section": "3.1 첫 다리와 마지막 다리",
+          "primaryConcepts": [
+            "건설 순서"
+          ],
+          "secondaryConcepts": [
+            "건설 시점"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구조물 건설 순서와 도읍으로부터의 거리 순서가 일치함을 확인한다. 건설 순서를 통치 영역 확장의 경로로 읽는 가설을 세운다.",
+          "aiAnalysisInputSha256": "527451a87b378b5ba7d36c501fe9f88edff7f22337601e333b683200d65ad036",
+          "aiPublicGuideTopic": "다섯이 놓인 차례를 세우고 그 차례가 무엇을 담는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 순서가 그리는 지도",
+          "section": "3.1 첫 다리와 마지막 다리",
+          "primaryConcepts": [
+            "건설 순서"
+          ],
+          "secondaryConcepts": [
+            "입지"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연대 구간이 겹치는 사례에서 복수 순서를 병렬 유지하는 방법을 제시한다. 순서 변경에 견디는 결론과 견디지 못하는 결론을 분리해 기술한다.",
+          "aiAnalysisInputSha256": "f079624fcbb7831525e8fddea4037125ee8e592c26e7ca0a5f08bdbaad802e4f",
+          "aiPublicGuideTopic": "차례를 가릴 수 없는 두 쌍을 어떻게 다룰지 정한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 순서가 그리는 지도",
+          "section": "3.2 순서가 보여 주는 방향",
+          "primaryConcepts": [
+            "팽창 경로"
+          ],
+          "secondaryConcepts": [
+            "건설 순서"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "건설 순서의 공간 배열이 영역 확장 경로와 일치함을 확인하고 다른 자료로 교차 검증한다. 선후 일치에서 인과를 도출할 수 없는 한계와 예외 사례를 제시한다.",
+          "aiAnalysisInputSha256": "335809e4a0f115f05e883594ea7311eff3368e97fa20ca791d6ab5eda655c9dd",
+          "aiPublicGuideTopic": "다리가 놓인 차례를 지도 위에 올려 방향을 읽는다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 순서가 그리는 지도",
+          "section": "3.2 순서가 보여 주는 방향",
+          "primaryConcepts": [
+            "팽창 경로"
+          ],
+          "secondaryConcepts": [
+            "중앙집권"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "건설 순서와 확장 경로의 대응을 핵심 명제로 정식화한다. 문헌 결락 시기를 구조물 배치로 보완하는 활용을 제시한다.",
+          "aiAnalysisInputSha256": "4e4a4b79e26964e5e34f1ffd896d4d33bb24ec31321de7a42388cde3ebf81f5a",
+          "aiPublicGuideTopic": "놓인 차례가 뻗어 나간 방향을 그린다는 명제를 정리한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": [
+            "order-draws-the-map"
+          ]
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 순서가 그리는 지도",
+          "section": "3.3 건너뛴 자리",
+          "primaryConcepts": [
+            "미가설 지점"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실제 건설 지점과 건설에 유리했으나 선택되지 않은 지점을 같은 지도에 병치한다. 미선택 자체를 의사결정의 흔적으로 읽는 관점을 시각화한다.",
+          "aiAnalysisInputSha256": "72198d8a24190fe13580390f68dd74a748406d93dfa42ba45fbb6b1acba60f3f",
+          "aiPublicGuideTopic": "다리가 놓일 만한데 놓이지 않은 자리를 함께 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 순서가 그리는 지도",
+          "section": "3.3 건너뛴 자리",
+          "primaryConcepts": [
+            "미가설 지점"
+          ],
+          "secondaryConcepts": [
+            "팽창 경로"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미가설 지점의 분포를 통치 범위의 경계 지표로 해석한다. 건설 유보와 건설 포기를 구분해 각각의 함의를 제시한다.",
+          "aiAnalysisInputSha256": "2c0d5f17b807853f963b774f8d66d792610927b3c8e58b8746e32d13a838fb6c",
+          "aiPublicGuideTopic": "놓이지 않은 자리가 알려 주는 것을 읽는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 순서가 그리는 지도",
+          "section": "3.4 뒤에 놓인 다리는 다른 다리다",
+          "primaryConcepts": [
+            "기능 변화"
+          ],
+          "secondaryConcepts": [
+            "규모"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "건설 시기에 따른 구조 형태 변화를 통행 대상의 변화로 설명한다. 동일 범주 구조물 내부의 기능 차이를 구분하도록 요구한다.",
+          "aiAnalysisInputSha256": "a74b350b8b447167cd02f0d150865816d7556455b749603efb3ce221ef75b739",
+          "aiPublicGuideTopic": "먼저 놓인 다리와 나중 놓인 다리의 성격이 다름을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 순서가 그리는 지도",
+          "section": "3.4 뒤에 놓인 다리는 다른 다리다",
+          "primaryConcepts": [
+            "기능 변화"
+          ],
+          "secondaryConcepts": [
+            "교통망"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 구조물의 기능 전환을 개축 흔적으로 식별하는 방법을 제시한다. 건설 시점과 현존 형태를 별도 항목으로 기록하는 절차를 밝힌다.",
+          "aiAnalysisInputSha256": "78fd4c8a33b08be5e2823567abc4758b9c071d3791a6ab6cedaa10fa55506a95",
+          "aiPublicGuideTopic": "한 다리가 세월이 지나며 다른 일을 하게 되는 경우를 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 잇는 힘과 쥐는 힘",
+          "section": "4.1 군사가 먼저인가 행정이 먼저인가",
+          "primaryConcepts": [
+            "군사와 행정"
+          ],
+          "secondaryConcepts": [
+            "구조물의 기능"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "군사적 목적과 행정적 목적을 구조물 특성으로 구분하는 기준을 제시한다. 두 독립 자료가 같은 방향을 가리킬 때 해석의 신뢰가 높아짐을 밝힌다.",
+          "aiAnalysisInputSha256": "1882b925914bb76a496112b9a3749d63b00ec2ad33cfe491b6cd82a345c7677d",
+          "aiPublicGuideTopic": "다리를 놓은 뜻이 군사에 있었는지 행정에 있었는지 가른다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 잇는 힘과 쥐는 힘",
+          "section": "4.1 군사가 먼저인가 행정이 먼저인가",
+          "primaryConcepts": [
+            "군사와 행정"
+          ],
+          "secondaryConcepts": [
+            "미가설 지점"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "목적의 배타적 구분이 아닌 비중 판단으로 문제를 재설정한다. 시공 속도의 물리적 흔적을 비중 추정의 지표로 제시한다.",
+          "aiAnalysisInputSha256": "84b6aeef4e08b7cde1b9fa746624feadccd00a134205099f415a16ab88a6d337",
+          "aiPublicGuideTopic": "두 뜻이 한 다리에 겹치는 자리를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 잇는 힘과 쥐는 힘",
+          "section": "4.2 세와 사람이 지나간다",
+          "primaryConcepts": [
+            "중앙집권"
+          ],
+          "secondaryConcepts": [
+            "팽창 경로"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이동 시간 단축이 통치 역량 증대로 전환되는 경로를 제시한다. 영역 확장과 군사력 증가의 불균형을 인프라로 설명하는 해석을 밝힌다.",
+          "aiAnalysisInputSha256": "a0689b478c2b94ca73d5a3cdaf0e799d7eb306083914dead5bdef3901c30a47f",
+          "aiPublicGuideTopic": "다리가 이어지면서 중앙이 무엇을 할 수 있게 되는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 잇는 힘과 쥐는 힘",
+          "section": "4.2 세와 사람이 지나간다",
+          "primaryConcepts": [
+            "중앙집권"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이동 소요 시간 단축이 통치 도달 범위 확대로 이어지는 관계를 두 축척으로 시각화한다. 시간 단축의 수혜 항목을 명시해 인프라와 통치의 연결을 보인다.",
+          "aiAnalysisInputSha256": "5fd173f4a64b3cdd7500d768db5dfd4d72ab5eeea41b8fb1651a2f30796ef198",
+          "aiPublicGuideTopic": "다리가 놓이기 전과 뒤에 도읍에서 걸리는 시간이 어떻게 달라졌는지 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 잇는 힘과 쥐는 힘",
+          "section": "4.3 다리는 막기도 한다",
+          "primaryConcepts": [
+            "통제"
+          ],
+          "secondaryConcepts": [
+            "중앙집권"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "교량이 통행 지점을 단일화해 감시와 차단을 가능하게 하는 구조를 제시한다. 연결과 통제의 상호 강화가 건설 집중을 낳는 경로를 밝힌다.",
+          "aiAnalysisInputSha256": "7f8cbb80ec46cd9b23dee46aa55b7b035a2964a19446fe2d38865c3812720b68",
+          "aiPublicGuideTopic": "이은 자리가 곧 막을 수 있는 자리가 되는 일을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 잇는 힘과 쥐는 힘",
+          "section": "4.3 다리는 막기도 한다",
+          "primaryConcepts": [
+            "통제"
+          ],
+          "secondaryConcepts": [
+            "군사와 행정"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "소실되기 쉬운 부속 시설을 석재의 가공 흔적으로 추정하는 방법을 제시한다. 미확인과 부재를 구분해 기술하는 표기 원칙을 밝힌다.",
+          "aiAnalysisInputSha256": "4b8d4b8a0af1681addf90dd64fc6834805d5f41b433a2729200db44453488988",
+          "aiPublicGuideTopic": "막는 쪽으로 쓰인 자국을 어떻게 가려내는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 잇는 힘과 쥐는 힘",
+          "section": "4.4 이어진 만큼 닿는다",
+          "primaryConcepts": [
+            "지배의 범위"
+          ],
+          "secondaryConcepts": [
+            "중앙집권"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "교통망 도달 범위와 통치 범위의 불일치 사례를 제시한다. 인프라를 영역 경계가 아닌 통치 강도의 지표로 재규정한다.",
+          "aiAnalysisInputSha256": "4194f1b410209b79b0a51161fd95336dc747ff59819f4f64b37cb2a799c7da92",
+          "aiPublicGuideTopic": "다리가 이은 범위와 실제로 다스린 범위를 견준다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 잇는 힘과 쥐는 힘",
+          "section": "4.4 이어진 만큼 닿는다",
+          "primaryConcepts": [
+            "지배의 범위"
+          ],
+          "secondaryConcepts": [
+            "통제"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "교량 단독이 아니라 후속 도로망과의 연결 여부로 도달 범위를 판단해야 함을 제시한다. 건설 역량과 유지·확장 역량의 격차를 지적한다.",
+          "aiAnalysisInputSha256": "d30b157218be29d09d2841eddf76d7752647a24a90ea118230abed3beebcc02d",
+          "aiPublicGuideTopic": "닿는 힘이 다리 하나로 끝나지 않음을 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 물푸레교 앞에서",
+          "section": "5.1 다리에 서서 재는 것",
+          "primaryConcepts": [
+            "실측"
+          ],
+          "secondaryConcepts": [
+            "규모"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구조물 실측의 순서와 대상 항목을 목적에 따라 규정한다. 측정 항목 선정이 후속 분석 가능성을 좌우한다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "7ebd0364a938d77f554d2ad36823fec253791d0b893e985de87ffa09ca616f8c",
+          "aiPublicGuideTopic": "다리 하나를 실제로 재는 일이 무엇부터 시작하는지 보인다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 물푸레교 앞에서",
+          "section": "5.1 다리에 서서 재는 것",
+          "primaryConcepts": [
+            "실측"
+          ],
+          "secondaryConcepts": [
+            "건설 시점"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "측정값에 부속 조건을 병기해야 하는 이유를 재측정과 상호 비교의 관점에서 제시한다. 조건 통제가 불가능한 경우 비교를 유보하는 원칙을 밝힌다.",
+          "aiAnalysisInputSha256": "4a099290ee37956c5d04575c6b90120f6f58dff19955e75d8f53a64f6b94921b",
+          "aiPublicGuideTopic": "잰 값에 어떤 조건을 함께 적어야 하는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 물푸레교 앞에서",
+          "section": "5.2 고친 자국을 세다",
+          "primaryConcepts": [
+            "보수 이력"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구조물의 부위별 시기 층위를 단면으로 시각화하고 아래에서 위로 연대가 어려지는 관계를 제시한다. 측정 조건인 수위와 층 식별의 필요성을 함께 보인다.",
+          "aiAnalysisInputSha256": "f649cff0441ab48f3c9381349ceb521460c85a88e08498864dc44f3abf079ac1",
+          "aiPublicGuideTopic": "한 다리에 남은 여러 시기의 돌을 층으로 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 물푸레교 앞에서",
+          "section": "5.2 고친 자국을 세다",
+          "primaryConcepts": [
+            "보수 이력"
+          ],
+          "secondaryConcepts": [
+            "부담 배분"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "보수 층위의 수와 석재 출처 변화에서 유지 역량과 자원 조건을 읽는 방법을 제시한다. 보수 빈도의 구조물 간 차이를 후속 논의로 연결한다.",
+          "aiAnalysisInputSha256": "aedfd894cf02d394830f59053fc21530f5c139fe72388ab2e7f6b772d852b004",
+          "aiPublicGuideTopic": "고친 횟수와 시기가 무엇을 말해 주는지 읽는다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 물푸레교 앞에서",
+          "section": "5.3 다섯을 한 장에 겹치기",
+          "primaryConcepts": [
+            "겹쳐 그리기"
+          ],
+          "secondaryConcepts": [
+            "건설 순서"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "개별 실측 결과를 통합 도면으로 전환하는 두 가지 방식과 각각의 용도를 제시한다. 통합 과정에서 추정과 결측을 표시로 보존하는 원칙을 밝힌다.",
+          "aiAnalysisInputSha256": "7acce583882aa7cea60f059eaa0427f03fa23f6302360883cc91415b42ff98dc",
+          "aiPublicGuideTopic": "다섯 다리의 실측 결과를 한 장으로 모으는 방법을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 물푸레교 앞에서",
+          "section": "5.4 재고 남긴 것을 다시 쓰려면",
+          "primaryConcepts": [
+            "측정 기록"
+          ],
+          "secondaryConcepts": [
+            "실측"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "측정 결과의 재사용 조건을 위치·도구·결측 세 항목으로 제시한다. 미측정과 측정 실패를 구분해 기록하는 절차를 밝힌다.",
+          "aiAnalysisInputSha256": "50f0264cf62397c70508734fd87ee92459d10945d21d33dc0b8dc28599397fa4",
+          "aiPublicGuideTopic": "잰 값을 다음 사람이 다시 쓸 수 있게 남기는 방법을 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 물푸레교 앞에서",
+          "section": "5.5 다리를 떠나며",
+          "primaryConcepts": [
+            "실측"
+          ],
+          "secondaryConcepts": [
+            "보수 이력"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실측 결과를 측정값과 미측정 목록으로 구분해 정리한다. 미측정 사유를 재측정 가능성에 따라 분류하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "354ccaa5a2a53878f3e214186d5a9d44f6e04fde7a4c62c42fa654cc02dd8e8b",
+          "aiPublicGuideTopic": "한 차례 실측을 마치며 무엇이 남았는지 셈한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 돌이 말하지 않는 것",
+          "section": "6.1 남은 다리만 세었다",
+          "primaryConcepts": [
+            "잔존 구조물"
+          ],
+          "secondaryConcepts": [
+            "구조물 사료"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "잔존 구조물이 내구성 기준으로 선별된 표본임을 제시한다. 표본이 대규모 투자 사례로 편향되는 방향을 특정한다.",
+          "aiAnalysisInputSha256": "ec61897cf56d76e2fffb3bb495ecfce86f04d94b862cf9ad7ee641b0300c3ea5",
+          "aiPublicGuideTopic": "오늘 남은 다섯이 그때 있던 다리의 전부가 아님을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 돌이 말하지 않는 것",
+          "section": "6.1 남은 다리만 세었다",
+          "primaryConcepts": [
+            "잔존 구조물"
+          ],
+          "secondaryConcepts": [
+            "미가설 지점"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "소실 구조물의 위치를 기초 잔존물과 도로 흔적으로 추정하는 방법을 제시한다. 표본 제외 사례와 그 사유를 명시해 결론의 기반을 드러낸다.",
+          "aiAnalysisInputSha256": "b1201587b5f278d0d37409b8b3674f5fc94035a0f1cdc66f847f82859ded6d0a",
+          "aiPublicGuideTopic": "없어진 다리의 자리를 다른 흔적으로 더듬는 방법을 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 돌이 말하지 않는 것",
+          "section": "6.2 놓인 것과 쓰인 것",
+          "primaryConcepts": [
+            "건설과 이용"
+          ],
+          "secondaryConcepts": [
+            "규모"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "건설 흔적과 사용 흔적을 구분하고 마모 정도를 사용량 지표로 제시한다. 사용되지 않은 구조물이 핵심 주장을 제약함을 밝힌다.",
+          "aiAnalysisInputSha256": "09d2c058851b5dc0f4fabecc2468479c178f659a4c3ac087f8acce6064a46559",
+          "aiPublicGuideTopic": "다리가 놓였다는 것과 실제로 쓰였다는 것을 가른다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 돌이 말하지 않는 것",
+          "section": "6.2 놓인 것과 쓰인 것",
+          "primaryConcepts": [
+            "건설과 이용"
+          ],
+          "secondaryConcepts": [
+            "중앙집권"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "저사용 구조물의 원인을 세 가지로 나누고 부속 시설 흔적으로 판별한다. 동일 범주 내에서 기능이 갈리는 사례를 제시해 일반화를 제한한다.",
+          "aiAnalysisInputSha256": "0506d5973bdbb60da58de7f868ca648186e9b784d5a8042332f98ddf4985acfa",
+          "aiPublicGuideTopic": "적게 쓰인 다리가 무엇을 뜻하는지 여러 갈래로 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 돌이 말하지 않는 것",
+          "section": "6.3 다리 없이도 건넜다",
+          "primaryConcepts": [
+            "비공식 통행"
+          ],
+          "secondaryConcepts": [
+            "교통망"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비공식 도하가 기록과 구조물 양쪽에 흔적을 남기지 않는 구조를 제시한다. 통제 시설의 존재가 누락 규모를 키우는 방향을 짐작하는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "53f548082476184d204905acb8900ae93b3ba91b5ee73b591d48e1276adcc78c",
+          "aiPublicGuideTopic": "다리를 쓰지 않고 강을 건너던 길을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 돌이 말하지 않는 것",
+          "section": "6.3 다리 없이도 건넜다",
+          "primaryConcepts": [
+            "비공식 통행"
+          ],
+          "secondaryConcepts": [
+            "통제"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "누락의 크기를 모르는 상태에서 방향만으로 결론을 보정하는 방법을 제시한다. 보정 지침을 남기는 것과 임의 보정을 구분한다.",
+          "aiAnalysisInputSha256": "b1519c543b905d7b78099ccd91c60084664b1cd8d32771e0bba044adbc8c16db",
+          "aiPublicGuideTopic": "빠진 통행이 이 책의 결론을 어느 쪽으로 기울이는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 돌이 말하지 않는 것",
+          "section": "6.4 돌로 알 수 있는 데까지",
+          "primaryConcepts": [
+            "구조물 사료의 쓸모"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자료 유형별 답변 가능 범위를 세 동심 영역으로 구분해 제시한다. 단독 해석·교차 해석·해석 불가 영역을 구별해 연구 범위를 명시한다.",
+          "aiAnalysisInputSha256": "e40f95f60ec996d6e44482c6d2d0a84537e9d2ccb47a411bc9b612859bcdb118",
+          "aiPublicGuideTopic": "이 책이 다리로 답한 것과 답하지 못한 것을 갈라 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 돌이 말하지 않는 것",
+          "section": "6.4 돌로 알 수 있는 데까지",
+          "primaryConcepts": [
+            "구조물 사료의 쓸모"
+          ],
+          "secondaryConcepts": [
+            "잔존 구조물"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구조물 사료의 고유 가치를 문헌 결락 보완과 과장 억제 두 가지로 정리한다. 한계 인정 이후에도 남는 기능을 명확히 한다.",
+          "aiAnalysisInputSha256": "3f9ef76758132456c8fb4891429545889d3ab35c1291a268a5521f6eebd7321b",
+          "aiPublicGuideTopic": "한계를 다 인정하고도 구조물이 남기는 값어치를 정리한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 강 건너에서 되돌아보기",
+          "section": "7.1 다섯이 그린 것",
+          "primaryConcepts": [
+            "팽창 경로"
+          ],
+          "secondaryConcepts": [
+            "건설 순서"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연구 결과를 건설 순서와 확장 경로의 대응이라는 단일 명제로 압축한다. 정량 판단에 필요한 자료 종류를 특정해 미해결 영역을 구분한다.",
+          "aiAnalysisInputSha256": "5db42aa9cb8d1c760158e86c883d71590e811942c8aecd9fa94465e176191ca7",
+          "aiPublicGuideTopic": "이 책이 다섯 다리에서 얻어 낸 것을 한자리에 모은다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": [
+            "order-draws-the-map"
+          ]
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 강 건너에서 되돌아보기",
+          "section": "7.2 이 다섯 밖의 강",
+          "primaryConcepts": [
+            "잔존 구조물"
+          ],
+          "secondaryConcepts": [
+            "미가설 지점"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연구 대상 선정이 자료 잔존에 종속되었음을 밝히고 결론의 공간적 범위를 한정한다. 선명한 결과가 일반화 유혹을 키우는 문제를 지적한다.",
+          "aiAnalysisInputSha256": "da364d4208b7b8de2b572dd725197705bd3c1589bc842603512e778d1e0cc3a5",
+          "aiPublicGuideTopic": "이 강에서 얻은 것이 다른 강으로 갈 수 있는지 묻는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 강 건너에서 되돌아보기",
+          "section": "7.3 아직 놓이지 않은 다리",
+          "primaryConcepts": [
+            "구조물 사료의 쓸모"
+          ],
+          "secondaryConcepts": [
+            "측정 기록"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구조물 독해 절차를 일반 방법으로 정리하고 두 가지 대표 오류를 지목한다. 오류 회피 시 구조물이 수행하는 고유 기능으로 마무리한다.",
+          "aiAnalysisInputSha256": "4da89876aaab93be98ba01fe11b04640644353d712730ff97c804b9dfe750cf6",
+          "aiPublicGuideTopic": "구조물을 사료로 삼으려는 쪽에게 이 작업이 무엇을 남기는지 적는다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 41,
       "title": "분업과 비교우위: 교환은 왜 이익인가",
       "pdfPath": "pdfs/book-041.pdf",

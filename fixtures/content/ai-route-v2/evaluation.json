@@ -1269,6 +1269,76 @@
       ]
     },
     {
+      "caseId": "case-book-035",
+      "bookId": 35,
+      "purpose": "이 책을 소장하고 있는데, 다리가 놓인 순서만으로 제국이 어디로 뻗어 나갔는지를 짧게 핵심만 짚고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "구조물의 기능",
+        "건설 시점",
+        "건설 순서",
+        "팽창 경로",
+        "중앙집권"
+      ],
+      "helpfulConcepts": [
+        "교통망",
+        "입지",
+        "군사와 행정",
+        "지배의 범위"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 18
+        },
+        {
+          "beforePageNumber": 18,
+          "afterPageNumber": 26
+        }
+      ],
+      "irrelevantPageNumbers": [
+        14,
+        15,
+        28,
+        29,
+        37,
+        43,
+        44
+      ],
+      "duplicatePageGroups": [
+        [
+          19,
+          47
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        8,
+        16,
+        18,
+        26
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        9,
+        10,
+        17,
+        19
+      ]
+    },
+    {
       "caseId": "case-book-041",
       "bookId": 41,
       "purpose": "이 책을 소장하고 있는데, 작은 가게를 열기 전에 여러 메뉴를 한 사람이 다 만드는 게 나을지 한 가지에 집중하는 게 나을지 핵심만 빠르게 확인하고 싶다",
