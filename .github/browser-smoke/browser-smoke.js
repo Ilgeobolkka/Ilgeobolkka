@@ -65,6 +65,7 @@ async function run() {
     await verifyViewerInvalidInitialPage();
     await verifyViewerRenderFailureStopsQueue();
     await verifyRouteDetailFlow();
+    await verifyRouteDetailPrerequisiteAndNavigation();
     await verifyRouteDetailImageAndReplacement();
     await verifyRouteDetailFailures();
     await verifyLogoutNavigation("success");
@@ -1072,6 +1073,85 @@ async function verifyRouteDetailFlow() {
     assert(events.some(event => event.url === "/api/ai-routes/476"
         && event.method === "DELETE"),
         "경로 삭제는 S03 DELETE를 호출해야 합니다.");
+
+    root.remove();
+}
+
+async function verifyRouteDetailPrerequisiteAndNavigation() {
+    const root = createRouteDetailFixture();
+    fixtureContainer.append(root);
+
+    const openedPages = new Set();
+    const requestedPages = [];
+    const confirmationResults = [false, true];
+    const confirmationMessages = [];
+    const request = async (url, options = {}) => {
+        const method = options.method || "GET";
+        if (url === "/api/books/15/reading-sessions"
+                || url === "/api/reading-sessions/current/page") {
+            const pageNumber = JSON.parse(options.body).pageNumber;
+            requestedPages.push({method, pageNumber});
+            return routeOpenMetadata(pageNumber, pageNumber === 3);
+        }
+        if (url === "/api/ai-routes/476" && method === "GET") {
+            return routeSnapshot(openedPages, false);
+        }
+        throw new Error(`예상하지 않은 선수 개념 경로 요청: ${method} ${url}`);
+    };
+    const page = createRouteDetailPage(root, {
+        request,
+        loadContent: async (url) => {
+            const pageNumber = Number(url.match(/pages\/(\d+)\/content$/)?.[1]);
+            openedPages.add(pageNumber);
+            return {contentType: "TEXT", body: `${pageNumber}페이지 경로 본문`};
+        },
+        storage: routeStorage(),
+        confirm: (message) => {
+            confirmationMessages.push(message);
+            return confirmationResults.shift();
+        }
+    });
+
+    page.start();
+    await page.openItem(1);
+
+    assert(confirmationMessages.length === 1
+        && confirmationMessages[0].includes("읽지 않은 선수 개념 페이지"),
+        "선수 개념을 건너뛰면 계속할지 확인해야 합니다.");
+    assert(requestedPages.length === 0 && openedPages.size === 0,
+        "선수 개념 건너뛰기를 취소하면 페이지를 열면 안 됩니다.");
+
+    await page.openItem(1);
+
+    assert(confirmationMessages.length === 2,
+        "선수 개념 건너뛰기를 다시 시도하면 확인창을 다시 표시해야 합니다.");
+    assert(requestedPages[0]?.method === "POST" && requestedPages[0]?.pageNumber === 3,
+        "선수 개념 건너뛰기를 확인하면 선택한 두 번째 항목을 열어야 합니다.");
+    assert(root.querySelector("[data-route-content]").textContent === "3페이지 경로 본문",
+        "건너뛰기 확인 뒤 두 번째 경로 항목의 콘텐츠를 표시해야 합니다.");
+
+    const previous = root.querySelector("[data-route-previous]");
+    const next = root.querySelector("[data-route-next]");
+    assert(previous.disabled === false && next.disabled === true,
+        "두 번째 경로 항목에서는 이전 이동만 활성화해야 합니다.");
+
+    previous.click();
+    await waitFor(
+        () => root.querySelector("[data-route-content]").textContent === "42페이지 경로 본문"
+            && next.disabled === false,
+        "이전 경로 버튼으로 첫 번째 항목을 열어야 합니다.");
+    assert(requestedPages[1]?.method === "PATCH" && requestedPages[1]?.pageNumber === 42,
+        "이전 경로 버튼은 현재 세션을 첫 번째 항목의 원본 페이지로 이동해야 합니다.");
+
+    next.click();
+    await waitFor(
+        () => root.querySelector("[data-route-content]").textContent === "3페이지 경로 본문"
+            && requestedPages.length === 3,
+        "다음 경로 버튼으로 두 번째 항목을 다시 열어야 합니다.");
+    assert(requestedPages[2]?.method === "PATCH" && requestedPages[2]?.pageNumber === 3,
+        "다음 경로 버튼은 현재 세션을 두 번째 항목의 원본 페이지로 이동해야 합니다.");
+    assert(confirmationMessages.length === 2,
+        "선수 개념을 연 뒤 다음 이동에서는 건너뛰기 확인창을 다시 표시하면 안 됩니다.");
 
     root.remove();
 }
