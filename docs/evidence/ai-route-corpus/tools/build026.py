@@ -754,7 +754,9 @@ CASE_HELPFUL_CONCEPTS = ["어두운 세계", "반응 조건", "방어와 유인"
 # 42는 6.1 오해 페이지이고 `빛의 색`을 secondary로 달고 있어 무관 페이지가 될 수 없었다.
 CASE_IRRELEVANT_PAGES = [35, 36, 37, 38, 41]
 # 정답 대신 골라도 목적을 채우는 페이지. 같은 절의 이어지는 설명과 이웃한 처리다.
-CASE_ALTERNATIVE_PAGES = [3, 6, 10, 14, 18, 28]
+# 정답 페이지의 같은 절 짝을 채운다. primary가 필수·도움 개념을 덮어 정답의 한 자리를
+# 그대로 대신할 수 있고, 선수 폐쇄가 이 사례의 상한 안에 든다.
+CASE_ALTERNATIVE_PAGES = [3, 6, 10, 14, 16, 18, 22, 28]
 
 
 def build_case(manifest_pages, prereq):
