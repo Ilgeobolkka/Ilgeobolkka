@@ -49565,6 +49565,1107 @@
           "duplicateGroupKeys": []
         }
       ]
+    },
+    {
+      "bookId": 78,
+      "title": "색인과 실행 계획: 쿼리 성능 진단",
+      "pdfPath": "pdfs/book-078.pdf",
+      "pdfSha256": "079bf2f7c8f278e4ec58504eee01ef997f462a3906c90e0415813cc523c0cdf4",
+      "totalPageCount": 50,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "조회 성능 진단을 다루는 장과 절의 구성",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 조회가 느리다는 말",
+          "section": "1.1 느림을 무엇으로 재는가",
+          "primaryConcepts": [
+            "응답 시간"
+          ],
+          "secondaryConcepts": [
+            "측정"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "성능 문제의 정량화 기준으로 조회 단위 소요 시간을 제시하고 측정 지점에 따른 값의 차이를 구분한다. 단건 처리 시간과 발생 횟수라는 두 축을 이 책의 진단 틀로 세운다.",
+          "aiAnalysisInputSha256": "26a20d61412555a4717a0059fd5829d3536247aa9b85434f10154022782d5c4e",
+          "aiPublicGuideTopic": "느리다는 말을 수로 바꾸는 방법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 조회가 느리다는 말",
+          "section": "1.2 평균과 꼬리",
+          "primaryConcepts": [
+            "분포"
+          ],
+          "secondaryConcepts": [
+            "응답 시간"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "평균값이 지연 사례를 은폐하는 구조를 설명하고 분위수 관찰의 필요를 제시한다. 꼬리 구간의 조건 차이가 원인 탐색의 단서로 기능함을 밝힌다.",
+          "aiAnalysisInputSha256": "c5315241b0b7012f7be0bed16ee2b74e76005115a81d58e152cd608c5df7dec4",
+          "aiPublicGuideTopic": "평균만 보면 놓치는 느린 구간",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 조회가 느리다는 말",
+          "section": "1.3 어디서 시간이 드는가",
+          "primaryConcepts": [
+            "시간 배분"
+          ],
+          "secondaryConcepts": [
+            "응답 시간",
+            "측정"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조회 지연을 탐색·가공·전송·호출 측 처리의 네 구간으로 분해하고 구간별로 대응 수단이 다름을 제시한다. 저장소 내부 시간과 전체 시간의 차이를 구간 판별의 최소 지표로 삼는다.",
+          "aiAnalysisInputSha256": "76eb21074a27058d6f2e179330b590f52669da7d30907beb676c0dd94fb772ea",
+          "aiPublicGuideTopic": "한 번의 조회가 시간을 쓰는 자리들",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 조회가 느리다는 말",
+          "section": "1.4 조회 한 건과 화면 한 장",
+          "primaryConcepts": [
+            "요청 단위"
+          ],
+          "secondaryConcepts": [
+            "시간 배분",
+            "반복 조회"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "성능 측정 단위를 조회·요청·화면으로 구분하고 단위 불명 수치의 비교 불가를 지적한다. 개선 효과에서 단건 최적화보다 호출 횟수 감소가 큰 경우를 제시한다.",
+          "aiAnalysisInputSha256": "5e954a2df40322a3eb9f30df9183e57825e7b250ac061b80419f8284d4c5f50e",
+          "aiPublicGuideTopic": "한 건의 성능과 한 화면의 성능은 다르다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 조회가 느리다는 말",
+          "section": "1.5 무엇을 먼저 재는가",
+          "primaryConcepts": [
+            "측정 순서"
+          ],
+          "secondaryConcepts": [
+            "시간 배분",
+            "분포"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "측정 선행 원칙과 요청·조회·횟수로 좁혀 가는 관찰 순서를 제시한다. 측정 부하를 이유로 한 기록 축소와 진단 기간의 예외를 구분해 설명한다.",
+          "aiAnalysisInputSha256": "8415c6e84691c2525060093a2aa538e66da6ddef8ef52ee15c9cb210043b274b",
+          "aiPublicGuideTopic": "고치기 전에 재는 순서",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": [
+            "measure-before-tuning"
+          ]
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 조회가 느리다는 말",
+          "section": "1.6 시간이 흩어지는 자리",
+          "primaryConcepts": [
+            "시간 배분"
+          ],
+          "secondaryConcepts": [
+            "요청 단위",
+            "측정 순서"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "요청 소요 시간을 처리 구간별 폭으로 표현하고 각 구간이 넓을 때의 점검 대상을 병기한다. 동일 시간을 반복 호출 관점으로 다시 분해한 두 번째 배열을 대비시킨다.",
+          "aiAnalysisInputSha256": "a583ed048156f4e5f836be95f76bba6f7da12d8f5b918ee36698a8d4f3e05c4e",
+          "aiPublicGuideTopic": "한 요청의 시간이 나뉘는 모습",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 조회가 느리다는 말",
+          "section": "1.7 빠른 조회의 기준",
+          "primaryConcepts": [
+            "목표 설정"
+          ],
+          "secondaryConcepts": [
+            "분포",
+            "응답 시간"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "성능 목표를 사용자 체감 기준의 수치로 사전 정의할 것을 요구하고 상한 없는 최적화의 기회비용을 지적한다. 목표 초과 달성이 구조 복잡도라는 대가를 수반함을 밝힌다.",
+          "aiAnalysisInputSha256": "02e41e3c0c34199d0c35b120fd4d85232fb0006012770ca9be90185c91b33308",
+          "aiPublicGuideTopic": "어디까지 빠르게 만들 것인가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            3
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 저장된 자료를 찾는 방법",
+          "section": "2.1 전체를 훑는 조회",
+          "primaryConcepts": [
+            "전체 훑기"
+          ],
+          "secondaryConcepts": [
+            "시간 배분"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "순차 탐색의 성립 조건과 자료량에 비례하는 소요 시간 증가를 설명한다. 판단 기준을 현재 속도가 아닌 자료 증가에 대한 내성으로 전환한다.",
+          "aiAnalysisInputSha256": "b1b91dc1012845a91d60b1a99d391dc7be85ef5dd899b32d0f3b03d04ea2f3e5",
+          "aiPublicGuideTopic": "처음부터 끝까지 읽어 찾는 방식",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 저장된 자료를 찾는 방법",
+          "section": "2.2 색인이 하는 일",
+          "primaryConcepts": [
+            "색인"
+          ],
+          "secondaryConcepts": [
+            "전체 훑기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "색인을 특정 항목 기준의 사전 정렬 구조로 정의하고 자료량 증가에 대한 탐색 시간의 완만한 증가를 핵심 이득으로 제시한다. 저장 공간과 갱신 비용이라는 대가를 함께 명시한다.",
+          "aiAnalysisInputSha256": "6cfb7ba4dbfa1bf5c3614f8fb0c21d27bf3e2176e920ebd4777b921a8ee563de",
+          "aiPublicGuideTopic": "찾을 자리를 미리 정리해 두는 장치",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 저장된 자료를 찾는 방법",
+          "section": "2.3 색인의 구조와 정렬",
+          "primaryConcepts": [
+            "색인 구조"
+          ],
+          "secondaryConcepts": [
+            "색인"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정렬 구조가 등치 탐색·범위 탐색·정렬 출력의 세 용도에 함께 기여함을 설명한다. 색인 순서와 조회 요구 순서의 불일치가 잔여 정렬 비용을 남기는 구조를 제시한다.",
+          "aiAnalysisInputSha256": "4bac428788873c8eade3cc862722e0fb8a74bd95a036ed0d6b436c88dbdd6ce5",
+          "aiPublicGuideTopic": "정렬된 순서가 만들어 내는 성질",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 저장된 자료를 찾는 방법",
+          "section": "2.4 색인이 쓰이지 않는 조건",
+          "primaryConcepts": [
+            "색인 미사용"
+          ],
+          "secondaryConcepts": [
+            "색인",
+            "전체 훑기"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "색인 미사용의 전형을 항목 가공·낮은 선택도·선행 항목 미지정으로 분류하고 각각의 기전을 설명한다. 해결 방향을 색인 추가가 아닌 조회와 색인 형태의 정합으로 제시한다.",
+          "aiAnalysisInputSha256": "ab49d0c51b1f51bf2f844f9d91020c14e42bdd232425fb175f4e95614767f091",
+          "aiPublicGuideTopic": "만들어 두었는데 쓰이지 않는 경우",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 저장된 자료를 찾는 방법",
+          "section": "2.5 여러 항목을 묶은 색인",
+          "primaryConcepts": [
+            "복합 색인"
+          ],
+          "secondaryConcepts": [
+            "색인 구조",
+            "색인 미사용"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복합 색인의 항목 순서가 탐색 가능 조건을 결정하는 원리를 설명하고 등치·범위 조건의 배치 원칙을 제시한다. 단일 항목 색인 조합 대비 이점과 조합 폭증의 비용을 함께 밝힌다.",
+          "aiAnalysisInputSha256": "14e9e65e0f00a3541f3df92cfbfea9ed33aa83463281f7a75d076f1ed467fe09",
+          "aiPublicGuideTopic": "두 개 이상의 항목으로 만든 색인",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 저장된 자료를 찾는 방법",
+          "section": "2.6 훑기와 색인 찾기",
+          "primaryConcepts": [
+            "색인"
+          ],
+          "secondaryConcepts": [
+            "전체 훑기",
+            "색인 구조"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "순차 탐색과 색인 탐색의 접근 범위 차이를 확인 표시로 대비하고 자료량 증가에 따른 두 곡선의 기울기 차이를 함께 제시한다. 축에 수치를 넣지 않아 경향만 읽도록 한다.",
+          "aiAnalysisInputSha256": "e8a7a7e8c58abb68f0e216ef737eaf02b701d4ad1fbd2cd18e3d3c7c8061a3fd",
+          "aiPublicGuideTopic": "두 가지 찾기 방식이 자료량에 따라 달라지는 모습",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 저장된 자료를 찾는 방법",
+          "section": "2.7 색인이 늘리는 비용",
+          "primaryConcepts": [
+            "색인 비용"
+          ],
+          "secondaryConcepts": [
+            "색인",
+            "복합 색인"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "색인 유지 비용을 쓰기 부하·저장 공간·계획 선택 복잡도로 구체화한다. 색인 도입 근거의 기록이 이후 제거 판단의 전제가 됨을 설명한다.",
+          "aiAnalysisInputSha256": "b1e39eb98ef6d4545591da74ce5b30a47e721421c9e5aa56792ff3a61ce41f31",
+          "aiPublicGuideTopic": "색인을 둘 때 치르는 대가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 실행 계획 읽기",
+          "section": "3.1 실행 계획이란",
+          "primaryConcepts": [
+            "실행 계획"
+          ],
+          "secondaryConcepts": [
+            "색인",
+            "전체 훑기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실행 계획을 조회 처리 절차의 선택 결과로 정의하고 자료 통계에 기반한 비용 추정이 선택을 좌우함을 설명한다. 계획 확인이 지연의 원인 규명 수단임을 밝힌다.",
+          "aiAnalysisInputSha256": "10c856fba99b3ace5d94628877576d1661166d822822fa615e42c492dbdbfb1b",
+          "aiPublicGuideTopic": "저장소가 조회를 처리하려고 세운 절차",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 실행 계획 읽기",
+          "section": "3.2 계획에서 볼 세 가지",
+          "primaryConcepts": [
+            "계획 판독"
+          ],
+          "secondaryConcepts": [
+            "실행 계획",
+            "색인 미사용"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실행 계획 판독의 우선 확인 항목을 접근 방식·단계별 처리 건수·정렬 및 그룹화 위치로 정식화한다. 중간 건수와 최종 건수의 격차를 조건 선행 적용 가능성의 단서로 제시한다.",
+          "aiAnalysisInputSha256": "fdd1155ef3f17a94576827147ceee5ee1bf4d305a7b2a7fdda3e5b74f3c8ba6f",
+          "aiPublicGuideTopic": "계획을 읽을 때 먼저 확인할 항목",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 실행 계획 읽기",
+          "section": "3.3 예상과 실제의 차이",
+          "primaryConcepts": [
+            "추정 오차"
+          ],
+          "secondaryConcepts": [
+            "계획 판독",
+            "실행 계획"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "추정 건수와 실제 건수의 괴리가 계획 선택 오류로 이어지는 경로를 설명하고 분포 편중과 통계 노후를 원인으로 제시한다. 통계 갱신이 색인 추가보다 우선하는 경우를 밝힌다.",
+          "aiAnalysisInputSha256": "61023c8e60a132ea7392239a6cf09481c84d13f629e416e7dd1671c626adca0a",
+          "aiPublicGuideTopic": "짐작한 건수와 실제 건수가 다를 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 실행 계획 읽기",
+          "section": "3.4 계획이 바뀌는 이유",
+          "primaryConcepts": [
+            "계획 변동"
+          ],
+          "secondaryConcepts": [
+            "실행 계획"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계획 변동의 원인을 자료 증가·분포 변화·조건 값 차이로 제시하고 동일 조회의 값 의존적 처리 차이를 지연 분포와 연결한다. 지연 기록에 계획을 병기하는 관행을 대응으로 제시한다.",
+          "aiAnalysisInputSha256": "cfd4e121ff6a2cb60910ab94504cac02f085c020cd5c0f3b2979d5f464b6ca60",
+          "aiPublicGuideTopic": "어제와 오늘의 계획이 다른 경우",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 실행 계획 읽기",
+          "section": "3.5 같은 조회의 두 계획",
+          "primaryConcepts": [
+            "계획 판독"
+          ],
+          "secondaryConcepts": [
+            "계획 변동",
+            "추정 오차"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 조회의 값 조건에 따른 두 실행 경로를 단계별로 대비하고 단계마다 처리 건수를 막대 길이로 표현한다. 최종 결과 건수가 아니라 중간 처리량이 소요 시간을 좌우함을 드러낸다.",
+          "aiAnalysisInputSha256": "e1417a60029671d44a0f86b0f058defadd5128d8352b88fec8796a4fc945fa50",
+          "aiPublicGuideTopic": "같은 조회가 다르게 처리되는 두 경우",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 실행 계획 읽기",
+          "section": "3.6 계획을 바꾸는 방법",
+          "primaryConcepts": [
+            "계획 유도"
+          ],
+          "secondaryConcepts": [
+            "계획 변동",
+            "복합 색인"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계획 개선 수단을 색인 정합·조회 재작성·통계 갱신의 순서로 제시하고 직접 지시 방식을 최후 수단으로 규정한다. 고정된 지시가 자료 변화에 따라 열화되는 위험을 근거로 든다.",
+          "aiAnalysisInputSha256": "3d8e05023910d21f61590896b4338a2287c2e0e9038a8af1f1cee74539f4f8ec",
+          "aiPublicGuideTopic": "원하는 절차로 처리되게 만드는 수단",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            19
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 실행 계획 읽기",
+          "section": "3.7 계획만 보고 판단할 때",
+          "primaryConcepts": [
+            "계획의 한계"
+          ],
+          "secondaryConcepts": [
+            "추정 오차",
+            "응답 시간"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실행 계획의 비용 수치와 실제 소요 시간의 괴리 요인을 추정 오차와 자료 배치로 설명한다. 계획 판독과 시간 측정을 병행하는 진단 절차를 처방한다.",
+          "aiAnalysisInputSha256": "84d0a8e753cd7f5d217a20c163a63cc72ce49b2f089e19aa22a1c23bf5ea6312",
+          "aiPublicGuideTopic": "계획을 읽는 것으로 충분하지 않은 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "4장 반복 조회 문제",
+          "section": "4.1 한 번이 여러 번이 되는 자리",
+          "primaryConcepts": [
+            "반복 조회"
+          ],
+          "secondaryConcepts": [
+            "요청 단위",
+            "실행 계획"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복 조회를 목록 건수에 비례해 조회가 증가하는 구조로 정의하고 개별 조회의 저지연이 탐지를 어렵게 만드는 점을 지적한다. 시간이 아닌 횟수 계측을 탐지 수단으로 제시한다.",
+          "aiAnalysisInputSha256": "d7c3a7bad9af0be9289ae9788b4dc11024510856caa8164fd9507b3f5e679cf0",
+          "aiPublicGuideTopic": "조회가 자료 건수만큼 늘어나는 구조",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 반복 조회 문제",
+          "section": "4.2 목록과 상세의 관계",
+          "primaryConcepts": [
+            "목록 조회"
+          ],
+          "secondaryConcepts": [
+            "반복 조회"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "목록 화면에서 반복 조회가 발생하는 코드 구조를 설명하고 결합 조회와 일괄 후속 조회라는 두 대안을 비교한다. 선택 기준을 연관 자료의 건수와 결과 팽창 여부로 제시한다.",
+          "aiAnalysisInputSha256": "181d4cd33980c4e200522f90dab9c7672de833e8b59f69d45c0ecb73f1e2f54a",
+          "aiPublicGuideTopic": "목록을 그릴 때 자료를 모으는 방식",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 반복 조회 문제",
+          "section": "4.3 한꺼번에 가져오기",
+          "primaryConcepts": [
+            "일괄 조회"
+          ],
+          "secondaryConcepts": [
+            "목록 조회",
+            "반복 조회"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "식별자 집합 기반 일괄 조회로 호출 횟수를 자료 건수와 분리하는 방법을 제시한다. 단일 조회의 과대 확장을 막는 분할 크기 조정과 결과 결합 코드의 국소화를 함께 다룬다.",
+          "aiAnalysisInputSha256": "6469c287bc12c951811f81fea569631962e104d79240463b50b7883cee71ebb5",
+          "aiPublicGuideTopic": "여러 건의 조회를 하나로 합치는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 반복 조회 문제",
+          "section": "4.4 반복 조회가 늘어나는 모양",
+          "primaryConcepts": [
+            "반복 조회"
+          ],
+          "secondaryConcepts": [
+            "일괄 조회",
+            "목록 조회"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "행 단위 조회와 일괄 조회의 호출 구조를 화살표 수로 대비하고 목록 크기와 호출 횟수의 관계를 각각 표기한다. 증가하는 축이 단건 소요 시간이 아니라 호출 횟수임을 드러낸다.",
+          "aiAnalysisInputSha256": "364e40c6537b630948b17bd8eb1317e19b73594e76a6dd52c83f6962289a2c57",
+          "aiPublicGuideTopic": "건수에 따라 조회 횟수가 달라지는 두 구조",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 반복 조회 문제",
+          "section": "4.5 필요한 만큼만 가져오기",
+          "primaryConcepts": [
+            "필요 항목 선택"
+          ],
+          "secondaryConcepts": [
+            "목록 조회",
+            "시간 배분"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "전송량 감축의 두 축을 항목 선택과 건수 제한으로 제시하고 애플리케이션 측 절단의 문제를 지적한다. 과도한 분할이 호출 횟수 증가로 되돌아오는 균형점을 함께 설명한다.",
+          "aiAnalysisInputSha256": "95ddad99e6408ab261b9cdf8b48bd85f756d0f37b23783ada792c6168162496c",
+          "aiPublicGuideTopic": "가져오는 양을 줄이는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 반복 조회 문제",
+          "section": "4.6 캐시를 두기 전에",
+          "primaryConcepts": [
+            "캐시 판단"
+          ],
+          "secondaryConcepts": [
+            "일괄 조회",
+            "반복 조회"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결과 캐싱 도입에 앞서 지연 원인의 구조적 성격을 확인할 것을 요구하고 원인 은폐의 위험을 지적한다. 캐싱 적합 조건을 조회 빈도·변경 빈도·계산 비용의 세 항목으로 제시한다.",
+          "aiAnalysisInputSha256": "44ed350825dcc148c96cfbd2aa77d3590ea30e18dcb11c886c4d7a149592d9d4",
+          "aiPublicGuideTopic": "결과를 보관해 다시 쓰기 전에 볼 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            25
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 반복 조회 문제",
+          "section": "4.7 반복을 세는 방법",
+          "primaryConcepts": [
+            "조회 계수"
+          ],
+          "secondaryConcepts": [
+            "반복 조회",
+            "측정 순서"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "요청 단위 조회 횟수 계측의 구현 지점과 임계 초과 표시를 제시한다. 계측 부재가 반복 조회를 점진적 성능 저하로 위장시키는 구조를 설명한다.",
+          "aiAnalysisInputSha256": "03e232f0ba0bd47fd4d8b65a632ca7fffede7b184e41d74b1e3d76c349bef21e",
+          "aiPublicGuideTopic": "요청마다 조회 횟수를 확인하는 장치",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "5장 접근 패턴 관찰",
+          "section": "5.1 무엇을 관찰할 것인가",
+          "primaryConcepts": [
+            "접근 패턴"
+          ],
+          "secondaryConcepts": [
+            "반복 조회",
+            "측정 순서"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "접근 패턴을 조회 빈도·조건·정렬 요구의 집합으로 정의하고 색인 설계의 근거로 위치시킨다. 패턴의 시간적 변화를 근거로 반복 관찰의 필요를 제시한다.",
+          "aiAnalysisInputSha256": "a03833192d75cce5c2850a546af41f907fbb7e045dba5f09b1fc12e8a695712f",
+          "aiPublicGuideTopic": "자료를 어떻게 쓰고 있는지 보는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "5장 접근 패턴 관찰",
+          "section": "5.2 느린 조회 모으기",
+          "primaryConcepts": [
+            "느린 조회 수집"
+          ],
+          "secondaryConcepts": [
+            "접근 패턴",
+            "응답 시간"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지연 조회 수집의 임계 설정과 병기 항목을 제시하고 시간 단독 기록의 재현 불가 문제를 지적한다. 임계를 단계적으로 낮추는 운영 방식을 실무 절차로 제시한다.",
+          "aiAnalysisInputSha256": "15e9c955cd53888413ba04fb05428e29c5b3d12fa8894118a1b7479751d73df0",
+          "aiPublicGuideTopic": "오래 걸린 조회를 따로 남기는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 접근 패턴 관찰",
+          "section": "5.3 자주 오는 조회",
+          "primaryConcepts": [
+            "빈도 분석"
+          ],
+          "secondaryConcepts": [
+            "접근 패턴",
+            "조회 계수"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지연 상위 목록이 고빈도 저지연 조회를 누락시키는 문제를 지적하고 총 소요 시간 기준 정렬을 대안으로 제시한다. 조건 값을 제거한 조회 형태별 집약이 분석의 전제임을 밝힌다.",
+          "aiAnalysisInputSha256": "6722717606ab99f4c3811b8bb92a10aba6cf640142a103a95472722a531b0605",
+          "aiPublicGuideTopic": "느리지 않지만 많이 오는 조회 보기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 접근 패턴 관찰",
+          "section": "5.4 조회의 두 갈래 분포",
+          "primaryConcepts": [
+            "빈도 분석"
+          ],
+          "secondaryConcepts": [
+            "느린 조회 수집",
+            "응답 시간"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조회를 단건 소요 시간과 발생 빈도의 두 축으로 배치해 지연형과 빈발형을 구분한다. 두 값의 곱이 동일한 등가선을 표시해 개선 우선순위 판단 기준을 시각화한다.",
+          "aiAnalysisInputSha256": "8392cc604cff2a526a8436fe5aaf8f1b9aa820b44ac108b8127a0317b5883037",
+          "aiPublicGuideTopic": "느린 조회와 잦은 조회를 함께 놓고 보기",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 접근 패턴 관찰",
+          "section": "5.5 자료가 늘면 달라지는 것",
+          "primaryConcepts": [
+            "자료 증가"
+          ],
+          "secondaryConcepts": [
+            "접근 패턴",
+            "전체 훑기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자료량 증가가 탐색 방식·계획 선택·반복 횟수에 미치는 영향을 정리하고 증가 내성을 평가 기준으로 제시한다. 소규모 시험 환경의 한계와 증가 시나리오 확인의 필요를 밝힌다.",
+          "aiAnalysisInputSha256": "d5683be84b490a30f7bf45b12b7721ef21ae28a25cbfa03d7f9d59ba637c0845",
+          "aiPublicGuideTopic": "시간이 지나며 성질이 바뀌는 조회",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 접근 패턴 관찰",
+          "section": "5.6 실제와 시험 환경의 차이",
+          "primaryConcepts": [
+            "환경 차이"
+          ],
+          "secondaryConcepts": [
+            "느린 조회 수집",
+            "자료 증가"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시험 환경의 자료량·동시성·분포 차이가 성능 문제 재현을 막는 요인임을 설명한다. 분포 정합의 중요성과 운영 환경 관찰 장치의 병행 필요를 제시한다.",
+          "aiAnalysisInputSha256": "c813c3ed41f9ccef39c4d171a485507c8d3062ae724711e05ea1d667dca1ddac",
+          "aiPublicGuideTopic": "시험에서 재현되지 않는 느림",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 접근 패턴 관찰",
+          "section": "5.7 관찰이 부담이 될 때",
+          "primaryConcepts": [
+            "관찰 비용"
+          ],
+          "secondaryConcepts": [
+            "느린 조회 수집",
+            "조회 계수"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관찰 부하의 발생 조건과 상시·임시 관찰의 분리 기준을 제시한다. 표본 관찰의 부하 절감 효과와 희소 사건 누락 위험을 함께 설명하고 지연 조회의 전량 보존을 예외로 둔다.",
+          "aiAnalysisInputSha256": "8fe7da016c2bfbfd62ce54e60a5b499bcf539988a579167ddff04f76b0041b67",
+          "aiPublicGuideTopic": "재는 일이 성능을 해치는 경우",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "6장 느린 화면 하나를 고친 기록",
+          "section": "6.1 느린 화면의 증상",
+          "primaryConcepts": [
+            "사례 증상"
+          ],
+          "secondaryConcepts": [
+            "요청 단위",
+            "응답 시간"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지연 화면의 초기 측정값과 목표 설정, 구간 분해 결과를 기술한다. 저장소 처리 시간 비중이 커 탐색 범위가 축소된 과정을 진단 순서에 따라 제시한다.",
+          "aiAnalysisInputSha256": "435d9685c675944c36d37c39d25e59b745ae09a9f0ad9a9661c08ba2c0ea243c",
+          "aiPublicGuideTopic": "처음 확인한 화면의 상태",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "6장 느린 화면 하나를 고친 기록",
+          "section": "6.2 조회 횟수를 세어 본 결과",
+          "primaryConcepts": [
+            "횟수 측정"
+          ],
+          "secondaryConcepts": [
+            "조회 계수",
+            "반복 조회"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지연 조회 목록에서 누락된 문제를 요청 단위 조회 횟수 계측으로 특정한 과정을 기술한다. 개별 지연이 낮은 반복 조회가 시간 기반 탐지를 우회하는 사례로 제시한다.",
+          "aiAnalysisInputSha256": "2337cee4c83598de86f1fb9affbc9c8fe805669921ec2d4a8249c6f476d74f92",
+          "aiPublicGuideTopic": "요청 하나에 조회가 몇 번 일어났는지",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            37
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 느린 화면 하나를 고친 기록",
+          "section": "6.3 반복을 줄인 과정",
+          "primaryConcepts": [
+            "반복 제거"
+          ],
+          "secondaryConcepts": [
+            "일괄 조회",
+            "목록 조회"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복 조회 세 종류의 일괄 전환과 미사용 조회 제거로 호출 횟수를 감축한 과정을 기술한다. 감축 이후 잔여 지연의 성격이 바뀌었음을 다음 단계의 전제로 제시한다.",
+          "aiAnalysisInputSha256": "470d41f13c286a627b9bc5cfdbf4e34ecc7980f88631b160b7baedbc05f95dbb",
+          "aiPublicGuideTopic": "줄마다 나가던 조회를 합친 결과",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 느린 화면 하나를 고친 기록",
+          "section": "6.4 남은 조회의 실행 계획",
+          "primaryConcepts": [
+            "계획 확인"
+          ],
+          "secondaryConcepts": [
+            "실행 계획",
+            "계획 판독"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "잔여 지연 조회의 실행 계획에서 접근 방식·중간 처리 건수·정렬 위치를 확인한 결과를 기술한다. 분포 편중으로 인한 추정 오차가 계획 선택에 영향을 준 상황을 함께 제시한다.",
+          "aiAnalysisInputSha256": "3f6990ac694bea178dbabac2db55db1e6612de7f7046b3535a636ad9c2917a33",
+          "aiPublicGuideTopic": "네 번 남은 조회에서 확인한 절차",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 느린 화면 하나를 고친 기록",
+          "section": "6.5 색인을 정한 과정",
+          "primaryConcepts": [
+            "색인 결정"
+          ],
+          "secondaryConcepts": [
+            "복합 색인",
+            "색인 구조"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복합 색인의 항목 순서를 조건 유형에 따라 결정하고 정렬 요구와 일치시켜 정렬 단계를 제거한 과정을 기술한다. 도입 전 갱신 비용 확인과 근거 기록을 절차에 포함한다.",
+          "aiAnalysisInputSha256": "9f5caf61102d1ecbd6e583d7c4de01040fc5006826c6e4f07a300e5bddfab768",
+          "aiPublicGuideTopic": "어떤 색인을 어떤 순서로 만들지 정하기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 느린 화면 하나를 고친 기록",
+          "section": "6.6 고친 뒤 다시 잰 결과",
+          "primaryConcepts": [
+            "개선 확인"
+          ],
+          "secondaryConcepts": [
+            "측정 순서",
+            "분포"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "색인 적용 후 계획 변화와 응답 시간 개선을 측정값으로 기술하고 잔여 꼬리 구간의 원인을 규명한다. 저장소 최적화 대신 요구 범위 제한으로 해결한 판단을 제시한다.",
+          "aiAnalysisInputSha256": "1c3176ef942169211a820f9d5f54a0d121911c9c2cc751a2c5b2beb3158d43b0",
+          "aiPublicGuideTopic": "바꾼 뒤 확인한 수",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 느린 화면 하나를 고친 기록",
+          "section": "6.7 남긴 장치와 다음 후보",
+          "primaryConcepts": [
+            "후속 관찰"
+          ],
+          "secondaryConcepts": [
+            "조회 계수",
+            "느린 조회 수집"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "개선 후 재발 감지 장치와 지표를 남긴 조치를 기술하고 지연 수집 임계 하향으로 후속 후보를 확보한 과정을 제시한다. 추정 상태의 후보를 측정 전 결론으로 굳히지 않는 기록 방식을 밝힌다.",
+          "aiAnalysisInputSha256": "db15857feab3cabb1671e45d8eea04010cbc84b06dd1a7bb3429bbd69872b320",
+          "aiPublicGuideTopic": "이번 작업이 남긴 것과 다음에 볼 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "7장 성능 판단 기준",
+          "section": "7.1 어디부터 손댈 것인가",
+          "primaryConcepts": [
+            "개선 우선순위"
+          ],
+          "secondaryConcepts": [
+            "응답 시간",
+            "빈도 분석"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "개선 순위 기준을 소요 시간과 빈도의 곱으로 정하고 수정 난이도를 함께 고려하는 실무 조합을 제시한다. 자료 증가 비례성을 우선순위 상향 요인으로 추가한다.",
+          "aiAnalysisInputSha256": "6aac2f18447bf13800945c3f570bae2dd9764df02f824a017c47677914cf0b87",
+          "aiPublicGuideTopic": "고칠 자리의 순서를 정하는 기준",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "7장 성능 판단 기준",
+          "section": "7.2 고치기 전에 재기",
+          "primaryConcepts": [
+            "측정 원칙"
+          ],
+          "secondaryConcepts": [
+            "개선 우선순위",
+            "측정 순서"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "측정 선행 원칙의 위반이 초래하는 손실을 원인 불명·효과 불명·기준 부재로 정리한다. 측정 장치의 구축 비용이 개선 비용보다 낮고 반복 사용된다는 점을 근거로 제시한다.",
+          "aiAnalysisInputSha256": "4118175f36f7f1ec6bdfc2145332013b9095f91b93521cba07f3e95026b0e431",
+          "aiPublicGuideTopic": "측정 없이 고치지 않는다는 규칙",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": [
+            "measure-before-tuning"
+          ]
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 성능 판단 기준",
+          "section": "7.3 색인을 더할 때와 지울 때",
+          "primaryConcepts": [
+            "색인 관리"
+          ],
+          "secondaryConcepts": [
+            "색인 비용",
+            "접근 패턴"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "색인 추가 조건을 조회 빈도·미사용 여부·쓰기 부담의 세 항목으로 정식화하고 제거 판단의 난점을 지적한다. 도입 근거 기록과 주기적 목록 점검을 관리 절차로 제시한다.",
+          "aiAnalysisInputSha256": "f40c996d072282ac9603a53bf4c890f4519f9f5b0a6e27218a39477d7474e90c",
+          "aiPublicGuideTopic": "색인 목록을 손보는 판단",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            15
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 성능 판단 기준",
+          "section": "7.4 성능 점검 항목",
+          "primaryConcepts": [
+            "성능 점검 항목"
+          ],
+          "secondaryConcepts": [
+            "계획 판독",
+            "조회 계수"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "성능 진단 점검을 조회 횟수·저장소 시간 비중·접근 방식·중간 처리량·전송량의 다섯 항목으로 정식화한다. 점검 순서를 개선 효과와 수정 난이도의 기대값으로 정당화한다.",
+          "aiAnalysisInputSha256": "8b07a6980466968fe05aa61c51284224ade5d32382d9d5152eee6b292dc52152",
+          "aiPublicGuideTopic": "느린 조회를 만났을 때 볼 목록",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 성능 판단 기준",
+          "section": "7.5 구조를 바꾸는 선택",
+          "primaryConcepts": [
+            "구조 변경"
+          ],
+          "secondaryConcepts": [
+            "캐시 판단",
+            "자료 증가"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조회 수준 개선의 한계 이후 선택지를 사전 계산·결과 보관·요구 범위 축소로 제시하고 각각의 부작용을 명시한다. 선택 기준을 허용 가능한 불일치 수준에 둔다.",
+          "aiAnalysisInputSha256": "8ca13258a0f56d9ff19b02d51b9fb159e76dd1073786c35d162e34b3255a8d17",
+          "aiPublicGuideTopic": "조회를 손보는 것으로 부족할 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 성능 판단 기준",
+          "section": "7.6 성능과 다른 목표의 균형",
+          "primaryConcepts": [
+            "목표 균형"
+          ],
+          "secondaryConcepts": [
+            "목표 설정",
+            "색인 비용"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "성능 개선이 쓰기 성능·코드 복잡도·정확성에 부과하는 대가를 정리하고 목표 기준 중단을 원칙으로 제시한다. 개선 근거의 기록이 이후 되돌리기 가능성을 유지하는 수단임을 밝힌다.",
+          "aiAnalysisInputSha256": "d0b9bf065a14b7835f7455a35cdc0aabe1a898a31c213ac8099ec637606f8249",
+          "aiPublicGuideTopic": "빠르게 만드는 일이 치르는 대가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 성능 판단 기준",
+          "section": "7.7 핵심 원칙 정리",
+          "primaryConcepts": [
+            "성능 원칙 요약"
+          ],
+          "secondaryConcepts": [
+            "측정 원칙",
+            "반복 조회"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체의 판단을 시간 배분과 자료 증가 내성이라는 두 물음으로 압축하고 각 도구를 그 물음의 수단으로 정리한다. 진단을 반복 가능한 절차로 규정하고 이전 가능성을 밝힌다.",
+          "aiAnalysisInputSha256": "77f141f9ef3c52d8070d545eb25f05bf45b974d37acb392405fbfb08fe9ca3a5",
+          "aiPublicGuideTopic": "이 책이 다룬 판단 기준의 요약",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
     }
   ]
 }
