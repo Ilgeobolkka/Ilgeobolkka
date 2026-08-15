@@ -67,7 +67,8 @@ class AiRouteDetailPageTest {
         assertTrue(html.contains("data-ai-route-detail-root"));
         assertTrue(html.contains("name=\"_csrf\""));
         assertTrue(html.contains("name=\"_csrf_header\""));
-        assertTrue(html.contains("/js/ai-route/route-detail-page.js"));
+        assertTrue(html.contains("/js/ai-route/route-detail.js"));
+        assertFalse(html.contains("/js/ai-route/route-detail-page.js"));
         assertTrue(html.indexOf("원본 <span>42</span>페이지")
                 < html.indexOf("원본 <span>3</span>페이지"));
         assertTrue(html.contains("1잉크로 열기"));

@@ -9,16 +9,11 @@ import {
 } from "/js/ai-route/generation-page.js";
 import {initializeBookDetailPage} from "/js/ownership/book-detail-page.js";
 import {createOwnershipHistoryPage} from "/js/ownership/ownership-history-page.js";
-import {
-    createRouteDetailPage,
-    requestRoutePageContent
-} from "/js/ai-route/route-detail-page.js";
+import {createRouteDetailPage} from "/js/ai-route/route-detail-page.js";
+import {requestPageContent} from "/js/common/request-page-content.js";
 import {ApiRequestError, requestJson} from "/js/common/request-json.js";
-import {
-    createViewer,
-    requestPageContent,
-    VIEWER_SESSION_STORAGE_KEY
-} from "/js/viewer/viewer-page.js";
+import {VIEWER_SESSION_STORAGE_KEY} from "/js/common/viewer-session.js";
+import {createViewer} from "/js/viewer/viewer-page.js";
 
 const DEFAULT_ERROR_MESSAGE = "요청을 처리하지 못했습니다. 잠시 후 다시 시도해 주세요.";
 const AUTH_REQUEST_STORAGE_KEY = "browser-smoke-auth-request";
@@ -179,10 +174,11 @@ async function verifyPageContentRequest() {
 
 async function verifyRoutePageContentRequest() {
     await assertApiError(
-        () => requestRoutePageContent(
+        () => requestPageContent(
             "https://example.com/api/ai-routes/476/pages/42/content",
             "route-viewer-session-id",
-            "TEXT"),
+            "TEXT",
+            {method: "POST"}),
         "CROSS_ORIGIN_REQUEST",
         0,
         null,
@@ -197,10 +193,11 @@ async function verifyRoutePageContentRequest() {
         });
     };
 
-    const content = await requestRoutePageContent(
+    const content = await requestPageContent(
         "/api/ai-routes/476/pages/42/content",
         "route-viewer-session-id",
-        "TEXT"
+        "TEXT",
+        {method: "POST"}
     );
 
     assert(content.contentType === "TEXT", "경로 텍스트 콘텐츠 형식을 보존해야 합니다.");
@@ -224,10 +221,11 @@ async function verifyRoutePageContentRequest() {
                 headers: {"Content-Type": mediaType}
             }
         );
-        const imageContent = await requestRoutePageContent(
+        const imageContent = await requestPageContent(
             "/api/ai-routes/476/pages/42/content",
             "route-viewer-session-id",
-            "IMAGE"
+            "IMAGE",
+            {method: "POST"}
         );
 
         assert(imageContent.contentType === "IMAGE",
@@ -244,10 +242,11 @@ async function verifyRoutePageContentRequest() {
         }
     });
     await assertApiError(
-        () => requestRoutePageContent(
+        () => requestPageContent(
             "/api/ai-routes/476/pages/42/content",
             "route-viewer-session-id",
-            "IMAGE"),
+            "IMAGE",
+            {method: "POST"}),
         "INVALID_RESPONSE",
         200,
         "invalid-route-image-request",
@@ -264,10 +263,11 @@ async function verifyRoutePageContentRequest() {
         }
     });
     await assertApiError(
-        () => requestRoutePageContent(
+        () => requestPageContent(
             "/api/ai-routes/476/pages/42/content",
             "route-viewer-session-id",
-            "TEXT"),
+            "TEXT",
+            {method: "POST"}),
         "VIEWER_SESSION_REPLACED",
         409,
         "route-viewer-replaced-request",
@@ -286,10 +286,11 @@ async function verifyRoutePageContentRequest() {
     };
     try {
         await assertApiError(
-            () => requestRoutePageContent(
+            () => requestPageContent(
                 "/api/ai-routes/476/pages/42/content",
                 "route-viewer-session-id",
-                "TEXT"),
+                "TEXT",
+                {method: "POST"}),
             "MISSING_CSRF_TOKEN",
             0,
             null,
@@ -985,9 +986,9 @@ async function verifyRouteDetailFlow() {
         }
         throw new Error(`예상하지 않은 경로 상세 요청: ${method} ${url}`);
     };
-    const loadContent = async (url, viewerSessionId, contentType) => {
+    const loadContent = async (url, viewerSessionId, contentType, options = {}) => {
         const pageNumber = Number(url.match(/pages\/(\d+)\/content$/)?.[1]);
-        events.push({type: "content", url, viewerSessionId, contentType});
+        events.push({type: "content", url, viewerSessionId, contentType, options});
         openedPages.add(pageNumber);
         return {contentType: "TEXT", body: `${pageNumber}페이지 경로 본문`};
     };
@@ -1013,8 +1014,9 @@ async function verifyRouteDetailFlow() {
         && events[0]?.method === "POST",
         "첫 경로 페이지는 새 열람 세션 POST로 열어야 합니다.");
     assert(events[1]?.type === "content"
-        && events[1]?.viewerSessionId === "route-viewer-session-id",
-        "페이지 열기 성공 뒤 같은 뷰어 세션으로 경로 콘텐츠를 요청해야 합니다.");
+        && events[1]?.viewerSessionId === "route-viewer-session-id"
+        && events[1]?.options.method === "POST",
+        "페이지 열기 성공 뒤 같은 뷰어 세션과 POST로 경로 콘텐츠를 요청해야 합니다.");
     assert(events[2]?.url === "/api/ai-routes/476" && events[2]?.method === "GET",
         "콘텐츠 성공 뒤 경로 상세 상태를 새로고침해야 합니다.");
     assert(storedValues.get(VIEWER_SESSION_STORAGE_KEY) === "route-viewer-session-id",

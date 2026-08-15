@@ -34,13 +34,14 @@
 
 - 화면: `GET /ai-routes/{routeId}`
 - 산출물: `AiRouteDetailPageController`, `pages/ai-route-detail.html`
-- 산출물: `static/js/ai-route/route-detail-page.js`, route 순서·읽기 상태 helper
+- 산출물: `static/js/ai-route/route-detail.js`, `route-detail-page.js`, route 순서·읽기 상태 helper
+- 공통화: `static/js/common/request-page-content.js`, `viewer-session.js`, 최소 `request-json.js` 확장
 - Q03에 넘길 것: route 읽기 전체 브라우저 시나리오
 
 ## 수정 허용 파일
 
 - 새 detail page Controller·template·AI detail JavaScript·필요 최소 CSS
-- 기존 viewer·request-json은 공개 API만 재사용하고 파일 수정 금지
+- 기존 viewer·request-json은 content 요청·CSRF·viewer session 계약을 공통화하는 최소 범위에서 수정
 - 새 `AiRouteDetailPageTest`
 
 ## 구현 조건
@@ -52,9 +53,7 @@
 5. route 이전·다음은 추천 position, 원본 page 이동은 기존 viewer로 분리하고 비용을 사전 표시합니다.
 6. 선수 page 건너뛰기는 안내 후 사용자가 계속할 수 있고 강제 순서 차단하지 않습니다.
 7. current 지정·삭제는 S03, 완료 뒤 세 rating은 S05만 호출합니다.
-8. 모든 문자열은 textContent/escaped output, 모든 JSON 변경 fetch는 공통 CSRF helper를 사용합니다.
-9. 기존 공통 파일은 수정하지 않고 W02 전용 JavaScript 안에 같은 출처·CSRF·viewer session을 검증하는
-   바이너리 content POST helper를 둘 수 있습니다.
+8. 모든 문자열은 textContent/escaped output, 모든 변경 fetch는 공통 CSRF helper를 사용합니다.
 
 ## 테스트
 

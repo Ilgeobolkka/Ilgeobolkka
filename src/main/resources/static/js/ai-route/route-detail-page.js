@@ -1,84 +1,14 @@
 import {clearCommonError, showCommonError} from "../common/error-display.js";
+import {requestPageContent} from "../common/request-page-content.js";
 import {ApiRequestError, requestJson} from "../common/request-json.js";
-import {VIEWER_SESSION_STORAGE_KEY} from "../viewer/viewer-page.js";
+import {VIEWER_SESSION_STORAGE_KEY} from "../common/viewer-session.js";
 
 const DEFAULT_ERROR_MESSAGE = "요청을 처리하지 못했습니다. 잠시 후 다시 시도해 주세요.";
 const CONTENT_TYPES = new Set(["TEXT", "IMAGE"]);
 
-export async function requestRoutePageContent(
-        url,
-        viewerSessionId,
-        expectedContentType,
-        options = {}) {
-    const requestUrl = new URL(url, window.location.href);
-    if (requestUrl.origin !== window.location.origin) {
-        throw new ApiRequestError(
-            "CROSS_ORIGIN_REQUEST",
-            "같은 출처의 API만 호출할 수 있습니다.",
-            0,
-            null
-        );
-    }
-
-    const token = document.querySelector("meta[name='_csrf']")?.content;
-    const headerName = document.querySelector("meta[name='_csrf_header']")?.content;
-    if (!token || !headerName) {
-        throw new ApiRequestError(
-            "MISSING_CSRF_TOKEN",
-            "보안 토큰을 찾을 수 없습니다. 페이지를 새로고침해 주세요.",
-            0,
-            null
-        );
-    }
-
-    const headers = new Headers(options.headers);
-    headers.set(headerName, token);
-    headers.set("X-Viewer-Session-Id", viewerSessionId);
-
-    let response;
-    try {
-        response = await fetch(requestUrl, {
-            method: "POST",
-            headers,
-            credentials: "same-origin",
-            signal: options.signal
-        });
-    } catch (error) {
-        if (error?.name === "AbortError") {
-            throw error;
-        }
-        throw new ApiRequestError("NETWORK_ERROR", DEFAULT_ERROR_MESSAGE, 0, null);
-    }
-
-    const requestId = response.headers.get("X-Request-Id");
-    if (!response.ok) {
-        throw await createApiError(response, requestId);
-    }
-
-    const mediaType = (response.headers.get("Content-Type") || "")
-        .split(";")[0]
-        .trim()
-        .toLowerCase();
-
-    if (expectedContentType === "TEXT" && mediaType === "text/plain") {
-        return {contentType: "TEXT", body: await response.text()};
-    }
-    if (expectedContentType === "IMAGE"
-            && (mediaType === "image/jpeg" || mediaType === "image/png")) {
-        return {contentType: "IMAGE", body: await response.blob()};
-    }
-
-    throw new ApiRequestError(
-        "INVALID_RESPONSE",
-        DEFAULT_ERROR_MESSAGE,
-        response.status,
-        requestId
-    );
-}
-
 export function createRouteDetailPage(root, dependencies = {}) {
     const request = dependencies.request || requestJson;
-    const loadContent = dependencies.loadContent || requestRoutePageContent;
+    const loadContent = dependencies.loadContent || requestPageContent;
     const storage = dependencies.storage || window.sessionStorage;
     const askToContinue = dependencies.confirm || window.confirm.bind(window);
     const navigate = dependencies.navigate || ((url) => window.location.assign(url));
@@ -161,7 +91,8 @@ export function createRouteDetailPage(root, dependencies = {}) {
             const content = await loadContent(
                 `/api/ai-routes/${state.routeId}/pages/${pageNumber}/content`,
                 state.viewerSessionId,
-                metadata.contentType
+                metadata.contentType,
+                {method: "POST"}
             );
             renderContent(content, pageNumber);
             setActiveItem(index);
@@ -587,25 +518,6 @@ function openButtonLabel(status) {
     throw invalidResponseError();
 }
 
-async function createApiError(response, requestId) {
-    let errorBody;
-    try {
-        errorBody = await response.json();
-    } catch {
-        errorBody = null;
-    }
-    const code = typeof errorBody?.code === "string" ? errorBody.code : "INVALID_RESPONSE";
-    const message = typeof errorBody?.message === "string"
-        ? errorBody.message
-        : DEFAULT_ERROR_MESSAGE;
-    return new ApiRequestError(code, message, response.status, requestId);
-}
-
 function invalidResponseError() {
     return new ApiRequestError("INVALID_RESPONSE", DEFAULT_ERROR_MESSAGE, 0, null);
-}
-
-const root = document.querySelector("[data-ai-route-detail-root]");
-if (root) {
-    createRouteDetailPage(root).start();
 }
