@@ -26,10 +26,6 @@ public class AiRouteDetailPageController {
             @PathVariable long routeId,
             @AuthenticationPrincipal AuthenticatedReader authenticatedReader,
             Model model) {
-        if (authenticatedReader == null) {
-            return "redirect:/login";
-        }
-
         FindAiRouteResponse route;
         try {
             route = aiRouteQueryFacade.findRoute(authenticatedReader.readerId(), routeId);
