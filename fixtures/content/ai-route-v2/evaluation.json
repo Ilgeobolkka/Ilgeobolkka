@@ -3216,6 +3216,107 @@
         16,
         17
       ]
+    },
+    {
+      "caseId": "case-book-083",
+      "bookId": 83,
+      "purpose": "낯선 무역 도시에 사흘만 머무는데 시장 하나로 도시를 읽어 보고 싶다. 시장이 시각마다 무엇으로 바뀌는지와 냄새로 구역을 나누는 법, 경매와 좌판에서 값이 어떻게 갈리는지, 흥정이 무엇을 정하는 절차인지를 익히고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [
+        2,
+        3
+      ],
+      "requiredConcepts": [
+        "무역 도시",
+        "장 서는 시각",
+        "시장 구역",
+        "냄새 지도",
+        "새벽 경매",
+        "도매와 소매",
+        "흥정"
+      ],
+      "helpfulConcepts": [
+        "소리와 흐름",
+        "신선도 판단",
+        "향의 층",
+        "계절 재료"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 13
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 17
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 22
+        },
+        {
+          "beforePageNumber": 22,
+          "afterPageNumber": 23
+        }
+      ],
+      "irrelevantPageNumbers": [
+        28,
+        29,
+        30,
+        31,
+        48,
+        49
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          50
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        6,
+        8,
+        9,
+        12,
+        13,
+        16,
+        17,
+        22,
+        23
+      ],
+      "allowedAlternativePageNumbers": [
+        5,
+        14,
+        24
+      ]
     }
   ]
 }

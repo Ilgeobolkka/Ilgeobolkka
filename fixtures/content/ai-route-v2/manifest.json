@@ -39187,6 +39187,1116 @@
           "duplicateGroupKeys": []
         }
       ]
+    },
+    {
+      "bookId": 83,
+      "title": "시장 냄새로 기억한 도시",
+      "pdfPath": "pdfs/book-083.pdf",
+      "pdfSha256": "4e7491a95dfae733efd3f49b54e2d1da99f917ecef3aa185491a53c50c198f25",
+      "totalPageCount": 51,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 도시에 도착한 첫 새벽",
+          "section": "1.1 재의 항",
+          "primaryConcepts": [
+            "무역 도시"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도시를 파악하는 방법으로 시장이라는 단일 장소를 선택한 이유를 밝히는 도입 페이지다. 전망이나 건축물 중심의 관찰이 도시 간 차이를 드러내지 못한다는 문제를 지적하고, 소비와 폐기가 한자리에 모이며 시간대별로 얼굴이 바뀐다는 시장의 성질을 근거로 든다.",
+          "aiAnalysisInputSha256": "da49fe9b0f2b3fdbb555a92a684461b49722778d58c65d4758b8bc73ca4f2f9f",
+          "aiPublicGuideTopic": "도시를 한 장소로 읽어 보기로 한 까닭",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "market-as-a-lens"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 도시에 도착한 첫 새벽",
+          "section": "1.1 재의 항",
+          "primaryConcepts": [
+            "무역 도시"
+          ],
+          "secondaryConcepts": [
+            "시장 구역"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "중계 무역 도시의 공간 배치가 취급 물품의 부패 속도에 따라 결정된다는 구조를 설명한다. 수변에서 내륙으로 갈수록 보존 기간이 긴 물품이 배치되며 그 순서가 개장 시각과도 대응한다는 관계를 제시하고, 도시를 읽는 첫 질문을 유통 품목으로 정한다.",
+          "aiAnalysisInputSha256": "e29004a1b56b2ad68a69bb1c25b9de82b1db2be907578d7e1763198cdf132209",
+          "aiPublicGuideTopic": "물건이 지나가는 도시의 생김새",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 도시에 도착한 첫 새벽",
+          "section": "1.2 장 서는 시각",
+          "primaryConcepts": [
+            "장 서는 시각"
+          ],
+          "secondaryConcepts": [
+            "무역 도시"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 공간이 시간대에 따라 서로 다른 거래 형태로 전환된다는 점을 다룬다. 도매 경매, 소매, 음식 판매로 이어지는 교대 일정을 제시하고, 개장 시각이 아니라 시간대별 기능을 질문해야 관찰 대상을 놓치지 않는다는 실무를 설명한다.",
+          "aiAnalysisInputSha256": "1cc9fc344364b12594094f87f09022b13d66a787878a41eb7e8b827a59a05825",
+          "aiPublicGuideTopic": "같은 자리가 시각마다 다른 시장이 되는 것",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 도시에 도착한 첫 새벽",
+          "section": "1.2 장 서는 시각",
+          "primaryConcepts": [
+            "장 서는 시각"
+          ],
+          "secondaryConcepts": [
+            "휴장일"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정기 휴장과 임시 휴장이 겹치는 시장의 운영 주기를 다룬다. 휴장 전후로 물량과 가격이 반대 방향으로 움직인다는 점을 제시하고, 관찰 목적에 따라 방문일을 선택해야 하며 그 확인을 도착 당일에 마쳐야 하는 이유를 설명한다.",
+          "aiAnalysisInputSha256": "d9375b9c44b4e1be495a5bca5ac898236d65598197422c86707f7798bb1918e5",
+          "aiPublicGuideTopic": "장이 서지 않는 날을 먼저 확인하기",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 도시에 도착한 첫 새벽",
+          "section": "1.3 세 시장",
+          "primaryConcepts": [
+            "시장 구역"
+          ],
+          "secondaryConcepts": [
+            "장 서는 시각"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "한 도시의 시장들이 취급 품목이 아니라 재고 회전 속도에 따라 분화된다는 관점을 제시한다. 회전이 빠른 시장일수록 거래와 발화가 짧아진다는 대응 관계를 소리라는 단서로 설명하고, 세 시장 관찰이 동일 현상의 반복이 아닌 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "b3a8fa6a4ae65bfedd8a70a981d2676e80e77a5aafe3323075a2106c90003a71",
+          "aiPublicGuideTopic": "한 도시 안에서 시장이 나뉘는 방식",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 도시에 도착한 첫 새벽",
+          "section": "1.3 세 시장",
+          "primaryConcepts": [
+            "시장 구역"
+          ],
+          "secondaryConcepts": [
+            "무역 도시",
+            "장 서는 시각"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "세 시장의 위치를 수변에서 내륙 방향의 축에 배치하고 재고 체류 시간과 개장 시각을 함께 표시한 도표다. 테두리 굵기로 거래 속도를 나타내 공간 배치와 거래 성격이 같은 순서를 따른다는 점을 드러낸다.",
+          "aiAnalysisInputSha256": "319144b2712740bdac73a97b01a243161a46e437d2040e1f32aef51da64d84a4",
+          "aiPublicGuideTopic": "물가에서 안쪽으로 세 시장이 놓인 순서를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 도시에 도착한 첫 새벽",
+          "section": "1.4 냄새 지도",
+          "primaryConcepts": [
+            "냄새 지도"
+          ],
+          "secondaryConcepts": [
+            "무역 도시"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "후각을 도시 구역 구분의 기준으로 삼는 방법을 제시한다. 품목별 냄새가 구역 경계를 형성하고 중첩 폭이 풍향을 드러낸다는 관찰을 근거로 들며, 후각의 순응 때문에 한자리에 머물면 단서가 사라진다는 제약을 함께 밝힌다.",
+          "aiAnalysisInputSha256": "a989798b3dc4cdb3b3b502ec46aa9bb3675c941fc12543e1b134a4f506e81c80",
+          "aiPublicGuideTopic": "코로 먼저 구역을 나누는 방법",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 도시에 도착한 첫 새벽",
+          "section": "1.4 냄새 지도",
+          "primaryConcepts": [
+            "냄새 지도"
+          ],
+          "secondaryConcepts": [
+            "소리와 흐름",
+            "향의 층"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "후각 관찰을 기록으로 남기는 형식을 세 가지 항목으로 제시한다. 대상의 구체적 상태, 냄새가 미치는 범위, 경쟁하는 냄새와의 우열을 적는 방식이며, 평가어 대신 이 항목들을 기록해야 장기 회상이 가능하다는 근거를 든다.",
+          "aiAnalysisInputSha256": "5aec78b951a3f5163d80c77cc73f3a43ec9fe48ab2b36fb069dae9c7696987d3",
+          "aiPublicGuideTopic": "냄새를 적을 때 쓰는 말",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "1장 도시에 도착한 첫 새벽",
+          "section": "1.5 소리와 흐름",
+          "primaryConcepts": [
+            "소리와 흐름"
+          ],
+          "secondaryConcepts": [
+            "냄새 지도"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "청각과 인파의 방향을 시장의 진행 단계를 판단하는 지표로 사용하는 방법을 다룬다. 준비, 경매, 정리의 각 단계가 서로 다른 소리로 구분된다는 점과 물건을 들고 나오는 사람의 비율이 정점 통과를 알린다는 관찰을 제시한다.",
+          "aiAnalysisInputSha256": "be96202fc2f42678a169975e293f7857bb97d614500228845b3be0d746746ada",
+          "aiPublicGuideTopic": "귀로 시장의 상태를 알아내기",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "1장 도시에 도착한 첫 새벽",
+          "section": "1.5 소리와 흐름",
+          "primaryConcepts": [
+            "소리와 흐름"
+          ],
+          "secondaryConcepts": [
+            "시장 밥집",
+            "시장 구역"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관찰자가 시장 내에서 점유할 수 있는 위치와 그 조건을 다룬다. 통행이 이루어지되 정체되지 않는 세 유형의 자리를 제시하고, 체류의 명분을 만드는 방법과 한 지점의 체류 시간을 제한해야 하는 두 가지 이유를 설명한다.",
+          "aiAnalysisInputSha256": "285d89970bae16ee5bb1fbb7ab8704622988c45fd850ffd14aebe82897fe009a",
+          "aiPublicGuideTopic": "시장에서 자리를 잡고 서 있는 법",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 새벽어시장",
+          "section": "2.1 새벽 경매",
+          "primaryConcepts": [
+            "새벽 경매"
+          ],
+          "secondaryConcepts": [
+            "시장 구역",
+            "장 서는 시각"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도매 경매에서 가격이 단시간에 결정되는 구조를 설명한다. 부패 속도가 거래 속도를 규정하므로 언어적 흥정이 사라지고 호가와 수신호만 남는다는 점, 출품 어종의 구성이 전날의 조업 상황을 드러낸다는 관찰을 함께 제시한다.",
+          "aiAnalysisInputSha256": "4d04b514686c08ee71e44e55d2883e312360be6dc13b2f8542024b573b112aa4",
+          "aiPublicGuideTopic": "값이 몇 분 만에 정해지는 자리",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 새벽어시장",
+          "section": "2.1 새벽 경매",
+          "primaryConcepts": [
+            "새벽 경매"
+          ],
+          "secondaryConcepts": [
+            "도매와 소매",
+            "장 서는 시각"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 시장 공간이 새벽부터 오전까지 세 단계로 전환되는 과정을 시간 띠로 나타낸 도표다. 단계별 이용자 구성과 지배적인 소리를 함께 표시하고 물량 곡선을 아래에 배치해, 방문 시각이 관찰 대상을 결정한다는 점을 보인다.",
+          "aiAnalysisInputSha256": "cef1b92a117d751812a388ff102f150f1eeb64684437d278a36ed72ad5294c68",
+          "aiPublicGuideTopic": "새벽 세 시부터 아홉 시까지 같은 바닥이 세 번 바뀌는 것을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 새벽어시장",
+          "section": "2.2 신선도 판단",
+          "primaryConcepts": [
+            "신선도 판단"
+          ],
+          "secondaryConcepts": [
+            "새벽 경매"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구매자의 검품 동작을 관찰해 해당 시장의 가치 판단 기준을 추론하는 방법을 다룬다. 어류 검품의 순서와 도매·소매에서 단서가 달라지는 이유를 제시하고, 구매자의 손이 먼저 닿는 부위가 가격 결정 요인이라는 일반화를 덧붙인다.",
+          "aiAnalysisInputSha256": "46ac90c1a447b36988a3b491624d39cbce4b4f4cdd6b8dc3aa67b45823519cab",
+          "aiPublicGuideTopic": "사는 사람들이 무엇을 보는지 따라 보기",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 새벽어시장",
+          "section": "2.2 신선도 판단",
+          "primaryConcepts": [
+            "신선도 판단"
+          ],
+          "secondaryConcepts": [
+            "계절 재료"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 좌판을 반복 관찰해 계절 변화와 수급 상태를 읽는 방법을 제시한다. 물량과 가격의 조합으로 수요 감소와 희소성을 구분하는 기준을 설명하고, 고정 관찰 지점을 정해 같은 시각에 기록하는 절차를 권한다.",
+          "aiAnalysisInputSha256": "5e5cb9451562ec7fae44d926f6ed39290341c557294f6f4a6c1d723d65ad2b92",
+          "aiPublicGuideTopic": "어제와 오늘이 다른 좌판",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 새벽어시장",
+          "section": "2.3 도매와 소매",
+          "primaryConcepts": [
+            "도매와 소매"
+          ],
+          "secondaryConcepts": [
+            "새벽 경매"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 상품에 도매가와 소매가가 각각 형성되는 구조를 다룬다. 가격 차에 포함된 보관·자리·가공 비용을 제시하고, 차이의 크기가 상품별 취급 공정의 양과 대응한다는 해석을 통해 가격 격차를 유통 구조의 지표로 삼는다.",
+          "aiAnalysisInputSha256": "82b2d4fdecb4fb16a20405511e9c7c308e5b843a5163489757408d7a27c4736e",
+          "aiPublicGuideTopic": "같은 물건에 두 값이 붙는 자리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "2장 새벽어시장",
+          "section": "2.3 도매와 소매",
+          "primaryConcepts": [
+            "도매와 소매"
+          ],
+          "secondaryConcepts": [
+            "시장 밥집",
+            "무역 도시"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시장 구매자를 재판매업자, 음식점, 가정 소비자로 구분하고 각각의 구매 방식과 방문 시각이 다르다는 점을 설명한다. 시각이 늦어질수록 거래에 수반되는 대화가 길어진다는 관찰을 덧붙이고, 관찰자가 구매자 집단을 따라다니며 얻는 정보를 제시한다.",
+          "aiAnalysisInputSha256": "cdfd4a8b7d31c0e3f6f81b4de275700748d68c00db16da60aa4e0dfae4efa135",
+          "aiPublicGuideTopic": "시장에서 사는 사람들의 얼굴",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "2장 새벽어시장",
+          "section": "2.4 시장 밥집",
+          "primaryConcepts": [
+            "시장 밥집"
+          ],
+          "secondaryConcepts": [
+            "소리와 흐름"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시장 내 식당의 이용 시간대가 종사자와 방문객으로 이원화된다는 점을 다룬다. 시간대별로 식사 속도와 대화량이 달라진다는 관찰을 제시하고, 당일 저가 품목이 식당 메뉴에 반영되므로 좌판과 식당을 함께 보면 그날의 수급을 정리할 수 있다고 설명한다.",
+          "aiAnalysisInputSha256": "8f354e273d193064912bab3fbd66838e0e0cb55d407aac070e9847ab9a45f654",
+          "aiPublicGuideTopic": "시장 안에서 밥을 먹는 시각",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "2장 새벽어시장",
+          "section": "2.4 시장 밥집",
+          "primaryConcepts": [
+            "시장 밥집"
+          ],
+          "secondaryConcepts": [
+            "여행자 가격"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시장 식당에서 주문을 결정하는 실무를 다룬다. 차림표보다 종사자의 상차림을 따르는 방법, 가격 표시가 없는 관행에 대응해 사전에 확인하는 절차, 좌석 회전이 매출인 업소에서 체류 시간을 제한해야 하는 이유를 각각 제시한다.",
+          "aiAnalysisInputSha256": "cc16817b595acc20760e45dea6a689de8b91c1c37353386b9140d8817873e64c",
+          "aiPublicGuideTopic": "무엇을 시킬지 정하는 방법",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 향신료골목",
+          "section": "3.1 향의 층",
+          "primaryConcepts": [
+            "향의 층"
+          ],
+          "secondaryConcepts": [
+            "냄새 지도"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "향신료 골목 내부에서 취급 품목이 향의 강도와 가격에 따라 배열된다는 구조를 설명한다. 강한 향이 약한 향을 가리기 때문에 안쪽에서 바깥으로 이동하며 관찰해야 한다는 실무와, 전면 배치가 회전율을 반영한다는 일반 원리를 제시한다.",
+          "aiAnalysisInputSha256": "e69014867889291c316512c0253fcb7c769ec83384596954e132ba5421b157a4",
+          "aiPublicGuideTopic": "골목 하나가 여러 냄새로 나뉘는 것",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 향신료골목",
+          "section": "3.1 향의 층",
+          "primaryConcepts": [
+            "향의 층"
+          ],
+          "secondaryConcepts": [
+            "냄새 지도",
+            "흥정"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "골목 내 향신료 배치를 네 구간으로 나누고 향의 세기와 가격이 반대 방향으로 배열된다는 점을 나타낸 도표다. 두 방향의 통행 화살표를 좌우에 두어 진행 방향에 따라 식별 가능한 향의 수가 달라진다는 것을 보인다.",
+          "aiAnalysisInputSha256": "8b31898372f993f24e2bc3357810d3af70f9a0e459cd6191746928fb09d88cca",
+          "aiPublicGuideTopic": "골목을 걸어 들어가는 동안 냄새가 네 번 바뀌는 것을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 향신료골목",
+          "section": "3.2 흥정",
+          "primaryConcepts": [
+            "흥정"
+          ],
+          "secondaryConcepts": [
+            "시장 구역",
+            "향의 층"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "흥정을 가격 인하 기법이 아니라 관계 형성 절차로 규정한다. 최초 호가가 출발점이라는 점, 구매량과 재방문 가능성이 가격에 반영된다는 점을 제시하고 반복 방문으로 가격이 달라진 실제 경험을 근거로 든다.",
+          "aiAnalysisInputSha256": "d01e4de73d6ccb66acbae3b5835231ecc4d5e90a4c8bfae0b02b4bc49c37a249",
+          "aiPublicGuideTopic": "값을 묻는 일이 대화의 시작인 자리",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 향신료골목",
+          "section": "3.2 흥정",
+          "primaryConcepts": [
+            "흥정"
+          ],
+          "secondaryConcepts": [
+            "저울과 값",
+            "여행자 가격"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "흥정에서 가격 외에 수량, 품질, 덤이 함께 조정된다는 점을 다룬다. 목적을 먼저 정한 뒤 협상에 들어가는 순서, 용도를 먼저 밝히는 대화 방식, 계량 시작이 협상 종료 신호라는 관행을 각각 제시한다.",
+          "aiAnalysisInputSha256": "03b5f98f2d32ecca704723c6a1b31a32d3c08f7f01f5ad4408eb9f921d3816e6",
+          "aiPublicGuideTopic": "흥정에서 실제로 정해지는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "3장 향신료골목",
+          "section": "3.3 계절 재료",
+          "primaryConcepts": [
+            "계절 재료"
+          ],
+          "secondaryConcepts": [
+            "향의 층",
+            "신선도 판단"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계절 품목의 가격이 출하 초기, 성수기, 종료기에 각각 다르게 형성된다는 주기를 설명한다. 이 정보를 현재 구매 판단과 다음 방문 시기 결정에 활용하는 두 가지 용도를 제시하고, 배경 지식이 관찰 내용을 바꾼다는 점을 사례로 든다.",
+          "aiAnalysisInputSha256": "9ec75ae74f939c1a01ebe2724a0c3755b143f019c3e36bda7e4a8e345b47b1c9",
+          "aiPublicGuideTopic": "시장이 알려 주는 계절",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "3장 향신료골목",
+          "section": "3.3 계절 재료",
+          "primaryConcepts": [
+            "계절 재료"
+          ],
+          "secondaryConcepts": [
+            "무역 도시",
+            "중고 유통"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "중계 무역 도시의 시장이 산지 정보를 통해 교역망을 드러낸다는 점을 다룬다. 동일 품목의 가격 차가 산지 차이에서 비롯된다는 관찰, 원거리 품목일수록 소량·고가·내측 배치라는 규칙을 제시하고 산지 표기를 모아 도시의 연결 범위를 그리는 방법을 설명한다.",
+          "aiAnalysisInputSha256": "070a8acf4c632c09f55dda2712873b16532cd5bb5f27bb99d67d899cbfcbbbe5",
+          "aiPublicGuideTopic": "그 도시에서 나지 않는 것들",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "3장 향신료골목",
+          "section": "3.4 저울과 값",
+          "primaryConcepts": [
+            "저울과 값"
+          ],
+          "secondaryConcepts": [
+            "흥정"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계량 방식의 차이가 실질 거래 조건을 좌우한다는 점을 다룬다. 접시저울과 눈금저울의 특성 차이, 용기 무게 처리 방식에 따른 실수령량의 변화를 제시하고, 계량 과정의 가시성을 기준으로 거래처를 선택한 판단을 설명한다.",
+          "aiAnalysisInputSha256": "b7057a2b50e087b81d2e264b7d2898e8c70c898854a95f3fdd3a59dde64440d7",
+          "aiPublicGuideTopic": "무게를 다는 방식이 값을 정한다",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "3장 향신료골목",
+          "section": "3.4 저울과 값",
+          "primaryConcepts": [
+            "저울과 값"
+          ],
+          "secondaryConcepts": [
+            "도매와 소매",
+            "여행자 가격"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "소량 구매에서 단위 가격이 상승하는 이유를 계량과 포장의 고정 비용으로 설명한다. 관광객 대상 가격과 수량 기반 가격을 구분해야 한다는 점을 지적하고, 한 점포에서 품목 수를 늘려 거래 규모를 맞추는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "7bfe6af5e77e052dd39e6dc01401d04f2205b0e06e41ddbc449baece03bca1cd",
+          "aiPublicGuideTopic": "적은 양을 살 때 생기는 일",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 헌옷마당",
+          "section": "4.1 중고 유통",
+          "primaryConcepts": [
+            "중고 유통"
+          ],
+          "secondaryConcepts": [
+            "시장 구역",
+            "무역 도시"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "중고 시장의 물품이 도시 내부와 외부에서 각각 유입되는 경로를 구분해 설명한다. 포장 형태로 출처를 판별하는 방법과 혼합 물량의 증가가 도시 내 변화의 지표라는 해석을 제시하고, 이 시장이 과거 시점의 도시를 드러낸다는 관점을 밝힌다.",
+          "aiAnalysisInputSha256": "10c4c85de40503bd196e40d7a3ca1098e51dd727457263940e33b60b01f32224",
+          "aiPublicGuideTopic": "헌 물건이 도시로 들어오는 길",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 헌옷마당",
+          "section": "4.1 중고 유통",
+          "primaryConcepts": [
+            "중고 유통"
+          ],
+          "secondaryConcepts": [
+            "시장 구역",
+            "장 서는 시각"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "세 시장의 유입 경로와 유출 방향을 도시 경계를 기준으로 나타낸 도표다. 외부에서 들어오는 두 시장과 내부에서 물량이 나오는 한 시장을 구분해, 유입 방향의 차이가 각 시장의 성격과 개장 시각을 규정한다는 점을 보인다.",
+          "aiAnalysisInputSha256": "430b53c1eb49c97d061b7469084cbb866bd315d4e4ed67655872fab173a4a23f",
+          "aiPublicGuideTopic": "세 시장의 물건이 각각 어디서 와서 어디로 가는지 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 헌옷마당",
+          "section": "4.2 고르는 눈",
+          "primaryConcepts": [
+            "고르는 눈"
+          ],
+          "secondaryConcepts": [
+            "중고 유통"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "무진열 상태의 중고 물품을 탐색하는 절차를 세 단계로 제시한다. 상단 물품으로 더미의 수준을 판단하는 방법, 시각보다 촉각이 빠른 이유, 조도가 낮은 실내에서 결함을 확인하기 위한 이동을 각각 실무로 설명한다.",
+          "aiAnalysisInputSha256": "67e46e90057985a67226c496fc539fbd1ce43d7da5421f33b0b375345401dc02",
+          "aiPublicGuideTopic": "쌓인 더미에서 하나를 찾는 순서",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 헌옷마당",
+          "section": "4.2 고르는 눈",
+          "primaryConcepts": [
+            "고르는 눈"
+          ],
+          "secondaryConcepts": [
+            "여행자 가격",
+            "저울과 값"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "중고 시장에서 여행자의 구매 기준을 다룬다. 현지에서 즉시 사용할 물품과 부피가 작고 내구성이 긴 물품만 유효하다는 기준을 제시하고, 기념 목적의 구매가 맥락을 잃는다는 이유로 관찰 중심의 이용을 권한다.",
+          "aiAnalysisInputSha256": "04b0af48c0a48480221370eeb89ddf63b7a2b4e3f4776186d6ecef4bf9a7976f",
+          "aiPublicGuideTopic": "여행자가 여기서 살 수 있는 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "4장 헌옷마당",
+          "section": "4.3 파장",
+          "primaryConcepts": [
+            "파장"
+          ],
+          "secondaryConcepts": [
+            "장 서는 시각",
+            "소리와 흐름"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "폐장 시점의 처리 방식이 상품의 보존 가능 기간을 드러낸다는 점을 세 시장에 걸쳐 비교한다. 가격 하락 폭과 잔여 수명의 대응 관계를 제시하고, 종사자와의 대화가 가능해지는 시간대라는 점에서 관찰 가치가 높다고 설명한다.",
+          "aiAnalysisInputSha256": "f4c3291d75383fb1d3a7ab30856b3d909497a1784f767bbf2851523f0593f4cf",
+          "aiPublicGuideTopic": "시장이 끝나는 시각에 드러나는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "4장 헌옷마당",
+          "section": "4.3 파장",
+          "primaryConcepts": [
+            "파장"
+          ],
+          "secondaryConcepts": [
+            "시장 밥집",
+            "고르는 눈"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "판매되지 않은 물품의 처리 경로를 세 시장별로 추적한다. 식당으로의 이동과 가공, 진열 위치의 후퇴, 타 도시로의 재이송을 각각 제시하고, 이 경로들이 도시의 폐기와 재사용 방식을 드러낸다는 관점을 밝힌다.",
+          "aiAnalysisInputSha256": "f60d1b512e30fd467359b773d080c1c2f537d27f769aecf51f5c36722e4cfdf4",
+          "aiPublicGuideTopic": "남은 것이 가는 자리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "4장 헌옷마당",
+          "section": "4.4 시장 둘레",
+          "primaryConcepts": [
+            "시장 둘레"
+          ],
+          "secondaryConcepts": [
+            "소리와 흐름",
+            "냄새 지도"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시장 외곽 골목에 형성된 보조 업종을 통해 해당 시장의 요구를 파악하는 방법을 다룬다. 보조 업종의 구성이 취급 품목의 성질과 대응한다는 관찰을 세 시장에 걸쳐 제시하고, 관찰자의 휴식 공간으로서의 기능도 함께 밝힌다.",
+          "aiAnalysisInputSha256": "c96b158a527e05839f4c75c800cd8cbf08aa95bd9ac98d36fae37119909420e6",
+          "aiPublicGuideTopic": "시장 밖 한 겹의 골목",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "4장 헌옷마당",
+          "section": "4.4 시장 둘레",
+          "primaryConcepts": [
+            "시장 둘레"
+          ],
+          "secondaryConcepts": [
+            "무역 도시",
+            "표본의 한계"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시장과 일반 시가지의 경계가 짧은 구간에서 급격히 전환된다는 관찰을 다룬다. 냄새가 끊기는 지점을 표시해 시장의 실제 범위를 그리는 방법을 제시하고, 그 범위가 지도상의 행정적 구획과 일치하지 않는다는 차이를 지적한다.",
+          "aiAnalysisInputSha256": "2ea77e8e21498a3c3fdd2bd5ac5fc911d33bdb2af996209440049e4a989ca451",
+          "aiPublicGuideTopic": "시장에서 도시로 넘어가는 지점",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 사흘 동안 세 시장",
+          "section": "5.1 첫날 동선",
+          "primaryConcepts": [
+            "첫날 동선"
+          ],
+          "secondaryConcepts": [
+            "새벽 경매",
+            "장 서는 시각"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계획 없이 시작한 첫날의 동선 실패를 기록한다. 개장 시각을 모른 채 이동해 관찰 기회를 놓친 과정을 시간순으로 제시하고, 세 시장의 개장 시각을 확인한 뒤 일정이 정리된 결과를 통해 사전 확인의 효과를 보인다.",
+          "aiAnalysisInputSha256": "b3ad572f396028775207fb951c941fe00fc1e234a9e14adf7c351749c623fc7a",
+          "aiPublicGuideTopic": "첫 새벽에 실제로 걸은 길",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 사흘 동안 세 시장",
+          "section": "5.1 첫날 동선",
+          "primaryConcepts": [
+            "첫날 동선"
+          ],
+          "secondaryConcepts": [
+            "시장 구역",
+            "휴장일"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사흘간의 시장 방문 시각을 하루 단위 시간 축 세 줄에 겹쳐 배치한 도표다. 첫날의 어긋난 방문에 표식을 얹고 이후 이틀의 조정을 나란히 두어, 개장 시각 확인이 동선 전체를 결정한다는 점을 보인다.",
+          "aiAnalysisInputSha256": "424f5a3edebc4fdb5e6ec17568d2c6578dcf8ee86101c50f8fb216941b507fd7",
+          "aiPublicGuideTopic": "사흘 동안 세 시장을 어떤 순서로 돌았는지 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 사흘 동안 세 시장",
+          "section": "5.2 흥정 실패",
+          "primaryConcepts": [
+            "흥정 실패"
+          ],
+          "secondaryConcepts": [
+            "흥정",
+            "저울과 값"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "협상 순서를 잘못 잡아 거래가 성립하지 않은 사례를 기록한다. 가격을 먼저 제시하면 그 가격대의 상품만 제시된다는 구조를 설명하고, 용도를 먼저 밝혔을 때 제시 상품이 달라진 결과를 대조해 순서의 효과를 드러낸다.",
+          "aiAnalysisInputSha256": "6f77712311d997e855d997598f5206cda1cc218cf4bdad30c18990f0b06342da",
+          "aiPublicGuideTopic": "둘째 날 향신료골목에서 잘못한 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "5장 사흘 동안 세 시장",
+          "section": "5.2 흥정 실패",
+          "primaryConcepts": [
+            "흥정 실패"
+          ],
+          "secondaryConcepts": [
+            "여행자 가격",
+            "계절 재료"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 점포를 반복 방문했을 때 가격과 정보 제공이 달라지는 과정을 사흘에 걸쳐 기록한다. 가격이 상품뿐 아니라 관계에도 형성된다는 관찰을 제시하고, 짧은 체류에서 관찰 지점을 넓히기보다 반복하는 편이 유리하다는 결론을 든다.",
+          "aiAnalysisInputSha256": "212e86d6fe4322e4db8c0edeb1270579d1a702a7d662f95fe96d8e0d18e856f6",
+          "aiPublicGuideTopic": "같은 자리에 세 번 간 결과",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "5장 사흘 동안 세 시장",
+          "section": "5.3 휴장일",
+          "primaryConcepts": [
+            "휴장일"
+          ],
+          "secondaryConcepts": [
+            "장 서는 시각",
+            "시장 둘레"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "휴장일의 시장 공간에서 관찰 가능한 정보를 기록한다. 바닥의 흔적으로 평소 배치를 파악한 사례, 보조 업종의 작업 주기가 휴장일에 맞춰 있다는 발견, 한 시장의 휴장이 다른 시장의 인파에 영향을 준다는 연결을 제시한다.",
+          "aiAnalysisInputSha256": "dc9046dfed3bb19cea7810a1dacb2dc2561c98f9cef1fbd59be90f328f164b10",
+          "aiPublicGuideTopic": "장이 서지 않는 날에 본 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "5장 사흘 동안 세 시장",
+          "section": "5.3 휴장일",
+          "primaryConcepts": [
+            "휴장일"
+          ],
+          "secondaryConcepts": [
+            "파장",
+            "표본의 한계"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "휴장일 관찰이 이전 기록의 오류를 교정한 사례를 다룬다. 인파의 밀집이 중심 위치와 공간 규모에 대한 판단을 왜곡한다는 점을 구체적으로 제시하고, 비어 있는 상태의 관찰을 일정에 포함해야 하는 이유를 설명한다.",
+          "aiAnalysisInputSha256": "f7891c2919c8d29e3634f67abdc21c668a80f3975c352cc1abe4ae73cf274f2c",
+          "aiPublicGuideTopic": "빈 시장이 알려 준 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "5장 사흘 동안 세 시장",
+          "section": "5.4 구역 대조",
+          "primaryConcepts": [
+            "구역 대조"
+          ],
+          "secondaryConcepts": [
+            "첫날 동선",
+            "냄새 지도"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "여러 감각 기준으로 그린 구역 경계를 한 장에 중첩해 대조한 과정을 다룬다. 후각과 청각 경계가 어긋난 지점에서 풍향의 영향을 확인한 발견을 제시하고, 두 경계를 하나로 통합하지 않고 병기하는 편이 정확하다는 판단을 밝힌다.",
+          "aiAnalysisInputSha256": "26ae43c8eaa20505b8a472d1f4d43dfd57fa93b65eb5e844939f971f27513342",
+          "aiPublicGuideTopic": "사흘의 기록을 지도 한 장에 겹치기",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "5장 사흘 동안 세 시장",
+          "section": "5.4 구역 대조",
+          "primaryConcepts": [
+            "구역 대조"
+          ],
+          "secondaryConcepts": [
+            "도매와 소매",
+            "중고 유통"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "세 시장을 시간 폭이 다른 관찰 창으로 재해석하는 종합을 제시한다. 당일, 계절, 수년 단위로 대응시켜 도입부의 물음에 답하고, 이 방법으로 파악할 수 없는 영역이 남는다는 점을 다음 장으로 넘긴다.",
+          "aiAnalysisInputSha256": "d8ad70b6dd5cb1da1df5915edf8ed7edc10507fac82a0dbc72a82dac5f339d90",
+          "aiPublicGuideTopic": "세 시장을 나란히 놓고 본 도시",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 시장으로 도시를 읽을 때 놓치는 것",
+          "section": "6.1 표본의 한계",
+          "primaryConcepts": [
+            "표본의 한계"
+          ],
+          "secondaryConcepts": [
+            "시장 구역",
+            "무역 도시"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시장 중심 관찰이 포착하지 못하는 영역을 밝히는 한계 페이지다. 비상품 영역과 공공시설이 누락된다는 점, 시장 이용자만 관찰 대상이 되므로 표본이 편향된다는 점을 지적하고, 관찰 범위를 함께 기록해야 한다는 조건을 제시한다.",
+          "aiAnalysisInputSha256": "8ec49c6614c8477270a624dedda6b7f94e3f0888ac09197b744a0bbe605f3d38",
+          "aiPublicGuideTopic": "시장에 나오지 않는 것들",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 시장으로 도시를 읽을 때 놓치는 것",
+          "section": "6.1 표본의 한계",
+          "primaryConcepts": [
+            "표본의 한계"
+          ],
+          "secondaryConcepts": [
+            "시장 둘레",
+            "구역 대조"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관찰 범위와 도시 전체의 크기 차이를 포함 관계로 나타낸 도표다. 세 시장을 둘러싼 관찰 범위 바깥에 시장에 나오지 않는 영역을 배치하고 막대 비교를 덧붙여, 부분 관찰을 전체로 서술할 때 생기는 오류를 드러낸다.",
+          "aiAnalysisInputSha256": "44252b2c567c8c2c671c01aa790801a3966a00bbd9a44f21642e858ea1dc90fa",
+          "aiPublicGuideTopic": "시장으로 본 도시와 실제 도시의 크기 차이를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 시장으로 도시를 읽을 때 놓치는 것",
+          "section": "6.2 여행자 가격",
+          "primaryConcepts": [
+            "여행자 가격"
+          ],
+          "secondaryConcepts": [
+            "흥정",
+            "저울과 값"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관광객에게 형성되는 가격이 세 가지 요인으로 이루어진다는 점을 정리한다. 관찰자가 지불한 가격을 그 도시의 시세로 기록하면 왜곡이 생긴다는 문제를 지적하고, 현지 구매자의 거래를 병기하거나 관찰하는 방식으로 보정하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "120ad5ef28581bd57f641e257f81d05f14176d9b040e0867c9ad198287447ac4",
+          "aiPublicGuideTopic": "여행자에게만 보이는 값",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "6장 시장으로 도시를 읽을 때 놓치는 것",
+          "section": "6.2 여행자 가격",
+          "primaryConcepts": [
+            "여행자 가격"
+          ],
+          "secondaryConcepts": [
+            "시장 밥집",
+            "도매와 소매"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "절대 가격만으로는 물가 수준을 판단할 수 없다는 문제를 다룬다. 식사 값과 기본 식재료 값을 기준점으로 삼아 상대 비교하는 방법을 제시하고, 이 기준이 시장 내부 항목에만 적용되며 주거비나 임금에는 확장되지 않는다는 한계를 밝힌다.",
+          "aiAnalysisInputSha256": "9975a7d1226064f047226fa21ab29ab0c790f1cf5baf3e2ec68ddf07b736ccba",
+          "aiPublicGuideTopic": "값을 물어도 알 수 없는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "6장 시장으로 도시를 읽을 때 놓치는 것",
+          "section": "6.3 기억의 한계",
+          "primaryConcepts": [
+            "기억의 한계"
+          ],
+          "secondaryConcepts": [
+            "냄새 지도"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "후각 기반 기록이 장기적으로 위치 정보를 잃는다는 한계를 다룬다. 냄새가 장소보다 정서에 결합해 저장된다는 점을 원인으로 제시하고, 시각 정보를 함께 기록해 보완하는 방법과 그럼에도 남는 소실률을 실제 수치로 밝힌다.",
+          "aiAnalysisInputSha256": "a480887c97acdbaaa4fb782f5125463a601f1e200aab5ceaaab69babd707a7e6",
+          "aiPublicGuideTopic": "냄새로 기억한 것이 흐려질 때",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "6장 시장으로 도시를 읽을 때 놓치는 것",
+          "section": "6.3 기억의 한계",
+          "primaryConcepts": [
+            "기억의 한계"
+          ],
+          "secondaryConcepts": [
+            "구역 대조",
+            "고르는 눈"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시장 중심 관찰법이 유효하지 않은 세 가지 조건을 제시한다. 유통 기능이 외곽으로 이전된 도시, 관광화된 시장, 체류 기간이 하루인 경우를 각각 들고, 마지막 경우에는 관찰 지점을 좁히는 대안을 권한다.",
+          "aiAnalysisInputSha256": "e658c9de94f08b9203a502b8537e60caf98a13469f5b43d5c7d2d8fbbbfcd513",
+          "aiPublicGuideTopic": "이 방법이 맞지 않는 도시",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 결론: 냄새로 남은 도시",
+          "section": "7.1 냄새로 남은 도시",
+          "primaryConcepts": [
+            "시장으로 읽기"
+          ],
+          "secondaryConcepts": [
+            "무역 도시",
+            "냄새 지도"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단일 장소를 통한 도시 관찰의 성과와 대가를 종합하는 결론 도입 페이지다. 깊이와 범위의 교환을 명시하고, 관찰 결과를 도시 전체로 일반화하지 않고 관찰한 범위의 이름으로 기록하는 태도를 제시한다.",
+          "aiAnalysisInputSha256": "203777bbdd68184d9977a0d42a02e3dec0f3d2a782e5df808e3eb8bbe3da64f1",
+          "aiPublicGuideTopic": "한 장소로 도시를 읽고 나서 남은 것",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "market-as-a-lens"
+          ]
+        },
+        {
+          "pageNumber": 51,
+          "chapter": "7장 결론: 냄새로 남은 도시",
+          "section": "7.1 냄새로 남은 도시",
+          "primaryConcepts": [
+            "시장으로 읽기"
+          ],
+          "secondaryConcepts": [
+            "장 서는 시각",
+            "표본의 한계"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다른 도시에 적용할 수 있도록 관찰 절차를 네 단계로 압축해 제시한다. 개장 정보 확인, 진입 전 상태 판단, 후각 기록 형식, 반복 방문으로 구성되며, 관찰하지 못한 범위를 명시하는 마지막 단계까지 방법에 포함된다는 점을 강조한다.",
+          "aiAnalysisInputSha256": "7ac5a3501080e32adc83cee0c83aeba469c8b1186a0f75c615110d49625cd4ae",
+          "aiPublicGuideTopic": "다음 도시의 시장에 들어가기 전에",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            50
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
     }
   ]
 }
