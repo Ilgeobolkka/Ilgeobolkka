@@ -24961,6 +24961,1073 @@
       ]
     },
     {
+      "bookId": 52,
+      "title": "선택과 책임: 되돌릴 수 없는 결정",
+      "pdfPath": "pdfs/book-052.pdf",
+      "pdfSha256": "f673e47943fbf170a41b33ee787c5a56271aa81b3637bdebee0d45fa86b3c099",
+      "totalPageCount": 50,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 선택은 언제 선택이 되는가",
+          "section": "1.1 무엇을 선택이라 부르는가",
+          "primaryConcepts": [
+            "선택"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선택의 성립 조건을 복수의 열린 대안과 행위자의 기여 두 가지로 규정한다. 각 조건이 무너질 때 강요와 사고로 갈린다는 구분을 제시하고, 열려 있음의 기준이 사람마다 달라 책임의 크기를 좌우한다는 점을 책 전체의 문제로 놓는다.",
+          "aiAnalysisInputSha256": "261bfccaee871ee695c0b53ca4e2c9d8030aa028a74e0104caf302b546300295",
+          "aiPublicGuideTopic": "고르는 일과 그냥 일어나는 일의 경계",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "choice-and-what-follows"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 선택은 언제 선택이 되는가",
+          "section": "1.1 무엇을 선택이라 부르는가",
+          "primaryConcepts": [
+            "선택"
+          ],
+          "secondaryConcepts": [
+            "미결정"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선택 시점을 결심·표명·비가역화 셋으로 나누고 실질적 무게가 마지막에 걸린다는 기준을 제시한다. 사례를 통해 세 시점의 간격을 보이고, 이 기준이 내심의 결정에 책임을 묻지 않는 통념을 설명한다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "36d398105292250357d5d2c8cae98bd98089659c731c8a4eb0c9253f3f0a31f1",
+          "aiPublicGuideTopic": "고른 순간을 어디로 잡을 것인가",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 선택은 언제 선택이 되는가",
+          "section": "1.2 갈림길의 조건",
+          "primaryConcepts": [
+            "대안의 조건"
+          ],
+          "secondaryConcepts": [
+            "선택"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대안의 존재를 물리적 가능성·감당 가능성·인지 가능성 세 층위로 구분하고 층위마다 선택 여부 판정이 달라진다는 점을 다룬다. 비난과 변명이 서로 다른 층위를 사용해 논의가 어긋난다는 진단과, 자타에 다른 기준을 적용하는 편향을 지적한다.",
+          "aiAnalysisInputSha256": "2c254748351f5ea89c5e63306043f4ece562add2cf83c863edeb05dc7c9d55a3",
+          "aiPublicGuideTopic": "다른 길이 실제로 열려 있었는가",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 선택은 언제 선택이 되는가",
+          "section": "1.2 갈림길의 조건",
+          "primaryConcepts": [
+            "대안의 조건"
+          ],
+          "secondaryConcepts": [
+            "반사실"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인지하지 못한 대안에 대한 책임을 사전 준비 행위까지 확장해 검토한다. 무한 소급의 위험을 지적하고 당시 요구 가능성을 기준으로 삼는 실무를 제시하며, 역할과 경험에 따라 요구 수준이 달라진다는 점을 뒤 장으로 연결한다.",
+          "aiAnalysisInputSha256": "f8fbc14865ff73261af04b39e2d409edcd96e072f92ce3b16cd100d64cba1f03",
+          "aiPublicGuideTopic": "떠오르지 않은 길의 몫",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 선택은 언제 선택이 되는가",
+          "section": "1.3 정하지 않는 것도 정하는 것",
+          "primaryConcepts": [
+            "미결정"
+          ],
+          "secondaryConcepts": [
+            "선택"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결정 유보가 현상 유지라는 결과를 산출한다는 점에서 선택과 동일한 효과를 갖는다는 것을 다룬다. 결과의 동일성과 행위자 의도의 차이를 구분하고, 흐름의 예측 가능성이 책임 판단을 가른다는 기준과 유보 중 고착되는 것을 기록하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "5dac2d414ed246eced129c108ee0430df62f3431cf3d4b514fdf9756d2707b15",
+          "aiPublicGuideTopic": "결정을 미룰 때 실제로 일어나는 일",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 선택은 언제 선택이 되는가",
+          "section": "1.3 정하지 않는 것도 정하는 것",
+          "primaryConcepts": [
+            "미결정"
+          ],
+          "secondaryConcepts": [
+            "지연의 대가"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "유보가 정당화되는 조건으로 판단을 바꿀 정보의 도착을 제시하고 대기 목적·기한·미도착 시 처리를 명시하는 절차를 다룬다. 대기 중인 정보가 어느 값으로 오든 선택이 같다면 대기가 무의미하다는 사전 점검과, 기한 초과가 상황에 의한 결정으로 이어진다는 문제를 제시한다.",
+          "aiAnalysisInputSha256": "f35d06c2e29509fbd971a44f23c617aff6dc59c2c606a547c3330cf945d2d744",
+          "aiPublicGuideTopic": "미루기를 언제 끝낼 것인가",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 선택은 언제 선택이 되는가",
+          "section": "1.4 선택이 성립하는 조건",
+          "primaryConcepts": [
+            "선택의 성립"
+          ],
+          "secondaryConcepts": [
+            "선택",
+            "대안의 조건"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대안의 복수성과 행위자의 기여를 두 축으로 삼아 네 영역을 나눈 도표다. 두 조건이 모두 충족된 영역만 선택으로 표시하고 나머지를 강요·사고·자연 발생으로 구분하며, 열려 있음의 세 층위가 가로축에서 점차 좁아진다는 점을 함께 나타낸다.",
+          "aiAnalysisInputSha256": "e116e1464d4932dd347706964e1dfc7716dbea1cfc67092a9a16d427ddf3c896",
+          "aiPublicGuideTopic": "선택이라 부를 수 있는 자리와 그렇지 않은 자리를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 선택은 언제 선택이 되는가",
+          "section": "1.5 이 책이 다루지 않는 것",
+          "primaryConcepts": [
+            "논의의 경계"
+          ],
+          "secondaryConcepts": [
+            "선택"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자유의지의 형이상학적 성립 여부를 논의에서 제외하는 근거를 제시한다. 그 물음의 답과 무관하게 행위 귀속과 재발 방지라는 과제가 남는다는 점을 들고, 다루지 않을 범위를 명시하는 것이 논의를 유지하는 조건이라는 관점을 밝힌다.",
+          "aiAnalysisInputSha256": "19e4435b0451d8a19b7da289f9f89680b5f0ba243c0722c64f73748e3a4a5c05",
+          "aiPublicGuideTopic": "물음을 좁히는 이유",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 되돌릴 수 없다는 것",
+          "section": "2.1 되돌릴 수 있음과 없음",
+          "primaryConcepts": [
+            "불가역성"
+          ],
+          "secondaryConcepts": [
+            "선택"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비가역성을 절대적 불가능이 아니라 복원 비용의 크기로 재규정한다. 금전·시간·경과 중 마지막이 회수 불가능한 이유를 타인의 의존이 축적된다는 점에서 설명하고, 가역성 판단을 결정 이전에 수행해야 한다는 순서를 제시한다.",
+          "aiAnalysisInputSha256": "fa07a79509fcc2bca33aa945842e849fb68476509f43549a10d7aea175a9fca5",
+          "aiPublicGuideTopic": "무엇을 되돌릴 수 없다고 하는가",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 되돌릴 수 없다는 것",
+          "section": "2.1 되돌릴 수 있음과 없음",
+          "primaryConcepts": [
+            "불가역성"
+          ],
+          "secondaryConcepts": [
+            "가역성 설계"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "가역성 여부에 따라 결정 속도와 검토 깊이를 다르게 배분하는 원칙을 제시한다. 가역적 결정에서는 실행을 통한 확인이 효율적이고 비가역적 결정에서는 사전 검토와 가역화 시도가 우선한다는 기준, 그리고 가역 기한을 명시해야 하는 이유를 다룬다.",
+          "aiAnalysisInputSha256": "679935d7150029a1277594f26a06ba520b835189d1298ab2a33ec26e63c85389",
+          "aiPublicGuideTopic": "되돌릴 수 있는 결정과 없는 결정을 다르게 다루기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 되돌릴 수 없다는 것",
+          "section": "2.2 시간이 만드는 잠금",
+          "primaryConcepts": [
+            "잠금"
+          ],
+          "secondaryConcepts": [
+            "불가역성"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비가역성이 단절적으로 발생하는 과정을 다룬다. 복원 비용이 시간에 비례해 늘지 않고 특정 지점에서 급증한다는 점, 그 지점 전후로 같은 행동의 평가가 달라진다는 점, 그리고 확인 작업을 그 지점 이전에 배치해야 하는 이유를 제시한다.",
+          "aiAnalysisInputSha256": "c855581b7e98be7992f490ca61a9b28bd378715d05cc4f51c010dcdcd93583e5",
+          "aiPublicGuideTopic": "저절로 굳어지는 과정",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 되돌릴 수 없다는 것",
+          "section": "2.2 시간이 만드는 잠금",
+          "primaryConcepts": [
+            "잠금"
+          ],
+          "secondaryConcepts": [
+            "미결정"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "잠금 지연 전략의 효용과 비용을 함께 다룬다. 결정을 분할해 확정 시점을 늦추면 수정 기회가 늘지만 그 유연성의 비용이 관련자에게 전가된다는 점을 지적하고, 확정 여부를 공유해야 하는 이유와 확정 사실을 숨기는 행위의 성격을 밝힌다.",
+          "aiAnalysisInputSha256": "65aa30f3b0e5de169c0373885f96bc64210cc6e8f071a0ec5685f5e2c7350257",
+          "aiPublicGuideTopic": "잠금을 미루는 방법과 그 값",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 되돌릴 수 없다는 것",
+          "section": "2.3 되돌리기 비용의 층",
+          "primaryConcepts": [
+            "되돌리기 비용"
+          ],
+          "secondaryConcepts": [
+            "불가역성",
+            "잠금"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복원 비용의 시간 변화를 계단 형태로 그린 도표다. 공개 시점과 타인의 의존이 발생하는 시점에서 비용이 급증하고 그 사이는 평탄하다는 점을 보이며, 같은 철회 행위의 평가가 구간마다 달라진다는 것과 검토를 배치해야 할 구간을 함께 표시한다.",
+          "aiAnalysisInputSha256": "8e3cd8269f06bde0b91711fe9695e685af7c636604ed8c26ceed78bc9d0709c7",
+          "aiPublicGuideTopic": "시간이 지나며 되돌리기 값이 뛰는 모양을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 되돌릴 수 없다는 것",
+          "section": "2.4 되돌릴 수 없는 것을 다루는 법",
+          "primaryConcepts": [
+            "가역성 설계"
+          ],
+          "secondaryConcepts": [
+            "잠금"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비가역적 결정에 대한 두 가지 대응으로 규모 축소를 통한 가역화와 확인 강화를 제시한다. 축소 실행의 대표성 확인 필요, 실패 조건 목록이 성공 근거보다 효율적이라는 점, 그리고 정보 탐색을 종료하고 검토에 할애하는 시간 배분을 다룬다.",
+          "aiAnalysisInputSha256": "adf8b221073170b33d844a30ac73636bb8d39f0fdcbf9066583f8387a56a3737",
+          "aiPublicGuideTopic": "닫히기 전에 할 수 있는 일",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 되돌릴 수 없다는 것",
+          "section": "2.4 되돌릴 수 없는 것을 다루는 법",
+          "primaryConcepts": [
+            "가역성 설계"
+          ],
+          "secondaryConcepts": [
+            "책임의 대상"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결정 확정 이후의 실행 항목을 통지·정합성 정리·미지 사항 기록 셋으로 정리한다. 통지 누락이 어긋남을 결정 자체의 결함으로 오인하게 만든다는 점, 상위 결정이 무효화하는 하위 약속을 정리해야 실질적 변화가 생긴다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "61da0826352d81c222857f8f0f8f9356bd47bd9f86143760937cff273099cc62",
+          "aiPublicGuideTopic": "닫힌 뒤에 남는 일",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            15
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 가지 않은 길",
+          "section": "3.1 가지 않은 길을 세는 일",
+          "primaryConcepts": [
+            "반사실"
+          ],
+          "secondaryConcepts": [
+            "대안의 조건"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반사실적 비교의 구성 규칙과 그 한계를 다룬다. 단일 변경 원칙이 비교 가능성을 확보한다는 점과, 변경의 파급 범위를 임의로 정할 수밖에 없어 동일 물음에 상이한 답이 나온다는 구조적 문제를 제시하며 미선택 경로에 대한 과신을 지적한다.",
+          "aiAnalysisInputSha256": "91e9cdc5047203cb92f307dff45f3b21f6203453edbdf945d4c8bd52225f3fe8",
+          "aiPublicGuideTopic": "그때 다르게 했다면이라는 물음의 구조",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 가지 않은 길",
+          "section": "3.1 가지 않은 길을 세는 일",
+          "primaryConcepts": [
+            "반사실"
+          ],
+          "secondaryConcepts": [
+            "운"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반사실 구성의 용도를 우열 판정이 아니라 당시 정보 결여의 식별로 재설정한다. 미지로 인한 오류와 판단으로 인한 오류를 구분해 각각 다른 개선으로 이어진다는 점, 결과 직후에는 사후 확신 때문에 이 구분이 왜곡된다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "74da598c91cc447768de79d0dc01407df763c73a3a5b6b9f7fd08ca08e3eebc9",
+          "aiPublicGuideTopic": "그려 본 것을 어디에 쓸 것인가",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 가지 않은 길",
+          "section": "3.2 비교할 수 없는 것",
+          "primaryConcepts": [
+            "비교 불가"
+          ],
+          "secondaryConcepts": [
+            "반사실"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "질적으로 이질적인 대안 사이의 비교 불가능성을 다룬다. 단일 척도 환산이 비교를 가능하게 하는 대신 측정하기 어려운 가치를 배제한다는 문제를 지적하고, 우선순위 선언에 근거한 선택과 그 선언이 사후 수정 지점을 명확히 한다는 효과를 제시한다.",
+          "aiAnalysisInputSha256": "37a7d526431ed00885b013c4c25d501e3314b8162463fe67b9add33b2af302d3",
+          "aiPublicGuideTopic": "두 길이 서로 다른 것을 줄 때",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 가지 않은 길",
+          "section": "3.2 비교할 수 없는 것",
+          "primaryConcepts": [
+            "비교 불가"
+          ],
+          "secondaryConcepts": [
+            "사후 정당화"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선택 이후 선호가 조정되면서 판단 기준의 기억이 재구성되는 현상을 다룬다. 사전 기준 기록이 사후 재구성을 막는 유일한 장치라는 점, 기준의 수정과 과거 판단에 대한 비난을 분리해야 한다는 구분을 제시한다.",
+          "aiAnalysisInputSha256": "54b859b2012ec00284910b740c718138129f4f57c85af612faa926bb71d23b53",
+          "aiPublicGuideTopic": "고른 뒤에 기준이 바뀌는 일",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            19
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 가지 않은 길",
+          "section": "3.3 결과로 판단하기",
+          "primaryConcepts": [
+            "결과 판단"
+          ],
+          "secondaryConcepts": [
+            "반사실"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결과 기준 평가의 편의성과 한계를 다룬다. 결정 품질과 결과가 어긋나는 경우가 존재하는 이유를 통제 밖 요인의 개입에서 찾고, 결과 일변도 평가가 설명하기 쉬운 선택을 유도하는 왜곡을 지적하면서 과정 평가의 필요로 연결한다.",
+          "aiAnalysisInputSha256": "8f19bcb8129c30e2a153569024e7dba5eba23bc3e1db9cd7b1bcbbc4547d20a6",
+          "aiPublicGuideTopic": "잘된 결정과 좋은 결과",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 가지 않은 길",
+          "section": "3.3 결과로 판단하기",
+          "primaryConcepts": [
+            "결과 판단"
+          ],
+          "secondaryConcepts": [
+            "운"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결과를 판단 근거로 사용할 수 있는 조건을 반복 가능성으로 규정한다. 일회적 결정에서 단일 결과가 판단력의 지표가 될 수 없다는 점과, 반복 결정에서는 누적 결과를 관찰해야 한다는 점을 구분하고 절차 폐기의 위험을 지적한다.",
+          "aiAnalysisInputSha256": "e49a24eab80d45a2ab440eb99a0dd93c27fca9afed6e554bc0e5a0ee1d72e058",
+          "aiPublicGuideTopic": "결과가 알려 주는 것과 알려 주지 않는 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            21
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 가지 않은 길",
+          "section": "3.4 과정으로 판단하기",
+          "primaryConcepts": [
+            "과정 판단"
+          ],
+          "secondaryConcepts": [
+            "결과 판단",
+            "비교 불가"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "과정 평가의 세 항목으로 보유 정보·획득 가능 정보·적용 기준을 제시하고 이들이 사후 사건에 영향받지 않는다는 점을 근거로 든다. 절차 준수가 면책 논리로 전용되는 위험을 지적하고 평가의 목적을 책임 배분으로 규정한다.",
+          "aiAnalysisInputSha256": "1d5a0766e9d34908cc9b7327f24e69f9427b6383e0b4b8c2bcd1d74814f9518f",
+          "aiPublicGuideTopic": "결정을 그 자체로 보는 방법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            21
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 책임은 어디까지인가",
+          "section": "4.1 무엇에 대해 책임지는가",
+          "primaryConcepts": [
+            "책임의 대상"
+          ],
+          "secondaryConcepts": [
+            "선택"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책임의 귀속 대상을 결정과 결과로 나누고 두 극단의 기준이 각각 통제 밖 부담과 무제한 면책을 낳는다는 점을 지적한다. 예견 가능성과 회피 가능성 두 조건을 결합한 기준을 제시하며 그 판정이 개인의 정보와 역량에 따라 달라진다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "5f1acf566e24de080df4fdf8880b30ba2dd5a8dca58d71128940f69356524a43",
+          "aiPublicGuideTopic": "결정과 결과 가운데 무엇이 내 몫인가",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 책임은 어디까지인가",
+          "section": "4.1 무엇에 대해 책임지는가",
+          "primaryConcepts": [
+            "책임의 대상"
+          ],
+          "secondaryConcepts": [
+            "통제 범위"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책임 추궁의 두 목적인 개선 주체 결정과 부담 배분을 구분하고 각 목적이 서로 다른 답을 산출한다는 점을 다룬다. 두 목적을 혼동할 때의 오류와, 개선을 먼저 처리해야 정보가 드러난다는 순서상의 근거를 제시한다.",
+          "aiAnalysisInputSha256": "c5f932fcb0543929a7e499564cc385695b4c64d039a77044630c91fb7ecd913b",
+          "aiPublicGuideTopic": "묻는 일과 탓하는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 책임은 어디까지인가",
+          "section": "4.2 통제와 책임의 범위",
+          "primaryConcepts": [
+            "통제 범위"
+          ],
+          "secondaryConcepts": [
+            "책임의 대상",
+            "운"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "예견 가능성과 회피 가능성을 두 집합으로 두고 교집합만을 귀속 범위로 표시한 도표다. 한 조건만 충족된 두 영역과 두 조건 모두 벗어난 영역을 구분해, 귀속 범위가 고정된 경계가 아니라 행위자의 자리에 따라 이동한다는 점을 나타낸다.",
+          "aiAnalysisInputSha256": "80e9bfceb851b574ab6e512b9d39cc596970bf4be424b826e94feb4096a8ffab",
+          "aiPublicGuideTopic": "예견과 회피 두 조건이 만드는 책임의 범위를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 책임은 어디까지인가",
+          "section": "4.3 운의 몫",
+          "primaryConcepts": [
+            "운"
+          ],
+          "secondaryConcepts": [
+            "결과 판단"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 판단과 실행에서 결과가 갈리는 요인으로 운을 규정하고 그 지분 산정이 결과 방향과 대상에 따라 편향된다는 점을 다룬다. 결과 확인 이전에 통제 불가 항목을 명시해 두는 방법과, 그 목록을 공유할 때 사후 분쟁 범위가 좁아진다는 효과를 제시한다.",
+          "aiAnalysisInputSha256": "a7b2249c27f2823fcdc1c10f25057538fad002755876e0ec8a540f0b4e5f9187",
+          "aiPublicGuideTopic": "같은 결정이 다른 결과를 낳을 때",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 책임은 어디까지인가",
+          "section": "4.3 운의 몫",
+          "primaryConcepts": [
+            "운"
+          ],
+          "secondaryConcepts": [
+            "통제 범위"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "운의 인정이 검토의 종결이 되지 않도록 노출 축소 가능성을 추가로 묻는 절차를 제시한다. 비용을 이유로 축소하지 않은 경우는 판단으로, 가능성을 몰랐던 경우는 학습 항목으로 분류하는 세 갈래 구분을 다룬다.",
+          "aiAnalysisInputSha256": "636006b86bfc20ffb44f75183c5db7b1f9a4109f096caacae8775489ebe75188",
+          "aiPublicGuideTopic": "운이 컸다는 말로 끝내지 않기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            27
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 책임은 어디까지인가",
+          "section": "4.4 나눠지는 책임",
+          "primaryConcepts": [
+            "책임의 분담"
+          ],
+          "secondaryConcepts": [
+            "책임의 대상"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공동 결정에서 책임 배분의 기준을 균등 분할이나 권한 크기가 아니라 각자의 실제 기여로 제시한다. 정보 은폐·반대 표명·묵인이 각각 다른 몫을 만든다는 점과, 인원수가 개인의 몫을 희석하지 않는다는 논지, 발언 기록의 필요를 다룬다.",
+          "aiAnalysisInputSha256": "bacb49a81cd110a605182ad96d7e944788b2a81705200f95073e77df2ff73414",
+          "aiPublicGuideTopic": "여럿이 함께 정했을 때",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 책임은 어디까지인가",
+          "section": "4.4 나눠지는 책임",
+          "primaryConcepts": [
+            "책임의 분담"
+          ],
+          "secondaryConcepts": [
+            "공동 결정"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "위임한 업무에 대한 책임을 위임 자체가 결정이라는 점에서 도출한다. 실행 오류와 위임 설계 오류를 구분하는 기준으로 수행 가능성 확인·자원 제공·점검 시점 합의 세 항목을 제시하고, 이 절차의 부재를 떠넘김으로 규정한다.",
+          "aiAnalysisInputSha256": "11175af7dc582a47b4504b1abaab3e259c8b782e20e6f96734b2fda94184cdbe",
+          "aiPublicGuideTopic": "맡긴 일에 대한 몫",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            29
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "5장 후회의 자리",
+          "section": "5.1 후회는 무엇을 말하는가",
+          "primaryConcepts": [
+            "후회"
+          ],
+          "secondaryConcepts": [
+            "반사실"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "후회의 강도가 결정의 질이 아니라 사후 획득 정보량에 비례한다는 점을 다룬다. 이 성질을 근거로 후회를 사후 학습 항목의 지표로 전환하는 방법을 제시하고, 기록되지 않은 후회가 방향 없이 판단 속도만 저하시킨다는 점을 지적한다.",
+          "aiAnalysisInputSha256": "d9147bb82cfb63d35b9b0ed7383005032f5afd6af83d4a5551f0477443d11254",
+          "aiPublicGuideTopic": "후회가 실제로 가리키는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 후회의 자리",
+          "section": "5.1 후회는 무엇을 말하는가",
+          "primaryConcepts": [
+            "후회"
+          ],
+          "secondaryConcepts": [
+            "과정 판단"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "후회 회피를 목표로 삼을 때의 귀결을 검토한다. 결과 미확인과 결정권 이양이라는 두 회피 전략이 학습과 판단 능력을 함께 잃게 한다는 점을 지적하고, 목표를 후회의 부재가 아니라 후회로부터의 수정 가능성으로 재설정한다.",
+          "aiAnalysisInputSha256": "86ea52139d3607ba199a881dfb8d565e91c7c0589e62ab90ca15aff8d865cf0d",
+          "aiPublicGuideTopic": "후회하지 않는 것이 목표가 아닌 이유",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 후회의 자리",
+          "section": "5.2 정당화의 유혹",
+          "primaryConcepts": [
+            "사후 정당화"
+          ],
+          "secondaryConcepts": [
+            "후회"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결정 이후 형성된 근거가 결정 시점의 근거로 기억되는 재구성 과정을 다룬다. 이 현상이 의도적 왜곡이 아니라는 점, 사전 기록만이 대조를 가능하게 한다는 점, 그리고 정당화의 기능을 심리적 안정으로 한정해야 한다는 구분을 제시한다.",
+          "aiAnalysisInputSha256": "be3a02a5887026d78f227b697960fe5c53984b35d98357a7956e8aa6e590d759",
+          "aiPublicGuideTopic": "고른 뒤에 이유를 만드는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 후회의 자리",
+          "section": "5.2 정당화의 유혹",
+          "primaryConcepts": [
+            "사후 정당화"
+          ],
+          "secondaryConcepts": [
+            "비교 불가"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "매몰된 투입이 향후 판단에 영향을 미치는 기제를 손실 확정 회피로 설명한다. 무투입 상태를 가정한 재선택 질문으로 판단을 분리하는 방법과, 투입 이력을 모르는 제삼자에게 현황만 제시해 판단을 얻는 절차를 제시한다.",
+          "aiAnalysisInputSha256": "bd4f395328b683742fbcc5576b1f741f409226c07fc9582a4d3956669135d625",
+          "aiPublicGuideTopic": "이미 들인 것이 판단을 잡아끄는 자리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            33
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 후회의 자리",
+          "section": "5.3 자책과 책임의 차이",
+          "primaryConcepts": [
+            "자책"
+          ],
+          "secondaryConcepts": [
+            "책임의 대상"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자책과 책임을 귀속 대상의 차이로 구분한다. 성격 귀인이 개선 방안을 산출하지 못한다는 점과, 강한 자책이 추가 검토를 차단해 실질적 책임 규명을 대체하는 기능을 지적하며 결론 문장의 주어로 둘을 판별하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "678f1333300a8dda60002fb078d9deaa3bdddec2b836212199e01440c1a1eafd",
+          "aiPublicGuideTopic": "두 가지가 섞이면 생기는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 후회의 자리",
+          "section": "5.3 자책과 책임의 차이",
+          "primaryConcepts": [
+            "자책"
+          ],
+          "secondaryConcepts": [
+            "운"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "타인 평가에서도 행위 귀인과 인격 판정을 구분해야 한다는 점을 다룬다. 인격 판정이 방어를 유발해 정보 확보를 막는다는 기제를 설명하고, 정보·역량·선택 이유를 묻는 행위 중심 질문이 엄격함과 양립한다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "eec09e654eab72225ac3c66580ddfd1db892bdd1f87eab522ea8fdd874b62f28",
+          "aiPublicGuideTopic": "남을 볼 때의 같은 구분",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            35
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 후회의 자리",
+          "section": "5.4 후회의 두 방향",
+          "primaryConcepts": [
+            "후회의 방향"
+          ],
+          "secondaryConcepts": [
+            "후회",
+            "자책"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 후회가 학습 경로와 자책 경로로 분기하는 구조를 그린 도표다. 학습 경로는 기록·기준 수정·적용으로 이어지는 직선으로, 자책 경로는 출발점으로 되돌아오는 닫힌 고리로 그려 귀속 대상의 차이가 진행 여부를 가른다는 점을 나타낸다.",
+          "aiAnalysisInputSha256": "6d0078038cf4157126527b95839b1d17ff80a4c3f13d7f935715bb9400e6e0c9",
+          "aiPublicGuideTopic": "같은 후회가 배움으로 가는 길과 자책으로 가는 길을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "6장 세 가지 결정",
+          "section": "6.1 옮길 것인가",
+          "primaryConcepts": [
+            "결정의 적용"
+          ],
+          "secondaryConcepts": [
+            "불가역성",
+            "비교 불가"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비가역적 결정 사례에 가역성 확인과 잠금 지점 식별 절차를 적용한 과정을 서술한다. 복원 가능한 항목과 그렇지 않은 항목을 구분하고 확정 이전 구간을 확인에 배정한 결과, 결론이 아니라 판단 기준이 수정되었다는 전개를 보인다.",
+          "aiAnalysisInputSha256": "e07d1e52a4c7842253256a20287e014d13bd0a5068ab15529108dba910b209fd",
+          "aiPublicGuideTopic": "되돌리기 어려운 결정 하나를 따라가기",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 세 가지 결정",
+          "section": "6.1 옮길 것인가",
+          "primaryConcepts": [
+            "결정의 적용"
+          ],
+          "secondaryConcepts": [
+            "과정 판단",
+            "반사실"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선택 기준과 재검토 조건을 사전에 문서화한 사례를 보인다. 기준만으로는 사후 재개 시점이 정해지지 않는다는 점에서 판정 조건의 역할을 부각하고, 반사실적 비교가 불가능하므로 평가 대상이 과정에 한정된다는 결론으로 이어진다.",
+          "aiAnalysisInputSha256": "04a08458b96680ef0c8edfcd988ea9b510435539f02f0335e30c2de10de81ca5",
+          "aiPublicGuideTopic": "기준을 적고 고르기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 세 가지 결정",
+          "section": "6.1 옮길 것인가",
+          "primaryConcepts": [
+            "결정의 적용"
+          ],
+          "secondaryConcepts": [
+            "후회",
+            "운"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결과 악화 이후 사전 기록을 대조해 후회의 내용을 정보 결여와 판단으로 분해하는 과정을 보인다. 재검토 조건의 충족을 근거로 결정을 다시 여는 절차와, 결과 평가와 결정 평가가 분리된다는 점을 사례로 정리한다.",
+          "aiAnalysisInputSha256": "3c837fc3b33fe37a711eeb6b8e6c84f09a0928f596cc9c79b37b32b21181d242",
+          "aiPublicGuideTopic": "그 뒤에 일어난 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 세 가지 결정",
+          "section": "6.2 함께 정하기",
+          "primaryConcepts": [
+            "공동 결정"
+          ],
+          "secondaryConcepts": [
+            "책임의 분담"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공동 결정의 사후 검토에서 내심의 우려와 표명된 의견을 구분하고 각각의 몫을 산정하는 과정을 보인다. 무의견자의 몫이 원인에 따라 본인 또는 배치 결정자에게 귀속된다는 판단과, 발언 기록 도입이 사후 규명 범위를 줄인다는 결과를 다룬다.",
+          "aiAnalysisInputSha256": "87a5f735452153379ad48f89c92f3e86d4fc8469b3f1f5cd1dbd2e4e7163ab59",
+          "aiPublicGuideTopic": "여럿이 정한 일에서 몫을 가르기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            29
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 세 가지 결정",
+          "section": "6.2 함께 정하기",
+          "primaryConcepts": [
+            "공동 결정"
+          ],
+          "secondaryConcepts": [
+            "통제 범위"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "위임 실패 사례에서 위임자와 수임자의 몫을 각각 규명한다. 폐쇄형 확인 질문이 유효한 정보를 산출하지 못한다는 점과 필요 자원을 묻는 개방형 질문의 효과를 제시하고, 수행 중 이상 보고 지연이 별도의 몫을 구성한다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "d40c9fe62327dd10485338d18c9d806181ae0c67737e9884817813e6d8fed2ac",
+          "aiPublicGuideTopic": "맡기고 맡는 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 세 가지 결정",
+          "section": "6.3 미루기의 값",
+          "primaryConcepts": [
+            "지연의 대가"
+          ],
+          "secondaryConcepts": [
+            "미결정"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장기 유보 사례에서 그 기간 동안 고착된 항목을 열거해 유보의 비용을 가시화한다. 선택 시의 포기는 즉시 인지되지만 유보 시의 소멸은 인지되지 않는다는 비대칭을 지적하고, 비용이 선택지 축소의 형태로 지불된다는 점을 보인다.",
+          "aiAnalysisInputSha256": "17c81def10ef1c4d955d169898e12d9a5d88d8554feb4d3a4275b70aadb0d7f5",
+          "aiPublicGuideTopic": "정하지 않은 채 흘려보낸 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 세 가지 결정",
+          "section": "6.3 미루기의 값",
+          "primaryConcepts": [
+            "지연의 대가"
+          ],
+          "secondaryConcepts": [
+            "잠금"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "유보를 관리 가능한 형태로 만드는 절차로 기한과 판정 기준의 동시 명시를 제시한다. 기준이 없으면 기한 도래 시 검토가 반복된다는 점, 유보 기간의 소멸 예상 항목을 함께 적어 기한을 조정하는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "61eaf63bf5f017a0f59406d6c7aaecf15ccb8997df235c19dd45427d901984b2",
+          "aiPublicGuideTopic": "언제까지 열어 둘지 정하기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "7장 고른 뒤에 하는 일",
+          "section": "7.1 고른 뒤에 하는 일",
+          "primaryConcepts": [
+            "선택"
+          ],
+          "secondaryConcepts": [
+            "불가역성",
+            "책임의 대상"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선택의 성립 조건, 비가역화의 단계적 진행, 귀속 범위의 판정, 운의 처리라는 네 축으로 책 전체를 요약한다. 각 축이 앞 장들에서 어떤 절차로 구체화되었는지를 연결해 결론부의 뼈대로 제시한다.",
+          "aiAnalysisInputSha256": "649e325b64ecc53c11e68ddc3776faff87e5daf3ad8d48d108b733fbaed6d02d",
+          "aiPublicGuideTopic": "이 책이 지나온 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "choice-and-what-follows"
+          ]
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 고른 뒤에 하는 일",
+          "section": "7.1 고른 뒤에 하는 일",
+          "primaryConcepts": [
+            "선택"
+          ],
+          "secondaryConcepts": [
+            "과정 판단",
+            "후회"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일회적 결정과 반복 결정에서 평가 근거가 달라진다는 점을 정리하고 과정 평가의 세 항목이 사후 사건에 불변이라는 근거를 제시한다. 결과를 정보원으로 유지하되 인격 판정에 사용하지 않는다는 태도와, 후회를 학습 항목으로 전환하는 처리를 다룬다.",
+          "aiAnalysisInputSha256": "5348e478c646093e2e2d953fba4c984f0f85da407268ee3dd7c3e8e1e3d02875",
+          "aiPublicGuideTopic": "결정을 평가하는 자리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 고른 뒤에 하는 일",
+          "section": "7.1 고른 뒤에 하는 일",
+          "primaryConcepts": [
+            "선택"
+          ],
+          "secondaryConcepts": [
+            "자책",
+            "사후 정당화"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "절차의 실패를 전면적 자기 귀속과 절차의 면책 전용 두 방향으로 정리한다. 두 실패를 동시에 억제하는 조건으로 검토 목적의 유지를 제시하고, 개선 주체 결정인지 부담 배분인지를 선행 확정해야 한다는 점을 강조한다.",
+          "aiAnalysisInputSha256": "1fb695d102a9fbce88d7a85eb29f788c27de7a47f07f4450ae156844ebab0f1b",
+          "aiPublicGuideTopic": "이 절차가 어긋나는 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 고른 뒤에 하는 일",
+          "section": "7.2 다음 선택으로",
+          "primaryConcepts": [
+            "결정의 축적"
+          ],
+          "secondaryConcepts": [
+            "결과 판단"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "개별 결정의 품질보다 결정 간 연결이 갖는 효용을 다룬다. 기준·미지 사항·운의 몫 세 항목을 기록해 축적하는 방법과, 누적 기록에서 반복되는 누락 항목이 드러나 사전 점검 항목으로 전환된다는 과정을 제시한다.",
+          "aiAnalysisInputSha256": "6ea6c44c24a58ab7657f589c9fa3ab15af8e61c92f220b6e31c72a3b7af205ce",
+          "aiPublicGuideTopic": "한 번의 결정이 다음 결정에 남기는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 고른 뒤에 하는 일",
+          "section": "7.2 다음 선택으로",
+          "primaryConcepts": [
+            "결정의 축적"
+          ],
+          "secondaryConcepts": [
+            "책임의 분담"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단독 결정과 공동 결정의 선택 기준을 가역성에 연결하고, 공동 결정에서 발언 기록이 사후 몫 규명의 조건이 된다는 점을 다룬다. 미확신 표명이 정보 부족 지점을 알려 주는 신호라는 점과 기록을 문책에 쓸 때 그 신호가 소멸한다는 위험을 제시한다.",
+          "aiAnalysisInputSha256": "7c82a9581420649dedf94c54b6dff3bea93825c8340c572a0cc67e06ffc68e45",
+          "aiPublicGuideTopic": "혼자 정하는 일과 함께 정하는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 고른 뒤에 하는 일",
+          "section": "7.2 다음 선택으로",
+          "primaryConcepts": [
+            "결정의 축적"
+          ],
+          "secondaryConcepts": [
+            "미결정",
+            "지연의 대가"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결정을 확정하는 행위에 대한 회피 성향과 그 대가를 정리하며 책을 맺는다. 확정 지점·미지 사항·재개 조건 세 항목의 기록이 확정을 종결이 아닌 표시로 만든다는 관점을 제시하고, 그 차이가 후속 결정의 출발점을 가른다고 결론짓는다.",
+          "aiAnalysisInputSha256": "197a5ac0ea7b83fb2087a355befd5de547636c1fd55f37b2877fa5f609fdb47b",
+          "aiPublicGuideTopic": "닫는 일에 익숙해지기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            49
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 61,
       "title": "형태와 구도: 화면을 구성하는 원리",
       "pdfPath": "pdfs/book-061.pdf",
