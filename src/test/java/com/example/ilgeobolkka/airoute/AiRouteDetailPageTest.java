@@ -75,12 +75,46 @@ class AiRouteDetailPageTest {
         assertTrue(html.contains("소장 도서 · 열기"));
         assertTrue(html.contains("관련도 높음"));
         assertTrue(html.contains("관련도 보통"));
+        assertTrue(html.contains(" · 선수 페이지</span>"));
+        assertFalse(html.contains(" · 선수 개념</span>"));
         assertTrue(html.contains("data-route-position=\"1\" data-page-number=\"42\""));
         assertTrue(html.contains("data-route-position=\"2\" data-page-number=\"3\""));
-        assertTrue(html.contains("data-item-opened-time"));
-        assertFalse(html.contains("<time class=\"d-block small text-secondary mb-1\""));
-        assertTrue(html.contains("data-route-ink-notice"));
-        assertTrue(html.contains("data-route-ink-link"));
+        for (String requiredHook : List.of(
+                "data-route-progress",
+                "data-reader-status",
+                "data-route-content",
+                "data-route-ink-notice",
+                "data-route-ink-notice-message",
+                "data-route-ink-link",
+                "data-route-previous",
+                "data-route-next",
+                "data-original-viewer-link",
+                "data-make-current",
+                "data-delete-route",
+                "data-current-badge",
+                "data-completed-badge",
+                "data-completed-time",
+                "data-feedback-guide",
+                "data-feedback-rating",
+                "data-item-opened-badge",
+                "data-item-opened-time",
+                "data-open-route-item")) {
+            assertTrue(html.contains(requiredHook), requiredHook + " 훅이 필요합니다.");
+        }
+        assertTrue(html.contains("data-cost-status=\"ONE_INK\""));
+        assertTrue(html.contains("data-cost-status=\"OWNED\""));
+        assertTrue(html.contains("data-opened=\"false\""));
+        assertTrue(html.contains("data-opened=\"true\""));
+        assertTrue(html.contains("data-prerequisite=\"true\""));
+        assertTrue(html.contains("data-prerequisite=\"false\""));
+
+        int openedTimeHookIndex = html.indexOf("data-item-opened-time");
+        String unreadOpenedTimeTag = html.substring(
+                html.lastIndexOf("<time", openedTimeHookIndex),
+                html.indexOf(">", openedTimeHookIndex) + 1);
+        assertTrue(unreadOpenedTimeTag.contains("hidden"));
+        assertFalse(unreadOpenedTimeTag.contains("d-block"));
+
         assertTrue(html.contains("href=\"/ink\""));
         assertTrue(html.matches("(?s).*data-feedback-rating=\"HELPFUL\"[^>]*disabled.*"));
         assertFalse(html.contains("<script>alert('purpose')</script>"));
