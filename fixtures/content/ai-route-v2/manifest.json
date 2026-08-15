@@ -29166,6 +29166,1056 @@
       ]
     },
     {
+      "bookId": 56,
+      "title": "좋은 삶은 무엇으로 이루어지는가",
+      "pdfPath": "pdfs/book-056.pdf",
+      "pdfSha256": "38f0a8767edd5ed156d01b44ff2f3c0efe4b36d0665690b8c3741b6bdee13446",
+      "totalPageCount": 49,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 무엇을 묻고 있는가",
+          "section": "1.1 좋은 삶이라는 말",
+          "primaryConcepts": [
+            "좋은 삶"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "좋은 삶이라는 표현이 즐거움·성취·관계라는 서로 다른 내용을 가리킨다는 점을 제시하고 셋이 분리 가능하다는 사실을 든다. 물음을 단일 답 탐색이 아니라 구성 요소의 열거와 배분 문제로 재설정하고 책의 진행 순서를 밝힌다.",
+          "aiAnalysisInputSha256": "d6a9680a3cc6324ba50f5ecca4ecd8e41b59b4312d1a57990acd5012a352344e",
+          "aiPublicGuideTopic": "좋다는 말이 삶에 붙을 때",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "what-makes-a-good-life"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 무엇을 묻고 있는가",
+          "section": "1.1 좋은 삶이라는 말",
+          "primaryConcepts": [
+            "좋은 삶"
+          ],
+          "secondaryConcepts": [
+            "기준의 주체"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "좋은 삶 판정의 주체를 본인과 외부 기준으로 나누어 각각의 난점을 제시한다. 주관적 만족만으로도 외부 기준만으로도 통상적 용법을 설명하지 못한다는 점에서 이 물음이 두 요소를 함께 요구한다는 관점을 밝힌다.",
+          "aiAnalysisInputSha256": "1fe3cb1ca7b732d1bfec5d81309e055f5a967597ab13bdc4aa9c0febc02101b1",
+          "aiPublicGuideTopic": "좋다는 판정을 누가 내리는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 무엇을 묻고 있는가",
+          "section": "1.2 순간과 전체",
+          "primaryConcepts": [
+            "순간과 전체"
+          ],
+          "secondaryConcepts": [
+            "좋은 삶"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "순간적 좋음과 생애 전체의 좋음을 구분하고 후자가 전자의 총합으로 환원되지 않는다는 점을 순서 의존성과 전체에서만 발생하는 가치로 논증한다. 두 층위가 분리 불가능하다는 점을 함께 밝히며 책의 대상을 전체 수준으로 설정한다.",
+          "aiAnalysisInputSha256": "428f1d4b93e314a2db1ce48978c79a2615f91ddc368cd2a4e6130a1190ff50e0",
+          "aiPublicGuideTopic": "지금 좋은 것과 삶이 좋은 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 무엇을 묻고 있는가",
+          "section": "1.2 순간과 전체",
+          "primaryConcepts": [
+            "순간과 전체"
+          ],
+          "secondaryConcepts": [
+            "자기 보고 측정"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "경험 시점의 평가와 회고 시점의 평가가 갈리는 이유를 참조 범위의 차이로 설명한다. 어느 쪽을 근거로 삼느냐에 따라 결과가 달라진다는 점을 지적하고 두 값이 각각 다른 사실을 담는다는 이유로 병용을 제안한다.",
+          "aiAnalysisInputSha256": "5cc15137448459c1cca8b4a2c7f445100ed96e7cd96bc2f305acf1b300c6a1bb",
+          "aiPublicGuideTopic": "돌아볼 때와 겪을 때가 다른 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 무엇을 묻고 있는가",
+          "section": "1.3 물음의 세 층",
+          "primaryConcepts": [
+            "물음의 층"
+          ],
+          "secondaryConcepts": [
+            "좋은 삶",
+            "순간과 전체"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "좋은 삶에 대한 물음을 구성 요소·배분·판정 주체 세 층으로 분해해 나란히 배치한 도표다. 각 층에 대응하는 답의 형태를 오른쪽에 표시하고 세 층이 하나의 질문으로 뭉뚱그려질 때 논의가 어긋난다는 점을 나타낸다.",
+          "aiAnalysisInputSha256": "87cb423e30c1da17d855f1ca57be16b7f6cb5ae04ebbe28ae6ece3561555d01b",
+          "aiPublicGuideTopic": "좋은 삶에 대한 물음이 갈라지는 세 층을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 무엇을 묻고 있는가",
+          "section": "1.4 누구의 기준인가",
+          "primaryConcepts": [
+            "기준의 주체"
+          ],
+          "secondaryConcepts": [
+            "좋은 삶"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "좋은 삶의 기준이 사회적 학습에서 유래한다는 점을 지적하되 그 자체를 문제로 보지 않고 출처의 무자각을 문제로 규정한다. 달성 이후 잔여물의 성격으로 내면화 여부를 판별하는 방법을 제시하고 성취의 공허 논의로 연결한다.",
+          "aiAnalysisInputSha256": "8e2a9d1b4e1792b7681177681cd7763eefc85531327946ba6e187d6ee4668905",
+          "aiPublicGuideTopic": "밖에서 온 기준을 자기 것으로 여기는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 무엇을 묻고 있는가",
+          "section": "1.4 누구의 기준인가",
+          "primaryConcepts": [
+            "기준의 주체"
+          ],
+          "secondaryConcepts": [
+            "비교 가능성"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "타인과의 비교가 평가 척도를 형성한다는 점과 비교 대상의 선택이 결과를 좌우한다는 문제를 다룬다. 비교 자체의 제거가 불가능하다는 전제 아래 대상 범위를 넓혀 기준의 단일화를 막는 대응을 제시한다.",
+          "aiAnalysisInputSha256": "97955134b0ca78181f9ab50cbf3d6586641477cc55ace011047a83601e97cde5",
+          "aiPublicGuideTopic": "남과 견주는 일이 기준에 하는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 즐거움",
+          "section": "2.1 즐거움이 하는 일",
+          "primaryConcepts": [
+            "즐거움"
+          ],
+          "secondaryConcepts": [
+            "좋은 삶"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "즐거움이 도구적 정당화를 요구하지 않는 항목이라는 점에서 구성 요소 목록에 포함되는 근거를 제시한다. 필수 재료라는 주장과 유일한 재료라는 주장을 구분하고 후자의 검토를 이 장의 과제로 놓는다.",
+          "aiAnalysisInputSha256": "c92c5790f91353138ebcbfeae29f0a62e611eebf5cdcab93ae158958dde65d26",
+          "aiPublicGuideTopic": "즐거움을 재료로 세는 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 즐거움",
+          "section": "2.1 즐거움이 하는 일",
+          "primaryConcepts": [
+            "즐거움"
+          ],
+          "secondaryConcepts": [
+            "즐거움의 종류"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "즐거움의 두 번째 기능을 적합성 신호로 규정하고 단기 판단에서의 유용성과 장기 계획에서의 한계를 구분한다. 방향 설정이 아니라 진행 중 점검 지표로 사용하는 방식을 제안한다.",
+          "aiAnalysisInputSha256": "5dfc35de5d67782d9f619a2eeade263241f236449152567c4d080b5964af0905",
+          "aiPublicGuideTopic": "즐거움이 신호로 하는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 즐거움",
+          "section": "2.2 익숙해지는 성질",
+          "primaryConcepts": [
+            "적응"
+          ],
+          "secondaryConcepts": [
+            "즐거움"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "쾌락 적응 현상을 긍정적·부정적 상태 양쪽에서 설명하고 그 적응이 견딤의 조건이기도 하다는 점을 밝힌다. 적응이 즐거움 총량 증대라는 목표를 실현 불가능하게 만든다는 문제를 제기하고 적응이 덜한 종류의 탐색으로 전환한다.",
+          "aiAnalysisInputSha256": "c380b656fba374e33d83b045c9176447f1b910cc7996569f4167cf59dbdc88d9",
+          "aiPublicGuideTopic": "좋은 것이 보통이 되는 과정",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 즐거움",
+          "section": "2.2 익숙해지는 성질",
+          "primaryConcepts": [
+            "적응"
+          ],
+          "secondaryConcepts": [
+            "측정의 누락"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "적응이 자기 보고 평가에 미치는 영향을 다루고 서로 다른 조건의 응답이 수렴하는 현상을 설명한다. 이 수렴을 조건의 양호함으로 해석할 때 개선 필요가 은폐된다는 문제를 지적하고 측정 논의로 연결한다.",
+          "aiAnalysisInputSha256": "f3567f098fb8bbed51af1a20eaaf130318ecf267aeaee4f5d91932d24214cf0e",
+          "aiPublicGuideTopic": "익숙해짐이 판정에 하는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 즐거움",
+          "section": "2.3 즐거움의 종류",
+          "primaryConcepts": [
+            "즐거움의 종류"
+          ],
+          "secondaryConcepts": [
+            "적응"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "즐거움을 수동적 상태와 능동적 과정으로 나누고 적응 속도의 차이를 그 구분으로 설명한다. 과정형 즐거움이 숙련에 따라 새로운 원천을 만든다는 점을 들어 생애 배분에서 비중을 두어야 할 종류를 제시한다.",
+          "aiAnalysisInputSha256": "1490ab823cd9db3247110f4fcf0f5fdbd6be4cfc4d62cc0351d5286112eb613f",
+          "aiPublicGuideTopic": "익숙해지는 것과 덜 익숙해지는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 즐거움",
+          "section": "2.3 즐거움의 종류",
+          "primaryConcepts": [
+            "즐거움의 종류"
+          ],
+          "secondaryConcepts": [
+            "숙련"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "과정형 활동 가운데 경험 시점에 불쾌하지만 회고 시점에 긍정적으로 평가되는 부류를 지적한다. 이 불일치가 즐거움 단일 척도의 한계를 드러낸다는 점에서 별도 범주의 필요를 도출하고 성취 논의로 넘긴다.",
+          "aiAnalysisInputSha256": "6ed1ccf4bc6a8d2ef67a29ad126779a228f2c3b64a52cffa8aff1e2235081350",
+          "aiPublicGuideTopic": "즐겁지 않은데 좋은 것들",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            13
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 즐거움",
+          "section": "2.4 즐거움만으로는",
+          "primaryConcepts": [
+            "즐거움의 한계"
+          ],
+          "secondaryConcepts": [
+            "즐거움",
+            "적응"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "즐거움이 완전히 충족된 삶을 구성해 그 귀결을 검토하는 사고 실험을 제시한다. 발생하는 유보감이 즐거움의 배제가 아니라 유일성 부정을 지지한다는 점을 밝히고, 상상 시 적응 효과가 반영되지 않는다는 해석상의 주의를 함께 다룬다.",
+          "aiAnalysisInputSha256": "cac374ca8f10d4b5686c776d9adb7615bc95a5f057bc0b73e804ebeffb964dfe",
+          "aiPublicGuideTopic": "즐거움이 채워진 삶을 그려 보기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 성취",
+          "section": "3.1 무언가를 이루는 일",
+          "primaryConcepts": [
+            "성취"
+          ],
+          "secondaryConcepts": [
+            "좋은 삶"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "성취의 성립 조건을 결과의 존재와 행위자 귀속으로 규정하고 우연한 결과와 구분한다. 난이도가 성취의 재료라는 점에서 즐거움과 반대 방향의 요구를 갖는다는 관계를 도출하고 요소 간 상충의 첫 사례로 제시한다.",
+          "aiAnalysisInputSha256": "9ea4fc0d4333bf67254a4b82aed06e167e2ec6b7d2f4044fd4e1670e240144b2",
+          "aiPublicGuideTopic": "성취를 재료로 세는 이유",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 성취",
+          "section": "3.1 무언가를 이루는 일",
+          "primaryConcepts": [
+            "성취"
+          ],
+          "secondaryConcepts": [
+            "목표 이후"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "성취감의 감쇠를 과제 종료에 따른 것으로 설명하고 반복에 따른 쾌락 적응과 구분한다. 목표 갱신에 의존하는 방식이 무한 갱신을 요구한다는 문제를 지적하고, 결과 대신 과정에 무게를 두는 대안으로 연결한다.",
+          "aiAnalysisInputSha256": "530f887764fbaa8387087e9006f8b372b0b79cfb3d9935433c5da1ba23c68e94",
+          "aiPublicGuideTopic": "이룬 뒤에 오는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 성취",
+          "section": "3.2 목표와 그 뒤",
+          "primaryConcepts": [
+            "목표 이후"
+          ],
+          "secondaryConcepts": [
+            "성취",
+            "숙련"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "목표 달성에 가치를 둔 경우와 수행 과정에 가치를 둔 경우의 시간에 따른 변화를 두 곡선으로 대비한 도표다. 달성 시점의 급등과 회귀, 완만한 상승과 상향 유지의 차이를 표시하고 종료 후 잔존 수준의 격차를 별도로 나타낸다.",
+          "aiAnalysisInputSha256": "250ac53fca8760c1ef023fc2300707daf87e9f515efe7714870714dd97beaca8",
+          "aiPublicGuideTopic": "목표를 이룬 뒤 값이 어떻게 움직이는지 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 성취",
+          "section": "3.3 잘하게 되는 즐거움",
+          "primaryConcepts": [
+            "숙련"
+          ],
+          "secondaryConcepts": [
+            "성취"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "숙련 과정에서 발생하는 가치를 목표 달성과 독립적인 것으로 규정하고 그것이 반복 가능하며 적응에 덜 취약한 이유를 설명한다. 향상의 가시성이 이 가치의 성립 조건이라는 점과 자체 척도 설정이라는 대응을 제시한다.",
+          "aiAnalysisInputSha256": "4fb35416add1dc2e8e5306740a9aa8878ee20ca3993f4cdbba5b9ab3c0ea608d",
+          "aiPublicGuideTopic": "나아지는 동안 생기는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 성취",
+          "section": "3.3 잘하게 되는 즐거움",
+          "primaryConcepts": [
+            "숙련"
+          ],
+          "secondaryConcepts": [
+            "즐거움의 종류"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "숙련의 향상 속도 저하 이후 선택지를 난도 상향과 활용 전환으로 나누어 각각의 비용과 산출을 비교한다. 활용 전환이 관계 요소와 결합될 때 세 재료가 동시에 발생할 수 있다는 점과 그것이 의도적 배치를 요구한다는 조건을 제시한다.",
+          "aiAnalysisInputSha256": "07313445963f54ff4d3559645630dc75a6898418d27fd644b729808123df33d2",
+          "aiPublicGuideTopic": "잘하게 된 뒤에 오는 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            19
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 성취",
+          "section": "3.4 성취가 비어 있을 때",
+          "primaryConcepts": [
+            "성취의 공허"
+          ],
+          "secondaryConcepts": [
+            "성취",
+            "기준의 주체"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "목표 달성 후 공허감의 원인을 기대 불일치·지속의 짧음·목표의 외래성 셋으로 정리하고 마지막의 빈도를 지적한다. 공허를 실패가 아닌 기준 재검토의 계기로 해석하고, 즉각적 목표 재설정이 순환을 반복시킨다는 문제를 제시한다.",
+          "aiAnalysisInputSha256": "7d1bafd6e252668f565f6081af3c1146bb337a0fdc2de55a5bfab4ad934c94ff",
+          "aiPublicGuideTopic": "이루고 나서 비는 경우",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 성취",
+          "section": "3.4 성취가 비어 있을 때",
+          "primaryConcepts": [
+            "성취의 공허"
+          ],
+          "secondaryConcepts": [
+            "목표 이후"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미달성 목표의 가치 평가에서 전면 손실론과 전면 보상론 양극단을 비판한다. 과정에서 발생한 가치가 목표와 독립적으로 잔존한다는 점과 지속되었다면 발생했을 가치는 실제로 상실된다는 점을 구분해 계산하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "27fe433b27367f7b863a28c8a9f5fc4bdfc5097c0ddfff30a3c6e0b2a4cd9f29",
+          "aiPublicGuideTopic": "이루지 못한 것의 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            21
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "4장 관계",
+          "section": "4.1 곁에 있는 사람들",
+          "primaryConcepts": [
+            "관계"
+          ],
+          "secondaryConcepts": [
+            "좋은 삶"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관계가 구성 요소로 인식되기 어려운 이유를 그 외재성에서 찾고, 관계를 배제한 삶의 그림에서 발생하는 결여감을 근거로 재료 목록에 포함한다. 관계의 도구적 기여를 제외하고도 남는 부분이 있다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "5d4f62df81edc06ad464f540bd41839c0c1f1a09188f13ef0cd6e486a77a1603",
+          "aiPublicGuideTopic": "관계를 재료로 세는 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 관계",
+          "section": "4.1 곁에 있는 사람들",
+          "primaryConcepts": [
+            "관계"
+          ],
+          "secondaryConcepts": [
+            "관계의 비용"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관계의 양을 인원수가 아니라 상호 사정의 파악과 실질적 접근 가능성 두 조건으로 규정한다. 두 조건이 모두 시간 투입을 요구한다는 점에서 다른 요소와의 자원 경합이 발생한다는 관계를 도출한다.",
+          "aiAnalysisInputSha256": "3d5e59b9e6e8ece98eee3d707ee09e4e14ad40c693c7a77ed44b4e08a9583bc1",
+          "aiPublicGuideTopic": "관계의 크기를 무엇으로 재는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 관계",
+          "section": "4.2 주고받음의 값",
+          "primaryConcepts": [
+            "관계의 비용"
+          ],
+          "secondaryConcepts": [
+            "관계"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관계 유지에 드는 시간·주의·기회비용을 부수적 손실이 아니라 관계의 구성 재료로 규정한다. 비용을 방해로 간주할 때 발생하는 기대 불일치를 지적하고 사전 배분을 명시하는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "0d07d255435be4b61477a4e17654ffd9b70fe1b35524bd9b9ccba3b6b3d02fcf",
+          "aiPublicGuideTopic": "관계에 드는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 관계",
+          "section": "4.2 주고받음의 값",
+          "primaryConcepts": [
+            "관계의 비용"
+          ],
+          "secondaryConcepts": [
+            "조건의 상충"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자원 부족기에 관계가 점진적으로 소멸하는 양상과 그 인지 지연을 다룬다. 최소 유지 수준을 사전에 설정해 복귀 비용을 낮추는 방법을 제시하고, 일률적 기준이 실행 실패로 이어진다는 점에서 관계별 차등 설정을 제안한다.",
+          "aiAnalysisInputSha256": "393c6781295efc17944cacb76fac6503a3f62b6df8bd412f741f8e8ac42e1100",
+          "aiPublicGuideTopic": "값을 치를 수 없는 시기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            25
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 관계",
+          "section": "4.3 세 재료의 얽힘",
+          "primaryConcepts": [
+            "세 재료"
+          ],
+          "secondaryConcepts": [
+            "즐거움",
+            "성취",
+            "관계"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "즐거움·성취·관계 세 요소를 겹치는 원으로 배치해 공존 영역과 경합 관계를 함께 그린 도표다. 삼중 교집합과 이중 교집합에 구체적 활동을 배정하고, 원 바깥의 상반된 화살표로 시간·주의·시점이라는 공통 자원의 경합을 나타낸다.",
+          "aiAnalysisInputSha256": "5b260831708d8ab2f92ce98aa7efe6f0533fa1e1867cde8484968118c1a5f476",
+          "aiPublicGuideTopic": "세 재료가 겹치고 밀어내는 자리를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 관계",
+          "section": "4.4 관계가 좁힐 때",
+          "primaryConcepts": [
+            "관계의 제약"
+          ],
+          "secondaryConcepts": [
+            "관계",
+            "기준의 주체"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관계가 규범 준거를 단일화해 선택지를 축소한다는 문제를 다룬다. 이 과정이 강제 없이 진행된다는 점과 관계의 밀도와 시야의 폭이 상충한다는 관계를 지적하고, 이질적 관계를 병행 유지하는 대응을 제시한다.",
+          "aiAnalysisInputSha256": "4b45c126cf308a7139218395ae10a2c663fa836ad9b98f0cfcfcd552cd6a745f",
+          "aiPublicGuideTopic": "곁에 있는 사람이 기준을 정할 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 관계",
+          "section": "4.4 관계가 좁힐 때",
+          "primaryConcepts": [
+            "관계의 제약"
+          ],
+          "secondaryConcepts": [
+            "자타 간 상충"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관계 유지가 개인의 계획을 유예시키는 구조를 다루고 그 유예가 관계 비용의 일부라는 점을 인정한다. 유예가 일방으로 누적될 때 가시성 부재로 상호 조정이 일어나지 않는다는 문제를 지적하고 자기 기록을 통한 인식 확보를 제안한다.",
+          "aiAnalysisInputSha256": "d92214279f6c41c65c761eb96d8d2e32e7811a18a5c24fb9fb00059fe9adcb20",
+          "aiPublicGuideTopic": "곁의 사람을 위해 자기를 미룰 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "5장 잴 수 있는가",
+          "section": "5.1 물어서 재기",
+          "primaryConcepts": [
+            "자기 보고 측정"
+          ],
+          "secondaryConcepts": [
+            "순간과 전체"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자기 보고에 의한 만족도 측정의 정당성을 주관적 판정의 불가결성에서 찾고, 응답이 시점·문맥·형식에 영향받는다는 취약성을 제시한다. 집계 수준에서 상쇄가 일어난다는 점과 개별 응답의 해석 한계를 구분한다.",
+          "aiAnalysisInputSha256": "38940d9e62e3befa610f51eca39a6e46be2bbb36f033c2ade1a5ce82ad2867b8",
+          "aiPublicGuideTopic": "얼마나 좋은지 묻는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "5장 잴 수 있는가",
+          "section": "5.1 물어서 재기",
+          "primaryConcepts": [
+            "자기 보고 측정"
+          ],
+          "secondaryConcepts": [
+            "적응"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "경험 표집형 측정과 회고형 측정이 서로 다른 대상을 포착한다는 점을 제시하고 목적에 따른 선택 기준을 밝힌다. 두 값을 함께 수집해 그 격차를 별도 정보로 읽는 방법을 제안한다.",
+          "aiAnalysisInputSha256": "378c8e236e6db3471303281a8186add846059bbb298cc678f20aa4c5dce417eb",
+          "aiPublicGuideTopic": "겪는 값과 돌아보는 값을 따로 재기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 잴 수 있는가",
+          "section": "5.2 무엇이 빠지는가",
+          "primaryConcepts": [
+            "측정의 누락"
+          ],
+          "secondaryConcepts": [
+            "자기 보고 측정"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "만족도 측정에서 누락되는 항목을 적응된 조건·전체 수준의 가치·미경험 선택지 셋으로 정리한다. 앞의 둘은 측정 설계로 보완 가능하지만 마지막은 응답자 내부에서 포착되지 않아 외부 추정이 필요하다는 점을 지적한다.",
+          "aiAnalysisInputSha256": "4bee863f3e4e80e32138df42fa8ec7204b7a9e4128727535d2f311d390d5e6f0",
+          "aiPublicGuideTopic": "재는 순간 빠져나가는 것들",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 잴 수 있는가",
+          "section": "5.2 무엇이 빠지는가",
+          "primaryConcepts": [
+            "측정의 누락"
+          ],
+          "secondaryConcepts": [
+            "세 재료"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "측정 누락에 대한 대응으로 요소별 분리 측정과 만족도 대신 가능한 활동 목록의 측정을 제시한다. 조건 측정이 적응과 미경험 문제에 강하다는 점과, 주관적 판정과 객관적 조건을 함께 사용해야 한다는 결론을 1장의 이중성과 연결한다.",
+          "aiAnalysisInputSha256": "491eb193e787f582ed224889a9aa0154679424c536333f35b8dbb93733a1f988",
+          "aiPublicGuideTopic": "빠진 것을 채우는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 잴 수 있는가",
+          "section": "5.3 재는 자가 답을 정한다",
+          "primaryConcepts": [
+            "척도의 선택"
+          ],
+          "secondaryConcepts": [
+            "자기 보고 측정",
+            "측정의 누락"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 세 사람을 주관적 만족도와 가능한 활동 수라는 두 척도로 각각 측정해 순위가 역전되는 상황을 나란히 그린 도표다. 두 결과가 모두 정확할 수 있다는 점을 표시해 척도 선택이 결론을 규정한다는 것을 나타낸다.",
+          "aiAnalysisInputSha256": "e38e388c92954b084397abdcce800c1e88b8d7d513b3ebc666433c1cba6bf891",
+          "aiPublicGuideTopic": "어떤 자로 재느냐에 따라 순위가 뒤집히는 모습을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 잴 수 있는가",
+          "section": "5.4 비교할 수 있는가",
+          "primaryConcepts": [
+            "비교 가능성"
+          ],
+          "secondaryConcepts": [
+            "측정의 누락"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "개인 내 비교와 개인 간 비교의 난이도 차이를 기준의 동일성 여부로 설명한다. 만족도 수치의 직접 비교가 갖는 위험을 지적하되 우선순위 결정을 위해 비교가 필요하다는 점을 인정하고, 해석 여지가 적은 조건 지표를 대안으로 제시한다.",
+          "aiAnalysisInputSha256": "c049ac4409f5365208d228f1830b5c35790c04d1a5a3849a274c34d07c26988b",
+          "aiPublicGuideTopic": "두 사람의 삶을 견주는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 잴 수 있는가",
+          "section": "5.4 비교할 수 있는가",
+          "primaryConcepts": [
+            "비교 가능성"
+          ],
+          "secondaryConcepts": [
+            "기준의 주체"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비교 불가 결론의 효용을 타인에 대한 자기 척도 적용의 방지에서 찾고, 동시에 그 결론이 개선 논의를 봉쇄하는 방향으로 쓰일 수 있다는 문제를 지적한다. 개인이 정하는 층과 공동으로 정하는 층을 나누어 후자에서 비교를 유지하는 구분을 제시한다.",
+          "aiAnalysisInputSha256": "f32d3b74014f1236f17da313f9a7e31ec3800091ca8c7407dcb0efa7b36a9d10",
+          "aiPublicGuideTopic": "견줄 수 없다는 결론의 값",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            35
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "6장 부딪히는 조건들",
+          "section": "6.1 셋이 서로를 밀어낼 때",
+          "primaryConcepts": [
+            "조건의 상충"
+          ],
+          "secondaryConcepts": [
+            "즐거움",
+            "성취"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "숙련에 자원을 집중한 기간에 관계 요소가 감소한 사례를 통해 요소 간 자원 경합을 보인다. 선택 자체의 오류가 아니라 지불한 비용의 미인지를 문제로 규정하고, 인지 여부가 최소 유지와 사후 복구의 가능 여부를 가른다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "e8a7cb1b3096da590a01fb95431cf34837840c811698dd9957c3fd86b328e784",
+          "aiPublicGuideTopic": "같은 시간을 두고 다투는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "6장 부딪히는 조건들",
+          "section": "6.1 셋이 서로를 밀어낼 때",
+          "primaryConcepts": [
+            "조건의 상충"
+          ],
+          "secondaryConcepts": [
+            "관계",
+            "세 재료"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "요소 간 교집합 영역을 의도적으로 조성한 사례를 보이고 그것이 양쪽 모두의 부분적 양보로 성립한다는 점을 밝힌다. 교집합이 상충을 제거하지 않고 손실을 줄이는 배분이라는 점과, 제거 불가능성을 인정해야 배분 탐색이 가능하다는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "37ea4e6488fb85aace61db08958dc6748d09df7770611460db50cb43d18c99e4",
+          "aiPublicGuideTopic": "겹치는 자리를 만들어 보기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            37
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 부딪히는 조건들",
+          "section": "6.1 셋이 서로를 밀어낼 때",
+          "primaryConcepts": [
+            "조건의 상충"
+          ],
+          "secondaryConcepts": [
+            "숙련",
+            "관계의 비용"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "요소 간 배분을 중요도 순위가 아니라 시간 할당으로 결정한 사례를 제시한다. 비율의 정확성보다 각 몫이 영이 되지 않는 것이 관건이라는 기준과, 시기별 조정 이력을 기록해 장기 편중을 확인하는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "1d280a2ce704e0343f42b36272220a1234d6123d887c276f1a3b476c9a7429ee",
+          "aiPublicGuideTopic": "배분을 정하는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 부딪히는 조건들",
+          "section": "6.2 지금과 나중",
+          "primaryConcepts": [
+            "시점 간 상충"
+          ],
+          "secondaryConcepts": [
+            "순간과 전체"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "현재와 미래 사이의 자원 배분 문제를 다루고 미래 할인의 두 위험을 미도래 가능성과 선호 변화로 제시한다. 현재만 고려할 때 축적형 가치가 생성되지 않는다는 반대 방향의 문제를 함께 지적하고, 유예 항목과 회수 시점의 기록을 유일한 원칙으로 제안한다.",
+          "aiAnalysisInputSha256": "ffaf5f390ae82da20a4f9055fec3fe64b7ca8faa8f2ae7e35f7226048ead4f91",
+          "aiPublicGuideTopic": "지금의 몫과 나중의 몫",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 부딪히는 조건들",
+          "section": "6.2 지금과 나중",
+          "primaryConcepts": [
+            "시점 간 상충"
+          ],
+          "secondaryConcepts": [
+            "목표 이후"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "유예한 항목의 회수 단계에서 발생하는 추가 비용을 습관 변화와 관계 상황의 변동으로 설명한다. 유예 결정 시 회수 비용이 계산에 포함되지 않는다는 문제를 지적하고, 회수 난이도에 따라 유예 여부를 달리 판단하는 기준을 제시한다.",
+          "aiAnalysisInputSha256": "ec095e13bd29e63340afb3f44d45673ae7275117480ea0457a3dccde726ba131",
+          "aiPublicGuideTopic": "나중이 왔을 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 부딪히는 조건들",
+          "section": "6.3 나와 곁",
+          "primaryConcepts": [
+            "자타 간 상충"
+          ],
+          "secondaryConcepts": [
+            "관계의 제약"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자기와 타인 사이의 자원 배분에서 각자의 비용과 편익이 서로 관측되지 않는다는 비대칭을 지적한다. 계산 대신 사전 합의와 사후 공유라는 절차를 제시하고, 공유의 목적이 보상 청구가 아니라 관계의 편중 방지에 있다고 밝힌다.",
+          "aiAnalysisInputSha256": "378cbc2cce6d8e4777947ba452147e556e83fb3616b70e5aa1c4a01f218a92b2",
+          "aiPublicGuideTopic": "자기 몫과 남의 몫이 다툴 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 부딪히는 조건들",
+          "section": "6.3 나와 곁",
+          "primaryConcepts": [
+            "자타 간 상충"
+          ],
+          "secondaryConcepts": [
+            "조건의 상충"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "요소 간 상충의 완화 수단으로 교집합 영역을 재확인하고 그 영역이 각 요소의 최적치를 산출하지 않는다는 점을 밝힌다. 교집합의 전면 확대를 경계하고 단일 요소에 집중된 시간의 필요를 함께 인정하는 배분 관점을 제시한다.",
+          "aiAnalysisInputSha256": "369999ab468f2f40c2375f227e45027e6813498bcdda39af83d5266d2b29e988",
+          "aiPublicGuideTopic": "다툼을 줄이는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "7장 답 없이 사는 법",
+          "section": "7.1 무엇을 묻고 있었나",
+          "primaryConcepts": [
+            "좋은 삶"
+          ],
+          "secondaryConcepts": [
+            "즐거움",
+            "성취",
+            "관계"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "물음의 세 층, 세 구성 요소와 각각의 한계, 시간 할당으로서의 배분, 판정 주체의 이중성이라는 축으로 책 전체를 요약한다. 각 축에서 도출한 기준을 연결해 결론부의 뼈대로 제시한다.",
+          "aiAnalysisInputSha256": "f2ebaf4f9dc13b0f1b66184fbfbea2853cd27abff2a3cf0c16929cd1e3df981b",
+          "aiPublicGuideTopic": "이 책이 지나온 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "what-makes-a-good-life"
+          ]
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "7장 답 없이 사는 법",
+          "section": "7.1 무엇을 묻고 있었나",
+          "primaryConcepts": [
+            "좋은 삶"
+          ],
+          "secondaryConcepts": [
+            "자기 보고 측정",
+            "비교 가능성"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "척도 선택이 결론을 규정한다는 5장 논의를 정리하고 자기 평가에서 만족도와 조건의 병용을, 타인과의 비교에서 층위 구분을 제시한다. 단일 척도 적용과 전면적 비교 거부가 모두 개선 대상을 은폐한다는 점을 지적한다.",
+          "aiAnalysisInputSha256": "5d69599fa7bf17e9c4fe5b8de104fe28b4a6097bd5957c41fee8153a766a0383",
+          "aiPublicGuideTopic": "재는 일에 대해 남은 말",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 답 없이 사는 법",
+          "section": "7.1 무엇을 묻고 있었나",
+          "primaryConcepts": [
+            "좋은 삶"
+          ],
+          "secondaryConcepts": [
+            "조건의 상충",
+            "시점 간 상충"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구성 요소 간 상충과 시기별 선호 변화를 근거로 단일 답이 성립하지 않는다는 결론을 제시한다. 답의 부재가 물음의 무효를 뜻하지 않으며 배분은 일상적으로 결정되고 있다는 점에서 주기적 재검토를 요구한다는 관점을 밝힌다.",
+          "aiAnalysisInputSha256": "8dbf6f8f2b05f41f09b9dfdf3a36c4aa438ed1178466841f047c955652f25147",
+          "aiPublicGuideTopic": "답이 하나로 나오지 않는 이유",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 답 없이 사는 법",
+          "section": "7.2 구성을 정하는 일",
+          "primaryConcepts": [
+            "구성의 실천"
+          ],
+          "secondaryConcepts": [
+            "세 재료"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "요소 배분을 중요도 판단이 아니라 시간 할당으로 수행하는 방법을 실천 지침으로 제시한다. 각 몫의 영 여부 확인, 시기별 조정의 기록, 장기 편중과 단발 선택의 구분이라는 세 절차와 그 산출을 밝힌다.",
+          "aiAnalysisInputSha256": "50c51ae3b1789914bc7e4e03dfa217f9533f1cad30850ce08f4dd010940e130a",
+          "aiPublicGuideTopic": "배분을 실제로 정하는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 답 없이 사는 법",
+          "section": "7.2 구성을 정하는 일",
+          "primaryConcepts": [
+            "구성의 실천"
+          ],
+          "secondaryConcepts": [
+            "기준의 주체"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배분 결정에 선행하는 작업으로 평가 기준의 출처 확인을 제시한다. 외래 기준의 사용 자체를 문제 삼지 않되 자각 여부가 수정 가능성을 좌우한다는 점과, 달성 후 잔여물을 상상해 판별하는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "88a31c7b12f53b4e4d95d9d0a97a007a0feb786087a03272d923166ca478578d",
+          "aiPublicGuideTopic": "밖에서 온 기준을 다시 보는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            47
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 답 없이 사는 법",
+          "section": "7.2 구성을 정하는 일",
+          "primaryConcepts": [
+            "구성의 실천"
+          ],
+          "secondaryConcepts": [
+            "관계의 비용",
+            "숙련"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "교집합 영역의 조성을 마지막 실천으로 제시하고 그것이 의도적 배치와 부분적 양보를 요구한다는 점을 밝힌다. 이 영역이 종료되지 않고 지속적으로 가치를 산출한다는 점에서 목표형·수동형 요소와 구분된다는 결론으로 책을 맺는다.",
+          "aiAnalysisInputSha256": "d48dd3b43acd6014e029a53c8de6f93e1958814b637a20a2ed0bd92adb31af02",
+          "aiPublicGuideTopic": "겹치는 자리를 늘려 두기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 61,
       "title": "형태와 구도: 화면을 구성하는 원리",
       "pdfPath": "pdfs/book-061.pdf",
