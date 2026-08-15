@@ -3019,6 +3019,116 @@
         30,
         49
       ]
+    },
+    {
+      "caseId": "case-book-091",
+      "bookId": 91,
+      "purpose": "이 책 앞부분을 빌려 뒀다. 목록에 크게 적어 둔 일을 오늘 바로 손댈 수 있는 크기로 쪼개고 어디서 끝낼지 정하는 기준을 빌린 범위 안에서 익히고 싶다. 하루 시간표를 다시 짜는 일까지는 아직 필요 없다",
+      "owned": false,
+      "maxAdditionalInk": 0,
+      "depth": null,
+      "activeRentalPageNumbers": [
+        2,
+        3,
+        4,
+        5,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "requiredConcepts": [
+        "최소실행단위",
+        "작업 분해",
+        "완료 조건",
+        "분해 단위 크기"
+      ],
+      "helpfulConcepts": [
+        "큰 덩어리",
+        "탐색형 작업",
+        "계획 오차"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 13
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 15
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 17
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 18
+        },
+        {
+          "beforePageNumber": 18,
+          "afterPageNumber": 19
+        }
+      ],
+      "irrelevantPageNumbers": [
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          50
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        5,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        11
+      ]
     }
   ]
 }

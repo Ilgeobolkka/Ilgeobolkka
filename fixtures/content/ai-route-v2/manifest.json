@@ -36968,6 +36968,1109 @@
           "duplicateGroupKeys": []
         }
       ]
+    },
+    {
+      "bookId": 91,
+      "title": "하루를 작게 나누는 기술",
+      "pdfPath": "pdfs/book-091.pdf",
+      "pdfSha256": "f473db63345b8f3e75e150d62eda98bcce3964fdf972bf1fe497e1cd4bd44831",
+      "totalPageCount": 51,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 하루가 흩어지는 이유",
+          "section": "1.1 큰 덩어리로 남은 일",
+          "primaryConcepts": [
+            "큰 덩어리"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실행되지 않는 하루의 원인을 의지가 아니라 목록에 적힌 작업 단위의 크기로 규정하는 도입 페이지다. 시작 지점이 없는 표현이 착수 결정을 반복 유예시킨다는 근거를 들고, 분할·배치·순서라는 책 전체의 구성을 제시한다.",
+          "aiAnalysisInputSha256": "bb5863707fe52578d0545012ad2765b732b79fb66c802ae7200a06e8a7454965",
+          "aiPublicGuideTopic": "목록에 크게 적힌 일이 하루를 붙잡는 이유",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "work-sized-not-willed"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 하루가 흩어지는 이유",
+          "section": "1.1 큰 덩어리로 남은 일",
+          "primaryConcepts": [
+            "큰 덩어리"
+          ],
+          "secondaryConcepts": [
+            "최소실행단위"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미분해 항목이 착수 전에도 반복적인 판단 부하를 만들고 진행 상태를 드러내지 못한다는 점을 다룬다. 수행한 작업이 목록에 남지 않아 다음 계획의 근거가 사라진다는 문제를 들어, 노력의 양이 아니라 목록의 표현을 바꾸는 것이 첫 조치임을 제시한다.",
+          "aiAnalysisInputSha256": "2b63c1613f602554a8729f7f83d1d88265a297228bdc4f5f3f6993b0eadcc4a6",
+          "aiPublicGuideTopic": "큰 덩어리가 하루에서 자리를 차지하는 방식",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 하루가 흩어지는 이유",
+          "section": "1.2 실행 가능한 단위",
+          "primaryConcepts": [
+            "최소실행단위"
+          ],
+          "secondaryConcepts": [
+            "큰 덩어리"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실행 가능한 단위를 다음 동작이 하나로 확정된 크기로 정의한다. 더 분해해도 얻는 것이 없는 지점이라는 기준과 착수 직전의 사고 내용으로 단위 여부를 판별하는 방법을 제시하며, 단위의 크기가 소요 시간이 아니라 필요한 결정의 수로 정해진다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "efd25a45fc6f0b65bbae5b58ce2793e038068c49a8205021959d0900adff748b",
+          "aiPublicGuideTopic": "지금 바로 손댈 수 있는 크기란 무엇인가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 하루가 흩어지는 이유",
+          "section": "1.2 실행 가능한 단위",
+          "primaryConcepts": [
+            "최소실행단위"
+          ],
+          "secondaryConcepts": [
+            "완료 조건"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "목록 항목이 실행 단위인지 확인하는 두 가지 질문을 제시한다. 착수 지점이 없어 막히는 경우와 종료 지점이 없어 막히는 경우를 구분하고, 점검 비용이 항목당 수십 초 수준이라는 점을 들어 계획 단계의 부담이 크지 않다는 것을 밝힌다.",
+          "aiAnalysisInputSha256": "d66a1986aba232d604fb56b2b4252dab63d5a4ee3f41906021c05f17e77e7dc1",
+          "aiPublicGuideTopic": "단위인지 아닌지를 가려내는 물음",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 하루가 흩어지는 이유",
+          "section": "1.3 하루라는 그릇",
+          "primaryConcepts": [
+            "하루의 용량"
+          ],
+          "secondaryConcepts": [
+            "큰 덩어리"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "가용 시간과 실제로 이어서 일한 시간의 차이를 하루 계획의 용량 문제로 다룬다. 계획에 기록되지 않는 회의와 응대가 용량을 잠식한다는 관찰과, 초과분이 다음 날로 누적되어 계획 전체가 상시 지연 상태가 되는 구조를 설명한다.",
+          "aiAnalysisInputSha256": "e0d72b1c51be7175e8f1ac33485d25bf781253ae07da3186b71be3a0b60c8b53",
+          "aiPublicGuideTopic": "하루에 실제로 담기는 양",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 하루가 흩어지는 이유",
+          "section": "1.3 하루라는 그릇",
+          "primaryConcepts": [
+            "하루의 용량"
+          ],
+          "secondaryConcepts": [
+            "최소실행단위"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "하루 용량을 추정 대신 완료 단위 수의 실측으로 파악하는 방법을 제시한다. 정확한 값보다 자기 인식의 교정에 목적이 있다는 점, 일정에 따라 용량이 날마다 달라진다는 점, 용량 확대는 이 책의 범위가 아니라는 한계를 함께 밝힌다.",
+          "aiAnalysisInputSha256": "c71dd64d61c169a86f9e39e07af4d43c26f452cacb1c2bbf7df06533e3d67f69",
+          "aiPublicGuideTopic": "자기 그릇의 크기를 재는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 하루가 흩어지는 이유",
+          "section": "1.4 전환의 비용",
+          "primaryConcepts": [
+            "전환비용"
+          ],
+          "secondaryConcepts": [
+            "하루의 용량"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "작업 몰입 정도를 시간축 위의 선으로 나타내고 전환이 일어날 때마다 급락과 재상승이 반복되는 형태를 그린 도표다. 재상승 구간을 빗금으로 채워 전환 직후의 회복 시간이 실제 작업에 쓰이지 못한다는 점을 표시한다.",
+          "aiAnalysisInputSha256": "b343f9ce9ec4f5f951c131fc5f0e921677317c1ffcd2909d8b6468710be6050c",
+          "aiPublicGuideTopic": "일을 바꾼 뒤 다시 붙는 과정을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 하루가 흩어지는 이유",
+          "section": "1.4 전환의 비용",
+          "primaryConcepts": [
+            "전환비용"
+          ],
+          "secondaryConcepts": [
+            "최소실행단위"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "작업 전환 직후의 복귀 비용을 설명하고 그 시간이 계획에 반영되지 않는 이유를 다룬다. 교착 상태에서 자발적으로 전환하려는 유인과 그 대가를 지적하고, 전환을 제거하는 대신 단위 크기와 배열로 줄인다는 이후 장의 방향을 예고한다.",
+          "aiAnalysisInputSha256": "2aa13f21a305c3a71009ef21a6f1f58ff587979b2151f1516d13a46445eb6391",
+          "aiPublicGuideTopic": "일을 바꿀 때 사라지는 시간",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "1장 하루가 흩어지는 이유",
+          "section": "1.5 계획과 실제의 차이",
+          "primaryConcepts": [
+            "계획 오차"
+          ],
+          "secondaryConcepts": [
+            "큰 덩어리"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계획 추정이 낙관으로 기우는 원인을 방해 없는 조건을 가정하는 습관과 과거 경험보다 현재 판단을 앞세우는 경향에서 찾는다. 계획 시점에 떠오르지 않았던 선행 작업이 실제 소요를 늘린 사례를 들어 오차를 상시적 성질로 규정한다.",
+          "aiAnalysisInputSha256": "e5cb315c2708681a2b2d13779ebb98e133aaf939bfb0d57e0c44b09fbfd99a14",
+          "aiPublicGuideTopic": "계획이 늘 낙관적인 이유",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "1장 하루가 흩어지는 이유",
+          "section": "1.5 계획과 실제의 차이",
+          "primaryConcepts": [
+            "계획 오차"
+          ],
+          "secondaryConcepts": [
+            "하루의 용량"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "추정치에 개인별 배율을 곱해 오차를 계획에 포함시키는 방법을 제시한다. 작업 종류에 따라 배율을 나누는 기준과, 배율을 적용하면 하루에 배정하는 단위 수가 줄어든다는 결과를 다루며 축소된 목록이 실제 용량이라는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "7307657c45e3052ed062c05e22591f3b4c7ba9edb49aca003b7ec6549e254ad3",
+          "aiPublicGuideTopic": "오차를 없애는 대신 예상에 넣는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 일을 쪼개는 법",
+          "section": "2.1 동사로 적기",
+          "primaryConcepts": [
+            "작업 분해"
+          ],
+          "secondaryConcepts": [
+            "최소실행단위",
+            "큰 덩어리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "목록 항목의 표현을 명사에서 동사로 바꾸는 것이 분해의 최소 조치임을 설명한다. 명사 표현이 대상에 관한 모든 작업을 한 줄에 묶어 완료 표시를 막는다는 문제와, 명사로 끝난 줄을 미룸 후보로 표시해 먼저 손보는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "62f512ea8bd22ec6cb2d504c29e74248db50eed7952aa5b8f184f28521a3d7d6",
+          "aiPublicGuideTopic": "명사로 적힌 일과 동사로 적힌 일의 차이",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 일을 쪼개는 법",
+          "section": "2.1 동사로 적기",
+          "primaryConcepts": [
+            "작업 분해"
+          ],
+          "secondaryConcepts": [
+            "완료 조건"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "작업 분해의 두 축을 산출물 기준과 행위 기준으로 나누고 각각의 이점을 비교한다. 산출물 기준은 중단 손실이 적고 행위 기준은 동종 작업을 묶기 쉽다는 차이를 들어, 그날의 시간 구조에 따라 선택하는 문제로 규정한다.",
+          "aiAnalysisInputSha256": "4d462b7925a6bc17103fc27798d1825a70fe886adecfdd82cc95ccbe7581017b",
+          "aiPublicGuideTopic": "결과물로 나눌 것인가 동작으로 나눌 것인가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 일을 쪼개는 법",
+          "section": "2.2 끝을 정하기",
+          "primaryConcepts": [
+            "완료 조건"
+          ],
+          "secondaryConcepts": [
+            "작업 분해"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단위마다 종료 조건을 문장으로 명시해야 하는 이유를 다룬다. 종료 조건이 없으면 작업 도중 범위가 늘어나 원래 목표가 미완으로 남는다는 문제를 지적하고, 도중에 떠오른 별건을 즉시 처리하지 않고 목록으로 옮기는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "bfe408bbb488aeba11577d7afef902033cfb4512b0448c1659f16bb0024f0aad",
+          "aiPublicGuideTopic": "끝이 없는 일은 끝나지 않는다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 일을 쪼개는 법",
+          "section": "2.2 끝을 정하기",
+          "primaryConcepts": [
+            "완료 조건"
+          ],
+          "secondaryConcepts": [
+            "최소실행단위"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "품질 판단이 들어간 종료 조건은 도달 지점을 갖지 못한다는 문제를 지적한다. 셀 수 있는 값으로 바꾸는 방법과 결정 자체를 종료 조건으로 삼는 대안을 제시하며, 낮은 기준에 먼저 도달한 뒤 연장하는 편이 낫다는 판단을 다룬다.",
+          "aiAnalysisInputSha256": "741e9bc9da15f2a5740377ea634e6687d54454529546668ae6f6380100433741",
+          "aiPublicGuideTopic": "끝을 잘못 잡는 흔한 경우",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 일을 쪼개는 법",
+          "section": "2.3 쪼개기의 크기",
+          "primaryConcepts": [
+            "분해 단위 크기"
+          ],
+          "secondaryConcepts": [
+            "작업 분해",
+            "최소실행단위"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 작업을 세 가지 분해 수준으로 표현해 비교한 도표다. 미분해·중간 분해·과잉 분해를 상자의 크기와 개수로 나타내고, 과잉 분해 쪽에는 관리 부담을, 중간 수준에는 강조 테두리를 두어 적정 지점을 표시한다.",
+          "aiAnalysisInputSha256": "2c061da105276edbac55267153ebd23d792dc4bc1a703d73aaaec2c62ad6f0c4",
+          "aiPublicGuideTopic": "같은 일을 세 가지 굵기로 쪼갠 결과를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "2장 일을 쪼개는 법",
+          "section": "2.3 쪼개기의 크기",
+          "primaryConcepts": [
+            "분해 단위 크기"
+          ],
+          "secondaryConcepts": [
+            "전환비용"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분해 수준의 적정 범위를 미분해와 과잉 분해 사이에서 정한다. 중단 없이 끝낼 수 있는 분량을 기준으로 삼는 근거로 전환 회복 비용을 들고, 사람과 작업 종류에 따라 달라지는 값을 며칠간의 실행 결과로 조정하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "a86e890be1390c2f7adb2f0a3a895660a1574459b059a7b9f65196f299d2029a",
+          "aiPublicGuideTopic": "얼마나 잘게 쪼갤 것인가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "2장 일을 쪼개는 법",
+          "section": "2.4 쪼갤 수 없는 일",
+          "primaryConcepts": [
+            "탐색형 작업"
+          ],
+          "secondaryConcepts": [
+            "완료 조건",
+            "작업 분해"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수행 내용이 확정되지 않은 작업은 분해가 성립하지 않는다는 점을 설명한다. 임의로 단계를 지어내면 첫 단계에서 계획이 어긋난다는 문제를 지적하고, 탐색 자체를 하나의 단위로 두어 그 산출물을 다음 작업 목록으로 삼는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "3e0a7b824d2d684029073bb1768248cd260a1e35181c5dab66678dc8b04ed129",
+          "aiPublicGuideTopic": "무엇을 할지 아직 모르는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "2장 일을 쪼개는 법",
+          "section": "2.4 쪼갤 수 없는 일",
+          "primaryConcepts": [
+            "탐색형 작업"
+          ],
+          "secondaryConcepts": [
+            "계획 오차"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "탐색 단위에 한해 결과 대신 시간을 종료 조건으로 삼는 예외를 다룬다. 조사 활동이 무한히 늘어나는 것을 막는 장치라는 근거와, 종료 시점에 확인한 내용과 막힌 지점을 기록해 다음 탐색의 출발점으로 삼는 절차를 제시한다.",
+          "aiAnalysisInputSha256": "8abf1c41d54a5d46cec063de7a9d7e4b861560fed4f8579b8a369499de45718e",
+          "aiPublicGuideTopic": "탐색하는 일에 끝을 붙이는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 시간을 묶는 법",
+          "section": "3.1 시간블록",
+          "primaryConcepts": [
+            "시간블록"
+          ],
+          "secondaryConcepts": [
+            "하루의 용량",
+            "최소실행단위"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분해한 단위에 하루의 특정 구간을 미리 배정하는 방법을 설명한다. 배정이 없으면 착수 결정을 하루에 여러 번 반복하며 쉬운 항목으로 치우친다는 문제와, 배정 자리의 수가 하루 용량을 눈에 보이게 만든다는 효과를 제시한다.",
+          "aiAnalysisInputSha256": "78696c084f6096692d928f5fc7300a118ecf3730ddc5a64738b5cd3480430388",
+          "aiPublicGuideTopic": "단위를 시간 위에 올려 두는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 시간을 묶는 법",
+          "section": "3.1 시간블록",
+          "primaryConcepts": [
+            "시간블록"
+          ],
+          "secondaryConcepts": [
+            "전환비용"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배정한 구간을 약속처럼 다루되 실패에 대비한 이동 규칙을 미리 정해 두는 방법을 다룬다. 규칙이 없으면 항목이 삭제되어 나중에 긴급 작업으로 되돌아온다는 문제와, 반복해서 옮겨진 항목을 이상 신호로 읽는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "ead90738c1c334fa1fcf352c2319acd6953408fda609cb0b49b99ac006738ce8",
+          "aiPublicGuideTopic": "블록을 지키는 방식과 옮기는 규칙",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 시간을 묶는 법",
+          "section": "3.2 블록의 길이",
+          "primaryConcepts": [
+            "블록 길이"
+          ],
+          "secondaryConcepts": [
+            "시간블록",
+            "분해 단위 크기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구간 길이를 단위 크기에서 역산해야 하는 이유와 실무적인 길이 범위를 제시한다. 지나치게 짧으면 회복 비용의 비중이 커지고 길면 후반부가 성글어진다는 근거, 구간 사이 여백과 길이 종류를 줄여 배치를 단순화하는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "41e9ad41844a09b02a717764c5e7779946a346559e05796d39bc88cbc97c9443",
+          "aiPublicGuideTopic": "한 블록을 얼마로 잡을 것인가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 시간을 묶는 법",
+          "section": "3.2 블록의 길이",
+          "primaryConcepts": [
+            "블록 길이"
+          ],
+          "secondaryConcepts": [
+            "하루의 용량"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연속성이 필요한 작업과 조각으로 독립된 작업을 구간 길이에 따라 배분하는 기준을 제시한다. 하루에 확보할 수 있는 긴 구간이 한둘에 그친다는 관찰을 들어, 그 자리에 무엇을 놓을지가 하루의 가장 큰 결정임을 밝힌다.",
+          "aiAnalysisInputSha256": "2482bf8358a8e523a660f10dc78d77f95ca3f217584cb7e910f857a03f230d07",
+          "aiPublicGuideTopic": "긴 블록과 짧은 블록의 쓰임",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "3장 시간을 묶는 법",
+          "section": "3.3 같은 종류끼리",
+          "primaryConcepts": [
+            "묶음 처리"
+          ],
+          "secondaryConcepts": [
+            "전환비용",
+            "시간블록"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 작업 구성을 순서만 달리 배열한 두 하루를 위아래로 비교한 도표다. 종류가 바뀌는 경계를 세모로 세어 표시해, 작업량이 같아도 배열에 따라 전환 횟수가 크게 달라진다는 점을 나타낸다.",
+          "aiAnalysisInputSha256": "1633d82abb916d2fd8baa0c5998b5e93ba78eade0a053ea45a987a3d605a9db6",
+          "aiPublicGuideTopic": "흩어진 하루와 묶은 하루를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "3장 시간을 묶는 법",
+          "section": "3.3 같은 종류끼리",
+          "primaryConcepts": [
+            "묶음 처리"
+          ],
+          "secondaryConcepts": [
+            "작업 분해"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "같은 종류의 작업을 붙여 배치해 전환 횟수를 줄이는 방법을 다룬다. 도구와 작업 태도로 묶을 수 있는지 판단하는 기준, 지연에 대한 우려와 실제 영향의 차이, 그리고 확인 시점을 협업자에게 미리 알려 두는 절차를 제시한다.",
+          "aiAnalysisInputSha256": "9d9d2894af0c49afc35025e1e76b109f1ba38bc03b1b7fa9428e8a69f265f0b6",
+          "aiPublicGuideTopic": "비슷한 일을 붙여 두는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "3장 시간을 묶는 법",
+          "section": "3.4 빈 블록 남기기",
+          "primaryConcepts": [
+            "여유 블록"
+          ],
+          "secondaryConcepts": [
+            "블록 길이",
+            "계획 오차"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "하루 계획에 배정하지 않은 구간을 남겨 초과분을 흡수하는 방법을 설명한다. 전 구간을 채우면 지연이 뒤 구간을 연쇄로 밀어낸다는 근거와, 쓰이지 않은 여유 구간도 손실이 아니라는 판단, 불확실함에 맞춰 크기를 정하는 기준을 제시한다.",
+          "aiAnalysisInputSha256": "ceb208b412277a159b4edd20b66e16c8f4e0833dd837fc837a1cedc419ce182a",
+          "aiPublicGuideTopic": "계획에 빈자리를 두는 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "3장 시간을 묶는 법",
+          "section": "3.4 빈 블록 남기기",
+          "primaryConcepts": [
+            "여유 블록"
+          ],
+          "secondaryConcepts": [
+            "하루의 용량"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "여유 구간이 잔여 항목으로 잠식되는 경향과 그 결과를 다룬다. 앞 구간이 일찍 끝난 날에 특히 취약하다는 점, 구간에 이름을 붙여 배정된 자리로 다루는 대응, 사용 빈도에 따라 크기를 조정하는 판단 기준을 제시한다.",
+          "aiAnalysisInputSha256": "8e1a94d14cd0191492e94d0e509439eb8efe0e6cb8c3312842ed7c267fd7e9a2",
+          "aiPublicGuideTopic": "빈자리를 지키기 어려운 이유",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 순서를 정하는 법",
+          "section": "4.1 먼저 할 것 고르기",
+          "primaryConcepts": [
+            "우선순위 기준"
+          ],
+          "secondaryConcepts": [
+            "완료 조건",
+            "작업 분해"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "우선순위 기준으로 중요도 대신 다른 작업을 막고 있는지를 쓰는 방법을 제시한다. 선행 결정이 지연되면 소요가 짧은 일이 하루치 작업을 정지시킨다는 사례를 들고, 목록을 훑을 때 던지는 한 가지 물음으로 순서를 정하는 절차를 다룬다.",
+          "aiAnalysisInputSha256": "4657a737616a448126beb14a55f6ebca679a18125699bbd107c1e8ab9505c1e1",
+          "aiPublicGuideTopic": "무엇을 앞에 놓을지 정하는 기준",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 순서를 정하는 법",
+          "section": "4.1 먼저 할 것 고르기",
+          "primaryConcepts": [
+            "우선순위 기준"
+          ],
+          "secondaryConcepts": [
+            "하루의 용량"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인계가 필요한 작업을 앞에 배치해야 하는 이유를 상대의 대기 시간으로 설명한다. 최종 기한에서 후속 작업자의 소요를 역산해 자기 기한을 정하는 방법과, 인계 대상이 여럿일 때 대기가 긴 쪽을 앞세우는 기준을 제시한다.",
+          "aiAnalysisInputSha256": "8335996ef82ebf7f49bc58188cead9defd0f3375fe99dd081fe5e9a98d1682c5",
+          "aiPublicGuideTopic": "다른 사람을 기다리게 하는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 순서를 정하는 법",
+          "section": "4.2 의존하는 일",
+          "primaryConcepts": [
+            "작업 의존"
+          ],
+          "secondaryConcepts": [
+            "우선순위 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "작업 사이의 선후 제약과 그것을 어겼을 때 생기는 재작업을 다룬다. 목록 형식이 의존 관계를 표시하지 못해 착수 순서가 손에 잡히는 대로 정해진다는 문제를 지적하고, 항목 옆에 기다리는 대상을 적어 선택 불가 항목을 드러내는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "6443dda99d7f5d3f42ebcae9bf56aa70c8e3922cab1698906fa1e33f49db182b",
+          "aiPublicGuideTopic": "앞의 결과가 있어야 시작되는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 순서를 정하는 법",
+          "section": "4.2 의존하는 일",
+          "primaryConcepts": [
+            "작업 의존"
+          ],
+          "secondaryConcepts": [
+            "작업 분해",
+            "우선순위 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "작업 사이의 선후 관계를 방향 그래프로 나타낸 도표다. 들어오는 간선이 없는 작업에 강조 테두리를 둘러 오늘 착수 가능한 자리를 표시하고, 여러 선행 작업이 모이는 자리와 마지막 작업을 구분해 순서 판단의 근거를 보인다.",
+          "aiAnalysisInputSha256": "a5686bb1c6b9b5d9412915fa18975d832013219442fbd51e0b06d6aa041f9e0f",
+          "aiPublicGuideTopic": "일 사이의 순서를 화살표로 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "4장 순서를 정하는 법",
+          "section": "4.3 하루의 첫 블록",
+          "primaryConcepts": [
+            "시작 블록"
+          ],
+          "secondaryConcepts": [
+            "시간블록",
+            "최소실행단위"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "하루의 첫 구간이 계획대로 쓰일 가능성이 가장 높은 자리라는 점을 근거로 배치 대상을 정한다. 반복해서 미뤄지는 작업을 이 자리에 두는 이유와, 전날에 대상을 확정해 아침의 선택 시간을 없애는 절차를 제시한다.",
+          "aiAnalysisInputSha256": "b178071f1f0c90fb1e640029a9a35abec44b8e198f469525bf24c55deaac4726",
+          "aiPublicGuideTopic": "하루의 첫 자리에 무엇을 놓을 것인가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "4장 순서를 정하는 법",
+          "section": "4.3 하루의 첫 블록",
+          "primaryConcepts": [
+            "시작 블록"
+          ],
+          "secondaryConcepts": [
+            "전환비용"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "첫 구간 앞에 외부 요청 확인을 두면 하루 순서의 결정권이 넘어간다는 문제를 다룬다. 응답 지연의 실제 위험이 낮다는 관찰과 연락 수단을 미리 알려 둔 대응을 제시하고, 첫 구간을 놓친 날에는 복구를 시도하지 않는 판단을 밝힌다.",
+          "aiAnalysisInputSha256": "4b22f0bf28760de53ed1e0eed8db36bd81c98e9c0fbdf0e7fd9ea76dce4f7dc4",
+          "aiPublicGuideTopic": "첫 블록 앞에 아무것도 두지 않기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "4장 순서를 정하는 법",
+          "section": "4.4 남은 자리에 넣기",
+          "primaryConcepts": [
+            "자투리 배치"
+          ],
+          "secondaryConcepts": [
+            "시작 블록",
+            "블록 길이"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계획할 수 없는 짧은 공백을 쓰기 위해 짧은 단위를 미리 모아 두는 방법을 제시한다. 공백이 생긴 뒤에 대상을 찾으면 그동안 공백이 끝난다는 근거, 그 목록에 들어갈 작업의 조건, 그리고 목록 길이를 제한해야 하는 이유를 다룬다.",
+          "aiAnalysisInputSha256": "0142e8b82958cc8777e007ebd7e9dc61cb9429ac95f329c3350124a785d27362",
+          "aiPublicGuideTopic": "짧은 틈에 맞는 일을 따로 모아 두는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "4장 순서를 정하는 법",
+          "section": "4.4 남은 자리에 넣기",
+          "primaryConcepts": [
+            "자투리 배치"
+          ],
+          "secondaryConcepts": [
+            "여유 블록"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "준비 비용이 큰 작업을 짧은 공백에 넣었을 때의 손실을 설명한다. 긴 구간에 배정한 작업을 미리 손대면 복귀 비용을 두 번 치른다는 점, 공백을 반드시 채울 필요가 없다는 판단, 다음 구간을 훑어보는 데 쓰는 대안을 제시한다.",
+          "aiAnalysisInputSha256": "9db34b0c8a7908910418db034f315dcc3966a74733ea09c1cd18bc1dd6d2e7db",
+          "aiPublicGuideTopic": "짧은 틈에 넣으면 안 되는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 어떤 하루",
+          "section": "5.1 아침에 적는 목록",
+          "primaryConcepts": [
+            "하루 목록"
+          ],
+          "secondaryConcepts": [
+            "작업 분해",
+            "하루의 용량"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "하루 계획을 세우는 짧은 고정 절차를 순서대로 보인 적용 사례다. 일정을 먼저 확인해 가용 구간을 세고, 전날 잔여 항목을 진행분만큼 줄여 다시 적고, 새로 온 항목을 더한 뒤 일부에만 구간을 배정하는 과정을 다룬다.",
+          "aiAnalysisInputSha256": "d582dc7a4b399728e28ff5792db3061b9c93c50f979d2bf91fc1a6d943ec964f",
+          "aiPublicGuideTopic": "하루를 시작하기 전 십 분 동안 하는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 어떤 하루",
+          "section": "5.1 아침에 적는 목록",
+          "primaryConcepts": [
+            "하루 목록"
+          ],
+          "secondaryConcepts": [
+            "시간블록",
+            "자투리 배치"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "하루 계획을 담는 종이 한 장의 구성을 세 구획으로 나타낸 도표다. 시각이 붙은 배정 항목, 오늘 착수하지 않기로 한 항목과 그 사유, 짧은 틈에 쓸 항목을 분리해 배치한 형태를 보인다.",
+          "aiAnalysisInputSha256": "2470a3dda70b7267568512b6072e183890cb4307c7e76d7f0e27edf34bfe8a90",
+          "aiPublicGuideTopic": "아침에 적은 목록 한 장의 모양을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 어떤 하루",
+          "section": "5.2 오전의 두 블록",
+          "primaryConcepts": [
+            "블록 실행"
+          ],
+          "secondaryConcepts": [
+            "하루 목록",
+            "시작 블록"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "첫 구간을 실행하는 동안 일어난 일을 시간 순서로 기록한 사례다. 도중에 떠오른 별건을 여백에 적어 두는 처리, 짧은 외부 연락 뒤의 복귀 소요, 목표 분량에 미치지 못한 채 구간을 끝내고 잔여를 다른 자리로 옮기는 판단을 보인다.",
+          "aiAnalysisInputSha256": "5767341d0c73d28482433b12c71b9bb49afbab75ed98448079d4dfa3371cce4f",
+          "aiPublicGuideTopic": "첫 블록이 지나가는 동안",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "5장 어떤 하루",
+          "section": "5.2 오전의 두 블록",
+          "primaryConcepts": [
+            "블록 실행"
+          ],
+          "secondaryConcepts": [
+            "완료 조건",
+            "여유 블록"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구간이 끝나면 작업이 남아 있어도 중단하는 규칙과 그 이유를 다룬다. 연장이 뒤 구간을 연쇄로 흔든다는 근거, 잔여 분량을 즉시 단위 형태로 적어 두는 절차, 그리고 남은 시간을 다음 구간에 당겨 쓰지 않는 원칙을 보인다.",
+          "aiAnalysisInputSha256": "65d108e86964af5b43e85ef768098702a6c761dd42c84a23c92de059ada688b1",
+          "aiPublicGuideTopic": "블록이 끝났는데 일이 남았을 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "5장 어떤 하루",
+          "section": "5.3 끼어드는 일",
+          "primaryConcepts": [
+            "끼어들기 대응"
+          ],
+          "secondaryConcepts": [
+            "하루 목록",
+            "여유 블록"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계획에 없던 요청을 받았을 때 즉시 착수 대신 배치 시점을 먼저 정하는 대응을 보인다. 여유 구간으로 흡수하는 경우, 자리가 없어 다른 일정을 제시하거나 대체로 미룰 항목을 함께 정하는 경우, 즉시 처리가 필요한 예외를 구분한다.",
+          "aiAnalysisInputSha256": "c8cc39b0d3a3bd854d719b1bcfe3c07ce296d26daa99f1ce266a0f2d2db52c33",
+          "aiPublicGuideTopic": "예정에 없던 요청이 들어왔을 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "5장 어떤 하루",
+          "section": "5.3 끼어드는 일",
+          "primaryConcepts": [
+            "끼어들기 대응"
+          ],
+          "secondaryConcepts": [
+            "최소실행단위",
+            "완료 조건"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수용한 요청을 전달받은 표현 그대로 적지 않고 실행 단위로 바꿔 기록하는 절차를 보인다. 종료 조건과 소요 판단이 가능해진다는 이점, 요청자에게 범위를 확인해 작업량을 줄이는 방법, 변환하지 않았을 때 생기는 결과를 다룬다.",
+          "aiAnalysisInputSha256": "7bd34b1bd2613783dffb475b0dbda5cced8c4e9406e2ccba4faa665478dd56c9",
+          "aiPublicGuideTopic": "끼어든 일을 목록의 말로 바꾸기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "5장 어떤 하루",
+          "section": "5.4 하루의 끝에서",
+          "primaryConcepts": [
+            "이월"
+          ],
+          "secondaryConcepts": [
+            "하루 목록",
+            "분해 단위 크기"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "하루를 마칠 때 목록을 정리하는 짧은 절차를 보인다. 완료 항목 지우기, 잔여 항목을 진행분만큼 줄여 다시 적기, 완료 개수로 용량 추정을 교정하기, 다음 날 첫 구간의 대상을 미리 적어 두기까지의 순서를 다룬다.",
+          "aiAnalysisInputSha256": "dce5c1d366c266b89c38d5b0f65ddce82df939f4ab36db8da1e3a94a2407a4bd",
+          "aiPublicGuideTopic": "남은 것을 내일로 옮기는 오 분",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "5장 어떤 하루",
+          "section": "5.4 하루의 끝에서",
+          "primaryConcepts": [
+            "이월"
+          ],
+          "secondaryConcepts": [
+            "큰 덩어리",
+            "우선순위 기준"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "여러 날 연속으로 이월된 항목을 세 가지 원인으로 나누어 처리하는 방법을 제시한다. 크기 문제는 다시 분해하고, 선행 작업을 기다리는 항목은 목록에서 분리하고, 수행 의사가 없는 항목은 지우며 그 삭제도 하나의 결정임을 밝힌다.",
+          "aiAnalysisInputSha256": "76a17fa055c89ba2178310ee073f72ce3ef54cbc6d64bb6a057f76706113d0ff",
+          "aiPublicGuideTopic": "며칠째 옮겨지는 줄을 다루는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 계획이 무너질 때",
+          "section": "6.1 쪼갤수록 느려질 때",
+          "primaryConcepts": [
+            "과잉 분해"
+          ],
+          "secondaryConcepts": [
+            "분해 단위 크기",
+            "작업 분해"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분해와 목록 관리에 드는 비용이 항목 수에 비례해 늘어난다는 점을 다룬다. 계획을 촘촘히 할수록 안심은 커지지만 진행과는 무관하다는 지적과, 목록을 만들고 고치는 데 쓴 시간을 실측해 과잉 여부를 판정하는 기준을 제시한다.",
+          "aiAnalysisInputSha256": "d46e572e96403d6fd48554f3c7f702b8168f39c60dcbaba86ab517cc9eb92319",
+          "aiPublicGuideTopic": "쪼개는 일이 일보다 커지는 지점",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 계획이 무너질 때",
+          "section": "6.1 쪼갤수록 느려질 때",
+          "primaryConcepts": [
+            "과잉 분해"
+          ],
+          "secondaryConcepts": [
+            "최소실행단위",
+            "전환비용"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분해 수준에 따라 착수 비용은 줄고 관리 비용은 늘어 총 소요가 골짜기 형태를 이루는 관계를 그린 도표다. 두 성분 곡선과 그 합을 함께 그려 최소 지점이 양극단이 아니라 중간에 있다는 것을 나타낸다.",
+          "aiAnalysisInputSha256": "6dc5eda0b2e87a1b2bac80385c97b737161f7053c303d70989630dd14c37f489",
+          "aiPublicGuideTopic": "쪼갠 개수와 하루에 걸린 시간의 관계를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 계획이 무너질 때",
+          "section": "6.2 하루를 통째로 써야 하는 일",
+          "primaryConcepts": [
+            "긴 몰입"
+          ],
+          "secondaryConcepts": [
+            "블록 길이",
+            "전환비용"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "전체를 한꺼번에 파악해야 진행되는 작업에서 분할이 복귀 비용을 반복 발생시킨다는 문제를 다룬다. 재개할 때 되돌아가야 하는 범위로 이런 작업을 가려내는 기준과, 분할하지 않는 날에도 종료 조건은 필요하다는 단서를 제시한다.",
+          "aiAnalysisInputSha256": "7dfe52a88264ad6b6466fa685453f7528c32f80040ddc70ed364745716b3d501",
+          "aiPublicGuideTopic": "나눌수록 손해인 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "6장 계획이 무너질 때",
+          "section": "6.2 하루를 통째로 써야 하는 일",
+          "primaryConcepts": [
+            "긴 몰입"
+          ],
+          "secondaryConcepts": [
+            "하루의 용량",
+            "우선순위 기준"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "긴 시간 이어서 일하는 날을 미리 확보하는 방법을 다룬다. 일정에 표시해 두지 않으면 그 자리가 외부 일정으로 채워진다는 점, 그날 목록을 한 항목으로 제한하는 이유, 한 주에 확보할 수 있는 날수의 현실적 한계를 제시한다.",
+          "aiAnalysisInputSha256": "326a3bd2c0d704daa3ba67d8cf541e634e0832132179efd1d6fd1114cda949ed",
+          "aiPublicGuideTopic": "그런 날을 만드는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "6장 계획이 무너질 때",
+          "section": "6.3 남의 일정에 맞춰야 할 때",
+          "primaryConcepts": [
+            "통제 밖 일정"
+          ],
+          "secondaryConcepts": [
+            "여유 블록",
+            "시간블록"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시간 통제권이 없는 날에는 이 책의 방법이 전제부터 성립하지 않는다는 한계를 밝힌다. 계획 단위를 하루에서 한 주로 넓혀 긴 작업을 다른 날로 옮기는 대응과, 짧은 단위 목록이 이런 날에 특히 쓸모 있다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "2fa23fbd0d2d91fac37ac360df267a801e780c32341db268027dbd050b97953a",
+          "aiPublicGuideTopic": "하루가 남의 일정으로 조각날 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "6장 계획이 무너질 때",
+          "section": "6.3 남의 일정에 맞춰야 할 때",
+          "primaryConcepts": [
+            "통제 밖 일정"
+          ],
+          "secondaryConcepts": [
+            "이월",
+            "자투리 배치"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "통제할 수 없는 날에도 자기가 정한 일로 채우는 구간을 하나만 확보한다는 최소 기준을 제시한다. 가장 긴 공백을 고르는 방법, 지키지 못한 날에 목록을 다시 쓰지 않는 처리, 이런 날이 잦으면 계획이 아니라 업무 구조의 문제라는 판단을 다룬다.",
+          "aiAnalysisInputSha256": "e6dd3b081136c621e0200bea1d60b86b1326e3d418c35f98edc9dbac09cb86ff",
+          "aiPublicGuideTopic": "조각난 하루에서 지킬 수 있는 최소",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 결론: 오늘 할 수 있는 크기로",
+          "section": "7.1 오늘 할 수 있는 크기로",
+          "primaryConcepts": [
+            "종합"
+          ],
+          "secondaryConcepts": [
+            "큰 덩어리",
+            "최소실행단위"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체의 논지를 착수 단위의 크기 문제로 다시 정리하는 결론 페이지다. 분할·완료 조건·시간 배정·순서·여유라는 구성 요소를 열거하고, 처리량 증가가 아니라 같은 용량 안의 선택이 달라지는 것이 목표임을 밝히며 방법이 통하지 않는 세 경우를 함께 짚는다.",
+          "aiAnalysisInputSha256": "53161d0a95c75d04c74bc3617ef358199df7412ad144cf63329de139786ec3ad",
+          "aiPublicGuideTopic": "하루가 흩어지던 이유를 다시 보기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "work-sized-not-willed"
+          ]
+        },
+        {
+          "pageNumber": 51,
+          "chapter": "7장 결론: 오늘 할 수 있는 크기로",
+          "section": "7.1 오늘 할 수 있는 크기로",
+          "primaryConcepts": [
+            "종합"
+          ],
+          "secondaryConcepts": [
+            "시간블록",
+            "이월"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책의 방법 가운데 하나만 골라 시작하도록 권하고 일주일 뒤에 확인할 세 가지 관찰 항목을 제시한다. 구간 길이나 여유 크기 같은 값은 본문에 적힌 수치가 아니라 자기 기록에서 정해야 한다는 점과 마지막 점검 물음을 남긴다.",
+          "aiAnalysisInputSha256": "1318e3a6febb2c31915e8df4cf03314174a12f239d7f5f208659dd7c2651d9c9",
+          "aiPublicGuideTopic": "내일 아침에 해 볼 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            50
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
     }
   ]
 }
