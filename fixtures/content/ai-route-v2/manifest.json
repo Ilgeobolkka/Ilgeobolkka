@@ -50661,6 +50661,1103 @@
       ]
     },
     {
+      "bookId": 77,
+      "title": "테스트 전략과 계약 검증",
+      "pdfPath": "pdfs/book-077.pdf",
+      "pdfSha256": "e2329a95f0a7682aafaad454f55e530537bfc780d36ad4fa21d9e9d439bf2264",
+      "totalPageCount": 50,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "확인 전략과 계약 검증을 다루는 장과 절의 구성",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 확인의 목적",
+          "section": "1.1 무엇을 확인하는가",
+          "primaryConcepts": [
+            "확인의 대상"
+          ],
+          "secondaryConcepts": [
+            "기대 동작"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인 대상을 명시된 기대 동작으로 한정하고 구현 절차가 대상에서 제외됨을 밝힌다. 코드에서 역으로 기대를 도출하는 순서가 결함을 고착시키는 경로를 지적한다.",
+          "aiAnalysisInputSha256": "f72b940556538cbb6bdae64ac20cd9b43905695296aaf4307aafb0a42020d752",
+          "aiPublicGuideTopic": "확인이 겨누는 것과 겨누지 않는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 확인의 목적",
+          "section": "1.2 확인이 주는 것",
+          "primaryConcepts": [
+            "확인의 효용"
+          ],
+          "secondaryConcepts": [
+            "확인의 대상"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인의 효용을 변경 가능성·실행 가능한 명세·설계 되먹임의 세 가지로 정리한다. 확인 부재가 코드 고착으로 이어지는 구조와 문서 대비 명세의 지속성을 함께 설명한다.",
+          "aiAnalysisInputSha256": "8e09bf0517799845cc7e71fab3e49d74a36de2bedba0dd296be0994f43ca47e0",
+          "aiPublicGuideTopic": "확인을 두어 실제로 얻는 것들",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 확인의 목적",
+          "section": "1.3 확인의 층",
+          "primaryConcepts": [
+            "확인의 층"
+          ],
+          "secondaryConcepts": [
+            "확인의 대상",
+            "단위 확인"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인을 대상 범위 기준으로 계층화하고 각 층의 속도·원인 지목 정확도·현실성의 교환 관계를 제시한다. 단일 층 편중이 초래하는 손실을 양방향으로 설명한다.",
+          "aiAnalysisInputSha256": "cb055078613590b5d624ff73edcfef70756956db537b7391ccd11011864a82f1",
+          "aiPublicGuideTopic": "범위에 따라 나뉘는 확인의 종류",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 확인의 목적",
+          "section": "1.4 통과가 뜻하는 것",
+          "primaryConcepts": [
+            "통과의 의미"
+          ],
+          "secondaryConcepts": [
+            "확인의 효용"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인 통과의 의미를 명시된 기대의 충족으로 한정하고 미기술 조건의 미검증 상태를 지적한다. 신규 결함을 기대 명세의 누락으로 해석해 확인으로 편입하는 순환을 제시한다.",
+          "aiAnalysisInputSha256": "f938845f2a3e47682257293728abc4593c23ac3f62939160e64efa975011cee1",
+          "aiPublicGuideTopic": "모두 통과했을 때 알 수 있는 것과 없는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            3
+          ],
+          "duplicateGroupKeys": [
+            "green-is-not-proof"
+          ]
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 확인의 목적",
+          "section": "1.5 무엇을 확인하지 않을지",
+          "primaryConcepts": [
+            "확인 제외"
+          ],
+          "secondaryConcepts": [
+            "확인의 효용",
+            "확인의 층"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인 제외 기준을 외부 보장·단순 전달·빈번한 표면 변경으로 제시하고 필수 확인 대상을 분기·경계·권한 관련 처리로 지정한다. 사전 기준 설정이 대상 논의를 개수 논의에서 분리함을 밝힌다.",
+          "aiAnalysisInputSha256": "c6fe05dd18c3e58b04d9fc30671ff07c7116e420054cc47f24450a4a86f1ca5e",
+          "aiPublicGuideTopic": "확인 대상에서 빼는 것을 정하기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            3
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 확인의 목적",
+          "section": "1.6 확인의 층과 범위",
+          "primaryConcepts": [
+            "확인의 층"
+          ],
+          "secondaryConcepts": [
+            "단위 확인",
+            "통합 확인"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인 계층을 포함 관계의 동심 구조로 표현하고 각 층의 속도·원인 지목·현실성을 병기한다. 층별 권장 개수와 실행 빈도의 차이를 테두리와 주석으로 구분한다.",
+          "aiAnalysisInputSha256": "c1860c9656d2d37ef8d1b19d95bfb71bdcf8cd74d490334b76bc7bed467c0f9b",
+          "aiPublicGuideTopic": "층마다 감싸는 범위와 성질의 차이",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 확인의 목적",
+          "section": "1.7 확인을 언제 돌리는가",
+          "primaryConcepts": [
+            "실행 시점"
+          ],
+          "secondaryConcepts": [
+            "확인의 층"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인의 가치가 실행 시점에 따라 달라짐을 설명하고 층과 시점의 대응을 제시한다. 미실행 확인이 허위 안전감을 주는 문제를 지적하고 추가 시 실행 시점 결정을 요구한다.",
+          "aiAnalysisInputSha256": "dacad2afcf0486138d67bc1e115173c6566d2932e969d9d4010a78543177f98b",
+          "aiPublicGuideTopic": "확인이 실제로 값을 하는 시점",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 단위 확인",
+          "section": "2.1 단위 확인의 정의",
+          "primaryConcepts": [
+            "단위 확인"
+          ],
+          "secondaryConcepts": [
+            "확인의 층"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단위 확인을 대상 격리 상태의 검증으로 정의하고 속도와 원인 국소화를 이유로 제시한다. 격리 가능성이 대상 코드의 구조에 의해 결정됨을 밝힌다.",
+          "aiAnalysisInputSha256": "3ca4473a6d73336113c4270de3f92b3b1c4d0cbc39364cfc12a9ff81603c71a8",
+          "aiPublicGuideTopic": "작은 범위를 따로 떼어 보는 확인",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 단위 확인",
+          "section": "2.2 무엇을 한 단위로 볼까",
+          "primaryConcepts": [
+            "단위 범위"
+          ],
+          "secondaryConcepts": [
+            "단위 확인"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단위 크기 결정 기준을 기대 진술 가능성으로 제시하고 과소·과대 설정의 부작용을 각각 설명한다. 외부 호출 가능한 인터페이스 단위를 실무 기준으로 제안한다.",
+          "aiAnalysisInputSha256": "f2857d0bb6d4252ae6814ca472bb33ce948ed99033ee31c5302de5e82a3cd9ae",
+          "aiPublicGuideTopic": "단위의 크기를 정하는 기준",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 단위 확인",
+          "section": "2.3 확인의 구조",
+          "primaryConcepts": [
+            "확인 구조"
+          ],
+          "secondaryConcepts": [
+            "단위 확인",
+            "확인 이름"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인의 구성을 준비·실행·검증의 세 부분으로 정식화하고 구분의 가독성 효과를 설명한다. 준비 코드의 비대를 대상 코드의 의존 과다 신호로 해석한다.",
+          "aiAnalysisInputSha256": "6a0c2e223952ccefca1fe846082b338f2703afc4b922f156f48da6a5b3cedd64",
+          "aiPublicGuideTopic": "확인 하나가 갖는 세 부분",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 단위 확인",
+          "section": "2.4 하나의 확인에 하나의 물음",
+          "primaryConcepts": [
+            "단일 확인"
+          ],
+          "secondaryConcepts": [
+            "확인 구조"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인당 단일 물음 원칙을 실패 지점 식별 가능성에서 도출하고 조건 공유와 확인 병합을 구분한다. 다중 검증문과 다중 물음의 차이를 판별 기준으로 제시한다.",
+          "aiAnalysisInputSha256": "a779f24d67b97e6824debd3855e93bb183e4c1e4cc05118439d5df2d668ba2d8",
+          "aiPublicGuideTopic": "한 확인이 겨누는 물음의 수",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 단위 확인",
+          "section": "2.5 확인 하나의 구조",
+          "primaryConcepts": [
+            "확인 구조"
+          ],
+          "secondaryConcepts": [
+            "단일 확인",
+            "단위 확인"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인 실행 흐름을 준비·실행·검증의 세 단계로 배열하고 각 단계 실패의 해석을 병기한다. 준비 단계 분량을 의존도 지표로 표시하고 최종 분기를 통과와 실패로 나타낸다.",
+          "aiAnalysisInputSha256": "f04587ede055037f3ddbaa887b3c3f1ce7304723e76e92c7c12f73f42a1b16f2",
+          "aiPublicGuideTopic": "확인 하나가 지나는 세 부분과 실패 지점",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 단위 확인",
+          "section": "2.6 이름이 알려 주는 것",
+          "primaryConcepts": [
+            "확인 이름"
+          ],
+          "secondaryConcepts": [
+            "확인 구조",
+            "단일 확인"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인 이름의 구성 요소를 조건과 기대로 정하고 실패 목록에서의 판독 효율을 근거로 제시한다. 명명 난도를 확인 설계의 문제를 드러내는 신호로 활용한다.",
+          "aiAnalysisInputSha256": "ffedf2c7f927a61f4ed6db42bb567933da1d8c91aaffdfba2dd9c880ef8aa9fa",
+          "aiPublicGuideTopic": "확인의 이름에 담을 내용",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 단위 확인",
+          "section": "2.7 깨지기 쉬운 확인",
+          "primaryConcepts": [
+            "취약한 확인"
+          ],
+          "secondaryConcepts": [
+            "단일 확인",
+            "단위 범위"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구현 결합형 확인의 전형을 호출 횟수 검증·미명세 성질 의존·내부 구조 직접 구성으로 분류한다. 취약 확인의 누적이 변경 촉진 기능을 변경 저해로 뒤집는 과정을 설명한다.",
+          "aiAnalysisInputSha256": "37f51f32eebc082dba39b35f8565a8abd9255c29f38923d035bcbb00ca66fc29",
+          "aiPublicGuideTopic": "기대가 아니라 구현에 매인 확인",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 대체물",
+          "section": "3.1 대체물의 정의",
+          "primaryConcepts": [
+            "테스트 대체물"
+          ],
+          "secondaryConcepts": [
+            "단위 확인"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대체물을 실제 구성 요소의 확인용 대리로 정의하고 속도·준비 난도·상황 재현이라는 도입 이유를 제시한다. 임의 상황 구성 능력이 실제와의 괴리 위험을 동반함을 밝힌다.",
+          "aiAnalysisInputSha256": "a49c94ce016d5245b0bc5f5f80245c133c3152fe6bfe0c972c746bf93f2ada58",
+          "aiPublicGuideTopic": "확인에서 진짜 대신 쓰는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 대체물",
+          "section": "3.2 대체물의 종류",
+          "primaryConcepts": [
+            "대체물 종류"
+          ],
+          "secondaryConcepts": [
+            "테스트 대체물"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대체물을 고정값 반환·경량 실동작·호출 기록의 세 종류로 분류하고 각각의 용도를 제시한다. 호출 기록형의 구현 결합 위험과 허용 조건을 명시한다.",
+          "aiAnalysisInputSha256": "1d71de44599c6cd3d3c0fecfc64447608bd78a55e09fb3646811a8db7b09d472",
+          "aiPublicGuideTopic": "무엇을 대신하느냐에 따른 구분",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 대체물",
+          "section": "3.3 무엇을 대체할까",
+          "primaryConcepts": [
+            "대체 대상"
+          ],
+          "secondaryConcepts": [
+            "테스트 대체물",
+            "단위 범위"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대체 범위 결정 기준을 확인 대상 여부로 정하고 과다·과소 대체의 손실을 대비한다. 시스템 경계를 기본 분할선으로 삼아 내부 대체가 구조 결합을 만든다는 점을 지적한다.",
+          "aiAnalysisInputSha256": "a81e2b17eb7de0f086c5ff025f2bed6d3b035ab6200001f13c3a4608adbba5d4",
+          "aiPublicGuideTopic": "대체할 것과 진짜로 쓸 것을 가르기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 대체물",
+          "section": "3.4 대체물이 주는 착각",
+          "primaryConcepts": [
+            "대체 착각"
+          ],
+          "secondaryConcepts": [
+            "대체물 종류",
+            "통과의 의미"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대체물 기반 확인이 작성자의 가정 위에 성립함을 지적하고 실패 형태와 자료 형태의 괴리를 대표 사례로 제시한다. 실제 관찰 결과를 대체물 구성의 근거로 삼을 것을 처방한다.",
+          "aiAnalysisInputSha256": "a23a4675bbd8762d31d12e1e6c0644592e4f4da0a1542853a14c0885e2dc0570",
+          "aiPublicGuideTopic": "대체물로 확인한 것이 실제와 다를 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 대체물",
+          "section": "3.5 대체물이 놓이는 자리",
+          "primaryConcepts": [
+            "대체 대상"
+          ],
+          "secondaryConcepts": [
+            "테스트 대체물",
+            "통합 확인"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인 종류별로 실제 동작 구간과 대체 구간을 동일한 구성 요소 배열 위에 표시한다. 채움과 빗금의 대비로 각 확인이 보장하는 범위를 직접 읽게 한다.",
+          "aiAnalysisInputSha256": "34a32d91732dbe30a5fb939ad471cf9027fa0dcd016d0861dc655b84585a8a25",
+          "aiPublicGuideTopic": "확인마다 무엇을 진짜로 쓰고 무엇을 대신하는지",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 대체물",
+          "section": "3.6 대체물을 줄이는 설계",
+          "primaryConcepts": [
+            "대체 축소"
+          ],
+          "secondaryConcepts": [
+            "대체 대상",
+            "단위 확인"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대체물 필요량을 대상 코드의 외부 의존도로 환원하고 계산과 부수 작용의 분리를 축소 수단으로 제시한다. 대체 지점 축소가 실제와의 괴리 가능성도 함께 줄임을 설명한다.",
+          "aiAnalysisInputSha256": "576a42106cc9a44ccdb04b94247f5e10ff0af2d99662dc1cde3d1ea2871405ca",
+          "aiPublicGuideTopic": "대체물이 적게 필요한 코드로 만들기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 대체물",
+          "section": "3.7 대체물이 낡을 때",
+          "primaryConcepts": [
+            "대체물 노후"
+          ],
+          "secondaryConcepts": [
+            "대체 착각",
+            "계약 검증"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대체물과 실제 구현의 비연동성이 명세 변경 시 무증상 괴리를 만드는 구조를 설명한다. 해소 경로를 대체물 개선이 아닌 계약 검증 도입으로 제시해 다음 장과 연결한다.",
+          "aiAnalysisInputSha256": "eb03eec7a96904b81f0a935535708451ee13e038159f97831117da1575f408c9",
+          "aiPublicGuideTopic": "진짜가 바뀌었는데 대체물이 그대로일 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            19
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "4장 통합 확인과 계약",
+          "section": "4.1 통합 확인의 자리",
+          "primaryConcepts": [
+            "통합 확인"
+          ],
+          "secondaryConcepts": [
+            "확인의 층",
+            "테스트 대체물"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "통합 확인의 대상을 구성 요소 간 상호 약속으로 규정하고 단위 확인이 통과하는 결합 오류 유형을 열거한다. 배치 기준을 조합 망라가 아닌 접합 지점 선택으로 제시한다.",
+          "aiAnalysisInputSha256": "96aa64c9b03a34b8390a096c1251fad7a1b89fefc22714a8dc2123981c69753e",
+          "aiPublicGuideTopic": "여러 부분을 붙여 보는 확인의 몫",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 통합 확인과 계약",
+          "section": "4.2 계약 검증",
+          "primaryConcepts": [
+            "계약 검증"
+          ],
+          "secondaryConcepts": [
+            "통합 확인",
+            "대체물 노후"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계약 검증을 송수신 양측의 명세 준수 확인으로 정의하고 동시 기동 없이 불일치를 검출하는 구조를 설명한다. 계약 항목에 실패 형태를 포함해야 대체물의 근거가 됨을 밝힌다.",
+          "aiAnalysisInputSha256": "3ccc968bd20dfc41c54fe1456389e27c13232f166dbeda50398fb8a98a12d0d8",
+          "aiPublicGuideTopic": "주고받는 약속이 지켜지는지 보는 확인",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 통합 확인과 계약",
+          "section": "4.3 양쪽에서 같은 계약 보기",
+          "primaryConcepts": [
+            "계약 공유"
+          ],
+          "secondaryConcepts": [
+            "계약 검증"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계약의 단일 원본 유지를 검증 성립 조건으로 제시하고 문서 분기 시 판정 불가를 지적한다. 계약 변경의 단계적 절차와 검증이 그 절차의 준수를 강제하는 역할을 설명한다.",
+          "aiAnalysisInputSha256": "ee94ae689629eb96581eab786180dc6152337b16d3ac6aa2b810a64344cd01b4",
+          "aiPublicGuideTopic": "약속을 한 벌만 두고 함께 쓰기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 통합 확인과 계약",
+          "section": "4.4 계약을 사이에 둔 두 확인",
+          "primaryConcepts": [
+            "계약 검증"
+          ],
+          "secondaryConcepts": [
+            "계약 공유",
+            "테스트 대체물"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계약을 중심에 두고 송신 측과 수신 측이 각각 독립 검증하는 구조를 표현한다. 단일 계약 참조가 변경 시 양측 동시 실패를 유발해 괴리를 조기 노출함을 나타낸다.",
+          "aiAnalysisInputSha256": "acea42fb6627815036f3ddb0837c57eb451c8d324022353940853895eed563bd",
+          "aiPublicGuideTopic": "양쪽이 같은 약속을 각자 확인하는 구조",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 통합 확인과 계약",
+          "section": "4.5 통합 확인의 비용",
+          "primaryConcepts": [
+            "통합 비용"
+          ],
+          "secondaryConcepts": [
+            "통합 확인",
+            "실행 시점"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "통합 확인의 비용을 준비 부담·실행 시간·원인 국소화 저하·불안정성으로 정리한다. 소수 유지와 실행 시점 제한, 실패 시 상태 기록을 관리 방법으로 제시한다.",
+          "aiAnalysisInputSha256": "526b9787e2d4833d07049cab127b1ef89291d81d37c3da55b4483d1f90c9715c",
+          "aiPublicGuideTopic": "붙여 보는 확인이 치르는 대가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 통합 확인과 계약",
+          "section": "4.6 무엇까지 붙여 볼까",
+          "primaryConcepts": [
+            "통합 범위"
+          ],
+          "secondaryConcepts": [
+            "통합 확인",
+            "대체 대상"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "통합 확인의 실 결합 범위를 시스템 경계 기준으로 정하고 외부 실연동의 판정 모호성을 근거로 든다. 외부 약속 검증을 계약 검증에 위임하는 역할 분담을 제시한다.",
+          "aiAnalysisInputSha256": "c3321390b6e9c0a41468fd08e2a6ecd6098e6e51ea1b0a95c5a8972231f27c01",
+          "aiPublicGuideTopic": "통합 확인의 경계를 정하는 기준",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 통합 확인과 계약",
+          "section": "4.7 바깥 시스템과의 확인",
+          "primaryConcepts": [
+            "외부 확인"
+          ],
+          "secondaryConcepts": [
+            "계약 공유",
+            "통합 범위"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "외부 연동 확인을 계약 검증·대체물·주기적 실연동의 세 겹으로 구성하는 배치를 제시한다. 상대의 계약 위반은 확인이 아닌 실행 시 경계로 다뤄야 하는 범위임을 명시한다.",
+          "aiAnalysisInputSha256": "1438516e7ef1016e65ecf1a08f9b01ecf0ecad955ca0df2404d3f151eb8bf399",
+          "aiPublicGuideTopic": "상대가 있는 확인에서 정할 것들",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            25
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "5장 회귀 방지",
+          "section": "5.1 회귀의 뜻",
+          "primaryConcepts": [
+            "회귀"
+          ],
+          "secondaryConcepts": [
+            "통합 확인",
+            "확인의 효용"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회귀를 기존 동작의 사후 손상으로 정의하고 미관찰 영역에서 발생하는 특성을 지적한다. 누적된 기대 명세가 변경 시 즉시 위반을 드러내는 기전을 설명한다.",
+          "aiAnalysisInputSha256": "e1c81274ba6cf36f9683f7bb590943ee5ebd1a7c041e18fb79a7c3fe1e437d5b",
+          "aiPublicGuideTopic": "고쳤던 것이 다시 나빠지는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "5장 회귀 방지",
+          "section": "5.2 버그에서 확인으로",
+          "primaryConcepts": [
+            "재현 확인"
+          ],
+          "secondaryConcepts": [
+            "회귀"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결함 수정 시 재현 확인의 선행 작성 절차와 그 이중 효용을 제시한다. 확인 기준을 수정 방식이 아닌 증상 조건으로 기술해야 구현 변경에도 유지됨을 밝힌다.",
+          "aiAnalysisInputSha256": "a0053d00c29da7cd2972a224a80e21d56e3a0195132099eecb6c0de838ad9e35",
+          "aiPublicGuideTopic": "겪은 문제를 확인으로 옮기는 절차",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 회귀 방지",
+          "section": "5.3 확인이 쌓이는 방식",
+          "primaryConcepts": [
+            "확인 축적"
+          ],
+          "secondaryConcepts": [
+            "회귀",
+            "확인 제외"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인 목록의 자연 증가와 미정리 시 나타나는 중복·잔존·목적 불명 문제를 지적한다. 계층 배치 조정과 제거를 포함한 목록 관리를 코드 관리와 동등하게 다룰 것을 제안한다.",
+          "aiAnalysisInputSha256": "f2e2c0d744e07088ba7dc3abcb55ade1686b4a74def8ea212e0a6cd67447dd57",
+          "aiPublicGuideTopic": "시간이 지나며 늘어나는 확인 목록",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 회귀 방지",
+          "section": "5.4 느려지는 확인",
+          "primaryConcepts": [
+            "실행 시간"
+          ],
+          "secondaryConcepts": [
+            "확인 축적",
+            "통합 비용"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인 실행 시간 증가가 실행 빈도 저하와 원인 추적 난도 상승으로 이어지는 연쇄를 설명한다. 소수 고비용 확인의 우선 처리와 계층 조정·준비 공유·분할 실행을 대응으로 제시한다.",
+          "aiAnalysisInputSha256": "2977003a90838b71a4749f2c94165a365a0de26319dcf514c5c91f7ab69c7f1a",
+          "aiPublicGuideTopic": "돌리는 데 오래 걸리게 되었을 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 회귀 방지",
+          "section": "5.5 흔들리는 확인",
+          "primaryConcepts": [
+            "불안정 확인"
+          ],
+          "secondaryConcepts": [
+            "확인 축적",
+            "통합 비용"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "불안정 확인이 실패 신호 전반의 신뢰를 훼손하는 구조를 설명하고 시각·무작위·공유 상태·고정 대기를 원인으로 열거한다. 수정 또는 제거를 원칙으로 하고 유예 시 재검토 시점 기록을 요구한다.",
+          "aiAnalysisInputSha256": "502f5588134dc64e8f2046a7578b019c6ad57680a72f8f7dc5914cb8cad14d0d",
+          "aiPublicGuideTopic": "같은 코드에서 결과가 달라지는 확인",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 회귀 방지",
+          "section": "5.6 확인을 지우는 기준",
+          "primaryConcepts": [
+            "확인 정리"
+          ],
+          "secondaryConcepts": [
+            "확인 축적",
+            "확인 제외"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인 제거 기준을 현행 기대의 보호 여부로 정하고 제거 가능 전형을 세 가지로 분류한다. 제거 전 해당 기대의 잔존 보호 여부 확인과 계층 이동 대안을 절차로 제시한다.",
+          "aiAnalysisInputSha256": "73382ad076318fca17de7996fdd0f611153bf0b0a8f38ae15286ec495bb2933c",
+          "aiPublicGuideTopic": "남길 확인과 지울 확인을 가르기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 회귀 방지",
+          "section": "5.7 확인이 알려 주는 설계",
+          "primaryConcepts": [
+            "설계 신호"
+          ],
+          "secondaryConcepts": [
+            "확인의 효용",
+            "대체 축소"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인 작성의 난도를 대상 코드의 의존·결합 상태를 드러내는 신호로 해석한다. 신호를 확인 측 보정으로 은폐할 때 구조 문제가 잔존함을 지적하고 코드 조정을 우선 대응으로 제시한다.",
+          "aiAnalysisInputSha256": "7adf5b32d4a49290df087588ebbc300962d758354887f0032aab41041cddd633",
+          "aiPublicGuideTopic": "확인을 짜면서 드러나는 구조 문제",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "6장 한 기능을 확인으로 감싼 기록",
+          "section": "6.1 감쌀 기능과 상태",
+          "primaryConcepts": [
+            "사례 대상"
+          ],
+          "secondaryConcepts": [
+            "확인의 대상",
+            "통합 확인"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인 부재 상태의 기능 구성과 미검증 경로를 기술하고 변경 요구가 감싸기 작업의 계기가 된 경위를 제시한다. 현행 동작의 불확실성을 착수 근거로 밝힌다.",
+          "aiAnalysisInputSha256": "24121aa934cf359b296f6e8f88570ddcf3561d274f6b6abc234dca338d0008b8",
+          "aiPublicGuideTopic": "확인이 거의 없던 기능 하나",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "6장 한 기능을 확인으로 감싼 기록",
+          "section": "6.2 기대를 먼저 적기",
+          "primaryConcepts": [
+            "기대 정리"
+          ],
+          "secondaryConcepts": [
+            "확인의 대상",
+            "확인 제외"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "코드 독해에 앞서 이해관계자와 화면 문구에서 기대를 수집한 절차와 결과 수를 기술한다. 기대와 구현의 불일치 항목을 확인으로 노출시킨 처리를 제시한다.",
+          "aiAnalysisInputSha256": "8e5a0dfc104bf74aec09cf61cf15d9890255a6c99da7238fe3e0858448957219",
+          "aiPublicGuideTopic": "코드를 읽기 전에 기대를 모은 과정",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            37
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 한 기능을 확인으로 감싼 기록",
+          "section": "6.3 층을 나눈 기준",
+          "primaryConcepts": [
+            "층 배분"
+          ],
+          "secondaryConcepts": [
+            "확인의 층",
+            "대체 대상"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수집한 기대를 값 판정·저장 연계·외부 연동 기준으로 세 층에 배분한 과정과 각 층의 항목 수를 기술한다. 외부 연동 기대를 계약 검증과 대체물로 분할한 판단을 제시한다.",
+          "aiAnalysisInputSha256": "7af0054488854cd1ab936c452a03ff45771494397d3d4ca53bd91fc1bd6edea5",
+          "aiPublicGuideTopic": "어떤 기대를 어느 층에서 확인할지",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 한 기능을 확인으로 감싼 기록",
+          "section": "6.4 대체물을 만든 방식",
+          "primaryConcepts": [
+            "대체물 구성"
+          ],
+          "secondaryConcepts": [
+            "테스트 대체물",
+            "대체 착각"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계약 명세와 운영 기록을 함께 참조해 대체물의 응답 유형을 구성한 과정을 기술한다. 명세 외 장애 형태의 반영이 미처리 경로를 드러낸 결과를 제시한다.",
+          "aiAnalysisInputSha256": "ee7749a8c5fa33af3bae3631bc626996f8664dba2b3ff8f39b1a53138bcc748c",
+          "aiPublicGuideTopic": "환불 요청을 대신할 물건을 만든 과정",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 한 기능을 확인으로 감싼 기록",
+          "section": "6.5 통합 확인의 준비",
+          "primaryConcepts": [
+            "준비 구성"
+          ],
+          "secondaryConcepts": [
+            "통합 확인",
+            "확인 구조"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "통합 확인의 준비 코드 비대 문제와 공통 상태 구성 함수 도입 과정을 기술한다. 준비 분량을 구조 신호로 기록하되 이번 범위에서 구조 변경을 유예한 판단을 밝힌다.",
+          "aiAnalysisInputSha256": "bab6560c010e9b109bc322a8a3c50fc252b2c06ec20d5867da169b9f9649623d",
+          "aiPublicGuideTopic": "저장까지 붙이는 확인을 준비한 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 한 기능을 확인으로 감싼 기록",
+          "section": "6.6 확인이 드러낸 것",
+          "primaryConcepts": [
+            "발견 사항"
+          ],
+          "secondaryConcepts": [
+            "재현 확인",
+            "회귀"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인 도입 과정에서 발견된 네 가지 기존 결함과 재현 확인 선행 수정 절차를 기술한다. 확인 정비가 잠재 결함을 노출하는 효과를 사례로 제시한다.",
+          "aiAnalysisInputSha256": "b709e1af38df5e33ff46dbdfc74572b271a1d33f0e1e6d9a17ed9ada665059bd",
+          "aiPublicGuideTopic": "감싸는 동안 나온 문제들",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 한 기능을 확인으로 감싼 기록",
+          "section": "6.7 원래 하려던 변경",
+          "primaryConcepts": [
+            "변경 수행"
+          ],
+          "secondaryConcepts": [
+            "회귀",
+            "확인의 효용"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인 정비 후 목표 변경 수행 시 두 확인이 실패한 결과와 각각의 대응을 기술한다. 정비 비용을 단회 변경이 아닌 누적 변경과 대비해 평가할 것을 결론으로 제시한다.",
+          "aiAnalysisInputSha256": "ff647d0527de5cbd29eee7e7208c5acc20af9a8af82151fb761cf568579f2d9e",
+          "aiPublicGuideTopic": "확인을 갖춘 뒤 처음 요구를 처리한 과정",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "7장 확인 전략 판단",
+          "section": "7.1 얼마나 확인할 것인가",
+          "primaryConcepts": [
+            "확인 분량"
+          ],
+          "secondaryConcepts": [
+            "확인의 효용",
+            "확인 제외"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인 분량 결정을 기대 위반의 손해와 유지 비용의 비교로 정식화한다. 실행 비율 지표가 기대 검증 여부를 대변하지 못한다는 한계를 지적한다.",
+          "aiAnalysisInputSha256": "3c015b1a54c34d449482776f2c09b9dcfcf501f6bfdf0ee5ff06f720adbcf931",
+          "aiPublicGuideTopic": "확인의 양을 정하는 판단",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            3
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "7장 확인 전략 판단",
+          "section": "7.2 통과를 어떻게 읽을까",
+          "primaryConcepts": [
+            "통과 해석"
+          ],
+          "secondaryConcepts": [
+            "확인 분량",
+            "통과의 의미"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인 통과를 배포 판단의 부분 근거로 위치시키고 미검증 영역 식별의 필요를 제시한다. 실패 확인에 대한 허용 가능한 처리 방식을 세 가지로 한정한다.",
+          "aiAnalysisInputSha256": "48f15680cfb533d65ef94d1fe18071b7773a0cbc694711b0553a15e569aff9cd",
+          "aiPublicGuideTopic": "확인 결과를 판단으로 옮기는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": [
+            "green-is-not-proof"
+          ]
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 확인 전략 판단",
+          "section": "7.3 층을 다시 배분할 때",
+          "primaryConcepts": [
+            "층 재배분"
+          ],
+          "secondaryConcepts": [
+            "확인의 층",
+            "실행 시간"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인 계층 재배분의 착수 신호를 실행 시간 증가와 취약 확인 빈발로 제시한다. 기대별 최저 비용 계층 배치를 기준으로 하고 단일 이동 후 효과 측정을 절차로 규정한다.",
+          "aiAnalysisInputSha256": "9bf39779b690b61b2394f85fb834d21ab3bbfbee6ac707683a9dbae49b6c8683",
+          "aiPublicGuideTopic": "확인의 층 구성을 손보는 시점",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 확인 전략 판단",
+          "section": "7.4 확인 전략 점검 항목",
+          "primaryConcepts": [
+            "전략 점검 항목"
+          ],
+          "secondaryConcepts": [
+            "확인의 층",
+            "계약 검증"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인 전략 점검을 계층 배분·실행 시간·계약 공유·대체물 근거·안정성의 다섯 항목으로 정식화한다. 외부 연동 관련 두 항목의 누락 빈도를 함께 지적한다.",
+          "aiAnalysisInputSha256": "b04292877edfce397b3b1578f53cbc77bce69256939ab7c93d8e852969ce75e5",
+          "aiPublicGuideTopic": "설계를 살펴볼 때 차례로 확인할 목록",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            25
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 확인 전략 판단",
+          "section": "7.5 확인을 고치는 순서",
+          "primaryConcepts": [
+            "확인 개선 순서"
+          ],
+          "secondaryConcepts": [
+            "불안정 확인",
+            "실행 시간"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기존 확인 묶음의 개선 순서를 안정성·실행 시간·계층 배분·범위 보완으로 제시하고 선행 조건 관계를 설명한다. 신뢰와 속도 확보 전의 확인 추가가 역효과임을 지적한다.",
+          "aiAnalysisInputSha256": "cd952da477c924a3090a272b765e98edaed24160a242ad5de551dddbf5dd9d9c",
+          "aiPublicGuideTopic": "이미 있는 확인 묶음을 손볼 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 확인 전략 판단",
+          "section": "7.6 확인과 다른 안전 장치",
+          "primaryConcepts": [
+            "안전 장치 배치"
+          ],
+          "secondaryConcepts": [
+            "계약 검증",
+            "확인 제외"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인을 코드 검토·실행 시 검증·실패 경계·운영 관찰과 함께 배치하고 각 장치의 담당 영역을 구분한다. 확인의 강점을 기지 기대의 유지에, 약점을 미지 상황 대응에 둔다.",
+          "aiAnalysisInputSha256": "99a5eef84dc7697fb11724b97317a0d181a6aa405c55ca1ed992f76905430ee2",
+          "aiPublicGuideTopic": "확인이 맡을 자리와 맡지 않을 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            29
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 확인 전략 판단",
+          "section": "7.7 핵심 원칙 정리",
+          "primaryConcepts": [
+            "확인 원칙 요약"
+          ],
+          "secondaryConcepts": [
+            "확인의 대상",
+            "계약 검증"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체의 판단을 기대 식별과 최저 비용 계층 배치라는 두 물음으로 압축하고 각 기법을 그 수단으로 정리한다. 확인의 가치 척도를 개수가 아닌 보호 대상의 명시 가능성으로 규정한다.",
+          "aiAnalysisInputSha256": "1138af807ab16d541fc20e45f8ef38497586f1447736e3928ba385af2d601a0e",
+          "aiPublicGuideTopic": "이 책이 다룬 판단 기준의 요약",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 78,
       "title": "색인과 실행 계획: 쿼리 성능 진단",
       "pdfPath": "pdfs/book-078.pdf",

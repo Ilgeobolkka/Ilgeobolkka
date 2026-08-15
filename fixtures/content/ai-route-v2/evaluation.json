@@ -4063,6 +4063,128 @@
       ]
     },
     {
+      "caseId": "case-book-077",
+      "bookId": 77,
+      "purpose": "이 책을 소장하고 있는데, 무엇을 어느 층에서 확인하고 주고받는 약속을 어떻게 검증할지 깊이 정리하고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "확인의 층",
+        "단위 확인",
+        "테스트 대체물",
+        "통합 확인",
+        "계약 검증",
+        "회귀"
+      ],
+      "helpfulConcepts": [
+        "확인의 효용",
+        "단위 범위",
+        "대체물 종류",
+        "계약 공유",
+        "재현 확인"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 3
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 11
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 17
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 18
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 23
+        },
+        {
+          "beforePageNumber": 23,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 25
+        },
+        {
+          "beforePageNumber": 23,
+          "afterPageNumber": 30
+        },
+        {
+          "beforePageNumber": 30,
+          "afterPageNumber": 31
+        },
+        {
+          "beforePageNumber": 30,
+          "afterPageNumber": 32
+        }
+      ],
+      "irrelevantPageNumbers": [
+        38,
+        39,
+        40,
+        42,
+        43
+      ],
+      "duplicatePageGroups": [
+        [
+          5,
+          45
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        3,
+        4,
+        9,
+        10,
+        11,
+        16,
+        17,
+        18,
+        23,
+        24,
+        25,
+        30,
+        31,
+        32
+      ],
+      "allowedAlternativePageNumbers": [
+        5,
+        6,
+        8,
+        12,
+        14,
+        19,
+        26,
+        33
+      ]
+    },
+    {
       "caseId": "case-book-078",
       "bookId": 78,
       "purpose": "조회가 느린 원인을 어디서부터 봐야 할지 몰라서, 색인과 실행 계획과 반복 조회를 넓게 훑어보고 싶다",
