@@ -3317,6 +3317,124 @@
         14,
         24
       ]
+    },
+    {
+      "caseId": "case-book-084",
+      "bookId": 84,
+      "purpose": "지도를 구할 수 없는 숲에서 사흘을 걸을 계획이다. 무엇을 기준으로 방향을 잡고 어떤 지형지물을 기억에 걸어야 하는지, 갈림길에서 무엇을 보고 정하며 어디인지 모르게 되었을 때 어떻게 하는지, 그리고 잘 자리와 물을 어떻게 고르는지를 익히고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 15,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "방향 기준",
+        "지형지물",
+        "되짚기",
+        "갈림길 판단",
+        "조난 대응",
+        "야영지 선택",
+        "물 구하기"
+      ],
+      "helpfulConcepts": [
+        "지도 없이 걷기",
+        "걷는 속도",
+        "짐과 물",
+        "숲의 밤"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 15
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 18
+        },
+        {
+          "beforePageNumber": 18,
+          "afterPageNumber": 19
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 20
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 21
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 22
+        },
+        {
+          "beforePageNumber": 22,
+          "afterPageNumber": 23
+        }
+      ],
+      "irrelevantPageNumbers": [
+        42,
+        43,
+        46,
+        47,
+        48,
+        49
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          50
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        6,
+        7,
+        8,
+        10,
+        12,
+        14,
+        15,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "allowedAlternativePageNumbers": [
+        13,
+        16,
+        24
+      ]
     }
   ]
 }

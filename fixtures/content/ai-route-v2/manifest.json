@@ -40297,6 +40297,1122 @@
           "duplicateGroupKeys": []
         }
       ]
+    },
+    {
+      "bookId": 84,
+      "title": "지도 없는 숲길 사흘",
+      "pdfPath": "pdfs/book-084.pdf",
+      "pdfSha256": "b218f3134782d77676c8ac44e5e2dfd71e8af95b77c462b6ab721c2dc5ee675c",
+      "totalPageCount": 51,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 지도 없이 들어가기로 하다",
+          "section": "1.1 지도 없이",
+          "primaryConcepts": [
+            "지도 없이 걷기"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지도가 없는 조건에서의 보행이 위치 기반이 아니라 지형지물 간의 관계 기반으로 이루어진다는 차이를 밝히는 도입 페이지다. 종이 지도와 달리 머릿속의 관계는 지속적인 갱신을 요구한다는 점을 근거로 들고, 이 기술을 사흘간 적용한 기록이라는 책의 성격을 제시한다.",
+          "aiAnalysisInputSha256": "c43c9f574b57be45fbe385425e932aec8c4e98a248422b07d20ddeea469df70c",
+          "aiPublicGuideTopic": "종이를 두고 들어가기로 정한 까닭",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "reading-not-locating"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 지도 없이 들어가기로 하다",
+          "section": "1.1 지도 없이",
+          "primaryConcepts": [
+            "지도 없이 걷기"
+          ],
+          "secondaryConcepts": [
+            "방향 기준"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지도 없는 보행에 필요한 최소 정보를 세 가지로 정리한다. 수계의 배수 방향, 주 능선의 주향, 주요 지형지물의 이름과 순서이며, 이 정보가 한 문장으로 압축되어 현장 판단의 기준으로 작동한다는 점을 설명한다.",
+          "aiAnalysisInputSha256": "13bf0bd8e9510319fa70585e89a62c83af53e58a011b22598c51357a4232beb4",
+          "aiPublicGuideTopic": "들어가기 전에 알아야 하는 최소한",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 지도 없이 들어가기로 하다",
+          "section": "1.2 방향 기준",
+          "primaryConcepts": [
+            "방향 기준"
+          ],
+          "secondaryConcepts": [
+            "지도 없이 걷기"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "삼림 내부에서 사용 가능한 방향 기준을 신뢰도 순으로 제시한다. 배수 방향이 일정한 수계, 지형의 경사와 능선, 태양 위치 순이며, 청각으로도 확인 가능한 수계의 이점과 임관에 가려지는 태양의 한계를 각각 설명한다.",
+          "aiAnalysisInputSha256": "2a373cf69261eb95a2f9d0889de0483b99f56e0c5a5484d7f55ff1630ef60643",
+          "aiPublicGuideTopic": "숲 안에서 방향을 정하는 세 가지",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 지도 없이 들어가기로 하다",
+          "section": "1.2 방향 기준",
+          "primaryConcepts": [
+            "방향 기준"
+          ],
+          "secondaryConcepts": [
+            "지형지물",
+            "지도의 자리"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복수의 방향 기준이 불일치할 때의 처리 방법을 다룬다. 국지적 지형이 원인인 경우가 많아 일정 거리를 더 이동하면 해소된다는 점을 제시하고, 기준 간 우선순위를 사전에 정해 두어야 자의적 판단으로 흐르지 않는다고 설명한다.",
+          "aiAnalysisInputSha256": "b761b9f1aa4d81f2fca3f1f308980919fa5162203c5805c29daf9aff973ce834",
+          "aiPublicGuideTopic": "기준이 서로 어긋날 때",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 지도 없이 들어가기로 하다",
+          "section": "1.3 지형지물",
+          "primaryConcepts": [
+            "지형지물"
+          ],
+          "secondaryConcepts": [
+            "방향 기준"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지형지물의 선정 기준을 원거리 식별성, 유일성, 계절 불변성의 세 가지로 제시한다. 이 조건을 모두 만족하는 것이 대체로 지형 요소라는 점을 근거로 들고, 개별 기억이 아니라 순서로 기억해야 현재 위치 추정이 가능하다고 설명한다.",
+          "aiAnalysisInputSha256": "8bd2bce99ae4da9dd090cb45acf58fe8775196a4c9dceb474458e11146ee0eea",
+          "aiPublicGuideTopic": "기억에 걸어 둘 만한 것을 고르는 기준",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 지도 없이 들어가기로 하다",
+          "section": "1.3 지형지물",
+          "primaryConcepts": [
+            "지형지물"
+          ],
+          "secondaryConcepts": [
+            "방향 기준",
+            "되짚기"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기억의 기준점으로 채택할 지형지물과 배제할 대상을 두 열로 나누어 대비한 도표다. 세 가지 선정 조건의 충족 여부를 항목마다 표시해, 배제되는 대상이 어느 조건에서 탈락하는지 드러낸다.",
+          "aiAnalysisInputSha256": "f1812686c78e438d593f295764fcd4d3ce219ec66dfe5ff644381eff6dfcf085",
+          "aiPublicGuideTopic": "무엇을 기억에 걸어 두고 무엇을 버리는지 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 지도 없이 들어가기로 하다",
+          "section": "1.4 걷는 속도",
+          "primaryConcepts": [
+            "걷는 속도"
+          ],
+          "secondaryConcepts": [
+            "지도 없이 걷기"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "거리 측정이 불가능한 조건에서 시간을 이동량의 단위로 사용하는 방법을 다룬다. 지형별 보행 속도를 사전에 파악하고 하중에 따른 감속을 현장에서 보정하는 절차를 제시하며, 시간 단위가 복귀 계산에 그대로 재사용된다는 이점을 밝힌다.",
+          "aiAnalysisInputSha256": "31b1e6d5f9ee7333abb2ae300e5a1edff30f30b92dfd0a1a444d1e555869a600",
+          "aiPublicGuideTopic": "거리 대신 시간으로 재기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 지도 없이 들어가기로 하다",
+          "section": "1.4 걷는 속도",
+          "primaryConcepts": [
+            "걷는 속도"
+          ],
+          "secondaryConcepts": [
+            "하루 배분",
+            "짐과 물"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일일 보행 가능 시간을 임내의 조도 조건에 맞춰 산정하는 방법을 제시한다. 하중과 피로에 따라 일자별 보행 능력이 달라진다는 점을 근거로 최장 구간을 둘째 날에 배치하고, 어두워지면 지형지물 식별이 불가능해져 판단 자체가 정지한다는 이유로 정해진 시간을 지켜야 한다고 설명한다.",
+          "aiAnalysisInputSha256": "38093b82c9a420dc695bd20fab2b4d6fa982189d2b385002bb63da237796c08e",
+          "aiPublicGuideTopic": "하루에 걸을 수 있는 시간",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "1장 지도 없이 들어가기로 하다",
+          "section": "1.5 짐과 물",
+          "primaryConcepts": [
+            "짐과 물"
+          ],
+          "secondaryConcepts": [
+            "걷는 속도"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다일 보행에서 휴대 물품의 구성이 변한다는 점을 다룬다. 숙영 장비와 여벌 의류가 절반을 차지하고 수분이 최대 중량 요소라는 분석을 제시하며, 급수 가능 경로를 선택해 물의 휴대량을 줄이는 방법과 물품 선별 기준을 설명한다.",
+          "aiAnalysisInputSha256": "bfbc0bae32d7b5f82bc202f3a980c24c5d547438072585ba063549788a56ecc2",
+          "aiPublicGuideTopic": "사흘치를 지고 걷는다는 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "1장 지도 없이 들어가기로 하다",
+          "section": "1.5 짐과 물",
+          "primaryConcepts": [
+            "짐과 물"
+          ],
+          "secondaryConcepts": [
+            "물 구하기",
+            "젖음 관리"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "습윤 환경에서 휴대품을 방수 필요성에 따라 분류하는 방법을 제시한다. 건조 의류, 발화 도구, 식량을 개별 포장해 동시 손실을 막는 원칙과, 젖어도 되는 품목을 미리 정해 도하 시 판단을 단순화하는 효과를 설명한다.",
+          "aiAnalysisInputSha256": "e689737f23e69c4e2c613e1f72081d53d8a7a54d27f9bc87554f55b2fbaceb1c",
+          "aiPublicGuideTopic": "젖으면 안 되는 것과 젖어도 되는 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 방향을 잃지 않는 법",
+          "section": "2.1 되짚기",
+          "primaryConcepts": [
+            "되짚기"
+          ],
+          "secondaryConcepts": [
+            "지형지물",
+            "걷는 속도"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복귀 가능성을 상시 유지하는 것을 최우선 규칙으로 제시한다. 지형지물이 진행 방향과 역방향에서 다르게 보인다는 점을 근거로 통과 시마다 후방을 확인하는 절차를 설명하고, 동행자 간 구두 공유로 기억의 중복을 확보하는 방법을 덧붙인다.",
+          "aiAnalysisInputSha256": "205cbf6ca350debbb2c252f676c7adf215b6163aa4175a299ab41de504fb8bdf",
+          "aiPublicGuideTopic": "돌아 나올 수 있게 걷는 방법",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 방향을 잃지 않는 법",
+          "section": "2.1 되짚기",
+          "primaryConcepts": [
+            "되짚기"
+          ],
+          "secondaryConcepts": [
+            "지형지물",
+            "갈림길 판단"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 지형지물이 진행 방향과 복귀 방향에서 서로 다른 외형으로 인식된다는 점을 두 개의 시점 그림으로 대비한 도표다. 통과 시점에 후방을 확인하는 짧은 동작을 화살표로 표시해 복귀 정보를 그 자리에서 확보한다는 절차를 보인다.",
+          "aiAnalysisInputSha256": "71a8c829830bc035d2e88ee2d3b8fea73431a421dbe14af9d9195d0604b3bc7c",
+          "aiPublicGuideTopic": "같은 바위가 갈 때와 올 때 다르게 보이는 것을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 방향을 잃지 않는 법",
+          "section": "2.2 갈림길 판단",
+          "primaryConcepts": [
+            "갈림길 판단"
+          ],
+          "secondaryConcepts": [
+            "되짚기",
+            "방향 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자연 지형에서 형성되는 분기점의 판단 절차를 다룬다. 세 가지 방향 기준의 일치 여부로 결정하고, 통행 난이도를 기준으로 삼으면 저지대로 유도된다는 점을 경고하며, 선택 지점에 표식을 남겨 복귀 시 재판단을 피하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "640faf4393b32dd1f749aaa0021b4f1d8776e9f010a18a7e5bb8f167bff1f5fe",
+          "aiPublicGuideTopic": "길이 갈라지는 자리에서 정하는 법",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 방향을 잃지 않는 법",
+          "section": "2.2 갈림길 판단",
+          "primaryConcepts": [
+            "갈림길 판단"
+          ],
+          "secondaryConcepts": [
+            "흔적 관리",
+            "되짚기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인위적 표식의 형식과 회수 규칙을 다룬다. 자연 상태와 구분되고 풍화에 견디는 두 가지 형식만 사용하는 이유, 복귀 시 반드시 제거해야 하는 이유를 타인의 오독 사례와 함께 제시한다.",
+          "aiAnalysisInputSha256": "92b96fe0f708af701421a4cd86423094663c7ab0237545d85aa889354efc2fbd",
+          "aiPublicGuideTopic": "표시를 남기고 지우는 규칙",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 방향을 잃지 않는 법",
+          "section": "2.3 능선과 계곡",
+          "primaryConcepts": [
+            "능선과 계곡"
+          ],
+          "secondaryConcepts": [
+            "지형지물",
+            "방향 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "능선 경로와 계곡 경로의 특성을 방향 유지, 급수, 기상 노출 측면에서 비교한다. 주간에는 능선에서 방향을 확보하고 야간에는 계곡에서 물을 얻는 방식으로 두 경로를 결합한 실제 운용을 제시한다.",
+          "aiAnalysisInputSha256": "1b13e7ffe4001fef297e1f0fa15151c0c7d8258771ef864003976ecb5c293578",
+          "aiPublicGuideTopic": "높은 데로 갈지 낮은 데로 갈지",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "2장 방향을 잃지 않는 법",
+          "section": "2.3 능선과 계곡",
+          "primaryConcepts": [
+            "능선과 계곡"
+          ],
+          "secondaryConcepts": [
+            "걷는 속도",
+            "야영지 선택"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "능선과 계곡 간 고도 이동에 소요되는 시간을 실제 보행 시간에서 차감해야 한다는 점을 다룬다. 상승과 하강 모두에서 소요가 커진다는 이유를 들어 일일 고도 이동 횟수를 제한하고, 피로와 조도를 고려해 오전에 상승하는 배치를 권한다.",
+          "aiAnalysisInputSha256": "1b9b0a7e94a21c74c8cffea27018ed07327d54a525d10a0fad6efcba0ed0233d",
+          "aiPublicGuideTopic": "오르내리는 데 드는 값",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "2장 방향을 잃지 않는 법",
+          "section": "2.4 조난 대응",
+          "primaryConcepts": [
+            "조난 대응"
+          ],
+          "secondaryConcepts": [
+            "갈림길 판단",
+            "방향 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "위치 상실 상황의 대응 절차를 정지, 최종 확인 지점 회상, 경과 시간에 의한 범위 추정, 역행 순으로 제시한다. 전진 탐색보다 복귀가 확실한 이유를 설명하고 실제 사례에서 표식 지점까지 되돌아가 재출발한 경과를 기록한다.",
+          "aiAnalysisInputSha256": "169f22d15647d6aea4d2b2a34d0fb194a659a0ff3f13a185e08070d8969608ee",
+          "aiPublicGuideTopic": "지금 어디인지 모르게 되었을 때",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "2장 방향을 잃지 않는 법",
+          "section": "2.4 조난 대응",
+          "primaryConcepts": [
+            "조난 대응"
+          ],
+          "secondaryConcepts": [
+            "물 구하기",
+            "단독 산행 위험"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "역행으로도 위치를 회복하지 못한 경우의 대안을 제시한다. 목표를 목적지 도달에서 이탈로 전환하고 수계를 따라 하류로 이동하는 방법이며, 보행 조건이 나쁘고 시간이 더 걸리므로 조도가 남아 있을 때 결정해야 한다는 조건을 밝힌다.",
+          "aiAnalysisInputSha256": "cf94d6d3f5136c5ed51091fb081abc64772cf121a4c329670325a30e13e8d8c7",
+          "aiPublicGuideTopic": "되짚어도 찾지 못할 때",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 하룻밤을 나는 자리",
+          "section": "3.1 야영지 선택",
+          "primaryConcepts": [
+            "야영지 선택"
+          ],
+          "secondaryConcepts": [
+            "짐과 물",
+            "능선과 계곡"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "야영지 선정의 네 가지 조건과 결정 시점을 제시한다. 평탄성, 수원과의 적정 거리, 상부 낙하물 위험, 풍향 노출을 각각 설명하고, 조건이 모두 충족되는 지점이 드물어 우선순위에 따라 타협한다는 실무를 밝힌다.",
+          "aiAnalysisInputSha256": "52090e5829215ba89c4abc0d08dcd8956100ca432eeb5e60447a36c61a53f65f",
+          "aiPublicGuideTopic": "잘 자리를 고르는 조건",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 하룻밤을 나는 자리",
+          "section": "3.1 야영지 선택",
+          "primaryConcepts": [
+            "야영지 선택"
+          ],
+          "secondaryConcepts": [
+            "물 구하기",
+            "숲의 밤"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "야영지의 네 가지 선정 조건을 충족한 지점과 그렇지 않은 지점을 좌우로 대비한 도표다. 각 문제 지점에 표식을 얹어 어떤 조건이 결여되었는지 드러내고, 모든 조건을 만족하기 어렵다는 점을 함께 제시한다.",
+          "aiAnalysisInputSha256": "b28759eafa3a4c73c655cb55c74715f8f4cb05f2034f4a0c808246c5f196bbe5",
+          "aiPublicGuideTopic": "좋은 자리와 나쁜 자리를 네 조건으로 견준 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 하룻밤을 나는 자리",
+          "section": "3.2 물 구하기",
+          "primaryConcepts": [
+            "물 구하기"
+          ],
+          "secondaryConcepts": [
+            "야영지 선택",
+            "방향 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "산림 내 취수 지점의 판단 기준을 다룬다. 유속과 지형에 따른 수질 차이, 상류 오염원 확인 절차, 가열 처리의 필요성을 각각 제시하고, 현지인과 외지인의 내성 차이를 이유로 처리 기준이 달라진다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "dd96cdb1ec8ddbd7b876d435769599698a8ecca704f483d0924ad41d3dc59a93",
+          "aiPublicGuideTopic": "숲에서 물을 얻는 자리",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 하룻밤을 나는 자리",
+          "section": "3.2 물 구하기",
+          "primaryConcepts": [
+            "물 구하기"
+          ],
+          "secondaryConcepts": [
+            "짐과 물",
+            "하루 배분"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다음 취수 지점까지의 간격을 시간 기준으로 관리하는 방법을 제시한다. 경과 시간에 따라 탐색 개시, 절수, 목표 전환으로 단계를 나누고, 능선 구간 진입 전 보충을 원칙으로 삼으며 수원이 존재할 만한 지형적 단서를 함께 정리한다.",
+          "aiAnalysisInputSha256": "38ebf2b31bb1184c7fd30c95139fc8ad4db05e51a33a6b225b10f10bb4d49b35",
+          "aiPublicGuideTopic": "다음 물까지의 거리를 재기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "3장 하룻밤을 나는 자리",
+          "section": "3.3 숲의 밤",
+          "primaryConcepts": [
+            "숲의 밤"
+          ],
+          "secondaryConcepts": [
+            "야영지 선택"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "임내 야간의 길이와 그 시간의 관리 방법을 다룬다. 익일 필요 물품의 사전 인출, 야간 소음에 대한 적응 과정을 제시하고, 수면 부족이 다음 날 판단력 저하로 이어진다는 관찰을 실제 사례와 연결한다.",
+          "aiAnalysisInputSha256": "e094de36db7481887a0fc8855382ff4dd9d22a68936e48213a62e1bf9d3a3b1a",
+          "aiPublicGuideTopic": "해가 지고 나서의 몇 시간",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "3장 하룻밤을 나는 자리",
+          "section": "3.3 숲의 밤",
+          "primaryConcepts": [
+            "숲의 밤"
+          ],
+          "secondaryConcepts": [
+            "젖음 관리",
+            "몸의 신호"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "야간 체온 유지의 핵심이 보온보다 습기 제거에 있다는 점을 다룬다. 도착 직후 환복을 최우선으로 두는 순서, 임내에서 건조를 기대할 수 없다는 조건, 말단부터 덮는 방법을 각각 제시한다.",
+          "aiAnalysisInputSha256": "a5070c066973da476cb0d04d937aa11b64d816f8827e394cfc4a506f4a7c594d",
+          "aiPublicGuideTopic": "밤에 몸을 지키는 순서",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "3장 하룻밤을 나는 자리",
+          "section": "3.4 흔적 관리",
+          "primaryConcepts": [
+            "흔적 관리"
+          ],
+          "secondaryConcepts": [
+            "야영지 선택",
+            "갈림길 판단"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "야영지 원상 복구의 이유를 예절과 안전 양면에서 설명한다. 잔존 흔적이 후속 이용자에게 부적절한 신호로 읽힌다는 점을 지적하고, 화기 자리 정리, 식생 복원, 잔반 반출이라는 세 절차와 매립이 초래하는 문제를 제시한다.",
+          "aiAnalysisInputSha256": "53cc5635d5f5bc9144eb0f7f83446481e24a026793c4865da54817d6c375af7a",
+          "aiPublicGuideTopic": "머문 자리를 되돌려 놓기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "3장 하룻밤을 나는 자리",
+          "section": "3.4 흔적 관리",
+          "primaryConcepts": [
+            "흔적 관리"
+          ],
+          "secondaryConcepts": [
+            "숲의 밤",
+            "적용 한계"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "야영 중 화기 사용 여부의 판단 기준을 제시한다. 체온 회복과 음용수 처리라는 두 경우로 한정하고, 연료 수집 시간과 감시 부담과 잔존 흔적이라는 비용을 근거로 든다. 계절에 따라 사용 자체가 금지된다는 조건도 함께 밝힌다.",
+          "aiAnalysisInputSha256": "0923156b9317b656e3bad212fff0a2d854fbfc00556ffff830542d30e473fb53",
+          "aiPublicGuideTopic": "불을 피울지 정하는 기준",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 사흘을 걷는 몸",
+          "section": "4.1 하루 배분",
+          "primaryConcepts": [
+            "하루 배분"
+          ],
+          "secondaryConcepts": [
+            "걷는 속도"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일일 시간 배분을 철수, 보행, 설영, 취식으로 구분해 제시한다. 설영 소요를 과소평가하면 야간 작업이 발생한다는 문제를 사례로 들고, 정기적인 휴식 간격을 정해 두어 과부하를 막는 방법을 설명한다.",
+          "aiAnalysisInputSha256": "7a898ca5760f36d3bb76e84cd1827a6323395ae845632aab1eb62c7c03634e25",
+          "aiPublicGuideTopic": "하루를 어떻게 나누어 쓰는가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 사흘을 걷는 몸",
+          "section": "4.1 하루 배분",
+          "primaryConcepts": [
+            "하루 배분"
+          ],
+          "secondaryConcepts": [
+            "걷는 속도",
+            "야영지 선택"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사흘간의 일일 시간 배분을 동일한 시간 축 위에 세 줄로 배치한 도표다. 설영 구간이 일몰선을 넘는 첫날과 그렇지 않은 이후 이틀을 대비해, 보행 종료 시각의 조정이 야간 작업을 없앴다는 점을 보인다.",
+          "aiAnalysisInputSha256": "e22e8801e9db89d3cc4cd744aee76a6c8e16bf1048240b5d2fda5d4b4c583c76",
+          "aiPublicGuideTopic": "사흘 동안 하루가 어떻게 나뉘었는지 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 사흘을 걷는 몸",
+          "section": "4.2 몸의 신호",
+          "primaryConcepts": [
+            "몸의 신호"
+          ],
+          "secondaryConcepts": [
+            "하루 배분"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "피로의 전조를 보행 습관, 발화량, 판단력 순으로 제시한다. 판단력 저하가 가장 늦게 나타나고 지도 없는 보행에서 가장 위험하다는 점을 강조하고, 신호 감지 시 휴식과 조기 종료로 대응한 실제 판단을 기록한다.",
+          "aiAnalysisInputSha256": "3b0531cc544789941970eea0b9dc756a697462f27ec42a5c07d18182884c4d33",
+          "aiPublicGuideTopic": "지치기 전에 알아채는 법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 사흘을 걷는 몸",
+          "section": "4.2 몸의 신호",
+          "primaryConcepts": [
+            "몸의 신호"
+          ],
+          "secondaryConcepts": [
+            "젖음 관리",
+            "단독 산행 위험"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동행 보행에서 상호 점검이 자기 상태 인식의 한계를 보완한다는 점을 다룬다. 정기적으로 확인하는 세 가지 항목을 제시하고, 현재 위치 추정이 서로 다를 때 즉시 검증하는 절차가 경로 이탈을 조기에 드러낸 사례를 기록한다.",
+          "aiAnalysisInputSha256": "24d573d2d437a82f9fdab4bada84c80177fe23c5c4f4d209b520ecb577c8ef09",
+          "aiPublicGuideTopic": "둘이 걸을 때 서로 보는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "4장 사흘을 걷는 몸",
+          "section": "4.3 젖음 관리",
+          "primaryConcepts": [
+            "젖음 관리"
+          ],
+          "secondaryConcepts": [
+            "짐과 물"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "강우 시 임내 조건의 변화와 대응을 다룬다. 수관 차단이 일시적이라는 점, 강우 초기에 장비를 정비하고 진행 여부를 결정하는 절차, 지면 상태를 기준으로 고도 이동을 보류하는 판단, 젖은 상태에서의 휴식 방식을 각각 제시한다.",
+          "aiAnalysisInputSha256": "08b628b27b9ddaadc4e40ff54ced57095ad1c690bb7b518287f76f3da2386777",
+          "aiPublicGuideTopic": "비가 오는 날의 숲",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "4장 사흘을 걷는 몸",
+          "section": "4.3 젖음 관리",
+          "primaryConcepts": [
+            "젖음 관리"
+          ],
+          "secondaryConcepts": [
+            "숲의 밤",
+            "야영지 선택"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "강우 이후의 조건 변화를 보행 속도, 지형지물 식별, 야영지 선정의 세 측면에서 다룬다. 수량 변화로 기준 지형의 외형이 달라져 위치 판단이 어긋난 사례를 제시하고, 수량과 무관한 특징으로 재확인하는 방법과 야영 고도를 높이는 대응을 설명한다.",
+          "aiAnalysisInputSha256": "74e02315316470a42d5a2880f68b69f6b700bd5d57a6b262756f4b0699a87aaa",
+          "aiPublicGuideTopic": "비 온 뒤의 하루",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "4장 사흘을 걷는 몸",
+          "section": "4.4 복귀 계획",
+          "primaryConcepts": [
+            "복귀 계획"
+          ],
+          "secondaryConcepts": [
+            "되짚기",
+            "하루 배분"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복귀 시점과 경로를 사전에 확정하는 계획 방식을 다룬다. 회귀 지점을 미리 정해 시간 초과를 방지하는 방법, 진입 경로로 되돌아 나오는 편이 안전한 이유, 외부에 복귀 예정 시각을 알리는 조치를 각각 제시한다.",
+          "aiAnalysisInputSha256": "217f8094ed24054998aefb3d25f09d0edb6ffd07c94c5b6844d409ae9e707b94",
+          "aiPublicGuideTopic": "돌아 나오는 날을 미리 정하기",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "4장 사흘을 걷는 몸",
+          "section": "4.4 복귀 계획",
+          "primaryConcepts": [
+            "복귀 계획"
+          ],
+          "secondaryConcepts": [
+            "조난 대응",
+            "몸의 신호"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일정 축소 결정의 시점과 기준을 제시한다. 잔여 수분과 수면 상태라는 두 가지 객관적 기준을 사전에 정해 피로한 상태에서의 논쟁을 방지하는 방법을 설명하고, 실제로 목표를 줄여 예정 시각에 복귀한 사례를 기록한다.",
+          "aiAnalysisInputSha256": "1cb7083b71cb17e5e3c70a8c09f0e3e2b3b75e0dd8c3b5d004a526b5ed3aea36",
+          "aiPublicGuideTopic": "계획을 줄이기로 정하는 자리",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 삼일숲의 사흘",
+          "section": "5.1 첫날 기록",
+          "primaryConcepts": [
+            "첫날 기록"
+          ],
+          "secondaryConcepts": [
+            "갈림길 판단",
+            "지형지물"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "첫날의 실제 소요 시간과 예상의 차이를 기록한다. 하중 조건이 다른 현지인의 기준을 그대로 적용해 생긴 오차와 그 보정 방법을 제시하고, 통과 지점에서 역방향 외형을 기록해 둔 것이 이후 복귀에 사용되었다는 결과를 밝힌다.",
+          "aiAnalysisInputSha256": "10bc1adbd900f398094732326833730887320dfe96378d57a2bce7ba0c832edc",
+          "aiPublicGuideTopic": "갈림바위까지 걸은 첫날",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 삼일숲의 사흘",
+          "section": "5.1 첫날 기록",
+          "primaryConcepts": [
+            "첫날 기록"
+          ],
+          "secondaryConcepts": [
+            "지형지물",
+            "복귀 계획"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사흘간의 경로를 하나의 선으로 나타내고 주요 지형지물과 야영 지점을 그 위에 배치한 도표다. 경로를 이탈했다 복귀한 구간을 옅은 선으로 따로 표시해, 계획된 이동과 실제 이동의 차이를 함께 보인다.",
+          "aiAnalysisInputSha256": "5621678e9fed489b67e720b9fb96403ade373a43544827e67b58e4f00a158ef2",
+          "aiPublicGuideTopic": "사흘 동안 지나온 지형지물과 잔 자리를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 삼일숲의 사흘",
+          "section": "5.2 둘째 날 기록",
+          "primaryConcepts": [
+            "둘째 날 기록"
+          ],
+          "secondaryConcepts": [
+            "조난 대응",
+            "물 구하기"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "경로 이탈이 발생한 과정과 복구를 시간순으로 기록한다. 통행 난이도를 기준으로 분기를 선택한 판단 오류를 원인으로 지적하고, 정지 후 최종 확인 지점까지 역행해 표식으로 경로를 회복한 경위를 제시한다.",
+          "aiAnalysisInputSha256": "6711d6a4f6a0e44a034be525782d202bf48f5d8439f8f2c823420447335f4843",
+          "aiPublicGuideTopic": "마른개천에서 길을 잃은 오후",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "5장 삼일숲의 사흘",
+          "section": "5.2 둘째 날 기록",
+          "primaryConcepts": [
+            "둘째 날 기록"
+          ],
+          "secondaryConcepts": [
+            "몸의 신호",
+            "하루 배분"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이탈의 근본 원인을 피로와 수면 부족으로 진단한 과정을 기록한다. 분기 판단을 구두로 수행하도록 절차를 바꾸고 설영 시각을 앞당긴 두 가지 조치를 제시하며, 중간 시점의 점검이 남은 일정의 성패를 좌우했다고 정리한다.",
+          "aiAnalysisInputSha256": "96f419ba5cc10153a7300102437c0c4fbfdc0cadd39b5a6d43730ed62a56be56",
+          "aiPublicGuideTopic": "그날 저녁에 고친 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "5장 삼일숲의 사흘",
+          "section": "5.3 셋째 날 기록",
+          "primaryConcepts": [
+            "셋째 날 기록"
+          ],
+          "secondaryConcepts": [
+            "능선과 계곡",
+            "복귀 계획"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "능선 구간의 보행 조건과 회귀 지점에서의 판단을 기록한다. 개방된 시야로 방향 기준이 회복된 상태, 사전에 정한 반환 시점을 지킨 결정, 축적된 복귀 정보 덕분에 귀로가 단축된 결과를 각각 제시한다.",
+          "aiAnalysisInputSha256": "67f8ee7d9ada79f55ed6fcdc14570de668df2741ea47be7215936b0e4ffa184f",
+          "aiPublicGuideTopic": "능선길에 올라 돌아선 자리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "5장 삼일숲의 사흘",
+          "section": "5.3 셋째 날 기록",
+          "primaryConcepts": [
+            "셋째 날 기록"
+          ],
+          "secondaryConcepts": [
+            "되짚기",
+            "흔적 관리"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복귀 과정에서 표식과 야영 흔적을 제거한 경위를 기록한다. 제거 작업이 경로 재확인의 기능을 겸한다는 점을 지적하고, 강우 이후 흔적이 깊어져 복구에 시간이 더 든 사례를 덧붙인다.",
+          "aiAnalysisInputSha256": "f6e9143f69ca78fe3bc3fb9757d7826eb527fe67cc10aded6e55e63cad9ce91d",
+          "aiPublicGuideTopic": "나오면서 지운 것들",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "5장 삼일숲의 사흘",
+          "section": "5.4 여정 정리",
+          "primaryConcepts": [
+            "여정 정리"
+          ],
+          "secondaryConcepts": [
+            "첫날 기록",
+            "지형지물"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사흘간의 이동을 아홉 개의 지점과 구간 시간으로 압축한 결과를 제시한다. 시간 기반 기록이 보행 속도에 종속되어 타인에게 이전되지 않는다는 성질을 밝히고, 재방문 시의 효용을 이 기록의 한계이자 용도로 정리한다.",
+          "aiAnalysisInputSha256": "6967e20a4220a9bd7e0893ab634b4c00b8bf6ce833dc00ecec56b388b4832a45",
+          "aiPublicGuideTopic": "사흘을 한 장으로 줄이기",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "5장 삼일숲의 사흘",
+          "section": "5.4 여정 정리",
+          "primaryConcepts": [
+            "여정 정리"
+          ],
+          "secondaryConcepts": [
+            "몸의 신호",
+            "복귀 계획"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계획 대비 실제 결과를 항목별로 대조하고 유지된 것이 일정이 아니라 사전 규칙이었다는 점을 밝힌다. 규칙의 존재가 이탈의 손실을 제한했다는 인과를 제시하고, 계획의 핵심을 목적지 설정이 아니라 규칙 설정으로 재정의한다.",
+          "aiAnalysisInputSha256": "5ee3d653b493870490c8ad973e4bf806a56e438bfbaf7def04c31d0cfb844c98",
+          "aiPublicGuideTopic": "사흘 동안 어긋난 것과 지킨 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 이렇게 걸으면 안 되는 때",
+          "section": "6.1 적용 한계",
+          "primaryConcepts": [
+            "적용 한계"
+          ],
+          "secondaryConcepts": [
+            "조난 대응",
+            "방향 기준"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지형지물 기반 보행법이 적용되지 않는 삼림 조건을 세 가지로 제시한다. 배수 방향이 일정하지 않은 지형, 능선이 발달하지 않은 평탄지, 식별 가능한 기준점이 없는 균질한 임상이며, 마지막 경우에는 진입 자체를 피해야 한다고 밝힌다.",
+          "aiAnalysisInputSha256": "b0dc568549fbce6f4a11cc05e17e3da439512d5c37f2a5b50a221fb1b62f3a6f",
+          "aiPublicGuideTopic": "이 방법이 통하지 않는 숲",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 이렇게 걸으면 안 되는 때",
+          "section": "6.1 적용 한계",
+          "primaryConcepts": [
+            "적용 한계"
+          ],
+          "secondaryConcepts": [
+            "방향 기준",
+            "지도의 자리"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지형지물 기반 보행이 성립하는 조건과 성립하지 않는 조건을 세 항목씩 좌우로 대비한 도표다. 수계, 지형 단면, 기준점의 유무를 각각 그림으로 표시해 방법의 적용 범위를 시각적으로 구분한다.",
+          "aiAnalysisInputSha256": "0650c2438add121ec3d596eaf473155a8bed87151dcb1006877f00fd381f2d56",
+          "aiPublicGuideTopic": "이 방법이 통하는 숲과 통하지 않는 숲을 견준 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 이렇게 걸으면 안 되는 때",
+          "section": "6.2 단독 산행 위험",
+          "primaryConcepts": [
+            "단독 산행 위험"
+          ],
+          "secondaryConcepts": [
+            "몸의 신호",
+            "조난 대응"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단독 보행에서 증가하는 위험을 자기 상태 인식의 결여와 부상 시 대응 불가로 나누어 제시한다. 동행이 있었기에 경로 이탈을 조기에 발견한 사례를 근거로 들고, 단독 시 추가해야 할 세 가지 안전 조치를 제안한다.",
+          "aiAnalysisInputSha256": "abdb00fb3ccd06b001b2b696e6450b20398c35db94514267b8d9d501af7cdddf",
+          "aiPublicGuideTopic": "혼자 걸을 때 달라지는 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "6장 이렇게 걸으면 안 되는 때",
+          "section": "6.2 단독 산행 위험",
+          "primaryConcepts": [
+            "단독 산행 위험"
+          ],
+          "secondaryConcepts": [
+            "복귀 계획",
+            "숲의 밤"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "무지도 보행이 성립하는 공간적 범위를 자력 복귀 가능 시간으로 규정한다. 하루 이상 깊이에서는 장비와 통신 수단이 별도로 필요하다는 점을 지적하고, 이 제한을 정해 두면 다일 일정도 제한 범위 안에서 구성된다는 이점을 설명한다.",
+          "aiAnalysisInputSha256": "4d65f8878de8e8b7c7846b5204ede5d8f96119cd3c2eb58ab3bb0cb73cd83265",
+          "aiPublicGuideTopic": "도와줄 사람이 없는 거리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "6장 이렇게 걸으면 안 되는 때",
+          "section": "6.3 지도의 자리",
+          "primaryConcepts": [
+            "지도의 자리"
+          ],
+          "secondaryConcepts": [
+            "방향 기준",
+            "지도 없이 걷기"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지도가 필수적인 조건을 초행의 대규모 산림, 자력 복귀 불가 깊이, 적설기로 제시한다. 지도 소지 여부와 무관하게 지형지물 기억과 복귀 가능성 유지가 필요하다는 점을 밝히고, 두 방법이 대체 관계가 아니라 보완 관계라고 정리한다.",
+          "aiAnalysisInputSha256": "b7051dd325acded47769ce2373e0e8d37ef72c45a16a73d063bd840112dbbc36",
+          "aiPublicGuideTopic": "지도를 가져가야 할 때",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "6장 이렇게 걸으면 안 되는 때",
+          "section": "6.3 지도의 자리",
+          "primaryConcepts": [
+            "지도의 자리"
+          ],
+          "secondaryConcepts": [
+            "적용 한계",
+            "여정 정리"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지도 사용이 주변 관찰의 동기를 약화시키고 경로 선택을 도상 노선에 종속시킨다는 대가를 지적한다. 두 방식이 만들어 내는 경로가 다르다는 점을 밝히고, 현장에서만 얻을 수 있는 관찰의 성격으로 책의 기록 범위를 정리한다.",
+          "aiAnalysisInputSha256": "0014825f85fd1ab90c28c0811f4641ee19dd7ed248294d3cfee7439f1e93cd2b",
+          "aiPublicGuideTopic": "지도를 보면 잃는 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 결론: 숲을 읽는 일",
+          "section": "7.1 숲을 읽는 일",
+          "primaryConcepts": [
+            "숲에서 읽기"
+          ],
+          "secondaryConcepts": [
+            "지도 없이 걷기",
+            "지형지물"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체의 명제를 다시 진술하는 결론 도입 페이지다. 무지도 보행이 지형지물 간 관계망을 축적하는 작업이라는 점을 정리하고, 그 결과가 해당 지역에 한정되며 이전 가능한 것은 구축 방법뿐이라는 한계를 함께 밝힌다.",
+          "aiAnalysisInputSha256": "0b6beb1a74c4281aa4ddff61b7aaabeb60a4dc3dba9310c4384504e3680ab617",
+          "aiPublicGuideTopic": "위치를 찾는 대신 관계를 세우는 일",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "reading-not-locating"
+          ]
+        },
+        {
+          "pageNumber": 51,
+          "chapter": "7장 결론: 숲을 읽는 일",
+          "section": "7.1 숲을 읽는 일",
+          "primaryConcepts": [
+            "숲에서 읽기"
+          ],
+          "secondaryConcepts": [
+            "복귀 계획",
+            "되짚기"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다른 지역에 적용할 수 있도록 사전 준비와 현장 습관을 네 가지로 압축해 제시한다. 배수 방향 확인, 지형지물의 순서 암기, 복귀 시각 통보, 통과 시 후방 확인이며 마지막 항목이 실행하기 가장 어렵고 가장 결정적이라는 점을 강조한다.",
+          "aiAnalysisInputSha256": "ce3ba3766ed3ad93b05e0e47f32a637de246caf8f83bec62be25df5c6d069cb4",
+          "aiPublicGuideTopic": "다음 숲에 들어가기 전에",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            50
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
     }
   ]
 }
