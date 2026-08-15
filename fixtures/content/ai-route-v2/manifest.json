@@ -46264,6 +46264,1105 @@
       ]
     },
     {
+      "bookId": 73,
+      "title": "재현과 원인 격리: 디버깅 방법론",
+      "pdfPath": "pdfs/book-073.pdf",
+      "pdfSha256": "a922012522dbf623f6ed8dcb80de8cebd398b42a4650d6b8ffa80a0bd544a7c0",
+      "totalPageCount": 50,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "문제 재현과 원인 격리를 다루는 장과 절의 구성",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 문제를 문제로 만들기",
+          "section": "1.1 증상과 원인의 구분",
+          "primaryConcepts": [
+            "증상과 원인"
+          ],
+          "secondaryConcepts": [
+            "관찰과 짐작"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "증상을 원인이 남긴 관측 결과로 정의하고 두 개념의 혼동이 조사 시작점을 왜곡함을 설명한다. 증상의 정밀 기술이 원인 탐색 조건으로 전환되는 구조를 제시한다.",
+          "aiAnalysisInputSha256": "2839a2eeb7f0aeea484147ec57ef2c26f9c8d4dc48f2cb69a75023bb87c4a75e",
+          "aiPublicGuideTopic": "드러난 현상과 그것을 만든 것을 나누는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 문제를 문제로 만들기",
+          "section": "1.2 관찰한 것과 짐작한 것",
+          "primaryConcepts": [
+            "관찰과 짐작"
+          ],
+          "secondaryConcepts": [
+            "증상과 원인"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관찰과 해석의 혼동을 조사 실패의 주요 원인으로 지목하고 근거 명시를 통한 구분 방법을 제시한다. 짐작을 검증 대상 목록으로, 관찰을 추론 기반으로 각각 자리매김한다.",
+          "aiAnalysisInputSha256": "8a064ee3dd282ede9ff590ee3eb10714f7683f4ad1b5b1203cdd47858a2a5115",
+          "aiPublicGuideTopic": "본 것과 그렇게 생각한 것을 갈라 적기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 문제를 문제로 만들기",
+          "section": "1.3 재현이라는 조건",
+          "primaryConcepts": [
+            "재현"
+          ],
+          "secondaryConcepts": [
+            "증상과 원인"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재현을 조건 충족 시 증상이 재발하는 상태로 정의하고 변경 효과 확인·수정 검증·문제 이관의 세 효용을 제시한다. 재현 확보를 문제 해결이 아닌 문제 형식화 단계로 규정한다.",
+          "aiAnalysisInputSha256": "b7e5f8d54c37ded08b2c9d1940ba775f3ed9707bbd2f6ce05a20b1ae2f85f9dd",
+          "aiPublicGuideTopic": "같은 조건에서 같은 증상을 다시 만드는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 문제를 문제로 만들기",
+          "section": "1.4 재현되지 않는 문제",
+          "primaryConcepts": [
+            "간헐적 문제"
+          ],
+          "secondaryConcepts": [
+            "재현",
+            "관찰과 짐작"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "간헐적 증상을 미발견 조건의 문제로 재정의하고 발생·미발생 사례 대조를 조건 축소 수단으로 제시한다. 재현 강제 대신 표적 관찰 지점 확충이라는 대안 경로를 함께 밝힌다.",
+          "aiAnalysisInputSha256": "81233596f2c2e344eafd7330013c72d3e344c103c05494d6e489b29c2bd76ab8",
+          "aiPublicGuideTopic": "가끔만 나타나는 증상을 다루는 방법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 문제를 문제로 만들기",
+          "section": "1.5 문제를 적는 형식",
+          "primaryConcepts": [
+            "문제 기술"
+          ],
+          "secondaryConcepts": [
+            "관찰과 짐작",
+            "재현"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "문제 기술의 필수 항목을 조건·조작·실제 결과·기대 결과로 정식화하고 기대 결과 누락의 위험을 설명한다. 원인 추정과 관찰 기록의 분리를 기술 규칙으로 제시한다.",
+          "aiAnalysisInputSha256": "fa3695cd2a6828de619df0ed89ef3bfa5f448dda4ea257a4881c8be3fef8cadb",
+          "aiPublicGuideTopic": "다른 사람이 그대로 따라 할 수 있게 적기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            3
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 문제를 문제로 만들기",
+          "section": "1.6 증상에서 원인으로",
+          "primaryConcepts": [
+            "재현"
+          ],
+          "secondaryConcepts": [
+            "원인 격리",
+            "증상과 원인"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조사 절차를 다섯 단계로 배열하고 각 단계의 산출물을 화살표에 병기한다. 재현 확보 실패 시 증상 기술 단계로 회귀하는 경로를 표시해 절차가 일방향이 아님을 나타낸다.",
+          "aiAnalysisInputSha256": "800d8b67f2977d703b7ffa93b08f5b64b71e089c4888f29ccb1abe29b46eedd1",
+          "aiPublicGuideTopic": "조사가 지나는 단계와 각 단계의 결과",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 문제를 문제로 만들기",
+          "section": "1.7 언제 멈출 것인가",
+          "primaryConcepts": [
+            "조사 중단"
+          ],
+          "secondaryConcepts": [
+            "문제 기술"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조사 중단 시점을 원인 확정·증상 차단·정보 부족 판단의 세 경우로 구분하고 매몰 비용에 의한 지속을 경고한다. 중단 시 확인 사항과 배제 사항의 기록을 재조사 비용 절감 수단으로 제시한다.",
+          "aiAnalysisInputSha256": "1103cd533bdf54dbef1e2a4e8a7472807c06cd496b2ba07893fc0369b69223b5",
+          "aiPublicGuideTopic": "조사를 접거나 넘길 시점의 판단",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 재현 가능한 최소 사례",
+          "section": "2.1 최소 사례의 정의",
+          "primaryConcepts": [
+            "최소 사례"
+          ],
+          "secondaryConcepts": [
+            "재현"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "최소 사례를 증상 보존하의 최소 실행으로 정의하고 후보 축소·이관 용이성·재확인 가능성의 세 이점을 제시한다. 축소 작업 자체가 원인 탐색의 일부임을 밝힌다.",
+          "aiAnalysisInputSha256": "2659d9b8a2b941b9e308d1760a1d8c34fa726c040b665e1e281be6a894c2c4e3",
+          "aiPublicGuideTopic": "증상을 남기면서 가장 작아진 실행",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 재현 가능한 최소 사례",
+          "section": "2.2 줄여 가는 절차",
+          "primaryConcepts": [
+            "축소 절차"
+          ],
+          "secondaryConcepts": [
+            "최소 사례"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "축소 절차를 단일 변경 후 증상 확인의 반복으로 정식화하고 절반 단위 제거의 확인 횟수 이점을 설명한다. 축소 종료 상태의 잔여 구성이 원인 정보를 담는다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "12111a4f8fc818f71937c8cd2f11878f92452a79591d967c60e1211f80765707",
+          "aiPublicGuideTopic": "무엇부터 덜어 낼지 정하는 순서",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 재현 가능한 최소 사례",
+          "section": "2.3 무엇을 고정할 것인가",
+          "primaryConcepts": [
+            "변수 고정"
+          ],
+          "secondaryConcepts": [
+            "최소 사례",
+            "재현"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "변수 고정 대상을 환경·자료 상태·시각·무작위 값으로 열거하고 고정 실패 항목이 조건 후보가 됨을 설명한다. 고정을 임시 조치로 한정하고 고정 상태에서의 결론 도출을 경계한다.",
+          "aiAnalysisInputSha256": "312f6ca83449c496873fbf966383a283d871f081d5fe382d7ac0cae19980d435",
+          "aiPublicGuideTopic": "달라질 수 있는 것을 붙들어 두는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 재현 가능한 최소 사례",
+          "section": "2.4 자료를 줄이는 방법",
+          "primaryConcepts": [
+            "자료 축소"
+          ],
+          "secondaryConcepts": [
+            "축소 절차"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자료 축소를 절반 분할 반복으로 수행하되 순서 보존을 요구하는 이유를 설명한다. 단건 조건과 건 간 관계 조건을 구분하고 후자에 대한 조 단위 축소 전략을 제시한다.",
+          "aiAnalysisInputSha256": "dfdfd5b4bc106b3f9d1af72073ae3a8337dcdddd9af6c244975d4f1a8700fe61",
+          "aiPublicGuideTopic": "많은 자료에서 문제를 남기는 부분만 남기기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 재현 가능한 최소 사례",
+          "section": "2.5 줄이는 과정의 기록",
+          "primaryConcepts": [
+            "축소 절차"
+          ],
+          "secondaryConcepts": [
+            "자료 축소",
+            "최소 사례"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "축소 반복 과정을 단계별 잔여 구성과 증상 유무로 표현하고 실패한 축소의 복원 지점을 표시한다. 최종 잔여 구성이 증상 필수 요소 집합임을 시각적으로 드러낸다.",
+          "aiAnalysisInputSha256": "3d45014e24322c02d36afcd152d83b9220343cc916b571fc8c1b54e4df25c400",
+          "aiPublicGuideTopic": "사례가 작아지는 동안 남는 확인 자국",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 재현 가능한 최소 사례",
+          "section": "2.6 줄이다 사라지는 문제",
+          "primaryConcepts": [
+            "축소 중 소실"
+          ],
+          "secondaryConcepts": [
+            "축소 절차",
+            "간헐적 문제"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "축소 중 증상 소실을 조건 동반 제거로 해석하고 자료량 감소가 시간·순서 조건을 변화시키는 경로를 설명한다. 소실 원인을 설명하지 못한 축소를 되돌리는 규칙을 제시한다.",
+          "aiAnalysisInputSha256": "c8031df2dea165b75a9ee73f947d91c29c5a9c8c493cc15657f94a7a65d09452",
+          "aiPublicGuideTopic": "줄이는 동안 증상이 없어질 때의 해석",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 재현 가능한 최소 사례",
+          "section": "2.7 최소 사례를 남기는 자리",
+          "primaryConcepts": [
+            "사례 보존"
+          ],
+          "secondaryConcepts": [
+            "최소 사례",
+            "재현"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "최소 사례 보존을 재조사 비용 회피 수단으로 규정하고 확인 대상과 기대 결과의 병기를 요구한다. 보존 사례의 노후화 가능성과 주기적 유효성 확인의 필요를 제시한다.",
+          "aiAnalysisInputSha256": "134e9e3baef5d3f56ca5cb6fd61f138206fe1534901a3b5079340cfe1119a42d",
+          "aiPublicGuideTopic": "만들어 둔 사례를 조사 뒤에도 두는 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": [
+            "keep-the-repro"
+          ]
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 원인을 좁히는 방법",
+          "section": "3.1 원인 격리의 뜻",
+          "primaryConcepts": [
+            "원인 격리"
+          ],
+          "secondaryConcepts": [
+            "최소 사례",
+            "증상과 원인"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "원인 격리를 후보 범위의 점진적 축소로 정의하고 단발 추정과 대비해 실패의 정보 가치 차이를 설명한다. 코드 위치·시간·조건이라는 세 축소 방향을 이 장의 구성으로 제시한다.",
+          "aiAnalysisInputSha256": "57493ad39776d6b39fa812271d3940b596113de4ce621846fdeae9a2a59d1f9f",
+          "aiPublicGuideTopic": "원인이 있을 수 있는 범위를 줄이는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 원인을 좁히는 방법",
+          "section": "3.2 절반씩 좁히기",
+          "primaryConcepts": [
+            "이분 탐색"
+          ],
+          "secondaryConcepts": [
+            "원인 격리",
+            "축소 절차"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이분 탐색의 확인 횟수 이점을 제시하고 분할 가능성과 판정 가능성을 성립 요건으로 규정한다. 분할 지점 선택에서 이론적 중앙보다 판정 용이성을 우선하는 실용 기준을 밝힌다.",
+          "aiAnalysisInputSha256": "997cc28ea2cc47e3a30e29ca2c6661f1638a57f8f7f3358a41d21594cbdb81f0",
+          "aiPublicGuideTopic": "후보를 반으로 나눠 확인하는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 원인을 좁히는 방법",
+          "section": "3.3 시간으로 좁히기",
+          "primaryConcepts": [
+            "변경 이력 탐색"
+          ],
+          "secondaryConcepts": [
+            "이분 탐색"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "변경 이력에 대한 이분 탐색으로 코드 독해 없이 후보를 축소하는 절차를 설명한다. 탐색으로 특정된 변경이 원인이 아닌 계기일 가능성과 그 확인 방법을 제시한다.",
+          "aiAnalysisInputSha256": "74d2d873ffd03798c9667c4fdea18d6b1c7ae12724a5e9933ae42f03679d5233",
+          "aiPublicGuideTopic": "언제부터 잘못되었는지로 범위를 줄이기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 원인을 좁히는 방법",
+          "section": "3.4 자리로 좁히기",
+          "primaryConcepts": [
+            "구간 좁히기"
+          ],
+          "secondaryConcepts": [
+            "원인 격리",
+            "관찰과 짐작"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "처리 경로상의 관찰 지점 선택으로 오류 발생 구간을 축소하는 방법을 제시한다. 판정 가능한 지점의 조건과 기대값 사전 명시가 확인의 신뢰성을 결정함을 설명한다.",
+          "aiAnalysisInputSha256": "063c84ba6e5fa63e0f76b55ef617eb8400ef0ee5a7198da12b9e9628fa34bdcf",
+          "aiPublicGuideTopic": "값이 언제부터 어긋나는지 확인하기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 원인을 좁히는 방법",
+          "section": "3.5 좁히는 두 방향",
+          "primaryConcepts": [
+            "이분 탐색"
+          ],
+          "secondaryConcepts": [
+            "구간 좁히기",
+            "변경 이력 탐색"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시간축 이분 탐색과 처리 경로상의 구간 탐색을 나란히 배치해 동일한 축소 원리를 대비한다. 정상·비정상 판정의 경계 지점이 후보로 남는 구조를 두 방향 모두에서 표시한다.",
+          "aiAnalysisInputSha256": "2c7413fd9227a45ac817e89a09aed80429234bb04fc50774a4e1b1b1093af8f0",
+          "aiPublicGuideTopic": "시간과 자리 두 축으로 범위를 줄이는 모습",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 원인을 좁히는 방법",
+          "section": "3.6 바꿔 보며 확인하기",
+          "primaryConcepts": [
+            "변경 실험"
+          ],
+          "secondaryConcepts": [
+            "구간 좁히기",
+            "변수 고정"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조건 조작 실험을 후보 축소 수단으로 제시하고 단일 변경·기록·원복을 절차 규칙으로 규정한다. 증상 소멸과 원인 규명을 구분하고 설명 가능성을 원인 확정 기준으로 삼는다.",
+          "aiAnalysisInputSha256": "06fcaf38df2081d009610dc63ed9e7e1b4f376cf4d72912225baba63e82465c7",
+          "aiPublicGuideTopic": "일부러 바꿔 보고 결과를 견주는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            19
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 원인을 좁히는 방법",
+          "section": "3.7 좁히지 못할 때",
+          "primaryConcepts": [
+            "격리 실패"
+          ],
+          "secondaryConcepts": [
+            "구간 좁히기",
+            "간헐적 문제"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "격리 정체의 원인을 판정 불안정·분할 불가·복합 원인으로 분류하고 각각에 대한 대응을 제시한다. 축소 실패 패턴 자체가 문제 구조에 대한 정보임을 밝힌다.",
+          "aiAnalysisInputSha256": "9d58b18e53d51a5c2d424a64e446d11fa5dfe65a940b75f875a1c7a3f2be2465",
+          "aiPublicGuideTopic": "범위가 줄지 않는 상황의 원인과 대응",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            19
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "4장 관찰과 가설",
+          "section": "4.1 가설을 세우고 확인하기",
+          "primaryConcepts": [
+            "가설 검증"
+          ],
+          "secondaryConcepts": [
+            "원인 격리",
+            "관찰과 짐작"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "가설을 확인 방법과 예상 결과를 포함한 검증 가능 형태로 정의하고 사전 예상 기록의 필요를 설명한다. 가설의 생존과 기각이 모두 후보 축소에 기여함을 밝힌다.",
+          "aiAnalysisInputSha256": "3e910e6610e7ad3a3798a1621fec5f80c36f2a1762f98493c0f351aa7e945a71",
+          "aiPublicGuideTopic": "짐작을 확인할 수 있는 형태로 바꾸기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 관찰과 가설",
+          "section": "4.2 관찰이 대상을 바꾸는 자리",
+          "primaryConcepts": [
+            "관찰의 영향"
+          ],
+          "secondaryConcepts": [
+            "가설 검증",
+            "간헐적 문제"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관찰 도구 삽입이 시간·순서 조건을 변화시켜 증상을 소실시키는 기전을 설명한다. 관찰 강도 조절 방법과 함께 해당 현상 자체를 조건 단서로 활용하는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "2aeca91982e25a8471038dc0b38e2310dfbd62d369c0cf1e2ecbad12665ce0b2",
+          "aiPublicGuideTopic": "들여다보는 행위가 결과를 흔드는 경우",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 관찰과 가설",
+          "section": "4.3 무엇을 볼지 정하기",
+          "primaryConcepts": [
+            "관찰 대상"
+          ],
+          "secondaryConcepts": [
+            "가설 검증",
+            "구간 좁히기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관찰 대상 선택 기준을 가설 분기 여부로 단일화하고 판정이 쉬운 경계 지점을 우선 후보로 제시한다. 단발 관찰과 추이 관찰의 구분이 관찰 부하와 연결됨을 밝힌다.",
+          "aiAnalysisInputSha256": "d4ac015811edef417b51336b97922c3db3f7ffaf008830d647e6e7644c68d619",
+          "aiPublicGuideTopic": "확인할 값과 자리를 고르는 기준",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 관찰과 가설",
+          "section": "4.4 한 번에 하나만 바꾸기",
+          "primaryConcepts": [
+            "단일 변경"
+          ],
+          "secondaryConcepts": [
+            "변경 실험",
+            "가설 검증"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단일 변경 원칙의 근거를 결과 해석 가능성에서 도출하고 다중 변경 시 확인 자체가 무효화됨을 지적한다. 원복 방식과 누적 방식의 선택 기준을 조건 조합 여부로 제시한다.",
+          "aiAnalysisInputSha256": "1e6954099a57f5b3487d7e5c6e6e1854ae7f479920d744c8e60417b4d08ce041",
+          "aiPublicGuideTopic": "확인의 결과를 해석할 수 있게 만드는 규칙",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 관찰과 가설",
+          "section": "4.5 반증할 수 있는 가설",
+          "primaryConcepts": [
+            "반증 가능성"
+          ],
+          "secondaryConcepts": [
+            "가설 검증"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반증 조건의 사전 명시를 가설 품질 기준으로 제시하고 광범위한 가설이 검증 불가능해지는 이유를 설명한다. 가설 기각을 후보 축소의 성과로 재해석한다.",
+          "aiAnalysisInputSha256": "f2e6f625049b4eec512ed57e46bad3180306c123b2166e1c0b539ebc21a49dd0",
+          "aiPublicGuideTopic": "틀렸다면 어떤 결과가 나올지 정해 두기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 관찰과 가설",
+          "section": "4.6 우연히 맞은 답",
+          "primaryConcepts": [
+            "우연한 성공"
+          ],
+          "secondaryConcepts": [
+            "반증 가능성",
+            "변경 실험"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "증상 소멸과 원인 규명의 차이를 지적하고 원복·재적용 반복으로 인과 연결을 확인하는 절차를 제시한다. 설명 불가 상태의 기록을 수정이 아닌 증상 차단으로 구분해 남길 것을 요구한다.",
+          "aiAnalysisInputSha256": "4918a552e9506d0496355c6a21486a1078b17428b95d90c783d8af4daab52e2d",
+          "aiPublicGuideTopic": "고쳤는데 왜 고쳐졌는지 모르는 상태",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            27
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 관찰과 가설",
+          "section": "4.7 확인한 것을 적어 두기",
+          "primaryConcepts": [
+            "조사 기록"
+          ],
+          "secondaryConcepts": [
+            "관찰 대상",
+            "가설 검증"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조사 기록의 최소 구성을 확인·예상·결과·배제의 네 항목으로 제시하고 중복 확인 방지 효과를 설명한다. 인수인계 시 전달 대상이 결론이 아니라 축소된 후보 범위임을 밝힌다.",
+          "aiAnalysisInputSha256": "b0986fe5d2aa7b22585fcdee56624d2d924babb9541764a5d42d1a307683c07a",
+          "aiPublicGuideTopic": "조사 도중 남기는 기록의 형식과 쓸모",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            25
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "5장 조사가 빗나가는 자리",
+          "section": "5.1 마지막 변경을 의심하는 습관",
+          "primaryConcepts": [
+            "최근 변경 편향"
+          ],
+          "secondaryConcepts": [
+            "가설 검증",
+            "변경 이력 탐색"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "최근 변경 우선 검토의 유효성과 그 실패 이후의 고착 위험을 함께 제시한다. 후보 전환 시점의 사전 결정을 편향 관리 수단으로 제안한다.",
+          "aiAnalysisInputSha256": "66a526ffed4f0ae1210f671f374ab479305450d0d0ce4eb90b3618ea50e2b8c1",
+          "aiPublicGuideTopic": "가장 최근 것을 먼저 보는 판단의 값과 한계",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "5장 조사가 빗나가는 자리",
+          "section": "5.2 고쳐졌다고 믿는 순간",
+          "primaryConcepts": [
+            "사라진 증상"
+          ],
+          "secondaryConcepts": [
+            "최근 변경 편향",
+            "간헐적 문제"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "증상 비관찰을 해결로 판단하는 오류를 지적하고 재현 조건에서의 확인을 요구한다. 간헐적 문제에 대해 사전 발생 빈도 측정이 수정 효과 판정의 전제임을 밝힌다.",
+          "aiAnalysisInputSha256": "c602801d22625f771e5d21bb11cf6b50f804627b47843d4e52acc353ebbff481",
+          "aiPublicGuideTopic": "증상이 보이지 않는 것과 문제가 없어진 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 조사가 빗나가는 자리",
+          "section": "5.3 원인과 계기의 혼동",
+          "primaryConcepts": [
+            "원인과 계기"
+          ],
+          "secondaryConcepts": [
+            "최근 변경 편향",
+            "증상과 원인"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "원인과 계기를 문제 생성과 발현 촉발로 구분하고 각각을 다룰 때의 재발 가능성 차이를 설명한다. 조건 복원 실험을 통해 수정 대상이 어느 쪽인지 판별하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "b99907179afd7991b5099f70fa1eb107bb7e1c4643f1630031e354951624f6dd",
+          "aiPublicGuideTopic": "문제를 만든 것과 드러나게 한 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 조사가 빗나가는 자리",
+          "section": "5.4 원인이 겹쳐 있을 때",
+          "primaryConcepts": [
+            "복합 원인"
+          ],
+          "secondaryConcepts": [
+            "원인과 계기",
+            "격리 실패"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "두 조건의 조합에서만 증상이 발현되는 구조를 조건 유무의 네 경우로 표현한다. 단일 조건 제거 실험에서 두 원인이 모두 무관하게 보이는 이유를 결과 배열로 드러낸다.",
+          "aiAnalysisInputSha256": "4b679404992219b36f58396581e9615aebe3594dfe80af63dedf1dae51e1a591",
+          "aiPublicGuideTopic": "둘 이상이 함께 있어야 증상이 나오는 구조",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 조사가 빗나가는 자리",
+          "section": "5.5 자기 코드만 보는 눈",
+          "primaryConcepts": [
+            "탐색 범위"
+          ],
+          "secondaryConcepts": [
+            "원인 격리",
+            "관찰과 짐작"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "익숙한 구성 요소의 사전 배제와 외부 요소 우선 의심이라는 두 편향이 후보 순서를 왜곡함을 설명한다. 배제 사유의 명시적 기록을 편향 점검 수단으로 제시한다.",
+          "aiAnalysisInputSha256": "50eddf9ab885f9bcd0a63faac4e73c1222c975f814041da3fc3eaea58a511742",
+          "aiPublicGuideTopic": "후보에서 미리 빼 두는 자리들",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 조사가 빗나가는 자리",
+          "section": "5.6 같은 조건을 만들지 못할 때",
+          "primaryConcepts": [
+            "환경 차이"
+          ],
+          "secondaryConcepts": [
+            "사라진 증상",
+            "재현"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "환경별 발현 차이를 조건 후보로 전환하는 절차와 차이 이식 실험을 제시한다. 조사 수행 위치를 증상 발현 환경으로 지정하고 비발현 환경을 대조군으로 한정한다.",
+          "aiAnalysisInputSha256": "616fed0613534febc274703c03c59b19d098fc71e3b329c4cd6473df936a6af9",
+          "aiPublicGuideTopic": "다른 자리에서만 나타나는 문제 다루기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 조사가 빗나가는 자리",
+          "section": "5.7 다시 겪지 않기 위한 확인",
+          "primaryConcepts": [
+            "재발 방지 확인"
+          ],
+          "secondaryConcepts": [
+            "사례 보존",
+            "사라진 증상"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수정과 함께 재발 감지 장치를 남기는 절차를 제시하고 최소 사례를 그 재료로 활용한다. 확인 기준을 수정 방식이 아닌 증상 조건으로 기술해야 하는 이유를 설명한다.",
+          "aiAnalysisInputSha256": "73b9d47d462425f1c4846e365c34aed1acc58b3173984f1f7981cf5d04f67712",
+          "aiPublicGuideTopic": "고친 뒤에 남겨 두는 확인 장치",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": [
+            "keep-the-repro"
+          ]
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "6장 한 문제를 좁혀 간 기록",
+          "section": "6.1 처음 받은 증상",
+          "primaryConcepts": [
+            "사례 증상"
+          ],
+          "secondaryConcepts": [
+            "증상과 원인",
+            "문제 기술"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "초기 신고 내용의 불충분성과 문제 기술 네 항목을 채워 조건을 구체화한 과정을 기술한다. 원인 추정을 별도로 분리 보관한 판단과 이후 절의 서술 순서를 밝힌다.",
+          "aiAnalysisInputSha256": "fbc7a1cb53f0df7f0f2a18d36ef37ff1580d18e0cece957f0aa2fef2335c2ea0",
+          "aiPublicGuideTopic": "조사를 시작할 때 손에 있던 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "6장 한 문제를 좁혀 간 기록",
+          "section": "6.2 재현을 만든 방법",
+          "primaryConcepts": [
+            "재현 구성"
+          ],
+          "secondaryConcepts": [
+            "재현",
+            "변수 고정"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "누락 조건 보완으로 재현을 확보한 과정과 자료 상태·조작 간격의 고정 조치를 기술한다. 불완전한 재현에 대해 반복 판정 기준을 사전 정의해 축소를 진행한 방법을 제시한다.",
+          "aiAnalysisInputSha256": "c436c8b343c97d15177cdcb3c967c82861201c9654ab522c58629bdbaa80ad35",
+          "aiPublicGuideTopic": "조건 목록에서 되풀이되는 실행을 만들기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            37
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 한 문제를 좁혀 간 기록",
+          "section": "6.3 사례를 줄인 과정",
+          "primaryConcepts": [
+            "사례 축소 기록"
+          ],
+          "secondaryConcepts": [
+            "축소 절차",
+            "자료 축소"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조작과 자료를 각각 축소한 절차와 되돌린 지점을 기록하고 최소 사례의 구성을 특정한다. 축소 방향에 따른 결과 차이를 조건 단서로 포착한 과정을 기술한다.",
+          "aiAnalysisInputSha256": "3e8d12f0d88f478df6b6e68cf66a2458bdb7e5fe67b8d488ca1cfea32d5121be",
+          "aiPublicGuideTopic": "실행과 자료를 절반씩 덜어 낸 결과",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 한 문제를 좁혀 간 기록",
+          "section": "6.4 절반씩 좁힌 결과",
+          "primaryConcepts": [
+            "구간 확인 결과"
+          ],
+          "secondaryConcepts": [
+            "이분 탐색",
+            "구간 좁히기"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "처리 경로상 네 지점의 값 비교로 오류 발생 구간을 특정한 과정을 기술한다. 코드 독해 없이 관찰 지점 선택만으로 범위가 축소되는 과정을 확인 횟수와 함께 제시한다.",
+          "aiAnalysisInputSha256": "12ef9aafa76c2ca56c28801d57c8b65376efc938b7608708a74adc7d1316aa6a",
+          "aiPublicGuideTopic": "값이 어디서부터 어긋나는지 확인한 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 한 문제를 좁혀 간 기록",
+          "section": "6.5 세운 가설과 확인",
+          "primaryConcepts": [
+            "가설 확인 기록"
+          ],
+          "secondaryConcepts": [
+            "가설 검증",
+            "반증 가능성"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "두 가설에 대한 확인 방법과 예상 결과를 사전 기술하고 실험으로 하나를 기각한 과정을 보인다. 사전 예상 기록이 결과 해석의 임의성을 막은 사례로 제시한다.",
+          "aiAnalysisInputSha256": "766be94e62d8935c626f37b467c3c34b858aabc777fc152c65c94bde0516ea7f",
+          "aiPublicGuideTopic": "좁힌 자리에서 세운 짐작과 그 결과",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 한 문제를 좁혀 간 기록",
+          "section": "6.6 진짜 원인과 계기",
+          "primaryConcepts": [
+            "원인 확정"
+          ],
+          "secondaryConcepts": [
+            "원인과 계기",
+            "복합 원인"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "코드 확인으로 원인을 확정하고 최근 추가된 조건을 계기로 분리한 판단을 기술한다. 초기 추정이 탐색 방향을 왜곡하지 않은 이유를 기록 분리 규칙과 연결한다.",
+          "aiAnalysisInputSha256": "6436b88d5c4bb73ad52c7de998feaace21c529392580152e0e659061af0b8ecd",
+          "aiPublicGuideTopic": "무엇이 문제를 만들었고 무엇이 드러냈는지",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 한 문제를 좁혀 간 기록",
+          "section": "6.7 고친 뒤 확인한 것",
+          "primaryConcepts": [
+            "수정 후 확인"
+          ],
+          "secondaryConcepts": [
+            "재발 방지 확인",
+            "사라진 증상"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수정 검증을 최소 사례와 축소 전 사례 양쪽에서 수행한 절차를 기술한다. 보존 확인의 기준을 구현 방식이 아닌 증상 조건으로 기술한 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "86dea74ac29565461363b6cc980e4163825798928c44a544ced7975ad79b16ca",
+          "aiPublicGuideTopic": "고침이 실제로 통했는지 판정한 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "7장 조사 판단 기준",
+          "section": "7.1 시간을 어디에 쓸 것인가",
+          "primaryConcepts": [
+            "조사 시간 배분"
+          ],
+          "secondaryConcepts": [
+            "원인 격리",
+            "재현"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조사 시간의 배분 대상을 재현·축소·검증으로 나누고 재현 확보 투자의 회수 구조를 설명한다. 완전한 재현 추구를 경계하고 판정 가능성을 재현의 충분 조건으로 제시한다.",
+          "aiAnalysisInputSha256": "f58e650bc7931a18cf65935c754cce95207756881403304630b2c38a5a9d5574",
+          "aiPublicGuideTopic": "조사 단계마다 들일 시간의 배분",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "7장 조사 판단 기준",
+          "section": "7.2 재현에 드는 비용",
+          "primaryConcepts": [
+            "재현 비용"
+          ],
+          "secondaryConcepts": [
+            "조사 시간 배분",
+            "간헐적 문제"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재현 확보 비용이 조사 이득을 초과하는 조건을 열거하고 관찰 확충 후 대기라는 대안을 제시한다. 선택 기준을 증상 빈도와 손해 규모로 정식화하고 결정의 기록을 요구한다.",
+          "aiAnalysisInputSha256": "76694c47b6cd62e9d4af316f77834a6a2b7a244d8edf5398497c3445956c1f03",
+          "aiPublicGuideTopic": "재현을 포기하고 다른 길로 갈 때의 판단",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 조사 판단 기준",
+          "section": "7.3 좁히기와 짐작 사이",
+          "primaryConcepts": [
+            "탐색 전략 선택"
+          ],
+          "secondaryConcepts": [
+            "이분 탐색",
+            "가설 검증"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "직관적 추정과 체계적 축소의 혼용 규칙을 시도 횟수 상한으로 제시한다. 추정에도 확인 방법과 예상을 기록하게 해 실패한 시도가 후보 축소에 기여하도록 만든다.",
+          "aiAnalysisInputSha256": "b59c8a606ca03da7e678b0ab39327c62a7a2736e0cfd06226b62711c59968b8a",
+          "aiPublicGuideTopic": "차례로 좁힐 때와 곧장 짚을 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 조사 판단 기준",
+          "section": "7.4 조사 점검 항목",
+          "primaryConcepts": [
+            "조사 점검 항목"
+          ],
+          "secondaryConcepts": [
+            "관찰 대상",
+            "조사 기록"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조사 정체 시 점검 항목을 재현 유무·관찰과 추정의 분리·확인의 분기력·사전 배제·단일 원인 가정의 다섯으로 정식화한다. 각 항목을 앞 장의 대응 절과 연결한다.",
+          "aiAnalysisInputSha256": "a6a2d03db39f7e28829d1d9b6fd3626273290272658b509d907815e5b6cd8bdb",
+          "aiPublicGuideTopic": "막혔을 때 차례로 확인할 목록",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            25
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 조사 판단 기준",
+          "section": "7.5 남길 기록과 버릴 기록",
+          "primaryConcepts": [
+            "기록 취사"
+          ],
+          "secondaryConcepts": [
+            "조사 기록",
+            "사례 보존"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조사 종료 후 보존 대상을 최소 사례·원인과 계기 구분·배제 목록으로 한정하고 배제 정보의 재사용 가치를 강조한다. 미검증 추정의 폐기 기준을 확인 여부로 제시한다.",
+          "aiAnalysisInputSha256": "9fca653d6c7caa6c9382d0891168eaf717f61b6a3c96ac893b40687f39b29dbe",
+          "aiPublicGuideTopic": "조사가 끝난 뒤 무엇을 남길지 정하기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            29
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 조사 판단 기준",
+          "section": "7.6 조사를 넘길 때",
+          "primaryConcepts": [
+            "조사 인계"
+          ],
+          "secondaryConcepts": [
+            "조사 점검 항목",
+            "문제 기술"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인계 시 전달 항목을 증상·재현·배제 목록·현재 가설로 규정하고 미검증 추정의 결론화 위험을 지적한다. 공동 조사에서 분담 단위가 후보 집합임을 원칙으로 제시한다.",
+          "aiAnalysisInputSha256": "e5787afa1f78291bc8ea9152d7094b3558bf6c311716183cb36ac07148c623a6",
+          "aiPublicGuideTopic": "다른 사람에게 이어 받게 하는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            47
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 조사 판단 기준",
+          "section": "7.7 핵심 원칙 정리",
+          "primaryConcepts": [
+            "조사 원칙 요약"
+          ],
+          "secondaryConcepts": [
+            "재현",
+            "원인 격리"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체의 판단을 관찰과 추정의 구분, 확인의 분기력이라는 두 물음으로 압축한다. 조사 역량을 직관이 아닌 반복 가능한 절차로 규정하고 이전 가능성을 밝힌다.",
+          "aiAnalysisInputSha256": "adf5182ba321652245da8fe025f11c18d281786071f11e4f84e796869adf0158",
+          "aiPublicGuideTopic": "이 책이 다룬 판단 기준의 요약",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 74,
       "title": "함수와 모듈: 인터페이스 설계",
       "pdfPath": "pdfs/book-074.pdf",

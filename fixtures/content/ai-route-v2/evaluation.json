@@ -3706,6 +3706,74 @@
       ]
     },
     {
+      "caseId": "case-book-073",
+      "bookId": 73,
+      "purpose": "지금 붙잡은 문제를 어디서부터 좁혀야 할지 몰라서, 재현을 만들고 원인을 격리하는 데 꼭 필요한 만큼만 짧게 짚고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "증상과 원인",
+        "재현",
+        "최소 사례",
+        "원인 격리",
+        "가설 검증"
+      ],
+      "helpfulConcepts": [
+        "관찰과 짐작",
+        "변수 고정",
+        "이분 탐색",
+        "문제 기술"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 23
+        }
+      ],
+      "irrelevantPageNumbers": [
+        38,
+        39,
+        40,
+        42,
+        43
+      ],
+      "duplicatePageGroups": [
+        [
+          15,
+          36
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        9,
+        16,
+        23
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        6,
+        10,
+        11,
+        17
+      ]
+    },
+    {
       "caseId": "case-book-074",
       "bookId": 74,
       "purpose": "코드를 함수와 모듈로 어떻게 나누고 그 사이의 약속을 어떻게 정할지, 구조를 판단하는 기준을 넓게 정리하고 싶다",
