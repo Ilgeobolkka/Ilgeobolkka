@@ -28120,6 +28120,1052 @@
       ]
     },
     {
+      "bookId": 55,
+      "title": "타인의 마음은 알 수 있는가",
+      "pdfPath": "pdfs/book-055.pdf",
+      "pdfSha256": "42ab33440b21d3906eeeaceba3591eb69a0049e572d29ddacf5a9926fdf35e1e",
+      "totalPageCount": 49,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 다른 사람의 안쪽",
+          "section": "1.1 나만 아는 것",
+          "primaryConcepts": [
+            "일인칭 접근"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일인칭 접근의 특수성을 관찰이 아닌 직접성에서 규정하고, 타인의 내면에 대해서는 관찰량과 무관하게 접근 방식이 달라지지 않는다는 점을 제시한다. 이 물음이 자료 부족 문제와 다르다는 구분을 세우고 짐작·공감·질문을 책의 축으로 놓는다.",
+          "aiAnalysisInputSha256": "3b368af91af22c8b992001cd87fd6eb52e2288a2b6f173c2a51e4285fb58e02e",
+          "aiPublicGuideTopic": "안에서만 닿는 자리가 있다는 사실",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "other-minds-question"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 다른 사람의 안쪽",
+          "section": "1.1 나만 아는 것",
+          "primaryConcepts": [
+            "일인칭 접근"
+          ],
+          "secondaryConcepts": [
+            "자기 보고"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일인칭 접근이 무오류를 보장하지 않는다는 점을 자기 감정 오인 사례로 제시하고, 외부 관찰이 더 정확할 수 있는 경우를 든다. 내면 접근의 문제를 폐쇄성이 아니라 관점별 가시 범위의 차이로 재설정하고 두 극단의 오류를 지적한다.",
+          "aiAnalysisInputSha256": "9e66e135f9f9e56d65c54b4939f71918b303f191815e58078c8744b99ad5a2b2",
+          "aiPublicGuideTopic": "안에서 안다는 것도 완전하지는 않다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 다른 사람의 안쪽",
+          "section": "1.2 밖에서 보이는 것",
+          "primaryConcepts": [
+            "행동의 관찰"
+          ],
+          "secondaryConcepts": [
+            "일인칭 접근"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "외부에서 관찰 가능한 항목을 열거하고 그것이 내면과 상관관계를 가진다는 점에서 추정의 근거가 된다고 설명한다. 동일한 표현이 내적 상태·상황 요구·의사 전달이라는 서로 다른 원인에서 나올 수 있다는 점을 들어 해석 단계의 필요를 제시한다.",
+          "aiAnalysisInputSha256": "b4af2be5c3c97fa76d7ebf43f436c40b208856172e62a5cf47768cace83fdde0",
+          "aiPublicGuideTopic": "밖에서 볼 수 있는 것의 목록",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 다른 사람의 안쪽",
+          "section": "1.2 밖에서 보이는 것",
+          "primaryConcepts": [
+            "행동의 관찰"
+          ],
+          "secondaryConcepts": [
+            "상황 추론"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지각 단계에 이미 해석이 포함된다는 점과 그 자동성이 갖는 효율과 위험을 함께 다룬다. 관찰자의 상태가 해석 내용을 좌우한다는 점을 지적하고, 읽은 내용과 자기 상태의 대응 여부를 점검하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "bf1d4e1843d98e71ffd0f7ef209f1c458662aa898e4ab56fb1ad27baf599daee",
+          "aiPublicGuideTopic": "보는 사람이 이미 넣고 있는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 다른 사람의 안쪽",
+          "section": "1.3 안과 밖의 어긋남",
+          "primaryConcepts": [
+            "표현과 내면"
+          ],
+          "secondaryConcepts": [
+            "행동의 관찰"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "표현과 내면의 불일치가 기만 외의 요인에서 발생한다는 점을 학습된 표현 규범·수신자 존재·복합적 내면 셋으로 설명한다. 불일치를 예외가 아닌 기본값으로 두는 관점을 제시하고 해석 실패에 대한 기대치를 조정한다.",
+          "aiAnalysisInputSha256": "98c07db3b642b562768d766ca8c17266746dc446ce6f352fd3ee2029dae789d3",
+          "aiPublicGuideTopic": "겉과 속이 달라지는 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 다른 사람의 안쪽",
+          "section": "1.3 안과 밖의 어긋남",
+          "primaryConcepts": [
+            "표현과 내면"
+          ],
+          "secondaryConcepts": [
+            "미확인 추정"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "불일치를 전제로 한 두 태도 가운데 전면적 불신이 실행 불가능하다는 점을 지적하고 잠정적 수용을 실질적 선택으로 제시한다. 판단의 근거를 함께 기록해 두어 반증 신호가 왔을 때 수정이 작동하게 하는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "90147196053f1aff42ebf3fe3339f7efc8c7e104968581f42ac9188d63ee8407",
+          "aiPublicGuideTopic": "어긋남을 다루는 두 태도",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 다른 사람의 안쪽",
+          "section": "1.4 두 자리에서 본 같은 사람",
+          "primaryConcepts": [
+            "관점의 비대칭"
+          ],
+          "secondaryConcepts": [
+            "일인칭 접근",
+            "행동의 관찰"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 인물을 향한 일인칭 시선과 삼인칭 시선의 도달 범위를 대비한 도표다. 내부 시선이 닿지 못하는 영역과 외부 시선이 겉면에서 멈춘 뒤 해석으로 이어지는 경로를 함께 표시해, 두 관점이 각각 부분만 본다는 점을 나타낸다.",
+          "aiAnalysisInputSha256": "8f65e7ce5993ddda8b88eb22804e8124a865bf7b8de18ddb8aacd5af656996ff",
+          "aiPublicGuideTopic": "안에서 보이는 것과 밖에서 보이는 것을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 어떻게 짐작하는가",
+          "section": "2.1 나를 본떠 짐작하기",
+          "primaryConcepts": [
+            "유추"
+          ],
+          "secondaryConcepts": [
+            "일인칭 접근"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "유추에 의한 마음 읽기의 작동 근거를 인간 반응의 유사성에서 찾고, 단일 사례에서 일반화한다는 점에서 논증적 근거가 약하다는 문제를 지적한다. 대안 부재로 이 방법이 유지된다는 점을 인정하되 그 취약성의 인식이 수정 가능성을 확보한다고 다룬다.",
+          "aiAnalysisInputSha256": "7a9b932849fcd09a9c663f71774c344b431b28dd684c0dab41872e55ae57269d",
+          "aiPublicGuideTopic": "내 경우를 상대에게 옮겨 보는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 어떻게 짐작하는가",
+          "section": "2.1 나를 본떠 짐작하기",
+          "primaryConcepts": [
+            "유추"
+          ],
+          "secondaryConcepts": [
+            "투사"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "유추의 정확도가 대상과의 유사도에 의존하지만 그 유사도를 사전에 판별하기 어렵다는 문제를 다룬다. 추정이 성립하기 위한 구체적 조건을 명시하는 방법과, 그 조건이 확인 가능한 형태가 되어 질문으로 이어진다는 절차를 제시한다.",
+          "aiAnalysisInputSha256": "0fb26baed006458dba08983145cd3642348f852bc56736932e7af320c473cc70",
+          "aiPublicGuideTopic": "본뜨기가 어긋나는 첫 번째 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 어떻게 짐작하는가",
+          "section": "2.2 짐작의 두 갈래",
+          "primaryConcepts": [
+            "짐작의 구조"
+          ],
+          "secondaryConcepts": [
+            "유추",
+            "상황 추론"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관찰된 행동에서 출발하는 두 추정 경로를 자기 투영형과 상황 규범형으로 나누어 그린 도표다. 각 경로의 적용 범위와 실패 방향을 나란히 배치하고 두 경로가 공통으로 확인 단계를 남긴다는 점을 하단에 표시한다.",
+          "aiAnalysisInputSha256": "76a5d267299b4d7377839d5f20d68335350879e3636fda5f550a9f309eea9c5e",
+          "aiPublicGuideTopic": "자기를 본뜨는 짐작과 상황을 읽는 짐작을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 어떻게 짐작하는가",
+          "section": "2.3 상황으로 짐작하기",
+          "primaryConcepts": [
+            "상황 추론"
+          ],
+          "secondaryConcepts": [
+            "행동의 관찰"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "상황 규범에 근거한 추정의 이점을 대상 정보 없이도 적용 가능하다는 점에서 제시한다. 개별 사정을 놓칠 때 그 오류가 상대의 이상함으로 귀속되기 쉽다는 문제를 지적하고, 일반성을 명시적으로 표현해 예외 가능성을 유지하는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "f3c09e316be944bd8c83fcfa65f04f82cc3c40f845680fda9a503f67355ab4ca",
+          "aiPublicGuideTopic": "그 자리에 있으면 대개 그렇다는 방식",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 어떻게 짐작하는가",
+          "section": "2.3 상황으로 짐작하기",
+          "primaryConcepts": [
+            "상황 추론"
+          ],
+          "secondaryConcepts": [
+            "말이 서툰 상대"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "두 추정 경로를 결합해 사용하는 순서와 이유를 제시한다. 상황 판단을 선행하면 자기 상태의 개입이 줄어든다는 점과, 두 경로가 불일치할 때 그 자체가 개별 사정의 신호이므로 추정을 중단하고 확인으로 넘어가야 한다는 기준을 다룬다.",
+          "aiAnalysisInputSha256": "1ee3fbd51c251091a00dd4a5d01a1855100b1ae1181422940e799d9ada06d08c",
+          "aiPublicGuideTopic": "두 방법을 함께 쓰기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 어떻게 짐작하는가",
+          "section": "2.4 짐작이 자동으로 일어나는 자리",
+          "primaryConcepts": [
+            "즉각적 읽기"
+          ],
+          "secondaryConcepts": [
+            "유추"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "즉각적 마음 읽기의 형성 배경과 유용성을 인정하면서 그 과정이 근거를 남기지 않아 수정이 어렵다는 문제를 다룬다. 첫인상의 지속성을 이 구조로 설명하고, 사후에 판단 근거를 역추적해 수정 가능성을 확보하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "d561766a086091ce55366ea51b425f30f0015f6b94972d35f8cf0e075994cef4",
+          "aiPublicGuideTopic": "생각하기 전에 이미 읽고 있다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 어떻게 짐작하는가",
+          "section": "2.4 짐작이 자동으로 일어나는 자리",
+          "primaryConcepts": [
+            "즉각적 읽기"
+          ],
+          "secondaryConcepts": [
+            "익숙함의 함정"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장기 관계에서 즉각적 읽기가 특정 대상에 맞춰 고착되는 과정과 그 효율을 다룬다. 고착된 틀이 대상의 변화를 흡수해 오독을 지속시킨다는 문제를 지적하고, 익숙한 상대에게 의도적으로 확인 질문을 던지는 대응을 제시한다.",
+          "aiAnalysisInputSha256": "efe0533c3acb9597155db7011ad74ebb89ae77311650c5f940d556359ad1e975",
+          "aiPublicGuideTopic": "빠른 읽기가 굳어질 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 공감",
+          "section": "3.1 함께 느낀다는 말",
+          "primaryConcepts": [
+            "공감"
+          ],
+          "secondaryConcepts": [
+            "유추"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공감을 상대 상태의 유사 재현으로, 앎을 상태에 대한 판정으로 구분하고 둘이 독립적으로 발생할 수 있음을 제시한다. 공감이 앎의 감각을 유발한다는 점에서 근거로 오용될 위험을 지적하고 신호와 근거의 구분을 제안한다.",
+          "aiAnalysisInputSha256": "f530682b32ef4349b6172d17a7293a5197e1eb99995fcedd6c7b64584de71631",
+          "aiPublicGuideTopic": "공감이라 부르는 것의 안쪽",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 공감",
+          "section": "3.1 함께 느낀다는 말",
+          "primaryConcepts": [
+            "공감"
+          ],
+          "secondaryConcepts": [
+            "공감과 이해"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공감의 기능을 주의 유지·행동 촉발·상대에 대한 전달 셋으로 정리하고 이들이 인지적 판정으로 대체되지 않는다는 점을 제시한다. 공감과 앎이 각각 현장 유지와 행위 결정을 담당한다는 역할 분담으로 두 요소의 병존 필요를 밝힌다.",
+          "aiAnalysisInputSha256": "8672c7c211e4049c50cfe9c42c371a25dbffbcbd7c9e8fd94ae5deae604c3b79",
+          "aiPublicGuideTopic": "공감이 하는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 공감",
+          "section": "3.2 공감의 재료",
+          "primaryConcepts": [
+            "공감의 근거"
+          ],
+          "secondaryConcepts": [
+            "공감"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공감 발생의 조건을 유사 경험·관계 근접성·서사적 구체성 셋으로 정리한다. 구체적 개별 사례가 통계적 규모보다 강한 반응을 유발한다는 성질을 지적하고, 그 성질 때문에 공감을 사안의 경중 판단에 사용할 수 없다는 결론을 제시한다.",
+          "aiAnalysisInputSha256": "be9d66f40a78a3643ab3eddd49ecc1eef40838cb21af61b730c45f1d493d4750",
+          "aiPublicGuideTopic": "무엇이 있어야 함께 느껴지는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 공감",
+          "section": "3.2 공감의 재료",
+          "primaryConcepts": [
+            "공감의 근거"
+          ],
+          "secondaryConcepts": [
+            "상황 추론"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공감 재료가 없는 상황에서 상대의 일상을 구체적으로 청취해 접점을 찾는 방법을 제시한다. 이 방법이 공감을 생성하는 것이 아니라 기존 경험 조각을 발견하는 절차라는 점을 밝히고, 접점이 전무한 경우의 한계를 함께 다룬다.",
+          "aiAnalysisInputSha256": "7eea0b52fd3e856b8138d41b2fd64904f32828bb510e9fd4e1ee23daa9393f38",
+          "aiPublicGuideTopic": "재료가 없을 때 만드는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 공감",
+          "section": "3.3 공감이 닿지 않는 자리",
+          "primaryConcepts": [
+            "공감의 한계"
+          ],
+          "secondaryConcepts": [
+            "공감"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공감이 작동하지 않는 영역으로 무경험 사태·이해 불가 선택·자신을 향한 적의를 들고 마지막 경우의 구조적 어려움을 설명한다. 공감 실패를 상대의 비합리성으로 귀속하는 처리의 문제를 지적하고 판정 유보라는 대안을 제시한다.",
+          "aiAnalysisInputSha256": "4e091023573682990f9e803e8af5024f8d5e2489b8df6bf1bc197ad39e4a5e81",
+          "aiPublicGuideTopic": "함께 느낄 수 없는 것들",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 공감",
+          "section": "3.3 공감이 닿지 않는 자리",
+          "primaryConcepts": [
+            "공감의 한계"
+          ],
+          "secondaryConcepts": [
+            "질문의 한계"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공감 부재 상황에서 필요 파악과 대응이라는 절차적 기여가 가능하다는 점을 제시한다. 절차만 남을 때 상대가 대상화된다고 느끼는 문제를 지적하고, 공감의 부재를 은폐하지 않고 밝히는 편이 지속 가능하다는 판단을 다룬다.",
+          "aiAnalysisInputSha256": "31cfd4bf3e2a65ce265c22e46f213f6f4d62779364e9fb998f27e32120805fb2",
+          "aiPublicGuideTopic": "공감 없이 할 수 있는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 공감",
+          "section": "3.4 공감과 이해는 다르다",
+          "primaryConcepts": [
+            "공감과 이해"
+          ],
+          "secondaryConcepts": [
+            "공감",
+            "공감의 한계"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "공감과 이해의 혼용에서 발생하는 두 오해를 정리한다. 공감을 앎으로 대체하는 오류와, 이해가 승인으로 이어진다는 압력을 구분하고, 이해와 승인이 결합될 때 이해 시도 자체가 회피된다는 결과를 지적한다.",
+          "aiAnalysisInputSha256": "638fac5b8267121fa881f04ca09f12bc2ecadf96f02c7a1e7a416ab31a58a4e7",
+          "aiPublicGuideTopic": "두 낱말을 갈라 두는 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "4장 짐작이 어긋나는 방식",
+          "section": "4.1 자기를 기준으로 삼을 때",
+          "primaryConcepts": [
+            "투사"
+          ],
+          "secondaryConcepts": [
+            "유추"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "유추와 투사를 방향의 차이로 구분하고 후자가 자기 상태를 대상에게 귀속시킨다는 점을 설명한다. 동일 시점의 복수 판단이 서로 유사할 때 투사를 의심하는 진단 방법과 그 판단을 일괄 보류하는 대응을 제시한다.",
+          "aiAnalysisInputSha256": "90971656a4e329fdfde19b96a14e4f029f3b0d7e368e6239222b2f4afba9aba7",
+          "aiPublicGuideTopic": "본뜨기가 뒤집히는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 짐작이 어긋나는 방식",
+          "section": "4.1 자기를 기준으로 삼을 때",
+          "primaryConcepts": [
+            "투사"
+          ],
+          "secondaryConcepts": [
+            "표현과 내면"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "투사가 불안뿐 아니라 기대 방향으로도 발생한다는 점과 그 경우 반증 신호가 재해석되어 지속성이 커진다는 문제를 다룬다. 누적된 어긋남이 급격한 반전으로 이어지는 양상을 지적하고, 판단의 방향 편중을 점검 지표로 제시한다.",
+          "aiAnalysisInputSha256": "8d6277a60eb2424b36b5181ea2cd5e898859bc5ab38840c609ec020fd4a5cd82",
+          "aiPublicGuideTopic": "바라는 대로 읽는 방향",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 짐작이 어긋나는 방식",
+          "section": "4.2 어긋남이 생기는 자리",
+          "primaryConcepts": [
+            "오독의 자리"
+          ],
+          "secondaryConcepts": [
+            "투사",
+            "표현과 내면"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "상대의 내적 상태에서 관찰자의 판정에 이르는 네 단계를 직렬로 그리고 각 전이 지점에서 발생하는 이탈 요인을 분기로 표시한 도표다. 판정에서 출발점으로 되돌아가는 확인 경로를 점선으로 두어 그 부재가 오독의 고착을 낳는다는 점을 나타낸다.",
+          "aiAnalysisInputSha256": "94f92d7e7ded94fa08f6deb60ae1c9b6d34b99e135659b8fb2d01e6d48ae3600",
+          "aiPublicGuideTopic": "관찰에서 판정까지의 어느 단계에서 어긋나는지를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 짐작이 어긋나는 방식",
+          "section": "4.3 아는 사이일수록",
+          "primaryConcepts": [
+            "익숙함의 함정"
+          ],
+          "secondaryConcepts": [
+            "투사"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "친밀 관계에서 추정 속도가 빨라지고 확인 빈도가 줄어드는 구조를 다룬다. 과거의 적중률이 현재의 타당성을 보장하지 않는다는 점과, 정정 발화가 관계에 대한 발언으로 해석되어 억제된다는 점에서 오독이 누적되는 과정을 설명한다.",
+          "aiAnalysisInputSha256": "fa90d8bda5e7ff60dafcccf68dc54ab0b5d81fff2cadc8a13346d3b78fb35430",
+          "aiPublicGuideTopic": "가까울수록 덜 확인하는 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 짐작이 어긋나는 방식",
+          "section": "4.3 아는 사이일수록",
+          "primaryConcepts": [
+            "익숙함의 함정"
+          ],
+          "secondaryConcepts": [
+            "오랜 관계의 짐작"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "고착된 인상을 식별하는 방법으로 확신 문장의 명시적 기술을 제시하고 그 형성 시점을 추적하는 절차를 다룬다. 친밀 관계에서 확인 행위가 갖는 사회적 부담과 그 이유를 함께 밝히는 대응, 주기적 점검의 효과를 제시한다.",
+          "aiAnalysisInputSha256": "1b896f169d6ff9aaab668e2da709e09781076160d9f38f29e7037ea25cb8e59a",
+          "aiPublicGuideTopic": "오래된 그림을 고치는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 짐작이 어긋나는 방식",
+          "section": "4.4 확인하지 않는 짐작",
+          "primaryConcepts": [
+            "미확인 추정"
+          ],
+          "secondaryConcepts": [
+            "표현과 내면"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미확인 추정이 반복 사용과 외부 발화를 거쳐 사실처럼 고착되는 과정을 단계별로 서술한다. 추정에 근거한 결정이 확인 기회를 차단해 순환을 만든다는 점을 지적하고, 결정 이전에 확인 여부를 점검하는 개입 지점을 제시한다.",
+          "aiAnalysisInputSha256": "7e9523f0aec25b50e4991f30d6a0b52679bb8f920df506ababc4ee2dc57e22b0",
+          "aiPublicGuideTopic": "짐작이 사실이 되는 과정",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 짐작이 어긋나는 방식",
+          "section": "4.4 확인하지 않는 짐작",
+          "primaryConcepts": [
+            "미확인 추정"
+          ],
+          "secondaryConcepts": [
+            "질문의 한계"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확인을 회피하는 동기를 기지 확신·관계 부담·응답 회피 셋으로 정리하고 마지막이 배려로 위장되기 쉽다는 점을 지적한다. 회피의 실제 동기를 자기 확인하는 절차와, 동기 인지 여부가 이후 처리를 가른다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "87ed6d59e268f2372da1326193f2a9b30fe26777924baf55ef6ab96bd12b6659",
+          "aiPublicGuideTopic": "확인하지 않는 이유들",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "5장 물어보는 일",
+          "section": "5.1 물으면 알 수 있는가",
+          "primaryConcepts": [
+            "질문의 한계"
+          ],
+          "secondaryConcepts": [
+            "표현과 내면"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "질문이 내면에 직접 도달하지 못하고 또 하나의 외적 표현을 산출한다는 점을 1장의 구도로 설명한다. 다만 그 표현이 내면을 겨냥해 산출된다는 점에서 다른 관찰 항목과 구별된다고 보고, 확실성이 아닌 최선이라는 위치를 부여한다.",
+          "aiAnalysisInputSha256": "ef9a4d19e9e8bbb3cb9d2208856f4440f5158fc441dbc70db59839db91943ffb",
+          "aiPublicGuideTopic": "묻는 일이 해결하는 것과 남기는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "5장 물어보는 일",
+          "section": "5.1 물으면 알 수 있는가",
+          "primaryConcepts": [
+            "질문의 한계"
+          ],
+          "secondaryConcepts": [
+            "자기 보고"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "질문 형식이 응답을 제약한다는 점을 폐쇄형 질문의 사례로 보이고 개방형 질문의 이점을 제시한다. 질문 상황의 공개성이 답변 내용을 바꾼다는 점과, 복수 질문이 선택적 응답을 유도한다는 문제를 다룬다.",
+          "aiAnalysisInputSha256": "8e621d2819f10d960ef49ec8c7c2be4efa71523d73734a41a41545ce1e319738",
+          "aiPublicGuideTopic": "무엇을 어떻게 묻는가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 물어보는 일",
+          "section": "5.2 말과 마음 사이",
+          "primaryConcepts": [
+            "자기 보고"
+          ],
+          "secondaryConcepts": [
+            "일인칭 접근"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자기 보고의 오류 가능성을 자기 인식의 한계·언어화에 따른 변형·수신자에 따른 조정 셋으로 설명한다. 이 조정이 기만과 다르다는 점을 밝히고, 응답을 확정 사실이 아니라 하나의 자료로 취급하는 태도를 제시한다.",
+          "aiAnalysisInputSha256": "9457541981d7ce905ff50d50ab93bca59821f63c0f4f6de833e06372359ac26f",
+          "aiPublicGuideTopic": "본인의 말이 틀릴 수 있는 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 물어보는 일",
+          "section": "5.2 말과 마음 사이",
+          "primaryConcepts": [
+            "자기 보고"
+          ],
+          "secondaryConcepts": [
+            "오해의 전개"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "언어적 응답과 비언어적 신호가 상충할 때의 처리 방식을 검토한다. 표면적 수용과 내적 불신의 병행이 가장 문제적이라는 점을 지적하고, 관찰된 불일치를 그대로 진술하는 방법과 이후 진행 권한을 상대에게 두는 태도를 제시한다.",
+          "aiAnalysisInputSha256": "e30eb121610c19897443a3392934886d8a232870d04bc936f6794851d54721c4",
+          "aiPublicGuideTopic": "답과 다른 신호가 함께 올 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 물어보는 일",
+          "section": "5.3 물을 수 없는 자리",
+          "primaryConcepts": [
+            "질문 불가"
+          ],
+          "secondaryConcepts": [
+            "질문의 한계"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "질문이 불가능한 조건을 응답 능력의 부재·질문의 부담·관계상 제약 셋으로 나누고 각각의 판단 방식을 다룬다. 세 번째 유형이 실제로는 회피에서 비롯되는 경우가 많다는 점을 지적하고, 구분 기록을 통해 불가 영역을 축소하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "70fe3b86ff4e3de20df9680eb7fa8375be1b07bed22b38743313159daeece0fa",
+          "aiPublicGuideTopic": "묻는 일이 가능하지 않은 조건",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 물어보는 일",
+          "section": "5.3 물을 수 없는 자리",
+          "primaryConcepts": [
+            "질문 불가"
+          ],
+          "secondaryConcepts": [
+            "말이 서툰 상대"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "질문이 불가능한 상황에서 추정 정확도를 높이는 방법으로 장기 관찰을 통한 개별 규칙 축적과 복수 관찰자의 상호 상쇄를 제시한다. 후자가 유효하려면 관찰 결과의 사전 공유를 피해야 한다는 조건을 밝힌다.",
+          "aiAnalysisInputSha256": "9adb0a85bbb6112d7acd0091a8a491d82886caa3ea1a2c7acc6f8f133d58b90c",
+          "aiPublicGuideTopic": "묻지 못할 때 하는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 물어보는 일",
+          "section": "5.4 확인의 사다리",
+          "primaryConcepts": [
+            "확인 절차"
+          ],
+          "secondaryConcepts": [
+            "질문의 한계",
+            "미확인 추정"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "추정에서 질문에 이르는 확인 절차를 다섯 단계의 계단으로 배열하고 각 단계의 비용과 오류 감소를 병기한 도표다. 최하단에서 옆으로 빠지는 경로를 두어 확인 없이 추정이 고착되는 갈래를 함께 나타낸다.",
+          "aiAnalysisInputSha256": "727bb52c8e32394d95cc31875844cb9745a10ce5ca8c93aa8903f5f8d088e8c8",
+          "aiPublicGuideTopic": "짐작에서 확인까지의 단계를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "6장 세 자리의 짐작",
+          "section": "6.1 화가 났다고 여긴 날",
+          "primaryConcepts": [
+            "오해의 전개"
+          ],
+          "secondaryConcepts": [
+            "투사",
+            "미확인 추정"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미확인 추정이 행동을 바꾸고 그 행동이 다시 추정을 뒷받침하는 사실을 산출하는 자기 강화 과정을 사례로 보인다. 최초 근거가 다른 원인에서 비롯되었음을 확인 후에 알게 되는 전개로 확인 지연의 비용을 드러낸다.",
+          "aiAnalysisInputSha256": "96c00ea84993803f032adab2174b5bac5fe64e5a857871cd1436c68d08822f40",
+          "aiPublicGuideTopic": "하나의 오독이 자라난 과정",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "6장 세 자리의 짐작",
+          "section": "6.1 화가 났다고 여긴 날",
+          "primaryConcepts": [
+            "오해의 전개"
+          ],
+          "secondaryConcepts": [
+            "즉각적 읽기"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "오독의 전개 과정에서 개입 가능했던 세 지점을 추정 발생·행동 결정·이상 감지로 정리한다. 개입 비용이 시간에 따라 증가한다는 점을 사례로 확인하고 초기 단계의 기록과 확인이 저비용임을 보인다.",
+          "aiAnalysisInputSha256": "c934dec54a9091b4250e28dafec0070d8235754271515cf01a20eb227a62bbed",
+          "aiPublicGuideTopic": "어디서 멈출 수 있었나",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            37
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 세 자리의 짐작",
+          "section": "6.1 화가 났다고 여긴 날",
+          "primaryConcepts": [
+            "오해의 전개"
+          ],
+          "secondaryConcepts": [
+            "공감의 한계"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "오해 해소 이후에도 잔여 손실이 남는다는 점과 자책이 학습을 가리는 문제를 다룬다. 사건을 개인 특성이 아니라 추정 강화 구조로 정리해야 다음 개입 지점이 확보된다는 관점을 제시하고 기록 습관의 형성을 결과로 보인다.",
+          "aiAnalysisInputSha256": "2d6e27c386f6198a3d9cbe37acc346b9b5645cc614a782ef7d3aa34ce5fad043",
+          "aiPublicGuideTopic": "물어본 뒤에 남은 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 세 자리의 짐작",
+          "section": "6.2 아이의 말",
+          "primaryConcepts": [
+            "말이 서툰 상대"
+          ],
+          "secondaryConcepts": [
+            "질문 불가",
+            "상황 추론"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "어휘가 제한된 화자의 진술을 해석하는 문제를 사례로 다룬다. 단일 표현에 복수 상태가 수렴한다는 점을 지적하고, 내용 대신 발생 조건을 질문해 패턴을 수집하는 방법이 유효했음을 보인다.",
+          "aiAnalysisInputSha256": "2b6daa9f1d66d0f08d12bab384522abc4e17a28f2a4a5a5127fe74b019f4a7ae",
+          "aiPublicGuideTopic": "말로 다 옮기지 못하는 상대를 읽기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 세 자리의 짐작",
+          "section": "6.2 아이의 말",
+          "primaryConcepts": [
+            "말이 서툰 상대"
+          ],
+          "secondaryConcepts": [
+            "행동의 관찰"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "언어 표현이 제한된 상대에 대해 관찰 항목을 시간·장소·동석자로 확장하는 방법을 제시한다. 성인에게도 적용 가능하다는 점을 밝히면서, 관찰 사실을 상대에게 알려 감시로 전환되지 않게 하는 조건을 함께 다룬다.",
+          "aiAnalysisInputSha256": "9d44c1fa20a115e1ba0dc622723c3f9db133ce28195c26d36fbaefb7b84a14fa",
+          "aiPublicGuideTopic": "말이 적은 자리에서 늘려야 하는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 세 자리의 짐작",
+          "section": "6.3 오래 함께 일한 사람",
+          "primaryConcepts": [
+            "오랜 관계의 짐작"
+          ],
+          "secondaryConcepts": [
+            "익숙함의 함정"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장기 관계에서 형성된 인상의 형성 시점을 추적하고 확인을 통해 절반이 변화했음을 발견한 사례를 보인다. 고착된 인상이 상대의 행동 기회를 제약하는 결과를 낳았다는 점에서 오독의 실질적 비용을 드러낸다.",
+          "aiAnalysisInputSha256": "edc6ab858a405777e425100ce002b1bb3ce48688e1f1aa1575ad804281a9327e",
+          "aiPublicGuideTopic": "오래된 그림이 어긋나 있던 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 세 자리의 짐작",
+          "section": "6.3 오래 함께 일한 사람",
+          "primaryConcepts": [
+            "오랜 관계의 짐작"
+          ],
+          "secondaryConcepts": [
+            "미확인 추정"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인상 수정이 인지적 확인만으로 완결되지 않고 습관화된 반응이 남는다는 점을 사례로 보인다. 상대에게 교정 신호를 요청해 수정 작업을 공동으로 수행하는 방법과 주기적 상호 점검의 도입을 다룬다.",
+          "aiAnalysisInputSha256": "9d83776b8a7112ccd34395cc9f0aac8b172115b3e15e9c88d2b17b0a7d0a493b",
+          "aiPublicGuideTopic": "고친 뒤에 달라진 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "7장 알 수 없음과 함께 살기",
+          "section": "7.1 무엇을 물었나",
+          "primaryConcepts": [
+            "일인칭 접근"
+          ],
+          "secondaryConcepts": [
+            "유추",
+            "행동의 관찰"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일인칭 접근의 특수성과 한계, 두 갈래 추정, 공감의 기능과 오용, 오독 발생 지점과 확인 단계라는 축으로 책 전체를 요약한다. 각 축에서 제시한 절차가 어디에 대응하는지를 연결해 결론부의 뼈대로 제시한다.",
+          "aiAnalysisInputSha256": "92bd71c19dd4661df0ce08991f4467710d3dca4a40d66625e9b4643d1bca79d5",
+          "aiPublicGuideTopic": "이 책이 지나온 자리",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "other-minds-question"
+          ]
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "7장 알 수 없음과 함께 살기",
+          "section": "7.1 무엇을 물었나",
+          "primaryConcepts": [
+            "일인칭 접근"
+          ],
+          "secondaryConcepts": [
+            "공감",
+            "공감과 이해"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "불가지 결론을 접근 방식에 한정된 주장으로 제한하고 실제 실천이 추정·확인·수정으로 이루어진다는 점을 제시한다. 물음을 가능성에서 오차 감소로 전환하면 절차적 답이 성립한다는 관점과, 그 전환이 더 많은 실행을 요구한다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "c189b58c2af044297f9c89c0231d1e5ee0f08e0645acdfbfc7f6643dadd7ebf3",
+          "aiPublicGuideTopic": "알 수 없다는 결론의 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 알 수 없음과 함께 살기",
+          "section": "7.1 무엇을 물었나",
+          "primaryConcepts": [
+            "일인칭 접근"
+          ],
+          "secondaryConcepts": [
+            "투사",
+            "익숙함의 함정"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "절차의 실패를 확인 중단과 과잉 확인 두 방향으로 정리하고 후자가 상대에게 설명 부담을 지속시킨다는 문제를 지적한다. 확인의 목적을 오차 감소로 한정할 때 적정량이 정해진다는 기준을 제시한다.",
+          "aiAnalysisInputSha256": "449e16ceb59bacb316a09239c6035c41fe36fc16548d62a391ac334a74466c0a",
+          "aiPublicGuideTopic": "이 절차가 어긋나는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 알 수 없음과 함께 살기",
+          "section": "7.2 짐작을 다루는 법",
+          "primaryConcepts": [
+            "짐작의 실천"
+          ],
+          "secondaryConcepts": [
+            "미확인 추정"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "추정에 표지를 붙이는 실천을 책의 핵심 습관으로 제시하고 근거 기록이 반증 시 판단 철회를 가능하게 한다는 구조를 설명한다. 근거 없이 남은 판단이 인물에 대한 확신으로 굳는 경로를 앞 장 사례와 연결한다.",
+          "aiAnalysisInputSha256": "6917d1eb3e5c697ded9ec7bd8466cca5c043e3a2d8b8c000b60aea3c01b4dbe7",
+          "aiPublicGuideTopic": "짐작을 짐작으로 두는 기술",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 알 수 없음과 함께 살기",
+          "section": "7.2 짐작을 다루는 법",
+          "primaryConcepts": [
+            "짐작의 실천"
+          ],
+          "secondaryConcepts": [
+            "질문의 한계",
+            "자기 보고"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "질문의 부담이 빈도에 반비례한다는 점을 제시하고 정기적 확인이 개별 질문의 무게를 낮춘다는 방법을 다룬다. 질문 의도의 명시와 응답 이후 조치의 예고가 심문으로 읽히는 것을 막는다는 점을 함께 밝힌다.",
+          "aiAnalysisInputSha256": "858fdeb0bee47e46e5586f599e61c26c6c2963dc7aadfc88e1cef9bc29acb930",
+          "aiPublicGuideTopic": "묻는 일을 쉽게 만들기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            47
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 알 수 없음과 함께 살기",
+          "section": "7.2 짐작을 다루는 법",
+          "primaryConcepts": [
+            "짐작의 실천"
+          ],
+          "secondaryConcepts": [
+            "공감의 근거",
+            "말이 서툰 상대"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "질문이 불가능한 대상에 대해 관찰 항목 확장과 복수 관찰자 활용을 대응으로 제시하고 각각의 조건을 다시 정리한다. 이 방법들이 불확실성을 제거하지 않고 오차만 줄인다는 점을 책 전체의 태도로 규정하며 맺는다.",
+          "aiAnalysisInputSha256": "9a2a85e4849c3e0b714fdef0240af164434ac21a013398fcc1939ea7a6c06277",
+          "aiPublicGuideTopic": "물을 수 없는 사람 앞에서",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 61,
       "title": "형태와 구도: 화면을 구성하는 원리",
       "pdfPath": "pdfs/book-061.pdf",
