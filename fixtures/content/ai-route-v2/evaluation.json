@@ -4279,6 +4279,76 @@
         25,
         31
       ]
+    },
+    {
+      "caseId": "case-book-079",
+      "bookId": 79,
+      "purpose": "화면을 키보드와 읽어 주는 도구로도 쓸 수 있게 만들려는데, 꼭 필요한 것만 짧게 짚고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "접근성",
+        "의미 구조",
+        "의미 요소",
+        "키보드 접근성",
+        "대체 텍스트"
+      ],
+      "helpfulConcepts": [
+        "이용 방식",
+        "제목 구조",
+        "초점 순서",
+        "명도 대비"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 23
+        }
+      ],
+      "irrelevantPageNumbers": [
+        38,
+        39,
+        40,
+        42,
+        43
+      ],
+      "duplicatePageGroups": [
+        [
+          5,
+          45
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        9,
+        16,
+        23
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        10,
+        11,
+        12,
+        17,
+        24,
+        30
+      ]
     }
   ]
 }
