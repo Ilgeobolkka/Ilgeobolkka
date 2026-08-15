@@ -3500,6 +3500,98 @@
         13,
         16
       ]
+    },
+    {
+      "caseId": "case-book-086",
+      "bookId": 86,
+      "purpose": "이 책을 소장하고 있는데, 항구 마을에서 새벽 하루를 따라가 볼 계획이다. 배가 언제 나가고 어떤 순서로 돌아오는지, 위판장에서 값이 어떻게 매겨지는지, 아침식당이 언제 여는지를 이어서 익히고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "항구의 하루",
+        "출항 시각",
+        "위판장",
+        "귀항 순서",
+        "값매김",
+        "밥집 시각"
+      ],
+      "helpfulConcepts": [
+        "조업 조건",
+        "하역",
+        "마을 배치",
+        "아침 차림"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 13
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 17
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 20
+        }
+      ],
+      "irrelevantPageNumbers": [
+        32,
+        33,
+        46,
+        47,
+        48,
+        49
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          50
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        5,
+        8,
+        10,
+        12,
+        13,
+        16,
+        17,
+        20
+      ],
+      "allowedAlternativePageNumbers": [
+        9,
+        14,
+        21
+      ]
     }
   ]
 }

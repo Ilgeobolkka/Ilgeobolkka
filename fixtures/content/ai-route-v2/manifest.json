@@ -42529,6 +42529,1114 @@
           "duplicateGroupKeys": []
         }
       ]
+    },
+    {
+      "bookId": 86,
+      "title": "새벽 항구의 첫 식사",
+      "pdfPath": "pdfs/book-086.pdf",
+      "pdfSha256": "1a3a365b271d0872a1ef25c385614da77188100ec1628c82f08b62bcd7f813d0",
+      "totalPageCount": 51,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 자물목의 새벽",
+          "section": "1.1 항구의 하루",
+          "primaryConcepts": [
+            "항구의 하루"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "어업 취락의 하루가 야간에 시작된다는 시간 구조를 밝히는 도입 페이지다. 방문 시각에 따라 같은 장소가 전혀 다르게 관찰된다는 점을 첫날의 오판 사례로 제시하고, 조업과 귀항과 배분의 순서를 따라가는 책의 구성을 밝힌다.",
+          "aiAnalysisInputSha256": "288be67ac3dda7bd99a0c776a46eb6c85811ec34de8a88fda3a3c66d1a43a3c5",
+          "aiPublicGuideTopic": "하루가 밤에 시작되는 마을",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "harbor-runs-on-night"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 자물목의 새벽",
+          "section": "1.1 항구의 하루",
+          "primaryConcepts": [
+            "항구의 하루"
+          ],
+          "secondaryConcepts": [
+            "출항 시각"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "어업 취락의 하루를 출항, 귀항, 배분, 휴식의 네 구간으로 구분해 제시한다. 관광객의 일반적 방문 시각이 휴식 구간과 겹친다는 점을 지적하고, 관찰을 위해 수면을 분할해 현지 시간대에 맞춘 실제 방식을 기록한다.",
+          "aiAnalysisInputSha256": "9c0938c47f8707004ec3a88ec09eac6911ddf256a7d250a5a61e7c3ff7fa9d29",
+          "aiPublicGuideTopic": "네 토막으로 나뉜 시간",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 자물목의 새벽",
+          "section": "1.2 출항 시각",
+          "primaryConcepts": [
+            "출항 시각"
+          ],
+          "secondaryConcepts": [
+            "항구의 하루"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "출항 시각이 어장까지의 거리, 선박 규모와 수심 조건, 동반 출항 여부에 따라 매일 달라진다는 구조를 설명한다. 고정된 시각표가 아니라 전날 저녁에 결정되는 값이라는 점을 선주의 판단 과정으로 제시한다.",
+          "aiAnalysisInputSha256": "c1e2a802d32637f4abb29e5f9125d44dac3e615152b692d66e3ece46d8d3ab45",
+          "aiPublicGuideTopic": "배마다 나가는 시각이 다른 까닭",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 자물목의 새벽",
+          "section": "1.2 출항 시각",
+          "primaryConcepts": [
+            "출항 시각"
+          ],
+          "secondaryConcepts": [
+            "조업 조건",
+            "귀항 순서"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "출항 정보로 귀항 시각을 역산하는 방법을 제시한다. 어장까지의 이동 시간과 조업 시간을 더하는 계산과 그에 맞춘 관찰 시점 배치를 설명하고, 어획량에 따라 귀항이 앞당겨지거나 늦어져 추정에 오차가 생긴다는 한계를 밝힌다.",
+          "aiAnalysisInputSha256": "58c0a3e73bce3983b7d11e81f825dd9b632663c7d56cfaf2a55c9a18977cc596",
+          "aiPublicGuideTopic": "나가는 시각이 돌아오는 시각을 정한다",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 자물목의 새벽",
+          "section": "1.3 조업 조건",
+          "primaryConcepts": [
+            "조업 조건"
+          ],
+          "secondaryConcepts": [
+            "출항 시각"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조업 가능 여부를 결정하는 세 가지 조건을 기상, 어기, 정기 휴무로 구분한다. 각각의 확정 시점이 다르다는 점과 조업 중단이 위판과 식당 운영까지 연쇄적으로 멈춘다는 관계를 제시하고, 방문자는 전날 저녁 확인에 의존해야 한다고 설명한다.",
+          "aiAnalysisInputSha256": "94e8171470f3cbf0822c3e5867b3a61ab6dbc23355b55087561e936d406d503c",
+          "aiPublicGuideTopic": "그날 배가 나가는지 정해지는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 자물목의 새벽",
+          "section": "1.3 조업 조건",
+          "primaryConcepts": [
+            "조업 조건"
+          ],
+          "secondaryConcepts": [
+            "휴어기",
+            "항구의 하루"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "어종의 계절 변화가 출항·귀항 시각과 마을의 활동 내용을 함께 바꾼다는 점을 다룬다. 비조업기에는 선박 정비와 어구 손질이 주된 활동이 된다는 관찰을 제시하고, 방문 시기 선택이 관찰 대상을 결정한다는 결론을 밝힌다.",
+          "aiAnalysisInputSha256": "9997428c1057ffeec21da3d614124131d5b5690ca8f2130bb9359aab3e0280d6",
+          "aiPublicGuideTopic": "계절이 정하는 것",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 자물목의 새벽",
+          "section": "1.4 위판장",
+          "primaryConcepts": [
+            "위판장"
+          ],
+          "secondaryConcepts": [
+            "항구의 하루"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "위판장의 공간 구조가 물류 순서를 그대로 반영한다는 점을 설명한다. 해측 반입구와 육측 반출구, 배수 설비의 배치를 제시하고 관찰자의 출입이 허용되는 범위가 바닥의 표시로 구분된다는 현장 규칙을 밝힌다.",
+          "aiAnalysisInputSha256": "9c2d30027febc4b1d67e084e363c2010d2b62f1d45d16de1d3de61bb2b17d942",
+          "aiPublicGuideTopic": "잡은 것이 지나가는 한 건물",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 자물목의 새벽",
+          "section": "1.4 위판장",
+          "primaryConcepts": [
+            "위판장"
+          ],
+          "secondaryConcepts": [
+            "값매김",
+            "하역"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "위판장 내부를 반입, 경매, 반출의 세 구역으로 나누고 물류가 한 방향으로 흐르는 구조를 위에서 본 형태로 나타낸 도표다. 관찰자가 머물 수 있는 통로를 경계선과 함께 표시해 출입 범위를 드러낸다.",
+          "aiAnalysisInputSha256": "819cfd4156fc6466df26f855d736d2bc3dc415e55e1c3c92b112a4316084d515",
+          "aiPublicGuideTopic": "위판장을 지나는 물건의 순서를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "1장 자물목의 새벽",
+          "section": "1.5 마을 배치",
+          "primaryConcepts": [
+            "마을 배치"
+          ],
+          "secondaryConcepts": [
+            "항구의 하루"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "어촌의 공간 구조를 부두, 부속 업종, 주거의 세 층으로 구분하고 각 층이 서로 다른 시간대에 활동한다는 점을 설명한다. 숙박 위치가 주거층에 있어 관찰 지점까지 이동하며 세 시간대를 통과하게 된다는 관찰을 덧붙인다.",
+          "aiAnalysisInputSha256": "78d63b03995cdec45eeadc87b5f23184067b11229e91fe72bb1a8633b48acace",
+          "aiPublicGuideTopic": "부두에서 멀어질수록 달라지는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "1장 자물목의 새벽",
+          "section": "1.5 마을 배치",
+          "primaryConcepts": [
+            "마을 배치"
+          ],
+          "secondaryConcepts": [
+            "밥집 시각",
+            "구경하는 자리"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "숙소에서 부두까지의 이동 구간이 시간대가 다른 세 층을 통과한다는 점을 감각의 변화로 기록한다. 조명과 소음의 순서로 당일 조업 규모를 사전에 판단할 수 있다는 관찰과, 동일 경로의 반복이 차이를 드러낸다는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "e0a6df7f042341bf18f41c506a86af5dc122256ed9f0ba130414a4bd489f2d3b",
+          "aiPublicGuideTopic": "새벽에 걸어가는 길",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 배가 들어오는 시간",
+          "section": "2.1 귀항 순서",
+          "primaryConcepts": [
+            "귀항 순서"
+          ],
+          "secondaryConcepts": [
+            "출항 시각"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "귀항 순서가 어획량과 어장 거리로 결정된다는 구조를 설명한다. 선착 어선이 그날의 가격 기준을 형성한다는 연쇄를 제시하고, 관찰자에게 첫 입항 선박이 가장 정보량이 큰 대상이라는 실무를 덧붙인다.",
+          "aiAnalysisInputSha256": "3afd897e37ad346e7dca2be66bdd384f6532b189c8d0e3001ac037cede9fa219",
+          "aiPublicGuideTopic": "돌아오는 순서가 정해지는 방식",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 배가 들어오는 시간",
+          "section": "2.1 귀항 순서",
+          "primaryConcepts": [
+            "귀항 순서"
+          ],
+          "secondaryConcepts": [
+            "하역",
+            "구경하는 자리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "입항 관찰에 적합한 위치와 그 이유를 다룬다. 계류 작업 구역을 피해야 하는 안전상의 근거, 방파제에서 확보되는 관찰 시간, 선체 흘수로 어획량을 추정하는 방법을 각각 제시한다.",
+          "aiAnalysisInputSha256": "00191a2c3f9555a6de1062ddcdda0c37fdf77413d80067938c72a6de179d0bbf",
+          "aiPublicGuideTopic": "배가 들어오는 것을 보는 자리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 배가 들어오는 시간",
+          "section": "2.2 하역",
+          "primaryConcepts": [
+            "하역"
+          ],
+          "secondaryConcepts": [
+            "귀항 순서"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "하역 작업의 속도와 위험 요인을 설명한다. 선도 유지를 위해 시간이 곧 가격이라는 압박, 젖은 바닥과 조도 부족이 겹친 작업 환경을 제시하고, 관찰자가 물러나야 하는 이유와 시점을 밝힌다.",
+          "aiAnalysisInputSha256": "e631673cc2fa3ebfe9b025a561afb247a0f48df93a56ed4a2df2109fc1f53ba6",
+          "aiPublicGuideTopic": "배에서 건물까지 옮기는 짧은 거리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 배가 들어오는 시간",
+          "section": "2.2 하역",
+          "primaryConcepts": [
+            "하역"
+          ],
+          "secondaryConcepts": [
+            "위판장",
+            "구경하는 자리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "부두에서 위판장까지의 하역 동선과 관찰자가 위치할 수 있는 지점을 위에서 본 형태로 나타낸 도표다. 작업 구역을 별도 색으로 표시하고 관찰 위치에서의 시선을 점선으로 그려, 안전한 거리와 관찰 가능성을 함께 보인다.",
+          "aiAnalysisInputSha256": "93e2706863c7d4f7f1ced56a3083e359e61a9a17addd1f80aeaae1c55e60fded",
+          "aiPublicGuideTopic": "배에서 위판장까지 짐이 지나는 길과 서 있으면 안 되는 자리를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 배가 들어오는 시간",
+          "section": "2.3 값매김",
+          "primaryConcepts": [
+            "값매김"
+          ],
+          "secondaryConcepts": [
+            "위판장"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "위판 경매의 진행 속도와 가격 결정 요소를 정리한다. 크기, 선도, 물량이라는 세 기준과 각각의 확인 방법을 제시하고, 수신호 방식이 사용되는 이유와 관찰자가 결과를 파악하는 대체 방법을 설명한다.",
+          "aiAnalysisInputSha256": "657dc4bf3069f9e54117536a075c527e8731b8377133e1fa6c47319580788d63",
+          "aiPublicGuideTopic": "값이 정해지는 몇 분",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "2장 배가 들어오는 시간",
+          "section": "2.3 값매김",
+          "primaryConcepts": [
+            "값매김"
+          ],
+          "secondaryConcepts": [
+            "출하",
+            "귀항 순서"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 어종 내에서 가격이 갈리는 요인을 취급 상태, 규격의 균일성, 상장 시각으로 구분해 설명한다. 각 요인이 조업 단계의 어떤 작업과 연결되는지를 제시해 가격 차이가 작업의 결과임을 밝힌다.",
+          "aiAnalysisInputSha256": "4454a2214d9352a38f08e433de59ad8a21f5a1879ce0e48c2e81f736baf4fcb9",
+          "aiPublicGuideTopic": "값이 갈리는 이유",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "2장 배가 들어오는 시간",
+          "section": "2.4 출하",
+          "primaryConcepts": [
+            "출하"
+          ],
+          "secondaryConcepts": [
+            "값매김"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "위판 이후의 물류가 마을 외부로 향한다는 점과 잔여 물량의 처리를 다룬다. 반출 차량이 집중되는 시간대, 미상장 물량과 자가 소비분의 구분을 제시하고, 식당 메뉴가 당일 어획 구성을 반영한다는 연결을 밝힌다.",
+          "aiAnalysisInputSha256": "757026f836739d4939f9b0f5964b7d2339b34bab7bbfc72578a3b6e3bb5c2730",
+          "aiPublicGuideTopic": "마을을 떠나는 물건",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "2장 배가 들어오는 시간",
+          "section": "2.4 출하",
+          "primaryConcepts": [
+            "출하"
+          ],
+          "secondaryConcepts": [
+            "큰 항구",
+            "마을 배치"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "취락의 처리 용량이 위판장과 제빙 설비의 규모로 제한된다는 점을 다룬다. 용량 초과 시 대기와 선도 저하로 가격이 하락하는 역설, 얼음 부족이 조업 시간을 단축시키는 연쇄를 제시한다.",
+          "aiAnalysisInputSha256": "960ec2e112ecd5df253d5428dcc82c24da685a68092a471fcf47eceaca930f67",
+          "aiPublicGuideTopic": "이 마을이 감당하는 양",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 아침식당 골목",
+          "section": "3.1 밥집 시각",
+          "primaryConcepts": [
+            "밥집 시각"
+          ],
+          "secondaryConcepts": [
+            "마을 배치"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "식당의 개점 시각이 귀항 시각에 맞춰 형성되고 부두와의 거리에 따라 시차를 두고 열린다는 구조를 설명한다. 폐점 순서와 야간 미영업이라는 특성을 함께 제시하고, 방문자의 일반적 식사 시각과 어긋난다는 점을 지적한다.",
+          "aiAnalysisInputSha256": "3f7e320e060018779191132859af02ed5668f8b190bc5864c9df0b1afbb29c1b",
+          "aiPublicGuideTopic": "식당이 여는 시각이 정해진 방식",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 아침식당 골목",
+          "section": "3.1 밥집 시각",
+          "primaryConcepts": [
+            "밥집 시각"
+          ],
+          "secondaryConcepts": [
+            "항구의 하루",
+            "먹는 사람들"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "부두와 위판장과 식당의 활동 시간대를 같은 시간 축 위에 세 줄로 배치한 도표다. 활동이 겹치고 이어지는 구간을 진하게 표시하고 첫 입항 시점을 세로선으로 표시해, 세 장소가 하나의 새벽을 나누어 쓴다는 것을 보인다.",
+          "aiAnalysisInputSha256": "0786c9dcc3d88101522bcdc7fa7bfb27fbc9141acca3d4f63dff01c35d75fbf8",
+          "aiPublicGuideTopic": "부두와 식당과 위판장이 시각을 나누어 쓰는 것을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 아침식당 골목",
+          "section": "3.2 아침 차림",
+          "primaryConcepts": [
+            "아침 차림"
+          ],
+          "secondaryConcepts": [
+            "밥집 시각",
+            "출하"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "식당 메뉴가 당일 위판 결과에 따라 결정된다는 구조를 설명한다. 미상장 물량과 저가 물량이 메뉴가 되는 경로, 신속한 제공을 위한 단순한 조리 방식을 제시하고, 선택지가 적다는 점이 오히려 당일 어획을 반영한다고 정리한다.",
+          "aiAnalysisInputSha256": "5c5985d151102dee94974832bf1698100479189142f0e1b1455e49b907fa2f0e",
+          "aiPublicGuideTopic": "밥상에 오르는 것이 정해지는 방식",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 아침식당 골목",
+          "section": "3.2 아침 차림",
+          "primaryConcepts": [
+            "아침 차림"
+          ],
+          "secondaryConcepts": [
+            "값매김",
+            "밥값"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미상장 물량이 식당으로 이동하면서 형성되는 가격과 선도의 관계를 설명한다. 상품성과 식용 가치가 다른 기준이라는 점을 제시하고, 선택 가능성이 없다는 한계와 그에 대한 대안을 뒤 장으로 연결한다.",
+          "aiAnalysisInputSha256": "d611da95c852f64557393d49cad9f64ebd86934d67b4cd8779ccbed4cbb9d172",
+          "aiPublicGuideTopic": "같은 그릇에 담긴 다른 값",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "3장 아침식당 골목",
+          "section": "3.3 먹는 사람들",
+          "primaryConcepts": [
+            "먹는 사람들"
+          ],
+          "secondaryConcepts": [
+            "밥집 시각"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "식당 이용자를 조업 종료자, 위판장 종사자, 반출 운송자로 구분하고 각각의 이용 시각과 체류 시간이 다르다는 점을 다룬다. 하루의 종료와 시작이 한 공간에서 교차한다는 구조를 제시하고 관찰자의 시각 선택 기준을 밝힌다.",
+          "aiAnalysisInputSha256": "a9051f0269d2ef325ac39a7e84fac6a3f41a6c6aaf622dfdf87dcf0aafa0fcbd",
+          "aiPublicGuideTopic": "새벽 밥상에 앉는 사람들",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "3장 아침식당 골목",
+          "section": "3.3 먹는 사람들",
+          "primaryConcepts": [
+            "먹는 사람들"
+          ],
+          "secondaryConcepts": [
+            "묻는 법",
+            "아침 차림"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "합석 상황에서의 대화 방식을 다룬다. 짧게 답하고 되묻는 균형, 조업 상황처럼 답하기 쉬운 주제 선택, 수입과 가격처럼 피해야 할 주제를 각각 제시하고 그 이유를 현장 사정으로 설명한다.",
+          "aiAnalysisInputSha256": "41f451362fdaf32628121ad806fb6913eccc52e55f88b59420c410cb87b560f1",
+          "aiPublicGuideTopic": "합석과 말 걸기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "3장 아침식당 골목",
+          "section": "3.4 밥값",
+          "primaryConcepts": [
+            "밥값"
+          ],
+          "secondaryConcepts": [
+            "아침 차림"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "가격 표시가 없는 소규모 식당의 관행과 단일 가격 구조를 설명한다. 메뉴가 고정되지 않으므로 가격도 단일해진다는 관계를 제시하고, 현금 결제만 가능한 조건과 그에 따른 사전 준비를 밝힌다.",
+          "aiAnalysisInputSha256": "9df9f9ad9be7038c3bfdeffedab186e62815ee59657e4290e667060aef1d1999",
+          "aiPublicGuideTopic": "값을 셈하는 방식",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "3장 아침식당 골목",
+          "section": "3.4 밥값",
+          "primaryConcepts": [
+            "밥값"
+          ],
+          "secondaryConcepts": [
+            "사는 법",
+            "먹는 사람들"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지역 관행으로서의 식대 대납과 그에 대한 대응을 다룬다. 거절이 관계를 어색하게 만든다는 점, 다음 기회에 되갚는 순환, 계산 행위를 드러내지 않는 방식이라는 세 가지를 실제 경험으로 제시한다.",
+          "aiAnalysisInputSha256": "84547940f9531d13cf04814c46b08ba0218ff806d2336d605acec060479f0b68",
+          "aiPublicGuideTopic": "얻어먹게 될 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 여행자의 자리",
+          "section": "4.1 구경하는 자리",
+          "primaryConcepts": [
+            "구경하는 자리"
+          ],
+          "secondaryConcepts": [
+            "마을 배치"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "작업 현장에서 관찰자가 지켜야 할 세 가지 규칙을 제시한다. 이동 동선의 회피, 체류 시간의 제한, 사전 허락의 확인이며 각각이 작업 방해를 줄이고 관찰 범위를 넓히는 이유를 설명한다.",
+          "aiAnalysisInputSha256": "91fcbfe93a6e740c2efed49a084d8f0fbaa4366ba3fa3245fd2785a1d75d2509",
+          "aiPublicGuideTopic": "일하는 곳에서 서 있는 법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 여행자의 자리",
+          "section": "4.1 구경하는 자리",
+          "primaryConcepts": [
+            "구경하는 자리"
+          ],
+          "secondaryConcepts": [
+            "하역",
+            "사진 예의"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "부두 공간을 작업 구역과 관찰 가능 구역으로 나누어 표시한 도표다. 세 곳의 관찰 지점마다 그 위치에서 확인할 수 있는 대상을 함께 적어, 안전 거리와 관찰 목적을 연결해 보인다.",
+          "aiAnalysisInputSha256": "fd23da052b99d085c471b45d02169f8e169aca5a9bb6ca67101558a4b4c683d1",
+          "aiPublicGuideTopic": "새벽 부두에서 설 수 있는 자리와 그렇지 않은 자리를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 여행자의 자리",
+          "section": "4.2 묻는 법",
+          "primaryConcepts": [
+            "묻는 법"
+          ],
+          "secondaryConcepts": [
+            "구경하는 자리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "작업 현장에서 질문할 시점과 방식을 다룬다. 공정 사이의 간격을 이용하는 시점 선택, 눈앞의 대상에 관한 구체적 질문의 효과, 대화를 짧게 끊어 관계를 다음 날로 이어 가는 방법을 각각 제시한다.",
+          "aiAnalysisInputSha256": "74e8eec4752af6fc8c7704e67704b646ccb552fd90bbb5b2cdbe9b6c98592048",
+          "aiPublicGuideTopic": "언제 무엇을 묻는가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 여행자의 자리",
+          "section": "4.2 묻는 법",
+          "primaryConcepts": [
+            "묻는 법"
+          ],
+          "secondaryConcepts": [
+            "밥집 시각",
+            "먹는 사람들"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관찰 장소와 질문 장소를 분리하는 방법을 제시한다. 작업 현장에서는 사실 확인이, 식사 자리에서는 배경 설명이 얻어진다는 차이를 근거로 들고, 현장에서 기록한 의문을 이후에 묻는 순서가 양쪽을 모두 만족시킨다고 설명한다.",
+          "aiAnalysisInputSha256": "b943a573efb4d7881276e88f1bd4170916d6f2161c1ff3383f22708e2377bf3e",
+          "aiPublicGuideTopic": "물을 자리를 옮기기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "4장 여행자의 자리",
+          "section": "4.3 사진 예의",
+          "primaryConcepts": [
+            "사진 예의"
+          ],
+          "secondaryConcepts": [
+            "구경하는 자리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "작업 현장에서의 촬영 규칙을 인물, 거래 정보, 조명의 세 측면으로 정리한다. 동의 확보가 어려운 상황에서의 대안, 가격 정보 촬영을 피해야 하는 이유, 보조광이 작업자에게 미치는 영향을 각각 제시한다.",
+          "aiAnalysisInputSha256": "0e601141acc10ad1da0255ef84bd646d0838e7484d6ad46c28ed013ec7b6d020",
+          "aiPublicGuideTopic": "찍어도 되는 것과 아닌 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "4장 여행자의 자리",
+          "section": "4.3 사진 예의",
+          "primaryConcepts": [
+            "사진 예의"
+          ],
+          "secondaryConcepts": [
+            "관광 항구",
+            "묻는 법"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "촬영 이후의 후속 조치를 다룬다. 촬영본을 즉시 보여 주고 삭제 요청을 수용하는 절차, 전달 약속의 이행 문제, 인화본 전달이라는 대안을 제시하고 현지에서 촬영이 갖는 의미를 설명한다.",
+          "aiAnalysisInputSha256": "997ea54682bf911dbe3f457e85ac9625044f827e7da15bde5627ba86d7f052fe",
+          "aiPublicGuideTopic": "찍고 나서 하는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "4장 여행자의 자리",
+          "section": "4.4 사는 법",
+          "primaryConcepts": [
+            "사는 법"
+          ],
+          "secondaryConcepts": [
+            "값매김"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "위판 경매에 대한 접근 제한과 그 이후의 소매 경로를 설명한다. 낙찰자를 통한 분매의 조건과 가격 수준, 질문 위치의 선택을 제시하고, 구매 의사 없는 가격 문의가 이후 방문자에게 미치는 영향을 지적한다.",
+          "aiAnalysisInputSha256": "46f49553ef762533b24cbdc3c2de593f66185e223139111e57514b78796c8989",
+          "aiPublicGuideTopic": "여행자가 위판장에서 살 수 있는가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "4장 여행자의 자리",
+          "section": "4.4 사는 법",
+          "primaryConcepts": [
+            "사는 법"
+          ],
+          "secondaryConcepts": [
+            "아침 차림",
+            "밥값"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "현지 구매 이후의 처리 방법을 다룬다. 식당 조리 위탁과 제빙소 이용이라는 두 경로와 각각의 시간 제약을 제시하고, 관찰을 목적으로 한 방문에서는 구매가 오히려 관찰을 중단시킨다는 판단을 밝힌다.",
+          "aiAnalysisInputSha256": "1ac088e415464f5468827ccf3d573cd64debbb0f9613bcef95f43cd294dfcdd0",
+          "aiPublicGuideTopic": "산 것을 어떻게 하는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 자물목의 하루",
+          "section": "5.1 새벽 기록",
+          "primaryConcepts": [
+            "새벽 기록"
+          ],
+          "secondaryConcepts": [
+            "귀항 순서",
+            "출항 시각"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실제 관찰의 첫 장면을 시간과 함께 기록한다. 귀항 시각 추정이 빗나간 이유, 흘수로 어획량을 판단한 관찰, 하역 소요 시간과 선상 선별 작업의 관계를 제시하고 관찰 위치에 관한 경험을 덧붙인다.",
+          "aiAnalysisInputSha256": "aa3a81af53c1177bec526c97f6760c560c349188331e79a3d2207610ec9a2ad8",
+          "aiPublicGuideTopic": "세 시의 부두",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 자물목의 하루",
+          "section": "5.1 새벽 기록",
+          "primaryConcepts": [
+            "새벽 기록"
+          ],
+          "secondaryConcepts": [
+            "항구의 하루",
+            "밥집 시각"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사흘간의 관찰 위치를 시간 축 위에 배치해 비교한 도표다. 첫날의 늦은 시작과 누락된 지점을 이후 이틀과 대비하고, 첫 입항 시각이 날마다 다르다는 것을 세로선의 위치로 표시한다.",
+          "aiAnalysisInputSha256": "ae2c2fcd781ee6326270240489b1baea935bfc86baadb0f8ffb4ce3256b823df",
+          "aiPublicGuideTopic": "사흘 동안 새벽에 어디에 있었는지 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 자물목의 하루",
+          "section": "5.2 아침 기록",
+          "primaryConcepts": [
+            "아침 기록"
+          ],
+          "secondaryConcepts": [
+            "값매김",
+            "위판장"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "위판 경매의 실제 진행을 시간과 함께 기록한다. 상장 준비, 수신호 방식의 경매, 가격 차이의 원인 확인, 반출까지의 흐름을 순서대로 제시하고 앞 장에서 설명한 구조가 현장에서 확인된 사례로 삼는다.",
+          "aiAnalysisInputSha256": "206af598933f6a82b9b8d5ad0654141d26ab820ce7c92d2760ab146cf1ea7d43",
+          "aiPublicGuideTopic": "여섯 시의 위판장",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "5장 자물목의 하루",
+          "section": "5.2 아침 기록",
+          "primaryConcepts": [
+            "아침 기록"
+          ],
+          "secondaryConcepts": [
+            "출하",
+            "사는 법"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사흘간의 가격 기록에서 물량과 가격의 관계를 확인한 과정을 다룬다. 어획량 증가에 따른 가격 하락이 식당 메뉴의 구성 변화로 이어진 사례를 제시하고, 위판장과 식당을 하나의 흐름으로 관찰해야 한다는 결론을 밝힌다.",
+          "aiAnalysisInputSha256": "4ca70225cb41863fd122d6e1853a7d124eaadecf2ada59bb37069726a41858cf",
+          "aiPublicGuideTopic": "값을 적어 두고 알게 된 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "5장 자물목의 하루",
+          "section": "5.3 밥상 기록",
+          "primaryConcepts": [
+            "밥상 기록"
+          ],
+          "secondaryConcepts": [
+            "아침 차림",
+            "먹는 사람들"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "식사 자리에서의 관찰과 대화를 기록한다. 메뉴 구성이 당일 미상장 물량과 일치한 사실, 합석자가 관찰 대상의 당사자였다는 우연이 정보의 밀도를 높인 과정을 제시하고, 관찰과 질문의 장소 분리가 작동한 사례로 삼는다.",
+          "aiAnalysisInputSha256": "f1577b33a4d450b90edb5a1a3a37a76b48aa39cb24ae72430c8550ffdf06cb2a",
+          "aiPublicGuideTopic": "여덟 시의 밥상",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "5장 자물목의 하루",
+          "section": "5.3 밥상 기록",
+          "primaryConcepts": [
+            "밥상 기록"
+          ],
+          "secondaryConcepts": [
+            "밥값",
+            "묻는 법"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관찰자가 의도적으로 하지 않은 두 가지 행동과 그 이유를 기록한다. 촬영이 대화를 중단시킨다는 관찰, 가격 질문이 상대에게 미치는 영향을 앞 장의 조언과 연결하고, 대체 질문으로 얻은 정보의 가치를 제시한다.",
+          "aiAnalysisInputSha256": "723c7a92f1e65187cce77403e7c759555d989d0e4a7fe154ddf2e7d3c62fd1ca",
+          "aiPublicGuideTopic": "그 자리에서 하지 않은 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "5장 자물목의 하루",
+          "section": "5.4 낮 기록",
+          "primaryConcepts": [
+            "낮 기록"
+          ],
+          "secondaryConcepts": [
+            "새벽 기록",
+            "마을 배치"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조업 종료 이후 시간대의 관찰을 기록한다. 어구 손질 시간대가 질문에 적합하다는 점, 빈 위판장의 흔적으로 앞선 배치를 확인할 수 있다는 관찰을 제시하고, 두 시간대가 하나의 하루라는 인식으로 정리한다.",
+          "aiAnalysisInputSha256": "f8574b22848ab65ac737cf9b65aa0d7a88f9eb027c06aba09cb9ee0a452b0f8f",
+          "aiPublicGuideTopic": "아홉 시 이후의 마을",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "5장 자물목의 하루",
+          "section": "5.4 낮 기록",
+          "primaryConcepts": [
+            "낮 기록"
+          ],
+          "secondaryConcepts": [
+            "항구의 하루",
+            "휴어기"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사흘의 관찰을 시각, 위치, 가격의 세 항목으로 압축한 결과를 제시한다. 시각과 위치는 다른 지역에도 이전 가능하고 가격 자료는 지역 한정이지만 물량과 가격의 관계는 일반화된다는 구분을 밝힌다.",
+          "aiAnalysisInputSha256": "5096d505d5c5cdff46efd2557078309b4b74aae7b9f6ee48a7404117f15e4ced",
+          "aiPublicGuideTopic": "사흘의 기록을 한 장으로",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 이 마을이 아닌 항구",
+          "section": "6.1 휴어기",
+          "primaryConcepts": [
+            "휴어기"
+          ],
+          "secondaryConcepts": [
+            "조업 조건"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비조업기에는 이 책이 전제한 시간 구조가 성립하지 않는다는 한계를 밝힌다. 위판과 식당 운영이 중단되는 연쇄를 제시하고, 대신 선박 정비와 어구 제작이라는 다른 관찰 대상이 주간에 형성된다는 점을 설명한다.",
+          "aiAnalysisInputSha256": "8f949249b54425ce7a32b9877f49c7284f1057139fc0276852543cf823a7e184",
+          "aiPublicGuideTopic": "배가 나가지 않는 철에 오면",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 이 마을이 아닌 항구",
+          "section": "6.1 휴어기",
+          "primaryConcepts": [
+            "휴어기"
+          ],
+          "secondaryConcepts": [
+            "항구의 하루",
+            "조업 조건"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조업기와 비조업기의 활동 시간대를 같은 축 위에 대비한 도표다. 진한 구역이 야간에서 주간으로 이동한 것을 화살표로 표시해, 방문 시기에 따라 관찰 가능한 시간대가 반전된다는 점을 보인다.",
+          "aiAnalysisInputSha256": "7c199777a4657d5d56a027cae76c65921639d8be974eeb2f98c20d95fcb1a051",
+          "aiPublicGuideTopic": "조업하는 철과 하지 않는 철의 하루를 견준 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 이 마을이 아닌 항구",
+          "section": "6.2 관광 항구",
+          "primaryConcepts": [
+            "관광 항구"
+          ],
+          "secondaryConcepts": [
+            "사진 예의",
+            "구경하는 자리"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관광지화된 항구에서 관찰 조건이 달라지는 양상을 다룬다. 지정된 관람 구역과 질의 기회의 축소, 시연 형태의 경매와 실제 거래의 구분 필요성을 제시하고, 관찰 방식 자체가 달라진다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "c78ec7b9204015af843f33783c888f396fae7a8e38fa5fe1088b6668f6f02dd9",
+          "aiPublicGuideTopic": "구경거리가 된 항구에서는",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "6장 이 마을이 아닌 항구",
+          "section": "6.2 관광 항구",
+          "primaryConcepts": [
+            "관광 항구"
+          ],
+          "secondaryConcepts": [
+            "사는 법",
+            "밥값"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "방문자 증가가 지역의 가격 구조를 바꾸는 경로를 설명한다. 식당의 메뉴와 조달 방식 변화, 소매 분매의 감소와 전문 판매점의 등장을 제시하고, 이 책이 기록한 조건이 방문자 희소성에 의존한다는 점을 명시한다.",
+          "aiAnalysisInputSha256": "2bf10e94adeba2f89f72ed3d968e607baba29ab5b845316edb0214a16cc7d94b",
+          "aiPublicGuideTopic": "여행자가 늘면 달라지는 값",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "6장 이 마을이 아닌 항구",
+          "section": "6.3 큰 항구",
+          "primaryConcepts": [
+            "큰 항구"
+          ],
+          "secondaryConcepts": [
+            "출하",
+            "위판장"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대규모 항만에서 이 책의 관찰 방식이 성립하지 않는 이유를 세 가지로 제시한다. 전체 파악의 불가능, 구성원 간 관계망의 부재, 관찰자의 익명성이며 각각이 정보 획득 경로를 어떻게 바꾸는지 설명한다.",
+          "aiAnalysisInputSha256": "860f8e3b973e569c41ce477e8a60c67411e836d4a419a19bf08bcd5469acd1f0",
+          "aiPublicGuideTopic": "규모가 커지면 사라지는 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "6장 이 마을이 아닌 항구",
+          "section": "6.3 큰 항구",
+          "primaryConcepts": [
+            "큰 항구"
+          ],
+          "secondaryConcepts": [
+            "마을 배치",
+            "관광 항구"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대규모 항만에서 대체 가능한 관찰 대상을 제시한다. 기계화된 처리 설비와 연속적인 시간 구조를 특징으로 들고, 하루 전체를 따라가는 대신 단일 공정을 추적하는 방법으로 전환할 것을 권한다.",
+          "aiAnalysisInputSha256": "0658672c6995359d907062a3b297d7c2a154060d972c41de178dda879ad348f8",
+          "aiPublicGuideTopic": "큰 항구에서 대신 볼 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 결론: 새벽을 보는 일",
+          "section": "7.1 새벽을 보는 일",
+          "primaryConcepts": [
+            "새벽을 보는 일"
+          ],
+          "secondaryConcepts": [
+            "항구의 하루",
+            "구경하는 자리"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체의 명제를 다시 진술하는 결론 도입 페이지다. 관찰 대상이 관광 자원이 아니라 작업 현장이라는 점을 밝히고, 거리 유지와 시점 선택이라는 규칙이 관찰의 질을 높인다는 관계를 정리한다.",
+          "aiAnalysisInputSha256": "4c693b60235ea130d50666291f8ea469daeba05791d0f50b1dc77be08f9da266",
+          "aiPublicGuideTopic": "일터를 구경한다는 것",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "harbor-runs-on-night"
+          ]
+        },
+        {
+          "pageNumber": 51,
+          "chapter": "7장 결론: 새벽을 보는 일",
+          "section": "7.1 새벽을 보는 일",
+          "primaryConcepts": [
+            "새벽을 보는 일"
+          ],
+          "secondaryConcepts": [
+            "밥집 시각",
+            "묻는 법"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다른 지역에 적용할 수 있도록 확인 항목을 네 가지로 압축해 제시한다. 세 가지는 사전 문의로 확보되고 마지막 하나는 현장 확인이 필요하다는 구분을 밝히며, 직접 참여 없이도 관찰이 성립한 근거로 삼는다.",
+          "aiAnalysisInputSha256": "bcb23270ad1bb4e0d090838a2d2d233290d92c89bca98fbe35458aaa6025f9c1",
+          "aiPublicGuideTopic": "다른 항구에 가기 전에",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            50
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
     }
   ]
 }
