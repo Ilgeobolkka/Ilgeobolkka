@@ -3289,6 +3289,118 @@
         19,
         25
       ]
+    },
+    {
+      "caseId": "case-book-094",
+      "bookId": 94,
+      "purpose": "기록을 여러 번 시작했다가 늘 몇 주 만에 그만뒀다. 이번에는 이어지게 만들고 싶어서 적는 부담을 줄이는 방법과 언제 적을지 정하는 방법을 처음부터 익히고 싶다. 기록이 짐이 되는 경우까지는 지금 필요 없다",
+      "owned": false,
+      "maxAdditionalInk": 15,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "트리거-행동-보상",
+        "마찰",
+        "도구 접근성",
+        "최소 기록 단위",
+        "행동 연결",
+        "보상"
+      ],
+      "helpfulConcepts": [
+        "기록의 중단",
+        "기록 시점",
+        "무분류 기록",
+        "결손 허용"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 13
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 15
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 20
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 22
+        },
+        {
+          "beforePageNumber": 22,
+          "afterPageNumber": 23
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 28
+        },
+        {
+          "beforePageNumber": 28,
+          "afterPageNumber": 29
+        }
+      ],
+      "irrelevantPageNumbers": [
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          49
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        12,
+        13,
+        14,
+        15,
+        20,
+        22,
+        23,
+        28,
+        29
+      ],
+      "allowedAlternativePageNumbers": [
+        9,
+        17,
+        25
+      ]
     }
   ]
 }

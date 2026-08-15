@@ -40230,6 +40230,1088 @@
           "duplicateGroupKeys": []
         }
       ]
+    },
+    {
+      "bookId": 94,
+      "title": "기록이 습관이 되는 순간",
+      "pdfPath": "pdfs/book-094.pdf",
+      "pdfSha256": "fdfd2f09bfc4f1ca8d887d842f000a4781d321a4d869f2a2636f70652bc82e52",
+      "totalPageCount": 50,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 기록이 끊기는 자리",
+          "section": "1.1 적기로 한 것과 적히지 않는 것",
+          "primaryConcepts": [
+            "기록의 중단"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 습관의 중단을 개인의 성실성이 아니라 기록 형식의 부담으로 설명하는 도입 페이지다. 동일한 목적의 기록을 서로 다른 분량으로 운영한 두 사례를 대비하고, 이 책이 기록의 내용이 아니라 지속 가능성을 다룬다는 범위를 밝힌다.",
+          "aiAnalysisInputSha256": "8057f2537b2999d9fef8ea0f6feee4e3fbba2b639714eb63500f1763f8b13fca",
+          "aiPublicGuideTopic": "기록이 몇 주 만에 끊기는 이유",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "written-beats-well-written"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 기록이 끊기는 자리",
+          "section": "1.1 적기로 한 것과 적히지 않는 것",
+          "primaryConcepts": [
+            "기록의 중단"
+          ],
+          "secondaryConcepts": [
+            "마찰"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 중단의 공통 요인을 착수 전 준비 동작에서 찾는다. 개별 준비의 소요가 작아도 피로 상태에서는 결정적이라는 점, 결손이 누적되면 복귀 부담이 커진다는 구조를 설명하고 준비 제거라는 대응 방향을 제시한다.",
+          "aiAnalysisInputSha256": "8e29dc0a9606b26691c413ffa9c8f9dd2000a9bc8e4ecd8726dfd17bf5f5b8f3",
+          "aiPublicGuideTopic": "끊기는 자리에 공통으로 있는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 기록이 끊기는 자리",
+          "section": "1.2 습관이 되는 구조",
+          "primaryConcepts": [
+            "트리거-행동-보상"
+          ],
+          "secondaryConcepts": [
+            "기록의 중단"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복 행동을 신호·행동·후속 결과의 세 요소로 분해해 설명한다. 세 요소가 결합되면 매번의 판단 없이 실행된다는 점과, 기록 습관의 실패를 세 요소 중 결손으로 진단하는 틀을 제시하며 책의 장 구성이 이 틀을 따른다는 것을 밝힌다.",
+          "aiAnalysisInputSha256": "999e7dc18557c46abcbe480905363300038571ead63e85518c529d98721c6bcf",
+          "aiPublicGuideTopic": "되풀이되는 행동에 들어 있는 세 부분",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 기록이 끊기는 자리",
+          "section": "1.2 습관이 되는 구조",
+          "primaryConcepts": [
+            "트리거-행동-보상"
+          ],
+          "secondaryConcepts": [
+            "마찰",
+            "보상"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "습관의 세 요소를 순환 구조로 나타낸 도표다. 각 요소에 기록 상황의 구체적 예를 병기하고, 행동 요소에 마찰이 작용하는 방향을 별도 표시해 개입 지점이 어디인지를 함께 보인다.",
+          "aiAnalysisInputSha256": "e50b16bf57cfc933f03ae1862a93df4b919376282171e2a53e49e9d9761e3752",
+          "aiPublicGuideTopic": "신호와 행동과 보상이 이어진 고리를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 기록이 끊기는 자리",
+          "section": "1.3 마찰이라는 개념",
+          "primaryConcepts": [
+            "마찰"
+          ],
+          "secondaryConcepts": [
+            "기록의 중단"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "마찰을 행동 착수까지 드는 모든 수고로 정의하고 의지와 대비한다. 의지는 변동하지만 마찰 감소는 지속된다는 점, 기록에서 마찰이 집중되는 지점이 시작 부분이라는 점, 그리고 착수 전 단계 수를 세어 마찰을 측정하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "fc536819c7552b242e74595099122e219681f5bda6c1dae3e1223f914f166709",
+          "aiPublicGuideTopic": "행동을 무겁게 만드는 것들",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 기록이 끊기는 자리",
+          "section": "1.3 마찰이라는 개념",
+          "primaryConcepts": [
+            "마찰"
+          ],
+          "secondaryConcepts": [
+            "도구 접근성"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "마찰 측정 절차로 기록 과정을 동작 단위로 분해하는 방법을 제시한다. 분해 결과 대부분의 단계가 내용 작성과 무관하다는 관찰, 단계별 제거 가능성을 검토하는 순서, 그리고 완전 제거가 아니라 감소가 목표라는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "61799da8f4e522f28d667ecc581f58aedc8fd65d2723ba700bb22e0d58c8e883",
+          "aiPublicGuideTopic": "마찰을 세어 보는 방법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 기록이 끊기는 자리",
+          "section": "1.4 무엇을 적을 것인가",
+          "primaryConcepts": [
+            "기록 대상"
+          ],
+          "secondaryConcepts": [
+            "기록의 중단"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 대상을 사전에 한정해 매 회차의 선택 부담을 없애는 방법을 제시한다. 재열람 가능성을 기준으로 대상을 좁히는 판단과, 대상은 변경 가능하되 한 회차에 한 항목이라는 제약은 유지한다는 원칙을 다룬다.",
+          "aiAnalysisInputSha256": "580badacb6db38b9cea8b43fea4c131ab3edc06045c7f81802040f91384146b1",
+          "aiPublicGuideTopic": "적을 것을 좁히는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 기록이 끊기는 자리",
+          "section": "1.4 무엇을 적을 것인가",
+          "primaryConcepts": [
+            "기록 대상"
+          ],
+          "secondaryConcepts": [
+            "기록의 목적"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 대상 설정에서 제외 범위를 명시하는 것이 선택 갈등을 줄인다는 점을 다룬다. 과거 기록의 재열람 이력으로 대상을 판단하는 방법과, 자료가 없는 초기에는 범위를 최소로 잡고 이후 확장하는 순서를 제시한다.",
+          "aiAnalysisInputSha256": "4af4ab519cb2b7169e5b6e58459e7d433b8f3c0af080c1bb8d82a44b9d902d60",
+          "aiPublicGuideTopic": "적지 않기로 정하는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "1장 기록이 끊기는 자리",
+          "section": "1.5 왜 적는가",
+          "primaryConcepts": [
+            "기록의 목적"
+          ],
+          "secondaryConcepts": [
+            "기록 대상"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록의 목적을 정보 보존과 사고 정리로 구분하고 목적에 따라 요구되는 형식이 달라진다는 점을 설명한다. 목적이 불분명하면 지속되지 않는다는 점과, 두 목적을 혼합할 때 형식 부담만 늘어난다는 문제를 제시한다.",
+          "aiAnalysisInputSha256": "8d81e41e2983ea87df0ef28e1d5d80f0415d8d89c3f69d5d1d92deac96ba369e",
+          "aiPublicGuideTopic": "기록이 무엇을 해 주는가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "1장 기록이 끊기는 자리",
+          "section": "1.5 왜 적는가",
+          "primaryConcepts": [
+            "기록의 목적"
+          ],
+          "secondaryConcepts": [
+            "보상"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록이 실제로 활용되지 않으면 지속되지 않는다는 점을 다룬다. 시작 시점에 재열람 시점을 함께 정해야 한다는 조건, 검색 성공 경험이 다음 기록을 유발한다는 순환, 그리고 재열람이 습관 유지의 필수 요소라는 점을 제시한다.",
+          "aiAnalysisInputSha256": "10ff46a91668ac6ac33e40c4193b915b89562436d19062a5678d86fd529d8b55",
+          "aiPublicGuideTopic": "쓰이지 않는 기록이 멈추는 이유",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 마찰 줄이기",
+          "section": "2.1 도구를 가까이",
+          "primaryConcepts": [
+            "도구 접근성"
+          ],
+          "secondaryConcepts": [
+            "마찰",
+            "기록의 중단"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 도구의 물리적·화면상 접근 거리를 줄이는 방법을 다룬다. 기록 발생 지점과 도구 위치를 일치시키는 기준, 화면 도구의 접근 단계 축소, 그리고 도구를 복수로 두어 접근성을 확보하고 통합 비용을 감수하는 선택을 제시한다.",
+          "aiAnalysisInputSha256": "38738253536c6380925da94ecdf21a9463463338fa5901a2081129f914a708b6",
+          "aiPublicGuideTopic": "적을 것이 손에 닿는 자리에 있는가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 마찰 줄이기",
+          "section": "2.1 도구를 가까이",
+          "primaryConcepts": [
+            "도구 접근성"
+          ],
+          "secondaryConcepts": [
+            "최소 기록 단위"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도구 선택 기준을 기능 수가 아니라 실행 속도와 단계 수로 제시한다. 작업 환경에 따라 종이와 화면의 적합성이 갈린다는 점, 짧은 시험 사용으로 결정하되 도구 선정 자체가 지연 요인이 되지 않게 기한을 두는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "85656f996526e5f475148d4e9a921c1799bea2732bfdf5f256eca4b0a7949ad7",
+          "aiPublicGuideTopic": "도구를 고르는 기준",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 마찰 줄이기",
+          "section": "2.2 형식을 줄이기",
+          "primaryConcepts": [
+            "최소 기록 단위"
+          ],
+          "secondaryConcepts": [
+            "마찰",
+            "기록 대상"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 형식의 분량이 실제 작성 빈도를 결정한다는 점을 설명한다. 가장 여건이 나쁜 날을 기준으로 형식을 정해야 한다는 원칙, 짧은 기록의 누적량이 더 크다는 계산, 그리고 정한 분량이 하한이지 상한이 아니라는 운용 방식을 제시한다.",
+          "aiAnalysisInputSha256": "a8818d68f5396cbab3d0dbcd7aeabb4df3ec02f9efc472987e40458ea05ee65f",
+          "aiPublicGuideTopic": "한 번에 적을 분량을 정하는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 마찰 줄이기",
+          "section": "2.2 형식을 줄이기",
+          "primaryConcepts": [
+            "최소 기록 단위"
+          ],
+          "secondaryConcepts": [
+            "도구 접근성",
+            "무분류 기록"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 양식의 분량에 따라 작성 소요 시간과 월간 작성 일수가 어떻게 달라지는지를 세 지면으로 비교한 도표다. 분량이 큰 양식일수록 미기입 줄이 많고 작성 일수가 적다는 관계를 함께 표시한다.",
+          "aiAnalysisInputSha256": "d4cf71e98bf0bd719abf1f5426e800435782a4227ee2c52a11af5691b18bcbc3",
+          "aiPublicGuideTopic": "세 가지 기록 양식과 적는 데 걸린 시간을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 마찰 줄이기",
+          "section": "2.3 정리하지 않기",
+          "primaryConcepts": [
+            "무분류 기록"
+          ],
+          "secondaryConcepts": [
+            "최소 기록 단위",
+            "마찰"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 시작 단계에서 분류 체계를 구축하지 않는 이유를 초기 마찰과 회차별 결정 부담으로 설명한다. 시간순 단일 기록을 기본으로 삼고, 분류는 축적량이 임계를 넘은 뒤 실제 사용 패턴을 근거로 도입한다는 순서를 제시한다.",
+          "aiAnalysisInputSha256": "7faa38c87f1e6b289299c1c55f40b9a61b62fa66a897532039c5231a7738bcaf",
+          "aiPublicGuideTopic": "적을 때 분류하지 않는 이유",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "2장 마찰 줄이기",
+          "section": "2.3 정리하지 않기",
+          "primaryConcepts": [
+            "무분류 기록"
+          ],
+          "secondaryConcepts": [
+            "기록의 목적"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "무분류 기록에서도 재탐색을 위해 필요한 최소 요소로 날짜와 대상을 제시한다. 종이와 화면 각각의 구현 방식과, 검색 기반 매체에서는 용어를 일관되게 유지해야 한다는 조건을 다룬다.",
+          "aiAnalysisInputSha256": "cfe219bae0f68a1728b62f741d158787901756c1d33692d5d9109914433da82d",
+          "aiPublicGuideTopic": "찾을 수 있게 적는 최소한",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "2장 마찰 줄이기",
+          "section": "2.4 빠뜨려도 되게 만들기",
+          "primaryConcepts": [
+            "결손 허용"
+          ],
+          "secondaryConcepts": [
+            "기록의 중단",
+            "최소 기록 단위"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 누락에 대한 사전 규칙의 필요성을 다룬다. 누락분을 소급 작성하는 대응이 정확도와 소요 면에서 불리하며 중단으로 이어진다는 점을 지적하고, 빈 항목을 그대로 두고 당일분부터 재개하는 규칙을 제시한다.",
+          "aiAnalysisInputSha256": "a0bffa20ccbe9be81c4f7e22ad0879e0ecd4e3a276b209ce1c1b927559958cf7",
+          "aiPublicGuideTopic": "빈 날을 다루는 규칙",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "2장 마찰 줄이기",
+          "section": "2.4 빠뜨려도 되게 만들기",
+          "primaryConcepts": [
+            "결손 허용"
+          ],
+          "secondaryConcepts": [
+            "재개"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연속 일수 지표가 중단 시 포기 사유로 작동한다는 문제를 다룬다. 누적 일수처럼 결손에 강한 지표로 대체하는 방법과, 진척 지표를 관리하는 행위 자체가 추가 마찰이 될 수 있다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "b360a3938ea859fd0e2d4ece1f926b7eb512dd38d231c95191a73ecec9b3a2e6",
+          "aiPublicGuideTopic": "연속 기록이 목표가 아닌 이유",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 신호 만들기",
+          "section": "3.1 언제 적을 것인가",
+          "primaryConcepts": [
+            "기록 시점"
+          ],
+          "secondaryConcepts": [
+            "트리거-행동-보상",
+            "마찰"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 시점을 명시하지 않으면 실행되지 않는다는 점을 지적하고 시각 기반과 행동 기반 두 방식을 비교한다. 시각 단서는 인지 실패가 잦고 행동 단서는 발생이 확실하다는 차이를 제시하며, 행동 단서를 쓸 수 없는 경우의 대안을 다룬다.",
+          "aiAnalysisInputSha256": "194f705e8fe04776f987c15fa8d88224ba1d280f134c50d4011aabcab3761e3e",
+          "aiPublicGuideTopic": "시각으로 정할 때와 일로 정할 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 신호 만들기",
+          "section": "3.1 언제 적을 것인가",
+          "primaryConcepts": [
+            "기록 시점"
+          ],
+          "secondaryConcepts": [
+            "기록 대상"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 대상의 성격에 따라 적정 시점이 달라진다는 점을 다룬다. 즉시 기록이 정확도에서 유리하다는 근거와, 즉시 기록을 하려면 도구 배치가 함께 따라와야 한다는 상호 의존을 제시한다.",
+          "aiAnalysisInputSha256": "2ba9e4b757b7f8863590f77b95e4d9bd3b41e1865729e1b2c23e10c17eaa06f0",
+          "aiPublicGuideTopic": "하루의 어느 자리가 나은가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 신호 만들기",
+          "section": "3.2 이미 하는 일에 붙이기",
+          "primaryConcepts": [
+            "행동 연결"
+          ],
+          "secondaryConcepts": [
+            "기록 시점",
+            "트리거-행동-보상"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기존 행동을 기록 단서로 삼기 위한 세 조건을 제시한다. 발생 빈도가 기록 빈도를 제한한다는 점, 종료 시점이 불분명하면 단서 기능을 하지 못한다는 점, 후속 활동이 즉시 이어지면 실행이 밀린다는 점을 각각 설명한다.",
+          "aiAnalysisInputSha256": "c0e7fde7ed0a20e5a3c7508342916431456f63f658cba1c9d1d649b6769ce82e",
+          "aiPublicGuideTopic": "신호로 쓸 수 있는 일의 조건",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 신호 만들기",
+          "section": "3.2 이미 하는 일에 붙이기",
+          "primaryConcepts": [
+            "행동 연결"
+          ],
+          "secondaryConcepts": [
+            "기록 시점",
+            "장소 신호"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 단서 후보 네 가지를 세 조건으로 평가한 표를 나타낸 도표다. 조건 충족 여부를 기호로 표시하고 모두 충족한 행을 강조해, 단서 선택이 인상이 아니라 조건 대조로 이뤄진다는 점을 보인다.",
+          "aiAnalysisInputSha256": "5b751a0d083d59217d3e94fd9d8417de7defe411442cf133583e65955c910504",
+          "aiPublicGuideTopic": "신호 후보를 세 조건으로 견준 표를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "3장 신호 만들기",
+          "section": "3.3 자리와 신호",
+          "primaryConcepts": [
+            "장소 신호"
+          ],
+          "secondaryConcepts": [
+            "행동 연결",
+            "도구 접근성"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "물리적 장소와 전용 도구가 행동 단서로 기능하는 조건을 다룬다. 해당 장소나 도구가 다른 용도로 쓰이면 단서가 성립하지 않는다는 점을 지적하고, 공간 분리가 어려운 경우 전용 도구로 대체하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "217034d06e8c0c94577a73100483137565d0be0b5bfd6fbe3eb4c17594e4230f",
+          "aiPublicGuideTopic": "장소가 신호가 되는 방식",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "3장 신호 만들기",
+          "section": "3.3 자리와 신호",
+          "primaryConcepts": [
+            "장소 신호"
+          ],
+          "secondaryConcepts": [
+            "무분류 기록"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 도구를 열어 둔 상태로 두어 단서와 접근성을 동시에 확보하는 방법을 제시한다. 전용 위치를 지정해 다른 물건에 가려지지 않게 유지하는 조건과, 화면 매체에서는 가림 때문에 효과가 약하다는 차이를 다룬다.",
+          "aiAnalysisInputSha256": "050bc2fb9abc4fd8bc88886a19ba31d478174dc8541613df3fb80d99a1767c60",
+          "aiPublicGuideTopic": "펼쳐 두는 방법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "3장 신호 만들기",
+          "section": "3.4 신호가 사라질 때",
+          "primaryConcepts": [
+            "신호 유지"
+          ],
+          "secondaryConcepts": [
+            "행동 연결",
+            "기록의 중단"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "행동 단서가 소멸했을 때 기록이 함께 중단된다는 점과 그 원인을 개인의 태도로 귀인하는 오류를 다룬다. 중단 시 환경 변화를 먼저 확인하는 절차와, 상황이 복수인 경우 단서도 복수로 두는 대응을 제시한다.",
+          "aiAnalysisInputSha256": "9ec24015065efebf8ff3ade57dfdfb7cc7980c3bd40dc21caa6021c18150fc5d",
+          "aiPublicGuideTopic": "붙여 둔 일이 없어지면",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "3장 신호 만들기",
+          "section": "3.4 신호가 사라질 때",
+          "primaryConcepts": [
+            "신호 유지"
+          ],
+          "secondaryConcepts": [
+            "결손 허용"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "행동 단서의 점진적 약화를 감지하기 위한 주기적 점검을 제시한다. 결손이 집중된 구간을 찾아 환경 변화와 대조하는 방법, 점검 소요를 짧게 유지해야 하는 이유, 그리고 점검 목적이 개선이 아니라 조기 발견이라는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "0fc29cf4a0210b69bb7795c971cc1558b4dd9aca90d90180345253b2f0da47ed",
+          "aiPublicGuideTopic": "신호를 점검하는 시점",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 이어지게 하기",
+          "section": "4.1 적은 것이 쓰이는 경험",
+          "primaryConcepts": [
+            "보상"
+          ],
+          "secondaryConcepts": [
+            "트리거-행동-보상",
+            "기록의 목적"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 습관의 후속 결과를 활용 경험으로 규정하고 그 경험이 초기에는 발생하지 않는다는 문제를 다룬다. 초기 구간에 즉시 제공되는 소규모 보상을 임시로 부착하고, 활용 경험이 시작되면 제거하는 단계적 운용을 제시한다.",
+          "aiAnalysisInputSha256": "ab32e0267bfa5ed1fa1010d94684ad07af6adf6b62320248227a2c3030637834",
+          "aiPublicGuideTopic": "기록을 이어지게 하는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 이어지게 하기",
+          "section": "4.1 적은 것이 쓰이는 경험",
+          "primaryConcepts": [
+            "보상"
+          ],
+          "secondaryConcepts": [
+            "기록 대상"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록이 장기간 활용되지 않을 경우 기록 대상 자체를 재설정해야 한다는 판단을 제시한다. 과거 기록의 재열람 필요성을 점검하는 방법과, 대상 변경 시 형식과 단서는 유지되므로 초기 기간이 손실이 아니라는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "8acc0432a77777deb622ef36da3ab4389726b62e5878acf78ce02b695720dcaa",
+          "aiPublicGuideTopic": "쓰일 만한 것을 적고 있는가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 이어지게 하기",
+          "section": "4.2 다시 읽는 시점",
+          "primaryConcepts": [
+            "재독"
+          ],
+          "secondaryConcepts": [
+            "보상",
+            "기록의 목적"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 재열람을 필요 기반 검색과 주기적 통독으로 구분하고 목적별 적합성을 제시한다. 검색형은 별도 시간이 들지 않고 통독형은 누적 흐름을 드러내지만 부담이 있다는 차이, 그리고 두 방식의 병행 운용을 다룬다.",
+          "aiAnalysisInputSha256": "0de1f8b4e1ddaafa902b3ea7b2918fd867d29fcc53c6c8516df69536f92444a4",
+          "aiPublicGuideTopic": "찾아 읽는 때와 훑어 읽는 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 이어지게 하기",
+          "section": "4.2 다시 읽는 시점",
+          "primaryConcepts": [
+            "재독"
+          ],
+          "secondaryConcepts": [
+            "무분류 기록"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재열람 실패가 기록 중단으로 이어진다는 점을 지적하고 실패 원인을 세 유형으로 분류한다. 유형별 대응이 앞 장의 조치와 대응된다는 점, 그리고 실패 사례를 기록해 누적 분석하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "8bc5c93fe679473bb808eebbdc69aefffde66eaa2d3dfaea3922496be817f3c4",
+          "aiPublicGuideTopic": "찾아지지 않을 때 고칠 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "4장 이어지게 하기",
+          "section": "4.3 끊긴 뒤 돌아오기",
+          "primaryConcepts": [
+            "재개"
+          ],
+          "secondaryConcepts": [
+            "결손 허용",
+            "신호 유지"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장기 중단 이후 재개의 심리적 부담과 잘못된 대응을 다룬다. 도구와 형식을 새로 만드는 준비가 재개를 막는다는 점, 기존 기록을 이어 쓰고 결손 구간을 남겨 두는 방법, 재개일의 목표를 최소로 두는 원칙을 제시한다.",
+          "aiAnalysisInputSha256": "35f10c4f5a7b344e25e0c6eea8d4d035f2a64ff12118c80c46f2bee615790483",
+          "aiPublicGuideTopic": "몇 주 비운 뒤에 다시 시작하기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "4장 이어지게 하기",
+          "section": "4.3 끊긴 뒤 돌아오기",
+          "primaryConcepts": [
+            "재개"
+          ],
+          "secondaryConcepts": [
+            "마찰"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재개 용이성을 결정하는 형식 조건으로 항목 간 독립성을 제시한다. 선행 기록을 참조하는 형식은 중단 후 복원 부담을 만든다는 점과, 이 조건을 형식 설계 단계에서 정해야 이후 변경 비용이 발생하지 않는다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "97662d0db78d16efea995c5e52a599ec623ad43d363af30bfd3aa04662cc80b4",
+          "aiPublicGuideTopic": "돌아오기 쉬운 기록의 조건",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "4장 이어지게 하기",
+          "section": "4.4 오래된 기록 다루기",
+          "primaryConcepts": [
+            "보관과 폐기"
+          ],
+          "secondaryConcepts": [
+            "재독",
+            "기록의 목적"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장기 누적된 기록의 관리 부담과 전면 재정리의 비용을 다룬다. 새 기록이 중단된다는 문제를 지적하고, 권 단위 요약이나 재열람 후보 목록 같은 최소 정리로 탐색 비용을 낮추는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "acc9ddc58dd6ceac2e1ffb15b918422fa6fbd6ebbee028a7169eb84bb9edeb72",
+          "aiPublicGuideTopic": "쌓인 기록을 어떻게 둘 것인가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "4장 이어지게 하기",
+          "section": "4.4 오래된 기록 다루기",
+          "primaryConcepts": [
+            "보관과 폐기"
+          ],
+          "secondaryConcepts": [
+            "기록 부담"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "누적 기록의 선별 폐기를 다룬다. 보존에도 탐색 비용과 심리적 부담이 든다는 점, 열람 이력을 기준으로 판단하는 방법, 그리고 즉시 폐기 대신 시야 밖으로 이동하는 중간 단계가 실행 가능성을 높인다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "b1daf75fdba4bdd7d3960bdffb1e8a62efb483c50212f1f4776ae64e83ebfb1c",
+          "aiPublicGuideTopic": "버릴 것을 정하기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 어떤 기록",
+          "section": "5.1 세 번 실패한 기록",
+          "primaryConcepts": [
+            "실패 사례"
+          ],
+          "secondaryConcepts": [
+            "마찰",
+            "기록의 중단"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 인물의 기록 시도 세 건이 각기 다른 원인으로 중단된 경위를 시간 순으로 보인다. 양식 과다, 지연 작성으로 인한 내용 희석, 도구와 작업 환경의 불일치라는 세 원인을 구분하고, 이를 성실성 문제로 귀인해 온 점을 드러낸다.",
+          "aiAnalysisInputSha256": "8e4b2bf1b336e4b38ef133c77c14b486fd0db9c32072d34b279b8503623cdc13",
+          "aiPublicGuideTopic": "같은 사람이 같은 기록을 세 번 놓친 경위",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 어떤 기록",
+          "section": "5.1 세 번 실패한 기록",
+          "primaryConcepts": [
+            "실패 사례"
+          ],
+          "secondaryConcepts": [
+            "기록 대상",
+            "기록의 목적"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 목적을 먼저 확정하고 그에 따라 대상을 좁히는 과정을 보인다. 대상의 발생 빈도가 낮으면 매일 작성을 목표로 삼지 않는 것이 타당하다는 판단과, 이전 시도들이 빈도 목표 때문에 실패했다는 대비를 제시한다.",
+          "aiAnalysisInputSha256": "cd79608c8e72d80e933ac319a798a25233d8492924bef7e6d6d1f1a2b232c394",
+          "aiPublicGuideTopic": "무엇을 적으려 했는지 다시 물어보기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 어떤 기록",
+          "section": "5.2 한 줄로 줄이기",
+          "primaryConcepts": [
+            "축소 적용"
+          ],
+          "secondaryConcepts": [
+            "최소 기록 단위",
+            "도구 접근성"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재설계한 기록 방식의 네 요소를 구체적으로 보인다. 대상·형식·도구·단서를 각각 최소로 정한 내용과, 작성 대상이 없는 날에는 빈 항목조차 만들지 않기로 한 결정, 그리고 그 결정의 근거가 된 이전 시도의 경험을 제시한다.",
+          "aiAnalysisInputSha256": "0ac5f603182ac6b33f90d2b7413d95723d8c9029a252d1d5ecdec3c3de7d0d55",
+          "aiPublicGuideTopic": "네 번째 시도에서 정한 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "5장 어떤 기록",
+          "section": "5.2 한 줄로 줄이기",
+          "primaryConcepts": [
+            "축소 적용"
+          ],
+          "secondaryConcepts": [
+            "행동 연결",
+            "결손 허용"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재설계한 방식의 첫 달 경과를 보인다. 예상보다 적은 작성량이 실제 사건 빈도에 따른 것이라는 확인, 단서 조건 중 하나가 충족되지 않은 날의 결손과 보조 단서 추가로 해소한 과정, 그리고 누적 결과를 제시한다.",
+          "aiAnalysisInputSha256": "3c7f7d9efe9510da4b00f7363fde45995902ec9b35790334d8c786111d81328d",
+          "aiPublicGuideTopic": "첫 달에 일어난 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "5장 어떤 기록",
+          "section": "5.3 넉 달 뒤",
+          "primaryConcepts": [
+            "지속 관찰"
+          ],
+          "secondaryConcepts": [
+            "결손 허용",
+            "실패 사례"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "네 번의 기록 시도를 열두 주 격자로 나란히 비교한 도표다. 초기 세 시도가 조밀하게 채워지다 중단된 형태와 네 번째 시도가 결손을 포함한 채 지속되는 형태를 대비해, 밀도와 지속성이 서로 다른 성질임을 보인다.",
+          "aiAnalysisInputSha256": "af96561b7b9afadf19abd8ed31ac8a82c8b55733132d0f4b6dcf0212cd0a86b0",
+          "aiPublicGuideTopic": "네 번의 시도를 달력 격자에 표시한 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "5장 어떤 기록",
+          "section": "5.3 넉 달 뒤",
+          "primaryConcepts": [
+            "지속 관찰"
+          ],
+          "secondaryConcepts": [
+            "재독",
+            "보상"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록이 처음 활용된 시점과 그 이후의 변화를 보인다. 대상 이름을 앞에 두는 형식이 탐색 시간을 줄였다는 결과, 활용 경험 이후 작성 동기와 내용이 달라졌다는 관찰, 그리고 습관 성립 시점을 활용 경험으로 규정하는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "66118db7b2a8f57a5c7425532ebd2932b4203b3db540430841f4062edccbada0",
+          "aiPublicGuideTopic": "처음으로 찾아본 날",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "5장 어떤 기록",
+          "section": "5.4 늘리기",
+          "primaryConcepts": [
+            "점진 확장"
+          ],
+          "secondaryConcepts": [
+            "기록 대상",
+            "축소 적용"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "안정된 기록 형식을 확장하는 절차를 제시한다. 한 번에 한 항목만 추가하고 작성 빈도의 변화로 감당 가능 여부를 판정하는 방법, 그리고 확장 주기를 길게 두지 않으면 초기 실패 형식으로 회귀한다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "51d6c2da166b056c70492f9fab4064840d39a11bdcb1d409bb97efc72849d5c1",
+          "aiPublicGuideTopic": "언제 무엇을 늘릴 것인가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 기록이 짐이 될 때",
+          "section": "6.1 적는 것이 일이 될 때",
+          "primaryConcepts": [
+            "기록 과잉"
+          ],
+          "secondaryConcepts": [
+            "최소 기록 단위",
+            "마찰"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록량 증가가 본래 업무를 잠식하는 상태를 다룬다. 기록이 성실성의 지표로 오인되기 쉽다는 점, 기록 소요와 활용 결과를 비교해 판정하는 방법, 그리고 형식 축소보다 대상 축소가 효과적인 이유를 제시한다.",
+          "aiAnalysisInputSha256": "58dd0178355b30b56609d9cadacbd09ea1d89216a80ab534e8e4fcab3b395a63",
+          "aiPublicGuideTopic": "기록이 본래 일을 밀어낼 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 기록이 짐이 될 때",
+          "section": "6.1 적는 것이 일이 될 때",
+          "primaryConcepts": [
+            "기록 과잉"
+          ],
+          "secondaryConcepts": [
+            "보관과 폐기"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록을 관리하기 위한 부수 기록이 누적되면서 본래 기록을 압박하는 문제를 다룬다. 부수 기록을 하나로 제한하는 규칙과, 점검을 별도 기록으로 남기지 않고 직접 확인으로 대체하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "2545581de84189a5bafc50de7bd784251f6d8dbd8b1849bda23882983c05c802",
+          "aiPublicGuideTopic": "기록을 위한 기록",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 기록이 짐이 될 때",
+          "section": "6.2 적지 않는 편이 나은 것",
+          "primaryConcepts": [
+            "비기록 영역"
+          ],
+          "secondaryConcepts": [
+            "기록 대상",
+            "기록의 목적"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록이 오히려 부정적으로 작용하는 영역을 다룬다. 감정 기록이 재열람 시 감정을 재생시킨다는 점과, 공유 가능한 매체에 타인에 대한 판단을 남길 때 문서의 성격이 달라진다는 점을 들어 비기록 영역을 사전에 정하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "720f11f11b3af89468ee54c771436bf3f44f641e2eab8db29b945d372d7f25dd",
+          "aiPublicGuideTopic": "적으면 오히려 나빠지는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 기록이 짐이 될 때",
+          "section": "6.2 적지 않는 편이 나은 것",
+          "primaryConcepts": [
+            "비기록 영역"
+          ],
+          "secondaryConcepts": [
+            "기록 부담"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기억으로 충분한 영역과 기록이 필요한 영역을 구분하는 기준을 제시한다. 불안이 아니라 실제 곤란 경험을 근거로 대상을 정하는 방법과, 필요가 확인된 시점에 대상을 추가하면 되므로 사전에 넓게 설정할 이유가 없다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "942f24bf6cd7406dad2bf9da843a77f0bbac7ea238d0d525af5e190385e03742",
+          "aiPublicGuideTopic": "기억에 맡겨도 되는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "6장 기록이 짐이 될 때",
+          "section": "6.3 남는 기록의 무게",
+          "primaryConcepts": [
+            "기록 부담"
+          ],
+          "secondaryConcepts": [
+            "보관과 폐기",
+            "재독"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장기 누적 기록이 주는 심리적 부담과 미결정 상태의 문제를 다룬다. 정리 여부를 명시적으로 결정하는 것이 부담을 없앤다는 점과, 정리하지 않기로 정하되 최소 요약만 남기는 선택지를 제시한다.",
+          "aiAnalysisInputSha256": "0fbe7c17636b4268c0a7506de6c02fb36e9cc9ece8727ee470a1524f45d8c5f7",
+          "aiPublicGuideTopic": "쌓인 것이 주는 압박",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "6장 기록이 짐이 될 때",
+          "section": "6.3 남는 기록의 무게",
+          "primaryConcepts": [
+            "기록 부담"
+          ],
+          "secondaryConcepts": [
+            "기록의 중단"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 중단을 명시적 종료 결정으로 처리하는 방법을 다룬다. 결정 없이 흐지부지되는 상태가 다음 시도까지 저해한다는 점을 지적하고, 종료 시점을 기록에 남겨 완결된 기록으로 만드는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "a66254555515b231d5873604df80c8385ae2e17bb162419e951fcfd882e61087",
+          "aiPublicGuideTopic": "그만두기로 정하는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            47
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 결론: 남는 것은 이어진 기록뿐이다",
+          "section": "7.1 남는 것은 이어진 기록뿐이다",
+          "primaryConcepts": [
+            "종합"
+          ],
+          "secondaryConcepts": [
+            "기록의 중단",
+            "마찰"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체를 지속 가능성의 관점에서 정리하는 결론 페이지다. 습관의 세 요소를 채운 조치들을 요약하고, 축소를 통해 남긴 것이 무엇인지 밝히며, 기록이 수단이라는 점과 과잉의 세 경우를 함께 짚는다.",
+          "aiAnalysisInputSha256": "92e867f7f86356869dac76b16effad43d0346b92a4468f57b91a1967ebd78a6c",
+          "aiPublicGuideTopic": "기록을 형식이 아니라 지속의 문제로 본 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "written-beats-well-written"
+          ]
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 결론: 남는 것은 이어진 기록뿐이다",
+          "section": "7.1 남는 것은 이어진 기록뿐이다",
+          "primaryConcepts": [
+            "종합"
+          ],
+          "secondaryConcepts": [
+            "행동 연결",
+            "보상"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실행을 위한 최소 결정 항목 네 가지와 각각의 선택 기준을 제시한다. 대상은 최소로, 분량은 최악 조건에 맞추고, 단서는 세 조건을 충족하는 행동에서 고르며 도구는 그 지점에 두는 방식을 요약하고 활용 경험이 도래하는 시점을 마지막으로 짚는다.",
+          "aiAnalysisInputSha256": "9d99e90ee491ed3b4b5ac812a2758cf6006b66f2b0ebea892db4e84471676622",
+          "aiPublicGuideTopic": "오늘 정할 네 가지",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            49
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
     }
   ]
 }
