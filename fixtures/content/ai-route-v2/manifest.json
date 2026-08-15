@@ -33365,6 +33365,1055 @@
       ]
     },
     {
+      "bookId": 60,
+      "title": "관점의 복수성과 대화의 조건",
+      "pdfPath": "pdfs/book-060.pdf",
+      "pdfSha256": "cca89167291265dc98d28456c7688b5111b0c076c6104f28b116e6f135f2dd94",
+      "totalPageCount": 49,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 관점이란 무엇인가",
+          "section": "1.1 같은 것을 다르게 본다는 말",
+          "primaryConcepts": [
+            "관점"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관점 차이를 관찰 대상의 차이·해석의 차이·중요도 부여의 차이 셋으로 분해하고 각각의 해소 방식이 다르다는 점을 제시한다. 세 번째 유형이 자료 제시나 설명으로 해소되지 않는다는 점에서 이 책의 주된 대상으로 설정한다.",
+          "aiAnalysisInputSha256": "97fa815018adbc22ee8c5272cf171a737ffc6ab3f38f138e3f9711ce7405f4b8",
+          "aiPublicGuideTopic": "관점이라는 말이 가리키는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "many-viewpoints"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 관점이란 무엇인가",
+          "section": "1.1 같은 것을 다르게 본다는 말",
+          "primaryConcepts": [
+            "관점"
+          ],
+          "secondaryConcepts": [
+            "관점의 형성"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관점의 불가피성을 제시하고 무관점적 시선의 추구가 자기 관점의 은폐로 이어진다는 문제를 지적한다. 실행 가능한 대안으로 자기 위치의 인지와 진술을 제시하고, 그것이 상호 차이 확인의 조건이 된다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "1d5466b7a78583050dcbd3836e268e65e0b40e590ba564fa9069eb606ab992d8",
+          "aiPublicGuideTopic": "관점이 없는 자리는 없다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 관점이란 무엇인가",
+          "section": "1.2 자리에 따라 보이는 것",
+          "primaryConcepts": [
+            "관점의 자리"
+          ],
+          "secondaryConcepts": [
+            "관점",
+            "결론의 분기"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 대상을 서로 다른 위치에서 관찰할 때 상이한 면이 포착된다는 구조를 입체 도형과 두 시선으로 그린 도표다. 두 상이 모두 같은 대상에 대한 것임을 표시하고, 관점 없는 관찰 위치가 성립하지 않는다는 점을 별도로 나타낸다.",
+          "aiAnalysisInputSha256": "cfeb38a97b72805efe16578c13b944d1844119551f10d36748a9837148c96778",
+          "aiPublicGuideTopic": "같은 것을 두 자리에서 볼 때 보이는 것이 다른 모습을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 관점이란 무엇인가",
+          "section": "1.3 관점을 만드는 것들",
+          "primaryConcepts": [
+            "관점의 형성"
+          ],
+          "secondaryConcepts": [
+            "관점"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관점 형성 요인을 경험·사회적 위치·준거 집단 셋으로 정리하고 모두 선택되지 않은 조건이라는 점을 밝힌다. 이유를 묻는 질문이 답을 얻기 어렵다는 점을 지적하고 관찰 위치를 묻는 형태로 전환하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "6c1d4f885bd7d40f1c7191435644ba6c635f75613571c505d0386a5f01bc2322",
+          "aiPublicGuideTopic": "무엇이 자리를 정하는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 관점이란 무엇인가",
+          "section": "1.3 관점을 만드는 것들",
+          "primaryConcepts": [
+            "관점의 형성"
+          ],
+          "secondaryConcepts": [
+            "관점의 선택"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관점이 언어적 설득이 아니라 경험 조건의 변화로 이동한다는 점을 제시한다. 설득 실패의 원인을 상대의 완고함이 아니라 형성 기제의 성격에서 찾고, 대화의 목표를 관점 변경에서 상호 위치 파악으로 조정하는 관점을 밝힌다.",
+          "aiAnalysisInputSha256": "f743ddf18903f551d93f85e9d087517e2ef6d445cfc1c191cd7c829b26538cf2",
+          "aiPublicGuideTopic": "관점이 바뀌는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 관점이란 무엇인가",
+          "section": "1.4 관점은 고를 수 있는가",
+          "primaryConcepts": [
+            "관점의 선택"
+          ],
+          "secondaryConcepts": [
+            "관점의 형성"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관점의 선택 가능 범위를 향후 경험 조건과 주의 배분으로 한정한다. 과거 경험은 변경 불가하지만 미래 노출은 조정 가능하다는 구분을 제시하고, 이질적 위치의 타인과의 대화가 자기 위치를 드러내는 방법이라는 점을 다룬다.",
+          "aiAnalysisInputSha256": "075fe30beaa858d1781e04a48155f70ca81f5c221c5d746125334f5da63b906d",
+          "aiPublicGuideTopic": "고를 수 있는 부분과 없는 부분",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 관점이란 무엇인가",
+          "section": "1.4 관점은 고를 수 있는가",
+          "primaryConcepts": [
+            "관점의 선택"
+          ],
+          "secondaryConcepts": [
+            "입장 교대"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "역지사지 시도가 자기 관점 내부의 상상으로 대체되기 쉽다는 문제를 지적한다. 실제 청취를 재료로 요구하고, 목표를 타자 관점의 획득이 아니라 자기 관점의 사각 인지로 낮추는 접근을 제시한다.",
+          "aiAnalysisInputSha256": "5ee97ac21769aa0812c4d6d20d65b36e9ec0f77e8b920526da07fdd55c77f8fb",
+          "aiPublicGuideTopic": "다른 자리에 서 보는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 왜 다른 결론에 이르는가",
+          "section": "2.1 같은 사실에서 갈리는 자리",
+          "primaryConcepts": [
+            "결론의 분기"
+          ],
+          "secondaryConcepts": [
+            "관점"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 사실 기반에서 결론이 분기하는 지점을 원인 지목·대응 판단·긴급도 평가 셋으로 정리한다. 앞의 두 지점은 논증으로 좁혀질 수 있으나 세 번째는 가치 우선순위에 의존해 자료 축적으로 해소되지 않는다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "5e0fc6f9ed436403e6c079aed9629a394aeab7dd93f2d7bc36da073056c01d0c",
+          "aiPublicGuideTopic": "사실이 같아도 결론이 갈리는 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 왜 다른 결론에 이르는가",
+          "section": "2.1 같은 사실에서 갈리는 자리",
+          "primaryConcepts": [
+            "결론의 분기"
+          ],
+          "secondaryConcepts": [
+            "중요도의 차이"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결론 차이의 발생 지점을 역방향 추적으로 특정하는 방법을 제시한다. 일방적 추적이 심문으로 인식되어 방어를 유발한다는 점을 지적하고, 자기 논거를 먼저 개방한 뒤 대응 지점을 묻는 순서를 제안한다.",
+          "aiAnalysisInputSha256": "a475948bcce1c45053c64bb2a32e8b66ecba211c1af0b6833614b1ad69ca13c9",
+          "aiPublicGuideTopic": "갈린 자리를 가리는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 왜 다른 결론에 이르는가",
+          "section": "2.2 무엇을 중요하게 세는가",
+          "primaryConcepts": [
+            "중요도의 차이"
+          ],
+          "secondaryConcepts": [
+            "결론의 분기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결론 분기의 주된 원인을 가치 항목의 가중치 차이로 규정하고 그것이 상대의 무지가 아니라는 점을 밝힌다. 가중치가 경험과 책임 범위에서 유래한다는 점을 근거로 설득 시도의 부적절함을 지적하고 상호 가중치 기술을 대안으로 제시한다.",
+          "aiAnalysisInputSha256": "305f588a2475927a06b42a7648a761bc7d2b98a2cbc00644ec5fe78c9a7e83e8",
+          "aiPublicGuideTopic": "가장 자주 갈리는 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 왜 다른 결론에 이르는가",
+          "section": "2.2 무엇을 중요하게 세는가",
+          "primaryConcepts": [
+            "중요도의 차이"
+          ],
+          "secondaryConcepts": [
+            "차이와 오류"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "가치 우선순위를 항목화하고 순위를 명시하는 절차를 제시한다. 항목이 대개 공유되고 순서만 다르다는 관찰이 상대에 대한 이해를 바꾼다는 점, 그리고 순위 다툼이 교환 가능한 형태의 논의가 된다는 이점을 다룬다.",
+          "aiAnalysisInputSha256": "cc7be530dc7c30286f51a397cae39e3e9582dcf342c4eab91df2e69945ee4da1",
+          "aiPublicGuideTopic": "중요도를 적어 보는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 왜 다른 결론에 이르는가",
+          "section": "2.3 갈림이 생기는 세 자리",
+          "primaryConcepts": [
+            "분기의 지점"
+          ],
+          "secondaryConcepts": [
+            "결론의 분기",
+            "중요도의 차이"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 사실에서 상반된 결론에 이르는 경로를 세 개의 분기 마디로 그린 도표다. 마디별 갈래 폭의 차이로 해소 가능성의 정도를 표시하고, 마지막 마디가 가치 가중치에 의존해 좁혀지지 않는다는 점을 함께 나타낸다.",
+          "aiAnalysisInputSha256": "15c53737ae5423f3d37b2c2c0a29e6ed307c1f969ecc120016b41d1558c20711",
+          "aiPublicGuideTopic": "같은 사실에서 결론이 갈라져 나가는 세 지점을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 왜 다른 결론에 이르는가",
+          "section": "2.4 다르다는 것과 틀렸다는 것",
+          "primaryConcepts": [
+            "차이와 오류"
+          ],
+          "secondaryConcepts": [
+            "중요도의 차이"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "차이와 오류를 구분하는 기준을 사실 정확성과 논증 정합성의 충족 여부로 제시한다. 자기 관점에서의 이질감이 오류 판정으로 전환되는 기제를 지적하고, 구분에 따라 대응이 교정과 유지로 갈린다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "0859d686e1440b744b6fd0051e4c7153632a24cfef4c5337f336228458172f66",
+          "aiPublicGuideTopic": "두 낱말을 갈라 두는 이유",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 왜 다른 결론에 이르는가",
+          "section": "2.4 다르다는 것과 틀렸다는 것",
+          "primaryConcepts": [
+            "차이와 오류"
+          ],
+          "secondaryConcepts": [
+            "무차별 상대주의"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "오류를 관점 차이로 처리할 때 교정 가능성이 소멸한다는 문제를 지적한다. 차이 판정에 사실 공유와 논증 정합이라는 조건을 부과하고, 조건 없는 상대화가 앞선 두 분기 지점의 논의까지 차단한다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "592e7cee9fae3087a13aadafe14de5925d5055a9095845b4bdeda75cc7f277fb",
+          "aiPublicGuideTopic": "다르다는 말이 너무 넓게 쓰일 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 대화가 되는 조건",
+          "section": "3.1 무엇을 하려는 대화인가",
+          "primaryConcepts": [
+            "대화의 목적"
+          ],
+          "secondaryConcepts": [
+            "관점"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대화의 목적을 공동 결정·상호 이해·자기 정리·상대 변경 넷으로 분류하고 각각이 요구하는 종결 조건이 다르다는 점을 제시한다. 목적의 사전 공유가 대화의 효율을 높인다는 실무를 다룬다.",
+          "aiAnalysisInputSha256": "cd4d1202db744c0069bce7f63c380a2676af5a83ed8a8ad40755c71292d81d7d",
+          "aiPublicGuideTopic": "대화의 목적을 먼저 정하는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 대화가 되는 조건",
+          "section": "3.1 무엇을 하려는 대화인가",
+          "primaryConcepts": [
+            "대화의 목적"
+          ],
+          "secondaryConcepts": [
+            "승패의 대화"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대화 목적이 진행 중 전환되는 현상과 그 계기를 자기 입장의 동요에서 찾는다. 전환의 징후로 약점 탐색과 반박 우선 사고를 제시하고, 목적의 재확인을 통한 복귀 방법을 다룬다.",
+          "aiAnalysisInputSha256": "0dd41d674238d8711480cfd2d35035cab7d7a195d8022e9fffe165d4dc5da3da",
+          "aiPublicGuideTopic": "목적이 도중에 바뀔 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 대화가 되는 조건",
+          "section": "3.2 들린다는 것",
+          "primaryConcepts": [
+            "듣기"
+          ],
+          "secondaryConcepts": [
+            "대화의 목적"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "듣기를 수용이 아니라 자기 이해 체계에 배치하는 작업으로 규정한다. 재진술을 통한 확인 방법을 제시하고, 초기 시도에서 드러나는 불일치가 대화 전체의 어긋남을 조기에 차단한다는 효용을 밝힌다.",
+          "aiAnalysisInputSha256": "73303fe20af8a969576b5d25281baf9397879ea8dd1ba75a260d1bb3ac71f27e",
+          "aiPublicGuideTopic": "듣는 일이 하는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 대화가 되는 조건",
+          "section": "3.2 들린다는 것",
+          "primaryConcepts": [
+            "듣기"
+          ],
+          "secondaryConcepts": [
+            "형식적 경청"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "청취의 외적 표시와 실제 청취를 구분하고 후자의 부재가 외부에서 식별되지 않는다는 점을 지적한다. 재진술 가능성을 판별 기준으로 제시하고 대화 중 자기 점검으로 활용하는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "a1abae675c76c30c7cce4a8a1cdc895ad456b0f127642144b2e1bb752eaa294e",
+          "aiPublicGuideTopic": "듣고 있다는 표시와 듣는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 대화가 되는 조건",
+          "section": "3.3 자리를 바꿔 보기",
+          "primaryConcepts": [
+            "입장 교대"
+          ],
+          "secondaryConcepts": [
+            "대화의 목적"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "입장 교대를 상상이 아니라 상대 주장의 대리 구성으로 조작화하고 상대의 승인을 검증 절차로 둔다. 근거 탐색 과정에서 주장의 출처가 드러나 무지 귀인이 해소된다는 효과와, 상호 수행 방식의 절차를 제시한다.",
+          "aiAnalysisInputSha256": "3d935bf513529cb0f5d549c434379c9f2fe51f9dfc7fb0e4d9a7735f43ecf334",
+          "aiPublicGuideTopic": "상대의 주장을 대신 세워 보기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 대화가 되는 조건",
+          "section": "3.3 자리를 바꿔 보기",
+          "primaryConcepts": [
+            "입장 교대"
+          ],
+          "secondaryConcepts": [
+            "이해와 동의"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대리 구성이 동의로 이어진다는 우려를 검토하고 이해와 승인의 분리를 명시한다. 이 구분의 부재가 이해 시도 자체를 회피하게 만든다는 점을 지적하고, 구성 후 입장 유지를 진술하는 절차를 제시한다.",
+          "aiAnalysisInputSha256": "ccf5091eac67d0878e81afcfbd70ee4e9b9f07d332b8cfee1746da10cd0dd5ce",
+          "aiPublicGuideTopic": "세워 봤다고 동의한 것은 아니다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 대화가 되는 조건",
+          "section": "3.4 대화가 되지 않는 자리",
+          "primaryConcepts": [
+            "대화의 불가"
+          ],
+          "secondaryConcepts": [
+            "대화의 목적",
+            "듣기"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대화가 성립하지 않는 조건을 승패 지향·반증 불가 주장·발언 안전 미확보 셋으로 정리한다. 세 번째 조건이 외부에서 드러나지 않고 침묵이 동의로 오독된다는 점을 지적한다.",
+          "aiAnalysisInputSha256": "1fe13bd2bd209b58f91a6e96069f267044d35bb8fee747cdecb3eb58abda418e",
+          "aiPublicGuideTopic": "대화를 시작하지 않는 편이 나은 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "4장 합의 없는 이해",
+          "section": "4.1 이해와 동의는 다르다",
+          "primaryConcepts": [
+            "이해와 동의"
+          ],
+          "secondaryConcepts": [
+            "차이와 오류"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이해와 동의를 대상의 차이로 구분하고 두 개념이 결합될 때 발생하는 두 방향의 문제를 제시한다. 이해 압력과 이해 회피를 각각 지적하고, 두 진술을 병기하는 발화 방식을 실무로 다룬다.",
+          "aiAnalysisInputSha256": "ba5dc2f92b87c77710a5b00fefa9e2e29046653e9e488e8bf2e029abd2b089cc",
+          "aiPublicGuideTopic": "두 가지를 갈라 두는 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 합의 없는 이해",
+          "section": "4.1 이해와 동의는 다르다",
+          "primaryConcepts": [
+            "이해와 동의"
+          ],
+          "secondaryConcepts": [
+            "차이의 기록"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동의 없는 이해가 산출하는 세 가지 변화를 상대에 대한 귀인 수정·쟁점 범위의 축소·공동 결정 자료 확보로 정리한다. 이해가 합의의 전 단계가 아니라 독립적 성과라는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "6f834df1f191cebe648f35216ef3b9955b6ac9cc1cec20c43decb32ef8a42d96",
+          "aiPublicGuideTopic": "이해만으로 달라지는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 합의 없는 이해",
+          "section": "4.2 대화가 도달하는 네 자리",
+          "primaryConcepts": [
+            "대화의 도달점"
+          ],
+          "secondaryConcepts": [
+            "이해와 동의",
+            "차이의 기록"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대화의 결과를 이해 여부와 동의 여부 두 축으로 나눈 네 영역으로 배치한 도표다. 이해가 이루어진 두 영역을 함께 묶어 대화의 성과로 표시하고, 이해 없는 동의의 불안정성과 이해된 불일치의 처리 방향을 각각 나타낸다.",
+          "aiAnalysisInputSha256": "bf24e901277b91600c9a193aa932d9e05cf43b8724b9ca94539610839424b7a6",
+          "aiPublicGuideTopic": "대화가 끝날 때 놓이는 네 자리를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 합의 없는 이해",
+          "section": "4.3 남는 차이를 적어 두기",
+          "primaryConcepts": [
+            "차이의 기록"
+          ],
+          "secondaryConcepts": [
+            "이해와 동의"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미합의 사항의 기록 항목을 합치점·쟁점·쟁점의 유래 셋으로 제시하고 마지막 항목의 중요성을 밝힌다. 조건 변화에 따른 재검토 가능성을 근거로 들고, 기록을 공동으로 작성해야 편향이 남지 않는다는 절차를 제안한다.",
+          "aiAnalysisInputSha256": "be58c24f7111e0a22251fe9844104b1004bce5d981b4bd7b4ae31f1f20994231",
+          "aiPublicGuideTopic": "갈린 채로 끝난 것을 남기는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 합의 없는 이해",
+          "section": "4.3 남는 차이를 적어 두기",
+          "primaryConcepts": [
+            "차이의 기록"
+          ],
+          "secondaryConcepts": [
+            "미합의의 처리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "차이 기록의 효용을 반복 논쟁 방지·차이의 구조적 성격 식별·의사결정 시 사전 협의 유도 셋으로 정리한다. 명시된 차이가 관계를 악화시키지 않고 오히려 충돌의 예측 가능성을 높인다는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "394c2965ff66ef22f0468bdeb751e29122edada802713011f5437e894cef8528",
+          "aiPublicGuideTopic": "적어 둔 차이가 하는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 합의 없는 이해",
+          "section": "4.4 함께 정해야 할 때",
+          "primaryConcepts": [
+            "공동 결정"
+          ],
+          "secondaryConcepts": [
+            "대화의 목적"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이해된 불일치 상태에서의 결정 방법을 설득이 아닌 배분으로 제시한다. 우선순위의 명시와 양보의 통시적 계상이라는 두 조건을 제시하고, 후자가 없을 때 우선순위 진술이 왜곡된다는 점을 지적한다.",
+          "aiAnalysisInputSha256": "87d369b288ffd883700088470b1ad9e93e9d259862f9f14939b371e204677300",
+          "aiPublicGuideTopic": "갈린 채로 하나를 정하는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 합의 없는 이해",
+          "section": "4.4 함께 정해야 할 때",
+          "primaryConcepts": [
+            "공동 결정"
+          ],
+          "secondaryConcepts": [
+            "다수의 조정"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결정 이후에도 불일치가 존속한다는 전제에서 양보 내역의 기록과 재검토 시점 설정을 후속 절차로 제시한다. 재검토 부재가 양보를 패배로 전환시켜 이후 배분을 불가능하게 한다는 인과를 밝힌다.",
+          "aiAnalysisInputSha256": "299683f75fe25e0086fc93c9b3619da2eb8bd3e3b60786c2f0055ea2c86a471e",
+          "aiPublicGuideTopic": "정한 뒤에 남는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "5장 대화가 실패하는 방식",
+          "section": "5.1 이기려는 대화",
+          "primaryConcepts": [
+            "승패의 대화"
+          ],
+          "secondaryConcepts": [
+            "대화의 목적"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "승패 지향 대화에서 청취가 소멸하지만 외형상 활발해 보인다는 점을 지적한다. 원인을 입장 변경의 비용 구조에서 찾고, 대화 내부의 기법이 아니라 그 비용을 없애는 조건 정비가 선행되어야 한다는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "d41585b1c1c512f24661f81c0d6eea55115eba93a34ff60203124833a23bfefa",
+          "aiPublicGuideTopic": "이기는 것이 목적이 될 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "5장 대화가 실패하는 방식",
+          "section": "5.1 이기려는 대화",
+          "primaryConcepts": [
+            "승패의 대화"
+          ],
+          "secondaryConcepts": [
+            "형식적 경청"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "승패 지향의 식별 지표로 약점 선택적 공략·상대 주장의 재구성 불가·응답의 사전 결정 셋을 제시한다. 자기 점검이 해당 상태에서 작동하기 어렵다는 점을 지적하고 사전 목표 설정을 대안으로 다룬다.",
+          "aiAnalysisInputSha256": "701fb3ebdafd6308fe911e1f3f919fec0b155906f94c277296e01c356dc17fb7",
+          "aiPublicGuideTopic": "이기려는 대화의 표시",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 대화가 실패하는 방식",
+          "section": "5.2 다 맞다는 말",
+          "primaryConcepts": [
+            "무차별 상대주의"
+          ],
+          "secondaryConcepts": [
+            "차이와 오류"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "무차별적 상대화가 존중의 외형으로 대화를 종결시키는 문제를 다룬다. 차이 판정 조건의 미확인과 쟁점 기록의 부재라는 두 결과를 지적하고, 상대성 인정을 종결이 아니라 후속 탐색의 출발점으로 두는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "c3eaf5e25254493a9516028b772e3e31ed0c133c15b03804e4f7dc7f07a855e7",
+          "aiPublicGuideTopic": "각자의 관점이라는 말로 끝낼 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 대화가 실패하는 방식",
+          "section": "5.2 다 맞다는 말",
+          "primaryConcepts": [
+            "무차별 상대주의"
+          ],
+          "secondaryConcepts": [
+            "대화의 불가"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "존중과 방기를 상대 관점의 유래에 대한 파악 여부로 구분한다. 외형상 유사한 두 태도가 남기는 결과의 차이를 지적하고, 대리 구성 가능성을 판별 기준으로 제시한다.",
+          "aiAnalysisInputSha256": "eace9f54c1ba076c73f56e29e709ff06a9dcb89668c793f58a031ed62d583c13",
+          "aiPublicGuideTopic": "존중과 포기의 차이",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 대화가 실패하는 방식",
+          "section": "5.3 듣는 척하기",
+          "primaryConcepts": [
+            "형식적 경청"
+          ],
+          "secondaryConcepts": [
+            "듣기"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "청취 절차의 존재가 실질적 반영을 보장하지 않는다는 점과 형식적 절차가 사후 정당화 근거로 전용된다는 문제를 다룬다. 반영 여부와 미반영 사유의 회신이 후속 참여를 유지하는 조건이라는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "3961eb76f833b898bd5baa346d97fbc98466c8dc8b6e42735a3482ac2683352a",
+          "aiPublicGuideTopic": "듣는 절차만 남을 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 대화가 실패하는 방식",
+          "section": "5.3 듣는 척하기",
+          "primaryConcepts": [
+            "형식적 경청"
+          ],
+          "secondaryConcepts": [
+            "대화의 불가"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발언 안전이 확보되지 않은 상황에서 침묵이 동의로 오독되고 그 합의가 실행 단계에서 붕괴한다는 문제를 다룬다. 발언 분포의 관찰과 별도 통로를 통한 의견 수렴을 대응으로 제시하고 그 결과의 차이가 진단 자료가 된다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "df082082f3b2f0b8e6256c8810e46c9ab74820c0ff843c7a392f93706847675d",
+          "aiPublicGuideTopic": "말할 수 없는 자리에서의 조용함",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 대화가 실패하는 방식",
+          "section": "5.4 두 가지 닫힘",
+          "primaryConcepts": [
+            "대화의 닫힘"
+          ],
+          "secondaryConcepts": [
+            "승패의 대화",
+            "무차별 상대주의"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대화가 종결되는 두 양상을 정면 충돌과 상호 회피로 그린 도표다. 부딪혀 막히는 경우와 비켜 지나가는 경우를 각각 표현하고 두 경로가 동일한 결과로 수렴한다는 점을 하단에서 합류시켜 나타낸다.",
+          "aiAnalysisInputSha256": "0628e2380a8901f80375397ce342c3dbe51cad80fe6fcc72bcb268f45f3b7169",
+          "aiPublicGuideTopic": "대화가 두 방향으로 닫히는 모습을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "6장 세 자리의 대화",
+          "section": "6.1 같은 일을 다르게 본 두 사람",
+          "primaryConcepts": [
+            "대화의 적용"
+          ],
+          "secondaryConcepts": [
+            "결론의 분기",
+            "중요도의 차이"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자료 제시로 진전이 없던 논쟁에서 역방향 추적으로 분기 지점을 특정한 과정을 보인다. 앞선 두 마디의 합치가 확인되면서 쟁점이 긴급도 하나로 축소되고 이전 논의의 상당 부분이 불필요했음이 드러나는 전개를 제시한다.",
+          "aiAnalysisInputSha256": "bb1aa73bc6b4081a279b07a2a990f7703556138cf9c7be5043fa621cb513df4e",
+          "aiPublicGuideTopic": "어디서 갈렸는지 찾은 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "6장 세 자리의 대화",
+          "section": "6.1 같은 일을 다르게 본 두 사람",
+          "primaryConcepts": [
+            "대화의 적용"
+          ],
+          "secondaryConcepts": [
+            "중요도의 차이",
+            "입장 교대"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "가치 항목의 명시와 순위 비교를 통해 상호 무지 귀인이 해소되는 과정을 보인다. 항목의 공유와 순서의 상이가 확인된 뒤 대리 구성 절차를 수행해 상호 승인에 이르는 전개를 제시한다.",
+          "aiAnalysisInputSha256": "d4369e62f45102274178874f5ec505c644656c5356ef724bf7d6f4be9ced6464",
+          "aiPublicGuideTopic": "순서를 적어 본 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            37
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 세 자리의 대화",
+          "section": "6.1 같은 일을 다르게 본 두 사람",
+          "primaryConcepts": [
+            "대화의 적용"
+          ],
+          "secondaryConcepts": [
+            "이해와 동의",
+            "차이의 기록"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장시간 대화 후에도 결론이 유지된 사례에서 이해 도달을 성과로 규정한다. 미합의 기록의 세 항목을 실제로 작성한 과정과, 그 기록이 후속 논의의 비용을 줄인다는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "b64f243664943f212770d30e615a66aeb0c73c7f5403771a92c7fd3d5d4d8e80",
+          "aiPublicGuideTopic": "갈린 채로 끝낸 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 세 자리의 대화",
+          "section": "6.2 여럿이 정해야 할 때",
+          "primaryConcepts": [
+            "다수의 조정"
+          ],
+          "secondaryConcepts": [
+            "공동 결정",
+            "형식적 경청"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다수 참여 상황에서 발언 편중이 합의를 왜곡하는 과정과 서면 수렴으로 이를 교정한 사례를 보인다. 우선순위의 일괄 수집이 쟁점 수를 축소해 논의를 구조화한다는 결과를 제시한다.",
+          "aiAnalysisInputSha256": "f594302240bec6c198082f017e45fe1e4eee668986d590d05683f7baef0ad0ce",
+          "aiPublicGuideTopic": "여덟 사람이 하나를 정한 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 세 자리의 대화",
+          "section": "6.2 여럿이 정해야 할 때",
+          "primaryConcepts": [
+            "다수의 조정"
+          ],
+          "secondaryConcepts": [
+            "공동 결정"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복수 쟁점을 일괄 처리해 교환 가능성을 확보한 사례를 보인다. 개별 처리가 승패 구도를 만든다는 점을 지적하고, 양보 기록과 재검토 시점 설정이 결정의 수용 조건이라는 점을 확인한다.",
+          "aiAnalysisInputSha256": "b3eac8e5d57ff8924f6cc2ffcaae9c3f872c0268edc423d249d70aa17a8803ca",
+          "aiPublicGuideTopic": "배분으로 정한 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 세 자리의 대화",
+          "section": "6.3 끝내 갈린 자리",
+          "primaryConcepts": [
+            "미합의의 처리"
+          ],
+          "secondaryConcepts": [
+            "차이의 기록",
+            "대화의 불가"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조건 변화 이후에도 유지되는 차이를 기록의 유래 항목으로 확인하고 좁힘 시도를 중단한 사례를 보인다. 구조적 차이를 표시해 두고 사안별 배분으로 처리하는 방식이 비용상 유리하다는 판단을 제시한다.",
+          "aiAnalysisInputSha256": "0baf36f9ed3022c2cfd6b1c17e03019bd3fb1920437675916e3ac8ddbeec2dde",
+          "aiPublicGuideTopic": "합의되지 않은 채 남은 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 세 자리의 대화",
+          "section": "6.3 끝내 갈린 자리",
+          "primaryConcepts": [
+            "미합의의 처리"
+          ],
+          "secondaryConcepts": [
+            "관점의 형성"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "위치 변화에 따라 가치 순위가 이동해 기존 쟁점이 해소된 사례를 보인다. 관점 변화의 기제를 1장의 논의와 연결하고, 좁혀질 쟁점과 그렇지 않은 쟁점을 사전에 식별할 수 없다는 결론을 제시한다.",
+          "aiAnalysisInputSha256": "b143a310cc384b0d2db8203ae2b43e09027e250323542a8c0f84d8f62b49133f",
+          "aiPublicGuideTopic": "갈림이 옅어진 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "7장 다른 채로 함께",
+          "section": "7.1 무엇을 물었나",
+          "primaryConcepts": [
+            "관점"
+          ],
+          "secondaryConcepts": [
+            "결론의 분기",
+            "이해와 동의"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관점 차이의 세 유형, 관점 형성의 비선택성, 동의 없이 수행 가능한 세 절차, 이해된 불일치라는 도달점이라는 네 축으로 책 전체를 요약한다. 각 축에서 도출한 방법을 연결해 결론부의 뼈대로 제시한다.",
+          "aiAnalysisInputSha256": "cc8752d271600b0e8343925a1ca7cfddadcadaa55e90bd1ad99e13c8bb213590",
+          "aiPublicGuideTopic": "이 책이 지나온 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "many-viewpoints"
+          ]
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "7장 다른 채로 함께",
+          "section": "7.1 무엇을 물었나",
+          "primaryConcepts": [
+            "관점"
+          ],
+          "secondaryConcepts": [
+            "차이와 오류",
+            "무차별 상대주의"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "차이와 오류의 혼동이 양방향으로 대화를 종결시킨다는 점을 정리하고 판별 조건을 사실 공유와 논증 정합으로 제시한다. 조건 미확인 상태의 상대화를 방기로 규정하고 대리 구성 가능성을 존중의 지표로 삼는다.",
+          "aiAnalysisInputSha256": "306c51b60416e1a63fb2b9e833f40796f3dd6a37316e9a73268be2709fd570a4",
+          "aiPublicGuideTopic": "다르다는 말에 붙는 조건",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 다른 채로 함께",
+          "section": "7.1 무엇을 물었나",
+          "primaryConcepts": [
+            "관점"
+          ],
+          "secondaryConcepts": [
+            "승패의 대화",
+            "대화의 불가"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대화 실패의 두 방향과 각각의 해소 층위를 구분한다. 충돌형은 구조적 조건의 정비를, 회피형은 대화 내 절차를 요구한다는 점을 제시하고, 발언 안전 미확보 상황에서 침묵을 합의로 계상하지 않는다는 원칙을 덧붙인다.",
+          "aiAnalysisInputSha256": "6fc513af5ef97e50447fb72e6fc5229fec9a8dc13fa925bc7c68a098a15d1190",
+          "aiPublicGuideTopic": "대화가 닫히는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 다른 채로 함께",
+          "section": "7.2 대화를 이어 가는 일",
+          "primaryConcepts": [
+            "대화의 실천"
+          ],
+          "secondaryConcepts": [
+            "대화의 목적"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대화 목적의 사전 진술을 첫 실천으로 제시하고 종결 조건이 정해진다는 효과를 밝힌다. 진행 중 목적 전환의 명시가 복귀를 돕는다는 점과, 목적 불명확이 대화 시간을 늘린다는 관찰을 다룬다.",
+          "aiAnalysisInputSha256": "6f7f043d88a84064016e63b0e3d0bed1f664c150b56cd1aba2b1af599f0d4551",
+          "aiPublicGuideTopic": "시작할 때 정하는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 다른 채로 함께",
+          "section": "7.2 대화를 이어 가는 일",
+          "primaryConcepts": [
+            "대화의 실천"
+          ],
+          "secondaryConcepts": [
+            "중요도의 차이",
+            "입장 교대"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분기 지점 탐색의 두 방법으로 역방향 추적과 우선순위 기술을 제시하고 각각의 수행 요령을 정리한다. 대리 구성을 후속 절차로 두고 이해와 동의의 분리를 명시하는 발화로 마무리한다.",
+          "aiAnalysisInputSha256": "38a941d327ded6d3db846d025f73d2476a5d0fa40f6b791da5827c029281edf0",
+          "aiPublicGuideTopic": "갈린 자리를 찾는 두 가지",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            47
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 다른 채로 함께",
+          "section": "7.2 대화를 이어 가는 일",
+          "primaryConcepts": [
+            "대화의 실천"
+          ],
+          "secondaryConcepts": [
+            "차이의 기록",
+            "공동 결정"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대화 종료 시 기록 항목을 합치점·쟁점·쟁점의 유래로 정리하고 공동 결정이 있었던 경우 양보 내역과 재검토 시점을 추가한다. 대화의 목표를 동일화가 아니라 차이의 인지와 후속 결정 가능성으로 규정하며 책과 카테고리를 맺는다.",
+          "aiAnalysisInputSha256": "d2017d2f238fa48177ddbbd6fd10d1a4be6d5f818d5d62d7dbf5747b1ee12d30",
+          "aiPublicGuideTopic": "끝낼 때 남기는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 61,
       "title": "형태와 구도: 화면을 구성하는 원리",
       "pdfPath": "pdfs/book-061.pdf",
