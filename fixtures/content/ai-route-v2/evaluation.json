@@ -2637,6 +2637,74 @@
       ]
     },
     {
+      "caseId": "case-book-059",
+      "bookId": 59,
+      "purpose": "이 책을 소장하고 있는데, 무엇을 안다고 말할 수 있는 근거가 무엇인지와 무엇을 모르는지 아는 일이 왜 배움의 출발점인지 핵심만 짧게 잡고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "앎",
+        "앎의 근거",
+        "무지의 종류",
+        "무지의 무지",
+        "배움의 시작"
+      ],
+      "helpfulConcepts": [
+        "확신",
+        "무지의 자각",
+        "앎의 확장",
+        "익숙함의 착각"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 11
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 16
+        }
+      ],
+      "irrelevantPageNumbers": [
+        34,
+        35,
+        40,
+        41,
+        42,
+        43
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          44
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        5,
+        9,
+        11,
+        16
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        6,
+        10,
+        17,
+        23
+      ]
+    },
+    {
       "caseId": "case-book-061",
       "bookId": 61,
       "purpose": "그림을 처음 그리려는데 화면에 무엇을 어디에 놓아야 할지 막막하다. 가장 단순한 형태에서 시작해 화면을 채워 가는 순서와, 다 그린 뒤 한쪽으로 쏠려 보이지 않게 맞추는 기준을 이미 빌려 둔 앞부분 안에서 익히고 싶다",

@@ -32315,6 +32315,1056 @@
       ]
     },
     {
+      "bookId": 59,
+      "title": "안다는 것은 무엇인가",
+      "pdfPath": "pdfs/book-059.pdf",
+      "pdfSha256": "fd58fb954d600394955192d65ee9bf89c307ebeb868347ed005591095a846e7c",
+      "totalPageCount": 49,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 안다고 말할 때",
+          "section": "1.1 안다는 말의 쓰임",
+          "primaryConcepts": [
+            "앎"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "안다는 표현이 명제적·면식적·방법적 앎을 함께 가리킨다는 점과 각각의 확인 방식이 다르다는 것을 제시한다. 이 책의 대상을 명제적 앎으로 두되 나머지가 섞여 있다는 점을 예고하고, 앎의 규정보다 무지의 파악을 먼저 다루겠다고 밝힌다.",
+          "aiAnalysisInputSha256": "e8f960f6d12216cac6fae3992e0890bfdfb77f08ec538baba1da8237bd293ae6",
+          "aiPublicGuideTopic": "안다는 말이 여러 곳에 쓰이는 사정",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "what-is-knowing"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 안다고 말할 때",
+          "section": "1.1 안다는 말의 쓰임",
+          "primaryConcepts": [
+            "앎"
+          ],
+          "secondaryConcepts": [
+            "앎의 근거"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "앎의 성립 조건을 사실성·믿음·근거 셋으로 제시하고 각 조건이 빠질 때의 상태를 구분한다. 세 조건 가운데 행위자가 조작 가능한 것은 근거뿐이라는 점에서 근거 검토를 앎의 점검 방법으로 채택한다.",
+          "aiAnalysisInputSha256": "aab0b97cf9bfda20f5c4f6ad1c9787fe35ebfa064c6c247bb176e88f0684cac6",
+          "aiPublicGuideTopic": "안다고 말할 수 있는 조건",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 안다고 말할 때",
+          "section": "1.2 아는 것과 모르는 것 사이",
+          "primaryConcepts": [
+            "앎의 층"
+          ],
+          "secondaryConcepts": [
+            "앎",
+            "무지의 종류"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "앎과 무지를 이분법이 아니라 연속된 다섯 단계로 배치한 도표다. 무지의 무지에서 실행 가능까지의 층을 색의 농도로 표시하고, 배움이 시작되는 지점과 설명 가능성을 실행 가능성으로 오인하는 지점을 각각 표시한다.",
+          "aiAnalysisInputSha256": "3ba080182d4b18f25d0240b2c0886d77a07a002047c88a47690b7e96d2320663",
+          "aiPublicGuideTopic": "앎과 모름 사이에 놓인 여러 층을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 안다고 말할 때",
+          "section": "1.3 안다고 여기는 근거",
+          "primaryConcepts": [
+            "앎의 근거"
+          ],
+          "secondaryConcepts": [
+            "앎"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "앎의 근거를 관찰·전언·추론·실행 넷으로 분류하고 각각의 제한 조건을 제시한다. 단일 근거의 취약성을 지적하고 복수 근거의 중첩이 안정성을 높인다는 점에서 근거의 수를 점검하는 방법을 제안한다.",
+          "aiAnalysisInputSha256": "b69abad162943db0a60b9b134adc81308e5797c5ba4a476b50ddda7ecc64f7fc",
+          "aiPublicGuideTopic": "근거가 어디서 오는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 안다고 말할 때",
+          "section": "1.3 안다고 여기는 근거",
+          "primaryConcepts": [
+            "앎의 근거"
+          ],
+          "secondaryConcepts": [
+            "전언적 앎"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "근거가 소실된 앎이 지식의 대부분을 차지한다는 점을 정상적 상태로 인정하되, 반증 신호가 왔을 때 수정 지점을 찾지 못하는 문제를 지적한다. 중요한 항목에 근거를 병기해 수정 가능성을 확보하는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "203ba1d0c92ba1ebc019377b83530ed598d25cf29178fbfae7ab79cf1c923a15",
+          "aiPublicGuideTopic": "근거가 기억나지 않을 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 안다고 말할 때",
+          "section": "1.4 확신과 정확함",
+          "primaryConcepts": [
+            "확신"
+          ],
+          "secondaryConcepts": [
+            "앎의 근거"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확신과 정확성의 상관이 불완전하다는 점을 지적하고 확신이 사용 빈도에 의존한다는 기제를 제시한다. 반증 기회가 없는 환경에서 확신만 누적된다는 문제를 밝히고 최근 검증 시점을 떠올리는 점검 방법을 제안한다.",
+          "aiAnalysisInputSha256": "bf4673586f4b5576ab8760157e18e6db98282de0f85bfa260d77d3d7cb6d67a9",
+          "aiPublicGuideTopic": "확신의 크기가 알려 주는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 안다고 말할 때",
+          "section": "1.4 확신과 정확함",
+          "primaryConcepts": [
+            "확신"
+          ],
+          "secondaryConcepts": [
+            "익숙함의 착각"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확신이 앎의 성립 조건에 포함되지 않는다는 점을 1.1의 조건과 대조해 밝힌다. 숙달될수록 한계 인식이 확신을 낮춘다는 관계를 제시하고, 타인의 확신 대신 예외 조건에 대한 답변으로 앎의 수준을 가늠하는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "939bfe6e99d3d4d842b483406a92da100fa7ab0dd4d332b4fce8112c7eb7d5d8",
+          "aiPublicGuideTopic": "확신이 낮은 것이 나쁘지 않은 이유",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 모른다는 것",
+          "section": "2.1 모른다는 말의 종류",
+          "primaryConcepts": [
+            "무지의 종류"
+          ],
+          "secondaryConcepts": [
+            "앎"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "무지를 존재 미인지·내용 미상·부정확·인식 불가 넷으로 분류하고 각 유형이 요구하는 대응을 제시한다. 무지 진술 시 유형을 명시하면 후속 행동이 결정된다는 점에서 구분의 실천적 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "5a2684d6b6a8ace8afbae4fee79195cf30e8444ecfede94ee0f824aedfedc215",
+          "aiPublicGuideTopic": "모른다는 말이 가리키는 여러 상태",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 모른다는 것",
+          "section": "2.1 모른다는 말의 종류",
+          "primaryConcepts": [
+            "무지의 종류"
+          ],
+          "secondaryConcepts": [
+            "무지의 무지"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "무지의 네 유형 가운데 존재 미인지만 자기 점검으로 접근할 수 없다는 구조적 차이를 밝힌다. 이 유형이 외부 개입이나 우연에 의존해 해소된다는 점과, 동질적 집단 내에서는 상호 보완이 일어나지 않는다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "82fdb7cc90cd9ca9be8018156e0e3000105d59464b94d4d8211dfba102f7f83c",
+          "aiPublicGuideTopic": "첫째 종류가 다른 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 모른다는 것",
+          "section": "2.2 모른다는 것을 모를 때",
+          "primaryConcepts": [
+            "무지의 무지"
+          ],
+          "secondaryConcepts": [
+            "무지의 종류"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "무지의 무지 상태에서 결손이 주변 지식으로 메워져 인지되지 않는다는 구조를 설명한다. 학습 초기에 자각된 무지가 증가하는 현상을 유형 이동으로 해석하고 그것을 진전의 신호로 읽는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "00449e518bdf5bdaee15d4f8d630869dae83b7028cb096bb2cdc2035badb4621",
+          "aiPublicGuideTopic": "빈자리가 보이지 않는 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 모른다는 것",
+          "section": "2.2 모른다는 것을 모를 때",
+          "primaryConcepts": [
+            "무지의 무지"
+          ],
+          "secondaryConcepts": [
+            "확신"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지식 수준과 확신의 관계가 예외 인식의 유무로 매개된다는 점을 제시한다. 무지의 무지 상태에서 확신이 균일하게 높아 외부에 견고해 보인다는 문제를 지적하고, 한계와 미지 영역의 진술 가능성을 대체 지표로 제안한다.",
+          "aiAnalysisInputSha256": "04eb0aad374c532d34431724b373470fbf37cd6ea8bc5e094a92b82ad8d7ad5f",
+          "aiPublicGuideTopic": "적게 알수록 고르게 확신하는 까닭",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 모른다는 것",
+          "section": "2.3 모름의 네 칸",
+          "primaryConcepts": [
+            "무지의 배치"
+          ],
+          "secondaryConcepts": [
+            "무지의 종류",
+            "무지의 무지"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "앎의 유무와 그에 대한 자각 여부를 두 축으로 삼아 네 영역을 구성한 도표다. 자각된 무지 영역을 배움의 출발점으로 표시하고, 무자각 무지에서 그 영역으로의 이동이 외부 계기를 요구한다는 점을 화살표로 나타낸다.",
+          "aiAnalysisInputSha256": "615b4c92b1c416a0f9c99b197fac17a497b9830d4d2b49a5573a717d4abbfb89",
+          "aiPublicGuideTopic": "아는지 여부와 그것을 아는지 여부로 나눈 네 칸을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 모른다는 것",
+          "section": "2.4 모름을 알아채는 방법",
+          "primaryConcepts": [
+            "무지의 자각"
+          ],
+          "secondaryConcepts": [
+            "무지의 무지"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "무자각 무지를 자력으로 드러내는 방법을 설명 시도·예측 대조·이질적 타인과의 대화 셋으로 제시한다. 각 방법의 정확도와 비용을 비교하고 설명 시도가 비용 대비 효율이 높다는 판단을 다룬다.",
+          "aiAnalysisInputSha256": "e662014ecc778450fb98423849bd8e2532965a16f61a7f7256654276cfb5988b",
+          "aiPublicGuideTopic": "빈자리를 드러내는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 모른다는 것",
+          "section": "2.4 모름을 알아채는 방법",
+          "primaryConcepts": [
+            "무지의 자각"
+          ],
+          "secondaryConcepts": [
+            "배움의 시작"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자각된 무지가 시간이 지나면 다시 은폐된다는 점을 지적하고 질문 형태의 기록으로 유지하는 방법을 제시한다. 기록이 없으면 관련 정보를 인지하지 못한다는 점과, 목록을 짧게 유지해야 실제로 참조된다는 실무를 다룬다.",
+          "aiAnalysisInputSha256": "06bfb628557b16fbd7c56b3f8ba21a5d25c125029cf136f0f1da032cc31c2866",
+          "aiPublicGuideTopic": "알아챈 뒤에 하는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 배움이 시작되는 자리",
+          "section": "3.1 물음이 생기는 자리",
+          "primaryConcepts": [
+            "배움의 시작"
+          ],
+          "secondaryConcepts": [
+            "앎"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "학습의 출발점을 자각된 무지로 규정하고 질문의 형성이 관련 지식의 정착을 돕는다는 구조를 설명한다. 질문 없이 수용된 정보가 배치될 자리를 갖지 못한다는 점을 지적하고 사전 질문 작성이라는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "f75cfe875c08b5999de73ce4ef4c0a745c091b772c4edefc1810b4e2b16e5132",
+          "aiPublicGuideTopic": "배움이 시작되는 지점",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 배움이 시작되는 자리",
+          "section": "3.1 물음이 생기는 자리",
+          "primaryConcepts": [
+            "배움의 시작"
+          ],
+          "secondaryConcepts": [
+            "무지의 자각"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "완전한 무지 상태에서는 유효한 질문이 형성되지 않는다는 점을 지적하고 개관을 통한 구조 파악을 선행 단계로 제시한다. 전체 지형을 확보한 뒤 불명확한 지점이 질문으로 전환된다는 순서를 밝힌다.",
+          "aiAnalysisInputSha256": "58cf7139939f0d8ad0dc1c1f27a7353aa001f3ab602d7243ec81d08d6949b897",
+          "aiPublicGuideTopic": "물음이 생기지 않을 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 배움이 시작되는 자리",
+          "section": "3.2 아는 것이 늘면",
+          "primaryConcepts": [
+            "앎의 확장"
+          ],
+          "secondaryConcepts": [
+            "배움의 시작"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지식의 증가가 질문의 증가를 동반한다는 점과 그 증가가 확장기와 심화기로 나뉜다는 관찰을 제시한다. 시기에 따라 학습 방식이 달라져야 한다는 점과 질문의 형태로 현재 시기를 판별하는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "0a07e250087fe26bd7fe4587b9243989016eac70177bf8caee99cbed88437b0b",
+          "aiPublicGuideTopic": "하나를 알면 늘어나는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 배움이 시작되는 자리",
+          "section": "3.2 아는 것이 늘면",
+          "primaryConcepts": [
+            "앎의 확장"
+          ],
+          "secondaryConcepts": [
+            "숙련자의 배움"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선행 지식이 새로운 정보의 통합 비용을 증가시킨다는 점과 그 비용이 통합된 지식의 견고함으로 회수된다는 관계를 제시한다. 충돌 시 즉각적 취사선택 대신 각각의 적용 범위를 구분하는 접근을 다룬다.",
+          "aiAnalysisInputSha256": "fe16adcf48fb404760f839d71f6e037e15da79a62469c930f3330bf716b14e89",
+          "aiPublicGuideTopic": "알수록 어려워지는 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 배움이 시작되는 자리",
+          "section": "3.3 설명해 보기",
+          "primaryConcepts": [
+            "설명 시험"
+          ],
+          "secondaryConcepts": [
+            "배움의 시작"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "설명 시도가 지식의 결손을 드러내는 기제를 순서화 요구에서 찾는다. 청자의 존재가 건너뛴 부분의 자각을 돕는다는 점과, 학습 완료 후가 아니라 학습 중에 적용할 때 후속 학습 방향이 정해진다는 이점을 제시한다.",
+          "aiAnalysisInputSha256": "02dab62793531d09351afe24dc3eb8d5f9af74ded7f78f0d74ac7c88fbdabae2",
+          "aiPublicGuideTopic": "말해 보면 드러나는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 배움이 시작되는 자리",
+          "section": "3.3 설명해 보기",
+          "primaryConcepts": [
+            "설명 시험"
+          ],
+          "secondaryConcepts": [
+            "이해감"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "설명의 유창함이 이해가 아니라 반복에서 올 수 있다는 점을 지적한다. 순서 변경·연속 이유 질문·새로운 예시 요구를 통해 실질적 이해를 시험하는 방법을 제시하고 사례 종속적 앎을 판별하는 기준을 다룬다.",
+          "aiAnalysisInputSha256": "8237fb5f8860fd6d4b42d49b1dfdbd2b286aada907c34ed02fb8ea980999cdc7",
+          "aiPublicGuideTopic": "설명이 매끄러울 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 배움이 시작되는 자리",
+          "section": "3.4 배움이 멈추는 자리",
+          "primaryConcepts": [
+            "배움의 정체"
+          ],
+          "secondaryConcepts": [
+            "배움의 시작",
+            "앎의 확장"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "학습 정체의 세 원인을 질문 소멸·접근 수단 부재·기존 지식과의 충돌로 정리하고 각각에 대응하는 방법을 앞 절들과 연결한다. 원인 구분 없이 학습량만 늘릴 때 동일 내용의 반복에 그친다는 문제를 지적한다.",
+          "aiAnalysisInputSha256": "54f44536f2cca29586fe6a4b54b04551adef828c888cf8c88c41a1d06f141ca0",
+          "aiPublicGuideTopic": "더 이상 늘지 않는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "4장 무엇이 앎을 떠받치는가",
+          "section": "4.1 겪어서 아는 것",
+          "primaryConcepts": [
+            "경험적 앎"
+          ],
+          "secondaryConcepts": [
+            "앎의 근거"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "경험적 앎의 견고함과 그 적용 범위의 제약을 함께 다룬다. 관찰이 배경 지식에 의존해 동일 상황에서도 달라진다는 점을 지적하고, 관찰 조건을 병기해 적용 범위를 남기는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "b632783221df96906cc0069fc330ccf5356ebf9ae90be7f9f9d2dc2ac25bdc6d",
+          "aiPublicGuideTopic": "직접 본 것이 주는 것과 주지 않는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 무엇이 앎을 떠받치는가",
+          "section": "4.1 겪어서 아는 것",
+          "primaryConcepts": [
+            "경험적 앎"
+          ],
+          "secondaryConcepts": [
+            "실행적 앎"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "언어화되지 않는 경험적 앎의 존재를 인정하고 설명 시험이 이 유형에 적용되지 않는다는 점을 밝힌다. 전달 방법으로 공동 실행을 제시하되, 부분적 언어화 시도가 판단 근거를 드러내는 효과를 갖는다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "2b118f8f92c8887ef1ec4b6c4e7ee7b4af2ed0e42140de4df2203353cea225f9",
+          "aiPublicGuideTopic": "겪음이 말이 되지 않을 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 무엇이 앎을 떠받치는가",
+          "section": "4.2 들어서 아는 것",
+          "primaryConcepts": [
+            "전언적 앎"
+          ],
+          "secondaryConcepts": [
+            "앎의 근거"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "전언적 앎이 지식의 대부분을 차지한다는 점을 인정하고 성립 조건을 전달자의 접근 위치와 전달 과정의 보존으로 제시한다. 조건의 직접 확인이 어려워 과거 적중률로 대체된다는 점과 출처 병기의 효용을 다룬다.",
+          "aiAnalysisInputSha256": "f852146788f358aedac10a1b21bb8ce5832be4b1d22366bc783812ce342d0a5b",
+          "aiPublicGuideTopic": "남에게 들은 것이 앎이 되는 조건",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 무엇이 앎을 떠받치는가",
+          "section": "4.2 들어서 아는 것",
+          "primaryConcepts": [
+            "전언적 앎"
+          ],
+          "secondaryConcepts": [
+            "빌린 앎"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "복수 증언의 신뢰도가 출처의 독립성에 의존한다는 점을 제시한다. 동일 출처에서 파생된 증언이 외형상 독립적 확인과 구별되지 않는다는 문제를 지적하고, 중요 판단에 한해 출처 추적을 수행하는 실무를 다룬다.",
+          "aiAnalysisInputSha256": "9778f7cf1a007a58d62e9c393c8b501829a62b86b8f355ef811b92d513a3d41c",
+          "aiPublicGuideTopic": "여러 사람이 같은 말을 할 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            25
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 무엇이 앎을 떠받치는가",
+          "section": "4.3 앎이 서 있는 자리",
+          "primaryConcepts": [
+            "앎의 지지"
+          ],
+          "secondaryConcepts": [
+            "경험적 앎",
+            "전언적 앎",
+            "실행적 앎"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "앎의 근거 수를 지지대의 개수로 표현해 단일 근거와 복수 근거의 안정성을 대비한 도표다. 동일한 외력에 대해 한쪽만 기울어지는 모습으로 근거 다변화의 효과를 나타내고 확신과 구별되는 견고함의 출처를 표시한다.",
+          "aiAnalysisInputSha256": "77370e56e7ed3c8d814b2b928b7560a06d9ecb98f9e81c38ed2a4d590f6cb271",
+          "aiPublicGuideTopic": "앎이 몇 개의 다리로 서 있는지를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 무엇이 앎을 떠받치는가",
+          "section": "4.4 해 봐서 아는 것",
+          "primaryConcepts": [
+            "실행적 앎"
+          ],
+          "secondaryConcepts": [
+            "앎의 근거"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실행적 앎이 설명의 양으로 보완되지 않는다는 점을 암묵적 요소의 존재로 설명한다. 설명자 자신도 인지하지 못하는 요소가 있다는 점을 지적하고, 설명과 실행을 교차하는 학습 순서를 제안한다.",
+          "aiAnalysisInputSha256": "9dbb4aa5fc57a18f9d316308e4ce68c461612e13c211cd03d9d86a2d81befe6f",
+          "aiPublicGuideTopic": "해 보기 전에는 알 수 없는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 무엇이 앎을 떠받치는가",
+          "section": "4.4 해 봐서 아는 것",
+          "primaryConcepts": [
+            "실행적 앎"
+          ],
+          "secondaryConcepts": [
+            "숙련자의 배움"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실행 경험이 동일 자료의 이해를 변화시키는 기제를 수용 자리의 형성으로 설명한다. 실행 없는 반복 학습과 실행을 사이에 둔 반복 학습의 차이를 제시하고 분할 학습 방식을 제안한다.",
+          "aiAnalysisInputSha256": "79b1c368f6aa0bd89447ffd83fa7824c371a1bac9ba5374983eed4d9258a30cb",
+          "aiPublicGuideTopic": "해 본 것이 설명을 바꾼다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "5장 안다고 착각하는 방식",
+          "section": "5.1 익숙함을 앎으로",
+          "primaryConcepts": [
+            "익숙함의 착각"
+          ],
+          "secondaryConcepts": [
+            "확신"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "친숙성이 앎으로 오인되는 현상을 재인과 인출의 차이로 설명한다. 익숙한 대상에서 질문이 형성되지 않아 학습이 정체된다는 점을 지적하고, 설명 시험을 익숙한 영역에 적용하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "2a976af978808128ff7040f5a7b1ab1be0485239de672a93d33945170424f506",
+          "aiPublicGuideTopic": "자주 본 것을 안다고 여기는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "5장 안다고 착각하는 방식",
+          "section": "5.1 익숙함을 앎으로",
+          "primaryConcepts": [
+            "익숙함의 착각"
+          ],
+          "secondaryConcepts": [
+            "무지의 무지"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "친숙성이 결손의 은폐를 강화한다는 점을 2장의 논의와 연결한다. 익숙한 영역의 무지가 드러날 계기를 갖지 못한다는 점을 지적하고, 신규 진입자의 곤란 지점을 통해 자신의 설명 불가 영역을 찾는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "b92099de1adace5c276470876416820c0cb251d39a3da143949e24bfed8e9545",
+          "aiPublicGuideTopic": "익숙함이 빈자리를 덮는 방식",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 안다고 착각하는 방식",
+          "section": "5.2 설명을 들은 것을 앎으로",
+          "primaryConcepts": [
+            "이해감"
+          ],
+          "secondaryConcepts": [
+            "확신"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이해감이 설명의 유창성에서 발생해 실제 이해와 분리될 수 있다는 점을 다룬다. 자기 언어로의 재구성을 판별 방법으로 제시하고, 직후 시행은 단기 기억의 영향을 받으므로 시간 간격을 두어야 한다는 조건을 밝힌다.",
+          "aiAnalysisInputSha256": "2885dfd7121ecae9908865e9503ce435c444b09da154b8092f974740ef7362b9",
+          "aiPublicGuideTopic": "알겠다는 느낌의 정체",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 안다고 착각하는 방식",
+          "section": "5.2 설명을 들은 것을 앎으로",
+          "primaryConcepts": [
+            "이해감"
+          ],
+          "secondaryConcepts": [
+            "설명 시험"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이해감의 주된 위험을 오류 형성이 아니라 학습 종료로 규정한다. 설명의 질과 이해감의 크기가 비례해 확인 행동을 억제한다는 역설을 지적하고, 이해감이 큰 경우에 검증을 강화하는 대응을 제시한다.",
+          "aiAnalysisInputSha256": "fe4d71eec0d6939c498232355ee96874e7fdd3bed7df578489a332a556833365",
+          "aiPublicGuideTopic": "이해감이 배움을 멈추는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 안다고 착각하는 방식",
+          "section": "5.3 남의 앎을 자기 앎으로",
+          "primaryConcepts": [
+            "빌린 앎"
+          ],
+          "secondaryConcepts": [
+            "전언적 앎"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "타인의 지식에 대한 접근 가능성이 자기 지식으로 계상되는 현상을 다룬다. 분산된 지식 활용 자체는 정상적이라는 점을 인정하되, 자기 지식과 접근 가능한 지식을 구분해 기록해야 단독 판단 상황에서 대비가 가능하다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "a90e0bcd06968a40d5d34d0a219a285ba8ef52c0fab6b0ee7dbfeee0765649ee",
+          "aiPublicGuideTopic": "옆에 있는 앎을 자기 것으로 세는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            25
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 안다고 착각하는 방식",
+          "section": "5.3 남의 앎을 자기 앎으로",
+          "primaryConcepts": [
+            "빌린 앎"
+          ],
+          "secondaryConcepts": [
+            "가르침"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "검색 가능성이 지식으로 계상되는 현상을 시간 제약 상황과 질의어 부재 상황에서 검토한다. 후자가 무지의 첫 유형과 연결된다는 점을 지적하고, 검색 결과의 정리가 영역 지형을 축적해 후속 탐색을 가능하게 한다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "7a1ac63c2cccb9eac7edcfc6e5e4043654553753e3478b749e3bfb99480ab591",
+          "aiPublicGuideTopic": "찾을 수 있다는 것과 아는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 안다고 착각하는 방식",
+          "section": "5.4 앎과 앎처럼 보이는 것",
+          "primaryConcepts": [
+            "착각의 구분"
+          ],
+          "secondaryConcepts": [
+            "익숙함의 착각",
+            "이해감",
+            "빌린 앎"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "친숙성·이해감·접근 가능성·실제 앎 넷을 재인·설명·실행 세 단계에 대한 충족 정도로 비교한 도표다. 겉으로 구별되지 않는 네 상태가 단계별 시험에서 갈린다는 점을 채움 정도와 점선으로 나타낸다.",
+          "aiAnalysisInputSha256": "726432db7408a7f12967cd5e600c8e3cc0ab21b5cbb87c3088e64c5035f7671c",
+          "aiPublicGuideTopic": "앎과 앎처럼 보이는 세 가지를 견준 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "6장 세 자리의 배움",
+          "section": "6.1 처음 배우는 자리",
+          "primaryConcepts": [
+            "초심의 배움"
+          ],
+          "secondaryConcepts": [
+            "배움의 시작",
+            "무지의 종류"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "완전한 무지 상태에서 질문 형성이 실패하는 과정과 개관을 통한 구조 파악이 선행된 사례를 보인다. 개관 이후 형성된 질문이 자각된 무지에서 나온다는 점에서 초기 질문과 질적으로 다르다는 것을 제시한다.",
+          "aiAnalysisInputSha256": "6fb5ea6b9007bb573a98a2ddc1db0c91cbedb611a49171003d1d899b8dc5ab0d",
+          "aiPublicGuideTopic": "아무것도 모르는 자리에서 시작하기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "6장 세 자리의 배움",
+          "section": "6.1 처음 배우는 자리",
+          "primaryConcepts": [
+            "초심의 배움"
+          ],
+          "secondaryConcepts": [
+            "설명 시험",
+            "이해감"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "학습 진행도 확인에 설명 시험을 하루 간격으로 적용한 사례를 보인다. 막힌 지점의 목록화가 후속 학습 범위를 정한다는 점과, 학습량 감소가 정착도 향상으로 이어졌다는 결과를 제시한다.",
+          "aiAnalysisInputSha256": "91272f4621811b214a886ca7221de4d295be7cb0718ff9cb36daf4093aad1bda",
+          "aiPublicGuideTopic": "잘 배우고 있는지 확인하기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            37
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 세 자리의 배움",
+          "section": "6.1 처음 배우는 자리",
+          "primaryConcepts": [
+            "초심의 배움"
+          ],
+          "secondaryConcepts": [
+            "앎의 확장"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "학습 진행에 따라 자각된 무지가 증가하는 현상을 사례로 확인하고 그것이 지식 지형의 확장에서 온다는 해석을 제시한다. 확장된 질문 목록을 소수로 유지하며 순환시키는 관리 방법을 다룬다.",
+          "aiAnalysisInputSha256": "e490e28cfbd8f6a8ad346449e437a48aaa6720ceeae4ef0676c0b7bfb0f16a55",
+          "aiPublicGuideTopic": "모르는 것이 늘어난 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 세 자리의 배움",
+          "section": "6.2 오래 해 온 자리",
+          "primaryConcepts": [
+            "숙련자의 배움"
+          ],
+          "secondaryConcepts": [
+            "익숙함의 착각",
+            "앎의 확장"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "숙련 영역에서 학습이 정체되는 원인을 질문 부재로 진단하고 신규자의 곤란 지점을 통해 질문을 확보한 사례를 보인다. 암묵적 판단 근거의 언어화가 숙련자의 학습 내용이 된다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "373068cfa81b0715ec111cb28ebac42c4870f14ba17cf22e622110fc9c681fe9",
+          "aiPublicGuideTopic": "오래 한 일에서 배우기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 세 자리의 배움",
+          "section": "6.2 오래 해 온 자리",
+          "primaryConcepts": [
+            "숙련자의 배움"
+          ],
+          "secondaryConcepts": [
+            "실행적 앎"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "암묵적 판단을 언어화하는 방법으로 관행의 의도적 위반을 제시하고 어긋남이 발생하는 지점에서 판단 근거가 드러난다는 기제를 설명한다. 언어화의 산출이 전수 효율뿐 아니라 자기 판단의 오류 발견이라는 점을 사례로 보인다.",
+          "aiAnalysisInputSha256": "88f6e0975882cfbc7c6ae488d2e29b0715e7fa3c3712f7b53989e026f86f614a",
+          "aiPublicGuideTopic": "말로 옮기면서 달라진 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 세 자리의 배움",
+          "section": "6.3 가르치는 자리",
+          "primaryConcepts": [
+            "가르침"
+          ],
+          "secondaryConcepts": [
+            "설명 시험",
+            "무지의 자각"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "교수 준비 과정이 설명 시험을 강제된 형태로 수행하게 한다는 점을 사례로 보인다. 연속된 이유 질문에서 앎의 경계가 드러나며 그 경계 인지가 후속 학습 방향을 정한다는 구조를 제시한다.",
+          "aiAnalysisInputSha256": "8506da6e28f0b268dd0e5576559cca76d53188ff6860b638767b2d13711dfd48",
+          "aiPublicGuideTopic": "가르치면서 알게 되는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 세 자리의 배움",
+          "section": "6.3 가르치는 자리",
+          "primaryConcepts": [
+            "가르침"
+          ],
+          "secondaryConcepts": [
+            "초심의 배움",
+            "빌린 앎"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "교수 상황에서 무지를 유형과 함께 진술하면 안내로 기능한다는 점을 사례로 보인다. 미확인 영역의 표시가 학습자에게 신뢰 범위를 제공하고 자발적 탐색을 유도한다는 결과를 제시한다.",
+          "aiAnalysisInputSha256": "a334c0aa6d474aaa14ef1c82b090380f52f6000107500c57a5e48bd304178390",
+          "aiPublicGuideTopic": "모른다고 말하는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "7장 모르는 채로",
+          "section": "7.1 무엇을 물었나",
+          "primaryConcepts": [
+            "앎"
+          ],
+          "secondaryConcepts": [
+            "무지의 종류",
+            "앎의 근거"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "앎의 세 쓰임과 성립 조건, 무지의 네 유형과 첫 유형의 특수성, 학습의 출발점, 근거의 다변화라는 네 축으로 책 전체를 요약한다. 각 축에서 도출한 판단 기준을 연결해 결론부의 뼈대로 제시한다.",
+          "aiAnalysisInputSha256": "5bdd81678c1d0f792e1383967f68fbe3c744790942a3916fa5ffb9f023fbd5f9",
+          "aiPublicGuideTopic": "이 책이 지나온 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "what-is-knowing"
+          ]
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "7장 모르는 채로",
+          "section": "7.1 무엇을 물었나",
+          "primaryConcepts": [
+            "앎"
+          ],
+          "secondaryConcepts": [
+            "익숙함의 착각",
+            "이해감"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "앎과 혼동되는 세 상태를 정리하고 그것들이 시험을 통해서만 구별된다는 점을 제시한다. 이해감이 학습 종료를 유발한다는 점에서 가장 위험하다고 평가하고, 저비용 검증 방법의 반복을 결론적 처방으로 제시한다.",
+          "aiAnalysisInputSha256": "8b7092e74513520db18f8ff94c29721cb3a3e51672f7f0aa806fc3e33b6bf2c5",
+          "aiPublicGuideTopic": "앎처럼 보이는 것들",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 모르는 채로",
+          "section": "7.1 무엇을 물었나",
+          "primaryConcepts": [
+            "앎"
+          ],
+          "secondaryConcepts": [
+            "확신",
+            "무지의 자각"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "무지 인식의 두 왜곡을 판단 회피와 행위 마비로 정리한다. 두 극단을 억제하는 조건으로 당면 결정의 명확화를 제시하고, 확인 대상을 현재 과제에 걸린 항목으로 한정하는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "7f3bbf2c35c483365e2c87dcffeb88c17b6446c4554f68fd484f72dd5c152fe5",
+          "aiPublicGuideTopic": "이 태도가 어긋나는 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 모르는 채로",
+          "section": "7.2 모름을 다루는 일",
+          "primaryConcepts": [
+            "앎의 실천"
+          ],
+          "secondaryConcepts": [
+            "무지의 자각"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자각된 무지의 기록을 첫 실천으로 제시하고 미기록 시 재은폐된다는 근거를 2장 논의에서 가져온다. 목록의 길이 제한과 무지 유형의 병기가 후속 행동을 결정한다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "9aa1273ed8cf0dc6fe512394f0a2ed22972a93086e372670366e2b281928d221",
+          "aiPublicGuideTopic": "모름을 적어 두는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 모르는 채로",
+          "section": "7.2 모름을 다루는 일",
+          "primaryConcepts": [
+            "앎의 실천"
+          ],
+          "secondaryConcepts": [
+            "설명 시험"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "설명 시험의 수행 조건을 시간 간격·순서 변경·새 예시 생성으로 구체화한다. 시행 시점에 따라 확인과 방향 설정이라는 다른 산출을 얻는다는 점을 밝히고 학습 중 시행을 권한다.",
+          "aiAnalysisInputSha256": "b46248be83d1b22e7b221ae6550c7eb7aea2e647b6ac131e80b862ac49cec919",
+          "aiPublicGuideTopic": "시험하는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            47
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 모르는 채로",
+          "section": "7.2 모름을 다루는 일",
+          "primaryConcepts": [
+            "앎의 실천"
+          ],
+          "secondaryConcepts": [
+            "앎의 근거",
+            "빌린 앎"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "근거 수 계산과 빌린 앎의 분리 기록을 세 번째 실천으로 제시한다. 단일 근거의 연쇄 붕괴 위험과 단독 판단 상황의 대비를 각각 근거로 들고, 무지의 파악이 지식 축적에 선행한다는 결론으로 책을 맺는다.",
+          "aiAnalysisInputSha256": "b87be185b35dc56a53b517e32db2250be29450932237eef1fe05566cee6e0431",
+          "aiPublicGuideTopic": "다리를 세는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 61,
       "title": "형태와 구도: 화면을 구성하는 원리",
       "pdfPath": "pdfs/book-061.pdf",
