@@ -1680,6 +1680,99 @@
       ]
     },
     {
+      "caseId": "case-book-040",
+      "bookId": 40,
+      "purpose": "이 책은 아직 소장하지 않았고 잉크는 열까지 쓸 수 있는데, 국경에 있던 도시 하나가 왜 비었는지를 조약과 초소 일지로 어떻게 세우는지 알고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "경계의 성격",
+        "조약문",
+        "재협상",
+        "귀속 변경",
+        "국경 이동의 결과"
+      ],
+      "helpfulConcepts": [
+        "변경도시",
+        "조약의 두 판본",
+        "교환의 셈",
+        "경계 문언",
+        "사료 대조"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 26
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 29
+        },
+        {
+          "beforePageNumber": 26,
+          "afterPageNumber": 29
+        },
+        {
+          "beforePageNumber": 29,
+          "afterPageNumber": 31
+        }
+      ],
+      "irrelevantPageNumbers": [
+        14,
+        15,
+        37,
+        41,
+        42,
+        43,
+        44
+      ],
+      "duplicatePageGroups": [
+        [
+          31,
+          47
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        8,
+        10,
+        24,
+        26,
+        29,
+        31
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        9,
+        11,
+        12,
+        22,
+        25,
+        27,
+        30
+      ]
+    },
+    {
       "caseId": "case-book-041",
       "bookId": 41,
       "purpose": "이 책을 소장하고 있는데, 작은 가게를 열기 전에 여러 메뉴를 한 사람이 다 만드는 게 나을지 한 가지에 집중하는 게 나을지 핵심만 빠르게 확인하고 싶다",

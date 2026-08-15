@@ -21072,6 +21072,1032 @@
       ]
     },
     {
+      "bookId": 40,
+      "title": "북쪽 관문의 마지막 겨울",
+      "pdfPath": "pdfs/book-040.pdf",
+      "pdfSha256": "dba22988530133b634b8a6358bc56f508fc136ece26303a4a7b2599830c3e995",
+      "totalPageCount": 49,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 선은 어디에 있었나",
+          "section": "1.1 국경이라는 것",
+          "primaryConcepts": [
+            "경계의 성격"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "국경을 지리적 실체가 아닌 합의된 언어적 규정으로 규정한다. 그로 인해 국경 연구의 주된 자료가 문서가 된다는 이 책의 전제를 세운다.",
+          "aiAnalysisInputSha256": "b652765bcc01bb08d0eb8ca3d2ec82ee1cf95b1ba4dccc983451a4f16729830d",
+          "aiPublicGuideTopic": "나라와 나라 사이의 선이 어떤 것인지 밝힌다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 선은 어디에 있었나",
+          "section": "1.1 국경이라는 것",
+          "primaryConcepts": [
+            "경계의 성격"
+          ],
+          "secondaryConcepts": [
+            "변경도시"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "국경의 실효적 작동이 통행 지점에 한정됨을 제시하고 자료 역시 그곳에 집중됨을 밝힌다. 단일 지점 연구의 대표성 한계를 명시한다.",
+          "aiAnalysisInputSha256": "75f8981b3b9a40c51f4092a5fba79b2b5f2efb1b4ecbf948ebb70c2cbf6ff859",
+          "aiPublicGuideTopic": "선이 있는 자리와 없는 자리를 가른다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 선은 어디에 있었나",
+          "section": "1.2 북관성이 선 자리",
+          "primaryConcepts": [
+            "변경도시"
+          ],
+          "secondaryConcepts": [
+            "경계의 성격"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "변경도시의 이중적 소속과 그것이 주민 생계와 양국 이해에 모두 걸쳐 있음을 제시한다. 이중성의 소멸이 도시 쇠퇴로 이어지는 이 책의 서사 축을 세운다.",
+          "aiAnalysisInputSha256": "3cef5fd3a0b00c5d65a9672228a57436592b59c5312597db46a627722d4f2e2d",
+          "aiPublicGuideTopic": "선 위에 선 도시가 어떤 곳인지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 선은 어디에 있었나",
+          "section": "1.2 북관성이 선 자리",
+          "primaryConcepts": [
+            "변경도시"
+          ],
+          "secondaryConcepts": [
+            "초소 일지"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "변경도시의 실무 관행이 조약과 별도의 자료층에 남음을 제시한다. 상위 규정과 현지 관행을 각각 다른 사료에서 확인해야 함을 밝힌다.",
+          "aiAnalysisInputSha256": "ddcb2970c8b9bebb0d60db412695cc4c4223ea4870113cf7b5ff8cd24a34aed9",
+          "aiPublicGuideTopic": "두 나라에 걸친 도시가 어떻게 굴러갔는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 선은 어디에 있었나",
+          "section": "1.3 무엇이 남았나",
+          "primaryConcepts": [
+            "변경 사료"
+          ],
+          "secondaryConcepts": [
+            "변경도시"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "변경 사료를 작성 목적별로 세 층위로 분류하고 각 층위가 기록하는 대상이 다름을 제시한다. 기록 목적을 선행 질문으로 두는 방법을 세운다.",
+          "aiAnalysisInputSha256": "207d777c426a0d2751025c006df01ae51420ea66551faf80eef8b4db3b8497ff",
+          "aiPublicGuideTopic": "북관성에 대해 남은 자료가 무엇인지 정리한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 선은 어디에 있었나",
+          "section": "1.3 무엇이 남았나",
+          "primaryConcepts": [
+            "변경 사료"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사료 유형별 기재 항목의 상호 보완성을 격자로 시각화한다. 단일 사료로는 어떤 질문에도 답할 수 없는 구조를 보인다.",
+          "aiAnalysisInputSha256": "4fec7cad2389c9d96fe9e64e94c24068a4186911b5cb044b83dcb688b77ddc78",
+          "aiPublicGuideTopic": "세 갈래 자료가 무엇을 적고 무엇을 비웠는지 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "2장 두 나라가 적어 둔 것",
+          "section": "2.1 조약문을 읽는 법",
+          "primaryConcepts": [
+            "조약문"
+          ],
+          "secondaryConcepts": [
+            "경계의 성격"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조약문이 합의 결과만 기록하고 협상 과정을 배제함을 제시한다. 반복 조항의 존재를 분쟁 빈도의 지표로 읽는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "05c80e7017c0b3261508fed36f27ebd3fc24efb2f9fc44c1dd74acaf29343943",
+          "aiPublicGuideTopic": "두 나라가 맺은 문서를 어떻게 읽어야 하는지 밝힌다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 두 나라가 적어 둔 것",
+          "section": "2.1 조약문을 읽는 법",
+          "primaryConcepts": [
+            "조약문"
+          ],
+          "secondaryConcepts": [
+            "조약의 두 판본"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "부속 문서의 상세성과 낮은 잔존율을 제시한다. 본문 편중 잔존이 협정의 정밀도를 과소평가하게 만드는 구조를 밝힌다.",
+          "aiAnalysisInputSha256": "f02aea243bcc59b29e3a320d0bd35823dcb50323008a01d0afcc3240290967a2",
+          "aiPublicGuideTopic": "조약문에 붙은 것들을 어떻게 다룰지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 두 나라가 적어 둔 것",
+          "section": "2.2 같은 조약, 두 벌",
+          "primaryConcepts": [
+            "조약의 두 판본"
+          ],
+          "secondaryConcepts": [
+            "조약문"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 조약의 양측 사본 간 차이를 세 가지 원인으로 분류하고 판별 기준을 제시한다. 차이의 분포가 원인을 지시함을 밝힌다.",
+          "aiAnalysisInputSha256": "ded6b248fe25abd0f6b60ad61193df5b9d55a4f625a92e024406ab189c04cca3",
+          "aiPublicGuideTopic": "한 조약이 두 벌로 남는다는 사실이 무엇을 알려 주는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 두 나라가 적어 둔 것",
+          "section": "2.2 같은 조약, 두 벌",
+          "primaryConcepts": [
+            "조약의 두 판본"
+          ],
+          "secondaryConcepts": [
+            "경계 문언"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사본 차이를 무해한 표기 차이와 이해관계가 걸린 차이로 분리한다. 후자의 집중이 미합의 지점을 드러냄을 제시한다.",
+          "aiAnalysisInputSha256": "6c915874b17ea56d5ccbabd7b754c56b1c003bcbdc053f58a4a5d2daef1367b7",
+          "aiPublicGuideTopic": "두 벌이 어긋난 자리를 실제로 살핀다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 두 나라가 적어 둔 것",
+          "section": "2.3 선을 그리는 말",
+          "primaryConcepts": [
+            "경계 문언"
+          ],
+          "secondaryConcepts": [
+            "조약의 두 판본"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "경계 문언의 지물 연결 방식이 지시 대상의 모호성과 소멸에 취약함을 제시한다. 특정 문언이 후속 재협상의 근거가 되는 경로를 밝힌다.",
+          "aiAnalysisInputSha256": "028319f49efcbc5a4bbf246f700ebde1f1bc8bb8e220445299345bcd32a4e5c4",
+          "aiPublicGuideTopic": "선을 말로 적는 방식이 어떤 틈을 남기는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 두 나라가 적어 둔 것",
+          "section": "2.3 선을 그리는 말",
+          "primaryConcepts": [
+            "경계 문언"
+          ],
+          "secondaryConcepts": [
+            "재협상"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 문언의 복수 해석이 힘의 우열로 귀결됨을 제시한다. 문언의 해석 가능 수를 세는 것이 분쟁 가능성 평가의 절차임을 밝힌다.",
+          "aiAnalysisInputSha256": "5b4d617bbdd38c949c9a93be718ba8016aa342acf75a11c5f1c298fb081a5b36",
+          "aiPublicGuideTopic": "말로 적힌 선을 뒤에 어떻게 다투었는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 두 나라가 적어 둔 것",
+          "section": "2.4 도장과 날짜",
+          "primaryConcepts": [
+            "문서의 형식"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조약문의 물리적 구성 요소와 각 요소의 배치를 도해한다. 추기 부분이 하단에 위치하는 형식적 규칙을 표시한다.",
+          "aiAnalysisInputSha256": "bc2744263f3b7192294a4509c14aee3825a65194b62374c9a07bcc711793d66f",
+          "aiPublicGuideTopic": "조약문에 찍힌 것과 적힌 것의 자리를 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 두 나라가 적어 둔 것",
+          "section": "2.4 도장과 날짜",
+          "primaryConcepts": [
+            "문서의 형식"
+          ],
+          "secondaryConcepts": [
+            "조약문"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인장과 날짜 표기 등 문서 형식 요소의 판독 가치를 제시한다. 이 절이 국경 변동 서술 계열과 직접 연결되지 않음을 명시한다.",
+          "aiAnalysisInputSha256": "e37663071fa2da29ed63425a5a1f6f8b230aee060a69efd7938ebac735aaf11a",
+          "aiPublicGuideTopic": "문서의 겉모양이 무엇을 알려 주는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 초소가 적어 둔 것",
+          "section": "3.1 날마다 적는 일",
+          "primaryConcepts": [
+            "초소 일지"
+          ],
+          "secondaryConcepts": [
+            "변경 사료"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "초소 일지의 정형화된 기재 항목이 통시적 비교를 가능하게 하는 동시에 비정형 사건의 기록을 작성자 판단에 맡김을 제시한다.",
+          "aiAnalysisInputSha256": "d40f60015832b249aa59cafb108b459afeb45a9e7e6e9a48f7ff0438de8e06a1",
+          "aiPublicGuideTopic": "초소에서 날마다 적은 문서가 어떤 것인지 밝힌다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 초소가 적어 둔 것",
+          "section": "3.1 날마다 적는 일",
+          "primaryConcepts": [
+            "초소 일지"
+          ],
+          "secondaryConcepts": [
+            "일지의 선택"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "필적 변화로 작성자 교체를 식별하고 그것이 기재 밀도에 영향을 줌을 제시한다. 사건 빈도 변화를 작성자 요인과 분리해야 함을 밝힌다.",
+          "aiAnalysisInputSha256": "7123911d2c0ee548231f0df02dea0494febc2f2d66cde3f22c65eca179b4d428",
+          "aiPublicGuideTopic": "일지를 적은 사람이 누구였는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 초소가 적어 둔 것",
+          "section": "3.2 무엇을 적고 무엇을 뺐나",
+          "primaryConcepts": [
+            "일지의 선택"
+          ],
+          "secondaryConcepts": [
+            "초소 일지"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일지의 체계적 결락 항목을 보고 목적으로 설명한다. 기재 수치가 실제 통행량이 아닌 포착량임을 제시하고 외부 자료 대조의 필요를 밝힌다.",
+          "aiAnalysisInputSha256": "96d8f83212532c037c7c46f4ffb542138482dd22d7b588a07fd859241cd4d5f1",
+          "aiPublicGuideTopic": "일지가 무엇을 빼고 적었는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 초소가 적어 둔 것",
+          "section": "3.2 무엇을 적고 무엇을 뺐나",
+          "primaryConcepts": [
+            "일지의 선택"
+          ],
+          "secondaryConcepts": [
+            "왕래 기록"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "적발 건수를 통행량 지표로 쓰기 위한 전제와 그 전제가 무너지는 조건을 제시한다. 지표 사용 가능 구간을 자료 범위로 한정한다.",
+          "aiAnalysisInputSha256": "377b5a6a4a971454c967ae3711cdf9be0f180c2ae5c8a31daed81b9829b2e25a",
+          "aiPublicGuideTopic": "빠진 것을 어떻게 짐작하는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 초소가 적어 둔 것",
+          "section": "3.3 오간 사람들",
+          "primaryConcepts": [
+            "왕래 기록"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연도별 통행 인원의 추세와 재협상 시점의 대응을 시각화한다. 방향별 감소 속도의 차이를 이단 막대로 구분해 보인다.",
+          "aiAnalysisInputSha256": "ff50a166e26cea64243d6a04375db84132b9065a19c7e5611cc65abb90a03621",
+          "aiPublicGuideTopic": "해마다 오간 사람의 수가 어떻게 달라졌는지 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 초소가 적어 둔 것",
+          "section": "3.3 오간 사람들",
+          "primaryConcepts": [
+            "왕래 기록"
+          ],
+          "secondaryConcepts": [
+            "초소 일지"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "방향별 통행량 감소의 비대칭을 확인하고 그것이 원인의 편재를 지시함을 제시한다. 후속 장의 인과 서술로 이어지는 관측을 특정한다.",
+          "aiAnalysisInputSha256": "bfa1f7007de46de5e0efd5eccd51489ba16583e8aa5d59f2a1c93c3ac4bf4e15",
+          "aiPublicGuideTopic": "오간 수에서 무엇을 읽을 수 있는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 초소가 적어 둔 것",
+          "section": "3.4 일지와 조약을 맞대면",
+          "primaryConcepts": [
+            "사료 대조"
+          ],
+          "secondaryConcepts": [
+            "일지의 선택"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조약 조항과 일지 항목의 사전 대응표 작성을 대조 절차로 제시한다. 검증 가능 조항과 불가능 조항을 분리해 기술하는 원칙을 밝힌다.",
+          "aiAnalysisInputSha256": "fbae7af9589b61b2eb91358d8cb1561c1d30b568ae175a913dd8e2867f2abf3c",
+          "aiPublicGuideTopic": "성격이 다른 두 자료를 맞대는 방법을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            18,
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 초소가 적어 둔 것",
+          "section": "3.4 일지와 조약을 맞대면",
+          "primaryConcepts": [
+            "사료 대조"
+          ],
+          "secondaryConcepts": [
+            "경계 문언"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미이행 조항이 위반이 아니라 문언의 미확정에서 비롯됨을 제시한다. 대조 결과를 준수 여부의 이분법으로 환원하지 않는 해석 원칙을 밝힌다.",
+          "aiAnalysisInputSha256": "f7e60390ba95ad0dffee753042ff3806e02e66e04adaa372d76a62cc61649013",
+          "aiPublicGuideTopic": "맞댄 결과를 어떻게 다룰지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 선이 움직인 까닭",
+          "section": "4.1 다시 앉은 자리",
+          "primaryConcepts": [
+            "재협상"
+          ],
+          "secondaryConcepts": [
+            "조약의 두 판본"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재협상 개시의 명분과 실제 시점의 괴리를 제시한다. 제기 시점을 사유 발생이 아닌 제기 가능성의 변화로 설명하는 관점을 세운다.",
+          "aiAnalysisInputSha256": "482c0d7f9b559d478360a861ad66300e2912b9f727afd96eeb85021b9ebe1e77",
+          "aiPublicGuideTopic": "두 나라가 다시 마주 앉게 된 사정을 밝힌다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 선이 움직인 까닭",
+          "section": "4.1 다시 앉은 자리",
+          "primaryConcepts": [
+            "재협상"
+          ],
+          "secondaryConcepts": [
+            "교환의 셈"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재협상 시점을 교통로 변화와 상대국의 군사적 여력이라는 두 조건의 중첩으로 설명한다. 명분과 원인을 구분하는 분석을 실연한다.",
+          "aiAnalysisInputSha256": "4fb6c9072e8ce43c1f115129e18fd6e79f7a35cd7a797fa44733094a7c8864ad",
+          "aiPublicGuideTopic": "그해에 무엇이 달라져 있었는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 선이 움직인 까닭",
+          "section": "4.2 무엇을 주고 무엇을 받았나",
+          "primaryConcepts": [
+            "교환의 셈"
+          ],
+          "secondaryConcepts": [
+            "재협상"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "영토 교환의 항목을 열거하고 면적 기준과 인구 기준에서 손익 평가가 반전됨을 제시한다. 평가 척도의 선택이 결론을 결정하는 구조를 밝힌다.",
+          "aiAnalysisInputSha256": "747f638be09901fd555af9b04d7f8adf14ed403755f2cb89f46ec010ad6f137a",
+          "aiPublicGuideTopic": "다시 앉은 자리에서 오간 것을 정리한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 선이 움직인 까닭",
+          "section": "4.2 무엇을 주고 무엇을 받았나",
+          "primaryConcepts": [
+            "교환의 셈"
+          ],
+          "secondaryConcepts": [
+            "귀속 변경"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "양국 문서의 서술 순서 차이를 평가 척도의 차이로 설명한다. 기록 간 불일치가 가치 평가의 차이를 드러내는 자료임을 제시한다.",
+          "aiAnalysisInputSha256": "210fe58345506f913105dac3e1d0d0e6f7cda401c8ba6eb729777d9997e0852b",
+          "aiPublicGuideTopic": "두 나라가 각자 어떻게 셈했는지 살핀다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 선이 움직인 까닭",
+          "section": "4.2 무엇을 주고 무엇을 받았나",
+          "primaryConcepts": [
+            "교환의 셈"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 영토 교환을 면적과 인구 두 척도로 평가할 때 결과가 반전됨을 저울로 시각화한다. 척도 선택이 결론에 선행함을 보인다.",
+          "aiAnalysisInputSha256": "cab6e1845a7c4737d34929f0fe2b12c4b79f70bd171bea720feb0bb836585f3a",
+          "aiPublicGuideTopic": "무엇으로 세느냐에 따라 답이 어떻게 뒤집히는지 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            27
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 선이 움직인 까닭",
+          "section": "4.3 도시 하나가 넘어갈 때",
+          "primaryConcepts": [
+            "귀속 변경"
+          ],
+          "secondaryConcepts": [
+            "변경도시"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "국경 이동이 변경도시의 지위를 내지 도시로 전환시키며 그 도시의 존립 기반을 제거함을 제시한다. 이중성 소멸이 쇠퇴의 기제임을 밝힌다.",
+          "aiAnalysisInputSha256": "f6133e411ff26a2577e369a07e3c5eb25e8027d082dff3578f39ae5979bd6e49",
+          "aiPublicGuideTopic": "도시가 다른 나라에 넘어가면 무엇이 달라지는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            26,
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 선이 움직인 까닭",
+          "section": "4.3 도시 하나가 넘어갈 때",
+          "primaryConcepts": [
+            "귀속 변경"
+          ],
+          "secondaryConcepts": [
+            "왕래 기록"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "국경 이동 후 통행 기록 감소가 실제 감소와 기록 대상 소멸의 합임을 제시한다. 자료 종료를 현상 종료로 읽는 오류를 경계한다.",
+          "aiAnalysisInputSha256": "b246fb67b0e41ddbd77cb3be4745077de2d84a384c5d08575e66cb5f43aca1c8",
+          "aiPublicGuideTopic": "넘어간 뒤 도시에 무슨 일이 있었는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            29
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 선이 움직인 까닭",
+          "section": "4.4 조약이 바꾼 것",
+          "primaryConcepts": [
+            "국경 이동의 결과"
+          ],
+          "secondaryConcepts": [
+            "귀속 변경"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도시 쇠퇴의 원인을 지리적 변화가 아닌 정치적 합의 변경으로 특정한다. 원인의 성격이 가역성을 규정함을 제시한다.",
+          "aiAnalysisInputSha256": "09e43fbe990b834c0d0f46c9fa804349c0cfc9aad4fb9b86aaef4b8ac7d98dd1",
+          "aiPublicGuideTopic": "조약 하나가 도시를 어떻게 바꿨는지 정리한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            29
+          ],
+          "duplicateGroupKeys": [
+            "line-moved-not-the-river"
+          ]
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 북관성의 마지막 겨울",
+          "section": "5.1 그해 초소 일지",
+          "primaryConcepts": [
+            "일지 추적"
+          ],
+          "secondaryConcepts": [
+            "초소 일지"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "최종 연도 일지의 통행량 감소와 비정형 기재 급증을 시점별로 제시한다. 기재 대상 외 사건의 기록이 작성자의 인식 변화를 반영함을 밝힌다.",
+          "aiAnalysisInputSha256": "8aa722e9c5e589e13a302ef730f7418979211729d234a7fb6b882eb67b8ce103",
+          "aiPublicGuideTopic": "마지막 겨울의 일지를 하루씩 따라간다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 북관성의 마지막 겨울",
+          "section": "5.1 그해 초소 일지",
+          "primaryConcepts": [
+            "일지 추적"
+          ],
+          "secondaryConcepts": [
+            "일지의 선택"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일지 기재 건수의 불완전성을 인정하되 시간적 분포는 유효한 정보임을 제시한다. 절대량이 아닌 집중 시점을 분석 대상으로 삼는다.",
+          "aiAnalysisInputSha256": "a46af7cf3bf8c76f8d8f24c19cef72829528b69db1ce3328676a82c822ebfc46",
+          "aiPublicGuideTopic": "일지에서 무엇을 셀 수 있고 무엇을 셀 수 없는지 가른다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 북관성의 마지막 겨울",
+          "section": "5.2 떠난 사람과 남은 사람",
+          "primaryConcepts": [
+            "이주와 잔류"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이주 발생일의 시간 분포와 세 가지 사건 시점의 선후 관계를 시각화한다. 집중 구간 직전의 사건을 식별 대상으로 표시한다.",
+          "aiAnalysisInputSha256": "28d4b5409e4a5c801a3e45eeb77921c21edcb11d64bb99634ee5c65b9aed53e4",
+          "aiPublicGuideTopic": "그 겨울에 언제 얼마나 떠났는지 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            29
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 북관성의 마지막 겨울",
+          "section": "5.2 떠난 사람과 남은 사람",
+          "primaryConcepts": [
+            "이주와 잔류"
+          ],
+          "secondaryConcepts": [
+            "귀속 변경"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이주 집중 직전의 두 사건을 특정하고 인과 판별의 한계를 밝힌다. 잔류 집단의 토지 보유 비율에서 이동 가능성의 차이를 추정한다.",
+          "aiAnalysisInputSha256": "29714617f269165a87ebadf2d401d50d6050634fd9f4cb855bf27ec35f5d9b4e",
+          "aiPublicGuideTopic": "떠난 사람과 남은 사람이 어떻게 갈렸는지 살핀다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 북관성의 마지막 겨울",
+          "section": "5.3 두 이름으로 불린 거리",
+          "primaryConcepts": [
+            "이중 정체성"
+          ],
+          "secondaryConcepts": [
+            "변경도시"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지명의 이중 표기가 주민 구성의 이중성을 반영함을 제시한다. 표기 단일화와 인구 감소의 시기적 일치를 관측한다.",
+          "aiAnalysisInputSha256": "fb440060b4f56b862bff5258e1cd93a84c2fb2870709d07020c1a4f3352dd89a",
+          "aiPublicGuideTopic": "한 도시가 두 이름을 갖고 살던 방식을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 북관성의 마지막 겨울",
+          "section": "5.4 무엇을 근거로 삼았나",
+          "primaryConcepts": [
+            "근거 표시"
+          ],
+          "secondaryConcepts": [
+            "일지 추적"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인용 수치의 출처와 계수 기준을 병기하는 절차를 제시한다. 이 절이 인과 서술 계열이 아닌 기록 방법에 속함을 명시한다.",
+          "aiAnalysisInputSha256": "958e7d57b0e77338066418542fef30cf9ce08503516561129ddac8dd0fd0c27a",
+          "aiPublicGuideTopic": "이 장의 셈이 어디서 나왔는지 남기는 방법을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 북관성의 마지막 겨울",
+          "section": "5.5 겨울이 지나고",
+          "primaryConcepts": [
+            "일지 추적"
+          ],
+          "secondaryConcepts": [
+            "이주와 잔류"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단일 연도 분석의 결과와 그 적용 범위를 한정한다. 도출된 관측이 이전 연도 검토의 질문 목록을 산출함을 밝힌다.",
+          "aiAnalysisInputSha256": "d1a74653bdd1eea50ceee25a16c3c1d8762f975c877f2410a19047bd08496e87",
+          "aiPublicGuideTopic": "마지막 겨울에서 무엇까지 얻었는지 정리한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 변경 사료가 감추는 것",
+          "section": "6.1 이긴 쪽이 적었다",
+          "primaryConcepts": [
+            "승자의 기록"
+          ],
+          "secondaryConcepts": [
+            "조약문"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "영토 이전 후 문서 보관 주체의 변화가 잔존 사료의 편중을 낳음을 제시한다. 서술 분량 차이를 중요도가 아닌 보존 조건으로 설명한다.",
+          "aiAnalysisInputSha256": "a1a13d074fa8589078dbadeed2480fa18af36ed948a949c01c1abeeddbbe5618",
+          "aiPublicGuideTopic": "선을 옮긴 쪽의 기록이 더 많이 남는 이유를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 변경 사료가 감추는 것",
+          "section": "6.1 이긴 쪽이 적었다",
+          "primaryConcepts": [
+            "승자의 기록"
+          ],
+          "secondaryConcepts": [
+            "재협상"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사료 편중의 보정 불가능성을 인정하고 편중 지점의 명시를 대응책으로 제시한다. 자기 서술의 취약 지점을 표시하는 관행을 밝힌다.",
+          "aiAnalysisInputSha256": "7defd7fdd8d92b9f078f5c1c800e55e76bf41b44f20fd90adc7c327b31994204",
+          "aiPublicGuideTopic": "한쪽으로 기운 자료를 어떻게 다룰지 짚는다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 변경 사료가 감추는 것",
+          "section": "6.2 초소는 다 남지 않았다",
+          "primaryConcepts": [
+            "일지의 잔존"
+          ],
+          "secondaryConcepts": [
+            "초소 일지"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일지 잔존의 시기적 편중을 제시하고 그것이 장기 추세 서술을 제약함을 밝힌다. 말기 자료 편중이 쇠퇴 서사를 강화하는 위험을 지적한다.",
+          "aiAnalysisInputSha256": "6f0c54fe9350ea4aed9678b83ddfad96fc22e045ead3c47a43e2b448e8e34b93",
+          "aiPublicGuideTopic": "남은 일지가 전체의 얼마인지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 변경 사료가 감추는 것",
+          "section": "6.2 초소는 다 남지 않았다",
+          "primaryConcepts": [
+            "일지의 잔존"
+          ],
+          "secondaryConcepts": [
+            "왕래 기록"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결측 연도의 표시 여부가 동일 자료에서 상이한 추세 인상을 만듦을 제시한다. 이 절이 인과 서술이 아닌 자료 조건 검토임을 명시한다.",
+          "aiAnalysisInputSha256": "17d4e2a8d52c6eb4e7cc652855ab8cf4b4bdfc9bd55c6509a599fb67ff60cb63",
+          "aiPublicGuideTopic": "남은 해와 남지 않은 해를 어떻게 다룰지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 변경 사료가 감추는 것",
+          "section": "6.3 사람들의 말은 없다",
+          "primaryConcepts": [
+            "주민의 부재"
+          ],
+          "secondaryConcepts": [
+            "변경도시"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "주민 자필 사료의 전면적 부재를 확인하고 모든 기록이 제삼자 작성임을 제시한다. 동기 서술이 외부 추정임을 명시한다.",
+          "aiAnalysisInputSha256": "a73d4aa881881f9b25df5f6ea3eb77862cd00c0bb206671150cea5353bfa3683",
+          "aiPublicGuideTopic": "이 도시 사람들이 남긴 말이 없다는 사실을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 변경 사료가 감추는 것",
+          "section": "6.3 사람들의 말은 없다",
+          "primaryConcepts": [
+            "주민의 부재"
+          ],
+          "secondaryConcepts": [
+            "이주와 잔류"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "부재 사료를 보충하는 두 방법의 위험과 한계를 비교한다. 유물 기반 역추론만을 채택하는 선택과 그 근거를 밝힌다.",
+          "aiAnalysisInputSha256": "7d81d0c9053cf917b27f25c90cc81369dc87a3b41a42ce9b928985b3c52f3f26",
+          "aiPublicGuideTopic": "없는 목소리를 어떻게 다룰지 짚는다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 변경 사료가 감추는 것",
+          "section": "6.4 변경사를 읽는 자리",
+          "primaryConcepts": [
+            "변경사의 쓸모"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 사건이 사료 층위별로 다른 형태의 흔적을 남김을 세 개의 띠로 시각화한다. 자료별 포괄 구간의 차이를 함께 표시한다.",
+          "aiAnalysisInputSha256": "ca0e34abbcbfa88c5c118e67649ae472c8d33844e5f0ad33a51fcee5c9db19bf",
+          "aiPublicGuideTopic": "변경을 볼 때 무엇을 겹쳐 놓아야 하는지 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 변경 사료가 감추는 것",
+          "section": "6.4 변경사를 읽는 자리",
+          "primaryConcepts": [
+            "변경사의 쓸모"
+          ],
+          "secondaryConcepts": [
+            "경계의 성격"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "변경 연구의 인식론적 이점과 사료의 국가 편향이 동시에 성립함을 제시한다. 관찰의 선명함과 편중이 같은 원인에서 나옴을 밝힌다.",
+          "aiAnalysisInputSha256": "959cc68556b0947f9bb4b57e1c35125eadde4a3e90c22dbb18471df789c3b977",
+          "aiPublicGuideTopic": "변경을 다루는 일이 무엇을 볼 수 있게 하는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 선을 다시 보며",
+          "section": "7.1 무엇이 도시를 비웠나",
+          "primaryConcepts": [
+            "국경 이동의 결과"
+          ],
+          "secondaryConcepts": [
+            "귀속 변경"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도시 소멸의 인과를 국경 이동과 그 이후의 개별 결정으로 이중 구조화한다. 단일 사건 환원과 우연 나열을 모두 배제하는 서술 위치를 세운다.",
+          "aiAnalysisInputSha256": "0bd2dc1abe42f22585fc8e9290025ee31b28bbb84f2573dec9f4a5ab953cd77e",
+          "aiPublicGuideTopic": "이 책이 북관성에서 얻은 것을 한자리에 모은다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            29
+          ],
+          "duplicateGroupKeys": [
+            "line-moved-not-the-river"
+          ]
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 선을 다시 보며",
+          "section": "7.2 남은 것과 남지 않은 것",
+          "primaryConcepts": [
+            "승자의 기록"
+          ],
+          "secondaryConcepts": [
+            "주민의 부재"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "서술의 두 가지 결락을 명시하고 그것이 자료 탐색으로 해소되지 않는 구조적 부재임을 밝힌다. 한계를 변경 연구 일반의 조건으로 위치시킨다.",
+          "aiAnalysisInputSha256": "ffd3008b1a82bcaedaaa26228e8ed9e216875a741aba6d47a52e702b6dc7f244",
+          "aiPublicGuideTopic": "이 책이 무엇을 말하지 못했는지 적는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 선을 다시 보며",
+          "section": "7.3 다른 변경을 볼 때",
+          "primaryConcepts": [
+            "변경사의 쓸모"
+          ],
+          "secondaryConcepts": [
+            "국경 이동의 결과"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "국경 연구의 네 가지 질문을 절차로 제시하고 각 질문이 향할 자료를 지정한다. 답의 부재를 확인하는 것도 절차의 일부임을 밝힌다.",
+          "aiAnalysisInputSha256": "bd1579987356b77a33ecc10f6171a3c2c166adeb3788b9fb458da1c780cb7745",
+          "aiPublicGuideTopic": "이 책의 방법을 다른 국경에 어떻게 쓸지 정리한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 41,
       "title": "분업과 비교우위: 교환은 왜 이익인가",
       "pdfPath": "pdfs/book-041.pdf",
