@@ -399,6 +399,82 @@
       ]
     },
     {
+      "caseId": "case-book-015",
+      "bookId": 15,
+      "purpose": "이 책을 소장하고 있고, 집에서 들리는 소리 때문에 자꾸 하던 일이 끊기는데 이사를 갈 수는 없어서 우선 짧게 핵심만 잡고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "소음이라는 말",
+        "귀를 닫을 수 없음",
+        "배경음",
+        "골라 듣기",
+        "고요"
+      ],
+      "helpfulConcepts": [
+        "소리를 세기",
+        "멈춤이 들린다",
+        "소리의 지도",
+        "나머지 소리",
+        "접어 두기"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 24
+        }
+      ],
+      "irrelevantPageNumbers": [
+        31,
+        32,
+        33,
+        34
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          45
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        5,
+        9,
+        16,
+        24
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        4,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12,
+        14,
+        17,
+        19,
+        22,
+        38,
+        43
+      ]
+    },
+    {
       "caseId": "case-book-021",
       "bookId": 21,
       "purpose": "이 책을 사지는 않았고, 별빛에서 성분과 움직이는 속도를 어떻게 알아내는지 큰 틀만 보고 싶다",

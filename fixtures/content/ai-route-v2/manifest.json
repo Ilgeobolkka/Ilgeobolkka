@@ -4386,6 +4386,1063 @@
       ]
     },
     {
+      "bookId": 15,
+      "title": "오늘의 소음을 접어두기",
+      "totalPageCount": 50,
+      "pdfPath": "pdfs/book-015.pdf",
+      "pdfSha256": "f7003c8d6dd6a360d3d5af49be4c9a5dfad22761e92e6e552adcb03dca9fb56f",
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 소음이라는 말",
+          "section": "1.1 무엇이 소음이 되는가",
+          "primaryConcepts": [
+            "소음이라는 말"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "소음을 음향의 물리적 속성이 아니라 청취자의 판정으로 규정하는 페이지다. 동일한 소리가 맥락에 따라 다르게 분류되는 사례를 제시하고, 이 책이 판정 과정을 다룬다는 범위를 밝힌다.",
+          "aiAnalysisInputSha256": "3d7a9c58e82b960ead3276cd501e1f5eae88893a2a963f9367fbee2fa7b89887",
+          "aiPublicGuideTopic": "같은 소리가 소음이 되기도 하고 아니기도 한 까닭",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "noise-is-a-judgement"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 소음이라는 말",
+          "section": "1.1 무엇이 소음이 되는가",
+          "primaryConcepts": [
+            "소음이라는 말"
+          ],
+          "secondaryConcepts": [
+            "배경음"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "판정 결과가 시간대와 청취자 상태에 따라 변동한다는 점을 다루는 페이지다. 판정에 관여하는 두 변수를 구분하고, 개입 가능한 변수가 어느 쪽인지 제시한다.",
+          "aiAnalysisInputSha256": "e9d748fb2e36ba41e21ccd415abdc48e0cb76db67b3bc9be6f0c2e0ac768990c",
+          "aiPublicGuideTopic": "판정이 바뀌는 조건",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 소음이라는 말",
+          "section": "1.1 무엇이 소음이 되는가",
+          "primaryConcepts": [
+            "소음이라는 말"
+          ],
+          "secondaryConcepts": [
+            "귀를 닫을 수 없음"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인내와 판정 개입을 구분하는 페이지다. 억제 방식이 누적되어 반작용을 낳는 경과를 제시하고, 판정 자체를 다루는 접근이 이 책의 방법임을 밝힌다.",
+          "aiAnalysisInputSha256": "a6b85d26cde1bfe5b68d0d1e7ed6f468cfceda5dcd9a71ff613222061a02786e",
+          "aiPublicGuideTopic": "참는 일과 다루는 일의 차이",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            3
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 소음이라는 말",
+          "section": "1.2 귀는 닫을 수 없다",
+          "primaryConcepts": [
+            "귀를 닫을 수 없음"
+          ],
+          "secondaryConcepts": [
+            "소음이라는 말"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "청각이 시각과 달리 차단 불가능하다는 조건을 다루는 페이지다. 방향성 없는 입력과 물리적 차단의 한계를 제시하고, 대응이 수용 쪽 조절로 향할 수밖에 없음을 밝힌다.",
+          "aiAnalysisInputSha256": "50c4660cb7104ce9d4444a0636aa7e3d4c44aefa93061ecf889dc9b7a6eadf13",
+          "aiPublicGuideTopic": "눈과 귀가 다른 자리",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 소음이라는 말",
+          "section": "1.2 귀는 닫을 수 없다",
+          "primaryConcepts": [
+            "귀를 닫을 수 없음"
+          ],
+          "secondaryConcepts": [
+            "고요"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "물리적 차단의 효과와 부작용을 다루는 페이지다. 외부음 감쇠가 내부 신체음의 부각을 낳는다는 관측을 제시하고, 도구의 사용 범위를 한정한 판단을 기술한다.",
+          "aiAnalysisInputSha256": "0fa3b41065b0bb6028e01c0b6cc5caadc88ae013309390049bdb9d3e6b0acee3",
+          "aiPublicGuideTopic": "막아 본 뒤에 알게 된 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 소음이라는 말",
+          "section": "1.3 하루의 소리를 세어 보기",
+          "primaryConcepts": [
+            "소리를 세기"
+          ],
+          "secondaryConcepts": [
+            "소음이라는 말"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "청취 가능한 소리의 목록화를 다루는 페이지다. 인지되는 소리의 수와 부정적 판정을 받는 소리의 수가 크게 다르다는 관측을 제시하고, 관찰의 초점을 후자에서 전자로 옮긴 경위를 밝힌다.",
+          "aiAnalysisInputSha256": "40c8ff6d49863e9f366f0f97fe9c8bc9dac857a7aa4fc0e0efe8798d130a3b3d",
+          "aiPublicGuideTopic": "무엇이 들리는지 먼저 적어 보는 일",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 소음이라는 말",
+          "section": "1.3 하루의 소리를 세어 보기",
+          "primaryConcepts": [
+            "소리를 세기"
+          ],
+          "secondaryConcepts": [
+            "배경음",
+            "소음이라는 말"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "하루 동안 인지된 소리를 판정 결과에 따라 두 범주로 구분해 표현한 도표다. 부정적 판정을 받은 항목의 비율이 매우 낮다는 점을 개수 대비로 드러낸다.",
+          "aiAnalysisInputSha256": "b807bfd91f4314f0cb15a643a09e3781bb4d893c4be1ab9150edf78830a49719",
+          "aiPublicGuideTopic": "하루에 들린 소리를 판정별로 갈라 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 배경이 된 소리들",
+          "section": "2.1 늘 있어서 안 들리는 것",
+          "primaryConcepts": [
+            "배경음"
+          ],
+          "secondaryConcepts": [
+            "귀를 닫을 수 없음"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지속적인 음원이 인지에서 배제되는 현상을 다루는 페이지다. 배경화가 의도적으로 제어되지 않는다는 점을 제시하고, 배경음을 소리의 종류가 아닌 상태로 규정한다.",
+          "aiAnalysisInputSha256": "05c1b6a0abbcda810cdac5b82761d6d3641155dccb4646b8c61cf1fc1fe4de3d",
+          "aiPublicGuideTopic": "배경이 된다는 것이 무슨 일인가",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 배경이 된 소리들",
+          "section": "2.1 늘 있어서 안 들리는 것",
+          "primaryConcepts": [
+            "배경음"
+          ],
+          "secondaryConcepts": [
+            "소리를 세기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배경화 소요 시간이 음원의 규칙성에 좌우된다는 점을 다루는 페이지다. 음량보다 예측 가능성이 결정적이라는 관측을 제시하고, 불규칙성이 부정적 판정의 주요 원인임을 밝힌다.",
+          "aiAnalysisInputSha256": "bd2a48cf2023b4e74838609ca92618c5d0d0192a506bfb73d22f94f1ee85766c",
+          "aiPublicGuideTopic": "배경이 되는 데 걸리는 시간",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 배경이 된 소리들",
+          "section": "2.1 늘 있어서 안 들리는 것",
+          "primaryConcepts": [
+            "배경음"
+          ],
+          "secondaryConcepts": [
+            "소리의 지도",
+            "골라 듣기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "음원을 규칙성과 음량의 두 축에 배치한 도표다. 배경화 여부의 경계가 규칙성 축에서만 형성된다는 점을 영역 분할과 화살표 방향으로 드러낸다.",
+          "aiAnalysisInputSha256": "6e08d6052ab52523d748808f798ba73ceb92683583cf80daf6422f66137ce3d9",
+          "aiPublicGuideTopic": "소리를 규칙성과 크기로 갈라 놓은 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 배경이 된 소리들",
+          "section": "2.2 배경이 멈출 때",
+          "primaryConcepts": [
+            "멈춤이 들린다"
+          ],
+          "secondaryConcepts": [
+            "배경음"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배경화된 음원의 정지 시점에 인지가 발생하는 현상을 다루는 페이지다. 정지 횟수의 계수가 지속 구간의 인지로 이어진 경과를 제시하고, 간접적 접근이 효과를 낸 사례로 기술한다.",
+          "aiAnalysisInputSha256": "45bf41b322a76a9a5401196324aae1c85b7dee41aef03b7df953b37e4f21112e",
+          "aiPublicGuideTopic": "없어진 소리가 들리는 순간",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 배경이 된 소리들",
+          "section": "2.2 배경이 멈출 때",
+          "primaryConcepts": [
+            "멈춤이 들린다"
+          ],
+          "secondaryConcepts": [
+            "고요"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "국소적 음원 정지와 정적 지각을 구분하는 페이지다. 조용함의 체감이 총 음량과 대응하지 않는다는 점을 제시하고, 두 개념을 분리해 사용하는 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "55e39b9c07e33f23b42e2fd2a404962e18c819251dd54997e3fd89c75ac25562",
+          "aiPublicGuideTopic": "멈춤과 고요를 섞지 않기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 배경이 된 소리들",
+          "section": "2.3 소리가 오는 자리",
+          "primaryConcepts": [
+            "소리의 지도"
+          ],
+          "secondaryConcepts": [
+            "배경음"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "음원 식별이 인지 부담을 줄인다는 점을 다루는 페이지다. 출처 불명 상태에서 주의가 반복 점유되는 현상을 제시하고, 배경화의 조건을 규칙성에서 설명 가능성으로 정정한다.",
+          "aiAnalysisInputSha256": "c4750d4454418a1a008b5fc91abf562d7532681a9618c7e31b6dd1b830c85578",
+          "aiPublicGuideTopic": "어디서 오는지 알면 달라지는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 배경이 된 소리들",
+          "section": "2.3 소리가 오는 자리",
+          "primaryConcepts": [
+            "소리의 지도"
+          ],
+          "secondaryConcepts": [
+            "소리를 세기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "음원 위치의 도면화 절차를 다루는 페이지다. 추정 항목을 별도 기호로 표시하는 방법과, 확인이 우연에 의존한다는 제약을 제시하고 미확인 항목의 잔존을 기술한다.",
+          "aiAnalysisInputSha256": "3c195dec0d41154f7e396df3dc4bf400d1afd927edc0209b9c8a66de2950bb60",
+          "aiPublicGuideTopic": "지도를 그리는 방법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 골라 듣는 일",
+          "section": "3.1 주의를 옮기는 연습",
+          "primaryConcepts": [
+            "골라 듣기"
+          ],
+          "secondaryConcepts": [
+            "배경음"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "청각적 주의의 이동을 훈련하는 절차를 다루는 페이지다. 특정 음원에 주의를 고정하고 전환하는 방법을 제시하고, 전경에 놓을 수 있는 대상이 하나로 제한된다는 관측을 기술한다.",
+          "aiAnalysisInputSha256": "6fcb5d7a35bca108e8a5b7cebb4e4c0c0226d4606c9853deb414824a9924ad0a",
+          "aiPublicGuideTopic": "귀 대신 주의를 움직이는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 골라 듣는 일",
+          "section": "3.1 주의를 옮기는 연습",
+          "primaryConcepts": [
+            "골라 듣기"
+          ],
+          "secondaryConcepts": [
+            "소리의 지도"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회피 대상 음원에 주의를 집중했을 때의 상반된 결과를 다루는 페이지다. 음원의 설명 가능 여부가 결과를 가른다는 점을 제시하고, 선행 식별 작업의 효용을 밝힌다.",
+          "aiAnalysisInputSha256": "16d47e7bdfcf082f71a914ccc6028fc0127842d8aff775513d1aada556b4bd8c",
+          "aiPublicGuideTopic": "거슬리는 소리를 앞에 놓아 보기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 골라 듣는 일",
+          "section": "3.1 주의를 옮기는 연습",
+          "primaryConcepts": [
+            "골라 듣기"
+          ],
+          "secondaryConcepts": [
+            "나머지 소리",
+            "배경음"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "주의 대상 전환에 따른 음원의 전경·배경 재배치를 세 상태로 표현한 도표다. 전경 위치가 단일하다는 제약과 비선택 상태의 분포를 같은 화면에서 대조한다.",
+          "aiAnalysisInputSha256": "ffcd316ce682b69e7835e9ab3f229b30c6271cabff70a7fa228598596e8ad17e",
+          "aiPublicGuideTopic": "주의를 옮길 때 소리들이 앞뒤로 자리를 바꾸는 모습을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 골라 듣는 일",
+          "section": "3.2 골라 들으면 나머지는",
+          "primaryConcepts": [
+            "나머지 소리"
+          ],
+          "secondaryConcepts": [
+            "골라 듣기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비선택 음원의 상태를 다루는 페이지다. 자발적 배경화와 주의 배분에 의한 후경화를 구분하고, 후자가 가역적이지만 지속되지 않는다는 성질을 기술한다.",
+          "aiAnalysisInputSha256": "06ff9768d811097c7b0c315eba3f3f643fcb6cebf919d342ec6674a401fefcd4",
+          "aiPublicGuideTopic": "뒤로 간 소리들은 어떻게 되는가",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 골라 듣는 일",
+          "section": "3.2 골라 들으면 나머지는",
+          "primaryConcepts": [
+            "나머지 소리"
+          ],
+          "secondaryConcepts": [
+            "멈춤이 들린다"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비선택 음원들이 단일 배경으로 통합되는 현상을 다루는 페이지다. 통합이 개별 판정의 부담을 줄인다는 점과 통합에서 이탈하는 음원의 빈도를 함께 제시한다.",
+          "aiAnalysisInputSha256": "3ee658673643075964da69904d9b17899c5d57a0bc6b48d7954849924b3b9746",
+          "aiPublicGuideTopic": "나머지 소리가 하나로 뭉치는 일",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            19
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 골라 듣는 일",
+          "section": "3.2 골라 들으면 나머지는",
+          "primaryConcepts": [
+            "나머지 소리"
+          ],
+          "secondaryConcepts": [
+            "소리를 세기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "통합된 배경음의 성질이 상황에 따라 달라진다는 관측을 다루는 페이지다. 개별 음원 식별 없이 전체 특성만으로 외부 상황을 추정하는 사용법을 제시한다.",
+          "aiAnalysisInputSha256": "c7fabd911f00386c619b329550c083e6d5fb082c6c36c2936829e20009ac7a70",
+          "aiPublicGuideTopic": "뭉친 덩어리에도 결이 있다",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 골라 듣는 일",
+          "section": "3.3 골라 듣기가 안 되는 날",
+          "primaryConcepts": [
+            "골라 듣기의 실패"
+          ],
+          "secondaryConcepts": [
+            "골라 듣기"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "주의 조절 방법이 작동하지 않는 조건을 다루는 페이지다. 수면·건강·시간 여유의 부족이 공통 원인이며, 필요도가 높은 상황에서 가용성이 낮다는 역설을 명시한다.",
+          "aiAnalysisInputSha256": "5e39ceb8683f077674ab3dc1edeba2b0eadd5b74c28a9f424e8cb78d93a0afe5",
+          "aiPublicGuideTopic": "방법이 통하지 않는 조건",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 골라 듣는 일",
+          "section": "3.3 골라 듣기가 안 되는 날",
+          "primaryConcepts": [
+            "골라 듣기의 실패"
+          ],
+          "secondaryConcepts": [
+            "귀를 닫을 수 없음"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "방법이 작동하지 않는 날의 대체 수단을 다루는 페이지다. 차폐 방식이 억제와 유사하다는 점을 인정하고, 사용 사실을 기록해 구분한 절차와 그 빈도를 제시한다.",
+          "aiAnalysisInputSha256": "08590b8beaf7b966d04b1b82391d1653e169a62ae5146d5256cc328a33500340",
+          "aiPublicGuideTopic": "안 되는 날에 쓴 것들",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 고요라는 것",
+          "section": "4.1 고요는 소리가 없는 것이 아니다",
+          "primaryConcepts": [
+            "고요"
+          ],
+          "secondaryConcepts": [
+            "골라 듣기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정적을 음의 부재가 아니라 판정 부하가 없는 상태로 규정하는 페이지다. 조용하다고 지각된 환경에도 다수의 음원이 존재한다는 관측을 제시하고, 소음 정의와의 대칭을 밝힌다.",
+          "aiAnalysisInputSha256": "7141f5ec67366ac970d25ff799aca840a582c065215a2f50ddb70c79d261cafa",
+          "aiPublicGuideTopic": "조용하다고 느낄 때 실제로 있는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 고요라는 것",
+          "section": "4.1 고요는 소리가 없는 것이 아니다",
+          "primaryConcepts": [
+            "고요"
+          ],
+          "secondaryConcepts": [
+            "배경음"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "무음 환경이 정적으로 지각되지 않는 이유를 다루는 페이지다. 입력이 사라지면 주의가 내부음으로 이동한다는 점을 제시하고, 정적의 조건이 음량과 무관함을 사례로 밝힌다.",
+          "aiAnalysisInputSha256": "222868ab56b8a3cfd408cb79030370c507eebd572e58b3b939908717bfd26fba",
+          "aiPublicGuideTopic": "완전히 조용한 곳이 편하지 않은 까닭",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 고요라는 것",
+          "section": "4.1 고요는 소리가 없는 것이 아니다",
+          "primaryConcepts": [
+            "고요"
+          ],
+          "secondaryConcepts": [
+            "소리의 지도"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정적이 성립하는 조건을 세 항목으로 정리하는 페이지다. 음원 식별, 요구의 부재, 청취자의 정당한 체류를 제시하고, 개입 가능한 항목이 하나뿐임을 밝힌다.",
+          "aiAnalysisInputSha256": "becfd44d3512da65f85061941c3c60f11b0fad807ab27d4103dd1ad10bddcc43",
+          "aiPublicGuideTopic": "판정하지 않아도 되는 조건",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            25
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 고요라는 것",
+          "section": "4.2 만들 수 있는 고요",
+          "primaryConcepts": [
+            "만드는 고요"
+          ],
+          "secondaryConcepts": [
+            "고요"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정적을 의도적으로 조성하는 방법을 다루는 페이지다. 시간과 장소를 사전에 지정하는 방식이 판정 부하를 낮춘다는 관측을 제시하고, 음향 조건의 변경이 없었다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "05d009996d72044ad1ce6fd1511e11f9f8a22c95132afbb8f7504f10a7b1b4bc",
+          "aiPublicGuideTopic": "고요를 만들어 보려던 시도들",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 고요라는 것",
+          "section": "4.2 만들 수 있는 고요",
+          "primaryConcepts": [
+            "만드는 고요"
+          ],
+          "secondaryConcepts": [
+            "골라 듣기의 실패"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조성된 정적이 해소되는 조건과 대응을 다루는 페이지다. 예기치 않은 음원 발생이 설정을 무효화한다는 점을 제시하고, 중단을 허용한 처리와 그 빈도를 기술한다.",
+          "aiAnalysisInputSha256": "0ef41f9a8f0dd2249b25f37035c7caba4c4e3d12c577ce1f8393602571076f31",
+          "aiPublicGuideTopic": "만든 고요가 무너질 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            27
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 고요라는 것",
+          "section": "4.3 접어 둔다는 말",
+          "primaryConcepts": [
+            "접어 두기"
+          ],
+          "secondaryConcepts": [
+            "고요"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "핵심 용어의 선택 근거를 밝히는 페이지다. 제거·인내·무시와의 차이를 대비해 접기라는 표현이 가역성과 반복성을 함께 담는다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "2c2e106baf0c7779b38908225115a2ee669e951ab1b15d197b23c8e56bb405c6",
+          "aiPublicGuideTopic": "이 책의 제목에 쓴 말의 뜻",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 고요라는 것",
+          "section": "4.3 접어 둔다는 말",
+          "primaryConcepts": [
+            "접어 두기"
+          ],
+          "secondaryConcepts": [
+            "나머지 소리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "후경화가 필요한 정보까지 배제하는 문제를 다루는 페이지다. 정기적으로 전체 청취 상태로 복귀하는 절차를 제시하고, 복귀 시 재선별하는 방식을 기술한다.",
+          "aiAnalysisInputSha256": "1e05f9e10ae82f78dba72b701f25ad3418a33c3efcbef3090ebdadb7d6542a3c",
+          "aiPublicGuideTopic": "접어 둔 것을 다시 펴는 때",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            29
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "5장 한 해의 소리 공책",
+          "section": "5.1 소리를 적는 규칙",
+          "primaryConcepts": [
+            "기록의 규칙"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "청각 정보의 기록 방식을 다루는 페이지다. 기록 항목을 세 가지로 한정한 이유와 명칭 없는 음원의 표기 방법을 제시하고, 기록 장소를 고정한 절차를 기술한다.",
+          "aiAnalysisInputSha256": "bc4515a733ece6c7f5195b26a5ea16dea88dad07cfcaa8f368450f1cf6b93be8",
+          "aiPublicGuideTopic": "들리지 않는 것을 종이에 남기는 방법",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 한 해의 소리 공책",
+          "section": "5.1 소리를 적는 규칙",
+          "primaryConcepts": [
+            "기록의 규칙"
+          ],
+          "secondaryConcepts": [
+            "못 적은 소리"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 시점을 하루 세 회로 고정한 절차를 다루는 페이지다. 시간대별 기록량 차이가 음원 분포가 아니라 가용 시간에서 비롯되었다는 점을 제시하고 해석상의 주의를 밝힌다.",
+          "aiAnalysisInputSha256": "6770b1b13621da57951367b9c60c58a5f56f80da73b1592498a09749538983ac",
+          "aiPublicGuideTopic": "적는 시각을 정하기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 한 해의 소리 공책",
+          "section": "5.2 못 적은 소리",
+          "primaryConcepts": [
+            "못 적은 소리"
+          ],
+          "secondaryConcepts": [
+            "기록의 규칙"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 누락의 규모와 유형을 다루는 페이지다. 집중 기록 주간과 평상시의 기록량을 비교해 누락률을 제시하고, 후경화된 음원이 기록에서 체계적으로 빠진다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "98e15eb0012fe627463a35f5312a5e774be094b0c29808acd644613e24c63462",
+          "aiPublicGuideTopic": "빠진 것을 세는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 한 해의 소리 공책",
+          "section": "5.2 못 적은 소리",
+          "primaryConcepts": [
+            "못 적은 소리"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "완전 기록 시도와 그 중단을 다루는 페이지다. 기록 행위가 관측 방법과 상충한다는 점을 제시하고, 기록을 표본으로 규정한 판단과 그 근거를 기술한다.",
+          "aiAnalysisInputSha256": "3022505f6fe7465854942efe4f4fcef34c153a536c6eac03899b6f2adaafc021",
+          "aiPublicGuideTopic": "빠진 것을 채우지 않기로 한 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            33
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 한 해의 소리 공책",
+          "section": "5.3 한 해를 늘어놓으면",
+          "primaryConcepts": [
+            "소리를 늘어놓기"
+          ],
+          "secondaryConcepts": [
+            "소리의 지도"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연간 기록의 음원별 빈도 분포를 다루는 페이지다. 소수 음원이 기록의 대부분을 차지한다는 결과와, 빈도와 위치 식별 여부의 상관을 제시한다.",
+          "aiAnalysisInputSha256": "2ba4a28897da3bc0e88b31f89da622a03e0a3a9f7fbd04a57c1c1cc39922586a",
+          "aiPublicGuideTopic": "한 해 치 소리 목록을 펴 보기",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 한 해의 소리 공책",
+          "section": "5.3 한 해를 늘어놓으면",
+          "primaryConcepts": [
+            "소리를 늘어놓기"
+          ],
+          "secondaryConcepts": [
+            "접어 두기"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "접기와 펴기의 기록 빈도를 다루는 페이지다. 통계가 성공률이 아니라 난이도 높은 항목의 목록임을 밝히고, 기록 항목 설계의 미비를 함께 기술한다.",
+          "aiAnalysisInputSha256": "fa74513c63866ce1bc3d9a4224da1aafc93436d8b1a2c11a60ec0677b379e3cf",
+          "aiPublicGuideTopic": "접었는지 폈는지를 세어 보면",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            35
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 한 해의 소리 공책",
+          "section": "5.3 한 해를 늘어놓으면",
+          "primaryConcepts": [
+            "소리를 늘어놓기"
+          ],
+          "secondaryConcepts": [
+            "배경음",
+            "못 적은 소리"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연간 기록의 음원별 빈도를 내림차순 막대로 표현한 도표다. 상위 소수 항목의 점유와 하위 항목의 긴 꼬리를 대비하고, 위치 식별 여부를 항목별 표시로 함께 나타낸다.",
+          "aiAnalysisInputSha256": "99dff9f1868d3dc435adb31c2272c2b3425af3abb9df055a2d9bb49cd64d6fb5",
+          "aiPublicGuideTopic": "한 해 동안 적힌 소리를 잦은 순서로 늘어놓은 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "6장 접어 둘 수 없는 것",
+          "section": "6.1 누군가의 생활음",
+          "primaryConcepts": [
+            "남의 생활음"
+          ],
+          "secondaryConcepts": [
+            "소리의 지도"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "음원 발생자와 청취자의 위치 차이를 다루는 페이지다. 방법이 청취 측에서만 작동한다는 한계를 제시하고, 대응 방식의 선택 기준을 확보하지 못했음을 명시한다.",
+          "aiAnalysisInputSha256": "56dca32e510c1b9086b72f9adcd076b18419d16c859ea04cd30d08f3aab1c37f",
+          "aiPublicGuideTopic": "내 소음이 남의 생활인 자리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 접어 둘 수 없는 것",
+          "section": "6.1 누군가의 생활음",
+          "primaryConcepts": [
+            "남의 생활음"
+          ],
+          "secondaryConcepts": [
+            "소음이라는 말"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "청취자가 동시에 발생자라는 위치의 이중성을 다루는 페이지다. 자신의 발생음에 대한 대응을 기술하고, 그 조치가 이 책의 방법과 별개임을 밝힌다.",
+          "aiAnalysisInputSha256": "f48e9a5259f8ca6b733a9c0cd94cdc8376adc655ef1fbe5f9d44465279fa8c8b",
+          "aiPublicGuideTopic": "나도 누군가의 위층이라는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 접어 둘 수 없는 것",
+          "section": "6.1 누군가의 생활음",
+          "primaryConcepts": [
+            "남의 생활음"
+          ],
+          "secondaryConcepts": [
+            "고요"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "방법의 적용이 부적절한 상황을 다루는 페이지다. 개입이 필요한 사안에 후경화를 적용하면 억제와 동일해진다는 점을 제시하고, 구분 기준이 확보되지 않았음을 명시한다.",
+          "aiAnalysisInputSha256": "3b08958187a5e39a9284d7772dd2b225e1611600377e0703b0a9bb62c53b490e",
+          "aiPublicGuideTopic": "접는 일이 참는 일이 되어 버리는 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 접어 둘 수 없는 것",
+          "section": "6.2 고요를 살 수 있는가",
+          "primaryConcepts": [
+            "고요의 값"
+          ],
+          "secondaryConcepts": [
+            "고요"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정적 확보가 주거 조건에 의존한다는 점을 다루는 페이지다. 방법의 필요와 가용성이 반비례한다는 구조를 제시하고, 태도 문제로 환원하지 않겠다는 기술 방침을 밝힌다.",
+          "aiAnalysisInputSha256": "e2419bdc83fd39ed34233f6778064833951512f32d1021e81aa151e2972327f9",
+          "aiPublicGuideTopic": "조용한 집에 사는 일에 드는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 접어 둘 수 없는 것",
+          "section": "6.2 고요를 살 수 있는가",
+          "primaryConcepts": [
+            "고요의 값"
+          ],
+          "secondaryConcepts": [
+            "만드는 고요"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비용이 들지 않는 정적 공간의 목록화를 다루는 페이지다. 공통 조건을 제시하고, 목록이 모두 외부 공간이어서 주거 내부의 해법이 되지 못한다는 한계를 밝힌다.",
+          "aiAnalysisInputSha256": "cefffe8bc4350523f54214d12789150d90b675be78b2fe783119aad7fa5cf3fe",
+          "aiPublicGuideTopic": "돈이 들지 않는 고요를 찾아본 목록",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 접어 둘 수 없는 것",
+          "section": "6.3 듣는 일이 다른 사람",
+          "primaryConcepts": [
+            "다른 귀"
+          ],
+          "secondaryConcepts": [
+            "귀를 닫을 수 없음"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "방법이 전제하는 청각 조건을 다루는 페이지다. 청력 차이와 민감도 차이에 따라 적용 가능성이 달라진다는 점을 제시하고, 직접 경험하지 않은 영역에 대한 기술을 유보한다.",
+          "aiAnalysisInputSha256": "45972fb516df8dc1665ea256ceed6a4252ae378bec6629d3080b812386572736",
+          "aiPublicGuideTopic": "이 방법이 전제하는 귀",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 접어 둘 수 없는 것",
+          "section": "6.3 듣는 일이 다른 사람",
+          "primaryConcepts": [
+            "다른 귀"
+          ],
+          "secondaryConcepts": [
+            "골라 듣기"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 환경 내 청취자 간 판정 차이를 다루는 페이지다. 판정에 개인 상태가 개입한다는 앞선 정의에서 차이가 도출된다는 점을 제시하고, 그 이해가 갖는 실용적 효과를 기술한다.",
+          "aiAnalysisInputSha256": "7a030d06221f4422c2033b1c331ea42958923c0d8687dba4770a30a4493cc239",
+          "aiPublicGuideTopic": "같이 사는 사람과 다른 판정",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "7장 오늘의 소음을 접어두기",
+          "section": "7.1 접어 둔 자리에 남은 것",
+          "primaryConcepts": [
+            "남은 것"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 종료 시점에서 용어 재정의의 효과를 정리하는 페이지다. 대응 순서의 변화와 부정적 반응 빈도의 감소를 제시하고, 음향 조건은 변하지 않았다는 점을 함께 밝힌다.",
+          "aiAnalysisInputSha256": "959574c9fa3c5409d0e4a057111216c2277efcdf70e80733da48c13c60cc47fb",
+          "aiPublicGuideTopic": "소음을 판정이라고 부른 뒤에 달라진 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "noise-is-a-judgement"
+          ]
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 오늘의 소음을 접어두기",
+          "section": "7.1 접어 둔 자리에 남은 것",
+          "primaryConcepts": [
+            "남은 것"
+          ],
+          "secondaryConcepts": [
+            "고요",
+            "배경음"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정적의 재정의가 가져온 실천의 변화를 정리하는 페이지다. 장소 탐색에서 시간 지정으로 대응이 바뀐 점을 제시하고, 기록 빈도의 감소를 정착의 지표로 해석한다.",
+          "aiAnalysisInputSha256": "1f82caec540da64a2f8474ed02277675332bfb3d0cbba9dfad1399c72c2ba49b",
+          "aiPublicGuideTopic": "고요가 상태라는 것을 알고 나서",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 오늘의 소음을 접어두기",
+          "section": "7.1 접어 둔 자리에 남은 것",
+          "primaryConcepts": [
+            "남은 것"
+          ],
+          "secondaryConcepts": [
+            "접어 두기",
+            "다른 귀"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "방법의 적용 범위 밖에 있는 항목을 정리하는 페이지다. 음향 조건 개선, 발생자와의 조정, 개입 필요성 판단이 포함되지 않는다는 점을 명시한다.",
+          "aiAnalysisInputSha256": "b24db932d3ca235d46bd188c9e2335446641c52f24211b26103a40c82ddddc6a",
+          "aiPublicGuideTopic": "이 방법이 하지 못하는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 오늘의 소음을 접어두기",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "소리의 지도"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 범위의 제약으로 남은 미해결 문제를 정리하는 페이지다. 대응 방식의 판단 기준, 미식별 음원, 인과 방향의 확인이라는 세 항목을 구분하고 각각의 해소 가능성을 다르게 평가한다.",
+          "aiAnalysisInputSha256": "eec83471818d87d1f67e7f53e32848390ef47cdc167fee9a267d17a9d3058c9b",
+          "aiPublicGuideTopic": "한 해로 답하지 못한 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 오늘의 소음을 접어두기",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "고요의 값",
+            "만드는 고요"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록의 이전 가능성을 검토하는 페이지다. 지역 고유의 음원 목록과 절차를 구분하고, 절차 수행에 필요한 기간과 여건이 적용 범위를 제한한다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "01217625ba481af2018d0dec8a78a59e08a7429e0468bf0ba38bdba3679b9ce3",
+          "aiPublicGuideTopic": "이 기록을 다른 사람이 쓸 수 있는가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 오늘의 소음을 접어두기",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "못 적은 소리",
+            "남은 것"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "차기 관측의 변경 항목을 정리하는 페이지다. 기록 범주의 세분과 신규 항목 추가를 제시하고, 유지할 규칙과 그 이유를 함께 밝힌다.",
+          "aiAnalysisInputSha256": "d8bb1acc81d1492eabc612234043de87034b1914490c777ccb1cdd261259b4e9",
+          "aiPublicGuideTopic": "다음 해에 바꿀 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            49
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 21,
       "title": "빛으로 읽는 우주: 분광과 거리 측정",
       "pdfPath": "pdfs/book-021.pdf",
