@@ -43637,6 +43637,1069 @@
           "duplicateGroupKeys": []
         }
       ]
+    },
+    {
+      "bookId": 87,
+      "title": "고원 마을의 느린 우편",
+      "pdfPath": "pdfs/book-087.pdf",
+      "pdfSha256": "67c792fa81ca902f84fcb53150512ae6b98111791de9cc0accab517d4e55962c",
+      "totalPageCount": 49,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 윗바람고원",
+          "section": "1.1 고원의 조건",
+          "primaryConcepts": [
+            "고원의 조건"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "고지대 취락의 조건을 거리가 아니라 왕복 비용으로 규정하는 도입 페이지다. 접근에 하루가 소요되므로 사람과 물자와 정보가 묶음 단위로 이동한다는 구조를 제시하고, 그 가운데 우편을 관찰 대상으로 삼는다는 책의 범위를 밝힌다.",
+          "aiAnalysisInputSha256": "964ce31cf6647c56c65808595108794979db4e701aa2ee41778ce0245ce3d4f7",
+          "aiPublicGuideTopic": "높이가 정하는 마을의 생김새",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "slow-news-is-a-structure"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 윗바람고원",
+          "section": "1.1 고원의 조건",
+          "primaryConcepts": [
+            "고원의 조건"
+          ],
+          "secondaryConcepts": [
+            "두 마을"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "고지대 정주의 경제적 근거를 서늘한 기후에서만 가능한 작물로 설명한다. 저지대와의 상호 의존 관계를 제시하고, 물자 수송로가 곧 정보 전달 경로이므로 우편 속도가 도로 조건에 종속된다는 전제를 밝힌다.",
+          "aiAnalysisInputSha256": "d3d6bbd5223bc79690839fb321ee2029da70ce7475ae24f0da7f5e320e235341",
+          "aiPublicGuideTopic": "고원에 사람이 사는 이유",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 윗바람고원",
+          "section": "1.2 오르는 길",
+          "primaryConcepts": [
+            "오르는 길"
+          ],
+          "secondaryConcepts": [
+            "고원의 조건"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단일 접근로라는 조건이 고립의 직접적 원인이 된다는 점을 설명한다. 계절에 따른 노면 상태 변화와 물자 수송 시기의 집중, 이동 수단에 따라 소요 시간이 배 이상 달라진다는 사실을 제시한다.",
+          "aiAnalysisInputSha256": "2902cacd2e0fba7e408467fdd37acf586d4543fb48e2a6acebba5970aaf4b295",
+          "aiPublicGuideTopic": "고원으로 올라가는 하나뿐인 길",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 윗바람고원",
+          "section": "1.2 오르는 길",
+          "primaryConcepts": [
+            "오르는 길"
+          ],
+          "secondaryConcepts": [
+            "계절 고립",
+            "길 끊김"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "접근로의 통행 제한을 차량 불가, 도보 위험, 통행 불가, 복구 대기의 네 단계로 구분한다. 각 단계에서 우편 전달과 방문 가능성이 어떻게 달라지는지 제시하고, 통행 여부가 아니라 단계를 확인해야 한다는 실무를 밝힌다.",
+          "aiAnalysisInputSha256": "442506e996f4214e7f889d0b6a05193f0113000abd625211097ec0d3daa2d9e2",
+          "aiPublicGuideTopic": "길이 끊기는 정도가 여러 가지라는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 윗바람고원",
+          "section": "1.3 두 마을",
+          "primaryConcepts": [
+            "두 마을"
+          ],
+          "secondaryConcepts": [
+            "고원의 조건"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "고원 내 두 취락의 규모와 접근성 차이를 제시한다. 차량 진입 가능 여부가 우편 도달 시점을 하루 이상 벌린다는 점을 밝히고, 동일 권역 안에서도 정보 전달 속도의 층위가 생긴다는 구조를 설명한다.",
+          "aiAnalysisInputSha256": "a53b9ae04a4d9272c36dc41b1b0d7ee61fac0b938f30159d7f6486dafcc415c8",
+          "aiPublicGuideTopic": "고원 위에 있는 두 마을",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 윗바람고원",
+          "section": "1.3 두 마을",
+          "primaryConcepts": [
+            "두 마을"
+          ],
+          "secondaryConcepts": [
+            "오르는 길",
+            "집배 경로"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "저지대에서 두 고원 취락까지의 이동 시간과 우편 도달 소요 일수를 하나의 경로선 위에 표시한 도표다. 차량과 도보의 소요 차이를 구간별로 병기해, 접근성이 정보 도달 시점을 어떻게 벌리는지 보인다.",
+          "aiAnalysisInputSha256": "b3b8f96feb9edd17ed0ae5af6b25318f2821a3154bf7ed6344e05b28b7910f50",
+          "aiPublicGuideTopic": "우편이 아랫마을에서 두 고원 마을까지 가는 데 걸리는 시간을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 윗바람고원",
+          "section": "1.4 우편배달",
+          "primaryConcepts": [
+            "우편배달"
+          ],
+          "secondaryConcepts": [
+            "두 마을"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단독 배달원이 담당하는 배달 구역과 주 2회라는 주기를 제시한다. 우편 외에 물품 대리 구매와 구두 전언까지 겸한다는 점을 밝히고, 정보 전달의 상당 부분이 문서가 아니라 사람을 통해 이루어진다는 관찰을 덧붙인다.",
+          "aiAnalysisInputSha256": "7bba73eddf4213b0ddd69018621cdb10d12d74aad074a6164d5477ca8adf2d3e",
+          "aiPublicGuideTopic": "우체부 한 사람이 맡은 구역",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 윗바람고원",
+          "section": "1.4 우편배달",
+          "primaryConcepts": [
+            "우편배달"
+          ],
+          "secondaryConcepts": [
+            "집배 경로",
+            "오는 물건"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "집합 우편함 방식이 배달 시간을 단축해 안쪽 취락의 도달 시점을 앞당긴다는 구조를 설명한다. 다만 수취인이 확인하기까지 추가 시간이 발생한다는 점, 소규모 취락에서는 직접 전달로 그 간격이 사라진다는 대비를 제시한다.",
+          "aiAnalysisInputSha256": "1b6acd971baff0127bd6fbc3a63ba9bda33bd0377734f6ab5a6f4fb3889c329e",
+          "aiPublicGuideTopic": "우편함이 마을 어귀에 모여 있는 까닭",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "1장 윗바람고원",
+          "section": "1.5 계절 고립",
+          "primaryConcepts": [
+            "계절 고립"
+          ],
+          "secondaryConcepts": [
+            "오르는 길"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "적설로 인한 연간 고립 기간의 가변성과 그에 따른 생활 주기의 이분을 설명한다. 개방기에 연간 물자를 준비하고 폐쇄기에 소비하는 구조를 제시하며, 방문 가능 시기가 개방기에 한정되므로 폐쇄기 서술은 전문에 근거한다는 한계를 밝힌다.",
+          "aiAnalysisInputSha256": "2d0e81e387440259b44f55e57e8df4e624a0bcaf080e0673942542dc6dc10473",
+          "aiPublicGuideTopic": "일 년 가운데 끊기는 기간",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "1장 윗바람고원",
+          "section": "1.5 계절 고립",
+          "primaryConcepts": [
+            "계절 고립"
+          ],
+          "secondaryConcepts": [
+            "겨울 준비",
+            "기다리는 시간"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "폐쇄기 진입 전의 물자와 문서 처리 집중을 다룬다. 수송 빈도와 배달 횟수가 일시적으로 늘어나는 시기라는 점을 제시하고, 이 준비기가 관찰에 가장 적합한 시기라는 판단을 덧붙인다.",
+          "aiAnalysisInputSha256": "6a825d485c4c3d99cf6c8af424959cfff5579ac7d807032127b28cfd44e75876",
+          "aiPublicGuideTopic": "닫히기 전에 하는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 우편이 오는 길",
+          "section": "2.1 집배 경로",
+          "primaryConcepts": [
+            "집배 경로"
+          ],
+          "secondaryConcepts": [
+            "우편배달",
+            "오르는 길"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "우편물의 이동 경로를 다섯 단계로 나누고 각 단계에서 지체가 발생한다는 구조를 설명한다. 지연의 주된 원인이 이동이 아니라 발송 단위를 채우기 위한 대기라는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "d7f2d1b28116ce08da32b53b320ac326fc500f18ffa9860a2415ca6fe3774e23",
+          "aiPublicGuideTopic": "편지가 지나는 자리들",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 우편이 오는 길",
+          "section": "2.1 집배 경로",
+          "primaryConcepts": [
+            "집배 경로"
+          ],
+          "secondaryConcepts": [
+            "배달 주기",
+            "두 마을"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "우편물이 거치는 다섯 지점과 구간별 소요 시간을 순서대로 배치한 도표다. 발송 대기 구간의 화살표를 굵게 표시해 전체 소요의 대부분이 이동이 아니라 대기에서 발생한다는 점을 드러낸다.",
+          "aiAnalysisInputSha256": "57d91983cbe6bc6549beb42991a6860fde2961402371c94e81881781ce2cbb39",
+          "aiPublicGuideTopic": "편지가 다섯 자리를 지나며 하루씩 머무는 것을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 우편이 오는 길",
+          "section": "2.2 배달 주기",
+          "primaryConcepts": [
+            "배달 주기"
+          ],
+          "secondaryConcepts": [
+            "집배 경로"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "주 2회 배달 주기가 도착 시점을 비균등하게 만든다는 구조를 설명한다. 발송 시각의 작은 차이가 도착일에 큰 차이를 만든다는 점을 제시하고, 왕복 소요를 계산해 발송 요일을 선택하는 현지의 관행을 밝힌다.",
+          "aiAnalysisInputSha256": "18d0b98c9741134e79b7f3b6585f6de53ddd9f945259b9fafc850965c3eaf9e2",
+          "aiPublicGuideTopic": "일주일에 두 번이라는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 우편이 오는 길",
+          "section": "2.2 배달 주기",
+          "primaryConcepts": [
+            "배달 주기"
+          ],
+          "secondaryConcepts": [
+            "기다리는 시간",
+            "우편배달"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배달 지연이 후속 회차의 물량 분포까지 왜곡한다는 연쇄를 설명한다. 지연 여부를 사전에 확인하려는 행동과, 대기 자체보다 대기 기간의 불확실성이 더 큰 부담이라는 현지의 진술을 제시한다.",
+          "aiAnalysisInputSha256": "038849336fb874c6266461dca14e1825000033082fd493f72bf1602aa5265ff0",
+          "aiPublicGuideTopic": "주기가 밀릴 때",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 우편이 오는 길",
+          "section": "2.3 오는 물건",
+          "primaryConcepts": [
+            "오는 물건"
+          ],
+          "secondaryConcepts": [
+            "집배 경로"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배달 물량의 구성을 서류, 대리 구매 물품, 사신으로 구분해 비중을 제시한다. 기한이 있는 행정 문서가 다수를 차지한다는 점, 우편과 심부름의 경계가 실질적으로 없다는 점, 개인 서신이 소수라는 관찰을 함께 밝힌다.",
+          "aiAnalysisInputSha256": "ad92ab4891ec926673747d244a3bfea0ffdf5a63b75039cf99caeaad4a2a1949",
+          "aiPublicGuideTopic": "이 고원으로 올라오는 것들",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "2장 우편이 오는 길",
+          "section": "2.3 오는 물건",
+          "primaryConcepts": [
+            "오는 물건"
+          ],
+          "secondaryConcepts": [
+            "급한 연락",
+            "겨울 준비"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기한부 문서가 지연 배달과 결합할 때 실질 응답 기간이 크게 줄어든다는 계산을 제시한다. 수취 당일 회신이라는 대응 관행과, 배달원이 기한부 우편을 선별해 직접 전달하는 비공식 절차를 함께 기록한다.",
+          "aiAnalysisInputSha256": "149763a52b576ec2cbd0333b63a5dc4f68cbcfdc493830b737fa812aa6df42fc",
+          "aiPublicGuideTopic": "기한이 있는 것과 없는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "2장 우편이 오는 길",
+          "section": "2.4 나가는 물건",
+          "primaryConcepts": [
+            "나가는 물건"
+          ],
+          "secondaryConcepts": [
+            "오는 물건"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "상행뿐 아니라 하행 물량도 존재한다는 점과 그 구성을 다룬다. 정식 발송과 배달원 위탁이라는 두 경로의 차이를 기록 유무와 속도로 구분하고, 두 방식이 용도에 따라 병용된다는 실태를 제시한다.",
+          "aiAnalysisInputSha256": "6f2ae9d66a9d1b79f811e1dcdebb9cee340f239bd6e6d0f30a5dbaa8ffab2254",
+          "aiPublicGuideTopic": "고원에서 아래로 내려가는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "2장 우편이 오는 길",
+          "section": "2.4 나가는 물건",
+          "primaryConcepts": [
+            "나가는 물건"
+          ],
+          "secondaryConcepts": [
+            "통신이 들어오면",
+            "편지의 말"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "통신 수단이 일부 도입된 이후에도 우편이 유지되는 세 가지 이유를 제시한다. 원본 서류의 필요, 물품 운송, 통신망의 간헐적 단절이며, 속도보다 가용성이 전달 수단의 존속을 결정한다는 관점을 밝힌다.",
+          "aiAnalysisInputSha256": "6bcd7ed38f3a0c9fb0d159086ffd2cfff8e645376e6a444d00035be0b62b18bf",
+          "aiPublicGuideTopic": "우편이 아직 하는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 느림이 만드는 것",
+          "section": "3.1 기다리는 시간",
+          "primaryConcepts": [
+            "기다리는 시간"
+          ],
+          "secondaryConcepts": [
+            "배달 주기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "주기가 정해진 대기가 심리적으로 다르게 작동한다는 점을 다룬다. 종료 시점을 알면 대기 중 다른 활동이 가능하다는 구조, 확인 빈도를 줄이는 대응 방식, 조기 도착이 아니라 예정대로의 도착을 기대한다는 태도 차이를 제시한다.",
+          "aiAnalysisInputSha256": "2c15623a181215270d8242bfff14bfd419572720efdaa3559c9eadfa7fc96123",
+          "aiPublicGuideTopic": "다음 배달일까지의 며칠",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 느림이 만드는 것",
+          "section": "3.1 기다리는 시간",
+          "primaryConcepts": [
+            "기다리는 시간"
+          ],
+          "secondaryConcepts": [
+            "배달 주기",
+            "늦는 소식"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 대기 기간을 확인 빈도가 다른 두 경우로 나누어 대비한 도표다. 반복 확인이 실패 경험을 누적시키는 반면 주기에 맞춘 단일 확인은 그것을 없앤다는 점을 표시의 수로 보인다.",
+          "aiAnalysisInputSha256": "9870352e0f4c70ad9c48840cd5fea386eab3d1eb037fb86f5200528bb22a1dfd",
+          "aiPublicGuideTopic": "같은 나흘이 확인 횟수에 따라 다르게 느껴지는 것을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 느림이 만드는 것",
+          "section": "3.2 편지의 말",
+          "primaryConcepts": [
+            "편지의 말"
+          ],
+          "secondaryConcepts": [
+            "기다리는 시간"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지연 전달을 전제로 한 문장의 특징을 제시한다. 상대적 시점 표현을 피하고 날짜를 명시하는 방식, 질문 대신 경우의 수를 함께 적어 왕복 횟수를 줄이는 작성법을 실제 사례와 함께 설명한다.",
+          "aiAnalysisInputSha256": "48ed7994219246747df35894d38a8ee5432d7017d4acda0debfdb614bff9afb6",
+          "aiPublicGuideTopic": "며칠 뒤에 읽힐 것을 아는 문장",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 느림이 만드는 것",
+          "section": "3.2 편지의 말",
+          "primaryConcepts": [
+            "편지의 말"
+          ],
+          "secondaryConcepts": [
+            "늦는 소식",
+            "나가는 물건"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발송 빈도가 낮을 때 서신의 형태가 달라진다는 점을 다룬다. 여러 날에 걸쳐 작성하는 방식, 수취 후 반복해 읽는 행태를 제시하고 한 통이 다음 수신까지의 기간을 채우는 역할을 한다고 설명한다.",
+          "aiAnalysisInputSha256": "7c6545f7825e20a4dd43d7fd7397df6745a954372fd37ce578c860d7a20cd1a3",
+          "aiPublicGuideTopic": "한 번에 여러 이야기를 적는 이유",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "3장 느림이 만드는 것",
+          "section": "3.3 늦는 소식",
+          "primaryConcepts": [
+            "늦는 소식"
+          ],
+          "secondaryConcepts": [
+            "기다리는 시간"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정보 지연이 사후 인지를 만든다는 문제와 그 대응을 다룬다. 사전에 대응 방침을 문서로 합의해 두는 방식을 제시하고, 지연 환경에서의 해법이 정보 속도 개선이 아니라 사전 결정이라는 관점을 밝힌다.",
+          "aiAnalysisInputSha256": "616bee719cca0ab2580a49504d938d7dc7d47888928fdeefffdd1cd727618272",
+          "aiPublicGuideTopic": "이미 지난 일을 알게 될 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "3장 느림이 만드는 것",
+          "section": "3.3 늦는 소식",
+          "primaryConcepts": [
+            "늦는 소식"
+          ],
+          "secondaryConcepts": [
+            "편지의 말",
+            "인구 감소"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "통신 지연이 관계에 미치는 영향을 양면으로 다룬다. 일상 정보의 공유가 줄어드는 손실과, 전달 내용이 선별되어 중요한 사안에 집중된다는 효과를 함께 제시하고 단순한 손실로 정리하지 않는다.",
+          "aiAnalysisInputSha256": "2e5b28df3d42083d1b0179f34ec59f93cb08fba6c7b6fd0d0a9d4cf6a9d1bcb3",
+          "aiPublicGuideTopic": "늦음이 만드는 거리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "3장 느림이 만드는 것",
+          "section": "3.4 급한 연락",
+          "primaryConcepts": [
+            "급한 연락"
+          ],
+          "secondaryConcepts": [
+            "늦는 소식"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "우편으로 대응할 수 없는 긴급 상황의 대체 수단을 세 가지로 정리한다. 통신 가능 가옥의 이용, 직접 하산, 배달원 위탁이며 각각의 소요와 확실성을 비교해 상황별 선택 기준을 제시한다.",
+          "aiAnalysisInputSha256": "f1ea26d30f9d4a8b7f7e82481bdfe95a4d5ec7e4aa306c51bf9eac6a50a2a1f7",
+          "aiPublicGuideTopic": "정말 급할 때 쓰는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "3장 느림이 만드는 것",
+          "section": "3.4 급한 연락",
+          "primaryConcepts": [
+            "급한 연락"
+          ],
+          "secondaryConcepts": [
+            "통신이 들어오면",
+            "길 끊김"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "폐쇄기에는 긴급 연락 수단이 하나로 줄어들고 그마저 불안정하다는 조건을 제시한다. 위험한 작업을 회피하는 계절 규칙을 대응으로 들고, 지연과 단절을 구분해 이해해야 한다는 관점을 밝힌다.",
+          "aiAnalysisInputSha256": "999426c1fc713a6a54564b57ebb9c778b4519316c454707b1aaabffd08b45d9a",
+          "aiPublicGuideTopic": "급한 일이 겹칠 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 길이 끊기는 계절",
+          "section": "4.1 길 끊김",
+          "primaryConcepts": [
+            "길 끊김"
+          ],
+          "secondaryConcepts": [
+            "계절 고립"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "폐쇄 시점이 사전에 확정되지 않고 특정 지점의 결빙으로 예고된다는 점을 설명한다. 국지적 전조를 관찰해 판단하는 방식과, 마지막 배달일이 사후에야 확인된다는 불확실성을 제시한다.",
+          "aiAnalysisInputSha256": "c833c3b5fba9bb6e36c315795d55cbcee44548ac594c4e39a9c377a671a0334d",
+          "aiPublicGuideTopic": "닫히는 날을 아는 법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 길이 끊기는 계절",
+          "section": "4.2 겨울 준비",
+          "primaryConcepts": [
+            "겨울 준비"
+          ],
+          "secondaryConcepts": [
+            "길 끊김"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "폐쇄기 대비 물자의 종류와 산정 방식을 다룬다. 전년 실적에 여유를 더하는 방법, 소요 예측이 어려운 의약품을 공동 비축으로 관리하는 방식을 제시하고 공유가 개별 비축보다 효율적이라는 원리를 밝힌다.",
+          "aiAnalysisInputSha256": "7d31e0c83b5e7c78d9a177fcca67bb42f6f02357ada238d528f43636b769a17b",
+          "aiPublicGuideTopic": "몇 달 치를 올려 두는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 길이 끊기는 계절",
+          "section": "4.2 겨울 준비",
+          "primaryConcepts": [
+            "겨울 준비"
+          ],
+          "secondaryConcepts": [
+            "계절 고립",
+            "묵는 우편"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연간 주기를 원으로 나타내고 개방기, 준비기, 폐쇄기를 구분해 표시한 도표다. 경계를 점선으로 그려 시점의 가변성을 나타내고, 폐쇄기 동안 축적되는 우편물을 함께 표시해 두 계절의 성격 차이를 보인다.",
+          "aiAnalysisInputSha256": "51f837ea61acb037146d90ba6d5881f518363baaa7b7cabfe8aa339845a43e6e",
+          "aiPublicGuideTopic": "한 해가 열린 계절과 닫힌 계절로 나뉘는 것을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            29
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 길이 끊기는 계절",
+          "section": "4.3 묵는 우편",
+          "primaryConcepts": [
+            "묵는 우편"
+          ],
+          "secondaryConcepts": [
+            "길 끊김"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "폐쇄기 동안 우편물이 저지대에 보관되는 상황을 다룬다. 발송자 측의 자율적 억제와 행정 문서의 지속 발송이라는 차이를 제시하고, 기한 도과가 발생해 사후 소명이 필요해진다는 실질적 부담을 밝힌다.",
+          "aiAnalysisInputSha256": "8a45a5b1e2084bc20ba9ff82a34a9e5a7c5769e8917f81b236886a6db0a6bf70",
+          "aiPublicGuideTopic": "닫힌 동안 편지는 어디에 있는가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "4장 길이 끊기는 계절",
+          "section": "4.3 묵는 우편",
+          "primaryConcepts": [
+            "묵는 우편"
+          ],
+          "secondaryConcepts": [
+            "편지의 말",
+            "재개통"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재개통 후 일괄 도착한 우편물을 처리하는 방식을 다룬다. 발신 일자순 정렬이 맥락 유지를 위해 필요하다는 점을 제시하고, 그 열람 과정이 계절 전환의 실질적 종료로 인식된다는 현지의 표현을 기록한다.",
+          "aiAnalysisInputSha256": "6035e6a408ab5bef3caeec853717467944196dfa317dcb5a8ba2a2fc611270a1",
+          "aiPublicGuideTopic": "묵은 편지를 읽는 순서",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "4장 길이 끊기는 계절",
+          "section": "4.4 재개통",
+          "primaryConcepts": [
+            "재개통"
+          ],
+          "secondaryConcepts": [
+            "길 끊김"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재개통이 단계적으로 이루어진다는 점과 각 단계의 특징을 설명한다. 도보 통행 재개 시 우선 반입되는 품목, 차량 통행 재개일의 물량 집중을 제시하고 계절 전환을 물류량으로 인식하는 현지의 관점을 밝힌다.",
+          "aiAnalysisInputSha256": "0f90ca38276a8e83f697c749d723a50e3eec15a7bcf4be68eade6e79b15e38af",
+          "aiPublicGuideTopic": "다시 열리는 날",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "4장 길이 끊기는 계절",
+          "section": "4.4 재개통",
+          "primaryConcepts": [
+            "재개통"
+          ],
+          "secondaryConcepts": [
+            "겨울 준비",
+            "동행 정리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장기 고립이 형성한 두 가지 특성을 제시한다. 사전 준비의 습관화와 구성원 간 정보의 공유이며, 우편의 지연이 단독 현상이 아니라 생활 방식 전반과 맞물려 있다는 관점으로 정리한다.",
+          "aiAnalysisInputSha256": "de76d437fd36507fea9138b2240241d8d66edade37bd82d4a0d542603041a86d",
+          "aiPublicGuideTopic": "닫힌 계절이 남기는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            33
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 사흘 동안 따라다닌 우편",
+          "section": "5.1 첫날 동행",
+          "primaryConcepts": [
+            "첫날 동행"
+          ],
+          "secondaryConcepts": [
+            "배달 주기",
+            "집배 경로"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동행 첫날의 우체국 작업을 시간과 함께 기록한다. 나흘 치 물량의 규모, 주소가 아닌 성명 기준의 분류 방식, 우편과 함께 실리는 대리 구매 물품의 비중을 제시한다.",
+          "aiAnalysisInputSha256": "513f8dcf8ebe1682a6df7c0da4cbc71a967ae8f989f4f8d3030a1d11a9224976",
+          "aiPublicGuideTopic": "아랫마을 우체국의 아침",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 사흘 동안 따라다닌 우편",
+          "section": "5.1 첫날 동행",
+          "primaryConcepts": [
+            "첫날 동행"
+          ],
+          "secondaryConcepts": [
+            "집배 경로",
+            "두 마을"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사흘간의 동행 경로와 지점별 체류 시간을 하나의 경로선 위에 표시한 도표다. 각 날의 이동 구간을 굵기가 다른 선으로 겹쳐 그리고, 소요가 이동보다 특정 지점에 집중된다는 점을 시간 표기로 드러낸다.",
+          "aiAnalysisInputSha256": "f26019b58194397a2b3f1860fa7d52524829f7d9939c4316382f90d42a2dbcec",
+          "aiPublicGuideTopic": "사흘 동안 우편을 따라다닌 자리와 시각을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            35
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 사흘 동안 따라다닌 우편",
+          "section": "5.2 둘째 날 동행",
+          "primaryConcepts": [
+            "둘째 날 동행"
+          ],
+          "secondaryConcepts": [
+            "첫날 동행",
+            "두 마을"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "안쪽 취락으로의 도보 배달을 기록한다. 집합 우편함에 남은 수량이 수취 지연을 드러낸다는 관찰, 배달원이 수취인의 대기 내용을 숙지하고 있다는 점, 직접 전달에서 소요의 대부분이 대화라는 사실을 제시한다.",
+          "aiAnalysisInputSha256": "3f0b7d41d263a753667b0c56384c51fd9f41db7b3f8856b79ad18ddeb0b90918",
+          "aiPublicGuideTopic": "구름마을에서 돌담마을까지",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            35
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 사흘 동안 따라다닌 우편",
+          "section": "5.2 둘째 날 동행",
+          "primaryConcepts": [
+            "둘째 날 동행"
+          ],
+          "secondaryConcepts": [
+            "오는 물건",
+            "급한 연락"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단일 배달일에 전달된 우편물의 구성을 항목별로 기록한다. 기한부 서류에 대한 구두 고지, 대리 구매 물품의 전달과 동시에 이루어지는 다음 주문, 여러 날에 걸쳐 작성된 서신이 일괄 도착하는 양상을 제시한다.",
+          "aiAnalysisInputSha256": "8a1aec183c8f9d517b12e3fd56cb8db88866bc7e8abdc7ef46016d47b5858940",
+          "aiPublicGuideTopic": "그날 건넨 것들",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            37
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "5장 사흘 동안 따라다닌 우편",
+          "section": "5.3 셋째 날 동행",
+          "primaryConcepts": [
+            "셋째 날 동행"
+          ],
+          "secondaryConcepts": [
+            "첫날 동행",
+            "나가는 물건"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "하행 물량의 구성과 회신 속도를 기록한다. 위탁 물품과 정식 발송의 구분, 수취 당일 작성된 회신이 다수를 차지한다는 관찰을 제시하고, 지연이 전달 경로에서 발생하며 응답 자체는 신속하다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "eccdce66e7809091f716f47a0e7c9c08ddcaabad9af962bcafa27919e2e3a542",
+          "aiPublicGuideTopic": "내려가는 가방",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            35
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "5장 사흘 동안 따라다닌 우편",
+          "section": "5.3 셋째 날 동행",
+          "primaryConcepts": [
+            "셋째 날 동행"
+          ],
+          "secondaryConcepts": [
+            "기다리는 시간",
+            "편지의 말"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배달원과의 대화를 통해 장기 변화를 기록한다. 서신 감소와 물품 증가라는 물량 구성의 변화, 제도가 존속하는 이유의 확인, 향후 변화가 폐지가 아니라 빈도 감소로 나타날 것이라는 전망을 제시한다.",
+          "aiAnalysisInputSha256": "911732365a3212d70a1e7215882c61698f602c8f83a816561ccb8d2bcc9de1d5",
+          "aiPublicGuideTopic": "내려오는 길에 들은 이야기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "5장 사흘 동안 따라다닌 우편",
+          "section": "5.4 동행 정리",
+          "primaryConcepts": [
+            "동행 정리"
+          ],
+          "secondaryConcepts": [
+            "둘째 날 동행",
+            "집배 경로"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동행 관찰을 물량과 시간 배분으로 정리한다. 상행과 하행의 불균형과 그 원인, 총 작업 시간 가운데 이동이 차지하는 비중이 낮다는 계산을 제시하고 이 업무의 성격을 운반이 아닌 매개로 규정한다.",
+          "aiAnalysisInputSha256": "c389f10f47ad41a2a72f4b2a99a573d317c67bb67c1441b24fdb64cb92857691",
+          "aiPublicGuideTopic": "사흘을 한 장으로",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            37
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "5장 사흘 동안 따라다닌 우편",
+          "section": "5.4 동행 정리",
+          "primaryConcepts": [
+            "동행 정리"
+          ],
+          "secondaryConcepts": [
+            "늦는 소식",
+            "우편배달"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관찰 전후의 인식 변화를 정리한다. 지연을 결함이 아니라 생활 방식의 토대로 파악하게 된 과정을 제시하고, 속도 변화가 그 위에 형성된 관행까지 바꾼다는 관점을 밝히며 제목의 표현을 설명한다.",
+          "aiAnalysisInputSha256": "1082d37cf7b7b4a943ebbc3a8e50cd3a65537973a47602cff734f3d783d15937",
+          "aiPublicGuideTopic": "따라다니며 알게 된 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 이 리듬이 바뀔 때",
+          "section": "6.1 길이 바뀌면",
+          "primaryConcepts": [
+            "길이 바뀌면"
+          ],
+          "secondaryConcepts": [
+            "오르는 길"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "접근로 포장이 우편 주기와 생활 구조를 함께 바꾼다는 점을 다룬다. 소요 시간 단축과 폐쇄 기간 감소가 배달 빈도를 늘린다는 예측을 제시하고, 정주 형태 변화에 대한 상반된 견해를 병기해 단정하지 않는다.",
+          "aiAnalysisInputSha256": "0200db6510c6512985729871dee64d109ce3cad11ee763609db87f241157b4c9",
+          "aiPublicGuideTopic": "길이 포장되면 달라지는 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 이 리듬이 바뀔 때",
+          "section": "6.1 길이 바뀌면",
+          "primaryConcepts": [
+            "길이 바뀌면"
+          ],
+          "secondaryConcepts": [
+            "배달 주기",
+            "통신이 들어오면"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "접근로와 통신 조건의 변화가 배달 빈도와 우편의 역할에 미치는 영향을 세 가지 시나리오로 대비한 도표다. 각 조건에서 이 책의 어느 부분이 유효한지를 함께 표기해 서술의 적용 범위를 드러낸다.",
+          "aiAnalysisInputSha256": "c71381e1c86c2b8d881dce827bb31c8ce0ae303c27e8aee13a96c658f9461a2e",
+          "aiPublicGuideTopic": "길과 신호가 바뀔 때 우편 주기가 어떻게 달라지는지 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 이 리듬이 바뀔 때",
+          "section": "6.2 통신이 들어오면",
+          "primaryConcepts": [
+            "통신이 들어오면"
+          ],
+          "secondaryConcepts": [
+            "급한 연락"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "통신 인프라 개선 이후에도 우편이 존속하되 기능이 전환된다는 전망을 제시한다. 서신 감소와 문서·물품 운송의 잔존을 구분하고, 관찰된 물량 구성이 이미 그 전환의 중간 단계에 있음을 근거로 든다.",
+          "aiAnalysisInputSha256": "57485f7ab4048d7870994675d2ee468f55a8b85504b7c1217efea799b14908f9",
+          "aiPublicGuideTopic": "신호가 안정되면 남는 우편",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 이 리듬이 바뀔 때",
+          "section": "6.3 인구 감소",
+          "primaryConcepts": [
+            "인구 감소"
+          ],
+          "secondaryConcepts": [
+            "두 마을",
+            "늦는 소식"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인구 감소와 배달 주기 축소가 서로를 강화하는 순환을 제시한다. 특정 규모 이하에서 도보 배달이 중단될 수 있다는 전망과 그 경우의 수취 방식 변화를 밝혀, 접근성 저하가 단계적으로 진행된다는 점을 설명한다.",
+          "aiAnalysisInputSha256": "8286caea107d10f4f7393eea66619af0e642c44a966298feb5fad343e79e2bae",
+          "aiPublicGuideTopic": "사람이 줄면 우편도 줄어든다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "6장 이 리듬이 바뀔 때",
+          "section": "6.3 인구 감소",
+          "primaryConcepts": [
+            "인구 감소"
+          ],
+          "secondaryConcepts": [
+            "길이 바뀌면",
+            "계절 고립"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록의 시효를 명시하는 페이지다. 세 가지 변화 요인 가운데 하나만 발생해도 서술의 상당 부분이 무효화된다는 점을 밝히고, 특정 시점의 기록임을 전제하되 일반화 가능한 명제를 구분해 제시한다.",
+          "aiAnalysisInputSha256": "a3808eba0ea6fd4ae548a8bc42d9c939a06aff5710fe0d9c74e7c0e03f90a9fc",
+          "aiPublicGuideTopic": "이 기록이 오래가지 않는다는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 결론: 늦게 오는 소식",
+          "section": "7.1 늦게 오는 소식",
+          "primaryConcepts": [
+            "느린 소식"
+          ],
+          "secondaryConcepts": [
+            "고원의 조건",
+            "기다리는 시간"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체의 명제를 다시 진술하는 결론 도입 페이지다. 물자의 묶음 수송이라는 도입부의 관찰을 정보 전달로 확장하고, 지연이 결함이 아니라 생활 구조의 전제라는 관점으로 앞 장들을 종합한다.",
+          "aiAnalysisInputSha256": "907cef96fa7fa8b111c8a46ba89a81fc989793e9f6caaf60c4317b4852aa8cfa",
+          "aiPublicGuideTopic": "느림이 구조라는 것",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "slow-news-is-a-structure"
+          ]
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 결론: 늦게 오는 소식",
+          "section": "7.1 늦게 오는 소식",
+          "primaryConcepts": [
+            "느린 소식"
+          ],
+          "secondaryConcepts": [
+            "편지의 말",
+            "인구 감소"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다른 지역에 적용할 수 있도록 확인 항목을 세 가지로 압축해 제시한다. 정보 전달의 주기, 긴급 대체 수단, 주기가 중단되는 기간이며, 관찰 결과에 시점을 함께 기록해야 한다는 원칙을 덧붙인다.",
+          "aiAnalysisInputSha256": "d868c9eb41b6c55dbf5f7a5e66624d9727e3726270228f67307ea6ca267cbf50",
+          "aiPublicGuideTopic": "다른 느린 곳에 가기 전에",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
     }
   ]
 }

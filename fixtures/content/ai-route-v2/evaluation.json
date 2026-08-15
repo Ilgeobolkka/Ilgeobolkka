@@ -3592,6 +3592,123 @@
         14,
         21
       ]
+    },
+    {
+      "caseId": "case-book-087",
+      "bookId": 87,
+      "purpose": "이 책을 소장하고 있는데, 우편이 며칠 걸려 닿는 고원 마을에 오래 머물 계획이다. 편지가 어떤 자리들을 지나 며칠에 한 번 오는지, 그 주기가 기다림과 편지의 문장을 어떻게 바꾸는지, 그리고 정말 급할 때는 무엇을 쓰는지까지 차근히 익히고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "우편배달",
+        "집배 경로",
+        "배달 주기",
+        "기다리는 시간",
+        "편지의 말",
+        "급한 연락"
+      ],
+      "helpfulConcepts": [
+        "고원의 조건",
+        "두 마을",
+        "늦는 소식",
+        "계절 고립"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 13
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 15
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 20
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 21
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 22
+        },
+        {
+          "beforePageNumber": 22,
+          "afterPageNumber": 23
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 26
+        },
+        {
+          "beforePageNumber": 26,
+          "afterPageNumber": 27
+        }
+      ],
+      "irrelevantPageNumbers": [
+        29,
+        30,
+        43,
+        44,
+        46,
+        47
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          48
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        6,
+        8,
+        9,
+        12,
+        13,
+        14,
+        15,
+        20,
+        21,
+        22,
+        23,
+        24,
+        26,
+        27
+      ],
+      "allowedAlternativePageNumbers": [
+        7,
+        16,
+        25
+      ]
     }
   ]
 }
