@@ -49567,6 +49567,1100 @@
       ]
     },
     {
+      "bookId": 76,
+      "title": "기본값과 실패 경계의 설계",
+      "pdfPath": "pdfs/book-076.pdf",
+      "pdfSha256": "a0a738ceee131451db2072f6b8bd92e02466dde59cf5341f428cca446eb2f4e4",
+      "totalPageCount": 50,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "기본값과 실패 경계를 다루는 장과 절의 구성",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 기본값이 하는 일",
+          "section": "1.1 기본값의 정의",
+          "primaryConcepts": [
+            "기본값"
+          ],
+          "secondaryConcepts": [
+            "설정"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기본값을 미지정 시 적용되는 대체 값으로 정의하고 반복 설정 부담 완화라는 존재 이유를 제시한다. 미인지 상태에서 결과를 받는 구조가 기본값 선정의 책임을 만든다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "e1e9d4d8eb418b31be20e95377ecc2edb626741caa68ba7374ec65028810c8a5",
+          "aiPublicGuideTopic": "정하지 않았을 때 쓰이는 값",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 기본값이 하는 일",
+          "section": "1.2 기본값이 정하는 것",
+          "primaryConcepts": [
+            "기본값의 효과"
+          ],
+          "secondaryConcepts": [
+            "기본값"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기본값이 단일 수치가 아니라 동작 범위를 결정함을 설명하고 값의 크고 작음에 따른 위험 방향을 대비시킨다. 다중 영향 값에 대해 관련 지점을 사전 열거하는 절차를 제시한다.",
+          "aiAnalysisInputSha256": "e71ebaadd126241f8703d925cf11728c3b6438aee893dee3ceacfe902a00f0c1",
+          "aiPublicGuideTopic": "값 하나가 결정하는 동작의 범위",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 기본값이 하는 일",
+          "section": "1.3 안전한 기본값",
+          "primaryConcepts": [
+            "안전한 기본값"
+          ],
+          "secondaryConcepts": [
+            "기본값",
+            "실패 경계"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기본값 선정 기준을 최적 성능이 아닌 오류 시 피해 최소화로 규정하고 국소적 실패와 전체 정지의 비교를 판단 방법으로 제시한다. 권한 관련 값에서 최소 허용 원칙이 갖는 추가 근거를 밝힌다.",
+          "aiAnalysisInputSha256": "87a4818b0231394157d92c291edd2f4488f95c8d8fc27730507bc4d2a38b1405",
+          "aiPublicGuideTopic": "모르는 상황에서 덜 위험한 쪽을 고르기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 기본값이 하는 일",
+          "section": "1.4 편한 기본값과 안전한 기본값",
+          "primaryConcepts": [
+            "편의와 안전"
+          ],
+          "secondaryConcepts": [
+            "안전한 기본값"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사용 편의 압력이 기본값을 완화 방향으로 밀어내는 구조를 지적하고 명시적 설정 묶음으로 편의를 분리 제공하는 대안을 제시한다. 값별 판단 기준을 누락 시 피해 유형으로 정식화한다.",
+          "aiAnalysisInputSha256": "c2e52e218b31c7727b2e4e039846a216102d530af1e4c69a77d1bf818d0e54d6",
+          "aiPublicGuideTopic": "쓰기 쉬움과 덜 위험함이 어긋날 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 기본값이 하는 일",
+          "section": "1.5 기본값이 감추는 것",
+          "primaryConcepts": [
+            "암묵 동작"
+          ],
+          "secondaryConcepts": [
+            "기본값의 효과"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기본값의 비가시성이 조사 시 원인 후보에서 제외되는 문제를 설명한다. 기동 시 유효 설정값 기록을 가시성 확보 수단으로 제시한다.",
+          "aiAnalysisInputSha256": "bfaa3807e6c42f02938b65689181d4868de7e4f0cc5c610fcf2e809d25e8abe0",
+          "aiPublicGuideTopic": "적히지 않은 값이 만드는 오해",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            3
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 기본값이 하는 일",
+          "section": "1.6 값이 정해지는 자리",
+          "primaryConcepts": [
+            "기본값의 효과"
+          ],
+          "secondaryConcepts": [
+            "설정 우선순위",
+            "암묵 동작"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "설정 값의 결정 경로를 네 개 층의 우선순위로 표현하고 상위 층의 값이 하위 층을 가리는 구조를 시각화한다. 미지정 층과 지정 층을 구분해 최종 적용 값의 출처를 드러낸다.",
+          "aiAnalysisInputSha256": "7e7ca746d9ef4559338a358e57499c341d8b0242b7129cfc44bf8fbec2ea13d2",
+          "aiPublicGuideTopic": "한 값이 어디에서 정해지는지 보이는 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            3
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 기본값이 하는 일",
+          "section": "1.7 기본값을 적어 두는 자리",
+          "primaryConcepts": [
+            "기본값 기술"
+          ],
+          "secondaryConcepts": [
+            "기본값의 효과",
+            "암묵 동작"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기본값 문서화 항목을 값·선정 근거·한계 상황의 세 가지로 정식화하고 근거 부재가 값을 불가침으로 만드는 현상을 지적한다. 값 정의부 인접 배치가 갱신 누락을 줄이는 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "bbaecb7caf0d54cba4c41a22765cfddbe29a06f864c763badfa16817574e44dc",
+          "aiPublicGuideTopic": "값과 그 이유를 남기는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            3
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 설정과 우선순위",
+          "section": "2.1 설정의 층",
+          "primaryConcepts": [
+            "설정 우선순위"
+          ],
+          "secondaryConcepts": [
+            "기본값"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "설정 값의 다중 정의 지점을 층으로 정리하고 구체성 기준의 우선순위 규칙을 제시한다. 층 구분의 근거를 변경 비용의 차이에서 도출한다.",
+          "aiAnalysisInputSha256": "ce130b1fd2e20094a4e2090d996537aff6d43a4431bbaff25f1e826165bb58ca",
+          "aiPublicGuideTopic": "값이 여러 자리에서 정해질 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 설정과 우선순위",
+          "section": "2.2 층을 정하는 순서",
+          "primaryConcepts": [
+            "우선순위 규칙"
+          ],
+          "secondaryConcepts": [
+            "설정 우선순위"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "우선순위 규칙의 전역 일관성 요구와 값 조회 지점 집약을 제시한다. 묶음 단위 덮어쓰기가 하위 층 값을 소실시키는 오류 유형을 지적한다.",
+          "aiAnalysisInputSha256": "737213de2aa532f8100c143c3f071f058e2d72f31d7c48329ecdee524802049c",
+          "aiPublicGuideTopic": "어느 층이 이기는지 정하고 지키기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 설정과 우선순위",
+          "section": "2.3 어디서 온 값인지 알기",
+          "primaryConcepts": [
+            "값 출처"
+          ],
+          "secondaryConcepts": [
+            "우선순위 규칙",
+            "암묵 동작"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "설정 오류의 주된 형태를 값 오류가 아닌 출처 오인으로 규정하고 기동 시 출처 포함 기록을 대응으로 제시한다. 민감 값 마스킹을 기록 시 전제 조건으로 명시한다.",
+          "aiAnalysisInputSha256": "a4f51852be7b1ab592165e484d0830f6e9e0afba291b8e43160d18288f7cdda2",
+          "aiPublicGuideTopic": "지금 쓰이는 값의 출처를 확인하는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 설정과 우선순위",
+          "section": "2.4 바꿀 수 있는 값과 없는 값",
+          "primaryConcepts": [
+            "변경 범위"
+          ],
+          "secondaryConcepts": [
+            "설정 우선순위"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "외부 노출 대상을 환경 의존 값과 긴급 조절 값으로 한정하고 업무 규칙 값의 설정화가 갖는 위험을 지적한다. 판단 기준을 규칙과 환경의 구분으로 제시한다.",
+          "aiAnalysisInputSha256": "a348c9d821c2b292beb168888b9b4bd87155ba5735047126c252032dda94ee61",
+          "aiPublicGuideTopic": "밖에서 조절할 값을 고르는 기준",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 설정과 우선순위",
+          "section": "2.5 설정이 겹치는 모양",
+          "primaryConcepts": [
+            "우선순위 규칙"
+          ],
+          "secondaryConcepts": [
+            "값 출처",
+            "설정 난립"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "설정 병합을 항목 단위와 묶음 단위로 대비하고 각각의 결과 구성을 색으로 구분해 표시한다. 묶음 치환 시 미지정 항목이 기본값으로 회귀하는 경로를 드러낸다.",
+          "aiAnalysisInputSha256": "60e677a2ce8015443905fc4c8a6d5ffff949aabc0fd9543cee7089153b628173",
+          "aiPublicGuideTopic": "여러 층의 설정이 합쳐지는 방식",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 설정과 우선순위",
+          "section": "2.6 설정이 늘어나는 문제",
+          "primaryConcepts": [
+            "설정 난립"
+          ],
+          "secondaryConcepts": [
+            "변경 범위"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "설정 항목 증가가 조합 검증 불가·사용 실태 불명·값 간 정합성 붕괴로 이어짐을 설명한다. 기본값 이탈 여부 계측을 정리의 출발점으로 제시한다.",
+          "aiAnalysisInputSha256": "101fe41c258b54276a4a025d745e65bbe994a078faedc1c716426a7b0363ff23",
+          "aiPublicGuideTopic": "조절할 수 있는 값이 많아졌을 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 설정과 우선순위",
+          "section": "2.7 설정을 바꾸는 절차",
+          "primaryConcepts": [
+            "설정 변경"
+          ],
+          "secondaryConcepts": [
+            "값 출처",
+            "우선순위 규칙"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "설정 변경 절차를 현재 값·출처 확인, 변경, 적용 확인의 순서로 정식화한다. 층 우선순위로 인한 무효 변경 가능성과 되돌리기 경로의 사전 확보를 요구한다.",
+          "aiAnalysisInputSha256": "78607d9206119678a5d22fefa05d35df0512deea52d0597d1cd14affbdc99fee",
+          "aiPublicGuideTopic": "값을 고칠 때 지키는 순서",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 실패를 다루는 경계",
+          "section": "3.1 실패 경계의 정의",
+          "primaryConcepts": [
+            "실패 경계"
+          ],
+          "secondaryConcepts": [
+            "안전한 기본값"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실패 경계를 영향 범위 차단 지점으로 정의하고 판정 기준·대체 응답·연속 실패 대응의 세 결정을 요구한다. 경계 부재 시 자원 고갈을 통해 국소 실패가 전면 정지로 확대되는 경로를 설명한다.",
+          "aiAnalysisInputSha256": "a85a138bbe27e3f717f8e3f5c5f53d8c1da4c1211ffb8035432968de81188dc7",
+          "aiPublicGuideTopic": "잘못이 번지지 못하게 막는 선",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 실패를 다루는 경계",
+          "section": "3.2 빠른 실패",
+          "primaryConcepts": [
+            "빠른 실패"
+          ],
+          "secondaryConcepts": [
+            "실패 경계"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "빠른 실패를 저확률 작업의 조기 종료로 정의하고 자원 반환을 통한 전체 처리량 보호를 이득으로 제시한다. 과도한 조기 종료의 부작용과 대기 상한 설정의 필요를 연결한다.",
+          "aiAnalysisInputSha256": "e453550fb78cf89385885278990ec8162f458780d7082b9b317411e04e9f41bb",
+          "aiPublicGuideTopic": "안 될 일을 일찍 끝내는 선택",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 실패를 다루는 경계",
+          "section": "3.3 기다림의 상한",
+          "primaryConcepts": [
+            "대기 상한"
+          ],
+          "secondaryConcepts": [
+            "빠른 실패"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대기 상한의 부재가 자원 회수를 막는 구조를 설명하고 정상 응답 분포 기반의 값 설정을 제시한다. 호출 계층 간 상한의 포함 관계가 실패 지점 식별에 미치는 영향을 밝힌다.",
+          "aiAnalysisInputSha256": "2caf959a639fce40af79339658ec28461d04d244bfbc310cce92480b702ddfe7",
+          "aiPublicGuideTopic": "얼마나 기다릴지 정하는 값",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 실패를 다루는 경계",
+          "section": "3.4 다시 해 보기",
+          "primaryConcepts": [
+            "재시도"
+          ],
+          "secondaryConcepts": [
+            "대기 상한",
+            "빠른 실패"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재시도 규칙을 횟수·간격·대상 실패 유형의 세 항목으로 정식화하고 즉시 재시도의 부하 증폭을 지적한다. 재시도 가능 실패와 불가능 실패의 구분이 응답 설계에 의존함을 설명한다.",
+          "aiAnalysisInputSha256": "6f0ee98c44b900c3f9e60a1414b2372aeb3ad6b94ebf2423cd81fae764ccac2a",
+          "aiPublicGuideTopic": "실패한 일을 다시 시도할 때의 규칙",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 실패를 다루는 경계",
+          "section": "3.5 실패가 번지는 길",
+          "primaryConcepts": [
+            "실패 경계"
+          ],
+          "secondaryConcepts": [
+            "대기 상한",
+            "재시도"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대기 누적으로 하위 장애가 상위로 전파되는 경로와 상한·경계 도입 후의 차단 결과를 좌우로 대비한다. 차단 지점에서 축소 응답으로 전환되는 흐름을 함께 표시한다.",
+          "aiAnalysisInputSha256": "6c6507756f7263470345405462fd921951b97814de181c0469406c7dbddd6f60",
+          "aiPublicGuideTopic": "한 자리의 실패가 퍼지는 경로와 막는 자리",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 실패를 다루는 경계",
+          "section": "3.6 되돌리기와 남는 상태",
+          "primaryConcepts": [
+            "부분 실패"
+          ],
+          "secondaryConcepts": [
+            "실패 경계",
+            "재시도"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다단계 처리의 부분 실패에서 잔여 상태 관리 원칙을 제시하고 비가역 작업의 후순위 배치를 처방한다. 선행 비가역 작업에 대해 멱등성 확보를 대안으로 제시한다.",
+          "aiAnalysisInputSha256": "3e8bc5c383ad4a2b15e5540dd9ccf802634680c4044b7ff8c79a77d0f053959f",
+          "aiPublicGuideTopic": "중간에서 끊겼을 때 남는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 실패를 다루는 경계",
+          "section": "3.7 실패를 감추는 기본값",
+          "primaryConcepts": [
+            "실패 은폐"
+          ],
+          "secondaryConcepts": [
+            "안전한 기본값",
+            "실패 경계"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실패 시 중립값 반환이 오류를 은폐해 후속 처리 오염과 인지 실패를 만드는 구조를 설명한다. 대체 값 사용 시 출처 표기를 통해 실제 값과의 구분 가능성을 유지할 것을 요구한다.",
+          "aiAnalysisInputSha256": "90503f9636eaf1e60441375235dc8c48ed25523000694a63bc9989974e657e54",
+          "aiPublicGuideTopic": "빈 값으로 대신했을 때 생기는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": [
+            "fail-loud-not-silent"
+          ]
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "4장 줄여서 버티기",
+          "section": "4.1 다 죽는 대신 덜 주기",
+          "primaryConcepts": [
+            "점진적 저하"
+          ],
+          "secondaryConcepts": [
+            "실패 경계"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "점진적 저하를 부분 포기를 통한 전체 가용성 유지로 정의하고 구성 요소의 중요도 차등을 전제로 제시한다. 저하 구현에 수반되는 알림·대체 경로·감시 부담을 함께 밝힌다.",
+          "aiAnalysisInputSha256": "e46689943334460f19235c465821ebcdd5365d5969ecbbb1030dd74732c4941b",
+          "aiPublicGuideTopic": "전부 멈추지 않고 일부만 포기하는 방식",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 줄여서 버티기",
+          "section": "4.2 무엇을 먼저 끌 것인가",
+          "primaryConcepts": [
+            "기능 우선순위"
+          ],
+          "secondaryConcepts": [
+            "점진적 저하"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "저하 순서의 사전 결정 필요와 판정 기준을 사용자 목표 달성 가능성으로 제시한다. 문서상 순서와 실제 의존 관계의 불일치를 확인하기 위한 사전 시험을 요구한다.",
+          "aiAnalysisInputSha256": "7517a9d522bd594a9cf1ee937e16e207eb5b75da0936fe7b292a553bb09b698e",
+          "aiPublicGuideTopic": "포기할 순서를 미리 정하는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 줄여서 버티기",
+          "section": "4.3 부하가 넘칠 때",
+          "primaryConcepts": [
+            "과부하 대응"
+          ],
+          "secondaryConcepts": [
+            "점진적 저하",
+            "빠른 실패"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "과부하 시 전량 수용 시도의 역효과를 대기 지연과 요청 무효화로 설명하고 수용 한계 기반 거절을 기본 대응으로 제시한다. 요청 중요도에 따른 선택적 거절의 이득을 밝힌다.",
+          "aiAnalysisInputSha256": "659ac4a8ec75d8f263ea9bee4b19219fb2db31376d5d6b5f314c8fdef660752c",
+          "aiPublicGuideTopic": "감당할 수 있는 양을 넘어선 상황",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 줄여서 버티기",
+          "section": "4.4 부하에 따른 응답의 단계",
+          "primaryConcepts": [
+            "점진적 저하"
+          ],
+          "secondaryConcepts": [
+            "과부하 대응",
+            "축소 응답"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "부하 증가에 따른 응답 수준을 네 단계로 배열하고 각 단계에서 사용자가 받는 결과를 병기한다. 완전 무응답 상태를 점선으로 표시해 앞선 단계들의 목적이 그 도달 방지임을 드러낸다.",
+          "aiAnalysisInputSha256": "0a390c98421c74b5780f7962605f954abca27b82cf4d33f4f0970bee722758f2",
+          "aiPublicGuideTopic": "부하가 늘 때 응답이 달라지는 단계",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 줄여서 버티기",
+          "section": "4.5 줄여서 주는 응답",
+          "primaryConcepts": [
+            "축소 응답"
+          ],
+          "secondaryConcepts": [
+            "기능 우선순위",
+            "실패 은폐"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "축소 응답의 구조 동일성 유지와 결측 사유 병기를 설계 원칙으로 제시한다. 화면 수준에서도 누락 사실을 표시해 정상 상태와 구분하도록 요구한다.",
+          "aiAnalysisInputSha256": "b998129a3a49e7b4320e450e2fb0c6c5917090e9751bd837fda301ec62a624ba",
+          "aiPublicGuideTopic": "일부만 담은 답을 돌려주는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 줄여서 버티기",
+          "section": "4.6 저하 상태를 알리는 방법",
+          "primaryConcepts": [
+            "상태 알림"
+          ],
+          "secondaryConcepts": [
+            "축소 응답",
+            "점진적 저하"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "저하 상태의 무통보 지속 위험을 지적하고 시작·종료 기록과 지속 시간 기반 통보를 요구한다. 사용자 통보 문구의 구성 요소를 범위·대안·복구 방법으로 제시한다.",
+          "aiAnalysisInputSha256": "719fcd6457580885e70f1d4627cc91ae9641b783141e4187fa848dad11ad02a6",
+          "aiPublicGuideTopic": "지금 줄여서 주고 있다는 사실 전하기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            27
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 줄여서 버티기",
+          "section": "4.7 저하가 굳어질 때",
+          "primaryConcepts": [
+            "저하 고착"
+          ],
+          "secondaryConcepts": [
+            "축소 응답",
+            "상태 알림"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "임시 저하가 상시화되며 발생하는 코드 노후와 복구 불능, 원인 미해결 문제를 지적한다. 기한 설정을 통해 원인 해결 또는 기능 정식 폐기라는 결정 시점을 강제할 것을 제안한다.",
+          "aiAnalysisInputSha256": "e36069535cd703675e5d37830e3606f2f3ac3020b58e0b7373fd4cb5ab29f4a9",
+          "aiPublicGuideTopic": "임시 조치가 오래 남는 문제",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            27
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "5장 경계를 정하는 값들",
+          "section": "5.1 값을 정하는 근거",
+          "primaryConcepts": [
+            "임계값 근거"
+          ],
+          "secondaryConcepts": [
+            "점진적 저하",
+            "대기 상한"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "경계 임계값의 근거를 정상 측정값·자원 용량·사용자 인내 시간의 세 출처로 정리한다. 외부 값 복사의 부적합성과 근거 기록의 재검토 효용을 제시한다.",
+          "aiAnalysisInputSha256": "4e42e6a7ee1145260b2c86524b355bb6b96c9d951d5c5069b75e1774ca35d83b",
+          "aiPublicGuideTopic": "경계에 쓰는 수를 고르는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "5장 경계를 정하는 값들",
+          "section": "5.2 처음 값과 조정",
+          "primaryConcepts": [
+            "초기값"
+          ],
+          "secondaryConcepts": [
+            "임계값 근거"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "초기값 설정 후 관측 기반 조정을 기본 전략으로 제시하고 조정의 전제로 계측과 변경 용이성을 요구한다. 단일 값 변경 원칙을 결과 해석 가능성의 근거로 설명한다.",
+          "aiAnalysisInputSha256": "dd23a3151cfaaaef4cd6b0ad10dac8bcd20aa9b22ac50e048c6f42c90d576bde",
+          "aiPublicGuideTopic": "완벽한 값을 처음부터 찾지 않기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 경계를 정하는 값들",
+          "section": "5.3 값을 실제로 확인하기",
+          "primaryConcepts": [
+            "값 검증"
+          ],
+          "secondaryConcepts": [
+            "초기값",
+            "설정 변경"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "설정값과 실제 적용값의 불일치를 지적하고 장애 상황 재현을 통한 검증 절차를 제시한다. 미검증 경계가 실효성을 갖지 않는다는 점을 결론으로 밝힌다.",
+          "aiAnalysisInputSha256": "4d8c37b4baf4a81f203980978f36b35f87ccaa8a257e7fdc4836710db7aa6eff",
+          "aiPublicGuideTopic": "정한 값이 실제로 걸리는지 보기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 경계를 정하는 값들",
+          "section": "5.4 값이 서로 얽힐 때",
+          "primaryConcepts": [
+            "값 상호작용"
+          ],
+          "secondaryConcepts": [
+            "대기 상한",
+            "재시도"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "경계 값들의 조합이 상위 제약을 초과하는 사례를 계산으로 제시하고 사전 산출을 점검 방법으로 제안한다. 값 간 관계의 문서화가 단일 값 변경 시 연쇄 검토를 유도함을 밝힌다.",
+          "aiAnalysisInputSha256": "b679bc4d1bc7c0e48399887a1997181f45febbf2863ff8ffc1cecada7e59dfdf",
+          "aiPublicGuideTopic": "여러 값이 함께 만드는 결과",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 경계를 정하는 값들",
+          "section": "5.5 환경마다 다른 값",
+          "primaryConcepts": [
+            "환경별 값"
+          ],
+          "secondaryConcepts": [
+            "초기값",
+            "설정 우선순위"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "환경별 경계 값 차등의 필요와 값 목록의 통합 가시성 요구를 제시한다. 기본값을 최소 자원 환경에 맞추는 원칙을 미지 환경 적용 가능성에서 도출한다.",
+          "aiAnalysisInputSha256": "cf5a4403654bf4723cc90b4af26f6be65ccfe388cc2f953a564d9c173ea1b381",
+          "aiPublicGuideTopic": "자리마다 값이 달라야 하는 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 경계를 정하는 값들",
+          "section": "5.6 값이 낡는 방식",
+          "primaryConcepts": [
+            "값 노후"
+          ],
+          "secondaryConcepts": [
+            "임계값 근거",
+            "환경별 값"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "경계 값의 노후가 무오류 상태로 진행되는 문제를 지적하고 임계 도달 빈도의 양방향 이상을 탐지 신호로 제시한다. 근거 기록의 부재가 주기적 재검토를 불가능하게 함을 밝힌다.",
+          "aiAnalysisInputSha256": "322fe23da3c807ffa7aa2cc1f8684458ab46981f1be3e8f7753ee25b0d52c5e5",
+          "aiPublicGuideTopic": "한때 맞았던 수가 더는 맞지 않을 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 경계를 정하는 값들",
+          "section": "5.7 값을 기록하는 자리",
+          "primaryConcepts": [
+            "값 기록"
+          ],
+          "secondaryConcepts": [
+            "값 검증",
+            "값 출처"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "경계 값 정보의 분산 보관 문제를 지적하고 값과 근거의 동일 위치 배치를 제시한다. 정의값과 적용값의 병행 확인이 경계 관리의 완결 조건임을 밝힌다.",
+          "aiAnalysisInputSha256": "5b58299a4d22a2250b4470a4cf0aeee04fd90ae513ea98023c5f6b22e65e531c",
+          "aiPublicGuideTopic": "정한 값과 근거를 어디에 둘지",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "6장 한 연동의 경계를 정한 기록",
+          "section": "6.1 연동의 상황",
+          "primaryConcepts": [
+            "사례 배경"
+          ],
+          "secondaryConcepts": [
+            "실패 경계",
+            "기본값"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "외부 연동 장애가 전체 화면 정지로 확대된 사례의 경과를 기술하고 미설정 대기 상한이 도구 기본값으로 대체되어 있었음을 원인으로 제시한다.",
+          "aiAnalysisInputSha256": "f8c25fb631be7b17c654968c930f4fd408f9c0e8a7f7fea7fecafdd3b2c6e16e",
+          "aiPublicGuideTopic": "경계를 정하기 전의 상태",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "6장 한 연동의 경계를 정한 기록",
+          "section": "6.2 무엇부터 정했나",
+          "primaryConcepts": [
+            "경계 결정"
+          ],
+          "secondaryConcepts": [
+            "대기 상한",
+            "임계값 근거"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대기 상한을 정상 응답 분포에서 산출하고 상위 요청 상한과의 포함 관계를 확인한 과정을 기술한다. 재시도 횟수 결정에 상대 부하와 정보 중요도를 함께 고려한 판단을 제시한다.",
+          "aiAnalysisInputSha256": "2767ad580a1c73c9cffac5282f282b2c08bc556ce90b223941c898b1d3daf0d8",
+          "aiPublicGuideTopic": "첫 번째로 세운 값과 그 근거",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            37
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 한 연동의 경계를 정한 기록",
+          "section": "6.3 없어도 되는 부분 정하기",
+          "primaryConcepts": [
+            "저하 대상 선정"
+          ],
+          "secondaryConcepts": [
+            "기능 우선순위",
+            "점진적 저하"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "저하 대상 선정에서 사용자 목표 달성 가능성을 판정 기준으로 적용한 과정을 기술한다. 동일 값의 다른 사용처가 저하 불가 경로임을 확인해 처리를 분리한 판단을 제시한다.",
+          "aiAnalysisInputSha256": "960f848165a7bfffd1c77280d716c4b74af2b840f63f68d9d5ec47d749ff6e75",
+          "aiPublicGuideTopic": "화면에서 포기할 수 있는 자리 고르기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 한 연동의 경계를 정한 기록",
+          "section": "6.4 실패를 어떻게 알렸나",
+          "primaryConcepts": [
+            "실패 표시"
+          ],
+          "secondaryConcepts": [
+            "축소 응답",
+            "실패 은폐"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "중립값 대체를 배제하고 결측 사유를 응답에 포함한 설계를 기술한다. 실패 건수 지표화가 저하 진입 감지 신호로 기능하는 구조를 제시한다.",
+          "aiAnalysisInputSha256": "dcd9d84d73ff8f1d6d382daff172befa4fac78faf2a0a6a0dcb7ced73993b853",
+          "aiPublicGuideTopic": "빠진 자리를 드러낸 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 한 연동의 경계를 정한 기록",
+          "section": "6.5 값이 실제로 걸리는지 확인",
+          "primaryConcepts": [
+            "경계 검증"
+          ],
+          "secondaryConcepts": [
+            "값 검증",
+            "값 상호작용"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장애 재현 시험에서 다중 상한의 존재로 실측값이 설정값과 달랐던 경위를 기술한다. 연결 단계 상한 조정과 재시도 횟수 실측을 통해 경계의 실효성을 확인한 과정을 제시한다.",
+          "aiAnalysisInputSha256": "7524d59b5e3481d43640471c8a4780463155cdd73ab4637602bf00e127b93755",
+          "aiPublicGuideTopic": "정한 상한이 실제로 동작하는지 시험",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 한 연동의 경계를 정한 기록",
+          "section": "6.6 다시 겪은 날",
+          "primaryConcepts": [
+            "재발 관찰"
+          ],
+          "secondaryConcepts": [
+            "상태 알림",
+            "점진적 저하"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 장애 재발 시 경계와 저하가 작동한 결과를 기술하고 자동 복구 경과를 제시한다. 장기 저하 상황에서의 안내 문구 고정이라는 잔여 문제를 후속 과제로 기록한다.",
+          "aiAnalysisInputSha256": "ae8653f5aad7cb9f3d2180673ee34208a99691c355aa4de1999c56f222cd32fa",
+          "aiPublicGuideTopic": "같은 상황이 다시 왔을 때의 결과",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 한 연동의 경계를 정한 기록",
+          "section": "6.7 남긴 값과 근거",
+          "primaryConcepts": [
+            "기록 정리"
+          ],
+          "secondaryConcepts": [
+            "값 기록",
+            "임계값 근거"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "확정한 경계 값과 근거의 기록, 외부 조절 가능성 부여와 기본값 일치 설정을 기술한다. 기동 시 적용값 기록이 후속 작업의 탐색 비용을 줄이는 산출물임을 제시한다.",
+          "aiAnalysisInputSha256": "ab9b63842e3d8f2715a3b14f41229e98e24bb92e68696804322bfba09b944816",
+          "aiPublicGuideTopic": "이번 작업이 남긴 설정과 문서",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "7장 경계 설계 판단",
+          "section": "7.1 얼마나 방어할 것인가",
+          "primaryConcepts": [
+            "방어 수준"
+          ],
+          "secondaryConcepts": [
+            "안전한 기본값",
+            "실패 경계"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "전면 방어의 비용을 가독성 저하와 처리 자체의 결함으로 지적하고 대비 대상 선정 기준을 발생 빈도와 전파 범위로 제시한다. 미대비 결정의 명시적 기록이 갖는 의미를 밝힌다.",
+          "aiAnalysisInputSha256": "e17510611e34ce4b3397e9406e884df0873c4c805212191ef69909665ede289d",
+          "aiPublicGuideTopic": "모든 실패에 대비하지 않는 선택",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "7장 경계 설계 판단",
+          "section": "7.2 조용한 실패를 없애기",
+          "primaryConcepts": [
+            "실패 노출"
+          ],
+          "secondaryConcepts": [
+            "방어 수준",
+            "실패 은폐"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실패 은폐의 대표 형태를 열거하고 값 수준 표기·계수·통보라는 세 가지 노출 수단을 제시한다. 노출이 결함의 발견 시점을 앞당겨 총비용을 낮춘다는 근거를 밝힌다.",
+          "aiAnalysisInputSha256": "60a2697a3862ff0360593c9143a7efb24ca26c7e33b2687d431417b8bd1e996a",
+          "aiPublicGuideTopic": "실패가 보이게 만드는 원칙",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": [
+            "fail-loud-not-silent"
+          ]
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 경계 설계 판단",
+          "section": "7.3 기본값을 바꾸는 순서",
+          "primaryConcepts": [
+            "기본값 변경"
+          ],
+          "secondaryConcepts": [
+            "설정 변경",
+            "기본값 기술"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기본값 변경의 영향 범위가 설정 변경보다 넓다는 점을 지적하고 명시 설정 비율 측정을 선행 절차로 제시한다. 변경 후 임계 도달 빈도 관찰과 원복 가능성 확보를 요구한다.",
+          "aiAnalysisInputSha256": "78847b0e6d0f33d03554063c81facfe98fef74bc60485047db6f3b3ac803f043",
+          "aiPublicGuideTopic": "이미 쓰이고 있는 기본값을 고칠 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            15
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 경계 설계 판단",
+          "section": "7.4 경계 설계 점검 항목",
+          "primaryConcepts": [
+            "경계 점검 항목"
+          ],
+          "secondaryConcepts": [
+            "빠른 실패",
+            "대기 상한"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "경계 점검을 상한 존재·계층 간 포함 관계·재시도 대상·실패 값 구분·실측 검증의 다섯 항목으로 정식화한다. 마지막 항목이 문서 검토로 대체될 수 없음을 강조한다.",
+          "aiAnalysisInputSha256": "0f7d76b84f1fa0ec766307d225946d30c894a58c582a6c28e8527d05a1cab740",
+          "aiPublicGuideTopic": "설계를 살펴볼 때 차례로 확인할 목록",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 경계 설계 판단",
+          "section": "7.5 값을 다시 볼 때",
+          "primaryConcepts": [
+            "값 재검토"
+          ],
+          "secondaryConcepts": [
+            "값 노후",
+            "임계값 근거"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "경계 값 재검토의 시점을 상대 변화·부하 증가·정기 점검으로 정하고 임계 도달 횟수를 판단 자료로 제시한다. 근거 갱신을 값 조정에 선행하는 작업으로 규정한다.",
+          "aiAnalysisInputSha256": "1e00de0baf04a1e7ccdcdc92648a59d99f25fe31d44c6201ccfa4544602743ad",
+          "aiPublicGuideTopic": "정해 둔 수를 다시 손보는 시점",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            35
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 경계 설계 판단",
+          "section": "7.6 저하와 중단 사이",
+          "primaryConcepts": [
+            "저하와 중단"
+          ],
+          "secondaryConcepts": [
+            "과부하 대응",
+            "저하 고착"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "저하와 중단의 선택 기준을 사용자 목표 달성 가능성과 결과 정확성 영향으로 제시한다. 판단 모호 시 중단을 기본값으로 두는 근거를 오류 인지 가능성에서 도출한다.",
+          "aiAnalysisInputSha256": "3b22f98fba5d982e3659b007426d226a2b07326a1e2f68091b829d1c26721344",
+          "aiPublicGuideTopic": "줄여서 버틸지 멈출지 정하기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            25
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 경계 설계 판단",
+          "section": "7.7 핵심 원칙 정리",
+          "primaryConcepts": [
+            "경계 원칙 요약"
+          ],
+          "secondaryConcepts": [
+            "기본값",
+            "실패 노출"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체의 판단을 미지정 시 적용값과 실패 전파 범위라는 두 물음으로 압축하고 각 장치를 그 물음의 수단으로 정리한다. 미결정이 외부 기본값에 의한 결정으로 대체된다는 점을 결론으로 제시한다.",
+          "aiAnalysisInputSha256": "1d8387f858a8f57ca5300c21fd9137c8d227b3dd51ac6f8706b8b4f49f3f1858",
+          "aiPublicGuideTopic": "이 책이 다룬 판단 기준의 요약",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 78,
       "title": "색인과 실행 계획: 쿼리 성능 진단",
       "pdfPath": "pdfs/book-078.pdf",

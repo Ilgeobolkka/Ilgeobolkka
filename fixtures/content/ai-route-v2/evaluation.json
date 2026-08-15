@@ -3967,6 +3967,102 @@
       ]
     },
     {
+      "caseId": "case-book-076",
+      "bookId": 76,
+      "purpose": "이 책을 소장하고 있는데, 정하지 않았을 때 쓰이는 값과 잘 안 될 때 막는 자리를 균형 있게 정리하고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "기본값",
+        "안전한 기본값",
+        "설정 우선순위",
+        "실패 경계",
+        "빠른 실패",
+        "점진적 저하"
+      ],
+      "helpfulConcepts": [
+        "기본값의 효과",
+        "우선순위 규칙",
+        "대기 상한",
+        "기능 우선순위"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 17
+        },
+        {
+          "beforePageNumber": 17,
+          "afterPageNumber": 18
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 23
+        },
+        {
+          "beforePageNumber": 23,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 23,
+          "afterPageNumber": 30
+        }
+      ],
+      "irrelevantPageNumbers": [
+        38,
+        39,
+        40,
+        42,
+        43
+      ],
+      "duplicatePageGroups": [
+        [
+          22,
+          45
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        9,
+        10,
+        16,
+        17,
+        18,
+        23,
+        24,
+        30
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        6,
+        11,
+        12,
+        19,
+        25,
+        31
+      ]
+    },
+    {
       "caseId": "case-book-078",
       "bookId": 78,
       "purpose": "조회가 느린 원인을 어디서부터 봐야 할지 몰라서, 색인과 실행 계획과 반복 조회를 넓게 훑어보고 싶다",
