@@ -17997,6 +17997,1032 @@
       ]
     },
     {
+      "bookId": 37,
+      "title": "바람길 상인의 연대기",
+      "pdfPath": "pdfs/book-037.pdf",
+      "pdfSha256": "6d349e5186c73e2530a5d3c5c0cc089edeb0d9b2c58948c8521683d350aac98b",
+      "totalPageCount": 49,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 짐을 싣기 전에",
+          "section": "1.1 혼자 가지 않는다",
+          "primaryConcepts": [
+            "대상 조직"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대상 조직을 사회적 결합이 아닌 위험 관리 장치로 규정한다. 조직의 규칙이 사료로 남고 그 규칙이 위험 인식을 반영한다는 이 책의 전제를 세운다.",
+          "aiAnalysisInputSha256": "5a7b9fa52036a1f9ad7c5d271676c67ae295cd05a93d125595dec2bec0d64a39",
+          "aiPublicGuideTopic": "먼 길을 여럿이 무리 지어 가는 방식이 무엇을 푸는지 밝힌다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 짐을 싣기 전에",
+          "section": "1.1 혼자 가지 않는다",
+          "primaryConcepts": [
+            "대상 조직"
+          ],
+          "secondaryConcepts": [
+            "출자와 몫"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대상 규모가 안전과 속도의 균형점에서 결정됨을 제시한다. 규모의 연도별 변동을 위험 인식과 물량 사정의 지표로 활용하는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "98108432fe8f3883f684a9b1dd5ad2515cea70612585cdd19a99d857faef6768",
+          "aiPublicGuideTopic": "상단의 크기가 무엇으로 정해졌는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 짐을 싣기 전에",
+          "section": "1.2 길 위의 위험",
+          "primaryConcepts": [
+            "교역로의 위험"
+          ],
+          "secondaryConcepts": [
+            "대상 조직"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "손실 유형을 세 갈래로 분류하고 각각의 대응 가능성이 다름을 제시한다. 유형별 비중 변화를 교역로 환경 변화의 지표로 연결한다.",
+          "aiAnalysisInputSha256": "8b199815e78d5c6ace6b42744e19399bf634875e614adf71f75d46c28e438aa8",
+          "aiPublicGuideTopic": "바람길에서 실제로 짐을 잃는 방식을 갈래로 나눈다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 짐을 싣기 전에",
+          "section": "1.2 길 위의 위험",
+          "primaryConcepts": [
+            "교역로의 위험"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "손실 유형별 대응 방법과 시기별 비중 변화를 한 화면에 병렬 제시한다. 대응 불가능한 유형의 존재를 명시해 이후 장의 문제를 예고한다.",
+          "aiAnalysisInputSha256": "55e0619d605c3d972fbf4f1daf2b6716c5c2a3d8f81a6eb7248ae3df61f02a76",
+          "aiPublicGuideTopic": "짐을 잃는 세 갈래와 각각을 줄이는 방법을 나란히 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 짐을 싣기 전에",
+          "section": "1.3 무엇을 실을 것인가",
+          "primaryConcepts": [
+            "화물 선택"
+          ],
+          "secondaryConcepts": [
+            "교역로의 위험"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "화물 성격이 운송 방식과 조직 규칙을 결정하는 관계를 제시한다. 화물 종류 확인이 여타 수치 해석의 선결 조건임을 밝힌다.",
+          "aiAnalysisInputSha256": "86397d059e3ee7e19dd229feec097d4c2a4d2cbe99f9caeb602d04fb16fb7e45",
+          "aiPublicGuideTopic": "무엇을 싣느냐가 다른 모든 결정을 정한다는 점을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 짐을 싣기 전에",
+          "section": "1.3 무엇을 실을 것인가",
+          "primaryConcepts": [
+            "화물 선택"
+          ],
+          "secondaryConcepts": [
+            "운반 비용"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "화물 선택이 예상 손실을 포함한 비용 계산에 따름을 제시한다. 장부의 예상 손실 항목을 위험 인식의 시계열 지표로 활용하는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "c691241b25d777cf58a3025c42bccbacf96f8d0571e6cf1871faea9bb3573eff",
+          "aiPublicGuideTopic": "실을 것을 정할 때 셈하는 것을 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "2장 상단이라는 짜임",
+          "section": "2.1 누가 무엇을 대는가",
+          "primaryConcepts": [
+            "출자와 몫"
+          ],
+          "secondaryConcepts": [
+            "대상 조직"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "출자와 운영의 분리 구조를 제시하고 분산 출자의 위험 완화 기능을 밝힌다. 자본 외 기여가 배분에 반영되는 방식을 사료에서 확인한다.",
+          "aiAnalysisInputSha256": "7740b1e48e964fbd72208ce13b323643f6df5b5fe0cba99996b598e5e755cdb7",
+          "aiPublicGuideTopic": "상단을 꾸리는 데 필요한 것을 누가 댔는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 상단이라는 짜임",
+          "section": "2.1 누가 무엇을 대는가",
+          "primaryConcepts": [
+            "출자와 몫"
+          ],
+          "secondaryConcepts": [
+            "분배 규칙"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "출자자와 운영자의 이해 상충 구조와 계약 조항의 통제 기능을 제시한다. 조항 수를 신뢰 수준의 대리 지표로 삼는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "bd16d59faffac096869b22151a2e8f3d165cdfe4ac1d8c36bf2eb14760fa8bf9",
+          "aiPublicGuideTopic": "대는 쪽과 가는 쪽의 이해가 어긋나는 자리를 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 상단이라는 짜임",
+          "section": "2.2 길잡이와 삯꾼",
+          "primaryConcepts": [
+            "역할 분담"
+          ],
+          "secondaryConcepts": [
+            "대상 조직"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대상 내부 역할 구분과 보상 방식의 차이를 제시한다. 성과 배분과 고정 임금의 구분이 위험 부담 주체를 드러냄을 밝힌다.",
+          "aiAnalysisInputSha256": "3ca6d03029fbd7098b00ce9c1acf386545dd434cfed0ce3c5bac92d9049eb16c",
+          "aiPublicGuideTopic": "상단 안에서 일이 어떻게 나뉘었는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 상단이라는 짜임",
+          "section": "2.2 길잡이와 삯꾼",
+          "primaryConcepts": [
+            "역할 분담"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "보상 방식에 따른 역할 구분과 위험 부담의 대응을 좌우 대비로 시각화한다. 성과 연동 여부가 손실 귀속을 결정함을 보인다.",
+          "aiAnalysisInputSha256": "3143267e1a7647583a14df480fba878a77341d33953afc1a7b6403cad942f412",
+          "aiPublicGuideTopic": "상단 안의 자리와 각자가 받는 방식을 나란히 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 상단이라는 짜임",
+          "section": "2.3 몫을 나누는 규칙",
+          "primaryConcepts": [
+            "분배 규칙"
+          ],
+          "secondaryConcepts": [
+            "출자와 몫"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정산 규칙의 이층 구조와 사전 확정 관행을 제시한다. 비용 우선 공제 순서가 손실 귀속 순서를 결정함을 밝힌다.",
+          "aiAnalysisInputSha256": "2b7bd3392c1e36f1a16f11d4e24195eaae12ce5b3c716d21a79f41accba0c44e",
+          "aiPublicGuideTopic": "돌아온 뒤 몫을 나누는 규칙이 어떻게 적혔는지 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 상단이라는 짜임",
+          "section": "2.3 몫을 나누는 규칙",
+          "primaryConcepts": [
+            "분배 규칙"
+          ],
+          "secondaryConcepts": [
+            "위험 분담"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "손실 상황에서 배분 규칙이 만드는 비대칭적 부담을 제시한다. 규칙 개정 흔적을 경험 반영의 증거로 읽는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "6282361d31808b6d9d956c6dec25a0a411b4430c9c1891987dcd3f054cbbdc5f",
+          "aiPublicGuideTopic": "규칙이 잃었을 때 어떻게 움직이는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 상단이라는 짜임",
+          "section": "2.4 다투는 자리",
+          "primaryConcepts": [
+            "분쟁 처리"
+          ],
+          "secondaryConcepts": [
+            "분배 규칙"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분쟁 조정 절차의 사전 지정과 그 존재가 시사하는 분쟁 빈도를 제시한다. 이 절이 다른 장과 직접 연결되지 않음을 밝혀 구성상 위치를 명시한다.",
+          "aiAnalysisInputSha256": "1933330d675d531236b5a70e73330a311cb1b7c2142c61b77e8b0a68e0d727ec",
+          "aiPublicGuideTopic": "몫을 두고 다툼이 생겼을 때 어떻게 처리했는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 상단이라는 짜임",
+          "section": "2.4 다투는 자리",
+          "primaryConcepts": [
+            "분쟁 처리"
+          ],
+          "secondaryConcepts": [
+            "역할 분담"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분쟁 기록의 부재와 계약 조항 신설을 통한 간접 확인 방법을 제시한다. 원인 추정이 불가능한 사례를 공백으로 유지하는 원칙을 밝힌다.",
+          "aiAnalysisInputSha256": "4b199b07e20a763f55b2cc0e7637c634e94c5c605c4d4785233bcc7343dd3c1a",
+          "aiPublicGuideTopic": "다툼의 기록이 남는 방식을 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 위험을 나누는 법",
+          "section": "3.1 한 배에 다 싣지 않는다",
+          "primaryConcepts": [
+            "분산"
+          ],
+          "secondaryConcepts": [
+            "교역로의 위험"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분산 적재의 비용과 편익을 손실 규모의 분포 관점에서 설명한다. 기대 손실이 아닌 극단 손실을 줄이는 것이 관행의 목적임을 밝힌다.",
+          "aiAnalysisInputSha256": "3a373ee2e35b3a2d49272b3ad2830a2ca756aa0c21338547d49aaad569c1209c",
+          "aiPublicGuideTopic": "짐을 나누어 싣는 관행이 무엇을 바꾸는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 위험을 나누는 법",
+          "section": "3.1 한 배에 다 싣지 않는다",
+          "primaryConcepts": [
+            "분산"
+          ],
+          "secondaryConcepts": [
+            "화물 선택"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "화물 특성에 따른 분산 정도의 차이를 비용 비교로 설명한다. 분산 횟수와 예상 손실 항목의 동조를 위험 인식의 교차 확인으로 제시한다.",
+          "aiAnalysisInputSha256": "14a320b04fe950c130fff874b7fa95a94c0c52095e1d3d54119da5336cd8250a",
+          "aiPublicGuideTopic": "무엇을 나누고 무엇을 나누지 않는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 위험을 나누는 법",
+          "section": "3.2 여럿이 나누어 진다",
+          "primaryConcepts": [
+            "위험 분담"
+          ],
+          "secondaryConcepts": [
+            "분산"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "개인 내 분산에서 집단 간 위험 공유로 확장되는 구조를 제시한다. 공유가 성립하기 위한 두 가지 선행 조건을 명시한다.",
+          "aiAnalysisInputSha256": "d8123ee78a9b59b827e2374d5dc5cdf1ef3651b0290f3e8b80d6d76c6367e1a0",
+          "aiPublicGuideTopic": "짐을 나누는 데서 위험을 나누는 데로 넘어가는 자리를 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16,
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 위험을 나누는 법",
+          "section": "3.2 여럿이 나누어 진다",
+          "primaryConcepts": [
+            "위험 분담"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "위험 공유 전후의 손실 분포를 개인별 막대 높이로 대비한다. 최악값의 개선과 전체 손실 총량의 불변을 함께 보인다.",
+          "aiAnalysisInputSha256": "66a9b38d93bb414f1f7662339aae79fbe02e11e1e0811c086665b2e08a658639",
+          "aiPublicGuideTopic": "짐을 잃었을 때 손실이 어떻게 흩어지는지 두 경우로 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 위험을 나누는 법",
+          "section": "3.3 잃었을 때 메우는 약속",
+          "primaryConcepts": [
+            "보상 관행"
+          ],
+          "secondaryConcepts": [
+            "위험 분담"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "외부 보상 약정의 구조와 손실 규모별 단계 설정을 제시한다. 소액 손실의 내부 처리와 대형 손실의 외부 이전이라는 이중 구조를 밝힌다.",
+          "aiAnalysisInputSha256": "6fa5ea05cd9146f2aab65928821f4251bdb5bdd4ac4afbdffbf95ffd665574ca",
+          "aiPublicGuideTopic": "잃은 몫을 어떻게 메웠는지 그 약속의 꼴을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 위험을 나누는 법",
+          "section": "3.3 잃었을 때 메우는 약속",
+          "primaryConcepts": [
+            "보상 관행"
+          ],
+          "secondaryConcepts": [
+            "보상의 한계"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "보상 약정이 검증 가능한 손실 유형에만 적용되는 한계를 제시한다. 미담보 위험의 증가와 교역로 쇠퇴의 연결을 예고한다.",
+          "aiAnalysisInputSha256": "cdf26a1615056c02295eaf6651160e7f443c451654b69690613c27bb692ec0bc",
+          "aiPublicGuideTopic": "이 약속이 통하지 않는 자리를 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 위험을 나누는 법",
+          "section": "3.4 값을 미리 정해 둔다",
+          "primaryConcepts": [
+            "선도 거래"
+          ],
+          "secondaryConcepts": [
+            "보상 관행"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선도 계약의 위험 이전 구조와 대칭적 기회 포기를 제시한다. 가격 변동성이 큰 화물에 한정되는 적용 조건을 밝힌다.",
+          "aiAnalysisInputSha256": "6d42ff2e9efa903970984fda2393f1352460f11c30048ca63dc01c4c78e69437",
+          "aiPublicGuideTopic": "도착하기 전에 값을 정해 두는 거래를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 위험을 나누는 법",
+          "section": "3.4 값을 미리 정해 둔다",
+          "primaryConcepts": [
+            "선도 거래"
+          ],
+          "secondaryConcepts": [
+            "신용 증서"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선도 계약의 이행이 반복 거래의 평판 효과에 의존함을 제시한다. 관계의 지속성이 이후 신용 장치의 기반이 됨을 밝힌다.",
+          "aiAnalysisInputSha256": "9498f909b8ca69bfa82244bedea2ab0632fef6da2a4fd278e4d9d03214f37d8b",
+          "aiPublicGuideTopic": "미리 정한 값이 지켜지게 만드는 것이 무엇인지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 짐 없이 오가는 것",
+          "section": "4.1 무거운 돈의 문제",
+          "primaryConcepts": [
+            "운반 비용"
+          ],
+          "secondaryConcepts": [
+            "화물 선택"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결제 수단의 물리적 운반이 초래하는 비용과 위험을 제시한다. 원격 결제 장치의 등장 배경을 문제 정의로 세운다.",
+          "aiAnalysisInputSha256": "5d5dcdf8b1acccd0ea6af5bc352fa2a290c25edd2aef3ed5aa02c04cebc9afa7",
+          "aiPublicGuideTopic": "값을 치를 것을 실어 나르는 일이 왜 문제인지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 짐 없이 오가는 것",
+          "section": "4.1 무거운 돈의 문제",
+          "primaryConcepts": [
+            "운반 비용"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실물 결제와 증서 결제의 소요 자원을 항목별로 대비한다. 운반 회피가 비용 절감의 근본 수단임을 시각화한다.",
+          "aiAnalysisInputSha256": "bd79f3895e63bd59db149332af49dca97483518a7e0d20c02d1592d7c0bcc1fc",
+          "aiPublicGuideTopic": "값을 실어 나를 때와 종이로 대신할 때 드는 것을 견주어 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 짐 없이 오가는 것",
+          "section": "4.2 종이 한 장으로",
+          "primaryConcepts": [
+            "신용 증서"
+          ],
+          "secondaryConcepts": [
+            "운반 비용"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "신용 증서의 작동 방식과 실물 이동 없는 가치 이전을 제시한다. 무게 절감과 강탈 위험 감소가 동시에 발생하는 구조를 밝힌다.",
+          "aiAnalysisInputSha256": "0608cc9a20c36858d3a86a21e5b64df238623fc74bbe6799e1c077a42b04ccea",
+          "aiPublicGuideTopic": "값을 나르지 않고 옮기는 증서가 어떻게 쓰였는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 짐 없이 오가는 것",
+          "section": "4.2 종이 한 장으로",
+          "primaryConcepts": [
+            "신용 증서"
+          ],
+          "secondaryConcepts": [
+            "선도 거래"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "신용 증서의 전제 조건인 양단 거점 조직을 제시한다. 조직 성장과 금융 장치 도입의 선후 관계를 사료의 시기 분포로 확인한다.",
+          "aiAnalysisInputSha256": "28f22487f107bb931ec21eee74c298fbb94e6ce1d2d8527e50f07fe6f0a810f8",
+          "aiPublicGuideTopic": "증서가 쓰이려면 무엇이 갖춰져야 하는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": [
+            "paper-travels-lighter"
+          ]
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 짐 없이 오가는 것",
+          "section": "4.3 믿음은 어디서 오는가",
+          "primaryConcepts": [
+            "신용의 근거"
+          ],
+          "secondaryConcepts": [
+            "신용 증서"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "신용의 근거를 증서 외부의 관계와 조직에서 찾고 규모에 따른 접근 불평등을 제시한다. 금융 장치가 격차를 확대하는 방향을 밝힌다.",
+          "aiAnalysisInputSha256": "b191e89a1417a862d3520c2907188eb8a0233e0e017415acee261c1f7f729217",
+          "aiPublicGuideTopic": "종이를 믿게 만드는 것이 무엇인지 다룬다",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            26,
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 짐 없이 오가는 것",
+          "section": "4.3 믿음은 어디서 오는가",
+          "primaryConcepts": [
+            "신용의 근거"
+          ],
+          "secondaryConcepts": [
+            "출자와 몫"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "신용 기반의 붕괴 경로를 거래 단절과 거점 이탈로 설명한다. 장치의 소멸을 기반 조건의 소멸로 구분해 읽는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "f8ef2b8366f8754badff9ef0f9de54abe13f492d7f44914d2583f726eb40cbf1",
+          "aiPublicGuideTopic": "믿음이 무너지는 자리를 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 짐 없이 오가는 것",
+          "section": "4.4 장부가 길을 대신할 때",
+          "primaryConcepts": [
+            "원격 결제"
+          ],
+          "secondaryConcepts": [
+            "신용의 근거"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다자 거래의 차액 결제 구조와 실물 이동 축소 효과를 제시한다. 증서 단계에서 장부 상계 단계로의 발전 관계를 밝힌다.",
+          "aiAnalysisInputSha256": "3467b966bc41f12d2092edc0e488057c8a71df35782704fddf982c39120d9989",
+          "aiPublicGuideTopic": "여러 거래를 장부에서 상계하는 방식을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 짐 없이 오가는 것",
+          "section": "4.4 장부가 길을 대신할 때",
+          "primaryConcepts": [
+            "원격 결제"
+          ],
+          "secondaryConcepts": [
+            "분배 규칙"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "차액 결제가 요구하는 기록 완결성과 전담 인력의 등장을 제시한다. 기록 밀도의 시기 편중이 자료 해석에 미치는 영향을 밝힌다.",
+          "aiAnalysisInputSha256": "6693ac9149c388a1bd71a3b69678289b7d023207b57846ba8958f2eaf99af1cb",
+          "aiPublicGuideTopic": "장부로 셈하는 방식이 무엇을 요구하는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 소금성에서 향료항까지",
+          "section": "5.1 한 번의 왕복을 따라간다",
+          "primaryConcepts": [
+            "왕복 추적"
+          ],
+          "secondaryConcepts": [
+            "대상 조직"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단일 왕복 사례의 자료 구성과 역순 추적 절차를 제시한다. 정산 기록의 신뢰성이 높은 이유와 계획 문서를 결과로 오독하는 위험을 밝힌다.",
+          "aiAnalysisInputSha256": "8f7e12bbed0f332f6185d6f0d2209877cacf56ce6456c8586d016d7f23000d61",
+          "aiPublicGuideTopic": "장부 한 벌로 한 번의 왕복을 따라가는 순서를 보인다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 소금성에서 향료항까지",
+          "section": "5.1 한 번의 왕복을 따라간다",
+          "primaryConcepts": [
+            "왕복 추적"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "왕복 경로상의 자료 배치와 역순 검토 방향을 시각화한다. 정산 기록을 기점으로 삼는 절차를 화살표로 명시한다.",
+          "aiAnalysisInputSha256": "bc6c838462418dd624673829bfc5495d64818dba3826aed22f4a6c17963fcae0",
+          "aiPublicGuideTopic": "한 번의 왕복에서 남은 자료가 어느 자리에 놓이는지 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 소금성에서 향료항까지",
+          "section": "5.2 든 것과 남은 것",
+          "primaryConcepts": [
+            "비용 계산"
+          ],
+          "secondaryConcepts": [
+            "운반 비용"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정산 항목의 내부 이전과 외부 지출 구분을 비용 계산의 선결 과제로 제시한다. 항목 분류 결과에서 통행세의 비중을 확인해 후속 논의로 연결한다.",
+          "aiAnalysisInputSha256": "c565251dfb2ebe3052a3c8ce9187b67301cb342ef84efbfb1adc24ec9f9ae898",
+          "aiPublicGuideTopic": "한 번의 왕복에서 든 것을 항목별로 갈라 본다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 소금성에서 향료항까지",
+          "section": "5.2 든 것과 남은 것",
+          "primaryConcepts": [
+            "비용 계산"
+          ],
+          "secondaryConcepts": [
+            "분배 규칙"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정산 규칙의 실제 적용 과정과 문서 대비 편차를 제시한다. 편차의 원인을 추정하지 않고 사실만 기록하는 처리를 밝힌다.",
+          "aiAnalysisInputSha256": "880adb1ebfd758fcb35e3b2d8905c9ea62f399d69e38e8274b85fe17b15593e4",
+          "aiPublicGuideTopic": "남은 것을 나누는 과정을 실제 숫자 없이 따라간다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 소금성에서 향료항까지",
+          "section": "5.3 셈을 다시 맞춰 보기",
+          "primaryConcepts": [
+            "검산"
+          ],
+          "secondaryConcepts": [
+            "비용 계산"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장부 검산의 두 가지 방법과 각각의 탐지 결과를 제시한다. 불일치가 오류가 아닌 집계 범위 차이에서 비롯될 수 있음을 밝힌다.",
+          "aiAnalysisInputSha256": "02941b9d8a2410fde05ce07239b05b6b6987ff4eb360fa6514605dc2cc985162",
+          "aiPublicGuideTopic": "장부의 셈이 맞는지 되짚어 보는 절차를 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 소금성에서 향료항까지",
+          "section": "5.4 셈에 쓴 값이 어디서 왔는지",
+          "primaryConcepts": [
+            "출처 표시"
+          ],
+          "secondaryConcepts": [
+            "검산"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "값의 출처별 신뢰도 차이와 출처 병기의 필요성을 제시한다. 이 절이 다른 장과 직접 연결되지 않음을 밝혀 구성상 위치를 명시한다.",
+          "aiAnalysisInputSha256": "71d7477ebc5184c2026efc72da2f1ec49d5a4bdee30ff8dcd4e8955aea0722c4",
+          "aiPublicGuideTopic": "셈에 쓴 값마다 출처를 남기는 방법을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 소금성에서 향료항까지",
+          "section": "5.5 왕복이 끝난 뒤",
+          "primaryConcepts": [
+            "왕복 추적"
+          ],
+          "secondaryConcepts": [
+            "검산"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단일 사례 추적의 결과를 확정값·불일치·결측으로 정리한다. 결측 구간의 추정과 기록을 표기로 구분하는 원칙을 밝힌다.",
+          "aiAnalysisInputSha256": "4c1a0bb901507d2b6c63f62415f14a931f73452090944531061454ed09f21dba",
+          "aiPublicGuideTopic": "한 벌의 자료로 어디까지 갔는지 셈한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 장부가 감추는 것",
+          "section": "6.1 남은 장부는 살아남은 상단의 것",
+          "primaryConcepts": [
+            "성공 편향"
+          ],
+          "secondaryConcepts": [
+            "대상 조직"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "잔존 자료가 존속 조직에 한정되는 생존 편향을 제시한다. 편향의 방향이 장치의 효과를 과대평가하는 쪽임을 특정한다.",
+          "aiAnalysisInputSha256": "1396b626ccb85cf7540584b78dd9b8173b804549a64829db2972e18614841b05",
+          "aiPublicGuideTopic": "오늘 남은 자료가 성공한 상단의 것이라는 점을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 장부가 감추는 것",
+          "section": "6.1 남은 장부는 살아남은 상단의 것",
+          "primaryConcepts": [
+            "성공 편향"
+          ],
+          "secondaryConcepts": [
+            "보상 관행"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "소멸 조직을 거래 상대 명단의 단절로 추적하는 방법을 제시한다. 단절 시기의 집중을 관찰하되 원인 단정은 유보한다.",
+          "aiAnalysisInputSha256": "5e3f8167dd2deea7c39e44b8e65953755960613873245350ec9cd80a373efc1e",
+          "aiPublicGuideTopic": "망한 상단의 자리를 다른 흔적으로 더듬는 방법을 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 장부가 감추는 것",
+          "section": "6.2 적히지 않은 거래",
+          "primaryConcepts": [
+            "비장부 거래"
+          ],
+          "secondaryConcepts": [
+            "원격 결제"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "장부 기재 범위 밖의 거래 존재와 그 규모 추정 불가를 제시한다. 기록 제도 변화가 시계열 비교를 왜곡하는 경로를 밝힌다.",
+          "aiAnalysisInputSha256": "773f01260cfbf7492c36c95cd240579e05010bab750eb84fba5ca3c0fac60215",
+          "aiPublicGuideTopic": "장부에 오르지 않은 거래가 있었을 가능성을 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 장부가 감추는 것",
+          "section": "6.2 적히지 않은 거래",
+          "primaryConcepts": [
+            "비장부 거래"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시기별 장부 포착률의 차이를 실제 거래 대비 비율로 시각화한다. 제도 변화가 기록 범위를 넓힌 경로를 화살표로 제시한다.",
+          "aiAnalysisInputSha256": "74572a56e3bfa6eb1bdd4b1613611621ffc7c11ac7eb33cbaacd51eda813d691",
+          "aiPublicGuideTopic": "실제 거래와 장부에 오른 거래의 폭이 시기마다 다름을 보인다",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 장부가 감추는 것",
+          "section": "6.3 길이 끊긴 해의 기록",
+          "primaryConcepts": [
+            "단절기 기록"
+          ],
+          "secondaryConcepts": [
+            "보상 관행"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "활동 중단기의 자료 부재가 사건 부재로 오독되는 구조를 제시한다. 전후 문서의 변화로 간접 추론하되 해석의 다의성을 명시한다.",
+          "aiAnalysisInputSha256": "f91abe622145e6ef028cac2bd6ef196883b8fd1953706de4534d17ba8ddd9c36",
+          "aiPublicGuideTopic": "길이 막힌 해에 기록이 어떻게 되는지 다룬다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 장부가 감추는 것",
+          "section": "6.3 길이 끊긴 해의 기록",
+          "primaryConcepts": [
+            "단절기 기록"
+          ],
+          "secondaryConcepts": [
+            "신용의 근거"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복적 단절이 금융 장치의 기반을 잠식하는 순환을 제시한다. 교역로 쇠퇴를 단일 사건이 아닌 누적 과정으로 설명한다.",
+          "aiAnalysisInputSha256": "492997155c50905590cea3ebb442a26fe5cf2b6cd316118295d54ae8ae5d2cf3",
+          "aiPublicGuideTopic": "끊김이 되풀이될 때 무엇이 무너지는지 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 장부가 감추는 것",
+          "section": "6.4 셈으로 닿는 자리",
+          "primaryConcepts": [
+            "상업 사료의 쓸모"
+          ],
+          "secondaryConcepts": [
+            "성공 편향"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "상업 사료의 신뢰 영역을 금액이 아닌 제도 구조로 한정한다. 조작 유인이 없는 항목을 근거로 삼는 관점을 밝힌다.",
+          "aiAnalysisInputSha256": "d9a6ebf2e91cdc4b36c633f56ffbb3c63aabde7072f7417b72f582cfee865f04",
+          "aiPublicGuideTopic": "한계를 다 인정하고도 장부가 남기는 값어치를 정리한다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 장부가 감추는 것",
+          "section": "6.4 셈으로 닿는 자리",
+          "primaryConcepts": [
+            "상업 사료의 쓸모"
+          ],
+          "secondaryConcepts": [
+            "비장부 거래"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "상업 사료가 외부 요인 설명에 한계가 있음을 밝히고 타 유형 자료와의 결합 필요성을 제시한다. 현 작업을 결합 준비로 위치시킨다.",
+          "aiAnalysisInputSha256": "02f17bf311dc91ed201edc5021658198cba34c54ef487563f9119b8b74953c43",
+          "aiPublicGuideTopic": "장부가 다른 자료와 함께 놓일 때 커지는 자리를 짚는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 바람이 바뀐 뒤",
+          "section": "7.1 상단이 남긴 것",
+          "primaryConcepts": [
+            "신용의 근거"
+          ],
+          "secondaryConcepts": [
+            "원격 결제"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연구 결과를 위험 관리 장치의 공통 방향이라는 명제로 압축한다. 효과 검증에 필요한 자료 조건을 특정해 미해결 영역을 구분한다.",
+          "aiAnalysisInputSha256": "11144f8010cd9ed84cb812e4185ed16c23a26482eb0f483e1d0cbae264fc604e",
+          "aiPublicGuideTopic": "이 책이 다로 상단의 자료에서 얻어 낸 것을 한자리에 모은다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": [
+            "paper-travels-lighter"
+          ]
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 바람이 바뀐 뒤",
+          "section": "7.2 이 길 밖의 길",
+          "primaryConcepts": [
+            "성공 편향"
+          ],
+          "secondaryConcepts": [
+            "단절기 기록"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "금융 장치의 형태가 교역로 조건에서 도출됨을 제시한다. 타 사례 비교의 전제로 조건 명세를 남기는 것을 현 작업의 범위로 규정한다.",
+          "aiAnalysisInputSha256": "c51e110dffd904edae8e7af2bbdc98381dd8a295bd63ce0000d521ab82149161",
+          "aiPublicGuideTopic": "바람길에서 얻은 것이 다른 길로 갈 수 있는지 묻는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 바람이 바뀐 뒤",
+          "section": "7.3 다시 실을 수 있는 셈",
+          "primaryConcepts": [
+            "상업 사료의 쓸모"
+          ],
+          "secondaryConcepts": [
+            "출처 표시"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "상업 사료 독해 절차를 일반 방법으로 정리하고 두 가지 대표 오류를 지목한다. 오류 회피 시 장부가 전달하는 고유 정보를 제시한다.",
+          "aiAnalysisInputSha256": "dd7bef5cfbfc497d76a02d1a9778cc10e01b94fb36b69d4e87a2737201a541d6",
+          "aiPublicGuideTopic": "상업 자료를 다루려는 쪽에게 이 작업이 무엇을 남기는지 적는다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 41,
       "title": "분업과 비교우위: 교환은 왜 이익인가",
       "pdfPath": "pdfs/book-041.pdf",

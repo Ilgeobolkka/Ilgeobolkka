@@ -1424,6 +1424,125 @@
       ]
     },
     {
+      "caseId": "case-book-037",
+      "bookId": 37,
+      "purpose": "이 책을 소장하고 있는데, 먼 길을 오간 상단이 위험과 셈을 어떤 장치로 다뤘는지 깊이 있게 훑어보고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "대상 조직",
+        "위험 분담",
+        "보상 관행",
+        "신용 증서",
+        "원격 결제"
+      ],
+      "helpfulConcepts": [
+        "교역로의 위험",
+        "분배 규칙",
+        "분산",
+        "신용의 근거"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 18
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 18
+        },
+        {
+          "beforePageNumber": 18,
+          "afterPageNumber": 20
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 26
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 28
+        },
+        {
+          "beforePageNumber": 26,
+          "afterPageNumber": 28
+        },
+        {
+          "beforePageNumber": 28,
+          "afterPageNumber": 30
+        }
+      ],
+      "irrelevantPageNumbers": [
+        14,
+        15,
+        37,
+        41,
+        42,
+        43,
+        44
+      ],
+      "duplicatePageGroups": [
+        [
+          27,
+          47
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        6,
+        8,
+        12,
+        16,
+        18,
+        20,
+        24,
+        26,
+        28,
+        30
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        7,
+        9,
+        13,
+        17,
+        19,
+        21,
+        25,
+        27,
+        29,
+        31
+      ]
+    },
+    {
       "caseId": "case-book-041",
       "bookId": 41,
       "purpose": "이 책을 소장하고 있는데, 작은 가게를 열기 전에 여러 메뉴를 한 사람이 다 만드는 게 나을지 한 가지에 집중하는 게 나을지 핵심만 빠르게 확인하고 싶다",
