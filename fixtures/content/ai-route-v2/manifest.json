@@ -48465,6 +48465,1106 @@
           "duplicateGroupKeys": []
         }
       ]
+    },
+    {
+      "bookId": 75,
+      "title": "로그 설계와 수집 파이프라인",
+      "pdfPath": "pdfs/book-075.pdf",
+      "pdfSha256": "0051f98991e706c3a597f2a05779340a4d8b9d250c0ba62269ae69230db930fb",
+      "totalPageCount": 50,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "로그 설계와 수집을 다루는 장과 절의 구성",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 로그가 하는 일",
+          "section": "1.1 로그의 정의",
+          "primaryConcepts": [
+            "로그"
+          ],
+          "secondaryConcepts": [
+            "기록",
+            "시각"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "로그를 실행 시점에 생성되고 사후에 소비되는 기록으로 정의하고 시차가 설계 제약을 만드는 구조를 설명한다. 부족과 과잉이라는 두 실패 방향을 이 책의 판단 축으로 세운다.",
+          "aiAnalysisInputSha256": "afa2fd29654b8aedbc2783168f6cc2f5e6822b8218639aaf6f3cfa7d6bf3c01a",
+          "aiPublicGuideTopic": "실행 중에 남기는 기록이라는 것의 뜻",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 로그가 하는 일",
+          "section": "1.2 무엇을 남길 것인가",
+          "primaryConcepts": [
+            "기록 대상"
+          ],
+          "secondaryConcepts": [
+            "로그"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 대상 선정을 사후 질문에서 역산하는 절차로 제시하고 흐름·분기·이상이라는 세 갈래로 사건을 분류한다. 정적 분석으로 알 수 있는 사실을 기록 대상에서 제외하는 기준을 밝힌다.",
+          "aiAnalysisInputSha256": "4ae9881be277c04036a88a80849fc3dff627727b2a964e812f1bea2cbbfa7025",
+          "aiPublicGuideTopic": "남길 만한 사건을 고르는 기준",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 로그가 하는 일",
+          "section": "1.3 남기지 말아야 할 것",
+          "primaryConcepts": [
+            "기록 금지 대상"
+          ],
+          "secondaryConcepts": [
+            "기록 대상"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "로그의 복제·장기 보존 특성에서 민감값 기록 금지의 근거를 도출하고 전량 기록 방식의 위험을 지적한다. 허용 목록 방식과 마스킹·대체 식별자라는 두 대응을 제시한다.",
+          "aiAnalysisInputSha256": "371753e2e356822dbabfe69378d56002eecebc74d7a02f897f5ad51e480cb373",
+          "aiPublicGuideTopic": "기록에 담으면 안 되는 값의 종류",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            3
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 로그가 하는 일",
+          "section": "1.4 로그와 지표의 구분",
+          "primaryConcepts": [
+            "로그와 지표"
+          ],
+          "secondaryConcepts": [
+            "로그"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "로그와 지표를 개별 사건 기록과 집계 수치로 구분하고 이상 탐지와 원인 추적이라는 역할 분담을 설명한다. 보존 비용 차이가 보존 기간 배치로 이어지는 구조를 제시한다.",
+          "aiAnalysisInputSha256": "e2f7f251cf149f5c921c788287aa74fc1f2dbdc7012820b8fcd4d7378532858b",
+          "aiPublicGuideTopic": "낱낱의 기록과 모아 놓은 수의 다른 쓰임",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 로그가 하는 일",
+          "section": "1.5 로그를 읽는 사람",
+          "primaryConcepts": [
+            "독자"
+          ],
+          "secondaryConcepts": [
+            "로그",
+            "기록 대상"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "로그 소비자의 맥락 부재를 전제로 개별 행의 자기 완결성을 요구한다. 조건 필터링 기반 소비 방식과 결과·입력 값 병기의 필요를 함께 제시한.",
+          "aiAnalysisInputSha256": "4b082101dbe477e901b2188fcd79c1523d88453a275dbf1ab94de79c434bf90b",
+          "aiPublicGuideTopic": "나중에 이 기록을 볼 사람의 처지",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": [
+            "logs-answer-questions"
+          ]
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 로그가 하는 일",
+          "section": "1.6 한 줄의 로그가 담는 것",
+          "primaryConcepts": [
+            "기록 대상"
+          ],
+          "secondaryConcepts": [
+            "구조화된 로그",
+            "독자"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "로그 한 행의 구성 요소를 시각·발생 위치·수준·사건·부가 항목의 다섯으로 분해하고 각 요소가 답하는 물음을 병기한다. 고정 항목과 가변 항목의 경계를 테두리로 구분한다.",
+          "aiAnalysisInputSha256": "005e5a8f81dc8c252991708e83168fc329acf7a3e0388bf82f9c23043a4898bf",
+          "aiPublicGuideTopic": "기록 한 줄을 이루는 부분들",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            3
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 로그가 하는 일",
+          "section": "1.7 너무 많은 로그",
+          "primaryConcepts": [
+            "과다 기록"
+          ],
+          "secondaryConcepts": [
+            "기록 대상",
+            "독자"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록량 증가가 탐색 시간·저장 비용·중요 신호 매몰로 이어지는 경로를 설명하고 경보 둔감화를 가장 심각한 결과로 지목한다. 삭제가 아닌 수준 분리와 반복 집약을 대응으로 제시한다.",
+          "aiAnalysisInputSha256": "36d4669bd7e66cb68c8df30a5d5d2fd7dbba6f7155d77c74c4253e4d58c37877",
+          "aiPublicGuideTopic": "양이 늘어 쓸모가 줄어드는 상태",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            3
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 로그 레벨",
+          "section": "2.1 레벨의 정의",
+          "primaryConcepts": [
+            "로그 레벨"
+          ],
+          "secondaryConcepts": [
+            "로그",
+            "과다 기록"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "로그 레벨을 행 단위 중요도 표시로 정의하고 필터링과 생성 제어라는 두 용도를 제시한다. 기준의 일관성이 필터링 유효성의 전제임을 밝힌다.",
+          "aiAnalysisInputSha256": "4fbaa59cde8a5a1c8f2692453cd95b2de7b207d35a130604d62ce953ef46fc3e",
+          "aiPublicGuideTopic": "기록에 붙이는 수준 표시의 뜻",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 로그 레벨",
+          "section": "2.2 레벨을 가르는 기준",
+          "primaryConcepts": [
+            "레벨 기준"
+          ],
+          "secondaryConcepts": [
+            "로그 레벨"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "레벨 판정 기준을 심각도 대신 필요 조치의 유무와 시급성으로 재정의하고 재시도 성공·실패 사례로 적용을 보인다. 상세 수준을 행동 기준 축과 분리해 다루는 이유를 제시한다.",
+          "aiAnalysisInputSha256": "a9d75b7ca9388fa684e746c9790d27c3bc16ea3f47532d4f9ce905077a997549",
+          "aiPublicGuideTopic": "무엇을 보고 수준을 정할지",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 로그 레벨",
+          "section": "2.3 오류와 경고 사이",
+          "primaryConcepts": [
+            "오류와 경고"
+          ],
+          "secondaryConcepts": [
+            "레벨 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "오류·경고 판정이 흔들리는 세 전형을 열거하고 행동 기준을 각각에 적용한다. 판단 모호 시 하위 수준 선택과 지표 활용을 권고하며 그 근거를 경보 신뢰도에 둔다.",
+          "aiAnalysisInputSha256": "1a8932b10686e1962430f100d73ae06b20bbb5a9c0f1d991990ff3b8dd3a1884",
+          "aiPublicGuideTopic": "두 수준이 헷갈리는 자리 정리하기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 로그 레벨",
+          "section": "2.4 상세 기록의 자리",
+          "primaryConcepts": [
+            "상세 기록"
+          ],
+          "secondaryConcepts": [
+            "레벨 기준",
+            "과다 기록"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "상세 로그의 상시 생성과 완전 부재 사이의 절충으로 선택적 활성화를 제시하고 활성화 단위 축소 방법을 설명한다. 상세 수준에서도 항목 선별 원칙이 유지되어야 하는 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "e4563260e7a0b57d155b64cb42a2b4827e156b15c463e66581aa5c98baf43e91",
+          "aiPublicGuideTopic": "조사할 때만 필요한 기록을 두는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 로그 레벨",
+          "section": "2.5 레벨과 대응 방식",
+          "primaryConcepts": [
+            "레벨과 대응"
+          ],
+          "secondaryConcepts": [
+            "오류와 경고",
+            "로그와 지표"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "레벨에 대응 규칙을 결합해야 의미가 유지된다는 점을 설명하고 대응 정의가 레벨 부여를 엄격하게 만드는 되먹임을 제시한다. 대응 가능한 물량이 레벨 기준 재조정의 판단 근거임을 밝힌다.",
+          "aiAnalysisInputSha256": "e17ef07ab1e95fdd1e54bd7c6058ca01db6558fb648c2554d4924e5de7848a42",
+          "aiPublicGuideTopic": "수준마다 정해 두는 사람의 행동",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 로그 레벨",
+          "section": "2.6 레벨이 무너지는 방식",
+          "primaryConcepts": [
+            "레벨 붕괴"
+          ],
+          "secondaryConcepts": [
+            "레벨과 대응",
+            "과다 기록"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "레벨 상향이 누적되어 구분이 소실되는 과정을 네 시점의 구성비 변화로 표현한다. 각 단계의 동기를 병기해 개별적으로는 합리적인 판단이 전체를 무너뜨리는 구조를 드러낸다.",
+          "aiAnalysisInputSha256": "99d3da9472c90206fefe27aa5a0bc8b3427937ce6b52c30d512e9ce8e562c529",
+          "aiPublicGuideTopic": "수준 구분이 뜻을 잃어 가는 과정",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            13
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 로그 레벨",
+          "section": "2.7 레벨을 다시 정할 때",
+          "primaryConcepts": [
+            "레벨 재조정"
+          ],
+          "secondaryConcepts": [
+            "레벨과 대응",
+            "레벨 붕괴"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "레벨 재조정을 종류별 발생량 측정과 행동 기준 재판정의 순서로 제시한다. 하향 조정 후 누락 사례 확인 절차를 두어 재상향의 반복을 방지하는 방법을 설명한다.",
+          "aiAnalysisInputSha256": "edde0a5c8fcd411fc1b70c50c87c40465e5a4830c3ba86c18fd19e1f0f5288d0",
+          "aiPublicGuideTopic": "이미 붙은 수준을 손보는 절차",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            13
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 구조화된 로그",
+          "section": "3.1 구조화의 뜻",
+          "primaryConcepts": [
+            "구조화된 로그"
+          ],
+          "secondaryConcepts": [
+            "로그 레벨",
+            "기록 대상"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구조화된 로그를 명명된 항목의 집합으로 정의하고 필터링·집계 가능성이라는 이득을 제시한다. 항목 이름의 전역 일관성이 그 이득의 전제임을 밝힌다.",
+          "aiAnalysisInputSha256": "a67ef708b485090e3a456f813112a73b7630a612bfd74e6801e9ab685ebddc38",
+          "aiPublicGuideTopic": "문장 대신 항목으로 남긴다는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 구조화된 로그",
+          "section": "3.2 항목 이름을 정하는 일",
+          "primaryConcepts": [
+            "항목 이름"
+          ],
+          "secondaryConcepts": [
+            "구조화된 로그"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "로그 항목 이름을 사실상의 스키마로 규정하고 공용 목록 관리와 의미·부재 표기의 사전 정의를 요구한다. 이름 추가의 비가역성을 근거로 기존 이름 재사용 검토를 우선한다.",
+          "aiAnalysisInputSha256": "79f1c1f66c6a2145167563e0523f267270cbaf1f4cadcb48cf73971600c1345f",
+          "aiPublicGuideTopic": "이름을 맞추고 뜻을 고정하는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 구조화된 로그",
+          "section": "3.3 값의 형태와 단위",
+          "primaryConcepts": [
+            "값 형태"
+          ],
+          "secondaryConcepts": [
+            "항목 이름"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "값 표기의 단위 불일치가 집계를 무효화하는 문제를 지적하고 단위의 명칭 포함 관례를 제시한다. 수치형과 범주형의 구분 기준을 계산·비교 가능성과 집계 안정성에서 도출한다.",
+          "aiAnalysisInputSha256": "6773426b0642a45813fba12aaafa184c9ab45137ce5afd8a7f10a5a27a701065",
+          "aiPublicGuideTopic": "숫자와 시각을 적는 방식 맞추기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 구조화된 로그",
+          "section": "3.4 문장과 항목의 분리",
+          "primaryConcepts": [
+            "문장과 항목"
+          ],
+          "secondaryConcepts": [
+            "구조화된 로그",
+            "독자"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "가변 값의 문장 삽입이 사건 단위 집계를 방해하는 기전을 설명하고 고정 문장과 항목의 분리 방식을 제시한다. 문장 완전 제거의 조사 편의 손실을 함께 지적한다.",
+          "aiAnalysisInputSha256": "28b9d5a9e0193b43a6c3a000d050d0ceace2b6ec76700fd0438b0c8deda978c2",
+          "aiPublicGuideTopic": "사람이 읽을 문장과 기계가 볼 항목 나누기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 구조화된 로그",
+          "section": "3.5 이어 붙이는 식별자",
+          "primaryConcepts": [
+            "추적 식별자"
+          ],
+          "secondaryConcepts": [
+            "구조화된 로그",
+            "항목 이름"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "추적 식별자를 처리 단위의 공통 키로 정의하고 생성·전파·수신 측 승계의 절차를 제시한다. 시각 기반 근사 탐색과 식별자 기반 정확 선택의 차이를 조사 방식의 변화로 설명한다.",
+          "aiAnalysisInputSha256": "1000acd8ce3768316963f3d5a5f8283bcdf090d492be428787ba4128d6c58e6f",
+          "aiPublicGuideTopic": "흩어진 기록을 한 흐름으로 묶는 값",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 구조화된 로그",
+          "section": "3.6 구조화가 늘리는 비용",
+          "primaryConcepts": [
+            "구조화 비용"
+          ],
+          "secondaryConcepts": [
+            "구조화된 로그",
+            "값 형태"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구조화의 비용을 행 크기 증가와 생성 부하로 구체화하고 용도에 따른 차등 적용을 제시한다. 실제 질의에 사용된 항목의 측정을 통한 항목 수 축소 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "9e478143cd60f289d240aa6b9c32d4b74a75417ef5e299e8143d0da8b5a22f57",
+          "aiPublicGuideTopic": "항목으로 적을 때 치르는 대가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 구조화된 로그",
+          "section": "3.7 이름이 늘어나는 문제",
+          "primaryConcepts": [
+            "항목 난립"
+          ],
+          "secondaryConcepts": [
+            "항목 이름",
+            "구조화 비용"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "항목 이름의 무관리 증식이 필터링 신뢰도를 훼손하는 과정을 설명하고 사용량 측정 기반 정리 절차를 제시한다. 구명 병행 유지 후 제거라는 단계적 이행을 약속 변경 절차로 규정한다.",
+          "aiAnalysisInputSha256": "7a4a07361c2ece9b2e5fc96b6dda013fcc31646914b61015d9b954257b4ed0e3",
+          "aiPublicGuideTopic": "관리되지 않은 항목이 쌓였을 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "4장 수집과 집계 파이프라인",
+          "section": "4.1 수집의 단계",
+          "primaryConcepts": [
+            "로그 수집"
+          ],
+          "secondaryConcepts": [
+            "구조화된 로그",
+            "로그"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "로그 수집 경로를 생성·전송·집합·저장의 네 단계로 정식화하고 단계 구분이 장애 지점 식별을 가능하게 함을 설명한다. 로컬 보관의 한계를 수집 필요의 근거로 제시한다.",
+          "aiAnalysisInputSha256": "5f7b4490727fc47be35a23bcffa0e49ff0f02ac31c5c5c1ccc31128d8106b493",
+          "aiPublicGuideTopic": "남긴 기록이 볼 수 있는 곳까지 가는 길",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 수집과 집계 파이프라인",
+          "section": "4.2 옮기는 도중의 손실",
+          "primaryConcepts": [
+            "전송 손실"
+          ],
+          "secondaryConcepts": [
+            "로그 수집"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "로그 전송 손실의 발생 지점을 열거하고 손실 자체가 무기록으로 남는 문제를 지적한다. 송수신 건수 대조를 통한 가시화와 로그 종류별 신뢰도 차등 적용을 대응으로 제시한다.",
+          "aiAnalysisInputSha256": "a4c7c44057979f5cd8200d11397d9852af34a9b3b5627eb94e8c63418e013b57",
+          "aiPublicGuideTopic": "기록이 중간에서 사라지는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 수집과 집계 파이프라인",
+          "section": "4.3 모아서 세는 일",
+          "primaryConcepts": [
+            "집계"
+          ],
+          "secondaryConcepts": [
+            "로그 수집",
+            "로그와 지표"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "로그 집계로 지표를 생성하는 두 방식을 사전 계산과 질의 시 계산으로 구분하고 각각의 제약을 제시한다. 표본 기반 집계와 전수 집계의 혼용이 만드는 수치 왜곡을 경고한다.",
+          "aiAnalysisInputSha256": "b8412adbff046691f7ea3790b89fd03afe3013b357e465c29c8f9ea89a726903",
+          "aiPublicGuideTopic": "낱낱의 기록에서 수를 뽑아내기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 수집과 집계 파이프라인",
+          "section": "4.4 수집 파이프라인의 단계",
+          "primaryConcepts": [
+            "로그 수집"
+          ],
+          "secondaryConcepts": [
+            "집계",
+            "전송 손실"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수집 경로의 네 단계와 각 단계의 유실 지점을 함께 배치하고 단계별 계수 항목을 병기한다. 저장 이후의 두 소비 경로를 구분해 조회와 집계가 같은 저장에서 갈라짐을 보인다.",
+          "aiAnalysisInputSha256": "9e91429394d73cc2b444e421753ce66c6a99672fd9398bfb46f3f65ba6ea8b01",
+          "aiPublicGuideTopic": "기록이 지나는 네 단계와 새는 자리",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 수집과 집계 파이프라인",
+          "section": "4.5 보관 기간과 비용",
+          "primaryConcepts": [
+            "보관 기간"
+          ],
+          "secondaryConcepts": [
+            "집계",
+            "로그와 지표"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "보관 기간 미설정이 긴급 삭제로 이어지는 경로를 지적하고 로그 종류별 차등 기간 설정을 제시한다. 생성 결정 시점에 삭제 규칙을 함께 정하는 절차를 권고한다.",
+          "aiAnalysisInputSha256": "7c963c64e1d16b9992e908f5d01474f879db1c94f0b963fea8219d89bd7f8d9f",
+          "aiPublicGuideTopic": "언제까지 두고 언제 지울지",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            25
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 수집과 집계 파이프라인",
+          "section": "4.6 찾을 수 있게 두는 일",
+          "primaryConcepts": [
+            "검색 가능성"
+          ],
+          "secondaryConcepts": [
+            "집계",
+            "추적 식별자"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "로그 조회 방식을 시각 범위·항목 값·추적 식별자의 세 갈래로 정리하고 선택적 색인의 비용 균형을 설명한다. 사건·항목 목록의 공개가 조사 시간에 미치는 영향을 밝힌다.",
+          "aiAnalysisInputSha256": "1f025db97c42d1d71869475c1f00d670976d82edbe6848e6875cc73ae5a39f84",
+          "aiPublicGuideTopic": "모아 둔 기록에서 원하는 줄을 고르기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            25
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 수집과 집계 파이프라인",
+          "section": "4.7 파이프라인이 막힐 때",
+          "primaryConcepts": [
+            "수집 지연"
+          ],
+          "secondaryConcepts": [
+            "전송 손실",
+            "로그 수집"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수집 지연의 발생 조건과 장애 시점과의 상관을 지적하고 폐기·지연 전송 정책의 사전 결정을 요구한다. 적체량 지표화가 지연과 부재를 구분하는 수단임을 설명한다.",
+          "aiAnalysisInputSha256": "e02f786cec9470f754a2750962d00e2fdb71f3d742471e5c2c71052f0bbbad8d",
+          "aiPublicGuideTopic": "기록이 늦게 도착하거나 밀릴 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "5장 로그로 무엇을 보는가",
+          "section": "5.1 한 요청을 따라가기",
+          "primaryConcepts": [
+            "흐름 추적"
+          ],
+          "secondaryConcepts": [
+            "로그 수집",
+            "추적 식별자"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "처리 단위 추적의 성립 조건을 식별자 부착·중앙 집합·시각 비교 가능성으로 정식화한다. 추적 가능성이 조사 방식을 추정 기반에서 흐름 판독으로 전환함을 설명한다.",
+          "aiAnalysisInputSha256": "b843903e98a69a52ea295740f04812e580a10819f36884bcf6de5d1c13b2a869",
+          "aiPublicGuideTopic": "흩어진 줄에서 한 처리를 복원하기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "5장 로그로 무엇을 보는가",
+          "section": "5.2 흔한 물음과 그 답",
+          "primaryConcepts": [
+            "질의 유형"
+          ],
+          "secondaryConcepts": [
+            "흐름 추적",
+            "집계"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "로그 질의를 추적·시점·빈도·변화 시점의 네 유형으로 분류하고 각 유형이 요구하는 설계 요소를 대응시킨다. 질의 유형 점검을 통한 역방향 설계 절차를 제시한다.",
+          "aiAnalysisInputSha256": "b5232ca49a104786db175ed82e533d2efba0f033b8ce7c5a94010f91c284afe7",
+          "aiPublicGuideTopic": "로그에 자주 던지는 질문의 종류",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 로그로 무엇을 보는가",
+          "section": "5.3 로그로 알 수 없는 것",
+          "primaryConcepts": [
+            "로그의 한계"
+          ],
+          "secondaryConcepts": [
+            "흐름 추적",
+            "기록 대상"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "로그의 인식 범위가 기록된 사건에 한정됨을 지적하고 미발생 사건에 대한 추론 불가를 설명한다. 기대 건수 대조와 다른 관찰 수단의 병용을 보완책으로 제시한다.",
+          "aiAnalysisInputSha256": "12cc9b630db2f3f68f4b0c18becb2c7b7938335b25e37894da8471b195d4590e",
+          "aiPublicGuideTopic": "기록만으로는 답할 수 없는 물음",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 로그로 무엇을 보는가",
+          "section": "5.4 흩어진 기록을 잇는 방법",
+          "primaryConcepts": [
+            "흐름 추적"
+          ],
+          "secondaryConcepts": [
+            "추적 식별자",
+            "시각 불일치"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "여러 구성 요소에 분산된 로그를 추적 식별자로 단일 흐름에 재배열하는 과정을 시각화한다. 식별자 전파가 끊긴 지점 이후의 추적 불가를 함께 표시한다.",
+          "aiAnalysisInputSha256": "e311f23d119a1dc503ab41a014c8c8eb6dfb3eec861fc6f27ac6aa9c315528fe",
+          "aiPublicGuideTopic": "여러 자리의 줄을 하나의 흐름으로 묶기",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 로그로 무엇을 보는가",
+          "section": "5.5 시각이 어긋날 때",
+          "primaryConcepts": [
+            "시각 불일치"
+          ],
+          "secondaryConcepts": [
+            "흐름 추적",
+            "값 형태"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다중 발생원의 시계 편차가 인과 순서를 뒤집어 보이게 하는 문제를 설명하고 순번 기반 정렬을 대안으로 제시한다. 시각 표기의 통일 기준을 가독성보다 비교 가능성에 둔다.",
+          "aiAnalysisInputSha256": "41f9aa5006b559bec9fd96b1802e1bf3625e0d2094ffeb29785f4a8739c520a6",
+          "aiPublicGuideTopic": "여러 자리의 시계가 다를 때 생기는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 로그로 무엇을 보는가",
+          "section": "5.6 표본만 남기는 선택",
+          "primaryConcepts": [
+            "표본 기록"
+          ],
+          "secondaryConcepts": [
+            "질의 유형",
+            "과다 기록"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "표본 기록의 양 감축 효과와 개별 조사 가능성 상실이라는 대가를 대비한다. 실패 전량 보존과 성공 표본 추출의 조합, 비율 기록의 필요를 실무 배치로 제시한다.",
+          "aiAnalysisInputSha256": "4b552e61edc5f7ff6e223b7a14ad471067dee45ed1f5d9f1bb1d280af0622565",
+          "aiPublicGuideTopic": "일부만 남겨 양을 줄이는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 로그로 무엇을 보는가",
+          "section": "5.7 사람이 읽는 자리",
+          "primaryConcepts": [
+            "사람의 확인"
+          ],
+          "secondaryConcepts": [
+            "질의 유형",
+            "독자"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "로그의 최종 소비 지점을 사람의 조회 화면으로 규정하고 질의 유형별 사전 구성 화면을 제시한다. 화면 요구가 로그 설계를 역으로 규정하지 않도록 하는 순서 원칙을 밝힌다.",
+          "aiAnalysisInputSha256": "c27344533544c0ef6531d6f08172b5b6b587fd8fa108dd16e0d3b7aaace87b64",
+          "aiPublicGuideTopic": "기계가 아니라 사람이 보게 되는 화면",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "6장 로그를 다시 설계한 기록",
+          "section": "6.1 처음 상태와 문제",
+          "primaryConcepts": [
+            "사례 배경"
+          ],
+          "secondaryConcepts": [
+            "과다 기록",
+            "로그 수집"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재설계 착수 시점의 로그 상태와 조사 지연·비용 증가·경보 무시라는 세 증상을 기술한다. 작업 목표를 기록량이 아닌 질의 응답 가능성으로 설정한 판단을 밝힌다.",
+          "aiAnalysisInputSha256": "42b86f83388d71e1a5e634545ed5f3cdd65f2ccc1b212a2ac3b9db2a938bf3b0",
+          "aiPublicGuideTopic": "로그를 다시 설계하기 전의 상황",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "6장 로그를 다시 설계한 기록",
+          "section": "6.2 무엇을 남기고 있었나",
+          "primaryConcepts": [
+            "기록 현황"
+          ],
+          "secondaryConcepts": [
+            "기록 대상",
+            "항목 이름"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재설계 전 레벨 구성비·사건 분포·항목 사용 실태를 계측한 과정을 기술한다. 변경 전 수치 확보가 효과 판정의 기준선이 된다는 이유로 관측과 변경을 분리한다.",
+          "aiAnalysisInputSha256": "f0d69880af0116f4e422e91201e7613150457fe63443b453a572da1219a012b7",
+          "aiPublicGuideTopic": "손대기 전에 지금 상태를 센 결과",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            37
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 로그를 다시 설계한 기록",
+          "section": "6.3 레벨을 다시 정한 과정",
+          "primaryConcepts": [
+            "레벨 재정의"
+          ],
+          "secondaryConcepts": [
+            "레벨 기준",
+            "레벨 재조정"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "고빈도 오류 세 종류에 행동 기준을 재적용해 수준을 하향하고 지표로 대체한 과정을 기술한다. 하향 후 누락 확인 기간을 두어 한 종류를 복원한 판단을 함께 남긴다.",
+          "aiAnalysisInputSha256": "bd8a97a25c6ce38855b4312de5736f85b518808bbec6bc686c28bd8e94135794",
+          "aiPublicGuideTopic": "행동 기준으로 수준을 다시 판정하기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 로그를 다시 설계한 기록",
+          "section": "6.4 항목을 정한 과정",
+          "primaryConcepts": [
+            "항목 정의"
+          ],
+          "secondaryConcepts": [
+            "항목 이름",
+            "문장과 항목"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "고빈도 사건부터 항목화를 적용하고 공용 이름 목록을 도입한 절차를 기술한다. 문장 병행 유지 후 값 제거라는 순서가 기존 조회 방식의 단절을 막은 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "5842f09f7eb928a162bea57f85e5d5bc2d3e07368a95be8cd126e10909aea581",
+          "aiPublicGuideTopic": "문장을 항목으로 옮긴 순서",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 로그를 다시 설계한 기록",
+          "section": "6.5 수집 단계를 손본 결과",
+          "primaryConcepts": [
+            "수집 개선"
+          ],
+          "secondaryConcepts": [
+            "로그 수집",
+            "전송 손실"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단계별 계수 도입으로 상시 유실을 발견하고 로그 종류별 폐기 정책을 분리 적용한 과정을 기술한다. 추적 식별자 도입이 조사 방식에 준 변화를 결과로 제시한다.",
+          "aiAnalysisInputSha256": "34873a39c3bf3514323bacf5ad0cf80d8f301b0d36eacfa69b38759aadba36e9",
+          "aiPublicGuideTopic": "모으는 길에서 고친 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 로그를 다시 설계한 기록",
+          "section": "6.6 줄인 양과 남긴 것",
+          "primaryConcepts": [
+            "감축 결과"
+          ],
+          "secondaryConcepts": [
+            "보관 기간",
+            "표본 기록"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "레벨 재정의·반복 집약·표본 추출·기간 차등의 결합으로 총량과 비용을 낮춘 결과를 기술한다. 표본화로 잃은 능력과 그에 대한 보완 장치를 함께 기록한다.",
+          "aiAnalysisInputSha256": "9fa8931047379383fcee646ed7230cf6229d8cf0e9011a72d886350df4649815",
+          "aiPublicGuideTopic": "전체 양과 비용이 달라진 결과",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 로그를 다시 설계한 기록",
+          "section": "6.7 다시 물어 본 질문들",
+          "primaryConcepts": [
+            "재확인 결과"
+          ],
+          "secondaryConcepts": [
+            "질의 유형",
+            "흐름 추적"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재설계 후 네 질의 유형에 대한 응답 가능 여부를 점검하고 시계열 질의만 미해결로 남은 이유를 기술한다. 사전 계측이 효과 비교를 가능하게 한 점을 결론으로 제시한다.",
+          "aiAnalysisInputSha256": "8ff8e8e4e764c2f8d6f9170f7c71ed47b40d7cd1202875c1fb8508f978e6fefa",
+          "aiPublicGuideTopic": "바꾼 뒤 같은 질문에 답해 본 결과",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "7장 로그 설계 판단",
+          "section": "7.1 얼마나 남길 것인가",
+          "primaryConcepts": [
+            "기록량 판단"
+          ],
+          "secondaryConcepts": [
+            "기록 대상",
+            "과다 기록"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 여부 판단 기준을 미기록 시 응답 불가한 질문의 존재로 단일화하고 보존 기간 조절을 통한 결정 완화를 제시한다. 감축 대상에서 제외할 기록 유형을 별도로 지정한다.",
+          "aiAnalysisInputSha256": "d2602bfdd85bb1dc8b53391b185cda5743d324fee29ba5d09e3c4bb99601ca7b",
+          "aiPublicGuideTopic": "남기는 양을 정하는 판단 기준",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            3
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "7장 로그 설계 판단",
+          "section": "7.2 무엇을 먼저 고칠 것인가",
+          "primaryConcepts": [
+            "개선 우선순위"
+          ],
+          "secondaryConcepts": [
+            "기록량 판단",
+            "독자"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "로그 개선의 착수 순서를 추적 식별자·레벨 재정의·항목 정의·보존 정책으로 제시하고 각 단계의 선행 이유를 밝힌다. 우선순위 판단 기준을 소비자의 질의 차단 지점에 둔다.",
+          "aiAnalysisInputSha256": "542293c0d33ae0d4e641140ac7eb126fb36fd3897ef44a1e0bb7a8cba3be73ec",
+          "aiPublicGuideTopic": "손볼 자리의 순서를 정하는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": [
+            "logs-answer-questions"
+          ]
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 로그 설계 판단",
+          "section": "7.3 레벨과 항목을 바꾸는 순서",
+          "primaryConcepts": [
+            "변경 순서"
+          ],
+          "secondaryConcepts": [
+            "레벨 재조정",
+            "항목 난립"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "레벨·항목 변경을 병행 유지 후 제거의 단계 절차로 규정하고 조회 측 침묵 실패의 위험을 지적한다. 부분 범위 적용과 사후 확인 목록을 안전 장치로 제시한다.",
+          "aiAnalysisInputSha256": "986e2d18da23eb40f585de2a5f62ad4f6c19bf0ca1f3d178ca625304da19a738",
+          "aiPublicGuideTopic": "약속을 바꿀 때 지키는 절차",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            15
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 로그 설계 판단",
+          "section": "7.4 로그 설계 점검 항목",
+          "primaryConcepts": [
+            "설계 점검 항목"
+          ],
+          "secondaryConcepts": [
+            "질의 유형",
+            "항목 이름"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "로그 설계 점검을 추적 가능성·행동 연결·이름 일관성·유실 계측·삭제 시점의 다섯 항목으로 정식화한다. 각 항목의 위반이 가리키는 결함과 대응 절을 연결한다.",
+          "aiAnalysisInputSha256": "0480673990cac24096d854e69f910645e6ab538d3c965694309272691adc84f5",
+          "aiPublicGuideTopic": "설계를 살펴볼 때 차례로 확인할 목록",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 로그 설계 판단",
+          "section": "7.5 수집을 바꾸는 순서",
+          "primaryConcepts": [
+            "수집 변경 순서"
+          ],
+          "secondaryConcepts": [
+            "수집 지연",
+            "로그 수집"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수집 변경의 착수 순서를 계측·폐기 정책 결정·보존과 표본 조정으로 제시하고 각 단계의 선행 이유를 밝힌다. 계측 선행이 후속 변경의 결과 판정을 가능하게 함을 설명한다.",
+          "aiAnalysisInputSha256": "7c166fa6521345d75049ee85e2c25d0cbc3b19668e39cf07384f7908f8b4953f",
+          "aiPublicGuideTopic": "모으는 길을 손볼 때의 진행 방식",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            29
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 로그 설계 판단",
+          "section": "7.6 로그와 다른 관찰 수단",
+          "primaryConcepts": [
+            "관찰 수단 배치"
+          ],
+          "secondaryConcepts": [
+            "로그와 지표",
+            "로그의 한계"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관찰 수단을 로그·지표·조사용 기록으로 구분하고 범위와 보존 기간의 배치 원칙을 제시한다. 단일 수단으로 전체 물음을 감당할 때의 실패 양상을 각각 설명한다.",
+          "aiAnalysisInputSha256": "1e308bf6cd0d523151b44e52579bcd9344d774b9ec3e3642ef58a8e44793f9aa",
+          "aiPublicGuideTopic": "기록·지표·조사 도구를 함께 배치하기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 로그 설계 판단",
+          "section": "7.7 핵심 원칙 정리",
+          "primaryConcepts": [
+            "로그 원칙 요약"
+          ],
+          "secondaryConcepts": [
+            "로그",
+            "질의 유형"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체의 판단을 사후 질의 예측이라는 단일 물음으로 압축하고 각 장치를 그 물음의 수단으로 정리한다. 로그의 목표를 완전성이 아닌 응답 가능성과 비용의 균형으로 규정한다.",
+          "aiAnalysisInputSha256": "48c4773cfb92e17d043e365d4d5dd4802752454345db0713db1891293c7f5c8d",
+          "aiPublicGuideTopic": "이 책이 다룬 판단 기준의 요약",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
     }
   ]
 }
