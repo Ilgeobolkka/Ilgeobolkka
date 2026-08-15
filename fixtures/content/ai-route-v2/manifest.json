@@ -45166,6 +45166,1104 @@
       ]
     },
     {
+      "bookId": 72,
+      "title": "데이터 검증과 스키마 경계",
+      "pdfPath": "pdfs/book-072.pdf",
+      "pdfSha256": "e64207759939c9a84d7e33f65208ce759c5680b6e6b13f63dbc9fa699f4a6c90",
+      "totalPageCount": 50,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "자료 검증과 스키마를 다루는 장과 절의 구성",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 바깥에서 들어오는 데이터",
+          "section": "1.1 바깥에서 오는 데이터",
+          "primaryConcepts": [
+            "외부 데이터"
+          ],
+          "secondaryConcepts": [
+            "입력",
+            "출처"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자료를 생성 주체 기준으로 내부·외부로 구분하고 외부 자료가 규칙 준수를 보장받지 못함을 설명한다. 검증 위치 결정의 전제로 시스템 경계의 식별을 제시한다.",
+          "aiAnalysisInputSha256": "60b346efd15fd5d22b62d316e48af05c23130669a82b0600eea5043d4ac1f800",
+          "aiPublicGuideTopic": "시스템 밖에서 만들어진 자료가 갖는 성질",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 바깥에서 들어오는 데이터",
+          "section": "1.2 신뢰할 수 없는 입력",
+          "primaryConcepts": [
+            "신뢰 경계"
+          ],
+          "secondaryConcepts": [
+            "외부 데이터"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "입력 불신을 악의 가정이 아닌 규칙 준수 미보장으로 정의하고 신뢰 경계를 확인 통과선으로 규정한다. 경계 분산이 방어 코드 중복과 누락을 동시에 만드는 구조를 설명한다.",
+          "aiAnalysisInputSha256": "26abe16dc5281821311577459333cedcf4418a8454215a400fa9d4595aa23225",
+          "aiPublicGuideTopic": "값을 믿지 않는다는 말의 실제 뜻",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 바깥에서 들어오는 데이터",
+          "section": "1.3 형식과 의미의 구분",
+          "primaryConcepts": [
+            "형식과 의미"
+          ],
+          "secondaryConcepts": [
+            "외부 데이터",
+            "스키마"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "값 검증을 형식 적합성과 의미 적합성으로 분리하고 각각에 필요한 참조 범위의 차이를 제시한다. 확인 지점 분리의 근거를 두 검증의 참조 요구 차이에서 도출한다.",
+          "aiAnalysisInputSha256": "b1f7840866555baf7aade048f25cf5b54c60a6ffa505e712bff58dd913c8e499",
+          "aiPublicGuideTopic": "생김새가 맞는 것과 뜻이 맞는 것의 차이",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 바깥에서 들어오는 데이터",
+          "section": "1.4 확인하지 않은 값이 퍼지는 방식",
+          "primaryConcepts": [
+            "오염 전파"
+          ],
+          "secondaryConcepts": [
+            "신뢰 경계"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미검증 값의 저장·재사용을 통한 확산과 무오류 오해석의 위험을 설명한다. 경계 차단의 목적을 결함 제거가 아닌 원인 추적 범위의 축소로 규정한다.",
+          "aiAnalysisInputSha256": "7d55626302cc0b9213c7d6381021973269202a192a7dd998f9953c8a6c5853ab",
+          "aiPublicGuideTopic": "잘못된 값이 멀리 가면 생기는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            3
+          ],
+          "duplicateGroupKeys": [
+            "unchecked-values-travel"
+          ]
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 바깥에서 들어오는 데이터",
+          "section": "1.5 입력이 지나는 자리들",
+          "primaryConcepts": [
+            "입력 경로"
+          ],
+          "secondaryConcepts": [
+            "외부 데이터"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "입력 통로를 화면·시스템 간 전송·파일·직접 수정으로 열거하고 통로별 검증 밀도의 불균형을 지적한다. 규칙 중복 정의 대신 단일 규칙의 통로별 호출을 제시한다.",
+          "aiAnalysisInputSha256": "d87c95269e94de4b2a0d59a5d1e51d5e9f969e51a0dc8354ef8d0156e8019bf1",
+          "aiPublicGuideTopic": "자료가 시스템에 들어오는 여러 통로",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 바깥에서 들어오는 데이터",
+          "section": "1.6 데이터가 들어오는 자리",
+          "primaryConcepts": [
+            "입력 경로"
+          ],
+          "secondaryConcepts": [
+            "신뢰 경계"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "입력 통로들이 단일 확인선으로 수렴하는 구조와 그 선을 우회하는 통로를 함께 표시한다. 검증 누락이 규칙의 부재가 아니라 통로의 누락에서 생김을 시각화한다.",
+          "aiAnalysisInputSha256": "c27e7cf638e3a42daa81a13f164ad30b5d2b2d8af0f838e93d7010dddf49cb7d",
+          "aiPublicGuideTopic": "여러 통로와 확인선의 위치를 나타낸 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 바깥에서 들어오는 데이터",
+          "section": "1.7 무엇까지 데이터로 볼 것인가",
+          "primaryConcepts": [
+            "데이터 범위"
+          ],
+          "secondaryConcepts": [
+            "형식과 의미"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "검증 대상을 개별 값에서 건수·길이·중복 등 집합 속성으로 확장하고 통과 전달 자료의 제외 기준을 제시한다. 대상 판단 기준을 해당 자료의 사용 방식에 둔다.",
+          "aiAnalysisInputSha256": "fb6252d215b1c457cf87a1c2ef4351d49a7dbdfaaefb530fffd70c9cdc513a7c",
+          "aiPublicGuideTopic": "검증 대상에 넣을 것과 넣지 않을 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 스키마와 타입 경계",
+          "section": "2.1 스키마의 정의",
+          "primaryConcepts": [
+            "스키마"
+          ],
+          "secondaryConcepts": [
+            "형식과 의미",
+            "계약"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "스키마를 항목 구성과 값 종류에 대한 사전 합의로 정의하고 자동 검사 생성과 합의 기록이라는 두 가지 효용을 제시한다. 의미 규칙이 스키마 밖에 남는다는 한계를 함께 밝힌다.",
+          "aiAnalysisInputSha256": "2e9b1074c9fd007ed5f71bf2c961f97848f069192b8c45358325fbdf95720233",
+          "aiPublicGuideTopic": "자료의 모양을 미리 적어 둔 약속",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 스키마와 타입 경계",
+          "section": "2.2 타입이 막아 주는 것과 못 막는 것",
+          "primaryConcepts": [
+            "타입 경계"
+          ],
+          "secondaryConcepts": [
+            "스키마"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "타입 검사가 차단하는 범위와 동일 타입 내 의미 오류를 구분하고 식별자 혼동 사례를 제시한다. 타입 세분화와 처리 코드 증가의 교환 관계를 판단 축으로 설정한다.",
+          "aiAnalysisInputSha256": "68b24123cf1ef067781f1b9043c448db87955c5cbe0997edd235d46db5585903",
+          "aiPublicGuideTopic": "값의 종류를 정해 두었을 때 남는 문제",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 스키마와 타입 경계",
+          "section": "2.3 필수와 선택",
+          "primaryConcepts": [
+            "필수와 선택"
+          ],
+          "secondaryConcepts": [
+            "스키마"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "필수·선택 지정을 처리 완결 가능성 기준으로 정식화하고 비용이 송신 측과 수신 측 사이에서 이동함을 설명한다. 부재·공백·영값의 상태 구분을 선택 항목의 필수 명세로 제시한다.",
+          "aiAnalysisInputSha256": "2b6175e4cbcc0a837c7c5477d2eb6b179e8be0f76114c1e16ab559bb312b805e",
+          "aiPublicGuideTopic": "없어도 되는 항목을 정할 때의 기준",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 스키마와 타입 경계",
+          "section": "2.4 값의 범위와 형식 규칙",
+          "primaryConcepts": [
+            "값 규칙"
+          ],
+          "secondaryConcepts": [
+            "필수와 선택",
+            "타입 경계"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "값 규칙을 타입 위에 추가되는 업무 유래 조건으로 규정하고 현재 데이터 관찰의 규칙화가 만드는 오차단을 경고한다. 다중 규칙의 평가 순서 지정 필요를 함께 제시한다.",
+          "aiAnalysisInputSha256": "4159ee513906a08adae2fabb8fb7b00d7cff01c6fdeefc69a7cef8988d020c97",
+          "aiPublicGuideTopic": "종류만으로 부족할 때 더하는 조건",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            11
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 스키마와 타입 경계",
+          "section": "2.5 스키마 위반을 알리는 방법",
+          "primaryConcepts": [
+            "위반 보고"
+          ],
+          "secondaryConcepts": [
+            "값 규칙",
+            "실패 표현"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "위반 보고에 필요한 항목 식별과 위반 조건을 명시하고 내부 구조 노출의 위험을 지적한다. 위반 표현 형식의 사전 정의가 다건 처리와 자동 처리를 가능하게 함을 설명한다.",
+          "aiAnalysisInputSha256": "eb1b3f1ed7d4766d7e71c30e8b27fa7fa1a4f044ca546492d5e5aff0640d863e",
+          "aiPublicGuideTopic": "무엇이 왜 어긋났는지 전하는 형태",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 스키마와 타입 경계",
+          "section": "2.6 스키마가 바뀔 때",
+          "primaryConcepts": [
+            "스키마 변경"
+          ],
+          "secondaryConcepts": [
+            "스키마",
+            "필수와 선택"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "스키마 변경을 기존 자료 통과 여부로 안전·위험으로 분류하고 의미 변경을 최고 위험으로 규정한다. 선택 항목 추가·병행 수용·구항목 제거의 단계적 이행 절차를 제시한다.",
+          "aiAnalysisInputSha256": "2fb4c94fb9da51dec1b35c87d918a07e61af6abd33390fd90a20a4e666c754ed",
+          "aiPublicGuideTopic": "약속을 고치면서 기존 자료를 지키는 방법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 스키마와 타입 경계",
+          "section": "2.7 스키마로 적을 수 없는 규칙",
+          "primaryConcepts": [
+            "스키마 밖 규칙"
+          ],
+          "secondaryConcepts": [
+            "값 규칙",
+            "형식과 의미"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "스키마 표현 한계를 자료 자체로 판단 가능한 조건까지로 규정하고 업무 규칙 편입이 스키마 안정성을 훼손함을 설명한다. 검증을 자료 층과 업무 상태 층으로 이원화하는 구도를 도입한다.",
+          "aiAnalysisInputSha256": "203d4a3565c6920eb67b9a6f3db619cb3d69667af7dc6e3a62090a9d3db83247",
+          "aiPublicGuideTopic": "약속에 담기지 않는 조건들",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 검증의 자리와 순서",
+          "section": "3.1 어디서 검증할 것인가",
+          "primaryConcepts": [
+            "입력 검증"
+          ],
+          "secondaryConcepts": [
+            "신뢰 경계",
+            "스키마"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "검증 지점 선택을 차단과 탐지의 차이로 설명하고 형식 층과 업무 상태 층의 이원 배치를 기본안으로 제시한다. 통과 값의 신뢰 지위 합의가 없으면 배치 효과가 사라짐을 지적한다.",
+          "aiAnalysisInputSha256": "4843b47ebe94a5e74723ec5620a31ce3ba4f8f265c7d4d949e7f4f9e381b6a1e",
+          "aiPublicGuideTopic": "확인을 수행할 자리를 정하는 문제",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 검증의 자리와 순서",
+          "section": "3.2 이른 검증과 늦은 검증",
+          "primaryConcepts": [
+            "검증 시점"
+          ],
+          "secondaryConcepts": [
+            "입력 검증"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "검증 시점 선택 기준을 시간 의존성 여부로 정식화하고 조기 검증의 추적 거리 단축 효과를 설명한다. 상태 의존 조건은 상태 변경 지점에서 확인해야 함을 근거와 함께 제시한다.",
+          "aiAnalysisInputSha256": "207f09f143d469715cf5b7a627c42f30da2df526258fe658e338df6913b37e77",
+          "aiPublicGuideTopic": "확인을 앞당길 때와 미룰 때의 차이",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 검증의 자리와 순서",
+          "section": "3.3 검증 단계의 순서",
+          "primaryConcepts": [
+            "검증 순서"
+          ],
+          "secondaryConcepts": [
+            "검증 시점",
+            "값 규칙"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "검증을 존재·종류·범위·업무 적합의 네 단계로 나누고 단계별 대표 위반 사례를 병기한다. 자료만으로 판단하는 세 단계와 외부 기록 참조가 필요한 마지막 단계를 테두리로 구분한다.",
+          "aiAnalysisInputSha256": "49501d404002499a98e2c2360e12ba2334f04e2f84b762aeddb7270a1ea85fc2",
+          "aiPublicGuideTopic": "확인이 걸리는 차례와 각 단계에서 걸리는 것",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 검증의 자리와 순서",
+          "section": "3.4 같은 검증을 여러 번 하는 문제",
+          "primaryConcepts": [
+            "중복 검증"
+          ],
+          "secondaryConcepts": [
+            "입력 검증",
+            "신뢰 경계"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "중복 검증의 비용을 규칙 동기화 실패·실패 응답 불일치·경계 식별 불가로 열거한다. 책임 지점 확정 후 잉여 검증을 제거하는 순서를 처방으로 제시한다.",
+          "aiAnalysisInputSha256": "901509e02a7f029d8a25e25a9c820ae795ea29794534b63ed66dcf5c2a0761b3",
+          "aiPublicGuideTopic": "확인을 겹쳐 두었을 때 생기는 비용",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 검증의 자리와 순서",
+          "section": "3.5 검증과 업무 규칙의 분리",
+          "primaryConcepts": [
+            "규칙 분리"
+          ],
+          "secondaryConcepts": [
+            "입력 검증",
+            "스키마 밖 규칙"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "형식 검증과 업무 판단의 변경 빈도·참조 요구 차이를 근거로 분리를 정당화하고 층별 책임 범위를 명시한다. 분리가 각 층의 독립적 확인 가능성을 만든다는 부수 효과를 제시한다.",
+          "aiAnalysisInputSha256": "5c75076d65117eb9d9722960ccf21f120024c1e608cb394723d6b504804861a4",
+          "aiPublicGuideTopic": "형식 확인과 업무 판단을 나누는 이유",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 검증의 자리와 순서",
+          "section": "3.6 검증 실패를 모으는 방법",
+          "primaryConcepts": [
+            "실패 수집"
+          ],
+          "secondaryConcepts": [
+            "위반 보고",
+            "검증 시점"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실패 처리 방식을 조기 중단과 전량 수집으로 대비하고 단계 내 수집·단계 간 중단의 절충안을 제시한다. 수집 결과의 순서 고정이 송신 측 수정 작업에 주는 이점을 밝힌다.",
+          "aiAnalysisInputSha256": "c17067e87ad125527906411204593313102c0f54ad0c88068dcdc49a0bf445d5",
+          "aiPublicGuideTopic": "처음 하나에서 멈출지 끝까지 볼지",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 검증의 자리와 순서",
+          "section": "3.7 확인한 것을 남기는 자리",
+          "primaryConcepts": [
+            "검증 기록"
+          ],
+          "secondaryConcepts": [
+            "실패 수집",
+            "오염 전파"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "검증 결과 축적이 규칙 적합성 재검토의 근거가 됨을 설명하고 원자료 보존이 미검증 값의 사본을 만든다는 점을 지적한다. 기록 범위를 항목과 위반 규칙의 식별로 한정한다.",
+          "aiAnalysisInputSha256": "baceba708b16b914892e1d100d3192389d11ed5482ac5f752b75fa4e88e66e84",
+          "aiPublicGuideTopic": "무엇을 확인했고 무엇이 걸렸는지 남기기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            21
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "4장 정제와 변환",
+          "section": "4.1 정제의 정의",
+          "primaryConcepts": [
+            "데이터 정제"
+          ],
+          "secondaryConcepts": [
+            "입력 검증",
+            "외부 데이터"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정제를 의미 보존하의 표기 정규화로 정의하고 외부 표기 다양성을 필요 근거로 제시한다. 정제와 검증의 순서가 어긋나면 오류가 은폐될 수 있음을 지적한다.",
+          "aiAnalysisInputSha256": "867acd91c954d72fe9241df880d0476b1b36f1f94fbae86fcee53ddd6863d570",
+          "aiPublicGuideTopic": "받은 자료를 다룰 수 있는 모양으로 고치는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 정제와 변환",
+          "section": "4.2 정제와 검증의 차이",
+          "primaryConcepts": [
+            "정제와 검증"
+          ],
+          "secondaryConcepts": [
+            "데이터 정제",
+            "입력 검증"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정제와 검증을 교정과 차단의 방향 차이로 대비하고 의미 유일성을 교정 허용 기준으로 제시한다. 판단 불확실 시 차단을 기본값으로 두는 근거를 설명한다.",
+          "aiAnalysisInputSha256": "75086f68054e08f0ac20bfdade6a30874708891485c23eea5531c8ae872c18e7",
+          "aiPublicGuideTopic": "고치는 일과 막는 일을 가르는 기준",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 정제와 변환",
+          "section": "4.3 표기를 하나로 맞추는 일",
+          "primaryConcepts": [
+            "표기 통일"
+          ],
+          "secondaryConcepts": [
+            "정제와 검증"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "표기 정규화의 기준 표현 선정과 가역성 요건을 제시하고 비가역 변환을 정제 범위에서 배제한다. 정규화 규칙의 단일 보관이 통로별 저장 불일치를 막는 이유를 설명한다.",
+          "aiAnalysisInputSha256": "3b4d65f0b3ab0d64aec092a5155e2b2b2bdc3a0b9fa830fa86bd8d81fd9cc7f8",
+          "aiPublicGuideTopic": "같은 뜻의 서로 다른 적기를 정리하는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 정제와 변환",
+          "section": "4.4 정제 전후의 자료",
+          "primaryConcepts": [
+            "표기 통일"
+          ],
+          "secondaryConcepts": [
+            "정보 손실"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 항목의 정제 전후 상태를 나란히 배치해 정규화 대상과 보존 대상을 구분한다. 가역 변환만 적용한다는 원칙과 변경 표시의 필요를 함께 나타낸다.",
+          "aiAnalysisInputSha256": "dc3faf9cf0170c812383376b55022391a1247e57186461db478c5ef80b1cf86b",
+          "aiPublicGuideTopic": "같은 항목이 정제를 지나며 달라지는 모습",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            25
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 정제와 변환",
+          "section": "4.5 빠진 값을 다루는 방법",
+          "primaryConcepts": [
+            "결측 처리"
+          ],
+          "secondaryConcepts": [
+            "필수와 선택",
+            "데이터 정제"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결측값 처리 선택지를 유지·기본값 대체·차단으로 정리하고 대체가 실측값과의 구분을 소실시킴을 지적한다. 사실 보존을 기본 정책으로 삼는 근거를 가역성에서 도출한다.",
+          "aiAnalysisInputSha256": "32ce4318d0c7858942ad67e7182b4fd4abe34a882e0ce3351dcc490d34b13ecd",
+          "aiPublicGuideTopic": "값이 없는 자리를 채울지 비워 둘지",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 정제와 변환",
+          "section": "4.6 정제가 지우는 정보",
+          "primaryConcepts": [
+            "정보 손실"
+          ],
+          "secondaryConcepts": [
+            "표기 통일",
+            "결측 처리"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정규화 과정에서 발생하는 출처 단서 소실과 오류 은폐 가능성을 설명한다. 변경 항목과 적용 규칙의 기록을 정제 설계의 필수 구성으로 제시한다.",
+          "aiAnalysisInputSha256": "9338f38ae94e9bd3fa820d3f9e73ee3d0a02cc5c9f125c757838cc4e63449949",
+          "aiPublicGuideTopic": "모양을 맞추면서 함께 사라지는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            25
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 정제와 변환",
+          "section": "4.7 원본을 남길지 정하는 기준",
+          "primaryConcepts": [
+            "원본 보존"
+          ],
+          "secondaryConcepts": [
+            "정보 손실",
+            "검증 기록"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "원본 보존 여부를 추적 빈도·자료량·보관 부적합 값 포함 여부의 세 기준으로 판단하는 절차를 제시한다. 보존 불가 자료에 대해 변경 이력만 남기는 대안을 명시한다.",
+          "aiAnalysisInputSha256": "ae07000f9d53936732d58c434b231b05791329ad542c318a7a466e1b7a31cf0e",
+          "aiPublicGuideTopic": "받은 그대로를 보관할 때와 버릴 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "5장 데이터 파이프라인의 단계",
+          "section": "5.1 파이프라인의 정의",
+          "primaryConcepts": [
+            "데이터 파이프라인"
+          ],
+          "secondaryConcepts": [
+            "데이터 정제",
+            "입력 검증"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "파이프라인을 단계 간 결과 전달로 구성된 처리 구조로 정의하고 자료 상태의 단계 표현이라는 이점을 제시한다. 단계 분할 기준을 변경 사유 공통성과 인계 최소화에 둔다.",
+          "aiAnalysisInputSha256": "dfde7cd2def6348aa72fa11cc157f425af4cfec57815d0a9893274939e2edf13",
+          "aiPublicGuideTopic": "자료가 단계를 지나며 처리되는 구조",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            23
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "5장 데이터 파이프라인의 단계",
+          "section": "5.2 단계 사이의 계약",
+          "primaryConcepts": [
+            "단계 계약"
+          ],
+          "secondaryConcepts": [
+            "데이터 파이프라인",
+            "스키마"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단계 간 보장 조건을 계약으로 명시하고 자료 상태에 이름을 부여하는 표현 방법을 제시한다. 상태 명명이 단계 교체 시 인접 단계 확인 부담을 제거함을 설명한다.",
+          "aiAnalysisInputSha256": "15c51597dc25e7cec65555b378163d91006090ad2b13e061c2751c963845f92b",
+          "aiPublicGuideTopic": "앞 단계가 보장하고 뒤 단계가 기대하는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 데이터 파이프라인의 단계",
+          "section": "5.3 단계별 실패 처리",
+          "primaryConcepts": [
+            "단계 실패"
+          ],
+          "secondaryConcepts": [
+            "단계 계약",
+            "실패 수집"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일괄 처리 실패 시 전체 중단과 부분 진행의 선택 기준을 자료 간 독립성에서 도출한다. 제외 자료의 격리 보관과 중단 시 기처리분의 복구 정책을 각각의 필수 결정 사항으로 제시한다.",
+          "aiAnalysisInputSha256": "e2b96e9e2679dc83459c59dda0204f40fb6d53004a63052c02e69a56c5dfe592",
+          "aiPublicGuideTopic": "한 자료가 걸렸을 때 나머지를 어떻게 할지",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 데이터 파이프라인의 단계",
+          "section": "5.4 파이프라인 단계와 자료 상태",
+          "primaryConcepts": [
+            "자료 상태"
+          ],
+          "secondaryConcepts": [
+            "단계 계약",
+            "단계 실패"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단계 경계마다 부여되는 자료 상태 이름과 실패 자료의 격리 경로를 함께 표시한다. 두 확인 단계가 동일한 격리 자리로 이어지는 구조를 시각화한다.",
+          "aiAnalysisInputSha256": "934bee352f4b641dc54eefeb5ddc892e1e12ce16cc1fc125f4993720a2c03969",
+          "aiPublicGuideTopic": "자료가 단계를 지나며 얻는 상태의 이름",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 데이터 파이프라인의 단계",
+          "section": "5.5 다시 돌릴 수 있는 단계",
+          "primaryConcepts": [
+            "재실행"
+          ],
+          "secondaryConcepts": [
+            "단계 실패",
+            "원본 보존"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재실행 가능성을 파이프라인의 기본 요건으로 규정하고 멱등한 갱신 방식과 누적 방식의 결과 차이를 대비한다. 자료별 진행 표시가 재처리 범위를 축소하는 수단임을 제시한다.",
+          "aiAnalysisInputSha256": "77541d8b312e20982bdc4a20286462c392dd6a6084655e8b321e5acb8f9cf95f",
+          "aiPublicGuideTopic": "같은 자료를 두 번 처리해도 되게 만들기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 데이터 파이프라인의 단계",
+          "section": "5.6 중간 결과를 남기는 기준",
+          "primaryConcepts": [
+            "중간 결과"
+          ],
+          "secondaryConcepts": [
+            "재실행",
+            "원본 보존"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "중간 산출물 보관의 이득을 재처리 비용 절감과 변경 지점 관찰로 정리하고 사본 증가의 부담을 함께 제시한다. 고비용 단계 직전 보관 원칙과 삭제 규칙 동시 결정을 처방한다.",
+          "aiAnalysisInputSha256": "e271e1c7655a74d181090ccea27865695390b66b60c77704b8d82cbe94316843",
+          "aiPublicGuideTopic": "단계 사이의 자료를 보관할지 정하는 문제",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 데이터 파이프라인의 단계",
+          "section": "5.7 파이프라인 밖으로 나가는 자료",
+          "primaryConcepts": [
+            "출력 계약"
+          ],
+          "secondaryConcepts": [
+            "단계 계약",
+            "스키마"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "출력 자료에도 스키마와 검증이 필요한 이유를 수신 측 관점의 신뢰 경계에서 도출한다. 내부 저장 구조와 출력 형식의 분리, 송신 전 확인의 효용을 제시한다.",
+          "aiAnalysisInputSha256": "e6695ab7eb690c20d5d1e5acb60b6ec79e5e5716dd92ebf72fb8c00a57edee3a",
+          "aiPublicGuideTopic": "안에서 만든 자료를 바깥으로 보낼 때의 약속",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "6장 한 자료가 지나간 길",
+          "section": "6.1 사례의 자료와 목적",
+          "primaryConcepts": [
+            "사례 자료"
+          ],
+          "secondaryConcepts": [
+            "데이터 파이프라인",
+            "외부 데이터"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "예제 자료의 구성과 규모, 선정 이유를 제시하고 이후 절의 서술 순서를 처리 순서와 일치시킨다. 앞 장들의 문제 유형이 한 자료에서 모두 나타나는 사례임을 밝힌다.",
+          "aiAnalysisInputSha256": "66820d57139305cc82a2c1f4efe3dbce2e2b1946d2d143dde6244c781adef0e5",
+          "aiPublicGuideTopic": "다른 곳에서 받은 목록 하나를 다루는 경우",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "6장 한 자료가 지나간 길",
+          "section": "6.2 받은 그대로의 자료",
+          "primaryConcepts": [
+            "원자료 관찰"
+          ],
+          "secondaryConcepts": [
+            "외부 데이터",
+            "표기 통일"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "규칙 설계 전 원자료 관찰에서 확인한 표기 혼재와 필수 항목 결측을 기술한다. 관찰 결과를 규칙으로 직접 전환하지 않고 예상 위반 추정에만 사용한 판단을 밝힌다.",
+          "aiAnalysisInputSha256": "6208cd3b4445d447b57010ffdbcc8d4d086c9143a2b797c8dd8479eee07252bd",
+          "aiPublicGuideTopic": "확인하기 전에 자료를 먼저 살펴본 결과",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            37
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 한 자료가 지나간 길",
+          "section": "6.3 형식 확인에서 걸린 것",
+          "primaryConcepts": [
+            "형식 위반 사례"
+          ],
+          "secondaryConcepts": [
+            "입력 검증",
+            "위반 보고"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "형식 검증 단계에서 차단된 위반 유형과 격리 시 기록 범위를 기술한다. 단계 내 전량 수집과 단계 간 중단이라는 앞 장의 절충안이 실제로 적용된 결과를 보인다.",
+          "aiAnalysisInputSha256": "4e011a099ca8e0fc0bd0d429f1a456adfdbdc495f17375436f63f0d4b905cb5b",
+          "aiPublicGuideTopic": "생김새 확인만으로 막힌 자료들",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 한 자료가 지나간 길",
+          "section": "6.4 정제에서 고친 것",
+          "primaryConcepts": [
+            "정제 적용"
+          ],
+          "secondaryConcepts": [
+            "표기 통일",
+            "결측 처리"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "가역 변환에 한정한 정제 적용 항목과 합의 부재를 이유로 보존한 항목을 구분해 기술한다. 변경 이력을 값이 아닌 항목과 규칙 수준으로 남긴 선택을 밝힌다.",
+          "aiAnalysisInputSha256": "3b592eff63f1e8426b55981730c10739989b4d3ed8b224c00ab6b6d1ecb347f6",
+          "aiPublicGuideTopic": "형식을 지난 자료에서 모양만 맞춘 항목",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 한 자료가 지나간 길",
+          "section": "6.5 업무 규칙에서 걸린 것",
+          "primaryConcepts": [
+            "업무 위반 사례"
+          ],
+          "secondaryConcepts": [
+            "스키마 밖 규칙",
+            "검증 시점"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "업무 검증 단계에서만 검출 가능한 위반 유형을 값 자체의 적법성과 대비해 설명한다. 중복 수신을 실패가 아닌 건너뛰기로 처리해 재실행 가능성을 유지한 판단을 기술한다.",
+          "aiAnalysisInputSha256": "eaebbedaadaeac7fad466bf49c16fa85efbf36e1e4babde53165f751ca9611f8",
+          "aiPublicGuideTopic": "저장된 기록과 대조해야 알 수 있던 문제",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 한 자료가 지나간 길",
+          "section": "6.6 걸린 자료를 다시 받은 방법",
+          "primaryConcepts": [
+            "재접수"
+          ],
+          "secondaryConcepts": [
+            "단계 실패",
+            "재실행"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "격리 자료의 반환 형식과 수정 제안을 배제한 이유를 기술하고 재접수 자료에 동일 규칙 전 단계를 다시 적용한 판단을 밝힌다. 반복 위반 건의 별도 표시를 규칙 재검토 신호로 사용한다.",
+          "aiAnalysisInputSha256": "330ac2c35df07ba933f365f2d8d082c01fbb9ccff47c8b7bd6e2250c9494abc8",
+          "aiPublicGuideTopic": "빠진 건을 처리에 되돌린 절차",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 한 자료가 지나간 길",
+          "section": "6.7 이 길에서 남긴 기록",
+          "primaryConcepts": [
+            "사례 기록"
+          ],
+          "secondaryConcepts": [
+            "검증 기록",
+            "정제 적용"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "처리 회차마다 남는 네 종류의 기록과 그 축적이 규칙과 운영의 불일치를 드러낸 과정을 기술한다. 해결책을 자료 교정이 아닌 스키마 합의 변경으로 판단한 근거를 제시한다.",
+          "aiAnalysisInputSha256": "a072d14cf6877f96607500c064f9fce28424df6921b6512d966c6814df3d1bdb",
+          "aiPublicGuideTopic": "한 번의 처리가 남긴 자료와 그 쓸모",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "7장 검증 설계 판단",
+          "section": "7.1 과도한 검증의 비용",
+          "primaryConcepts": [
+            "과도한 검증"
+          ],
+          "secondaryConcepts": [
+            "입력 검증",
+            "중복 검증"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "검증 규칙 증가가 오차단·수동 확인·유지 비용을 함께 늘린다는 점을 지적하고 우회 발생 경로를 설명한다. 규칙 추가 판단 기준으로 실제 발생 여부와 양방향 손해 비교를 제시한다.",
+          "aiAnalysisInputSha256": "325f6b39cac18dd8d0be55f65b262ee9ff2965038a6a0980767d71f782a6cf1d",
+          "aiPublicGuideTopic": "확인을 늘리기만 할 때 생기는 문제",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "7장 검증 설계 판단",
+          "section": "7.2 어디까지 막을 것인가",
+          "primaryConcepts": [
+            "차단 범위"
+          ],
+          "secondaryConcepts": [
+            "과도한 검증",
+            "오염 전파"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "차단 대상을 비가역 사용 경로로 진입하는 값으로 한정하고 소멸성 값에 대해서는 기록 후 관찰을 권한다. 검증 설계의 핵심 작업을 규칙 수집이 아닌 비가역 지점 식별로 규정한다.",
+          "aiAnalysisInputSha256": "39e6e80e0b0d79fcec767c9f4bc5a23318f1e5fa88c481cca7a0e795ec8f75f6",
+          "aiPublicGuideTopic": "막을 것과 통과시키고 기록할 것의 구분",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": [
+            "unchecked-values-travel"
+          ]
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 검증 설계 판단",
+          "section": "7.3 스키마를 넓힐 때와 좁힐 때",
+          "primaryConcepts": [
+            "스키마 범위 조정"
+          ],
+          "secondaryConcepts": [
+            "스키마 변경",
+            "필수와 선택"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "스키마 확장과 축소의 비대칭 위험을 비교하고 축소 시 기존 자료 영향 규모의 사전 측정을 요구한다. 기록 전용 적용 후 차단 전환이라는 단계적 도입 절차를 제시한다.",
+          "aiAnalysisInputSha256": "634c8ba2a45dfdb8a28f4e3c59e986edbba9f9c7b1a2662f0498980c53fe5afa",
+          "aiPublicGuideTopic": "약속의 범위를 바꾸는 두 방향의 판단",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 검증 설계 판단",
+          "section": "7.4 검증 설계 점검 항목",
+          "primaryConcepts": [
+            "검증 점검 항목"
+          ],
+          "secondaryConcepts": [
+            "규칙 분리",
+            "검증 위치"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "검증 설계 점검을 통로 열거·중복 확인·층 분리·격리 경로·측정 가능성의 다섯 항목으로 정식화한다. 각 항목이 앞 장에서 제시한 대응 수단과 직접 연결됨을 밝힌다.",
+          "aiAnalysisInputSha256": "587edb72fb22a0257abf0d6dd06b15d2f3676cb3d0edc57a7f43a219bd92d667",
+          "aiPublicGuideTopic": "설계를 살펴볼 때 차례로 확인할 목록",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 검증 설계 판단",
+          "section": "7.5 정제 규칙을 다시 볼 때",
+          "primaryConcepts": [
+            "정제 규칙 재검토"
+          ],
+          "secondaryConcepts": [
+            "정보 손실",
+            "표기 통일"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정제 규칙의 무오류 특성이 노후화를 은폐함을 지적하고 적용 빈도와 방향 적절성을 정기 점검 항목으로 제시한다. 규칙 제거 시 후속 단계의 전제 붕괴를 사전 확인할 것을 요구한다.",
+          "aiAnalysisInputSha256": "f1a4c20ce5e291bb7d1340f2673f8f1b5e1c58ee5fa4edaf48a525231a14f093",
+          "aiPublicGuideTopic": "고치는 규칙을 손볼 시점과 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 검증 설계 판단",
+          "section": "7.6 파이프라인을 바꾸는 순서",
+          "primaryConcepts": [
+            "파이프라인 변경 순서"
+          ],
+          "secondaryConcepts": [
+            "재실행",
+            "단계 계약"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "파이프라인 변경을 단계 단위로 제한하는 이유와 기록 전용 도입 후 차단 전환 절차를 제시한다. 재실행 가능성이 변경 결과 비교의 전제 조건임을 밝힌다.",
+          "aiAnalysisInputSha256": "96f344b0907ecfd6171adc27b7bc93cf8a1d9bcc430814bed9bbe74b09389988",
+          "aiPublicGuideTopic": "이미 돌아가는 처리를 고칠 때의 진행 방식",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 검증 설계 판단",
+          "section": "7.7 핵심 원칙 정리",
+          "primaryConcepts": [
+            "검증 원칙 요약"
+          ],
+          "secondaryConcepts": [
+            "신뢰 경계",
+            "데이터 정제"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체의 판단을 출처 식별과 책임 귀속의 두 물음으로 압축하고 각 장의 분리 원칙을 그 귀결로 정리한다. 검증의 목표를 완전성이 아닌 결함 범위 축소와 추적 가능성으로 규정한다.",
+          "aiAnalysisInputSha256": "5a958ae8708ff40b40910c87d05665b46da1ce78ab0754af4b4f001ca438380b",
+          "aiPublicGuideTopic": "이 책이 다룬 판단 기준의 요약",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 74,
       "title": "함수와 모듈: 인터페이스 설계",
       "pdfPath": "pdfs/book-074.pdf",
