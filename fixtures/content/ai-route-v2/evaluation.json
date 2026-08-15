@@ -3679,6 +3679,97 @@
         31,
         33
       ]
+    },
+    {
+      "caseId": "case-book-098",
+      "bookId": 98,
+      "purpose": "강의를 듣고 나면 다 이해한 것 같은데 며칠 뒤에 물어보면 답을 못 한다. 잉크를 열 정도만 써서 배운 것을 덮고 떠올려 내 말로 설명해 보는 방법을 익히고 싶다. 설명이 도움이 되지 않는 경우까지는 지금 필요 없다",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "안다는 착각",
+        "재인과 회상",
+        "능동 회상",
+        "결손 표시",
+        "자기 언어"
+      ],
+      "helpfulConcepts": [
+        "설명 검증",
+        "청자 설정",
+        "회상 순서",
+        "대조"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 13
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 17
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 20
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 21
+        }
+      ],
+      "irrelevantPageNumbers": [
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          49
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        6,
+        10,
+        12,
+        13,
+        16,
+        17,
+        20,
+        21
+      ],
+      "allowedAlternativePageNumbers": [
+        15,
+        19,
+        23
+      ]
     }
   ]
 }

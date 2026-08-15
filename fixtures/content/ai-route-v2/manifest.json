@@ -44560,6 +44560,1087 @@
           "duplicateGroupKeys": []
         }
       ]
+    },
+    {
+      "bookId": 98,
+      "title": "배운 것을 설명하는 연습",
+      "pdfPath": "pdfs/book-098.pdf",
+      "pdfSha256": "412371389319b6d81f5a2f92f3140729e445f616f898a642a9ebe36ac18276a0",
+      "totalPageCount": 50,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 안다고 느끼는 순간",
+          "section": "1.1 읽으면 알 것 같다",
+          "primaryConcepts": [
+            "안다는 착각"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "학습 후의 이해감이 실제 이해가 아니라 자료에 대한 익숙함일 수 있다는 문제를 도입 페이지에서 제시한다. 재열람 시 낯설지 않으나 인출은 되지 않는 상태를 사례로 들고, 설명을 통한 검증을 책의 방법으로 밝힌다.",
+          "aiAnalysisInputSha256": "82ccf6910a91864de86fc6d50672ea752fafc6e25c5bf9dac86d5b7e89f40139",
+          "aiPublicGuideTopic": "읽고 나서 드는 이해했다는 느낌",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "fluency-is-not-knowing"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 안다고 느끼는 순간",
+          "section": "1.1 읽으면 알 것 같다",
+          "primaryConcepts": [
+            "안다는 착각"
+          ],
+          "secondaryConcepts": [
+            "재인과 회상"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "익숙함이 형성되는 학습 방식들의 공통점을 자료의 현전에서 찾는다. 실제 활용 상황에는 자료가 없다는 점을 들어, 자료를 제거한 상태에서 확인해야 이해와 익숙함이 구분된다는 원칙을 제시한다.",
+          "aiAnalysisInputSha256": "8311db5ad33f77b32ff3a23d0d06dfcc129ca82603b58c3272741870f2a35e2b",
+          "aiPublicGuideTopic": "익숙함이 이해로 잘못 읽히는 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 안다고 느끼는 순간",
+          "section": "1.2 알아보는 것과 떠올리는 것",
+          "primaryConcepts": [
+            "재인과 회상"
+          ],
+          "secondaryConcepts": [
+            "안다는 착각"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재인과 회상을 구분하고 난이도 차이를 설명한다. 일반적인 학습 방식이 재인만 반복시켜 회상 능력이 늘지 않는다는 문제와, 실제 활용과 평가가 요구하는 것은 회상이라는 점을 들어 연습 방향을 제시한다.",
+          "aiAnalysisInputSha256": "1ff4182eee9a2bcbcb1e02f288fa139ee76efa43b32949e54c98b848e1e18404",
+          "aiPublicGuideTopic": "보면 아는 것과 없이도 나오는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 안다고 느끼는 순간",
+          "section": "1.2 알아보는 것과 떠올리는 것",
+          "primaryConcepts": [
+            "재인과 회상"
+          ],
+          "secondaryConcepts": [
+            "능동 회상",
+            "안다는 착각"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "학습 직후의 주관적 이해 수준과 자료를 치운 뒤의 실제 인출량을 두 막대로 비교한 도표다. 두 값의 차이를 화살표로 표시하고 미인출 구간을 빗금으로 채워, 확인 절차 이전에는 이 간격이 드러나지 않는다는 점을 보인다.",
+          "aiAnalysisInputSha256": "00f0b9fd03961f1b827b86ad686f63898bc24ecd34df02da10355203e7bf2ca7",
+          "aiPublicGuideTopic": "안다고 느낀 정도와 실제로 떠올린 정도를 견준 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 안다고 느끼는 순간",
+          "section": "1.3 설명이라는 시험",
+          "primaryConcepts": [
+            "설명 검증"
+          ],
+          "secondaryConcepts": [
+            "안다는 착각"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "설명을 이해 검증 수단으로 제시하고 그 원리를 순서 구성 요구에서 찾는다. 개별 요소의 인출과 연결 구성이 다르다는 점, 연결이 끊기는 지점이 이해 결손이라는 판단, 그리고 소요 시간 대비 정보량이 크다는 이점을 다룬다.",
+          "aiAnalysisInputSha256": "1999e565e293e3cb5dc1ccf51112b61c3a32700fb2d8d60672c097b811b4b67a",
+          "aiPublicGuideTopic": "설명해 보면 드러나는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 안다고 느끼는 순간",
+          "section": "1.3 설명이라는 시험",
+          "primaryConcepts": [
+            "설명 검증"
+          ],
+          "secondaryConcepts": [
+            "막힘의 신호"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "설명이 순조로운 경우에도 암송과 이해를 구분해야 한다는 점을 다룬다. 순서 변경과 이유 질문이라는 두 가지 추가 확인 방법을 제시하고, 확인 비용 때문에 중요 항목에 한정해 적용한다는 기준을 밝힌다.",
+          "aiAnalysisInputSha256": "f44b12c7572d8726163411611f3379e02f71f8b664d229ca83ebb791c3bfe7e3",
+          "aiPublicGuideTopic": "설명이 잘 되는 것도 정보다",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 안다고 느끼는 순간",
+          "section": "1.4 막히는 지점",
+          "primaryConcepts": [
+            "막힘의 신호"
+          ],
+          "secondaryConcepts": [
+            "설명 검증"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "설명 중 발생하는 정지를 세 유형으로 구분하고 각각이 지시하는 결손을 제시한다. 오개념은 재열람으로 드러나지 않고 발화 과정에서 감지된다는 점, 그리고 묵독이 아니라 소리 내어 설명해야 하는 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "c7ca54bf0be7fcf6a96c82d15c0c9c0de8732810837f90b062c59efafb59a04d",
+          "aiPublicGuideTopic": "말이 멈추는 자리가 알려 주는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 안다고 느끼는 순간",
+          "section": "1.4 막히는 지점",
+          "primaryConcepts": [
+            "막힘의 신호"
+          ],
+          "secondaryConcepts": [
+            "막힘 기록"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "막힘 발생 시 즉시 자료를 확인하는 습관의 문제를 지적한다. 확인 대신 표시하고 설명을 완주해야 다수의 결손을 모두 발견할 수 있다는 절차, 그리고 수집된 표시가 재열람 범위를 한정한다는 이점을 제시한다.",
+          "aiAnalysisInputSha256": "a16e4b151dae88ba64091ac9501790fb565b88587b2cb14c899fe1fc8ab187d8",
+          "aiPublicGuideTopic": "막힌 자리를 그냥 넘기지 않기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "1장 안다고 느끼는 순간",
+          "section": "1.5 누구에게 설명하는가",
+          "primaryConcepts": [
+            "청자 설정"
+          ],
+          "secondaryConcepts": [
+            "설명 검증"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "설명 연습에서 청자 설정이 형식을 결정한다는 점을 다룬다. 비전문가를 청자로 두면 용어 사용이 제한되어 개념 이해가 요구된다는 점, 가상의 청자로도 효과가 있다는 점, 그리고 청자 부재 시 설명이 자기 완결적으로 흐른다는 문제를 제시한다.",
+          "aiAnalysisInputSha256": "2c2f9397d99c634355fc1b53d6e27b726e9f2d504fb8867059fc18756fe0549f",
+          "aiPublicGuideTopic": "듣는 사람을 정해 두기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "1장 안다고 느끼는 순간",
+          "section": "1.5 누구에게 설명하는가",
+          "primaryConcepts": [
+            "청자 설정"
+          ],
+          "secondaryConcepts": [
+            "자기 언어"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실제 청자를 두었을 때의 이점인 질문 발생을 다룬다. 청자 부담을 낮추는 요청 방식, 전문가 청자와 비전문가 청자가 각각 제공하는 피드백의 차이, 그리고 두 유형을 목적에 따라 나누어 활용하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "c12140899b756d392933b65bd37291124ea3262bf1302490339403a114aae9bd",
+          "aiPublicGuideTopic": "실제 사람에게 설명할 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 떠올려 보기",
+          "section": "2.1 책을 덮고",
+          "primaryConcepts": [
+            "능동 회상"
+          ],
+          "secondaryConcepts": [
+            "재인과 회상",
+            "안다는 착각"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "능동 회상 절차를 네 단계로 제시하고 첫 단계인 자료 차단이 잘 수행되지 않는 이유를 다룬다. 망각 여부 확인이 목적이라는 점과, 한 절 단위로 끊어 수행하는 적정 분량을 제시한다.",
+          "aiAnalysisInputSha256": "eb2460e359afb330937526f7e81072bd1f22ccf7bc8714feb1b91d8caad54bbb",
+          "aiPublicGuideTopic": "자료를 치우고 떠올리는 연습",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 떠올려 보기",
+          "section": "2.1 책을 덮고",
+          "primaryConcepts": [
+            "능동 회상"
+          ],
+          "secondaryConcepts": [
+            "결손 표시",
+            "대조"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "능동 회상의 네 단계를 좌우 흐름으로 나타내고 각 단계의 소요 시간과 지침을 병기한 도표다. 표시 단계에 강조를 두고 마지막에서 첫 단계로 돌아가는 반복 경로를 그려, 절 단위로 순환하는 구조를 보인다.",
+          "aiAnalysisInputSha256": "26e57c5021b92494ed6142d818253f8f7f665d248a14e4ddd64716edb7cd71f2",
+          "aiPublicGuideTopic": "덮고 떠올리고 표시하고 맞춰 보는 네 단계를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 떠올려 보기",
+          "section": "2.2 무엇부터 떠오르는가",
+          "primaryConcepts": [
+            "회상 순서"
+          ],
+          "secondaryConcepts": [
+            "능동 회상"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회상 순서가 학습 상태를 드러낸다는 점을 다룬다. 초두와 특이 항목이 먼저 인출되고 중간부가 누락되는 경향, 요소는 인출되나 순서가 확정되지 않는 상태도 결손으로 표시한다는 기준을 제시한다.",
+          "aiAnalysisInputSha256": "07e33d2dc96924680e2133dba6e0b3e7b30da4d226ca6df9a9728c5ad5ae3fba",
+          "aiPublicGuideTopic": "떠오르는 순서가 알려 주는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 떠올려 보기",
+          "section": "2.2 무엇부터 떠오르는가",
+          "primaryConcepts": [
+            "회상 순서"
+          ],
+          "secondaryConcepts": [
+            "막힘의 신호"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회상 시도의 시간 상한과 대기 시간을 함께 제시한다. 짧은 대기 후 인출되는 항목이 있다는 점, 인출 시도 자체가 이후 인출을 쉽게 만든다는 점, 그리고 무한정 붙들지 않도록 상한을 두는 이유를 다룬다.",
+          "aiAnalysisInputSha256": "85d54487865d653effadb595c4b41b731234f7fdaea3fed6c8d58e4c31d7fdc7",
+          "aiPublicGuideTopic": "떠올리는 시간을 정해 두기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 떠올려 보기",
+          "section": "2.3 빈자리를 표시하기",
+          "primaryConcepts": [
+            "결손 표시"
+          ],
+          "secondaryConcepts": [
+            "능동 회상",
+            "막힘의 신호"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결손 표시의 방법과 기록 수준을 다룬다. 위치만이 아니라 무엇이 인출되지 않았는지를 적어야 재열람 대상이 특정된다는 점, 표시가 이 연습의 유일한 산출물이라는 점, 그리고 결손이 없는 구간을 제외하는 효과를 제시한다.",
+          "aiAnalysisInputSha256": "a1189e9d56375b01baad62d65e2d6dceaa5cc3fd9d9be52b2a8051dd1d4a9351",
+          "aiPublicGuideTopic": "모르는 자리를 적어 두는 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "2장 떠올려 보기",
+          "section": "2.3 빈자리를 표시하기",
+          "primaryConcepts": [
+            "결손 표시"
+          ],
+          "secondaryConcepts": [
+            "재학습"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "누적된 결손 표시의 분포를 근거로 다음 학습 행동을 결정하는 방법을 제시한다. 집중형·분산형·희소형 분포에 각각 대응하는 조치와, 학습 종료 판단을 주관적 느낌이 아니라 표시 수로 내릴 수 있다는 이점을 다룬다.",
+          "aiAnalysisInputSha256": "789dd1619788a6e73eaf9c64388533194759ba645605679ff902f238affeadc7",
+          "aiPublicGuideTopic": "표시가 쌓였을 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "2장 떠올려 보기",
+          "section": "2.4 다시 펴서 맞춰 보기",
+          "primaryConcepts": [
+            "대조"
+          ],
+          "secondaryConcepts": [
+            "결손 표시",
+            "능동 회상"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대조 단계에서 표시 지점만 선별 열람하는 방법을 제시한다. 재열람 시간이 크게 줄어든다는 이점, 막힘의 원인을 함께 확인하는 절차, 그리고 자료 자체의 설명 부족인 경우에는 다른 조치가 필요하다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "627e8c5816b9ca3ef084c03b1ef6aef14f24195ec7d33f1615eb8b861e6cd8f1",
+          "aiPublicGuideTopic": "표시한 자리만 다시 읽기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "2장 떠올려 보기",
+          "section": "2.4 다시 펴서 맞춰 보기",
+          "primaryConcepts": [
+            "대조"
+          ],
+          "secondaryConcepts": [
+            "이해의 확인"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "대조 직후 재차 회상을 수행하는 절차와 그 필요성을 다룬다. 열람만으로 끝내면 익숙함만 형성된다는 점, 다음 날 재확인으로 유지 여부를 판정하는 방법, 그리고 반복 실패 시 다른 접근이 필요하다는 판단을 제시한다.",
+          "aiAnalysisInputSha256": "5150037fc29e1038e64f556a8795395e64ac8a4731b3e869be99a63f6ba4dd9b",
+          "aiPublicGuideTopic": "맞춰 본 뒤에 다시 덮기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 내 말로 바꾸기",
+          "section": "3.1 원문 없이 말하기",
+          "primaryConcepts": [
+            "자기 언어"
+          ],
+          "secondaryConcepts": [
+            "청자 설정",
+            "설명 검증"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "원문 재생과 자기 언어 재구성을 구분하고 후자가 이해 검증 기능을 한다는 점을 설명한다. 변형 질문에 원문 재생이 무너진다는 점, 그리고 전문 용어는 유지하되 짧은 부연이 가능한지로 판단하는 기준을 제시한다.",
+          "aiAnalysisInputSha256": "104d591876a4659c7e9154e5e15ad4be16de4a771c3d7715c79c51ba958fecb8",
+          "aiPublicGuideTopic": "외운 문장과 자기 문장",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 내 말로 바꾸기",
+          "section": "3.1 원문 없이 말하기",
+          "primaryConcepts": [
+            "자기 언어"
+          ],
+          "secondaryConcepts": [
+            "압축"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자기 언어 전환이 되지 않을 때의 대응을 다룬다. 동일 자료의 반복 열람이 효과가 낮다는 점, 다른 서술과 대조해 공통 골격을 찾는 방법, 그리고 사례 생성이 이해 여부를 판별하고 전환을 돕는다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "3c00215944282f52f0833200b7554dff1c3fc1bb926bbd01881e50c4e0c29936",
+          "aiPublicGuideTopic": "바꿔 말하기가 어려울 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 내 말로 바꾸기",
+          "section": "3.2 짧게 말하기",
+          "primaryConcepts": [
+            "압축"
+          ],
+          "secondaryConcepts": [
+            "자기 언어",
+            "회상 순서"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "요약을 통한 이해 검증을 다룬다. 압축이 중심과 부수의 구분을 요구한다는 점, 요약 실패가 인출 실패와 다른 결손을 가리킨다는 점, 그리고 요약문이 이후 인출의 단서로 기능한다는 이점을 제시한다.",
+          "aiAnalysisInputSha256": "61d32af65bb0fa7e2599472246eba7a0a58ffa65f4e7d163eaf4c99d480f8f40",
+          "aiPublicGuideTopic": "한 문장으로 줄여 보기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 내 말로 바꾸기",
+          "section": "3.2 짧게 말하기",
+          "primaryConcepts": [
+            "압축"
+          ],
+          "secondaryConcepts": [
+            "비유"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "과도한 압축으로 필수 조건이 누락되는 문제를 다룬다. 요약문만으로 실행 가능한지 점검하는 절차와, 문장 수 제한이 목표일 뿐 규칙이 아니라는 점, 압축의 목적이 중심 식별에 있다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "8926f0a46e3f74032c9c8ec335ce53df2bec690128da7aad577685f9eb61dfea",
+          "aiPublicGuideTopic": "너무 줄였을 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "3장 내 말로 바꾸기",
+          "section": "3.3 비유를 쓰는 자리",
+          "primaryConcepts": [
+            "비유"
+          ],
+          "secondaryConcepts": [
+            "자기 언어",
+            "청자 설정"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비유 생성이 구조 파악을 요구한다는 점에서 이해 검증 수단이 된다는 것을 설명한다. 대응 요소가 여럿일수록 비유가 견고하다는 기준과, 단일 대응 비유가 곧 한계에 부딪힌다는 문제를 제시한다.",
+          "aiAnalysisInputSha256": "515ad6c3a9820837def4611868f2bff4ef7c295e003867c770c73db41dba45fb",
+          "aiPublicGuideTopic": "아는 것에 빗대어 말하기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "3장 내 말로 바꾸기",
+          "section": "3.3 비유를 쓰는 자리",
+          "primaryConcepts": [
+            "비유"
+          ],
+          "secondaryConcepts": [
+            "비유의 한계",
+            "자기 언어"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비유의 원관념과 보조관념이 겹치는 영역과 겹치지 않는 영역을 두 원으로 나타낸 도표다. 대응 항목을 겹친 부분에 나열하고 각 원의 고유 영역을 옅게 표시해, 비유의 유효 범위와 한계를 함께 보인다.",
+          "aiAnalysisInputSha256": "9abe3fc9052765849a20edc60ec1ce96b9f111b71a2919e8164e3a4fc2482b6f",
+          "aiPublicGuideTopic": "비유가 겹치는 부분과 어긋나는 부분을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "3장 내 말로 바꾸기",
+          "section": "3.4 틀린 비유",
+          "primaryConcepts": [
+            "비유의 한계"
+          ],
+          "secondaryConcepts": [
+            "비유",
+            "안다는 착각"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비유가 오개념을 유발하는 기제를 다룬다. 비대응 영역까지 동일시하는 경향, 유효 범위를 명시적으로 함께 전달하는 대응, 그리고 범위를 밝히지 않으면 청자가 과대 적용한다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "360dd47e0058be12b79b9c7b0724b310e74b30356baba9ddd5669ae2c558c578",
+          "aiPublicGuideTopic": "비유가 잘못 가르치는 경우",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "3장 내 말로 바꾸기",
+          "section": "3.4 틀린 비유",
+          "primaryConcepts": [
+            "비유의 한계"
+          ],
+          "secondaryConcepts": [
+            "이해의 확인"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비유의 사용 종료 시점을 다룬다. 비유로 설명되지 않는 영역에서 억지 확장이 오류를 낳는다는 점, 비유를 도입 단계에 한정하고 전문 용어로 이행하는 절차, 그리고 비유 없이 설명 가능해진 상태를 이해의 지표로 삼는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "b043e970291cc04b38043439b8d10d43ad1d1cc39f87e1b7e491be5953ce2750",
+          "aiPublicGuideTopic": "비유를 버리는 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 막히는 자리 다루기",
+          "section": "4.1 막힌 곳을 적기",
+          "primaryConcepts": [
+            "막힘 기록"
+          ],
+          "secondaryConcepts": [
+            "막힘의 신호",
+            "결손 표시"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "막힘 항목을 단일 목록으로 축적하는 방법을 제시한다. 기록 항목을 위치와 유형 두 가지로 제한하는 이유, 목록이 학습 계획을 대체한다는 점, 그리고 해결 항목 삭제로 진척과 정체를 판단하는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "a250a5409dcc60f286ef8384ea2e3896d0b70d66883be891bdc15a1c8dfff49c",
+          "aiPublicGuideTopic": "막힌 자리를 모으는 목록",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 막히는 자리 다루기",
+          "section": "4.1 막힌 곳을 적기",
+          "primaryConcepts": [
+            "막힘 기록"
+          ],
+          "secondaryConcepts": [
+            "막힘 분류"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복 재출현 항목의 처리를 다룬다. 동일 자료 재열람으로 해소되지 않는다는 판단 근거, 자료 교체·질문·실습이라는 대체 수단, 그리고 방법 전환의 기준 횟수를 사전에 정해 두는 실무를 제시한다.",
+          "aiAnalysisInputSha256": "6d815ad8e6c43db945c40c8035cf794a27daa710bf39a7155cf7def1f20b3099",
+          "aiPublicGuideTopic": "같은 자리에서 계속 막힐 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 막히는 자리 다루기",
+          "section": "4.2 왜 막혔는지 가르기",
+          "primaryConcepts": [
+            "막힘 분류"
+          ],
+          "secondaryConcepts": [
+            "막힘 기록",
+            "막힘의 신호"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "막힘 원인을 미암기·선행 결손·자료 결손 세 유형으로 분류하고 각각의 대응을 제시한다. 자료에 해당 설명이 있었는지를 판별 기준으로 삼는 방법과, 자료 결손을 미암기로 오판할 때의 비용을 다룬다.",
+          "aiAnalysisInputSha256": "ed77368e09087dba09a6865b874528ce586de7e276704a7da31b05fdebb340fa",
+          "aiPublicGuideTopic": "막힘을 세 갈래로 나누기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 막히는 자리 다루기",
+          "section": "4.2 왜 막혔는지 가르기",
+          "primaryConcepts": [
+            "막힘 분류"
+          ],
+          "secondaryConcepts": [
+            "선행 지식 부족"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선행 지식 결손으로 인한 막힘의 식별 방법을 제시한다. 문장 내 용어의 설명 가능 여부로 판별하는 절차, 앞 단계로 되돌아가는 결정이 진도 후퇴로 느껴진다는 점, 그리고 선행 보완 후 학습 효율이 회복된 사례를 다룬다.",
+          "aiAnalysisInputSha256": "e6acdbfbcdf97d881f2c97bf6c88b029a2aa7059cd45ec0fc2fe082c6293a85f",
+          "aiPublicGuideTopic": "앞으로 돌아가야 하는 경우",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "4장 막히는 자리 다루기",
+          "section": "4.3 다시 배우는 순서",
+          "primaryConcepts": [
+            "재학습"
+          ],
+          "secondaryConcepts": [
+            "막힘 분류",
+            "대조"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재학습 항목의 우선순위 기준을 제시한다. 다른 항목을 차단하는 선행 항목을 우선하고, 사용 빈도가 높은 항목을 다음으로, 난도가 높은 항목을 뒤로 두는 순서와 그 근거를 다룬다.",
+          "aiAnalysisInputSha256": "a4a70cdeaacfdb555e085f108e98d4b71668a7d6f9f20b33a504cb7fe55b882b",
+          "aiPublicGuideTopic": "무엇부터 다시 볼 것인가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "4장 막히는 자리 다루기",
+          "section": "4.3 다시 배우는 순서",
+          "primaryConcepts": [
+            "재학습"
+          ],
+          "secondaryConcepts": [
+            "능동 회상"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재학습 이후 재설명으로 검증하는 절차를 제시한다. 부분만 설명하면 연결 결손을 확인할 수 없다는 점, 분할 시에도 이음매를 포함해야 한다는 조건, 그리고 익일 재확인까지 마친 뒤 목록에서 삭제하는 기준을 다룬다.",
+          "aiAnalysisInputSha256": "baee1c317aadbc9b986f0a29ec396f3a96554f07cddf841c2808204f2587c875",
+          "aiPublicGuideTopic": "다시 배운 뒤에 하는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "4장 막히는 자리 다루기",
+          "section": "4.4 설명이 되는 순간",
+          "primaryConcepts": [
+            "이해의 확인"
+          ],
+          "secondaryConcepts": [
+            "설명 검증",
+            "재학습"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "학습 종료 판단 기준 세 가지를 제시한다. 무자료 설명·순서 변경 응답·이유 부연이라는 조건과, 항목의 중요도에 따라 기준을 차등 적용하는 방법, 그리고 기준 부재 시 발생하는 두 가지 실패 형태를 다룬다.",
+          "aiAnalysisInputSha256": "bb57c0ff18cc224db6a0b7d189d2aa9124d803ab779496a53645225107fd01a9",
+          "aiPublicGuideTopic": "무엇을 보면 알았다고 할 수 있는가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "4장 막히는 자리 다루기",
+          "section": "4.4 설명이 되는 순간",
+          "primaryConcepts": [
+            "이해의 확인"
+          ],
+          "secondaryConcepts": [
+            "압축"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "학습 완료 이후의 망각을 정상 과정으로 규정하고 재학습 비용이 크게 줄어든다는 점을 제시한다. 주기적 재설명의 필요성과, 재확인 주기를 사용 빈도에 따라 정하는 기준을 다룬다.",
+          "aiAnalysisInputSha256": "4a57ffeebf5e2cfca93b6db51ea938af5e6814f3a0bbbf0541e9a0cd34ae7eec",
+          "aiPublicGuideTopic": "알았다고 한 뒤에도 남는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 어떤 연습",
+          "section": "5.1 다 안다고 생각한 절차",
+          "primaryConcepts": [
+            "사례 관찰"
+          ],
+          "secondaryConcepts": [
+            "안다는 착각",
+            "설명 검증"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "학습자가 반복 열람과 관찰로 습득했다고 판단한 절차가 인출 시점에 실패하는 상황을 사례로 보인다. 재열람 시 즉시 인지되지만 차단 시 재차 실패한다는 관찰과, 현장에서 요구되는 것이 인출 능력이라는 지적을 제시한다.",
+          "aiAnalysisInputSha256": "77898e07b5c8cad826ab2735b05b37e7f5bf38cd8b6ac66a306d677162548681",
+          "aiPublicGuideTopic": "세 번 읽고 사흘 뒤에 막힌 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 어떤 연습",
+          "section": "5.1 다 안다고 생각한 절차",
+          "primaryConcepts": [
+            "사례 관찰"
+          ],
+          "secondaryConcepts": [
+            "재인과 회상",
+            "청자 설정"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기존 학습 방식이 모두 재인 활동에 해당했다는 분석을 보인다. 자료 차단 후 구술 설명이라는 단일 변경과, 비전문가 청자를 설정해 용어 사용을 제한한 이유를 함께 제시한다.",
+          "aiAnalysisInputSha256": "b9ba3f56699092657159c18df003c88bbce75f513da2a068e641d62f31448cb0",
+          "aiPublicGuideTopic": "무엇을 잘못하고 있었는지 짚어 보기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 어떤 연습",
+          "section": "5.2 설명해 본 오 분",
+          "primaryConcepts": [
+            "적용"
+          ],
+          "secondaryConcepts": [
+            "능동 회상",
+            "결손 표시"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "능동 회상을 처음 적용한 회차의 경과를 보인다. 조기 종료의 원인이 결손이라는 점, 즉시 확인 대신 표시 후 완주한 절차, 그리고 선별 재열람이 전체 재열람보다 시간이 크게 짧다는 결과를 제시한다.",
+          "aiAnalysisInputSha256": "93fced28a32df9f633dfa67b5399da565b5c5b86633a97bea9517fee884fdfe3",
+          "aiPublicGuideTopic": "첫 번째 설명에서 일어난 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "5장 어떤 연습",
+          "section": "5.2 설명해 본 오 분",
+          "primaryConcepts": [
+            "적용"
+          ],
+          "secondaryConcepts": [
+            "막힘 기록",
+            "막힘의 신호"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구술 설명 중 발생한 막힘 지점을 절차 단계 위에 표시한 기록을 재현한 도표다. 단계별 발화량을 선 길이로, 결손을 기호로 나타내 완주 이후에야 복수의 결손이 모두 수집된다는 점을 보인다.",
+          "aiAnalysisInputSha256": "f83e16c27fd3ec9fbfdd768d22b946aa0cc81aa92ec7964938ef53a7b4fc0347",
+          "aiPublicGuideTopic": "설명 중 막힌 자리를 표시한 기록을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "5장 어떤 연습",
+          "section": "5.3 세 번째 설명",
+          "primaryConcepts": [
+            "반복 관찰"
+          ],
+          "secondaryConcepts": [
+            "대조",
+            "재학습"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 내용에 대한 반복 설명의 경과를 보인다. 결손 수가 줄어드는 양상, 자료 결손형 항목이 질문으로 해소되는 과정, 그리고 순서 변경 응답까지 통과한 시점을 학습 완료로 판단한 사례를 제시한다.",
+          "aiAnalysisInputSha256": "a3089fd3210d5995c23aa5be5ab81d37da9297523a57a413d2f3ec5b584a6556",
+          "aiPublicGuideTopic": "같은 절차를 세 번 설명한 결과",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "5장 어떤 연습",
+          "section": "5.3 세 번째 설명",
+          "primaryConcepts": [
+            "반복 관찰"
+          ],
+          "secondaryConcepts": [
+            "막힘 분류",
+            "이해의 확인"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복 설명 방식과 재열람 방식의 소요 시간을 비교한다. 선별 열람으로 범위가 축소된다는 점과, 인출 시도가 열람보다 인지적 부담이 크다는 단점을 함께 밝힌다.",
+          "aiAnalysisInputSha256": "f98dda80c94d0f60ff661ba1b934da5a25d9652891a921a6a3ddf82964617c79",
+          "aiPublicGuideTopic": "세 번 동안 걸린 시간",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "5장 어떤 연습",
+          "section": "5.4 가르치게 되다",
+          "primaryConcepts": [
+            "정착"
+          ],
+          "secondaryConcepts": [
+            "청자 설정",
+            "자기 언어"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "학습자가 교수 역할을 맡으며 새로운 결손을 발견하는 과정을 보인다. 타인의 질문이 자기 점검으로는 생성되지 않는다는 점, 교수 기회가 제한적이므로 단독 설명을 기본 형태로 유지한다는 운용을 제시한다.",
+          "aiAnalysisInputSha256": "9a52b58470105574ea22d94a5edeb82b4a394053ebac56408aa67b9137203004",
+          "aiPublicGuideTopic": "여섯 달 뒤",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 설명이 도움이 되지 않을 때",
+          "section": "6.1 아직 배우지 않은 것",
+          "primaryConcepts": [
+            "선행 지식 부족"
+          ],
+          "secondaryConcepts": [
+            "막힘 분류",
+            "재학습"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "능동 회상이 최초 학습을 대체하지 않는다는 점을 밝힌다. 전면 결손 상태에서는 진단 정보가 산출되지 않는다는 이유, 1회 열람 후 차단이라는 순서, 그리고 절 단위 분량 기준을 제시한다.",
+          "aiAnalysisInputSha256": "a8fa6abd5a02cb9730289c5cecf89dea63c8932e84761fcddad508e441151266",
+          "aiPublicGuideTopic": "설명할 것이 없을 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 설명이 도움이 되지 않을 때",
+          "section": "6.1 아직 배우지 않은 것",
+          "primaryConcepts": [
+            "선행 지식 부족"
+          ],
+          "secondaryConcepts": [
+            "안다는 착각"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선행 지식 결손이 큰 경우 능동 회상이 무효라는 점을 다룬다. 용어 설명 가능 여부로 결손 지점을 추적하는 방법과, 역추적이 여러 단계 이어질 때는 처음부터 재학습하는 편이 효율적이라는 판단을 제시한다.",
+          "aiAnalysisInputSha256": "b16c4a74a3ccb823d6fde12a506d0c2fd9220891455fbabe421a208fae64996e",
+          "aiPublicGuideTopic": "기초가 비어 있을 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 설명이 도움이 되지 않을 때",
+          "section": "6.2 몸으로 익히는 것",
+          "primaryConcepts": [
+            "절차적 기술"
+          ],
+          "secondaryConcepts": [
+            "자기 언어",
+            "설명 검증"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선언적 지식과 절차적 기술을 구분하고 설명 연습의 적용 범위를 한정한다. 감각 기반 기술은 반복 실습으로만 습득된다는 점, 그리고 대부분의 학습에서 두 유형이 혼재하므로 각각 다른 방법을 배분한다는 원칙을 제시한다.",
+          "aiAnalysisInputSha256": "27dc6ccc325b9188a167804f50abe0cb9d4527e91e3f52117f6e62cadf416c2e",
+          "aiPublicGuideTopic": "말로 설명해도 손이 못 하는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 설명이 도움이 되지 않을 때",
+          "section": "6.2 몸으로 익히는 것",
+          "primaryConcepts": [
+            "절차적 기술"
+          ],
+          "secondaryConcepts": [
+            "비유의 한계"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "숙련된 운동 기술을 언어화할 때 수행이 저하될 수 있다는 점을 다룬다. 습득 단계와 교수 단계를 분리하는 운용, 언어화 과정이 별도의 학습이 된다는 점, 그리고 설명이 상대의 기술 습득을 대체하지 못한다는 한계를 제시한다.",
+          "aiAnalysisInputSha256": "0725adfc8e095d6042f2dc212443d16a5334b6b4143ef01d1c4ec1296f0802b3",
+          "aiPublicGuideTopic": "설명이 오히려 방해가 되는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "6장 설명이 도움이 되지 않을 때",
+          "section": "6.3 설명이 외우기가 될 때",
+          "primaryConcepts": [
+            "암송"
+          ],
+          "secondaryConcepts": [
+            "대조",
+            "안다는 착각"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복 설명이 고정된 문장으로 굳어 암송이 되는 현상을 다룬다. 자기 산출물에 대한 익숙함이 다시 이해 착각을 만든다는 점, 변형 설명으로 판별하는 방법, 그리고 이유 없는 순서 암기의 위험을 제시한다.",
+          "aiAnalysisInputSha256": "98df9e5df6b46f6f8c09a04a2475e0d88ba6a4e828d53fc8fac053ec580981d3",
+          "aiPublicGuideTopic": "같은 말을 되풀이하게 되는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "6장 설명이 도움이 되지 않을 때",
+          "section": "6.3 설명이 외우기가 될 때",
+          "primaryConcepts": [
+            "암송"
+          ],
+          "secondaryConcepts": [
+            "이해의 확인"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이해 대상과 암기 대상을 구분하고 각각에 맞는 방법을 배분한다. 임의로 정해진 값에 이유를 찾는 시도가 비효율이라는 점, 암기 대상에도 인출 연습은 유효하되 형태가 다르다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "38de00d06dd60abef171f9483c47dfcf5702e1e96a529f13b14649751d293b49",
+          "aiPublicGuideTopic": "외워야 하는 것도 있다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            47
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 결론: 막히는 자리가 배울 자리다",
+          "section": "7.1 막히는 자리가 배울 자리다",
+          "primaryConcepts": [
+            "종합"
+          ],
+          "secondaryConcepts": [
+            "안다는 착각",
+            "설명 검증"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체를 익숙함과 인출의 구분이라는 관점으로 정리하는 결론 페이지다. 네 단계 절차와 언어 재구성 검증을 요약하고, 즉시 확인을 미루는 것이 핵심이라는 점, 그리고 적용되지 않는 세 경우를 함께 짚는다.",
+          "aiAnalysisInputSha256": "54f52d0d13717e005f2d726d3e2ccdca8d2679956e6a7a0160ddcb69369ba287",
+          "aiPublicGuideTopic": "설명을 시험으로 쓴 이유",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "fluency-is-not-knowing"
+          ]
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 결론: 막히는 자리가 배울 자리다",
+          "section": "7.1 막히는 자리가 배울 자리다",
+          "primaryConcepts": [
+            "종합"
+          ],
+          "secondaryConcepts": [
+            "능동 회상",
+            "막힘 기록"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실행을 위한 최소 절차로 한 절 차단, 오 분 구술 설명, 표시 후 선별 열람, 익일 재확인을 제시한다. 일주일 누적으로 결손 분포를 파악하는 방법과, 즉시 실행 가능한 점검 질문을 마지막에 남긴다.",
+          "aiAnalysisInputSha256": "16956c8782f5e68fc9d05cdaa335ffa2411fa19749f67613146f295e38c6f945",
+          "aiPublicGuideTopic": "오늘 배운 것으로 해 볼 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            49
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
     }
   ]
 }
