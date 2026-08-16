@@ -294,8 +294,14 @@ for c in evaluation["cases"]:
         chk(len(charged) <= c["maxAdditionalInk"],
             f"{c['caseId']}: 선수 폐쇄 포함 추가 차감 {len(charged)}p ≤ 예산 {c['maxAdditionalInk']} "
             f"(정답 {len(c['referencePageNumbers'])}p + 선수 폐쇄 {extra}, 차감 {charged})")
+    # 정본 「품질 평가 조건」: 예산 0만 활성 대여를 입력하고 나머지 비소장 시나리오는 활성 대여가
+    # 없다. AiRouteEvaluationReader가 같은 규칙으로 fixture를 거부한다.
     if c["owned"] is False and c["maxAdditionalInk"] == 0:
         chk(bool(c["activeRentalPageNumbers"]), f"{c['caseId']}: 예산0은 activeRentalPageNumbers 필요")
+    if c["owned"] is False and c["maxAdditionalInk"] != 0:
+        chk(not c["activeRentalPageNumbers"],
+            f"{c['caseId']}: 예산 {c['maxAdditionalInk']}는 activeRentalPageNumbers가 "
+            f"비어 있어야 함 (실제 {c['activeRentalPageNumbers']})")
 
     # 대체 페이지는 정답의 한 자리를 대신해 고르는 자리다. 그 페이지의 선수 폐쇄가 이 사례의 상한을
     # 넘으면 어느 배분으로도 고를 수 없어 죽은 값이 된다. 정답 경로가 상한을 꽉 채운 사례에서

@@ -4589,6 +4589,918 @@
         27,
         33
       ]
+    },
+    {
+      "caseId": "case-book-081",
+      "bookId": 81,
+      "purpose": "군도를 배로만 건널 계획인데, 배 시각이 날마다 달라지는 까닭과 한 배가 여러 섬을 도는 순서를 알고 싶고, 갈아탈 때 시간을 얼마나 남겨야 놓치지 않는지를 이미 빌려 둔 앞부분 안에서 익히고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 0,
+      "depth": null,
+      "activeRentalPageNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "requiredConcepts": [
+        "물때",
+        "배편 시간표",
+        "항로",
+        "기항 순서",
+        "환승 여유",
+        "환승 실패"
+      ],
+      "helpfulConcepts": [
+        "여객선",
+        "대기 시간",
+        "결항 기준",
+        "선착장"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 3
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 13
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 15
+        }
+      ],
+      "irrelevantPageNumbers": [
+        28,
+        29,
+        32,
+        33,
+        34,
+        35
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          50
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        12,
+        13,
+        14,
+        15
+      ],
+      "allowedAlternativePageNumbers": [
+        8,
+        16,
+        17,
+        18
+      ]
+    },
+    {
+      "caseId": "case-book-082",
+      "bookId": 82,
+      "purpose": "완행열차로 북부를 도는 계획인데, 급행을 두고 완행을 고르는 것이 무엇을 얻는 선택인지와 창밖이 바뀌는 자리를 알아보고 달리는 기차에서 무엇을 적을지 정하는 법을 적은 잉크로 익히고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "완행열차",
+        "정차역",
+        "풍경 전환",
+        "창가 노트",
+        "관찰 기록"
+      ],
+      "helpfulConcepts": [
+        "열차 시각표",
+        "창가 자리",
+        "선로 사정",
+        "지연"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 18
+        }
+      ],
+      "irrelevantPageNumbers": [
+        26,
+        27,
+        34,
+        35,
+        46,
+        47
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          50
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        12,
+        14,
+        18
+      ],
+      "allowedAlternativePageNumbers": [
+        5,
+        16,
+        17
+      ]
+    },
+    {
+      "caseId": "case-book-083",
+      "bookId": 83,
+      "purpose": "낯선 무역 도시에 사흘만 머무는데 시장 하나로 도시를 읽어 보고 싶다. 시장이 시각마다 무엇으로 바뀌는지와 냄새로 구역을 나누는 법, 경매와 좌판에서 값이 어떻게 갈리는지, 흥정이 무엇을 정하는 절차인지를 익히고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "무역 도시",
+        "장 서는 시각",
+        "시장 구역",
+        "냄새 지도",
+        "새벽 경매",
+        "도매와 소매",
+        "흥정"
+      ],
+      "helpfulConcepts": [
+        "소리와 흐름",
+        "신선도 판단",
+        "향의 층",
+        "계절 재료"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 13
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 17
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 22
+        }
+      ],
+      "irrelevantPageNumbers": [
+        28,
+        29,
+        30,
+        31,
+        48,
+        49
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          50
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        6,
+        8,
+        9,
+        12,
+        13,
+        16,
+        17,
+        22
+      ],
+      "allowedAlternativePageNumbers": [
+        5,
+        14,
+        24
+      ]
+    },
+    {
+      "caseId": "case-book-084",
+      "bookId": 84,
+      "purpose": "지도를 구할 수 없는 숲에서 사흘을 걸을 계획이다. 무엇을 기준으로 방향을 잡고 어떤 지형지물을 기억에 걸어야 하는지, 갈림길에서 무엇을 보고 정하며 어디인지 모르게 되었을 때 어떻게 하는지, 그리고 잘 자리와 물을 어떻게 고르는지를 익히고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 15,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "방향 기준",
+        "지형지물",
+        "되짚기",
+        "갈림길 판단",
+        "조난 대응",
+        "야영지 선택",
+        "물 구하기"
+      ],
+      "helpfulConcepts": [
+        "지도 없이 걷기",
+        "걷는 속도",
+        "짐과 물",
+        "숲의 밤"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 15
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 18
+        },
+        {
+          "beforePageNumber": 18,
+          "afterPageNumber": 19
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 20
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 21
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 22
+        },
+        {
+          "beforePageNumber": 22,
+          "afterPageNumber": 23
+        }
+      ],
+      "irrelevantPageNumbers": [
+        42,
+        43,
+        46,
+        47,
+        48,
+        49
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          50
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        6,
+        7,
+        8,
+        10,
+        12,
+        14,
+        15,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "allowedAlternativePageNumbers": [
+        13,
+        16,
+        24
+      ]
+    },
+    {
+      "caseId": "case-book-085",
+      "bookId": 85,
+      "purpose": "이 책을 소장하고 있는데, 해안도로를 자전거로 달릴 계획이라 바람만 빠르게 익히고 싶다. 하루 안에서 바람이 어떻게 도는지와 앞에서 오는 바람과 옆에서 미는 바람을 각각 어떻게 다루는지를 알고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "자기 운전",
+        "해풍",
+        "맞바람",
+        "옆바람"
+      ],
+      "helpfulConcepts": [
+        "굽이",
+        "바람 지형",
+        "멈춤 판단",
+        "하루 거리"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 15
+        }
+      ],
+      "irrelevantPageNumbers": [
+        24,
+        25,
+        32,
+        33,
+        46,
+        47
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          50
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        12,
+        14,
+        15
+      ],
+      "allowedAlternativePageNumbers": [
+        5,
+        13,
+        16
+      ]
+    },
+    {
+      "caseId": "case-book-086",
+      "bookId": 86,
+      "purpose": "이 책을 소장하고 있는데, 항구 마을에서 새벽 하루를 따라가 볼 계획이다. 배가 언제 나가고 어떤 순서로 돌아오는지, 위판장에서 값이 어떻게 매겨지는지, 아침식당이 언제 여는지를 이어서 익히고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "항구의 하루",
+        "출항 시각",
+        "위판장",
+        "귀항 순서",
+        "값매김",
+        "밥집 시각"
+      ],
+      "helpfulConcepts": [
+        "조업 조건",
+        "하역",
+        "마을 배치",
+        "아침 차림"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 13
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 17
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 20
+        }
+      ],
+      "irrelevantPageNumbers": [
+        32,
+        33,
+        46,
+        47,
+        48,
+        49
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          50
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        5,
+        8,
+        10,
+        12,
+        13,
+        16,
+        17,
+        20
+      ],
+      "allowedAlternativePageNumbers": [
+        9,
+        14,
+        21
+      ]
+    },
+    {
+      "caseId": "case-book-087",
+      "bookId": 87,
+      "purpose": "이 책을 소장하고 있는데, 우편이 며칠 걸려 닿는 고원 마을에 오래 머물 계획이다. 편지가 어떤 자리들을 지나 며칠에 한 번 오는지, 그 주기가 기다림과 편지의 문장을 어떻게 바꾸는지, 그리고 정말 급할 때는 무엇을 쓰는지까지 차근히 익히고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "우편배달",
+        "집배 경로",
+        "배달 주기",
+        "기다리는 시간",
+        "편지의 말",
+        "급한 연락"
+      ],
+      "helpfulConcepts": [
+        "고원의 조건",
+        "두 마을",
+        "늦는 소식",
+        "계절 고립"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 13
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 15
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 20
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 21
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 22
+        },
+        {
+          "beforePageNumber": 22,
+          "afterPageNumber": 23
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 26
+        },
+        {
+          "beforePageNumber": 26,
+          "afterPageNumber": 27
+        }
+      ],
+      "irrelevantPageNumbers": [
+        29,
+        30,
+        43,
+        44,
+        46,
+        47
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          48
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        6,
+        8,
+        9,
+        12,
+        13,
+        14,
+        15,
+        20,
+        21,
+        22,
+        23,
+        24,
+        26,
+        27
+      ],
+      "allowedAlternativePageNumbers": [
+        7,
+        16,
+        25
+      ]
+    },
+    {
+      "caseId": "case-book-088",
+      "bookId": 88,
+      "purpose": "지도에 골목이 그려져 있지 않은 도시에 며칠 머물면서 직접 골목 지도를 그려 보고 싶다. 비 오는 날 골목에서 물이 어느 쪽으로 흐르는지와 배수로를 어떻게 읽는지, 그리고 걸음으로 재어 종이에 옮기는 방법을 이어서 익히고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "지도의 공백",
+        "골목의 폭",
+        "물길",
+        "빗길 통행",
+        "배수로",
+        "그리는 기준",
+        "걸음 재기"
+      ],
+      "helpfulConcepts": [
+        "처마",
+        "골목 입구",
+        "기호",
+        "바닥 재질"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 13
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 15
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 20
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 22
+        }
+      ],
+      "irrelevantPageNumbers": [
+        33,
+        34,
+        42,
+        45,
+        46
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          47
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        6,
+        10,
+        12,
+        13,
+        14,
+        15,
+        20,
+        22
+      ],
+      "allowedAlternativePageNumbers": [
+        5,
+        11,
+        21
+      ]
+    },
+    {
+      "caseId": "case-book-089",
+      "bookId": 89,
+      "purpose": "이 책을 소장하고 있는데, 낯선 도시에서 하루권으로 순환선을 돌 계획이라 어디서 내릴지 정하는 법만 빠르게 익히고 싶다. 하루권이 무엇을 바꾸는 표인지와 순환선의 성질, 그리고 정거장을 어떻게 나누는지를 알고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "하루권",
+        "순환선",
+        "정거장 목록",
+        "내릴 곳 고르기"
+      ],
+      "helpfulConcepts": [
+        "배차 간격",
+        "운행 시간",
+        "체류 배분",
+        "도는 방향"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 13
+        }
+      ],
+      "irrelevantPageNumbers": [
+        22,
+        23,
+        34,
+        35,
+        46,
+        47
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          48
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        6,
+        12,
+        13
+      ],
+      "allowedAlternativePageNumbers": [
+        5,
+        7,
+        16
+      ]
+    },
+    {
+      "caseId": "case-book-090",
+      "bookId": 90,
+      "purpose": "이 책을 소장하고 있는데, 안내인과 함께 사막을 며칠 걸을 계획이다. 낮과 밤의 기온차가 하루를 어떻게 나누는지와 언제 걷고 물을 어떻게 나누어 마시는지, 그리고 밤에 별로 방향을 잡는 법을 이어서 익히고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "낮밤 온도차",
+        "오아시스",
+        "걷는 시각",
+        "물 배분",
+        "밤의 냉각",
+        "별로 방향"
+      ],
+      "helpfulConcepts": [
+        "모래 지형",
+        "그늘 만들기",
+        "야영 자리",
+        "동행과 안내인"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 13
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 17
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 20
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 22
+        },
+        {
+          "beforePageNumber": 22,
+          "afterPageNumber": 23
+        }
+      ],
+      "irrelevantPageNumbers": [
+        32,
+        33,
+        44,
+        45,
+        46,
+        47
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          48
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        5,
+        12,
+        13,
+        16,
+        17,
+        20,
+        22,
+        23
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        14,
+        25
+      ]
     }
   ]
 }
