@@ -30219,7 +30219,7 @@
       "bookId": 57,
       "title": "시간과 존재: 지속과 변화",
       "pdfPath": "pdfs/book-057.pdf",
-      "pdfSha256": "a9bc04877ba29d867ea956823a8bdf0ef7a9a1773782868be39f39e002cb32eb",
+      "pdfSha256": "3d696a05b58a267c74de08aabfedaaaebe8774389ac27f11ece274391dc13109",
       "totalPageCount": 49,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -30870,7 +30870,7 @@
           "aiAnalysisText": "경험 현재의 폭이 대상의 단위 설정에 따라 가변적이라는 점을 제시한다. 폭의 확장이 지각 수준에서 취급 단위 수준으로 연속적으로 이어진다는 점을 밝히고 전체의 존재 시점 문제로 연결한다.",
           "aiAnalysisInputSha256": "e1c83df319b8ac9d57e4e1315324dd7b8ac93942801b59652965998ae760fa98",
           "aiPublicGuideTopic": "폭을 넓혀 보면",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [
             30
           ],
@@ -31270,7 +31270,7 @@
       "bookId": 58,
       "title": "규칙과 예외: 약속을 지키는 이유",
       "pdfPath": "pdfs/book-058.pdf",
-      "pdfSha256": "a564360e0f85f3ac9f1c7989bc0b41d546dfa0ebb4089320023c2733151a2be9",
+      "pdfSha256": "055014627348557012eb2b2837b03c776c0e1d1196fd718455b02ce725f20afe",
       "totalPageCount": 49,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -31706,7 +31706,7 @@
           "aiAnalysisText": "약속 해제 시의 후속 절차를 조기 통지·근거 설명·손해 보전 셋으로 제시한다. 통지 지연이 위반 자체보다 큰 손실을 낳는다는 점과, 근거 미설명이 후속 신뢰에 미치는 영향을 지적하며 비용 대비 누락 빈도를 밝힌다.",
           "aiAnalysisInputSha256": "527e81faf2a518c4cebdefab054d8ef2290f6ebfe2c0d91fc6176e1fa7b32fa3",
           "aiPublicGuideTopic": "어길 때 하는 일",
-          "estimatedReadingSeconds": 65,
+          "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             20
           ],
@@ -32318,7 +32318,7 @@
       "bookId": 59,
       "title": "안다는 것은 무엇인가",
       "pdfPath": "pdfs/book-059.pdf",
-      "pdfSha256": "4bcaed6eb6fa391c3aeb910491bdf73f79ddbfd71443121c059db4e2991247b9",
+      "pdfSha256": "18963a33dad6f5ab62ab5fe72d75cbc0935791c970e3ebee59bc5a5d8ff037dc",
       "totalPageCount": 49,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -32839,7 +32839,7 @@
           "aiAnalysisText": "전언적 앎이 지식의 대부분을 차지한다는 점을 인정하고 성립 조건을 전달자의 접근 위치와 전달 과정의 보존으로 제시한다. 조건의 직접 확인이 어려워 과거 적중률로 대체된다는 점과 출처 병기의 효용을 다룬다.",
           "aiAnalysisInputSha256": "f852146788f358aedac10a1b21bb8ce5832be4b1d22366bc783812ce342d0a5b",
           "aiPublicGuideTopic": "남에게 들은 것이 앎이 되는 조건",
-          "estimatedReadingSeconds": 65,
+          "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             5
           ],
@@ -33368,7 +33368,7 @@
       "bookId": 60,
       "title": "관점의 복수성과 대화의 조건",
       "pdfPath": "pdfs/book-060.pdf",
-      "pdfSha256": "ab24c90e9826dc5583dfe960a03cbc9b6971aeaa7165a7f0fc35aa36791bfa1e",
+      "pdfSha256": "c40ba4ad3ba150485f7ad41d19e5b777903058e2280d40134b1eb4c49ac844a2",
       "totalPageCount": 49,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
