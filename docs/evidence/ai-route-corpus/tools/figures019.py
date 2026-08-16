@@ -203,13 +203,28 @@ def light_stage(day):
 
 
 SKIP_RUNS = [(48, 62, "서른에서 백 사이"), (188, 202, "더운 두 주"), (342, 358, "한 해 끝")]
+# 5.2·5.3 본문이 센 값. 도표는 이 값에서 만들어야 본문과 어긋나지 않는다.
+MISSED_DAYS = 59
+
+
+def _skipped_set():
+    """못 나간 날을 정확히 MISSED_DAYS개 고른다.
+
+    세 구간을 먼저 채우고 남은 자리를 고르게 나눠 합계를 맞춘다. 나머지 연산만 쓰면 개수가
+    본문과 어긋나므로 이렇게 한다. 무작위를 쓰지 않아 다시 실행해도 같은 그림이 나온다.
+    """
+    picked = {d for a, c, _ in SKIP_RUNS for d in range(a, c + 1)}
+    rest = [d for d in range(365) if d not in picked]
+    need = MISSED_DAYS - len(picked)
+    step = len(rest) / need
+    return picked | {rest[int(i * step)] for i in range(need)}
+
+
+SKIPPED = _skipped_set()
 
 
 def skipped(day):
-    for a, c, _ in SKIP_RUNS:
-        if a <= day <= c:
-            return True
-    return day % 19 == 0
+    return day in SKIPPED
 
 
 def fig_year_walks():
@@ -251,7 +266,8 @@ def fig_year_walks():
         b.append(text(mx, y2 + 84, label, 11, MARK, "700"))
     # 합계 막대 — 훨씬 아래에
     by = y2 + 220
-    for k, (label, val) in enumerate((("나감", 306), ("못 나감", 60), ("규칙 어긋남", 50))):
+    for k, (label, val) in enumerate((("나감", 365 - MISSED_DAYS), ("못 나감", MISSED_DAYS),
+                                      ("규칙 어긋남", 50))):
         bx = 220 + k * 150
         h = val * 0.3
         b.append(f'<rect x="{bx}" y="{by - h:.0f}" width="46" height="{h:.0f}" rx="3" '

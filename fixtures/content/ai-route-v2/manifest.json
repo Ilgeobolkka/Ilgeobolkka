@@ -1861,7 +1861,7 @@
           "chapter": "5장 창가에서 보낸 한 해",
           "section": "5.1 기록의 규칙을 정한다",
           "primaryConcepts": [
-            "기록의 규칙"
+            "수첩과 칸"
           ],
           "secondaryConcepts": [],
           "contentRole": "EXAMPLE",
@@ -1880,7 +1880,7 @@
           "chapter": "5장 창가에서 보낸 한 해",
           "section": "5.1 기록의 규칙을 정한다",
           "primaryConcepts": [
-            "기록의 규칙"
+            "수첩과 칸"
           ],
           "secondaryConcepts": [
             "놓친 날"
@@ -1904,7 +1904,7 @@
             "놓친 날"
           ],
           "secondaryConcepts": [
-            "기록의 규칙"
+            "수첩과 칸"
           ],
           "contentRole": "EXAMPLE",
           "aiRouteCandidatePage": true,
@@ -2215,7 +2215,7 @@
           "chapter": "7장 창가의 작은 계절들",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "창가에 남는 물음"
           ],
           "secondaryConcepts": [
             "어긋나는 차례"
@@ -2236,7 +2236,7 @@
           "chapter": "7장 창가의 작은 계절들",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "창가에 남는 물음"
           ],
           "secondaryConcepts": [
             "창이 자른 것"
@@ -2257,7 +2257,7 @@
           "chapter": "7장 창가의 작은 계절들",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "창가에 남는 물음"
           ],
           "secondaryConcepts": [
             "창을 옮길 때",
@@ -2915,7 +2915,7 @@
           "chapter": "5장 골목을 적는 법",
           "section": "5.1 걸으면서 적을 수 있는 것",
           "primaryConcepts": [
-            "기록의 규칙"
+            "단어로 적기"
           ],
           "secondaryConcepts": [],
           "contentRole": "EXAMPLE",
@@ -2934,10 +2934,10 @@
           "chapter": "5장 골목을 적는 법",
           "section": "5.1 걸으면서 적을 수 있는 것",
           "primaryConcepts": [
-            "기록의 규칙"
+            "단어로 적기"
           ],
           "secondaryConcepts": [
-            "이름 붙이기"
+            "골목에 이름 붙이기"
           ],
           "contentRole": "EXAMPLE",
           "aiRouteCandidatePage": true,
@@ -2955,10 +2955,10 @@
           "chapter": "5장 골목을 적는 법",
           "section": "5.2 이름 없는 골목에 이름 붙이기",
           "primaryConcepts": [
-            "이름 붙이기"
+            "골목에 이름 붙이기"
           ],
           "secondaryConcepts": [
-            "기록의 규칙"
+            "단어로 적기"
           ],
           "contentRole": "EXAMPLE",
           "aiRouteCandidatePage": true,
@@ -2976,7 +2976,7 @@
           "chapter": "5장 골목을 적는 법",
           "section": "5.2 이름 없는 골목에 이름 붙이기",
           "primaryConcepts": [
-            "이름 붙이기"
+            "골목에 이름 붙이기"
           ],
           "secondaryConcepts": [],
           "contentRole": "EXAMPLE",
@@ -3083,7 +3083,7 @@
             "구경거리가 되는 삶"
           ],
           "secondaryConcepts": [
-            "기록의 규칙"
+            "단어로 적기"
           ],
           "contentRole": "COUNTERPOINT",
           "aiRouteCandidatePage": true,
@@ -3268,7 +3268,7 @@
           "chapter": "7장 낯선 골목과 친해지는 시간",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "골목에 남는 물음"
           ],
           "secondaryConcepts": [
             "겹치는 길"
@@ -3289,7 +3289,7 @@
           "chapter": "7장 낯선 골목과 친해지는 시간",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "골목에 남는 물음"
           ],
           "secondaryConcepts": [
             "사라지는 골목"
@@ -3310,7 +3310,7 @@
           "chapter": "7장 낯선 골목과 친해지는 시간",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "골목에 남는 물음"
           ],
           "secondaryConcepts": [
             "낯섦",
@@ -3334,7 +3334,7 @@
       "title": "한 잔의 온도가 남긴 것",
       "totalPageCount": 50,
       "pdfPath": "pdfs/book-014.pdf",
-      "pdfSha256": "f61177082c149fa0c95f1d8c96fe842571dfd72ba7f14050b311dcf53268f8b5",
+      "pdfSha256": "f18a9b87c72ec27744350f3a6ef834f486b5642dd16322bfd990327b39f8f5a4",
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
       "pages": [
@@ -3970,7 +3970,7 @@
           "chapter": "5장 한 해의 잔들",
           "section": "5.1 잔마다 적어 둔 것",
           "primaryConcepts": [
-            "기록의 규칙"
+            "한 줄 서식"
           ],
           "secondaryConcepts": [],
           "contentRole": "EXAMPLE",
@@ -3989,7 +3989,7 @@
           "chapter": "5장 한 해의 잔들",
           "section": "5.1 잔마다 적어 둔 것",
           "primaryConcepts": [
-            "기록의 규칙"
+            "한 줄 서식"
           ],
           "secondaryConcepts": [
             "버린 잔"
@@ -4013,7 +4013,7 @@
             "버린 잔"
           ],
           "secondaryConcepts": [
-            "기록의 규칙"
+            "한 줄 서식"
           ],
           "contentRole": "EXAMPLE",
           "aiRouteCandidatePage": true,
@@ -4201,7 +4201,7 @@
             "습관이 된 의례"
           ],
           "secondaryConcepts": [
-            "기록의 규칙"
+            "한 줄 서식"
           ],
           "contentRole": "COUNTERPOINT",
           "aiRouteCandidatePage": true,
@@ -4261,7 +4261,7 @@
           "chapter": "7장 한 잔의 온도가 남긴 것",
           "section": "7.1 남은 것은 온도가 아니었다",
           "primaryConcepts": [
-            "남은 것"
+            "눈금이 남긴 것"
           ],
           "secondaryConcepts": [],
           "contentRole": "CONCLUSION",
@@ -4280,7 +4280,7 @@
           "chapter": "7장 한 잔의 온도가 남긴 것",
           "section": "7.1 남은 것은 온도가 아니었다",
           "primaryConcepts": [
-            "남은 것"
+            "눈금이 남긴 것"
           ],
           "secondaryConcepts": [
             "한 잔의 시간",
@@ -4302,7 +4302,7 @@
           "chapter": "7장 한 잔의 온도가 남긴 것",
           "section": "7.1 남은 것은 온도가 아니었다",
           "primaryConcepts": [
-            "남은 것"
+            "눈금이 남긴 것"
           ],
           "secondaryConcepts": [
             "붙잡을 수 없는 순간",
@@ -4324,7 +4324,7 @@
           "chapter": "7장 한 잔의 온도가 남긴 것",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "잔에 남는 물음"
           ],
           "secondaryConcepts": [
             "온도의 눈금"
@@ -4345,7 +4345,7 @@
           "chapter": "7장 한 잔의 온도가 남긴 것",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "잔에 남는 물음"
           ],
           "secondaryConcepts": [
             "마실 수 없는 날"
@@ -4366,11 +4366,11 @@
           "chapter": "7장 한 잔의 온도가 남긴 것",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "잔에 남는 물음"
           ],
           "secondaryConcepts": [
             "잔이 정하는 것",
-            "남은 것"
+            "눈금이 남긴 것"
           ],
           "contentRole": "CONCLUSION",
           "aiRouteCandidatePage": true,
@@ -5026,7 +5026,7 @@
           "chapter": "5장 한 해의 소리 공책",
           "section": "5.1 소리를 적는 규칙",
           "primaryConcepts": [
-            "기록의 규칙"
+            "소리를 적는 법"
           ],
           "secondaryConcepts": [],
           "contentRole": "EXAMPLE",
@@ -5045,7 +5045,7 @@
           "chapter": "5장 한 해의 소리 공책",
           "section": "5.1 소리를 적는 규칙",
           "primaryConcepts": [
-            "기록의 규칙"
+            "소리를 적는 법"
           ],
           "secondaryConcepts": [
             "못 적은 소리"
@@ -5069,7 +5069,7 @@
             "못 적은 소리"
           ],
           "secondaryConcepts": [
-            "기록의 규칙"
+            "소리를 적는 법"
           ],
           "contentRole": "EXAMPLE",
           "aiRouteCandidatePage": true,
@@ -5317,7 +5317,7 @@
           "chapter": "7장 오늘의 소음을 접어두기",
           "section": "7.1 접어 둔 자리에 남은 것",
           "primaryConcepts": [
-            "남은 것"
+            "접어 둔 자리에 남은 것"
           ],
           "secondaryConcepts": [],
           "contentRole": "CONCLUSION",
@@ -5336,7 +5336,7 @@
           "chapter": "7장 오늘의 소음을 접어두기",
           "section": "7.1 접어 둔 자리에 남은 것",
           "primaryConcepts": [
-            "남은 것"
+            "접어 둔 자리에 남은 것"
           ],
           "secondaryConcepts": [
             "고요",
@@ -5358,7 +5358,7 @@
           "chapter": "7장 오늘의 소음을 접어두기",
           "section": "7.1 접어 둔 자리에 남은 것",
           "primaryConcepts": [
-            "남은 것"
+            "접어 둔 자리에 남은 것"
           ],
           "secondaryConcepts": [
             "접어 두기",
@@ -5380,7 +5380,7 @@
           "chapter": "7장 오늘의 소음을 접어두기",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "소리에 남는 물음"
           ],
           "secondaryConcepts": [
             "소리의 지도"
@@ -5401,7 +5401,7 @@
           "chapter": "7장 오늘의 소음을 접어두기",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "소리에 남는 물음"
           ],
           "secondaryConcepts": [
             "고요의 값",
@@ -5423,11 +5423,11 @@
           "chapter": "7장 오늘의 소음을 접어두기",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "소리에 남는 물음"
           ],
           "secondaryConcepts": [
             "못 적은 소리",
-            "남은 것"
+            "접어 둔 자리에 남은 것"
           ],
           "contentRole": "CONCLUSION",
           "aiRouteCandidatePage": true,
@@ -6083,7 +6083,7 @@
           "chapter": "5장 한 해의 문장들",
           "section": "5.1 무엇을 적었는가",
           "primaryConcepts": [
-            "기록의 규칙"
+            "그 자리에서 적지 않기"
           ],
           "secondaryConcepts": [],
           "contentRole": "EXAMPLE",
@@ -6102,7 +6102,7 @@
           "chapter": "5장 한 해의 문장들",
           "section": "5.1 무엇을 적었는가",
           "primaryConcepts": [
-            "기록의 규칙"
+            "그 자리에서 적지 않기"
           ],
           "secondaryConcepts": [
             "옮겨 적기"
@@ -6126,7 +6126,7 @@
             "옮겨 적기"
           ],
           "secondaryConcepts": [
-            "기록의 규칙"
+            "그 자리에서 적지 않기"
           ],
           "contentRole": "EXAMPLE",
           "aiRouteCandidatePage": true,
@@ -6374,7 +6374,7 @@
           "chapter": "7장 우산 아래 나눈 짧은 문장",
           "section": "7.1 남은 문장들",
           "primaryConcepts": [
-            "남은 것"
+            "짧은 문장이 남긴 것"
           ],
           "secondaryConcepts": [],
           "contentRole": "CONCLUSION",
@@ -6393,7 +6393,7 @@
           "chapter": "7장 우산 아래 나눈 짧은 문장",
           "section": "7.1 남은 문장들",
           "primaryConcepts": [
-            "남은 것"
+            "짧은 문장이 남긴 것"
           ],
           "secondaryConcepts": [
             "말의 밀도",
@@ -6415,7 +6415,7 @@
           "chapter": "7장 우산 아래 나눈 짧은 문장",
           "section": "7.1 남은 문장들",
           "primaryConcepts": [
-            "남은 것"
+            "짧은 문장이 남긴 것"
           ],
           "secondaryConcepts": [
             "상대의 자리",
@@ -6437,7 +6437,7 @@
           "chapter": "7장 우산 아래 나눈 짧은 문장",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "우산 아래 남는 물음"
           ],
           "secondaryConcepts": [
             "기억나는 문장"
@@ -6458,7 +6458,7 @@
           "chapter": "7장 우산 아래 나눈 짧은 문장",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "우산 아래 남는 물음"
           ],
           "secondaryConcepts": [
             "안전하지 않은 말 걸기"
@@ -6479,11 +6479,11 @@
           "chapter": "7장 우산 아래 나눈 짧은 문장",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "우산 아래 남는 물음"
           ],
           "secondaryConcepts": [
             "옮겨 적기",
-            "남은 것"
+            "짧은 문장이 남긴 것"
           ],
           "contentRole": "CONCLUSION",
           "aiRouteCandidatePage": true,
@@ -6503,7 +6503,7 @@
       "title": "마음의 서랍을 정리하는 밤",
       "totalPageCount": 50,
       "pdfPath": "pdfs/book-017.pdf",
-      "pdfSha256": "3053aaaf8584d1f190bafcada8b9c19a919278257033874f92e14b913b40aaac",
+      "pdfSha256": "bd3760ef86c6960ee81ae2ed23218e1add101e233b6f2b96163b32d74f3a6962",
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
       "pages": [
@@ -6699,7 +6699,7 @@
             "꺼내 놓기"
           ],
           "secondaryConcepts": [
-            "이름 붙이기"
+            "감정에 이름 붙이기"
           ],
           "contentRole": "CORE",
           "aiRouteCandidatePage": true,
@@ -6721,7 +6721,7 @@
           ],
           "secondaryConcepts": [
             "분류해 보기",
-            "이름 붙이기"
+            "감정에 이름 붙이기"
           ],
           "contentRole": "CORE",
           "aiRouteCandidatePage": true,
@@ -6739,7 +6739,7 @@
           "chapter": "2장 꺼내 놓기",
           "section": "2.2 이름을 붙여 보기",
           "primaryConcepts": [
-            "이름 붙이기"
+            "감정에 이름 붙이기"
           ],
           "secondaryConcepts": [
             "꺼내 놓기"
@@ -6760,7 +6760,7 @@
           "chapter": "2장 꺼내 놓기",
           "section": "2.2 이름을 붙여 보기",
           "primaryConcepts": [
-            "이름 붙이기"
+            "감정에 이름 붙이기"
           ],
           "secondaryConcepts": [
             "섞여 있는 것"
@@ -6784,7 +6784,7 @@
             "이름 없는 것"
           ],
           "secondaryConcepts": [
-            "이름 붙이기"
+            "감정에 이름 붙이기"
           ],
           "contentRole": "CORE",
           "aiRouteCandidatePage": true,
@@ -6826,7 +6826,7 @@
             "분류해 보기"
           ],
           "secondaryConcepts": [
-            "이름 붙이기"
+            "감정에 이름 붙이기"
           ],
           "contentRole": "CORE",
           "aiRouteCandidatePage": true,
@@ -7141,7 +7141,7 @@
           "chapter": "5장 한 해의 밤들",
           "section": "5.1 무엇을 적는가",
           "primaryConcepts": [
-            "기록의 규칙"
+            "밤의 서식"
           ],
           "secondaryConcepts": [],
           "contentRole": "EXAMPLE",
@@ -7160,7 +7160,7 @@
           "chapter": "5장 한 해의 밤들",
           "section": "5.1 무엇을 적는가",
           "primaryConcepts": [
-            "기록의 규칙"
+            "밤의 서식"
           ],
           "secondaryConcepts": [
             "못 적은 밤"
@@ -7184,7 +7184,7 @@
             "못 적은 밤"
           ],
           "secondaryConcepts": [
-            "기록의 규칙"
+            "밤의 서식"
           ],
           "contentRole": "EXAMPLE",
           "aiRouteCandidatePage": true,
@@ -7348,7 +7348,7 @@
           "chapter": "6장 정리되지 않는 것",
           "section": "6.2 서랍이라는 비유의 한계",
           "primaryConcepts": [
-            "비유의 한계"
+            "서랍 비유의 한계"
           ],
           "secondaryConcepts": [
             "서랍이라는 비유"
@@ -7369,10 +7369,10 @@
           "chapter": "6장 정리되지 않는 것",
           "section": "6.2 서랍이라는 비유의 한계",
           "primaryConcepts": [
-            "비유의 한계"
+            "서랍 비유의 한계"
           ],
           "secondaryConcepts": [
-            "이름 붙이기"
+            "감정에 이름 붙이기"
           ],
           "contentRole": "COUNTERPOINT",
           "aiRouteCandidatePage": true,
@@ -7432,7 +7432,7 @@
           "chapter": "7장 마음의 서랍을 정리하는 밤",
           "section": "7.1 정리한다는 말",
           "primaryConcepts": [
-            "남은 것"
+            "정리가 남긴 것"
           ],
           "secondaryConcepts": [],
           "contentRole": "CONCLUSION",
@@ -7451,7 +7451,7 @@
           "chapter": "7장 마음의 서랍을 정리하는 밤",
           "section": "7.1 정리한다는 말",
           "primaryConcepts": [
-            "남은 것"
+            "정리가 남긴 것"
           ],
           "secondaryConcepts": [
             "열어 둔 서랍",
@@ -7473,10 +7473,10 @@
           "chapter": "7장 마음의 서랍을 정리하는 밤",
           "section": "7.1 정리한다는 말",
           "primaryConcepts": [
-            "남은 것"
+            "정리가 남긴 것"
           ],
           "secondaryConcepts": [
-            "비유의 한계",
+            "서랍 비유의 한계",
             "혼자 할 수 없는 것"
           ],
           "contentRole": "CONCLUSION",
@@ -7495,7 +7495,7 @@
           "chapter": "7장 마음의 서랍을 정리하는 밤",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "서랍에 남는 물음"
           ],
           "secondaryConcepts": [
             "서랍의 개수"
@@ -7516,7 +7516,7 @@
           "chapter": "7장 마음의 서랍을 정리하는 밤",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "서랍에 남는 물음"
           ],
           "secondaryConcepts": [
             "못 적은 밤"
@@ -7537,11 +7537,11 @@
           "chapter": "7장 마음의 서랍을 정리하는 밤",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "서랍에 남는 물음"
           ],
           "secondaryConcepts": [
             "다시 열림",
-            "남은 것"
+            "정리가 남긴 것"
           ],
           "contentRole": "CONCLUSION",
           "aiRouteCandidatePage": true,
@@ -7561,7 +7561,7 @@
       "title": "작은 실패를 기르는 정원",
       "totalPageCount": 50,
       "pdfPath": "pdfs/book-018.pdf",
-      "pdfSha256": "2c0cc2c4fd449431ccddc803859b4c45e2ce76ff577876888474cdea6faca2b1",
+      "pdfSha256": "480a76e22cea3b9c43ab94d952b114cc6cc8f4bed9942cb3c3e5168bac746ed0",
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
       "pages": [
@@ -8199,7 +8199,7 @@
           "chapter": "5장 한 해의 정원",
           "section": "5.1 무엇을 적었는가",
           "primaryConcepts": [
-            "기록의 규칙"
+            "한 줄에 실패 하나"
           ],
           "secondaryConcepts": [],
           "contentRole": "EXAMPLE",
@@ -8218,7 +8218,7 @@
           "chapter": "5장 한 해의 정원",
           "section": "5.1 무엇을 적었는가",
           "primaryConcepts": [
-            "기록의 규칙"
+            "한 줄에 실패 하나"
           ],
           "secondaryConcepts": [
             "못 적은 실패"
@@ -8242,7 +8242,7 @@
             "못 적은 실패"
           ],
           "secondaryConcepts": [
-            "기록의 규칙"
+            "한 줄에 실패 하나"
           ],
           "contentRole": "EXAMPLE",
           "aiRouteCandidatePage": true,
@@ -8279,7 +8279,7 @@
           "chapter": "5장 한 해의 정원",
           "section": "5.3 한 해를 늘어놓으면",
           "primaryConcepts": [
-            "한 해를 늘어놓기"
+            "정원을 늘어놓기"
           ],
           "secondaryConcepts": [
             "해 보기"
@@ -8300,7 +8300,7 @@
           "chapter": "5장 한 해의 정원",
           "section": "5.3 한 해를 늘어놓으면",
           "primaryConcepts": [
-            "한 해를 늘어놓기"
+            "정원을 늘어놓기"
           ],
           "secondaryConcepts": [
             "되풀이되는 실패"
@@ -8321,7 +8321,7 @@
           "chapter": "5장 한 해의 정원",
           "section": "5.3 한 해를 늘어놓으면",
           "primaryConcepts": [
-            "한 해를 늘어놓기"
+            "정원을 늘어놓기"
           ],
           "secondaryConcepts": [
             "못 적은 실패",
@@ -8448,7 +8448,7 @@
           "chapter": "6장 기를 수 없는 실패",
           "section": "6.3 정원이라는 비유의 한계",
           "primaryConcepts": [
-            "비유의 한계"
+            "정원 비유의 한계"
           ],
           "secondaryConcepts": [
             "정원이라는 비유"
@@ -8469,7 +8469,7 @@
           "chapter": "6장 기를 수 없는 실패",
           "section": "6.3 정원이라는 비유의 한계",
           "primaryConcepts": [
-            "비유의 한계"
+            "정원 비유의 한계"
           ],
           "secondaryConcepts": [
             "기다리는 시간"
@@ -8490,7 +8490,7 @@
           "chapter": "7장 작은 실패를 기르는 정원",
           "section": "7.1 기른다는 말",
           "primaryConcepts": [
-            "남은 것"
+            "기르는 일이 남긴 것"
           ],
           "secondaryConcepts": [],
           "contentRole": "CONCLUSION",
@@ -8509,7 +8509,7 @@
           "chapter": "7장 작은 실패를 기르는 정원",
           "section": "7.1 기른다는 말",
           "primaryConcepts": [
-            "남은 것"
+            "기르는 일이 남긴 것"
           ],
           "secondaryConcepts": [
             "되지 않는 것",
@@ -8531,11 +8531,11 @@
           "chapter": "7장 작은 실패를 기르는 정원",
           "section": "7.1 기른다는 말",
           "primaryConcepts": [
-            "남은 것"
+            "기르는 일이 남긴 것"
           ],
           "secondaryConcepts": [
             "권하지 않기",
-            "비유의 한계"
+            "정원 비유의 한계"
           ],
           "contentRole": "CONCLUSION",
           "aiRouteCandidatePage": true,
@@ -8553,7 +8553,7 @@
           "chapter": "7장 작은 실패를 기르는 정원",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "정원에 남는 물음"
           ],
           "secondaryConcepts": [
             "되풀이되는 실패"
@@ -8574,7 +8574,7 @@
           "chapter": "7장 작은 실패를 기르는 정원",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "정원에 남는 물음"
           ],
           "secondaryConcepts": [
             "못 적은 실패"
@@ -8595,11 +8595,11 @@
           "chapter": "7장 작은 실패를 기르는 정원",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "정원에 남는 물음"
           ],
           "secondaryConcepts": [
-            "한 해를 늘어놓기",
-            "남은 것"
+            "정원을 늘어놓기",
+            "기르는 일이 남긴 것"
           ],
           "contentRole": "CONCLUSION",
           "aiRouteCandidatePage": true,
@@ -8619,7 +8619,7 @@
       "title": "저녁 여섯 시의 산책자",
       "totalPageCount": 50,
       "pdfPath": "pdfs/book-019.pdf",
-      "pdfSha256": "945326e72479a49fb006227372965de2403657378fd3cbfc538bf5fa4e717444",
+      "pdfSha256": "5fe5d1d778c6f9d4a55242490f323f68211b8549db1db5a71a8e5dcf1738132f",
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
       "pages": [
@@ -9048,7 +9048,7 @@
             "백 번째"
           ],
           "secondaryConcepts": [
-            "기록의 규칙"
+            "여섯 지점에서 적기"
           ],
           "contentRole": "CORE",
           "aiRouteCandidatePage": true,
@@ -9256,7 +9256,7 @@
           "chapter": "5장 한 해의 산책",
           "section": "5.1 걸으면서 적는 법",
           "primaryConcepts": [
-            "기록의 규칙"
+            "여섯 지점에서 적기"
           ],
           "secondaryConcepts": [],
           "contentRole": "EXAMPLE",
@@ -9275,7 +9275,7 @@
           "chapter": "5장 한 해의 산책",
           "section": "5.1 걸으면서 적는 법",
           "primaryConcepts": [
-            "기록의 규칙"
+            "여섯 지점에서 적기"
           ],
           "secondaryConcepts": [
             "걷지 못한 날"
@@ -9299,14 +9299,14 @@
             "걷지 못한 날"
           ],
           "secondaryConcepts": [
-            "기록의 규칙"
+            "여섯 지점에서 적기"
           ],
           "contentRole": "EXAMPLE",
           "aiRouteCandidatePage": true,
           "aiAnalysisText": "미수행일의 기록을 다루는 페이지다. 사유를 네 유형으로 분류해 비율을 제시하고, 특정 사유가 시기적으로 집중된다는 관측을 기술한다.",
           "aiAnalysisInputSha256": "d2ebb798e116df3a10959a63bd2297d31e4db626c724f16c8f47549caaa36c11",
           "aiPublicGuideTopic": "안 나간 날을 세기",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [
             31
           ],
@@ -9336,7 +9336,7 @@
           "chapter": "5장 한 해의 산책",
           "section": "5.3 삼백 번을 늘어놓으면",
           "primaryConcepts": [
-            "늘어놓기"
+            "산책을 늘어놓기"
           ],
           "secondaryConcepts": [
             "계절이 지나감"
@@ -9357,7 +9357,7 @@
           "chapter": "5장 한 해의 산책",
           "section": "5.3 삼백 번을 늘어놓으면",
           "primaryConcepts": [
-            "늘어놓기"
+            "산책을 늘어놓기"
           ],
           "secondaryConcepts": [
             "어긋난 날"
@@ -9367,7 +9367,7 @@
           "aiAnalysisText": "연간 계수 결과를 다루는 페이지다. 수행·미수행·미준수 건수와 정점별 기록량을 제시하고, 계수 이전의 인상과 실제 값이 어긋난 점을 기술한다.",
           "aiAnalysisInputSha256": "d50ddb73685aeb95738e0820298381cdad6193e4cc218c59d8be27ee376784ea",
           "aiPublicGuideTopic": "늘어놓고 세어 본 것",
-          "estimatedReadingSeconds": 65,
+          "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             35
           ],
@@ -9378,7 +9378,7 @@
           "chapter": "5장 한 해의 산책",
           "section": "5.3 삼백 번을 늘어놓으면",
           "primaryConcepts": [
-            "늘어놓기"
+            "산책을 늘어놓기"
           ],
           "secondaryConcepts": [
             "계절이 지나감",
@@ -9547,7 +9547,7 @@
           "chapter": "7장 저녁 여섯 시의 산책자",
           "section": "7.1 되풀이가 남긴 것",
           "primaryConcepts": [
-            "남은 것"
+            "되풀이가 남긴 것"
           ],
           "secondaryConcepts": [],
           "contentRole": "CONCLUSION",
@@ -9566,7 +9566,7 @@
           "chapter": "7장 저녁 여섯 시의 산책자",
           "section": "7.1 되풀이가 남긴 것",
           "primaryConcepts": [
-            "남은 것"
+            "되풀이가 남긴 것"
           ],
           "secondaryConcepts": [
             "그날의 표시",
@@ -9588,7 +9588,7 @@
           "chapter": "7장 저녁 여섯 시의 산책자",
           "section": "7.1 되풀이가 남긴 것",
           "primaryConcepts": [
-            "남은 것"
+            "되풀이가 남긴 것"
           ],
           "secondaryConcepts": [
             "쌓임의 대가",
@@ -9610,7 +9610,7 @@
           "chapter": "7장 저녁 여섯 시의 산책자",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "여섯 시에 남는 물음"
           ],
           "secondaryConcepts": [
             "되풀이의 조건"
@@ -9631,7 +9631,7 @@
           "chapter": "7장 저녁 여섯 시의 산책자",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "여섯 시에 남는 물음"
           ],
           "secondaryConcepts": [
             "시각을 지킬 수 없을 때"
@@ -9652,11 +9652,11 @@
           "chapter": "7장 저녁 여섯 시의 산책자",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "여섯 시에 남는 물음"
           ],
           "secondaryConcepts": [
             "달라지지 않는 것",
-            "남은 것"
+            "되풀이가 남긴 것"
           ],
           "contentRole": "CONCLUSION",
           "aiRouteCandidatePage": true,
@@ -9676,7 +9676,7 @@
       "title": "말하지 않은 친절의 모양",
       "totalPageCount": 50,
       "pdfPath": "pdfs/book-020.pdf",
-      "pdfSha256": "af83fd9a6a9402dc42ec883fa8edfc84655e54b1e88e4461aa3f0d52ab7cc9b3",
+      "pdfSha256": "b2d6a311b190cd34620bd715982cf255983d95cc2235c06ec5ed2f0081e5b6aa",
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
       "pages": [
@@ -10312,7 +10312,7 @@
           "chapter": "5장 한 해의 목록",
           "section": "5.1 무엇을 적었는가",
           "primaryConcepts": [
-            "기록의 규칙"
+            "메모 한 줄"
           ],
           "secondaryConcepts": [],
           "contentRole": "EXAMPLE",
@@ -10331,7 +10331,7 @@
           "chapter": "5장 한 해의 목록",
           "section": "5.1 무엇을 적었는가",
           "primaryConcepts": [
-            "기록의 규칙"
+            "메모 한 줄"
           ],
           "secondaryConcepts": [
             "못 적은 것"
@@ -10355,7 +10355,7 @@
             "못 적은 것"
           ],
           "secondaryConcepts": [
-            "기록의 규칙"
+            "메모 한 줄"
           ],
           "contentRole": "EXAMPLE",
           "aiRouteCandidatePage": true,
@@ -10392,7 +10392,7 @@
           "chapter": "5장 한 해의 목록",
           "section": "5.3 백열아홉 개를 늘어놓으면",
           "primaryConcepts": [
-            "늘어놓기"
+            "목록을 늘어놓기"
           ],
           "secondaryConcepts": [
             "알아차림"
@@ -10413,7 +10413,7 @@
           "chapter": "5장 한 해의 목록",
           "section": "5.3 백열아홉 개를 늘어놓으면",
           "primaryConcepts": [
-            "늘어놓기"
+            "목록을 늘어놓기"
           ],
           "secondaryConcepts": [
             "옮겨 가는 것"
@@ -10434,7 +10434,7 @@
           "chapter": "5장 한 해의 목록",
           "section": "5.3 백열아홉 개를 늘어놓으면",
           "primaryConcepts": [
-            "늘어놓기"
+            "목록을 늘어놓기"
           ],
           "secondaryConcepts": [
             "못 적은 것",
@@ -10603,7 +10603,7 @@
           "chapter": "7장 말하지 않은 친절의 모양",
           "section": "7.1 모양이라는 말",
           "primaryConcepts": [
-            "남은 것"
+            "모양이 남긴 것"
           ],
           "secondaryConcepts": [],
           "contentRole": "CONCLUSION",
@@ -10622,7 +10622,7 @@
           "chapter": "7장 말하지 않은 친절의 모양",
           "section": "7.1 모양이라는 말",
           "primaryConcepts": [
-            "남은 것"
+            "모양이 남긴 것"
           ],
           "secondaryConcepts": [
             "알아차림",
@@ -10644,7 +10644,7 @@
           "chapter": "7장 말하지 않은 친절의 모양",
           "section": "7.1 모양이라는 말",
           "primaryConcepts": [
-            "남은 것"
+            "모양이 남긴 것"
           ],
           "secondaryConcepts": [
             "순환이라는 말",
@@ -10655,7 +10655,7 @@
           "aiAnalysisText": "구조에 대한 명명을 끝까지 유보한 경위를 정리하는 페이지다. 계수 가능한 값의 범위를 명시하고, 결론적 서술을 반복 삭제한 판단을 기술한다.",
           "aiAnalysisInputSha256": "40dda72bbf672de97544e6457e371d8a11a40cdc367c5e8876c3812fc914a72b",
           "aiPublicGuideTopic": "이름 붙이지 않고 끝내기",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             46
           ],
@@ -10666,7 +10666,7 @@
           "chapter": "7장 말하지 않은 친절의 모양",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "목록에 남는 물음"
           ],
           "secondaryConcepts": [
             "옮겨 가는 것"
@@ -10687,10 +10687,10 @@
           "chapter": "7장 말하지 않은 친절의 모양",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "목록에 남는 물음"
           ],
           "secondaryConcepts": [
-            "기록의 규칙"
+            "메모 한 줄"
           ],
           "contentRole": "CONCLUSION",
           "aiRouteCandidatePage": true,
@@ -10708,11 +10708,11 @@
           "chapter": "7장 말하지 않은 친절의 모양",
           "section": "7.2 남는 물음",
           "primaryConcepts": [
-            "남는 물음"
+            "목록에 남는 물음"
           ],
           "secondaryConcepts": [
             "세는 일의 한계",
-            "남은 것"
+            "모양이 남긴 것"
           ],
           "contentRole": "CONCLUSION",
           "aiRouteCandidatePage": true,

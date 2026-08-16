@@ -194,10 +194,26 @@ MONTHS = ["첫째 달", "둘째 달", "셋째 달", "넷째 달", "다섯째 달
 DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 
+# 5.2·5.3 본문이 센 값. 도표는 이 값에서 만들어야 본문과 어긋나지 않는다.
+MISSED_NIGHTS = 90
+
+
+def _missed_set():
+    """못 앉은 밤을 정확히 MISSED_NIGHTS개 고른다.
+
+    나머지 연산으로 고르면 개수가 목표와 어긋난다. 본문은 못 앉은 밤이 특정 달에 몰렸다고
+    말하지 않으므로 한 해에 고르게 흩어 놓는다. 무작위를 쓰지 않아 다시 실행해도 같은 그림이다.
+    """
+    days = [(m, d) for m, n in enumerate(DAYS, start=1) for d in range(1, n + 1)]
+    step = len(days) / MISSED_NIGHTS
+    return {days[int(i * step)] for i in range(MISSED_NIGHTS)}
+
+
+MISSED = _missed_set()
+
+
 def missed(month, day):
-    if month in (3, 8) and (month * 4 + day * 3) % 7 == 0:
-        return True
-    return (month * 5 + day * 7) % 11 == 0
+    return (month, day) in MISSED
 
 
 def fig_year_nights():

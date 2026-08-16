@@ -189,20 +189,49 @@ MONTHS = ["첫째 달", "둘째 달", "셋째 달", "넷째 달", "다섯째 달
 DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 
+# 5.2·5.3 본문이 센 값. 도표는 이 값에서 만들어야 본문과 어긋나지 않는다.
+TOTAL_CUPS, POURED_CUPS, REHEATED_CUPS = 512, 26, 11
+NO_CUP_DAYS, TWO_CUP_DAYS = 33, 180  # 180*2 + (365-33-180) = 512
+CLUSTER_MONTHS = (3, 4, 9, 10)  # 버림·되데움이 몰린 달
+
+
+def _pick(pool, count):
+    """pool에서 count개를 고르게 고른다. 개수가 정확히 맞도록 간격으로 나눈다."""
+    step = len(pool) / count
+    return [pool[int(i * step)] for i in range(count)]
+
+
+def _cups():
+    """(달, 날, 칸) → 상태. 잔 수와 버림·되데움 수를 본문 값에 정확히 맞춘다."""
+    cal = [(m, d) for m, n in enumerate(DAYS, start=1) for d in range(1, n + 1)]
+    none_days = set(_pick(cal, NO_CUP_DAYS))
+    rest = [k for k in cal if k not in none_days]
+    two_days = set(_pick(rest, TWO_CUP_DAYS))
+    slots = []
+    for m, d in cal:
+        if (m, d) in none_days:
+            continue
+        for slot in range(2 if (m, d) in two_days else 1):
+            slots.append((m, d, slot))
+    state = {s: "plain" for s in slots}
+    cluster = [s for s in slots if s[0] in CLUSTER_MONTHS]
+    for s in _pick(cluster, POURED_CUPS):
+        state[s] = "poured"
+    left = [s for s in cluster if state[s] == "plain"]
+    for s in _pick(left, REHEATED_CUPS):
+        state[s] = "reheated"
+    return slots, state
+
+
+SLOTS, STATE = _cups()
+
+
 def cup_state(month, day, slot):
-    """잔 하나의 상태. 무작위를 쓰지 않아 다시 실행해도 같은 그림이 나온다."""
-    key = month * 7 + day * 3 + slot
-    if month in (3, 4, 9, 10) and key % 9 == 0:
-        return "poured"
-    if month in (3, 4, 9, 10) and key % 11 == 0:
-        return "reheated"
-    if month in (6, 7):
-        return "plain"
-    if key % 23 == 0:
-        return "poured"
-    if key % 31 == 0:
-        return "reheated"
-    return "plain"
+    return STATE.get((month, day, slot), "plain")
+
+
+def cup_count(month, day):
+    return sum(1 for s in SLOTS if s[0] == month and s[1] == day)
 
 
 def fig_year_cups():
@@ -213,9 +242,7 @@ def fig_year_cups():
         cy = y0 + (m - 1) * rh
         b.append(text(x0 - 12, cy + 22, MONTHS[m - 1], 13, MUTED, "400", "end"))
         for d in range(1, n + 1):
-            # 하루에 두 잔이지만 절반쯤은 한 잔이고 일부는 없다
-            cups = 2 if (m * 5 + d * 3) % 4 else (0 if (m + d) % 11 == 0 else 1)
-            for slot in range(cups):
+            for slot in range(cup_count(m, d)):
                 bx = x0 + (d - 1) * (slot_w * 2 + 2.2) + slot * slot_w
                 state = cup_state(m, d, slot)
                 if state == "plain":
