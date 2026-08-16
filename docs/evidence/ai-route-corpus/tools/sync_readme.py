@@ -29,7 +29,7 @@ def body_pages(pages):
 
 
 def scenario_of(case):
-    return case["depth"] if case["owned"] else f"비소장 예산 {case['maxAdditionalInk']}"
+    return f"소장 {case['depth']}" if case["owned"] else f"비소장 예산 {case['maxAdditionalInk']}"
 
 
 def main():
