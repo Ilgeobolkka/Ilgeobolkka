@@ -46356,7 +46356,7 @@
           "chapter": "4장 재고 나서",
           "section": "4.4 숫자에서 다음 행동으로",
           "primaryConcepts": [
-            "행동 연결"
+            "조치 연결"
           ],
           "secondaryConcepts": [
             "확인 주기",
@@ -46378,7 +46378,7 @@
           "chapter": "4장 재고 나서",
           "section": "4.4 숫자에서 다음 행동으로",
           "primaryConcepts": [
-            "행동 연결"
+            "조치 연결"
           ],
           "secondaryConcepts": [
             "지표 갱신"
@@ -46491,7 +46491,7 @@
           ],
           "secondaryConcepts": [
             "해석",
-            "행동 연결"
+            "조치 연결"
           ],
           "contentRole": "EXAMPLE",
           "aiRouteCandidatePage": true,
@@ -46578,7 +46578,7 @@
             "지표 왜곡"
           ],
           "secondaryConcepts": [
-            "행동 연결"
+            "조치 연결"
           ],
           "contentRole": "COUNTERPOINT",
           "aiRouteCandidatePage": true,
