@@ -254,8 +254,8 @@ manifest 리비전이나 임베딩 모델이 바뀌어 **콘텐츠 재적재가 
 ### OpenAI 데이터·비용 제어
 
 [ADR-0014](./adr/application/0014-use-openai-and-mysql-for-ai-route-generation.md)의 AI 경로를 활성화하기
-위한 2차 MVP 계약입니다. 현재 애플리케이션은 아래 변수를 바인딩하지만 OpenAI 호출 adapter는 아직 구현하지
-않았습니다. 다음 환경변수를 사용합니다.
+위한 2차 MVP 계약입니다. 현재 애플리케이션은 OpenAI Embeddings·Responses 호출 adapter와 아래 환경변수
+바인딩을 구현했으며, 공개 AI 경로는 기본 비활성화입니다. 다음 환경변수를 사용합니다.
 
 | 변수 | 기본값 | 설명 | 민감정보 |
 | --- | --- | --- | --- |
