@@ -3836,6 +3836,73 @@
         19,
         21
       ]
+    },
+    {
+      "caseId": "case-book-100",
+      "bookId": 100,
+      "purpose": "이 책을 소장하고 있다. 다음 달의 나에게 무엇을 남겨야 이번 달의 판단이 이어지는지 그 형식만 빠르게 보고 싶다. 달을 닫고 회고로 잇는 단계까지는 아직 필요 없다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "계획의 단절",
+        "미래의 나",
+        "계획 편지",
+        "전달 항목"
+      ],
+      "helpfulConcepts": [
+        "분리된 두 활동",
+        "계획-실행-회고 순환",
+        "전제 기록",
+        "단일 중점"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 15
+        }
+      ],
+      "irrelevantPageNumbers": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          49
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        6,
+        12,
+        14,
+        15
+      ],
+      "allowedAlternativePageNumbers": [
+        13,
+        17,
+        19
+      ]
     }
   ]
 }
