@@ -8615,6 +8615,1063 @@
       ]
     },
     {
+      "bookId": 19,
+      "title": "저녁 여섯 시의 산책자",
+      "totalPageCount": 50,
+      "pdfPath": "pdfs/book-019.pdf",
+      "pdfSha256": "945326e72479a49fb006227372965de2403657378fd3cbfc538bf5fa4e717444",
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 여섯 시에 나선다",
+          "section": "1.1 여섯 시로 정한 이유",
+          "primaryConcepts": [
+            "같은 시각"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 시각을 단일 시점으로 고정한 이유를 다루는 페이지다. 시각이 변동하면 관측 간 비교가 성립하지 않는다는 점을 제시하고, 계절에 따른 조도 변화가 큰 시간대를 선택한 근거를 밝힌다.",
+          "aiAnalysisInputSha256": "8f139184f96f25ff6b44230627d2e997fff98e9c43db588be6c094358991d152",
+          "aiPublicGuideTopic": "시각을 하나로 못 박는 일",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "same-hour-same-route"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 여섯 시에 나선다",
+          "section": "1.1 여섯 시로 정한 이유",
+          "primaryConcepts": [
+            "같은 시각"
+          ],
+          "secondaryConcepts": [
+            "같은 길"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시각 고정의 허용 범위를 다루는 페이지다. 엄격한 기준이 준수율을 떨어뜨린다는 점을 제시하고, 허용 폭 안에서도 실제 시각을 기록해 사후 확인에 쓰는 절차를 기술한다.",
+          "aiAnalysisInputSha256": "d5ad2048db50378b8902bb90bcbdba9eefae39ba1c94ca2b08a9d9696aaae2ae",
+          "aiPublicGuideTopic": "몇 분까지 지키는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 여섯 시에 나선다",
+          "section": "1.1 여섯 시로 정한 이유",
+          "primaryConcepts": [
+            "같은 시각"
+          ],
+          "secondaryConcepts": [
+            "걷는 규칙"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시각 고정이 관측 지속에 미치는 영향을 다루는 페이지다. 고정된 시각이 일과의 기준점으로 작용한다는 관측을 제시하고, 동일한 규칙이 방법과 지속 장치를 겸한다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "cc6825a1540584e054f771ce3cf088ec6fcbf6393625254a7ef43d937a664a90",
+          "aiPublicGuideTopic": "같은 시각이 만드는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            3
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 여섯 시에 나선다",
+          "section": "1.2 같은 길을 정하다",
+          "primaryConcepts": [
+            "같은 길"
+          ],
+          "secondaryConcepts": [
+            "같은 시각"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 경로의 고정과 정점 선정을 다루는 페이지다. 경로가 변동하면 변화의 원인을 특정할 수 없다는 점을 제시하고, 변화 가능성이 아니라 통과 확실성을 기준으로 정점을 고른 근거를 밝힌다.",
+          "aiAnalysisInputSha256": "f58474b41e21a4dd743a3b675c72be0ac4e91039743b69226e22a418ae8ca62e",
+          "aiPublicGuideTopic": "경로를 하나로 못 박는 일",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 여섯 시에 나선다",
+          "section": "1.2 같은 길을 정하다",
+          "primaryConcepts": [
+            "같은 길"
+          ],
+          "secondaryConcepts": [
+            "달라지는 것"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "경로의 진행 방향을 고정한 경위를 다루는 페이지다. 역방향 보행이 조도, 경사, 정점 순서를 모두 바꾼다는 관측을 제시하고, 통제 변수를 셋으로 확정한 구조를 밝힌다.",
+          "aiAnalysisInputSha256": "93c96febe5ad1e86f83056da23501ba234830b5882de92b3539c9c792f18dab8",
+          "aiPublicGuideTopic": "방향도 고정하기",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 여섯 시에 나선다",
+          "section": "1.3 걷는 방식을 정하다",
+          "primaryConcepts": [
+            "걷는 규칙"
+          ],
+          "secondaryConcepts": [
+            "같은 길"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "보행 방식의 표준화를 다루는 페이지다. 속도와 정지 시간이 관측량을 좌우한다는 점을 제시하고, 계절에 따른 준수율 저하를 인지하면서도 규칙을 유지한 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "e16f5c6090b05add75b753703e858daf1cc623efdbe7796b092fa775d03b331e",
+          "aiPublicGuideTopic": "속도와 멈춤을 정해 두기",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 여섯 시에 나선다",
+          "section": "1.3 걷는 방식을 정하다",
+          "primaryConcepts": [
+            "걷는 규칙"
+          ],
+          "secondaryConcepts": [
+            "같은 길",
+            "같은 시각"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "통제 변수 셋과 자유 변수 하나의 관계를 좌측 목록으로, 고정된 경로와 정점을 우측 도면으로 표현한 도표다. 고정 항목에 표시를 붙여 자유 항목과 구분한다.",
+          "aiAnalysisInputSha256": "346a14aebef4bb8a18222e2067b69a22c2c49dd383de5e990a55a46af182e9d8",
+          "aiPublicGuideTopic": "고정한 것 셋과 여섯 지점을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 달라지는 것",
+          "section": "2.1 무엇이 달라지는가",
+          "primaryConcepts": [
+            "달라지는 것"
+          ],
+          "secondaryConcepts": [
+            "같은 길"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "고정 조건에서 관측되는 변화의 유형을 다루는 페이지다. 조도, 통행량, 식생, 배치물의 네 범주를 제시하고 각 범주의 변화 주기가 서로 다르다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "75aeb63cfdffef18d6036efeecd469649f892ebe2ff50fe47a5c1087c78198cf",
+          "aiPublicGuideTopic": "삼십 분 안에서 달라지는 것들",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 달라지는 것",
+          "section": "2.1 무엇이 달라지는가",
+          "primaryConcepts": [
+            "달라지는 것"
+          ],
+          "secondaryConcepts": [
+            "견주는 눈"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 항목의 분류 기록을 다루는 페이지다. 변화 주기가 다른 항목을 분리 기록하는 이유를 제시하고, 분류에 포함되지 않는 관측을 위한 자유 기입란의 필요를 밝힌다.",
+          "aiAnalysisInputSha256": "61cd5ff975aec4a5cb5d64a15cb831b39d40323f562ec166e608dff7d6c36cbd",
+          "aiPublicGuideTopic": "네 가지를 따로 적기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 달라지는 것",
+          "section": "2.1 무엇이 달라지는가",
+          "primaryConcepts": [
+            "달라지는 것"
+          ],
+          "secondaryConcepts": [
+            "쌓이는 관찰",
+            "같은 시각"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "변화 유형별 시간 패턴을 동일 시간축 위에 네 행으로 표현한 도표다. 주기적 변동, 요일 주기, 완만한 추세, 무작위 발생이라는 서로 다른 형태를 나란히 배치해 대비한다.",
+          "aiAnalysisInputSha256": "562288a3c70cd492c7ba0110fc5edc6a57c68feae126d3d80cd04f9fc1643e25",
+          "aiPublicGuideTopic": "네 가지가 달라지는 속도를 나란히 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 달라지는 것",
+          "section": "2.2 달라지지 않는 것",
+          "primaryConcepts": [
+            "달라지지 않는 것"
+          ],
+          "secondaryConcepts": [
+            "달라지는 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "불변 요소의 기능을 다루는 페이지다. 고정된 대상이 변화 측정의 기준선 역할을 한다는 구조를 제시하고, 정점 선정 기준이 이 기능과 부합했음을 밝힌다.",
+          "aiAnalysisInputSha256": "727abefd2faf16b33c9f8f5583c939501ff0c222b0d00ecfec2b3e1fbc0a64d7",
+          "aiPublicGuideTopic": "한 해 내내 그대로인 것들",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 달라지는 것",
+          "section": "2.2 달라지지 않는 것",
+          "primaryConcepts": [
+            "달라지지 않는 것"
+          ],
+          "secondaryConcepts": [
+            "바뀌는 길"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기준선으로 삼은 대상이 변화한 사례를 다루는 페이지다. 측정 기준을 관측 대상에서 제외했을 때 변화를 감지하지 못한다는 문제를 제시하고, 주기적 기준 점검 절차를 도입한 경위를 기술한다.",
+          "aiAnalysisInputSha256": "a45390ae14e90470132126296d4bc79f87c60475100574f0e3b358fac84cf2a5",
+          "aiPublicGuideTopic": "그대로인 줄 알았는데 달라진 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 달라지는 것",
+          "section": "2.3 달라짐을 알아보는 방법",
+          "primaryConcepts": [
+            "견주는 눈"
+          ],
+          "secondaryConcepts": [
+            "달라지는 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "직전 기록의 사전 열람을 다루는 페이지다. 기억에 의한 비교가 불가능하다는 점을 제시하고, 사전 열람이 관측 대상을 특정하는 동시에 제한한다는 양면을 밝힌다.",
+          "aiAnalysisInputSha256": "4354549e5417cf94130e35fc03c927cccb14b393d6d13ea67b06f5fc71ce9fb9",
+          "aiPublicGuideTopic": "어제와 견주는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 달라지는 것",
+          "section": "2.3 달라짐을 알아보는 방법",
+          "primaryConcepts": [
+            "견주는 눈"
+          ],
+          "secondaryConcepts": [
+            "백 번째"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "변화 감지에 필요한 관측 간격을 다루는 페이지다. 항목별 변화 속도에 따라 비교 기준 시점을 다르게 설정한 절차를 제시하고, 단일 간격 적용 시 특정 항목이 누락된다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "c5a57706f89fdc1b5b5d0336f2aea87364811f1bc1b3221f0fe50f48b96e0c1b",
+          "aiPublicGuideTopic": "얼마나 달라져야 알아보는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 쌓이는 관찰",
+          "section": "3.1 되풀이가 만드는 것",
+          "primaryConcepts": [
+            "쌓이는 관찰"
+          ],
+          "secondaryConcepts": [
+            "달라지는 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복 관측이 관측자에게 축적하는 것을 다루는 페이지다. 주의가 자동으로 배치되고 미세한 차이가 즉시 감지된다는 변화를 제시하며, 이 축적이 기록으로 표현되지 않는다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "99696137971a22629c3821e5645d30496b7f055f58c624accee6907edcdc2736",
+          "aiPublicGuideTopic": "같은 것을 여러 번 볼 때 생기는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 쌓이는 관찰",
+          "section": "3.1 되풀이가 만드는 것",
+          "primaryConcepts": [
+            "쌓이는 관찰"
+          ],
+          "secondaryConcepts": [
+            "견주는 눈"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 기록량의 시기별 변화를 다루는 페이지다. 초기 증가, 중기 감소, 후기 재증가라는 세 구간을 제시하고, 후기 기록의 내용이 존재 확인에서 변화 확인으로 전환된다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "b03b30ea6db9dd1222d365111a841e0125fd3d973b615ca397fc3d775b5bbc4f",
+          "aiPublicGuideTopic": "몇 번째부터 달라지는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 쌓이는 관찰",
+          "section": "3.1 되풀이가 만드는 것",
+          "primaryConcepts": [
+            "쌓이는 관찰"
+          ],
+          "secondaryConcepts": [
+            "백 번째",
+            "달라지는 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회차에 따른 기록량 변화를 곡선으로, 기록 내용의 성격 변화를 구간 구분으로 함께 표현한 도표다. 중간 구간의 저조와 그 시기의 관측 중단을 별도 표시로 나타낸다.",
+          "aiAnalysisInputSha256": "86f48959e0b72900c3bca686876974dbb587be212157f5cd6c13229a800daec9",
+          "aiPublicGuideTopic": "회차별로 적은 양과 그 내용이 바뀌는 모습을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 쌓이는 관찰",
+          "section": "3.2 백 번째 걸음",
+          "primaryConcepts": [
+            "백 번째"
+          ],
+          "secondaryConcepts": [
+            "쌓이는 관찰"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "특정 회차를 의식했을 때의 관측 저하를 다루는 페이지다. 계수 정보가 주의를 점유한다는 관측을 제시하고, 회차 확인 시점을 사후로 옮긴 조치를 기술한다.",
+          "aiAnalysisInputSha256": "feda36058c5087c0923f1fe3162ea3571c5f77080e94c60a609bfc6324bd6a08",
+          "aiPublicGuideTopic": "백 번째 날에 있었던 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 쌓이는 관찰",
+          "section": "3.2 백 번째 걸음",
+          "primaryConcepts": [
+            "백 번째"
+          ],
+          "secondaryConcepts": [
+            "달라지지 않는 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정점별 기록량의 편차를 다루는 페이지다. 기록이 거의 발생하지 않는 지점의 존재를 결과로 인정하고, 해당 구간이 관측 사이의 정리 시간으로 기능했다는 점을 기술한다.",
+          "aiAnalysisInputSha256": "dbc6b678ed7efb5d11ce2efdaca681a09d9da14f338367140cbe670dc69c3fd7",
+          "aiPublicGuideTopic": "백 번을 지나고 알게 된 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            19
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 쌓이는 관찰",
+          "section": "3.2 백 번째 걸음",
+          "primaryConcepts": [
+            "백 번째"
+          ],
+          "secondaryConcepts": [
+            "기록의 규칙"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "회차 기록의 용도를 다루는 페이지다. 관측 중에는 기여하지 않으나 사후 정리 단계에서 필요하다는 구분을 제시하고, 그런 항목의 배치 방식을 기술한다.",
+          "aiAnalysisInputSha256": "dea3b0d3f854a6106fee99313bdde7cb8db82f53fbf6a434f880d1dd6a58fe7b",
+          "aiPublicGuideTopic": "회차를 세는 일에 대하여",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 쌓이는 관찰",
+          "section": "3.3 쌓임이 가리는 것",
+          "primaryConcepts": [
+            "쌓임의 대가"
+          ],
+          "secondaryConcepts": [
+            "쌓이는 관찰"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복 관측이 시야를 협소화하는 문제를 다루는 페이지다. 정점 고정이 정점 사이의 관측을 배제한다는 결과를 제시하고, 관측 기간 전체에 걸쳐 누적된 손실을 기술한다.",
+          "aiAnalysisInputSha256": "927ad01c52c8378f787fa587220ef197134cb5a0530a79f3f06f34bb83806389",
+          "aiPublicGuideTopic": "익숙해져서 안 보이는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 쌓이는 관찰",
+          "section": "3.3 쌓임이 가리는 것",
+          "primaryConcepts": [
+            "쌓임의 대가"
+          ],
+          "secondaryConcepts": [
+            "견주는 눈"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "협소화를 완화하려는 시도와 실패를 다루는 페이지다. 정점 무시와 정점 증설의 두 방법이 각각 비교 가능성과 시간 규칙을 깨뜨린다는 점을 제시하고 해결하지 못했음을 명시한다.",
+          "aiAnalysisInputSha256": "ca78f98f2ecbe476ca7c3d841cde8567ae2b40ebe210b45e86e60470b321ec9d",
+          "aiPublicGuideTopic": "가려진 것을 되찾아 보려던 시도",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 같은 길 다른 하루",
+          "section": "4.1 그날의 표시",
+          "primaryConcepts": [
+            "그날의 표시"
+          ],
+          "secondaryConcepts": [
+            "쌓이는 관찰",
+            "달라지는 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "특정 회차가 개별적으로 기억되는 조건을 다루는 페이지다. 평소와의 작은 불일치가 식별 표지로 작용한다는 관측을 제시하고, 표지가 없는 회차는 구분되지 않고 통합된다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "d920027ffaddf0dbb49f1fa21ce8c76956effb678df11d66247a582de82fbe86",
+          "aiPublicGuideTopic": "하루를 하루로 만드는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 같은 길 다른 하루",
+          "section": "4.1 그날의 표시",
+          "primaryConcepts": [
+            "그날의 표시"
+          ],
+          "secondaryConcepts": [
+            "백 번째"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기억에 남지 않은 다수 회차의 기능을 다루는 페이지다. 평소 상태의 형성이 이상 감지의 전제라는 구조를 제시하고, 그 비율을 조정할 수 없다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "617b9c3181ef8578d488d62d5e993b6526ca957bcc0a2f034f267fa24a8998f0",
+          "aiPublicGuideTopic": "표시가 없는 이백육십 번",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 같은 길 다른 하루",
+          "section": "4.1 그날의 표시",
+          "primaryConcepts": [
+            "그날의 표시"
+          ],
+          "secondaryConcepts": [
+            "어긋난 날"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "식별 표지의 인위적 생성 시도와 실패를 다루는 페이지다. 관측자가 만든 변화는 표지로 기능하지 않는다는 결과를 제시하고, 외부 발생을 기다리는 구조를 밝힌다.",
+          "aiAnalysisInputSha256": "ca068aafe5e8534a036a06519ec33a3383c548f0a033e57a427ac498ab0c6e91",
+          "aiPublicGuideTopic": "표시를 만들 수는 없는가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            25
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 같은 길 다른 하루",
+          "section": "4.2 계절이 지나가는 방식",
+          "primaryConcepts": [
+            "계절이 지나감"
+          ],
+          "secondaryConcepts": [
+            "달라지는 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "고정 시각의 조도 변화가 연중 균일하지 않다는 점을 다루는 페이지다. 변화 속도가 큰 시기와 정체 시기를 구분해 제시하고, 다른 관측 방식과의 결과 차이를 언급한다.",
+          "aiAnalysisInputSha256": "32d7d9822b90c3ad957407df94c9e5be1867c5933c658a700ef0761f80d5dc31",
+          "aiPublicGuideTopic": "같은 시각의 빛이 알려 주는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 같은 길 다른 하루",
+          "section": "4.2 계절이 지나가는 방식",
+          "primaryConcepts": [
+            "계절이 지나감"
+          ],
+          "secondaryConcepts": [
+            "같은 시각"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "조도 변화가 다른 관측 항목에 미치는 영향을 다루는 페이지다. 저조도 시기의 기록 감소가 대상의 부재와 관측 불가를 구분하지 못한다는 문제를 제시하고, 표기로 대응한 방법을 기술한다.",
+          "aiAnalysisInputSha256": "a91938d44879176836d4ecc564fd33adb8eed04ec211400a1f9c5070cf1fd1d9",
+          "aiPublicGuideTopic": "밝기가 바뀌면 함께 바뀌는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            27
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 같은 길 다른 하루",
+          "section": "4.3 어긋난 날",
+          "primaryConcepts": [
+            "어긋난 날"
+          ],
+          "secondaryConcepts": [
+            "그날의 표시"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "규칙 미준수 회차의 처리를 다루는 페이지다. 유형별 발생 건수를 제시하고, 제외하지 않고 표시해 유지한 이유 및 미준수의 시간적 집중을 기술한다.",
+          "aiAnalysisInputSha256": "89ea5702f143347d9ef592e3c352e4f0d2d42d1861ed927671ab2c8f6b475a55",
+          "aiPublicGuideTopic": "규칙을 못 지킨 날들",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 같은 길 다른 하루",
+          "section": "4.3 어긋난 날",
+          "primaryConcepts": [
+            "어긋난 날"
+          ],
+          "secondaryConcepts": [
+            "시각을 지킬 수 없을 때"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "규칙 미준수 회차에서 관측량이 증가한 현상을 다루는 페이지다. 고정이 비교 가능성을, 이탈이 관측량을 각각 확보한다는 상충 구조를 제시하고, 표기 분리를 통한 병존 방식을 기술한다.",
+          "aiAnalysisInputSha256": "a196eea7fe1e4a23f1105989cd61981bbf56003426293ba7ad4026ba6d147eb2",
+          "aiPublicGuideTopic": "어긋난 날의 기록이 알려 준 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            29
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "5장 한 해의 산책",
+          "section": "5.1 걸으면서 적는 법",
+          "primaryConcepts": [
+            "기록의 규칙"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이동 중 기록의 제약을 다루는 페이지다. 정점에서 단어 단위로 기록하고 사후에 문장화하는 절차를 제시하고, 계절에 따른 기록량 저하를 보정하지 않은 판단을 기술한다.",
+          "aiAnalysisInputSha256": "c56a83e7aad0dc24205a4a65f07637664381d88b408ba803f59c84cbb7fa37cf",
+          "aiPublicGuideTopic": "걷는 중에 적을 수 있는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 한 해의 산책",
+          "section": "5.1 걸으면서 적는 법",
+          "primaryConcepts": [
+            "기록의 규칙"
+          ],
+          "secondaryConcepts": [
+            "걷지 못한 날"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "귀가 후 기록 정리 절차를 다루는 페이지다. 현장 기록의 전사와 사후 상기 내용의 추가를 구분해 표기하는 방법을 제시하고, 사후 추가분의 규모를 기술한다.",
+          "aiAnalysisInputSha256": "e12429039d4c3ba0479fde7ae6ac944c4463fafeca0eb5e8de36632942c41b6c",
+          "aiPublicGuideTopic": "집에 와서 하는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 한 해의 산책",
+          "section": "5.2 걷지 못한 날",
+          "primaryConcepts": [
+            "걷지 못한 날"
+          ],
+          "secondaryConcepts": [
+            "기록의 규칙"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미수행일의 기록을 다루는 페이지다. 사유를 네 유형으로 분류해 비율을 제시하고, 특정 사유가 시기적으로 집중된다는 관측을 기술한다.",
+          "aiAnalysisInputSha256": "d2ebb798e116df3a10959a63bd2297d31e4db626c724f16c8f47549caaa36c11",
+          "aiPublicGuideTopic": "안 나간 날을 세기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 한 해의 산책",
+          "section": "5.2 걷지 못한 날",
+          "primaryConcepts": [
+            "걷지 못한 날"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미수행일의 보충을 배제한 판단을 다루는 페이지다. 하루 일 회라는 조건이 고정 변수의 일부라는 점을 제시하고, 수행 횟수를 목표로 두지 않은 선택의 효과를 기술한다.",
+          "aiAnalysisInputSha256": "6143022f356069069ba7289ddf0953bd6bc26cb08b6fbbf82c86ccab482cf7a7",
+          "aiPublicGuideTopic": "빠진 날을 메우지 않기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            33
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 한 해의 산책",
+          "section": "5.3 삼백 번을 늘어놓으면",
+          "primaryConcepts": [
+            "늘어놓기"
+          ],
+          "secondaryConcepts": [
+            "계절이 지나감"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연간 기록의 배열 결과를 다루는 페이지다. 조도 단계만 추출해 시계열로 배치한 방법을 제시하고, 전이 구간이 짧다는 관측이 보행 중 인상과 일치했다는 점을 기술한다.",
+          "aiAnalysisInputSha256": "ddc1bb9771973c45e5cc0192bf41b925e25e35756b7140f9e999555b3b4c8787",
+          "aiPublicGuideTopic": "한 해 치를 한자리에 펴기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 한 해의 산책",
+          "section": "5.3 삼백 번을 늘어놓으면",
+          "primaryConcepts": [
+            "늘어놓기"
+          ],
+          "secondaryConcepts": [
+            "어긋난 날"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연간 계수 결과를 다루는 페이지다. 수행·미수행·미준수 건수와 정점별 기록량을 제시하고, 계수 이전의 인상과 실제 값이 어긋난 점을 기술한다.",
+          "aiAnalysisInputSha256": "d50ddb73685aeb95738e0820298381cdad6193e4cc218c59d8be27ee376784ea",
+          "aiPublicGuideTopic": "늘어놓고 세어 본 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            35
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 한 해의 산책",
+          "section": "5.3 삼백 번을 늘어놓으면",
+          "primaryConcepts": [
+            "늘어놓기"
+          ],
+          "secondaryConcepts": [
+            "계절이 지나감",
+            "걷지 못한 날"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연간 조도 단계와 수행 여부를 두 개의 시계열 띠로 표현한 도표다. 전이 구간의 길이와 미수행일의 집중 구간을 각각 표시하고, 합계를 우측 막대로 병기한다.",
+          "aiAnalysisInputSha256": "5217c62ba9faacd2597899db0e11e8ec7537e9e05070ac22f412b3010ca37a54",
+          "aiPublicGuideTopic": "한 해 치 산책을 날짜 순서로 늘어놓은 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "6장 같은 길이 끝날 때",
+          "section": "6.1 길이 바뀔 때",
+          "primaryConcepts": [
+            "바뀌는 길"
+          ],
+          "secondaryConcepts": [
+            "같은 길"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 경로가 외부 요인으로 변경된 사례를 다루는 페이지다. 정점 일부의 통과 불가로 기록에 결손이 생긴 상황과 그 처리 방식을 제시하고, 기준 대상 자체의 변경을 기술한다.",
+          "aiAnalysisInputSha256": "e0542676e9b996926a4149f65d917bfcd5b002939069da39fe1242bec71ebe66",
+          "aiPublicGuideTopic": "고정한 것이 밖에서 무너지는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 같은 길이 끝날 때",
+          "section": "6.1 길이 바뀔 때",
+          "primaryConcepts": [
+            "바뀌는 길"
+          ],
+          "secondaryConcepts": [
+            "달라지지 않는 것"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 대상의 영구적 소멸을 다루는 페이지다. 대상이 사라진 뒤 기존 기록의 성격이 현재 기술에서 과거 기술로 전환된다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "37becc911241c2771f2542a63f458744ed105a4aaf3955e86cefead464b19e9f",
+          "aiPublicGuideTopic": "길이 영영 바뀌면",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 같은 길이 끝날 때",
+          "section": "6.1 길이 바뀔 때",
+          "primaryConcepts": [
+            "바뀌는 길"
+          ],
+          "secondaryConcepts": [
+            "쌓임의 대가"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 지점 이전이 축적을 무효화한다는 점을 다루는 페이지다. 축적된 지각이 특정 경로에 종속된다는 구조를 제시하고, 기록을 지점 단위로 종결하는 선택을 기술한다.",
+          "aiAnalysisInputSha256": "e47aa66d0cc239cfc10c2dd72f40e1678dc3a2966d9f20f53e51fb01c22d78c0",
+          "aiPublicGuideTopic": "길을 옮겨야 할 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 같은 길이 끝날 때",
+          "section": "6.2 여섯 시가 안 되는 날",
+          "primaryConcepts": [
+            "시각을 지킬 수 없을 때"
+          ],
+          "secondaryConcepts": [
+            "같은 시각"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "방법이 전제하는 생활 조건을 다루는 페이지다. 매일 동일 시각의 확보 가능성이 필수 전제라는 점을 제시하고, 그 조건이 충족되지 않는 경우를 명시한다.",
+          "aiAnalysisInputSha256": "4a231e610539c2d00c83112ca4c2144f1bff3a1436af1c982b67c6ee87520b29",
+          "aiPublicGuideTopic": "이 방법이 전제하는 생활",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 같은 길이 끝날 때",
+          "section": "6.2 여섯 시가 안 되는 날",
+          "primaryConcepts": [
+            "시각을 지킬 수 없을 때"
+          ],
+          "secondaryConcepts": [
+            "어긋난 날"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시각 고정이 불가능한 경우의 대안을 다루는 페이지다. 경로와 정점만 고정했을 때 사용 가능한 관측 항목을 구분해 제시하고, 검증되지 않은 제안임을 명시한다.",
+          "aiAnalysisInputSha256": "6738593d8d88efab81ed5d2ff3b189a9578c8f0e813eec609b32bb8a1cc483cf",
+          "aiPublicGuideTopic": "고정할 수 없을 때 남는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 같은 길이 끝날 때",
+          "section": "6.3 되풀이가 안 맞는 사람",
+          "primaryConcepts": [
+            "되풀이의 조건"
+          ],
+          "secondaryConcepts": [
+            "쌓임의 대가"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복 관측이 요구하는 관측자 성향을 다루는 페이지다. 지루함에 대한 내성의 개인차를 제시하고, 다른 접근이 더 적합한 경우가 있음을 명시한다.",
+          "aiAnalysisInputSha256": "11eeff63ac131f1c77bb66af24377148f02bce8c6471f098bc15040beb3688f6",
+          "aiPublicGuideTopic": "같은 것을 되풀이하는 일이 힘든 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 같은 길이 끝날 때",
+          "section": "6.3 되풀이가 안 맞는 사람",
+          "primaryConcepts": [
+            "되풀이의 조건"
+          ],
+          "secondaryConcepts": [
+            "백 번째"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "반복 수행을 지속시킨 장치를 다루는 페이지다. 기록 서식, 회차 계수, 소요 시간의 세 요소를 제시하고, 지속이 성향만의 문제가 아니라는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "4013c386dd80e2d7e39b92e3a69b2944dcd9a2611973aec70d8de75989a20ddc",
+          "aiPublicGuideTopic": "견딜 수 있게 만든 것들",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "7장 저녁 여섯 시의 산책자",
+          "section": "7.1 되풀이가 남긴 것",
+          "primaryConcepts": [
+            "남은 것"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 종료 시점에서 결과를 정리하는 페이지다. 축적된 지각이 특정 경로에 한정된다는 점을 제시하고, 범위의 협소함과 깊이의 관계를 밝힌다.",
+          "aiAnalysisInputSha256": "f5eec220c9bda060d18c1c289e5bd21ae374b93cdc5006b319855fe8214e4f87",
+          "aiPublicGuideTopic": "삼백 번을 걷고 남은 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "same-hour-same-route"
+          ]
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 저녁 여섯 시의 산책자",
+          "section": "7.1 되풀이가 남긴 것",
+          "primaryConcepts": [
+            "남은 것"
+          ],
+          "secondaryConcepts": [
+            "그날의 표시",
+            "쌓이는 관찰"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기억에 남은 회차와 그렇지 않은 회차의 관계를 정리하는 페이지다. 효율 관점의 계산이 성립하지 않는 구조를 제시하고, 그 이해가 수행 부담을 낮췄다는 점을 기술한다.",
+          "aiAnalysisInputSha256": "6f7f2d604b6a6c96bf88a004c993a85dd518292743ad56b0d2abba0c519a8549",
+          "aiPublicGuideTopic": "마흔 날과 이백육십여섯 날",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 저녁 여섯 시의 산책자",
+          "section": "7.1 되풀이가 남긴 것",
+          "primaryConcepts": [
+            "남은 것"
+          ],
+          "secondaryConcepts": [
+            "쌓임의 대가",
+            "바뀌는 길"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 방법의 손실을 정리하는 페이지다. 정점 사이 구간의 관측 배제와 축적의 경로 종속성을 제시하고, 결과의 유효 기간이 대상의 존속에 매여 있다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "03228a76c9b6b812b590b47f4e9b7face013f602a62e6670a4ba54da06c056c1",
+          "aiPublicGuideTopic": "잃은 것도 함께 적기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 저녁 여섯 시의 산책자",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "되풀이의 조건"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 범위의 제약으로 남은 미해결 문제를 정리하는 페이지다. 시야 협소화의 해소, 축적의 지속성, 지역 일반화라는 세 항목을 구분하고 각각의 확인 가능성을 다르게 평가한다.",
+          "aiAnalysisInputSha256": "086e12cd5e66fdbcb3bc81562fe09e56bfb1e88b076bdf9a95c1db43cc89b0b5",
+          "aiPublicGuideTopic": "한 해로 답하지 못한 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 저녁 여섯 시의 산책자",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "시각을 지킬 수 없을 때"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "방법의 이전 가능성을 검토하는 페이지다. 이전 가능한 절차 네 가지를 제시하고, 전제 조건과 최소 소요 기간이라는 제약을 함께 밝힌다.",
+          "aiAnalysisInputSha256": "6b001bd2fa2ec36e5faee8be8828403a1c6008cc9a6d80bcdc02b145f5b685c1",
+          "aiPublicGuideTopic": "이 기록을 다른 사람이 쓸 수 있는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 저녁 여섯 시의 산책자",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "달라지지 않는 것",
+            "남은 것"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "차기 관측의 변경 항목을 정리하는 페이지다. 기준 대상의 정기 점검과 결측 사유의 표기 도입을 제시하고, 유지할 고정 변수와 그 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "0523d36ce75e7d2e59782fe8478478099a71ba8a08d8a3ff12df4344db1cbe98",
+          "aiPublicGuideTopic": "다음 해에 바꿀 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            49
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 21,
       "title": "빛으로 읽는 우주: 분광과 거리 측정",
       "pdfPath": "pdfs/book-021.pdf",
