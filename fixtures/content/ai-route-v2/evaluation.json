@@ -899,6 +899,82 @@
       ]
     },
     {
+      "caseId": "case-book-020",
+      "bookId": 20,
+      "purpose": "이 책을 소장하고 있고, 모르는 사람에게 받은 작은 도움이 왜 오래 남는지 궁금해서 우선 핵심만 짧게 잡고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "친절이라는 말",
+        "말 없는 친절",
+        "알아차림",
+        "되갚을 수 없음",
+        "옮겨 가는 것"
+      ],
+      "helpfulConcepts": [
+        "세어 보기",
+        "알아차리는 조건",
+        "뒤늦은 알아차림",
+        "갚으려는 시도",
+        "친절이 아닌 것"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 24
+        }
+      ],
+      "irrelevantPageNumbers": [
+        31,
+        32,
+        33,
+        34
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          45
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        5,
+        9,
+        16,
+        24
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        4,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12,
+        14,
+        17,
+        19,
+        22,
+        38,
+        43
+      ]
+    },
+    {
       "caseId": "case-book-021",
       "bookId": 21,
       "purpose": "이 책을 사지는 않았고, 별빛에서 성분과 움직이는 속도를 어떻게 알아내는지 큰 틀만 보고 싶다",

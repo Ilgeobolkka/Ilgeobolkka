@@ -9672,6 +9672,1062 @@
       ]
     },
     {
+      "bookId": 20,
+      "title": "말하지 않은 친절의 모양",
+      "totalPageCount": 50,
+      "pdfPath": "pdfs/book-020.pdf",
+      "pdfSha256": "af83fd9a6a9402dc42ec883fa8edfc84655e54b1e88e4461aa3f0d52ab7cc9b3",
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 친절이라는 말",
+          "section": "1.1 무엇을 친절이라 부를까",
+          "primaryConcepts": [
+            "친절이라는 말"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "친절의 조작적 정의를 다루는 페이지다. 범위를 넓게 또는 좁게 잡을 때의 문제를 각각 제시하고, 의무 없음과 비용 발생이라는 두 조건을 함께 요구하는 기준을 채택한 경위를 밝힌다.",
+          "aiAnalysisInputSha256": "98256bcf41e31caef955d7fd317a298a6e23006ff0b6e9d46c7dcd117b0a76ad",
+          "aiPublicGuideTopic": "세기 전에 정해야 했던 것",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "kindness-without-words"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 친절이라는 말",
+          "section": "1.1 무엇을 친절이라 부를까",
+          "primaryConcepts": [
+            "친절이라는 말"
+          ],
+          "secondaryConcepts": [
+            "말 없는 친절"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비용 조건의 범위를 다루는 페이지다. 금전 외에 시간과 수고를 포함한다는 점을 제시하고, 비용의 크기를 측정하지 않기로 한 이유와 그 결과를 밝힌다.",
+          "aiAnalysisInputSha256": "3edfff5baa6362929e31fcb8d8a65e5521b23268a0b24c9d842d4e90bf317a53",
+          "aiPublicGuideTopic": "값이 든다는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 친절이라는 말",
+          "section": "1.1 무엇을 친절이라 부를까",
+          "primaryConcepts": [
+            "친절이라는 말"
+          ],
+          "secondaryConcepts": [
+            "세어 보기"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관계 조건을 추가한 경위를 다루는 페이지다. 지인 간 행위를 제외하는 이유로 목록 편중과 의무 경계의 모호성을 제시하고, 이 조건이 이후 논의로 이어지는 구조를 밝힌다.",
+          "aiAnalysisInputSha256": "419c2bb0ebf9087e9151a51191cc8f73cfd187e62a566500682618afab01a486",
+          "aiPublicGuideTopic": "아는 사람은 세지 않기로 한 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            3
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 친절이라는 말",
+          "section": "1.2 말이 없는 쪽",
+          "primaryConcepts": [
+            "말 없는 친절"
+          ],
+          "secondaryConcepts": [
+            "친절이라는 말"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "발화를 수반하지 않는 행위로 대상을 한정한 이유를 다루는 페이지다. 대화가 별개의 주제라는 점과, 언어적 설명의 부재가 해석의 여지를 남긴다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "3932889c77935b5e41a3864751e39d6cea642d590eeba49cceee92a5698cd106",
+          "aiPublicGuideTopic": "말이 오가지 않은 것만 세기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 친절이라는 말",
+          "section": "1.2 말이 없는 쪽",
+          "primaryConcepts": [
+            "말 없는 친절"
+          ],
+          "secondaryConcepts": [
+            "알아차림"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비언어적 접촉의 처리를 다루는 페이지다. 목례를 발화가 아닌 행위로 분류한 판단을 제시하고, 시선 접촉 여부를 기록해 얻은 분포를 밝힌다.",
+          "aiAnalysisInputSha256": "f40691c74d670599e129f5f016b0d86405e6e2138bbf1db458b346d6337ff36f",
+          "aiPublicGuideTopic": "눈이 마주치는 정도",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 친절이라는 말",
+          "section": "1.3 세어 보기",
+          "primaryConcepts": [
+            "세어 보기"
+          ],
+          "secondaryConcepts": [
+            "친절이라는 말"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계수 행위의 목적을 다루는 페이지다. 수혜 경험이 빠르게 망각된다는 문제를 제시하고, 계수가 감사와 구분되는 별개의 작업임을 밝힌다.",
+          "aiAnalysisInputSha256": "e1bab80bc11a9d6666d4a77b25c43a090782d7f6d1d0285a045637f40808371c",
+          "aiPublicGuideTopic": "세기로 한 이유",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 친절이라는 말",
+          "section": "1.3 세어 보기",
+          "primaryConcepts": [
+            "세어 보기"
+          ],
+          "secondaryConcepts": [
+            "말 없는 친절",
+            "친절이라는 말"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수집 대상의 선별 조건을 깔때기 형태로 표현한 도표다. 각 조건에서 배제되는 사례를 화살표로 함께 표시해 최종 집합이 좁혀지는 과정을 드러낸다.",
+          "aiAnalysisInputSha256": "552aefde37df80d4df0bb48dd51c50b090d3dbbb0a68d755ac3724bce0db4431",
+          "aiPublicGuideTopic": "네 조건으로 걸러 내는 과정을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "2장 알아차리는 일",
+          "section": "2.1 대부분은 지나간다",
+          "primaryConcepts": [
+            "알아차림"
+          ],
+          "secondaryConcepts": [
+            "말 없는 친절"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수혜 사실의 미인지를 다루는 페이지다. 관측되지 않은 사례를 계수할 수 없다는 구조적 한계를 제시하고, 계수 시작 이후 인지 건수가 증가했다는 관측을 기술한다.",
+          "aiAnalysisInputSha256": "a9afb92f9d5edc2d016c965d8fd757019e513175eaf86d6fb9c7d2974afdf876",
+          "aiPublicGuideTopic": "받고도 모르는 것들",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "2장 알아차리는 일",
+          "section": "2.1 대부분은 지나간다",
+          "primaryConcepts": [
+            "알아차림"
+          ],
+          "secondaryConcepts": [
+            "알아차리는 조건"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미인지의 원인을 세 유형으로 정리하는 페이지다. 행위의 비가시성, 수혜자의 주의 부족, 습관화를 제시하고 각각의 작동 방식을 기술한다.",
+          "aiAnalysisInputSha256": "4d63396d66c91a6a04e1f7c1d0eb8fe6b9ee6db70bd7cad3120fa421401f7f2b",
+          "aiPublicGuideTopic": "왜 못 알아차리는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "2장 알아차리는 일",
+          "section": "2.1 대부분은 지나간다",
+          "primaryConcepts": [
+            "알아차림"
+          ],
+          "secondaryConcepts": [
+            "세어 보기",
+            "알아차리는 조건"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "월별 인지 건수의 증가를 막대로 표현하고, 실제 발생량을 경계가 없는 배경 영역으로 함께 나타낸 도표다. 관측 가능한 값과 측정 불가능한 전체의 관계를 대비한다.",
+          "aiAnalysisInputSha256": "189ce47c0f3656a24d7bf44728aeae26b80bc0b32f19d923911fb807524c607b",
+          "aiPublicGuideTopic": "달마다 알아차린 수가 늘어난 모습을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 알아차리는 일",
+          "section": "2.2 알아차리는 조건",
+          "primaryConcepts": [
+            "알아차리는 조건"
+          ],
+          "secondaryConcepts": [
+            "알아차림"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인지 발생 조건을 다루는 페이지다. 시간 여유와 장소의 낯섦이 인지율과 상관된다는 관측을 제시하고, 의지보다 조건이 결정적이라는 결론을 기술한다.",
+          "aiAnalysisInputSha256": "1c815f1aafdb80b87ad1f581d3acf7a6bbd050a699bf11df32fa62f778adcb77",
+          "aiPublicGuideTopic": "잘 알아차리는 날",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 알아차리는 일",
+          "section": "2.2 알아차리는 조건",
+          "primaryConcepts": [
+            "알아차리는 조건"
+          ],
+          "secondaryConcepts": [
+            "뒤늦은 알아차림"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인지율을 높이려는 시도를 다루는 페이지다. 즉각적 주의 환기가 효과가 없었던 반면 사후 회고가 유효했다는 결과를 제시하고, 인지가 사후에도 성립한다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "60b2236105f34a61658aa6fd0f6f9c6cd6606dfa81a3ec5b08134b41abd3a076",
+          "aiPublicGuideTopic": "알아차리려고 해 본 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 알아차리는 일",
+          "section": "2.3 뒤늦게 알아차린 것",
+          "primaryConcepts": [
+            "뒤늦은 알아차림"
+          ],
+          "secondaryConcepts": [
+            "알아차리는 조건"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지연된 인지를 다루는 페이지다. 즉시 인지와 사후 인지의 건수를 제시하고, 사후에 발생한 감정의 귀속 문제를 미해결로 남기면서 해당 사례를 목록에 유지한 판단을 기술한다.",
+          "aiAnalysisInputSha256": "3ec4cd9e0d6ad0ce1489ff3f16587f496c24e76aed4985896b88dd7c5ef50d79",
+          "aiPublicGuideTopic": "며칠 뒤에 아는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 알아차리는 일",
+          "section": "2.3 뒤늦게 알아차린 것",
+          "primaryConcepts": [
+            "뒤늦은 알아차림"
+          ],
+          "secondaryConcepts": [
+            "되갚을 수 없음"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지연된 인지가 보답 가능성을 차단한다는 점을 다루는 페이지다. 시점의 문제로 보답이 불가능해진 사례의 비중을 제시하고, 이후 논의의 전제를 수정한다.",
+          "aiAnalysisInputSha256": "83405527b1bc84fae106d43414cf58ae858aeb946b2d2b7dd0f610a772d1d6c6",
+          "aiPublicGuideTopic": "뒤늦게 알면 갚을 수 없다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "3장 되갚을 수 없는 것",
+          "section": "3.1 갚을 데가 없다",
+          "primaryConcepts": [
+            "되갚을 수 없음"
+          ],
+          "secondaryConcepts": [
+            "알아차림"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "보답이 불가능한 구조를 다루는 페이지다. 관계 조건상 재접촉이 발생하지 않는다는 점을 제시하고, 부채나 선물이라는 기존 범주로 규정되지 않는다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "a408d7744c792084896a7b2a40da2640fc86f8debe7bf16f83e20534fdb25d42",
+          "aiPublicGuideTopic": "받은 쪽에 남는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            9
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "3장 되갚을 수 없는 것",
+          "section": "3.1 갚을 데가 없다",
+          "primaryConcepts": [
+            "되갚을 수 없음"
+          ],
+          "secondaryConcepts": [
+            "뒤늦은 알아차림"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "보답 불가능성이 수혜 경험을 가볍게 만든다는 점을 다루는 페이지다. 상호성 기대가 부재할 때 부담이 발생하지 않는다는 구조를 제시하고, 가벼움과 크기가 별개임을 밝힌다.",
+          "aiAnalysisInputSha256": "ba44d9f5137efffad7284023a3e38ac8f888958456433c3b6bddc0872a4d0b97",
+          "aiPublicGuideTopic": "갚을 수 없다는 것이 편한 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "3장 되갚을 수 없는 것",
+          "section": "3.1 갚을 데가 없다",
+          "primaryConcepts": [
+            "되갚을 수 없음"
+          ],
+          "secondaryConcepts": [
+            "옮겨 가는 것",
+            "알아차림"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "상호적 교환과 일방적 수혜의 구조를 두 칸으로 대비한 도표다. 보답 경로의 부재를 끊긴 점선으로, 이후 논의로 이어지는 방향을 칸 밖으로 향한 화살표로 표시한다.",
+          "aiAnalysisInputSha256": "02ec1fc4d85b4edfbbbf296f2d96d9382424342ea079e56d6f81009db0246597",
+          "aiPublicGuideTopic": "받은 쪽에서 갈 데가 없는 흐름을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            17
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "3장 되갚을 수 없는 것",
+          "section": "3.2 갚으려 한 시도",
+          "primaryConcepts": [
+            "갚으려는 시도"
+          ],
+          "secondaryConcepts": [
+            "되갚을 수 없음"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "보답 시도의 사례와 실패를 다루는 페이지다. 보답이 성립하려면 수신자의 인정이 필요하다는 조건을 제시하고, 과잉 반응이 새로운 부담을 만든다는 관측을 기술한다.",
+          "aiAnalysisInputSha256": "1f2b3621507095b05beca4e23b66040f54f07b03cd781f75660aa3856262e4f1",
+          "aiPublicGuideTopic": "그래도 갚아 보려 한 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 되갚을 수 없는 것",
+          "section": "3.2 갚으려 한 시도",
+          "primaryConcepts": [
+            "갚으려는 시도"
+          ],
+          "secondaryConcepts": [
+            "내가 하는 쪽"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "보답 시도 중단 이후의 행동 변화를 다루는 페이지다. 수혜일과 자신의 행위 발생일이 겹치는 경향을 제시하고, 이것이 보답과 다른 범주임을 밝힌다.",
+          "aiAnalysisInputSha256": "384e4e7559b3bdc6a59e6c51fb6844bd3c1112fbceb49cefd5bd8598d17b85a4",
+          "aiPublicGuideTopic": "갚는 대신 하는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            19
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 되갚을 수 없는 것",
+          "section": "3.2 갚으려 한 시도",
+          "primaryConcepts": [
+            "갚으려는 시도"
+          ],
+          "secondaryConcepts": [
+            "갚지 않기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "보답하지 않는 것의 적절성을 검토하는 페이지다. 제공자가 보답을 기대하지 않았다는 근거를 제시하고, 인지 표시와 보답을 구분해 전자만 수행하기로 한 판단을 기술한다.",
+          "aiAnalysisInputSha256": "b6a721409fdf758e950881b3d38450d9cd187cb530d448494ee25903c060f8b7",
+          "aiPublicGuideTopic": "갚지 않는 것이 실례인가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 되갚을 수 없는 것",
+          "section": "3.3 갚지 않아도 되는 자리",
+          "primaryConcepts": [
+            "갚지 않기"
+          ],
+          "secondaryConcepts": [
+            "되갚을 수 없음"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "보답 면제가 인지 저하로 이어질 위험을 다루는 페이지다. 계수 행위가 습관화를 지연시킨다는 점을 제시하고, 계수 자체도 습관화된다는 한계를 함께 밝힌다.",
+          "aiAnalysisInputSha256": "17ef27e7c3dc9190bc7355dd0b6ebba33dcecd447a204ea16530a5462f5e20a4",
+          "aiPublicGuideTopic": "받기만 하는 일에 익숙해지는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 되갚을 수 없는 것",
+          "section": "3.3 갚지 않아도 되는 자리",
+          "primaryConcepts": [
+            "갚지 않기"
+          ],
+          "secondaryConcepts": [
+            "불편한 친절"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수혜를 원하지 않은 사례를 다루는 페이지다. 정의상 조건을 충족하나 수혜자가 거부감을 느낀 경우를 별도 표시로 기록한 처리를 제시하고, 이후 논의로 연결한다.",
+          "aiAnalysisInputSha256": "635c9f582a27d6c12c1dbd0601b13c8e8342520b2fe1706e168b9345b120f9e7",
+          "aiPublicGuideTopic": "받지 않아도 되는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "4장 옮겨 가는 것",
+          "section": "4.1 다른 데로 간다",
+          "primaryConcepts": [
+            "옮겨 가는 것"
+          ],
+          "secondaryConcepts": [
+            "되갚을 수 없음"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수혜와 제공이 서로 다른 상대에게 향한다는 구조를 다루는 페이지다. 순환이나 전달이라는 어휘가 부적절한 이유를 제시하고, 매개된 대상이 무엇인지 특정하지 못한다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "2d4f309ed0493c756fd83c2a2f20de26e72160a0a6d8273bad705caf5df565e8",
+          "aiPublicGuideTopic": "받은 자리와 하는 자리가 다르다",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "4장 옮겨 가는 것",
+          "section": "4.1 다른 데로 간다",
+          "primaryConcepts": [
+            "옮겨 가는 것"
+          ],
+          "secondaryConcepts": [
+            "내가 하는 쪽"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수혜 여부에 따른 제공 빈도의 차이를 다루는 페이지다. 두 조건에서의 발생 비율을 제시하고, 계수 결과가 지지하는 범위를 한정한다.",
+          "aiAnalysisInputSha256": "462b0979065bc8b197c1b7107efae7a0fb2d282d82c3fd3c5416372626b5384c",
+          "aiPublicGuideTopic": "얼마나 자주 옮겨 가는가",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "4장 옮겨 가는 것",
+          "section": "4.1 다른 데로 간다",
+          "primaryConcepts": [
+            "옮겨 가는 것"
+          ],
+          "secondaryConcepts": [
+            "순환이라는 말"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 범위가 두 지점에 한정된다는 점을 다루는 페이지다. 연쇄의 전후를 확인할 수 없다는 한계를 제시하고, 이 장의 서술이 추론에 기반함을 명시한다.",
+          "aiAnalysisInputSha256": "bfd9be072471bc880e98252a71deb135404fdcb2a526455bc41ec0d83a6e7826",
+          "aiPublicGuideTopic": "옮겨 가는 것이 멈추는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            25
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "4장 옮겨 가는 것",
+          "section": "4.2 내가 한 쪽",
+          "primaryConcepts": [
+            "내가 하는 쪽"
+          ],
+          "secondaryConcepts": [
+            "옮겨 가는 것"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "제공 건수와 수혜 건수의 비교가 성립하지 않는 이유를 다루는 페이지다. 자기 행위는 전수 인지되나 수혜는 일부만 인지된다는 비대칭을 제시하고 그 함의를 기술한다.",
+          "aiAnalysisInputSha256": "7a8a95054ba1eba9ac41bb055f3bdc42201537bdac2fe3080020a95468edfa0d",
+          "aiPublicGuideTopic": "하는 쪽에서 보이는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 옮겨 가는 것",
+          "section": "4.2 내가 한 쪽",
+          "primaryConcepts": [
+            "내가 하는 쪽"
+          ],
+          "secondaryConcepts": [
+            "세는 일의 한계"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "제공 행위의 계수가 행위 자체를 유발하는 문제를 다루는 페이지다. 목표 설정 배제라는 대응과 그 한계를 제시하고, 수혜 측을 중심으로 기록을 구성한 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "22e656364657acd3be8a322bd17500fa23b2d85d82fce42dc601e0395c8d64e5",
+          "aiPublicGuideTopic": "하는 쪽을 세는 일의 문제",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            27
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 옮겨 가는 것",
+          "section": "4.3 순환이라고 부르지 않기",
+          "primaryConcepts": [
+            "순환이라는 말"
+          ],
+          "secondaryConcepts": [
+            "옮겨 가는 것"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "순환이라는 어휘를 배제한 이유를 다루는 페이지다. 회귀의 함의가 검증 불가능하다는 점과, 이득 구조를 도입해 비상호성이라는 성질을 훼손한다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "b1f767eb45d9ff3d41be07d75ded736a1b5f2584b4a346b82a4479d94bbaafe8",
+          "aiPublicGuideTopic": "돌아오지 않는데 순환인가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 옮겨 가는 것",
+          "section": "4.3 순환이라고 부르지 않기",
+          "primaryConcepts": [
+            "순환이라는 말"
+          ],
+          "secondaryConcepts": [
+            "갚지 않기"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "적절한 명칭을 찾지 못한 경위를 다루는 페이지다. 후보 어휘들이 각각 도입하는 함의를 제시하고, 부정확한 명명 대신 무명 상태를 유지한 판단을 기술한다.",
+          "aiAnalysisInputSha256": "2fefd29cfea79b0ca9bd848fbfe0c48e663cd332276ec7459602cdbc1c20f7d6",
+          "aiPublicGuideTopic": "이름을 붙이지 않고 두기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            29
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "5장 한 해의 목록",
+          "section": "5.1 무엇을 적었는가",
+          "primaryConcepts": [
+            "기록의 규칙"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 서식을 다루는 페이지다. 기입 항목과 수혜·제공의 구분 표기를 제시하고, 동기 추정을 기록하지 않는 규칙과 그 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "d4353f5480b30aedcf5f44a16e72e4e430e945e30e51f5ab9728d50968a699b6",
+          "aiPublicGuideTopic": "한 줄에 들어가는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "5장 한 해의 목록",
+          "section": "5.1 무엇을 적었는가",
+          "primaryConcepts": [
+            "기록의 규칙"
+          ],
+          "secondaryConcepts": [
+            "못 적은 것"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기록 시점의 규칙과 예외를 다루는 페이지다. 즉시 기록이 어려운 상황을 제시하고, 인지 시점을 병기해 즉시 인지와 사후 인지를 구분한 절차를 기술한다.",
+          "aiAnalysisInputSha256": "c0380f47bceb75087daa49d921250795ba5c18740cbdc322c2d1a9fe49511ec1",
+          "aiPublicGuideTopic": "적는 시각",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "5장 한 해의 목록",
+          "section": "5.2 못 적은 것",
+          "primaryConcepts": [
+            "못 적은 것"
+          ],
+          "secondaryConcepts": [
+            "기록의 규칙"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "인지했으나 기록하지 못한 사례를 다루는 페이지다. 미기록의 발생 규모와 내용을 특정하지 못한 사례의 처리를 제시하고, 공백을 유지한 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "3b2e75d44b8a41288864d415711f99d8c51f8472a179c1c2a99ad0bb787b2d8a",
+          "aiPublicGuideTopic": "적지 못하고 지나간 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "5장 한 해의 목록",
+          "section": "5.2 못 적은 것",
+          "primaryConcepts": [
+            "못 적은 것"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결손의 유형을 세 가지로 구분하는 페이지다. 미인지, 미기록, 내용 불명의 각 상태와 확인 가능한 정보의 범위를 제시하고, 총계의 의미를 한정한다.",
+          "aiAnalysisInputSha256": "c8cd2fe2e3901c0a550ec8b06a7dedc05348574b6b5df78ae6bdf4ca3232a888",
+          "aiPublicGuideTopic": "세 종류의 빈자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            33
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 한 해의 목록",
+          "section": "5.3 백열아홉 개를 늘어놓으면",
+          "primaryConcepts": [
+            "늘어놓기"
+          ],
+          "secondaryConcepts": [
+            "알아차림"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연간 기록의 유형별 분류를 다루는 페이지다. 상위 다섯 유형이 대부분을 차지한다는 결과를 제시하고, 비언어적 행위의 종류가 제한적이라는 해석을 기술한다.",
+          "aiAnalysisInputSha256": "6dad93c16353f5df74aa66104929fc5d0f75d47261c097a4b6442f37092becb0",
+          "aiPublicGuideTopic": "한 해 치를 한자리에 펴기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 한 해의 목록",
+          "section": "5.3 백열아홉 개를 늘어놓으면",
+          "primaryConcepts": [
+            "늘어놓기"
+          ],
+          "secondaryConcepts": [
+            "옮겨 가는 것"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연간 계수 결과를 다루는 페이지다. 수혜·제공, 시선 접촉, 인지 시점, 거부감의 각 분포와 발생 장소의 분포를 제시하고, 공간의 협소함과 발생 빈도의 관계를 기술한다.",
+          "aiAnalysisInputSha256": "cf3a4b6e626fab8405deb50eabfefa15340198a222e8b3842d95a47616dd5b44",
+          "aiPublicGuideTopic": "늘어놓고 세어 본 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            35
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 한 해의 목록",
+          "section": "5.3 백열아홉 개를 늘어놓으면",
+          "primaryConcepts": [
+            "늘어놓기"
+          ],
+          "secondaryConcepts": [
+            "못 적은 것",
+            "내가 하는 쪽"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "연간 기록을 행위 유형, 발생 장소, 부가 속성의 세 관점으로 나누어 배치한 도표다. 측정되지 않은 영역을 경계가 없는 띠로 함께 표시해 총계의 범위를 드러낸다.",
+          "aiAnalysisInputSha256": "15b225e09b7cc6318c85b01fff802b51b2a5d4565521b9373383e16b33f12ac4",
+          "aiPublicGuideTopic": "한 해 치 목록을 종류와 자리로 갈라 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "6장 친절이 아닌 것",
+          "section": "6.1 친절처럼 보이는 것",
+          "primaryConcepts": [
+            "친절이 아닌 것"
+          ],
+          "secondaryConcepts": [
+            "말 없는 친절"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정의상 조건을 충족하나 대상에서 제외한 사례를 다루는 페이지다. 자기 유발 불편의 해소라는 유형을 제시하고, 판정이 관측자의 상태에 좌우된다는 한계를 밝힌다.",
+          "aiAnalysisInputSha256": "c361b7aaff75de9537f2198ae6a6f3e6645c48454606c00a709877d83f1c41ea",
+          "aiPublicGuideTopic": "조건은 맞는데 아닌 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            5
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "6장 친절이 아닌 것",
+          "section": "6.1 친절처럼 보이는 것",
+          "primaryConcepts": [
+            "친절이 아닌 것"
+          ],
+          "secondaryConcepts": [
+            "친절이라는 말"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동기의 순수성을 판정 기준에서 배제한 이유를 다루는 페이지다. 동기 확인이 불가능하다는 점과 수혜자 측에 도달한 결과는 동일하다는 점을 제시하고, 기록 기준을 수혜 측으로 고정한다.",
+          "aiAnalysisInputSha256": "630d3487bd6419e182fdd07e512f87d8d3c54a273ebb7402f3093be218ae374f",
+          "aiPublicGuideTopic": "보여 주려고 하는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "6장 친절이 아닌 것",
+          "section": "6.1 친절처럼 보이는 것",
+          "primaryConcepts": [
+            "친절이 아닌 것"
+          ],
+          "secondaryConcepts": [
+            "세는 일의 한계"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선별 기준을 완화한 결과를 다루는 페이지다. 동기 판정을 포기하면 이질적 사례가 혼입된다는 점을 인정하고, 추정에 의한 선별보다 낫다는 판단과 그 함의를 기술한다.",
+          "aiAnalysisInputSha256": "ae5e10f64cc49935e83d6815c0de329bf83abe9ec77849f2def48242377a5ae7",
+          "aiPublicGuideTopic": "가릴 수 없는 것을 가리지 않기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            39
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "6장 친절이 아닌 것",
+          "section": "6.2 받는 쪽이 불편한 자리",
+          "primaryConcepts": [
+            "불편한 친절"
+          ],
+          "secondaryConcepts": [
+            "갚지 않기"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수혜자가 불편을 느낀 사례를 다루는 페이지다. 유형별 내역과 공통 원인으로 선택권의 부재를 제시하고, 제공자 측에서 인지되지 않는 구조를 밝힌다.",
+          "aiAnalysisInputSha256": "fd462fc304f57b9ad515eac520de87fd8c3319d6bc312b1dfa811267c1594658",
+          "aiPublicGuideTopic": "받고 싶지 않았던 아홉 개",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 친절이 아닌 것",
+          "section": "6.2 받는 쪽이 불편한 자리",
+          "primaryConcepts": [
+            "불편한 친절"
+          ],
+          "secondaryConcepts": [
+            "내가 하는 쪽"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "제공 측에서도 동일한 문제가 발생했을 가능성을 다루는 페이지다. 확인 불가능성을 명시하고, 수혜자의 선택권을 남기는 방향으로 행동을 조정한 경위와 그 부작용을 기술한다.",
+          "aiAnalysisInputSha256": "24caea60093dbccd8f364e5273d36460e4d7bc700ac49cf4a5cf961bddec2383",
+          "aiPublicGuideTopic": "내가 한 것에도 있었을 것이다",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            41
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 친절이 아닌 것",
+          "section": "6.3 친절을 세는 일의 한계",
+          "primaryConcepts": [
+            "세는 일의 한계"
+          ],
+          "secondaryConcepts": [
+            "세어 보기"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계수 방법의 한계를 종합하는 페이지다. 행위 유발, 선별 기준의 완화, 미인지 사례의 배제, 그리고 계수가 수혜 경험 자체를 변형한다는 네 항목을 제시한다.",
+          "aiAnalysisInputSha256": "5cb88b94bb01590a4ce1e0b0bb6be4a82aece53a309ee5d8a7d6b477d4aab73f",
+          "aiPublicGuideTopic": "세면서 달라지는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            7
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 친절이 아닌 것",
+          "section": "6.3 친절을 세는 일의 한계",
+          "primaryConcepts": [
+            "세는 일의 한계"
+          ],
+          "secondaryConcepts": [
+            "알아차림"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "한계를 인지하고도 계수를 지속한 이유를 다루는 페이지다. 망각과 감정의 희석 사이의 선택을 제시하고, 차기 계획에서 일부 한계를 제거하는 방향을 밝힌다.",
+          "aiAnalysisInputSha256": "f4fb7f6593f8c6e3ff05cb239edf3bfbc26e31d4ec4e0fa6fe268e9e452b264b",
+          "aiPublicGuideTopic": "그래도 세기로 한 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "7장 말하지 않은 친절의 모양",
+          "section": "7.1 모양이라는 말",
+          "primaryConcepts": [
+            "남은 것"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "제목 어휘의 선택 근거를 정리하는 페이지다. 동기가 관측되지 않는다는 조건에서 행위의 형태만 기록 가능하다는 점을 제시하고, 그 선택이 방법 전체를 규정했음을 밝힌다.",
+          "aiAnalysisInputSha256": "9248e7c08a80c66b66d6481f70f131d6ffb5085ca6c5c2d5032b8c828dbf64c6",
+          "aiPublicGuideTopic": "제목에 모양이라는 말을 쓴 이유",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "kindness-without-words"
+          ]
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "7장 말하지 않은 친절의 모양",
+          "section": "7.1 모양이라는 말",
+          "primaryConcepts": [
+            "남은 것"
+          ],
+          "secondaryConcepts": [
+            "알아차림",
+            "되갚을 수 없음"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 종료 시점에서 변화와 불변을 함께 정리하는 페이지다. 인지 건수의 증가와 수혜 부담의 감소를 제시하고, 기록으로 뒷받침되지 않는 진술을 배제한다.",
+          "aiAnalysisInputSha256": "6300ffdcfa3b3584fd2a3deb559960930156442655aa448c34469f823774f86a",
+          "aiPublicGuideTopic": "한 해가 바꾼 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 말하지 않은 친절의 모양",
+          "section": "7.1 모양이라는 말",
+          "primaryConcepts": [
+            "남은 것"
+          ],
+          "secondaryConcepts": [
+            "순환이라는 말",
+            "세는 일의 한계"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "구조에 대한 명명을 끝까지 유보한 경위를 정리하는 페이지다. 계수 가능한 값의 범위를 명시하고, 결론적 서술을 반복 삭제한 판단을 기술한다.",
+          "aiAnalysisInputSha256": "40dda72bbf672de97544e6457e371d8a11a40cdc367c5e8876c3812fc914a72b",
+          "aiPublicGuideTopic": "이름 붙이지 않고 끝내기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 말하지 않은 친절의 모양",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "옮겨 가는 것"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관측 범위의 제약으로 남은 미해결 문제를 정리하는 페이지다. 연쇄의 추적, 미인지 규모의 추정, 선별 판정의 일관성이라는 세 항목을 구분하고 각각의 확인 가능성을 다르게 평가한다.",
+          "aiAnalysisInputSha256": "1affb17f3ef1eea5c88aeea1f7f6e052f581d0b921e9894f140c257ab253c986",
+          "aiPublicGuideTopic": "한 해로 답하지 못한 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 말하지 않은 친절의 모양",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "기록의 규칙"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "방법의 이전 가능성을 검토하는 페이지다. 선별 조건 네 가지를 이전 대상으로 제시하고, 일부 조건의 조절 가능성과 계수의 부작용을 사전에 알아야 한다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "d1f6e9c42148d4cf4b41f8de269c71ddd0faac92c00d671716f68cec16448434",
+          "aiPublicGuideTopic": "이 기록을 다른 사람이 쓸 수 있는가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 말하지 않은 친절의 모양",
+          "section": "7.2 남는 물음",
+          "primaryConcepts": [
+            "남는 물음"
+          ],
+          "secondaryConcepts": [
+            "세는 일의 한계",
+            "남은 것"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "차기 관측의 변경 항목을 정리하는 페이지다. 제공 측 계수의 중단과 이중 관측 실험을 제시하고, 유지할 규칙 및 계수 결과의 해석 범위를 밝힌다.",
+          "aiAnalysisInputSha256": "9349f40ad3e7ef9ad1d6ad817171ea8261c19737138f6f30393d0a4745d9558c",
+          "aiPublicGuideTopic": "다음 해에 바꿀 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            49
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
+    },
+    {
       "bookId": 21,
       "title": "빛으로 읽는 우주: 분광과 거리 측정",
       "pdfPath": "pdfs/book-021.pdf",
