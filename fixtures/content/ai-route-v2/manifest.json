@@ -45745,6 +45745,1069 @@
           "duplicateGroupKeys": []
         }
       ]
+    },
+    {
+      "bookId": 89,
+      "title": "열두 정거장의 하루",
+      "pdfPath": "pdfs/book-089.pdf",
+      "pdfSha256": "322975622a89d7de44d05da6f596bf769f6a540382a2d46d9a934443d2a54a91",
+      "totalPageCount": 49,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 고리선과 하루권",
+          "section": "1.1 하루권",
+          "primaryConcepts": [
+            "하루권"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일일권이 비용 판단을 제거하고 시간 판단만 남긴다는 점을 밝히는 도입 페이지다. 승차마다 요금을 지불할 때와 달리 짧은 구간 이용에 대한 망설임이 사라진다는 변화를 제시하고, 하루 단위 순환 여행이라는 책의 범위를 밝힌다.",
+          "aiAnalysisInputSha256": "86b35129fc79dec4ee7a1906a0a4935e17ecd09d747cba52650114120a4bfc2f",
+          "aiPublicGuideTopic": "한 장으로 하루를 사는 표",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "one-ticket-one-day"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 고리선과 하루권",
+          "section": "1.1 하루권",
+          "primaryConcepts": [
+            "하루권"
+          ],
+          "secondaryConcepts": [
+            "본전 계산"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일일권 구매 전 확인 항목을 세 가지로 제시한다. 손익 분기 승차 횟수, 유효 시간의 기준, 사용 가능한 노선의 범위이며 각각이 그날 일정의 형태를 어떻게 제약하는지 설명한다.",
+          "aiAnalysisInputSha256": "09b51e838b8e2ffc003bad88b0f3a7d0a3f5c15c02855ca4fcae0e35629160ec",
+          "aiPublicGuideTopic": "표를 사기 전에 확인할 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 고리선과 하루권",
+          "section": "1.2 순환선",
+          "primaryConcepts": [
+            "순환선"
+          ],
+          "secondaryConcepts": [
+            "하루권"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "순환 노선의 구조적 특성을 세 가지로 정리한다. 시작점의 임의성, 통과 지점의 회복 가능성과 그 비용, 양방향 운행이며 각각이 일정 구성에 미치는 영향을 제시한다.",
+          "aiAnalysisInputSha256": "e54623b03918ee43a18757f201ec37020e1bbf2a5b5f8bb23f72c2cd911e8993",
+          "aiPublicGuideTopic": "끝이 없는 노선의 성질",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 고리선과 하루권",
+          "section": "1.2 순환선",
+          "primaryConcepts": [
+            "순환선"
+          ],
+          "secondaryConcepts": [
+            "도는 방향",
+            "정거장 목록"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "순환 일주 소요 시간과 정거장 간 평균 소요를 제시하고 구간별 편차가 도보와 승차의 선택 기준이 된다는 점을 설명한다. 실제 일정에서 체류 시간이 대부분을 차지하므로 계획의 핵심이 체류 배분이라는 결론을 밝힌다.",
+          "aiAnalysisInputSha256": "739ec1b0f335d054217fedadcdee10373c07540ea13b42313092b72f336a5b6e",
+          "aiPublicGuideTopic": "한 바퀴가 얼마나 되는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 고리선과 하루권",
+          "section": "1.3 정거장 목록",
+          "primaryConcepts": [
+            "정거장 목록"
+          ],
+          "secondaryConcepts": [
+            "순환선"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정거장을 체류 목적에 따라 세 등급으로 분류하는 방법을 제시한다. 안내 자료의 간략한 설명만으로 분류가 가능하다는 점과, 등급별 체류 시간을 배정해 하루 일정의 골격을 만드는 절차를 설명한다.",
+          "aiAnalysisInputSha256": "f2e6e1a0ce6d208b55a40694e5db5e272ab07ad6ed823a80b4afa4dc209ce1ee",
+          "aiPublicGuideTopic": "열두 정거장을 세 부류로 나누기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 고리선과 하루권",
+          "section": "1.3 정거장 목록",
+          "primaryConcepts": [
+            "정거장 목록"
+          ],
+          "secondaryConcepts": [
+            "체류 배분",
+            "순환선"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "순환 노선의 정거장을 원 위에 배치하고 체류 등급을 표시 크기로 구분한 도표다. 등급별 배정 시간과 총합, 예비 시간을 함께 적어 하루의 시간 배분이 한 장에 드러나게 구성했다.",
+          "aiAnalysisInputSha256": "264df73d2aee7b03aff398d8e10fe2ea492cc879eb5cf0922d9a874e25e44606",
+          "aiPublicGuideTopic": "열두 정거장을 세 부류로 나누고 시간을 배정한 것을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 고리선과 하루권",
+          "section": "1.4 배차 간격",
+          "primaryConcepts": [
+            "배차 간격"
+          ],
+          "secondaryConcepts": [
+            "순환선"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "시간대별 배차 간격의 차이가 대기 시간에 미치는 영향을 설명한다. 짧은 간격에서는 시각 확인이 불필요하지만 긴 간격에서는 출발 시각 조정이 필요하다는 대응을 제시하고, 이 정보가 하루 전체의 대기를 좌우한다고 밝힌다.",
+          "aiAnalysisInputSha256": "f7182f3760a4a7fb891fc91e382968bb9b2ea5562764cc0ee356a7be4d2886a2",
+          "aiPublicGuideTopic": "몇 분마다 오는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 고리선과 하루권",
+          "section": "1.4 배차 간격",
+          "primaryConcepts": [
+            "배차 간격"
+          ],
+          "secondaryConcepts": [
+            "혼잡 시간",
+            "차창 관찰"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배차 간격이 하루 중 네 구간으로 나뉜다는 점과 그에 따른 이동 비용의 시간대별 차이를 제시한다. 빈번한 승하차가 필요한 일정을 고빈도 시간대로, 장시간 체류를 저빈도 시간대로 옮기는 재배치의 효과를 설명한다.",
+          "aiAnalysisInputSha256": "b4d10b89423c1edd62c3e51deb7d3ba80f64036719d16fde12aa62e09fcd1539",
+          "aiPublicGuideTopic": "간격이 바뀌는 시각",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "1장 고리선과 하루권",
+          "section": "1.5 운행 시간",
+          "primaryConcepts": [
+            "운행 시간"
+          ],
+          "secondaryConcepts": [
+            "하루권"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "운행 시간과 일일권 유효 시간의 관계를 다룬다. 순환 노선에서 최종 운행 시각이 정거장마다 다르다는 점을 지적하고, 귀가 정거장의 막차 시각을 미리 확인해 하루의 종료 시점을 정하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "eb926f3c0c84f65d54660425df1e6042f7f03603892e67edf535c4a2e1fd1b3b",
+          "aiPublicGuideTopic": "첫차와 막차가 정하는 하루",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "1장 고리선과 하루권",
+          "section": "1.5 운행 시간",
+          "primaryConcepts": [
+            "운행 시간"
+          ],
+          "secondaryConcepts": [
+            "본전 계산",
+            "이틀째 계획"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일일권의 실질 가치가 사용 시작 시각에 좌우된다는 점을 제시한다. 이른 시작이 가용 시간을 늘리지만 시설의 개방 시각과 맞지 않으면 무의미하다는 조건을 지적하고, 개방 시각에 맞춰 방문 순서를 배치한 실제 판단을 밝힌다.",
+          "aiAnalysisInputSha256": "2110e69c2091eefde7507d3b4e3ce799e6a2a99ea18d913ca6c2666f55aac51d",
+          "aiPublicGuideTopic": "하루를 언제 시작할 것인가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 어디서 내릴지 정하기",
+          "section": "2.1 내릴 곳 고르기",
+          "primaryConcepts": [
+            "내릴 곳 고르기"
+          ],
+          "secondaryConcepts": [
+            "정거장 목록"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일일권 이용 시 방문지를 늘리려는 경향과 그 결과를 다룬다. 전 정거장 하차 시 체류 시간이 관찰에 부족해진다는 계산을 제시하고, 하차 지점을 줄여 체류 시간을 확보하는 판단이 이 방식의 핵심이라고 밝힌다.",
+          "aiAnalysisInputSha256": "2b0e647c1e7b2e68029054b3e107da7dd2aee97d1c9133e724b6457be7b38c93",
+          "aiPublicGuideTopic": "열둘을 다 내리지 않기로 하는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 어디서 내릴지 정하기",
+          "section": "2.1 내릴 곳 고르기",
+          "primaryConcepts": [
+            "내릴 곳 고르기"
+          ],
+          "secondaryConcepts": [
+            "체류 배분",
+            "차창 관찰"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "하차하지 않는 정거장에서도 관찰이 이루어진다는 점을 제시한다. 정차 시 짧은 시간에 확인 가능한 항목을 세 가지로 정하고, 재방문 여부의 판단을 기록해 다음 여정의 목록으로 삼는 방법을 설명한다.",
+          "aiAnalysisInputSha256": "5e2247fc2b894fb5e1514529f34bc830226927242fd67b31352d5f331f134f7a",
+          "aiPublicGuideTopic": "지나칠 곳에서 무엇을 얻는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 어디서 내릴지 정하기",
+          "section": "2.2 체류 배분",
+          "primaryConcepts": [
+            "체류 배분"
+          ],
+          "secondaryConcepts": [
+            "내릴 곳 고르기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "체류 시간을 세 등급으로 나누어 배정하는 방식과 중간 등급의 초과 문제를 다룬다. 정거장에서 시야에 들어오는 범위로 활동을 제한하는 규칙을 도입해 시간 초과를 방지한 사례를 제시한다.",
+          "aiAnalysisInputSha256": "ff6c3952a3d5efef3616ab489d10ec68e0fbb079ee4b233d874ba97f90bb76e2",
+          "aiPublicGuideTopic": "한 곳에 얼마나 있을 것인가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 어디서 내릴지 정하기",
+          "section": "2.2 체류 배분",
+          "primaryConcepts": [
+            "체류 배분"
+          ],
+          "secondaryConcepts": [
+            "배차 간격",
+            "혼잡 시간"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "하루의 시간을 체류와 이동으로 구분해 하나의 시간 띠에 배치한 도표다. 등급별 체류 폭의 차이와 시간대별 대기 증가를 함께 표시해, 일일권 이용의 실제 시간 구성을 드러낸다.",
+          "aiAnalysisInputSha256": "eeb02bc4506eeccd9b9c8b314c18f4b92547723a5aa63e68d395a3322e8c02ab",
+          "aiPublicGuideTopic": "하루의 시간이 타는 시간과 머무는 시간으로 어떻게 나뉘는지 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 어디서 내릴지 정하기",
+          "section": "2.3 도는 방향",
+          "primaryConcepts": [
+            "도는 방향"
+          ],
+          "secondaryConcepts": [
+            "순환선"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "순환 노선에서 진행 방향의 선택이 방문 순서를 결정한다는 점을 설명한다. 시설의 개방 시각과 활동의 성격에 맞춰 방향을 정하는 기준을 제시하고, 필요 시 역방향을 병용한다는 원칙을 덧붙인다.",
+          "aiAnalysisInputSha256": "f0467149b72412203c75582ebdd73ff6839e9f7f2bb922e8673b1fc4be56aad2",
+          "aiPublicGuideTopic": "어느 쪽으로 돌 것인가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "2장 어디서 내릴지 정하기",
+          "section": "2.3 도는 방향",
+          "primaryConcepts": [
+            "도는 방향"
+          ],
+          "secondaryConcepts": [
+            "체류 배분",
+            "운행 시간"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "진행 방향 선택의 기준을 시설 개장 시각, 태양의 위치, 하루의 종료 지점으로 정리한다. 기준이 충돌할 때의 우선순위를 제시하고 그 근거를 각 기준이 어긋났을 때의 손실 크기로 설명한다.",
+          "aiAnalysisInputSha256": "e671ccbfadf1cfeb8e5cd73ff15bcfbccfb1fefc857a1b057811cd1b2800915f",
+          "aiPublicGuideTopic": "방향을 정하는 세 가지 기준",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "2장 어디서 내릴지 정하기",
+          "section": "2.4 역방향 환승",
+          "primaryConcepts": [
+            "역방향 환승"
+          ],
+          "secondaryConcepts": [
+            "도는 방향"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "역방향 승차와 순방향 일주의 손익을 정거장 수로 판단하는 기준을 제시한다. 승강장 이동 시간을 반영하면 경계값이 조정된다는 점, 순방향 선택이 추가 관찰 기회를 제공한다는 부수 효과를 함께 밝힌다.",
+          "aiAnalysisInputSha256": "305f5d0b29f4cbdd95ddf54c986528da5569a6238f81620f859752dba0f9cb66",
+          "aiPublicGuideTopic": "반대쪽 차를 타는 계산",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "2장 어디서 내릴지 정하기",
+          "section": "2.4 역방향 환승",
+          "primaryConcepts": [
+            "역방향 환승"
+          ],
+          "secondaryConcepts": [
+            "환승 시간",
+            "배차 간격"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "방향 전환의 실제 비용에 대기 시간이 포함된다는 점을 설명한다. 양방향 운행이 동기화되어 있지 않다는 조건을 제시하고, 전환 횟수를 제한하는 규칙과 그 근거를 일주 소요 시간과 비교해 밝힌다.",
+          "aiAnalysisInputSha256": "55be03a652b8b91d28f3f9a8f3d3176426dc97ebb7bee2005eb1b57bf3d44821",
+          "aiPublicGuideTopic": "방향을 바꿀 때 드는 시간",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 정거장 사이",
+          "section": "3.1 차창 관찰",
+          "primaryConcepts": [
+            "차창 관찰"
+          ],
+          "secondaryConcepts": [
+            "배차 간격"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정거장 간 이동 시간의 누적이 하루의 상당 부분을 차지한다는 점을 제시한다. 차창에서 관찰되는 구간별 차이가 정거장 주변보다 도시의 성격을 잘 드러낸다는 관점과, 동일 구간을 다른 시각에 반복 기록해 비교하는 방법을 설명한다.",
+          "aiAnalysisInputSha256": "691b65655dcc11d615ed1132b68cd53df8bd8056327f8cbef3d546027c8c59fa",
+          "aiPublicGuideTopic": "타고 있는 동안 보는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 정거장 사이",
+          "section": "3.1 차창 관찰",
+          "primaryConcepts": [
+            "차창 관찰"
+          ],
+          "secondaryConcepts": [
+            "정거장 목록",
+            "혼잡 시간"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 순환 구간을 아침과 저녁에 관찰한 결과를 두 개의 시간 띠로 대비한 도표다. 혼잡 구간의 이동을 색의 농도로 표시하고 배차 간격을 함께 적어, 반복 통과가 만들어 내는 비교 정보를 보인다.",
+          "aiAnalysisInputSha256": "07392dc1af24bf4e44985ad1672d6d8cef1b4458ef8925a8e029091f646ea2ec",
+          "aiPublicGuideTopic": "같은 구간을 아침과 저녁에 적은 두 줄을 견준 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 정거장 사이",
+          "section": "3.2 앉는 자리",
+          "primaryConcepts": [
+            "앉는 자리"
+          ],
+          "secondaryConcepts": [
+            "차창 관찰"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "순환 노선에서 좌우 차창의 관찰 대상이 다르다는 점을 제시한다. 외측 차창이 구역의 가로를 보여 준다는 이유로 위치를 선택하고, 혼잡 시간대에는 선택이 불가능하다는 제약과 착석 여부의 판단 기준을 함께 설명한다.",
+          "aiAnalysisInputSha256": "e2352a25efdff193cfb227579da740de79ec9f13752a5e0d41c292dc962fcb97",
+          "aiPublicGuideTopic": "어느 쪽 창에 설 것인가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 정거장 사이",
+          "section": "3.2 앉는 자리",
+          "primaryConcepts": [
+            "앉는 자리"
+          ],
+          "secondaryConcepts": [
+            "환승 시간",
+            "혼잡 시간"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관찰에 유리한 위치와 하차에 유리한 위치가 상충한다는 점을 다룬다. 하차 한 정거장 전에 이동하는 시점 기준을 제시하고, 반복되는 판단이 누적 시간으로 환산되는 규모를 밝힌다.",
+          "aiAnalysisInputSha256": "65ce90219b87b3a55ae72ba56414aea65d72f8efec9df8b53933e802070bf27d",
+          "aiPublicGuideTopic": "문 앞에 서 있는 것의 값",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "3장 정거장 사이",
+          "section": "3.3 혼잡 시간",
+          "primaryConcepts": [
+            "혼잡 시간"
+          ],
+          "secondaryConcepts": [
+            "배차 간격"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "혼잡 시간대의 이용 조건과 대응을 다룬다. 해당 시간대를 이동이 아닌 체류에 배정하는 방법, 방향별 혼잡도의 비대칭을 이용해 역방향을 선택하는 전략을 제시하고 그것이 정액권의 이점과 연결된다고 밝힌다.",
+          "aiAnalysisInputSha256": "dd799ba78bec2afe480c44a900a5405dd26458adb79c63964c14dc8dfd731eb0",
+          "aiPublicGuideTopic": "붐비는 시간에 하는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "3장 정거장 사이",
+          "section": "3.3 혼잡 시간",
+          "primaryConcepts": [
+            "혼잡 시간"
+          ],
+          "secondaryConcepts": [
+            "차창 관찰",
+            "체류 배분"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "혼잡 시간대에 차창 관찰이 불가능해지는 대신 승하차 패턴이 드러난다는 점을 제시한다. 특정 정거장에 집중되는 하차가 도시의 기능 분포를 보여 준다는 해석과, 관찰을 위해 짧게만 이용한다는 절제를 함께 밝힌다.",
+          "aiAnalysisInputSha256": "9cdff477e2b5621ebf70f6a629e13bde13a9894cabcdb6c23ae8a97f94538457",
+          "aiPublicGuideTopic": "붐빌 때 보이는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "3장 정거장 사이",
+          "section": "3.4 환승 시간",
+          "primaryConcepts": [
+            "환승 시간"
+          ],
+          "secondaryConcepts": [
+            "혼잡 시간"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "승하차 전환에 소요되는 시간을 줄이는 세 가지 방법과 그 누적 효과를 제시한다. 반대로 배차가 잦은 시간대에는 한 대를 보내는 여유가 관찰 시간으로 전환된다는 판단을 함께 밝힌다.",
+          "aiAnalysisInputSha256": "a2f1069b57405757f9071f7ea4cbc5ccce8df5e7895d3eebdf01a9ab0d431941",
+          "aiPublicGuideTopic": "내리고 타는 사이의 몇 분",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "3장 정거장 사이",
+          "section": "3.4 환승 시간",
+          "primaryConcepts": [
+            "환승 시간"
+          ],
+          "secondaryConcepts": [
+            "앉는 자리",
+            "역방향 환승"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "승차 대기 위치가 승차 시간에 미치는 영향을 다룬다. 정차 위치의 규칙성을 이용해 대기 지점을 정하는 방법과 혼잡 시 문 선택의 차이를 제시하고, 이런 정보가 안내 자료가 아니라 반복 이용에서 얻어진다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "184da3c4a240b54185ff0b5488a7431fe7b378dfda86a7b8eb55e45a0ceec758",
+          "aiPublicGuideTopic": "정거장에서 서 있는 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 하루권을 쓰는 셈",
+          "section": "4.1 본전 계산",
+          "primaryConcepts": [
+            "본전 계산"
+          ],
+          "secondaryConcepts": [
+            "운행 시간"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정액권의 손익 분기 계산을 제시하고 실제 이용 횟수가 그것을 쉽게 초과한다는 점을 밝힌다. 다만 실질적 효용은 금액이 아니라 승차 판단에 드는 시간과 체력의 절약에 있다는 관점으로 정리한다.",
+          "aiAnalysisInputSha256": "fada0cd11dba5b5b3cf496fdadd1a060f29c78887f46faa0f089edbe69695e56",
+          "aiPublicGuideTopic": "몇 번 타야 이득인가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 하루권을 쓰는 셈",
+          "section": "4.1 본전 계산",
+          "primaryConcepts": [
+            "본전 계산"
+          ],
+          "secondaryConcepts": [
+            "하루권",
+            "체류 배분"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "승차 횟수에 따른 누적 요금을 낱장 구매와 정액권으로 비교한 도표다. 손익 분기점과 실제 이용 횟수를 함께 표시하고, 금액 차이보다 판단 횟수의 감소가 크다는 본문의 결론을 아래에 덧붙인다.",
+          "aiAnalysisInputSha256": "0bcf024c3edb9b00a75978fd4806bda55de43b1f2fa457031ffdc1a48a619a29",
+          "aiPublicGuideTopic": "타는 횟수에 따라 값이 어떻게 달라지는지 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 하루권을 쓰는 셈",
+          "section": "4.2 표 사용",
+          "primaryConcepts": [
+            "표 사용"
+          ],
+          "secondaryConcepts": [
+            "본전 계산"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정액권의 물리적 사용 방식과 주의 사항을 다룬다. 승차 시 인식 위치의 제한, 분실 시 재발급 불가, 당일 한정이라는 조건을 각각 제시한다.",
+          "aiAnalysisInputSha256": "5f97cd390bdc7cf14cbef6f493b6e963fa027ae1b7d68976ae9da31457d59228",
+          "aiPublicGuideTopic": "표를 쓰는 방식",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 하루권을 쓰는 셈",
+          "section": "4.2 표 사용",
+          "primaryConcepts": [
+            "표 사용"
+          ],
+          "secondaryConcepts": [
+            "하루권의 한계",
+            "혼잡 시간"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "차내 검표가 이루어지는 상황과 그에 대한 대비를 다룬다. 소지 위치의 선택, 검표 중 하차가 지연될 수 있다는 문제, 순환 노선에서 통과 시 회복 비용을 함께 제시한다.",
+          "aiAnalysisInputSha256": "66e8eb3ba4ba07574b43d1724453ee270527bef654813101bbfcd6510e7faeaf",
+          "aiPublicGuideTopic": "표를 확인하는 자리",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "4장 하루권을 쓰는 셈",
+          "section": "4.3 하루권의 한계",
+          "primaryConcepts": [
+            "하루권의 한계"
+          ],
+          "secondaryConcepts": [
+            "본전 계산"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정액권의 적용 범위와 제약을 세 가지로 정리한다. 노선 한정, 당일 한정, 개인 한정이며 특히 노선 범위가 그날의 이동 반경을 확정한다는 점을 강조하고 구매 전 확인 사항으로 제시한다.",
+          "aiAnalysisInputSha256": "fbe99e79b5e4c1eb80035e6e2399dc402d2ece511609571e7470f17816aa8d50",
+          "aiPublicGuideTopic": "이 표로 할 수 없는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "4장 하루권을 쓰는 셈",
+          "section": "4.3 하루권의 한계",
+          "primaryConcepts": [
+            "하루권의 한계"
+          ],
+          "secondaryConcepts": [
+            "표가 없을 때",
+            "체류 배분"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "선불 요금제가 이용 횟수를 늘리려는 심리를 유발한다는 점을 다룬다. 그 경향이 체류 중심 계획과 충돌한다는 문제를 지적하고, 손익 분기 통과 후 계산을 중단하는 대응을 제시한다.",
+          "aiAnalysisInputSha256": "3eae6b3c324d08297da73cb2502fc1ee354a8367431adddb483a82f1d802e730",
+          "aiPublicGuideTopic": "표가 만드는 조급함",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "4장 하루권을 쓰는 셈",
+          "section": "4.4 이틀째 계획",
+          "primaryConcepts": [
+            "이틀째 계획"
+          ],
+          "secondaryConcepts": [
+            "하루권의 한계"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이틀에 걸친 이용 방식을 대안으로 제시한다. 첫날을 선별에, 둘째 날을 체류에 배정하는 구성과 그 이점을 설명하고, 이 기록이 하루 일정에 한정된다는 범위를 밝힌다.",
+          "aiAnalysisInputSha256": "443c35ca621020ffcd6e46e3be5c9f3c99cb34e31ae06fdc12f9f60d3d44f528",
+          "aiPublicGuideTopic": "하루로 끝나지 않을 때",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "4장 하루권을 쓰는 셈",
+          "section": "4.4 이틀째 계획",
+          "primaryConcepts": [
+            "이틀째 계획"
+          ],
+          "secondaryConcepts": [
+            "하루 정리",
+            "정거장 목록"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "하루의 기록을 다음 방문에 활용하는 정리 방법을 세 항목으로 제시한다. 통과 지점의 재방문 판단이 다음 목록이 되고, 대기가 길었던 지점의 시각을 조정해 일정을 개선하는 절차를 설명한다.",
+          "aiAnalysisInputSha256": "ca205ce37a3c52f34602e26a9bc8b718d980b3055bb65348bf6c3a2fa626c961",
+          "aiPublicGuideTopic": "하루의 기록을 다음 날에 쓰는 법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 고리선의 하루",
+          "section": "5.1 오전 기록",
+          "primaryConcepts": [
+            "오전 기록"
+          ],
+          "secondaryConcepts": [
+            "내릴 곳 고르기",
+            "도는 방향"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "오전 구간의 실제 진행을 시각과 함께 기록한다. 시작 지점의 선택 근거, 하차 지점과 체류 시간의 배분, 현지 정보로 계획이 보완된 사례, 배차 간격 변경이 진행 속도에 미친 영향을 제시한다.",
+          "aiAnalysisInputSha256": "50a5e87cde79fa1cac6beaac2b17ff9fbcc655c825dfa1779688daf88db342ef",
+          "aiPublicGuideTopic": "아침 다섯 정거장",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 고리선의 하루",
+          "section": "5.1 오전 기록",
+          "primaryConcepts": [
+            "오전 기록"
+          ],
+          "secondaryConcepts": [
+            "체류 배분",
+            "정거장 목록"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "하루의 실제 이동 경로를 순환 노선 위에 겹쳐 표시한 도표다. 진행 방향과 역방향 이동, 하차 지점과 체류 시간, 통과 시각을 함께 적어 계획한 배분이 실제로 어떻게 실행되었는지 보인다.",
+          "aiAnalysisInputSha256": "4adc35230a5249fee3472cd5611403bc1984f57547644f5327d15608f126481c",
+          "aiPublicGuideTopic": "하루 동안 열두 정거장을 어떻게 지났는지 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 고리선의 하루",
+          "section": "5.2 오후 기록",
+          "primaryConcepts": [
+            "오후 기록"
+          ],
+          "secondaryConcepts": [
+            "오전 기록",
+            "역방향 환승"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "오후 구간에서 발생한 일정 초과와 그 회복을 기록한다. 체류 시간 초과로 한 정거장을 건너뛴 경과, 역방향 승차로 복귀한 판단과 소요 비교, 현지 정보로 알게 된 지점이 최고의 방문지가 되었다는 결과를 제시한다.",
+          "aiAnalysisInputSha256": "6166fc613514d974ed4f3d7ea12aa0c1463230e7f72470b962985c7f4d4c05c7",
+          "aiPublicGuideTopic": "점심과 오후의 네 정거장",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "5장 고리선의 하루",
+          "section": "5.2 오후 기록",
+          "primaryConcepts": [
+            "오후 기록"
+          ],
+          "secondaryConcepts": [
+            "체류 배분",
+            "배차 간격"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일정 지연을 회복하는 두 가지 방식을 비교한다. 체류 시간 단축과 방문지 제외 가운데 후자를 선택한 근거를 제시하고, 분산 축소가 전체 경험의 질을 낮춘다는 판단을 밝힌다.",
+          "aiAnalysisInputSha256": "dee71723ac9ebb80aeff4311eb9c4c0564053a927f15afe4bfa6d674a47eceb6",
+          "aiPublicGuideTopic": "오후에 밀린 것을 되돌린 방법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "5장 고리선의 하루",
+          "section": "5.3 저녁 기록",
+          "primaryConcepts": [
+            "저녁 기록"
+          ],
+          "secondaryConcepts": [
+            "오전 기록",
+            "혼잡 시간"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "저녁 구간의 이용을 기록한다. 혼잡 시간대를 체류에 배정한 계획의 실행, 배차 회복 이후 무하차 일주를 통해 오전 기록과 비교한 관찰, 정액권이 있었기에 가능했던 이용 방식을 제시한다.",
+          "aiAnalysisInputSha256": "465f29eb6cb84e178c2da809102bbe49cf157af7ece3f8cdd220d415df920f63",
+          "aiPublicGuideTopic": "저녁의 마지막 바퀴",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "5장 고리선의 하루",
+          "section": "5.3 저녁 기록",
+          "primaryConcepts": [
+            "저녁 기록"
+          ],
+          "secondaryConcepts": [
+            "운행 시간",
+            "차창 관찰"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "운행 종료 전 잔여 시간의 사용을 기록한다. 추가 일주와 재방문 가운데 후자를 선택한 이유를 시간대 비교 관찰로 설명하고, 귀가 정거장의 최종 운행 시각에 여유를 두고 이용을 마감한 경과를 제시한다.",
+          "aiAnalysisInputSha256": "04b79e7e418e0abd8d335537c8e5c9247c6c53a1b4e67c3b1df0453d5f885efa",
+          "aiPublicGuideTopic": "마지막 차를 타기까지",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "5장 고리선의 하루",
+          "section": "5.4 하루 정리",
+          "primaryConcepts": [
+            "하루 정리"
+          ],
+          "secondaryConcepts": [
+            "오전 기록",
+            "오후 기록"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "하루의 결과를 방문 지점 수, 승차 횟수, 시간 배분으로 정리한다. 체류와 이동의 비율, 이동 중 대기의 비중을 수치로 제시하고 다음 방문 시의 개선 방향을 시간대별 배차 조건과 연결한다.",
+          "aiAnalysisInputSha256": "965bd38e8b5ae8cbc75dc547f52c2d7c6c45ad3b197cf392458304f9b464b05b",
+          "aiPublicGuideTopic": "열둘 가운데 일곱",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 이 방법이 통하지 않을 때",
+          "section": "6.1 직선 노선",
+          "primaryConcepts": [
+            "직선 노선"
+          ],
+          "secondaryConcepts": [
+            "순환선"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "직선 노선에서 이 방법의 어느 부분이 무효가 되는지 밝힌다. 통과 지점 회복의 비용 증가와 진행 방향 선택의 부재를 제시하고, 대신 소요 시간 계산이 단순해진다는 교환 관계를 설명한다.",
+          "aiAnalysisInputSha256": "49353f35e1b4a18b3a6329109f5fbf095cbd3b27cfac57979301a9f2fe2d606b",
+          "aiPublicGuideTopic": "순환선이 아닌 노선에서는",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 이 방법이 통하지 않을 때",
+          "section": "6.1 직선 노선",
+          "primaryConcepts": [
+            "직선 노선"
+          ],
+          "secondaryConcepts": [
+            "역방향 환승",
+            "하루권의 한계"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "순환 노선과 직선 노선에서 이전 정거장으로 복귀하는 경로를 각각 그려 비교한 도표다. 순환 노선에는 두 가지 선택지가, 직선 노선에는 하나만 존재한다는 차이를 경로 수로 드러낸다.",
+          "aiAnalysisInputSha256": "aff05df3a2e522b69dabd9cff8d35f20442942443d59259f250175310e954c24",
+          "aiPublicGuideTopic": "순환선과 직선 노선에서 지나친 정거장으로 돌아가는 길을 견준 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 이 방법이 통하지 않을 때",
+          "section": "6.2 표가 없을 때",
+          "primaryConcepts": [
+            "표가 없을 때"
+          ],
+          "secondaryConcepts": [
+            "본전 계산",
+            "하루권의 한계"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "정액권이 없는 조건에서 이 방법이 성립하지 않는 이유를 다룬다. 승차마다 지불이 발생하면 단거리 이용이 억제되어 관찰 방식 자체가 바뀐다는 점을 제시하고, 명칭이 다른 유사 상품을 확인하는 대안을 밝힌다.",
+          "aiAnalysisInputSha256": "a1cd137b2cf1d9d8f80eb030f0d523fba46aaf3ea33ef40c1eb87175ff52f8cf",
+          "aiPublicGuideTopic": "하루권이 없는 도시에서는",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 이 방법이 통하지 않을 때",
+          "section": "6.3 하루의 한계",
+          "primaryConcepts": [
+            "하루의 한계"
+          ],
+          "secondaryConcepts": [
+            "체류 배분",
+            "이틀째 계획"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "이 방법이 적용 가능한 노선의 조건을 일주 소요 시간과 정거장 수로 제시한다. 조건을 벗어날 때 나타나는 문제와 구역 분할이라는 대안을 설명하고 적정 범위를 명시한다.",
+          "aiAnalysisInputSha256": "4a7bbde9a9589586eea5bbed05b9b3811f27d4a36d1ccc77f5095978dd9bd9d5",
+          "aiPublicGuideTopic": "하루로는 부족한 도시",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "6장 이 방법이 통하지 않을 때",
+          "section": "6.3 하루의 한계",
+          "primaryConcepts": [
+            "하루의 한계"
+          ],
+          "secondaryConcepts": [
+            "하루권",
+            "하루 정리"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "하루 단위 관찰의 범위를 노선이 지나는 구역으로 한정한다. 노선의 공간적 편향과 방문일의 조건이 관찰 결과를 좌우한다는 점을 지적하고, 기록의 대상을 도시가 아니라 노선으로 명시하는 태도를 밝힌다.",
+          "aiAnalysisInputSha256": "e9edd8ff4eb90f4efa03df5fe71af33d582009cf3bcde8db08b77df419eaa7eb",
+          "aiPublicGuideTopic": "하루로 본 것이 그 도시인가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 결론: 하루로 도는 일",
+          "section": "7.1 하루로 도는 일",
+          "primaryConcepts": [
+            "하루로 도는 일"
+          ],
+          "secondaryConcepts": [
+            "하루권",
+            "체류 배분"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체의 명제를 다시 진술하는 결론 도입 페이지다. 요금 판단이 제거되면 모든 결정이 시간 배분으로 환원된다는 구조를 정리하고, 방문지를 줄이는 선택이 하루를 성립시켰다는 관점으로 앞 장들을 종합한다.",
+          "aiAnalysisInputSha256": "36d0fd07266d6f32812cf2eaf7497e47ff4dec88f226875385e5e9e4e9ecbf5c",
+          "aiPublicGuideTopic": "표 한 장이 정한 하루",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "one-ticket-one-day"
+          ]
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 결론: 하루로 도는 일",
+          "section": "7.1 하루로 도는 일",
+          "primaryConcepts": [
+            "하루로 도는 일"
+          ],
+          "secondaryConcepts": [
+            "정거장 목록",
+            "배차 간격"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다른 지역에 적용할 수 있도록 확인 항목을 네 가지로 압축해 제시한다. 일주 소요, 시간대별 배차, 정거장 등급 분류, 혼잡 시간대의 회피이며 모두 안내소에서 사전에 확인 가능하다는 점과 방문지를 줄이는 원칙을 덧붙인다.",
+          "aiAnalysisInputSha256": "13396114afc02526d2e5af25e1d42fd15a1f0f86ea2ad98f0f3a6cd958157724",
+          "aiPublicGuideTopic": "다른 도시의 순환선을 타기 전에",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
     }
   ]
 }

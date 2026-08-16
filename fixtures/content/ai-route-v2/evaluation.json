@@ -3809,6 +3809,71 @@
         11,
         21
       ]
+    },
+    {
+      "caseId": "case-book-089",
+      "bookId": 89,
+      "purpose": "이 책을 소장하고 있는데, 낯선 도시에서 하루권으로 순환선을 돌 계획이라 어디서 내릴지 정하는 법만 빠르게 익히고 싶다. 하루권이 무엇을 바꾸는 표인지와 순환선의 성질, 그리고 정거장을 어떻게 나누는지를 알고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "하루권",
+        "순환선",
+        "정거장 목록",
+        "내릴 곳 고르기"
+      ],
+      "helpfulConcepts": [
+        "배차 간격",
+        "운행 시간",
+        "체류 배분",
+        "도는 방향"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 13
+        }
+      ],
+      "irrelevantPageNumbers": [
+        22,
+        23,
+        34,
+        35,
+        46,
+        47
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          48
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        6,
+        12,
+        13
+      ],
+      "allowedAlternativePageNumbers": [
+        5,
+        7,
+        16
+      ]
     }
   ]
 }
