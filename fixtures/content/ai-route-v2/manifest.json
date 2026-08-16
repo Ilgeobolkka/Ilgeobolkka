@@ -45641,6 +45641,1087 @@
           "duplicateGroupKeys": []
         }
       ]
+    },
+    {
+      "bookId": 99,
+      "title": "작은 목표의 측정법",
+      "pdfPath": "pdfs/book-099.pdf",
+      "pdfSha256": "127cc3c4c41579b6ae2e717275256fbfad5b1da8eb572bcb1ffd3ae942d54ca7",
+      "totalPageCount": 50,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 해냈는지 알 수 없는 목표",
+          "section": "1.1 열심히 했는데 남는 게 없다",
+          "primaryConcepts": [
+            "모호한 목표"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결과를 확인할 수 없는 목표의 전형을 도입 페이지에서 제시한다. 수행 여부와 무관하게 달성 판정이 불가능하다는 점, 그 결과 부족감만 남는다는 문제를 들고, 측정 가능성 확보가 다음 행동 결정을 위한 것임을 밝힌다.",
+          "aiAnalysisInputSha256": "1286bf0e30c6ac2e2bb3f96c2124c498bd15d56011274b45eb8178e1277ee884",
+          "aiPublicGuideTopic": "해냈는지 알 수 없는 목표의 모양",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "measure-to-decide"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 해냈는지 알 수 없는 목표",
+          "section": "1.1 열심히 했는데 남는 게 없다",
+          "primaryConcepts": [
+            "모호한 목표"
+          ],
+          "secondaryConcepts": [
+            "지표"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "모호한 목표가 노력 수준에 따라 부족감과 과잉 안심이라는 상반된 결과를 낳는다는 점을 설명한다. 두 경우 모두 현재 상태를 알 수 없다는 공통점을 지적하고, 측정의 목적을 위치 확인으로 규정한다.",
+          "aiAnalysisInputSha256": "1ee16d8bae145666603a3babc7503176f6c6b6297c1a280ee3d3135d7f0a11c4",
+          "aiPublicGuideTopic": "모호한 목표가 남기는 두 가지",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 해냈는지 알 수 없는 목표",
+          "section": "1.2 목표와 지표",
+          "primaryConcepts": [
+            "지표"
+          ],
+          "secondaryConcepts": [
+            "모호한 목표"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "목표와 지표를 구분하고 지표가 대리 측정 수단이라는 점을 설명한다. 구분이 없으면 지표 자체가 목적화된다는 위험을 예시로 들고, 지표와 원 목표를 함께 기록하는 대응을 제시한다.",
+          "aiAnalysisInputSha256": "edec1898905efb6d574bd780f37f65ec55402dd7697f65bc192e0b1c982ec8d2",
+          "aiPublicGuideTopic": "목표와 그것을 재는 자를 나누기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 해냈는지 알 수 없는 목표",
+          "section": "1.2 목표와 지표",
+          "primaryConcepts": [
+            "지표"
+          ],
+          "secondaryConcepts": [
+            "측정 대상"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지표의 요건을 계량 가능성·통제 가능성·목표 연결성 세 가지로 정리한다. 각 요건이 빠졌을 때의 결과를 제시하고, 완전한 지표를 탐색하기보다 한계를 인지한 채 사용하는 접근을 권한다.",
+          "aiAnalysisInputSha256": "595ac0141d7bbdb46c2a9ddce30bc41de88d3cee6c44c91ae51b39629246c826",
+          "aiPublicGuideTopic": "좋은 지표의 조건",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 해냈는지 알 수 없는 목표",
+          "section": "1.3 무엇을 셀 수 있는가",
+          "primaryConcepts": [
+            "측정 대상"
+          ],
+          "secondaryConcepts": [
+            "지표"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 목표에 복수의 측정 축이 가능하다는 점과 축 선택이 행동을 바꾼다는 관계를 설명한다. 측정 대상 선정이 무엇을 증가시킬지 결정하는 일이라는 관점과, 후보를 나열해 예상 행동으로 비교하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "1b05051ea294853f79e721ccef30ef3bbe25ad0a5c39ebc3d3b7ef822929c34d",
+          "aiPublicGuideTopic": "같은 목표를 재는 여러 자",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 해냈는지 알 수 없는 목표",
+          "section": "1.3 무엇을 셀 수 있는가",
+          "primaryConcepts": [
+            "측정 대상"
+          ],
+          "secondaryConcepts": [
+            "지표",
+            "모호한 목표"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "하나의 목표에 세 가지 측정 축을 대응시키고 각 축이 유도하는 행동을 병기한 도표다. 눈금 간격을 달리한 자 모양으로 축의 차이를 나타내고 선택된 축을 강조해, 측정 대상 선정이 행동 선택과 같다는 점을 보인다.",
+          "aiAnalysisInputSha256": "842a39c98dcd3d7129d210b292ea67564d2e95af9148943c65ff5d6a73de93b0",
+          "aiPublicGuideTopic": "같은 목표에 세 가지 자를 댄 결과를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 해냈는지 알 수 없는 목표",
+          "section": "1.4 세는 일의 값",
+          "primaryConcepts": [
+            "측정의 효용"
+          ],
+          "secondaryConcepts": [
+            "지표"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "측정 행위 자체가 단기적으로 행동을 변화시킨다는 점과 그 효과가 지속되지 않는다는 한계를 다룬다. 측정의 본래 가치가 후속 행동 결정에 있다는 점을 밝히고 이후 장의 구성을 예고한다.",
+          "aiAnalysisInputSha256": "b01eec15f18de8d1ec2ec1122f212dfa8c65940f70cff33f6db6d33593d55605",
+          "aiPublicGuideTopic": "재면 달라지는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 해냈는지 알 수 없는 목표",
+          "section": "1.4 세는 일의 값",
+          "primaryConcepts": [
+            "측정의 효용"
+          ],
+          "secondaryConcepts": [
+            "확인 주기"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "측정에 수반되는 비용을 명시하고 비용이 효용을 넘으면 측정을 포기한다는 판단을 제시한다. 기존에 자동으로 남는 기록을 활용하는 방법과, 신규 측정의 소요 시간 상한을 두는 실무를 다룬다.",
+          "aiAnalysisInputSha256": "b29eca3a2cb4e26a780ef15ce9633a238f48f4877e1c57c2021011525d64f297",
+          "aiPublicGuideTopic": "재는 데 드는 비용",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "1장 해냈는지 알 수 없는 목표",
+          "section": "1.5 세지 않아도 되는 것",
+          "primaryConcepts": [
+            "비측정 영역"
+          ],
+          "secondaryConcepts": [
+            "측정 대상"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "측정이 부적합한 목표 유형을 다룬다. 계량화가 행동을 왜곡하는 사례를 들고, 사례 기록으로 확인하는 대안을 제시하며, 목표 설정 단계에서 측정 대상과 비측정 대상을 구분해야 중요한 목표가 배제되지 않는다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "26432458474a9efba63c9b109395afb33266cd9efdb25aa75fc1aaa8ed3e218d",
+          "aiPublicGuideTopic": "숫자로 만들지 않는 목표",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "1장 해냈는지 알 수 없는 목표",
+          "section": "1.5 세지 않아도 되는 것",
+          "primaryConcepts": [
+            "비측정 영역"
+          ],
+          "secondaryConcepts": [
+            "측정 불가"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비측정 목표의 확인 절차를 다룬다. 사전에 관찰 가능한 사례 조건을 정의하고, 빈도가 아니라 발생 여부로 판단하며, 확인 주기를 길게 두어 왜곡을 피하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "daab58781780cdb6900c3af7b65f0839014759d741db91d82f91e6d59fbf686a",
+          "aiPublicGuideTopic": "사례로 확인하는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 목표를 구체화하기",
+          "section": "2.1 동사와 숫자",
+          "primaryConcepts": [
+            "목표의 구체화"
+          ],
+          "secondaryConcepts": [
+            "모호한 목표",
+            "지표"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "목표 구체화의 두 조치로 동사 전환과 수치 부여를 제시한다. 목표 수치를 현재 수준보다 소폭 높게 설정하는 기준과, 현재 수준을 먼저 실측해야 기준선이 생긴다는 순서를 다룬다.",
+          "aiAnalysisInputSha256": "e03fa458df83254830d2f8839cf74df91eda62b14546ef47c39e5c228865687b",
+          "aiPublicGuideTopic": "목표를 다시 적는 두 가지 손질",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 목표를 구체화하기",
+          "section": "2.1 동사와 숫자",
+          "primaryConcepts": [
+            "목표의 구체화"
+          ],
+          "secondaryConcepts": [
+            "작은 목표"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수치화가 어려운 목표를 하위 활동으로 분해해 계량 가능한 항목을 찾는 방법을 제시한다. 분해 후에도 수치가 나오지 않으면 사례 확인으로 전환한다는 기준을 함께 밝힌다.",
+          "aiAnalysisInputSha256": "ba68d23fd2a96ec9a00eba5e3f68b3ac6357dc996dc48503c14251c6148fbe50",
+          "aiPublicGuideTopic": "숫자를 붙일 수 없을 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 목표를 구체화하기",
+          "section": "2.2 언제까지",
+          "primaryConcepts": [
+            "기한"
+          ],
+          "secondaryConcepts": [
+            "목표의 구체화"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기한 부재가 목표를 여전히 불확정 상태로 둔다는 점을 지적한다. 짧은 기한이 조기 피드백과 낮은 실패 비용을 제공한다는 근거와, 기간 단축으로 초기 목표 과다가 드러난 사례를 제시한다.",
+          "aiAnalysisInputSha256": "f65c7a64e8288134ce388707575f272ee2c6ff0809bad87ca7c221ce2623d981",
+          "aiPublicGuideTopic": "기한이 없는 목표",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 목표를 구체화하기",
+          "section": "2.2 언제까지",
+          "primaryConcepts": [
+            "기한"
+          ],
+          "secondaryConcepts": [
+            "확인 주기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "목표 기한과 중간 확인 주기를 구분하고 각각의 역할을 설명한다. 확인 부재 시 대응 시간이 사라진다는 문제와, 과도하게 잦은 확인이 단기 변동에 반응하게 만든다는 문제를 들어 기한의 사분의 일이라는 기준을 제시한다.",
+          "aiAnalysisInputSha256": "3951321c6669e2608510a658056bf5ed28b309cb6e5814d15b09b88559aaf51a",
+          "aiPublicGuideTopic": "기한과 확인 주기를 나누기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 목표를 구체화하기",
+          "section": "2.3 어디까지가 성공인가",
+          "primaryConcepts": [
+            "성공 기준"
+          ],
+          "secondaryConcepts": [
+            "목표의 구체화",
+            "기한"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "성공 판정 기준을 사전에 설정해야 하는 이유를 다룬다. 이분법 판정이 근소한 미달을 실패로 만들어 목표 자체를 회피하게 한다는 문제를 지적하고, 세 구간 설정과 사전 확정이라는 두 가지 조치를 제시한다.",
+          "aiAnalysisInputSha256": "a7c12a7000a46c95af8f60b9350b82ad9f1a8b68ca220be3e660cb494a7649ea",
+          "aiPublicGuideTopic": "선을 미리 그어 두기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "2장 목표를 구체화하기",
+          "section": "2.3 어디까지가 성공인가",
+          "primaryConcepts": [
+            "성공 기준"
+          ],
+          "secondaryConcepts": [
+            "작은 목표",
+            "해석"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "목표 달성 판정 구간을 수직선 위에 셋으로 나눈 도표다. 구간 경계와 명칭, 실제 결과 위치를 함께 표시해 근소한 미달이 실패로 처리되지 않는 구조를 보인다.",
+          "aiAnalysisInputSha256": "f2180a9a0b659eecc64da92adf6c2d49729a62f0cd86419c2cc514ed6f3af79f",
+          "aiPublicGuideTopic": "성공의 선을 세 칸으로 나눈 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "2장 목표를 구체화하기",
+          "section": "2.4 작게 자른 목표",
+          "primaryConcepts": [
+            "작은 목표"
+          ],
+          "secondaryConcepts": [
+            "목표의 구체화",
+            "기한"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "월 단위 목표를 주 단위로 분할해 조기 확인과 조정을 가능하게 하는 방법을 제시한다. 분할이 불가능한 목표에는 과정 지표를 쓴다는 예고와, 주 단위는 판정이 아니라 조정을 위한 단위라는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "77be738436cbc5a5b091fe3442efdc3407aca720627bff2b2485d99013daeaf0",
+          "aiPublicGuideTopic": "한 달 목표를 주 단위로 자르기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "2장 목표를 구체화하기",
+          "section": "2.4 작게 자른 목표",
+          "primaryConcepts": [
+            "작은 목표"
+          ],
+          "secondaryConcepts": [
+            "성공 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분할 단위를 지나치게 좁혔을 때 일간 변동이 실패 판정으로 이어지는 문제를 다룬다. 기록 단위와 판정 단위를 분리해 일간 기록은 주간 집계의 재료로만 쓰는 운용을 제시한다.",
+          "aiAnalysisInputSha256": "0cb267328fd764c8b99a27c683c856d77e671ec6344a758280b298171a4f069a",
+          "aiPublicGuideTopic": "너무 잘게 자를 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 지표 고르기",
+          "section": "3.1 결과와 과정",
+          "primaryConcepts": [
+            "결과 지표와 과정 지표"
+          ],
+          "secondaryConcepts": [
+            "지표",
+            "측정 대상"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지표를 결과형과 과정형으로 구분하고 반응 속도와 신뢰성의 차이를 설명한다. 두 유형을 서로 다른 주기로 함께 운용하는 방법과, 과정 지표만 상승하고 결과가 정체할 때 연결성 결여를 의심한다는 판단을 제시한다.",
+          "aiAnalysisInputSha256": "6c828d682dfbe2d19ac100e6fd40abf2b1241439c562586cd1277e68f4012db1",
+          "aiPublicGuideTopic": "무엇이 나왔는지와 무엇을 했는지",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 지표 고르기",
+          "section": "3.1 결과와 과정",
+          "primaryConcepts": [
+            "결과 지표와 과정 지표"
+          ],
+          "secondaryConcepts": [
+            "단일 지표"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결과 지표를 먼저 확정하고 과정 지표를 도출하는 순서를 제시한다. 과정부터 정하면 수행 용이성 기준으로 선택된다는 문제와, 결과에서 역방향으로 두 단계 이내에 도출해야 연결이 유지된다는 기준을 다룬다.",
+          "aiAnalysisInputSha256": "2d8728223bc4ef738e0aa20350eefb011e002f6b07e18c4670686d0a304e0c56",
+          "aiPublicGuideTopic": "어느 쪽부터 정할 것인가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 지표 고르기",
+          "section": "3.2 하나만 고르기",
+          "primaryConcepts": [
+            "단일 지표"
+          ],
+          "secondaryConcepts": [
+            "결과 지표와 과정 지표",
+            "측정 비용"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지표 수를 제한하는 이유를 판단 기준의 모호화와 측정 비용 증가에서 찾는다. 목표당 하나, 결과와 과정을 합해 둘을 상한으로 두는 원칙과, 선택이 어려울 때 단기 병행 후 하나를 남기는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "e82e681dda1e04e27a5bf596407ceb55b6396c2bc843e9a0b98f6e051ec11c5c",
+          "aiPublicGuideTopic": "지표를 여럿 두지 않는 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 지표 고르기",
+          "section": "3.2 하나만 고르기",
+          "primaryConcepts": [
+            "단일 지표"
+          ],
+          "secondaryConcepts": [
+            "지표 왜곡"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단일 지표가 목적을 대체하는 위험과 그 완화책을 다룬다. 지표 옆에 위반 여부만 확인하는 제약 조건을 두되 그것을 다시 계량하지 않는다는 원칙을 제시한다.",
+          "aiAnalysisInputSha256": "a75c27876cead72334ad20758e665aa9d23c51ca07be35ba0e13d4e16007dfcc",
+          "aiPublicGuideTopic": "하나만 두었을 때의 위험",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "3장 지표 고르기",
+          "section": "3.3 세기 쉬운 것",
+          "primaryConcepts": [
+            "측정 비용"
+          ],
+          "secondaryConcepts": [
+            "단일 지표",
+            "측정의 효용"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지표 선정에서 정확성보다 측정 용이성을 우선하는 근거를 제시한다. 자동 잔존·짧은 소요·사후 복원 가능성이라는 세 조건을 들고, 사후 복원이 가능한 지표가 결손 기간을 견딘다는 점을 사례로 다룬다.",
+          "aiAnalysisInputSha256": "38c554066da4c826c2bd90a84080b7cb7a7a2937ce68d7573fee4bc3d4d1dc54",
+          "aiPublicGuideTopic": "재기 쉬운 지표를 고르는 이유",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "3장 지표 고르기",
+          "section": "3.3 세기 쉬운 것",
+          "primaryConcepts": [
+            "측정 비용"
+          ],
+          "secondaryConcepts": [
+            "기한"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "측정 기록의 위치와 시점을 고정하는 방법을 제시한다. 기록 위치가 분산되면 집계가 불가능하다는 점, 기록 시점을 기존 행동에 붙이는 방식, 그리고 두 항목이 정해지면 측정 부담이 사라진다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "3e2e1c561fa68bc4e95ebaf7c530dbc163e222925e30ebed1add54cb82a1b001",
+          "aiPublicGuideTopic": "세는 자리를 정해 두기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "3장 지표 고르기",
+          "section": "3.4 지표를 바꾸는 때",
+          "primaryConcepts": [
+            "지표 갱신"
+          ],
+          "secondaryConcepts": [
+            "단일 지표",
+            "결과 지표와 과정 지표"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지표 교체가 필요한 세 가지 신호를 제시한다. 정체는 해당 영역의 안정을, 목표와의 괴리와 행동 왜곡은 지표 부적합을 뜻한다는 구분과, 변경 시점을 기록해 이후 비교에서 혼동을 막는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "dbea869339eda3949a09c868795da426e2b8ed5226d6ba4a7bc272cc73c91901",
+          "aiPublicGuideTopic": "지표가 낡았다는 신호",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "3장 지표 고르기",
+          "section": "3.4 지표를 바꾸는 때",
+          "primaryConcepts": [
+            "지표 갱신"
+          ],
+          "secondaryConcepts": [
+            "성공 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "목표 수치를 상향할 때의 폭과 되돌림 기준을 제시한다. 과도한 상향이 다음 기간의 성과를 낮춘다는 점, 두 기간 연속 미달 시 원복, 그리고 판정 구간을 함께 이동해야 한다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "217262e2b61f49028f976ff3e3fca58c96c60f4eda8edb89040a06f5aa8a5dae",
+          "aiPublicGuideTopic": "숫자를 올릴 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 재고 나서",
+          "section": "4.1 언제 확인할 것인가",
+          "primaryConcepts": [
+            "확인 주기"
+          ],
+          "secondaryConcepts": [
+            "측정의 효용",
+            "기한"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "측정값 확인 시점을 고정해야 하는 이유와 확인 절차 세 단계를 제시한다. 현재값 확인·기한 도달 추정·차기 조치 결정 가운데 마지막이 빠지면 확인이 무의미해진다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "47bd63049607efb0a4471688777332bc012b7bdcfc8e5a82f269525f93346143",
+          "aiPublicGuideTopic": "들여다보는 간격 정하기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 재고 나서",
+          "section": "4.1 언제 확인할 것인가",
+          "primaryConcepts": [
+            "확인 주기"
+          ],
+          "secondaryConcepts": [
+            "해석",
+            "정체"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일한 데이터를 세 가지 확인 간격으로 본 결과를 세 줄로 비교한 도표다. 일간 확인의 변동, 주간 확인의 추세, 종료 후 확인의 대응 불가를 각각 표시해 적정 간격을 보인다.",
+          "aiAnalysisInputSha256": "0ffdcbf574397a7d77689c0ecf21daf92bb275d32a331a115d72a1c758b5d7a9",
+          "aiPublicGuideTopic": "확인 간격에 따라 숫자가 달라 보이는 모양을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 재고 나서",
+          "section": "4.2 숫자를 읽는 법",
+          "primaryConcepts": [
+            "해석"
+          ],
+          "secondaryConcepts": [
+            "확인 주기",
+            "지표"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단일 측정값이 아니라 추세로 해석해야 한다는 원칙을 제시한다. 단기 변동을 상황 요인으로 보고 계획을 변경하지 않는 기준과, 연속 삼 회를 흐름으로 판정하는 실무적 임계를 다룬다.",
+          "aiAnalysisInputSha256": "17215e2da5b3dffc28bc169c44b6ef967e9fa156f850d4307e243eb5e1d2cb74",
+          "aiPublicGuideTopic": "한 점이 아니라 흐름을 보기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 재고 나서",
+          "section": "4.2 숫자를 읽는 법",
+          "primaryConcepts": [
+            "해석"
+          ],
+          "secondaryConcepts": [
+            "외부 지표"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "측정값이 원인 정보를 담지 않는다는 한계를 다룬다. 값 옆에 상황 메모를 남겨야 사후 해석이 가능하다는 점과, 메모 부재 시 원인을 개인 특성으로 귀인하게 된다는 문제를 제시한다.",
+          "aiAnalysisInputSha256": "b904ad5c4bd22c8f51b9ba01c2e1424f4b430fde24c4850e3a3b69b0cf30ea93",
+          "aiPublicGuideTopic": "숫자가 말해 주지 않는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "4장 재고 나서",
+          "section": "4.3 숫자가 움직이지 않을 때",
+          "primaryConcepts": [
+            "정체"
+          ],
+          "secondaryConcepts": [
+            "해석",
+            "지표 갱신"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지표 정체를 세 가지 원인으로 분류하고 각각의 대응을 제시한다. 현재 수준에 대한 만족 여부를 물어 원인을 가르는 방법과, 충분한 수준에 도달한 경우 목표를 종료하는 판단을 다룬다.",
+          "aiAnalysisInputSha256": "10b18970b88604747ebddae7662a4bb9a7d751c2a5e241096d4ebef35266c85a",
+          "aiPublicGuideTopic": "몇 주째 같은 자리일 때",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "4장 재고 나서",
+          "section": "4.3 숫자가 움직이지 않을 때",
+          "primaryConcepts": [
+            "정체"
+          ],
+          "secondaryConcepts": [
+            "작은 목표"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지표 하락 시의 대응 절차를 제시한다. 외부 요인 소멸까지 대기하는 기간, 회복되지 않을 때의 세 가지 조정 수단, 그리고 조정 결정을 미루면 목표가 방치된다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "44edb56c099de3879501b665328470b01419366bf5d2c4c51b0133274ef86fd2",
+          "aiPublicGuideTopic": "내려갈 때 하는 일",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "4장 재고 나서",
+          "section": "4.4 숫자에서 다음 행동으로",
+          "primaryConcepts": [
+            "행동 연결"
+          ],
+          "secondaryConcepts": [
+            "확인 주기",
+            "해석"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "측정 확인을 행동으로 연결하는 마지막 단계를 다룬다. 조치를 하나로 제한하는 이유, 변경 없음도 명시적으로 기록하는 처리, 그리고 차기 시작 시점의 재열람이 없으면 측정이 중단된다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "f2703d2105e1214992a53ae53dec7d937a78ee680b45859194c6f5c776a18d9b",
+          "aiPublicGuideTopic": "확인이 한 줄로 끝나야 하는 이유",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "4장 재고 나서",
+          "section": "4.4 숫자에서 다음 행동으로",
+          "primaryConcepts": [
+            "행동 연결"
+          ],
+          "secondaryConcepts": [
+            "지표 갱신"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "주기적 확인과 별도로 분기 단위 재검토를 두는 이유를 제시한다. 검토 대상이 차기 행동이 아니라 목표와 지표 자체라는 점, 검토 부재 시 목표가 관성으로 유지된다는 문제, 그리고 소요 시간과 주기를 다룬다.",
+          "aiAnalysisInputSha256": "885ccac67a01a9ad42807cec551d15527e47aaf42a178a6eb58db63b4203ba61",
+          "aiPublicGuideTopic": "몇 달치를 모아 볼 때",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 어떤 목표",
+          "section": "5.1 책을 더 많이 읽자",
+          "primaryConcepts": [
+            "사례 관찰"
+          ],
+          "secondaryConcepts": [
+            "모호한 목표",
+            "목표의 구체화"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "측정 기준 없이 설정된 목표가 반년 뒤 평가 불가 상태에 있는 사례를 보인다. 수행 사실과 달성 판정이 분리된다는 점을 대화로 드러내고, 목표 하나를 골라 측정 가능하게 만드는 것으로 범위를 좁힌 결정을 제시한다.",
+          "aiAnalysisInputSha256": "5d851fc0a320b048cc311c509f98ae645099b7b56d023a6304187b2991e37d5c",
+          "aiPublicGuideTopic": "반년 동안 확인하지 못한 목표",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 어떤 목표",
+          "section": "5.1 책을 더 많이 읽자",
+          "primaryConcepts": [
+            "사례 관찰"
+          ],
+          "secondaryConcepts": [
+            "비측정 영역",
+            "측정 대상"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "목표를 계량 대상과 사례 확인 대상으로 분류하는 과정을 보인다. 계량이 부적합한 목표를 사례 기록으로 넘긴 판단과, 측정 자체가 낯선 단계에서는 대상을 하나로 제한한 결정을 제시한다.",
+          "aiAnalysisInputSha256": "3f869a42e2ee92a76a5c20ba317593364ab21eb2af52f9d749cce52707d6fe50",
+          "aiPublicGuideTopic": "세 목표를 나누다",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 어떤 목표",
+          "section": "5.2 지표를 정하다",
+          "primaryConcepts": [
+            "지표 적용"
+          ],
+          "secondaryConcepts": [
+            "결과 지표와 과정 지표",
+            "측정 비용"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "결과 지표와 과정 지표를 각각 하나씩 정하고 제약 조건과 목표 수치를 설정한 과정을 보인다. 기준선을 실측한 뒤 수치를 정한 순서와, 기록 위치를 기존 동선에 두는 선택을 함께 제시한다.",
+          "aiAnalysisInputSha256": "43315de27d3aeaf3bb179d9e00ac0f646771c58a5fd74c4a611cfa119ccf4451",
+          "aiPublicGuideTopic": "결과와 과정을 하나씩",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "5장 어떤 목표",
+          "section": "5.2 지표를 정하다",
+          "primaryConcepts": [
+            "지표 적용"
+          ],
+          "secondaryConcepts": [
+            "단일 지표",
+            "확인 주기"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "팔 주간의 주별 측정값을 목표선과 함께 표시한 도표다. 목표 미달 주와 달성 주를 명도로 구분하고 상황 메모와 조치 시점을 주석으로 달아, 단기 변동과 조치 이후 변화를 함께 읽도록 구성했다.",
+          "aiAnalysisInputSha256": "9b65b784ff41baa8a5ac34616d2c19018f5a6de72faf320480a93b43eacbd306",
+          "aiPublicGuideTopic": "두 달 동안의 주별 숫자를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            38
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "5장 어떤 목표",
+          "section": "5.3 두 달 뒤",
+          "primaryConcepts": [
+            "변화 관찰"
+          ],
+          "secondaryConcepts": [
+            "해석",
+            "행동 연결"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "팔 주간 데이터를 구간별로 비교해 변화를 확인하는 과정을 보인다. 상황 메모가 이상값 해석에 쓰인 사례, 확인에서 도출된 단일 조치와 그 이후의 변화, 그리고 근거를 갖춘 판정이 가능해졌다는 결과를 제시한다.",
+          "aiAnalysisInputSha256": "75286b8069adf3cc11fb0cbfa985c1357247a71840ae4880b04a4fdefd953291",
+          "aiPublicGuideTopic": "여덟 주치를 나란히 놓고",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "5장 어떤 목표",
+          "section": "5.3 두 달 뒤",
+          "primaryConcepts": [
+            "변화 관찰"
+          ],
+          "secondaryConcepts": [
+            "성공 기준",
+            "정체"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "사전에 설정한 판정 구간을 실제 결과에 적용하는 과정을 보인다. 구간이 없었을 경우의 판정 왜곡을 대비시키고, 기준선 대비 개선을 함께 고려하는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "71dc21c4b57ed488c722e653a160e651348359bed4446fac44d1620ac5495640",
+          "aiPublicGuideTopic": "성공의 선에 대어 보기",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "5장 어떤 목표",
+          "section": "5.4 지표를 바꾸다",
+          "primaryConcepts": [
+            "갱신 사례"
+          ],
+          "secondaryConcepts": [
+            "지표 갱신",
+            "정체"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "목표 종료와 교체를 결정하는 과정을 보인다. 정체 상태에서 만족 여부를 물어 종료를 판단한 절차, 종료를 명시적으로 기록하는 이유, 그리고 후속 목표를 처음부터 측정 가능한 형태로 설정한 결과를 제시한다.",
+          "aiAnalysisInputSha256": "2c54b7e205ac86da66a7ef728d00c78f9708ce85c2407880db0db5d9381b4315",
+          "aiPublicGuideTopic": "넉 달 뒤에 내려놓은 목표",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 측정이 목표를 밀어낼 때",
+          "section": "6.1 숫자를 채우는 일",
+          "primaryConcepts": [
+            "지표 왜곡"
+          ],
+          "secondaryConcepts": [
+            "단일 지표",
+            "지표"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지표 향상 동기가 목표가 아닌 지표 자체로 향할 때 발생하는 왜곡을 다룬다. 수치 상승과 주관적 개선감의 불일치를 탐지 신호로 제시하고, 제약 조건 수정이나 지표 교체로 대응하되 완전 제거는 불가능하다는 한계를 밝힌다.",
+          "aiAnalysisInputSha256": "29387383e3eb87337eb34130dcb730b35b0a80f39e7db84160fe0ed40519e0db",
+          "aiPublicGuideTopic": "지표가 목표를 밀어내는 자리",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 측정이 목표를 밀어낼 때",
+          "section": "6.1 숫자를 채우는 일",
+          "primaryConcepts": [
+            "지표 왜곡"
+          ],
+          "secondaryConcepts": [
+            "행동 연결"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "평가에 연동된 지표에서 왜곡이 커진다는 점을 다룬다. 보고용과 자기 확인용을 분리하는 방법, 분리가 불가능할 때 왜곡을 인지한 채 해석하는 태도, 그리고 이 책의 범위가 자기 설정 목표라는 경계를 밝힌다.",
+          "aiAnalysisInputSha256": "d93e5d1d0785353597ead5659efda3ef38f3fd290798573edb676240a8e36bb8",
+          "aiPublicGuideTopic": "남에게 보이는 숫자",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 측정이 목표를 밀어낼 때",
+          "section": "6.2 셀 수 없는 목표",
+          "primaryConcepts": [
+            "측정 불가"
+          ],
+          "secondaryConcepts": [
+            "비측정 영역",
+            "측정 대상"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계량이 부적합한 목표에서 측정 시도가 측정 가능한 부분만 남긴다는 문제를 다룬다. 사례 기록이나 비측정 유지라는 선택지를 제시하고, 전면 계량화가 목표 구성을 편향시킨다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "c4350eefa0c66a63c485ee7401b6fb0ad2ec9684cc54b9de71f5d43a5b136152",
+          "aiPublicGuideTopic": "재려 하면 망가지는 목표",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 측정이 목표를 밀어낼 때",
+          "section": "6.2 셀 수 없는 목표",
+          "primaryConcepts": [
+            "측정 불가"
+          ],
+          "secondaryConcepts": [
+            "기한"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "비측정 목표를 목록에서 유지하되 사례 기반으로 확인하는 운용을 제시한다. 긴 확인 주기, 사례 기록의 누적이 추세를 대신한다는 점, 그리고 사례가 계속 부재하면 재개 또는 삭제를 결정한다는 기준을 다룬다.",
+          "aiAnalysisInputSha256": "e89c56d4712c1ae5a5fdb815815f4b95feb05494341f06c3c3e0022a3dceb0f8",
+          "aiPublicGuideTopic": "재지 않는 목표를 다루는 법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "6장 측정이 목표를 밀어낼 때",
+          "section": "6.3 남이 재는 숫자",
+          "primaryConcepts": [
+            "외부 지표"
+          ],
+          "secondaryConcepts": [
+            "지표 왜곡",
+            "해석"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "타인이 설정한 지표와 자기 목표가 어긋나는 상황을 다룬다. 지표의 설계 의도를 확인해 자기 목표와 연결하는 시도와, 연결되지 않을 때 별도의 최소 지표를 유지하는 대응을 제시한다.",
+          "aiAnalysisInputSha256": "c596ce3626c9233a221751660588ae1ef3f6b27a54c72b9c776db7c6ddc55b1b",
+          "aiPublicGuideTopic": "내가 정하지 않은 지표",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "6장 측정이 목표를 밀어낼 때",
+          "section": "6.3 남이 재는 숫자",
+          "primaryConcepts": [
+            "외부 지표"
+          ],
+          "secondaryConcepts": [
+            "측정 불가"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "측정을 보편 원칙으로 삼지 않는다는 이 책의 태도를 밝힌다. 후속 결정을 위해 확인이 필요한 목표만 측정한다는 기준과, 측정 대상 비율이 상황에 따라 달라진다는 관점을 제시한다.",
+          "aiAnalysisInputSha256": "b45d2fc0a5a01e0a7182932e4c4c9471061bab99d3bd69803a503cc85ae9cc5c",
+          "aiPublicGuideTopic": "재지 않아도 되는 자유",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            47
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 결론: 재는 것은 목표가 아니다",
+          "section": "7.1 재는 것은 목표가 아니다",
+          "primaryConcepts": [
+            "종합"
+          ],
+          "secondaryConcepts": [
+            "모호한 목표",
+            "지표"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체를 목표의 측정 가능성 확보라는 관점으로 정리하는 결론 페이지다. 구체화·기한·판정 구간·지표 선정·확인 절차를 요약하고, 측정이 목표를 대체하는 세 경우를 함께 짚는다.",
+          "aiAnalysisInputSha256": "1dd98942f1edbf4cf59ec296b92704d5d7ddbaaa46efcd3704718298c9149bc0",
+          "aiPublicGuideTopic": "목표를 셀 수 있게 만든 이유",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "measure-to-decide"
+          ]
+        },
+        {
+          "pageNumber": 50,
+          "chapter": "7장 결론: 재는 것은 목표가 아니다",
+          "section": "7.1 재는 것은 목표가 아니다",
+          "primaryConcepts": [
+            "종합"
+          ],
+          "secondaryConcepts": [
+            "성공 기준",
+            "확인 주기"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "실행을 위한 최소 절차로 목표 재작성, 기한, 판정 구간, 측정 대상 네 항목을 제시한다. 기준선 실측 후 수치를 정하는 순서와 주 단위 확인 절차를 요약하고, 달성 판정 가능 여부를 확인하는 점검 질문을 마지막에 남긴다.",
+          "aiAnalysisInputSha256": "d582f3371b52d5f7a24e1c4fdfd075d6aa7113e6739cd1f69e273915df40e71b",
+          "aiPublicGuideTopic": "이번 달에 해 볼 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            49
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
     }
   ]
 }
