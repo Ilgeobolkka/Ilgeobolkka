@@ -119,6 +119,862 @@
       "allowedAlternativePageNumbers": []
     },
     {
+      "caseId": "case-book-012",
+      "bookId": 12,
+      "purpose": "이 책을 사지는 않았고, 집에서 늘 보던 창밖이 계절에 따라 달라지는 것을 무엇을 보고 알아차릴 수 있는지 알고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "창이라는 자리",
+        "되풀이해 보기",
+        "작은 어긋남",
+        "계절의 겹침",
+        "기다림"
+      ],
+      "helpfulConcepts": [
+        "창틀의 테두리",
+        "견주기",
+        "빛의 속임",
+        "어긋나는 차례"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 24
+        }
+      ],
+      "irrelevantPageNumbers": [
+        31,
+        32,
+        33,
+        34
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          45
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        7,
+        9,
+        16,
+        24
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        4,
+        5,
+        8,
+        10,
+        12,
+        14,
+        17,
+        19,
+        22,
+        38,
+        43
+      ]
+    },
+    {
+      "caseId": "case-book-013",
+      "bookId": 13,
+      "purpose": "이 책을 사지는 않았고, 사는 동네에서 늘 지나치기만 하던 골목에 들어가 보고 싶은데 무작정 걷지 않고 어떻게 다녀야 할지 알고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "낯섦",
+        "길을 고르는 규칙",
+        "걸어서 아는 것",
+        "골목의 표시",
+        "우연한 경로",
+        "익숙해짐"
+      ],
+      "helpfulConcepts": [
+        "지도의 한계",
+        "되돌아 나오기",
+        "겹치는 길",
+        "사람이 사는 자리"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 29
+        }
+      ],
+      "irrelevantPageNumbers": [
+        31,
+        32,
+        33,
+        34
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          45
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        7,
+        9,
+        12,
+        16,
+        24,
+        29
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        4,
+        5,
+        8,
+        10,
+        13,
+        14,
+        17,
+        19,
+        22,
+        25,
+        27,
+        30,
+        38,
+        41,
+        43
+      ]
+    },
+    {
+      "caseId": "case-book-014",
+      "bookId": 14,
+      "purpose": "이 책을 사지는 않았고, 차 한 잔을 앞에 두고 앉아 있는 짧은 시간이 왜 어떤 날은 남고 어떤 날은 그냥 지나가는지 알고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 15,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "한 잔의 시간",
+        "끓이는 동안",
+        "온도의 눈금",
+        "몸이 재는 온도",
+        "마시기 좋은 때",
+        "식어감",
+        "식는 속도",
+        "붙잡을 수 없는 순간"
+      ],
+      "helpfulConcepts": [
+        "잔이 정하는 것",
+        "되데우기",
+        "되풀이의 실패",
+        "식은 채로 마시기",
+        "온도 밖의 것"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 19
+        },
+        {
+          "beforePageNumber": 19,
+          "afterPageNumber": 22
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 27
+        },
+        {
+          "beforePageNumber": 22,
+          "afterPageNumber": 29
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 38
+        }
+      ],
+      "irrelevantPageNumbers": [
+        31,
+        32,
+        33,
+        34
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          45
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        5,
+        9,
+        12,
+        14,
+        16,
+        19,
+        22,
+        24,
+        27,
+        29,
+        38
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        4,
+        6,
+        7,
+        8,
+        10,
+        13,
+        15,
+        17,
+        20,
+        23,
+        25,
+        30,
+        41,
+        43
+      ]
+    },
+    {
+      "caseId": "case-book-015",
+      "bookId": 15,
+      "purpose": "이 책을 소장하고 있고, 집에서 들리는 소리 때문에 자꾸 하던 일이 끊기는데 이사를 갈 수는 없어서 우선 짧게 핵심만 잡고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "소음이라는 말",
+        "귀를 닫을 수 없음",
+        "배경음",
+        "골라 듣기",
+        "고요"
+      ],
+      "helpfulConcepts": [
+        "소리를 세기",
+        "멈춤이 들린다",
+        "소리의 지도",
+        "나머지 소리",
+        "접어 두기"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 24
+        }
+      ],
+      "irrelevantPageNumbers": [
+        31,
+        32,
+        33,
+        34
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          45
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        5,
+        9,
+        16,
+        24
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        4,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12,
+        14,
+        17,
+        19,
+        22,
+        38,
+        43
+      ]
+    },
+    {
+      "caseId": "case-book-016",
+      "bookId": 16,
+      "purpose": "이 책을 소장하고 있고, 비 오는 날 처마 밑에서 모르는 사람과 몇 마디 나눈 일이 오래 남는 이유를 찬찬히 짚어 보고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "비가 만드는 자리",
+        "우연한 만남",
+        "짧은 대화",
+        "먼저 말 걸기",
+        "끝나는 방식",
+        "말의 밀도",
+        "기억나는 문장",
+        "남에 대한 궁금함"
+      ],
+      "helpfulConcepts": [
+        "비 오는 날의 속도",
+        "말 밖의 것",
+        "묻지 않기",
+        "다시 없음",
+        "상대의 자리"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 19
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 29
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 38
+        }
+      ],
+      "irrelevantPageNumbers": [
+        31,
+        32,
+        33,
+        34
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          45
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        7,
+        9,
+        12,
+        14,
+        16,
+        19,
+        24,
+        29,
+        38
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        4,
+        5,
+        8,
+        10,
+        13,
+        15,
+        17,
+        20,
+        22,
+        25,
+        27,
+        30,
+        41,
+        43
+      ]
+    },
+    {
+      "caseId": "case-book-017",
+      "bookId": 17,
+      "purpose": "이 책을 소장하고 있고, 밤마다 그날 있었던 일이 정리되지 않은 채 쌓이는 것 같아서 처음부터 끝까지 차근히 따라가며 방법을 익히고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "DEEP",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "밤이라는 시각",
+        "서랍이라는 비유",
+        "하루치 분량",
+        "꺼내 놓기",
+        "감정에 이름 붙이기",
+        "이름 없는 것",
+        "분류해 보기",
+        "섞여 있는 것",
+        "안 들어가는 것"
+      ],
+      "helpfulConcepts": [
+        "서랍의 개수",
+        "열어 둔 서랍",
+        "다시 열림",
+        "정리가 나쁜 밤",
+        "혼자 할 수 없는 것"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 19
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 22
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 19,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 27
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 29
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 38
+        },
+        {
+          "beforePageNumber": 27,
+          "afterPageNumber": 43
+        }
+      ],
+      "irrelevantPageNumbers": [
+        31,
+        32,
+        33,
+        34
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          45
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        5,
+        7,
+        9,
+        12,
+        14,
+        16,
+        19,
+        22,
+        24,
+        27,
+        29,
+        38,
+        43
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        4,
+        6,
+        8,
+        10,
+        13,
+        15,
+        17,
+        20,
+        23,
+        25,
+        28,
+        30,
+        41,
+        44
+      ]
+    },
+    {
+      "caseId": "case-book-018",
+      "bookId": 18,
+      "purpose": "이 책을 사지는 않았고, 해 보고 싶은 것이 있는데 잘 못할 것 같아 매번 시작하지 못하는 버릇을 어떻게 다뤄야 할지 알고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "작은 실패",
+        "실패의 크기",
+        "해 보기",
+        "한 번에 잘하려는 마음",
+        "작게 하기",
+        "기다리는 시간",
+        "되지 않는 것",
+        "실패를 허용하기"
+      ],
+      "helpfulConcepts": [
+        "정원이라는 비유",
+        "솎아 내기",
+        "아픈 것",
+        "되풀이되는 실패",
+        "값이 큰 실패"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 7
+        },
+        {
+          "beforePageNumber": 7,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 19
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 22
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 19,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 29
+        }
+      ],
+      "irrelevantPageNumbers": [
+        31,
+        32,
+        33,
+        34
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          45
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        7,
+        9,
+        12,
+        14,
+        16,
+        19,
+        22,
+        24,
+        29
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        4,
+        5,
+        8,
+        10,
+        13,
+        15,
+        17,
+        20,
+        23,
+        25,
+        27,
+        30,
+        38,
+        43
+      ]
+    },
+    {
+      "caseId": "case-book-019",
+      "bookId": 19,
+      "purpose": "이 책을 사지는 않았고, 늘 걷던 길을 걸으면서도 남는 것이 없다는 느낌이 들어 같은 길에서 무엇을 봐야 하는지 짧게 짚고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 5,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "같은 시각",
+        "같은 길",
+        "달라지는 것",
+        "쌓이는 관찰",
+        "그날의 표시"
+      ],
+      "helpfulConcepts": [
+        "걷는 규칙",
+        "달라지지 않는 것",
+        "견주는 눈",
+        "백 번째",
+        "계절이 지나감"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 24
+        }
+      ],
+      "irrelevantPageNumbers": [
+        31,
+        32,
+        33,
+        34
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          45
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        5,
+        9,
+        16,
+        24
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        4,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12,
+        14,
+        17,
+        19,
+        22,
+        38,
+        41
+      ]
+    },
+    {
+      "caseId": "case-book-020",
+      "bookId": 20,
+      "purpose": "이 책을 소장하고 있고, 모르는 사람에게 받은 작은 도움이 왜 오래 남는지 궁금해서 우선 핵심만 짧게 잡고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "QUICK",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "친절이라는 말",
+        "말 없는 친절",
+        "알아차림",
+        "되갚을 수 없음",
+        "옮겨 가는 것"
+      ],
+      "helpfulConcepts": [
+        "세어 보기",
+        "알아차리는 조건",
+        "뒤늦은 알아차림",
+        "갚으려는 시도",
+        "친절이 아닌 것"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 5,
+          "afterPageNumber": 9
+        },
+        {
+          "beforePageNumber": 9,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 24
+        }
+      ],
+      "irrelevantPageNumbers": [
+        31,
+        32,
+        33,
+        34
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          45
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        5,
+        9,
+        16,
+        24
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        4,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12,
+        14,
+        17,
+        19,
+        22,
+        38,
+        43
+      ]
+    },
+    {
       "caseId": "case-book-021",
       "bookId": 21,
       "purpose": "이 책을 사지는 않았고, 별빛에서 성분과 움직이는 속도를 어떻게 알아내는지 큰 틀만 보고 싶다",
