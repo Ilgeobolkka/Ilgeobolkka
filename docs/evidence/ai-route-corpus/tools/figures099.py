@@ -77,7 +77,7 @@ def fig_rulers():
         b.append(t(x0 - 20, y - 4, name, 15, INK, "600", anchor="end"))
         b.append(t(x0 + rw + 14, y + 23, effect, 14, KEEP if pick else MUTED, anchor="start"))
         if pick:
-            b.append(t(x0 + rw + 14, y + 44, "이든이 바란 것", 13, MARK, "700", anchor="start"))
+            b.append(t(x0 + rw + 14, y + 44, "여기서 고른 자", 13, MARK, "700", anchor="start"))
     b.append(note_box(147, 740, 500, "자를 고르는 일이 무엇을 늘릴지 정하는 일이다"))
     b.append(caption(W / 2, 862, [
         "같은 목표라도 어느 자를 대느냐에 따라 하게 되는 행동이 달라진다.",

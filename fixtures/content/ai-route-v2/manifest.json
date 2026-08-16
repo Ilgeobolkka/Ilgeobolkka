@@ -36973,7 +36973,7 @@
       "bookId": 91,
       "title": "하루를 작게 나누는 기술",
       "pdfPath": "pdfs/book-091.pdf",
-      "pdfSha256": "f473db63345b8f3e75e150d62eda98bcce3964fdf972bf1fe497e1cd4bd44831",
+      "pdfSha256": "2cb3f9fa0b68bf58076cbc3016ab1bda5496aaf4af32e286c1b147519a34e34a",
       "totalPageCount": 51,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -37050,7 +37050,7 @@
           "aiAnalysisText": "실행 가능한 단위를 다음 동작이 하나로 확정된 크기로 정의한다. 더 분해해도 얻는 것이 없는 지점이라는 기준과 착수 직전의 사고 내용으로 단위 여부를 판별하는 방법을 제시하며, 단위의 크기가 소요 시간이 아니라 필요한 결정의 수로 정해진다는 점을 밝힌다.",
           "aiAnalysisInputSha256": "efd25a45fc6f0b65bbae5b58ce2793e038068c49a8205021959d0900adff748b",
           "aiPublicGuideTopic": "지금 바로 손댈 수 있는 크기란 무엇인가",
-          "estimatedReadingSeconds": 65,
+          "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             2
           ],
@@ -37562,7 +37562,7 @@
           "aiAnalysisText": "우선순위 기준으로 중요도 대신 다른 작업을 막고 있는지를 쓰는 방법을 제시한다. 선행 결정이 지연되면 소요가 짧은 일이 하루치 작업을 정지시킨다는 사례를 들고, 목록을 훑을 때 던지는 한 가지 물음으로 순서를 정하는 절차를 다룬다.",
           "aiAnalysisInputSha256": "4657a737616a448126beb14a55f6ebca679a18125699bbd107c1e8ab9505c1e1",
           "aiPublicGuideTopic": "무엇을 앞에 놓을지 정하는 기준",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             14
           ],
@@ -37648,7 +37648,7 @@
           "aiAnalysisText": "하루의 첫 구간이 계획대로 쓰일 가능성이 가장 높은 자리라는 점을 근거로 배치 대상을 정한다. 반복해서 미뤄지는 작업을 이 자리에 두는 이유와, 전날에 대상을 확정해 아침의 선택 시간을 없애는 절차를 제시한다.",
           "aiAnalysisInputSha256": "b178071f1f0c90fb1e640029a9a35abec44b8e198f469525bf24c55deaac4726",
           "aiPublicGuideTopic": "하루의 첫 자리에 무엇을 놓을 것인가",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [
             20
           ],
@@ -38076,7 +38076,7 @@
       "bookId": 92,
       "title": "미루는 마음과 협상하기",
       "pdfPath": "pdfs/book-092.pdf",
-      "pdfSha256": "b668ab71a796359922a61977adda58c98862057a9bf0718553d04e6a4dd49a1b",
+      "pdfSha256": "3e94de85a6eb8eef8fb0791d5d7a816703539ec39c6cc20708cbedc3d01fb825",
       "totalPageCount": 50,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -38237,7 +38237,7 @@
           "aiAnalysisText": "회피 대상이 실제 과제가 아니라 그에 대한 예상이며 정보 부족 상태에서 예상이 과대해진다는 점을 설명한다. 짧은 착수가 진도가 아니라 난이도 정보를 얻는 수단이라는 관점과, 확인 목적의 착수는 실패 조건이 없다는 이점을 제시한다.",
           "aiAnalysisInputSha256": "cdda299dac4dd2d9e3f64183fed16e2dcd639a640b22a258e8bd9ca471847e41",
           "aiPublicGuideTopic": "겪지 않은 어려움을 미리 겪는 일",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [
             4
           ],
@@ -38472,7 +38472,7 @@
           "aiAnalysisText": "선행 결정 하나가 이후 작업 전체를 정지시키는 형태의 지연을 다룬다. 되돌림 비용을 먼저 평가해 결정 속도를 정하는 기준과, 결정에 사용할 시간 상한을 미리 정해 교착을 끊는 방법을 제시한다.",
           "aiAnalysisInputSha256": "9dd015678f7f751a5a7ca9682ee1108d8482b3dad626bc94f5c259817f65c134",
           "aiPublicGuideTopic": "결정을 미루는 일",
-          "estimatedReadingSeconds": 65,
+          "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             18
           ],
@@ -38601,7 +38601,7 @@
           "aiAnalysisText": "짧은 시간 착수를 조건으로 하는 협상에서 중단 허용이 핵심이라는 점을 설명한다. 실제 중단 사례가 없으면 조건이 신뢰를 잃어 이후 효력이 사라진다는 문제와, 중단 비율을 확인해 협상의 유효성을 점검하는 방법을 제시한다.",
           "aiAnalysisInputSha256": "2ad89c655a24e5f9558ba7a563d84483fc24b859cf7276f54e69aa6df5af64c3",
           "aiPublicGuideTopic": "십 분만 하기로 하는 협상",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             24
           ],
@@ -38709,7 +38709,7 @@
           "aiAnalysisText": "자기 비난이 정서 악화를 통해 회피를 재유발하며 개선 지점을 제시하지 못한다는 문제를 다룬다. 인물 특성 진술을 행동 진술로 바꾸면 수정 가능한 대상이 드러난다는 방법을 제시한다.",
           "aiAnalysisInputSha256": "19717f557a96c8e9a9bcf6d72c119a3cef327650097c91532dd65533483f2fcf",
           "aiPublicGuideTopic": "자신을 나무라는 말이 하는 일",
-          "estimatedReadingSeconds": 75,
+          "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             28
           ],
@@ -38773,7 +38773,7 @@
           "aiAnalysisText": "실행 의도를 신호와 행동이 결합된 조건문 형태로 작성하는 방법을 제시한다. 시각보다 기존 행동을 신호로 쓰는 편이 유리한 이유와, 행동 부분을 협상으로 축소한 크기로 적어야 실행 가능하다는 조건을 다룬다.",
           "aiAnalysisInputSha256": "472fcc2dd54d938795a39b10e59b6c59ffe12a77364126bf341ab161c5ef403c",
           "aiPublicGuideTopic": "언제 무엇을 할지 미리 정해 두는 문장",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [
             32
           ],
@@ -39155,7 +39155,7 @@
       "bookId": 93,
       "title": "집중을 위한 빈칸 만들기",
       "pdfPath": "pdfs/book-093.pdf",
-      "pdfSha256": "c24fbae43df1065440f1276e1346cc984be7a31f61b1c872d9a19772c7db3394",
+      "pdfSha256": "faead1590eb28db79f2d0f7f1dca2b2fcc00b00bdfbae3dd063a5d901e44ef26",
       "totalPageCount": 50,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -39875,7 +39875,7 @@
           "aiAnalysisText": "주의 지속 시간에 한계가 있으며 그 이후의 착석 시간은 성과와 무관하다는 점을 설명한다. 한계 도달을 알리는 행동 신호를 예시로 들고, 휴식 중 화면 사용이 회복을 방해한다는 조건을 제시한다.",
           "aiAnalysisInputSha256": "6b183677bbe5834e025800c47eb90e1dd94095de0c49095921aace1fc468d118",
           "aiPublicGuideTopic": "더 앉아 있어도 나아지지 않는 지점",
-          "estimatedReadingSeconds": 75,
+          "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             28
           ],
@@ -40179,7 +40179,7 @@
           "aiAnalysisText": "방해 빈도를 낮출 수 없는 환경에서 과제 배치로 대응하는 방법을 다룬다. 복귀 비용이 낮은 작업을 방해가 잦은 시간대에 배치하는 원칙과 재개 지점 표시의 중요성을 제시하며, 방법으로 보완할 수 있는 범위에 한계가 있음을 밝힌다.",
           "aiAnalysisInputSha256": "8a72636580b275c1262e06661e6b9407b93e5f4187a50aad4ffbe0cc43e1ad56",
           "aiPublicGuideTopic": "방해가 많은 자리에서 일하는 법",
-          "estimatedReadingSeconds": 75,
+          "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             47
           ],
@@ -40235,7 +40235,7 @@
       "bookId": 94,
       "title": "기록이 습관이 되는 순간",
       "pdfPath": "pdfs/book-094.pdf",
-      "pdfSha256": "fdfd2f09bfc4f1ca8d887d842f000a4781d321a4d869f2a2636f70652bc82e52",
+      "pdfSha256": "897eafdb4ab083cab5a748c5ddc22d844862f997879cbb28deb4ab9c090656e6",
       "totalPageCount": 50,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -41317,7 +41317,7 @@
       "bookId": 95,
       "title": "완벽하지 않은 시작의 힘",
       "pdfPath": "pdfs/book-095.pdf",
-      "pdfSha256": "4d0f8bcf040ae9d324495d84ea278eb17ffb1f576ae89d6dc91b1ff7206cb6c4",
+      "pdfSha256": "6b7965795f69b2183c8f046cbb3302406c9cceb124eac47ecec18f7d7fd0e15f",
       "totalPageCount": 50,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -41542,7 +41542,7 @@
           "aiAnalysisText": "수정 비용이 시간에 따라 증가한다는 점과 결정의 파급 범위에 따라 확정 시점을 달리하는 기준을 제시한다. 초안의 기능 가운데 하나가 파급이 큰 결정을 조기에 검증하는 것이라는 점을 밝힌다.",
           "aiAnalysisInputSha256": "d68f90b948175dd8f36aa3e9a65cbe81f7d7e4b789752a87f5fa6a0a301029b5",
           "aiPublicGuideTopic": "고치는 비용이 자라는 자리",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             10
           ],
@@ -42399,7 +42399,7 @@
       "bookId": 96,
       "title": "질문으로 여는 회의",
       "pdfPath": "pdfs/book-096.pdf",
-      "pdfSha256": "2cdf0eafb58baa331306890c5f25553fa1ba5c54e350833fbc16abe91e5a19cd",
+      "pdfSha256": "4f37993968b4d46bbd77ede3c6153d0b14da4d79ffde8210ae43907477233637",
       "totalPageCount": 50,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -42926,7 +42926,7 @@
           "aiAnalysisText": "기록물을 회의 중에 활용하는 방법을 제시한다. 중간 요약이 늦은 참여자의 합류와 논점 복귀를 돕는다는 점, 적정 빈도, 그리고 종료 후 별도 정리 없이 원문 그대로 공유하는 방식을 다룬다.",
           "aiAnalysisInputSha256": "e36a8063992cd0e4b81796928223eb140b7a23958472c3530fc23b506e6e5100",
           "aiPublicGuideTopic": "적은 것을 회의 중에 쓰는 법",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             24
           ],
@@ -43482,7 +43482,7 @@
       "bookId": 97,
       "title": "일주일을 돌아보는 열 문장",
       "pdfPath": "pdfs/book-097.pdf",
-      "pdfSha256": "e087623981d38127a3fb0770e40cabccd9c487dde6e2fff6bb26dda95d4b8777",
+      "pdfSha256": "6c8c4a1269c102d372cf394d3370744a25c3ced958c9110c538d055d0d6fea61",
       "totalPageCount": 50,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -44162,7 +44162,7 @@
           "aiAnalysisText": "성공 주차의 공통 요인을 찾는 방법을 다룬다. 통제 불가능해 보이는 요인에도 조정 가능한 부분이 있다는 사례, 그리고 성공 상황은 기록이 부실해 사실 질문이 필요하다는 점을 제시한다.",
           "aiAnalysisInputSha256": "b0e7e8f81d6e14269497873a9104898f701ee02e337b9871220f756638e63737",
           "aiPublicGuideTopic": "잘 굴러간 주의 공통점",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             28
           ],
@@ -44183,7 +44183,7 @@
           "aiAnalysisText": "장기간에 걸친 완만한 변화를 감지하는 방법을 다룬다. 계량 항목이 점진적 추세를 드러낸다는 점, 구간을 나눠 평균을 비교하는 방식, 그리고 감지 이후의 대응이 이월 항목 한 줄로 충분할 수 있다는 사례를 제시한다.",
           "aiAnalysisInputSha256": "fe46933734cbd2e1e53710e4af462c45e76bd49283e3440203547525627bf1fb",
           "aiPublicGuideTopic": "천천히 달라지는 것",
-          "estimatedReadingSeconds": 75,
+          "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             32
           ],
@@ -44565,7 +44565,7 @@
       "bookId": 98,
       "title": "배운 것을 설명하는 연습",
       "pdfPath": "pdfs/book-098.pdf",
-      "pdfSha256": "412371389319b6d81f5a2f92f3140729e445f616f898a642a9ebe36ac18276a0",
+      "pdfSha256": "f5f78bfcca4b7d79bc16001f2ad3eb52dbed15dbf37ac33ceb497cce120bdc92",
       "totalPageCount": 50,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -44769,7 +44769,7 @@
           "aiAnalysisText": "설명 연습에서 청자 설정이 형식을 결정한다는 점을 다룬다. 비전문가를 청자로 두면 용어 사용이 제한되어 개념 이해가 요구된다는 점, 가상의 청자로도 효과가 있다는 점, 그리고 청자 부재 시 설명이 자기 완결적으로 흐른다는 문제를 제시한다.",
           "aiAnalysisInputSha256": "2c2f9397d99c634355fc1b53d6e27b726e9f2d504fb8867059fc18756fe0549f",
           "aiPublicGuideTopic": "듣는 사람을 정해 두기",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             6
           ],
@@ -45178,7 +45178,7 @@
           "aiAnalysisText": "반복 재출현 항목의 처리를 다룬다. 동일 자료 재열람으로 해소되지 않는다는 판단 근거, 자료 교체·질문·실습이라는 대체 수단, 그리고 방법 전환의 기준 횟수를 사전에 정해 두는 실무를 제시한다.",
           "aiAnalysisInputSha256": "6d815ad8e6c43db945c40c8035cf794a27daa710bf39a7155cf7def1f20b3099",
           "aiPublicGuideTopic": "같은 자리에서 계속 막힐 때",
-          "estimatedReadingSeconds": 65,
+          "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             28
           ],
@@ -45646,7 +45646,7 @@
       "bookId": 99,
       "title": "작은 목표의 측정법",
       "pdfPath": "pdfs/book-099.pdf",
-      "pdfSha256": "127cc3c4c41579b6ae2e717275256fbfad5b1da8eb572bcb1ffd3ae942d54ca7",
+      "pdfSha256": "0872c84a97cbce61493cdf296cade39bf7f80ab961dd7a697ba0de2cf2eaa419",
       "totalPageCount": 50,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -45765,7 +45765,7 @@
           "aiAnalysisText": "동일 목표에 복수의 측정 축이 가능하다는 점과 축 선택이 행동을 바꾼다는 관계를 설명한다. 측정 대상 선정이 무엇을 증가시킬지 결정하는 일이라는 관점과, 후보를 나열해 예상 행동으로 비교하는 방법을 제시한다.",
           "aiAnalysisInputSha256": "1b05051ea294853f79e721ccef30ef3bbe25ad0a5c39ebc3d3b7ef822929c34d",
           "aiPublicGuideTopic": "같은 목표를 재는 여러 자",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [
             4
           ],
@@ -45808,7 +45808,7 @@
           "aiAnalysisText": "측정 행위 자체가 단기적으로 행동을 변화시킨다는 점과 그 효과가 지속되지 않는다는 한계를 다룬다. 측정의 본래 가치가 후속 행동 결정에 있다는 점을 밝히고 이후 장의 구성을 예고한다.",
           "aiAnalysisInputSha256": "b01eec15f18de8d1ec2ec1122f212dfa8c65940f70cff33f6db6d33593d55605",
           "aiPublicGuideTopic": "재면 달라지는 것",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [
             4
           ],
@@ -45829,7 +45829,7 @@
           "aiAnalysisText": "측정에 수반되는 비용을 명시하고 비용이 효용을 넘으면 측정을 포기한다는 판단을 제시한다. 기존에 자동으로 남는 기록을 활용하는 방법과, 신규 측정의 소요 시간 상한을 두는 실무를 다룬다.",
           "aiAnalysisInputSha256": "b29eca3a2cb4e26a780ef15ce9633a238f48f4877e1c57c2021011525d64f297",
           "aiPublicGuideTopic": "재는 데 드는 비용",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [
             8
           ],
@@ -46043,7 +46043,7 @@
           "aiAnalysisText": "분할 단위를 지나치게 좁혔을 때 일간 변동이 실패 판정으로 이어지는 문제를 다룬다. 기록 단위와 판정 단위를 분리해 일간 기록은 주간 집계의 재료로만 쓰는 운용을 제시한다.",
           "aiAnalysisInputSha256": "0cb267328fd764c8b99a27c683c856d77e671ec6344a758280b298171a4f069a",
           "aiPublicGuideTopic": "너무 잘게 자를 때",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [
             18
           ],
@@ -46671,7 +46671,7 @@
           "aiAnalysisText": "측정을 보편 원칙으로 삼지 않는다는 이 책의 태도를 밝힌다. 후속 결정을 위해 확인이 필요한 목표만 측정한다는 기준과, 측정 대상 비율이 상황에 따라 달라진다는 관점을 제시한다.",
           "aiAnalysisInputSha256": "b45d2fc0a5a01e0a7182932e4c4c9471061bab99d3bd69803a503cc85ae9cc5c",
           "aiPublicGuideTopic": "재지 않아도 되는 자유",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [
             47
           ],
@@ -46727,7 +46727,7 @@
       "bookId": 100,
       "title": "다음 달의 나에게 보내는 계획",
       "pdfPath": "pdfs/book-100.pdf",
-      "pdfSha256": "2b7582e38b7465a6e71a12dfe733f0fbd2700710a46ea9ccb1c48d1d1ceda670",
+      "pdfSha256": "f1db57b39266c5ac6615008cc4e0b534653f4fb47eb242c23319c07b09437691",
       "totalPageCount": 50,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -46889,7 +46889,7 @@
           "aiAnalysisText": "월 단위를 기본 주기로 삼는 근거를 제시한다. 주 단위는 계획 대상이 부족하고 연 단위는 중간 망각이 발생한다는 점, 달력이 이미 구획을 제공한다는 실용적 이점, 그리고 개인별 주기 차이는 이후 장에서 다룬다는 예고를 밝힌다.",
           "aiAnalysisInputSha256": "e1d614c86188332994fbdeaa99824d3f8ee3c51c85b689a2a80c8327f3f536ed",
           "aiPublicGuideTopic": "왜 한 달인가",
-          "estimatedReadingSeconds": 65,
+          "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             2
           ],
@@ -47254,7 +47254,7 @@
           "aiAnalysisText": "실패한 달에도 회고를 유지해야 순환이 끊기지 않는다는 점을 다룬다. 축약된 회고 형식과, 그 기록이 다음 주기의 전제로 전환되는 경로, 그리고 부진한 달의 회고가 큰 조정을 낳은 사례를 제시한다.",
           "aiAnalysisInputSha256": "bc9b5a37d18e66a3be53c086199c3e4745a0c17e04611bcf8225889f62249b7a",
           "aiPublicGuideTopic": "포기하는 달을 만들지 않기",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [
             24
           ],
@@ -47491,7 +47491,7 @@
           "aiRouteCandidatePage": true,
           "aiAnalysisText": "첫 편지의 실제 구성을 항목별로 보인다. 중점 항목과 근거, 의도적 제외 항목과 그 이유, 그리고 단일 전제와 대응 방침을 함께 기록한 형태를 제시한다.",
           "aiAnalysisInputSha256": "941cc48c659ff3affc97b55075457a0847e25c45738719721dac2eeb59d855f4",
-          "aiPublicGuideTopic": "해든이 처음 쓴 한 장",
+          "aiPublicGuideTopic": "처음 쓴 편지 한 장",
           "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [
             12
