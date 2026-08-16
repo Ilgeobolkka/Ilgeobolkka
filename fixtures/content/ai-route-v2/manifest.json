@@ -41317,7 +41317,7 @@
       "bookId": 95,
       "title": "완벽하지 않은 시작의 힘",
       "pdfPath": "pdfs/book-095.pdf",
-      "pdfSha256": "792077875359013f1dc594769bcbbf971e59d9fdeef103af93cfea65a4a99b3d",
+      "pdfSha256": "516b673cb4948235366ba085055d915d88148aa705c2463c210cd6746dc1f5c9",
       "totalPageCount": 50,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -41433,10 +41433,10 @@
           ],
           "contentRole": "PREREQUISITE",
           "aiRouteCandidatePage": true,
-          "aiAnalysisText": "초안을 완성작의 축소판이 아니라 판단을 위한 별개 산출물로 규정한다. 내면에 머무는 계획은 결손 지점을 드러내지 못한다는 점과, 초안의 가치를 완성도가 아니라 획득한 정보량으로 평가하는 기준을 제시한다.",
-          "aiAnalysisInputSha256": "fdbfc0ee5605f283c7655e61f4a8f7f2b251292d0696e9c3cc4cc1eccebf7f3b",
+          "aiAnalysisText": "초안을 완성도 수준이 아니라 아직 약속에 내놓지 않은 상태로 규정한다. 계획이 머리 안에 있는 동안에는 결손 지점이 드러나지 않는다는 점과, 만들 범위를 지금 판단하려는 것에서 역으로 정하는 방식을 제시한다.",
+          "aiAnalysisInputSha256": "500a5034e8bf8bd265dc4f418afbc2af4262679b38ed93c85b49191dd462c516",
           "aiPublicGuideTopic": "머릿속에 있는 것과 밖에 나온 것",
-          "estimatedReadingSeconds": 65,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             2
           ],
@@ -41518,8 +41518,8 @@
           ],
           "contentRole": "PREREQUISITE",
           "aiRouteCandidatePage": true,
-          "aiAnalysisText": "초안 설계의 기준을 완성도가 아니라 수정 용이성으로 제시한다. 부분 분리 가능성과 의존 관계의 가시성을 조건으로 들고, 초안에 투입한 노력이 폐기 저항을 만들어 수정을 막는다는 역설을 다룬다.",
-          "aiAnalysisInputSha256": "d324e987bfd7feea53a6e4908deb0fc5c2d9f415cb94c630be1a88ca8e89a775",
+          "aiAnalysisText": "초안 설계의 기준을 완성도가 아니라 수정 용이성으로 제시한다. 부분 분리 가능성과 의존 관계의 가시성을 조건으로 들고, 의존 관계를 만드는 동안 함께 적어 두어야 순서 변경 비용이 낮아진다는 점을 다룬다.",
+          "aiAnalysisInputSha256": "9e11ee3642ba5a08649cd431b66e169f40127a6c016c4368b088a24f587fe23b",
           "aiPublicGuideTopic": "나중에 고치기 쉬운 상태로 만들기",
           "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
@@ -41854,7 +41854,7 @@
         {
           "pageNumber": 26,
           "chapter": "3장 반복해서 고치기",
-          "section": "3.4 되돌릴 수 있게",
+          "section": "3.4 이전 판으로 돌아가기",
           "primaryConcepts": [
             "가역성"
           ],
@@ -41864,10 +41864,10 @@
           ],
           "contentRole": "CORE",
           "aiRouteCandidatePage": true,
-          "aiAnalysisText": "수정 시도의 폭이 복원 가능성에 좌우된다는 점을 설명한다. 사본 생성과 변경 의도 기록이라는 최소 절차를 제시하고, 되돌린 시도도 실패 정보로 남겨 재시도를 방지하는 방법을 다룬다.",
-          "aiAnalysisInputSha256": "399288f7cfd4cced283574de58e3b67d4c50d6393f88f3ed9558b2cd8e3597aa",
+          "aiAnalysisText": "수정 시도의 폭이 복원 가능성에 좌우된다는 점을 설명한다. 회차마다 실제로 쓴 판을 남겨 판본을 쌓는 방법과 대목 단위로 되돌리는 절차를 제시하고, 되돌린 시도도 실패 정보로 남겨 재시도를 방지하는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "f31690b70c54029d42ae82985199c44cd650dd1849992bfb31935947968168eb",
           "aiPublicGuideTopic": "고치기 전의 상태를 남기는 일",
-          "estimatedReadingSeconds": 70,
+          "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             20
           ],
@@ -41876,7 +41876,7 @@
         {
           "pageNumber": 27,
           "chapter": "3장 반복해서 고치기",
-          "section": "3.4 되돌릴 수 있게",
+          "section": "3.4 이전 판으로 돌아가기",
           "primaryConcepts": [
             "가역성"
           ],
@@ -41993,8 +41993,8 @@
           ],
           "contentRole": "CORE",
           "aiRouteCandidatePage": true,
-          "aiAnalysisText": "피드백을 정보로 수용하되 수정 결정은 제작자가 유지한다는 원칙을 제시한다. 문제 지적과 해결 제안을 분리해 다루는 방법과, 복수 지적과 단일 지적의 신뢰도 차이를 판단 기준으로 다룬다.",
-          "aiAnalysisInputSha256": "358ffb71a6b63f51183130a1c99a0b73687aba867e214c1be770ebb3800718eb",
+          "aiAnalysisText": "피드백을 정보로 수용하되 수정 결정은 제작자가 유지한다는 원칙을 제시한다. 문제 지적과 해결 제안을 분리해 다루는 방법과, 다음 판까지 남은 시간을 기준으로 반영과 이월을 가르는 방법을 다룬다.",
+          "aiAnalysisInputSha256": "dd186835381a42a3ec29c97d70687640028f8da20b5a6d90180333c905832e10",
           "aiPublicGuideTopic": "모든 의견을 반영하지 않기",
           "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [
@@ -46727,7 +46727,7 @@
       "bookId": 100,
       "title": "다음 달의 나에게 보내는 계획",
       "pdfPath": "pdfs/book-100.pdf",
-      "pdfSha256": "bb2e6c741fe74584c9d79b503da4c09527453fa7f7a3efed4726f649e10aca9f",
+      "pdfSha256": "7fa2d9b7a30ddd20be2b1f35e3447ec2445c113920973c6b780928fdde2e7c0d",
       "totalPageCount": 50,
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
@@ -47750,10 +47750,10 @@
           ],
           "contentRole": "COUNTERPOINT",
           "aiRouteCandidatePage": true,
-          "aiAnalysisText": "이 방법이 유효하지 않은 조건을 밝힌다. 판단 변동이 적고 현 상태에 만족하는 경우를 제외 대상으로 두고, 세 주기 시험 후 편지 간 연결 여부로 지속을 판정하는 기준과 명시적 종료 기록을 제시한다.",
-          "aiAnalysisInputSha256": "3cfe36377570763cd635105c9398f3721f8552c36fc339ad8f5be2e64e3efc63",
-          "aiPublicGuideTopic": "이 방법을 쓰지 않아도 되는 때",
-          "estimatedReadingSeconds": 65,
+          "aiAnalysisText": "불확실한 시기가 길어질 때 형식을 두 줄까지 줄여 순환만 유지하는 방법을 제시한다. 원래 형식으로 돌아가는 시점을 날짜가 아니라 조건으로 정하는 기준을 들고, 이 방법이 필요하지 않은 경우도 함께 밝힌다.",
+          "aiAnalysisInputSha256": "f6d70bcff15e271a95299c58b9adc1bc5cf4461d19857d5e509ac64d7c581003",
+          "aiPublicGuideTopic": "알 수 없는 시기가 길어지면",
+          "estimatedReadingSeconds": 80,
           "prerequisitePageNumbers": [
             47
           ],
