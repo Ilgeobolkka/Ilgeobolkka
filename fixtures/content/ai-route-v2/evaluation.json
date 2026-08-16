@@ -453,9 +453,12 @@
       "allowedAlternativePageNumbers": [
         3,
         5,
+        7,
         9,
         10,
         17,
+        19,
+        20,
         25
       ]
     },
@@ -638,7 +641,9 @@
         6,
         10,
         14,
+        16,
         18,
+        22,
         28
       ]
     },
@@ -755,9 +760,11 @@
         3,
         5,
         7,
+        8,
         12,
         26,
         31,
+        32,
         35
       ]
     },
@@ -897,6 +904,9 @@
         3,
         5,
         6,
+        11,
+        13,
+        17,
         18,
         38
       ]
@@ -970,8 +980,13 @@
       ],
       "allowedAlternativePageNumbers": [
         3,
+        5,
+        7,
+        10,
         11,
         13,
+        16,
+        18,
         19,
         21,
         37
@@ -1680,6 +1695,99 @@
       ]
     },
     {
+      "caseId": "case-book-040",
+      "bookId": 40,
+      "purpose": "이 책은 아직 소장하지 않았고 잉크는 열까지 쓸 수 있는데, 국경에 있던 도시 하나가 왜 비었는지를 조약과 초소 일지로 어떻게 세우는지 알고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "경계의 성격",
+        "조약문",
+        "재협상",
+        "귀속 변경",
+        "국경 이동의 결과"
+      ],
+      "helpfulConcepts": [
+        "변경도시",
+        "조약의 두 판본",
+        "교환의 셈",
+        "경계 문언",
+        "사료 대조"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 8
+        },
+        {
+          "beforePageNumber": 8,
+          "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 24
+        },
+        {
+          "beforePageNumber": 24,
+          "afterPageNumber": 26
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 29
+        },
+        {
+          "beforePageNumber": 26,
+          "afterPageNumber": 29
+        },
+        {
+          "beforePageNumber": 29,
+          "afterPageNumber": 31
+        }
+      ],
+      "irrelevantPageNumbers": [
+        14,
+        15,
+        37,
+        41,
+        42,
+        43,
+        44
+      ],
+      "duplicatePageGroups": [
+        [
+          31,
+          47
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        8,
+        10,
+        24,
+        26,
+        29,
+        31
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        5,
+        9,
+        11,
+        12,
+        22,
+        25,
+        27,
+        30
+      ]
+    },
+    {
       "caseId": "case-book-041",
       "bookId": 41,
       "purpose": "이 책을 소장하고 있는데, 작은 가게를 열기 전에 여러 메뉴를 한 사람이 다 만드는 게 나을지 한 가지에 집중하는 게 나을지 핵심만 빠르게 확인하고 싶다",
@@ -1787,6 +1895,9 @@
         17
       ],
       "allowedAlternativePageNumbers": [
+        3,
+        5,
+        7,
         10,
         11,
         18,
@@ -1864,10 +1975,12 @@
         19
       ],
       "allowedAlternativePageNumbers": [
+        3,
         5,
         7,
         9,
         11,
+        13,
         15,
         18,
         20,
@@ -1962,6 +2075,7 @@
       ],
       "allowedAlternativePageNumbers": [
         3,
+        7,
         9,
         11,
         13,
@@ -2126,6 +2240,7 @@
         11,
         13,
         15,
+        18,
         22,
         23
       ]
@@ -2307,6 +2422,7 @@
       ],
       "allowedAlternativePageNumbers": [
         3,
+        5,
         7,
         11,
         16,
@@ -2491,6 +2607,7 @@
         13,
         14,
         15,
+        18,
         25,
         27,
         31

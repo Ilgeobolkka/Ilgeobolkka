@@ -9,12 +9,11 @@ import {
 } from "/js/ai-route/generation-page.js";
 import {initializeBookDetailPage} from "/js/ownership/book-detail-page.js";
 import {createOwnershipHistoryPage} from "/js/ownership/ownership-history-page.js";
+import {createRouteDetailPage} from "/js/ai-route/route-detail-page.js";
+import {requestPageContent} from "/js/common/request-page-content.js";
 import {ApiRequestError, requestJson} from "/js/common/request-json.js";
-import {
-    createViewer,
-    requestPageContent,
-    VIEWER_SESSION_STORAGE_KEY
-} from "/js/viewer/viewer-page.js";
+import {VIEWER_SESSION_STORAGE_KEY} from "/js/common/viewer-session.js";
+import {createViewer} from "/js/viewer/viewer-page.js";
 
 const DEFAULT_ERROR_MESSAGE = "요청을 처리하지 못했습니다. 잠시 후 다시 시도해 주세요.";
 const AUTH_REQUEST_STORAGE_KEY = "browser-smoke-auth-request";
@@ -51,6 +50,7 @@ async function run() {
         await verifyCsrfHandling();
         await verifyNoAutomaticAuthenticationRedirect();
         await verifyPageContentRequest();
+        await verifyRoutePageContentRequest();
         await verifyCatalogLatestRequestWins();
     } finally {
         window.fetch = originalFetch;
@@ -64,6 +64,10 @@ async function run() {
     await verifyViewerInitialPageAndRecovery();
     await verifyViewerInvalidInitialPage();
     await verifyViewerRenderFailureStopsQueue();
+    await verifyRouteDetailFlow();
+    await verifyRouteDetailPrerequisiteAndNavigation();
+    await verifyRouteDetailImageAndReplacement();
+    await verifyRouteDetailFailures();
     await verifyLogoutNavigation("success");
     await verifyLogoutNavigation("server-error");
     await verifyLogoutRetryableError("network-error");
@@ -167,6 +171,135 @@ async function verifyPageContentRequest() {
         409,
         "viewer-replaced-request",
         "새 뷰어로 교체된 열람 세션입니다.");
+}
+
+async function verifyRoutePageContentRequest() {
+    await assertApiError(
+        () => requestPageContent(
+            "https://example.com/api/ai-routes/476/pages/42/content",
+            "route-viewer-session-id",
+            "TEXT",
+            {method: "POST"}),
+        "CROSS_ORIGIN_REQUEST",
+        0,
+        null,
+        "같은 출처의 API만 호출할 수 있습니다.");
+
+    let capturedRequest;
+    window.fetch = async (url, options) => {
+        capturedRequest = {url, options};
+        return new Response("경로 페이지 본문", {
+            status: 200,
+            headers: {"Content-Type": "text/plain;charset=UTF-8"}
+        });
+    };
+
+    const content = await requestPageContent(
+        "/api/ai-routes/476/pages/42/content",
+        "route-viewer-session-id",
+        "TEXT",
+        {method: "POST"}
+    );
+
+    assert(content.contentType === "TEXT", "경로 텍스트 콘텐츠 형식을 보존해야 합니다.");
+    assert(content.body === "경로 페이지 본문", "경로 텍스트 콘텐츠 바디를 보존해야 합니다.");
+    assert(capturedRequest.url.pathname === "/api/ai-routes/476/pages/42/content",
+        "경로 콘텐츠 URL을 보존해야 합니다.");
+    assert(capturedRequest.options.method === "POST", "경로 콘텐츠는 POST로 요청해야 합니다.");
+    assert(capturedRequest.options.credentials === "same-origin",
+        "경로 콘텐츠는 same-origin 자격 증명만 전송해야 합니다.");
+    assert(capturedRequest.options.headers.get("X-CSRF-TOKEN") === "browser-smoke-token",
+        "경로 콘텐츠 요청에 페이지의 CSRF 토큰을 추가해야 합니다.");
+    assert(capturedRequest.options.headers.get("X-Viewer-Session-Id")
+        === "route-viewer-session-id",
+        "경로 콘텐츠 요청에 뷰어 세션 헤더를 추가해야 합니다.");
+
+    for (const mediaType of ["image/jpeg", "image/png"]) {
+        window.fetch = async () => new Response(
+            new Uint8Array([1, 2, 3]),
+            {
+                status: 200,
+                headers: {"Content-Type": mediaType}
+            }
+        );
+        const imageContent = await requestPageContent(
+            "/api/ai-routes/476/pages/42/content",
+            "route-viewer-session-id",
+            "IMAGE",
+            {method: "POST"}
+        );
+
+        assert(imageContent.contentType === "IMAGE",
+            `${mediaType} 경로 콘텐츠 형식을 보존해야 합니다.`);
+        assert(imageContent.body instanceof Blob && imageContent.body.type === mediaType,
+            `${mediaType} 경로 응답을 같은 형식의 Blob으로 반환해야 합니다.`);
+    }
+
+    window.fetch = async () => new Response("잘못된 경로 이미지 응답", {
+        status: 200,
+        headers: {
+            "Content-Type": "application/octet-stream",
+            "X-Request-Id": "invalid-route-image-request"
+        }
+    });
+    await assertApiError(
+        () => requestPageContent(
+            "/api/ai-routes/476/pages/42/content",
+            "route-viewer-session-id",
+            "IMAGE",
+            {method: "POST"}),
+        "INVALID_RESPONSE",
+        200,
+        "invalid-route-image-request",
+        DEFAULT_ERROR_MESSAGE);
+
+    window.fetch = async () => new Response(JSON.stringify({
+        code: "VIEWER_SESSION_REPLACED",
+        message: "새 뷰어로 교체된 열람 세션입니다."
+    }), {
+        status: 409,
+        headers: {
+            "Content-Type": "application/json",
+            "X-Request-Id": "route-viewer-replaced-request"
+        }
+    });
+    await assertApiError(
+        () => requestPageContent(
+            "/api/ai-routes/476/pages/42/content",
+            "route-viewer-session-id",
+            "TEXT",
+            {method: "POST"}),
+        "VIEWER_SESSION_REPLACED",
+        409,
+        "route-viewer-replaced-request",
+        "새 뷰어로 교체된 열람 세션입니다.");
+
+    const tokenMeta = document.querySelector("meta[name='_csrf']");
+    const token = tokenMeta.content;
+    let fetchCalled = false;
+    tokenMeta.removeAttribute("content");
+    window.fetch = async () => {
+        fetchCalled = true;
+        return new Response("전송되면 안 되는 콘텐츠", {
+            status: 200,
+            headers: {"Content-Type": "text/plain"}
+        });
+    };
+    try {
+        await assertApiError(
+            () => requestPageContent(
+                "/api/ai-routes/476/pages/42/content",
+                "route-viewer-session-id",
+                "TEXT",
+                {method: "POST"}),
+            "MISSING_CSRF_TOKEN",
+            0,
+            null,
+            "보안 토큰을 찾을 수 없습니다. 페이지를 새로고침해 주세요.");
+        assert(!fetchCalled, "CSRF 토큰이 없으면 경로 콘텐츠 요청을 전송하지 않아야 합니다.");
+    } finally {
+        tokenMeta.content = token;
+    }
 }
 
 async function verifyCatalogLatestRequestWins() {
@@ -820,6 +953,470 @@ function createViewerFixture(initialPage = 1) {
     return root;
 }
 
+async function verifyRouteDetailFlow() {
+    const root = createRouteDetailFixture();
+    fixtureContainer.append(root);
+
+    const storedValues = new Map();
+    const openedPages = new Set();
+    const events = [];
+    let current = false;
+    let navigatedPath = null;
+    const request = async (url, options = {}) => {
+        const method = options.method || "GET";
+        events.push({type: "json", url, method, options});
+
+        if (url === "/api/books/15/reading-sessions") {
+            return routeOpenMetadata(42, false);
+        }
+        if (url === "/api/reading-sessions/current/page") {
+            return routeOpenMetadata(JSON.parse(options.body).pageNumber, true);
+        }
+        if (url === "/api/ai-routes/476" && method === "GET") {
+            return routeSnapshot(openedPages, current);
+        }
+        if (url === "/api/books/15/ai-routes/current") {
+            current = true;
+            return routeSnapshot(openedPages, current);
+        }
+        if (url === "/api/ai-routes/476/feedback") {
+            return {routeId: 476, rating: JSON.parse(options.body).rating};
+        }
+        if (url === "/api/ai-routes/476" && method === "DELETE") {
+            return null;
+        }
+        throw new Error(`예상하지 않은 경로 상세 요청: ${method} ${url}`);
+    };
+    const loadContent = async (url, viewerSessionId, contentType, options = {}) => {
+        const pageNumber = Number(url.match(/pages\/(\d+)\/content$/)?.[1]);
+        events.push({type: "content", url, viewerSessionId, contentType, options});
+        openedPages.add(pageNumber);
+        return {contentType: "TEXT", body: `${pageNumber}페이지 경로 본문`};
+    };
+    const page = createRouteDetailPage(root, {
+        request,
+        loadContent,
+        storage: {
+            getItem: (key) => storedValues.get(key) || null,
+            setItem: (key, value) => storedValues.set(key, value),
+            removeItem: (key) => storedValues.delete(key)
+        },
+        confirm: () => true,
+        navigate: (url) => {
+            navigatedPath = url;
+        }
+    });
+
+    page.start();
+    assert(root.querySelector("[data-route-next]").textContent === "다음 경로 페이지",
+        "경로를 열기 전에는 비활성 다음 버튼에 첫 페이지 비용을 표시하면 안 됩니다.");
+    await page.openItem(0);
+
+    const items = root.querySelectorAll("[data-route-position]");
+    assert(events[0]?.url === "/api/books/15/reading-sessions"
+        && events[0]?.method === "POST",
+        "첫 경로 페이지는 새 열람 세션 POST로 열어야 합니다.");
+    assert(events[1]?.type === "content"
+        && events[1]?.viewerSessionId === "route-viewer-session-id"
+        && events[1]?.options.method === "POST",
+        "페이지 열기 성공 뒤 같은 뷰어 세션과 POST로 경로 콘텐츠를 요청해야 합니다.");
+    assert(events[2]?.url === "/api/ai-routes/476" && events[2]?.method === "GET",
+        "콘텐츠 성공 뒤 경로 상세 상태를 새로고침해야 합니다.");
+    assert(storedValues.get(VIEWER_SESSION_STORAGE_KEY) === "route-viewer-session-id",
+        "열기 성공의 뷰어 세션을 탭 sessionStorage에 저장해야 합니다.");
+    assert(items[0].dataset.opened === "true"
+        && items[0].querySelector("[data-item-opened-badge]").hidden === false,
+        "콘텐츠 제공에 성공한 경로 항목만 완료로 표시해야 합니다.");
+    assert(items[1].dataset.opened === "false",
+        "아직 콘텐츠를 제공하지 않은 경로 항목은 완료로 표시하면 안 됩니다.");
+    assert(root.querySelector("[data-route-content]").textContent === "42페이지 경로 본문",
+        "경로 콘텐츠 성공 응답을 실제 DOM에 표시해야 합니다.");
+    assert(root.querySelector("[data-route-progress]").textContent === "1 / 2 완료",
+        "첫 콘텐츠 성공 뒤 서버 진행 상태를 표시해야 합니다.");
+
+    await page.openItem(1);
+
+    const patchEvent = events.find(event =>
+        event.url === "/api/reading-sessions/current/page");
+    assert(patchEvent?.method === "PATCH"
+        && patchEvent.options.headers["X-Viewer-Session-Id"] === "route-viewer-session-id"
+        && JSON.parse(patchEvent.options.body).pageNumber === 3,
+        "다음 경로 페이지는 현재 세션 PATCH와 뷰어 세션 헤더로 열어야 합니다.");
+    assert(root.querySelector("[data-route-progress]").textContent === "2 / 2 완료",
+        "모든 콘텐츠 성공 뒤 전체 진행을 완료로 표시해야 합니다.");
+    assert(root.querySelector("[data-completed-badge]").hidden === false,
+        "서버가 완료한 경로의 완료 배지를 표시해야 합니다.");
+    assert(!root.querySelector("[data-completed-time]").textContent.includes("T"),
+        "동적으로 갱신한 완료 시각도 ISO 원문이 아닌 읽기 쉬운 형식이어야 합니다.");
+    assert([...root.querySelectorAll("[data-feedback-rating]")]
+        .every(button => button.disabled === false),
+        "경로 완료 뒤 세 피드백 버튼을 활성화해야 합니다.");
+    assert(root.querySelector("[data-route-content]").textContent === "3페이지 경로 본문",
+        "다음 추천 위치의 원본 페이지 콘텐츠를 표시해야 합니다.");
+
+    root.querySelector("[data-make-current]").click();
+    await waitFor(
+        () => root.querySelector("[data-current-badge]").hidden === false,
+        "현재 경로 지정 성공 상태를 표시해야 합니다.");
+    assert(events.some(event => event.url === "/api/books/15/ai-routes/current"
+        && event.method === "PUT"),
+        "현재 경로 지정은 S03 PUT을 호출해야 합니다.");
+
+    root.querySelector("[data-feedback-rating='HELPFUL']").click();
+    await waitFor(
+        () => root.querySelector("[data-feedback-rating='HELPFUL']")
+            .getAttribute("aria-pressed") === "true",
+        "완료 경로 피드백 성공 상태를 표시해야 합니다.");
+    assert(events.some(event => event.url === "/api/ai-routes/476/feedback"
+        && event.method === "PUT"),
+        "완료 경로 피드백은 S05 PUT을 호출해야 합니다.");
+
+    root.querySelector("[data-delete-route]").click();
+    await waitFor(() => navigatedPath === "/library",
+        "경로 삭제 성공 뒤 내 서재로 이동해야 합니다.");
+    assert(events.some(event => event.url === "/api/ai-routes/476"
+        && event.method === "DELETE"),
+        "경로 삭제는 S03 DELETE를 호출해야 합니다.");
+
+    root.remove();
+}
+
+async function verifyRouteDetailPrerequisiteAndNavigation() {
+    const root = createRouteDetailFixture();
+    fixtureContainer.append(root);
+
+    const openedPages = new Set();
+    const requestedPages = [];
+    const confirmationResults = [false, true];
+    const confirmationMessages = [];
+    const request = async (url, options = {}) => {
+        const method = options.method || "GET";
+        if (url === "/api/books/15/reading-sessions"
+                || url === "/api/reading-sessions/current/page") {
+            const pageNumber = JSON.parse(options.body).pageNumber;
+            requestedPages.push({method, pageNumber});
+            return routeOpenMetadata(pageNumber, pageNumber === 3);
+        }
+        if (url === "/api/ai-routes/476" && method === "GET") {
+            return routeSnapshot(openedPages, false);
+        }
+        throw new Error(`예상하지 않은 선수 개념 경로 요청: ${method} ${url}`);
+    };
+    const page = createRouteDetailPage(root, {
+        request,
+        loadContent: async (url) => {
+            const pageNumber = Number(url.match(/pages\/(\d+)\/content$/)?.[1]);
+            openedPages.add(pageNumber);
+            return {contentType: "TEXT", body: `${pageNumber}페이지 경로 본문`};
+        },
+        storage: routeStorage(),
+        confirm: (message) => {
+            confirmationMessages.push(message);
+            return confirmationResults.shift();
+        }
+    });
+
+    page.start();
+    await page.openItem(1);
+
+    assert(confirmationMessages.length === 1
+        && confirmationMessages[0].includes("읽지 않은 선수 개념 페이지"),
+        "선수 개념을 건너뛰면 계속할지 확인해야 합니다.");
+    assert(requestedPages.length === 0 && openedPages.size === 0,
+        "선수 개념 건너뛰기를 취소하면 페이지를 열면 안 됩니다.");
+
+    await page.openItem(1);
+
+    assert(confirmationMessages.length === 2,
+        "선수 개념 건너뛰기를 다시 시도하면 확인창을 다시 표시해야 합니다.");
+    assert(requestedPages[0]?.method === "POST" && requestedPages[0]?.pageNumber === 3,
+        "선수 개념 건너뛰기를 확인하면 선택한 두 번째 항목을 열어야 합니다.");
+    assert(root.querySelector("[data-route-content]").textContent === "3페이지 경로 본문",
+        "건너뛰기 확인 뒤 두 번째 경로 항목의 콘텐츠를 표시해야 합니다.");
+
+    const previous = root.querySelector("[data-route-previous]");
+    const next = root.querySelector("[data-route-next]");
+    assert(previous.disabled === false && next.disabled === true,
+        "두 번째 경로 항목에서는 이전 이동만 활성화해야 합니다.");
+
+    previous.click();
+    await waitFor(
+        () => root.querySelector("[data-route-content]").textContent === "42페이지 경로 본문"
+            && next.disabled === false,
+        "이전 경로 버튼으로 첫 번째 항목을 열어야 합니다.");
+    assert(requestedPages[1]?.method === "PATCH" && requestedPages[1]?.pageNumber === 42,
+        "이전 경로 버튼은 현재 세션을 첫 번째 항목의 원본 페이지로 이동해야 합니다.");
+
+    next.click();
+    await waitFor(
+        () => root.querySelector("[data-route-content]").textContent === "3페이지 경로 본문"
+            && requestedPages.length === 3,
+        "다음 경로 버튼으로 두 번째 항목을 다시 열어야 합니다.");
+    assert(requestedPages[2]?.method === "PATCH" && requestedPages[2]?.pageNumber === 3,
+        "다음 경로 버튼은 현재 세션을 두 번째 항목의 원본 페이지로 이동해야 합니다.");
+    assert(confirmationMessages.length === 2,
+        "선수 개념을 연 뒤 다음 이동에서는 건너뛰기 확인창을 다시 표시하면 안 됩니다.");
+
+    root.remove();
+}
+
+async function verifyRouteDetailImageAndReplacement() {
+    const root = createRouteDetailFixture();
+    fixtureContainer.append(root);
+
+    const storedValues = new Map();
+    const openedPages = new Set();
+    let createdBlob = null;
+    let revokedUrl = null;
+    const page = createRouteDetailPage(root, {
+        request: async (url, options = {}) => {
+            if (url === "/api/books/15/reading-sessions") {
+                return routeOpenMetadata(42, false, "IMAGE");
+            }
+            if (url === "/api/ai-routes/476" && (options.method || "GET") === "GET") {
+                return routeSnapshot(openedPages, false);
+            }
+            if (url === "/api/reading-sessions/current/page") {
+                return routeOpenMetadata(3, false);
+            }
+            throw new Error(`예상하지 않은 이미지 경로 요청: ${url}`);
+        },
+        loadContent: async (url, viewerSessionId, contentType) => {
+            if (url === "/api/ai-routes/476/pages/3/content") {
+                assert(viewerSessionId === "route-viewer-session-id"
+                    && contentType === "TEXT",
+                "교체 직전 콘텐츠 요청에도 현재 세션과 응답 형식을 전달해야 합니다.");
+                throw new ApiRequestError(
+                    "VIEWER_SESSION_REPLACED",
+                    "새 뷰어로 교체된 열람 세션입니다.",
+                    409,
+                    "route-viewer-replaced");
+            }
+            assert(url === "/api/ai-routes/476/pages/42/content",
+                "이미지 경로 항목의 원본 페이지 콘텐츠를 요청해야 합니다.");
+            assert(viewerSessionId === "route-viewer-session-id" && contentType === "IMAGE",
+                "이미지 경로 콘텐츠 요청에 세션과 콘텐츠 형식을 전달해야 합니다.");
+            openedPages.add(42);
+            return {
+                contentType: "IMAGE",
+                body: new Blob([new Uint8Array([1, 2, 3])], {type: "image/png"})
+            };
+        },
+        storage: routeStorage(storedValues),
+        confirm: () => true,
+        createObjectUrl: (blob) => {
+            createdBlob = blob;
+            return "blob:route-image";
+        },
+        revokeObjectUrl: (url) => {
+            revokedUrl = url;
+        }
+    });
+
+    page.start();
+    await page.openItem(0);
+
+    const image = root.querySelector(".viewer-image");
+    assert(createdBlob instanceof Blob && createdBlob.type === "image/png",
+        "경로 이미지 Blob으로 Object URL을 만들어야 합니다.");
+    assert(image?.alt === "42페이지 이미지 콘텐츠",
+        "경로 이미지에 원본 페이지 번호를 설명하는 대체 텍스트를 표시해야 합니다.");
+    assert(storedValues.get(VIEWER_SESSION_STORAGE_KEY) === "route-viewer-session-id",
+        "이미지 경로를 연 뷰어 세션을 저장해야 합니다.");
+
+    await page.openItem(1);
+
+    assert(revokedUrl === "blob:route-image",
+        "뷰어 세션이 교체되면 표시하던 이미지 Object URL을 해제해야 합니다.");
+    assert(root.querySelector(".viewer-image") === null
+        && root.querySelector("[data-route-content]").textContent
+            .includes("다른 탭에서 새 뷰어가 열려"),
+        "교체된 세션의 이미지를 제거하고 종료 안내를 표시해야 합니다.");
+    assert(!storedValues.has(VIEWER_SESSION_STORAGE_KEY),
+        "교체된 뷰어 세션 ID를 sessionStorage에서 제거해야 합니다.");
+    assert([...root.querySelectorAll("[data-open-route-item]")]
+        .every(button => button.disabled),
+        "교체된 세션에서는 경로 페이지를 더 열 수 없도록 막아야 합니다.");
+
+    root.remove();
+}
+
+async function verifyRouteDetailFailures() {
+    const openFailureRoot = createRouteDetailFixture();
+    fixtureContainer.append(openFailureRoot);
+    let contentRequestCount = 0;
+    const openFailurePage = createRouteDetailPage(openFailureRoot, {
+        request: async () => {
+            throw new ApiRequestError(
+                "INSUFFICIENT_INK",
+                "잉크가 부족합니다.",
+                422,
+                "route-open-failure");
+        },
+        loadContent: async () => {
+            contentRequestCount += 1;
+            throw new Error("열기 실패 뒤 콘텐츠를 요청하면 안 됩니다.");
+        },
+        storage: routeStorage()
+    });
+
+    openFailurePage.start();
+    await openFailurePage.openItem(0);
+
+    const openFailureItem = openFailureRoot.querySelector("[data-route-position='1']");
+    assert(contentRequestCount === 0,
+        "페이지 열기 API가 실패하면 경로 콘텐츠를 요청하면 안 됩니다.");
+    assert(openFailureItem.dataset.opened === "false"
+        && openFailureItem.querySelector("[data-item-opened-badge]").hidden,
+        "페이지 열기 실패를 경로 항목 완료로 표시하면 안 됩니다.");
+    assert(openFailureRoot.querySelector("[data-route-progress]").textContent === "0 / 2 완료",
+        "페이지 열기 실패 뒤 진행 상태를 유지해야 합니다.");
+    assert(openFailureRoot.querySelector("[data-route-ink-notice]").hidden === false
+        && openFailureRoot.querySelector("[data-route-ink-link]").hidden === false,
+        "잉크 부족으로 열지 못하면 충전 안내를 표시해야 합니다.");
+    openFailureRoot.remove();
+
+    const contentFailureRoot = createRouteDetailFixture();
+    fixtureContainer.append(contentFailureRoot);
+    let jsonRequestCount = 0;
+    const storedValues = new Map();
+    const contentFailurePage = createRouteDetailPage(contentFailureRoot, {
+        request: async () => {
+            jsonRequestCount += 1;
+            return routeOpenMetadata(42, false);
+        },
+        loadContent: async () => {
+            throw new ApiRequestError(
+                "NETWORK_ERROR",
+                "강제 콘텐츠 오류",
+                0,
+                null);
+        },
+        storage: routeStorage(storedValues)
+    });
+
+    contentFailurePage.start();
+    await contentFailurePage.openItem(0);
+
+    const contentFailureItem = contentFailureRoot.querySelector("[data-route-position='1']");
+    assert(jsonRequestCount === 1,
+        "콘텐츠 실패 뒤 경로 상세 새로고침을 성공으로 처리하면 안 됩니다.");
+    assert(contentFailureItem.dataset.costStatus === "ACTIVE_RENTAL"
+        && contentFailureItem.querySelector("[data-open-route-item]").textContent
+            === "대여 중 · 열기",
+        "열기 성공은 뒤이은 콘텐츠 실패와 무관하게 현재 비용 상태를 반영해야 합니다.");
+    assert(contentFailureItem.dataset.opened === "false"
+        && contentFailureItem.querySelector("[data-item-opened-badge]").hidden,
+        "콘텐츠 제공 실패를 경로 항목 완료로 표시하면 안 됩니다.");
+    assert(contentFailureRoot.querySelector("[data-route-content]").textContent
+        .includes("경로 페이지를 열면"),
+        "콘텐츠 제공 실패 시 성공 콘텐츠로 교체하면 안 됩니다.");
+    assert(storedValues.get(VIEWER_SESSION_STORAGE_KEY) === "route-viewer-session-id",
+        "열기 성공의 세션은 콘텐츠 실패와 무관하게 저장해야 합니다.");
+    assert(document.querySelector("[data-common-error]").textContent === "강제 콘텐츠 오류",
+        "콘텐츠 실패를 안전한 공통 오류 영역에 표시해야 합니다.");
+
+    clearCommonError();
+    contentFailureRoot.remove();
+}
+
+function createRouteDetailFixture() {
+    const root = document.createElement("section");
+    root.dataset.aiRouteDetailRoot = "";
+    root.dataset.routeId = "476";
+    root.dataset.bookId = "15";
+    root.dataset.routeCurrent = "false";
+    root.dataset.routeCompleted = "false";
+    root.dataset.routeCompletedAt = "";
+    root.dataset.routeRating = "";
+    root.innerHTML = `
+        <span data-current-badge hidden>현재 경로</span>
+        <span data-completed-badge hidden>경로 열람 완료</span>
+        <time data-completed-time hidden></time>
+        <button type="button" data-make-current>현재 경로로 지정</button>
+        <button type="button" data-delete-route>경로 삭제</button>
+        <span data-route-progress></span>
+        <ol>
+            ${routeItemFixture(1, 42, "ONE_INK", true)}
+            ${routeItemFixture(2, 3, "OWNED", false)}
+        </ol>
+        <p data-reader-status></p>
+        <button type="button" data-route-previous disabled>이전 경로 페이지</button>
+        <button type="button" data-route-next disabled>다음 경로 페이지</button>
+        <a data-original-viewer-link hidden>원본 순서로 읽기</a>
+        <div role="alert" tabindex="-1" data-route-ink-notice hidden>
+            <span data-route-ink-notice-message></span>
+            <a href="/ink" data-route-ink-link hidden>잉크 충전하기</a>
+        </div>
+        <div tabindex="-1" aria-busy="false" data-route-content>
+            <p>경로 페이지를 열면 콘텐츠가 여기에 표시됩니다.</p>
+        </div>
+        <p data-feedback-guide></p>
+        <button type="button" data-feedback-rating="HELPFUL" disabled>도움</button>
+        <button type="button" data-feedback-rating="NEUTRAL" disabled>보통</button>
+        <button type="button" data-feedback-rating="NOT_HELPFUL" disabled>도움 안 됨</button>
+    `;
+    return root;
+}
+
+function routeItemFixture(position, pageNumber, costStatus, prerequisite) {
+    return `
+        <li data-route-position="${position}"
+            data-page-number="${pageNumber}"
+            data-cost-status="${costStatus}"
+            data-opened="false"
+            data-opened-at=""
+            data-prerequisite="${prerequisite}">
+            <span data-item-opened-badge hidden>열람 완료</span>
+            <time data-item-opened-time hidden></time>
+            <button type="button" data-open-route-item>열기</button>
+        </li>
+    `;
+}
+
+function routeOpenMetadata(pageNumber, owned, contentType = "TEXT") {
+    return {
+        viewerSessionId: "route-viewer-session-id",
+        bookId: 15,
+        pageNumber,
+        owned,
+        contentType
+    };
+}
+
+function routeSnapshot(openedPages, current) {
+    const completed = openedPages.size === 2;
+    return {
+        routeId: 476,
+        bookId: 15,
+        current,
+        completedAt: completed ? "2026-08-14T01:10:00Z" : null,
+        rating: null,
+        items: [
+            {
+                position: 1,
+                pageNumber: 42,
+                openedAt: openedPages.has(42) ? "2026-08-14T01:05:00Z" : null,
+                additionalCostStatus: openedPages.has(42) ? "ACTIVE_RENTAL" : "ONE_INK"
+            },
+            {
+                position: 2,
+                pageNumber: 3,
+                openedAt: openedPages.has(3) ? "2026-08-14T01:10:00Z" : null,
+                additionalCostStatus: "OWNED"
+            }
+        ]
+    };
+}
+
+function routeStorage(values = new Map()) {
+    return {
+        getItem: (key) => values.get(key) || null,
+        setItem: (key, value) => values.set(key, value),
+        removeItem: (key) => values.delete(key)
+    };
+}
+
 async function verifyLibraryPage() {
     const root = createLibraryFixture();
     fixtureContainer.append(root);
@@ -899,9 +1496,70 @@ async function verifyLibraryPage() {
 
     clearCommonError();
     root.remove();
+
+    const aiRoot = createLibraryFixture({aiRouteEnabled: true});
+    fixtureContainer.append(aiRoot);
+    const htmlPurpose = "<img src=x onerror=alert('library')>";
+    await createLibraryPage(aiRoot, {
+        request: async () => ({
+            entries: [
+                {
+                    bookId: 21,
+                    coverImagePath: null,
+                    title: "경로만 저장한 도서",
+                    category: "인문",
+                    lastPageNumber: 1,
+                    rentedAt: null,
+                    expiresAt: null,
+                    activeRental: null,
+                    owned: false,
+                    routes: [{routeId: 31, purpose: htmlPurpose}],
+                    currentRouteId: 31
+                },
+                {
+                    ...libraryEntry(22, "여러 경로 도서", 4, false, true),
+                    routes: [
+                        {routeId: 42, purpose: "현재 경로"},
+                        {routeId: 41, purpose: "이전 경로"}
+                    ],
+                    currentRouteId: 42
+                }
+            ]
+        })
+    }).start();
+
+    const aiCards = aiRoot.querySelectorAll("[data-library-card]");
+    const routeOnlyCard = aiCards[0];
+    const routeOnlyLink = routeOnlyCard.querySelector("[data-library-route-list] a");
+    assert(aiCards.length === 2, "AI 경로가 있는 책도 책당 카드 하나로 렌더링해야 합니다.");
+    assert(
+        routeOnlyCard.querySelector("[data-library-access]").textContent === "AI 경로 저장",
+        "대여·소장 없이 경로만 저장한 책을 구분해야 합니다.");
+    assert(
+        routeOnlyCard.querySelector("[data-library-last-page]").textContent
+            === "아직 읽은 페이지가 없습니다.",
+        "경로만 저장한 책을 1페이지를 읽은 것처럼 표시하면 안 됩니다.");
+    assert(
+        routeOnlyCard.querySelector("[data-library-resume]").textContent === "첫 페이지 읽기"
+            && routeOnlyCard.querySelector("[data-library-resume]").getAttribute("href")
+                === "/books/21/viewer?page=1",
+        "경로만 저장한 책은 1페이지 첫 진입을 제공해야 합니다.");
+    assert(
+        routeOnlyLink.getAttribute("href") === "/ai-routes/31",
+        "저장 경로는 W02 상세 화면으로 연결해야 합니다.");
+    assert(
+        routeOnlyLink.textContent === htmlPurpose && routeOnlyLink.querySelector("img") === null,
+        "HTML 모양의 목적을 텍스트로만 표시해야 합니다.");
+    assert(
+        routeOnlyCard.querySelector("[data-library-route-list] .badge").textContent === "현재 경로",
+        "현재 경로를 배지로 표시해야 합니다.");
+    assert(
+        aiCards[1].querySelectorAll("[data-library-route-list] a").length === 2,
+        "한 책의 저장 경로 여러 개를 같은 카드에 표시해야 합니다.");
+    aiRoot.remove();
 }
 
-function createLibraryFixture() {
+function createLibraryFixture({aiRouteEnabled = false} = {}) {
     const root = document.createElement("section");
     root.innerHTML = `
         <p data-library-status></p>
@@ -920,6 +1578,11 @@ function createLibraryFixture() {
                     <p data-library-expires-at></p>
                 </div>
                 <p data-library-owned hidden>소장 안내</p>
+                ${aiRouteEnabled ? `
+                    <section data-library-ai-routes hidden>
+                        <ul data-library-route-list></ul>
+                    </section>
+                ` : ""}
                 <a data-library-resume>이어서 읽기</a>
             </article>
         </template>
@@ -1394,9 +2057,63 @@ async function verifyBookDetailPage() {
         disabledRoot.querySelector("[data-ownership-summary]").textContent.includes("사용할 수 없습니다"),
         "결제 비활성 환경 안내를 표시해야 합니다.");
     disabledRoot.remove();
+
+    const supportedRoot = createBookDetailFixture({aiRouteEnabled: true});
+    fixtureContainer.append(supportedRoot);
+    const supportedRequests = [];
+    await initializeBookDetailPage(supportedRoot, {
+        request: async (url) => {
+            supportedRequests.push(url);
+            return bookDetailResponse(false, true);
+        },
+        loadPortOne
+    }).ready;
+    assert(
+        supportedRoot.querySelector("[data-ai-route-link]").getAttribute("href")
+            === "/books/17/ai-route",
+        "로그인한 사용자의 지원 도서는 W01 생성 화면으로 연결해야 합니다.");
+    assert(!supportedRoot.querySelector("[data-ai-route-entry]").hidden, "지원 도서의 AI 진입점을 표시해야 합니다.");
+    assert(!supportedRoot.querySelector("[data-ownership-purchase]").hidden, "AI 진입점이 기존 소장 결제 버튼을 숨기면 안 됩니다.");
+    assert(
+        supportedRequests.length === 1 && supportedRequests[0] === "/api/books/17",
+        "도서 상세 진입점은 AI 생성 API를 호출하면 안 됩니다.");
+    supportedRoot.remove();
+
+    const anonymousAiRoot = createBookDetailFixture({
+        authenticated: false,
+        aiRouteEnabled: true
+    });
+    fixtureContainer.append(anonymousAiRoot);
+    await initializeBookDetailPage(anonymousAiRoot, {
+        request: async () => bookDetailResponse(null, true),
+        loadPortOne
+    }).ready;
+    assert(
+        anonymousAiRoot.querySelector("[data-ai-route-link]").getAttribute("href")
+            === "/login?returnTo=%2Fbooks%2F17%2Fai-route",
+        "비로그인 지원 도서는 로그인 후 W01로 복귀해야 합니다.");
+    assert(
+        anonymousAiRoot.querySelector("[data-ai-route-description]").textContent.includes("로그인하면"),
+        "비로그인 사용자에게 AI 경로 기능을 설명해야 합니다.");
+    anonymousAiRoot.remove();
+
+    const unsupportedRoot = createBookDetailFixture({aiRouteEnabled: true});
+    fixtureContainer.append(unsupportedRoot);
+    await initializeBookDetailPage(unsupportedRoot, {
+        request: async () => bookDetailResponse(false, false),
+        loadPortOne
+    }).ready;
+    assert(
+        unsupportedRoot.querySelector("[data-ai-route-entry]") === null,
+        "미지원 도서에는 AI 생성 control을 남기면 안 됩니다.");
+    unsupportedRoot.remove();
 }
 
-function createBookDetailFixture({authenticated = true, paymentEnabled = true} = {}) {
+function createBookDetailFixture({
+    authenticated = true,
+    paymentEnabled = true,
+    aiRouteEnabled = false
+} = {}) {
     const root = document.createElement("section");
     root.dataset.bookId = "17";
     root.dataset.authenticated = String(authenticated);
@@ -1413,6 +2130,12 @@ function createBookDetailFixture({authenticated = true, paymentEnabled = true} =
             <span data-book-page-count></span>
             <span data-book-price></span>
             <a data-book-viewer-link>첫 페이지 읽기</a>
+            ${aiRouteEnabled ? `
+                <section data-ai-route-entry hidden>
+                    <p data-ai-route-description></p>
+                    <a data-ai-route-link></a>
+                </section>
+            ` : ""}
             <p data-ownership-summary></p>
             <button type="button" data-ownership-purchase disabled>소장 결제</button>
             <a href="/login" data-ownership-login hidden>로그인</a>
@@ -1423,8 +2146,8 @@ function createBookDetailFixture({authenticated = true, paymentEnabled = true} =
     return root;
 }
 
-function bookDetailResponse(owned) {
-    return {
+function bookDetailResponse(owned, aiRouteSupported) {
+    const response = {
         bookId: 17,
         category: "소설",
         coverImagePath: null,
@@ -1435,6 +2158,10 @@ function bookDetailResponse(owned) {
         bookPrice: 12000,
         owned
     };
+    if (aiRouteSupported !== undefined) {
+        response.aiRouteSupported = aiRouteSupported;
+    }
+    return response;
 }
 
 async function verifyOwnershipHistoryPage() {

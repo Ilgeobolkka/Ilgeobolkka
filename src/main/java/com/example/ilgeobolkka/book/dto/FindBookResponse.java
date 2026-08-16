@@ -1,5 +1,6 @@
 package com.example.ilgeobolkka.book.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.example.ilgeobolkka.book.entity.Book;
 
 public record FindBookResponse(
@@ -11,9 +12,13 @@ public record FindBookResponse(
         String description,
         int totalPageCount,
         int bookPrice,
-        Boolean owned) {
+        Boolean owned,
+        @JsonInclude(JsonInclude.Include.NON_NULL) Boolean aiRouteSupported) {
 
-    public static FindBookResponse of(Book book, Boolean owned) {
+    public static FindBookResponse of(
+            Book book,
+            Boolean owned,
+            boolean aiRouteEnabled) {
         return new FindBookResponse(
                 book.getId(),
                 book.getCategory(),
@@ -23,6 +28,7 @@ public record FindBookResponse(
                 book.getDescription(),
                 book.getTotalPageCount(),
                 book.getPriceWon(),
-                owned);
+                owned,
+                aiRouteEnabled ? book.isAiRouteSupported() : null);
     }
 }

@@ -81,10 +81,13 @@ public class SecurityConfig {
             pathPattern(HttpMethod.GET, "/books/{bookId}");
     private static final RequestMatcher AI_ROUTE_GENERATION_PAGE =
             pathPattern(HttpMethod.GET, "/books/{bookId}/ai-route");
+    private static final RequestMatcher AI_ROUTE_DETAIL_PAGE =
+            pathPattern(HttpMethod.GET, "/ai-routes/{routeId}");
     private static final RequestMatcher API = pathPattern("/api/**");
     private static final RequestMatcher PROTECTED_HTML = new OrRequestMatcher(
             pathPattern("/books/{bookId}/viewer"),
             AI_ROUTE_GENERATION_PAGE,
+            AI_ROUTE_DETAIL_PAGE,
             pathPattern("/ink"),
             pathPattern("/ownership-payments"),
             pathPattern("/library"));

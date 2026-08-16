@@ -3,8 +3,11 @@ spring:
     web-application-type: none
 
 ai-route-evaluation:
+  phase: ${AI_ROUTE_EVALUATION_PHASE:evaluate}
   manifest: ${AI_ROUTE_EVALUATION_MANIFEST:fixtures/content/ai-route-v2/manifest.json}
   evaluation: ${AI_ROUTE_EVALUATION_DATASET:fixtures/content/ai-route-v2/evaluation.json}
   output: ${AI_ROUTE_EVALUATION_OUTPUT:var/evaluation/ai-route-evaluation.json}
+  judgments: ${AI_ROUTE_EVALUATION_JUDGMENTS:var/evaluation/ai-route-human-judgments.json}
+  report-output: ${AI_ROUTE_EVALUATION_REPORT_OUTPUT:var/evaluation/ai-route-evaluation-report.json}
   manifest-git-revision: ${AI_ROUTE_MANIFEST_GIT_REVISION:}
   evaluation-git-revision: ${AI_ROUTE_EVALUATION_GIT_REVISION:}

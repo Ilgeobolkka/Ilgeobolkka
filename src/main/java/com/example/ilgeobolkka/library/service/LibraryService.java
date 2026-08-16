@@ -25,7 +25,7 @@ public class LibraryService {
         libraryEntryRepository.insertOwnedBookIfAbsent(readerId, bookId, ownedAt);
     }
 
-    public List<LibraryEntryView> findEntries(long readerId) {
-        return libraryEntryRepository.findEntriesByReaderId(readerId);
+    public List<LibraryEntryView> findEntries(long readerId, boolean aiRouteEnabled) {
+        return libraryEntryRepository.findEntriesByReaderId(readerId, aiRouteEnabled);
     }
 }

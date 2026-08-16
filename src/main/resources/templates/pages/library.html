@@ -6,7 +6,10 @@
 <section data-library-root aria-labelledby="library-title">
     <header class="mb-4">
         <h1 class="h2 mb-2" id="library-title">내 서재</h1>
-        <p class="mb-0 text-secondary">
+        <p class="mb-0 text-secondary"
+           th:text="${aiRouteEnabled}
+                   ? '대여하거나 온라인 소장했거나 AI 독서 경로를 저장한 도서를 이어보세요.'
+                   : '대여하거나 온라인 소장한 도서를 마지막으로 읽은 페이지부터 이어보세요.'">
             대여하거나 온라인 소장한 도서를 마지막으로 읽은 페이지부터 이어보세요.
         </p>
     </header>
@@ -22,7 +25,12 @@
              data-library-empty
              hidden>
         <h2 class="h4">아직 서재가 비어 있습니다.</h2>
-        <p class="text-secondary">도서의 한 페이지를 읽거나 온라인 소장하면 여기에 추가됩니다.</p>
+        <p class="text-secondary"
+           th:text="${aiRouteEnabled}
+                   ? '도서의 한 페이지를 읽거나 온라인 소장하거나 AI 독서 경로를 저장하면 여기에 추가됩니다.'
+                   : '도서의 한 페이지를 읽거나 온라인 소장하면 여기에 추가됩니다.'">
+            도서의 한 페이지를 읽거나 온라인 소장하면 여기에 추가됩니다.
+        </p>
         <a class="btn btn-primary" th:href="@{/books}">도서 둘러보기</a>
     </section>
 
@@ -53,6 +61,15 @@
                        hidden>
                         기간 제한이나 잉크 차감 없이 읽을 수 있습니다.
                     </p>
+                    <section class="border-top pt-3 mb-3"
+                             th:if="${aiRouteEnabled}"
+                             data-library-ai-routes
+                             hidden
+                             aria-label="저장한 AI 독서 경로">
+                        <h3 class="h6 mb-2">AI 독서 경로</h3>
+                        <ul class="list-unstyled d-grid gap-2 mb-0"
+                            data-library-route-list></ul>
+                    </section>
                     <a class="btn btn-primary mt-auto"
                        data-library-resume>
                         이어서 읽기
