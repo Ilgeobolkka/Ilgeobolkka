@@ -46166,7 +46166,7 @@
           "aiRouteCandidatePage": true,
           "aiAnalysisText": "스키마 확장과 축소의 비대칭 위험을 비교하고 축소 시 기존 자료 영향 규모의 사전 측정을 요구한다. 기록 전용 적용 후 차단 전환이라는 단계적 도입 절차를 제시한다.",
           "aiAnalysisInputSha256": "634c8ba2a45dfdb8a28f4e3c59e986edbba9f9c7b1a2662f0498980c53fe5afa",
-          "aiPublicGuideTopic": "약속의 범위를 바꾸는 두 방향의 판단",
+          "aiPublicGuideTopic": "스키마의 범위를 넓히고 좁히는 판단",
           "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             14
@@ -46188,7 +46188,7 @@
           "aiRouteCandidatePage": true,
           "aiAnalysisText": "검증 설계 점검을 통로 열거·중복 확인·층 분리·격리 경로·측정 가능성의 다섯 항목으로 정식화한다. 각 항목이 앞 장에서 제시한 대응 수단과 직접 연결됨을 밝힌다.",
           "aiAnalysisInputSha256": "587edb72fb22a0257abf0d6dd06b15d2f3676cb3d0edc57a7f43a219bd92d667",
-          "aiPublicGuideTopic": "설계를 살펴볼 때 차례로 확인할 목록",
+          "aiPublicGuideTopic": "검증 설계를 훑을 때 차례로 볼 항목",
           "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             20
@@ -46254,7 +46254,7 @@
           "aiRouteCandidatePage": true,
           "aiAnalysisText": "책 전체의 판단을 출처 식별과 책임 귀속의 두 물음으로 압축하고 각 장의 분리 원칙을 그 귀결로 정리한다. 검증의 목표를 완전성이 아닌 결함 범위 축소와 추적 가능성으로 규정한다.",
           "aiAnalysisInputSha256": "5a958ae8708ff40b40910c87d05665b46da1ce78ab0754af4b4f001ca438380b",
-          "aiPublicGuideTopic": "이 책이 다룬 판단 기준의 요약",
+          "aiPublicGuideTopic": "검증 설계에서 되풀이해 물어야 할 두 가지",
           "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             45
@@ -47353,7 +47353,7 @@
           "aiRouteCandidatePage": true,
           "aiAnalysisText": "책 전체의 판단을 관찰과 추정의 구분, 확인의 분기력이라는 두 물음으로 압축한다. 조사 역량을 직관이 아닌 반복 가능한 절차로 규정하고 이전 가능성을 밝힌다.",
           "aiAnalysisInputSha256": "adf5182ba321652245da8fe025f11c18d281786071f11e4f84e796869adf0158",
-          "aiPublicGuideTopic": "이 책이 다룬 판단 기준의 요약",
+          "aiPublicGuideTopic": "조사를 능력이 아니라 절차로 다루는 이유",
           "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [
             45
@@ -48369,7 +48369,7 @@
           "aiRouteCandidatePage": true,
           "aiAnalysisText": "인터페이스 확장과 축소의 비대칭적 위험을 비교하고 다중 사용처 필요성을 확장 기준으로 제시한다. 구현 사정에서 파생된 항목을 계약에서 배제할 근거를 설명한다.",
           "aiAnalysisInputSha256": "c7c873131dbc6e252787c51cd75c699963219c5b307f957fb96d96c2cc9462ff",
-          "aiPublicGuideTopic": "약속의 범위를 바꾸는 두 방향의 판단",
+          "aiPublicGuideTopic": "인터페이스 범위를 조정하는 두 방향",
           "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             14
@@ -48457,7 +48457,7 @@
           "aiRouteCandidatePage": true,
           "aiAnalysisText": "함수와 모듈에서 반복된 경계 판단의 동일성을 확인하고 공통 변경 사유·인계 최소화를 단일 기준으로 통합한다. 구조의 적정성을 고정된 배치가 아닌 재조정 가능성으로 규정한다.",
           "aiAnalysisInputSha256": "1d7cf3e56736f838d6e0e45d4759f71455131cdacd493e928eae2e40aff1b8e1",
-          "aiPublicGuideTopic": "이 책이 다룬 판단 기준의 요약",
+          "aiPublicGuideTopic": "규모가 달라도 같은 경계 판단이 쓰이는 까닭",
           "estimatedReadingSeconds": 75,
           "prerequisitePageNumbers": [
             45
@@ -49491,7 +49491,7 @@
           "aiRouteCandidatePage": true,
           "aiAnalysisText": "로그 설계 점검을 추적 가능성·행동 연결·이름 일관성·유실 계측·삭제 시점의 다섯 항목으로 정식화한다. 각 항목의 위반이 가리키는 결함과 대응 절을 연결한다.",
           "aiAnalysisInputSha256": "0480673990cac24096d854e69f910645e6ab538d3c965694309272691adc84f5",
-          "aiPublicGuideTopic": "설계를 살펴볼 때 차례로 확인할 목록",
+          "aiPublicGuideTopic": "로그 설계에서 하나씩 확인할 항목",
           "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [
             17
@@ -49557,7 +49557,7 @@
           "aiRouteCandidatePage": true,
           "aiAnalysisText": "책 전체의 판단을 사후 질의 예측이라는 단일 물음으로 압축하고 각 장치를 그 물음의 수단으로 정리한다. 로그의 목표를 완전성이 아닌 응답 가능성과 비용의 균형으로 규정한다.",
           "aiAnalysisInputSha256": "48c4773cfb92e17d043e365d4d5dd4802752454345db0713db1891293c7f5c8d",
-          "aiPublicGuideTopic": "이 책이 다룬 판단 기준의 요약",
+          "aiPublicGuideTopic": "남길 것을 정하는 물음으로 되돌아가기",
           "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [
             45
@@ -50585,7 +50585,7 @@
           "aiRouteCandidatePage": true,
           "aiAnalysisText": "경계 점검을 상한 존재·계층 간 포함 관계·재시도 대상·실패 값 구분·실측 검증의 다섯 항목으로 정식화한다. 마지막 항목이 문서 검토로 대체될 수 없음을 강조한다.",
           "aiAnalysisInputSha256": "0f7d76b84f1fa0ec766307d225946d30c894a58c582a6c28e8527d05a1cab740",
-          "aiPublicGuideTopic": "설계를 살펴볼 때 차례로 확인할 목록",
+          "aiPublicGuideTopic": "경계 설계를 점검하는 항목의 차례",
           "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [
             17
@@ -50651,7 +50651,7 @@
           "aiRouteCandidatePage": true,
           "aiAnalysisText": "책 전체의 판단을 미지정 시 적용값과 실패 전파 범위라는 두 물음으로 압축하고 각 장치를 그 물음의 수단으로 정리한다. 미결정이 외부 기본값에 의한 결정으로 대체된다는 점을 결론으로 제시한다.",
           "aiAnalysisInputSha256": "1d8387f858a8f57ca5300c21fd9137c8d227b3dd51ac6f8706b8b4f49f3f1858",
-          "aiPublicGuideTopic": "이 책이 다룬 판단 기준의 요약",
+          "aiPublicGuideTopic": "정하지 않은 것도 결정이 되는 자리",
           "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             45
@@ -51682,7 +51682,7 @@
           "aiRouteCandidatePage": true,
           "aiAnalysisText": "확인 전략 점검을 계층 배분·실행 시간·계약 공유·대체물 근거·안정성의 다섯 항목으로 정식화한다. 외부 연동 관련 두 항목의 누락 빈도를 함께 지적한다.",
           "aiAnalysisInputSha256": "b04292877edfce397b3b1578f53cbc77bce69256939ab7c93d8e852969ce75e5",
-          "aiPublicGuideTopic": "설계를 살펴볼 때 차례로 확인할 목록",
+          "aiPublicGuideTopic": "확인 전략을 훑어볼 때의 항목 순서",
           "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             25
@@ -51748,7 +51748,7 @@
           "aiRouteCandidatePage": true,
           "aiAnalysisText": "책 전체의 판단을 기대 식별과 최저 비용 계층 배치라는 두 물음으로 압축하고 각 기법을 그 수단으로 정리한다. 확인의 가치 척도를 개수가 아닌 보호 대상의 명시 가능성으로 규정한다.",
           "aiAnalysisInputSha256": "1138af807ab16d541fc20e45f8ef38497586f1447736e3928ba385af2d601a0e",
-          "aiPublicGuideTopic": "이 책이 다룬 판단 기준의 요약",
+          "aiPublicGuideTopic": "확인의 값을 개수가 아닌 것으로 재기",
           "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             45
@@ -52849,7 +52849,7 @@
           "aiRouteCandidatePage": true,
           "aiAnalysisText": "책 전체의 판단을 시간 배분과 자료 증가 내성이라는 두 물음으로 압축하고 각 도구를 그 물음의 수단으로 정리한다. 진단을 반복 가능한 절차로 규정하고 이전 가능성을 밝힌다.",
           "aiAnalysisInputSha256": "77f141f9ef3c52d8070d545eb25f05bf45b974d37acb392405fbfb08fe9ca3a5",
-          "aiPublicGuideTopic": "이 책이 다룬 판단 기준의 요약",
+          "aiPublicGuideTopic": "성능 진단을 되풀이할 수 있는 절차로 만들기",
           "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             45
@@ -53947,7 +53947,7 @@
           "aiRouteCandidatePage": true,
           "aiAnalysisText": "책 전체의 판단을 비시각 조건에서의 과업 완수 가능성이라는 단일 물음으로 압축한다. 각 기법을 그 물음의 수단으로 정리하고 난이도보다 지속 실행이 관건임을 밝힌다.",
           "aiAnalysisInputSha256": "2eebb3cdcddef06921a27003e1c94bcdda4b76a20b74172ded40b1a134eb9d5a",
-          "aiPublicGuideTopic": "이 책이 다룬 판단 기준의 요약",
+          "aiPublicGuideTopic": "보지 않고도 쓸 수 있는가라는 하나의 물음",
           "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             45
@@ -55044,7 +55044,7 @@
           "aiRouteCandidatePage": true,
           "aiAnalysisText": "책 전체의 판단을 변경 범위 식별과 복구 경로 확보라는 두 물음으로 압축하고 각 장치를 그 수단으로 정리한다. 배포를 기술 실행이자 사전 결정의 축적으로 규정한다.",
           "aiAnalysisInputSha256": "fad55b12fc0928f1d32624768f2c042cd82f827259ca60904b7f25005a738370",
-          "aiPublicGuideTopic": "이 책이 다룬 판단 기준의 요약",
+          "aiPublicGuideTopic": "배포하는 날을 평범하게 만드는 사전 결정",
           "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [
             45
