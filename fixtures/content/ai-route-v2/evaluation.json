@@ -3135,20 +3135,11 @@
     {
       "caseId": "case-book-082",
       "bookId": 82,
-      "purpose": "완행열차로 북부를 도는 계획인데, 급행을 두고 완행을 고르는 것이 무엇을 얻는 선택인지와 창밖이 바뀌는 자리를 알아보고 달리는 기차에서 무엇을 적을지 정하는 법을 빌려 둔 앞부분에 조금만 더해 익히고 싶다",
+      "purpose": "완행열차로 북부를 도는 계획인데, 급행을 두고 완행을 고르는 것이 무엇을 얻는 선택인지와 창밖이 바뀌는 자리를 알아보고 달리는 기차에서 무엇을 적을지 정하는 법을 적은 잉크로 익히고 싶다",
       "owned": false,
       "maxAdditionalInk": 5,
       "depth": null,
-      "activeRentalPageNumbers": [
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9
-      ],
+      "activeRentalPageNumbers": [],
       "requiredConcepts": [
         "완행열차",
         "정차역",
@@ -3173,15 +3164,7 @@
         },
         {
           "beforePageNumber": 12,
-          "afterPageNumber": 13
-        },
-        {
-          "beforePageNumber": 12,
           "afterPageNumber": 14
-        },
-        {
-          "beforePageNumber": 14,
-          "afterPageNumber": 15
         },
         {
           "beforePageNumber": 14,
@@ -3206,9 +3189,7 @@
         2,
         4,
         12,
-        13,
         14,
-        15,
         18
       ],
       "allowedAlternativePageNumbers": [
@@ -3224,10 +3205,7 @@
       "owned": false,
       "maxAdditionalInk": 10,
       "depth": null,
-      "activeRentalPageNumbers": [
-        2,
-        3
-      ],
+      "activeRentalPageNumbers": [],
       "requiredConcepts": [
         "무역 도시",
         "장 서는 시각",
@@ -3279,10 +3257,6 @@
         {
           "beforePageNumber": 6,
           "afterPageNumber": 22
-        },
-        {
-          "beforePageNumber": 22,
-          "afterPageNumber": 23
         }
       ],
       "irrelevantPageNumbers": [
@@ -3309,8 +3283,7 @@
         13,
         16,
         17,
-        22,
-        23
+        22
       ],
       "allowedAlternativePageNumbers": [
         5,
@@ -3713,14 +3686,11 @@
     {
       "caseId": "case-book-088",
       "bookId": 88,
-      "purpose": "지도에 골목이 그려져 있지 않은 도시에 며칠 머물면서 직접 골목 지도를 그려 보고 싶다. 비 오는 날 골목에서 물이 어느 쪽으로 흐르는지와 배수로를 어떻게 읽는지, 그리고 걸음으로 재어 종이에 옮기는 방법을 빌려 둔 앞부분에 더해 익히고 싶다",
+      "purpose": "지도에 골목이 그려져 있지 않은 도시에 며칠 머물면서 직접 골목 지도를 그려 보고 싶다. 비 오는 날 골목에서 물이 어느 쪽으로 흐르는지와 배수로를 어떻게 읽는지, 그리고 걸음으로 재어 종이에 옮기는 방법을 이어서 익히고 싶다",
       "owned": false,
       "maxAdditionalInk": 10,
       "depth": null,
-      "activeRentalPageNumbers": [
-        2,
-        3
-      ],
+      "activeRentalPageNumbers": [],
       "requiredConcepts": [
         "지도의 공백",
         "골목의 폭",
@@ -3772,10 +3742,6 @@
         {
           "beforePageNumber": 20,
           "afterPageNumber": 22
-        },
-        {
-          "beforePageNumber": 22,
-          "afterPageNumber": 23
         }
       ],
       "irrelevantPageNumbers": [
@@ -3801,8 +3767,7 @@
         14,
         15,
         20,
-        22,
-        23
+        22
       ],
       "allowedAlternativePageNumbers": [
         5,

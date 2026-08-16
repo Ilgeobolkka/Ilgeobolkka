@@ -194,8 +194,14 @@ def main():
         "requiredPrerequisites가 referencePageNumbers 선수 간선 전체와 일치 "
         f"(누락 {missing_prerequisites}, 초과 {unexpected_prerequisites})")
     extra = sorted(route - set(case["referencePageNumbers"]))
+    # 정본 「품질 평가 조건」: 예산 0만 활성 대여를 입력하고 나머지 비소장 시나리오는 활성 대여가
+    # 없다. AiRouteEvaluationReader가 같은 규칙으로 fixture를 거부한다.
     if case["owned"] is False and case["maxAdditionalInk"] == 0:
         chk(bool(case["activeRentalPageNumbers"]), "예산0은 activeRentalPageNumbers 필요")
+    if case["owned"] is False and case["maxAdditionalInk"] != 0:
+        chk(not case["activeRentalPageNumbers"],
+            f"예산 {case['maxAdditionalInk']}는 activeRentalPageNumbers가 비어 있어야 함 "
+            f"(실제 {case['activeRentalPageNumbers']})")
     if case["owned"] is True:
         chk(case["maxAdditionalInk"] is None, "소장 사례는 maxAdditionalInk=null")
         chk(case["depth"] in DEPTH_PAGE_LIMITS, "소장 사례는 depth 지정")

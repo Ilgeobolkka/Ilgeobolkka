@@ -847,14 +847,14 @@ SECTION_EDGES = {
 
 
 # 정답 경로의 씨앗 페이지. 선수 폐쇄와 선수 간선은 그래프에서 계산하므로 여기에 적지 않는다.
-CASE_SEED_PAGES = [13, 15, 18]
+CASE_SEED_PAGES = [18]
 CASE_REQUIRED_CONCEPTS = ["완행열차", "정차역", "풍경 전환", "창가 노트", "관찰 기록"]
 CASE_HELPFUL_CONCEPTS = ["열차 시각표", "창가 자리", "선로 사정", "지연"]
-# 이미 빌려 둔 앞부분. 1장의 네 절이며 정답 경로의 앞부분을 덮어 추가 차감이 예산 안에 든다.
-CASE_RENTAL_PAGES = list(range(2, 10))
+# 예산 0이 아닌 비소장 시나리오는 활성 대여가 없다(정본 「품질 평가 조건」).
+CASE_RENTAL_PAGES = []
 # 창밖 기록만 익히려는 목적과 무관한 페이지. 지연 회복과 야간 운행, 터널 구간이다.
 CASE_IRRELEVANT_PAGES = [26, 27, 34, 35, 46, 47]
-# 정답 대신 골라도 목적을 채우는 페이지. 대여 안이거나 예산 안에서 바꿔 고를 수 있는 자리다.
+# 정답 대신 골라도 목적을 채우는 페이지. 선수 폐쇄가 예산 안에 들어 바꿔 고를 수 있다.
 CASE_ALTERNATIVE_PAGES = [5, 16, 17]
 
 
@@ -869,7 +869,7 @@ def build_case(manifest_pages, prereq):
         "bookId": BOOK_ID,
         "purpose": "완행열차로 북부를 도는 계획인데, 급행을 두고 완행을 고르는 것이 무엇을 얻는 "
                    "선택인지와 창밖이 바뀌는 자리를 알아보고 달리는 기차에서 무엇을 적을지 정하는 법을 "
-                   "빌려 둔 앞부분에 조금만 더해 익히고 싶다",
+                   "적은 잉크로 익히고 싶다",
         "owned": False,
         "maxAdditionalInk": 5,
         "depth": None,
