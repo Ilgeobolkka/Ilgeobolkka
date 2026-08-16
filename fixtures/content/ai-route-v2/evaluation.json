@@ -3709,6 +3709,106 @@
         16,
         25
       ]
+    },
+    {
+      "caseId": "case-book-088",
+      "bookId": 88,
+      "purpose": "지도에 골목이 그려져 있지 않은 도시에 며칠 머물면서 직접 골목 지도를 그려 보고 싶다. 비 오는 날 골목에서 물이 어느 쪽으로 흐르는지와 배수로를 어떻게 읽는지, 그리고 걸음으로 재어 종이에 옮기는 방법을 빌려 둔 앞부분에 더해 익히고 싶다",
+      "owned": false,
+      "maxAdditionalInk": 10,
+      "depth": null,
+      "activeRentalPageNumbers": [
+        2,
+        3
+      ],
+      "requiredConcepts": [
+        "지도의 공백",
+        "골목의 폭",
+        "물길",
+        "빗길 통행",
+        "배수로",
+        "그리는 기준",
+        "걸음 재기"
+      ],
+      "helpfulConcepts": [
+        "처마",
+        "골목 입구",
+        "기호",
+        "바닥 재질"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 6
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 10
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 13
+        },
+        {
+          "beforePageNumber": 6,
+          "afterPageNumber": 14
+        },
+        {
+          "beforePageNumber": 14,
+          "afterPageNumber": 15
+        },
+        {
+          "beforePageNumber": 10,
+          "afterPageNumber": 20
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 22
+        },
+        {
+          "beforePageNumber": 22,
+          "afterPageNumber": 23
+        }
+      ],
+      "irrelevantPageNumbers": [
+        33,
+        34,
+        42,
+        45,
+        46
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          47
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        6,
+        10,
+        12,
+        13,
+        14,
+        15,
+        20,
+        22,
+        23
+      ],
+      "allowedAlternativePageNumbers": [
+        5,
+        11,
+        21
+      ]
     }
   ]
 }

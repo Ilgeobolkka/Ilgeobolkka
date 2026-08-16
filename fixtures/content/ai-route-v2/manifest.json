@@ -44700,6 +44700,1051 @@
           "duplicateGroupKeys": []
         }
       ]
+    },
+    {
+      "bookId": 88,
+      "title": "비 오는 골목의 지도",
+      "pdfPath": "pdfs/book-088.pdf",
+      "pdfSha256": "40bfa7356a68a0b64cc7c17e1926a421e9113b72043adfe3230307ad5a025f50",
+      "totalPageCount": 48,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 먹구름시의 골목",
+          "section": "1.1 지도의 공백",
+          "primaryConcepts": [
+            "지도의 공백"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지도에 기재되지 않은 소로의 존재와 그 원인을 밝히는 도입 페이지다. 폭이 좁고 변형이 잦아 기재가 유지되지 않는다는 구조를 제시하고, 강우 시에 지형 정보가 드러난다는 관찰을 근거로 우천을 관찰 조건으로 선택한 이유를 밝힌다.",
+          "aiAnalysisInputSha256": "df2d38fa95279f4d5f22268f541a346082fbbc8941f94f8f2882ab3e2ec5f226",
+          "aiPublicGuideTopic": "지도에 그려지지 않은 길들",
+          "estimatedReadingSeconds": 90,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "draw-while-walking"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 먹구름시의 골목",
+          "section": "1.1 지도의 공백",
+          "primaryConcepts": [
+            "지도의 공백"
+          ],
+          "secondaryConcepts": [
+            "골목의 폭"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "작업 범위를 먼저 측정하는 절차를 다룬다. 대상 구역의 둘레와 진입구의 수를 세어 소요를 가늠하는 방법을 제시하고, 그 결과에 따라 범위를 세 골목으로 축소한 판단을 밝힌다.",
+          "aiAnalysisInputSha256": "cc46ea969d7bb16ad477fb2ab8632559b466966f00107b6391ae00bea4f7c6b2",
+          "aiPublicGuideTopic": "빈칸의 크기를 먼저 재기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 먹구름시의 골목",
+          "section": "1.2 골목의 폭",
+          "primaryConcepts": [
+            "골목의 폭"
+          ],
+          "secondaryConcepts": [
+            "지도의 공백"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "소로의 폭을 세 등급으로 구분하고 각 등급에 대응하는 용도와 건물 배치를 설명한다. 최협소 통로가 대개 막다른 길이지만 일부는 관통해 경로의 지름길이 된다는 점을 제시한다.",
+          "aiAnalysisInputSha256": "3ae5cca6158bdd83fb75bed0b52030b08ac556b2439a72ac755b758f6147d8d3",
+          "aiPublicGuideTopic": "폭이 알려 주는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 먹구름시의 골목",
+          "section": "1.2 골목의 폭",
+          "primaryConcepts": [
+            "골목의 폭"
+          ],
+          "secondaryConcepts": [
+            "골목 입구",
+            "그리는 기준"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "폭 측정을 신체 기준으로 수행하는 방법과 그 결과를 도면의 선 굵기로 표현하는 방식을 제시한다. 폭이 변하는 지점을 별도로 표시해야 하는 이유를 통행 실패 사례로 설명한다.",
+          "aiAnalysisInputSha256": "423a7532e89b185d6961d678a9cfeb562d340eb40a93c6e25467437fdcbf0a38",
+          "aiPublicGuideTopic": "폭을 재는 방법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 먹구름시의 골목",
+          "section": "1.3 물길",
+          "primaryConcepts": [
+            "물길"
+          ],
+          "secondaryConcepts": [
+            "지도의 공백"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "소로의 미세한 경사가 강우 시에만 관측된다는 점과 그 방향이 간선 도로로 이어진다는 관계를 설명한다. 길을 잃었을 때의 탈출 규칙으로 물의 흐름을 사용한 사례를 제시하고, 도면의 최우선 기재 항목으로 삼는다.",
+          "aiAnalysisInputSha256": "15ef71cc97a7e9ae3db4b41628d6ccc107bb0cc56e865dc145a9aba19836fb42",
+          "aiPublicGuideTopic": "골목이 기울어 있는 방향",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 먹구름시의 골목",
+          "section": "1.3 물길",
+          "primaryConcepts": [
+            "물길"
+          ],
+          "secondaryConcepts": [
+            "배수로",
+            "골목의 폭"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "소로망의 배수 방향을 화살표로 표시하고 그것이 하나의 간선 배수로로 수렴하는 구조를 위에서 본 형태로 나타낸 도표다. 관찰자의 탈출 경로를 함께 그려 물의 흐름이 방향 기준으로 쓰이는 방식을 보인다.",
+          "aiAnalysisInputSha256": "bd276865d0ce945ac07fd32b82cc2c822c521009aa5460a6054813ae9f06ff0b",
+          "aiPublicGuideTopic": "비가 올 때 골목의 물이 어느 쪽으로 흐르는지 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 먹구름시의 골목",
+          "section": "1.4 처마",
+          "primaryConcepts": [
+            "처마"
+          ],
+          "secondaryConcepts": [
+            "물길"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "차양의 연속 여부가 우천 시 통행 조건을 가른다는 점을 다룬다. 건축 시기에 따라 차양의 유무가 갈린다는 관찰을 제시하고, 이를 도면에 표시해 경로 선택의 기준으로 삼은 실무를 설명한다.",
+          "aiAnalysisInputSha256": "f31470dd9d5faff3314c2291cb4d2c01fea077628e636c02409bb0016ac7f401",
+          "aiPublicGuideTopic": "비를 피할 수 있는 자리",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 먹구름시의 골목",
+          "section": "1.4 처마",
+          "primaryConcepts": [
+            "처마"
+          ],
+          "secondaryConcepts": [
+            "빗길 통행",
+            "기호"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "차양 하부가 통행 공간이자 체류 공간으로 이중 사용된다는 점을 다룬다. 강우 강도가 높을 때 통행이 어려워지는 역설, 그 공간이 기록과 질문에 적합한 조건을 제공한다는 관찰을 함께 제시한다.",
+          "aiAnalysisInputSha256": "bd544fdc3a737f38cd863d29e33b05d6b510e08e74a3a8243e6ac9a8586f9b49",
+          "aiPublicGuideTopic": "처마 아래에서 하는 일",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "1장 먹구름시의 골목",
+          "section": "1.5 골목 입구",
+          "primaryConcepts": [
+            "골목 입구"
+          ],
+          "secondaryConcepts": [
+            "골목의 폭"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "간선 도로에서 소로 진입구를 식별하는 방법을 제시한다. 노면 마모와 유출수의 양, 간판의 유무를 단서로 삼고 두 단서가 겹치는 지점이 관통 가능성이 높다는 판단 근거를 밝힌다.",
+          "aiAnalysisInputSha256": "f5bea7bad57ec70e9be630b820bf50a87ec7450f8bad74d33aa8f0a5c55e97f4",
+          "aiPublicGuideTopic": "큰길에서 골목으로 들어가는 자리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "1장 먹구름시의 골목",
+          "section": "1.5 골목 입구",
+          "primaryConcepts": [
+            "골목 입구"
+          ],
+          "secondaryConcepts": [
+            "막다른 길",
+            "그리는 기준"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "소로 진입 전의 판단 기준을 시야, 통행 흔적, 체류 시간의 셋으로 제시한다. 우천 시 시간 감각이 흐려진다는 조건을 근거로 사전에 종료 시각을 정하는 방법을 설명하고, 실제 진입 여부의 결과를 함께 기록한다.",
+          "aiAnalysisInputSha256": "87390276e927d38652a27abe2f43e430c7fbba69dfe531bd8b925cc2bf843b48",
+          "aiPublicGuideTopic": "들어가기 전에 정하는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 비 오는 날의 골목",
+          "section": "2.1 빗길 통행",
+          "primaryConcepts": [
+            "빗길 통행"
+          ],
+          "secondaryConcepts": [
+            "골목의 폭",
+            "처마"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "강우가 통행 가능 폭을 축소하는 두 가지 경로를 제시한다. 노면의 물웅덩이와 차양 하부의 체류 인원이며, 그 결과 동일 소로의 통행 조건이 날씨에 따라 달라진다는 점을 도면 표기 방식과 연결한다.",
+          "aiAnalysisInputSha256": "c890bd02fde7ccfbcee49aabef745b549393705a84229a82172dfccff97dc2ec",
+          "aiPublicGuideTopic": "비가 골목을 다시 그린다",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 비 오는 날의 골목",
+          "section": "2.1 빗길 통행",
+          "primaryConcepts": [
+            "빗길 통행"
+          ],
+          "secondaryConcepts": [
+            "바닥 재질",
+            "빗소리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "강우가 통행을 가능하게 만드는 경우를 두 가지 사례로 제시한다. 적재물의 이동과 노상 체류의 감소가 원인이며, 도면에 조건부 통행 구간으로 별도 표기한 방식을 설명한다.",
+          "aiAnalysisInputSha256": "55f87c2c30443fe522e5dc4b4a64df2fee03cb50a24745b5feaac7391e0ca676",
+          "aiPublicGuideTopic": "비 오는 날에만 다닐 수 있는 길",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 비 오는 날의 골목",
+          "section": "2.2 배수로",
+          "primaryConcepts": [
+            "배수로"
+          ],
+          "secondaryConcepts": [
+            "물길"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배수 시설의 위치와 규모가 지형의 경사와 수렴 방향을 드러낸다는 점을 설명한다. 배수로를 따라가면 간선 도로에 도달한다는 규칙과, 도면에 굵기로 표기해 물의 수렴 구조를 가시화한 방법을 제시한다.",
+          "aiAnalysisInputSha256": "63a899097295cd3ece7901ce4552395592fbad0ee9a2f30af7f8e49b7219d8ed",
+          "aiPublicGuideTopic": "골목 아래를 지나는 물길",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 비 오는 날의 골목",
+          "section": "2.2 배수로",
+          "primaryConcepts": [
+            "배수로"
+          ],
+          "secondaryConcepts": [
+            "빗길 통행",
+            "지도 수정"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "배수 용량 초과가 발생하는 지점의 유형을 세 가지로 제시한다. 실제 범람을 관찰해 도면을 수정한 과정을 기록하고, 소로 도면이 일회적 작성이 아니라 반복 갱신으로 완성된다는 점을 밝힌다.",
+          "aiAnalysisInputSha256": "696e373101daff80f985e6a06d6ceb7ea62438a9893ce763bef2a6f6ee611bf5",
+          "aiPublicGuideTopic": "배수로가 막힐 때",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 비 오는 날의 골목",
+          "section": "2.3 바닥 재질",
+          "primaryConcepts": [
+            "바닥 재질"
+          ],
+          "secondaryConcepts": [
+            "빗길 통행",
+            "물길"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "노면 재질 네 가지의 우천 시 특성과 권장 통행 방식을 표 형태로 정리한 도표다. 미끄러움, 배수, 건축 시기의 세 항목을 함께 표기해 재질이 통행 조건과 골목의 연식을 동시에 드러낸다는 점을 보인다.",
+          "aiAnalysisInputSha256": "21ba908fe2e364aa90a6fde15229b0b7b717130e23c990e1832add6dda4ae58a",
+          "aiPublicGuideTopic": "골목 바닥의 재질에 따라 비 올 때 달라지는 것을 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "2장 비 오는 날의 골목",
+          "section": "2.3 바닥 재질",
+          "primaryConcepts": [
+            "바닥 재질"
+          ],
+          "secondaryConcepts": [
+            "배수로"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "우천 시 노면의 마찰 저하 요인을 재질과 이끼로 구분해 설명한다. 통행량이 적은 가장자리에 이끼가 집중된다는 점, 중앙 통행이 안전하지만 침수를 감수해야 한다는 상충을 제시하고 색으로 위험을 식별하는 방법을 덧붙인다.",
+          "aiAnalysisInputSha256": "b6c110bdbc1b096166eeecd88f0cb268cc621c8a4e267fc3239c1ebc4c70617b",
+          "aiPublicGuideTopic": "미끄러운 자리를 아는 법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "2장 비 오는 날의 골목",
+          "section": "2.4 빗소리",
+          "primaryConcepts": [
+            "빗소리"
+          ],
+          "secondaryConcepts": [
+            "빗길 통행"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "강우음의 반사와 확산이 소로의 폭과 구조를 드러낸다는 점을 다룬다. 폭의 변화, 차양 구간, 막다른 구조가 각각 다른 음향으로 구분된다는 관찰을 제시하고 시야가 제한된 조건에서의 보조 단서로 삼는다.",
+          "aiAnalysisInputSha256": "35f5dfca5db0fd9201d4f48412ccfdcd8efe57f4758d15772412c68e4fc67604",
+          "aiPublicGuideTopic": "소리로 골목의 모양을 아는 것",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "2장 비 오는 날의 골목",
+          "section": "2.4 빗소리",
+          "primaryConcepts": [
+            "빗소리"
+          ],
+          "secondaryConcepts": [
+            "기호",
+            "길 묻기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "청각으로 얻은 정보를 도면에 기록하는 문제와 그 해법을 다룬다. 확인 방법이 다른 정보를 별도 기호로 구분해 표기하는 원칙을 제시하고, 그 구분이 이후 검증과 수정의 근거가 된다고 설명한다.",
+          "aiAnalysisInputSha256": "402ea6b72deb367db60a935e0f68243382a5dd23e43c2e41b7729e9d84f81d14",
+          "aiPublicGuideTopic": "소리를 지도에 적을 수 있는가",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 손으로 그리는 지도",
+          "section": "3.1 그리는 기준",
+          "primaryConcepts": [
+            "그리는 기준"
+          ],
+          "secondaryConcepts": [
+            "골목 입구",
+            "지도의 공백"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도면에 기재할 항목과 배제할 항목을 사전에 정하는 절차를 다룬다. 통행 판단에 필요한 네 가지를 기재 대상으로, 변동성이 크거나 기록해서는 안 되는 정보를 배제 대상으로 구분하고 그 결정이 작업 속도를 좌우한다고 설명한다.",
+          "aiAnalysisInputSha256": "6f9c4b3c1abe2a839c22815067632f48f1a5e29a169eebe0d5f298ece8ac1c76",
+          "aiPublicGuideTopic": "무엇을 그리고 무엇을 버릴 것인가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 손으로 그리는 지도",
+          "section": "3.1 그리는 기준",
+          "primaryConcepts": [
+            "그리는 기준"
+          ],
+          "secondaryConcepts": [
+            "기호",
+            "지도 수정"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "우천 환경에서의 필기 재료 선택을 다룬다. 흡습으로 인한 번짐 문제와 기름종이로의 전환, 수정 가능성을 이유로 한 연필 사용, 도면을 골목 단위로 분할해 작성하는 방식을 각각 실무로 제시한다.",
+          "aiAnalysisInputSha256": "8fda7ab6eff0b4f991bc5a96cce65ca762f5559e002fa9b472c49a8347c5aafb",
+          "aiPublicGuideTopic": "종이와 필기구",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 손으로 그리는 지도",
+          "section": "3.2 걸음 재기",
+          "primaryConcepts": [
+            "걸음 재기"
+          ],
+          "secondaryConcepts": [
+            "그리는 기준"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "보수를 이용한 거리 측정 방법과 기준 보폭의 확보를 설명한다. 굴절 지점마다 누적 보수를 기록해 도면의 골격을 만드는 절차를 제시하고, 우천 시 보폭이 짧아져 발생하는 오차를 명시적으로 기록한다.",
+          "aiAnalysisInputSha256": "90bbeb567fb21a6fb22647b3b31ecd8a4acac797028aa4d073a0e498c0b9280e",
+          "aiPublicGuideTopic": "자 없이 길이를 재는 방법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 손으로 그리는 지도",
+          "section": "3.2 걸음 재기",
+          "primaryConcepts": [
+            "걸음 재기"
+          ],
+          "secondaryConcepts": [
+            "되돌아 나오기",
+            "골목의 폭"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "각도 측정을 생략하고 굴절 방향만 기록하는 방식을 제시한다. 누적 오차로 전체 형상이 왜곡되지만 순차 통행에는 지장이 없다는 점을 근거로 들고, 도면의 용도에 따라 요구되는 정확도가 다르다는 관점을 밝힌다.",
+          "aiAnalysisInputSha256": "0b116087d6b7ea1ee412f3f280fcecc9e95442f02a93ff97b5e5cff023f444ab",
+          "aiPublicGuideTopic": "각도를 재지 않는 이유",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "3장 손으로 그리는 지도",
+          "section": "3.3 기호",
+          "primaryConcepts": [
+            "기호"
+          ],
+          "secondaryConcepts": [
+            "그리는 기준",
+            "빗소리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도면에 사용한 여덟 개의 기호와 각각의 의미를 격자로 정리한 도표다. 폭을 나타내는 선 굵기 세 종류와 통행 조건을 나타내는 기호들을 구분해 배치하고, 기호 수를 제한한다는 원칙을 함께 밝힌다.",
+          "aiAnalysisInputSha256": "746a8d30009930dd097c0beeb5a309c11bedf57ba8b75b700797cdc44c25e35e",
+          "aiPublicGuideTopic": "이 지도에서 쓴 기호 여덟 개를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "3장 손으로 그리는 지도",
+          "section": "3.3 기호",
+          "primaryConcepts": [
+            "기호"
+          ],
+          "secondaryConcepts": [
+            "지도 수정",
+            "지도의 공백"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "기호 체계를 여덟 개로 제한한 이유를 현장 작성 시간의 제약으로 설명한다. 선택지가 많아지면 기록 자체가 중단된다는 점을 근거로 들고, 기호화하지 못한 정보는 문장으로 남겨 이후 판단에 넘긴다는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "11749386bdcacc6fe58dfc9814358ef6dd0b42d6a75f41603f908afa4b4a899e",
+          "aiPublicGuideTopic": "기호를 적게 두는 이유",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "3장 손으로 그리는 지도",
+          "section": "3.4 지도 수정",
+          "primaryConcepts": [
+            "지도 수정"
+          ],
+          "secondaryConcepts": [
+            "걸음 재기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도면 수정의 절차를 현장 표시와 사후 교정으로 나눈다. 우천 환경에서 즉석 수정이 기존 기록을 훼손한다는 문제, 저녁에 오류를 일괄 확인하는 방식, 이전 기록을 흔적으로 남겨 원인을 추적하는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "bd2eb8ffd73e39a9eed6039a030d33ba8b216fdca0bef532f12721d9fafe5794",
+          "aiPublicGuideTopic": "틀린 것을 고치는 순서",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "3장 손으로 그리는 지도",
+          "section": "3.4 지도 수정",
+          "primaryConcepts": [
+            "지도 수정"
+          ],
+          "secondaryConcepts": [
+            "순환 골목",
+            "배수로"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수정 과정에서 발견되는 두 가지 오류 유형을 제시한다. 동일 소로의 중복 기재와 연결되지 않는 선분이며, 각각의 식별 단서와 그것이 다음 날의 확인 목록으로 전환되는 순환을 설명한다.",
+          "aiAnalysisInputSha256": "2c967557b3f16c6e523842b788684b7f340ca0b627a2352ddf3a180998ef07e4",
+          "aiPublicGuideTopic": "고치다 보면 알게 되는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 길을 잃는 방식",
+          "section": "4.1 되돌아 나오기",
+          "primaryConcepts": [
+            "되돌아 나오기"
+          ],
+          "secondaryConcepts": [
+            "걸음 재기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "보수 기록을 역순으로 사용해 복귀하는 방법을 제시한다. 역방향에서 좌우가 뒤바뀌어 인지가 어려워진다는 문제와, 임시 표식을 남기고 회수하는 대응, 강우로 표식이 유실된 사례를 함께 기록한다.",
+          "aiAnalysisInputSha256": "8a25fa8d38a3b2f344fe31ed500f65dd73f451b1c4e08ff7db32a9247424acdf",
+          "aiPublicGuideTopic": "들어간 길로 나오는 방법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 길을 잃는 방식",
+          "section": "4.2 막다른 길",
+          "primaryConcepts": [
+            "막다른 길"
+          ],
+          "secondaryConcepts": [
+            "골목 입구"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "막다른 소로를 사전에 판별하는 세 가지 단서를 제시한다. 노면 마모의 분포, 배수로의 연속 여부, 강우음의 반사이며 실제 적중률을 함께 기록해 방법의 신뢰도를 밝힌다.",
+          "aiAnalysisInputSha256": "2995876d5c10f4b99a52347b1ea1b86b8014155ab8d633f205cddf70e1dfdec6",
+          "aiPublicGuideTopic": "막힌 골목을 알아보는 법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 길을 잃는 방식",
+          "section": "4.2 막다른 길",
+          "primaryConcepts": [
+            "막다른 길"
+          ],
+          "secondaryConcepts": [
+            "배수로",
+            "바닥 재질"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "관통 소로와 막다른 소로의 차이를 노면 마모, 배수로의 연속성, 음향 반사의 세 항목으로 대비한 도표다. 위에서 본 형태로 두 경우를 나란히 배치해 진입 전 판단의 근거를 시각적으로 정리한다.",
+          "aiAnalysisInputSha256": "77173f87912dff4a5de2c997e3054d46f4d4cbafababa062ede0ffb3bb86cdad",
+          "aiPublicGuideTopic": "뚫린 골목과 막힌 골목이 어떻게 다른지 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            29
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 길을 잃는 방식",
+          "section": "4.3 순환 골목",
+          "primaryConcepts": [
+            "순환 골목"
+          ],
+          "secondaryConcepts": [
+            "되돌아 나오기"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "순환 구조를 이루는 소로의 인지 난이도와 판별 방법을 다룬다. 보수 기록이 폐합을 드러낸다는 점을 제시하고, 순환 구간이 확인되면 탈출 가능성이 보장되므로 도면에 강조 표시한다는 실무를 밝힌다.",
+          "aiAnalysisInputSha256": "ce5a00b566a4c20e29e39b78e39520cc5fc011597801389abe9ac5bc805d5f75",
+          "aiPublicGuideTopic": "같은 자리로 돌아오는 골목",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "4장 길을 잃는 방식",
+          "section": "4.3 순환 골목",
+          "primaryConcepts": [
+            "순환 골목"
+          ],
+          "secondaryConcepts": [
+            "지도 수정",
+            "물길"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "순환 구조를 도면에서 폐합시키는 작업의 어려움을 다룬다. 양방향 측정값의 불일치와 처리 방식, 굴절 방향의 모순이 재확인 대상이 된다는 점을 제시하고, 해결하지 못한 부분을 미완으로 남기고 사유를 병기한 처리를 밝힌다.",
+          "aiAnalysisInputSha256": "c325f481f23470bbf2ea3ac27a7fd32b1337aabdeb6450036465ace0c0c4be26",
+          "aiPublicGuideTopic": "고리를 지도에 닫는 일",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            31
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "4장 길을 잃는 방식",
+          "section": "4.4 길 묻기",
+          "primaryConcepts": [
+            "길 묻기"
+          ],
+          "secondaryConcepts": [
+            "골목 입구",
+            "처마"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "현지 안내가 지형지물 기반으로 제공되어 정량 기록으로 전환하기 어렵다는 문제를 다룬다. 방향과 거리를 함께 질문하는 방법, 소로 내 상주자를 질문 대상으로 선택하는 기준을 제시한다.",
+          "aiAnalysisInputSha256": "27c2b40fd6a0e3b5d99536c442a7b3653cbae2d35afc2d7e57b04b19ca3586c6",
+          "aiPublicGuideTopic": "골목에서 길을 묻는 법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "4장 길을 잃는 방식",
+          "section": "4.4 길 묻기",
+          "primaryConcepts": [
+            "길 묻기"
+          ],
+          "secondaryConcepts": [
+            "빗소리",
+            "남에게 주는 지도"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "작성 중인 도면을 제시하며 질문하는 방식의 효과를 다룬다. 구두 질문보다 구체적인 수정 정보가 얻어진다는 점, 현지인만 아는 최근 변경 사항이 확인된다는 이점을 제시하고, 우천 시 지면 노출을 최소화하기 위한 장소 제약을 밝힌다.",
+          "aiAnalysisInputSha256": "21cc99e3a4c1bc5f9de34649e53553305007580b3a17e04b608b1aa2cd778d9e",
+          "aiPublicGuideTopic": "지도를 보여 주며 묻기",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            33
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "5장 사흘 동안 그린 세 장",
+          "section": "5.1 첫 장",
+          "primaryConcepts": [
+            "첫 장"
+          ],
+          "secondaryConcepts": [
+            "기호",
+            "처마"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "첫 번째 도면 작성의 경과를 보수와 함께 기록한다. 진입구 선택의 근거, 차양 구간의 길이, 분기 지점에서의 선택과 총 이동량을 제시하고 작성 시간의 배분을 밝힌다.",
+          "aiAnalysisInputSha256": "8e0b4f94aa04b0c593f520fb476f9697e41d3d2916b21f90fca1c9fd8ef7af72",
+          "aiPublicGuideTopic": "처마길을 그린 첫날",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 사흘 동안 그린 세 장",
+          "section": "5.1 첫 장",
+          "primaryConcepts": [
+            "첫 장"
+          ],
+          "secondaryConcepts": [
+            "걸음 재기",
+            "골목의 폭"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "첫날 작성한 도면을 그대로 옮긴 도표다. 보수, 차양 구간, 폭에 따른 선 굵기, 미확인 분기의 기호를 모두 포함해 앞 장에서 정한 표기 체계가 실제로 적용된 형태를 보인다.",
+          "aiAnalysisInputSha256": "4cf731ead938186efe9b0e019992d5662d05b7b5685eba9e10bed9273265b6a7",
+          "aiPublicGuideTopic": "첫날에 그린 처마길 지도를 옮겨 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            35
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 사흘 동안 그린 세 장",
+          "section": "5.2 둘째 장",
+          "primaryConcepts": [
+            "둘째 장"
+          ],
+          "secondaryConcepts": [
+            "배수로",
+            "지도 수정"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "두 번째 도면 작성에서 배수 시설이 방향 기준으로 기능해 작업이 단축된 과정을 기록한다. 범람으로 인한 경로 차단과 반대편 진입을 통한 분할 작성, 접합 시 발생한 보수 불일치의 처리를 함께 제시한다.",
+          "aiAnalysisInputSha256": "48e0c3c6ced6c59a1541baabeb29b482bee69a8e802889176c3eb37b24ac99fa",
+          "aiPublicGuideTopic": "배수로길을 그린 둘째 날",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 사흘 동안 그린 세 장",
+          "section": "5.2 둘째 장",
+          "primaryConcepts": [
+            "둘째 장"
+          ],
+          "secondaryConcepts": [
+            "빗길 통행",
+            "순환 골목"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "분할 작성 중 순환 구조를 발견한 경위를 기록한다. 동일 지점에 다른 경로로 도달한 사실이 폐합의 단서가 되었다는 점, 순환 구조가 확인되면 차단 지점을 우회할 수 있다는 실용적 결과를 제시한다.",
+          "aiAnalysisInputSha256": "ec74901e87870d8cbf9f9e2abbfc674a35e70b6c1c3d8f220b7625c3dd8ffe1f",
+          "aiPublicGuideTopic": "그날 알아낸 고리",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            37
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "5장 사흘 동안 그린 세 장",
+          "section": "5.3 셋째 장",
+          "primaryConcepts": [
+            "셋째 장"
+          ],
+          "secondaryConcepts": [
+            "첫 장",
+            "길 묻기"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "세 번째 도면 작성의 특징과 현지 확인의 효과를 기록한다. 격자형 구조가 탐색을 쉽게 하되 기록량을 늘린다는 점, 외부에서 식별할 수 없는 진입구가 질문을 통해서만 확인되었다는 사례를 제시한다.",
+          "aiAnalysisInputSha256": "fb32257642e4931312e6f781fe47a241a8e8cc16fe07ec2bd385aada8585288b",
+          "aiPublicGuideTopic": "우산장을 그린 셋째 날",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            35
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "5장 사흘 동안 그린 세 장",
+          "section": "5.4 지도 합치기",
+          "primaryConcepts": [
+            "지도 합치기"
+          ],
+          "secondaryConcepts": [
+            "첫 장",
+            "둘째 장"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "개별 도면을 통합하는 과정을 기록한다. 통합 시에만 드러나는 접점과 미확인 구간의 존재를 제시하고, 최종 도면의 규모와 전체 대상 구역 대비 완성도를 수치로 밝힌다.",
+          "aiAnalysisInputSha256": "62b8acab430c9cb1c91b8e03d784e884a559f1838ccbd98006a2641a6606da95",
+          "aiPublicGuideTopic": "세 장을 한 장으로",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            35
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "5장 사흘 동안 그린 세 장",
+          "section": "5.4 지도 합치기",
+          "primaryConcepts": [
+            "지도 합치기"
+          ],
+          "secondaryConcepts": [
+            "지도 수정",
+            "지도의 공백"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "미기재 구역에 사유를 명시하는 방법을 제시한다. 미방문, 진입 불가, 간접 확인의 세 가지로 구분해 두면 후속 작업의 우선순위가 정해진다는 점을 설명하고, 완성도보다 기재 범위의 명확성을 우선한다는 원칙을 밝힌다.",
+          "aiAnalysisInputSha256": "d74427674188e78eed1d35a55b878c346cbe3148f1b0778f45bd04816201a0fa",
+          "aiPublicGuideTopic": "빈칸을 남겨 두는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 이 방법이 통하지 않는 곳",
+          "section": "6.1 재개발",
+          "primaryConcepts": [
+            "재개발"
+          ],
+          "secondaryConcepts": [
+            "지도의 공백"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "재개발이 진행되는 구역에서는 도면의 유효 기간이 짧아 방법이 성립하지 않는다는 한계를 밝힌다. 사전에 구역의 상태를 확인하는 절차를 제시하고, 기록 보존을 목적으로 할 경우 작성 기준 자체가 달라진다는 점을 덧붙인다.",
+          "aiAnalysisInputSha256": "faf71fcbc39dbcd11c61b74fd7501c66510d1c8faf199f398a95c25121603b00",
+          "aiPublicGuideTopic": "골목이 사라지는 도시에서는",
+          "estimatedReadingSeconds": 85,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 이 방법이 통하지 않는 곳",
+          "section": "6.2 맑은 날",
+          "primaryConcepts": [
+            "맑은 날"
+          ],
+          "secondaryConcepts": [
+            "물길",
+            "빗길 통행"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동일 소로를 맑은 날과 강우일에 관찰했을 때 확인 가능한 정보량의 차이를 좌우로 대비한 도표다. 경사와 배수, 차양 구간이 강우 시에만 드러나고 통행 가능 여부도 반대로 바뀐다는 점을 함께 표시한다.",
+          "aiAnalysisInputSha256": "1796c2728de4238bc32bdf1013962c91074f14d649a40f239eaa3d6550e135fd",
+          "aiPublicGuideTopic": "같은 골목을 맑은 날과 비 오는 날에 본 것을 견준 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 이 방법이 통하지 않는 곳",
+          "section": "6.2 맑은 날",
+          "primaryConcepts": [
+            "맑은 날"
+          ],
+          "secondaryConcepts": [
+            "바닥 재질",
+            "그리는 기준"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "강우 조건에서만 확인되는 네 가지 정보와 맑은 날의 이점을 각각 정리한다. 두 조건을 모두 관찰해 선형 정보와 수문 정보를 한 도면에 겹쳐 기록하는 방식을 대안으로 제시한다.",
+          "aiAnalysisInputSha256": "b6a9af02b01a9dc0eeee705332161fefec42b398427fc89741753eaf98997040",
+          "aiPublicGuideTopic": "비가 오지 않으면 무엇을 놓치는가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            43
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 이 방법이 통하지 않는 곳",
+          "section": "6.3 남에게 주는 지도",
+          "primaryConcepts": [
+            "남에게 주는 지도"
+          ],
+          "secondaryConcepts": [
+            "기호",
+            "길 묻기"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "개인 기준으로 작성된 도면의 이전 가능성 문제를 다룬다. 보폭과 측정 조건의 차이, 기호 체계의 학습 비용을 근거로 들고, 공유를 목적으로 할 경우 정밀도를 낮추고 표기를 단순화해야 한다는 대안을 제시한다.",
+          "aiAnalysisInputSha256": "00137ca0be8be0f635096fcc4043d7d7dcf60e609f51fb7a2b210838b26ffb4f",
+          "aiPublicGuideTopic": "내 지도를 남이 쓸 수 있는가",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 이 방법이 통하지 않는 곳",
+          "section": "6.3 남에게 주는 지도",
+          "primaryConcepts": [
+            "남에게 주는 지도"
+          ],
+          "secondaryConcepts": [
+            "재개발",
+            "지도 합치기"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "도면 작성이 결과물의 공유 가치와 무관하게 관찰자에게 남기는 것을 세 가지로 정리한다. 관찰 방식의 변화, 질문 대상의 구체화, 재방문 시의 누적 효과이며 개인용 기록의 정당성을 밝힌다.",
+          "aiAnalysisInputSha256": "45d2b44bb23e734ddb753fae4e0226df7c698ad361a66454cb32bdbbefd605fc",
+          "aiPublicGuideTopic": "그리는 일 자체가 남기는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            45
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "7장 결론: 그리면서 걷기",
+          "section": "7.1 그리면서 걷기",
+          "primaryConcepts": [
+            "그리며 걷기"
+          ],
+          "secondaryConcepts": [
+            "지도의 공백",
+            "그리는 기준"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체의 명제를 다시 진술하는 결론 도입 페이지다. 작성 행위가 보행 속도를 낮추는 대신 관찰의 밀도를 높인다는 교환을 정리하고, 결과물보다 작성 과정에서 얻은 인식을 이 방법의 가치로 제시한다.",
+          "aiAnalysisInputSha256": "4e8634ca0e2c65ba96d2f2cc74c48dc5cb8b27f3c86e522d591d7941f7242aed",
+          "aiPublicGuideTopic": "지도를 얻는 대신 만드는 일",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "draw-while-walking"
+          ]
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 결론: 그리면서 걷기",
+          "section": "7.1 그리면서 걷기",
+          "primaryConcepts": [
+            "그리며 걷기"
+          ],
+          "secondaryConcepts": [
+            "물길",
+            "지도 수정"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다른 지역에 적용할 수 있도록 작성 절차를 네 단계로 압축해 제시한다. 배수 방향의 우선 기재, 기재 범위의 사전 결정, 보수 기반 측정, 저녁 교정과 다음 날 목록화이며 미기재 사유의 병기를 마지막 원칙으로 덧붙인다.",
+          "aiAnalysisInputSha256": "f87e9d6b429afd54f0104774bf0022d72770568c0671ff7d7f2609462ae02a3c",
+          "aiPublicGuideTopic": "다른 골목을 걷기 전에",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            47
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
     }
   ]
 }
