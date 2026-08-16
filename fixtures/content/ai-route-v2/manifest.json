@@ -3334,7 +3334,7 @@
       "title": "한 잔의 온도가 남긴 것",
       "totalPageCount": 50,
       "pdfPath": "pdfs/book-014.pdf",
-      "pdfSha256": "f18a9b87c72ec27744350f3a6ef834f486b5642dd16322bfd990327b39f8f5a4",
+      "pdfSha256": "4ea3eb173775ce6348b134307bb67b62516254612f1c7ae9609d82c1f685cc00",
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
       "pages": [
@@ -4390,7 +4390,7 @@
       "title": "오늘의 소음을 접어두기",
       "totalPageCount": 50,
       "pdfPath": "pdfs/book-015.pdf",
-      "pdfSha256": "f7003c8d6dd6a360d3d5af49be4c9a5dfad22761e92e6e552adcb03dca9fb56f",
+      "pdfSha256": "35c02a0f00de61839803a2bd421571e948b966f32fcf7a05022adb7adf0b4734",
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
       "pages": [
@@ -5447,7 +5447,7 @@
       "title": "우산 아래 나눈 짧은 문장",
       "totalPageCount": 50,
       "pdfPath": "pdfs/book-016.pdf",
-      "pdfSha256": "b5bfee6446709863a5b3e45673bc97ba36616e427fccca5735e337120bdb2a9f",
+      "pdfSha256": "19a8e428120f096b184a650b5badc0578d56fcf8527d8a37501edd99460db62c",
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
       "pages": [
@@ -6030,7 +6030,7 @@
           "aiAnalysisText": "실제 질문 사례의 결과를 다루는 페이지다. 응답 유형의 분화를 제시하고, 결과를 성패로 이분하지 않은 이유와 이후 행동의 변화를 기술한다.",
           "aiAnalysisInputSha256": "bd7771a0fbd62b27f07580abfd0eec5688d735b620991cece0f1a5b793608afd",
           "aiPublicGuideTopic": "물어본 몇 번",
-          "estimatedReadingSeconds": 65,
+          "estimatedReadingSeconds": 70,
           "prerequisitePageNumbers": [
             27
           ],
@@ -6468,7 +6468,7 @@
           "aiAnalysisText": "방법의 이전 가능성을 검토하는 페이지다. 절차의 단순성과 함께 화자의 위치가 결과에 개입한다는 점을 제시하고, 발화가 없던 사례를 기록에서 제외한 선택이 결과를 규정했음을 밝힌다.",
           "aiAnalysisInputSha256": "c3d1413023dfa2bc8939f2744dc314b41884b77922245c4e31f8e205e8283040",
           "aiPublicGuideTopic": "이 기록을 다른 사람이 쓸 수 있는가",
-          "estimatedReadingSeconds": 75,
+          "estimatedReadingSeconds": 80,
           "prerequisitePageNumbers": [
             48
           ],
@@ -9676,7 +9676,7 @@
       "title": "말하지 않은 친절의 모양",
       "totalPageCount": 50,
       "pdfPath": "pdfs/book-020.pdf",
-      "pdfSha256": "b2d6a311b190cd34620bd715982cf255983d95cc2235c06ec5ed2f0081e5b6aa",
+      "pdfSha256": "6c19e4b850b6852228c96880d5f8517b8bc1db299eddae9829b10f1f6520d399",
       "aiRouteCandidate": true,
       "aiExternalTransferAllowed": true,
       "pages": [
