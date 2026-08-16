@@ -695,7 +695,7 @@ CASE_SEED_PAGES = [30]
 CASE_REQUIRED_CONCEPTS = ["로그", "로그 레벨", "구조화된 로그", "로그 수집", "흐름 추적"]
 CASE_HELPFUL_CONCEPTS = ["기록 대상", "레벨 기준", "항목 이름", "집계"]
 CASE_IRRELEVANT_PAGES = [32, 35, 39, 41, 43]
-CASE_ALTERNATIVE_PAGES = [3, 5, 6, 10, 11, 17, 20, 24]
+CASE_ALTERNATIVE_PAGES = [3, 5, 6, 10, 11, 17, 20, 24, 25]
 
 
 def build_case(manifest_pages, prereq):

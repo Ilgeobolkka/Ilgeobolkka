@@ -123,7 +123,8 @@ p26(그림에 붙는 설명의 갈래). 생성 스크립트는 [`figures079.py`]
 4. `python3 build_pdf_generic.py 79 7,13,20,26 pdfbuild079` — 조판 HTML 생성
 5. Chrome Headless `--print-to-pdf`로 PDF 출력, `pdfcheck.py`로 구성 확인
 6. PDF를 `fixtures/content/ai-route-v2/pdfs/`에 두고 SHA-256을 인자로 `build079.py` 재실행
-7. `merge_fragments.py 79`로 정본에 병합
+7. `merge_fragments.py 79`로 정본에 병합. 이미 병합한 뒤에 다시 만들 때는
+   [도구 README의 되돌리기 절차](./tools/README.md#이미-병합한-도서를-다시-만들-때)를 먼저 따른다
 
 ## 검수
 

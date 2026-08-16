@@ -95,7 +95,7 @@ p33(파이프라인 단계와 자료 상태). 생성 스크립트는 [`figures07
 | `owned` / `maxAdditionalInk` / `depth` | `false` / `0` / `null` |
 | `activeRentalPageNumbers` | 2, 4, 9, 16, 23, 30 |
 | `requiredConcepts` | 외부 데이터, 스키마, 입력 검증, 데이터 정제, 데이터 파이프라인 |
-| `helpfulConcepts` | 형식과 의미, 신뢰 경계, 타입 경계, 단계 계약 |
+| `helpfulConcepts` | 형식과 의미, 신뢰 경계, 타입 경계, 검증 시점 |
 | `referencePageNumbers` | 2, 4, 9, 16, 23, 30 |
 | `allowedAlternativePageNumbers` | 3, 5, 6, 10, 11, 17, 24 |
 | `irrelevantPageNumbers` | 34·35(재실행·중간 결과), 38·40·42(원자료 관찰·정제 적용·재접수) |
@@ -122,7 +122,8 @@ p33(파이프라인 단계와 자료 상태). 생성 스크립트는 [`figures07
 4. `python3 build_pdf_generic.py 72 7,18,26,33 pdfbuild072` — 조판 HTML 생성
 5. Chrome Headless `--print-to-pdf`로 PDF 출력, `pdfcheck.py`로 구성 확인
 6. PDF를 `fixtures/content/ai-route-v2/pdfs/`에 두고 SHA-256을 인자로 `build072.py` 재실행
-7. `merge_fragments.py 72`로 정본에 병합
+7. `merge_fragments.py 72`로 정본에 병합. 이미 병합한 뒤에 다시 만들 때는
+   [도구 README의 되돌리기 절차](./tools/README.md#이미-병합한-도서를-다시-만들-때)를 먼저 따른다
 
 ## 검수
 
@@ -140,6 +141,8 @@ p33(파이프라인 단계와 자료 상태). 생성 스크립트는 [`figures07
 - **리뷰 뒤 무관 페이지를 다시 골랐다.** 초고는 아홉 권이 모두 6장의 같은 다섯 페이지를
   무관으로 적어 평가 데이터가 권마다 구분되지 않았다. 이 권은 5장의 두 절과 6장의 세 절로
   바꿔 카테고리 안에서 겹치지 않는 세트가 되게 했다. 원고와 PDF는 바뀌지 않았다.
+- 리뷰 뒤 도움 개념의 `단계 계약`을 `검증 시점`으로 바꿨다. 단계 계약을 담은 5.2는 폐쇄가 일곱이라
+  대여 여섯 페이지 안에서 고를 수 없어 이 사례에서는 닿지 않는 개념이었다.
 - 리뷰 뒤 7.3·7.4·7.7의 공개 주제문을 이 권의 것으로 바꿨다. 초고의 세 문장이 각각 074·075·전 권과
   겹쳐 공개 안내가 책을 구분해 주지 못했다.
 - `ContentBatchConverterTest`의 코퍼스 재고 단언을 갱신했다. 도서 52→53, 페이지 2191→2241,

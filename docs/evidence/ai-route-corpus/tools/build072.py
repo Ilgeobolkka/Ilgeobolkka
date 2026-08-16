@@ -742,7 +742,7 @@ SECTION_EDGES = {
 # 예산 0 사례다. 정답 경로는 이 씨앗의 선수 폐쇄이고, 그 폐쇄 전체를 대여 목록으로 잡아 차감을 0으로 만든다.
 CASE_SEED_PAGES = [30]
 CASE_REQUIRED_CONCEPTS = ["외부 데이터", "스키마", "입력 검증", "데이터 정제", "데이터 파이프라인"]
-CASE_HELPFUL_CONCEPTS = ["형식과 의미", "신뢰 경계", "타입 경계", "단계 계약"]
+CASE_HELPFUL_CONCEPTS = ["형식과 의미", "신뢰 경계", "타입 경계", "검증 시점"]
 CASE_IRRELEVANT_PAGES = [34, 35, 38, 40, 42]
 CASE_ALTERNATIVE_PAGES = [3, 5, 6, 10, 11, 17, 24]
 

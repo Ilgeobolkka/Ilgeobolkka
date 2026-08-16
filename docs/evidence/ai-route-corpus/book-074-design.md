@@ -96,7 +96,7 @@ p41(분리 절차와 확인 지점). 생성 스크립트는 [`figures074.py`](./
 | 필드 | 값 |
 | --- | --- |
 | `caseId` | `case-book-074` |
-| `purpose` | 코드를 함수와 모듈로 어떻게 나누고 그 사이의 약속을 어떻게 정할지, 구조를 판단하는 기준을 넓게 정리하고 싶다 |
+| `purpose` | 코드를 어떤 단위로 나누고 그 사이의 약속을 어떻게 정할지, 구조를 판단하는 기준을 넓게 정리하고 싶다 |
 | `owned` / `maxAdditionalInk` / `depth` | `false` / `15` / `null` |
 | `requiredConcepts` | 함수 분해, 인터페이스, 계약, 결합도, 응집도, 모듈 경계 |
 | `helpfulConcepts` | 함수의 책임, 사전 조건, 의존 방향, 결합 완화, 공개 범위 |
@@ -132,7 +132,8 @@ p41(분리 절차와 확인 지점). 생성 스크립트는 [`figures074.py`](./
 4. `python3 build_pdf_generic.py 74 7,20,28,41 pdfbuild074` — 조판 HTML 생성
 5. Chrome Headless `--print-to-pdf`로 PDF 출력, `pdfcheck.py`로 구성 확인
 6. PDF를 `fixtures/content/ai-route-v2/pdfs/`에 두고 SHA-256을 인자로 `build074.py` 재실행
-7. `merge_fragments.py 74`로 정본에 병합
+7. `merge_fragments.py 74`로 정본에 병합. 이미 병합한 뒤에 다시 만들 때는
+   [도구 README의 되돌리기 절차](./tools/README.md#이미-병합한-도서를-다시-만들-때)를 먼저 따른다
 
 PDF는 Chrome Headless 출력이므로 다시 만들면 바이트와 SHA-256이 달라진다. 재생성하면 manifest의
 `pdfSha256`과 이 문서의 값을 함께 갱신한다.
@@ -152,6 +153,8 @@ PDF는 Chrome Headless 출력이므로 다시 만들면 바이트와 SHA-256이 
 - 공개 가이드 주제와 비공개 분석 텍스트를 서로 다른 문장으로 적었고, 주제문에 숫자를 쓰지 않았다.
   50개 주제문과 50개 분석 텍스트에 중복이 없다.
 - 본문·도표·평가 데이터에 실존 인물·작품·단체·제품이 등장하지 않는다.
+- 리뷰 뒤 목적 문장에서 제목과 같은 말("함수와 모듈")을 뺐다. 목적에 제목을 넣지 않는 것이
+  book-071이 세운 관례다.
 - 리뷰 뒤 7.3·7.7의 공개 주제문을 이 권의 것으로 바꿨다. 초고의 두 문장이 072·전 권과 겹쳤다.
 - `ContentBatchConverterTest`의 코퍼스 재고 단언을 갱신했다. 도서 51→52, 페이지 2141→2191,
   이미지 247→251이다.

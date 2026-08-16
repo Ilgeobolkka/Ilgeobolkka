@@ -52339,8 +52339,8 @@
           ],
           "contentRole": "CORE",
           "aiRouteCandidatePage": true,
-          "aiAnalysisText": "전송량 감축의 두 축을 항목 선택과 건수 제한으로 제시하고 애플리케이션 측 절단의 문제를 지적한다. 과도한 분할이 호출 횟수 증가로 되돌아오는 균형점을 함께 설명한다.",
-          "aiAnalysisInputSha256": "95ddad99e6408ab261b9cdf8b48bd85f756d0f37b23783ada792c6168162496c",
+          "aiAnalysisText": "전송량 감축의 두 축을 항목 선택과 건수 제한으로 제시하고 부르는 쪽에서 자르는 방식의 문제를 지적한다. 과도한 분할이 호출 횟수 증가로 되돌아오는 균형점을 함께 설명한다.",
+          "aiAnalysisInputSha256": "8edbc4e7e6bddeb3f6147829672dfd2cf125ce60fbfe841e9ed118ba1ad6ec6a",
           "aiPublicGuideTopic": "가져오는 양을 줄이는 방법",
           "estimatedReadingSeconds": 65,
           "prerequisitePageNumbers": [

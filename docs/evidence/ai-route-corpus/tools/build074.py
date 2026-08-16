@@ -766,7 +766,7 @@ def build_case(manifest_pages, prereq):
     return {
         "caseId": f"case-book-{BOOK_ID:03d}",
         "bookId": BOOK_ID,
-        "purpose": "코드를 함수와 모듈로 어떻게 나누고 그 사이의 약속을 어떻게 정할지, "
+        "purpose": "코드를 어떤 단위로 나누고 그 사이의 약속을 어떻게 정할지, "
                    "구조를 판단하는 기준을 넓게 정리하고 싶다",
         "owned": False,
         "maxAdditionalInk": 15,
