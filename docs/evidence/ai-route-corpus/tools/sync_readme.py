@@ -73,23 +73,36 @@ def main():
     path = FIXTURE / "README.md"
     text = path.read_text("utf-8")
 
-    def sub(pattern, replacement):
+    def sub(pattern, replacement, flags=0):
         nonlocal text
-        text, n = re.subn(pattern, replacement, text, count=1)
+        text, n = re.subn(pattern, replacement, text, count=1, flags=flags)
         if n != 1:
             raise SystemExit(f"패턴을 한 번 바꾸지 못했다: {pattern}")
 
-    sub(r"## 현재 상태: \d+권 — 비소설 \d+ \+ 소설 10",
-        f"## 현재 상태: {total_books}권 — 비소설 {len(non)} + 소설 10")
-    sub(r"지금은 \d+권이 들어 있고", f"지금은 {total_books}권이 들어 있고")
-    sub(r"남은 비소설 \d+권은 같은 절차로", f"남은 비소설 {remaining}권은 같은 절차로")
+    sub(r"## 현재 상태: \d+권 — 비소설 \d+ \+ 소설 10 \([^)\n]*\)",
+        f"## 현재 상태: {total_books}권 — 비소설 {len(non)} + 소설 10 "
+        f"({'완성' if remaining == 0 else '확장 중'})")
+    # 확장이 끝나면 '남은 N권' 문장이 '남은 0권'이 되어 뜻이 어긋난다. 문단째 다시 쓴다.
+    if remaining:
+        intro = (f"정본은 최종적으로 100권을 요구하지만 지금은 {total_books}권이 들어 있고, "
+                 "**이 상태로 적재하는 것이 현재\n목표다.** 평가 시나리오 일곱 가지를 모두 채웠고, "
+                 f"남은 비소설 {remaining}권은 같은 절차로 늘린다. 소설 10권은")
+    else:
+        intro = ("정본이 요구하는 100권을 모두 채웠고, **이 상태로 적재하는 것이 현재\n"
+                 "목표다.** 평가 시나리오 일곱 가지를 모두 쓴다. 소설 10권은")
+    # `^`로 줄 시작에 묶는다. 앞 문단의 링크 텍스트에도 '정본'이 있어 그냥 찾으면 머리말까지 삼킨다.
+    sub(r"^정본.*?(?=\n`initial-v1`의)", intro, flags=re.DOTALL | re.MULTILINE)
     sub(r"\| 도서 수 \| 100권 \(비소설 90 \+ 소설 10\) \| \*\*\d+권\*\* \(비소설 \d+ \+ 소설 10\) \|",
         f"| 도서 수 | 100권 (비소설 90 + 소설 10) | **{total_books}권** (비소설 {len(non)} + 소설 10) |")
     sub(r"\| 평가 케이스 \| 90건, 일곱 시나리오 전부 \| \*\*\d+건\*\*, 일곱 시나리오를 모두 사용 \([^|]*\) \|",
         f"| 평가 케이스 | 90건, 일곱 시나리오 전부 | **{len(evaluation['cases'])}건**, "
         f"일곱 시나리오를 모두 사용 ({distribution}) |")
-    sub(r"확장 시 비소설 \d+권을 `books\[\]`에, 평가 \d+건을 `cases\[\]`에 추가한다\.",
-        f"확장 시 비소설 {remaining}권을 `books[]`에, 평가 {remaining}건을 `cases[]`에 추가한다.")
+    # 더 넣을 도서가 없으면 확장 안내 문장 자체를 뺀다.
+    sub(r"(?:확장 시 비소설 \d+권을 `books\[\]`에, 평가 \d+건을 `cases\[\]`에 추가한다\. )?"
+        r"소설 10권은\n`fixtures/content/manifest\.json`",
+        (f"확장 시 비소설 {remaining}권을 `books[]`에, 평가 {remaining}건을 `cases[]`에 추가한다. "
+         if remaining else "")
+        + "소설 10권은\n`fixtures/content/manifest.json`")
     sub(r"비소설 \d+권 합계는 [\d,]+페이지이며 그중 목차 \d+페이지, 이미지 \d+페이지, 본문 TEXT [\d,]+페이지다\.",
         f"비소설 {len(non)}권 합계는 {pages:,}페이지이며 그중 목차 {len(non)}페이지, "
         f"이미지 {images}페이지, 본문 TEXT {text_pages:,}페이지다.")
