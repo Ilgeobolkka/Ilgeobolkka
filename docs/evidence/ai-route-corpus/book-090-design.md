@@ -9,7 +9,7 @@
 - `bookId` 90, 카테고리 여행. 저자·소개는 `src/main/resources/demo/books.json`의 기존 값을 유지한다.
 - 제목은 `ai-route-v2` manifest의 `books[].title`이 정본이며 이 문서의 제목과 같다.
 - 실존 국가·도시·지명을 쓰지 않는다. 무대는 가상의 재모래사막과 그 안의 오아시스 마을 물빛마을이다.
-  인물은 안내인 사한과 동행 여울, 물빛마을의 나린이며 081~089의 인물과 겹치지 않는다.
+  인물은 안내인 사한과 동행 나린, 물빛마을의 지완이며 081~089의 인물과 겹치지 않는다.
 
 ## 개념 범위
 
@@ -65,10 +65,10 @@ BALANCED라 열 페이지 안에 낮과 밤을 모두 담아야 해서, 낮 줄�
 차례로 통과했다.
 
 - 49페이지(48~72), 7개 장(최소 6), 내용 역할 5종 모두 사용
-- `TEXT` 본문 42페이지가 335~449자(합계 16,433자)
+- `TEXT` 본문 42페이지가 335~449자(평균 391자, 합계 16,433자)
 - `FRONT_MATTER`(목차)와 `aiRouteCandidatePage=false`가 정확히 일치
 - 선수 관계가 후보 제외 페이지를 가리키지 않음, 위상 정렬로 49페이지 전체 방문
-- PDF 페이지 49개, 텍스트 43개, 이미지 6개(p7,15,21,29,37,43) — `pdfcheck.py`로 확인
+- PDF 페이지 49개, 텍스트 43개, 이미지 6개(p7,15,21,29,37,43) — `pdfcheck.py --book 90`으로 확인
 - PDF 실제 SHA-256이 manifest의 `pdfSha256`과 일치
 
 ## 평가 케이스: 소장·BALANCED 시나리오
@@ -97,9 +97,10 @@ BALANCED라 열 페이지 안에 낮과 밤을 모두 담아야 해서, 낮 줄�
 2. `python3 figures090.py pdfbuild090` — 도표 6개 SVG 생성
 3. Chrome Headless로 각 SVG를 794×1123 PNG로 렌더링
 4. `python3 build_pdf_generic.py 90 7,15,21,29,37,43 pdfbuild090` — 조판 HTML 생성
-5. Chrome Headless `--print-to-pdf`로 PDF 출력, `pdfcheck.py`로 구성 확인
+5. Chrome Headless `--print-to-pdf`로 PDF 출력, `pdfcheck.py --book 90`으로 구성 확인
 6. PDF를 `fixtures/content/ai-route-v2/pdfs/`에 두고 SHA-256을 인자로 `build090.py` 재실행
 7. `merge_fragments.py 90`으로 정본에 병합
+8. `sync_readme.py --add 90 여행`으로 fixture README의 수치와 표를 다시 계산
 
 ## 검수
 

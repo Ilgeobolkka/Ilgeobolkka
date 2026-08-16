@@ -2,13 +2,32 @@
 """Poppler 없이 PDF의 페이지 수와 페이지별 텍스트/이미지 구성을 확인한다.
 
 Chrome이 만든 PDF의 객체를 직접 파싱한다. 표준 라이브러리만 쓴다.
+
+사용:
+    python3 pdfcheck.py <pdf> [페이지수] [이미지페이지,...]
+    python3 pdfcheck.py --book 83 [pdf]   # 기대값을 원고에서 읽는다
+
+`--book`을 쓰면 페이지 수와 이미지 페이지를 손으로 적지 않는다. 손으로 적으면 나중에 페이지가
+밀렸을 때 PDF와 원고가 어긋난 것을 검사기가 놓친다.
 """
+import json
 import re
 import sys
 import zlib
 from pathlib import Path
 
-data = Path(sys.argv[1]).read_bytes()
+argv = sys.argv[1:]
+if argv and argv[0] == "--book":
+    book_id = int(argv[1])
+    repo = Path(__file__).resolve().parents[4]
+    manuscript = json.loads(
+        (repo / f"docs/evidence/ai-route-corpus/book-{book_id:03d}-manuscript.json").read_text("utf-8"))
+    pages = manuscript["pages"]
+    pdf = argv[2] if len(argv) > 2 else repo / f"fixtures/content/ai-route-v2/pdfs/book-{book_id:03d}.pdf"
+    argv = [str(pdf), str(len(pages)),
+            ",".join(str(p["pageNumber"]) for p in pages if p["contentFormat"] == "IMAGE")]
+
+data = Path(argv[0]).read_bytes()
 
 # ── 객체 수집: "N 0 obj ... endobj" ──────────────────────────────
 objs = {}
@@ -99,8 +118,8 @@ print(f"이미지만 있는 페이지: {image_pages}")
 if empty_pages:
     print(f"내용 없음: {empty_pages}")
 
-expected_total = int(sys.argv[2]) if len(sys.argv) > 2 else len(ordered)
-expected_images = [int(x) for x in sys.argv[3].split(",")] if len(sys.argv) > 3 else image_pages
+expected_total = int(argv[1]) if len(argv) > 1 else len(ordered)
+expected_images = [int(x) for x in argv[2].split(",")] if len(argv) > 2 else image_pages
 ok = (len(ordered) == expected_total and counts and max(counts) == expected_total
       and image_pages == expected_images and len(text_pages) == expected_total - len(expected_images))
 print("\n판정:", "통과" if ok else "불일치")

@@ -9,7 +9,7 @@
 - `bookId` 87, 카테고리 여행. 저자·소개는 `src/main/resources/demo/books.json`의 기존 값을 유지한다.
 - 제목은 `ai-route-v2` manifest의 `books[].title`이 정본이며 이 문서의 제목과 같다.
 - 실존 국가·지명을 쓰지 않는다. 무대는 가상의 「윗바람고원」이고 마을은 구름마을과 돌담마을이다.
-  인물은 우체부 마루, 구름마을의 세경, 돌담마을의 봉산이며 081~086의 인물과 겹치지 않는다.
+  인물은 우체부 마루, 구름마을의 세경, 돌담마을의 윤재이며 081~086의 인물과 겹치지 않는다.
 
 ## 개념 범위
 
@@ -69,7 +69,7 @@ book-081~086과 같은 처리다.
 - `TEXT` 본문 42페이지가 359~499자(평균 401자, 합계 16,844자)
 - `FRONT_MATTER`(목차)와 `aiRouteCandidatePage=false`가 정확히 일치
 - 선수 관계가 후보 제외 페이지를 가리키지 않음, 위상 정렬로 49페이지 전체 방문
-- PDF 페이지 49개, 텍스트 43개, 이미지 6개(p7,13,21,30,36,44) — `pdfcheck.py`로 확인
+- PDF 페이지 49개, 텍스트 43개, 이미지 6개(p7,13,21,30,36,44) — `pdfcheck.py --book 87`으로 확인
 - PDF 실제 SHA-256이 manifest의 `pdfSha256`과 일치
 
 ## 평가 케이스: 소장·DEEP 시나리오
@@ -99,9 +99,10 @@ QUICK·DEEP이 각 6건, 예산 0·예산 5·예산 10·예산 15가 각 5건이
 2. `python3 figures087.py pdfbuild087` — 도표 6개 SVG 생성
 3. Chrome Headless로 각 SVG를 794×1123 PNG로 렌더링
 4. `python3 build_pdf_generic.py 87 7,13,21,30,36,44 pdfbuild087` — 조판 HTML 생성
-5. Chrome Headless `--print-to-pdf`로 PDF 출력, `pdfcheck.py`로 구성 확인
+5. Chrome Headless `--print-to-pdf`로 PDF 출력, `pdfcheck.py --book 87`으로 구성 확인
 6. PDF를 `fixtures/content/ai-route-v2/pdfs/`에 두고 SHA-256을 인자로 `build087.py` 재실행
 7. `merge_fragments.py 87`로 정본에 병합
+8. `sync_readme.py --add 87 여행`으로 fixture README의 수치와 표를 다시 계산
 
 ## 검수
 
@@ -110,5 +111,5 @@ QUICK·DEEP이 각 6건, 예산 0·예산 5·예산 10·예산 15가 각 5건이
   내려오는 날에 반대 방향 화살표를 넣었다.
 - 조판한 PDF의 구성을 `pdfcheck.py`로 확인했다.
 - 공개 가이드 주제와 비공개 분석 텍스트를 서로 다른 문장으로 적었고, 주제문에 숫자를 쓰지 않았다.
-- 본문·도표·평가 데이터에 실존 국가·지명·인물이 등장하지 않는다.
+- 본문·도표·평가 데이터에 실존 국가·도시·지명·인물이 등장하지 않는다.
 - 닫힌 계절의 이야기는 모두 들은 이야기이고 본 이야기가 아니라는 점을 1.5와 4.3에 적어 두었다.

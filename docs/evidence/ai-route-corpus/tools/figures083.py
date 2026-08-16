@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""book-083 이미지 페이지 6개의 SVG 생성. figures081·082의 t()/base() 패턴을 그대로 쓴다.
+"""book-083 이미지 페이지 6개의 SVG 생성. 색 토큰과 t()·base()는 figure_lib에서 가져온다.
 
 여섯 도표가 모두 '무엇이 어디서 어디로 가는가'와 '무엇을 보고 무엇을 못 보는가'를 그린다. 물가에서
 안쪽으로, 새벽에서 낮으로 가는 방향은 늘 왼쪽에서 오른쪽 또는 아래에서 위로 두고, 본 것은 진한 색,
@@ -10,46 +10,10 @@
 import sys
 from pathlib import Path
 
-W, H = 794, 1123
-FONT = "'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from figure_lib import W, INK, LINE, SOFT, MUTED, KEEP, DROP, MARK, caption, make_base, note_box, t
 
-INK = "#26323a"
-LINE = "#7d8b90"
-SOFT = "#dfe4e6"
-MUTED = "#55666b"
-KEEP = "#3f6f66"
-DROP = "#c3ccd0"
-MARK = "#b4703a"
-
-
-def t(x, y, value, size=16, color=INK, weight="400", anchor="middle"):
-    return (f'<text x="{x}" y="{y}" text-anchor="{anchor}" font-size="{size}" '
-            f'font-weight="{weight}" fill="{color}">{value}</text>')
-
-
-def base(title, subtitle, body):
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">
-<style>text {{ font-family: {FONT}; }}</style>
-<rect width="{W}" height="{H}" fill="#ffffff"/>
-<defs>
-  <marker id="keep" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="{KEEP}"/></marker>
-  <marker id="mark" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="{MARK}"/></marker>
-  <marker id="gray" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="{LINE}"/></marker>
-</defs>
-{t(W / 2, 122, title, 31, '#203238', '700')}
-{t(W / 2, 164, subtitle, 17, '#66777b')}
-<line x1="105" y1="195" x2="689" y2="195" stroke="#d9dfe1"/>
-{body}
-</svg>'''
-
-
-def note_box(x, y, w, label, size=17, h=62):
-    return (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="14" fill="#f7f4ec" stroke="#c5a866"/>'
-            + t(x + w / 2, y + h / 2 + 6, label, size, "#51462c", "700"))
-
-
-def caption(x, y, lines, size=15, color=MUTED):
-    return "".join(t(x, y + i * 25, line, size, color) for i, line in enumerate(lines))
+base = make_base()
 
 
 def person(cx, cy, scale=1.0, color=INK, opacity=1.0):
@@ -161,7 +125,7 @@ def fig_layers():
     return base("이백 걸음의 네 층", "향신료골목의 배열과 걷는 방향", "".join(b))
 
 
-# ── p30 어디서 와서 어디로 가는가 ─────────────────────────────────────
+# ── p29 어디서 와서 어디로 가는가 ─────────────────────────────────────
 def fig_flows():
     b = []
     cx0, cy0, cw, ch = 168, 380, 458, 300
@@ -275,7 +239,7 @@ FIGURES = {
     7: fig_three_markets,
     13: fig_one_floor,
     21: fig_layers,
-    30: fig_flows,
+    29: fig_flows,
     37: fig_three_days,
     45: fig_scope,
 }

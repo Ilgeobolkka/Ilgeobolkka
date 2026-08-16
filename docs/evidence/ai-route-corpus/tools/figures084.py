@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""book-084 이미지 페이지 6개의 SVG 생성. figures081~083의 t()/base() 패턴을 그대로 쓴다.
+"""book-084 이미지 페이지 6개의 SVG 생성. 색 토큰과 t()·base()는 figure_lib에서 가져온다.
 
 여섯 도표가 모두 '무엇을 남기고 무엇을 버리는가'를 그린다. 쓰는 쪽·지킨 쪽은 진한 색, 버리는 쪽·
 어긋난 쪽은 옅은 색으로 고정하고, 시간과 경로는 늘 왼쪽에서 오른쪽으로 둔다.
@@ -9,46 +9,10 @@
 import sys
 from pathlib import Path
 
-W, H = 794, 1123
-FONT = "'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from figure_lib import W, INK, LINE, SOFT, MUTED, KEEP, DROP, MARK, caption, make_base, note_box, t
 
-INK = "#26323a"
-LINE = "#7d8b90"
-SOFT = "#dfe4e6"
-MUTED = "#55666b"
-KEEP = "#3f6f66"
-DROP = "#c3ccd0"
-MARK = "#b4703a"
-
-
-def t(x, y, value, size=16, color=INK, weight="400", anchor="middle"):
-    return (f'<text x="{x}" y="{y}" text-anchor="{anchor}" font-size="{size}" '
-            f'font-weight="{weight}" fill="{color}">{value}</text>')
-
-
-def base(title, subtitle, body):
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">
-<style>text {{ font-family: {FONT}; }}</style>
-<rect width="{W}" height="{H}" fill="#ffffff"/>
-<defs>
-  <marker id="keep" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="{KEEP}"/></marker>
-  <marker id="mark" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="{MARK}"/></marker>
-  <marker id="gray" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="{LINE}"/></marker>
-</defs>
-{t(W / 2, 122, title, 31, '#203238', '700')}
-{t(W / 2, 164, subtitle, 17, '#66777b')}
-<line x1="105" y1="195" x2="689" y2="195" stroke="#d9dfe1"/>
-{body}
-</svg>'''
-
-
-def note_box(x, y, w, label, size=17, h=62):
-    return (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="14" fill="#f7f4ec" stroke="#c5a866"/>'
-            + t(x + w / 2, y + h / 2 + 6, label, size, "#51462c", "700"))
-
-
-def caption(x, y, lines, size=15, color=MUTED):
-    return "".join(t(x, y + i * 25, line, size, color) for i, line in enumerate(lines))
+base = make_base()
 
 
 def split_rock(cx, cy, s=1.0, color=INK, opacity=1.0, split=True):
@@ -178,7 +142,7 @@ def fig_campsite():
     return base("네 가지를 보고 정한다", "잘 자리를 고르는 조건", "".join(b))
 
 
-# ── p30 하루의 네 토막 ────────────────────────────────────────────────
+# ── p29 하루의 네 토막 ────────────────────────────────────────────────
 def fig_day_blocks():
     b = []
     x0, x1 = 132, 672
@@ -322,7 +286,7 @@ FIGURES = {
     7: fig_landmarks,
     13: fig_look_back,
     21: fig_campsite,
-    30: fig_day_blocks,
+    29: fig_day_blocks,
     37: fig_three_days,
     45: fig_conditions,
 }

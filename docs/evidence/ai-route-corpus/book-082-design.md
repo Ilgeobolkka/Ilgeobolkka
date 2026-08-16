@@ -9,8 +9,8 @@
 - `bookId` 82, 카테고리 여행. 저자·소개는 `src/main/resources/demo/books.json`의 기존 값을 유지한다.
 - 제목은 `ai-route-v2` manifest의 `books[].title`이 정본이며 이 문서의 제목과 같다.
 - 실존 국가·도시·지명을 쓰지 않는다. 무대는 가상의 「북부 순환선」이고 역은 자작나무역·밀밭역·
-  안개고개역·돌다리역·경계역이다. 인물은 차장 무경, 자작나무역 역무원 단해, 안개고개역 매점의
-  설재이며 081의 인물(기연·두호·연화)과 겹치지 않는다.
+  안개고개역·돌다리역·경계역이다. 인물은 차장 무경 한 사람이고, 역무원과 매점 주인은 이름 없이
+  역할로만 적는다. 081의 인물(기연·두호)과 겹치지 않는다.
 - 계획 문서에는 역 이름이 셋만 정해져 있어 밀밭역·돌다리역을 새로 만들고 계획 문서에 함께 적었다.
 
 ## 개념 범위
@@ -71,10 +71,10 @@ book-081과 같은 처리다.
 차례로 통과했다.
 
 - 51페이지(48~72), 7개 장(최소 6), 내용 역할 5종 모두 사용
-- `TEXT` 본문 44페이지가 415~493자(평균 440자, 합계 19,344자)
+- `TEXT` 본문 44페이지가 415~493자(평균 440자, 합계 19,352자)
 - `FRONT_MATTER`(목차)와 `aiRouteCandidatePage=false`가 정확히 일치
 - 선수 관계가 후보 제외 페이지를 가리키지 않음, 위상 정렬로 51페이지 전체 방문
-- PDF 페이지 51개, 텍스트 45개, 이미지 6개(p7,13,21,30,37,45) — `pdfcheck.py`로 확인
+- PDF 페이지 51개, 텍스트 45개, 이미지 6개(p7,13,21,30,37,45) — `pdfcheck.py --book 82`으로 확인
 - PDF 실제 SHA-256이 manifest의 `pdfSha256`과 일치
 
 초고는 334~460자로 하한이 정본 기준(345자)에 미달했다. 081과 같이 420자에 못 미친 42페이지에
@@ -113,9 +113,10 @@ book-081과 같은 처리다.
 2. `python3 figures082.py pdfbuild082` — 도표 6개 SVG 생성
 3. Chrome Headless로 각 SVG를 794×1123 PNG로 렌더링
 4. `python3 build_pdf_generic.py 82 7,13,21,30,37,45 pdfbuild082` — 조판 HTML 생성
-5. Chrome Headless `--print-to-pdf`로 PDF 출력, `pdfcheck.py`로 구성 확인
+5. Chrome Headless `--print-to-pdf`로 PDF 출력, `pdfcheck.py --book 82`으로 구성 확인
 6. PDF를 `fixtures/content/ai-route-v2/pdfs/`에 두고 SHA-256을 인자로 `build082.py` 재실행
 7. `merge_fragments.py 82`로 정본에 병합
+8. `sync_readme.py --add 82 여행`으로 fixture README의 수치와 표를 다시 계산
 
 ## 검수
 

@@ -9,7 +9,7 @@
 - `bookId` 88, 카테고리 여행. 저자·소개는 `src/main/resources/demo/books.json`의 기존 값을 유지한다.
 - 제목은 `ai-route-v2` manifest의 `books[].title`이 정본이며 이 문서의 제목과 같다.
 - 실존 국가·도시·지명을 쓰지 않는다. 무대는 가상의 「먹구름시」이고 골목은 처마길·배수로길·우산장이다.
-  인물은 우산 가게의 소하와 인쇄소의 한별이며 081~087의 인물과 겹치지 않는다.
+  인물은 우산 가게의 소하 한 사람이며 081~087의 인물과 겹치지 않는다.
 
 ## 개념 범위
 
@@ -65,10 +65,10 @@ book-081~087과 같은 처리다.
 차례로 통과했다.
 
 - 48페이지(48~72), 7개 장(최소 6), 내용 역할 5종 모두 사용
-- `TEXT` 본문 41페이지가 384~495자(평균 413자, 합계 16,940자)
+- `TEXT` 본문 41페이지가 384~495자(평균 413자, 합계 16,936자)
 - `FRONT_MATTER`(목차)와 `aiRouteCandidatePage=false`가 정확히 일치
 - 선수 관계가 후보 제외 페이지를 가리키지 않음, 위상 정렬로 48페이지 전체 방문
-- PDF 페이지 48개, 텍스트 42개, 이미지 6개(p7,16,24,30,36,43) — `pdfcheck.py`로 확인
+- PDF 페이지 48개, 텍스트 42개, 이미지 6개(p7,16,24,30,36,43) — `pdfcheck.py --book 88`으로 확인
 - PDF 실제 SHA-256이 manifest의 `pdfSha256`과 일치
 
 ## 평가 케이스: 비소장·예산 10 시나리오
@@ -102,9 +102,10 @@ QUICK·DEEP·예산 10이 각 6건, 예산 0·예산 5·예산 15가 각 5건이
 2. `python3 figures088.py pdfbuild088` — 도표 6개 SVG 생성
 3. Chrome Headless로 각 SVG를 794×1123 PNG로 렌더링
 4. `python3 build_pdf_generic.py 88 7,16,24,30,36,43 pdfbuild088` — 조판 HTML 생성
-5. Chrome Headless `--print-to-pdf`로 PDF 출력, `pdfcheck.py`로 구성 확인
+5. Chrome Headless `--print-to-pdf`로 PDF 출력, `pdfcheck.py --book 88`으로 구성 확인
 6. PDF를 `fixtures/content/ai-route-v2/pdfs/`에 두고 SHA-256을 인자로 `build088.py` 재실행
 7. `merge_fragments.py 88`로 정본에 병합
+8. `sync_readme.py --add 88 여행`으로 fixture README의 수치와 표를 다시 계산
 
 ## 검수
 
