@@ -36,6 +36,22 @@ SCRUM-485 90권 확장에서 재사용하는 Python 스크립트다. 애플리�
 검증 도구를 고쳤으면 `python3 selftest.py`로 음성 검사가 여전히 걸리는지 확인한다. 모든 스크립트는
 `__file__` 기준으로 저장소 루트를 찾으므로 어느 디렉터리에서 실행해도 된다.
 
+## 이미 병합한 도서를 다시 만들 때
+
+`build0NN.py`는 실행할 때마다 조각을 새로 쓰지만, `merge_fragments.py`는 이미 정본에 있는 bookId를
+중복으로 막는다. 그래서 병합한 뒤 원고나 평가 데이터를 고칠 때는 순서가 하나 더 필요하다.
+
+1. `git checkout fixtures/content/ai-route-v2/manifest.json fixtures/content/ai-route-v2/evaluation.json`
+   으로 그 권이 들어가기 전 상태로 되돌린다 (해당 권이 아직 커밋 전일 때).
+2. `build0NN.py <pdfSha256>`으로 조각을 다시 만들고 `merge_fragments.py NN`으로 병합한다.
+
+그 권이 이미 커밋되어 있으면 되돌릴 자리가 없으므로, 조각의 `manifestBook`·`evaluationCase`로 정본의
+해당 항목을 갈아 끼운 뒤 `validate_manifest.py`로 검사한다. 어느 쪽이든 **본문을 고치지 않았다면 PDF와
+SHA-256은 그대로**이므로 4~8단계를 다시 밟을 필요가 없다.
+
+병합 뒤에 `build0NN.py`를 다시 실행했다면 쓰이지 않는 조각이 `_fragments/`에 남는다. 다음 병합에서
+중복으로 걸리므로 지워 둔다.
+
 ## 정답 경로와 선수 폐쇄
 
 평가 정답의 비용·분량은 `referencePageNumbers`가 아니라 **그 페이지들의 전이적 선수 폐쇄**로 센다.
