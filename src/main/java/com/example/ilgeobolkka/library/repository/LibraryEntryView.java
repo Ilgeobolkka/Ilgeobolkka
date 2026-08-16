@@ -4,6 +4,8 @@ import java.time.Instant;
 
 public interface LibraryEntryView {
 
+    Long getLibraryEntryId();
+
     Long getBookId();
 
     String getCoverImagePath();
@@ -19,4 +21,10 @@ public interface LibraryEntryView {
     Instant getExpiresAt();
 
     Long getOwnershipId();
+
+    Long getRouteId();
+
+    String getRoutePurpose();
+
+    Long getCurrentRouteId();
 }

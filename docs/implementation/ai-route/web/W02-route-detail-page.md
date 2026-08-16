@@ -34,13 +34,14 @@
 
 - 화면: `GET /ai-routes/{routeId}`
 - 산출물: `AiRouteDetailPageController`, `pages/ai-route-detail.html`
-- 산출물: `static/js/ai-route/route-detail-page.js`, route 순서·읽기 상태 helper
+- 산출물: `static/js/ai-route/route-detail.js`, `route-detail-page.js`, route 순서·읽기 상태 helper
+- 공통화: `static/js/common/request-page-content.js`, `viewer-session.js`, 최소 `request-json.js` 확장
 - Q03에 넘길 것: route 읽기 전체 브라우저 시나리오
 
 ## 수정 허용 파일
 
 - 새 detail page Controller·template·AI detail JavaScript·필요 최소 CSS
-- 기존 viewer·request-json은 공개 API만 재사용하고 파일 수정 금지
+- 기존 viewer·request-json은 content 요청·CSRF·viewer session 계약을 공통화하는 최소 범위에서 수정
 - 새 `AiRouteDetailPageTest`
 
 ## 구현 조건
@@ -63,6 +64,7 @@
 - 목적·guide XSS와 CSRF 누락 실패 표시
 - 수동 브라우저: 저장 route→1잉크 open→active rental 재열람→전체 완료→feedback
 - 명령: `./gradlew test --tests '*AiRouteDetailPageTest'`
+- 실제 ES Module·DOM 상태 전이: 패키징 뒤 `.github/scripts/boot-smoke.sh`의 경로 상세 fixture
 
 ## 제외 범위
 

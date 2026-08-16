@@ -10,11 +10,22 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties("ai-route-evaluation")
 class AiRouteEvaluationProperties {
 
+    private Phase phase = Phase.EVALUATE;
     private Path manifest = Path.of("fixtures/content/ai-route-v2/manifest.json");
     private Path evaluation = Path.of("fixtures/content/ai-route-v2/evaluation.json");
     private Path output = Path.of("var/evaluation/ai-route-evaluation.json");
+    private Path judgments = Path.of("var/evaluation/ai-route-human-judgments.json");
+    private Path reportOutput = Path.of("var/evaluation/ai-route-evaluation-report.json");
     private String manifestGitRevision;
     private String evaluationGitRevision;
+
+    Phase phase() {
+        return phase;
+    }
+
+    public void setPhase(Phase phase) {
+        this.phase = phase;
+    }
 
     Path manifest() {
         return manifest;
@@ -40,6 +51,22 @@ class AiRouteEvaluationProperties {
         this.output = output;
     }
 
+    Path judgments() {
+        return judgments;
+    }
+
+    public void setJudgments(Path judgments) {
+        this.judgments = judgments;
+    }
+
+    Path reportOutput() {
+        return reportOutput;
+    }
+
+    public void setReportOutput(Path reportOutput) {
+        this.reportOutput = reportOutput;
+    }
+
     String manifestGitRevision() {
         return manifestGitRevision;
     }
@@ -54,5 +81,11 @@ class AiRouteEvaluationProperties {
 
     public void setEvaluationGitRevision(String evaluationGitRevision) {
         this.evaluationGitRevision = evaluationGitRevision;
+    }
+
+    enum Phase {
+        EVALUATE,
+        FINALIZE,
+        ACTIVATE
     }
 }

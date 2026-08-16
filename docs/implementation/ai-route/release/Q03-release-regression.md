@@ -35,6 +35,9 @@ AI leaf 작업과 기존 초기 MVP 전체 회귀를 MySQL·패키징 실행물�
 - 입력: 모든 leaf test, Q02 평가 report, 데이터 정책 근거, 전용 project spend limit 확인 자료
 - 산출물: 전체 명령 결과, 패키징 smoke, 브라우저 시나리오, 외부 호출 여부가 구분된 출시 증거
 - 산출물: 실패 leaf ID·재현 명령·정본 기대값 목록
+- 현재 실행 근거:
+  [SCRUM-478 Q03 통합 회귀·출시 판정 근거](../../../evidence/release-verification/scrum-478-2026-08-15.md)
+  (Q01·Q02·실제 OpenAI·인증 브라우저 증거 미충족으로 Q03 미완료)
 - 별도 승인 시에만 PRD 구현 상태와 배포 가이드의 실제 명령·증거 링크 갱신
 
 ## 수정 허용 파일

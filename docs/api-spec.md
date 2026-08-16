@@ -522,6 +522,8 @@ HTML·JSON 경로를 등록하지 않으며 기존 도서·뷰어·결제 기능
 - `bookId`, `category`, `coverImagePath`, `title`, `author`, `description`
 - `totalPageCount`, `bookPrice`
 - 로그인하지 않은 경우 `owned`는 `null`, 로그인한 경우 소장 여부는 `true` 또는 `false`
+- AI 경로 feature가 활성화되면 지원 여부 `aiRouteSupported`는 `true` 또는 `false`,
+  비활성화되면 응답에서 생략
 
 `bookPrice`는 원화 단위의 0보다 큰 정수입니다. `coverImagePath`의 문자열 값은 공개 표지 자산의
 same-origin 경로이며 원본 PDF 경로나 비공개 페이지 이미지 저장소 주소가 아닙니다. 상세 조회 시 인증된
@@ -582,6 +584,17 @@ same-origin 경로이며 원본 PDF 경로나 비공개 페이지 이미지 저�
 `expiresAt`, `activeRental`, `owned`를 제공합니다. 대여 정보는 마지막 열람 페이지 한 건만 나타내며 전체
 대여 페이지 목록은 반환하지 않습니다. 동일 페이지를 여러 번 대여했다면 `rentedAt DESC, id DESC`의
 첫 대여를 사용해 현재 활성 여부를 서버 시각으로 계산합니다.
+
+AI 경로 feature가 활성화되면 각 항목에 `routes[]`(저장 시각·ID 내림차순의 `routeId`,
+`purpose`)와 선택 필드 `currentRouteId`를 추가합니다. 현재 경로가 없으면 `currentRouteId`는
+응답에서 생략합니다. feature가 비활성화되면 두 필드와 AI 경로만 저장한 책 항목을 모두
+생략해 기존 서재 응답을 유지합니다. `purpose`는 HTML로 해석하지 않고 텍스트로 표시합니다.
+
+페이지를 아직 열지 않고 AI 경로만 저장한 책도 feature 활성 서재에 책당 한 항목으로
+표시합니다. 이때 첫 뷰어 진입을 위해 `lastPageNumber=1`이고 `owned=false`, `rentedAt`,
+`expiresAt`, `activeRental`은 `null`입니다. 이 값은 1페이지를 이미 읽었다는 의미가 아니며,
+화면은 `AI 경로 저장`과 `첫 페이지 읽기`로 구분해 표시합니다. 서재 저장 위치를 생성하지
+않고 경로의 최신 `createdAt DESC`와 `bookId DESC`를 이 항목의 서재 정렬 기준으로 사용합니다.
 
 온라인 소장 도서는 소장 전 대여 이력이 있어도 `owned=true`이고 `rentedAt`, `expiresAt`,
 `activeRental`은 `null`입니다. 열람 이력 없이 소장으로 처음 서재에 추가된 도서는 `lastPageNumber=1`로
