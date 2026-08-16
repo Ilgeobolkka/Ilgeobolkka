@@ -46808,6 +46808,1068 @@
           "duplicateGroupKeys": []
         }
       ]
+    },
+    {
+      "bookId": 90,
+      "title": "별이 가까운 사막의 밤",
+      "pdfPath": "pdfs/book-090.pdf",
+      "pdfSha256": "278373b39894181ff47721bf141d1dbf8ed5af733e82f6aaccb0780af965b10a",
+      "totalPageCount": 49,
+      "aiRouteCandidate": true,
+      "aiExternalTransferAllowed": true,
+      "pages": [
+        {
+          "pageNumber": 1,
+          "chapter": "앞부분",
+          "section": "목차",
+          "primaryConcepts": [
+            "목차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "FRONT_MATTER",
+          "aiRouteCandidatePage": false,
+          "aiAnalysisText": "목차 페이지. 장과 절의 시작 위치만 담고 본문 설명은 없다.",
+          "aiAnalysisInputSha256": "4b383f227977938ccbaf2740f82e0a7f672eadd8261bed3ce2a2fefd031d727a",
+          "aiPublicGuideTopic": "이 책이 다루는 차례와 각 장이 답하는 물음",
+          "estimatedReadingSeconds": 40,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 2,
+          "chapter": "1장 재모래사막",
+          "section": "1.1 낮밤 온도차",
+          "primaryConcepts": [
+            "낮밤 온도차"
+          ],
+          "secondaryConcepts": [],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "건조 지형의 일교차가 큰 원인을 지표의 수분 부족과 야간 복사냉각으로 설명하는 도입 페이지다. 이 조건이 보행 시각, 장비 구성, 숙영 방식을 모두 규정한다는 점을 제시하고 낮과 밤을 나누어 다루는 책의 구성을 밝힌다.",
+          "aiAnalysisInputSha256": "03c1b2a0dbfc2067f855860c37c2746c92b21a4d142dd362f5e40d470b766cc8",
+          "aiPublicGuideTopic": "하루에 두 계절을 지나는 곳",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "two-seasons-a-day"
+          ]
+        },
+        {
+          "pageNumber": 3,
+          "chapter": "1장 재모래사막",
+          "section": "1.1 낮밤 온도차",
+          "primaryConcepts": [
+            "낮밤 온도차"
+          ],
+          "secondaryConcepts": [
+            "걷는 시각"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일교차에 따라 하루가 네 구간으로 분할된다는 점을 제시한다. 보행 가능 시간대와 회피 시간대를 구분하고, 총 보행 시간이 두 덩어리로 나뉘는 구조가 이 지형에서의 이동을 가능하게 한다고 설명한다.",
+          "aiAnalysisInputSha256": "68b2bc29873481a94757ad2a45686e45f77592c356d03c65a1fc220126b120bb",
+          "aiPublicGuideTopic": "하루가 네 토막으로 나뉘는 것",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 4,
+          "chapter": "1장 재모래사막",
+          "section": "1.2 오아시스",
+          "primaryConcepts": [
+            "오아시스"
+          ],
+          "secondaryConcepts": [
+            "낮밤 온도차"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "급수 지점의 분포가 경로와 일정을 결정한다는 구조를 설명한다. 지점 간 간격이 하루에서 하루 반이라는 조건과, 중간 숙영 시 다음 구간분의 물을 휴대해야 한다는 부담을 함께 제시한다.",
+          "aiAnalysisInputSha256": "c4cf2d1aa0dac4e06bf47e591351c4027b89128d2254f2453a528b982d145f07",
+          "aiPublicGuideTopic": "물이 있는 자리가 정하는 경로",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 5,
+          "chapter": "1장 재모래사막",
+          "section": "1.2 오아시스",
+          "primaryConcepts": [
+            "오아시스"
+          ],
+          "secondaryConcepts": [
+            "물 배분",
+            "오아시스 마을"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "급수 지점을 취락, 우물, 계절성 수원의 셋으로 구분하고 각각의 이용 조건을 제시한다. 불확실한 수원을 계획에서 제외하고 여유분으로만 취급하는 원칙과 그 이유를 설명한다.",
+          "aiAnalysisInputSha256": "6a799bb20d88890d9a4545a358ba4ce4d5468e189d274f3c3569ee25ee57d0a7",
+          "aiPublicGuideTopic": "물이 있는 자리의 세 종류",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 6,
+          "chapter": "1장 재모래사막",
+          "section": "1.3 모래 지형",
+          "primaryConcepts": [
+            "모래 지형"
+          ],
+          "secondaryConcepts": [
+            "낮밤 온도차"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지표 상태에 따른 보행 속도의 차이를 세 유형으로 제시한다. 고결된 지면, 얕은 사질토, 사구의 순으로 속도가 저하되며 사구 통과가 가장 비효율적이라는 점을 근거로 우회 경로 선택의 기준을 밝힌다.",
+          "aiAnalysisInputSha256": "15fc196cdbe08f980bdf19687a2bcbed284116e1071d99f8018403015338e1ee",
+          "aiPublicGuideTopic": "걷기 쉬운 모래와 어려운 모래",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 7,
+          "chapter": "1장 재모래사막",
+          "section": "1.3 모래 지형",
+          "primaryConcepts": [
+            "모래 지형"
+          ],
+          "secondaryConcepts": [
+            "걷는 시각",
+            "모래바람"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "지표 유형별로 동일 거리의 소요 시간을 막대 길이가 아니라 표기 시간으로 비교한 도표다. 우회 경로와 직선 경로를 아래에 함께 그려 거리 기준 선택이 오히려 느려진다는 점을 보인다.",
+          "aiAnalysisInputSha256": "aec178e6d280fba0014108007aa38e0fc1cda5fe380b87ae50864c31a0a769b4",
+          "aiPublicGuideTopic": "바닥의 종류에 따라 걷는 속도가 얼마나 달라지는지 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 8,
+          "chapter": "1장 재모래사막",
+          "section": "1.4 동행과 안내인",
+          "primaryConcepts": [
+            "동행과 안내인"
+          ],
+          "secondaryConcepts": [
+            "오아시스"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단독 진입을 권하지 않는 세 가지 이유를 급수 지점의 정보, 기상 판단, 부상 시 자력 탈출 불가로 제시한다. 안내인의 역할과 여행자가 여전히 담당해야 하는 몫을 구분해 밝힌다.",
+          "aiAnalysisInputSha256": "daf2de274dac2d21444ca0682f2ae89ae17e0784a729b95725c648b21949c4c2",
+          "aiPublicGuideTopic": "혼자 들어가지 않는 곳",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 9,
+          "chapter": "1장 재모래사막",
+          "section": "1.4 동행과 안내인",
+          "primaryConcepts": [
+            "동행과 안내인"
+          ],
+          "secondaryConcepts": [
+            "물 배분",
+            "단독 행"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동행 안내인에게 사전에 확인해야 할 항목을 목적지, 급수 지점, 시간 배분, 비상 대응의 넷으로 정리한다. 사막에서 발화 자체가 수분을 소모하므로 질문을 아침에 집중한다는 실무를 덧붙인다.",
+          "aiAnalysisInputSha256": "d61a7967a2baa3da7ff32363da104a72839043b7ed39da1d135ca81a1f5fee07",
+          "aiPublicGuideTopic": "안내인에게 물어야 하는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 10,
+          "chapter": "1장 재모래사막",
+          "section": "1.5 사막의 짐",
+          "primaryConcepts": [
+            "사막의 짐"
+          ],
+          "secondaryConcepts": [
+            "모래 지형"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "휴대품의 구성을 물, 의류, 침구로 정리하고 각각의 비중을 제시한다. 수분이 최대 중량 요소이며 일교차 때문에 주야 의류가 별도로 필요하다는 점을 밝히고, 경로 선택이 하중을 결정한다는 관계를 설명한다.",
+          "aiAnalysisInputSha256": "f1b7d9f55747ee1a58c6adf144aaa1b5f1fbf2a2ca46190da8174baff71ed7af",
+          "aiPublicGuideTopic": "물과 옷이 짐의 대부분인 이유",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 11,
+          "chapter": "1장 재모래사막",
+          "section": "1.5 사막의 짐",
+          "primaryConcepts": [
+            "사막의 짐"
+          ],
+          "secondaryConcepts": [
+            "구간 준비",
+            "그늘 만들기"
+          ],
+          "contentRole": "PREREQUISITE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "휴대품 선별 기준을 생존 필수 여부로 단순화한 사례를 제시한다. 물, 야간 의류, 차광 도구, 조명을 필수로 두고 식량이 과다 휴대되는 경향을 실제 경험으로 밝히며, 인공 그늘 조성 도구의 필요성을 설명한다.",
+          "aiAnalysisInputSha256": "cc37fa12f4bc1e9c0c8a9a153213305abb0af0ae9613841f0c8eb50fe02d2aec",
+          "aiPublicGuideTopic": "지고 갈 것과 두고 갈 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 12,
+          "chapter": "2장 낮",
+          "section": "2.1 걷는 시각",
+          "primaryConcepts": [
+            "걷는 시각"
+          ],
+          "secondaryConcepts": [
+            "낮밤 온도차"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "보행 시간대를 새벽과 오후로 이원화하는 원칙과 그 근거를 제시한다. 고온 시간대의 보행이 수분 소비를 배로 늘려 급수 계획을 무너뜨린다는 점을 이유로 들고, 총 보행 시간을 여덟 시간으로 고정한 실제 운용을 밝힌다.",
+          "aiAnalysisInputSha256": "5dd17e3b49bcae06b960cbcf839f10e9d0d3316fc6302a125cf2defa9a5dc89b",
+          "aiPublicGuideTopic": "언제 걷고 언제 멈추는가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 13,
+          "chapter": "2장 낮",
+          "section": "2.1 걷는 시각",
+          "primaryConcepts": [
+            "걷는 시각"
+          ],
+          "secondaryConcepts": [
+            "그늘 만들기",
+            "물 배분"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "고온 시간대의 정지 체류가 이동을 위한 필수 조건이라는 점을 다룬다. 활동 억제가 수분 소비를 줄인다는 이유와, 그 시간에 수행 가능한 정비 작업의 범위를 제시하며 나머지 시간의 성격을 밝힌다.",
+          "aiAnalysisInputSha256": "31d61d409e5f1483566791fe04e083f0e03ddc51a4fcf6d6b644f54a2a7ab2fa",
+          "aiPublicGuideTopic": "쉬는 일곱 시간을 보내는 법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 14,
+          "chapter": "2장 낮",
+          "section": "2.2 그늘 만들기",
+          "primaryConcepts": [
+            "그늘 만들기"
+          ],
+          "secondaryConcepts": [
+            "걷는 시각"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "자연 그늘이 없는 조건에서 차광 시설을 설치하는 방법을 다룬다. 최소 장비 구성과 설치 시간, 높이에 따른 통풍과 내풍성의 상충, 태양의 이동에 따른 재설치 필요성을 각각 제시한다.",
+          "aiAnalysisInputSha256": "8a3da8148b9421b5cd8cf0d05951f7a9bc6f3ff4d5db4639b58681a942306087",
+          "aiPublicGuideTopic": "그늘이 없는 곳에서 그늘을 만드는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 15,
+          "chapter": "2장 낮",
+          "section": "2.2 그늘 만들기",
+          "primaryConcepts": [
+            "그늘 만들기"
+          ],
+          "secondaryConcepts": [
+            "낮밤 온도차",
+            "야영 자리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "하루의 기온 변화 곡선 아래에 활동 구간을 배치한 도표다. 보행 두 구간과 정지 두 구간을 무늬로 구분하고 최고점과 최저점의 차이를 표시해, 활동 시간표가 기온 곡선에서 도출된다는 점을 보인다.",
+          "aiAnalysisInputSha256": "1d1786c1b14f5c9957c4c821bd3ec447bd64108ae70e610de32c42e92665c00c",
+          "aiPublicGuideTopic": "하루 동안 기온이 어떻게 오르내리고 언제 걷는지 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            14
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 16,
+          "chapter": "2장 낮",
+          "section": "2.3 물 배분",
+          "primaryConcepts": [
+            "물 배분"
+          ],
+          "secondaryConcepts": [
+            "오아시스"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수분 섭취를 시간 단위로 계획하는 방법을 제시한다. 소량 분할 섭취가 배출을 줄인다는 근거, 일일 배분과 시각 지정, 잔량에 따라 다음 날의 보행 시간을 조정하는 원칙을 각각 설명한다.",
+          "aiAnalysisInputSha256": "7f5b8e5b3751f8880dab5c40aa275b084682a9e4a18a579aa985fdba2726684f",
+          "aiPublicGuideTopic": "하루치 물을 나누어 마시는 법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 17,
+          "chapter": "2장 낮",
+          "section": "2.3 물 배분",
+          "primaryConcepts": [
+            "물 배분"
+          ],
+          "secondaryConcepts": [
+            "사막의 짐",
+            "휴식일"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "수분 소비가 계획을 초과할 때의 대응을 보행 시간 단축, 잔여 거리 재확인, 회귀 판단의 순으로 제시한다. 전진이 항상 최선은 아니라는 점과, 잔량 보고의 정확성이 안전에 직결된다는 원칙을 밝힌다.",
+          "aiAnalysisInputSha256": "511b45aec0a8d29501c9d166c173301e312ef2c5f0de2398867ac82621da3af7",
+          "aiPublicGuideTopic": "물이 모자랄 것 같을 때",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            16
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 18,
+          "chapter": "2장 낮",
+          "section": "2.4 모래바람",
+          "primaryConcepts": [
+            "모래바람"
+          ],
+          "secondaryConcepts": [
+            "모래 지형"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "모래폭풍의 전조를 하늘의 색조 변화, 풍향 전환, 일시적 정온의 셋으로 제시한다. 감지 시의 대응으로 이동 중단과 저지대 대피, 신체 차폐를 설명하고 통과 소요와 그 이후의 지형 변화를 밝힌다.",
+          "aiAnalysisInputSha256": "43e7391f7e31842cec813448c1d238711a16e760b881f58353601274e332420e",
+          "aiPublicGuideTopic": "바람이 오는 것을 아는 법",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            6
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 19,
+          "chapter": "2장 낮",
+          "section": "2.4 모래바람",
+          "primaryConcepts": [
+            "모래바람"
+          ],
+          "secondaryConcepts": [
+            "별로 방향",
+            "둘째 날 기록"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "모래폭풍 이후 지형의 미세 형상이 변형되어 위치 판단이 어려워진다는 문제를 다룬다. 원거리 지형과 천체를 기준으로 재설정하는 방법, 장비 정비에 소요되는 시간을 일정에 포함하는 대응을 제시한다.",
+          "aiAnalysisInputSha256": "7b47b67019242d466a5296abf6486ff3318e2c974b48c85216ebdfb78bd9f7ed",
+          "aiPublicGuideTopic": "바람이 지나간 뒤에 하는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 20,
+          "chapter": "3장 밤",
+          "section": "3.1 밤의 냉각",
+          "primaryConcepts": [
+            "밤의 냉각"
+          ],
+          "secondaryConcepts": [
+            "낮밤 온도차"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "일몰 후 급격한 기온 하강의 원인을 복사냉각으로 설명한다. 운량이 적을수록 냉각이 빨라 맑은 밤이 가장 춥다는 관계를 제시하고, 일몰 전에 야영 준비를 마쳐야 하는 이유와 그 시점을 판단하는 방법을 밝힌다.",
+          "aiAnalysisInputSha256": "1d050a81d214cb485cdd9b47adf096ba80c37437317dafbbf82f26ccd9017882",
+          "aiPublicGuideTopic": "해가 지고 나서 벌어지는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            2
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 21,
+          "chapter": "3장 밤",
+          "section": "3.1 밤의 냉각",
+          "primaryConcepts": [
+            "밤의 냉각"
+          ],
+          "secondaryConcepts": [
+            "별로 방향",
+            "야영 자리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "야간 복사냉각의 정도가 운량에 따라 달라지는 원리를 좌우 대비로 나타낸 도표다. 열의 이동을 화살표로, 결과를 온도계 눈금으로 표시해 관측 조건과 체감 온도가 반대로 움직인다는 점을 보인다.",
+          "aiAnalysisInputSha256": "416d42b37cb2690b39b7a759987db69febf90957fe637f47c860d334aa150ace",
+          "aiPublicGuideTopic": "맑은 밤과 흐린 밤에 열이 어떻게 빠져나가는지 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 22,
+          "chapter": "3장 밤",
+          "section": "3.2 별로 방향",
+          "primaryConcepts": [
+            "별로 방향"
+          ],
+          "secondaryConcepts": [
+            "밤의 냉각"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "야간 천체를 이용한 방위 결정 방법을 다룬다. 다수의 별 가운데 위치가 고정된 하나만 사용하는 방식과 그 식별 절차를 제시하고, 확인한 방위를 주간에 사용할 지형 기준으로 옮겨 두는 방법을 설명한다.",
+          "aiAnalysisInputSha256": "91903ba2ee591180d33c183b533b0c333359a617eacb8b9e661adb1161aab687",
+          "aiPublicGuideTopic": "밤하늘에서 방향을 잡는 법",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 23,
+          "chapter": "3장 밤",
+          "section": "3.2 별로 방향",
+          "primaryConcepts": [
+            "별로 방향"
+          ],
+          "secondaryConcepts": [
+            "모래바람",
+            "흐린 밤"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "천체 관측이 방위만 제공하고 위치는 제공하지 않는다는 한계를 밝힌다. 방위, 경과 시간에 의한 거리 추정, 원거리 지형에 의한 보정을 결합하는 방법을 제시하고, 야간 보행과 방위 결정을 구분한다.",
+          "aiAnalysisInputSha256": "e73effe7385dc41b3ca68db2d77f275641e6a97c0a04541e237cd3a283ddc0a1",
+          "aiPublicGuideTopic": "별이 알려 주는 것과 알려 주지 않는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 24,
+          "chapter": "3장 밤",
+          "section": "3.3 야영 자리",
+          "primaryConcepts": [
+            "야영 자리"
+          ],
+          "secondaryConcepts": [
+            "밤의 냉각"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "야영지 선정 기준을 방풍, 지면의 열적 특성, 수원과의 거리, 일출 방향의 넷으로 제시한다. 각 조건이 야간 체온 유지와 아침의 회복에 미치는 영향을 설명한다.",
+          "aiAnalysisInputSha256": "392d2896991a74fb64687b4b31dcb335912cf8599e9b69bdd76b5796abad4248",
+          "aiPublicGuideTopic": "밤을 나는 자리를 고르는 조건",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 25,
+          "chapter": "3장 밤",
+          "section": "3.3 야영 자리",
+          "primaryConcepts": [
+            "야영 자리"
+          ],
+          "secondaryConcepts": [
+            "모래바람",
+            "밤의 잠"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "야영지 결정 이후의 설영 절차를 네 단계로 제시한다. 취침 면 정리, 장비 집결, 야간 의류 인출, 물통 배치이며 각 조치가 야간과 새벽의 행동을 어떻게 단순화하는지 설명한다.",
+          "aiAnalysisInputSha256": "773e33f22efae7979736fc1294c709797641a752e98696f788b0bbd9ee8d70d3",
+          "aiPublicGuideTopic": "자리를 정하고 나서 하는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 26,
+          "chapter": "3장 밤",
+          "section": "3.4 밤의 잠",
+          "primaryConcepts": [
+            "밤의 잠"
+          ],
+          "secondaryConcepts": [
+            "야영 자리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "야간 저온에서의 수면 확보 방법을 다룬다. 일몰 전 환복으로 습기를 제거하는 조치, 지면 냉기 차단이 상부 보온보다 우선한다는 원칙, 화기 사용을 저녁으로 한정하는 이유를 각각 제시한다.",
+          "aiAnalysisInputSha256": "2303a6641d50ad58aa1b236336bb6485bf46d1d1415626f88f3117fa9667c9dd",
+          "aiPublicGuideTopic": "추운 밤을 나는 방법",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            24
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 27,
+          "chapter": "3장 밤",
+          "section": "3.4 밤의 잠",
+          "primaryConcepts": [
+            "밤의 잠"
+          ],
+          "secondaryConcepts": [
+            "별로 방향",
+            "첫날 기록"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "취침 전 시간대의 활용을 다룬다. 야간 관측 조건의 특수성, 다음 날 방위를 지형에 대응시켜 두는 절차, 보행 시간과 수분 소비를 기록해 익일 계획의 근거로 삼는 방법을 제시한다.",
+          "aiAnalysisInputSha256": "14ebcf89f13707dc1a312c1999235a9f625056b8d6dd8c9aab80618ba80e5670",
+          "aiPublicGuideTopic": "잠들기 전의 삼십 분",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            26
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 28,
+          "chapter": "4장 오아시스",
+          "section": "4.1 오아시스 마을",
+          "primaryConcepts": [
+            "오아시스 마을"
+          ],
+          "secondaryConcepts": [
+            "오아시스"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "오아시스 취락의 공간 구조를 수원 중심의 동심원으로 설명한다. 물과의 거리가 이용 우선순위를 나타내며 방문자의 위치가 최외곽이라는 점을 제시하고, 물이 지역 주민의 생활 자원이라는 인식을 밝힌다.",
+          "aiAnalysisInputSha256": "3bbd0d7da7772fc94c7f4ff9f4cae1cd9c304d9b8c180eb8f6a053a50a783d41",
+          "aiPublicGuideTopic": "사막 가운데의 마을",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [
+            4
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 29,
+          "chapter": "4장 오아시스",
+          "section": "4.1 오아시스 마을",
+          "primaryConcepts": [
+            "오아시스 마을"
+          ],
+          "secondaryConcepts": [
+            "물 규칙",
+            "휴식일"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "오아시스 취락의 토지 이용을 수원으로부터의 거리에 따라 동심원으로 배치한 도표다. 구역별 거리를 함께 표기해 물 이용의 우선순위가 공간 배치로 나타난다는 점을 보인다.",
+          "aiAnalysisInputSha256": "22b21e444cdfecc9b011d407c5c50b41106d4aa5cc8428b784c458b4cf1340ec",
+          "aiPublicGuideTopic": "물을 중심으로 마을이 어떻게 놓여 있는지 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 30,
+          "chapter": "4장 오아시스",
+          "section": "4.2 물 규칙",
+          "primaryConcepts": [
+            "물 규칙"
+          ],
+          "secondaryConcepts": [
+            "오아시스 마을"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "오아시스에서의 취수 규칙을 시각 제한, 용기 분리, 재사용의 셋으로 제시한다. 각 규칙이 수량 보존과 수질 유지, 농업 용수 확보와 연결된다는 점을 설명한다.",
+          "aiAnalysisInputSha256": "e39475e381599eede78ffb23abc08e9a7b8f374d906b2feaf6ffef0c25e98abc",
+          "aiPublicGuideTopic": "물을 얻는 데 있는 규칙",
+          "estimatedReadingSeconds": 60,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 31,
+          "chapter": "4장 오아시스",
+          "section": "4.2 물 규칙",
+          "primaryConcepts": [
+            "물 규칙"
+          ],
+          "secondaryConcepts": [
+            "휴식일",
+            "구간 준비"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "방문자가 급수를 받는 절차를 다룬다. 필요량의 사전 통보, 현장에서의 추가 요구 자제, 물품 교환 형태의 대가를 제시하고, 직접 취수를 제한하는 이유를 수질 관리의 관점에서 설명한다.",
+          "aiAnalysisInputSha256": "efeca668df6700b52dc360a18be33993384087cfba13c8ae554788c42d9a6b42",
+          "aiPublicGuideTopic": "여행자가 물을 받는 방식",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            30
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 32,
+          "chapter": "4장 오아시스",
+          "section": "4.3 휴식일",
+          "primaryConcepts": [
+            "휴식일"
+          ],
+          "secondaryConcepts": [
+            "오아시스 마을"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "중간 지점에서의 휴식일이 갖는 기능을 수분 보충, 장비 재정비, 수면 회복으로 정리한다. 불필요한 물품을 위탁해 하중을 줄이는 방법과, 휴식이 이후 구간의 지속을 가능하게 한다는 관계를 제시한다.",
+          "aiAnalysisInputSha256": "334aa003cf3b1e6cbcf1bf6a13fae81cec5525f58abfc566c6abde2dedd797b4",
+          "aiPublicGuideTopic": "사막 가운데에서 하루를 쉬는 일",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 33,
+          "chapter": "4장 오아시스",
+          "section": "4.3 휴식일",
+          "primaryConcepts": [
+            "휴식일"
+          ],
+          "secondaryConcepts": [
+            "오아시스 마을",
+            "나흘 정리"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "휴식일의 배치 시점을 여정의 중간으로 정하는 근거를 제시한다. 초반 이틀에서 신체 상태와 소비량이 파악된다는 점, 지나치게 이르거나 늦은 휴식의 문제를 각각 설명하고 실행을 방해하는 심리적 요인을 함께 밝힌다.",
+          "aiAnalysisInputSha256": "4536c664d932f298e0bf3f92a82bc577f85e9e89f1c62d8ce43e4ef5a0d72685",
+          "aiPublicGuideTopic": "쉬는 날을 어디에 넣을 것인가",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            32
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 34,
+          "chapter": "4장 오아시스",
+          "section": "4.4 구간 준비",
+          "primaryConcepts": [
+            "구간 준비"
+          ],
+          "secondaryConcepts": [
+            "사막의 짐"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다음 구간 출발 전 점검 항목을 급수, 용기 상태, 신발, 일정 확정의 순으로 제시한다. 사막 내에서는 수리가 불가능하다는 조건과 출발 시각이 당일 수분 소비를 좌우한다는 점을 근거로 든다.",
+          "aiAnalysisInputSha256": "bc41f03d1fbf81be9100b4a40215c92c7a79b3f9c506eba72d4ef4557ea1cf62",
+          "aiPublicGuideTopic": "다음 구간을 떠나기 전에",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            10
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 35,
+          "chapter": "4장 오아시스",
+          "section": "4.4 구간 준비",
+          "primaryConcepts": [
+            "구간 준비"
+          ],
+          "secondaryConcepts": [
+            "물 배분",
+            "여름 사막"
+          ],
+          "contentRole": "CORE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "출발 전 동행자 간 상호 점검 절차를 다룬다. 잔여 수량을 육안으로 확인하는 이유, 수면과 발 상태와 어지러움이라는 세 가지 문진 항목, 보고가 위축되지 않도록 하는 태도의 중요성을 제시한다.",
+          "aiAnalysisInputSha256": "ad8f8eef34a4999c533bacefaf6409d6abde45e9894a44366b6bec2d4d5e034c",
+          "aiPublicGuideTopic": "떠나기 전에 세 사람이 함께 하는 것",
+          "estimatedReadingSeconds": 65,
+          "prerequisitePageNumbers": [
+            34
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 36,
+          "chapter": "5장 나흘의 사막",
+          "section": "5.1 첫날 기록",
+          "primaryConcepts": [
+            "첫날 기록"
+          ],
+          "secondaryConcepts": [
+            "밤의 냉각",
+            "걷는 시각"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "첫날의 실제 진행을 시각과 함께 기록한다. 계획대로 진행된 보행 구간과 달리 정지 체류 구간에서 심리적 어려움이 발생했다는 점, 야간 저온으로 수면이 중단된 경험을 제시한다.",
+          "aiAnalysisInputSha256": "847f65f5b7e60700e2644b701de779a45ff1b1a96b01ce9a6c072d99a965255d",
+          "aiPublicGuideTopic": "첫날 밤에 알게 된 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            20
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 37,
+          "chapter": "5장 나흘의 사막",
+          "section": "5.1 첫날 기록",
+          "primaryConcepts": [
+            "첫날 기록"
+          ],
+          "secondaryConcepts": [
+            "오아시스",
+            "걷는 시각"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "나흘간의 급수 지점, 보행 구간, 숙영 위치를 하나의 축에 배치한 도표다. 일별 두 구간의 보행과 그 사이의 정지 시간을 함께 표시하고, 휴식일을 공백으로 두어 일정의 구성을 드러낸다.",
+          "aiAnalysisInputSha256": "d7c2a85148a29d219494075c4540f440a22954e8a35d31588c25ea11d279dd65",
+          "aiPublicGuideTopic": "나흘 동안 지나온 자리와 잔 자리를 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 38,
+          "chapter": "5장 나흘의 사막",
+          "section": "5.2 둘째 날 기록",
+          "primaryConcepts": [
+            "둘째 날 기록"
+          ],
+          "secondaryConcepts": [
+            "모래바람",
+            "물 배분"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "모래폭풍 조우와 대응을 시간 순으로 기록한다. 전조 감지에서 대피, 통과 후 정비까지의 소요를 제시하고, 그 결과 목표 지점에 도달하지 못해 수분을 절약해야 했던 경과를 밝힌다.",
+          "aiAnalysisInputSha256": "a6a15834924d6fcbe86b46758627f33629e5faa3f53f8d0043d1f7b99accfdb8",
+          "aiPublicGuideTopic": "모래바람을 만난 오후",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            18
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 39,
+          "chapter": "5장 나흘의 사막",
+          "section": "5.3 셋째 날 기록",
+          "primaryConcepts": [
+            "셋째 날 기록"
+          ],
+          "secondaryConcepts": [
+            "오아시스 마을",
+            "휴식일"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "휴식일의 관찰과 정비를 기록한다. 취수 규칙을 현장에서 확인한 경위, 취락 구조를 도면으로 옮긴 작업, 물품 위탁과 장비 수리, 수면 회복이 다음 날의 상태로 이어졌다는 결과를 제시한다.",
+          "aiAnalysisInputSha256": "dc2305245837d847276e490e3a4dd86776792125c79b6f1c0466ee25c9610115",
+          "aiPublicGuideTopic": "물빛마을의 하루",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            28
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 40,
+          "chapter": "5장 나흘의 사막",
+          "section": "5.4 나흘 정리",
+          "primaryConcepts": [
+            "나흘 정리"
+          ],
+          "secondaryConcepts": [
+            "첫날 기록",
+            "물 배분"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "나흘의 결과를 보행 시간, 수분 소비, 숙영 조건의 세 항목으로 정리한다. 평균값이 계획과 일치하더라도 일별 편차가 크다는 점을 제시하고, 수면 조건이 다음 날의 보행에 영향을 미쳤다는 관찰을 밝힌다.",
+          "aiAnalysisInputSha256": "27b2093685bad9118635b09c57e35e29142b007d2edb1f46d17c23c6772d7c56",
+          "aiPublicGuideTopic": "나흘을 숫자로 줄이기",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            36
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 41,
+          "chapter": "5장 나흘의 사막",
+          "section": "5.4 나흘 정리",
+          "primaryConcepts": [
+            "나흘 정리"
+          ],
+          "secondaryConcepts": [
+            "별로 방향",
+            "동행과 안내인"
+          ],
+          "contentRole": "EXAMPLE",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "동행한 안내인의 역할을 문서화 가능한 지식과 그렇지 않은 판단으로 구분한다. 급수 지점의 정확한 위치와 기상 전조 판단이 후자에 속한다는 점을 사례로 들고, 이 기록의 성격을 단독 행이 아닌 동행 여행의 기록으로 한정한다.",
+          "aiAnalysisInputSha256": "aef01c43df1244099e33ea6ca3cf8357cb1e91383dd37476891634eac5671dcf",
+          "aiPublicGuideTopic": "안내인 없이 할 수 있었을까",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            40
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 42,
+          "chapter": "6장 이 방법이 통하지 않을 때",
+          "section": "6.1 흐린 밤",
+          "primaryConcepts": [
+            "흐린 밤"
+          ],
+          "secondaryConcepts": [
+            "별로 방향"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "천체 관측이 불가능한 야간의 대응을 다룬다. 주간에 기록해 둔 지형 방위로 대체하는 방법과, 방위가 불확실할 때는 이동을 중단한다는 원칙을 제시하며 흐린 밤의 기온이 오히려 높다는 점을 덧붙인다.",
+          "aiAnalysisInputSha256": "faeadb5e14eec591cc42deafe71469f6e0b6e7f774fdd286f5397584730462af",
+          "aiPublicGuideTopic": "별이 보이지 않는 밤",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            22
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 43,
+          "chapter": "6장 이 방법이 통하지 않을 때",
+          "section": "6.1 흐린 밤",
+          "primaryConcepts": [
+            "흐린 밤"
+          ],
+          "secondaryConcepts": [
+            "별로 방향",
+            "모래바람"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "방위 판단 수단 세 가지의 가용 조건을 네 가지 상황에 걸쳐 표로 대비한 도표다. 세 수단이 함께 막히는 상황은 하나뿐이고 나머지에서는 적어도 하나가 남는다는 점을 칸의 농도로 보인다.",
+          "aiAnalysisInputSha256": "1bb9284013f0e4813a480ac274e37b8b7391f422ae404aa7fe7223b3e58d8c85",
+          "aiPublicGuideTopic": "방향을 잡는 세 가지가 언제 쓸 수 있는지 그린 그림",
+          "estimatedReadingSeconds": 45,
+          "prerequisitePageNumbers": [
+            42
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 44,
+          "chapter": "6장 이 방법이 통하지 않을 때",
+          "section": "6.2 단독 행",
+          "primaryConcepts": [
+            "단독 행"
+          ],
+          "secondaryConcepts": [
+            "동행과 안내인"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단독 진입 시 증가하는 위험을 부상, 방위 상실, 물자 부족의 셋으로 제시한다. 감당 가능한 범위를 당일 왕복으로 한정하는 기준과, 복귀 예정 시각을 취락에 통보하는 최소 조치를 밝힌다.",
+          "aiAnalysisInputSha256": "6b635d1757c03510357841a503f6af6ec697f8f8c365b512fee03bf4e29ba5df",
+          "aiPublicGuideTopic": "혼자 걷겠다는 사람에게",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            8
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 45,
+          "chapter": "6장 이 방법이 통하지 않을 때",
+          "section": "6.2 단독 행",
+          "primaryConcepts": [
+            "단독 행"
+          ],
+          "secondaryConcepts": [
+            "별로 방향",
+            "흐린 밤"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "단독 행에서도 유지되는 항목과 결여되는 항목을 구분해 제시한다. 시간 배분과 생활 관리는 이전 가능하지만 상황 판단은 대체 불가하다는 점을 밝히고, 판단을 사전 규칙으로 전환하는 대응을 제안한다.",
+          "aiAnalysisInputSha256": "ac644d9bf380ce32b8f23f7ae3ea4686cc7e36b7e9023ce29a8945d7c4d93c4a",
+          "aiPublicGuideTopic": "혼자여도 지킬 수 있는 것",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            44
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 46,
+          "chapter": "6장 이 방법이 통하지 않을 때",
+          "section": "6.3 여름 사막",
+          "primaryConcepts": [
+            "여름 사막"
+          ],
+          "secondaryConcepts": [
+            "걷는 시각",
+            "낮밤 온도차"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "고온기에는 이 일정이 성립하지 않는다는 한계를 밝힌다. 보행 가능 시간대의 단축과 수분 소요 증가가 하중과 구간 수를 함께 늘린다는 연쇄를 제시하고, 기록에 계절을 명시해야 하는 이유를 설명한다.",
+          "aiAnalysisInputSha256": "2740cd1f7e8f3d6745fd0b5d6824bb677de835d62c7f01e6948ed3141a57c6b7",
+          "aiPublicGuideTopic": "이 나흘이 성립하는 계절",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            12
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 47,
+          "chapter": "6장 이 방법이 통하지 않을 때",
+          "section": "6.3 여름 사막",
+          "primaryConcepts": [
+            "여름 사막"
+          ],
+          "secondaryConcepts": [
+            "오아시스",
+            "휴식일"
+          ],
+          "contentRole": "COUNTERPOINT",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "계절에 따라 동일 지역의 이동 조건이 달라진다는 점을 겨울과 여름의 사례로 제시한다. 하중과 수분 소비가 반대로 움직인다는 관계를 설명하고, 기록에 계절을 명시하지 않으면 정보로서 불완전하다는 결론을 밝힌다.",
+          "aiAnalysisInputSha256": "7b4aa16f2eada7234a9e8cece8b474311e67f89856f819e9084dd5a7650c71e8",
+          "aiPublicGuideTopic": "계절마다 다른 사막",
+          "estimatedReadingSeconds": 70,
+          "prerequisitePageNumbers": [
+            46
+          ],
+          "duplicateGroupKeys": []
+        },
+        {
+          "pageNumber": 48,
+          "chapter": "7장 결론: 사막의 시간",
+          "section": "7.1 사막의 시간",
+          "primaryConcepts": [
+            "사막의 시간"
+          ],
+          "secondaryConcepts": [
+            "낮밤 온도차",
+            "걷는 시각"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "책 전체의 명제를 다시 진술하는 결론 도입 페이지다. 하루가 연속이 아니라 분할된 구조라는 점을 정리하고, 정지 시간에 대한 인식이 바뀌는 과정과 야간 관측 조건이 저온과 같은 원인에서 나온다는 사실을 종합한다.",
+          "aiAnalysisInputSha256": "cfae64ec143718e9dc4a98995f7648eb0507a5f5530a2b300cd8a324071aafe6",
+          "aiPublicGuideTopic": "하루를 두 번 나누어 사는 일",
+          "estimatedReadingSeconds": 80,
+          "prerequisitePageNumbers": [],
+          "duplicateGroupKeys": [
+            "two-seasons-a-day"
+          ]
+        },
+        {
+          "pageNumber": 49,
+          "chapter": "7장 결론: 사막의 시간",
+          "section": "7.1 사막의 시간",
+          "primaryConcepts": [
+            "사막의 시간"
+          ],
+          "secondaryConcepts": [
+            "물 배분",
+            "동행과 안내인"
+          ],
+          "contentRole": "CONCLUSION",
+          "aiRouteCandidatePage": true,
+          "aiAnalysisText": "다른 지역에 적용할 수 있도록 준비 항목을 네 가지로 압축해 제시한다. 급수 지점 간격, 계절별 기온, 보행 시간대 결정, 안내인 확보이며 마지막 항목은 현지에서만 해결된다는 점을 강조한다.",
+          "aiAnalysisInputSha256": "c84e9973df7d9c40c2dbe2a88b8a46cbf4dc1c960e89717b24add42ddf01445c",
+          "aiPublicGuideTopic": "다른 사막에 가기 전에",
+          "estimatedReadingSeconds": 75,
+          "prerequisitePageNumbers": [
+            48
+          ],
+          "duplicateGroupKeys": []
+        }
+      ]
     }
   ]
 }

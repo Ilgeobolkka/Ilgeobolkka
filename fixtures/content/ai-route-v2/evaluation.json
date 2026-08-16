@@ -3874,6 +3874,98 @@
         7,
         16
       ]
+    },
+    {
+      "caseId": "case-book-090",
+      "bookId": 90,
+      "purpose": "이 책을 소장하고 있는데, 안내인과 함께 사막을 며칠 걸을 계획이다. 낮과 밤의 기온차가 하루를 어떻게 나누는지와 언제 걷고 물을 어떻게 나누어 마시는지, 그리고 밤에 별로 방향을 잡는 법을 이어서 익히고 싶다",
+      "owned": true,
+      "maxAdditionalInk": null,
+      "depth": "BALANCED",
+      "activeRentalPageNumbers": [],
+      "requiredConcepts": [
+        "낮밤 온도차",
+        "오아시스",
+        "걷는 시각",
+        "물 배분",
+        "밤의 냉각",
+        "별로 방향"
+      ],
+      "helpfulConcepts": [
+        "모래 지형",
+        "그늘 만들기",
+        "야영 자리",
+        "동행과 안내인"
+      ],
+      "requiredPrerequisites": [
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 4
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 5
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 12
+        },
+        {
+          "beforePageNumber": 12,
+          "afterPageNumber": 13
+        },
+        {
+          "beforePageNumber": 4,
+          "afterPageNumber": 16
+        },
+        {
+          "beforePageNumber": 16,
+          "afterPageNumber": 17
+        },
+        {
+          "beforePageNumber": 2,
+          "afterPageNumber": 20
+        },
+        {
+          "beforePageNumber": 20,
+          "afterPageNumber": 22
+        },
+        {
+          "beforePageNumber": 22,
+          "afterPageNumber": 23
+        }
+      ],
+      "irrelevantPageNumbers": [
+        32,
+        33,
+        44,
+        45,
+        46,
+        47
+      ],
+      "duplicatePageGroups": [
+        [
+          2,
+          48
+        ]
+      ],
+      "referencePageNumbers": [
+        2,
+        4,
+        5,
+        12,
+        13,
+        16,
+        17,
+        20,
+        22,
+        23
+      ],
+      "allowedAlternativePageNumbers": [
+        3,
+        14,
+        25
+      ]
     }
   ]
 }
