@@ -3,9 +3,14 @@
       xmlns:th="http://www.thymeleaf.org"
       th:fragment="page(pageTitle, pageContent)">
 <head th:replace="~{fragments/head :: head(${pageTitle})}"></head>
-<body class="d-flex flex-column min-vh-100 bg-light">
-<header th:replace="~{fragments/header :: header}"></header>
-<main class="container flex-grow-1 py-4" id="main-content">
+<body class="site-body d-flex flex-column min-vh-100"
+      th:classappend="${layoutMode == 'viewer'} ? ' viewer-body'">
+<th:block th:unless="${layoutMode == 'viewer'}">
+    <header th:replace="~{fragments/header :: header}"></header>
+</th:block>
+<main class="site-main flex-grow-1"
+      th:classappend="${layoutMode == 'viewer'} ? ' viewer-main'"
+      id="main-content">
     <div th:replace="~{fragments/error :: error}"></div>
     <th:block th:replace="${pageContent}"></th:block>
 </main>

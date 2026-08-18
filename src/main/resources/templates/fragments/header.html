@@ -1,43 +1,54 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <body>
-<header th:fragment="header" class="border-bottom bg-white">
-    <nav class="container d-flex align-items-center gap-4 py-3" aria-label="주요 메뉴">
-        <a class="fs-4 fw-semibold text-decoration-none text-dark" th:href="@{/books}">
-            읽어볼까
+<header th:fragment="header" class="site-header">
+    <nav class="site-nav" aria-label="주요 메뉴">
+        <a class="site-brand" th:href="@{/}" aria-label="읽어볼까 홈">
+            <span class="site-brand-mark" aria-hidden="true"></span>
+            <span>읽어볼까</span>
         </a>
 
-        <ul class="nav align-items-center flex-grow-1">
+        <ul class="site-nav-list">
             <li class="nav-item">
-                <a class="nav-link"
-                   th:classappend="${currentPath == '/books'} ? 'active'"
-                   th:attr="aria-current=${currentPath == '/books' ? 'page' : null}"
+                <a class="site-nav-link"
+                   th:classappend="${#strings.startsWith(currentPath, '/books')} ? 'active'"
+                   th:attr="aria-current=${#strings.startsWith(currentPath, '/books') ? 'page' : null}"
                    th:href="@{/books}">도서 탐색</a>
             </li>
-            <li class="nav-item ms-auto" th:unless="${authenticated}">
-                <a class="nav-link" th:href="@{/signup}">회원가입</a>
-            </li>
-            <li class="nav-item" th:unless="${authenticated}">
-                <a class="nav-link" th:href="@{/login}">로그인</a>
-            </li>
-            <li class="nav-item ms-auto" th:if="${authenticated}">
-                <a class="nav-link" th:href="@{/ink}">잉크</a>
+            <li class="nav-item" th:if="${authenticated}">
+                <a class="site-nav-link"
+                   th:classappend="${currentPath == '/library'} ? 'active'"
+                   th:attr="aria-current=${currentPath == '/library' ? 'page' : null}"
+                   th:href="@{/library}">내 서재</a>
             </li>
             <li class="nav-item" th:if="${authenticated}">
-                <a class="nav-link" th:href="@{/ownership-payments}">소장 결제 내역</a>
+                <a class="site-nav-link"
+                   th:classappend="${currentPath == '/ink'} ? 'active'"
+                   th:attr="aria-current=${currentPath == '/ink' ? 'page' : null}"
+                   th:href="@{/ink}">잉크</a>
             </li>
             <li class="nav-item" th:if="${authenticated}">
-                <a class="nav-link" th:href="@{/library}">내 서재</a>
+                <a class="site-nav-link"
+                   th:classappend="${currentPath == '/ownership-payments'} ? 'active'"
+                   th:attr="aria-current=${currentPath == '/ownership-payments' ? 'page' : null}"
+                   th:href="@{/ownership-payments}">소장 결제 내역</a>
             </li>
-            <li class="nav-item" th:if="${authenticated}">
-                <form th:action="@{/api/auth/logout}" method="post" data-logout-form>
+        </ul>
+
+        <div class="site-account-nav">
+            <a class="site-nav-link" th:unless="${authenticated}" th:href="@{/login}">로그인</a>
+            <a class="btn btn-primary btn-sm" th:unless="${authenticated}" th:href="@{/signup}">회원가입</a>
+            <form th:if="${authenticated}"
+                  th:action="@{/api/auth/logout}"
+                  method="post"
+                  data-logout-form>
                     <input type="hidden"
                            th:name="${_csrf.parameterName}"
                            th:value="${_csrf.token}">
-                    <button class="btn btn-link nav-link" type="submit">로그아웃</button>
-                </form>
-            </li>
-        </ul>
+                    <button class="site-account-button" type="submit">로그아웃</button>
+            </form>
+            <span class="site-account-dot" th:if="${authenticated}" aria-hidden="true"></span>
+        </div>
     </nav>
 </header>
 </body>

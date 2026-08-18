@@ -192,7 +192,7 @@ class CommonPageControllerTest {
         assertTrue(html.contains("aria-label=\"도서 목록 페이지\""));
         assertTrue(html.contains("aria-live=\"polite\""));
         assertEquals(1, html.split("aria-live=\"polite\"", -1).length - 1);
-        assertTrue(html.contains("<span class=\"text-secondary\" data-book-page>"));
+        assertTrue(html.contains("<span data-book-page>"));
         assertTrue(html.contains("/js/book/catalog.js"));
         assertFalse(html.contains("도서 목록 화면을 준비하고 있습니다."));
     }
@@ -209,6 +209,8 @@ class CommonPageControllerTest {
 
         assertTrue(html.contains("name=\"_csrf\" content=\"" + csrfToken.getToken() + "\""));
         assertTrue(html.contains("name=\"_csrf_header\" content=\"" + csrfToken.getHeaderName() + "\""));
+        assertTrue(html.contains("class=\"site-header\""));
+        assertTrue(html.contains("class=\"site-brand-mark\""));
         assertTrue(html.contains("href=\"/books\""));
         assertTrue(html.contains("href=\"/signup\""));
         assertTrue(html.contains("href=\"/login\""));
@@ -344,6 +346,10 @@ class CommonPageControllerTest {
         assertTrue(html.contains("aria-label=\"이동할 페이지 번호\""));
         assertTrue(html.contains("aria-label=\"글자 크기 키우기\""));
         assertTrue(html.contains("aria-label=\"페이지 이미지 확대\""));
+        assertTrue(html.contains("data-viewer-progress"));
+        assertTrue(html.contains("data-viewer-progress-label"));
+        assertTrue(html.contains("viewer-main"));
+        assertFalse(html.contains("class=\"site-header\""));
         assertTrue(html.matches(
                 "(?s).*role=\"alert\"\\s+tabindex=\"-1\"\\s+data-viewer-notice.*"));
         assertTrue(html.matches(
@@ -492,7 +498,11 @@ class CommonPageControllerTest {
                         org.hamcrest.Matchers.containsString("/refund"))));
 
         mockMvc.perform(get("/js/viewer/viewer-page.js"))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(content().string(org.hamcrest.Matchers.containsString(
+                        "elements.progress.value")))
+                .andExpect(content().string(org.hamcrest.Matchers.containsString(
+                        "elements.progressLabel.textContent")));
 
         mockMvc.perform(get("/js/viewer/viewer.js"))
                 .andExpect(status().isOk());

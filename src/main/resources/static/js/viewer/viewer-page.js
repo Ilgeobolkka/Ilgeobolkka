@@ -50,6 +50,7 @@ export function createViewer(root, dependencies = {}) {
             state.totalPageCount = book.totalPageCount;
             elements.title.textContent = `${book.title} 뷰어`;
             elements.totalPages.textContent = String(book.totalPageCount);
+            elements.progress.max = book.totalPageCount;
             elements.pageInput.max = String(book.totalPageCount);
             elements.pageInput.value = String(initialPage);
             updateControls();
@@ -221,6 +222,9 @@ export function createViewer(root, dependencies = {}) {
         elements.content.setAttribute("aria-busy", "false");
         elements.status.textContent =
             `${metadata.pageNumber} / ${state.totalPageCount} 페이지`;
+        elements.progress.value = metadata.pageNumber;
+        elements.progressLabel.textContent =
+            `${Math.round((metadata.pageNumber / state.totalPageCount) * 100)}%`;
         elements.access.textContent = accessMessage(metadata);
         elements.inkBalance.textContent = `남은 잉크 ${metadata.inkBalance}`;
         elements.content.scrollTop = 0;
@@ -441,6 +445,8 @@ function findElements(root) {
         pageInput: "[data-viewer-page-input]",
         pageSubmit: "[data-viewer-page-submit]",
         totalPages: "[data-viewer-total-pages]",
+        progress: "[data-viewer-progress]",
+        progressLabel: "[data-viewer-progress-label]",
         textControls: "[data-viewer-text-controls]",
         textSmaller: "[data-viewer-text-smaller]",
         textLarger: "[data-viewer-text-larger]",
