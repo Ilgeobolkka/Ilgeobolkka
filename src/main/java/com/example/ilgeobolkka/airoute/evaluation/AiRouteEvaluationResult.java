@@ -54,6 +54,7 @@ public record AiRouteEvaluationResult(
             String caseId,
             long bookId,
             long durationNanos,
+            StageDurations stageDurations,
             List<RoutePage> routePages,
             Comparison comparison,
             Versions versions) {
@@ -63,6 +64,7 @@ public record AiRouteEvaluationResult(
                     || caseId.isBlank()
                     || bookId <= 0
                     || durationNanos < 0
+                    || stageDurations == null
                     || routePages == null
                     || routePages.isEmpty()
                     || comparison == null
@@ -70,6 +72,23 @@ public record AiRouteEvaluationResult(
                 throw new IllegalArgumentException("완료 평가 case의 식별자·시간·경로·비교 자료가 필요합니다.");
             }
             routePages = List.copyOf(routePages);
+        }
+
+        public CompletedCase(
+                String caseId,
+                long bookId,
+                long durationNanos,
+                List<RoutePage> routePages,
+                Comparison comparison,
+                Versions versions) {
+            this(
+                    caseId,
+                    bookId,
+                    durationNanos,
+                    StageDurations.zero(),
+                    routePages,
+                    comparison,
+                    versions);
         }
     }
 
@@ -105,6 +124,41 @@ public record AiRouteEvaluationResult(
 
     public record Prerequisite(int beforePageNumber, int afterPageNumber) {}
 
+    public record CandidateScore(int pageNumber, double similarity) {
+
+        public CandidateScore {
+            if (pageNumber <= 0 || !Double.isFinite(similarity)) {
+                throw new IllegalArgumentException("평가 후보 페이지 번호와 유한한 점수가 필요합니다.");
+            }
+        }
+    }
+
+    public record StageDurations(
+            long evaluationPreparationNanos,
+            long contentPreparationNanos,
+            long purposeEmbeddingNanos,
+            long candidateSelectionNanos,
+            long routeResponseNanos,
+            long outputValidationNanos,
+            long routeAssemblyNanos) {
+
+        public StageDurations {
+            if (evaluationPreparationNanos < 0
+                    || contentPreparationNanos < 0
+                    || purposeEmbeddingNanos < 0
+                    || candidateSelectionNanos < 0
+                    || routeResponseNanos < 0
+                    || outputValidationNanos < 0
+                    || routeAssemblyNanos < 0) {
+                throw new IllegalArgumentException("평가 구간 시간은 음수일 수 없습니다.");
+            }
+        }
+
+        static StageDurations zero() {
+            return new StageDurations(0, 0, 0, 0, 0, 0, 0);
+        }
+    }
+
     public record Versions(
             String embeddingModel,
             String routeModel,
@@ -131,15 +185,69 @@ public record AiRouteEvaluationResult(
             String caseId,
             FailureReason reason,
             AiRouteGenerationResult.NoRouteReason noRouteReason,
-            long durationNanos) {
+            long durationNanos,
+            StageDurations stageDurations,
+            List<CandidateScore> topCandidateScores,
+            String detailCode) {
 
         public Failure {
-            if (caseId == null || caseId.isBlank() || reason == null || durationNanos < 0) {
+            if (caseId == null
+                    || caseId.isBlank()
+                    || reason == null
+                    || durationNanos < 0
+                    || stageDurations == null
+                    || topCandidateScores == null
+                    || (detailCode != null && detailCode.isBlank())) {
                 throw new IllegalArgumentException("실패 평가 case의 식별자·사유·시간이 필요합니다.");
             }
             if ((reason == FailureReason.NO_ROUTE) != (noRouteReason != null)) {
                 throw new IllegalArgumentException("NO_ROUTE 실패에만 경로 없음 사유가 있어야 합니다.");
             }
+            if (detailCode != null && reason != FailureReason.INVALID_OUTPUT) {
+                throw new IllegalArgumentException("INVALID_OUTPUT 실패에만 검증 상세 code가 있어야 합니다.");
+            }
+            topCandidateScores = List.copyOf(topCandidateScores);
+        }
+
+        public Failure(
+                String caseId,
+                FailureReason reason,
+                AiRouteGenerationResult.NoRouteReason noRouteReason,
+                long durationNanos) {
+            this(
+                    caseId,
+                    reason,
+                    noRouteReason,
+                    durationNanos,
+                    StageDurations.zero(),
+                    List.of(),
+                    null);
+        }
+
+        public Failure(
+                String caseId,
+                FailureReason reason,
+                AiRouteGenerationResult.NoRouteReason noRouteReason,
+                long durationNanos,
+                StageDurations stageDurations) {
+            this(caseId, reason, noRouteReason, durationNanos, stageDurations, List.of(), null);
+        }
+
+        public Failure(
+                String caseId,
+                FailureReason reason,
+                AiRouteGenerationResult.NoRouteReason noRouteReason,
+                long durationNanos,
+                StageDurations stageDurations,
+                List<CandidateScore> topCandidateScores) {
+            this(
+                    caseId,
+                    reason,
+                    noRouteReason,
+                    durationNanos,
+                    stageDurations,
+                    topCandidateScores,
+                    null);
         }
     }
 

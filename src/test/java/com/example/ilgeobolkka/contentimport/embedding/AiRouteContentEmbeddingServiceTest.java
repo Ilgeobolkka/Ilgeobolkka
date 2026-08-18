@@ -14,6 +14,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.IntStream;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.system.CapturedOutput;
@@ -75,6 +76,22 @@ class AiRouteContentEmbeddingServiceTest {
                 () -> assertEquals("p2 분석", gateway.analysisTexts.getFirst()),
                 () -> assertNull(embedded.vectorOf(41, 1)),
                 () -> assertEquals(List.of(0.1, 0.2, 0.3), embedded.vectorOf(41, 2)));
+    }
+
+    @Test
+    void 후보_페이지를_100개씩_묶어_Gateway에_보낸다() {
+        BatchRecordingGateway gateway = new BatchRecordingGateway();
+        AiRouteContentEmbeddingService service = new AiRouteContentEmbeddingService(gateway);
+        ValidatedAiRouteContent.ValidatedPage[] pages = IntStream.rangeClosed(1, 201)
+                .mapToObj(pageNumber -> page(pageNumber, true))
+                .toArray(ValidatedAiRouteContent.ValidatedPage[]::new);
+
+        EmbeddedAiRouteContent embedded =
+                service.embed(content(book(41, pages)), POLICY);
+
+        assertAll(
+                () -> assertEquals(List.of(100, 100, 1), gateway.batchSizes),
+                () -> assertEquals(201, embedded.vectors().size()));
     }
 
     @Test
@@ -382,6 +399,28 @@ class AiRouteContentEmbeddingServiceTest {
             models.add(model);
             dimensions.add(dims);
             return responder.apply(input);
+        }
+    }
+
+    private static final class BatchRecordingGateway implements OpenAiEmbeddingGateway {
+
+        private final List<Integer> batchSizes = new ArrayList<>();
+
+        @Override
+        public Embedding embedPurpose(PurposeInput input, String model, int dimensions) {
+            throw new AssertionError("적재는 목적 embedding을 호출하지 않습니다.");
+        }
+
+        @Override
+        public Embedding embedPageAnalysis(PageAnalysisInput input, String model, int dimensions) {
+            throw new AssertionError("적재는 단건 페이지 embedding을 호출하지 않습니다.");
+        }
+
+        @Override
+        public List<Embedding> embedPageAnalyses(
+                List<PageAnalysisInput> inputs, String model, int dimensions) {
+            batchSizes.add(inputs.size());
+            return inputs.stream().map(ignored -> vector(0.1, 0.2, 0.3)).toList();
         }
     }
 }

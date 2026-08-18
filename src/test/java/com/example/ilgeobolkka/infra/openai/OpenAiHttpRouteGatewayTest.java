@@ -15,7 +15,6 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 import com.example.ilgeobolkka.infra.openai.OpenAiRouteException.Failure;
 import com.example.ilgeobolkka.infra.openai.OpenAiRouteGateway.CandidatePage;
 import com.example.ilgeobolkka.infra.openai.OpenAiRouteGateway.ModelRouteItem;
-import com.example.ilgeobolkka.infra.openai.OpenAiRouteGateway.PrerequisiteEdge;
 import com.example.ilgeobolkka.infra.openai.OpenAiRouteGateway.Relevance;
 import com.example.ilgeobolkka.infra.openai.OpenAiRouteGateway.Role;
 import com.example.ilgeobolkka.infra.openai.OpenAiRouteGateway.RouteGatewayResult;
@@ -84,7 +83,7 @@ class OpenAiHttpRouteGatewayTest {
     }
 
     @Test
-    void 정규화_목적과_서버_후보만_strict_Responses_API에_보낸다() throws Exception {
+    void 정규화_목적과_서버_후보만_none_reasoning_strict_Responses_API에_보낸다() throws Exception {
         RouteInput input = routeInput();
         String expectedPrompt = readResource(PROMPT_RESOURCE);
         expectRouteRequest(json -> {
@@ -94,8 +93,7 @@ class OpenAiHttpRouteGatewayTest {
 
                     JsonNode payload = objectMapper.readTree(json.path("input").asString());
                     assertThat(new ArrayList<>(payload.propertyNames()))
-                            .containsExactlyInAnyOrder(
-                                    "normalizedPurpose", "candidates", "prerequisiteEdges");
+                            .containsExactlyInAnyOrder("normalizedPurpose", "candidates");
                     assertThat(payload.path("normalizedPurpose").asString())
                             .isEqualTo(input.normalizedPurpose());
                     assertThat(payload.path("candidates")).hasSize(2);
@@ -103,12 +101,7 @@ class OpenAiHttpRouteGatewayTest {
                             .isEqualTo(7);
                     assertThat(payload.path("candidates").get(0).path("analysisText").asString())
                             .isEqualTo("트랜잭션 격리 수준의 기본 개념");
-                    assertThat(payload.path("prerequisiteEdges").get(0)
-                                    .path("prerequisitePageNumber").asInt())
-                            .isEqualTo(7);
-                    assertThat(payload.path("prerequisiteEdges").get(0)
-                                    .path("dependentPageNumber").asInt())
-                            .isEqualTo(12);
+                    assertThat(payload.has("prerequisiteEdges")).isFalse();
                     assertThat(payload.toString())
                             .doesNotContain(
                                     "readerId", "budget", "ink", "rental", "ownership",
@@ -120,12 +113,12 @@ class OpenAiHttpRouteGatewayTest {
         RouteGatewayResult result = gateway.proposeRoute(input);
 
         assertThat(result.proposal().items()).containsExactly(
-                new ModelRouteItem(7, Relevance.MEDIUM, true, Role.PREREQUISITE),
-                new ModelRouteItem(12, Relevance.HIGH, false, Role.CORE));
+                new ModelRouteItem(7, Relevance.MEDIUM, Role.EXAMPLE),
+                new ModelRouteItem(12, Relevance.HIGH, Role.CORE));
         assertThat(result.promptVersion())
-                .isEqualTo(expectedVersion("air-route-prompt-v1", PROMPT_RESOURCE));
+                .isEqualTo(expectedVersion("air-route-prompt-v4", PROMPT_RESOURCE));
         assertThat(result.schemaVersion())
-                .isEqualTo(expectedVersion("air-route-schema-v1", SCHEMA_RESOURCE));
+                .isEqualTo(expectedVersion("air-route-schema-v2", SCHEMA_RESOURCE));
         assertThat(gateway.routeContract().model()).isEqualTo(MODEL);
         assertThat(gateway.routeContract().promptVersion()).isEqualTo(result.promptVersion());
         assertThat(gateway.routeContract().schemaVersion()).isEqualTo(result.schemaVersion());
@@ -133,36 +126,29 @@ class OpenAiHttpRouteGatewayTest {
     }
 
     @Test
-    void 후보_밖의_선수_폐쇄도_prompt가_포함하도록_요구한다() throws Exception {
+    void 선수_그래프는_모델에_보내지_않고_prompt가_후보만_고르도록_요구한다() throws Exception {
         RouteInput input = new RouteInput(
                 "트랜잭션 격리 수준을 이해한다",
-                List.of(new CandidatePage(12, "격리 수준별 동시성 문제 비교")),
-                List.of(new PrerequisiteEdge(7, 12)));
+                List.of(new CandidatePage(12, "격리 수준별 동시성 문제 비교")));
         expectRouteRequest(json -> {
                     assertRequestContract(json);
                     assertThat(json.path("instructions").asString())
-                            .contains("후보 페이지와 prerequisiteEdges를 역방향으로 재귀 추적해 찾은 선수 페이지")
-                            .contains("역추적해 찾은 모든 선수 페이지를 포함");
+                            .contains("후보 페이지에서만")
+                            .contains("선수 페이지를 추가하거나 정렬하지 않습니다");
 
                     JsonNode payload = objectMapper.readTree(json.path("input").asString());
                     assertThat(payload.path("candidates")).hasSize(1);
                     assertThat(payload.path("candidates").get(0).path("pageNumber").asInt())
                             .isEqualTo(12);
-                    assertThat(payload.path("prerequisiteEdges").get(0)
-                                    .path("prerequisitePageNumber").asInt())
-                            .isEqualTo(7);
-                    assertThat(payload.path("prerequisiteEdges").get(0)
-                                    .path("dependentPageNumber").asInt())
-                            .isEqualTo(12);
+                    assertThat(payload.has("prerequisiteEdges")).isFalse();
                 })
                 .andRespond(withSuccess(
-                        completedResponse(validProposal()), MediaType.APPLICATION_JSON));
+                        completedResponse(singleCandidateProposal(12)), MediaType.APPLICATION_JSON));
 
         RouteGatewayResult result = gateway.proposeRoute(input);
 
         assertThat(result.proposal().items()).containsExactly(
-                new ModelRouteItem(7, Relevance.MEDIUM, true, Role.PREREQUISITE),
-                new ModelRouteItem(12, Relevance.HIGH, false, Role.CORE));
+                new ModelRouteItem(12, Relevance.HIGH, Role.CORE));
         server.verify();
     }
 
@@ -178,24 +164,24 @@ class OpenAiHttpRouteGatewayTest {
     }
 
     @Test
-    void proposal_items는_72개까지_허용한다() {
+    void proposal_items는_40개까지_허용한다() {
         expectAnyRouteRequest()
                 .andRespond(withSuccess(
-                        completedResponse(proposalWithItemCount(72)),
+                        completedResponse(proposalWithItemCount(40)),
                         MediaType.APPLICATION_JSON));
 
         RouteGatewayResult result = gateway.proposeRoute(routeInput());
 
-        assertThat(result.proposal().items()).hasSize(72);
+        assertThat(result.proposal().items()).hasSize(40);
         server.verify();
     }
 
     @Test
-    void proposal_items가_73개면_malformed_response로_로그를_남기고_실패한다(
+    void proposal_items가_41개면_malformed_response로_로그를_남기고_실패한다(
             CapturedOutput output) {
         expectAnyRouteRequest()
                 .andRespond(withSuccess(
-                        completedResponse(proposalWithItemCount(73)),
+                        completedResponse(proposalWithItemCount(41)),
                         MediaType.APPLICATION_JSON));
 
         assertFailure(() -> gateway.proposeRoute(routeInput()), Failure.MALFORMED_RESPONSE);
@@ -509,7 +495,7 @@ class OpenAiHttpRouteGatewayTest {
 
         assertThat(Stream.of(RouteInput.class.getRecordComponents())
                         .map(component -> component.getName()))
-                .containsExactly("normalizedPurpose", "candidates", "prerequisiteEdges");
+                .containsExactly("normalizedPurpose", "candidates");
         assertThat(Stream.of(CandidatePage.class.getRecordComponents())
                         .map(component -> component.getName()))
                 .containsExactly("pageNumber", "analysisText");
@@ -524,13 +510,13 @@ class OpenAiHttpRouteGatewayTest {
         assertThatThrownBy(() -> gateway.proposeRoute(null))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> gateway.proposeRoute(
-                        new RouteInput(" ", routeInput().candidates(), List.of())))
+                        new RouteInput(" ", routeInput().candidates())))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> gateway.proposeRoute(
-                        new RouteInput("목적", List.of(), List.of())))
+                        new RouteInput("목적", List.of())))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> gateway.proposeRoute(new RouteInput(
-                        "목적", List.of(new CandidatePage(1, " ")), List.of())))
+                        "목적", List.of(new CandidatePage(1, " ")))))
                 .isInstanceOf(IllegalArgumentException.class);
 
         server.verify();
@@ -581,9 +567,13 @@ class OpenAiHttpRouteGatewayTest {
 
     private void assertRequestContract(JsonNode json) {
         assertThat(new ArrayList<>(json.propertyNames()))
-                .containsExactlyInAnyOrder("model", "store", "instructions", "input", "text");
+                .containsExactlyInAnyOrder(
+                        "model", "store", "reasoning", "instructions", "input", "text");
         assertThat(json.path("model").asString()).isEqualTo(MODEL);
         assertThat(json.path("store").asBoolean()).isFalse();
+        assertThat(new ArrayList<>(json.path("reasoning").propertyNames()))
+                .containsExactly("effort");
+        assertThat(json.path("reasoning").path("effort").asString()).isEqualTo("none");
         assertThat(json.path("instructions").isString()).isTrue();
         assertThat(json.path("input").isString()).isTrue();
 
@@ -591,7 +581,7 @@ class OpenAiHttpRouteGatewayTest {
         assertThat(new ArrayList<>(format.propertyNames()))
                 .containsExactlyInAnyOrder("type", "name", "schema", "strict");
         assertThat(format.path("type").asString()).isEqualTo("json_schema");
-        assertThat(format.path("name").asString()).isEqualTo("ai_route_proposal_v1");
+        assertThat(format.path("name").asString()).isEqualTo("ai_route_proposal_v2");
         assertThat(format.path("strict").asBoolean()).isTrue();
 
         JsonNode schema = format.path("schema");
@@ -604,13 +594,12 @@ class OpenAiHttpRouteGatewayTest {
         JsonNode items = schema.path("properties").path("items");
         assertThat(items.path("type").asString()).isEqualTo("array");
         assertThat(items.path("minItems").asInt()).isEqualTo(1);
-        assertThat(items.path("maxItems").asInt()).isEqualTo(72);
+        assertThat(items.path("maxItems").asInt()).isEqualTo(40);
 
         JsonNode item = items.path("items");
         assertThat(item.path("required"))
                 .extracting(JsonNode::asString)
-                .containsExactlyInAnyOrder(
-                        "pageNumber", "relevance", "prerequisite", "role");
+                .containsExactlyInAnyOrder("pageNumber", "relevance", "role");
         assertThat(item.path("additionalProperties").asBoolean()).isFalse();
         assertThat(item.path("properties").path("pageNumber").path("type").asString())
                 .isEqualTo("integer");
@@ -619,12 +608,11 @@ class OpenAiHttpRouteGatewayTest {
         assertThat(item.path("properties").path("relevance").path("enum"))
                 .extracting(JsonNode::asString)
                 .containsExactly("HIGH", "MEDIUM");
-        assertThat(item.path("properties").path("prerequisite").path("type").asString())
-                .isEqualTo("boolean");
+        assertThat(item.path("properties").has("prerequisite")).isFalse();
         assertThat(item.path("properties").path("role").path("enum"))
                 .extracting(JsonNode::asString)
                 .containsExactly(
-                        "PREREQUISITE", "CORE", "EXAMPLE", "COUNTERPOINT", "CONCLUSION");
+                        "CORE", "EXAMPLE", "COUNTERPOINT", "CONCLUSION");
 
         assertThat(json.toString())
                 .doesNotContain(
@@ -659,24 +647,28 @@ class OpenAiHttpRouteGatewayTest {
                 "트랜잭션 격리 수준을 이해한다",
                 List.of(
                         new CandidatePage(7, "트랜잭션 격리 수준의 기본 개념"),
-                        new CandidatePage(12, "격리 수준별 동시성 문제 비교")),
-                List.of(new PrerequisiteEdge(7, 12)));
+                        new CandidatePage(12, "격리 수준별 동시성 문제 비교")));
     }
 
     private String validProposal() {
         return """
                 {"items":[
-                {"pageNumber":7,"relevance":"MEDIUM","prerequisite":true,"role":"PREREQUISITE"},
-                {"pageNumber":12,"relevance":"HIGH","prerequisite":false,"role":"CORE"}
+                {"pageNumber":7,"relevance":"MEDIUM","role":"EXAMPLE"},
+                {"pageNumber":12,"relevance":"HIGH","role":"CORE"}
                 ]}
                 """;
+    }
+
+    private String singleCandidateProposal(int pageNumber) {
+        return "{\"items\":[{\"pageNumber\":" + pageNumber
+                + ",\"relevance\":\"HIGH\",\"role\":\"CORE\"}]}";
     }
 
     private String proposalWithItemCount(int itemCount) {
         List<String> items = new ArrayList<>(itemCount);
         for (int pageNumber = 1; pageNumber <= itemCount; pageNumber++) {
             items.add("{\"pageNumber\":" + pageNumber
-                    + ",\"relevance\":\"HIGH\",\"prerequisite\":false,\"role\":\"CORE\"}");
+                    + ",\"relevance\":\"HIGH\",\"role\":\"CORE\"}");
         }
 
         return "{\"items\":[" + String.join(",", items) + "]}";
@@ -719,36 +711,34 @@ class OpenAiHttpRouteGatewayTest {
 
     private static Stream<Arguments> invalidProposals() {
         return Stream.of(
-                Arguments.of("pageNumber 0", item(0, "HIGH", true, "CORE")),
-                Arguments.of("음수 pageNumber", item(-1, "HIGH", true, "CORE")),
-                Arguments.of("알 수 없는 relevance", item(1, "LOW", true, "CORE")),
-                Arguments.of("알 수 없는 role", item(1, "HIGH", true, "SUMMARY")),
+                Arguments.of("pageNumber 0", item(0, "HIGH", "CORE")),
+                Arguments.of("음수 pageNumber", item(-1, "HIGH", "CORE")),
+                Arguments.of("알 수 없는 relevance", item(1, "LOW", "CORE")),
+                Arguments.of("알 수 없는 role", item(1, "HIGH", "SUMMARY")),
                 Arguments.of("중복 pageNumber", """
                         {"items":[{"pageNumber":1,"pageNumber":2,"relevance":"HIGH",\
-                        "prerequisite":true,"role":"CORE"}]}
+                        "role":"CORE"}]}
                         """),
                 Arguments.of("item 자유 필드", """
                         {"items":[{"pageNumber":1,"relevance":"HIGH",\
-                        "prerequisite":true,"role":"CORE","guide":"금지"}]}
+                        "role":"CORE","guide":"금지"}]}
                         """),
                 Arguments.of("최상위 자유 필드", """
                         {"items":[{"pageNumber":1,"relevance":"HIGH",\
-                        "prerequisite":true,"role":"CORE"}],"guide":"금지"}
+                        "role":"CORE"}],"guide":"금지"}
                         """),
                 Arguments.of("빈 items", "{\"items\":[]}"),
                 Arguments.of("필수 필드 누락", """
-                        {"items":[{"pageNumber":1,"relevance":"HIGH","role":"CORE"}]}
+                        {"items":[{"pageNumber":1,"relevance":"HIGH"}]}
                         """));
     }
 
     private static String item(
             int pageNumber,
             String relevance,
-            boolean prerequisite,
             String role) {
         return "{\"items\":[{\"pageNumber\":" + pageNumber
                 + ",\"relevance\":\"" + relevance
-                + "\",\"prerequisite\":" + prerequisite
                 + ",\"role\":\"" + role + "\"}]}";
     }
 

@@ -4,13 +4,13 @@
 
 - 권장 담당: 파동 2 / 담당 C
 - 선행: [G01 입력 정규화](./G01-purpose-input.md),
-  [해제된 후보 정책 v1](../../../prd/ai-ink-route.md#후보prompt-정책-v1)
+  [해제된 후보 정책 v2](../../../prd/ai-ink-route.md#후보prompt-정책-v2)
 - 후속: [G04 경로 조립](./G04-route-assembly.md), [Q01 평가 runner](../release/Q01-evaluation-runner.md)
 
 ## 목표
 
 한 도서·콘텐츠 버전의 페이지 vector와 목적 vector를 메모리에서 정확 cosine 비교하고, 확정한 후보 정책
-v1에 따라 결정적인 후보 집합을 반환합니다.
+v2에 따라 결정적인 후보 집합을 반환합니다.
 
 ## 정본 링크
 
@@ -22,14 +22,14 @@ v1에 따라 결정적인 후보 집합을 반환합니다.
 ## 현재 구현 기준선
 
 - vector 검색 코드와 vector DB가 없습니다.
-- F02의 BookPage mapping과 `air-candidate-v1`의 `0.30`·30개·동점 기준을 입력으로 사용합니다.
+- F02의 BookPage mapping과 `air-candidate-v2`의 `0.15`·40개·동점 기준을 입력으로 사용합니다.
 - 평가 정답은 [evaluation.json 계약](../../../ai-route-content-corpus.md#품질-평가-데이터)에만 있으며 runtime
   검색 입력이 아닙니다.
 
 ## 입력과 산출물
 
 - 입력: bookId, contentVersion, purpose vector, 같은 version page vector·analysis metadata
-- 산출물: `AiRouteCandidateSelector`, `AiRouteCandidate`, `AiRouteCandidatePolicy` 하나와 `candidatePolicyVersion=air-candidate-v1`
+- 산출물: `AiRouteCandidateSelector`, `AiRouteCandidate`, `AiRouteCandidatePolicy` 하나와 `candidatePolicyVersion=air-candidate-v2`
 - candidate: pageId·pageNumber·similarity·analysisText reference·prerequisite edge reference
 - G04/F05에 넘길 것: 확정 순서의 후보와 candidatePolicyVersion
 
@@ -48,17 +48,17 @@ v1에 따라 결정적인 후보 집합을 반환합니다.
    비교 대상이 아닙니다.
 4. 후보 집합을 고른 뒤에 vector 유효성을 검사합니다. vector가 있는 페이지만 고르는 방식으로 대신하지
    않으며, `ai_route_candidate=1`인데 vector가 없으면 조용히 건너뛰지 않고 실패합니다.
-5. 반올림하지 않은 similarity가 `0.30` 이상인 페이지만 남기고 similarity 내림차순, `pageNumber` 오름차순으로 정렬한 최초 30개를 반환합니다.
-   정확히 `0.30`은 포함하고 similarity가 같을 때만 `pageNumber`를 비교합니다.
+5. 반올림하지 않은 similarity가 `0.15` 이상인 페이지만 남기고 similarity 내림차순, `pageNumber` 오름차순으로 정렬한 최초 40개를 반환합니다.
+   정확히 `0.15`는 포함하고 similarity가 같을 때만 `pageNumber`를 비교합니다.
 6. 이미지 페이지도 `ai_route_candidate=1`이고 분석 text와 vector가 있으면 동일하게 후보에 포함합니다.
 7. 평가 reference·requiredConcepts·allowedAlternativePageNumbers를 selector 타입이 받을 수 없게 합니다.
 8. similarity 백분율을 사용자 DTO로 만들지 않습니다.
-9. 선수 전이 폐쇄는 G03이 후보 선정 뒤 추가하므로 selector가 threshold·30개 상한을 선수 페이지에 다시 적용하거나 별도 후보 타입을 만들지 않습니다.
+9. 선수 전이 폐쇄는 G03이 후보 선정 뒤 추가하므로 selector가 threshold·40개 상한을 선수 페이지에 다시 적용하거나 별도 후보 타입을 만들지 않습니다.
 
 ## 테스트
 
 - 직교·동일·반대 vector cosine, dimensions·model 불일치, zero norm·비유한 수 실패
-- `0.30` 직전·정확 경계·직후, 29·30·31개 경계, 동일 similarity의 `pageNumber` 오름차순
+- `0.15` 직전·정확 경계·직후, 39·40·41개 경계, 동일 similarity의 `pageNumber` 오름차순
 - TEXT·IMAGE 동일 처리와 다른 contentVersion 혼입 거부
 - `ai_route_candidate=0`인 페이지는 vector가 있어도 후보에서 제외, `1`인데 vector가 없으면 실패
 - 같은 입력 반복 결과 동일성, 평가 정답 타입 의존성 부재
@@ -72,7 +72,7 @@ v1에 따라 결정적인 후보 집합을 반환합니다.
 
 ## 완료 조건
 
-- `air-candidate-v1`의 `0.30`·30개·정렬 값과 selector 결과가 테스트로 고정됩니다.
+- `air-candidate-v2`의 `0.15`·40개·정렬 값과 selector 결과가 테스트로 고정됩니다.
 - 한 권 정확 비교 외 검색 인프라가 추가되지 않습니다.
 - `./gradlew check`가 통과합니다.
 

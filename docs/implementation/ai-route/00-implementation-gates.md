@@ -16,18 +16,19 @@
 - 해제된 차단 작업: [F01 스키마 migration](./foundation/F01-schema-migration.md)
 - 금지: 일부 ID만 선별 backfill, nullable 임시 컬럼, V1 수정, manifest 버전 누락 허용
 
-## GATE-AIR-02 후보·prompt 정책 v1
+## GATE-AIR-02 후보·prompt 정책 v2
 
-- 결정 정본: [후보·prompt 정책 v1](../../prd/ai-ink-route.md#후보prompt-정책-v1)
-- 후보 정책은 `air-candidate-v1`, 최소 cosine similarity는 `0.30` 이상, 상한은 30개이며 similarity
+- 결정 정본: [후보·prompt 정책 v2](../../prd/ai-ink-route.md#후보prompt-정책-v2)
+- 후보 정책은 `air-candidate-v2`, 최소 cosine similarity는 `0.15` 이상, 상한은 40개이며 similarity
   내림차순·`pageNumber` 오름차순으로 고정합니다. 선수 폐쇄는 후보 선정 뒤 별도로 추가합니다.
 - prompt·schema는 classpath의 고정 resource에서 읽고 논리 버전과 UTF-8 원본 byte의 SHA-256을 함께
-  기록합니다. Responses의 `text.format`은 `type=json_schema`, `name=ai_route_proposal_v1`, `strict=true`로
-  고정하고 malformed·semantic invalid output만 같은 후보·정책으로 전체 20초 안에서 한 번 재시도합니다.
+  기록합니다. 모델에는 목적과 후보만 보내고 선수 폐쇄는 서버가 완성합니다. Responses는 `reasoning=none`,
+  `text.format`은 `type=json_schema`, `name=ai_route_proposal_v2`, `strict=true`로 고정하고
+  malformed·semantic invalid output만 같은 후보·정책으로 전체 20초 안에서 한 번 재시도합니다.
 - 해제된 차단 작업: [F05 Responses](./foundation/F05-responses-adapter.md),
   [G02 후보 검색](./generation/G02-candidate-search.md),
   [G03 출력 검증](./generation/G03-output-validation.md)
-- 금지: 평가 정답의 runtime 입력 사용, v1 값의 무버전 변경, 재시도 후보·정책 교체, 임시 prompt·schema와
+- 금지: 평가 정답·선수 그래프의 모델 입력 사용, v2 값의 무버전 변경, 재시도 후보·정책 교체, 임시 prompt·schema와
   중복 version 타입
 
 ## GATE-AIR-03 저장 전 권한 변동 오류

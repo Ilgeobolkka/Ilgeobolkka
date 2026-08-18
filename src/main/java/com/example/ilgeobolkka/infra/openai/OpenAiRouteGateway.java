@@ -13,21 +13,16 @@ public interface OpenAiRouteGateway {
 
     record RouteInput(
             String normalizedPurpose,
-            List<CandidatePage> candidates,
-            List<PrerequisiteEdge> prerequisiteEdges) {
+            List<CandidatePage> candidates) {
 
         public RouteInput {
             candidates = candidates == null ? null : List.copyOf(candidates);
-            prerequisiteEdges = prerequisiteEdges == null
-                    ? null
-                    : List.copyOf(prerequisiteEdges);
         }
 
         @Override
         public String toString() {
             return "RouteInput[purposeLength=" + lengthOf(normalizedPurpose)
-                    + ", candidates=" + sizeOf(candidates)
-                    + ", prerequisiteEdges=" + sizeOf(prerequisiteEdges) + "]";
+                    + ", candidates=" + sizeOf(candidates) + "]";
         }
     }
 
@@ -38,9 +33,6 @@ public interface OpenAiRouteGateway {
             return "CandidatePage[pageNumber=" + pageNumber
                     + ", analysisTextLength=" + lengthOf(analysisText) + "]";
         }
-    }
-
-    record PrerequisiteEdge(int prerequisitePageNumber, int dependentPageNumber) {
     }
 
     record RouteGatewayResult(
@@ -59,7 +51,6 @@ public interface OpenAiRouteGateway {
     record ModelRouteItem(
             int pageNumber,
             Relevance relevance,
-            boolean prerequisite,
             Role role) {
     }
 
@@ -69,7 +60,6 @@ public interface OpenAiRouteGateway {
     }
 
     enum Role {
-        PREREQUISITE,
         CORE,
         EXAMPLE,
         COUNTERPOINT,

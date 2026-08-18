@@ -414,7 +414,7 @@ class AiRouteUserJourneyMySqlIntegrationTest {
             invocationCount++;
             return new RouteGatewayResult(
                     new ModelRouteProposal(List.of(
-                            new ModelRouteItem(1, Relevance.HIGH, false, Role.CORE))),
+                            new ModelRouteItem(1, Relevance.HIGH, Role.CORE))),
                     "prompt-v1",
                     "schema-v1");
         }

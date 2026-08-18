@@ -33,7 +33,7 @@ Jira에는 담당자·일정·상태와 leaf 문서 링크만 둡니다. 정책 
 | F02 | [JPA Entity·Repository 기반](./foundation/F02-jpa-mapping.md) | F01 | AI Entity·Repository와 매핑 테스트 |
 | F03 | [기능 플래그·OpenAI 설정 계약](./foundation/F03-openai-configuration.md) | 없음 | 조건부 Bean과 설정 검증 |
 | F04 | [Embeddings HTTP adapter](./foundation/F04-embeddings-adapter.md) | F03 | 목적·분석 텍스트 embedding Gateway |
-| F05 | [Responses HTTP adapter](./foundation/F05-responses-adapter.md) | F03, [해제된 후보·prompt 정책 v1](../../prd/ai-ink-route.md#후보prompt-정책-v1) | strict 구조화 출력 Gateway |
+| F05 | [Responses HTTP adapter](./foundation/F05-responses-adapter.md) | F03, [해제된 후보·prompt 정책 v2](../../prd/ai-ink-route.md#후보prompt-정책-v2) | strict 구조화 출력 Gateway |
 
 ### 콘텐츠 적재
 
@@ -49,8 +49,8 @@ Jira에는 담당자·일정·상태와 leaf 문서 링크만 둡니다. 정책 
 | ID | 작업 | 선행 | 핵심 산출물 |
 | --- | --- | --- | --- |
 | G01 | [독서 목적·생성 입력 정규화](./generation/G01-purpose-input.md) | 없음 | 정규화기와 공급자 중립 command |
-| G02 | [cosine 후보 검색](./generation/G02-candidate-search.md) | G01, [해제된 후보 정책 v1](../../prd/ai-ink-route.md#후보prompt-정책-v1) | 후보 정렬·허용 후보 집합 |
-| G03 | [모델 출력 검증](./generation/G03-output-validation.md) | F05, [해제된 prompt·schema 정책 v1](../../prd/ai-ink-route.md#후보prompt-정책-v1) | 전체 거부형 output validator |
+| G02 | [cosine 후보 검색](./generation/G02-candidate-search.md) | G01, [해제된 후보 정책 v2](../../prd/ai-ink-route.md#후보prompt-정책-v2) | 후보 정렬·허용 후보 집합 |
+| G03 | [모델 출력 검증](./generation/G03-output-validation.md) | F05, [해제된 후보·prompt 정책 v2](../../prd/ai-ink-route.md#후보prompt-정책-v2) | 전체 거부형 output validator |
 | G04 | [예산·선수·가이드 경로 조립](./generation/G04-route-assembly.md) | G02, G03 | ROUTE·NO_ROUTE 결정 엔진 |
 | G05 | [멱등 생성 시작·일일 한도](./generation/G05-idempotency-daily-limit.md) | F02, G01 | generation 시작과 UTC 10회 원자성 |
 | G06 | [생성 완료·실패·만료 복구](./generation/G06-generation-lifecycle.md) | G05 | 상태 전이·15분 정리·중단 복구 |
@@ -90,7 +90,7 @@ Jira에는 담당자·일정·상태와 leaf 문서 링크만 둡니다. 정책 
 
 | 파동 | 담당 A | 담당 B | 담당 C |
 | --- | --- | --- | --- |
-| 0 | [GATE-AIR-01 해제](./00-implementation-gates.md#gate-air-01-초기-콘텐츠-버전-해제) | [GATE-AIR-02 해제](../../prd/ai-ink-route.md#후보prompt-정책-v1) | [GATE-AIR-03 해제](./00-implementation-gates.md#gate-air-03-저장-전-권한-변동-오류) · [GATE-AIR-04 해제](./00-implementation-gates.md#gate-air-04-재평가-중-공개-지원-상태) |
+| 0 | [GATE-AIR-01 해제](./00-implementation-gates.md#gate-air-01-초기-콘텐츠-버전-해제) | [GATE-AIR-02 해제](../../prd/ai-ink-route.md#후보prompt-정책-v2) | [GATE-AIR-03 해제](./00-implementation-gates.md#gate-air-03-저장-전-권한-변동-오류) · [GATE-AIR-04 해제](./00-implementation-gates.md#gate-air-04-재평가-중-공개-지원-상태) |
 | 1 | F01 스키마 | F03 설정 | G01 입력 정규화 |
 | 2 | F02 JPA | F04 Embeddings | G02 후보 검색 |
 | 3 | C01 manifest | F05 Responses | G05 멱등·일일 한도 |

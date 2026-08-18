@@ -40,6 +40,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.function.Supplier;
 import org.springframework.boot.autoconfigure.condition.AnyNestedCondition;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Conditional;
@@ -54,6 +55,13 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 @Service
 @Conditional(AiRouteGenerationEngine.EngineRequiredCondition.class)
 public class AiRouteGenerationEngine {
+
+    private static final StageTimer UNTIMED = new StageTimer() {
+        @Override
+        public <T> T measure(Stage stage, Supplier<T> operation) {
+            return operation.get();
+        }
+    };
 
     private final AiRouteFeatureProperties featureProperties;
     private final OpenAiProperties openAiProperties;
@@ -92,13 +100,25 @@ public class AiRouteGenerationEngine {
     /** 평가가 사용자 행 없이 명시적 권한 사본만으로 운영과 같은 생성 단계를 실행하는 진입점이다. */
     public AiRouteEngineResult generate(
             AiRouteGenerationCommand command, AiRouteEntitlementSnapshot entitlement) {
+        return generateMeasured(command, entitlement, UNTIMED);
+    }
+
+    /** 평가 artifact에 비민감 구간 시간만 남기며 운영 생성과 같은 단계를 실행한다. */
+    public AiRouteEngineResult generateMeasured(
+            AiRouteGenerationCommand command,
+            AiRouteEntitlementSnapshot entitlement,
+            StageTimer stageTimer) {
+        if (stageTimer == null) {
+            throw new InvalidAiRouteGenerationInputException("생성 구간 시간 측정기가 필요합니다.");
+        }
         GenerationTimeBudget timeBudget = startTimeBudget();
-        AiRouteGenerationSnapshot snapshot = transactionTemplate.execute(
-                status -> prepare(command, false));
+        AiRouteGenerationSnapshot snapshot = stageTimer.measure(
+                Stage.CONTENT_PREPARATION,
+                () -> transactionTemplate.execute(status -> prepare(command, false)));
         if (snapshot == null) {
             throw new IllegalStateException("AI 경로 생성 콘텐츠 snapshot을 만들지 못했습니다.");
         }
-        return generate(snapshot, entitlement, timeBudget);
+        return generate(snapshot, entitlement, timeBudget, stageTimer);
     }
 
     /** production Facade가 멱등·사용자 상태를 확정하기 전에 콘텐츠 사본을 준비한다. */
@@ -111,6 +131,14 @@ public class AiRouteGenerationEngine {
             AiRouteGenerationSnapshot snapshot,
             AiRouteEntitlementSnapshot entitlement,
             GenerationTimeBudget timeBudget) {
+        return generate(snapshot, entitlement, timeBudget, UNTIMED);
+    }
+
+    private AiRouteEngineResult generate(
+            AiRouteGenerationSnapshot snapshot,
+            AiRouteEntitlementSnapshot entitlement,
+            GenerationTimeBudget timeBudget,
+            StageTimer stageTimer) {
         if (snapshot == null || entitlement == null || timeBudget == null) {
             throw new InvalidAiRouteGenerationInputException(
                     "생성 콘텐츠·권한 사본과 제한 시간이 필요합니다.");
@@ -118,21 +146,27 @@ public class AiRouteGenerationEngine {
         requireNoTransaction();
         AiRouteGenerationCommand command = snapshot.command();
         RouteContract routeContract = routeGateway.routeContract();
-        OpenAiEmbeddingGateway.Embedding embedding = timeBudget.call(() ->
-                embeddingGateway.embedPurpose(
+        OpenAiEmbeddingGateway.Embedding embedding = stageTimer.measure(
+                Stage.PURPOSE_EMBEDDING,
+                () -> timeBudget.call(() -> embeddingGateway.embedPurpose(
                         new OpenAiEmbeddingGateway.PurposeInput(command.normalizedPurpose()),
                         snapshot.embeddingModel(),
-                        snapshot.embeddingDimensions()));
+                        snapshot.embeddingDimensions())));
         AiRouteEmbedding purposeEmbedding = AiRouteEmbedding.of(
                 embedding.model(),
                 embedding.dimensions(),
                 embedding.vector().stream().mapToDouble(Double::doubleValue).toArray());
-        AiRouteCandidateSelection selection = candidateSelector.select(
-                command.bookId(),
-                command.contentVersion(),
-                purposeEmbedding,
-                snapshot.candidatePages());
-        timeBudget.requireRemaining();
+        AiRouteCandidateSelection selection = stageTimer.measure(
+                Stage.CANDIDATE_SELECTION,
+                () -> {
+                    AiRouteCandidateSelection selected = candidateSelector.select(
+                            command.bookId(),
+                            command.contentVersion(),
+                            purposeEmbedding,
+                            snapshot.candidatePages());
+                    timeBudget.requireRemaining();
+                    return selected;
+                });
 
         if (selection.candidates().isEmpty()) {
             return result(
@@ -145,10 +179,15 @@ public class AiRouteGenerationEngine {
 
         RouteInput routeInput = routeInput(snapshot, selection.candidates());
         ValidatedRouteProposal proposal = proposeValidatedRoute(
-                snapshot, selection, routeInput, routeContract, timeBudget);
-        AiRouteGenerationResult generation = assembler.assemble(
-                proposal, command, entitlement, snapshot.assemblyPages());
-        timeBudget.requireRemaining();
+                snapshot, selection, routeInput, routeContract, timeBudget, stageTimer);
+        AiRouteGenerationResult generation = stageTimer.measure(
+                Stage.ROUTE_ASSEMBLY,
+                () -> {
+                    AiRouteGenerationResult assembled = assembler.assemble(
+                            proposal, command, entitlement, snapshot.assemblyPages());
+                    timeBudget.requireRemaining();
+                    return assembled;
+                });
         return result(
                 generation,
                 snapshot.embeddingModel(),
@@ -327,12 +366,7 @@ public class AiRouteGenerationEngine {
                         candidate.pageNumber(),
                         snapshot.analysisText(candidate.analysisTextRef())))
                 .toList();
-        List<OpenAiRouteGateway.PrerequisiteEdge> gatewayEdges = snapshot.prerequisites().stream()
-                .map(edge -> new OpenAiRouteGateway.PrerequisiteEdge(
-                        edge.prerequisitePageNumber(), edge.dependentPageNumber()))
-                .toList();
-        return new RouteInput(
-                snapshot.command().normalizedPurpose(), gatewayCandidates, gatewayEdges);
+        return new RouteInput(snapshot.command().normalizedPurpose(), gatewayCandidates);
     }
 
     private ValidatedRouteProposal proposeValidatedRoute(
@@ -340,11 +374,14 @@ public class AiRouteGenerationEngine {
             AiRouteCandidateSelection selection,
             RouteInput routeInput,
             RouteContract routeContract,
-            GenerationTimeBudget timeBudget) {
+            GenerationTimeBudget timeBudget,
+            StageTimer stageTimer) {
         for (int attempt = 0; attempt < 2; attempt++) {
             RouteGatewayResult gatewayResult;
             try {
-                gatewayResult = timeBudget.call(() -> routeGateway.proposeRoute(routeInput));
+                gatewayResult = stageTimer.measure(
+                        Stage.ROUTE_RESPONSE,
+                        () -> timeBudget.call(() -> routeGateway.proposeRoute(routeInput)));
             } catch (OpenAiRouteException exception) {
                 if (attempt == 0
                         && exception.failure() == OpenAiRouteException.Failure.MALFORMED_RESPONSE) {
@@ -353,14 +390,18 @@ public class AiRouteGenerationEngine {
                 throw exception;
             }
 
-            requireSameContract(routeContract, gatewayResult);
             try {
-                return outputValidator.validate(
-                        snapshot.command().bookId(),
-                        snapshot.command().contentVersion(),
-                        snapshot.candidatePages(),
-                        selection.candidates(),
-                        gatewayResult.proposal());
+                return stageTimer.measure(
+                        Stage.OUTPUT_VALIDATION,
+                        () -> {
+                            requireSameContract(routeContract, gatewayResult);
+                            return outputValidator.validate(
+                                    snapshot.command().bookId(),
+                                    snapshot.command().contentVersion(),
+                                    snapshot.candidatePages(),
+                                    selection.candidates(),
+                                    gatewayResult.proposal());
+                        });
             } catch (AiRouteInvalidOutputException exception) {
                 if (attempt == 0 && exception.failure().retryable()) {
                     continue;
@@ -407,6 +448,20 @@ public class AiRouteGenerationEngine {
     @PreDestroy
     void closeExternalCallExecutor() {
         externalCallExecutor.shutdownNow();
+    }
+
+    public enum Stage {
+        CONTENT_PREPARATION,
+        PURPOSE_EMBEDDING,
+        CANDIDATE_SELECTION,
+        ROUTE_RESPONSE,
+        OUTPUT_VALIDATION,
+        ROUTE_ASSEMBLY
+    }
+
+    public interface StageTimer {
+
+        <T> T measure(Stage stage, Supplier<T> operation);
     }
 
     static final class EngineRequiredCondition extends AnyNestedCondition {

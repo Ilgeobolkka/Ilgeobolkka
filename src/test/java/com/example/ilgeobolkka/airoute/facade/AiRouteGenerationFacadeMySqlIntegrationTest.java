@@ -140,10 +140,23 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
         jdbcTemplate.update("UPDATE book SET ai_route_supported = FALSE WHERE id = ?", BOOK_ID);
         routeGateway.then(정상_응답(1, 2));
         Map<String, Integer> persistenceCountsBefore = 평가용_Engine_영속화_행_수();
+        Set<AiRouteGenerationEngine.Stage> measuredStages =
+                java.util.EnumSet.noneOf(AiRouteGenerationEngine.Stage.class);
+        AiRouteGenerationEngine.StageTimer stageTimer =
+                new AiRouteGenerationEngine.StageTimer() {
+                    @Override
+                    public <T> T measure(
+                            AiRouteGenerationEngine.Stage stage,
+                            java.util.function.Supplier<T> operation) {
+                        measuredStages.add(stage);
+                        return operation.get();
+                    }
+                };
 
-        AiRouteEngineResult result = engine.generate(
+        AiRouteEngineResult result = engine.generateMeasured(
                 잉크_명령(2),
-                AiRouteEntitlementSnapshot.forNonOwned(2, Set.of()));
+                AiRouteEntitlementSnapshot.forNonOwned(2, Set.of()),
+                stageTimer);
 
         assertAll(
                 () -> assertEquals(
@@ -152,11 +165,14 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
                 () -> assertEquals(2, result.generation().items().size()),
                 () -> assertEquals("embedding-v1", result.embeddingModel()),
                 () -> assertEquals("route-v1", result.routeModel()),
-                () -> assertEquals("air-candidate-v1", result.candidatePolicyVersion()),
+                () -> assertEquals("air-candidate-v2", result.candidatePolicyVersion()),
                 () -> assertEquals("prompt-v1", result.promptVersion()),
                 () -> assertEquals("schema-v1", result.schemaVersion()),
                 () -> assertEquals(1, embeddingGateway.calls()),
                 () -> assertEquals(1, routeGateway.calls()),
+                () -> assertEquals(
+                        java.util.EnumSet.allOf(AiRouteGenerationEngine.Stage.class),
+                        measuredStages),
                 () -> assertEquals(persistenceCountsBefore, 평가용_Engine_영속화_행_수()));
     }
 
@@ -295,7 +311,7 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
             선수를_생성한다(prerequisite, 6);
         }
         소장한다();
-        routeGateway.then(정상_응답(1, 2, 3, 4, 5, 6));
+        routeGateway.then(정상_응답(6));
 
         GenerationExecutionResult result = facade.generate(
                 READER_ID,
@@ -582,9 +598,8 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
                     index == 0
                             ? OpenAiRouteGateway.Relevance.HIGH
                             : OpenAiRouteGateway.Relevance.MEDIUM,
-                    index < pageNumbers.length - 1,
                     index < pageNumbers.length - 1
-                            ? OpenAiRouteGateway.Role.PREREQUISITE
+                            ? OpenAiRouteGateway.Role.EXAMPLE
                             : OpenAiRouteGateway.Role.CORE));
         }
         return new OpenAiRouteGateway.RouteGatewayResult(

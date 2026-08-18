@@ -106,6 +106,42 @@ class OpenAiHttpEmbeddingGatewayTest {
         server.verify();
     }
 
+    @Test
+    void 여러_페이지_분석_텍스트를_한_요청으로_보내고_index_순서로_vector를_반환한다() {
+        expectEmbeddingRequest(json -> {
+                    assertThat(new ArrayList<>(json.propertyNames()))
+                            .containsExactlyInAnyOrder(
+                                    "input", "model", "dimensions", "encoding_format");
+                    assertThat(json.path("input"))
+                            .extracting(JsonNode::asString)
+                            .containsExactly("첫 분석", "둘째 분석");
+                    assertThat(json.path("model").asString()).isEqualTo(MODEL);
+                    assertThat(json.path("dimensions").asInt()).isEqualTo(DIMENSIONS);
+                    assertThat(json.path("encoding_format").asString()).isEqualTo("float");
+                })
+                .andRespond(withSuccess("""
+                        {"object":"list","data":[
+                        {"object":"embedding","embedding":[0.4,0.5,0.6],"index":1},
+                        {"object":"embedding","embedding":[0.1,0.2,0.3],"index":0}],
+                        "model":"text-embedding-3-small",
+                        "usage":{"prompt_tokens":6,"total_tokens":6}}
+                        """, MediaType.APPLICATION_JSON));
+
+        List<Embedding> embeddings = gateway.embedPageAnalyses(
+                List.of(
+                        new PageAnalysisInput("첫 분석"),
+                        new PageAnalysisInput("둘째 분석")),
+                MODEL,
+                DIMENSIONS);
+
+        assertThat(embeddings)
+                .extracting(Embedding::vector)
+                .containsExactly(
+                        List.of(0.1, 0.2, 0.3),
+                        List.of(0.4, 0.5, 0.6));
+        server.verify();
+    }
+
     @ParameterizedTest(name = "[{index}] {0}")
     @MethodSource("invalidResponses")
     void 잘못된_공급자_응답은_전체_실패한다(String description, String responseBody) {
