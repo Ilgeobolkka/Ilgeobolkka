@@ -41,9 +41,10 @@ class AiRouteEvaluationRunnerTest {
         AiRouteEvaluationReader reader = mock(AiRouteEvaluationReader.class);
         when(reader.read()).thenReturn(plan);
         AiRouteGenerationEngine engine = mock(AiRouteGenerationEngine.class);
-        when(engine.generate(
+        when(engine.generateMeasured(
                         any(AiRouteGenerationCommand.class),
-                        any(AiRouteEntitlementSnapshot.class)))
+                        any(AiRouteEntitlementSnapshot.class),
+                        any(AiRouteGenerationEngine.StageTimer.class)))
                 .thenThrow(new IllegalStateException(providerRaw + " " + apiKey));
         AiRouteEvaluationPageReader pageReader = mock(AiRouteEvaluationPageReader.class);
         when(pageReader.activeRentalPageIds(any(Long.class), any())).thenReturn(Set.of());

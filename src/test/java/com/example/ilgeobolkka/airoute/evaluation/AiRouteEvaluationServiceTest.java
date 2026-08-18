@@ -17,6 +17,7 @@ import com.example.ilgeobolkka.airoute.service.assembly.AiRouteGenerationResult;
 import com.example.ilgeobolkka.airoute.service.generation.AiRouteEngineResult;
 import com.example.ilgeobolkka.airoute.service.generation.AiRouteGenerationEngine;
 import com.example.ilgeobolkka.airoute.service.generation.GenerationTimeBudget;
+import com.example.ilgeobolkka.airoute.service.validation.AiRouteInvalidOutputException;
 import com.example.ilgeobolkka.contentimport.manifest.AiRouteEvaluationDataset;
 import com.example.ilgeobolkka.infra.openai.OpenAiRouteException;
 import java.time.Clock;
@@ -48,9 +49,10 @@ class AiRouteEvaluationServiceTest {
     @Test
     void 엔진에는_정규화된_목적과_권한_사본만_전달하고_결과에는_정답_비교_자료를_합친다()
             throws Exception {
-        when(engine.generate(
+        when(engine.generateMeasured(
                         any(AiRouteGenerationCommand.class),
-                        any(AiRouteEntitlementSnapshot.class)))
+                        any(AiRouteEntitlementSnapshot.class),
+                        any(AiRouteGenerationEngine.StageTimer.class)))
                 .thenReturn(routeResult(101L, 1));
         AiRouteEvaluationService service = service(new SequenceTicker(10, 20, 100, 160));
 
@@ -60,7 +62,10 @@ class AiRouteEvaluationServiceTest {
                 ArgumentCaptor.forClass(AiRouteGenerationCommand.class);
         ArgumentCaptor<AiRouteEntitlementSnapshot> entitlementCaptor =
                 ArgumentCaptor.forClass(AiRouteEntitlementSnapshot.class);
-        verify(engine).generate(commandCaptor.capture(), entitlementCaptor.capture());
+        verify(engine).generateMeasured(
+                commandCaptor.capture(),
+                entitlementCaptor.capture(),
+                any(AiRouteGenerationEngine.StageTimer.class));
         assertThat(commandCaptor.getValue().normalizedPurpose()).isEqualTo("핵심 개념");
         assertThat(commandCaptor.getValue().maxAdditionalInk()).isEqualTo(5);
         assertThat(entitlementCaptor.getValue().inkBalance()).isEqualTo(5);
@@ -95,15 +100,18 @@ class AiRouteEvaluationServiceTest {
                         evaluationCase(1, "첫 목적"), evaluationCase(2, "둘째 목적"))))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("두 번째 case");
-        verify(engine, never()).generate(
-                any(AiRouteGenerationCommand.class), any(AiRouteEntitlementSnapshot.class));
+        verify(engine, never()).generateMeasured(
+                any(AiRouteGenerationCommand.class),
+                any(AiRouteEntitlementSnapshot.class),
+                any(AiRouteGenerationEngine.StageTimer.class));
     }
 
     @Test
     void 두_번째_case가_NO_ROUTE면_첫_case만_완료_목록에_보존하고_전체_실패한다() {
-        when(engine.generate(
+        when(engine.generateMeasured(
                         any(AiRouteGenerationCommand.class),
-                        any(AiRouteEntitlementSnapshot.class)))
+                        any(AiRouteEntitlementSnapshot.class),
+                        any(AiRouteGenerationEngine.StageTimer.class)))
                 .thenReturn(routeResult(101L, 1))
                 .thenReturn(noRouteResult());
         AiRouteEvaluationService service =
@@ -123,13 +131,18 @@ class AiRouteEvaluationServiceTest {
         assertThat(result.failedCase().noRouteReason())
                 .isEqualTo(AiRouteGenerationResult.NoRouteReason.NO_RELEVANT_PAGES);
         assertThat(result.failedCase().durationNanos()).isEqualTo(70);
+        assertThat(result.failedCase().topCandidateScores())
+                .containsExactly(
+                        new AiRouteEvaluationResult.CandidateScore(7, 0.29),
+                        new AiRouteEvaluationResult.CandidateScore(3, 0.28));
     }
 
     @Test
     void 후보_점수가_필수_개념을_덮지_않으면_해당_case만_실패로_남기고_결과를_돌려준다() {
-        when(engine.generate(
+        when(engine.generateMeasured(
                         any(AiRouteGenerationCommand.class),
-                        any(AiRouteEntitlementSnapshot.class)))
+                        any(AiRouteEntitlementSnapshot.class),
+                        any(AiRouteGenerationEngine.StageTimer.class)))
                 .thenReturn(routeResult(101L, 1))
                 .thenReturn(routeResult(201L, 1));
         AiRouteEvaluationService service =
@@ -152,9 +165,10 @@ class AiRouteEvaluationServiceTest {
     void provider_실패와_timeout을_구분하고_완료_case를_보존한다() {
         GenerationTimeBudget.TimeLimitExceededException timeout =
                 mock(GenerationTimeBudget.TimeLimitExceededException.class);
-        when(engine.generate(
+        when(engine.generateMeasured(
                         any(AiRouteGenerationCommand.class),
-                        any(AiRouteEntitlementSnapshot.class)))
+                        any(AiRouteEntitlementSnapshot.class),
+                        any(AiRouteGenerationEngine.StageTimer.class)))
                 .thenReturn(routeResult(101L, 1))
                 .thenThrow(new OpenAiRouteException(OpenAiRouteException.Failure.TEMPORARY));
         AiRouteEvaluationResult providerFailure =
@@ -165,9 +179,10 @@ class AiRouteEvaluationServiceTest {
         assertThat(providerFailure.failedCase().reason())
                 .isEqualTo(AiRouteEvaluationResult.FailureReason.PROVIDER);
 
-        when(engine.generate(
+        when(engine.generateMeasured(
                         any(AiRouteGenerationCommand.class),
-                        any(AiRouteEntitlementSnapshot.class)))
+                        any(AiRouteEntitlementSnapshot.class),
+                        any(AiRouteGenerationEngine.StageTimer.class)))
                 .thenThrow(timeout);
         AiRouteEvaluationResult timeoutFailure = service(new SequenceTicker(10, 20, 50, 80))
                 .evaluate(plan(evaluationCase(1, "첫 목적")));
@@ -178,11 +193,69 @@ class AiRouteEvaluationServiceTest {
     }
 
     @Test
+    void timeout이어도_완료한_구간별_처리_시간을_실패_artifact에_남긴다() {
+        GenerationTimeBudget.TimeLimitExceededException timeout =
+                mock(GenerationTimeBudget.TimeLimitExceededException.class);
+        when(engine.generateMeasured(
+                        any(AiRouteGenerationCommand.class),
+                        any(AiRouteEntitlementSnapshot.class),
+                        any(AiRouteGenerationEngine.StageTimer.class)))
+                .thenAnswer(invocation -> {
+                    AiRouteGenerationEngine.StageTimer stageTimer = invocation.getArgument(2);
+                    stageTimer.measure(
+                            AiRouteGenerationEngine.Stage.CONTENT_PREPARATION, () -> null);
+                    stageTimer.measure(
+                            AiRouteGenerationEngine.Stage.PURPOSE_EMBEDDING, () -> null);
+                    return stageTimer.measure(
+                            AiRouteGenerationEngine.Stage.ROUTE_RESPONSE, () -> {
+                                throw timeout;
+                            });
+                });
+        AiRouteEvaluationService service =
+                service(new SequenceTicker(
+                        10, 20, 100, 110, 140, 150, 200, 210, 290, 310));
+
+        AiRouteEvaluationResult result =
+                service.evaluate(plan(evaluationCase(1, "목적")));
+
+        assertThat(result.failedCase().reason())
+                .isEqualTo(AiRouteEvaluationResult.FailureReason.TIMEOUT);
+        assertThat(result.failedCase().durationNanos()).isEqualTo(220);
+        assertThat(result.failedCase().stageDurations())
+                .isEqualTo(new AiRouteEvaluationResult.StageDurations(
+                        10,
+                        30,
+                        50,
+                        0,
+                        80,
+                        0,
+                        0));
+    }
+
+    @Test
+    void invalid_output은_안전한_검증_실패_code를_artifact에_남긴다() {
+        when(engine.generateMeasured(
+                        any(AiRouteGenerationCommand.class),
+                        any(AiRouteEntitlementSnapshot.class),
+                        any(AiRouteGenerationEngine.StageTimer.class)))
+                .thenThrow(AiRouteInvalidOutputException.retryContractChanged());
+        AiRouteEvaluationService service = service(new SequenceTicker(10, 20, 50, 80));
+
+        AiRouteEvaluationResult result =
+                service.evaluate(plan(evaluationCase(1, "목적")));
+
+        assertThat(result.failedCase().reason())
+                .isEqualTo(AiRouteEvaluationResult.FailureReason.INVALID_OUTPUT);
+        assertThat(result.failedCase().detailCode()).isEqualTo("RETRY_CONTRACT_CHANGED");
+    }
+
+    @Test
     void 전달된_계획_순서와_무관하게_bookId_오름차순으로_엔진을_호출한다() {
         List<Long> calledBookIds = new java.util.ArrayList<>();
-        when(engine.generate(
+        when(engine.generateMeasured(
                         any(AiRouteGenerationCommand.class),
-                        any(AiRouteEntitlementSnapshot.class)))
+                        any(AiRouteEntitlementSnapshot.class),
+                        any(AiRouteGenerationEngine.StageTimer.class)))
                 .thenAnswer(invocation -> {
                     AiRouteGenerationCommand command = invocation.getArgument(0);
                     calledBookIds.add(command.bookId());
@@ -207,9 +280,10 @@ class AiRouteEvaluationServiceTest {
 
     @Test
     void monotonic_clock이_역행하면_평가를_거부한다() {
-        when(engine.generate(
+        when(engine.generateMeasured(
                         any(AiRouteGenerationCommand.class),
-                        any(AiRouteEntitlementSnapshot.class)))
+                        any(AiRouteEntitlementSnapshot.class),
+                        any(AiRouteGenerationEngine.StageTimer.class)))
                 .thenReturn(routeResult(101L, 1));
         AiRouteEvaluationService service = service(new SequenceTicker(100, 99));
 
@@ -302,7 +376,9 @@ class AiRouteEvaluationServiceTest {
                 "air-candidate-v1",
                 "prompt-v1",
                 "schema-v1",
-                List.of());
+                List.of(
+                        new AiRouteEngineResult.CandidateScore(7, 0.29),
+                        new AiRouteEngineResult.CandidateScore(3, 0.28)));
     }
 
     private static final class SequenceTicker implements AiRouteEvaluationTicker {

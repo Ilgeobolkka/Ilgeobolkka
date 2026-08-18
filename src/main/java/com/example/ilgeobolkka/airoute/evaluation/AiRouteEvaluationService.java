@@ -15,7 +15,10 @@ import com.example.ilgeobolkka.infra.openai.OpenAiRouteException;
 import java.time.Clock;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Supplier;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -50,10 +53,11 @@ class AiRouteEvaluationService {
                 new ArrayList<>();
         for (PreparedCase prepared : preparedCases) {
             long startedAt = ticker.readNanos();
+            CaseStageTimer stageTimer = new CaseStageTimer();
             AiRouteEngineResult engineResult;
             try {
-                engineResult = generationEngine.generate(
-                        prepared.command(), prepared.entitlement());
+                engineResult = generationEngine.generateMeasured(
+                        prepared.command(), prepared.entitlement(), stageTimer);
             } catch (RuntimeException exception) {
                 return failed(
                         plan,
@@ -63,7 +67,10 @@ class AiRouteEvaluationService {
                                 prepared.caseId(),
                                 failureReason(exception),
                                 null,
-                                prepared.preparationDurationNanos() + elapsedSince(startedAt)));
+                                prepared.preparationDurationNanos() + elapsedSince(startedAt),
+                                stageTimer.result(prepared.preparationDurationNanos()),
+                                List.of(),
+                                failureDetailCode(exception)));
             }
 
             long durationNanos =
@@ -78,10 +85,16 @@ class AiRouteEvaluationService {
                                     prepared.caseId(),
                                     AiRouteEvaluationResult.FailureReason.NO_ROUTE,
                                     engineResult.generation().noRouteReason(),
-                                    durationNanos));
+                                    durationNanos,
+                                    stageTimer.result(prepared.preparationDurationNanos()),
+                                    topCandidateScores(engineResult)));
                 }
                 AiRouteEvaluationResult.CompletedCase completedCase =
-                        completedCase(prepared, engineResult, durationNanos);
+                        completedCase(
+                                prepared,
+                                engineResult,
+                                durationNanos,
+                                stageTimer.result(prepared.preparationDurationNanos()));
                 AiRouteCandidateThresholdEvaluator.CaseCandidates thresholdCase =
                         thresholdCase(prepared, engineResult);
                 completed.add(completedCase);
@@ -92,7 +105,13 @@ class AiRouteEvaluationService {
                         executedAt,
                         completed,
                         new AiRouteEvaluationResult.Failure(
-                                prepared.caseId(), failureReason(exception), null, durationNanos));
+                                prepared.caseId(),
+                                failureReason(exception),
+                                null,
+                                durationNanos,
+                                stageTimer.result(prepared.preparationDurationNanos()),
+                                List.of(),
+                                failureDetailCode(exception)));
             }
         }
         return new AiRouteEvaluationResult(
@@ -146,7 +165,10 @@ class AiRouteEvaluationService {
     }
 
     private AiRouteEvaluationResult.CompletedCase completedCase(
-            PreparedCase prepared, AiRouteEngineResult engineResult, long durationNanos) {
+            PreparedCase prepared,
+            AiRouteEngineResult engineResult,
+            long durationNanos,
+            AiRouteEvaluationResult.StageDurations stageDurations) {
         List<AiRouteEvaluationResult.RoutePage> routePages = engineResult.generation().items().stream()
                 .map(item -> {
                     List<String> concepts = prepared.reference()
@@ -182,6 +204,7 @@ class AiRouteEvaluationService {
                 prepared.caseId(),
                 prepared.bookId(),
                 durationNanos,
+                stageDurations,
                 routePages,
                 comparison,
                 versions);
@@ -206,6 +229,15 @@ class AiRouteEvaluationService {
                         .toList();
         return new AiRouteCandidateThresholdEvaluator.CaseCandidates(
                 prepared.reference().requiredConcepts(), candidates);
+    }
+
+    private List<AiRouteEvaluationResult.CandidateScore> topCandidateScores(
+            AiRouteEngineResult engineResult) {
+        return engineResult.candidateScores().stream()
+                .limit(5)
+                .map(candidate -> new AiRouteEvaluationResult.CandidateScore(
+                        candidate.pageNumber(), candidate.similarity()))
+                .toList();
     }
 
     private AiRouteEvaluationResult failed(
@@ -243,12 +275,55 @@ class AiRouteEvaluationService {
         return AiRouteEvaluationResult.FailureReason.EXECUTION;
     }
 
+    private String failureDetailCode(RuntimeException exception) {
+        if (exception instanceof AiRouteInvalidOutputException invalidOutputException) {
+            return invalidOutputException.failure().name();
+        }
+        return null;
+    }
+
     private long elapsedSince(long startedAt) {
         long elapsed = ticker.readNanos() - startedAt;
         if (elapsed < 0) {
             throw new IllegalStateException("평가 monotonic clock이 역행했습니다.");
         }
         return elapsed;
+    }
+
+    private final class CaseStageTimer implements AiRouteGenerationEngine.StageTimer {
+
+        private final Map<AiRouteGenerationEngine.Stage, Long> durationNanos =
+                new EnumMap<>(AiRouteGenerationEngine.Stage.class);
+
+        @Override
+        public <T> T measure(
+                AiRouteGenerationEngine.Stage stage, Supplier<T> operation) {
+            if (stage == null || operation == null) {
+                throw new IllegalArgumentException("평가 구간과 측정 작업이 필요합니다.");
+            }
+            long startedAt = ticker.readNanos();
+            try {
+                return operation.get();
+            } finally {
+                durationNanos.merge(stage, elapsedSince(startedAt), Math::addExact);
+            }
+        }
+
+        private AiRouteEvaluationResult.StageDurations result(
+                long evaluationPreparationNanos) {
+            return new AiRouteEvaluationResult.StageDurations(
+                    evaluationPreparationNanos,
+                    duration(AiRouteGenerationEngine.Stage.CONTENT_PREPARATION),
+                    duration(AiRouteGenerationEngine.Stage.PURPOSE_EMBEDDING),
+                    duration(AiRouteGenerationEngine.Stage.CANDIDATE_SELECTION),
+                    duration(AiRouteGenerationEngine.Stage.ROUTE_RESPONSE),
+                    duration(AiRouteGenerationEngine.Stage.OUTPUT_VALIDATION),
+                    duration(AiRouteGenerationEngine.Stage.ROUTE_ASSEMBLY));
+        }
+
+        private long duration(AiRouteGenerationEngine.Stage stage) {
+            return durationNanos.getOrDefault(stage, 0L);
+        }
     }
 
     private record PreparedCase(
