@@ -29,10 +29,9 @@
 
 ## 입력과 산출물
 
-- 입력: normalizedPurpose, `air-candidate-v2`의 확정 순서 candidate pageNumber·analysisText·검증된 선수 edge
+- 입력: normalizedPurpose, `air-candidate-v2`의 확정 순서 candidate pageNumber·analysisText
 - 산출물: `OpenAiRouteGateway`, `OpenAiHttpRouteGateway`, 공급자 DTO, `ModelRouteProposal`, `promptVersion`, `schemaVersion`
-- proposal 필드: pageNumber, `HIGH|MEDIUM`, prerequisite boolean,
-  `PREREQUISITE|CORE|EXAMPLE|COUNTERPOINT|CONCLUSION`
+- proposal 필드: pageNumber, `HIGH|MEDIUM`, `CORE|EXAMPLE|COUNTERPOINT|CONCLUSION`
 - 오류: budget, temporary, timeout/incomplete, refusal, malformed response의 공급자 중립 분류
 
 ## 수정 허용 파일
@@ -44,13 +43,14 @@
 
 ## 구현 조건
 
-1. 요청은 ADR의 route model, `store=false`, `text.format.type=json_schema`,
-   `text.format.name=ai_route_proposal_v1`, `strict=true`를 사용합니다.
+1. 요청은 ADR의 route model, `store=false`, `reasoning=none`, `text.format.type=json_schema`,
+   `text.format.name=ai_route_proposal_v2`, `strict=true`를 사용합니다.
 2. prompt와 schema는 정본의 두 classpath resource만 읽습니다.
    각 UTF-8 원본 byte 전체의 SHA-256을 별도 정규화 없이 계산해 논리 버전 뒤에 64자리 소문자 hex로 붙입니다.
-3. schema 최상위는 필수 `items` 배열 하나와 `additionalProperties=false`이고 `minItems=1`, `maxItems=72`입니다.
+3. schema 최상위는 필수 `items` 배열 하나와 `additionalProperties=false`이고 `minItems=1`, `maxItems=40`입니다.
    각 item의 pageNumber는 `type=integer`, `minimum=1`인 양의 정수이고
-   relevance·prerequisite·role을 모두 필수로 가지며 `additionalProperties=false`입니다.
+   relevance·role을 모두 필수로 가지며 `additionalProperties=false`입니다. 선수 edge·선수 여부·
+   `PREREQUISITE` role은 모델 입출력에 넣지 않습니다.
 4. 독자 ID, 예산, 잉크, 대여·소장·결제·세션, 평가 정답을 입력 DTO가 받을 수 없게 합니다.
 5. 가이드·비용·예상 시간과 자유 문구를 모델 출력 schema에 넣지 않습니다.
 6. Conversations, previous response, Background mode, streaming, hosted tools를 사용하지 않습니다.
@@ -62,10 +62,10 @@
 ## 테스트
 
 - 가짜 HTTP server에서 model, `store=false`, `text.format.type=json_schema`,
-  `text.format.name=ai_route_proposal_v1`, `strict=true`, `items` 1~72개, pageNumber의
+  `text.format.name=ai_route_proposal_v2`, `strict=true`, `items` 1~40개, pageNumber의
   `type=integer`·`minimum=1`, 모든 필수 필드와 양쪽 `additionalProperties=false` 확인
-- 두 resource의 UTF-8 byte SHA-256과 `air-route-prompt-v3:sha256:...`,
-  `air-route-schema-v1:sha256:...` 형식, 공백 변경 시 version 변경 확인
+- 두 resource의 UTF-8 byte SHA-256과 `air-route-prompt-v4:sha256:...`,
+  `air-route-schema-v2:sha256:...` 형식, 공백 변경 시 version 변경 확인
 - 정상 proposal Enum·순서 parse
 - pageNumber 0·음수, 자유 필드·알 수 없는 Enum·incomplete·refusal·malformed JSON·5xx·budget limit 실패 주입
 - 완료 응답의 message 0개·2개가 재시도 가능한 malformed output으로 분류되는지 확인

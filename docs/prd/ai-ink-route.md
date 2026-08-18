@@ -107,13 +107,13 @@ AI 잉크 경로는 독자가 선택한 한 권에서 독서 목적과 추가 �
 - 보정되지 않은 관련도·포괄성 백분율은 사용자에게 표시하지 않습니다.
 - 목표 응답 시간은 10초 이내이며 20초를 넘으면 실패 처리합니다. 스트리밍과 부분 경로는 제공하지
   않습니다. 한 번의 검증 재시도를 포함한 전체 요청 제한이 20초입니다.
-- AI 출력은 페이지 번호, 정성적 관련도, 선수 개념 여부와 역할 열거값으로 제한합니다. 서버는 검색 후보와
-  같은 도서·콘텐츠 버전의 검증된 선수 그래프에서 계산한 전이적 선수 페이지 폐쇄의 합집합을 요청별 허용
-  페이지 집합으로 고정합니다. 모든 출력 페이지가 이 집합에 속하는지 먼저 검증하고, 같은 책에 존재해도 검색
-  후보와 선수 폐쇄에 없는 페이지는 전체 응답과 함께 거부합니다. 이어서 도서·페이지 번호, 중복, 순서, 예산과
-  지원 상태를 검증하고 스키마 밖 자유 문구를 거부합니다.
-- 외부 AI는 사용자별 잉크·대여·소장 상태를 받지 않고 목적 관련도, 선수 관계와 읽기 순서를 반영한 후보
-  경로를 만듭니다. 서버는 검수된 선수 관계를 기준으로 후보 경로를 순회합니다. 비소장 도서는 선수 페이지가
+- AI 출력은 검색 후보의 페이지 번호, 정성적 관련도와 역할 열거값으로 제한합니다. 서버는 모델이 고른 후보마다
+  같은 도서·콘텐츠 버전의 검증된 선수 그래프에서 전이적 선수 페이지 폐쇄를 계산해 중복 없이 후보 앞에
+  추가합니다. 모델이 고른 후보가 다른 후보의 선수인데 뒤에 있으면 모델의 관련도·역할은 보존하고 DAG
+  순서만 서버가 바로잡습니다. 검색 후보 밖 페이지, 다른 도서·콘텐츠 버전, 미존재·중복과 스키마 밖 자유
+  문구는 전체 응답과 함께 거부합니다. 이어서 예산과 지원 상태를 검증합니다.
+- 외부 AI는 사용자별 잉크·대여·소장 상태와 선수 그래프를 받지 않고 목적 관련도와 후보 읽기 순서만
+  제안합니다. 서버는 검수된 선수 관계를 기준으로 후보 경로를 완성합니다. 비소장 도서는 선수 페이지가
   모두 포함되고 현재 권한으로 계산한 누적 추가 비용이 예산 안인 페이지만 최종 경로에 포함하며, 소장 도서는
   같은 선수 조건에서 선택한 깊이의 페이지 수 상한까지만 포함합니다. 비용 때문에 선수를 제외하면 그 선수에
   의존하는 페이지도 제외하며, 상한을 채우기 위해 무관한 페이지를 추가하지 않습니다.
@@ -141,16 +141,17 @@ AI 잉크 경로는 독자가 선택한 한 권에서 독서 목적과 추가 �
   관련 후보가 없는 case와 낮은 필수 개념 재현율이 확인되어 v2로 대체했습니다. 임베딩 모델·콘텐츠·정렬 규칙은 바꾸지 않습니다.
 - prompt는 `src/main/resources/openai/ai-route/route-generation-prompt-v1.md`, strict JSON Schema는
   `src/main/resources/openai/ai-route/route-proposal-v1.schema.json`에 둡니다. 환경 변수·DB·원격 prompt로 대체하지 않습니다.
-- `promptVersion`은 `air-route-prompt-v3:sha256:<64자리 소문자 hex>`, `schemaVersion`은
-  `air-route-schema-v1:sha256:<64자리 소문자 hex>`입니다. `<64자리 소문자 hex>`는 각 classpath resource의
+- `promptVersion`은 `air-route-prompt-v4:sha256:<64자리 소문자 hex>`, `schemaVersion`은
+  `air-route-schema-v2:sha256:<64자리 소문자 hex>`입니다. `<64자리 소문자 hex>`는 각 classpath resource의
   UTF-8 원본 byte 전체를 별도 정규화 없이 SHA-256으로 계산합니다.
-- Responses의 reasoning effort는 `low`로 고정합니다.
-- Responses의 `text.format.type`은 `json_schema`, `name`은 `ai_route_proposal_v1`이고 `strict=true`입니다.
-  schema의 최상위 객체는 `items` 배열 하나만 허용하며 배열은 1~72개입니다. 이 상한은 [AI 경로 콘텐츠 코퍼스](../ai-route-content-corpus.md#도서-제작-기준)의 지원 도서별 최대 페이지 수와 같으며,
-  코퍼스의 최대 페이지 수를 변경할 때 schema 계약과 version도 함께 갱신합니다. 각 item은 `pageNumber` 양의 정수, `HIGH|MEDIUM` relevance,
-  prerequisite boolean, `PREREQUISITE|CORE|EXAMPLE|COUNTERPOINT|CONCLUSION` role을 모두 필수로 가집니다.
+- Responses의 reasoning effort는 `none`으로 고정합니다.
+- Responses의 `text.format.type`은 `json_schema`, `name`은 `ai_route_proposal_v2`이고 `strict=true`입니다.
+  schema의 최상위 객체는 `items` 배열 하나만 허용하며 배열은 후보 상한과 같은 1~40개입니다. 각 item은
+  `pageNumber` 양의 정수, `HIGH|MEDIUM` relevance,
+  `CORE|EXAMPLE|COUNTERPOINT|CONCLUSION` role을 모두 필수로 가집니다. 선수 여부와 `PREREQUISITE` role은
+  서버가 검증된 그래프로 추가하므로 모델 schema에 두지 않습니다.
   최상위와 item 객체는 `additionalProperties=false`이며 중복·실재·허용 집합·순서는 서버가 다시 검증합니다.
-- F05의 malformed model output 또는 G03의 semantic invalid output만 최초 20초 제한의 남은 시간 안에서 즉시 한 번 재시도합니다.
+- F05의 malformed model output 또는 G03의 후보 밖·중복 등 semantic invalid output만 최초 20초 제한의 남은 시간 안에서 즉시 한 번 재시도합니다.
   재시도는 정규화 목적, 확정 후보의 값과 순서, 선수 그래프 snapshot, model,
   `candidatePolicyVersion`, `promptVersion`, `schemaVersion`을 그대로 사용한 새 Responses 요청이며
   `previous_response_id`와 최초 응답 원문을 사용하지 않습니다.

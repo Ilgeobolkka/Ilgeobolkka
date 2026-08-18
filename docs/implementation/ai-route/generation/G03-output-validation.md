@@ -9,8 +9,8 @@
 
 ## 목표
 
-모델 proposal의 페이지가 검색 후보와 같은 version의 선수 폐쇄 안에 있는지 검증하고 한 항목이라도
-잘못되면 전체 proposal을 거부합니다.
+모델 proposal이 검색 후보만 고르는지 검증하고, 선택 후보의 같은 version 선수 폐쇄를 서버가 결정적으로
+삽입·정렬합니다. 한 후보 항목이라도 잘못되면 전체 proposal을 거부합니다.
 
 ## 정본 링크
 
@@ -29,7 +29,7 @@
 
 - 입력: bookId·contentVersion, `air-candidate-v2`의 확정 순서 후보, 같은 version prerequisite graph, F05 proposal
 - 산출물: `AiRouteOutputValidator`, `ValidatedRouteProposal`, `AiRouteInvalidOutputException`
-- 산출물: 후보별 전이적 선수 폐쇄와 요청 허용 page 집합
+- 산출물: 모델이 선택한 후보별 전이적 선수 폐쇄, 서버가 완성한 순서와 요청 허용 page 집합
 - G04에 넘길 것: 순서·Enum·허용 집합을 통과한 proposal만
 
 ## 수정 허용 파일
@@ -40,20 +40,23 @@
 
 ## 구현 조건
 
-1. G02의 최대 40개 후보를 받은 뒤 후보마다 DAG의 전이적 선수 page를 계산하고 후보와 선수 폐쇄의 합집합을
-   허용 집합으로 고정합니다. 선수 폐쇄에는 similarity threshold와 40개 상한을 적용하지 않습니다.
-2. proposal page가 다른 book/version, 미존재, 허용 집합 밖, 중복이면 전체 거부합니다. 허용 집합 안의
-   선수 페이지만 있고 실제 검색 후보가 하나도 없을 때도 전체 거부합니다.
-3. position은 입력 배열 순서로 고정하고 선수 page가 의존 page보다 뒤거나 누락되면 전체 거부합니다.
-4. relevance·role·prerequisite가 F05 허용 Enum과 일치하는지 검증합니다.
-5. 모델이 prerequisite=false로 보냈더라도 graph상 선수로 포함된 page의 서버 판정을 우선합니다.
-6. 잘못된 항목만 제거하거나 순서를 자동 수정해 부분 성공하지 않습니다.
+1. G02의 최대 40개 후보를 받은 뒤 후보마다 DAG의 전이적 선수 page를 계산합니다. 선수 폐쇄에는 similarity
+   threshold와 40개 상한을 적용하지 않습니다.
+2. proposal page가 다른 book/version, 미존재, 검색 후보 밖, 중복이면 전체 거부합니다. 모델이 선수 폐쇄
+   페이지를 직접 고르는 것도 검색 후보가 아니면 거부합니다.
+3. 모델이 고른 각 후보의 전이적 선수 폐쇄를 direct edge 순서로 재귀 방문해 중복 없이 후보 앞에 추가합니다.
+   모델이 고른 다른 후보가 선수이면 모델 relevance·role을 보존하고 DAG 순서만 앞당깁니다. 서버가 추가한
+   선수는 `MEDIUM`, `prerequisite=true`, `PREREQUISITE`로 고정합니다.
+4. relevance·role이 F05 허용 Enum과 일치하는지 검증합니다.
+5. 선수 여부와 `PREREQUISITE` role은 모델 입력·출력에 두지 않고 서버 그래프 판정만 사용합니다.
+6. 잘못된 모델 후보를 제거해 부분 성공하지 않습니다. 서버가 소유한 선수 삽입·DAG 정렬만 자동 완성합니다.
 7. 오류에는 page 분석 text·purpose·provider response를 넣지 않고 실패 종류만 제공합니다.
 
 ## 테스트
 
-- 정상 후보+`0.15` 미만 선수 폐쇄, 40개 후보 뒤 추가된 다단계 선수 순서
-- 다른 book/version·미존재·허용 집합 밖·검색 후보 없이 선수만 있음·duplicate·선수 누락·역순 각각 전체 실패
+- 정상 후보+`0.15` 미만 선수 자동 폐쇄, 40개 후보 뒤 추가된 다단계 선수 순서
+- 다른 book/version·미존재·검색 후보 밖·duplicate는 각각 전체 실패
+- 모델에서 누락된 선수 자동 삽입, 모델 선택 후보가 선수인데 뒤에 있으면 메타데이터 보존·DAG 순서 보정
 - 자유 필드/Enum은 F05에서, semantic 허용 경계는 G03에서 실패하는 역할 분리
 - 실패 결과에 부분 proposal·분석 text가 없는지 확인
 - 명령: `./gradlew test --tests '*AiRouteOutputValidatorTest'`
