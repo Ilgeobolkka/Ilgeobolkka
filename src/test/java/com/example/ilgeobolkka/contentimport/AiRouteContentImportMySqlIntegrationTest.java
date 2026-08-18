@@ -175,6 +175,20 @@ class AiRouteContentImportMySqlIntegrationTest {
     }
 
     @Test
+    void AI_콘텐츠_적재_후_demo_도서_검증은_변경된_제목과_페이지_수를_허용한다() {
+        writer.write(command());
+
+        demoBookWriter.ensureBooks(demoBookCatalog.books());
+
+        Map<String, Object> book =
+                jdbcTemplate.queryForMap(
+                        "SELECT title, total_page_count FROM book WHERE id = ?", BOOK_ID);
+        assertAll(
+                () -> assertEquals("새 AI 도서 제목", book.get("title")),
+                () -> assertEquals(3, book.get("total_page_count")));
+    }
+
+    @Test
     void 같은_version을_재적재하면_페이지_ID를_보존하고_선수_관계를_교체한다() {
         writer.write(command());
         Long secondPageId = 페이지_ID(BOOK_ID, 2);

@@ -315,15 +315,13 @@ class DemoDataSeederMySqlIntegrationTest {
     }
 
     @Test
-    void 고정_도서_ID에_다른_데이터가_있으면_덮어쓰지_않는다() {
-        jdbcTemplate.update(
-                """
-                INSERT INTO book
-                    (id, category, title, author, total_page_count, price_won)
-                VALUES (1, '충돌', '기존 도서', '기존 작가', 1, 1000)
-                """);
+    void 고정_도서_ID의_저자가_다르면_덮어쓰지_않는다() {
+        demoBookWriter.ensureBooks(demoBookCatalog.books());
+        jdbcTemplate.update("UPDATE book SET author = '다른 저자' WHERE id = 1");
 
-        assertThrows(IllegalStateException.class, () -> demoDataSeeder.seed(DEMO_PASSWORD));
+        assertThrows(
+                IllegalStateException.class,
+                () -> demoBookWriter.ensureBooks(demoBookCatalog.books()));
     }
 
     @Test
@@ -359,17 +357,47 @@ class DemoDataSeederMySqlIntegrationTest {
                         () -> demoDataSeeder.seed(DEMO_PASSWORD));
 
         assertEquals(
-                "시연 계정 시드 전에 content-import 배치로 400페이지와 IMAGE 파일을 적재해야 합니다.",
+                "시연 계정 시드 전에 content-import 배치로 도서별 페이지와 IMAGE 파일을 적재해야 합니다.",
                 exception.getMessage());
     }
 
     @Test
-    void 레거시_이미지_경로가_남아_있으면_계정_시드_전에_중단한다() {
+    void page_2가_TEXT여도_다른_페이지가_IMAGE이면_시드한다() {
+        콘텐츠_페이지_준비();
+        Path imagePath = contentOutputDirectory.resolve("book-001/page-003.jpg");
+        테스트_이미지_파일_생성(imagePath);
+        jdbcTemplate.update(
+                """
+                UPDATE book_page
+                SET content_type = 'TEXT',
+                    text_content = '두 번째 본문',
+                    image_path = NULL
+                WHERE book_id = 1 AND page_number = 2
+                """);
+        jdbcTemplate.update(
+                """
+                UPDATE book_page
+                SET content_type = 'IMAGE',
+                    text_content = NULL,
+                    image_path = ?
+                WHERE book_id = 1 AND page_number = 3
+                """,
+                imagePath.toString());
+
+        demoDataSeeder.seed(DEMO_PASSWORD);
+
+        assertEquals(3, 시연_계정_비밀번호_해시().size());
+    }
+
+    @Test
+    void 도서별_IMAGE_페이지가_없으면_계정_시드_전에_중단한다() {
         콘텐츠_페이지_준비();
         jdbcTemplate.update(
                 """
                 UPDATE book_page
-                SET image_path = 'demo/book-pages/category-01.png'
+                SET content_type = 'TEXT',
+                    text_content = '두 번째 본문',
+                    image_path = NULL
                 WHERE book_id = 1 AND page_number = 2
                 """);
 
@@ -379,8 +407,96 @@ class DemoDataSeederMySqlIntegrationTest {
                         () -> demoDataSeeder.seed(DEMO_PASSWORD));
 
         assertEquals(
-                "시연 계정 시드 전에 content-import 배치로 400페이지와 IMAGE 파일을 적재해야 합니다.",
+                "시연 계정 시드 전에 content-import 배치로 도서별 페이지와 IMAGE 파일을 적재해야 합니다.",
                 exception.getMessage());
+    }
+
+    @Test
+    void 도서별_페이지_수가_total_page_count와_다르면_계정_시드_전에_중단한다() {
+        콘텐츠_페이지_준비();
+        jdbcTemplate.update("DELETE FROM book_page WHERE book_id = 1 AND page_number = 1");
+
+        IllegalStateException exception =
+                assertThrows(
+                        IllegalStateException.class,
+                        () -> demoDataSeeder.seed(DEMO_PASSWORD));
+
+        assertEquals(
+                "시연 계정 시드 전에 content-import 배치로 도서별 페이지와 IMAGE 파일을 적재해야 합니다.",
+                exception.getMessage());
+    }
+
+    @Test
+    void 하나의_IMAGE_경로라도_비어_있으면_계정_시드_전에_중단한다() {
+        콘텐츠_페이지_준비();
+        jdbcTemplate.update(
+                """
+                UPDATE book_page
+                SET content_type = 'IMAGE',
+                    text_content = NULL,
+                    image_path = ''
+                WHERE book_id = 1 AND page_number = 1
+                """);
+
+        IllegalStateException exception =
+                assertThrows(
+                        IllegalStateException.class,
+                        () -> demoDataSeeder.seed(DEMO_PASSWORD));
+
+        assertEquals(
+                "시연 계정 시드 전에 content-import 배치로 도서별 페이지와 IMAGE 파일을 적재해야 합니다.",
+                exception.getMessage());
+    }
+
+    @Test
+    void 하나의_IMAGE_파일이라도_없으면_계정_시드_전에_중단한다() {
+        콘텐츠_페이지_준비();
+        jdbcTemplate.update(
+                """
+                UPDATE book_page
+                SET content_type = 'IMAGE',
+                    text_content = NULL,
+                    image_path = '존재하지-않는-이미지.jpg'
+                WHERE book_id = 1 AND page_number = 1
+                """);
+
+        IllegalStateException exception =
+                assertThrows(
+                        IllegalStateException.class,
+                        () -> demoDataSeeder.seed(DEMO_PASSWORD));
+
+        assertEquals(
+                "시연 계정 시드 전에 content-import 배치로 도서별 페이지와 IMAGE 파일을 적재해야 합니다.",
+                exception.getMessage());
+    }
+
+    @Test
+    void AI_콘텐츠의_제목과_페이지_수로_갱신된_도서도_실제_페이지_수가_일치하면_시드한다() {
+        콘텐츠_페이지_준비();
+        jdbcTemplate.update(
+                "UPDATE book SET title = 'AI 도서 제목', total_page_count = 50 WHERE id = 11");
+        List<Object[]> additionalPages = new ArrayList<>();
+        for (int pageNumber = 6; pageNumber <= 50; pageNumber++) {
+            additionalPages.add(
+                    new Object[] {11L, pageNumber, "도서 11의 %d페이지".formatted(pageNumber)});
+        }
+        jdbcTemplate.batchUpdate(
+                """
+                INSERT INTO book_page
+                    (book_id, page_number, content_type, text_content, image_path)
+                VALUES (?, ?, 'TEXT', ?, NULL)
+                """,
+                additionalPages);
+
+        demoDataSeeder.seed(DEMO_PASSWORD);
+
+        Map<String, Object> book =
+                jdbcTemplate.queryForMap(
+                        "SELECT title, total_page_count FROM book WHERE id = 11");
+        assertAll(
+                () -> assertEquals("AI 도서 제목", book.get("title")),
+                () -> assertEquals(50, book.get("total_page_count")),
+                () -> assertEquals(3, 시연_계정_비밀번호_해시().size()));
     }
 
     private void 도서_시드가_계약과_일치한다() {

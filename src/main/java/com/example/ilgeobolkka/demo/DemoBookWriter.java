@@ -20,35 +20,32 @@ public class DemoBookWriter {
     }
 
     public void ensureBooks(List<DemoBookCatalog.BookSeed> expectedBooks) {
-        Map<Long, StoredBook> storedBooks = new HashMap<>();
+        Map<Long, StoredImmutableBookMetadata> storedBooks = new HashMap<>();
         jdbcTemplate
                 .query(
                         """
-                        SELECT id, category, title, author, description, cover_image_path,
-                               total_page_count, price_won
+                        SELECT id, category, author, description, cover_image_path, price_won
                         FROM book
                         WHERE id BETWEEN 1 AND 100
                         """,
                         (resultSet, rowNumber) ->
-                                new StoredBook(
+                                new StoredImmutableBookMetadata(
                                         resultSet.getLong("id"),
                                         resultSet.getString("category"),
-                                        resultSet.getString("title"),
                                         resultSet.getString("author"),
                                         resultSet.getString("description"),
                                         resultSet.getString("cover_image_path"),
-                                        resultSet.getInt("total_page_count"),
                                         resultSet.getInt("price_won")))
                 .forEach(book -> storedBooks.put(book.id(), book));
 
         List<DemoBookCatalog.BookSeed> missingBooks = new ArrayList<>();
         for (DemoBookCatalog.BookSeed expectedBook : expectedBooks) {
-            StoredBook storedBook = storedBooks.get(expectedBook.id());
+            StoredImmutableBookMetadata storedBook = storedBooks.get(expectedBook.id());
             if (storedBook == null) {
                 missingBooks.add(expectedBook);
                 continue;
             }
-            if (!storedBook.matches(expectedBook)) {
+            if (!storedBook.matchesImmutableMetadata(expectedBook)) {
                 throw new IllegalStateException(
                         "시연 도서 ID가 다른 데이터와 충돌합니다: " + expectedBook.id());
             }
@@ -75,24 +72,20 @@ public class DemoBookWriter {
                 });
     }
 
-    private record StoredBook(
+    private record StoredImmutableBookMetadata(
             long id,
             String category,
-            String title,
             String author,
             String description,
             String coverImagePath,
-            int totalPageCount,
             int priceWon) {
 
-        boolean matches(DemoBookCatalog.BookSeed expected) {
+        boolean matchesImmutableMetadata(DemoBookCatalog.BookSeed expected) {
             return id == expected.id()
                     && Objects.equals(category, expected.category())
-                    && Objects.equals(title, expected.title())
                     && Objects.equals(author, expected.author())
                     && Objects.equals(description, expected.description())
                     && Objects.equals(coverImagePath, expected.coverImagePath())
-                    && totalPageCount == expected.totalPageCount()
                     && priceWon == expected.priceWon();
         }
     }
