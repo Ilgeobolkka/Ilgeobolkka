@@ -51,7 +51,7 @@ Responses, 서버 검증·경로 조립 코드로 실행하고 원시 판정 입
 2. caseId·purpose·권한 snapshot만 생성 engine에 전달하고 required/helpful/reference/alternative 정답은 전달하지
    않습니다.
 3. Reader·InkAccount·Ledger·Rental·Ownership·Payment·Generation·Route row를 만들거나 조회하지 않습니다.
-4. 운영과 같은 normalization·Embeddings·`air-candidate-v1`·Responses·동일 snapshot 한 번 retry·output validation·assembly를 사용합니다.
+4. 운영과 같은 normalization·Embeddings·`air-candidate-v2`·Responses·동일 snapshot 한 번 retry·output validation·assembly를 사용합니다.
 5. 처리 시간은 evaluation entry부터 최종 route 확정까지 monotonic clock으로 측정합니다. 원인 분리를 위해
    준비·Embedding·후보 선택·Responses·출력 검증·조립 시간도 같은 clock으로 측정하며 재시도 구간은
    해당 단계에 합산합니다.
@@ -61,7 +61,7 @@ Responses, 서버 검증·경로 조립 코드로 실행하고 원시 판정 입
 ### 후보 임계값 변경 평가
 
 - 후속 후보 정책 승격을 검토할 때만 같은 content·evaluation revision, 임베딩 모델·vector와
-  30개 상한·동점 규칙을 고정한 채 `0.35`, `0.40`, `0.45`를 각각 실행합니다.
+  40개 상한·동점 규칙을 고정한 채 `0.20`, `0.25`, `0.30`을 각각 실행합니다.
 - 선수 페이지 폐쇄 전 후보의 `primaryConcepts[]`와 `requiredConcepts[]`는 대소문자를 구분한 문자열 완전
   일치로 비교합니다. `N`건 전체의 필수 개념 수를 분모로, 하나 이상의 후보에 정확히 일치한 필수 개념 수를
   분자로 사용합니다. trim·Unicode 정규화·부분 문자열·의미 유사도 비교는 적용하지 않습니다.
@@ -69,7 +69,7 @@ Responses, 서버 검증·경로 조립 코드로 실행하고 원시 판정 입
   `requiredConcepts[]`가 하나라도 있으면 평가 데이터 불일치로 임계값 비교를 실패합니다. 정답은 후보 선택
   후 지표 계산에만 사용하고 runtime 입력에 전달하지 않습니다.
 - 재현율 95% 이상을 만족하는 가장 높은 값만 새 version 검토값으로 선택합니다.
-  세 값이 모두 미달하면 `air-candidate-v1`의 `0.30`을 유지하며, 선택한 값은 새 version으로 `N`건 전체 경로를 재평가하기 전에 운영에 적용하지 않습니다.
+  세 값이 모두 미달하면 `air-candidate-v2`의 `0.15`를 유지하며, 선택한 값은 새 version으로 `N`건 전체 경로를 재평가하기 전에 운영에 적용하지 않습니다.
 - 승격을 결정한 뒤의 적용 순서는 [재평가 배포 순서](../../../deployment.md#재평가-배포-순서)를 따릅니다.
 
 ## 테스트
@@ -81,8 +81,8 @@ Responses, 서버 검증·경로 조립 코드로 실행하고 원시 판정 입
 - 일부 case provider 실패·NO_ROUTE·timeout 때 전체 평가 실패와 완료 case 결과 구분
 - timeout의 완료 구간별 시간, `NO_ROUTE` 상위 후보 5개, `INVALID_OUTPUT`의 비민감 검증 code 기록
 - 같은 engine의 embeddingModel·routeModel·candidatePolicyVersion·promptVersion·schemaVersion 기록 입력 확인
-- 후보 정책 승격 평가의 `0.35`·`0.40`·`0.45` 고정, 문자열 완전 일치와 불일치 입력 실패, 선수 폐쇄 전
-  필수 개념 재현율 95% 경계와 가장 높은 통과값 선택·전체 미달 시 `0.30` 유지
+- 후보 정책 승격 평가의 `0.20`·`0.25`·`0.30` 고정, 문자열 완전 일치와 불일치 입력 실패, 선수 폐쇄 전
+  필수 개념 재현율 95% 경계와 가장 높은 통과값 선택·전체 미달 시 `0.15` 유지
 - 명령: `./gradlew test --tests '*AiRouteEvaluationRunnerTest'`
 - 실제 공급자 평가는 `SPRING_PROFILES_ACTIVE=evaluation ./gradlew bootRun`으로 opt-in 실행하며,
   `OPENAI_PROJECT_ID`, `OPENAI_API_KEY`, `OPENAI_DATA_POLICY_VERSION`, manifest·evaluation Git revision과
@@ -106,5 +106,7 @@ Q02 담당자에게 case 결과 schema, 처리 시간 기준, manifest SHA-256, 
 revision·embeddingModel·routeModel과 candidate·prompt·schema version을 전달합니다. Q02의 report 재사용
 판정이 manifest SHA-256을 쓰므로 이 값을 빠뜨리지 않습니다.
 
-2026-08-18 실제 공급자 재평가와 현재 차단 사유는
-[Q01 actual OpenAI 재평가](../../../evidence/ai-route-evaluation/q01-actual-openai-2026-08-18.md)에 남겼습니다.
+2026-08-18 실제 공급자 재평가의 v1 후보 누락은
+[Q01 actual OpenAI 재평가](../../../evidence/ai-route-evaluation/q01-actual-openai-2026-08-18.md),
+v2의 후속 Responses timeout은
+[Q01 `air-candidate-v2` actual OpenAI 재평가](../../../evidence/ai-route-evaluation/q01-candidate-v2-actual-openai-2026-08-18.md)에 남겼습니다.
