@@ -31,44 +31,59 @@ public final class AiRouteOutputValidator {
                 requireConsistentContext(bookId, contentVersion, pages, candidates);
 
         Map<Integer, Set<Integer>> closureMemo = new HashMap<>();
-        Map<Integer, Set<Integer>> closureByCandidate = new LinkedHashMap<>();
+        Map<Integer, Set<Integer>> allClosureByCandidate = new LinkedHashMap<>();
         Set<Integer> allowedPageNumbers = new LinkedHashSet<>();
-        Set<Integer> serverPrerequisitePageNumbers = new LinkedHashSet<>();
 
         for (AiRouteCandidate candidate : candidates) {
             Set<Integer> closure =
                     prerequisiteClosure(candidate.pageNumber(), pagesByNumber, closureMemo, new HashSet<>());
-            closureByCandidate.put(candidate.pageNumber(), closure);
+            allClosureByCandidate.put(candidate.pageNumber(), closure);
             allowedPageNumbers.add(candidate.pageNumber());
             allowedPageNumbers.addAll(closure);
-            serverPrerequisitePageNumbers.addAll(closure);
         }
 
         List<ModelRouteItem> proposalItems = requireSemanticItems(
                 proposal,
                 pagesByNumber,
-                allowedPageNumbers,
-                closureByCandidate.keySet());
-        Map<Integer, Integer> positionByPageNumber = positionsOf(proposalItems);
-        requirePrerequisitesBeforeDependents(
-                proposalItems, positionByPageNumber, pagesByNumber, closureMemo);
+                allClosureByCandidate.keySet());
+        Map<Integer, ModelRouteItem> proposalItemsByPageNumber = new LinkedHashMap<>();
+        Map<Integer, Set<Integer>> selectedClosureByCandidate = new LinkedHashMap<>();
+        Set<Integer> serverPrerequisitePageNumbers = new LinkedHashSet<>();
+        for (ModelRouteItem item : proposalItems) {
+            proposalItemsByPageNumber.put(item.pageNumber(), item);
+            Set<Integer> closure = allClosureByCandidate.get(item.pageNumber());
+            selectedClosureByCandidate.put(item.pageNumber(), closure);
+            serverPrerequisitePageNumbers.addAll(closure);
+        }
+
+        List<Integer> orderedPageNumbers = new ArrayList<>();
+        Set<Integer> emittedPageNumbers = new HashSet<>();
+        for (ModelRouteItem item : proposalItems) {
+            appendWithPrerequisites(
+                    item.pageNumber(),
+                    pagesByNumber,
+                    emittedPageNumbers,
+                    new HashSet<>(),
+                    orderedPageNumbers);
+        }
 
         List<ValidatedRouteItem> validatedItems = new ArrayList<>();
 
-        for (int index = 0; index < proposalItems.size(); index++) {
-            ModelRouteItem item = proposalItems.get(index);
-            AiRouteCandidatePage page = pagesByNumber.get(item.pageNumber());
+        for (int index = 0; index < orderedPageNumbers.size(); index++) {
+            int pageNumber = orderedPageNumbers.get(index);
+            ModelRouteItem item = proposalItemsByPageNumber.get(pageNumber);
+            AiRouteCandidatePage page = pagesByNumber.get(pageNumber);
             validatedItems.add(new ValidatedRouteItem(
                     page.pageId(),
-                    item.pageNumber(),
+                    pageNumber,
                     index + 1,
-                    toDomainRelevance(item),
-                    serverPrerequisitePageNumbers.contains(item.pageNumber()),
-                    toDomainRole(item)));
+                    item == null ? AiRouteItemRelevance.MEDIUM : toDomainRelevance(item),
+                    serverPrerequisitePageNumbers.contains(pageNumber),
+                    item == null ? AiRouteItemRole.PREREQUISITE : toDomainRole(item)));
         }
 
         return new ValidatedRouteProposal(
-                validatedItems, closureByCandidate, allowedPageNumbers);
+                validatedItems, selectedClosureByCandidate, allowedPageNumbers);
     }
 
     private Map<Integer, AiRouteCandidatePage> requireConsistentContext(
@@ -164,7 +179,6 @@ public final class AiRouteOutputValidator {
     private List<ModelRouteItem> requireSemanticItems(
             ModelRouteProposal proposal,
             Map<Integer, AiRouteCandidatePage> pagesByNumber,
-            Set<Integer> allowedPageNumbers,
             Set<Integer> candidatePageNumbers) {
         if (proposal == null || proposal.items().isEmpty()) {
             throw fail(Failure.EMPTY_PROPOSAL);
@@ -181,7 +195,7 @@ public final class AiRouteOutputValidator {
                 throw fail(Failure.PAGE_NOT_FOUND);
             }
 
-            if (!allowedPageNumbers.contains(item.pageNumber())) {
+            if (!candidatePageNumbers.contains(item.pageNumber())) {
                 throw fail(Failure.PAGE_OUTSIDE_ALLOWED_SET);
             }
 
@@ -190,45 +204,37 @@ public final class AiRouteOutputValidator {
             }
         }
 
-        if (seenPageNumbers.stream().noneMatch(candidatePageNumbers::contains)) {
-            throw fail(Failure.MISSING_CANDIDATE);
-        }
-
         return proposal.items();
     }
 
-    private Map<Integer, Integer> positionsOf(List<ModelRouteItem> items) {
-        Map<Integer, Integer> positions = new HashMap<>();
-
-        for (int index = 0; index < items.size(); index++) {
-            positions.put(items.get(index).pageNumber(), index + 1);
-        }
-
-        return positions;
-    }
-
-    private void requirePrerequisitesBeforeDependents(
-            List<ModelRouteItem> items,
-            Map<Integer, Integer> positionByPageNumber,
+    private void appendWithPrerequisites(
+            int pageNumber,
             Map<Integer, AiRouteCandidatePage> pagesByNumber,
-            Map<Integer, Set<Integer>> closureMemo) {
-        for (ModelRouteItem item : items) {
-            int dependentPosition = positionByPageNumber.get(item.pageNumber());
-            Set<Integer> prerequisites = prerequisiteClosure(
-                    item.pageNumber(), pagesByNumber, closureMemo, new HashSet<>());
-
-            for (Integer prerequisite : prerequisites) {
-                Integer prerequisitePosition = positionByPageNumber.get(prerequisite);
-
-                if (prerequisitePosition == null) {
-                    throw fail(Failure.MISSING_PREREQUISITE);
-                }
-
-                if (prerequisitePosition >= dependentPosition) {
-                    throw fail(Failure.INVALID_PREREQUISITE_ORDER);
-                }
-            }
+            Set<Integer> emittedPageNumbers,
+            Set<Integer> visiting,
+            List<Integer> orderedPageNumbers) {
+        if (emittedPageNumbers.contains(pageNumber)) {
+            return;
         }
+        if (!visiting.add(pageNumber)) {
+            throw fail(Failure.CONTEXT_MISMATCH);
+        }
+
+        AiRouteCandidatePage page = pagesByNumber.get(pageNumber);
+        if (page == null) {
+            throw fail(Failure.CONTEXT_MISMATCH);
+        }
+        for (Integer prerequisite : page.prerequisitePageNumbers()) {
+            appendWithPrerequisites(
+                    prerequisite,
+                    pagesByNumber,
+                    emittedPageNumbers,
+                    visiting,
+                    orderedPageNumbers);
+        }
+        visiting.remove(pageNumber);
+        emittedPageNumbers.add(pageNumber);
+        orderedPageNumbers.add(pageNumber);
     }
 
     private AiRouteItemRelevance toDomainRelevance(ModelRouteItem item) {

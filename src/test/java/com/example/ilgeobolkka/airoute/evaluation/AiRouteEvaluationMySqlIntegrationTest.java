@@ -244,7 +244,7 @@ class AiRouteEvaluationMySqlIntegrationTest {
                 @Override
                 public RouteGatewayResult proposeRoute(RouteInput input) {
                     ModelRouteItem item = new ModelRouteItem(
-                            1, Relevance.HIGH, false, Role.CORE);
+                            1, Relevance.HIGH, Role.CORE);
                     return new RouteGatewayResult(
                             new ModelRouteProposal(List.of(item)), "prompt-v1", "schema-v1");
                 }

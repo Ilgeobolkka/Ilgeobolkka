@@ -4,7 +4,7 @@
     "items": {
       "type": "array",
       "minItems": 1,
-      "maxItems": 72,
+      "maxItems": 40,
       "items": {
         "type": "object",
         "properties": {
@@ -19,13 +19,9 @@
               "MEDIUM"
             ]
           },
-          "prerequisite": {
-            "type": "boolean"
-          },
           "role": {
             "type": "string",
             "enum": [
-              "PREREQUISITE",
               "CORE",
               "EXAMPLE",
               "COUNTERPOINT",
@@ -36,7 +32,6 @@
         "required": [
           "pageNumber",
           "relevance",
-          "prerequisite",
           "role"
         ],
         "additionalProperties": false

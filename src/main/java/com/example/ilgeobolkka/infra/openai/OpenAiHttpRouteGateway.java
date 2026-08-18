@@ -36,15 +36,15 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
 
     private static final String RESPONSES_PATH = "/responses";
     private static final String MODEL = "gpt-5.6-terra";
-    private static final String REASONING_EFFORT = "low";
-    private static final String FORMAT_NAME = "ai_route_proposal_v1";
+    private static final String REASONING_EFFORT = "none";
+    private static final String FORMAT_NAME = "ai_route_proposal_v2";
     private static final String PROMPT_RESOURCE =
             "openai/ai-route/route-generation-prompt-v1.md";
     private static final String SCHEMA_RESOURCE =
             "openai/ai-route/route-proposal-v1.schema.json";
     private static final Set<String> PROPOSAL_FIELDS = Set.of("items");
     private static final Set<String> ITEM_FIELDS =
-            Set.of("pageNumber", "relevance", "prerequisite", "role");
+            Set.of("pageNumber", "relevance", "role");
     private static final Logger log = LoggerFactory.getLogger(OpenAiHttpRouteGateway.class);
 
     private final RestClient restClient;
@@ -67,8 +67,8 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
         byte[] schemaBytes = readResourceBytes(SCHEMA_RESOURCE);
         prompt = new String(promptBytes, StandardCharsets.UTF_8);
         schema = parseSchema(schemaBytes);
-        promptVersion = resourceVersion("air-route-prompt-v3", promptBytes);
-        schemaVersion = resourceVersion("air-route-schema-v1", schemaBytes);
+        promptVersion = resourceVersion("air-route-prompt-v4", promptBytes);
+        schemaVersion = resourceVersion("air-route-schema-v2", schemaBytes);
         routeContract = new RouteContract(MODEL, promptVersion, schemaVersion);
     }
 
@@ -150,10 +150,6 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
             throw new IllegalArgumentException("경로 생성 후보가 필요합니다.");
         }
 
-        if (input.prerequisiteEdges() == null) {
-            throw new IllegalArgumentException("검증된 선수 관계가 필요합니다.");
-        }
-
         for (CandidatePage candidate : input.candidates()) {
             if (candidate == null
                     || candidate.analysisText() == null
@@ -166,7 +162,7 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
     private String serializeInput(RouteInput input) {
         try {
             return objectMapper.writeValueAsString(new RouteInputPayload(
-                    input.normalizedPurpose(), input.candidates(), input.prerequisiteEdges()));
+                    input.normalizedPurpose(), input.candidates()));
         } catch (JacksonException exception) {
             throw new IllegalStateException("경로 생성 입력을 직렬화할 수 없습니다.");
         }
@@ -252,7 +248,7 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
         if (!hasExactlyFields(proposal, PROPOSAL_FIELDS)
                 || !proposal.path("items").isArray()
                 || proposal.path("items").isEmpty()
-                || proposal.path("items").size() > 72) {
+                || proposal.path("items").size() > 40) {
             throw malformedResponse("PROPOSAL_SCHEMA");
         }
 
@@ -268,7 +264,6 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
     private ModelRouteItem parseItem(JsonNode item) {
         JsonNode pageNumber = item.path("pageNumber");
         JsonNode relevance = item.path("relevance");
-        JsonNode prerequisite = item.path("prerequisite");
         JsonNode role = item.path("role");
 
         if (!hasExactlyFields(item, ITEM_FIELDS)
@@ -276,7 +271,6 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
                 || !pageNumber.canConvertToInt()
                 || pageNumber.intValue() < 1
                 || !relevance.isString()
-                || !prerequisite.isBoolean()
                 || !role.isString()) {
             throw malformedResponse("PROPOSAL_ITEM");
         }
@@ -285,7 +279,6 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
             return new ModelRouteItem(
                     pageNumber.intValue(),
                     Relevance.valueOf(relevance.asString()),
-                    prerequisite.asBoolean(),
                     Role.valueOf(role.asString()));
         } catch (IllegalArgumentException exception) {
             throw malformedResponse("PROPOSAL_ITEM");
@@ -403,8 +396,7 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
 
     private record RouteInputPayload(
             String normalizedPurpose,
-            List<CandidatePage> candidates,
-            List<PrerequisiteEdge> prerequisiteEdges) {
+            List<CandidatePage> candidates) {
     }
 
     private record ResponsesRequest(

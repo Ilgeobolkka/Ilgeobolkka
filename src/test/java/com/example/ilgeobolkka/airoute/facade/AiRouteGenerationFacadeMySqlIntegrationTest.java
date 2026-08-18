@@ -311,7 +311,7 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
             선수를_생성한다(prerequisite, 6);
         }
         소장한다();
-        routeGateway.then(정상_응답(1, 2, 3, 4, 5, 6));
+        routeGateway.then(정상_응답(6));
 
         GenerationExecutionResult result = facade.generate(
                 READER_ID,
@@ -598,9 +598,8 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
                     index == 0
                             ? OpenAiRouteGateway.Relevance.HIGH
                             : OpenAiRouteGateway.Relevance.MEDIUM,
-                    index < pageNumbers.length - 1,
                     index < pageNumbers.length - 1
-                            ? OpenAiRouteGateway.Role.PREREQUISITE
+                            ? OpenAiRouteGateway.Role.EXAMPLE
                             : OpenAiRouteGateway.Role.CORE));
         }
         return new OpenAiRouteGateway.RouteGatewayResult(

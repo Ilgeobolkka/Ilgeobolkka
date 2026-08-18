@@ -34,7 +34,7 @@ class AiRouteOutputValidatorTest {
     private final AiRouteOutputValidator validator = new AiRouteOutputValidator();
 
     @Test
-    void 후보에서_탈락한_선수도_전이_폐쇄로_허용하고_입력_순서를_위치로_고정한다() {
+    void 모델이_고른_후보에_후보에서_탈락한_선수를_자동으로_앞에_추가한다() {
         AiRouteCandidatePage belowThresholdPrerequisite =
                 page(5, List.of(), embedding(0.0, 1.0));
         AiRouteCandidatePage candidatePage =
@@ -44,7 +44,7 @@ class AiRouteOutputValidatorTest {
                 validate(
                         List.of(belowThresholdPrerequisite, candidatePage),
                         List.of(candidate(candidatePage)),
-                        proposal(item(5, false), item(10, false)));
+                        proposal(item(10)));
 
         assertAll(
                 () -> assertEquals(Set.of(5), result.prerequisiteClosureByCandidate().get(10)),
@@ -71,13 +71,19 @@ class AiRouteOutputValidatorTest {
         }
 
         ValidatedRouteProposal result =
-                validate(pages, candidates, proposal(item(1, false), item(2, false), item(100, false)));
+                validate(pages, candidates, proposal(item(100)));
 
         assertAll(
                 () -> assertEquals(40, candidates.size()),
+                () -> assertEquals(Set.of(100), result.prerequisiteClosureByCandidate().keySet()),
                 () -> assertEquals(Set.of(1, 2), result.prerequisiteClosureByCandidate().get(100)),
                 () -> assertEquals(42, result.allowedPageNumbers().size()),
-                () -> assertTrue(result.allowedPageNumbers().containsAll(Set.of(1, 2))));
+                () -> assertTrue(result.allowedPageNumbers().containsAll(Set.of(1, 2))),
+                () -> assertEquals(
+                        List.of(1, 2, 100),
+                        result.items().stream()
+                                .map(ValidatedRouteProposal.ValidatedRouteItem::pageNumber)
+                                .toList()));
     }
 
     @Test
@@ -94,7 +100,7 @@ class AiRouteOutputValidatorTest {
 
         assertFailure(
                 Failure.CONTEXT_MISMATCH,
-                () -> validate(pages, candidates, proposal(item(1, false))));
+                () -> validate(pages, candidates, proposal(item(1))));
     }
 
     @Test
@@ -105,14 +111,12 @@ class AiRouteOutputValidatorTest {
                 () -> assertTrue(Failure.PAGE_OUTSIDE_ALLOWED_SET.retryable()),
                 () -> assertTrue(Failure.MISSING_CANDIDATE.retryable()),
                 () -> assertTrue(Failure.DUPLICATE_PAGE.retryable()),
-                () -> assertTrue(Failure.MISSING_PREREQUISITE.retryable()),
-                () -> assertTrue(Failure.INVALID_PREREQUISITE_ORDER.retryable()),
                 () -> assertTrue(Failure.EMPTY_PROPOSAL.retryable()),
                 () -> assertTrue(Failure.INVALID_ENUM.retryable()));
     }
 
     @Test
-    void 서버_그래프의_선수_판정이_모델의_false보다_우선한다() {
+    void 서버가_추가한_선수는_MEDIUM과_PREREQUISITE로_고정한다() {
         AiRouteCandidatePage prerequisite = page(5, List.of());
         AiRouteCandidatePage candidatePage = page(10, List.of(5));
 
@@ -120,13 +124,13 @@ class AiRouteOutputValidatorTest {
                 validate(
                         List.of(prerequisite, candidatePage),
                         List.of(candidate(candidatePage)),
-                        proposal(item(5, false), item(10, true)));
+                        proposal(item(10)));
 
         assertAll(
                 () -> assertTrue(result.items().get(0).prerequisite()),
                 () -> assertFalse(result.items().get(1).prerequisite()),
-                () -> assertEquals(AiRouteItemRelevance.HIGH, result.items().get(0).relevance()),
-                () -> assertEquals(AiRouteItemRole.CORE, result.items().get(0).role()));
+                () -> assertEquals(AiRouteItemRelevance.MEDIUM, result.items().get(0).relevance()),
+                () -> assertEquals(AiRouteItemRole.PREREQUISITE, result.items().get(0).role()));
     }
 
     @Test
@@ -139,13 +143,13 @@ class AiRouteOutputValidatorTest {
         assertAll(
                 () -> assertFailure(
                         Failure.CONTEXT_MISMATCH,
-                        () -> validate(List.of(otherBook), List.of(candidate(otherBook)), proposal(item(10, false)))),
+                        () -> validate(List.of(otherBook), List.of(candidate(otherBook)), proposal(item(10)))),
                 () -> assertFailure(
                         Failure.CONTEXT_MISMATCH,
                         () -> validate(
                                 List.of(otherVersion),
                                 List.of(candidate(otherVersion)),
-                                proposal(item(10, false)))));
+                                proposal(item(10)))));
     }
 
     @Test
@@ -157,7 +161,7 @@ class AiRouteOutputValidatorTest {
                 () -> validate(
                         List.of(candidatePage),
                         List.of(candidate(candidatePage)),
-                        proposal(item(99, false))));
+                        proposal(item(99))));
     }
 
     @Test
@@ -170,20 +174,20 @@ class AiRouteOutputValidatorTest {
                 () -> validate(
                         List.of(candidatePage, unrelatedPage),
                         List.of(candidate(candidatePage)),
-                        proposal(item(20, false))));
+                        proposal(item(20))));
     }
 
     @Test
-    void 검색_후보_없이_선수_페이지만_있으면_전체_거부한다() {
+    void 모델이_검색_후보가_아닌_선수_페이지만_고르면_전체_거부한다() {
         AiRouteCandidatePage prerequisite = page(5, List.of());
         AiRouteCandidatePage candidatePage = page(10, List.of(5));
 
         assertFailure(
-                Failure.MISSING_CANDIDATE,
+                Failure.PAGE_OUTSIDE_ALLOWED_SET,
                 () -> validate(
                         List.of(prerequisite, candidatePage),
                         List.of(candidate(candidatePage)),
-                        proposal(item(5, true))));
+                        proposal(item(5))));
     }
 
     @Test
@@ -195,33 +199,47 @@ class AiRouteOutputValidatorTest {
                 () -> validate(
                         List.of(candidatePage),
                         List.of(candidate(candidatePage)),
-                        proposal(item(10, false), item(10, false))));
+                        proposal(item(10), item(10))));
     }
 
     @Test
-    void 선수_페이지가_누락되면_전체_거부한다() {
+    void 모델에서_선수_페이지가_누락되어도_서버가_전이_폐쇄를_완성한다() {
         AiRouteCandidatePage prerequisite = page(5, List.of());
         AiRouteCandidatePage candidatePage = page(10, List.of(5));
 
-        assertFailure(
-                Failure.MISSING_PREREQUISITE,
-                () -> validate(
-                        List.of(prerequisite, candidatePage),
-                        List.of(candidate(candidatePage)),
-                        proposal(item(10, false))));
+        ValidatedRouteProposal result = validate(
+                List.of(prerequisite, candidatePage),
+                List.of(candidate(candidatePage)),
+                proposal(item(10)));
+
+        assertEquals(
+                List.of(5, 10),
+                result.items().stream()
+                        .map(ValidatedRouteProposal.ValidatedRouteItem::pageNumber)
+                        .toList());
     }
 
     @Test
-    void 선수가_의존_페이지보다_뒤에_있으면_전체_거부한다() {
+    void 모델이_선택한_선수가_뒤에_있어도_서버가_앞으로_정렬하고_모델_메타데이터를_보존한다() {
         AiRouteCandidatePage prerequisite = page(5, List.of());
         AiRouteCandidatePage candidatePage = page(10, List.of(5));
 
-        assertFailure(
-                Failure.INVALID_PREREQUISITE_ORDER,
-                () -> validate(
-                        List.of(prerequisite, candidatePage),
-                        List.of(candidate(candidatePage)),
-                        proposal(item(10, false), item(5, false))));
+        ValidatedRouteProposal result = validate(
+                List.of(prerequisite, candidatePage),
+                List.of(candidate(prerequisite), candidate(candidatePage)),
+                proposal(
+                        item(10),
+                        new ModelRouteItem(5, Relevance.MEDIUM, Role.CONCLUSION)));
+
+        assertAll(
+                () -> assertEquals(
+                        List.of(5, 10),
+                        result.items().stream()
+                                .map(ValidatedRouteProposal.ValidatedRouteItem::pageNumber)
+                                .toList()),
+                () -> assertEquals(AiRouteItemRelevance.MEDIUM, result.items().get(0).relevance()),
+                () -> assertEquals(AiRouteItemRole.CONCLUSION, result.items().get(0).role()),
+                () -> assertTrue(result.items().get(0).prerequisite()));
     }
 
     @Test
@@ -253,13 +271,13 @@ class AiRouteOutputValidatorTest {
                         () -> validate(
                                 List.of(candidatePage),
                                 List.of(candidate(candidatePage)),
-                                proposal(new ModelRouteItem(10, null, false, Role.CORE)))),
+                                proposal(new ModelRouteItem(10, null, Role.CORE)))),
                 () -> assertFailure(
                         Failure.INVALID_ENUM,
                         () -> validate(
                                 List.of(candidatePage),
                                 List.of(candidate(candidatePage)),
-                                proposal(new ModelRouteItem(10, Relevance.HIGH, false, null)))));
+                                proposal(new ModelRouteItem(10, Relevance.HIGH, null)))));
     }
 
     @Test
@@ -282,7 +300,7 @@ class AiRouteOutputValidatorTest {
                         () -> validate(
                                 List.of(candidatePage, unrelatedPage),
                                 List.of(candidate(candidatePage)),
-                                proposal(item(10, false), item(20, false))));
+                                proposal(item(10), item(20))));
 
         assertAll(
                 () -> assertEquals(Failure.PAGE_OUTSIDE_ALLOWED_SET, exception.failure()),
@@ -313,9 +331,8 @@ class AiRouteOutputValidatorTest {
         return new ModelRouteProposal(List.of(items));
     }
 
-    private ModelRouteItem item(int pageNumber, boolean prerequisite) {
-        return new ModelRouteItem(
-                pageNumber, Relevance.HIGH, prerequisite, Role.CORE);
+    private ModelRouteItem item(int pageNumber) {
+        return new ModelRouteItem(pageNumber, Relevance.HIGH, Role.CORE);
     }
 
     private AiRouteCandidate candidate(AiRouteCandidatePage page) {

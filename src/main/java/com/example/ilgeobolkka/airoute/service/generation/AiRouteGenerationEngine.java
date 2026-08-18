@@ -366,12 +366,7 @@ public class AiRouteGenerationEngine {
                         candidate.pageNumber(),
                         snapshot.analysisText(candidate.analysisTextRef())))
                 .toList();
-        List<OpenAiRouteGateway.PrerequisiteEdge> gatewayEdges = snapshot.prerequisites().stream()
-                .map(edge -> new OpenAiRouteGateway.PrerequisiteEdge(
-                        edge.prerequisitePageNumber(), edge.dependentPageNumber()))
-                .toList();
-        return new RouteInput(
-                snapshot.command().normalizedPurpose(), gatewayCandidates, gatewayEdges);
+        return new RouteInput(snapshot.command().normalizedPurpose(), gatewayCandidates);
     }
 
     private ValidatedRouteProposal proposeValidatedRoute(
