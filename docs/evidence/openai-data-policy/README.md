@@ -8,7 +8,7 @@
 
 | 프로필 ID | 콘텐츠가 허용한 조건 | 현재 근거 |
 | --- | --- | --- |
-| `OPENAI_DEFAULT_RETENTION_V1` | Responses API는 `store=false`, 기본 악용 모니터링은 원칙적으로 최대 30일과 법률·안전상 예외 허용, 비-ZDR GPT-5.6 프롬프트 캐시는 원문이 아닌 입력 파생 key/value tensor를 최대 24시간 허용 | [2026-08-05 확인 기록](./2026-08-05.md) |
+| `OPENAI_DEFAULT_RETENTION_V1` | Responses API는 `store=false`, 기본 악용 모니터링은 원칙적으로 최대 30일과 법률·안전상 예외 허용, 비-ZDR GPT-5.6 프롬프트 캐시는 원문이 아닌 입력 파생 key/value tensor를 최대 24시간 허용 | [2026-08-18 재확인 기록](./2026-08-18.md) |
 
 2차 MVP의 공개 AI 시연 콘텐츠는 `OPENAI_DEFAULT_RETENTION_V1`만 사용합니다. 프로필 ID는 ASCII 대문자,
 숫자와 `_`로 구성한 100자 이하의 안정 식별자입니다. 같은 ID의 의미는 바꾸지 않습니다. 공식 조건이 달라져

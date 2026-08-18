@@ -43,8 +43,16 @@ Q01 성공은 Q02 최종 통과와 지원 활성화를 뜻하지 않습니다. �
 시드가 대상이 아니므로 `DEMO_VALIDATION_PASSWORD`를 빈 값으로 명시해 같은 JAR를 다시 실행했고, DB나
 코드는 변경하지 않았습니다.
 
-skipped 2건은 기존 opt-in 실제 PDF 100권 Poppler 변환·MySQL 적재 테스트입니다. 이번 계약은
-임베딩 모델·manifest·저장 vector를 바꾸지 않아 콘텐츠 재적재를 실행하지 않았습니다.
+최초 전체 suite의 skipped 2건은 기존 opt-in 실제 PDF 100권 Poppler 변환·MySQL 적재 테스트였습니다.
+후속 로컬 완결 작업에서 두 테스트를 명시적으로 켜고 `--rerun-tasks`로 다시 실행했습니다.
+
+| opt-in 검증 | 결과 |
+| --- | --- |
+| `ContentBatchConverterTest` | 17 tests, skipped/failures/errors 0; 실제 PDF 100권·4,584페이지 Poppler 변환 |
+| `ContentImportFullMySqlIntegrationTest` | 1 test, skipped/failures/errors 0; 초기 100권·400페이지 Poppler 변환 후 MySQL 전체 적재 |
+
+따라서 로컬에서 실행 가능한 콘텐츠 변환·전체 적재 opt-in 경계도 모두 통과했습니다. 이 실행은 기존
+Q01 후보 DB의 support 상태를 바꾸지 않았습니다.
 
 ## 실제 Q01 결과
 
@@ -90,6 +98,23 @@ Q01 artifact에 대해 `AiRouteEvaluationMetrics`와 같은 분자·분모·합�
 - Q02 사람 유용성 90건과 최종 report: **미실행** — 지정 검수자 판정 파일 없음
 - 지원 활성화: **미실행** — 후보 DB 100권 모두 `ai_route_supported=false` 유지
 - 실제 OpenAI 인증 브라우저 여정: **미실행** — 지원 활성화 선행 조건 미충족
+
+## 사람 검토 준비와 프로젝트 설정 재확인
+
+Q01 artifact와 공개 guide metadata를 결합한 사람 검토 패킷을 Git 제외 경로에 만들었습니다. 두 파일은
+case 90개가 모두 고유하고, Q01의 표시 경로와 정확히 일치하며, 지정 검수자의 판정을 대신하지 않도록
+`useful`을 전부 미입력 상태로 유지합니다.
+
+| 파일 | SHA-256 | 상태 |
+| --- | --- | --- |
+| `var/evaluation/ai-route-human-review-20260818.json` | `50223771915aa4a93f51f5e860902bf192780c8ecd4c0ee2a26f267a016ef512` | 90 cases, 판정 0 |
+| `var/evaluation/ai-route-human-review-20260818.tsv` | `f9216902d4863b4ee04bb56d0fa53d389764281f7ad507a32cf68e0d7b8bfc43` | header 포함 91행, 판정 열 공란 |
+
+로그인된 OpenAI Platform도 읽기 전용으로 확인했습니다. 전용 프로젝트의 허용 모델은
+`gpt-5.6-terra`·`text-embedding-3-small`로 계약과 일치하고, API call logging은 호출별 설정이므로
+애플리케이션의 `store=false`가 유효한 차단 경계입니다. 다만 월 지출액 `$10.00`은 설정되어 있어도
+`Enforce a hard limit`가 꺼져 있어 강제 상한은 아닙니다. 상세 근거는
+[2026-08-18 데이터 정책·프로젝트 설정 재확인](../openai-data-policy/2026-08-18.md)에 남겼습니다.
 
 다음 사용자 경계는 90개 경로의 지정 검수자 `useful` 판정입니다. 그 입력이 준비되면 Q02 `finalize`로
 정식 report와 checksum을 만들고, 전체 기준 통과를 확인한 뒤에만 별도 승인으로 후보 DB 지원 도서 전체
