@@ -32,8 +32,11 @@ Responses, 서버 검증·경로 조립 코드로 실행하고 원시 판정 입
 - 입력: `fixtures/content/ai-route-v2/evaluation.json`, 같은 manifest·DB contentVersion
 - 입력: case의 owned·budget/depth·activeRentalPageNumbers snapshot
 - 산출물: `AiRouteEvaluationRunner`, `AiRouteEvaluationService`, evaluation 전용 reader
-- 산출물: caseId별 route 결과·준비 구간을 포함한 처리 시간·정답 비교용 page/concept 자료와 같은 실행에서
-  계산한 후보 임계값 검토 결과; provider 원문 제외
+- 산출물: caseId별 route 결과·준비 구간을 포함한 전체 처리 시간과 준비·Embedding·후보 선택·Responses·
+  출력 검증·조립의 구간별 시간, 정답 비교용 page/concept 자료와 같은 실행에서 계산한 후보 임계값 검토
+  결과; provider 원문 제외
+- 실패 산출물: `NO_ROUTE`의 상위 후보 pageNumber·similarity 최대 5개와 `INVALID_OUTPUT`의 서버 검증 실패
+  enum code. purpose·분석 text·provider 원문은 포함하지 않음
 
 ## 수정 허용 파일
 
@@ -49,7 +52,9 @@ Responses, 서버 검증·경로 조립 코드로 실행하고 원시 판정 입
    않습니다.
 3. Reader·InkAccount·Ledger·Rental·Ownership·Payment·Generation·Route row를 만들거나 조회하지 않습니다.
 4. 운영과 같은 normalization·Embeddings·`air-candidate-v1`·Responses·동일 snapshot 한 번 retry·output validation·assembly를 사용합니다.
-5. 처리 시간은 evaluation entry부터 최종 route 확정까지 monotonic clock으로 측정합니다.
+5. 처리 시간은 evaluation entry부터 최종 route 확정까지 monotonic clock으로 측정합니다. 원인 분리를 위해
+   준비·Embedding·후보 선택·Responses·출력 검증·조립 시간도 같은 clock으로 측정하며 재시도 구간은
+   해당 단계에 합산합니다.
 6. `N`건 모두 ROUTE여야 하며 case 실패를 건너뛰거나 NO_ROUTE를 정상 통과로 바꾸지 않습니다.
 7. purpose·분석 text·provider request/response·API key를 결과 artifact와 로그에 기록하지 않습니다.
 
@@ -74,6 +79,7 @@ Responses, 서버 검증·경로 조립 코드로 실행하고 원시 판정 입
 - engine spy로 정답 필드 전달 0개 확인
 - persistence spy/DB count로 사용자·결제·generation·route row 변화 0건
 - 일부 case provider 실패·NO_ROUTE·timeout 때 전체 평가 실패와 완료 case 결과 구분
+- timeout의 완료 구간별 시간, `NO_ROUTE` 상위 후보 5개, `INVALID_OUTPUT`의 비민감 검증 code 기록
 - 같은 engine의 embeddingModel·routeModel·candidatePolicyVersion·promptVersion·schemaVersion 기록 입력 확인
 - 후보 정책 승격 평가의 `0.35`·`0.40`·`0.45` 고정, 문자열 완전 일치와 불일치 입력 실패, 선수 폐쇄 전
   필수 개념 재현율 95% 경계와 가장 높은 통과값 선택·전체 미달 시 `0.30` 유지
@@ -99,3 +105,6 @@ Responses, 서버 검증·경로 조립 코드로 실행하고 원시 판정 입
 Q02 담당자에게 case 결과 schema, 처리 시간 기준, manifest SHA-256, manifest/evaluation Git
 revision·embeddingModel·routeModel과 candidate·prompt·schema version을 전달합니다. Q02의 report 재사용
 판정이 manifest SHA-256을 쓰므로 이 값을 빠뜨리지 않습니다.
+
+2026-08-18 실제 공급자 재평가와 현재 차단 사유는
+[Q01 actual OpenAI 재평가](../../../evidence/ai-route-evaluation/q01-actual-openai-2026-08-18.md)에 남겼습니다.
