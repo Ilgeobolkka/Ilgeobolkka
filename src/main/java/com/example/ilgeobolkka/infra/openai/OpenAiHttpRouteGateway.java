@@ -36,6 +36,7 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
 
     private static final String RESPONSES_PATH = "/responses";
     private static final String MODEL = "gpt-5.6-terra";
+    private static final String REASONING_EFFORT = "low";
     private static final String FORMAT_NAME = "ai_route_proposal_v1";
     private static final String PROMPT_RESOURCE =
             "openai/ai-route/route-generation-prompt-v1.md";
@@ -66,7 +67,7 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
         byte[] schemaBytes = readResourceBytes(SCHEMA_RESOURCE);
         prompt = new String(promptBytes, StandardCharsets.UTF_8);
         schema = parseSchema(schemaBytes);
-        promptVersion = resourceVersion("air-route-prompt-v1", promptBytes);
+        promptVersion = resourceVersion("air-route-prompt-v3", promptBytes);
         schemaVersion = resourceVersion("air-route-schema-v1", schemaBytes);
         routeContract = new RouteContract(MODEL, promptVersion, schemaVersion);
     }
@@ -82,6 +83,7 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
         ResponsesRequest request = new ResponsesRequest(
                 MODEL,
                 false,
+                new ReasoningConfig(REASONING_EFFORT),
                 prompt,
                 serializeInput(input),
                 new TextConfig(new JsonSchemaFormat("json_schema", FORMAT_NAME, schema, true)));
@@ -408,9 +410,13 @@ public final class OpenAiHttpRouteGateway implements OpenAiRouteGateway {
     private record ResponsesRequest(
             String model,
             boolean store,
+            ReasoningConfig reasoning,
             String instructions,
             String input,
             TextConfig text) {
+    }
+
+    private record ReasoningConfig(String effort) {
     }
 
     private record TextConfig(JsonSchemaFormat format) {

@@ -123,7 +123,7 @@ class OpenAiHttpRouteGatewayTest {
                 new ModelRouteItem(7, Relevance.MEDIUM, true, Role.PREREQUISITE),
                 new ModelRouteItem(12, Relevance.HIGH, false, Role.CORE));
         assertThat(result.promptVersion())
-                .isEqualTo(expectedVersion("air-route-prompt-v1", PROMPT_RESOURCE));
+                .isEqualTo(expectedVersion("air-route-prompt-v3", PROMPT_RESOURCE));
         assertThat(result.schemaVersion())
                 .isEqualTo(expectedVersion("air-route-schema-v1", SCHEMA_RESOURCE));
         assertThat(gateway.routeContract().model()).isEqualTo(MODEL);
@@ -581,9 +581,13 @@ class OpenAiHttpRouteGatewayTest {
 
     private void assertRequestContract(JsonNode json) {
         assertThat(new ArrayList<>(json.propertyNames()))
-                .containsExactlyInAnyOrder("model", "store", "instructions", "input", "text");
+                .containsExactlyInAnyOrder(
+                        "model", "store", "reasoning", "instructions", "input", "text");
         assertThat(json.path("model").asString()).isEqualTo(MODEL);
         assertThat(json.path("store").asBoolean()).isFalse();
+        assertThat(new ArrayList<>(json.path("reasoning").propertyNames()))
+                .containsExactly("effort");
+        assertThat(json.path("reasoning").path("effort").asString()).isEqualTo("low");
         assertThat(json.path("instructions").isString()).isTrue();
         assertThat(json.path("input").isString()).isTrue();
 
