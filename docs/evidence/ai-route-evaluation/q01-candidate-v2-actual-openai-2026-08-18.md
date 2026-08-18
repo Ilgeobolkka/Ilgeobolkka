@@ -75,3 +75,7 @@ v1의 해당 `NO_RELEVANT_PAGES` 경계는 해소됐습니다.
 다음 선택은 40개 후보의 품질 범위를 유지하면서 Responses 지연을 줄이는 별도 prompt/model/검증 계약
 변경입니다. 단순 재실행은 공급자 지연의 변동성은 확인할 수 있어도 이미 관찰된 10초 초과와 20초 실패를
 해결하지 않으므로 출시 통과 근거가 아닙니다.
+
+후속 서버 선수 폐쇄·`reasoning=none` 계약의 90건 성공 결과는
+[Q01 서버 선수 폐쇄·`reasoning=none` actual OpenAI 재평가](./q01-server-closure-none-actual-openai-2026-08-18.md)에
+기록했습니다.

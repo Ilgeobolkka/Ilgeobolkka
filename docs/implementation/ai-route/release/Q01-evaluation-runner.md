@@ -110,3 +110,5 @@ revision·embeddingModel·routeModel과 candidate·prompt·schema version을 전
 [Q01 actual OpenAI 재평가](../../../evidence/ai-route-evaluation/q01-actual-openai-2026-08-18.md),
 v2의 후속 Responses timeout은
 [Q01 `air-candidate-v2` actual OpenAI 재평가](../../../evidence/ai-route-evaluation/q01-candidate-v2-actual-openai-2026-08-18.md)에 남겼습니다.
+서버 선수 폐쇄·`reasoning=none` 계약의 90건 성공과 Q02 자동 지표 사전 계산은
+[Q01 서버 선수 폐쇄·`reasoning=none` actual OpenAI 재평가](../../../evidence/ai-route-evaluation/q01-server-closure-none-actual-openai-2026-08-18.md)에 남겼습니다.
