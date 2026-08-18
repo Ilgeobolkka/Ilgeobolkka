@@ -127,21 +127,24 @@ AI 잉크 경로는 독자가 선택한 한 권에서 독서 목적과 추가 �
 - 검증 실패 시 남은 전체 제한 시간 안에서 한 번 재시도하고 다시 실패하면 임시 결과도 만들지 않습니다.
 - 외부 API·서버 오류에는 경로와 잉크 상태를 변경하지 않고 재시도를 제공합니다.
 
-### 후보·prompt 정책 v1
+### 후보·prompt 정책 v2
 
-- 후보 정책 `air-candidate-v1`은 같은 도서·콘텐츠 버전과 같은 임베딩 모델·차원의 모든 지원 페이지를
+- 후보 정책 `air-candidate-v2`는 같은 도서·콘텐츠 버전과 같은 임베딩 모델·차원의 모든 지원 페이지를
   애플리케이션 메모리에서 exact cosine으로 비교합니다. vector가 유한 실수가 아니거나 zero norm이면 관련도 0으로 대체하지 않고 실패합니다.
-- cosine similarity가 `0.30` 이상인 페이지만 남기고 반올림하지 않은 similarity 내림차순, `pageNumber` 오름차순으로 정렬한
-  최초 30개를 후보로 고정합니다. 정확히 `0.30`인 페이지는 포함하고 similarity가 같을 때만 `pageNumber`를 비교합니다.
+- cosine similarity가 `0.15` 이상인 페이지만 남기고 반올림하지 않은 similarity 내림차순, `pageNumber` 오름차순으로 정렬한
+  최초 40개를 후보로 고정합니다. 정확히 `0.15`인 페이지는 포함하고 similarity가 같을 때만 `pageNumber`를 비교합니다.
 - `TEXT`와 `IMAGE` 페이지에 같은 기준을 적용합니다. 이미지 페이지도 검수된 분석 text와 같은 모델·차원의 vector가 있어야 합니다.
-- 후보별 전이적 선수 페이지 폐쇄는 30개를 고른 뒤 같은 도서·콘텐츠 버전의 검증된 그래프에서 추가합니다.
-  선수 페이지에는 similarity `0.30`과 30개 상한을 다시 적용하지 않습니다.
+- 후보별 전이적 선수 페이지 폐쇄는 40개를 고른 뒤 같은 도서·콘텐츠 버전의 검증된 그래프에서 추가합니다.
+  선수 페이지에는 similarity `0.15`와 40개 상한을 다시 적용하지 않습니다.
   similarity 후보가 한 개도 없으면 Responses를 호출하지 않고 `NO_RELEVANT_PAGES`를 반환합니다.
+- v1의 `0.30`·30개 정책은 [2026-08-18 실제 공급자 평가](../evidence/ai-route-evaluation/q01-actual-openai-2026-08-18.md)에서
+  관련 후보가 없는 case와 낮은 필수 개념 재현율이 확인되어 v2로 대체했습니다. 임베딩 모델·콘텐츠·정렬 규칙은 바꾸지 않습니다.
 - prompt는 `src/main/resources/openai/ai-route/route-generation-prompt-v1.md`, strict JSON Schema는
   `src/main/resources/openai/ai-route/route-proposal-v1.schema.json`에 둡니다. 환경 변수·DB·원격 prompt로 대체하지 않습니다.
-- `promptVersion`은 `air-route-prompt-v1:sha256:<64자리 소문자 hex>`, `schemaVersion`은
+- `promptVersion`은 `air-route-prompt-v3:sha256:<64자리 소문자 hex>`, `schemaVersion`은
   `air-route-schema-v1:sha256:<64자리 소문자 hex>`입니다. `<64자리 소문자 hex>`는 각 classpath resource의
   UTF-8 원본 byte 전체를 별도 정규화 없이 SHA-256으로 계산합니다.
+- Responses의 reasoning effort는 `low`로 고정합니다.
 - Responses의 `text.format.type`은 `json_schema`, `name`은 `ai_route_proposal_v1`이고 `strict=true`입니다.
   schema의 최상위 객체는 `items` 배열 하나만 허용하며 배열은 1~72개입니다. 이 상한은 [AI 경로 콘텐츠 코퍼스](../ai-route-content-corpus.md#도서-제작-기준)의 지원 도서별 최대 페이지 수와 같으며,
   코퍼스의 최대 페이지 수를 변경할 때 schema 계약과 version도 함께 갱신합니다. 각 item은 `pageNumber` 양의 정수, `HIGH|MEDIUM` relevance,
@@ -154,15 +157,16 @@ AI 잉크 경로는 독자가 선택한 한 권에서 독서 목적과 추가 �
 - refusal, incomplete, HTTP·timeout·공급자 한도 오류는 검증 재시도 대상이 아닙니다.
   두 번째 invalid output은 부분 결과 없이 전체 실패하고 외부 API·서버 오류의 사용자 재시도는 기존 멱등·실패 계약을 따릅니다.
 - 후보 임계값 변경을 검토할 때는 같은 content·evaluation revision과
-  임베딩 모델, cosine 계산, 30개 상한·동점 규칙을 고정하고 `0.35`, `0.40`, `0.45`를 비교합니다.
+  임베딩 모델, cosine 계산, 40개 상한·동점 규칙을 고정하고 `0.20`, `0.25`, `0.30`을 비교합니다.
   선수 페이지 폐쇄를 추가하기 전 후보의 `primaryConcepts[]`와 평가 정답의 `requiredConcepts[]`를 대소문자를 구분한 문자열 완전 일치로 비교합니다.
   실행한 대표 목적 전체의 필수 개념 수를 분모로, 하나 이상의 후보에 정확히 일치한 필수 개념 수를 분자로 사용하며
   trim·Unicode 정규화·부분 문자열·의미 유사도 비교는 적용하지 않습니다.
   같은 도서에서 `aiRouteCandidatePage=true`인 후보 페이지의 `primaryConcepts[]`에 정확히 일치하지 않는 필수 개념이 하나라도 있으면 평가 데이터 불일치로 임계값 비교를 실패합니다.
   두 배열은 같은 저장소에서 관리하는 검수 데이터이므로, 정규화로 표기 불일치를 숨기지 않고 평가 데이터 오류로 드러내기 위해 완전 일치로 비교합니다.
   재현율 95% 이상을 유지하는 가장 높은 임계값만 새 후보 정책 version의 검토값으로 선택합니다.
-  세 값이 모두 미달하면 `0.30`을 유지하고 중간값을 임의로 채택하지 않습니다.
-- v1의 후보 값, resource 내용 또는 schema 계약을 바꾸면 기존 식별자를 재사용하지 않고 v2로 올린 뒤 대표 목적 전체를 재평가합니다.
+  세 값이 모두 미달하면 `0.15`를 유지하고 중간값을 임의로 채택하지 않습니다.
+- v2의 후보 값을 바꾸면 기존 식별자를 재사용하지 않고 v3로 올린 뒤 대표 목적 전체를 재평가합니다.
+  prompt·schema의 의미 계약을 바꿀 때도 각각의 논리 version을 올립니다.
   평가 정답을 후보·prompt 입력에 넣거나, 재시도에서 후보·정책을 바꾸거나, 버전이 다른 평가 결과를 재사용하지 않습니다.
 
 ## AI 페이지 가이드

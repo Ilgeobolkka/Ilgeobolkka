@@ -79,10 +79,10 @@ class AiRouteEvaluationServiceTest {
                 result.completedCases().getFirst().versions();
         assertThat(versions.embeddingModel()).isEqualTo("embedding-v1");
         assertThat(versions.routeModel()).isEqualTo("route-v1");
-        assertThat(versions.candidatePolicyVersion()).isEqualTo("air-candidate-v1");
+        assertThat(versions.candidatePolicyVersion()).isEqualTo("air-candidate-v2");
         assertThat(versions.promptVersion()).isEqualTo("prompt-v1");
         assertThat(versions.schemaVersion()).isEqualTo("schema-v1");
-        assertThat(result.candidateThresholdReview().selectedThreshold()).isEqualTo(0.45);
+        assertThat(result.candidateThresholdReview().selectedThreshold()).isEqualTo(0.30);
         assertThat(result.candidateThresholdReview().thresholds())
                 .allSatisfy(threshold -> assertThat(threshold.recall()).isEqualTo(1.0));
         assertThat(new ObjectMapper().writeValueAsString(result))
@@ -362,7 +362,7 @@ class AiRouteEvaluationServiceTest {
                 AiRouteGenerationResult.route(List.of(item)),
                 "embedding-v1",
                 "route-v1",
-                "air-candidate-v1",
+                "air-candidate-v2",
                 "prompt-v1",
                 "schema-v1",
                 List.of(new AiRouteEngineResult.CandidateScore(pageNumber, 0.60)));
@@ -373,7 +373,7 @@ class AiRouteEvaluationServiceTest {
                 AiRouteGenerationResult.noRelevantPages(),
                 "embedding-v1",
                 "route-v1",
-                "air-candidate-v1",
+                "air-candidate-v2",
                 "prompt-v1",
                 "schema-v1",
                 List.of(

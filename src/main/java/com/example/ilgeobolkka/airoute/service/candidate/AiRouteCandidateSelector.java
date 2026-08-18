@@ -15,7 +15,7 @@ import java.util.Set;
  * {@link AiRouteCandidatePolicy}의 값만 적용한다. 근사 검색이나 vector DB를 쓰지 않는 것이 ADR-0014의
  * 결정이다.
  *
- * <p>선수 전이 폐쇄는 하지 않는다. G03이 후보를 고른 뒤 추가하며, 그때 threshold와 30개 상한을 선수
+ * <p>선수 전이 폐쇄는 하지 않는다. G03이 후보를 고른 뒤 추가하며, 그때 threshold와 40개 상한을 선수
  * 페이지에 다시 적용하지 않는다.
  */
 public final class AiRouteCandidateSelector {

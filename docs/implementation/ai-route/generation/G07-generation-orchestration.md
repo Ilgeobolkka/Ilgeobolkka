@@ -16,7 +16,7 @@
 ## 정본 링크
 
 - [경로 생성 정책](../../../prd/ai-ink-route.md#경로-생성-정책)
-- [후보·prompt 정책 v1](../../../prd/ai-ink-route.md#후보prompt-정책-v1)
+- [후보·prompt 정책 v2](../../../prd/ai-ink-route.md#후보prompt-정책-v2)
 - [생성 횟수와 실패](../../../prd/ai-ink-route.md#생성-횟수와-실패)
 - [ERD 목표 트랜잭션](../../../erd.md#목표-트랜잭션과-삭제-경계)
 - [Facade와 트랜잭션](../../../conventions.md#facade와-트랜잭션)

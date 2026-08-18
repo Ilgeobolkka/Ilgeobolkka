@@ -32,7 +32,7 @@ class AiRouteCandidateSelectorTest {
      * norm이 1.0이라 cosine이 {@code x}와 <b>완전히</b> 같아진다. 임계값 경계를 부동소수점 오차 없이
      * 고정하려고 쓴다.
      */
-    private static final double UNIT_PARTNER_FOR_030 = 0.9539392014169457;
+    private static final double UNIT_PARTNER_FOR_015 = 0.9886859966642595;
 
     private static final double UNIT_PARTNER_FOR_050 = 0.8660254037844387;
 
@@ -111,14 +111,14 @@ class AiRouteCandidateSelectorTest {
                 () -> AiRouteEmbedding.of(MODEL, 3, new double[] {1.0, 0.0}));
     }
 
-    // --- 0.30 임계값 경계 ---------------------------------------------------
+    // --- 0.15 임계값 경계 ---------------------------------------------------
 
     @Test
     void 임계값_경계_기법이_실제로_오차가_없다() {
         // 아래 세 경계 테스트는 "cosine == 첫 성분"에 기대고 있다. norm 이 1.0 이 아니게 되면
         // 세 테스트가 조용히 무의미해지므로 전제를 먼저 못박는다.
         assertEquals(1.0, embedding(1.0, 0.0).norm());
-        assertEquals(1.0, embedding(0.30, UNIT_PARTNER_FOR_030).norm());
+        assertEquals(1.0, embedding(0.15, UNIT_PARTNER_FOR_015).norm());
         assertEquals(1.0, embedding(0.50, UNIT_PARTNER_FOR_050).norm());
     }
 
@@ -161,7 +161,7 @@ class AiRouteCandidateSelectorTest {
                         List.of(
                                 page(1, embedding(5.0, 12.0)), // 5/13  ≈ 0.3846
                                 page(2, embedding(24.0, 7.0)), // 24/25 = 0.96
-                                page(3, embedding(7.0, 24.0)), // 7/25  = 0.28 → 제외
+                                page(3, embedding(3.0, 40.0)), // 3/sqrt(1609) ≈ 0.0748 → 제외
                                 page(4, embedding(3.0, 4.0)))); // 3/5   = 0.6
 
         assertEquals(
@@ -170,8 +170,8 @@ class AiRouteCandidateSelectorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {29, 30, 31})
-    void 상한은_30개이고_동점이면_pageNumber_오름차순으로_자른다(int pageCount) {
+    @ValueSource(ints = {39, 40, 41})
+    void 상한은_40개이고_동점이면_pageNumber_오름차순으로_자른다(int pageCount) {
         // 모든 페이지의 similarity 가 정확히 같아 정렬이 pageNumber 로만 결정된다.
         List<AiRouteCandidatePage> pages = new ArrayList<>();
         for (int pageNumber = pageCount; pageNumber >= 1; pageNumber--) { // 일부러 역순 입력
@@ -196,7 +196,7 @@ class AiRouteCandidateSelectorTest {
                         BOOK_ID,
                         CONTENT_VERSION,
                         embedding(1.0, 0.0),
-                        List.of(page(1, embedding(7.0, 24.0)))); // 0.28
+                        List.of(page(1, embedding(3.0, 40.0)))); // 약 0.0748
 
         assertTrue(candidates.isEmpty());
     }
@@ -209,7 +209,7 @@ class AiRouteCandidateSelectorTest {
                 embedding(1.0, 0.0),
                 List.of(
                         page(1, embedding(3.0, 4.0)),
-                        page(2, embedding(7.0, 24.0))));
+                        page(2, embedding(3.0, 40.0))));
 
         assertEquals(List.of(1), selection.candidates().stream()
                 .map(AiRouteCandidate::pageNumber)
@@ -217,7 +217,9 @@ class AiRouteCandidateSelectorTest {
         assertEquals(List.of(1, 2), selection.scoredCandidates().stream()
                 .map(AiRouteCandidate::pageNumber)
                 .toList());
-        assertEquals(0.28, selection.scoredCandidates().get(1).similarity());
+        assertEquals(
+                3.0 / Math.sqrt(1609.0),
+                selection.scoredCandidates().get(1).similarity());
     }
 
     // --- 후보로 실려 나가는 값 ----------------------------------------------
@@ -313,7 +315,7 @@ class AiRouteCandidateSelectorTest {
 
     @Test
     void 같은_페이지_번호가_두_번_들어오면_거부한다() {
-        // 중복을 허용하면 30개 상한과 정렬 결과가 입력 순서에 따라 달라진다.
+        // 중복을 허용하면 40개 상한과 정렬 결과가 입력 순서에 따라 달라진다.
         assertThrows(
                 InvalidAiRouteCandidateInputException.class,
                 () ->
@@ -393,6 +395,13 @@ class AiRouteCandidateSelectorTest {
     // --- 정책 버전 ----------------------------------------------------------
 
     @Test
+    void v2_정책값은_015와_40개로_고정한다() {
+        assertAll(
+                () -> assertEquals(0.15, AiRouteCandidatePolicy.MINIMUM_SIMILARITY),
+                () -> assertEquals(40, AiRouteCandidatePolicy.MAXIMUM_CANDIDATES));
+    }
+
+    @Test
     void 결과에_후보를_뽑은_정책_버전이_함께_실린다() {
         // 상수를 참조하지 않고 값을 직접 적는다. 값이 바뀌면 정책 버전을 올려야 하고,
         // 상수를 그대로 비교하면 값이 조용히 바뀌어도 이 테스트가 통과한다.
@@ -403,7 +412,7 @@ class AiRouteCandidateSelectorTest {
                         embedding(1.0, 0.0),
                         List.of(page(1, embedding(3.0, 4.0))));
 
-        assertEquals("air-candidate-v1", selection.candidatePolicyVersion());
+        assertEquals("air-candidate-v2", selection.candidatePolicyVersion());
     }
 
     @Test
@@ -413,10 +422,10 @@ class AiRouteCandidateSelectorTest {
                         BOOK_ID,
                         CONTENT_VERSION,
                         embedding(1.0, 0.0),
-                        List.of(page(1, embedding(7.0, 24.0)))); // 0.28
+                        List.of(page(1, embedding(3.0, 40.0)))); // 약 0.0748
 
         assertTrue(selection.candidates().isEmpty());
-        assertEquals("air-candidate-v1", selection.candidatePolicyVersion());
+        assertEquals("air-candidate-v2", selection.candidatePolicyVersion());
     }
 
     // --- 결정성과 범위 ------------------------------------------------------
@@ -471,7 +480,7 @@ class AiRouteCandidateSelectorTest {
                 BOOK_ID,
                 CONTENT_VERSION,
                 embedding(1.0, 0.0),
-                List.of(page(1, embedding(targetSimilarity, UNIT_PARTNER_FOR_030))));
+                List.of(page(1, embedding(targetSimilarity, UNIT_PARTNER_FOR_015))));
     }
 
     private List<AiRouteCandidate> selectCandidates(

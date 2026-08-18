@@ -4,7 +4,7 @@
 
 - 권장 담당: 파동 3 / 담당 B
 - 선행: [F03 OpenAI 설정](./F03-openai-configuration.md),
-  [해제된 후보·prompt 정책 v1](../../../prd/ai-ink-route.md#후보prompt-정책-v1)
+  [해제된 후보·prompt 정책 v2](../../../prd/ai-ink-route.md#후보prompt-정책-v2)
 - 후속: [G03 출력 검증](../generation/G03-output-validation.md),
   [G07 생성 orchestration](../generation/G07-generation-orchestration.md)
 
@@ -29,7 +29,7 @@
 
 ## 입력과 산출물
 
-- 입력: normalizedPurpose, `air-candidate-v1`의 확정 순서 candidate pageNumber·analysisText·검증된 선수 edge
+- 입력: normalizedPurpose, `air-candidate-v2`의 확정 순서 candidate pageNumber·analysisText·검증된 선수 edge
 - 산출물: `OpenAiRouteGateway`, `OpenAiHttpRouteGateway`, 공급자 DTO, `ModelRouteProposal`, `promptVersion`, `schemaVersion`
 - proposal 필드: pageNumber, `HIGH|MEDIUM`, prerequisite boolean,
   `PREREQUISITE|CORE|EXAMPLE|COUNTERPOINT|CONCLUSION`
@@ -64,7 +64,7 @@
 - 가짜 HTTP server에서 model, `store=false`, `text.format.type=json_schema`,
   `text.format.name=ai_route_proposal_v1`, `strict=true`, `items` 1~72개, pageNumber의
   `type=integer`·`minimum=1`, 모든 필수 필드와 양쪽 `additionalProperties=false` 확인
-- 두 resource의 UTF-8 byte SHA-256과 `air-route-prompt-v1:sha256:...`,
+- 두 resource의 UTF-8 byte SHA-256과 `air-route-prompt-v3:sha256:...`,
   `air-route-schema-v1:sha256:...` 형식, 공백 변경 시 version 변경 확인
 - 정상 proposal Enum·순서 parse
 - pageNumber 0·음수, 자유 필드·알 수 없는 Enum·incomplete·refusal·malformed JSON·5xx·budget limit 실패 주입

@@ -165,7 +165,7 @@ class AiRouteGenerationFacadeMySqlIntegrationTest {
                 () -> assertEquals(2, result.generation().items().size()),
                 () -> assertEquals("embedding-v1", result.embeddingModel()),
                 () -> assertEquals("route-v1", result.routeModel()),
-                () -> assertEquals("air-candidate-v1", result.candidatePolicyVersion()),
+                () -> assertEquals("air-candidate-v2", result.candidatePolicyVersion()),
                 () -> assertEquals("prompt-v1", result.promptVersion()),
                 () -> assertEquals("schema-v1", result.schemaVersion()),
                 () -> assertEquals(1, embeddingGateway.calls()),

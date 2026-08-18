@@ -7,7 +7,7 @@ import java.util.List;
 /** 운영 후보 정책을 바꾸지 않고 승격 검토값 세 개의 필수 개념 재현율만 계산한다. */
 public final class AiRouteCandidateThresholdEvaluator {
 
-    public static final List<Double> REVIEW_THRESHOLDS = List.of(0.35, 0.40, 0.45);
+    public static final List<Double> REVIEW_THRESHOLDS = List.of(0.20, 0.25, 0.30);
     private static final double REQUIRED_RECALL = 0.95;
 
     public Result evaluate(List<CaseCandidates> cases) {

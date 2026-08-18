@@ -58,12 +58,12 @@ class AiRouteOutputValidatorTest {
     }
 
     @Test
-    void 후보_30개를_고른_뒤에도_상한_밖의_다단계_선수를_모두_허용한다() {
+    void 후보_40개를_고른_뒤에도_상한_밖의_다단계_선수를_모두_허용한다() {
         List<AiRouteCandidatePage> pages = new ArrayList<>();
         pages.add(page(1, List.of()));
         pages.add(page(2, List.of(1)));
         List<AiRouteCandidate> candidates = new ArrayList<>();
-        for (int pageNumber = 100; pageNumber < 130; pageNumber++) {
+        for (int pageNumber = 100; pageNumber < 140; pageNumber++) {
             AiRouteCandidatePage candidatePage =
                     page(pageNumber, pageNumber == 100 ? List.of(2) : List.of());
             pages.add(candidatePage);
@@ -74,14 +74,14 @@ class AiRouteOutputValidatorTest {
                 validate(pages, candidates, proposal(item(1, false), item(2, false), item(100, false)));
 
         assertAll(
-                () -> assertEquals(30, candidates.size()),
+                () -> assertEquals(40, candidates.size()),
                 () -> assertEquals(Set.of(1, 2), result.prerequisiteClosureByCandidate().get(100)),
-                () -> assertEquals(32, result.allowedPageNumbers().size()),
+                () -> assertEquals(42, result.allowedPageNumbers().size()),
                 () -> assertTrue(result.allowedPageNumbers().containsAll(Set.of(1, 2))));
     }
 
     @Test
-    void 후보가_30개를_초과하면_검증_문맥을_거부한다() {
+    void 후보가_40개를_초과하면_검증_문맥을_거부한다() {
         List<AiRouteCandidatePage> pages = new ArrayList<>();
         List<AiRouteCandidate> candidates = new ArrayList<>();
         for (int pageNumber = 1;
