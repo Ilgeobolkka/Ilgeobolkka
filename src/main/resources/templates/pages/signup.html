@@ -3,13 +3,14 @@
       xmlns:th="http://www.thymeleaf.org"
       th:replace="~{fragments/shell :: page(${pageTitle}, ~{::section})}">
 <body>
-<section class="auth-page mx-auto"
+<section class="auth-page"
          data-auth-page
          data-success-path="/login"
          aria-labelledby="signup-title">
-    <div class="bg-white border rounded-3 p-4 p-md-5">
-        <h1 class="h2 mb-2" id="signup-title">회원가입</h1>
-        <p class="text-secondary mb-4">계정을 만든 뒤 로그인 화면에서 별도로 로그인해 주세요.</p>
+    <div class="auth-card">
+        <p class="eyebrow">NEW READER</p>
+        <h1 id="signup-title">회원가입</h1>
+        <p class="auth-lead">계정을 만든 뒤 로그인 화면에서 별도로 로그인해 주세요.</p>
 
         <noscript>
             <p class="alert alert-warning">회원가입하려면 JavaScript를 활성화해 주세요.</p>
@@ -43,11 +44,11 @@
                     </div>
                 </div>
 
-                <button class="btn btn-primary w-100" type="submit">회원가입</button>
+                <button class="btn btn-primary btn-lg w-100" type="submit">회원가입</button>
             </fieldset>
         </form>
 
-        <p class="text-center mt-4 mb-0">
+        <p class="auth-switch">
             이미 계정이 있으신가요?
             <a th:href="@{/login}">로그인</a>
         </p>

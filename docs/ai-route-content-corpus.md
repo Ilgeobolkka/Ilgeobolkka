@@ -96,7 +96,7 @@
 모델·차원·벡터와 `duplicateGroupKeys`는 `book_page`의 대응 필드로 저장합니다.
 `prerequisitePageNumbers`는 현재 페이지를 의존 페이지로 하는 `ai_route_prerequisite` 행으로
 저장합니다. 구체적인 물리 필드는
-[ERD의 AI 잉크 경로 목표 모델](./erd.md#ai-잉크-경로-2차-mvp-목표-모델-구현-전)을 따릅니다.
+[ERD의 AI 잉크 경로 구현 모델](./erd.md#ai-잉크-경로-2차-mvp-구현-모델)을 따릅니다.
 
 manifest는 AI 경로 지원 후보를 정의할 뿐 `ai_route_supported=true`를 선언하지 않습니다. 적재 직후에는
 `false`로 두고 아래 품질 평가를 통과한 비소설 도서만 `true`로 전환합니다.

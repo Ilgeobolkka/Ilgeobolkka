@@ -60,6 +60,7 @@ public class CommonPageController {
         model.addAttribute("bookId", bookId);
         model.addAttribute("initialPage", page);
         model.addAttribute("pageTitle", "뷰어");
+        model.addAttribute("layoutMode", "viewer");
         return "pages/viewer";
     }
 

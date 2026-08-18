@@ -3,6 +3,7 @@
 [구현 작업 색인](../README.md)으로 돌아갑니다.
 
 - 권장 담당: 파동 10 / 담당 A가 통합, B·C가 담당 영역 회귀 확인
+- 상태: 완료 — Q01·Q02·실제 OpenAI·배포·인증 브라우저 전체 여정 충족
 - 선행: [G08 생성 API](../generation/G08-generation-api.md),
   [W01 생성 화면](../web/W01-generation-page.md), [W02 경로 화면](../web/W02-route-detail-page.md),
   [W03 도서·서재 연결](../web/W03-book-library-integration.md), [Q02 지표·활성화](./Q02-metrics-activation.md)
@@ -16,7 +17,7 @@ AI leaf 작업과 기존 초기 MVP 전체 회귀를 MySQL·패키징 실행물�
 ## 정본 링크
 
 - [AI 2차 MVP 출시 게이트](../../../test-strategy.md#ai-잉크-경로-2차-mvp)
-- [배포 전 게이트](../../../deployment.md#5-배포-전-게이트)
+- [운영 전환 게이트](../../../deployment.md#5-운영-전환-게이트)
 - [재평가 배포 순서](../../../deployment.md#재평가-배포-순서)
 - [OpenAI 데이터·비용 제어](../../../deployment.md#openai-데이터비용-제어)
 - [PRD 품질과 출시 기준](../../../prd/ai-ink-route.md#품질과-출시-기준)
@@ -37,8 +38,8 @@ AI leaf 작업과 기존 초기 MVP 전체 회귀를 MySQL·패키징 실행물�
 - 산출물: 실패 leaf ID·재현 명령·정본 기대값 목록
 - 현재 실행 근거:
   [SCRUM-478 Q03 통합 회귀·출시 판정 근거](../../../evidence/release-verification/scrum-478-2026-08-15.md)
-  (Q01·Q02·실제 OpenAI·인증 브라우저 증거 미충족으로 Q03 미완료)
-- 별도 승인 시에만 PRD 구현 상태와 배포 가이드의 실제 명령·증거 링크 갱신
+  (Q01·Q02·실제 OpenAI는 저장소 근거, 배포·인증 브라우저 전체 여정은 사용자 완료 확인으로 Q03 완료)
+- 사용자 승인에 따라 PRD 구현 상태와 배포 가이드 상태를 갱신
 
 ## 수정 허용 파일
 
@@ -84,5 +85,5 @@ AI leaf 작업과 기존 초기 MVP 전체 회귀를 MySQL·패키징 실행물�
 
 ## 인계
 
-사용자에게 통과·실패·미실행 항목을 분리해 보고합니다. 사용자가 승인한 뒤에만 PRD의 “구현 전” 상태,
-Jira 상태, commit·push·PR을 각각 갱신합니다.
+통과·실패·미실행 항목을 분리해 보고하고, 사용자 승인 뒤 PRD 구현 상태와 출시 근거를 갱신합니다. 현재는
+사용자가 배포와 인증 브라우저 전체 여정 완료를 확인해 Q03을 완료 처리했습니다.

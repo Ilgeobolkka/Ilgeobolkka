@@ -4,6 +4,13 @@
 
 하나의 Spring Boot 애플리케이션을 로컬에서는 Docker Compose MySQL에, 운영에서는 Amazon RDS for MySQL에 연결하는 설정 계약을 정의합니다. 운영 배포에 `.env`를 복사하거나 MySQL 컨테이너를 함께 실행하지 않습니다.
 
+## 배포 상태
+
+- 비운영 `demo` 환경 배포와 AI 경로 인증 브라우저 전체 여정은 2026-08-18 사용자 확인으로 완료했습니다.
+- 저장소에서 독립 확인할 새 배포 URL·run ID·실측 수치는 제공되지 않았으므로 최종 Q03 근거에서 사용자
+  확인과 저장소 실행 근거를 구분합니다.
+- 아래 AWS 운영 연결과 운영 전환 게이트는 비운영 데모 완료와 별개이며 아직 운영 배포 완료를 뜻하지 않습니다.
+
 ## 2. 환경별 구성
 
 | 항목 | 로컬 개발·테스트 | AWS 운영 |
@@ -364,7 +371,7 @@ DB_PASSWORD=<Secrets Manager에서 주입>
 - [RDS와 AWS Secrets Manager 자격 증명 관리](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-secrets-manager.html)
 - [MySQL Connector/J SSL 모드](https://dev.mysql.com/doc/connector-j/en/connector-j-reference-using-ssl.html)
 
-## 5. 배포 전 게이트
+## 5. 운영 전환 게이트
 
 - [ ] 애플리케이션 실행 환경(ECS/Fargate, EC2, Elastic Beanstalk 등)을 결정합니다.
 - [ ] RDS를 생성하고 애플리케이션 전용 DB 계정을 준비합니다.
@@ -375,9 +382,11 @@ DB_PASSWORD=<Secrets Manager에서 주입>
 - [ ] 로컬·시연 전용 계정 생성 기능이 운영 프로필에서 비활성화되는지 확인합니다.
 - [ ] 운영과 동일한 MySQL 버전에서 전체 테스트를 통과시킵니다.
 - [ ] 배포 후 TLS 연결과 DB health를 확인합니다.
-- [ ] 로컬·시연 환경에서만 PortOne V2 테스트 채널, 서버 재조회와 웹훅 서명 검증을 확인합니다.
+- [x] 로컬·시연 환경에서만 PortOne V2 테스트 채널, 서버 재조회와 웹훅 서명 검증을 확인합니다.
 - [ ] 운영 환경에서 결제 기능과 PortOne 설정이 비활성화됐는지 확인합니다.
 - [ ] 재평가 대상 입력이 바뀐 배포는 [재평가 배포 순서](#재평가-배포-순서)의 통과 증거를 먼저
       확인합니다.
 
-현재 애플리케이션 실행 환경은 아직 결정되지 않았습니다. 실행 환경을 선택한 뒤 해당 서비스의 환경변수·Secrets Manager 연결 절차를 이 문서에 구체화합니다.
+비운영 데모는 별도 `Ilgeobolkka-infra` 저장소의 CloudFront·EC2·RDS 경로를 사용합니다. 운영 실행 환경은
+아직 결정되지 않았으며, 선택한 뒤 해당 서비스의 환경변수·Secrets Manager 연결 절차를 이 문서에
+구체화합니다.

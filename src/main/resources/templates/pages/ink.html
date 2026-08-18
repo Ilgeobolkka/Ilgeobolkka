@@ -3,30 +3,33 @@
       xmlns:th="http://www.thymeleaf.org"
       th:replace="~{fragments/shell :: page(${pageTitle}, ~{::section})}">
 <body>
-<section data-ink-page>
-    <div class="d-flex align-items-start justify-content-between gap-4 mb-4">
+<section class="ink-page" data-ink-page>
+    <header class="ink-hero">
         <div>
-            <h1 class="h2 mb-2">잉크</h1>
-            <p class="mb-0 text-secondary">잉크를 구매하고 현재 잔액과 사용 내역을 확인하세요.</p>
+            <p class="eyebrow">INK WALLET</p>
+            <h1>잉크</h1>
+            <p>잉크 1개로 페이지 한 쪽을 30일 대여합니다. 잉크는 만료되지 않습니다.</p>
         </div>
-        <div class="bg-white border rounded-3 px-4 py-3 text-end" aria-labelledby="ink-balance-title">
-            <div class="small text-secondary" id="ink-balance-title">현재 잔액</div>
-            <output class="fs-3 fw-semibold" data-ink-balance aria-live="polite">불러오는 중</output>
+        <div class="ink-balance" aria-labelledby="ink-balance-title">
+            <div id="ink-balance-title">현재 잔액</div>
+            <output data-ink-balance aria-live="polite">불러오는 중</output>
         </div>
-    </div>
+    </header>
 
-    <section class="bg-white border rounded-3 p-4 mb-4" aria-labelledby="ink-purchase-title">
-        <div class="d-flex align-items-center justify-content-between gap-4">
+    <div class="ink-page-content">
+    <section class="ink-purchase-panel" aria-labelledby="ink-purchase-title">
+        <div>
             <div>
-                <h2 class="h4 mb-2" id="ink-purchase-title">100잉크 구매</h2>
-                <p class="mb-0 text-secondary"
+                <p class="eyebrow">TOP UP</p>
+                <h2 id="ink-purchase-title">100잉크 구매</h2>
+                <p
                    th:text="${inkPurchaseEnabled
                        ? 'PortOne V2 테스트 채널에서 1,000원 카드 결제를 진행합니다.'
                        : '현재 환경에서는 잉크 구매를 사용할 수 없습니다.'}">
                     PortOne V2 테스트 채널에서 1,000원 카드 결제를 진행합니다.
                 </p>
             </div>
-            <button class="btn btn-primary flex-shrink-0"
+            <button class="btn btn-primary btn-lg flex-shrink-0"
                     type="button"
                     data-ink-purchase
                     th:disabled="${!inkPurchaseEnabled}"
@@ -34,7 +37,7 @@
                 1,000원 결제
             </button>
         </div>
-        <div class="alert mt-3 mb-0"
+        <div class="alert mt-4 mb-0"
              role="status"
              aria-live="polite"
              aria-atomic="true"
@@ -47,14 +50,17 @@
                 hidden></button>
     </section>
 
-    <section class="bg-white border rounded-3 p-4" aria-labelledby="ink-ledger-title">
-        <div class="d-flex align-items-center justify-content-between mb-3">
-            <h2 class="h4 mb-0" id="ink-ledger-title">잉크 내역</h2>
-            <span class="text-secondary" data-ink-ledger-page aria-live="polite">불러오는 중</span>
+    <section class="history-panel" aria-labelledby="ink-ledger-title">
+        <div class="history-panel-heading">
+            <div>
+                <p class="eyebrow">HISTORY</p>
+                <h2 id="ink-ledger-title">잉크 내역</h2>
+            </div>
+            <span data-ink-ledger-page aria-live="polite">불러오는 중</span>
         </div>
 
         <div class="table-responsive">
-            <table class="table align-middle mb-3">
+            <table class="table history-table align-middle mb-3">
                 <caption class="visually-hidden">
                     최근 순서로 표시한 잉크 지급과 차감 내역
                 </caption>
@@ -74,7 +80,7 @@
             </table>
         </div>
 
-        <nav class="d-flex justify-content-center gap-2" aria-label="잉크 내역 페이지">
+        <nav class="pagination-bar" aria-label="잉크 내역 페이지">
             <button class="btn btn-outline-secondary"
                     type="button"
                     data-ink-ledger-previous
@@ -85,6 +91,7 @@
                     disabled>다음</button>
         </nav>
     </section>
+    </div>
 
     <script type="module" th:src="@{/js/ink/ink.js}"></script>
 </section>
