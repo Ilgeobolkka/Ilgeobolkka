@@ -392,6 +392,6 @@ manifest의 결정적 입력이므로 임베딩 모델 변경은 항상 manifest
 ## 기술 결정
 
 외부 AI와 임베딩 검색 구조는
-[ADR-0014](../adr/application/0014-use-openai-and-mysql-for-ai-route-generation.md)를 따릅니다. 구현 전 목표
-HTTP 경로와 데이터 구조는 각각 [API 계약](../api-spec.md#ai-잉크-경로-2차-mvp-목표-계약-구현-전)과
-[ERD](../erd.md#ai-잉크-경로-2차-mvp-목표-모델-구현-전)를 따릅니다.
+[ADR-0014](../adr/application/0014-use-openai-and-mysql-for-ai-route-generation.md)를 따릅니다. 현재 구현
+HTTP 경로와 데이터 구조는 각각 [API 계약](../api-spec.md#ai-잉크-경로-2차-mvp-구현-계약)과
+[ERD](../erd.md#ai-잉크-경로-2차-mvp-구현-모델)를 따릅니다.
