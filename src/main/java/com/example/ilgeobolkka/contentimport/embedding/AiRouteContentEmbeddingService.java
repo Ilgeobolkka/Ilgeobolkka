@@ -2,6 +2,7 @@ package com.example.ilgeobolkka.contentimport.embedding;
 
 import com.example.ilgeobolkka.contentimport.validation.ValidatedAiRouteContent;
 import com.example.ilgeobolkka.infra.openai.OpenAiEmbeddingGateway;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -14,6 +15,8 @@ import java.util.Map;
  * vector가 파일이나 DB로 나가지 않는다. 이 서비스는 Repository를 주입받지 않아 저장 경로 자체가 없다.
  */
 public final class AiRouteContentEmbeddingService {
+
+    private static final int EMBEDDING_BATCH_SIZE = 100;
 
     private final OpenAiEmbeddingGateway gateway;
 
@@ -37,7 +40,7 @@ public final class AiRouteContentEmbeddingService {
         String model = content.embeddingModel();
         int dimensions = content.embeddingDimensions();
         Map<EmbeddedAiRouteContent.PageKey, List<Double>> vectors = new LinkedHashMap<>();
-        int candidateCount = 0;
+        List<PendingPage> pendingPages = new ArrayList<>();
 
         // bookId ASC, pageNumber ASC의 결정적 순서로 요청한다. 검증 결과는 위상 순서라 그대로 쓰지 않는다.
         List<ValidatedAiRouteContent.ValidatedBook> books =
@@ -56,22 +59,41 @@ public final class AiRouteContentEmbeddingService {
                 if (!page.aiRouteCandidatePage()) {
                     continue;
                 }
-                candidateCount++;
                 EmbeddedAiRouteContent.PageKey key =
                         new EmbeddedAiRouteContent.PageKey(
                                 book.bookId(), page.pageNumber(), content.contentVersion());
-                OpenAiEmbeddingGateway.Embedding embedding =
-                        gateway.embedPageAnalysis(
-                                new OpenAiEmbeddingGateway.PageAnalysisInput(page.analysisText()),
+                pendingPages.add(new PendingPage(
+                        key,
+                        new OpenAiEmbeddingGateway.PageAnalysisInput(page.analysisText())));
+            }
+        }
+
+        for (int from = 0; from < pendingPages.size(); from += EMBEDDING_BATCH_SIZE) {
+            int to = Math.min(from + EMBEDDING_BATCH_SIZE, pendingPages.size());
+            List<PendingPage> batch = pendingPages.subList(from, to);
+            List<OpenAiEmbeddingGateway.Embedding> embeddings = gateway.embedPageAnalyses(
+                    batch.stream().map(PendingPage::input).toList(),
+                    model,
+                    dimensions);
+            require(
+                    embeddings != null && embeddings.size() == batch.size(),
+                    "후보 페이지 embedding 응답 수가 요청 수와 다릅니다.");
+            for (int index = 0; index < batch.size(); index++) {
+                PendingPage pending = batch.get(index);
+                vectors.put(
+                        pending.key(),
+                        validVector(
+                                pending.key(),
+                                embeddings.get(index),
                                 model,
-                                dimensions);
-                vectors.put(key, validVector(key, embedding, model, dimensions));
+                                dimensions));
             }
         }
 
         require(
-                vectors.size() == candidateCount,
-                "후보 페이지 %d개 중 %d개만 vector를 받았습니다.".formatted(candidateCount, vectors.size()));
+                vectors.size() == pendingPages.size(),
+                "후보 페이지 %d개 중 %d개만 vector를 받았습니다."
+                        .formatted(pendingPages.size(), vectors.size()));
         return new EmbeddedAiRouteContent(
                 content.contentVersion(), model, dimensions, vectors);
     }
@@ -113,4 +135,8 @@ public final class AiRouteContentEmbeddingService {
             throw new AiRouteContentEmbeddingException(message);
         }
     }
+
+    private record PendingPage(
+            EmbeddedAiRouteContent.PageKey key,
+            OpenAiEmbeddingGateway.PageAnalysisInput input) {}
 }

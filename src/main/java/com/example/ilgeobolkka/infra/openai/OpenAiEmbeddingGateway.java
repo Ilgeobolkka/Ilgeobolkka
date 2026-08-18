@@ -8,6 +8,16 @@ public interface OpenAiEmbeddingGateway {
 
     Embedding embedPageAnalysis(PageAnalysisInput input, String model, int dimensions);
 
+    default List<Embedding> embedPageAnalyses(
+            List<PageAnalysisInput> inputs, String model, int dimensions) {
+        if (inputs == null) {
+            throw new IllegalArgumentException("페이지 분석 입력 목록이 필요합니다.");
+        }
+        return inputs.stream()
+                .map(input -> embedPageAnalysis(input, model, dimensions))
+                .toList();
+    }
+
     record PurposeInput(String normalizedPurpose) {
 
         @Override

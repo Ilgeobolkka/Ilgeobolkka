@@ -24,6 +24,7 @@ import tools.jackson.databind.ObjectMapper;
 public final class OpenAiHttpEmbeddingGateway implements OpenAiEmbeddingGateway {
 
     private static final String EMBEDDINGS_PATH = "/embeddings";
+    private static final int MAX_INPUTS = 2_048;
     private static final Logger log = LoggerFactory.getLogger(OpenAiHttpEmbeddingGateway.class);
 
     private final RestClient restClient;
@@ -42,7 +43,7 @@ public final class OpenAiHttpEmbeddingGateway implements OpenAiEmbeddingGateway 
             throw new IllegalArgumentException("정규화한 독서 목적이 필요합니다.");
         }
 
-        return embed(input.normalizedPurpose(), model, dimensions);
+        return embed(List.of(input.normalizedPurpose()), model, dimensions).getFirst();
     }
 
     @Override
@@ -51,13 +52,29 @@ public final class OpenAiHttpEmbeddingGateway implements OpenAiEmbeddingGateway 
             throw new IllegalArgumentException("페이지 분석 텍스트가 필요합니다.");
         }
 
-        return embed(input.aiAnalysisText(), model, dimensions);
+        return embed(List.of(input.aiAnalysisText()), model, dimensions).getFirst();
     }
 
-    private Embedding embed(String text, String model, int dimensions) {
-        validateRequest(text, model, dimensions);
+    @Override
+    public List<Embedding> embedPageAnalyses(
+            List<PageAnalysisInput> inputs, String model, int dimensions) {
+        if (inputs == null || inputs.isEmpty() || inputs.size() > MAX_INPUTS) {
+            throw new IllegalArgumentException("페이지 분석 입력은 1개 이상 2048개 이하여야 합니다.");
+        }
+        List<String> texts = new ArrayList<>(inputs.size());
+        for (PageAnalysisInput input : inputs) {
+            if (input == null) {
+                throw new IllegalArgumentException("페이지 분석 텍스트가 필요합니다.");
+            }
+            texts.add(input.aiAnalysisText());
+        }
+        return embed(texts, model, dimensions);
+    }
+
+    private List<Embedding> embed(List<String> texts, String model, int dimensions) {
+        validateRequest(texts, model, dimensions);
         EmbeddingRequest request = new EmbeddingRequest(
-                List.of(text), model, dimensions, "float");
+                texts, model, dimensions, "float");
 
         try {
             JsonNode response = restClient.post()
@@ -86,7 +103,7 @@ public final class OpenAiHttpEmbeddingGateway implements OpenAiEmbeddingGateway 
                         return parseResponse(clientResponse.getBody());
                     });
 
-            return validateResponse(response, model, dimensions);
+            return validateResponse(response, model, dimensions, texts.size());
         } catch (ResourceAccessException exception) {
             throw new OpenAiEmbeddingException(Failure.TEMPORARY);
         } catch (RestClientException exception) {
@@ -102,9 +119,14 @@ public final class OpenAiHttpEmbeddingGateway implements OpenAiEmbeddingGateway 
         }
     }
 
-    private void validateRequest(String text, String model, int dimensions) {
-        if (text == null || text.isBlank()) {
-            throw new IllegalArgumentException("Embedding 입력 텍스트가 필요합니다.");
+    private void validateRequest(List<String> texts, String model, int dimensions) {
+        if (texts == null || texts.isEmpty() || texts.size() > MAX_INPUTS) {
+            throw new IllegalArgumentException("Embedding 입력은 1개 이상 2048개 이하여야 합니다.");
+        }
+        for (String text : texts) {
+            if (text == null || text.isBlank()) {
+                throw new IllegalArgumentException("Embedding 입력 텍스트가 필요합니다.");
+            }
         }
 
         if (model == null || model.isBlank()) {
@@ -116,10 +138,11 @@ public final class OpenAiHttpEmbeddingGateway implements OpenAiEmbeddingGateway 
         }
     }
 
-    private Embedding validateResponse(
+    private List<Embedding> validateResponse(
             JsonNode response,
             String requestedModel,
-            int requestedDimensions) {
+            int requestedDimensions,
+            int requestedCount) {
         if (response == null || !response.isObject()) {
             throw new OpenAiEmbeddingException(Failure.INVALID_RESPONSE);
         }
@@ -129,21 +152,38 @@ public final class OpenAiHttpEmbeddingGateway implements OpenAiEmbeddingGateway 
         if (!modelNode.isString()
                 || !requestedModel.equals(modelNode.asString())
                 || !dataNode.isArray()
-                || dataNode.size() != 1) {
+                || dataNode.size() != requestedCount) {
             throw new OpenAiEmbeddingException(Failure.INVALID_RESPONSE);
         }
 
-        JsonNode item = dataNode.get(0);
-        JsonNode indexNode = item.path("index");
-        if (!item.isObject()
-                || !indexNode.isIntegralNumber()
-                || !indexNode.canConvertToInt()
-                || indexNode.intValue() != 0) {
-            throw new OpenAiEmbeddingException(Failure.INVALID_RESPONSE);
+        List<Embedding> embeddings = new ArrayList<>(requestedCount);
+        for (int index = 0; index < requestedCount; index++) {
+            embeddings.add(null);
+        }
+        for (JsonNode item : dataNode) {
+            JsonNode indexNode = item.path("index");
+            if (!item.isObject()
+                    || !indexNode.isIntegralNumber()
+                    || !indexNode.canConvertToInt()) {
+                throw new OpenAiEmbeddingException(Failure.INVALID_RESPONSE);
+            }
+            int index = indexNode.intValue();
+            if (index < 0 || index >= requestedCount || embeddings.get(index) != null) {
+                throw new OpenAiEmbeddingException(Failure.INVALID_RESPONSE);
+            }
+            embeddings.set(
+                    index,
+                    validateEmbedding(
+                            item.path("embedding"),
+                            modelNode.asString(),
+                            requestedDimensions));
         }
 
-        JsonNode vectorNode = item.path("embedding");
+        return List.copyOf(embeddings);
+    }
 
+    private Embedding validateEmbedding(
+            JsonNode vectorNode, String model, int requestedDimensions) {
         if (!vectorNode.isArray()
                 || vectorNode.isEmpty()
                 || vectorNode.size() != requestedDimensions) {
@@ -165,7 +205,7 @@ public final class OpenAiHttpEmbeddingGateway implements OpenAiEmbeddingGateway 
             vector.add(value);
         }
 
-        return new Embedding(List.copyOf(vector), modelNode.asString(), requestedDimensions);
+        return new Embedding(List.copyOf(vector), model, requestedDimensions);
     }
 
     private String extractErrorCode(InputStream responseBody) {
