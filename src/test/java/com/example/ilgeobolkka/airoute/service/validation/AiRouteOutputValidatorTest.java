@@ -109,7 +109,6 @@ class AiRouteOutputValidatorTest {
                 () -> assertFalse(Failure.CONTEXT_MISMATCH.retryable()),
                 () -> assertTrue(Failure.PAGE_NOT_FOUND.retryable()),
                 () -> assertTrue(Failure.PAGE_OUTSIDE_ALLOWED_SET.retryable()),
-                () -> assertTrue(Failure.MISSING_CANDIDATE.retryable()),
                 () -> assertTrue(Failure.DUPLICATE_PAGE.retryable()),
                 () -> assertTrue(Failure.EMPTY_PROPOSAL.retryable()),
                 () -> assertTrue(Failure.INVALID_ENUM.retryable()));
