@@ -601,6 +601,11 @@ async function verifyViewerFlow() {
     assert(
         inkBalance.textContent === "남은 잉크 99",
         "페이지 열기 뒤 현재 잉크 잔액을 표시해야 합니다.");
+    assert(
+        root.querySelector("[data-viewer-progress]").max === 5
+            && root.querySelector("[data-viewer-progress]").value === 1
+            && root.querySelector("[data-viewer-progress-label]").textContent === "20%",
+        "첫 페이지를 연 뒤 독서 진행률을 표시해야 합니다.");
 
     const requestCountBeforeTextSize =
         metadataRequests.length + contentRequests.length;
@@ -933,6 +938,8 @@ function createViewerFixture(initialPage = 1) {
             <button type="submit" data-viewer-page-submit disabled>이동</button>
         </form>
         <span data-viewer-total-pages></span>
+        <progress max="1" value="0" data-viewer-progress>0%</progress>
+        <output data-viewer-progress-label>0%</output>
         <button type="button" data-viewer-next disabled>다음</button>
         <div data-viewer-text-controls hidden>
             <button type="button" data-viewer-text-smaller>작게</button>
