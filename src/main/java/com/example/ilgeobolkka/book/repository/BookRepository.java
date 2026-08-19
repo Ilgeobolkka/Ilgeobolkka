@@ -17,30 +17,41 @@ public interface BookRepository extends JpaRepository<Book, Long> {
                     """
                     SELECT *
                     FROM book b
-                    WHERE b.title LIKE CONCAT('%', :keyword, '%') ESCAPE '!'
-                       OR b.author LIKE CONCAT('%', :keyword, '%') ESCAPE '!'
+                    WHERE (:category IS NULL OR b.category = :category)
+                      AND (b.title LIKE CONCAT('%', :keyword, '%') ESCAPE '!'
+                       OR b.author LIKE CONCAT('%', :keyword, '%') ESCAPE '!')
                     ORDER BY b.category ASC, b.title ASC, b.id ASC
                     """,
             countQuery =
                     """
                     SELECT COUNT(*)
                     FROM book b
-                    WHERE b.title LIKE CONCAT('%', :keyword, '%') ESCAPE '!'
-                       OR b.author LIKE CONCAT('%', :keyword, '%') ESCAPE '!'
+                    WHERE (:category IS NULL OR b.category = :category)
+                      AND (b.title LIKE CONCAT('%', :keyword, '%') ESCAPE '!'
+                       OR b.author LIKE CONCAT('%', :keyword, '%') ESCAPE '!')
                     """,
             nativeQuery = true)
-    Page<Book> findByKeyword(@Param("keyword") String keyword, Pageable pageable);
+    Page<Book> findByKeywordAndCategory(
+            @Param("keyword") String keyword,
+            @Param("category") String category,
+            Pageable pageable);
 
     @Query(
             value =
                     """
                     SELECT COUNT(*)
                     FROM book b
-                    WHERE b.title LIKE CONCAT('%', :keyword, '%') ESCAPE '!'
-                       OR b.author LIKE CONCAT('%', :keyword, '%') ESCAPE '!'
+                    WHERE (:category IS NULL OR b.category = :category)
+                      AND (b.title LIKE CONCAT('%', :keyword, '%') ESCAPE '!'
+                       OR b.author LIKE CONCAT('%', :keyword, '%') ESCAPE '!')
                     """,
             nativeQuery = true)
-    long countByKeyword(@Param("keyword") String keyword);
+    long countByKeywordAndCategory(
+            @Param("keyword") String keyword,
+            @Param("category") String category);
+
+    @Query("SELECT DISTINCT book.category FROM Book book ORDER BY book.category ASC")
+    List<String> findAllCategories();
 
     /** 활성화 대상 전체를 PK 순서로 잠가 동시 실행의 부분 성공과 잠금 순서 역전을 막는다. */
     @Lock(LockModeType.PESSIMISTIC_WRITE)
