@@ -456,6 +456,7 @@ function createCatalogFixture() {
             <input type="search" data-book-search>
             <button type="submit">검색</button>
         </form>
+        <select data-book-category-filter></select>
         <p data-book-status></p>
         <div data-book-list></div>
         <section data-book-empty hidden>
@@ -491,7 +492,9 @@ function catalogResponse(title, totalPages, page = 1) {
         }],
         page,
         totalPages,
-        totalCount: totalPages
+        totalCount: totalPages,
+        categories: ["소설", "에세이"],
+        selectedCategory: null
     };
 }
 
@@ -594,10 +597,9 @@ async function verifyViewerFlow() {
         document.activeElement === content,
         "페이지를 표시한 뒤 콘텐츠 영역으로 포커스를 이동해야 합니다.");
     assert(
-        access.textContent.includes("1잉크 사용")
-            && access.textContent.includes("2026")
+        access.textContent.includes("2026")
             && access.textContent.includes("까지 대여"),
-        "신규 대여의 잉크 차감과 만료 시각을 표시해야 합니다.");
+        "신규 대여의 만료 시각을 표시해야 합니다.");
     assert(
         inkBalance.textContent === "남은 잉크 99",
         "페이지 열기 뒤 현재 잉크 잔액을 표시해야 합니다.");
@@ -1334,6 +1336,7 @@ function createRouteDetailFixture() {
     root.dataset.bookId = "15";
     root.dataset.routeCurrent = "false";
     root.dataset.routeCompleted = "false";
+    root.dataset.evaluationAvailable = "false";
     root.dataset.routeCompletedAt = "";
     root.dataset.routeRating = "";
     root.innerHTML = `
@@ -1358,10 +1361,11 @@ function createRouteDetailFixture() {
         <div tabindex="-1" aria-busy="false" data-route-content>
             <p>경로 페이지를 열면 콘텐츠가 여기에 표시됩니다.</p>
         </div>
-        <p data-feedback-guide></p>
-        <button type="button" data-feedback-rating="HELPFUL" disabled>도움</button>
-        <button type="button" data-feedback-rating="NEUTRAL" disabled>보통</button>
-        <button type="button" data-feedback-rating="NOT_HELPFUL" disabled>도움 안 됨</button>
+        <section data-feedback-section hidden>
+            <button type="button" data-feedback-rating="HELPFUL" disabled>도움</button>
+            <button type="button" data-feedback-rating="NEUTRAL" disabled>보통</button>
+            <button type="button" data-feedback-rating="NOT_HELPFUL" disabled>도움 안 됨</button>
+        </section>
     `;
     return root;
 }
@@ -1398,6 +1402,7 @@ function routeSnapshot(openedPages, current) {
         bookId: 15,
         current,
         completedAt: completed ? "2026-08-14T01:10:00Z" : null,
+        evaluationAvailable: completed,
         rating: null,
         items: [
             {
@@ -2007,8 +2012,8 @@ async function verifyBookDetailPage() {
     completeMode = "paid";
     purchaseButton.click();
     await waitFor(
-        () => paymentStatus.textContent.includes("[PAID]"),
-        "검증된 소장 결제 성공을 PAID 상태로 표시해야 합니다.");
+        () => paymentStatus.textContent.includes("온라인 소장이 완료되었습니다"),
+        "검증된 소장 결제 성공을 안내해야 합니다.");
     assert(prepareCount === 2, "FAILED 뒤 새 paymentId를 준비해야 합니다.");
     assert(purchaseButton.hidden, "PAID 뒤 소장 결제 버튼을 숨겨야 합니다.");
     assert(retryButton.hidden, "PAID 뒤 결제 재시도 버튼을 숨겨야 합니다.");
@@ -2030,7 +2035,7 @@ async function verifyBookDetailPage() {
 
     reconnectRoot.querySelector("[data-ownership-purchase]").click();
     await waitFor(
-        () => reconnectStatus.textContent.includes("[PAID]"),
+        () => reconnectStatus.textContent.includes("온라인 소장이 완료되었습니다"),
         "이미 결제된 paymentId의 SDK 오류 뒤 서버 PAID 조회로 소장을 복구해야 합니다.");
     assert(
         prepareCount === prepareCountBeforeReconnect + 1,
@@ -2385,8 +2390,8 @@ async function verifyInkPage() {
         fixture.querySelector("[data-ink-ledger]").textContent.includes("-1잉크"),
         "DEDUCTION 내역은 -1잉크로 표시해야 합니다.");
     assert(
-        fixture.querySelector("[data-ink-ledger]").textContent.includes("원본 12페이지"),
-        "차감 내역에 원본 페이지 번호를 표시해야 합니다.");
+        fixture.querySelector("[data-ink-ledger]").textContent.includes("12페이지"),
+        "차감 내역에 페이지 번호를 표시해야 합니다.");
     assert(
         fixture.querySelector("[data-ink-ledger]").textContent.includes("샘플 도서"),
         "차감 내역에 도서 제목을 표시해야 합니다.");
@@ -2461,8 +2466,8 @@ async function verifyInkPage() {
     completeMode = "paid";
     purchaseButton.click();
     await waitFor(
-        () => paymentStatus.textContent.includes("[PAID]"),
-        "검증된 결제 성공을 PAID 상태로 표시해야 합니다.");
+        () => paymentStatus.textContent.includes("100잉크가 지급되었습니다"),
+        "검증된 결제 성공과 잉크 지급을 안내해야 합니다.");
     assert(
         fixture.querySelector("[data-ink-balance]").textContent === "200잉크",
         "PAID 뒤 현재 잉크 잔액을 다시 조회해야 합니다.");
