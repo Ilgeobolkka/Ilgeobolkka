@@ -15,6 +15,15 @@
           method="get"
           role="search"
           data-book-search-form>
+        <div class="catalog-filter-field">
+            <label class="form-label" for="book-category">카테고리</label>
+            <select class="form-select form-select-lg"
+                    id="book-category"
+                    name="category"
+                    data-book-category-filter>
+                <option value="">전체</option>
+            </select>
+        </div>
         <div class="catalog-search-field">
             <label class="visually-hidden" for="book-search">제목 또는 저자 검색</label>
             <input class="form-control form-control-lg"
@@ -80,7 +89,6 @@
                         <a class="stretched-link" data-book-title></a>
                     </h2>
                     <p class="book-card-meta" data-book-author></p>
-                    <p class="book-card-price mt-auto" data-book-price></p>
                 </div>
             </div>
         </article>

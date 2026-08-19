@@ -9,12 +9,17 @@ if (root) {
     let currentPage = parsePage(initialQuery.get("page"));
     let totalPages = 0;
     let keyword = (initialQuery.get("keyword") || "").trim();
+    let category = (initialQuery.get("category") || "").trim();
     let requestSequence = 0;
 
     elements.search.value = keyword;
     elements.searchForm.addEventListener("submit", (event) => {
         event.preventDefault();
         keyword = elements.search.value.trim();
+        loadPage(1, "push");
+    });
+    elements.category.addEventListener("change", () => {
+        category = elements.category.value;
         loadPage(1, "push");
     });
     elements.previous.addEventListener("click", () => {
@@ -27,7 +32,9 @@ if (root) {
     window.addEventListener("popstate", () => {
         const query = new URLSearchParams(window.location.search);
         keyword = (query.get("keyword") || "").trim();
+        category = (query.get("category") || "").trim();
         elements.search.value = keyword;
+        elements.category.value = category;
         loadPage(parsePage(query.get("page")));
     });
 
@@ -46,6 +53,9 @@ if (root) {
         if (keyword) {
             query.set("keyword", keyword);
         }
+        if (category) {
+            query.set("category", category);
+        }
 
         try {
             const response = await requestJson(`/api/books?${query}`);
@@ -55,6 +65,8 @@ if (root) {
             validateResponse(response);
             currentPage = response.page;
             totalPages = response.totalPages;
+            category = response.selectedCategory || "";
+            renderCategories(elements.category, response.categories, category);
             renderBooks(response.books);
             renderPage(response);
             updateHistory(query, historyMode);
@@ -89,9 +101,19 @@ if (root) {
             elements.emptyDescription.textContent = "이전 버튼을 누르면 마지막 페이지로 이동합니다.";
             return;
         }
+        if (keyword && category) {
+            elements.emptyTitle.textContent = "선택한 카테고리에서 검색 결과가 없습니다.";
+            elements.emptyDescription.textContent = "다른 카테고리나 검색어로 다시 찾아보세요.";
+            return;
+        }
         if (keyword) {
             elements.emptyTitle.textContent = "검색 결과가 없습니다.";
             elements.emptyDescription.textContent = "다른 제목이나 저자로 다시 검색해 보세요.";
+            return;
+        }
+        if (category) {
+            elements.emptyTitle.textContent = "선택한 카테고리에 도서가 없습니다.";
+            elements.emptyDescription.textContent = "전체 또는 다른 카테고리를 선택해 보세요.";
             return;
         }
         elements.emptyTitle.textContent = "표시할 도서가 없습니다.";
@@ -122,6 +144,21 @@ if (root) {
     }
 }
 
+function renderCategories(select, categories, selectedCategory) {
+    const all = document.createElement("option");
+    all.value = "";
+    all.textContent = "전체";
+    select.replaceChildren(all);
+
+    categories.forEach(category => {
+        const option = document.createElement("option");
+        option.value = category;
+        option.textContent = category;
+        select.append(option);
+    });
+    select.value = selectedCategory || "";
+}
+
 function createBookCard(book, template) {
     const card = template.content.cloneNode(true);
     const cover = card.querySelector("[data-book-cover]");
@@ -139,7 +176,6 @@ function createBookCard(book, template) {
     title.textContent = book.title;
     title.href = `/books/${book.bookId}`;
     card.querySelector("[data-book-author]").textContent = book.author;
-    card.querySelector("[data-book-price]").textContent = `${formatNumber(book.bookPrice)}원`;
     return card;
 }
 
@@ -147,6 +183,7 @@ function findElements(root) {
     return {
         searchForm: requiredElement(root, "[data-book-search-form]"),
         search: requiredElement(root, "[data-book-search]"),
+        category: requiredElement(root, "[data-book-category-filter]"),
         status: requiredElement(root, "[data-book-status]"),
         list: requiredElement(root, "[data-book-list]"),
         empty: requiredElement(root, "[data-book-empty]"),
@@ -176,7 +213,12 @@ function validateResponse(response) {
     const hasPage = Number.isInteger(response?.page) && response.page > 0
         && Number.isInteger(response.totalPages) && response.totalPages >= 0
         && Number.isInteger(response.totalCount) && response.totalCount >= 0;
-    if (!hasPage || !Array.isArray(response.books)) {
+    const hasCategories = Array.isArray(response?.categories)
+        && response.categories.every(category => typeof category === "string")
+        && (response.selectedCategory === null
+            || (typeof response.selectedCategory === "string"
+                && response.categories.includes(response.selectedCategory)));
+    if (!hasPage || !Array.isArray(response.books) || !hasCategories) {
         throw new Error("도서 목록 API 응답 형식이 올바르지 않습니다.");
     }
     response.books.forEach(validateBook);

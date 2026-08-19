@@ -183,6 +183,10 @@ class CommonPageControllerTest {
         assertTrue(html.contains("data-book-list-root"));
         assertTrue(html.contains("data-book-search-form"));
         assertTrue(html.contains("data-book-search"));
+        assertTrue(html.contains("<label class=\"form-label\" for=\"book-category\">카테고리</label>"));
+        assertTrue(html.contains("name=\"category\""));
+        assertTrue(html.contains("data-book-category-filter"));
+        assertTrue(html.contains("<option value=\"\">전체</option>"));
         assertTrue(html.contains("data-book-list"));
         assertTrue(html.contains("data-book-empty"));
         assertTrue(html.contains("data-book-empty-title"));
@@ -194,6 +198,7 @@ class CommonPageControllerTest {
         assertEquals(1, html.split("aria-live=\"polite\"", -1).length - 1);
         assertTrue(html.contains("<span data-book-page>"));
         assertTrue(html.contains("/js/book/catalog.js"));
+        assertFalse(html.contains("data-book-price"));
         assertFalse(html.contains("도서 목록 화면을 준비하고 있습니다."));
     }
 
@@ -481,7 +486,13 @@ class CommonPageControllerTest {
                 .andExpect(status().isOk());
 
         mockMvc.perform(get("/js/book/catalog.js"))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(content().string(org.hamcrest.Matchers.containsString(
+                        "query.set(\"category\", category)")))
+                .andExpect(content().string(org.hamcrest.Matchers.containsString(
+                        "response.selectedCategory")))
+                .andExpect(content().string(org.hamcrest.Matchers.not(
+                        org.hamcrest.Matchers.containsString("data-book-price"))));
 
         mockMvc.perform(get("/js/ink/ink.js"))
                 .andExpect(status().isOk())
