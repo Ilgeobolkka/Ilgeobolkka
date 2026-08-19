@@ -74,7 +74,7 @@
 | `POST /api/auth/login` | `email`, `password` | 200 | `readerId`, `email` | 아니오 |
 | `POST /api/auth/logout` | 없음 | 200 | `readerId` | 예 |
 | `GET /api/smoke` | 없음 | 204 | 없음 | 아니오 |
-| `GET /api/books?page={page}&keyword={keyword?}` | 쿼리 파라미터 | 200 | `books[]`, `page`, `totalPages`, `totalCount` | 아니오 |
+| `GET /api/books?page={page}&keyword={keyword?}&category={category?}` | 쿼리 파라미터 | 200 | `books[]`, `page`, `totalPages`, `totalCount`, `categories`, `selectedCategory` | 아니오 |
 | `GET /api/books/{bookId}` | 경로 파라미터 | 200 | 도서 기본 정보, `owned` | 선택 |
 | `POST /api/books/{bookId}/reading-sessions` | `pageNumber` | 201 | 세션과 페이지 열기 결과 | 예 |
 | `PATCH /api/reading-sessions/current/page` | 헤더 `X-Viewer-Session-Id`, 바디 `pageNumber` | 200 | 페이지 열기 결과 | 예 |
@@ -183,8 +183,10 @@
 ### 저장 경로 결과와 상태 변경
 
 저장 경로 상세는 생성 결과의 도서·목적·항목에 `routeId`, `current`, `createdAt`, `completedAt`,
-`rating`을 더합니다. 각 항목은 현재 권한으로 다시 계산한 `additionalCostStatus`와 콘텐츠 제공 성공 시각인
-`openedAt`을 포함합니다. 저장 뒤 페이지와 순서는 바꾸지 않습니다.
+`evaluationAvailable`, `rating`을 더합니다. `evaluationAvailable`은 `completedAt`이 있고 비어 있지 않은
+모든 경로 항목에 `openedAt`이 있을 때만 `true`입니다. 각 항목은 현재 권한으로 다시 계산한
+`additionalCostStatus`와 콘텐츠 제공 성공 시각인 `openedAt`을 포함합니다. 저장 뒤 페이지와 순서는
+바꾸지 않습니다.
 
 저장 성공은 새 경로를 만들면 `201`, 이미 소비한 `generationId`의 재시도면 기존 경로와 `200`입니다.
 현재 경로 지정·삭제는 같은 독자·도서 단위로 직렬화하며 삭제 뒤 현재 경로 재지정은
@@ -288,7 +290,9 @@ HTML·JSON 경로를 등록하지 않으며 기존 도서·뷰어·결제 기능
   ],
   "page": 1,
   "totalPages": 10,
-  "totalCount": 100
+  "totalCount": 100,
+  "categories": ["경제", "소설", "에세이"],
+  "selectedCategory": null
 }
 ```
 
@@ -528,10 +532,15 @@ HTML·JSON 경로를 등록하지 않으며 기존 도서·뷰어·결제 기능
 same-origin 경로이며 원본 PDF 경로나 비공개 페이지 이미지 저장소 주소가 아닙니다. 상세 조회 시 인증된
 세션이 있으면 `owned`를 계산하고, 없으면 `null`로 응답합니다.
 
-목록과 검색은 한 페이지에 10권을 제공합니다. `page`는 1부터 시작하며 0 이하는
-`400 INVALID_INPUT`, 전체 범위를 초과한 양수는 `200 OK`와 빈 `books`를 반환합니다. 검색어는 앞뒤
-공백만 제거하고 내부 공백은 보존하며, 빈 값은 전체 목록으로 처리합니다. 제목·저자 부분 일치 검색은
-영문 대소문자를 구분하지 않고 `%`, `_`는 SQL 와일드카드가 아닌 일반 문자로 처리합니다.
+목록과 검색은 한 페이지에 10권을 제공합니다. 응답의 `categories`는 현재 존재하는 전체 카테고리의
+오름차순 목록이며, `selectedCategory`는 선택한 카테고리 또는 전체 조회를 뜻하는 `null`입니다.
+`category`가 없거나 공백이면 전체 카테고리를 조회하고, 현재 존재하는 카테고리이면 검색 결과를 해당
+카테고리로 좁힙니다. 존재하지 않는 카테고리는 `400 INVALID_INPUT`입니다.
+
+`page`는 1부터 시작하며 0 이하는 `400 INVALID_INPUT`, 전체 범위를 초과한 양수는 `200 OK`와 빈
+`books`를 반환합니다. 검색어는 앞뒤 공백만 제거하고 내부 공백은 보존하며, 빈 값은 전체 목록으로
+처리합니다. 제목·저자 부분 일치 검색은 영문 대소문자를 구분하지 않고 `%`, `_`는 SQL 와일드카드가
+아닌 일반 문자로 처리합니다.
 
 정렬은 `category ASC, title ASC, id ASC`로 고정합니다.
 
