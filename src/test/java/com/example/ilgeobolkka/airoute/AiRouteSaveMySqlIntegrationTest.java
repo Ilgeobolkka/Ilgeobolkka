@@ -190,6 +190,7 @@ class AiRouteSaveMySqlIntegrationTest {
                         .andExpect(jsonPath("$.purpose").value(PURPOSE))
                         .andExpect(jsonPath("$.current").value(true))
                         .andExpect(jsonPath("$.completedAt").value(nullValue()))
+                        .andExpect(jsonPath("$.evaluationAvailable").value(false))
                         .andExpect(jsonPath("$.rating").value(nullValue()))
                         .andExpect(jsonPath("$.items.length()").value(2))
                         .andExpect(jsonPath("$.items[0].position").value(1))
@@ -229,6 +230,7 @@ class AiRouteSaveMySqlIntegrationTest {
                                 "current",
                                 "createdAt",
                                 "completedAt",
+                                "evaluationAvailable",
                                 "rating",
                                 "items"),
                         응답_키_집합(result)),

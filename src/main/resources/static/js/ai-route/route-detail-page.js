@@ -31,6 +31,7 @@ export function createRouteDetailPage(root, dependencies = {}) {
         replaced: false,
         current: root.dataset.routeCurrent === "true",
         completed: root.dataset.routeCompleted === "true",
+        evaluationAvailable: root.dataset.evaluationAvailable === "true",
         rating: root.dataset.routeRating || null,
         objectUrl: null
     };
@@ -133,7 +134,9 @@ export function createRouteDetailPage(root, dependencies = {}) {
 
         if (items.every(routeItem => routeItem.dataset.opened === "true")) {
             state.completed = true;
+            state.evaluationAvailable = true;
             root.dataset.routeCompleted = "true";
+            root.dataset.evaluationAvailable = "true";
             updateRouteState();
         }
         updateOriginalViewerLink();
@@ -274,9 +277,11 @@ export function createRouteDetailPage(root, dependencies = {}) {
 
         state.current = route.current;
         state.completed = route.completedAt !== null;
+        state.evaluationAvailable = route.evaluationAvailable;
         state.rating = route.rating;
         root.dataset.routeCurrent = String(state.current);
         root.dataset.routeCompleted = String(state.completed);
+        root.dataset.evaluationAvailable = String(state.evaluationAvailable);
         root.dataset.routeCompletedAt = route.completedAt || "";
         root.dataset.routeRating = state.rating || "";
         updateCompletedTime(route.completedAt);
@@ -353,7 +358,7 @@ export function createRouteDetailPage(root, dependencies = {}) {
         elements.currentBadge.hidden = !state.current;
         elements.completedBadge.hidden = !state.completed;
         elements.makeCurrent.disabled = state.busy || state.current;
-        elements.feedbackGuide.textContent = state.completed
+        elements.feedbackGuide.textContent = state.evaluationAvailable
             ? "평가는 선택 사항이며 잉크나 열람 권한을 바꾸지 않습니다."
             : "모든 경로 페이지를 연 뒤 선택적으로 평가할 수 있습니다.";
         updateFeedback();
@@ -361,7 +366,7 @@ export function createRouteDetailPage(root, dependencies = {}) {
 
     function updateFeedback() {
         elements.feedbackButtons.forEach(button => {
-            button.disabled = state.busy || !state.completed;
+            button.disabled = state.busy || !state.evaluationAvailable;
             button.setAttribute(
                 "aria-pressed",
                 String(button.dataset.feedbackRating === state.rating)
@@ -474,6 +479,7 @@ function validateRouteSnapshot(route, routeId, bookId) {
             || route.bookId !== bookId
             || typeof route.current !== "boolean"
             || !(route.completedAt === null || typeof route.completedAt === "string")
+            || typeof route.evaluationAvailable !== "boolean"
             || !(route.rating === null || typeof route.rating === "string")
             || !Array.isArray(route.items)) {
         throw invalidResponseError();

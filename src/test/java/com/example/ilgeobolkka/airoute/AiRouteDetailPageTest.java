@@ -143,6 +143,7 @@ class AiRouteDetailPageTest {
                 .getContentAsString();
 
         assertTrue(html.contains("data-route-completed=\"true\""));
+        assertTrue(html.contains("data-evaluation-available=\"true\""));
         assertTrue(html.contains("data-route-rating=\"NEUTRAL\""));
         assertTrue(html.contains("data-completed-time"));
         assertTrue(html.contains("완료 2026. 8. 14. 10:10"));
@@ -193,6 +194,7 @@ class AiRouteDetailPageTest {
                 false,
                 Instant.parse("2026-08-14T01:00:00Z"),
                 null,
+                false,
                 null,
                 List.of(
                         new AiRouteItemResponse(
@@ -239,6 +241,7 @@ class AiRouteDetailPageTest {
                 true,
                 route.createdAt(),
                 Instant.parse("2026-08-14T01:10:00Z"),
+                true,
                 AiReadingRouteFeedback.NEUTRAL,
                 openedItems);
     }

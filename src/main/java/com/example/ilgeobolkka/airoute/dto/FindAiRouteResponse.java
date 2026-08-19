@@ -22,6 +22,7 @@ public record FindAiRouteResponse(
         boolean current,
         Instant createdAt,
         Instant completedAt,
+        boolean evaluationAvailable,
         AiReadingRouteFeedback rating,
         List<AiRouteItemResponse> items) {
 
@@ -36,6 +37,9 @@ public record FindAiRouteResponse(
                 route.getCurrentRouteId() != null,
                 route.getCreatedAt(),
                 route.getCompletedAt(),
+                route.getCompletedAt() != null
+                        && !items.isEmpty()
+                        && items.stream().allMatch(item -> item.openedAt() != null),
                 route.getRating(),
                 items);
     }

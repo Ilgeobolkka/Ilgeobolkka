@@ -6,6 +6,7 @@ import com.example.ilgeobolkka.airoute.entity.AiReadingRoute;
 import com.example.ilgeobolkka.airoute.exception.AiRouteNotCompletedException;
 import com.example.ilgeobolkka.airoute.exception.AiRouteNotFoundException;
 import com.example.ilgeobolkka.airoute.repository.AiReadingRouteRepository;
+import com.example.ilgeobolkka.airoute.repository.AiReadingRouteItemRepository;
 import java.time.Clock;
 import java.time.Instant;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class AiRouteFeedbackFacade {
 
     private final AiReadingRouteRepository aiReadingRouteRepository;
+    private final AiReadingRouteItemRepository aiReadingRouteItemRepository;
     private final Clock clock;
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
@@ -27,7 +29,8 @@ public class AiRouteFeedbackFacade {
         AiReadingRoute route = aiReadingRouteRepository.findOwnedByIdForUpdate(readerId, routeId)
                 .orElseThrow(() -> new AiRouteNotFoundException(routeId));
 
-        if (route.getCompletedAt() == null) {
+        if (route.getCompletedAt() == null
+                || aiReadingRouteItemRepository.countByRouteIdAndOpenedAtIsNull(routeId) > 0) {
             throw new AiRouteNotCompletedException();
         }
 

@@ -8,6 +8,7 @@
                   data-book-id=${route.bookId},
                   data-route-current=${route.current},
                   data-route-completed=${route.completedAt != null},
+                  data-evaluation-available=${route.evaluationAvailable},
                   data-route-completed-at=${route.completedAt},
                   data-route-rating=${route.rating != null ? route.rating.name() : ''}"
          data-ai-route-detail-root
@@ -189,21 +190,21 @@
                     <button class="btn btn-outline-success"
                             type="button"
                             data-feedback-rating="HELPFUL"
-                            th:disabled="${route.completedAt == null}"
+                            th:disabled="${!route.evaluationAvailable}"
                             th:attr="aria-pressed=${route.rating != null && route.rating.name() == 'HELPFUL'}">
                         도움이 됐어요
                     </button>
                     <button class="btn btn-outline-secondary"
                             type="button"
                             data-feedback-rating="NEUTRAL"
-                            th:disabled="${route.completedAt == null}"
+                            th:disabled="${!route.evaluationAvailable}"
                             th:attr="aria-pressed=${route.rating != null && route.rating.name() == 'NEUTRAL'}">
                         보통이에요
                     </button>
                     <button class="btn btn-outline-danger"
                             type="button"
                             data-feedback-rating="NOT_HELPFUL"
-                            th:disabled="${route.completedAt == null}"
+                            th:disabled="${!route.evaluationAvailable}"
                             th:attr="aria-pressed=${route.rating != null && route.rating.name() == 'NOT_HELPFUL'}">
                         도움이 안 됐어요
                     </button>
