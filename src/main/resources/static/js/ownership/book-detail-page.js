@@ -175,7 +175,7 @@ export function initializeBookDetailPage(root, dependencies = {}) {
                 renderOwnershipState();
                 showPaymentStatus(
                     "success",
-                    "[PAID] 이미 온라인 소장 중입니다. 모든 페이지를 읽을 수 있습니다.");
+                    "이미 온라인 소장 중입니다. 모든 페이지를 읽을 수 있습니다.");
                 return;
             }
             showPaymentStatus(
@@ -229,7 +229,7 @@ export function initializeBookDetailPage(root, dependencies = {}) {
                 renderOwnershipState();
                 showPaymentStatus(
                     "success",
-                    "[PAID] 온라인 소장이 완료되었습니다. 이제 모든 페이지를 잉크 차감 없이 읽을 수 있습니다.");
+                    "온라인 소장이 완료되었습니다. 이제 모든 페이지를 잉크 차감 없이 읽을 수 있습니다.");
                 return;
             }
 

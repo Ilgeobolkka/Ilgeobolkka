@@ -262,7 +262,7 @@ export function initializeInkPage(
                 preparedPayment = null;
                 showPaymentStatus(
                     "success",
-                    `[PAID] ${response.grantedInk}잉크가 지급되었습니다. 현재 잔액은 ${response.inkBalance}잉크입니다.`);
+                    `${response.grantedInk}잉크가 지급되었습니다. 현재 잔액은 ${response.inkBalance}잉크입니다.`);
                 await Promise.all([loadBalance(), loadLedger(1)]);
                 return;
             }

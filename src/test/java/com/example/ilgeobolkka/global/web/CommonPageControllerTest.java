@@ -492,6 +492,10 @@ class CommonPageControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(org.hamcrest.Matchers.containsString(
                         "https://cdn.portone.io/v2/browser-sdk.esm.js")))
+                .andExpect(content().string(org.hamcrest.Matchers.containsString(
+                        "response.status === \"PAID\"")))
+                .andExpect(content().string(org.hamcrest.Matchers.not(
+                        org.hamcrest.Matchers.containsString("[PAID]"))))
                 .andExpect(content().string(org.hamcrest.Matchers.not(
                         org.hamcrest.Matchers.containsString("/cancel"))))
                 .andExpect(content().string(org.hamcrest.Matchers.not(
@@ -531,7 +535,9 @@ class CommonPageControllerTest {
                 .andExpect(content().string(org.hamcrest.Matchers.containsString(
                         "/ownership-payments")))
                 .andExpect(content().string(org.hamcrest.Matchers.containsString(
-                        "[PAID]")))
+                        "response.status === \"PAID\"")))
+                .andExpect(content().string(org.hamcrest.Matchers.not(
+                        org.hamcrest.Matchers.containsString("[PAID]"))))
                 .andExpect(content().string(org.hamcrest.Matchers.containsString(
                         "[PENDING]")))
                 .andExpect(content().string(org.hamcrest.Matchers.containsString(
