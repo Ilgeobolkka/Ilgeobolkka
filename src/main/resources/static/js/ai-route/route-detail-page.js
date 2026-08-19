@@ -131,14 +131,6 @@ export function createRouteDetailPage(root, dependencies = {}) {
         item.dataset.opened = "true";
         item.querySelector("[data-item-opened-badge]").hidden = false;
         updateProgress();
-
-        if (items.every(routeItem => routeItem.dataset.opened === "true")) {
-            state.completed = true;
-            state.evaluationAvailable = true;
-            root.dataset.routeCompleted = "true";
-            root.dataset.evaluationAvailable = "true";
-            updateRouteState();
-        }
         updateOriginalViewerLink();
     }
 
@@ -215,7 +207,7 @@ export function createRouteDetailPage(root, dependencies = {}) {
     }
 
     async function changeFeedback(rating) {
-        if (state.busy || !state.completed) {
+        if (state.busy || !state.evaluationAvailable) {
             return;
         }
         setBusy(true);
@@ -230,7 +222,6 @@ export function createRouteDetailPage(root, dependencies = {}) {
             }
             state.rating = response.rating;
             updateFeedback();
-            elements.feedbackGuide.textContent = "평가를 저장했습니다. 언제든 다른 평가로 바꿀 수 있습니다.";
         } catch (error) {
             showCommonError(error);
         } finally {
@@ -358,9 +349,7 @@ export function createRouteDetailPage(root, dependencies = {}) {
         elements.currentBadge.hidden = !state.current;
         elements.completedBadge.hidden = !state.completed;
         elements.makeCurrent.disabled = state.busy || state.current;
-        elements.feedbackGuide.textContent = state.evaluationAvailable
-            ? "평가는 선택 사항이며 잉크나 열람 권한을 바꾸지 않습니다."
-            : "모든 경로 페이지를 연 뒤 선택적으로 평가할 수 있습니다.";
+        elements.feedbackSection.hidden = !state.evaluationAvailable;
         updateFeedback();
     }
 
@@ -454,7 +443,7 @@ function findElements(root) {
         currentBadge: root.querySelector("[data-current-badge]"),
         completedBadge: root.querySelector("[data-completed-badge]"),
         completedTime: root.querySelector("[data-completed-time]"),
-        feedbackGuide: root.querySelector("[data-feedback-guide]"),
+        feedbackSection: root.querySelector("[data-feedback-section]"),
         feedbackButtons: root.querySelectorAll("[data-feedback-rating]")
     };
 }

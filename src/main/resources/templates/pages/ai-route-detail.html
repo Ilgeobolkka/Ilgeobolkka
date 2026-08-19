@@ -181,7 +181,10 @@
                 </p>
             </div>
 
-            <section class="bg-white border rounded-3 p-4" aria-labelledby="route-feedback-title">
+            <section class="bg-white border rounded-3 p-4"
+                     aria-labelledby="route-feedback-title"
+                     th:hidden="${!route.evaluationAvailable}"
+                     data-feedback-section>
                 <h2 class="h5" id="route-feedback-title">이 경로가 도움이 되었나요?</h2>
                 <p class="small text-secondary" data-feedback-guide>
                     모든 경로 페이지를 연 뒤 선택적으로 평가할 수 있습니다.
