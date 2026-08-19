@@ -17,6 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.example.ilgeobolkka.global.config.SecurityConfig;
 import com.example.ilgeobolkka.global.security.ApiSecurityErrorHandler;
 import com.example.ilgeobolkka.global.security.AuthenticatedReader;
+import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
@@ -112,7 +113,9 @@ class CommonPageControllerTest {
         assertTrue(signupHtml.contains("autocomplete=\"new-password\""));
         assertTrue(signupHtml.contains("maxlength=\"255\""));
         assertTrue(signupHtml.contains("minlength=\"8\""));
-        assertTrue(signupHtml.contains("영문, 숫자, 공백이 아닌 ASCII 특수문자"));
+        assertTrue(signupHtml.contains(
+                "8자 이상이며 영문, 숫자, 공백을 제외한 특수문자를 각각 포함해야 합니다."));
+        assertFalse(signupHtml.contains("공백이 아닌 ASCII 특수문자"));
         assertTrue(signupHtml.contains("data-success-path=\"/login\""));
         assertTrue(signupHtml.contains("/js/auth/auth.js"));
         assertTrue(signupHtml.contains("JavaScript를 활성화해 주세요."));
@@ -260,6 +263,7 @@ class CommonPageControllerTest {
         assertTrue(html.contains("data-ink-page"));
         assertTrue(html.contains("data-ink-balance"));
         assertTrue(html.contains("data-ink-purchase"));
+        assertTrue(html.contains("100잉크 구매"));
         assertTrue(html.matches(
                 "(?s).*data-ink-purchase[^>]*disabled=\"disabled\">구매 비활성화</button>.*"));
         assertTrue(html.contains("현재 환경에서는 잉크 구매를 사용할 수 없습니다."));
@@ -360,6 +364,7 @@ class CommonPageControllerTest {
         assertTrue(html.matches(
                 "(?s).*href=\"/ink\"\\s+data-viewer-ink-link.*"));
         assertTrue(html.contains("열람 권한을 확인하고 있습니다."));
+        assertFalse(html.contains("현재 권한"));
         assertTrue(html.contains("/js/viewer/viewer.js"));
         assertFalse(html.contains("도서 뷰어 화면을 준비하고 있습니다."));
     }
@@ -572,6 +577,37 @@ class CommonPageControllerTest {
 
         mockMvc.perform(get("/css/common.css"))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    void 클라이언트_렌더링_문구는_원본_권한_잉크와_PAID_접두어를_제거한다()
+            throws Exception {
+        String inkJavascript = utf8Asset("/js/ink/ink-page.js");
+        assertTrue(inkJavascript.contains("`${entry.pageNumber}페이지`"));
+        assertFalse(inkJavascript.contains("`원본 ${entry.pageNumber}페이지`"));
+        assertFalse(inkJavascript.contains("[PAID]"));
+
+        String viewerJavascript = utf8Asset("/js/viewer/viewer-page.js");
+        assertTrue(viewerJavascript.contains("`${expiresAt}까지 대여`"));
+        assertTrue(viewerJavascript.contains("`대여 중 · ${expiresAt}까지`"));
+        assertFalse(viewerJavascript.contains("1잉크 사용"));
+
+        String ownershipJavascript = utf8Asset("/js/ownership/book-detail-page.js");
+        assertTrue(ownershipJavascript.contains("온라인 소장이 완료되었습니다."));
+        assertTrue(ownershipJavascript.contains("`${formatWon(book.bookPrice)} 소장 결제`"));
+        assertFalse(ownershipJavascript.contains("[PAID]"));
+        assertFalse(ownershipJavascript.contains(
+                "전액을 PortOne V2 테스트 채널에서 결제합니다."));
+    }
+
+    private String utf8Asset(String path) throws Exception {
+        return new String(
+                mockMvc.perform(get(path))
+                        .andExpect(status().isOk())
+                        .andReturn()
+                        .getResponse()
+                        .getContentAsByteArray(),
+                StandardCharsets.UTF_8);
     }
 
     private void assertDisabledAuthFields(String html) {
