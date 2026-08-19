@@ -243,6 +243,7 @@ class AiRouteQueryApiMySqlIntegrationTest {
                 .andExpect(jsonPath("$.current").value(true))
                 .andExpect(jsonPath("$.createdAt").value("2026-08-01T09:00:00.123456Z"))
                 .andExpect(jsonPath("$.completedAt").value("2026-08-03T11:00:00.123456Z"))
+                .andExpect(jsonPath("$.evaluationAvailable").value(false))
                 .andExpect(jsonPath("$.rating").value("HELPFUL"))
                 .andExpect(jsonPath("$.items.length()").value(3))
                 .andExpect(jsonPath("$.items[*].position").value(contains(1, 2, 3)))
@@ -265,6 +266,15 @@ class AiRouteQueryApiMySqlIntegrationTest {
                 .andExpect(jsonPath("$.items[1].openedAt").value(nullValue()))
                 .andExpect(jsonPath("$.items[2].estimatedMinutes").value(1))
                 .andExpect(jsonPath("$.items[2].guide").value("결론을 다루는 페이지입니다."));
+
+        jdbcTemplate.update(
+                "UPDATE ai_reading_route_item SET opened_at = '2026-08-03 10:05:00.123456' WHERE route_id = ?",
+                routeId);
+
+        mockMvc.perform(get("/api/ai-routes/" + routeId)
+                        .with(authentication(인증된_독자(READER_ID))))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.evaluationAvailable").value(true));
     }
 
     /**

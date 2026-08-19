@@ -75,6 +75,15 @@ class AiRouteGenerationPageTest {
         assertTrue(html.contains("data-ai-route-purpose"));
         assertTrue(html.contains("data-ai-route-budget-fields"));
         assertTrue(html.contains("data-ai-route-depth-fields"));
+        assertTrue(html.contains("value=\"QUICK\""));
+        assertTrue(html.contains("최소 경로 · 최대 5페이지"));
+        assertTrue(html.contains("value=\"BALANCED\""));
+        assertTrue(html.contains("적정 경로 · 최대 10페이지"));
+        assertTrue(html.contains("value=\"DEEP\""));
+        assertTrue(html.contains("자세한 경로 · 최대 15페이지"));
+        assertFalse(html.contains("빠른 · 최대 5페이지"));
+        assertFalse(html.contains("균형 · 최대 10페이지"));
+        assertFalse(html.contains("깊이 · 최대 15페이지"));
         assertTrue(html.contains("data-ai-route-preview"));
         assertTrue(html.contains("data-ai-route-item-template"));
         assertTrue(html.contains("data-ai-route-save"));

@@ -426,10 +426,9 @@ function accessMessage(metadata) {
         timeStyle: "short"
     }).format(new Date(metadata.expiresAt));
 
-    if (metadata.deductedInk === 1) {
-        return `1잉크 사용 · ${expiresAt}까지 대여`;
-    }
-    return `대여 중 · ${expiresAt}까지`;
+    return metadata.deductedInk === 1
+        ? `${expiresAt}까지 대여`
+        : `대여 중 · ${expiresAt}까지`;
 }
 
 function findElements(root) {

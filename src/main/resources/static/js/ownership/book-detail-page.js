@@ -101,6 +101,7 @@ export function initializeBookDetailPage(root, dependencies = {}) {
 
     function renderOwnershipState() {
         if (!authenticated || book.owned === null) {
+            elements.summary.hidden = false;
             elements.summary.textContent =
                 `도서 원가 ${formatWon(book.bookPrice)}을 원화로 직접 결제해 온라인 소장할 수 있습니다.`;
             elements.purchase.hidden = true;
@@ -110,6 +111,7 @@ export function initializeBookDetailPage(root, dependencies = {}) {
 
         elements.login.hidden = true;
         if (book.owned) {
+            elements.summary.hidden = false;
             elements.summary.textContent =
                 "온라인 소장 중입니다. 잉크 차감과 대여 기간 없이 모든 페이지를 읽을 수 있습니다.";
             elements.purchase.hidden = true;
@@ -118,8 +120,9 @@ export function initializeBookDetailPage(root, dependencies = {}) {
             return;
         }
 
+        elements.summary.hidden = paymentEnabled;
         elements.summary.textContent = paymentEnabled
-            ? `도서 원가 ${formatWon(book.bookPrice)} 전액을 PortOne V2 테스트 채널에서 결제합니다.`
+            ? ""
             : "현재 환경에서는 온라인 소장 결제를 사용할 수 없습니다.";
         elements.purchase.textContent = paymentEnabled
             ? `${formatWon(book.bookPrice)} 소장 결제`
@@ -175,7 +178,7 @@ export function initializeBookDetailPage(root, dependencies = {}) {
                 renderOwnershipState();
                 showPaymentStatus(
                     "success",
-                    "[PAID] 이미 온라인 소장 중입니다. 모든 페이지를 읽을 수 있습니다.");
+                    "이미 온라인 소장 중입니다. 모든 페이지를 읽을 수 있습니다.");
                 return;
             }
             showPaymentStatus(
@@ -229,7 +232,7 @@ export function initializeBookDetailPage(root, dependencies = {}) {
                 renderOwnershipState();
                 showPaymentStatus(
                     "success",
-                    "[PAID] 온라인 소장이 완료되었습니다. 이제 모든 페이지를 잉크 차감 없이 읽을 수 있습니다.");
+                    "온라인 소장이 완료되었습니다. 이제 모든 페이지를 잉크 차감 없이 읽을 수 있습니다.");
                 return;
             }
 

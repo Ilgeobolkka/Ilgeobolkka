@@ -31,6 +31,7 @@ export function createRouteDetailPage(root, dependencies = {}) {
         replaced: false,
         current: root.dataset.routeCurrent === "true",
         completed: root.dataset.routeCompleted === "true",
+        evaluationAvailable: root.dataset.evaluationAvailable === "true",
         rating: root.dataset.routeRating || null,
         objectUrl: null
     };
@@ -130,12 +131,6 @@ export function createRouteDetailPage(root, dependencies = {}) {
         item.dataset.opened = "true";
         item.querySelector("[data-item-opened-badge]").hidden = false;
         updateProgress();
-
-        if (items.every(routeItem => routeItem.dataset.opened === "true")) {
-            state.completed = true;
-            root.dataset.routeCompleted = "true";
-            updateRouteState();
-        }
         updateOriginalViewerLink();
     }
 
@@ -212,7 +207,7 @@ export function createRouteDetailPage(root, dependencies = {}) {
     }
 
     async function changeFeedback(rating) {
-        if (state.busy || !state.completed) {
+        if (state.busy || !state.evaluationAvailable) {
             return;
         }
         setBusy(true);
@@ -227,7 +222,6 @@ export function createRouteDetailPage(root, dependencies = {}) {
             }
             state.rating = response.rating;
             updateFeedback();
-            elements.feedbackGuide.textContent = "평가를 저장했습니다. 언제든 다른 평가로 바꿀 수 있습니다.";
         } catch (error) {
             showCommonError(error);
         } finally {
@@ -274,9 +268,11 @@ export function createRouteDetailPage(root, dependencies = {}) {
 
         state.current = route.current;
         state.completed = route.completedAt !== null;
+        state.evaluationAvailable = route.evaluationAvailable;
         state.rating = route.rating;
         root.dataset.routeCurrent = String(state.current);
         root.dataset.routeCompleted = String(state.completed);
+        root.dataset.evaluationAvailable = String(state.evaluationAvailable);
         root.dataset.routeCompletedAt = route.completedAt || "";
         root.dataset.routeRating = state.rating || "";
         updateCompletedTime(route.completedAt);
@@ -353,15 +349,13 @@ export function createRouteDetailPage(root, dependencies = {}) {
         elements.currentBadge.hidden = !state.current;
         elements.completedBadge.hidden = !state.completed;
         elements.makeCurrent.disabled = state.busy || state.current;
-        elements.feedbackGuide.textContent = state.completed
-            ? "평가는 선택 사항이며 잉크나 열람 권한을 바꾸지 않습니다."
-            : "모든 경로 페이지를 연 뒤 선택적으로 평가할 수 있습니다.";
+        elements.feedbackSection.hidden = !state.evaluationAvailable;
         updateFeedback();
     }
 
     function updateFeedback() {
         elements.feedbackButtons.forEach(button => {
-            button.disabled = state.busy || !state.completed;
+            button.disabled = state.busy || !state.evaluationAvailable;
             button.setAttribute(
                 "aria-pressed",
                 String(button.dataset.feedbackRating === state.rating)
@@ -449,7 +443,7 @@ function findElements(root) {
         currentBadge: root.querySelector("[data-current-badge]"),
         completedBadge: root.querySelector("[data-completed-badge]"),
         completedTime: root.querySelector("[data-completed-time]"),
-        feedbackGuide: root.querySelector("[data-feedback-guide]"),
+        feedbackSection: root.querySelector("[data-feedback-section]"),
         feedbackButtons: root.querySelectorAll("[data-feedback-rating]")
     };
 }
@@ -474,6 +468,7 @@ function validateRouteSnapshot(route, routeId, bookId) {
             || route.bookId !== bookId
             || typeof route.current !== "boolean"
             || !(route.completedAt === null || typeof route.completedAt === "string")
+            || typeof route.evaluationAvailable !== "boolean"
             || !(route.rating === null || typeof route.rating === "string")
             || !Array.isArray(route.items)) {
         throw invalidResponseError();

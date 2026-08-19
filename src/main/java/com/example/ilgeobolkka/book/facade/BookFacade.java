@@ -7,7 +7,6 @@ import com.example.ilgeobolkka.book.service.BookService;
 import com.example.ilgeobolkka.infra.openai.AiRouteFeatureProperties;
 import com.example.ilgeobolkka.ownership.service.OwnershipService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,9 +20,15 @@ public class BookFacade {
 
     @Transactional(readOnly = true)
     public FindBooksResponse findBooks(int page, String keyword) {
-        Page<Book> books = bookService.findBooks(page, keyword);
+        return findBooks(page, keyword, null);
+    }
 
-        return FindBooksResponse.from(books, page);
+    @Transactional(readOnly = true)
+    public FindBooksResponse findBooks(int page, String keyword, String category) {
+        BookService.BookCatalog catalog = bookService.findBooks(page, keyword, category);
+
+        return FindBooksResponse.from(
+                catalog.books(), page, catalog.categories(), catalog.selectedCategory());
     }
 
     @Transactional(readOnly = true)

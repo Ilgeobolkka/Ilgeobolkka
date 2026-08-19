@@ -13,6 +13,7 @@ import com.example.ilgeobolkka.airoute.exception.AiRouteNotFoundException;
 import com.example.ilgeobolkka.auth.exception.InvalidCredentialsException;
 import com.example.ilgeobolkka.book.exception.BookNotFoundException;
 import com.example.ilgeobolkka.book.exception.BookPageNotFoundException;
+import com.example.ilgeobolkka.book.exception.InvalidBookCategoryException;
 import com.example.ilgeobolkka.infra.portone.PortOnePaymentUnavailableException;
 import com.example.ilgeobolkka.infra.portone.PortOneWebhookVerificationException;
 import com.example.ilgeobolkka.ink.exception.InkPurchaseNotFoundException;
@@ -55,7 +56,8 @@ public class GlobalExceptionHandler {
         MethodArgumentTypeMismatchException.class,
         ServletRequestBindingException.class,
         HttpMessageNotReadableException.class,
-        HttpMediaTypeNotSupportedException.class
+        HttpMediaTypeNotSupportedException.class,
+        InvalidBookCategoryException.class
     })
     ResponseEntity<ApiErrorResponse> handleInvalidInput(Exception exception) {
         logFailure(ErrorCode.INVALID_INPUT, exception);

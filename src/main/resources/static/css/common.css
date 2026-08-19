@@ -331,17 +331,23 @@ a:hover {
 
 .catalog-search {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: minmax(10rem, 14rem) minmax(0, 1fr) auto;
+    align-items: end;
     gap: 0.5rem;
     margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
     padding: clamp(0.75rem, 1.5vw, 1rem);
     background: var(--brand-navy);
 }
 
-.catalog-search .form-control {
+.catalog-search .form-control,
+.catalog-search .form-select {
     border-color: var(--brand-navy-soft);
     background: var(--brand-navy-soft);
     color: #fff;
+}
+
+.catalog-search .form-label {
+    color: var(--brand-cream);
 }
 
 .catalog-search .form-control::placeholder {
@@ -441,16 +447,9 @@ a:hover {
     text-decoration: none;
 }
 
-.book-card-meta,
-.book-card-price {
+.book-card-meta {
     margin: 0.4rem 0 0;
     color: var(--brand-muted);
-}
-
-.book-card-price {
-    padding-top: 0.55rem;
-    color: var(--brand-navy);
-    font-weight: 800;
 }
 
 /* 도서 상세 */
@@ -1253,6 +1252,10 @@ a:hover {
 
     .catalog-search {
         grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .catalog-filter-field {
+        grid-column: 1 / -1;
     }
 
     .catalog-search .btn {

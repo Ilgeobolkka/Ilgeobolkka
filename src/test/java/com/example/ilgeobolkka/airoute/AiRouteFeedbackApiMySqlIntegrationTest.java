@@ -96,6 +96,7 @@ class AiRouteFeedbackApiMySqlIntegrationTest {
     void 완료_owner의_세_rating_생성과_변경과_response_UTC_시각() throws Exception {
         long routeId = ROUTE_ID_BASE + 1;
         완료한_경로를_생성한다(READER_ID, routeId, "재무제표 읽기");
+        경로_항목을_생성한다(routeId, ROUTE_ID_BASE + 10, "2026-08-03 11:00:00.123456");
 
         // HELPFUL 생성
         mockMvc.perform(put("/api/ai-routes/{routeId}/feedback", routeId)
@@ -211,6 +212,38 @@ class AiRouteFeedbackApiMySqlIntegrationTest {
     }
 
     @Test
+    void 다른_사용자와_경로가_완료되어도_현재_경로에_미열람_항목이_있으면_직접_평가를_거부한다()
+            throws Exception {
+        long targetRouteId = ROUTE_ID_BASE + 20;
+        완료한_경로를_생성한다(READER_ID, targetRouteId, "미열람 항목이 있는 경로");
+        경로_항목을_생성한다(targetRouteId, ROUTE_ID_BASE + 20, null);
+
+        long sameReaderRouteId = ROUTE_ID_BASE + 21;
+        완료한_경로를_생성한다(READER_ID, sameReaderRouteId, "같은 사용자의 다른 경로");
+        경로_항목을_생성한다(
+                sameReaderRouteId, ROUTE_ID_BASE + 21, "2026-08-03 11:00:00.123456");
+
+        long otherReaderRouteId = ROUTE_ID_BASE + 22;
+        완료한_경로를_생성한다(OTHER_READER_ID, otherReaderRouteId, "다른 사용자의 경로");
+        경로_항목을_생성한다(
+                otherReaderRouteId, ROUTE_ID_BASE + 22, "2026-08-03 11:00:00.123456");
+
+        mockMvc.perform(put("/api/ai-routes/{routeId}/feedback", targetRouteId)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"rating\":\"HELPFUL\"}")
+                        .with(authentication(인증된_독자(READER_ID)))
+                        .with(csrf()))
+                .andExpect(status().isConflict())
+                .andExpect(jsonPath("$.code").value("AI_ROUTE_NOT_COMPLETED"));
+
+        assertThat(jdbcTemplate.queryForObject(
+                        "SELECT feedback FROM ai_reading_route WHERE id = ?",
+                        String.class,
+                        targetRouteId))
+                .isNull();
+    }
+
+    @Test
     void 같은_rating_순차_요청_결과_일관성() throws Exception {
         long routeId = ROUTE_ID_BASE + 1;
         완료한_경로를_생성한다(READER_ID, routeId, "재무제표 읽기");
@@ -312,8 +345,9 @@ class AiRouteFeedbackApiMySqlIntegrationTest {
 
         // items 추가
         jdbcTemplate.update(
-                "INSERT INTO ai_reading_route_item (id, route_id, book_id, book_page_id, position, relevance, prerequisite, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-                ROUTE_ID_BASE + 10, routeId, BOOK_ID, PAGE_ID_BASE + 1, 1, "HIGH", false, "CORE");
+                "INSERT INTO ai_reading_route_item (id, route_id, book_id, book_page_id, position, relevance, prerequisite, role, opened_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                ROUTE_ID_BASE + 10, routeId, BOOK_ID, PAGE_ID_BASE + 1, 1, "HIGH", false, "CORE",
+                "2026-08-03 11:00:00.123456");
 
         Map<String, Object> before = 상태_스냅샷(routeId);
 
@@ -412,6 +446,21 @@ class AiRouteFeedbackApiMySqlIntegrationTest {
                 readerId,
                 BOOK_ID,
                 purpose);
+    }
+
+    private void 경로_항목을_생성한다(long routeId, long itemId, String openedAt) {
+        jdbcTemplate.update(
+                """
+                INSERT INTO ai_reading_route_item
+                    (id, route_id, book_id, book_page_id, position, relevance, prerequisite, role,
+                     opened_at)
+                VALUES (?, ?, ?, ?, 1, 'HIGH', FALSE, 'CORE', ?)
+                """,
+                itemId,
+                routeId,
+                BOOK_ID,
+                PAGE_ID_BASE + 1,
+                openedAt);
     }
 
     private TestingAuthenticationToken 인증된_독자(long readerId) {

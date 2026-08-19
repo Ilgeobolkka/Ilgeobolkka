@@ -123,6 +123,7 @@ class AiRouteDetailPageTest {
         assertTrue(html.contains("열람 2026. 8. 14. 10:05"));
 
         assertTrue(html.contains("href=\"/ink\""));
+        assertTrue(feedbackSectionTag(html).contains("hidden"));
         assertTrue(html.matches("(?s).*data-feedback-rating=\"HELPFUL\"[^>]*disabled.*"));
         assertFalse(html.contains("<script>alert('purpose')</script>"));
         assertFalse(html.contains("<img src=x onerror=alert('guide')>"));
@@ -143,9 +144,13 @@ class AiRouteDetailPageTest {
                 .getContentAsString();
 
         assertTrue(html.contains("data-route-completed=\"true\""));
+        assertTrue(html.contains("data-evaluation-available=\"true\""));
         assertTrue(html.contains("data-route-rating=\"NEUTRAL\""));
         assertTrue(html.contains("data-completed-time"));
         assertTrue(html.contains("완료 2026. 8. 14. 10:10"));
+        assertFalse(feedbackSectionTag(html).contains("hidden"));
+        assertTrue(html.contains("이 경로가 도움이 되었나요?"));
+        assertTrue(html.contains("모든 경로 페이지를 연 뒤 선택적으로 평가할 수 있습니다."));
         assertTrue(html.matches(
                 "(?s).*data-feedback-rating=\"NEUTRAL\"[^>]*aria-pressed=\"true\".*"));
         assertFalse(html.matches(
@@ -184,6 +189,26 @@ class AiRouteDetailPageTest {
                 .andExpect(redirectedUrl("/login"));
     }
 
+    @Test
+    void 평가_영역은_브라우저_항목_수가_아니라_서버_평가_가능_상태로_갱신한다()
+            throws Exception {
+        String javascript = mockMvc.perform(get("/js/ai-route/route-detail-page.js"))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+
+        assertTrue(javascript.contains("state.evaluationAvailable = route.evaluationAvailable"));
+        assertTrue(javascript.contains(
+                "elements.feedbackSection.hidden = !state.evaluationAvailable"));
+        assertFalse(javascript.contains("items.every"));
+    }
+
+    private String feedbackSectionTag(String html) {
+        int hookIndex = html.indexOf("data-feedback-section");
+        return html.substring(html.lastIndexOf("<section", hookIndex), html.indexOf(">", hookIndex) + 1);
+    }
+
     private FindAiRouteResponse 진행중_경로() {
         return new FindAiRouteResponse(
                 ROUTE_ID,
@@ -193,6 +218,7 @@ class AiRouteDetailPageTest {
                 false,
                 Instant.parse("2026-08-14T01:00:00Z"),
                 null,
+                false,
                 null,
                 List.of(
                         new AiRouteItemResponse(
@@ -239,6 +265,7 @@ class AiRouteDetailPageTest {
                 true,
                 route.createdAt(),
                 Instant.parse("2026-08-14T01:10:00Z"),
+                true,
                 AiReadingRouteFeedback.NEUTRAL,
                 openedItems);
     }
