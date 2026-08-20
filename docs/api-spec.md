@@ -11,8 +11,9 @@
 - 화면과 결제 흐름은 데스크톱 브라우저만 지원합니다.
 - 아래 표의 경로와 응답은 합의된 범위입니다.
 - 결제는 PortOne V2 테스트 채널까지만 구현하며 운영 실결제는 활성화하지 않습니다.
-- 아래 표의 MVP JSON API와 HTML 화면은 모두 구현됐습니다. 도서 탐색·인증, 페이지 대여·열람 세션·
-  콘텐츠, 내 서재, 잉크·소장 결제와 조회, PortOne V2 테스트 결제·웹훅 경계를 포함합니다.
+- 아래 표의 초기 MVP와 [AI 잉크 경로 2차 MVP 구현 계약](#ai-잉크-경로-2차-mvp-구현-계약)의
+  JSON API·HTML 화면은 모두 구현됐습니다. 도서 탐색·인증, 페이지 대여·열람 세션·콘텐츠, 내 서재,
+  잉크·소장 결제와 조회, PortOne V2 테스트 결제·웹훅, AI 경로 생성·저장·열람·피드백 경계를 포함합니다.
 
 ## 공통 규칙
 
@@ -31,8 +32,8 @@
 
 ### 페이지 범위와 정렬
 
-- `GET /api/books`, `GET /api/ink/ledger`, `GET /api/ownership-payments`의 `page`는 필수인
-  1부터 시작하는 정수입니다.
+- `GET /api/books`, `GET /api/ink/ledger`, `GET /api/ownership-payments`, `GET /api/ai-routes`의
+  `page`는 필수인 1부터 시작하는 정수입니다.
 - 정수가 아니거나 0 이하면 `400 INVALID_INPUT`입니다. 전체 범위를 초과한 양수는 `200 OK`와
   빈 배열을 반환합니다.
 - 한 페이지는 10건으로 고정하고 클라이언트가 페이지 크기나 정렬을 지정하지 않습니다.
@@ -73,7 +74,7 @@
 | `POST /api/auth/login` | `email`, `password` | 200 | `readerId`, `email` | 아니오 |
 | `POST /api/auth/logout` | 없음 | 200 | `readerId` | 예 |
 | `GET /api/smoke` | 없음 | 204 | 없음 | 아니오 |
-| `GET /api/books?page={page}&keyword={keyword?}` | 쿼리 파라미터 | 200 | `books[]`, `page`, `totalPages`, `totalCount` | 아니오 |
+| `GET /api/books?page={page}&keyword={keyword?}&category={category?}` | 쿼리 파라미터 | 200 | `books[]`, `page`, `totalPages`, `totalCount`, `categories`, `selectedCategory` | 아니오 |
 | `GET /api/books/{bookId}` | 경로 파라미터 | 200 | 도서 기본 정보, `owned` | 선택 |
 | `POST /api/books/{bookId}/reading-sessions` | `pageNumber` | 201 | 세션과 페이지 열기 결과 | 예 |
 | `PATCH /api/reading-sessions/current/page` | 헤더 `X-Viewer-Session-Id`, 바디 `pageNumber` | 200 | 페이지 열기 결과 | 예 |
@@ -88,7 +89,151 @@
 | `GET /api/ownership-payments?page={page}` | 쿼리 파라미터 | 200 | `payments[]`, `page`, `totalPages`, `totalCount` | 예 |
 | `POST /api/webhooks/portone` | PortOne V2 웹훅 바디·서명 헤더 | 200 | 없음 | 웹훅 서명 |
 
-### 기대 응답 형태
+## AI 잉크 경로 2차 MVP 구현 계약
+
+이 절은 [AI 잉크 경로 PRD](./prd/ai-ink-route.md)를 구현한 현재 HTTP 계약입니다. 인증 독자는 항상 서버
+세션의 `Principal`에서 식별합니다.
+
+### HTML 화면
+
+| 메서드·경로 | 화면 | 인증 |
+| --- | --- | --- |
+| `GET /books/{bookId}/ai-route` | 독서 목적·예산 또는 깊이 입력과 임시 경로 미리보기 | 예 |
+| `GET /ai-routes/{routeId}` | 저장 경로 상세·경로 순서 열람·피드백 | 예 |
+
+도서 상세는 지원 도서에만 AI 경로 화면 링크를 표시하고 내 서재는 저장 경로와 현재 경로를 함께 표시합니다.
+다른 독자의 `routeId`나 `generationId`는 존재 여부를 구분하지 않고 `404 RESOURCE_NOT_FOUND`로 응답합니다.
+
+### JSON 엔드포인트
+
+| 메서드·경로 | 요청 | 성공 | 응답 | 목적 |
+| --- | --- | --- | --- | --- |
+| `POST /api/books/{bookId}/ai-route-generations` | UUID `Idempotency-Key` 헤더, 생성 입력 | 200·201·202 | 생성 결과 | 새 임시 경로 생성 또는 같은 요청 재조회 |
+| `GET /api/ai-route-generations/{generationId}` | 경로 파라미터 | 200·202 | 생성 결과 | 소유자의 유효한 임시 상태·결과 조회 |
+| `POST /api/ai-route-generations/{generationId}/routes` | 바디 없음 | 200·201 | 저장 경로 상세 | 임시 결과를 한 번 저장하고 현재 경로로 지정 |
+| `GET /api/ai-routes?page={page}` | 공통 `page` 쿼리 파라미터 | 200 | `routes[]`, 페이지 정보 | 소유자의 저장 경로를 `createdAt DESC, id DESC`로 조회 |
+| `GET /api/ai-routes/{routeId}` | 경로 파라미터 | 200 | 저장 경로 상세 | 소유자의 경로·진행·현재 비용 조회 |
+| `PUT /api/books/{bookId}/ai-routes/current` | `routeId` | 200 | 저장 경로 상세 | 같은 책의 저장 경로를 현재 경로로 지정 |
+| `POST /api/ai-routes/{routeId}/pages/{pageNumber}/content` | `X-Viewer-Session-Id` 헤더 | 200 | 기존 페이지 콘텐츠 | 기존 페이지 열기 성공 뒤 콘텐츠를 제공하고 경로 항목을 열람 완료로 기록 |
+| `PUT /api/ai-routes/{routeId}/feedback` | `rating` | 200 | `routeId`, `rating`, `feedbackAt` | 완료 경로의 선택형 피드백 생성·변경 |
+| `DELETE /api/ai-routes/{routeId}` | 경로 파라미터 | 204 | 없음 | 경로·항목·진행·피드백 삭제 |
+
+임시 결과는 목록 API를 제공하지 않습니다.
+
+경로 페이지 열기는 새 과금 API를 만들지 않고 기존 페이지 열기 유스케이스를 사용합니다. 새 뷰어에서 첫
+경로 페이지를 열 때는 `POST /api/books/{bookId}/reading-sessions`, 현재 뷰어에서 다음 경로 페이지로
+이동할 때는 `PATCH /api/reading-sessions/current/page`에 대상 `pageNumber`를 보냅니다. 이 요청이 신규
+대여·잉크 차감과 현재 열람 세션 위치 변경을 원자적으로 완료한 뒤, 응답의 `viewerSessionId`를
+`X-Viewer-Session-Id`로 보내 경로 페이지 콘텐츠를 조회합니다.
+
+경로 페이지 콘텐츠 `POST`는 경로 소유권·항목 포함 여부, 현재 열람 세션 위치와 기존 소장·활성 대여 권한을
+다시 검증하고 콘텐츠 제공과 `openedAt`·경로 완료 상태 기록을 함께 완료합니다. 이 `POST`는 공통 규칙에
+따라 CSRF 토큰을 검증하되 잉크를 차감하거나 대여·열람 세션·서재 위치를 생성·변경하지 않습니다. 페이지
+열기 요청이 실패했거나 열기 뒤 콘텐츠 요청 전에 권한이 만료되면 콘텐츠와 진행 상태를 제공하거나 변경하지
+않습니다.
+
+### 생성 입력과 결과
+
+생성 요청 바디는 다음 공통 필드와 서로 배타적인 입력 한 종류를 사용합니다.
+
+| 필드 | 형식 | 규칙 |
+| --- | --- | --- |
+| `purpose` | 문자열 | [독서 목적 입력 계약](./prd/ai-ink-route.md#독서-목적)에 맞게 서버가 정규화·검증 |
+| `maxAdditionalInk` | 정수 또는 `null` | 비소장 도서에서만 사용하며 [비소장 예산 정책](./prd/ai-ink-route.md#비소장-도서)을 따름 |
+| `depth` | 문자열 또는 `null` | 소장 도서에서만 `QUICK`, `BALANCED`, `DEEP` 중 하나 |
+
+`maxAdditionalInk`와 `depth`를 함께 보내거나 대상 도서의 소장 상태와 맞지 않으면 `400 INVALID_INPUT`입니다.
+같은 독자·`Idempotency-Key`에 도서·콘텐츠 버전·정규화한 목적·예산 또는 깊이가 다르면
+`409 AI_ROUTE_IDEMPOTENCY_KEY_REUSED`입니다.
+
+생성 결과는 다음 필드를 생략하지 않습니다.
+
+| 필드 | 형식 | 설명 |
+| --- | --- | --- |
+| `generationId` | UUID | 서버가 발급한 임시 결과 식별자 |
+| `status` | 문자열 | `GENERATING`, `ROUTE`, `NO_ROUTE`, `SAVED` 중 하나 |
+| `bookId`, `contentVersion` | 숫자, 문자열 | 생성에 사용한 도서와 콘텐츠 버전 |
+| `purpose` | 문자열 | 서버가 정규화한 독서 목적 |
+| `expiresAt` | UTC 시각 또는 `null` | `GENERATING`에서는 `null`, 그 밖에는 임시 상태·결과 만료 시각 |
+| `routeId` | 숫자 또는 `null` | `SAVED`에서만 저장 경로 식별자 |
+| `remainingDailyGenerations` | 정수 | 응답 시점의 남은 계정별 생성 횟수 |
+| `noRouteReason` | 문자열 또는 `null` | `NO_ROUTE`에서만 `NO_RELEVANT_PAGES`, `INSUFFICIENT_BUDGET`, `INSUFFICIENT_DEPTH` 중 하나 |
+| `minimumRequiredInk` | 정수 또는 `null` | 예산 부족 `NO_ROUTE`에서만 값이 있음 |
+| `items` | 배열 | `ROUTE`에서만 경로 항목, 그 밖에는 빈 배열 |
+
+각 `items[]`는 `position`, `pageNumber`, `relevance`, `prerequisite`, `role`, `estimatedMinutes`,
+`guide`, `additionalCostStatus`를 포함합니다. `relevance`는 `HIGH`·`MEDIUM`, `role`은
+`PREREQUISITE`·`CORE`·`EXAMPLE`·`COUNTERPOINT`·`CONCLUSION`, `additionalCostStatus`는
+`ONE_INK`·`ACTIVE_RENTAL`·`OWNED` 중 하나입니다. 임시 결과는 접근권한이나 잉크 차감을 만들지 않습니다.
+생성 결과의 `additionalCostStatus`는 생성 시점 값이며, `GET /api/ai-route-generations/{generationId}`로
+다시 조회해도 현재 권한으로 재계산하지 않습니다(저장 거부 뒤 재조회도 같습니다). 재계산은 저장 경로 상세
+조회에서만 수행합니다.
+
+`NO_RELEVANT_PAGES`와 `INSUFFICIENT_DEPTH`는 `minimumRequiredInk=null`이고,
+`INSUFFICIENT_BUDGET`은 선택한 예산보다 큰 최소 추가 잉크를 `minimumRequiredInk`로 반환합니다.
+`INSUFFICIENT_DEPTH`는 소장 경로의 후보와 선수 폐쇄를 선택한 깊이 상한에 담을 수 없다는 뜻입니다.
+`NO_ROUTE`가 아닌 상태에서는 두 필드가 모두 `null`입니다.
+
+새 요청이 완료되면 `201`, 같은 멱등 요청의 완료 결과를 반환하면 `200`, 먼저 시작한 같은 요청이 아직
+진행 중이면 `202`와 `GENERATING`을 반환합니다. `NO_ROUTE`는 오류가 아닌 정상 결과입니다. 실패한 키는
+보관 기간 동안 재실행하지 않고 최초 오류를 재현합니다. 만료 정리 뒤에는 과거 키 사용 여부를 보존하지 않아
+같은 키도 새 요청으로 처리되지만 클라이언트는 새 실행마다 새 키를 사용합니다. 보관 기간 안에 경로로 저장한
+키의 재조회는 `SAVED`와 `routeId`를 반환하며 경로를 삭제한 뒤에는 `409 AI_ROUTE_GENERATION_CONSUMED`입니다.
+
+### 저장 경로 결과와 상태 변경
+
+저장 경로 상세는 생성 결과의 도서·목적·항목에 `routeId`, `current`, `createdAt`, `completedAt`,
+`evaluationAvailable`, `rating`을 더합니다. `evaluationAvailable`은 `completedAt`이 있고 비어 있지 않은
+모든 경로 항목에 `openedAt`이 있을 때만 `true`입니다. 각 항목은 현재 권한으로 다시 계산한
+`additionalCostStatus`와 콘텐츠 제공 성공 시각인 `openedAt`을 포함합니다. 저장 뒤 페이지와 순서는
+바꾸지 않습니다.
+
+저장 성공은 새 경로를 만들면 `201`, 이미 소비한 `generationId`의 재시도면 기존 경로와 `200`입니다.
+현재 경로 지정·삭제는 같은 독자·도서 단위로 직렬화하며 삭제 뒤 현재 경로 재지정은
+[저장과 생명주기](./prd/ai-ink-route.md#저장과-생명주기)를 따릅니다. 경로 페이지 콘텐츠 `POST`만
+`openedAt`과 경로 완료 상태를 기록하며 생성·미리보기·저장·상세 조회는 진행을 바꾸지 않습니다.
+
+저장 시점에 현재 대여·소장 권한으로 다시 계산한 추가 잉크가 임시 결과의 생성 예산을 넘으면
+([저장과 생명주기 3단계](./prd/ai-ink-route.md#저장과-생명주기)) `409 AI_ROUTE_ENTITLEMENT_CHANGED`로
+거부합니다. 이때 `generationId`는 **소비하지 않습니다.** 경로·현재 경로를 만들지 않고 임시 결과는 원래
+만료 시각까지 `ROUTE` 상태로 남아 다시 조회할 수 있습니다. 저장은 매 요청마다 그 시점의 권한으로 추가
+잉크를 다시 계산하므로 권한이 그대로인 재시도는 같은 오류를 반환하며, 최초 거부를 기록해 이후 저장을 막는
+상태는 두지 않습니다. 따라서 만료 전 권한이 예산 이하로 회복되면 같은 `generationId` 저장이 성공할 수
+있지만, 이는 재계산의 결과일 뿐 클라이언트에 안내하는 복구 경로가 아닙니다.
+
+독자에게는 대여·소장 상태가 바뀌어 필요한 잉크가 생성 시점보다 늘었으므로 **경로를 다시 생성해야 한다고만
+안내합니다**(화면 조건은 [W01](./implementation/ai-route/web/W01-generation-page.md)). 이 응답에는 재계산한
+비용·권한 상세를 포함하지 않습니다. 콘텐츠 버전 변경(`AI_ROUTE_CONTENT_CHANGED`), 입력
+오류(`INVALID_INPUT`), 잉크 부족(`INSUFFICIENT_INK`)은 원인이 다르므로 이 상황에 대신 사용하지 않습니다.
+
+피드백 `rating`은 `HELPFUL`, `NEUTRAL`, `NOT_HELPFUL` 중 하나입니다. 완료하지 않았거나 소유하지 않은
+경로에는 저장하지 않습니다.
+
+### 오류
+
+| 상황 | HTTP 상태 | 코드 |
+| --- | --- | --- |
+| 멱등 키 형식 오류·생성 입력 조합 오류 | 400 | `INVALID_INPUT` |
+| 미지원 도서·외부 전송 권리·데이터 정책 프로필 미충족 | 422 | `AI_ROUTE_NOT_SUPPORTED` |
+| 같은 멱등 키의 다른 입력·저장 전 콘텐츠 버전 변경 | 409 | `AI_ROUTE_IDEMPOTENCY_KEY_REUSED`, `AI_ROUTE_CONTENT_CHANGED` |
+| 저장 뒤 경로를 삭제한 생성 결과 재사용 | 409 | `AI_ROUTE_GENERATION_CONSUMED` |
+| 저장 전 권한 변동으로 추가 잉크가 생성 예산 초과 | 409 | `AI_ROUTE_ENTITLEMENT_CHANGED` |
+| 미완료 경로에 피드백 시도 | 409 | `AI_ROUTE_NOT_COMPLETED` |
+| 만료한 임시 결과 | 404 | `RESOURCE_NOT_FOUND` |
+| 계정별 생성 횟수 초과 | 429 | `AI_ROUTE_DAILY_LIMIT_EXCEEDED` |
+| OpenAI 지출·사용량 한도 또는 크레딧 소진 | 503 | `AI_ROUTE_PROVIDER_BUDGET_UNAVAILABLE` |
+| OpenAI 일시 오류·출력 검증 최종 실패·전체 시간 제한 | 503 | `AI_ROUTE_PROVIDER_UNAVAILABLE`, `AI_ROUTE_INVALID_OUTPUT`, `AI_ROUTE_GENERATION_TIMEOUT` |
+
+`AI_ROUTE_CONTENT_CHANGED`는 2차 MVP에서 `contentVersion`을 재발급하지 않으므로
+([재평가와 지원 활성화 순서](./prd/ai-ink-route.md#재평가와-지원-활성화-순서)) 도달 가능한 사용자
+경로가 없습니다. 운영자 오적재를 저장 시점에 탐지하는 불변식 방어 검사로 계약을 유지하며, 일반 사용자
+흐름으로 설계하거나 화면 안내를 만들지 않습니다.
+
+`429`는 PRD가 정한 다음 초기화 시각까지의 `Retry-After`를 포함합니다. 외부 오류 응답에는 공급자 조직·
+프로젝트·비용, 프롬프트, 분석 텍스트와 응답 원문을 포함하지 않습니다. `AI_ROUTE_ENABLED=false`이면 AI
+HTML·JSON 경로를 등록하지 않으며 기존 도서·뷰어·결제 기능은 계속 제공합니다.
+
+## 초기 MVP 기대 응답 형태
 
 아래 JSON은 필드 이름, 중첩 구조와 `null` 가능성을 보여 주는 예시입니다. ID와 시각 등 값 자체를
 고정하지 않으며, 오류 응답은 [오류 응답](#오류-응답)의 공통 형태를 사용합니다.
@@ -145,7 +290,9 @@
   ],
   "page": 1,
   "totalPages": 10,
-  "totalCount": 100
+  "totalCount": 100,
+  "categories": ["경제", "소설", "에세이"],
+  "selectedCategory": null
 }
 ```
 
@@ -378,15 +525,22 @@
 - `bookId`, `category`, `coverImagePath`, `title`, `author`, `description`
 - `totalPageCount`, `bookPrice`
 - 로그인하지 않은 경우 `owned`는 `null`, 로그인한 경우 소장 여부는 `true` 또는 `false`
+- AI 경로 feature가 활성화되면 지원 여부 `aiRouteSupported`는 `true` 또는 `false`,
+  비활성화되면 응답에서 생략
 
 `bookPrice`는 원화 단위의 0보다 큰 정수입니다. `coverImagePath`의 문자열 값은 공개 표지 자산의
 same-origin 경로이며 원본 PDF 경로나 비공개 페이지 이미지 저장소 주소가 아닙니다. 상세 조회 시 인증된
 세션이 있으면 `owned`를 계산하고, 없으면 `null`로 응답합니다.
 
-목록과 검색은 한 페이지에 10권을 제공합니다. `page`는 1부터 시작하며 0 이하는
-`400 INVALID_INPUT`, 전체 범위를 초과한 양수는 `200 OK`와 빈 `books`를 반환합니다. 검색어는 앞뒤
-공백만 제거하고 내부 공백은 보존하며, 빈 값은 전체 목록으로 처리합니다. 제목·저자 부분 일치 검색은
-영문 대소문자를 구분하지 않고 `%`, `_`는 SQL 와일드카드가 아닌 일반 문자로 처리합니다.
+목록과 검색은 한 페이지에 10권을 제공합니다. 응답의 `categories`는 현재 존재하는 전체 카테고리의
+오름차순 목록이며, `selectedCategory`는 선택한 카테고리 또는 전체 조회를 뜻하는 `null`입니다.
+`category`가 없거나 공백이면 전체 카테고리를 조회하고, 현재 존재하는 카테고리이면 검색 결과를 해당
+카테고리로 좁힙니다. 존재하지 않는 카테고리는 `400 INVALID_INPUT`입니다.
+
+`page`는 1부터 시작하며 0 이하는 `400 INVALID_INPUT`, 전체 범위를 초과한 양수는 `200 OK`와 빈
+`books`를 반환합니다. 검색어는 앞뒤 공백만 제거하고 내부 공백은 보존하며, 빈 값은 전체 목록으로
+처리합니다. 제목·저자 부분 일치 검색은 영문 대소문자를 구분하지 않고 `%`, `_`는 SQL 와일드카드가
+아닌 일반 문자로 처리합니다.
 
 정렬은 `category ASC, title ASC, id ASC`로 고정합니다.
 
@@ -438,6 +592,17 @@ same-origin 경로이며 원본 PDF 경로나 비공개 페이지 이미지 저�
 `expiresAt`, `activeRental`, `owned`를 제공합니다. 대여 정보는 마지막 열람 페이지 한 건만 나타내며 전체
 대여 페이지 목록은 반환하지 않습니다. 동일 페이지를 여러 번 대여했다면 `rentedAt DESC, id DESC`의
 첫 대여를 사용해 현재 활성 여부를 서버 시각으로 계산합니다.
+
+AI 경로 feature가 활성화되면 각 항목에 `routes[]`(저장 시각·ID 내림차순의 `routeId`,
+`purpose`)와 선택 필드 `currentRouteId`를 추가합니다. 현재 경로가 없으면 `currentRouteId`는
+응답에서 생략합니다. feature가 비활성화되면 두 필드와 AI 경로만 저장한 책 항목을 모두
+생략해 기존 서재 응답을 유지합니다. `purpose`는 HTML로 해석하지 않고 텍스트로 표시합니다.
+
+페이지를 아직 열지 않고 AI 경로만 저장한 책도 feature 활성 서재에 책당 한 항목으로
+표시합니다. 이때 첫 뷰어 진입을 위해 `lastPageNumber=1`이고 `owned=false`, `rentedAt`,
+`expiresAt`, `activeRental`은 `null`입니다. 이 값은 1페이지를 이미 읽었다는 의미가 아니며,
+화면은 `AI 경로 저장`과 `첫 페이지 읽기`로 구분해 표시합니다. 서재 저장 위치를 생성하지
+않고 경로의 최신 `createdAt DESC`와 `bookId DESC`를 이 항목의 서재 정렬 기준으로 사용합니다.
 
 온라인 소장 도서는 소장 전 대여 이력이 있어도 `owned=true`이고 `rentedAt`, `expiresAt`,
 `activeRental`은 `null`입니다. 열람 이력 없이 소장으로 처음 서재에 추가된 도서는 `lastPageNumber=1`로
@@ -539,4 +704,4 @@ PortOne secret과 내부 저장소 주소를 포함하지 않습니다. 필드 �
 
 결정의 배경과 대안은 [ADR 색인](./adr/README.md)에서 확인합니다. 인증은 ADR-0007·0009, 페이지
 대여는 ADR-0010, 콘텐츠 전달은 ADR-0013, 테스트 결제 연동은 ADR-0012를 따릅니다. 카테고리 우선 정렬은
-[제품 정책](./prd/product-policy.md#카테고리와-탐색)에서 관리합니다.
+[제품 정책](./prd/product-policy.md#카테고리와-탐색), AI 잉크 경로 생성 구조는 ADR-0014를 따릅니다.

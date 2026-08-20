@@ -73,13 +73,17 @@ AI 코딩 에이전트(Claude Code, Codex, Antigravity 등)가 이 프로젝트�
 - macOS 한글 폴더명은 NFD 유니코드라 경로 직접 입력이 실패할 수 있다 → 글롭/`ls`로 접근한다.
 - zsh의 `path`는 `PATH`와 연동된 특수 배열이다 → 반복문 변수명으로 사용하지 않는다.
 - Ruby 정규식의 `#{...}`는 문자열 보간으로 해석된다 → Markdown 제목 수량자는 `^#+`를 사용한다.
+- 제한 환경의 `gh auth status` 실패는 키체인 차단일 수 있다 → 로그인 안내 전에 승인 경계에서 진단 스크립트를 재실행한다.
+- `fixtures/` 등 리소스만 고치면 Gradle이 최신으로 보고 테스트를 건너뛴다 → `./gradlew check --rerun-tasks`로 확인한다.
+- `build/`에 macOS 중복 사본(`… 2.sql`, `… 2.class`)이 생기면 Flyway 중복 버전·테스트 클래스명 오류가 난다 → `./gradlew clean` 후 다시 빌드한다.
+- 워크트리에서 테스트를 돌리면 공용 MySQL의 `ilgeobolkka_test`를 다른 세션과 공유해 마이그레이션이 충돌한다 → `.env`의 `TEST_DB_URL`을 워크트리 전용 DB로 바꾼다.
 
 ## 프로젝트 정보
 
 - 프로젝트명: Ilgeobolkka
 - 목표: 유효기간 없는 잉크로 페이지를 30일 대여하고 PortOne V2 테스트 결제로 도서를 온라인 소장하는 데스크톱 웹 MVP
 - 대상 사용자: 책 전체 구매가 부담스럽고 필요한 부분부터 읽고 싶은 일반 독자
-- 현재 상태: 제품·도메인·프런트엔드·PortOne V2 테스트 결제 계약 완료, Spring Boot 골격 단계. 프런트엔드와 API는 단일 실행물로 제공
+- 현재 상태: [PRD 색인의 문서 상태](./docs/prd/README.md#문서-상태)에서만 관리
 - 스택: Java 21 / Spring Boot 4.1.0 / Spring MVC / Thymeleaf / Bootstrap 5.3 / Vanilla JavaScript / Spring Data JPA / Spring Security / MySQL (Compose·RDS) / PortOne V2 테스트 채널
 - 문서 라우팅 정본: `docs/prd/README.md`에서 요구사항·용어·API·ERD·검증·컨벤션·배포·ADR로 이동
 - 핵심 불변식: 잉크는 만료되지 않고 권한 없는 페이지 열기에만 1잉크를 차감하며, 소장은 서버가 검증한 테스트 결제로만 한 번 부여하고 잔액·내역·대여·소장 기록을 일관되게 유지한다

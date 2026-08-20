@@ -14,10 +14,22 @@ public enum ErrorCode {
     BOOK_ALREADY_OWNED(HttpStatus.CONFLICT, "이미 소장한 도서입니다."),
     PAYMENT_STATE_CONFLICT(HttpStatus.CONFLICT, "현재 결제 상태에서는 요청을 처리할 수 없습니다."),
     VIEWER_SESSION_REPLACED(HttpStatus.CONFLICT, "새 뷰어로 교체된 열람 세션입니다."),
+    AI_ROUTE_ENTITLEMENT_CHANGED(
+            HttpStatus.CONFLICT, "대여·소장 상태가 바뀌었습니다. 경로를 다시 생성해 주세요."),
+    AI_ROUTE_CONTENT_CHANGED(HttpStatus.CONFLICT, "도서 콘텐츠가 바뀌었습니다. 경로를 다시 생성해 주세요."),
+    AI_ROUTE_GENERATION_CONSUMED(HttpStatus.CONFLICT, "이미 사용한 생성 결과입니다."),
+    AI_ROUTE_NOT_COMPLETED(HttpStatus.CONFLICT, "경로가 아직 완료되지 않았습니다."),
+    AI_ROUTE_IDEMPOTENCY_KEY_REUSED(HttpStatus.CONFLICT, "멱등 키가 다른 생성 입력에 이미 사용되었습니다."),
     RESOURCE_NOT_FOUND(HttpStatus.NOT_FOUND, "요청한 리소스를 찾을 수 없습니다."),
     INSUFFICIENT_INK(HttpStatus.UNPROCESSABLE_CONTENT, "잉크가 부족합니다. 잉크를 충전해 주세요."),
     PAYMENT_VERIFICATION_FAILED(HttpStatus.UNPROCESSABLE_CONTENT, "결제 검증에 실패했습니다."),
     INVALID_PAYMENT_AMOUNT(HttpStatus.UNPROCESSABLE_CONTENT, "결제 금액이 올바르지 않습니다."),
+    AI_ROUTE_NOT_SUPPORTED(HttpStatus.UNPROCESSABLE_CONTENT, "이 도서는 AI 경로 생성을 지원하지 않습니다."),
+    AI_ROUTE_DAILY_LIMIT_EXCEEDED(HttpStatus.TOO_MANY_REQUESTS, "오늘의 AI 경로 생성 횟수를 모두 사용했습니다."),
+    AI_ROUTE_PROVIDER_BUDGET_UNAVAILABLE(HttpStatus.SERVICE_UNAVAILABLE, "AI 경로 생성 한도를 확인할 수 없습니다."),
+    AI_ROUTE_PROVIDER_UNAVAILABLE(HttpStatus.SERVICE_UNAVAILABLE, "AI 경로 생성 서비스가 일시적으로 불가능합니다."),
+    AI_ROUTE_INVALID_OUTPUT(HttpStatus.SERVICE_UNAVAILABLE, "AI 경로 생성 결과를 검증할 수 없습니다."),
+    AI_ROUTE_GENERATION_TIMEOUT(HttpStatus.SERVICE_UNAVAILABLE, "AI 경로 생성 시간이 초과되었습니다."),
     PAYMENT_PROVIDER_UNAVAILABLE(HttpStatus.SERVICE_UNAVAILABLE, "결제사 조회가 일시적으로 불가능합니다."),
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "서버 오류가 발생했습니다.");
 

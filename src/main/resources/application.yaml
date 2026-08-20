@@ -31,6 +31,14 @@ logging:
 content-storage:
   root: ${CONTENT_IMPORT_OUTPUT_ROOT:var/content/pages}
 
+ai-route:
+  enabled: ${AI_ROUTE_ENABLED:false}
+
+openai:
+  project-id: ${OPENAI_PROJECT_ID:}
+  api-key: ${OPENAI_API_KEY:}
+  data-policy-version: ${OPENAI_DATA_POLICY_VERSION:}
+
 server:
   servlet:
     session:
@@ -39,6 +47,10 @@ server:
       cookie:
         http-only: true
         same-site: lax
+
+management:
+  server:
+    port: -1
 
 portone:
   payment:

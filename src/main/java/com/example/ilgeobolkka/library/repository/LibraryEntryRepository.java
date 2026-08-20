@@ -13,15 +13,46 @@ public interface LibraryEntryRepository extends JpaRepository<LibraryEntry, Long
     @Query(
             value =
                     """
-                    SELECT entry.book_id AS bookId,
+                    WITH reader_book AS (
+                        SELECT entry.id AS source_id,
+                               entry.reader_id,
+                               entry.book_id,
+                               entry.last_page_number,
+                               entry.updated_at
+                        FROM library_entry entry
+                        WHERE entry.reader_id = :readerId
+
+                        UNION ALL
+
+                        SELECT NULL AS source_id,
+                               route.reader_id,
+                               route.book_id,
+                               1 AS last_page_number,
+                               MAX(route.created_at) AS updated_at
+                        FROM ai_reading_route route
+                        WHERE :aiRouteEnabled = TRUE
+                          AND route.reader_id = :readerId
+                          AND NOT EXISTS (
+                              SELECT 1
+                              FROM library_entry existing_entry
+                              WHERE existing_entry.reader_id = route.reader_id
+                                AND existing_entry.book_id = route.book_id
+                          )
+                        GROUP BY route.reader_id, route.book_id
+                    )
+                    SELECT entry.source_id AS libraryEntryId,
+                           entry.book_id AS bookId,
                            book.cover_image_path AS coverImagePath,
                            book.title AS title,
                            book.category AS category,
                            entry.last_page_number AS lastPageNumber,
                            rental.rented_at AS rentedAt,
                            rental.expires_at AS expiresAt,
-                           ownership.id AS ownershipId
-                    FROM library_entry entry
+                           ownership.id AS ownershipId,
+                           route.id AS routeId,
+                           route.normalized_purpose AS routePurpose,
+                           current_route.route_id AS currentRouteId
+                    FROM reader_book entry
                     JOIN book_page last_page
                       ON last_page.book_id = entry.book_id
                      AND last_page.page_number = entry.last_page_number
@@ -37,11 +68,23 @@ public interface LibraryEntryRepository extends JpaRepository<LibraryEntry, Long
                         ORDER BY latest_rental.rented_at DESC, latest_rental.id DESC
                         LIMIT 1
                     )
+                    LEFT JOIN ai_reading_route route
+                      ON :aiRouteEnabled = TRUE
+                     AND route.reader_id = entry.reader_id
+                     AND route.book_id = entry.book_id
+                    LEFT JOIN ai_route_current current_route
+                      ON current_route.reader_id = entry.reader_id
+                     AND current_route.book_id = entry.book_id
+                     AND current_route.route_id = route.id
                     WHERE entry.reader_id = :readerId
-                    ORDER BY entry.updated_at DESC, entry.id DESC
+                    ORDER BY entry.updated_at DESC,
+                             COALESCE(entry.source_id, entry.book_id) DESC,
+                             route.created_at DESC, route.id DESC
                     """,
             nativeQuery = true)
-    List<LibraryEntryView> findEntriesByReaderId(@Param("readerId") long readerId);
+    List<LibraryEntryView> findEntriesByReaderId(
+            @Param("readerId") long readerId,
+            @Param("aiRouteEnabled") boolean aiRouteEnabled);
 
     /**
      * 마지막 열람 위치를 만들거나 옮긴다. 소장·활성 대여로 페이지를 여는 경로는 잉크 계정을 잠그지

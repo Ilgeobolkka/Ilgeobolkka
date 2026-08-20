@@ -1,77 +1,11 @@
 import {clearCommonError, showCommonError} from "../common/error-display.js";
+import {requestPageContent} from "../common/request-page-content.js";
 import {ApiRequestError, requestJson} from "../common/request-json.js";
+import {VIEWER_SESSION_STORAGE_KEY} from "../common/viewer-session.js";
 
 const DEFAULT_ERROR_MESSAGE = "요청을 처리하지 못했습니다. 잠시 후 다시 시도해 주세요.";
 const TEXT_SIZES = ["small", "medium", "large", "x-large"];
 const IMAGE_ZOOMS = [75, 100, 125, 150, 200];
-
-export const VIEWER_SESSION_STORAGE_KEY = "ilgeobolkka.viewerSessionId";
-
-export async function requestPageContent(
-        url,
-        viewerSessionId,
-        expectedContentType,
-        options = {}) {
-    const requestUrl = new URL(url, window.location.href);
-    if (requestUrl.origin !== window.location.origin) {
-        throw new ApiRequestError(
-            "CROSS_ORIGIN_REQUEST",
-            "같은 출처의 API만 호출할 수 있습니다.",
-            0,
-            null
-        );
-    }
-
-    const headers = new Headers(options.headers);
-    headers.set("X-Viewer-Session-Id", viewerSessionId);
-
-    let response;
-    try {
-        response = await fetch(requestUrl, {
-            method: "GET",
-            headers,
-            credentials: "same-origin",
-            signal: options.signal
-        });
-    } catch (error) {
-        if (error?.name === "AbortError") {
-            throw error;
-        }
-        throw new ApiRequestError("NETWORK_ERROR", DEFAULT_ERROR_MESSAGE, 0, null);
-    }
-
-    const requestId = response.headers.get("X-Request-Id");
-    if (!response.ok) {
-        throw await createApiError(response, requestId);
-    }
-
-    const mediaType = (response.headers.get("Content-Type") || "")
-        .split(";")[0]
-        .trim()
-        .toLowerCase();
-
-    if (expectedContentType === "TEXT" && mediaType === "text/plain") {
-        return {
-            contentType: "TEXT",
-            body: await response.text()
-        };
-    }
-
-    if (expectedContentType === "IMAGE"
-            && (mediaType === "image/jpeg" || mediaType === "image/png")) {
-        return {
-            contentType: "IMAGE",
-            body: await response.blob()
-        };
-    }
-
-    throw new ApiRequestError(
-        "INVALID_RESPONSE",
-        DEFAULT_ERROR_MESSAGE,
-        response.status,
-        requestId
-    );
-}
 
 export function createViewer(root, dependencies = {}) {
     const request = dependencies.request || requestJson;
@@ -116,6 +50,7 @@ export function createViewer(root, dependencies = {}) {
             state.totalPageCount = book.totalPageCount;
             elements.title.textContent = `${book.title} 뷰어`;
             elements.totalPages.textContent = String(book.totalPageCount);
+            elements.progress.max = book.totalPageCount;
             elements.pageInput.max = String(book.totalPageCount);
             elements.pageInput.value = String(initialPage);
             updateControls();
@@ -287,6 +222,9 @@ export function createViewer(root, dependencies = {}) {
         elements.content.setAttribute("aria-busy", "false");
         elements.status.textContent =
             `${metadata.pageNumber} / ${state.totalPageCount} 페이지`;
+        elements.progress.value = metadata.pageNumber;
+        elements.progressLabel.textContent =
+            `${Math.round((metadata.pageNumber / state.totalPageCount) * 100)}%`;
         elements.access.textContent = accessMessage(metadata);
         elements.inkBalance.textContent = `남은 잉크 ${metadata.inkBalance}`;
         elements.content.scrollTop = 0;
@@ -478,24 +416,6 @@ export function createViewer(root, dependencies = {}) {
     };
 }
 
-async function createApiError(response, requestId) {
-    let errorBody;
-    try {
-        errorBody = await response.json();
-    } catch {
-        errorBody = null;
-    }
-
-    return new ApiRequestError(
-        typeof errorBody?.code === "string" ? errorBody.code : "INVALID_RESPONSE",
-        typeof errorBody?.message === "string"
-            ? errorBody.message
-            : DEFAULT_ERROR_MESSAGE,
-        response.status,
-        requestId
-    );
-}
-
 function accessMessage(metadata) {
     if (metadata.owned) {
         return "온라인 소장 도서 · 잉크 차감과 대여 만료 없음";
@@ -506,10 +426,9 @@ function accessMessage(metadata) {
         timeStyle: "short"
     }).format(new Date(metadata.expiresAt));
 
-    if (metadata.deductedInk === 1) {
-        return `1잉크 사용 · ${expiresAt}까지 대여`;
-    }
-    return `대여 중 · ${expiresAt}까지`;
+    return metadata.deductedInk === 1
+        ? `${expiresAt}까지 대여`
+        : `대여 중 · ${expiresAt}까지`;
 }
 
 function findElements(root) {
@@ -525,6 +444,8 @@ function findElements(root) {
         pageInput: "[data-viewer-page-input]",
         pageSubmit: "[data-viewer-page-submit]",
         totalPages: "[data-viewer-total-pages]",
+        progress: "[data-viewer-progress]",
+        progressLabel: "[data-viewer-progress-label]",
         textControls: "[data-viewer-text-controls]",
         textSmaller: "[data-viewer-text-smaller]",
         textLarger: "[data-viewer-text-larger]",

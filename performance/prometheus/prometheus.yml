@@ -1,0 +1,15 @@
+global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+
+scrape_configs:
+  - job_name: ilgeobolkka-application
+    metrics_path: /actuator/prometheus
+    static_configs:
+      - targets:
+          - app:8081
+
+  - job_name: ilgeobolkka-mysql
+    static_configs:
+      - targets:
+          - mysql-exporter:9104

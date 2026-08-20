@@ -37,10 +37,10 @@ import org.springframework.test.context.ContextConfiguration;
 
 /**
  * SCRUM-422: MVP 핵심 경로(도서 목록·페이지 열기·서재)의 쿼리 수·단발 파사드 처리 시간을 실제
- * MySQL 8.4에서 측정해 명백한 N+1 유무를 근거로 확인한다. 조회 쿼리는 모두 native SQL 단일
- * 문장이라 목록 크기와 무관하게 쿼리 수가 고정될 것으로 예상하며, 아래 상한 초과는 그 가정이 깨졌다는
- * 회귀 신호다. 판정 근거는 쿼리 수이고, 처리 시간은 컨트롤러·시큐리티·직렬화를 제외한 파사드 단일
- * 호출의 경과 시간(워밍업·반복 없음)을 담은 참고용 수치일 뿐 HTTP API 응답 시간이 아니다.
+ * MySQL 8.4에서 측정해 명백한 N+1 유무를 근거로 확인한다. 도서 목록은 콘텐츠·전체 건수·필터 항목을
+ * 각각 한 번 조회하고, 나머지 경로도 목록 크기와 무관하게 쿼리 수가 고정될 것으로 예상한다. 아래 상한
+ * 초과는 그 가정이 깨졌다는 회귀 신호다. 판정 근거는 쿼리 수이고, 처리 시간은 컨트롤러·시큐리티·직렬화를
+ * 제외한 파사드 단일 호출의 경과 시간(워밍업·반복 없음)을 담은 참고용 수치일 뿐 HTTP API 응답 시간이 아니다.
  *
  * <p>목록 측정은 {@link #MEASUREMENT_KEYWORD}로 격리한다. keyword=null(전체 조회)로 측정하면
  * 오래 쓴 {@code _test} DB에 다른 테스트가 남긴 도서가 섞여도 결과가 비어 있지만 않으면 통과해,
@@ -50,18 +50,17 @@ import org.springframework.test.context.ContextConfiguration;
  * 경계를 날짜 리터럴로 고정하면 측정 시점이 지날수록 전제가 조용히 깨진다. {@link #FIXED_NOW}를
  * 주입해 "지금"을 고정하고, 그 기준으로 활성·만료·소장 건수를 매번 명시적으로 검증한다.
  *
- * <p>2026-08-03 로컬 MySQL 8.4(Docker), 도서 100권·서재 30건(소장 10·활성 대여 10·만료 대여 10)
- * 조건으로 목록 격리·고정 Clock 반영 뒤 재측정한 베이스라인은 아래와 같다(쿼리 수는 격리 전
- * 최초 측정과 동일, 처리 시간은 재측정값). 모든 경로가 데이터 규모와 무관한 고정 쿼리 수를 보여
- * 명백한 N+1이 확인되지 않았고, 그에 따라 별도 보정은 하지 않았다.
+ * <p>2026-08-19 로컬 MySQL 8.4(Docker), 도서 100권·서재 30건(소장 10·활성 대여 10·만료 대여 10)
+ * 조건으로 카테고리 필터 항목을 포함해 재측정한 베이스라인은 아래와 같다. 모든 경로가 데이터 규모와
+ * 무관한 고정 쿼리 수를 보여 명백한 N+1이 확인되지 않았고, 그에 따라 별도 보정은 하지 않았다.
  *
  * <pre>
  * | 경로                        | 쿼리 수 | 파사드 처리 시간 |
  * |-----------------------------|--------|-----------------|
- * | 도서 목록 1페이지(100권 중) | 2건    | 3ms             |
- * | 도서 목록 2페이지(100권 중) | 2건    | 7ms             |
- * | 서재 조회(30건)             | 1건    | 12ms            |
- * | 페이지 열기(신규 대여)      | 14건   | 94ms            |
+ * | 도서 목록 1페이지(100권 중) | 3건    | 3ms             |
+ * | 도서 목록 2페이지(100권 중) | 3건    | 11ms            |
+ * | 서재 조회(30건)             | 1건    | 16ms            |
+ * | 페이지 열기(신규 대여)      | 14건   | 115ms           |
  * </pre>
  */
 @SpringBootTest
@@ -136,9 +135,10 @@ class CoreQueryMeasurementMySqlIntegrationTest {
 
         assertEquals(10, response.books().size(), "1페이지는 10권이어야 한다");
         assertEquals(BOOK_COUNT, response.totalCount(), "격리된 측정 데이터가 100권이어야 한다");
+        assertEquals(CATEGORIES.length, response.categories().size(), "필터용 카테고리를 모두 반환해야 한다");
         assertTrue(
-                queryCount <= 2,
-                "목록 조회는 콘텐츠·카운트 쿼리 2건을 넘지 않아야 한다: " + queryCount);
+                queryCount <= 3,
+                "목록 조회는 콘텐츠·카운트·카테고리 쿼리 3건을 넘지 않아야 한다: " + queryCount);
     }
 
     @Test
@@ -154,9 +154,10 @@ class CoreQueryMeasurementMySqlIntegrationTest {
 
         assertEquals(10, response.books().size(), "2페이지도 10권이어야 한다");
         assertEquals(BOOK_COUNT, response.totalCount(), "격리된 측정 데이터가 100권이어야 한다");
+        assertEquals(CATEGORIES.length, response.categories().size(), "필터용 카테고리를 모두 반환해야 한다");
         assertTrue(
-                queryCount <= 2,
-                "목록 조회는 콘텐츠·카운트 쿼리 2건을 넘지 않아야 한다: " + queryCount);
+                queryCount <= 3,
+                "목록 조회는 콘텐츠·카운트·카테고리 쿼리 3건을 넘지 않아야 한다: " + queryCount);
     }
 
     @Test

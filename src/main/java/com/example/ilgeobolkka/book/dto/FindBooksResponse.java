@@ -8,9 +8,15 @@ public record FindBooksResponse(
         List<BookListItemResponse> books,
         int page,
         int totalPages,
-        long totalCount) {
+        long totalCount,
+        List<String> categories,
+        String selectedCategory) {
 
-    public static FindBooksResponse from(Page<Book> books, int requestedPage) {
+    public static FindBooksResponse from(
+            Page<Book> books,
+            int requestedPage,
+            List<String> categories,
+            String selectedCategory) {
         List<BookListItemResponse> items =
                 books.getContent().stream()
                         .map(BookListItemResponse::from)
@@ -19,6 +25,8 @@ public record FindBooksResponse(
                 items,
                 requestedPage,
                 books.getTotalPages(),
-                books.getTotalElements());
+                books.getTotalElements(),
+                List.copyOf(categories),
+                selectedCategory);
     }
 }

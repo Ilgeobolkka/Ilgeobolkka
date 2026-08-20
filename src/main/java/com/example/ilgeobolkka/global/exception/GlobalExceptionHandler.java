@@ -1,8 +1,19 @@
 package com.example.ilgeobolkka.global.exception;
 
+import com.example.ilgeobolkka.airoute.exception.AiRouteContentChangedException;
+import com.example.ilgeobolkka.airoute.exception.AiRouteEntitlementChangedException;
+import com.example.ilgeobolkka.airoute.exception.AiRouteGenerationConsumedException;
+import com.example.ilgeobolkka.airoute.exception.AiRouteGenerationApiException;
+import com.example.ilgeobolkka.airoute.exception.AiRouteGenerationNotFoundException;
+import com.example.ilgeobolkka.airoute.exception.AiRouteNotSupportedException;
+import com.example.ilgeobolkka.airoute.exception.InvalidAiRouteGenerationInputException;
+import com.example.ilgeobolkka.airoute.exception.InvalidAiRoutePurposeException;
+import com.example.ilgeobolkka.airoute.exception.AiRouteNotCompletedException;
+import com.example.ilgeobolkka.airoute.exception.AiRouteNotFoundException;
 import com.example.ilgeobolkka.auth.exception.InvalidCredentialsException;
 import com.example.ilgeobolkka.book.exception.BookNotFoundException;
 import com.example.ilgeobolkka.book.exception.BookPageNotFoundException;
+import com.example.ilgeobolkka.book.exception.InvalidBookCategoryException;
 import com.example.ilgeobolkka.infra.portone.PortOnePaymentUnavailableException;
 import com.example.ilgeobolkka.infra.portone.PortOneWebhookVerificationException;
 import com.example.ilgeobolkka.ink.exception.InkPurchaseNotFoundException;
@@ -17,6 +28,7 @@ import com.example.ilgeobolkka.reading.exception.ReadingSessionNotFoundException
 import com.example.ilgeobolkka.reading.exception.ViewerSessionReplacedException;
 import com.example.ilgeobolkka.webhook.exception.UnknownPaymentException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,11 +56,46 @@ public class GlobalExceptionHandler {
         MethodArgumentTypeMismatchException.class,
         ServletRequestBindingException.class,
         HttpMessageNotReadableException.class,
-        HttpMediaTypeNotSupportedException.class
+        HttpMediaTypeNotSupportedException.class,
+        InvalidBookCategoryException.class
     })
     ResponseEntity<ApiErrorResponse> handleInvalidInput(Exception exception) {
         logFailure(ErrorCode.INVALID_INPUT, exception);
         return response(ErrorCode.INVALID_INPUT);
+    }
+
+    @ExceptionHandler({
+        InvalidAiRouteGenerationInputException.class,
+        InvalidAiRoutePurposeException.class
+    })
+    ResponseEntity<ApiErrorResponse> handleInvalidAiRouteInput(Exception exception) {
+        logFailure(ErrorCode.INVALID_INPUT, exception);
+        return response(ErrorCode.INVALID_INPUT);
+    }
+
+    @ExceptionHandler(AiRouteNotSupportedException.class)
+    ResponseEntity<ApiErrorResponse> handleAiRouteNotSupported(
+            AiRouteNotSupportedException exception) {
+        logFailure(ErrorCode.AI_ROUTE_NOT_SUPPORTED, exception);
+        return response(ErrorCode.AI_ROUTE_NOT_SUPPORTED);
+    }
+
+    @ExceptionHandler(AiRouteGenerationApiException.class)
+    ResponseEntity<ApiErrorResponse> handleAiRouteGenerationApi(
+            AiRouteGenerationApiException exception) {
+        logFailure(exception.errorCode(), exception);
+        ResponseEntity.BodyBuilder response = ResponseEntity.status(exception.errorCode().status());
+        if (exception.retryAfterSeconds() != null) {
+            response.header(HttpHeaders.RETRY_AFTER, Long.toString(exception.retryAfterSeconds()));
+        }
+        return response.body(ApiErrorResponse.from(exception.errorCode()));
+    }
+
+    @ExceptionHandler(AiRouteNotCompletedException.class)
+    ResponseEntity<ApiErrorResponse> handleAiRouteNotCompleted(
+            AiRouteNotCompletedException exception) {
+        logFailure(ErrorCode.AI_ROUTE_NOT_COMPLETED, exception);
+        return response(ErrorCode.AI_ROUTE_NOT_COMPLETED);
     }
 
     @ExceptionHandler(PortOneWebhookVerificationException.class)
@@ -92,7 +139,30 @@ public class GlobalExceptionHandler {
         return response(ErrorCode.VIEWER_SESSION_REPLACED);
     }
 
+    @ExceptionHandler(AiRouteEntitlementChangedException.class)
+    ResponseEntity<ApiErrorResponse> handleAiRouteEntitlementChanged(
+            AiRouteEntitlementChangedException exception) {
+        logFailure(ErrorCode.AI_ROUTE_ENTITLEMENT_CHANGED, exception);
+        return response(ErrorCode.AI_ROUTE_ENTITLEMENT_CHANGED);
+    }
+
+    @ExceptionHandler(AiRouteContentChangedException.class)
+    ResponseEntity<ApiErrorResponse> handleAiRouteContentChanged(
+            AiRouteContentChangedException exception) {
+        logFailure(ErrorCode.AI_ROUTE_CONTENT_CHANGED, exception);
+        return response(ErrorCode.AI_ROUTE_CONTENT_CHANGED);
+    }
+
+    @ExceptionHandler(AiRouteGenerationConsumedException.class)
+    ResponseEntity<ApiErrorResponse> handleAiRouteGenerationConsumed(
+            AiRouteGenerationConsumedException exception) {
+        logFailure(ErrorCode.AI_ROUTE_GENERATION_CONSUMED, exception);
+        return response(ErrorCode.AI_ROUTE_GENERATION_CONSUMED);
+    }
+
     @ExceptionHandler({
+        AiRouteGenerationNotFoundException.class,
+        AiRouteNotFoundException.class,
         BookNotFoundException.class,
         BookPageNotFoundException.class,
         InkPurchaseNotFoundException.class,

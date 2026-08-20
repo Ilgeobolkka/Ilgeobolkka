@@ -3,21 +3,24 @@
       xmlns:th="http://www.thymeleaf.org"
       th:replace="~{fragments/shell :: page(${pageTitle}, ~{::section})}">
 <body>
-<section data-ownership-history-root aria-labelledby="ownership-history-title">
-    <header class="mb-4">
-        <h1 class="h2 mb-2" id="ownership-history-title">소장 결제 내역</h1>
-        <p class="mb-0 text-secondary">
+<section class="ownership-history-page"
+         data-ownership-history-root
+         aria-labelledby="ownership-history-title">
+    <header class="page-heading">
+        <p class="eyebrow">OWNED BOOKS</p>
+        <h1 id="ownership-history-title">소장 결제 내역</h1>
+        <p>
             완료된 도서 소장 결제만 잉크 내역과 분리해 최신순으로 확인합니다.
         </p>
     </header>
 
-    <p class="text-secondary" aria-live="polite" data-ownership-history-status>
+    <p class="history-status" aria-live="polite" data-ownership-history-status>
         소장 결제 내역을 불러오고 있습니다.
     </p>
 
-    <section class="bg-white border rounded-3 p-4" aria-label="완료된 소장 결제">
+    <section class="history-panel" aria-label="완료된 소장 결제">
         <div class="table-responsive">
-            <table class="table align-middle mb-3">
+            <table class="table history-table align-middle mb-3">
                 <caption class="visually-hidden">
                     결제 시각 최신순으로 표시한 완료된 소장 결제 내역
                 </caption>
@@ -39,7 +42,7 @@
             </table>
         </div>
 
-        <div class="d-flex flex-column flex-sm-row align-items-center justify-content-center gap-3">
+        <div class="pagination-bar">
             <button class="btn btn-outline-secondary"
                     type="button"
                     data-ownership-history-previous

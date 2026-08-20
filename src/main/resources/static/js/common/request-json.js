@@ -17,9 +17,7 @@ export async function requestJson(url, options = {}) {
     const method = (options.method || "GET").toUpperCase();
     const headers = new Headers(options.headers);
 
-    if (!SAFE_METHODS.has(method)) {
-        addCsrfHeader(headers);
-    }
+    addCsrfHeader(headers, method);
     if (options.body !== undefined && !headers.has("Content-Type")) {
         headers.set("Content-Type", "application/json");
     }
@@ -67,7 +65,7 @@ export async function requestJson(url, options = {}) {
     throw new ApiRequestError(code, message, response.status, requestId);
 }
 
-function resolveSameOriginUrl(url) {
+export function resolveSameOriginUrl(url) {
     const requestUrl = new URL(url, window.location.href);
     if (requestUrl.origin !== window.location.origin) {
         throw new ApiRequestError(
@@ -80,7 +78,10 @@ function resolveSameOriginUrl(url) {
     return requestUrl;
 }
 
-function addCsrfHeader(headers) {
+export function addCsrfHeader(headers, method) {
+    if (SAFE_METHODS.has(method.toUpperCase())) {
+        return;
+    }
     const token = document.querySelector("meta[name='_csrf']")?.content;
     const headerName = document.querySelector("meta[name='_csrf_header']")?.content;
     if (!token || !headerName) {

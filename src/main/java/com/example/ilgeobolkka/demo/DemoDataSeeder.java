@@ -92,7 +92,7 @@ class DemoDataSeeder {
     }
 
     private void requireImportedPages() {
-        Integer invalidBookCount =
+        Integer pageCountMismatchBookCount =
                 jdbcTemplate.queryForObject(
                         """
                         SELECT COUNT(*)
@@ -107,28 +107,45 @@ class DemoDataSeeder {
                           AND b.total_page_count <> COALESCE(bp.page_count, 0)
                         """,
                         Integer.class);
+        Integer missingImageBookCount =
+                jdbcTemplate.queryForObject(
+                        """
+                        SELECT COUNT(*)
+                        FROM book b
+                        LEFT JOIN (
+                            SELECT book_id, COUNT(*) AS image_count
+                            FROM book_page
+                            WHERE book_id BETWEEN 1 AND 100
+                              AND content_type = 'IMAGE'
+                            GROUP BY book_id
+                        ) bp ON bp.book_id = b.id
+                        WHERE b.id BETWEEN 1 AND 100
+                          AND COALESCE(bp.image_count, 0) = 0
+                        """,
+                        Integer.class);
         List<String> imagePaths =
                 jdbcTemplate.queryForList(
                         """
                         SELECT image_path
                         FROM book_page
                         WHERE book_id BETWEEN 1 AND 100
-                          AND page_number = 2
                           AND content_type = 'IMAGE'
-                        ORDER BY book_id
+                        ORDER BY book_id, page_number
                         """,
                         String.class);
-        boolean hasImportedImages =
-                imagePaths.size() == 100
-                        && imagePaths.stream().allMatch(this::isRegularFile);
-        if (invalidBookCount != 0 || !hasImportedImages) {
+        boolean hasValidImageFiles = imagePaths.stream().allMatch(this::isRegularFile);
+        if (pageCountMismatchBookCount != 0
+                || missingImageBookCount != 0
+                || !hasValidImageFiles) {
             throw new IllegalStateException(
-                    "시연 계정 시드 전에 content-import 배치로 400페이지와 IMAGE 파일을 적재해야 합니다.");
+                    "시연 계정 시드 전에 content-import 배치로 도서별 페이지와 IMAGE 파일을 적재해야 합니다.");
         }
     }
 
     private boolean isRegularFile(String filePath) {
-        return Files.isRegularFile(Path.of(filePath));
+        return filePath != null
+                && !filePath.isBlank()
+                && Files.isRegularFile(Path.of(filePath));
     }
 
     private Map<String, StoredReader> findDemoReaders() {

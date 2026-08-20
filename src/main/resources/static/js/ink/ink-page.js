@@ -136,7 +136,7 @@ export function initializeInkPage(
         book.className = "d-block";
         book.textContent = entry.bookTitle;
         pageNumber.className = "d-block";
-        pageNumber.textContent = `원본 ${entry.pageNumber}페이지`;
+        pageNumber.textContent = `${entry.pageNumber}페이지`;
         rentalPeriod.className = "d-block small text-secondary";
         rentalPeriod.textContent =
             `대여 ${formatDateTime(entry.rentedAt)} · 만료 ${formatDateTime(entry.expiresAt)}`;
@@ -262,7 +262,7 @@ export function initializeInkPage(
                 preparedPayment = null;
                 showPaymentStatus(
                     "success",
-                    `[PAID] ${response.grantedInk}잉크가 지급되었습니다. 현재 잔액은 ${response.inkBalance}잉크입니다.`);
+                    `${response.grantedInk}잉크가 지급되었습니다. 현재 잔액은 ${response.inkBalance}잉크입니다.`);
                 await Promise.all([loadBalance(), loadLedger(1)]);
                 return;
             }

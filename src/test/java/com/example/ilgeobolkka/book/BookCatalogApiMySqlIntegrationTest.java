@@ -78,7 +78,9 @@ class BookCatalogApiMySqlIntegrationTest {
                 .andExpect(jsonPath("$.books[0].bookPrice").value(9001))
                 .andExpect(jsonPath("$.page").value(1))
                 .andExpect(jsonPath("$.totalPages").value(10))
-                .andExpect(jsonPath("$.totalCount").value(100));
+                .andExpect(jsonPath("$.totalCount").value(100))
+                .andExpect(jsonPath("$.categories").value(contains("A", "B", "Z")))
+                .andExpect(jsonPath("$.selectedCategory").value(nullValue()));
     }
 
     @Test
@@ -101,6 +103,56 @@ class BookCatalogApiMySqlIntegrationTest {
                                                 402020)))
                 .andExpect(jsonPath("$.books[4].category").value("A"))
                 .andExpect(jsonPath("$.books[5].category").value("B"));
+    }
+
+    @Test
+    void 특정_카테고리는_해당_도서와_현재_선택_상태만_반환한다() throws Exception {
+        mockMvc.perform(
+                        get("/api/books")
+                                .param("page", "1")
+                                .param("category", "A"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.books.length()").value(10))
+                .andExpect(jsonPath("$.books[*].category").value(contains(
+                        "A", "A", "A", "A", "A", "A", "A", "A", "A", "A")))
+                .andExpect(jsonPath("$.totalPages").value(2))
+                .andExpect(jsonPath("$.totalCount").value(15))
+                .andExpect(jsonPath("$.categories").value(contains("A", "B", "Z")))
+                .andExpect(jsonPath("$.selectedCategory").value("A"));
+    }
+
+    @Test
+    void 선택한_카테고리에_검색_결과가_없으면_빈_목록과_필터_상태를_반환한다() throws Exception {
+        mockMvc.perform(
+                        get("/api/books")
+                                .param("page", "1")
+                                .param("category", "Z")
+                                .param("keyword", "Shared Search"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.books.length()").value(0))
+                .andExpect(jsonPath("$.totalPages").value(0))
+                .andExpect(jsonPath("$.totalCount").value(0))
+                .andExpect(jsonPath("$.categories").value(contains("A", "B", "Z")))
+                .andExpect(jsonPath("$.selectedCategory").value("Z"));
+    }
+
+    @Test
+    void 빈_카테고리는_전체로_처리하고_존재하지_않는_카테고리는_400이다() throws Exception {
+        mockMvc.perform(
+                        get("/api/books")
+                                .param("page", "1")
+                                .param("category", "   "))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.books.length()").value(10))
+                .andExpect(jsonPath("$.totalCount").value(100))
+                .andExpect(jsonPath("$.selectedCategory").value(nullValue()));
+
+        mockMvc.perform(
+                        get("/api/books")
+                                .param("page", "1")
+                                .param("category", "없는 카테고리"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.code").value("INVALID_INPUT"));
     }
 
     @Test
@@ -176,6 +228,17 @@ class BookCatalogApiMySqlIntegrationTest {
 
     @Test
     void T_CAT_005_목록과_상세는_계약_필드와_로그인_상태별_소장_여부를_반환한다() throws Exception {
+        jdbcTemplate.update(
+                """
+                UPDATE book
+                SET content_version = 'ai-route-v2',
+                    ai_external_transfer_allowed = TRUE,
+                    ai_data_policy_version = 'policy-test',
+                    ai_route_supported = TRUE
+                WHERE id = ?
+                """,
+                BOOK_ID_BASE + 1);
+
         mockMvc.perform(get("/api/books").param("page", "1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.books[0].bookId").value(402001))
@@ -199,7 +262,8 @@ class BookCatalogApiMySqlIntegrationTest {
                 .andExpect(jsonPath("$.description").value("Description 001"))
                 .andExpect(jsonPath("$.totalPageCount").value(4))
                 .andExpect(jsonPath("$.bookPrice").value(9001))
-                .andExpect(jsonPath("$.owned").value(nullValue()));
+                .andExpect(jsonPath("$.owned").value(nullValue()))
+                .andExpect(jsonPath("$.aiRouteSupported").doesNotExist());
 
         mockMvc.perform(
                         get("/api/books/{bookId}", BOOK_ID_BASE + 1)

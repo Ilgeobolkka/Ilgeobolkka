@@ -3,20 +3,30 @@
       xmlns:th="http://www.thymeleaf.org"
       th:replace="~{fragments/shell :: page(${pageTitle}, ~{::section})}">
 <body>
-<section data-book-list-root aria-labelledby="book-list-title">
-    <header class="mb-4">
-        <h1 class="h2 mb-2" id="book-list-title">도서 탐색</h1>
-        <p class="mb-0 text-secondary">제목이나 저자로 필요한 도서를 찾아보세요.</p>
+<section class="catalog-page" data-book-list-root aria-labelledby="book-list-title">
+    <header class="page-heading catalog-heading">
+        <p class="eyebrow">읽고 싶은 책을 찾는 곳</p>
+        <h1 id="book-list-title">도서 탐색</h1>
+        <p>제목이나 저자로 필요한 도서를 찾아보세요.</p>
     </header>
 
-    <form class="row g-2 mb-4"
+    <form class="catalog-search"
           th:action="@{/books}"
           method="get"
           role="search"
           data-book-search-form>
-        <div class="col">
+        <div class="catalog-filter-field">
+            <label class="form-label" for="book-category">카테고리</label>
+            <select class="form-select form-select-lg"
+                    id="book-category"
+                    name="category"
+                    data-book-category-filter>
+                <option value="">전체</option>
+            </select>
+        </div>
+        <div class="catalog-search-field">
             <label class="visually-hidden" for="book-search">제목 또는 저자 검색</label>
-            <input class="form-control"
+            <input class="form-control form-control-lg"
                    id="book-search"
                    name="keyword"
                    type="search"
@@ -24,54 +34,61 @@
                    autocomplete="off"
                    data-book-search>
         </div>
-        <div class="col-auto">
-            <button class="btn btn-primary" type="submit">검색</button>
+        <div>
+            <button class="btn btn-primary btn-lg" type="submit">검색</button>
         </div>
     </form>
 
-    <p class="text-secondary" aria-live="polite" data-book-status>
-        도서 목록을 불러오고 있습니다.
-    </p>
+    <div class="catalog-layout">
+        <aside class="catalog-guide" aria-labelledby="catalog-guide-title">
+            <p class="eyebrow" id="catalog-guide-title">읽는 방법</p>
+            <strong>잉크 1개로<br>한 쪽을 30일 대여</strong>
+            <p>처음 여는 페이지에만 잉크가 차감되고, 대여 기간에는 다시 열어도 추가 차감이 없습니다.</p>
+            <a th:if="${authenticated}" th:href="@{/ink}">내 잉크 확인하기 →</a>
+            <a th:unless="${authenticated}" th:href="@{/signup}">읽기 시작하기 →</a>
+        </aside>
 
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-5 g-4 mb-4"
-         data-book-list></div>
+        <div class="catalog-results">
+            <p class="catalog-status" aria-live="polite" data-book-status>
+                도서 목록을 불러오고 있습니다.
+            </p>
 
-    <section class="bg-white border rounded-3 p-4 text-center mb-4"
-             data-book-empty
-             hidden>
-        <h2 class="h4" data-book-empty-title>표시할 도서가 없습니다.</h2>
-        <p class="text-secondary mb-0" data-book-empty-description></p>
-    </section>
+            <div class="book-grid" data-book-list></div>
 
-    <nav class="d-flex align-items-center justify-content-center gap-3"
-         aria-label="도서 목록 페이지">
-        <button class="btn btn-outline-secondary"
-                type="button"
-                data-book-previous
-                disabled>이전</button>
-        <span class="text-secondary" data-book-page>불러오는 중</span>
-        <button class="btn btn-outline-secondary"
-                type="button"
-                data-book-next
-                disabled>다음</button>
-    </nav>
+            <section class="empty-state" data-book-empty hidden>
+                <h2 data-book-empty-title>표시할 도서가 없습니다.</h2>
+                <p data-book-empty-description></p>
+            </section>
+
+            <nav class="pagination-bar" aria-label="도서 목록 페이지">
+                <button class="btn btn-outline-secondary"
+                        type="button"
+                        data-book-previous
+                        disabled>이전</button>
+                <span data-book-page>불러오는 중</span>
+                <button class="btn btn-outline-secondary"
+                        type="button"
+                        data-book-next
+                        disabled>다음</button>
+            </nav>
+        </div>
+    </div>
 
     <template data-book-card-template>
-        <article class="col">
-            <div class="card h-100 shadow-sm">
+        <article class="book-card">
+            <div class="card h-100 book-card-frame">
                 <img class="card-img-top book-card-cover" data-book-cover alt="">
-                <div class="book-card-cover-placeholder align-items-center justify-content-center text-secondary"
+                <div class="book-card-cover-placeholder align-items-center justify-content-center"
                      data-book-cover-placeholder
                      hidden>
                     표지 없음
                 </div>
-                <div class="card-body d-flex flex-column">
-                    <p class="small text-secondary mb-1" data-book-category></p>
-                    <h2 class="h5 card-title">
-                        <a class="stretched-link text-decoration-none" data-book-title></a>
+                <div class="card-body d-flex flex-column px-0 pb-0">
+                    <p class="book-card-category" data-book-category></p>
+                    <h2 class="book-card-title">
+                        <a class="stretched-link" data-book-title></a>
                     </h2>
-                    <p class="mb-2" data-book-author></p>
-                    <p class="fw-semibold mt-auto mb-0" data-book-price></p>
+                    <p class="book-card-meta" data-book-author></p>
                 </div>
             </div>
         </article>

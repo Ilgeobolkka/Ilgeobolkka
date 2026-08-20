@@ -51,6 +51,7 @@ ADR을 모두 남기고, 현행 정본과 저장소의 참조는 새 ADR을 가�
 | --- | --- | --- |
 | [0002](./application/0002-organize-backend-packages-by-domain.md) | 도메인 우선 패키지와 Facade | 승인됨 |
 | [0004](./application/0004-define-api-contract.md) | same-origin JSON API 경계 | 승인됨 |
+| [0014](./application/0014-use-openai-and-mysql-for-ai-route-generation.md) | OpenAI와 MySQL 기반 AI 잉크 경로 | 승인됨 |
 
 ### 도메인
 
@@ -58,6 +59,7 @@ ADR을 모두 남기고, 현행 정본과 저장소의 참조는 새 ADR을 가�
 | --- | --- | --- |
 | [0003](./domain/0003-define-core-domain-erd.md) | 핵심 권한·결제 관계형 데이터 모델 | 승인됨 |
 | [0010](./domain/0010-model-page-rentals-with-ink-ledger.md) | 기간 대여와 잉크 원장 | 승인됨 |
+| [0016](./domain/0016-store-generation-item-cost-status.md) | 생성 항목의 추가 비용 상태 저장 | 승인됨 |
 
 ### 콘텐츠
 
@@ -66,6 +68,7 @@ ADR을 모두 남기고, 현행 정본과 저장소의 참조는 새 ADR을 가�
 | [0006](./content/0006-use-poppler-and-private-s3-for-image-pages.md) | Poppler 사전 변환과 비공개 S3 | 승인됨 |
 | [0011](./content/0011-align-page-content-with-source-pdf.md) | 원본 PDF 연결 텍스트·이미지 콘텐츠 | 대체됨 |
 | [0013](./content/0013-define-page-content-and-public-ai-fixture-boundary.md) | 원본 PDF 연결 콘텐츠와 공개 AI 시연 fixture 경계 | 승인됨 |
+| [0015](./content/0015-allow-verified-poppler-version-set.md) | 산출물 동일성을 확인한 Poppler 버전 집합 허용 | 승인됨 |
 
 ### 보안
 

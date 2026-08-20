@@ -24,8 +24,9 @@ public class BookController {
     @GetMapping
     FindBooksResponse findBooks(
             @RequestParam @Min(1) int page,
-            @RequestParam(required = false) String keyword) {
-        return bookFacade.findBooks(page, keyword);
+            @RequestParam(required = false) String keyword,
+            @RequestParam(required = false) String category) {
+        return bookFacade.findBooks(page, keyword, category);
     }
 
     @GetMapping("/{bookId}")

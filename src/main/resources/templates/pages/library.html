@@ -3,62 +3,75 @@
       xmlns:th="http://www.thymeleaf.org"
       th:replace="~{fragments/shell :: page(${pageTitle}, ~{::section})}">
 <body>
-<section data-library-root aria-labelledby="library-title">
-    <header class="mb-4">
-        <h1 class="h2 mb-2" id="library-title">내 서재</h1>
-        <p class="mb-0 text-secondary">
+<section class="library-page" data-library-root aria-labelledby="library-title">
+    <header class="page-heading">
+        <p class="eyebrow">MY LIBRARY</p>
+        <h1 id="library-title">내 서재</h1>
+        <p
+           th:text="${aiRouteEnabled}
+                   ? '대여하거나 온라인 소장했거나 AI 독서 경로를 저장한 도서를 이어보세요.'
+                   : '대여하거나 온라인 소장한 도서를 마지막으로 읽은 페이지부터 이어보세요.'">
             대여하거나 온라인 소장한 도서를 마지막으로 읽은 페이지부터 이어보세요.
         </p>
     </header>
 
-    <p class="text-secondary" aria-live="polite" data-library-status>
+    <div class="library-summary" aria-live="polite" data-library-status>
         내 서재를 불러오고 있습니다.
-    </p>
+    </div>
 
-    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4"
-         data-library-list></div>
+    <div class="library-list" data-library-list></div>
 
-    <section class="bg-white border rounded-3 p-4 text-center"
-             data-library-empty
-             hidden>
-        <h2 class="h4">아직 서재가 비어 있습니다.</h2>
-        <p class="text-secondary">도서의 한 페이지를 읽거나 온라인 소장하면 여기에 추가됩니다.</p>
+    <section class="empty-state" data-library-empty hidden>
+        <h2>아직 서재가 비어 있습니다.</h2>
+        <p
+           th:text="${aiRouteEnabled}
+                   ? '도서의 한 페이지를 읽거나 온라인 소장하거나 AI 독서 경로를 저장하면 여기에 추가됩니다.'
+                   : '도서의 한 페이지를 읽거나 온라인 소장하면 여기에 추가됩니다.'">
+            도서의 한 페이지를 읽거나 온라인 소장하면 여기에 추가됩니다.
+        </p>
         <a class="btn btn-primary" th:href="@{/books}">도서 둘러보기</a>
     </section>
 
     <template data-library-card-template>
-        <article class="col" data-library-card>
-            <div class="card h-100 shadow-sm">
-                <img class="card-img-top library-cover"
+        <article class="library-entry" data-library-card>
+            <div class="library-cover-wrap">
+                <img class="library-cover"
                      data-library-cover
                      alt="">
-                <div class="library-cover-placeholder align-items-center justify-content-center text-secondary"
+                <div class="library-cover-placeholder align-items-center justify-content-center"
                      data-library-cover-placeholder
                      hidden>
                     표지 없음
                 </div>
-                <div class="card-body d-flex flex-column">
-                    <p class="small text-secondary mb-1" data-library-category></p>
-                    <h2 class="h5 card-title" data-library-title></h2>
-                    <p class="mb-2" data-library-last-page></p>
-                    <p class="mb-2">
-                        <span class="badge" data-library-access></span>
-                    </p>
-                    <div class="small text-secondary mb-3" data-library-rental>
-                        <p class="mb-1" data-library-rented-at></p>
-                        <p class="mb-0" data-library-expires-at></p>
-                    </div>
-                    <p class="small text-secondary mb-3"
-                       data-library-owned
-                       hidden>
-                        기간 제한이나 잉크 차감 없이 읽을 수 있습니다.
-                    </p>
-                    <a class="btn btn-primary mt-auto"
-                       data-library-resume>
-                        이어서 읽기
-                    </a>
-                </div>
             </div>
+
+            <div class="library-entry-copy">
+                <p class="eyebrow" data-library-category></p>
+                <h2 data-library-title></h2>
+                <p class="library-last-page" data-library-last-page></p>
+                <p class="library-access-line">
+                    <span class="badge" data-library-access></span>
+                </p>
+                <div class="library-rental" data-library-rental>
+                    <p data-library-rented-at></p>
+                    <p data-library-expires-at></p>
+                </div>
+                <p class="library-owned-note" data-library-owned hidden>
+                    기간 제한이나 잉크 차감 없이 읽을 수 있습니다.
+                </p>
+                <section class="library-ai-routes"
+                         th:if="${aiRouteEnabled}"
+                         data-library-ai-routes
+                         hidden
+                         aria-label="저장한 AI 독서 경로">
+                    <h3>AI 독서 경로</h3>
+                    <ul class="list-unstyled" data-library-route-list></ul>
+                </section>
+            </div>
+
+            <a class="btn btn-outline-primary library-resume" data-library-resume>
+                이어서 읽기
+            </a>
         </article>
     </template>
 

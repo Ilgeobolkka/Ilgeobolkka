@@ -7,17 +7,65 @@
          th:attr="data-book-id=${bookId},data-initial-page=${initialPage}"
          data-viewer-root
          aria-labelledby="viewer-title">
-    <header class="d-flex align-items-center justify-content-between gap-3 mb-3">
-        <div>
-            <h1 class="h3 mb-1" id="viewer-title" data-viewer-title>도서 뷰어</h1>
-            <p class="mb-0 text-secondary" aria-live="polite" data-viewer-status>
-                뷰어를 준비하고 있습니다.
-            </p>
+    <header class="viewer-topbar">
+        <h1 class="viewer-title" id="viewer-title">
+            <a th:href="@{/books/{bookId}(bookId=${bookId})}">
+                <span aria-hidden="true">←</span>
+                <span data-viewer-title>도서 뷰어</span>
+            </a>
+        </h1>
+
+        <div class="viewer-progress-group">
+            <p aria-live="polite" data-viewer-status>뷰어를 준비하고 있습니다.</p>
+            <progress max="1" value="0" data-viewer-progress>0%</progress>
+            <output data-viewer-progress-label aria-label="독서 진행률">0%</output>
         </div>
-        <a class="btn btn-outline-secondary"
-           th:href="@{/books/{bookId}(bookId=${bookId})}">
-            도서 상세로 돌아가기
-        </a>
+
+        <div class="viewer-display-controls">
+            <div class="btn-group"
+                 role="group"
+                 aria-label="텍스트 글자 크기"
+                 data-viewer-text-controls
+                 hidden>
+                <button class="btn btn-outline-secondary"
+                        type="button"
+                        aria-label="글자 크기 줄이기"
+                        data-viewer-text-smaller>
+                    가−
+                </button>
+                <button class="btn btn-outline-secondary"
+                        type="button"
+                        aria-label="글자 크기 키우기"
+                        data-viewer-text-larger>
+                    가+
+                </button>
+            </div>
+
+            <div class="btn-group"
+                 role="group"
+                 aria-label="이미지 확대와 축소"
+                 data-viewer-image-controls
+                 hidden>
+                <button class="btn btn-outline-secondary"
+                        type="button"
+                        aria-label="페이지 이미지 축소"
+                        data-viewer-zoom-out>
+                    축소
+                </button>
+                <button class="btn btn-outline-secondary"
+                        type="button"
+                        aria-label="페이지 이미지를 너비에 맞춤"
+                        data-viewer-zoom-fit>
+                    너비 맞춤
+                </button>
+                <button class="btn btn-outline-secondary"
+                        type="button"
+                        aria-label="페이지 이미지 확대"
+                        data-viewer-zoom-in>
+                    확대
+                </button>
+            </div>
+        </div>
     </header>
 
     <div class="alert alert-warning"
@@ -31,9 +79,30 @@
         </a>
     </div>
 
-    <div class="viewer-toolbar bg-white border rounded-3 p-3 mb-3 shadow-sm">
-        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
-            <nav class="d-flex align-items-center gap-2" aria-label="페이지 이동">
+    <div class="viewer-workspace">
+        <div class="viewer-page"
+             role="region"
+             aria-label="페이지 콘텐츠"
+             aria-describedby="viewer-keyboard-help"
+             aria-live="polite"
+             aria-busy="true"
+             tabindex="-1"
+             data-text-size="medium"
+             data-image-zoom="100"
+             data-viewer-content>
+        </div>
+
+        <aside class="viewer-sidebar" aria-labelledby="viewer-info-title">
+            <h2 id="viewer-info-title">열람 정보</h2>
+            <div class="viewer-info-card">
+                <strong data-viewer-access>열람 권한을 확인하고 있습니다.</strong>
+            </div>
+            <div class="viewer-info-card viewer-ink-card">
+                <span>현재 잔액</span>
+                <strong data-viewer-ink-balance>확인 중</strong>
+            </div>
+
+            <nav class="viewer-page-navigation" aria-label="페이지 이동">
                 <button class="btn btn-outline-primary"
                         type="button"
                         aria-label="이전 페이지"
@@ -42,26 +111,26 @@
                     이전
                 </button>
 
-                <form class="d-flex align-items-center gap-2" data-viewer-page-form>
-                    <label class="visually-hidden" for="viewer-page-number">페이지 번호</label>
-                    <input class="form-control text-end"
-                           id="viewer-page-number"
-                           type="number"
-                           min="1"
-                           inputmode="numeric"
-                           aria-label="이동할 페이지 번호"
-                           data-viewer-page-input
-                           disabled>
-                    <span class="text-nowrap" aria-hidden="true">
-                        / <span data-viewer-total-pages>-</span>
-                    </span>
-                    <button class="btn btn-primary text-nowrap"
-                            type="submit"
-                            aria-label="입력한 페이지로 이동"
-                            data-viewer-page-submit
-                            disabled>
-                        이동
-                    </button>
+                <form data-viewer-page-form>
+                    <label for="viewer-page-number">페이지</label>
+                    <div class="viewer-page-input-group">
+                        <input class="form-control text-end"
+                               id="viewer-page-number"
+                               type="number"
+                               min="1"
+                               inputmode="numeric"
+                               aria-label="이동할 페이지 번호"
+                               data-viewer-page-input
+                               disabled>
+                        <span aria-hidden="true">/ <span data-viewer-total-pages>-</span></span>
+                        <button class="btn btn-primary"
+                                type="submit"
+                                aria-label="입력한 페이지로 이동"
+                                data-viewer-page-submit
+                                disabled>
+                            이동
+                        </button>
+                    </div>
                 </form>
 
                 <button class="btn btn-outline-primary"
@@ -72,70 +141,7 @@
                     다음
                 </button>
             </nav>
-
-            <div class="d-flex flex-wrap align-items-center gap-3">
-                <div class="btn-group"
-                     role="group"
-                     aria-label="텍스트 글자 크기"
-                     data-viewer-text-controls
-                     hidden>
-                    <button class="btn btn-outline-secondary"
-                            type="button"
-                            aria-label="글자 크기 줄이기"
-                            data-viewer-text-smaller>
-                        가−
-                    </button>
-                    <button class="btn btn-outline-secondary"
-                            type="button"
-                            aria-label="글자 크기 키우기"
-                            data-viewer-text-larger>
-                        가+
-                    </button>
-                </div>
-
-                <div class="btn-group"
-                     role="group"
-                     aria-label="이미지 확대와 축소"
-                     data-viewer-image-controls
-                     hidden>
-                    <button class="btn btn-outline-secondary"
-                            type="button"
-                            aria-label="페이지 이미지 축소"
-                            data-viewer-zoom-out>
-                        축소
-                    </button>
-                    <button class="btn btn-outline-secondary"
-                            type="button"
-                            aria-label="페이지 이미지를 너비에 맞춤"
-                            data-viewer-zoom-fit>
-                        너비 맞춤
-                    </button>
-                    <button class="btn btn-outline-secondary"
-                            type="button"
-                            aria-label="페이지 이미지 확대"
-                            data-viewer-zoom-in>
-                        확대
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class="d-flex flex-wrap gap-3 mt-3 small text-secondary">
-            <span data-viewer-access>열람 권한을 확인하고 있습니다.</span>
-            <span data-viewer-ink-balance></span>
-        </div>
-    </div>
-
-    <div class="viewer-page border rounded-3"
-         role="region"
-         aria-label="페이지 콘텐츠"
-         aria-describedby="viewer-keyboard-help"
-         aria-live="polite"
-         aria-busy="true"
-         tabindex="-1"
-         data-text-size="medium"
-         data-image-zoom="100"
-         data-viewer-content>
+        </aside>
     </div>
 
     <p class="visually-hidden" id="viewer-keyboard-help">

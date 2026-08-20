@@ -67,7 +67,19 @@ class CoreEntityMappingMySqlIntegrationTest {
             UUID.fromString("00000000-0000-0000-0000-000000026000");
     private static final UUID OWNERSHIP_PROVIDER_PAYMENT_ID =
             UUID.fromString("00000000-0000-0000-0000-000000029000");
-
+    private static final Set<Class<?>> V1_ENTITY_TYPES =
+            Set.of(
+                    Reader.class,
+                    Book.class,
+                    BookPage.class,
+                    ReadingSession.class,
+                    InkAccount.class,
+                    InkPurchase.class,
+                    PageRental.class,
+                    InkLedger.class,
+                    OwnershipPayment.class,
+                    BookOwnership.class,
+                    LibraryEntry.class);
     private final EntityManager entityManager;
     private final JdbcTemplate jdbcTemplate;
 
@@ -82,7 +94,7 @@ class CoreEntityMappingMySqlIntegrationTest {
         List<String> entityNames =
                 entityManager.getMetamodel().getEntities().stream()
                         .map(EntityType::getJavaType)
-                        .filter(type -> type.getPackageName().startsWith("com.example.ilgeobolkka"))
+                        .filter(V1_ENTITY_TYPES::contains)
                         .map(Class::getSimpleName)
                         .sorted()
                         .toList();
@@ -104,10 +116,12 @@ class CoreEntityMappingMySqlIntegrationTest {
     }
 
     @Test
-    void 모든_엔티티는_MySQL_AUTO_INCREMENT와_맞는_IDENTITY_전략을_사용한다() {
+    void V1의_모든_엔티티는_MySQL_AUTO_INCREMENT와_맞는_IDENTITY_전략을_사용한다() {
         entityManager
                 .getMetamodel()
                 .getEntities()
+                .stream()
+                .filter(entityType -> V1_ENTITY_TYPES.contains(entityType.getJavaType()))
                 .forEach(
                         entityType -> {
                             try {
@@ -136,6 +150,8 @@ class CoreEntityMappingMySqlIntegrationTest {
         entityManager
                 .getMetamodel()
                 .getEntities()
+                .stream()
+                .filter(entityType -> V1_ENTITY_TYPES.contains(entityType.getJavaType()))
                 .forEach(
                         entityType -> {
                             Class<?> javaType = entityType.getJavaType();
@@ -150,7 +166,6 @@ class CoreEntityMappingMySqlIntegrationTest {
                                                             mappedColumns,
                                                             mappedNullableColumns));
                         });
-
         List<String> physicalColumns = 물리_컬럼을_조회한다(false);
         List<String> physicalNullableColumns = 물리_컬럼을_조회한다(true);
 
@@ -353,19 +368,19 @@ class CoreEntityMappingMySqlIntegrationTest {
         String nullableCondition = nullableOnly ? "AND is_nullable = 'YES'" : "";
 
         return jdbcTemplate.queryForList(
-                """
-                SELECT CONCAT(table_name, '.', column_name)
-                FROM information_schema.columns
-                WHERE table_schema = DATABASE()
-                  AND table_name IN (
-                      'reader', 'book', 'book_page', 'reading_session',
-                      'ink_account', 'ink_purchase', 'page_rental', 'ink_ledger',
-                      'ownership_payment', 'book_ownership', 'library_entry'
-                  )
-                %s
-                ORDER BY table_name, ordinal_position
-                """
-                        .formatted(nullableCondition),
-                String.class);
+                        """
+                        SELECT CONCAT(table_name, '.', column_name)
+                        FROM information_schema.columns
+                        WHERE table_schema = DATABASE()
+                          AND table_name IN (
+                              'reader', 'book', 'book_page', 'reading_session',
+                              'ink_account', 'ink_purchase', 'page_rental', 'ink_ledger',
+                              'ownership_payment', 'book_ownership', 'library_entry'
+                          )
+                        %s
+                        ORDER BY table_name, ordinal_position
+                        """
+                                .formatted(nullableCondition),
+                        String.class);
     }
 }

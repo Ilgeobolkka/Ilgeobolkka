@@ -65,6 +65,9 @@ jobs:
       - name: GitHub CLI 점검 스크립트 테스트
         run: bash .agents/skills/github-cli-setup/scripts/check-test.sh
 
+      - name: 부팅 smoke 스크립트 테스트
+        run: bash .github/scripts/boot-smoke-test.sh
+
       - name: Poppler 26.05.0 설정
         run: |
           "$CONDA/bin/conda" create \
